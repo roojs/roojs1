@@ -89,16 +89,12 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
             hiddenName : 'day',
             mode : 'local',
             name : 'day_name',
-            placeholder : _this._strings['a441ee5f2757069eba2e93beeb9863c6'] /* Day of Birth */,
+            placeholder : this.dayPlaceholder,
             selectOnFocus : true,
-            style : 'margin-bottom:15px;',
             tpl : '<div class=\"select2-result\"><b>{value}</b></div>',
             triggerAction : 'all',
             typeAhead : true,
             valueField : 'value',
-            xns : Roo.bootstrap,
-            '|xns' : 'Roo.bootstrap',
-            xtype : 'ComboBox',
             store : {
                 data : (function() {             
                     var days = [];             
