@@ -23,23 +23,8 @@ Roo.bootstrap.DateSplitField = function(config){
     
 };
 
-Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     
-    jumbotron : false,
-    well: '',
-    panel : '',
-    header: '',
-    footer : '',
-    sticky: '',
-    tag : false,
-    alert : false,
-    fa: false,
-    icon : false,
-    expandable : false,
-    rheader : '',
-    expanded : true,
-  
-     
     getChildContainer : function() {
         
         if(!this.el){
