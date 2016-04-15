@@ -40,6 +40,9 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     dayAllowBlank : false,
     monthAllowBlank : false,
     yearAllowBlank : false,
+    dayPlaceholder : '',
+    monthPlaceholder : '',
+    yearPlaceholder : '',
     
     getAutoCreate : function()
     {
