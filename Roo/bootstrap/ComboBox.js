@@ -1173,7 +1173,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var dv = ''; // display value
         var vv = ''; // value value..
         this.lastData = o;
-        Roo.log(this.displayField);exit;
+        Roo.log(this.displayField);
         if (this.displayField) {
             dv = !o || typeof(o[this.displayField]) == 'undefined' ? '' : o[this.displayField];
         } else {
