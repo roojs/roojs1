@@ -27,49 +27,49 @@ Roo.History = {
     safariPollInterval : 500,
     
     /**
-     * History.options.doubleCheckInterval
+     * doubleCheckInterval
      * How long should the interval be before we perform a double check
      */
     doubleCheckInterval : 500,
     
     /**
-     * History.options.disableSuid
+     * disableSuid
      * Force this.not to append suid
      */
     disableSuid : false,
     
     /**
-     * History.options.storeInterval
+     * storeInterval
      * How long should we wait between store calls
      */
     storeInterval : 1000,
     
     /**
-     * History.options.busyDelay
+     * busyDelay
      * How long should we wait between busy events
      */
     busyDelay : 250,
     
     /**
-     * History.options.debug
+     * debug
      * If true will enable debug messages to be logged
      */
     debug : false,
     
     /**
-     * History.options.initialTitle
+     * initialTitle
      * What is the title of the initial state
      */
     initialTitle : '',
     
     /**
-     * History.options.html4Mode
+     * html4Mode
      * If true, will force HTMl4 mode (hashtags)
      */
     html4Mode : false,
     
     /**
-     * History.options.delayInit
+     * delayInit
      * Want to override default options and call init manually.
      */
     delayInit : false,
@@ -240,7 +240,7 @@ Roo.History = {
 		 
 
     /**
-     * History.clearAllIntervals
+     * clearAllIntervals
      * Clears all setInterval instances.
      */
     clearAllIntervals: function()
@@ -259,13 +259,13 @@ Roo.History = {
     // Debug
 
     /**
-     * History.debugLog(message,...)
+     * debugLog(message,...)
      * Logs the passed arguments if debug enabled
      */
     debugLog : function()
     {
         if ( (this.debug||false) ) {
-            Roo.log.apply(History,arguments);
+            Roo.log.apply(this,arguments);
         }
     },
 
@@ -275,7 +275,7 @@ Roo.History = {
     // Emulated Status
 
     /**
-     * History.getInternetExplorerMajorVersion()
+     * getInternetExplorerMajorVersion()
      * Get's the major version of Internet Explorer
      * @return {integer}
      * @license Public Domain
@@ -722,7 +722,7 @@ Roo.History = {
 			dataNotEmpty = !this.isEmptyObject(newState.data);
 
 			// Apply
-			if ( (newState.title || dataNotEmpty) && this.options.disableSuid !== true ) {
+			if ( (newState.title || dataNotEmpty) && this.disableSuid !== true ) {
 				// Add ID to Hash
 				newState.hash = this.getShortUrl(newState.url).replace(/\??\&_suid.*/,'');
 				if ( !/\?/.test(newState.hash) ) {
@@ -1142,7 +1142,7 @@ Roo.History = {
 		 * setHash(hash)
 		 * Sets the document hash
 		 * @param {string} hash
-		 * @return {History}
+		 * @return {Roo.History}
 		 */
 		setHash = function(hash,queue){
 			// Prepare
@@ -1162,7 +1162,7 @@ Roo.History = {
 			}
 
 			// Log
-			//this.debug('History.setHash: called',hash);
+			//this.debug('this.setHash: called',hash);
 
 			// Make Busy + Continue
 			this.busy(true);
@@ -1171,7 +1171,7 @@ Roo.History = {
 			State = this.extractState(hash,true);
 			if ( State && !this.emulated.pushState ) {
 				// Hash is a state so skip the setHash
-				//this.debug('History.setHash: Hash is a state so skipping the hash set with a direct pushState call',arguments);
+				//this.debug('this.setHash: Hash is a state so skipping the hash set with a direct pushState call',arguments);
 
 				// PushState
 				this.pushState(State.data,State.title,State.url,false);
@@ -1259,7 +1259,7 @@ Roo.History = {
 			if ( !title ) {
 				firstState = this.getStateByIndex(0);
 				if ( firstState && firstState.url === newState.url ) {
-					title = firstState.title||this.options.initialTitle;
+					title = firstState.title||this.initialTitle;
 				}
 			}
 
@@ -1278,53 +1278,47 @@ Roo.History = {
 		// ====================================================================
 		// Queueing
 
-		/**
-		 * queues
-		 * The list of queues to use
-		 * First In, First Out
-		 */
-		History.queues = [];
 
 		/**
-		 * History.busy(value)
+		 * busy(value)
 		 * @param {boolean} value [optional]
 		 * @return {boolean} busy
 		 */
-		History.busy = function(value){
+		busy = function(value){
 			// Apply
 			if ( typeof value !== 'undefined' ) {
-				//History.debug('History.busy: changing ['+(History.busy.flag||false)+'] to ['+(value||false)+']', History.queues.length);
-				History.busy.flag = value;
+				//this.debug('this.busy: changing ['+(this.busy.flag||false)+'] to ['+(value||false)+']', this.queues.length);
+				this.busy.flag = value;
 			}
 			// Default
-			else if ( typeof History.busy.flag === 'undefined' ) {
-				History.busy.flag = false;
+			else if ( typeof this.busy.flag === 'undefined' ) {
+				this.busy.flag = false;
 			}
 
 			// Queue
-			if ( !History.busy.flag ) {
+			if ( !this.busy.flag ) {
 				// Execute the next item in the queue
-				window.clearTimeout(History.busy.timeout);
+				window.clearTimeout(this.busy.timeout);
 				var fireNext = function(){
 					var i, queue, item;
-					if ( History.busy.flag ) return;
-					for ( i=History.queues.length-1; i >= 0; --i ) {
-						queue = History.queues[i];
+					if ( this.busy.flag ) return;
+					for ( i=this.queues.length-1; i >= 0; --i ) {
+						queue = this.queues[i];
 						if ( queue.length === 0 ) continue;
 						item = queue.shift();
-						History.fireQueueItem(item);
-						History.busy.timeout = window.setTimeout(fireNext,History.options.busyDelay);
+						this.fireQueueItem(item);
+						this.busy.timeout = window.setTimeout(fireNext,this.busyDelay);
 					}
 				};
-				History.busy.timeout = window.setTimeout(fireNext,History.options.busyDelay);
+				this.busy.timeout = window.setTimeout(fireNext,this.busyDelay);
 			}
 
 			// Return
-			return History.busy.flag;
+			return this.busy.flag;
 		};
 
 		/**
-		 * History.busy.flag
+		 * busy.flag
 		 */
 		History.busy.flag = false;
 
@@ -1462,7 +1456,7 @@ Roo.History = {
 						}
 						return true;
 					},
-					History.options.doubleCheckInterval
+					this.doubleCheckInterval
 				);
 			}
 
@@ -1949,7 +1943,7 @@ Roo.History = {
 			};
 
 			// For Internet Explorer
-			History.intervalList.push(setInterval(History.onUnload,History.options.storeInterval));
+			History.intervalList.push(setInterval(History.onUnload,this.storeInterval));
 
 			// For Other Browsers
 			History.Adapter.bind(window,'beforeunload',History.onUnload);
@@ -1968,7 +1962,7 @@ Roo.History = {
 			 * Setup Safari Fix
 			 */
 			if ( History.bugs.safariPoll ) {
-				History.intervalList.push(setInterval(History.safariStatePoll, History.options.safariPollInterval));
+				History.intervalList.push(setInterval(History.safariStatePoll, this.safariPollInterval));
 			}
 
 			/**
