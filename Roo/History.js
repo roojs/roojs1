@@ -152,6 +152,13 @@ Roo.History = {
      */
     savedStates : false,
 
+   /**
+    * queues
+    * The list of queues to use
+    * First In, First Out
+    */
+    queues : [],
+
     
     
 	// Initialise History
@@ -164,7 +171,7 @@ Roo.History = {
 		this.urlToId={};
 		this.storedStates=[];
 		this.savedStates=[];
-
+        this.queues = [];
         
         Roo.apply(this,options)
         
@@ -609,17 +616,17 @@ Roo.History = {
         if ( typeof create === 'undefined' ) { create = true; }
 
         // Fetch
-        var State = History.getLastSavedState();
+        var State = this.getLastSavedState();
 
         // Create
         if ( !State && create ) {
-            State = History.createStateObject();
+            State = this.createStateObject();
         }
 
         // Adjust
         if ( friendly ) {
-            State = History.cloneObject(State);
-            State.url = State.cleanUrl||State.url;
+            State = this.cloneObject(State);
+            State.url = this.cleanUrl||State.url;
         }
 
         // Return
@@ -627,38 +634,38 @@ Roo.History = {
     };
 
 		/**
-		 * History.getIdByState(State)
+		 * getIdByState(State)
 		 * Gets a ID for a State
 		 * @param {State} newState
 		 * @return {String} id
 		 */
-		History.getIdByState = function(newState){
+		getIdByState = function(newState){
 
 			// Fetch ID
-			var id = History.extractId(newState.url),
+			var id = this.extractId(newState.url),
 				str;
 
 			if ( !id ) {
 				// Find ID via State String
-				str = History.getStateString(newState);
-				if ( typeof History.stateToId[str] !== 'undefined' ) {
-					id = History.stateToId[str];
+				str = this.getStateString(newState);
+				if ( typeof this.stateToId[str] !== 'undefined' ) {
+					id = this.stateToId[str];
 				}
-				else if ( typeof History.store.stateToId[str] !== 'undefined' ) {
-					id = History.store.stateToId[str];
+				else if ( typeof this.store.stateToId[str] !== 'undefined' ) {
+					id = this.store.stateToId[str];
 				}
 				else {
 					// Generate a new ID
 					while ( true ) {
 						id = (new Date()).getTime() + String(Math.random()).replace(/\D/g,'');
-						if ( typeof History.idToState[id] === 'undefined' && typeof History.store.idToState[id] === 'undefined' ) {
+						if ( typeof this.idToState[id] === 'undefined' && typeof this.store.idToState[id] === 'undefined' ) {
 							break;
 						}
 					}
 
 					// Apply the new State to the ID
-					History.stateToId[str] = id;
-					History.idToState[id] = newState;
+					this.stateToId[str] = id;
+					this.idToState[id] = newState;
 				}
 			}
 
@@ -667,12 +674,12 @@ Roo.History = {
 		};
 
 		/**
-		 * History.normalizeState(State)
+		 * normalizeState(State)
 		 * Expands a State Object
 		 * @param {object} State
 		 * @return {object}
 		 */
-		History.normalizeState = function(oldState){
+		normalizeState = function(oldState){
 			// Variables
 			var newState, dataNotEmpty;
 
@@ -697,12 +704,12 @@ Roo.History = {
 			newState = {};
 			newState.normalized = true;
 			newState.title = oldState.title||'';
-			newState.url = History.getFullUrl(oldState.url?oldState.url:(History.getLocationHref()));
-			newState.hash = History.getShortUrl(newState.url);
-			newState.data = History.cloneObject(oldState.data);
+			newState.url = this.getFullUrl(oldState.url?oldState.url:(this.getLocationHref()));
+			newState.hash = this.getShortUrl(newState.url);
+			newState.data = this.cloneObject(oldState.data);
 
 			// Fetch ID
-			newState.id = History.getIdByState(newState);
+			newState.id = this.getIdByState(newState);
 
 			// ----------------------------------------------------------------
 
@@ -711,12 +718,12 @@ Roo.History = {
 			newState.url = newState.cleanUrl;
 
 			// Check to see if we have more than just a url
-			dataNotEmpty = !History.isEmptyObject(newState.data);
+			dataNotEmpty = !this.isEmptyObject(newState.data);
 
 			// Apply
-			if ( (newState.title || dataNotEmpty) && History.options.disableSuid !== true ) {
+			if ( (newState.title || dataNotEmpty) && this.options.disableSuid !== true ) {
 				// Add ID to Hash
-				newState.hash = History.getShortUrl(newState.url).replace(/\??\&_suid.*/,'');
+				newState.hash = this.getShortUrl(newState.url).replace(/\??\&_suid.*/,'');
 				if ( !/\?/.test(newState.hash) ) {
 					newState.hash += '?';
 				}
@@ -724,12 +731,12 @@ Roo.History = {
 			}
 
 			// Create the Hashed URL
-			newState.hashedUrl = History.getFullUrl(newState.hash);
+			newState.hashedUrl = this.getFullUrl(newState.hash);
 
 			// ----------------------------------------------------------------
 
 			// Update the URL if we have a duplicate
-			if ( (History.emulated.pushState || History.bugs.safariPoll) && History.hasUrlDuplicate(newState) ) {
+			if ( (this.emulated.pushState || this.bugs.safariPoll) && this.hasUrlDuplicate(newState) ) {
 				newState.url = newState.hashedUrl;
 			}
 
@@ -740,14 +747,14 @@ Roo.History = {
 		};
 
 		/**
-		 * History.createStateObject(data,title,url)
+		 * createStateObject(data,title,url)
 		 * Creates a object based on the data, title and url state params
 		 * @param {object} data
 		 * @param {string} title
 		 * @param {string} url
 		 * @return {object}
 		 */
-		History.createStateObject = function(data,title,url){
+		createStateObject = function(data,title,url){
 			// Hashify
 			var State = {
 				'data': data,
@@ -756,23 +763,23 @@ Roo.History = {
 			};
 
 			// Expand the State
-			State = History.normalizeState(State);
+			State = this.normalizeState(State);
 
 			// Return object
 			return State;
 		};
 
 		/**
-		 * History.getStateById(id)
+		 * getStateById(id)
 		 * Get a state by it's UID
 		 * @param {String} id
 		 */
-		History.getStateById = function(id){
+		getStateById = function(id){
 			// Prepare
 			id = String(id);
 
 			// Retrieve
-			var State = History.idToState[id] || History.store.idToState[id] || undefined;
+			var State = this.idToState[id] || this.store.idToState[id] || undefined;
 
 			// Return State
 			return State;
@@ -782,12 +789,12 @@ Roo.History = {
 		 * Get a State's String
 		 * @param {State} passedState
 		 */
-		History.getStateString = function(passedState){
+		getStateString = function(passedState){
 			// Prepare
 			var State, cleanedState, str;
 
 			// Fetch
-			State = History.normalizeState(passedState);
+			State = this.normalizeState(passedState);
 
 			// Clean
 			cleanedState = {
@@ -808,12 +815,12 @@ Roo.History = {
 		 * @param {State} passedState
 		 * @return {String} id
 		 */
-		History.getStateId = function(passedState){
+		getStateId = function(passedState){
 			// Prepare
 			var State, id;
 
 			// Fetch
-			State = History.normalizeState(passedState);
+			State = this.normalizeState(passedState);
 
 			// Fetch
 			id = State.id;
@@ -823,17 +830,17 @@ Roo.History = {
 		};
 
 		/**
-		 * History.getHashByState(State)
+		 * getHashByState(State)
 		 * Creates a Hash for the State Object
 		 * @param {State} passedState
 		 * @return {String} hash
 		 */
-		History.getHashByState = function(passedState){
+		getHashByState = function(passedState){
 			// Prepare
 			var State, hash;
 
 			// Fetch
-			State = History.normalizeState(passedState);
+			State = this.normalizeState(passedState);
 
 			// Hash
 			hash = State.hash;
@@ -843,12 +850,12 @@ Roo.History = {
 		};
 
 		/**
-		 * History.extractId(url_or_hash)
+		 * extractId(url_or_hash)
 		 * Get a State ID by it's URL or Hash
 		 * @param {string} url_or_hash
 		 * @return {string} id
 		 */
-		History.extractId = function ( url_or_hash ) {
+		this.extractId = function ( url_or_hash ) {
 			// Prepare
 			var id,parts,url, tmp;
 
@@ -873,12 +880,12 @@ Roo.History = {
 		};
 
 		/**
-		 * History.isTraditionalAnchor
+		 * isTraditionalAnchor
 		 * Checks to see if the url is a traditional anchor or not
 		 * @param {String} url_or_hash
 		 * @return {Boolean}
 		 */
-		History.isTraditionalAnchor = function(url_or_hash){
+		isTraditionalAnchor = function(url_or_hash){
 			// Check
 			var isTraditional = !(/[\/\?\.]/.test(url_or_hash));
 
@@ -887,36 +894,36 @@ Roo.History = {
 		};
 
 		/**
-		 * History.extractState
+		 * extractState
 		 * Get a State by it's URL or Hash
 		 * @param {String} url_or_hash
 		 * @return {State|null}
 		 */
-		History.extractState = function(url_or_hash,create){
+		extractState = function(url_or_hash,create){
 			// Prepare
 			var State = null, id, url;
 			create = create||false;
 
 			// Fetch SUID
-			id = History.extractId(url_or_hash);
+			id = this.extractId(url_or_hash);
 			if ( id ) {
-				State = History.getStateById(id);
+				State = this.getStateById(id);
 			}
 
 			// Fetch SUID returned no State
 			if ( !State ) {
 				// Fetch URL
-				url = History.getFullUrl(url_or_hash);
+				url = this.getFullUrl(url_or_hash);
 
 				// Check URL
-				id = History.getIdByUrl(url)||false;
+				id = this.getIdByUrl(url)||false;
 				if ( id ) {
-					State = History.getStateById(id);
+					State = this.getStateById(id);
 				}
 
 				// Create State
-				if ( !State && create && !History.isTraditionalAnchor(url_or_hash) ) {
-					State = History.createStateObject(null,null,url);
+				if ( !State && create && !this.isTraditionalAnchor(url_or_hash) ) {
+					State = this.createStateObject(null,null,url);
 				}
 			}
 
@@ -925,48 +932,48 @@ Roo.History = {
 		};
 
 		/**
-		 * History.getIdByUrl()
+		 * getIdByUrl()
 		 * Get a State ID by a State URL
 		 */
-		History.getIdByUrl = function(url){
+		getIdByUrl = function(url){
 			// Fetch
-			var id = History.urlToId[url] || History.store.urlToId[url] || undefined;
+			var id = this.urlToId[url] || this.store.urlToId[url] || undefined;
 
 			// Return
 			return id;
 		};
 
 		/**
-		 * History.getLastSavedState()
+		 * getLastSavedState()
 		 * Get an object containing the data, title and url of the current state
 		 * @return {Object} State
 		 */
-		History.getLastSavedState = function(){
-			return History.savedStates[History.savedStates.length-1]||undefined;
+		getLastSavedState = function(){
+			return this.savedStates[this.savedStates.length-1]||undefined;
 		};
 
 		/**
-		 * History.getLastStoredState()
+		 * getLastStoredState()
 		 * Get an object containing the data, title and url of the current state
 		 * @return {Object} State
 		 */
-		History.getLastStoredState = function(){
-			return History.storedStates[History.storedStates.length-1]||undefined;
+		getLastStoredState = function(){
+			return this.storedStates[this.storedStates.length-1]||undefined;
 		};
 
 		/**
-		 * History.hasUrlDuplicate
+		 * hasUrlDuplicate
 		 * Checks if a Url will have a url conflict
 		 * @param {Object} newState
 		 * @return {Boolean} hasDuplicate
 		 */
-		History.hasUrlDuplicate = function(newState) {
+		hasUrlDuplicate = function(newState) {
 			// Prepare
 			var hasDuplicate = false,
 				oldState;
 
 			// Fetch
-			oldState = History.extractState(newState.url);
+			oldState = this.extractState(newState.url);
 
 			// Check
 			hasDuplicate = oldState && oldState.id !== newState.id;
@@ -976,37 +983,37 @@ Roo.History = {
 		};
 
 		/**
-		 * History.storeState
+		 * storeState
 		 * Store a State
 		 * @param {Object} newState
 		 * @return {Object} newState
 		 */
-		History.storeState = function(newState){
+		storeState = function(newState){
 			// Store the State
-			History.urlToId[newState.url] = newState.id;
+			this.urlToId[newState.url] = newState.id;
 
 			// Push the State
-			History.storedStates.push(History.cloneObject(newState));
+			this.storedStates.push(this.cloneObject(newState));
 
 			// Return newState
 			return newState;
 		};
 
 		/**
-		 * History.isLastSavedState(newState)
+		 * isLastSavedState(newState)
 		 * Tests to see if the state is the last state
 		 * @param {Object} newState
 		 * @return {boolean} isLast
 		 */
-		History.isLastSavedState = function(newState){
+		isLastSavedState = function(newState){
 			// Prepare
 			var isLast = false,
 				newId, oldState, oldId;
 
 			// Check
-			if ( History.savedStates.length ) {
+			if ( this.savedStates.length ) {
 				newId = newState.id;
-				oldState = History.getLastSavedState();
+				oldState = this.getLastSavedState();
 				oldId = oldState.id;
 
 				// Check
@@ -1018,46 +1025,46 @@ Roo.History = {
 		};
 
 		/**
-		 * History.saveState
+		 * saveState
 		 * Push a State
 		 * @param {Object} newState
 		 * @return {boolean} changed
 		 */
-		History.saveState = function(newState){
+		saveState = function(newState){
 			// Check Hash
-			if ( History.isLastSavedState(newState) ) {
+			if ( this.isLastSavedState(newState) ) {
 				return false;
 			}
 
 			// Push the State
-			History.savedStates.push(History.cloneObject(newState));
+			this.savedStates.push(this.cloneObject(newState));
 
 			// Return true
 			return true;
 		};
 
 		/**
-		 * History.getStateByIndex()
+		 * getStateByIndex()
 		 * Gets a state by the index
 		 * @param {integer} index
 		 * @return {Object}
 		 */
-		History.getStateByIndex = function(index){
+		getStateByIndex = function(index){
 			// Prepare
 			var State = null;
 
 			// Handle
 			if ( typeof index === 'undefined' ) {
 				// Get the last inserted
-				State = History.savedStates[History.savedStates.length-1];
+				State = this.savedStates[this.savedStates.length-1];
 			}
 			else if ( index < 0 ) {
 				// Get from the end
-				State = History.savedStates[History.savedStates.length+index];
+				State = this.savedStates[this.savedStates.length+index];
 			}
 			else {
 				// Get from the beginning
-				State = History.savedStates[index];
+				State = this.savedStates[index];
 			}
 
 			// Return State
@@ -1065,20 +1072,20 @@ Roo.History = {
 		};
 		
 		/**
-		 * History.getCurrentIndex()
+		 * getCurrentIndex()
 		 * Gets the current index
 		 * @return (integer)
 		*/
-		History.getCurrentIndex = function(){
+		getCurrentIndex = function(){
 			// Prepare
 			var index = null;
 			
 			// No states saved
-			if(History.savedStates.length < 1) {
+			if(this.savedStates.length < 1) {
 				index = 0;
 			}
 			else {
-				index = History.savedStates.length-1;
+				index = this.savedStates.length-1;
 			}
 			return index;
 		};
@@ -1087,28 +1094,28 @@ Roo.History = {
 		// Hash Helpers
 
 		/**
-		 * History.getHash()
+		 * getHash()
 		 * @param {Location=} location
 		 * Gets the current document hash
 		 * Note: unlike location.hash, this is guaranteed to return the escaped hash in all browsers
 		 * @return {string}
 		 */
-		History.getHash = function(doc){
-			var url = History.getLocationHref(doc),
+		getHash = function(doc){
+			var url = this.getLocationHref(doc),
 				hash;
-			hash = History.getHashByUrl(url);
+			hash = this.getHashByUrl(url);
 			return hash;
 		};
 
 		/**
-		 * History.unescapeHash()
+		 * unescapeHash()
 		 * normalize and Unescape a Hash
 		 * @param {String} hash
 		 * @return {string}
 		 */
-		History.unescapeHash = function(hash){
+		unescapeHash = function(hash){
 			// Prepare
-			var result = History.normalizeHash(hash);
+			var result = this.normalizeHash(hash);
 
 			// Unescape hash
 			result = decodeURIComponent(result);
@@ -1118,11 +1125,11 @@ Roo.History = {
 		};
 
 		/**
-		 * History.normalizeHash()
+		 * normalizeHash()
 		 * normalize a hash across browsers
 		 * @return {string}
 		 */
-		History.normalizeHash = function(hash){
+		normalizeHash = function(hash){
 			// Prepare
 			var result = hash.replace(/[^#]*#/,'').replace(/#.*/, '');
 
@@ -1131,22 +1138,22 @@ Roo.History = {
 		};
 
 		/**
-		 * History.setHash(hash)
+		 * setHash(hash)
 		 * Sets the document hash
 		 * @param {string} hash
 		 * @return {History}
 		 */
-		History.setHash = function(hash,queue){
+		setHash = function(hash,queue){
 			// Prepare
 			var State, pageUrl;
 
 			// Handle Queueing
-			if ( queue !== false && History.busy() ) {
+			if ( queue !== false && this.busy() ) {
 				// Wait + Push to Queue
-				//History.debug('History.setHash: we must wait', arguments);
-				History.pushQueue({
-					scope: History,
-					callback: History.setHash,
+				//this.debug('this.setHash: we must wait', arguments);
+				this.pushQueue({
+					scope: this.
+					callback: this.setHash,
 					args: arguments,
 					queue: queue
 				});
@@ -1154,32 +1161,32 @@ Roo.History = {
 			}
 
 			// Log
-			//History.debug('History.setHash: called',hash);
+			//this.debug('History.setHash: called',hash);
 
 			// Make Busy + Continue
-			History.busy(true);
+			this.busy(true);
 
 			// Check if hash is a state
-			State = History.extractState(hash,true);
-			if ( State && !History.emulated.pushState ) {
+			State = this.extractState(hash,true);
+			if ( State && !this.emulated.pushState ) {
 				// Hash is a state so skip the setHash
-				//History.debug('History.setHash: Hash is a state so skipping the hash set with a direct pushState call',arguments);
+				//this.debug('History.setHash: Hash is a state so skipping the hash set with a direct pushState call',arguments);
 
 				// PushState
-				History.pushState(State.data,State.title,State.url,false);
+				this.pushState(State.data,State.title,State.url,false);
 			}
-			else if ( History.getHash() !== hash ) {
+			else if ( this.getHash() !== hash ) {
 				// Hash is a proper hash, so apply it
 
 				// Handle browser bugs
-				if ( History.bugs.setHash ) {
+				if ( this.bugs.setHash ) {
 					// Fix Safari Bug https://bugs.webkit.org/show_bug.cgi?id=56249
 
 					// Fetch the base page
-					pageUrl = History.getPageUrl();
+					pageUrl = this.getPageUrl();
 
 					// Safari hash apply
-					History.pushState(null,null,pageUrl+'#'+hash,false);
+					this.pushState(null,null,pageUrl+'#'+hash,false);
 				}
 				else {
 					// Normal hash apply
@@ -1188,23 +1195,23 @@ Roo.History = {
 			}
 
 			// Chain
-			return History;
+			return this;
 		};
 
 		/**
-		 * History.escape()
+		 * escape()
 		 * normalize and Escape a Hash
 		 * @return {string}
 		 */
-		History.escapeHash = function(hash){
+		escapeHash = function(hash){
 			// Prepare
-			var result = History.normalizeHash(hash);
+			var result = normalizeHash(hash);
 
 			// Escape hash
 			result = window.encodeURIComponent(result);
 
 			// IE6 Escape Bug
-			if ( !History.bugs.hashEscape ) {
+			if ( !this.bugs.hashEscape ) {
 				// Restore common parts
 				result = result
 					.replace(/\%21/g,'!')
@@ -1218,40 +1225,40 @@ Roo.History = {
 		};
 
 		/**
-		 * History.getHashByUrl(url)
+		 * getHashByUrl(url)
 		 * Extracts the Hash from a URL
 		 * @param {string} url
 		 * @return {string} url
 		 */
-		History.getHashByUrl = function(url){
+		getHashByUrl = function(url){
 			// Extract the hash
 			var hash = String(url)
 				.replace(/([^#]*)#?([^#]*)#?(.*)/, '$2')
 				;
 
 			// Unescape hash
-			hash = History.unescapeHash(hash);
+			hash = this.unescapeHash(hash);
 
 			// Return hash
 			return hash;
 		};
 
 		/**
-		 * History.setTitle(title)
+		 * setTitle(title)
 		 * Applies the title to the document
 		 * @param {State} newState
 		 * @return {Boolean}
 		 */
-		History.setTitle = function(newState){
+		setTitle = function(newState){
 			// Prepare
 			var title = newState.title,
 				firstState;
 
 			// Initial
 			if ( !title ) {
-				firstState = History.getStateByIndex(0);
+				firstState = this.getStateByIndex(0);
 				if ( firstState && firstState.url === newState.url ) {
-					title = firstState.title||History.options.initialTitle;
+					title = firstState.title||this.options.initialTitle;
 				}
 			}
 
@@ -1263,7 +1270,7 @@ Roo.History = {
 			window.document.title = title;
 
 			// Chain
-			return History;
+			return this;
 		};
 
 
@@ -1271,7 +1278,7 @@ Roo.History = {
 		// Queueing
 
 		/**
-		 * History.queues
+		 * queues
 		 * The list of queues to use
 		 * First In, First Out
 		 */
