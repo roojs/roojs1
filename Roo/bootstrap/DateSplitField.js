@@ -30,7 +30,15 @@
 Roo.bootstrap.DateSplitField = function(config){
     Roo.bootstrap.DateSplitField.superclass.constructor.call(this, config);
     
-    
+    this.addEvents({
+        // raw events
+         /**
+         * @event years
+         * getting the data of years
+         * @param {Roo.bootstrap.DateSplitField} this
+         */
+        "years" : true
+    });
 };
 
 Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
