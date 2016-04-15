@@ -79,16 +79,14 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     {
         Roo.bootstrap.NavProgressBar.superclass.onRender.call(this, ct, position);
         
-        this.day = new Roo.bootstrap.ComboBox({
+        this.dayField = new Roo.bootstrap.ComboBox({
             allowBlank : this.dayAllowBlank,
             alwaysQuery : true,
             displayField : 'value',
             editable : false,
             fieldLabel : '',
             forceSelection : true,
-            name : 'test_name',
             mode : 'local',
-            hiddenName : 'test',
             placeholder : this.dayPlaceholder,
             selectOnFocus : true,
             tpl : '<div class="select2-result"><b>{value}</b></div>',
@@ -113,10 +111,6 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
         });
 
         this.day.render(this.el.select('.roo-date-split-field-day', true).first(), null);
-        
-        Roo.log('render????????????????????????????????????????????????????????????????');
-        
-        Roo.log(this.day);
         
         
         
