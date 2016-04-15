@@ -137,7 +137,13 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
                     return days;
                 })(),
                 fields : [ 'value' ]
-            })
+            }),
+            listeners : {
+                select : function (_self, record, index)
+                {
+                    _this.validate();
+                }
+            }
         });
 
         this.dayField.render(this.el.select('.roo-date-split-field-day', true).first(), null);
@@ -149,6 +155,13 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
             readOnly : true,
             listeners : {
                 render : function (_self)
+                {
+                    this.el.select('span.input-group-addon', true).first().on('click', function(e){
+                        e.preventDefault();
+                        _self.focus();
+                    });
+                },
+                select : function (_self)
                 {
                     this.el.select('span.input-group-addon', true).first().on('click', function(e){
                         e.preventDefault();
@@ -181,7 +194,13 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
                     return years;
                 })(),
                 fields : [ 'value' ]
-            })
+            }),
+            listeners : {
+                select : function (_self, record, index)
+                {
+                    _this.validate();
+                }
+            }
         });
 
         this.yearField.render(this.el.select('.roo-date-split-field-year', true).first(), null);
