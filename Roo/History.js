@@ -1301,7 +1301,7 @@ Roo.History = {
             // Wait + Push to Queue
             //this.debug('this.setHash: we must wait', arguments);
             this.pushQueue({
-                scope: this.
+                scope: this,
                 callback: this.setHash,
                 args: arguments,
                 queue: queue
