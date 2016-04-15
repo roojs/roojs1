@@ -113,6 +113,47 @@ Roo.History = {
     intervalList : false, // array normally.
     enabled : false,
 
+    // ====================================================================
+		// State Storage
+
+    /**
+     * store
+     * The store for all session specific data
+     */
+    store :false,
+
+    /**
+     * History.idToState
+     * 1-1: State ID to State Object
+     */
+    idToState : false,
+
+    /**
+     * History.stateToId
+     * 1-1: State String to State ID
+     */
+    stateToId :false,
+
+    /**
+     * History.urlToId
+     * 1-1: State URL to State ID
+     */
+    urlToId : false,
+
+    /**
+     * History.storedStates
+     * Store the states in an array
+     */
+    storedStates : false,
+
+    /**
+     * History.savedStates
+     * Saved the states in an array
+     */
+    savedStates : false,
+
+    
+    
 	// Initialise History
 	init : function(options){
         
@@ -142,6 +183,52 @@ Roo.History = {
 		 */
 		this.enabled = !this.emulated.pushState;
 
+        
+        
+        // ====================================================================
+		// State Storage
+
+		/**
+		 * store
+		 * The store for all session specific data
+		 */
+		History.store = {};
+
+		/**
+		 * History.idToState
+		 * 1-1: State ID to State Object
+		 */
+		History.idToState = History.idToState||{};
+
+		/**
+		 * History.stateToId
+		 * 1-1: State String to State ID
+		 */
+		History.stateToId = History.stateToId||{};
+
+		/**
+		 * History.urlToId
+		 * 1-1: State URL to State ID
+		 */
+		History.urlToId = History.urlToId||{};
+
+		/**
+		 * History.storedStates
+		 * Store the states in an array
+		 */
+		History.storedStates = History.storedStates||[];
+
+		/**
+		 * History.savedStates
+		 * Saved the states in an array
+		 */
+		History.savedStates = History.savedStates||[];
+
+        
+        
+        
+        
+        
         
 
 		// Return true
@@ -235,7 +322,7 @@ Roo.History = {
                 })()
             ;
         return result;
-    };
+    },
 
     /**
      * isInternetExplorer()
@@ -244,7 +331,7 @@ Roo.History = {
      * @license Public Domain
      * @author Benjamin Arthur Lupton <contact@balupton.com>
      */
-    isInternetExplorer = function(){
+    isInternetExplorer : function(){
         var result =
             this.isInternetExplorer.cached =
             (typeof this.isInternetExplorer.cached !== 'undefined')
@@ -283,35 +370,35 @@ Roo.History = {
         this.emulated.hashChange = Boolean(
 					!(('onhashchange' in window) || ('onhashchange' in window.document))
 					||
-					(History.isInternetExplorer() && History.getInternetExplorerMajorVersion() < 8)
+					(this.isInternetExplorer() && this.getInternetExplorerMajorVersion() < 8)
 				);
 			
 	}
 
 	 
 
-		/**
-		 * History.isEmptyObject(obj)
-		 * Checks to see if the Object is Empty
-		 * @param {Object} obj
-		 * @return {boolean}
-		 */
-		History.isEmptyObject = function(obj) {
-			for ( var name in obj ) {
-				if ( obj.hasOwnProperty(name) ) {
-					return false;
-				}
-			}
-			return true;
-		};
+    /**
+     * isEmptyObject(obj)
+     * Checks to see if the Object is Empty
+     * @param {Object} obj
+     * @return {boolean}
+     */
+    isEmptyObject = function(obj) {
+        for ( var name in obj ) {
+            if ( obj.hasOwnProperty(name) ) {
+                return false;
+            }
+        }
+        return true;
+    };
 
 		/**
-		 * History.cloneObject(obj)
+		 * cloneObject(obj)
 		 * Clones a object and eliminate all references to the original contexts
 		 * @param {Object} obj
 		 * @return {Object}
 		 */
-		History.cloneObject = function(obj) {
+		cloneObject = function(obj) {
 			var hash,newObj;
 			if ( obj ) {
 				hash = JSON.stringify(obj);
@@ -328,11 +415,11 @@ Roo.History = {
 		// URL Helpers
 
 		/**
-		 * History.getRootUrl()
+		 * getRootUrl()
 		 * Turns "http://mysite.com/dir/page.html?asd" into "http://mysite.com"
 		 * @return {String} rootUrl
 		 */
-		History.getRootUrl = function(){
+		getRootUrl = function(){
 			// Create
 			var rootUrl = window.document.location.protocol+'//'+(window.document.location.hostname||window.document.location.host);
 			if ( window.document.location.port||false ) {
@@ -345,11 +432,11 @@ Roo.History = {
 		};
 
 		/**
-		 * History.getBaseHref()
+		 * getBaseHref()
 		 * Fetches the `href` attribute of the `<base href="...">` element if it exists
 		 * @return {String} baseHref
 		 */
-		History.getBaseHref = function(){
+		getBaseHref = function(){
 			// Create
 			var
 				baseElements = window.document.getElementsByTagName('base'),
@@ -372,28 +459,28 @@ Roo.History = {
 		};
 
 		/**
-		 * History.getBaseUrl()
+		 * getBaseUrl()
 		 * Fetches the baseHref or basePageUrl or rootUrl (whichever one exists first)
 		 * @return {String} baseUrl
 		 */
-		History.getBaseUrl = function(){
+		getBaseUrl = function(){
 			// Create
-			var baseUrl = History.getBaseHref()||History.getBasePageUrl()||History.getRootUrl();
+			var baseUrl = this.getBaseHref()||this.getBasePageUrl()||this.getRootUrl();
 
 			// Return
 			return baseUrl;
 		};
 
 		/**
-		 * History.getPageUrl()
+		 * getPageUrl()
 		 * Fetches the URL of the current page
 		 * @return {String} pageUrl
 		 */
-		History.getPageUrl = function(){
+		getPageUrl = function(){
 			// Fetch
 			var
-				State = History.getState(false,false),
-				stateUrl = (State||{}).url||History.getLocationHref(),
+				State = this.getState(false,false),
+				stateUrl = (State||{}).url||this.getLocationHref(),
 				pageUrl;
 
 			// Create
@@ -406,13 +493,13 @@ Roo.History = {
 		};
 
 		/**
-		 * History.getBasePageUrl()
+		 * getBasePageUrl()
 		 * Fetches the Url of the directory of the current page
 		 * @return {String} basePageUrl
 		 */
-		History.getBasePageUrl = function(){
+		getBasePageUrl = function(){
 			// Create
-			var basePageUrl = (History.getLocationHref()).replace(/[#\?].*/,'').replace(/[^\/]+$/,function(part,index,string){
+			var basePageUrl = (this.getLocationHref()).replace(/[#\?].*/,'').replace(/[^\/]+$/,function(part,index,string){
 				return (/[^\/]$/).test(part) ? '' : part;
 			}).replace(/\/+$/,'')+'/';
 
@@ -421,13 +508,13 @@ Roo.History = {
 		};
 
 		/**
-		 * History.getFullUrl(url)
+		 * getFullUrl(url)
 		 * Ensures that we have an absolute URL and not a relative URL
 		 * @param {string} url
 		 * @param {Boolean} allowBaseHref
 		 * @return {string} fullUrl
 		 */
-		History.getFullUrl = function(url,allowBaseHref){
+		getFullUrl = function(url,allowBaseHref){
 			// Prepare
 			var fullUrl = url, firstChar = url.substring(0,1);
 			allowBaseHref = (typeof allowBaseHref === 'undefined') ? true : allowBaseHref;
@@ -438,22 +525,22 @@ Roo.History = {
 			}
 			else if ( firstChar === '/' ) {
 				// Root URL
-				fullUrl = History.getRootUrl()+url.replace(/^\/+/,'');
+				fullUrl = this.getRootUrl()+url.replace(/^\/+/,'');
 			}
 			else if ( firstChar === '#' ) {
 				// Anchor URL
-				fullUrl = History.getPageUrl().replace(/#.*/,'')+url;
+				fullUrl = this.getPageUrl().replace(/#.*/,'')+url;
 			}
 			else if ( firstChar === '?' ) {
 				// Query URL
-				fullUrl = History.getPageUrl().replace(/[\?#].*/,'')+url;
+				fullUrl = this.getPageUrl().replace(/[\?#].*/,'')+url;
 			}
 			else {
 				// Relative URL
 				if ( allowBaseHref ) {
-					fullUrl = History.getBaseUrl()+url.replace(/^(\.\/)+/,'');
+					fullUrl = this.getBaseUrl()+url.replace(/^(\.\/)+/,'');
 				} else {
-					fullUrl = History.getBasePageUrl()+url.replace(/^(\.\/)+/,'');
+					fullUrl = this.getBasePageUrl()+url.replace(/^(\.\/)+/,'');
 				}
 				// We have an if condition above as we do not want hashes
 				// which are relative to the baseHref in our URLs
@@ -467,17 +554,17 @@ Roo.History = {
 		};
 
 		/**
-		 * History.getShortUrl(url)
+		 * getShortUrl(url)
 		 * Ensures that we have a relative URL and not a absolute URL
 		 * @param {string} url
 		 * @return {string} url
 		 */
-		History.getShortUrl = function(url){
+		getShortUrl = function(url){
 			// Prepare
-			var shortUrl = url, baseUrl = History.getBaseUrl(), rootUrl = History.getRootUrl();
+			var shortUrl = url, baseUrl = this.getBaseUrl(), rootUrl = this.getRootUrl();
 
 			// Trim baseUrl
-			if ( History.emulated.pushState ) {
+			if ( this.emulated.pushState ) {
 				// We are in a if statement as when pushState is not emulated
 				// The actual url these short urls are relative to can change
 				// So within the same session, we the url may end up somewhere different
@@ -488,7 +575,7 @@ Roo.History = {
 			shortUrl = shortUrl.replace(rootUrl,'/');
 
 			// Ensure we can still detect it as a state
-			if ( History.isTraditionalAnchor(shortUrl) ) {
+			if ( this.isTraditionalAnchor(shortUrl) ) {
 				shortUrl = './'+shortUrl;
 			}
 
@@ -500,7 +587,7 @@ Roo.History = {
 		};
 
 		/**
-		 * History.getLocationHref(document)
+		 * getLocationHref(document)
 		 * Returns a normalized version of document.location.href
 		 * accounting for browser inconsistencies, etc.
 		 *
@@ -509,7 +596,7 @@ Roo.History = {
 		 * @param {object} document
 		 * @return {string} url
 		 */
-		History.getLocationHref = function(doc) {
+		getLocationHref = function(doc) {
 			doc = doc || window.document;
 
 			// most of the time, this will be true
@@ -533,45 +620,7 @@ Roo.History = {
 		};
 
 
-		// ====================================================================
-		// State Storage
-
-		/**
-		 * History.store
-		 * The store for all session specific data
-		 */
-		History.store = {};
-
-		/**
-		 * History.idToState
-		 * 1-1: State ID to State Object
-		 */
-		History.idToState = History.idToState||{};
-
-		/**
-		 * History.stateToId
-		 * 1-1: State String to State ID
-		 */
-		History.stateToId = History.stateToId||{};
-
-		/**
-		 * History.urlToId
-		 * 1-1: State URL to State ID
-		 */
-		History.urlToId = History.urlToId||{};
-
-		/**
-		 * History.storedStates
-		 * Store the states in an array
-		 */
-		History.storedStates = History.storedStates||[];
-
-		/**
-		 * History.savedStates
-		 * Saved the states in an array
-		 */
-		History.savedStates = History.savedStates||[];
-
+		
 		/**
 		 * History.noramlizeStore()
 		 * Noramlize the store by adding necessary values
