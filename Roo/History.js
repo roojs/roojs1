@@ -291,13 +291,13 @@ Roo.History = {
 
 				// Setup Alias
 				this.Adapter.bind(window,'hashchange',function(){
-					this.Adapter.trigger(window,'popstate');
+					_this.Adapter.trigger(window,'popstate');
 				});
 
 				// Initialise Alias
 				if ( this.getHash() ) {
 					this.Adapter.onDomLoad(function(){
-						this.Adapter.trigger(window,'hashchange');
+						_this.Adapter.trigger(window,'hashchange');
 					});
 				}
 			}
