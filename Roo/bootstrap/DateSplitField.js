@@ -164,7 +164,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
             })
         });
 
-        this.dayField.render(this.el.select('.roo-date-split-field-day', true).first(), null);
+        this.yearField.render(this.el.select('.roo-date-split-field-year', true).first(), null);
     },
     
     initEvents: function() 
