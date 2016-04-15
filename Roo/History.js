@@ -7,47 +7,105 @@
  * @license New BSD License <http://creativecommons.org/licenses/BSD/>
  */
 
-(function(window,undefined){
-	"use strict";
+Roo.History = {
+	 
+     
+    // ====================================================================
+		// Options
 
+		 
+		/**
+		 * hashChangeInterval
+		 * How long should the interval be before hashchange checks
+		 */
+		thishashChangeInterval  : 100,
+
+		/**
+		 * safariPollInterval
+		 * How long should the interval be before safari poll checks
+		 */
+		safariPollInterval : 500,
+
+		/**
+		 * History.options.doubleCheckInterval
+		 * How long should the interval be before we perform a double check
+		 */
+		doubleCheckInterval : 500,
+
+		/**
+		 * History.options.disableSuid
+		 * Force this.not to append suid
+		 */
+		disableSuid : false,
+
+		/**
+		 * History.options.storeInterval
+		 * How long should we wait between store calls
+		 */
+		storeInterval : 1000,
+
+		/**
+		 * History.options.busyDelay
+		 * How long should we wait between busy events
+		 */
+		busyDelay : 250,
+
+		/**
+		 * History.options.debug
+		 * If true will enable debug messages to be logged
+		 */
+		debug : false,
+
+		/**
+		 * History.options.initialTitle
+		 * What is the title of the initial state
+		 */
+		initialTitle : '',
+
+		/**
+		 * History.options.html4Mode
+		 * If true, will force HTMl4 mode (hashtags)
+		 */
+		History.options.html4Mode = History.options.html4Mode || false;
+
+		/**
+		 * History.options.delayInit
+		 * Want to override default options and call init manually.
+		 */
+		History.options.delayInit = History.options.delayInit || false;
+ 
+     
+     
 	// ========================================================================
 	// Initialise
 
 	// Localise Globals
-	var
+	
 		  
-		sessionStorage = false, // sessionStorage
+	sessionStorage : false, // sessionStorage
 		 
 		 
-
-	try {
-		sessionStorage = window.sessionStorage; // This will throw an exception in some browsers when cookies/localStorage are explicitly disabled (i.e. Chrome)
-		sessionStorage.setItem('TEST', '1');
-		sessionStorage.removeItem('TEST');
-	} catch(e) {
-		sessionStorage = false;
-	}
- 
-	// Check Existence
-	if ( typeof History.init !== 'undefined' ) {
-		throw new Error('History.js Core has already been loaded...');
-	}
 
 	// Initialise History
-	History.init = function(options){
+	init : function(options){
+        
+        initialTitle : window.document.title,
+        
+        Roo.apply(this,options)
+        
 		// Check Load Status of Adapter
-		if ( typeof History.Adapter === 'undefined' ) {
-			return false;
-		}
+		//if ( typeof this.Adapter === 'undefined' ) {
+		//	return false;
+		//}
 
 		// Check Load Status of Core
-		if ( typeof History.initCore !== 'undefined' ) {
-			History.initCore();
+		if ( typeof this.initCore !== 'undefined' ) {
+			this.initCore();
 		}
 
 		// Check Load Status of HTML4 Support
-		if ( typeof History.initHtml4 !== 'undefined' ) {
-			History.initHtml4();
+		if ( typeof this.initHtml4 !== 'undefined' ) {
+			this.initHtml4();
 		}
 
 		// Return true
@@ -61,12 +119,22 @@
 	// Initialise Core
 	History.initCore = function(options){
 		// Initialise
-		if ( typeof History.initCore.initialized !== 'undefined' ) {
+        
+        try {
+            this.sessionStorage = window.sessionStorage; // This will throw an exception in some browsers when cookies/localStorage are explicitly disabled (i.e. Chrome)
+            this.sessionStorage.setItem('TEST', '1');
+            this.sessionStorage.removeItem('TEST');
+        } catch(e) {
+            this.sessionStorage = false;
+        }
+        
+        
+		if ( typeof this.initCore.initialized !== 'undefined' ) {
 			// Already Loaded
 			return false;
 		}
 		else {
-			History.initCore.initialized = true;
+			this.initCore.initialized = true;
 		}
 
 
@@ -74,34 +142,34 @@
 		// Options
 
 		/**
-		 * History.options
+		 * this.options
 		 * Configurable options
 		 */
-		History.options = History.options||{};
+		this.options = History.options||{};
 
 		/**
 		 * History.options.hashChangeInterval
 		 * How long should the interval be before hashchange checks
 		 */
-		History.options.hashChangeInterval = History.options.hashChangeInterval || 100;
+		this.options.hashChangeInterval = this.options.hashChangeInterval || 100;
 
 		/**
 		 * History.options.safariPollInterval
 		 * How long should the interval be before safari poll checks
 		 */
-		History.options.safariPollInterval = History.options.safariPollInterval || 500;
+		this.options.safariPollInterval = this.options.safariPollInterval || 500;
 
 		/**
 		 * History.options.doubleCheckInterval
 		 * How long should the interval be before we perform a double check
 		 */
-		History.options.doubleCheckInterval = History.options.doubleCheckInterval || 500;
+		this.options.doubleCheckInterval = this.options.doubleCheckInterval || 500;
 
 		/**
 		 * History.options.disableSuid
-		 * Force History not to append suid
+		 * Force this.not to append suid
 		 */
-		History.options.disableSuid = History.options.disableSuid || false;
+		this.options.disableSuid = this.options.disableSuid || false;
 
 		/**
 		 * History.options.storeInterval
@@ -171,8 +239,8 @@
 		 * History.debug(message,...)
 		 * Logs the passed arguments if debug enabled
 		 */
-		History.debug = function(){
-			if ( (History.options.debug||false) ) {
+		History.debugLog = function(){
+			if ( (this.debug||false) ) {
 				Roo.log.apply(History,arguments);
 			}
 		};
