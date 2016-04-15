@@ -1,0 +1,73 @@
+<html><head><title>../roojs1/Roo/bootstrap/DateSplitField.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ * page DateSplitField.
+ * 
+ */
+
+
+/**
+ * @class Roo.bootstrap.DateSplitField
+ * @extends Roo.bootstrap.Component
+ * Bootstrap DateSplitField class
+ * @cfg {string} fieldLabel - the label associated
+ * @cfg {Number} labelWidth set the width of label (0-12)
+ * @cfg {String} labelAlign (top|left)
+
+ *     
+ * @constructor
+ * Create a new DateSplitField
+ * @param {Object} config The config object
+ */
+
+</span><span class="jsdoc-var">Roo.bootstrap.DateSplitField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.bootstrap.DateSplitField.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    
+    
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.DateSplitField</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+    
+    </span><span class="jsdoc-var">fieldLabel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">labelAlign </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">labelWidth </span><span class="jsdoc-syntax">: 3,
+    
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'row roo-date-split-field-group'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: []
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fieldLabel</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'column roo-date-split-field-label col-md-' </span><span class="jsdoc-syntax">+ ((</span><span class="jsdoc-var">this.labelAlign </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'12' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">),
+                </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                    {
+                        </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel
+                    </span><span class="jsdoc-syntax">}
+                ]
+            });
+        }
+        
+        [</span><span class="jsdoc-string">'day'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'month'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'year'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'column roo-date-split-field-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' col-md-' </span><span class="jsdoc-syntax">+ ((</span><span class="jsdoc-var">this.labelAlign </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'4' </span><span class="jsdoc-syntax">: ((12 - </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">) / 3))
+            });
+        });
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() 
+    {
+        
+        
+    }
+});
+
+ </span></code></body></html>
