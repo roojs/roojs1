@@ -10,6 +10,7 @@
  * @class Roo.bootstrap.DateSplitField
  * @extends Roo.bootstrap.Component
  * Bootstrap DateSplitField class
+ * @cfg {string} fieldLabel - the label associated
 
  *     
  * @constructor
@@ -25,21 +26,8 @@ Roo.bootstrap.DateSplitField = function(config){
 
 Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     
-    getChildContainer : function() {
-        
-        if(!this.el){
-            return false;
-        }
-        
-        if (this.panel.length) {
-            return this.el.select('.panel-body',true).first();
-        }
-        
-        return this.el;
-    },
-    
-    
-    getAutoCreate : function(){
+    getAutoCreate : function()
+    {
         
         var cfg = {
             tag : this.tag || 'div',
@@ -169,137 +157,9 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        if(!this.expandable){
-            return;
-        }
         
-        var headerEl = this.headerEl();
         
-        if(!headerEl){
-            return;
-        }
-        
-        headerEl.on('click', this.onToggleClick, this);
-        
-    },
-    
-    onToggleClick : function()
-    {
-        var headerEl = this.headerEl();
-        
-        if(!headerEl){
-            return;
-        }
-        
-        if(this.expanded){
-            this.collapse();
-            return;
-        }
-        
-        this.expand();
-    },
-    
-    expand : function()
-    {
-        if(this.fireEvent('expand', this)) {
-            
-            this.expanded = true;
-            
-            //this.el.select('.panel-body',true).first().setVisibilityMode(Roo.Element.DISPLAY).show();
-            
-            this.el.select('.panel-body',true).first().removeClass('hide');
-            
-            var toggleEl = this.toggleEl();
-
-            if(!toggleEl){
-                return;
-            }
-
-            toggleEl.removeClass(['fa-minus', 'fa-plus']).addClass(['fa-minus']);
-        }
-        
-    },
-    
-    collapse : function()
-    {
-        if(this.fireEvent('collapse', this)) {
-            
-            this.expanded = false;
-            
-            //this.el.select('.panel-body',true).first().setVisibilityMode(Roo.Element.DISPLAY).hide();
-            this.el.select('.panel-body',true).first().addClass('hide');
-        
-            var toggleEl = this.toggleEl();
-
-            if(!toggleEl){
-                return;
-            }
-
-            toggleEl.removeClass(['fa-minus', 'fa-plus']).addClass(['fa-plus']);
-        }
-    },
-    
-    toggleEl : function()
-    {
-        if(!this.el || !this.panel.length || !this.header.length || !this.expandable){
-            return;
-        }
-        
-        return this.el.select('.panel-heading .fa',true).first();
-    },
-    
-    headerEl : function()
-    {
-        if(!this.el || !this.panel.length || !this.header.length){
-            return;
-        }
-        
-        return this.el.select('.panel-heading',true).first()
-    },
-    
-    titleEl : function()
-    {
-        if(!this.el || !this.panel.length || !this.header.length){
-            return;
-        }
-        
-        return this.el.select('.panel-title',true).first();
-    },
-    
-    setTitle : function(v)
-    {
-        var titleEl = this.titleEl();
-        
-        if(!titleEl){
-            return;
-        }
-        
-        titleEl.dom.innerHTML = v;
-    },
-    
-    getTitle : function()
-    {
-        
-        var titleEl = this.titleEl();
-        
-        if(!titleEl){
-            return '';
-        }
-        
-        return titleEl.dom.innerHTML;
-    },
-    
-    setRightTitle : function(v)
-    {
-        var t = this.el.select('.panel-header-right',true).first();
-        
-        if(!t){
-            return;
-        }
-        
-        t.dom.innerHTML = v;
     }
-   
 });
 
  
