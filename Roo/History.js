@@ -307,12 +307,7 @@ Roo.History = {
 
 		} // !History.emulated.pushState
 
-
-	}; // History.initCore
-
-        
-        
-        
+       
         
 
 		// Return true
