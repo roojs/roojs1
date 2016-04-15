@@ -30,7 +30,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     
     fieldLabel : '',
     labelAlign : 'top',
-    labelWidth : 0,
+    labelWidth : 2,
     
     getAutoCreate : function()
     {
