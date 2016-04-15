@@ -284,7 +284,10 @@ Roo.History = {
 			/**
 			 * Ensure Cross Browser Compatibility
 			 */
-			if ( window.navigator.vendor === 'Apple Computer, Inc.' || (window.navigator.appCodeName||'') === 'Mozilla' ) {
+			//if ( window.navigator.vendor === 'Apple Computer, Inc.' || (window.navigator.appCodeName||'') === 'Mozilla' ) {
+            if (Roo.isSafari) {
+                //code
+            
 				/**
 				 * Fix Safari HashChange Issue
 				 */
