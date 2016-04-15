@@ -117,9 +117,11 @@ Roo.History = {
 	// Initialise Core
 
 	// Initialise Core
-	initCore = function(options){
+	initCore : function(options){
 		// Initialise
         this.intervalList = [];
+        
+        
         try {
             this.sessionStorage = window.sessionStorage; // This will throw an exception in some browsers when cookies/localStorage are explicitly disabled (i.e. Chrome)
             this.sessionStorage.setItem('TEST', '1');
@@ -139,28 +141,21 @@ Roo.History = {
         
 
     }
-		// ====================================================================
-		// Interval record
+		 
 
-		/**
-		 * History.intervalList
-		 * List of intervals set, to be cleared when document is unloaded.
-		 */
-		
-
-		/**
-		 * History.clearAllIntervals
-		 * Clears all setInterval instances.
-		 */
-		clearAllIntervals = function(){
-			var i, il = History.intervalList;
-			if (typeof il !== "undefined" && il !== null) {
-				for (i = 0; i < il.length; i++) {
-					clearInterval(il[i]);
-				}
-				History.intervalList = null;
-			}
-		};
+    /**
+     * History.clearAllIntervals
+     * Clears all setInterval instances.
+     */
+    clearAllIntervals: function(){
+        var i, il = History.intervalList;
+        if (typeof il !== "undefined" && il !== null) {
+            for (i = 0; i < il.length; i++) {
+                clearInterval(il[i]);
+            }
+            History.intervalList = null;
+        }
+    },
 
 
 		// ====================================================================
