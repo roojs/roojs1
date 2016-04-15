@@ -111,7 +111,7 @@ Roo.History = {
 	sessionStorage : false, // sessionStorage
 		 
     intervalList : false, // array normally.
-    enabled;
+    enabled : false,
 
 	// Initialise History
 	init : function(options){
@@ -134,6 +134,15 @@ Roo.History = {
 		if ( typeof this.initHtml4 !== 'undefined' ) {
 			this.initHtml4();
 		}
+        
+        this.initEmulated();
+        	/**
+		 * History.enabled
+		 * Is History enabled?
+		 */
+		this.enabled = !this.emulated.pushState;
+
+        
 
 		// Return true
 		return true;
