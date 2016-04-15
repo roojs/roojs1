@@ -63,6 +63,14 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
         return cfg;
     },
     
+    onRender : function(ct, position) 
+    {
+        Roo.bootstrap.NavProgressBar.superclass.onRender.call(this, ct, position);
+        
+        
+        
+    },
+    
     initEvents: function() 
     {
         
