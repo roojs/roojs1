@@ -1193,6 +1193,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.hiddenField.dom.value = vv;
             
             this.lastSelectionText = dv;
+            Roo.log(dv);
             Roo.bootstrap.ComboBox.superclass.setValue.call(this, dv);
             this.value = vv;
             return;
