@@ -136,7 +136,7 @@ Roo.History = {
 		}
         
         this.initEmulated();
-        	/**
+        /**
 		 * History.enabled
 		 * Is History enabled?
 		 */
@@ -222,7 +222,7 @@ Roo.History = {
      * @author Benjamin Arthur Lupton <contact@balupton.com>
      * @author James Padolsey <https://gist.github.com/527683>
      */
-    getInternetExplorerMajorVersion = function(){
+    getInternetExplorerMajorVersion : function(){
         var result = this.getInternetExplorerMajorVersion.cached =
                 (typeof this.getInternetExplorerMajorVersion.cached !== 'undefined')
             ?	this.getInternetExplorerMajorVersion.cached
@@ -288,13 +288,7 @@ Roo.History = {
 			
 	}
 
-		/**
-		 * History.enabled
-		 * Is History enabled?
-		 */
-		History.enabled = !History.emulated.pushState;
-
-		
+	 
 
 		/**
 		 * History.isEmptyObject(obj)
