@@ -1194,6 +1194,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
             this.lastSelectionText = dv;
             Roo.log(dv);
+            Roo.log(Roo.bootstrap.ComboBox.superclass.setValue);
             Roo.bootstrap.ComboBox.superclass.setValue.call(this, dv);
             this.value = vv;
             return;
