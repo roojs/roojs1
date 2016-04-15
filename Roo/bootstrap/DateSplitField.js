@@ -37,10 +37,23 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
         var cfg = {
             tag : 'div',
             cls : 'row roo-date-split-field-group',
-            cn : [
-                
-            ]
+            cn : []
         }
+        
+        if(this.fieldLabel && this.labelAlign == 'top'){
+            cfg.cn.push({
+                tag : 'div',
+                cls : 'column col-md-12 roo-date-split-field-label',
+                cn : [
+                    {
+                        tag : 'label',
+                        html : this.fieldLabel
+                    }
+                ]
+            });
+        }
+        
+        
     },
     
     initEvents: function() 
