@@ -158,6 +158,13 @@ Roo.History = {
 	init : function(options){
         
         initialTitle : window.document.title,
+        this.store = {};
+        this.idToState={};
+		this.stateToId={};
+		this.urlToId={};
+		this.storedStates=[];
+		this.savedStates=[];
+
         
         Roo.apply(this,options)
         
@@ -183,49 +190,7 @@ Roo.History = {
 		 */
 		this.enabled = !this.emulated.pushState;
 
-        
-        
-        // ====================================================================
-		// State Storage
-
-		/**
-		 * store
-		 * The store for all session specific data
-		 */
-		History.store = {};
-
-		/**
-		 * History.idToState
-		 * 1-1: State ID to State Object
-		 */
-		History.idToState = History.idToState||{};
-
-		/**
-		 * History.stateToId
-		 * 1-1: State String to State ID
-		 */
-		History.stateToId = History.stateToId||{};
-
-		/**
-		 * History.urlToId
-		 * 1-1: State URL to State ID
-		 */
-		History.urlToId = History.urlToId||{};
-
-		/**
-		 * History.storedStates
-		 * Store the states in an array
-		 */
-		History.storedStates = History.storedStates||[];
-
-		/**
-		 * History.savedStates
-		 * Saved the states in an array
-		 */
-		History.savedStates = History.savedStates||[];
-
-        
-        
+         
         
         
         
