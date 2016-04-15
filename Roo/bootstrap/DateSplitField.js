@@ -184,7 +184,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
         this.monthField.setValue(d.format(this.monthFormat));
         this.yearField.setValue(d.format(this.yearFormat));
         
-        
+        return;
     }
     
 });
