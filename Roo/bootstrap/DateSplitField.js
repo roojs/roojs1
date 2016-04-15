@@ -225,7 +225,16 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
             valid = false;
         }
         
+        if(this.dayAllowBlank && this.monthAllowBlank && this.yearAllowBlank){
+            return valid;
+        }
         
+        if(valid){
+            this.markValid();
+            return valid;
+        }
+        
+        this.markInvalid();
         
         return valid;
     },
