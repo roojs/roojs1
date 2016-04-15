@@ -114,6 +114,21 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
 
         this.dayField.render(this.el.select('.roo-date-split-field-day', true).first(), null);
         
+        this.monthField = new Roo.bootstrap.MonthField({
+            after : '<i class=\"fa fa-calendar\"></i>',
+            allowBlank : this.monthAllowBlank,
+            placeholder : this.monthPlaceholder,
+            readOnly : true,
+            listeners : {
+                render : function (_self)
+                {
+                    this.el.select('span.input-group-addon', true).first().on('click', function(e){
+                        e.preventDefault();
+                        _self.focus();
+                    });
+                }
+            }
+        });
         
         
     },
