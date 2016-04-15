@@ -227,7 +227,31 @@ Roo.History = {
 
         this.Adapter.bind(window,'popstate',this.onPopState);
         
-        
+         
+		/**
+		 * Load the Store
+		 */
+		if ( this.sessionStorage ) {
+			// Fetch
+			try {
+				this.store = JSON.parse(this.sessionStorage.getItem('Roo.History.store'))||{};
+			}
+			catch ( err ) {
+				this.store = {};
+			}
+
+		} 
+        this.normalizeStore();
+		/**
+		 * Clear Intervals on exit to prevent memory leaks
+		 */
+		History.Adapter.bind(window,"unload",History.clearAllIntervals);
+
+		/**
+		 * Create the initial State
+		 */
+		History.saveState(History.storeState(History.extractState(History.getLocationHref(),true)));
+
         
 
 		// Return true
@@ -1720,156 +1744,123 @@ Roo.History = {
         
 			
 
-			/**
-			 * History.pushState(data,title,url)
-			 * Add a new State to the history object, become it, and trigger onpopstate
-			 * We have to trigger for HTML4 compatibility
-			 * @param {object} data
-			 * @param {string} title
-			 * @param {string} url
-			 * @return {true}
-			 */
-			History.pushState = function(data,title,url,queue){
-				//History.debug('History.pushState: called', arguments);
+        /**
+         * pushState(data,title,url)
+         * Add a new State to the history object, become it, and trigger onpopstate
+         * We have to trigger for HTML4 compatibility
+         * @param {object} data
+         * @param {string} title
+         * @param {string} url
+         * @return {true}
+         */
+        pushState = function(data,title,url,queue){
+            //this.debug('this.pushState: called', arguments);
 
-				// Check the State
-				if ( History.getHashByUrl(url) && History.emulated.pushState ) {
-					throw new Error('History.js does not support states with fragement-identifiers (hashes/anchors).');
-				}
+            // Check the State
+            if ( this.getHashByUrl(url) && this.emulated.pushState ) {
+                throw new Error('History.js does not support states with fragement-identifiers (hashes/anchors).');
+            }
 
-				// Handle Queueing
-				if ( queue !== false && History.busy() ) {
-					// Wait + Push to Queue
-					//History.debug('History.pushState: we must wait', arguments);
-					History.pushQueue({
-						scope: History,
-						callback: History.pushState,
-						args: arguments,
-						queue: queue
-					});
-					return false;
-				}
+            // Handle Queueing
+            if ( queue !== false && this.busy() ) {
+                // Wait + Push to Queue
+                //this.debug('this.pushState: we must wait', arguments);
+                this.pushQueue({
+                    scope: this,
+                    callback: this.pushState,
+                    args: arguments,
+                    queue: queue
+                });
+                return false;
+            }
 
-				// Make Busy + Continue
-				History.busy(true);
+            // Make Busy + Continue
+            this.busy(true);
 
-				// Create the newState
-				var newState = History.createStateObject(data,title,url);
+            // Create the newState
+            var newState = this.createStateObject(data,title,url);
 
-				// Check it
-				if ( History.isLastSavedState(newState) ) {
-					// Won't be a change
-					History.busy(false);
-				}
-				else {
-					// Store the newState
-					History.storeState(newState);
-					History.expectedStateId = newState.id;
+            // Check it
+            if ( this.isLastSavedState(newState) ) {
+                // Won't be a change
+                this.busy(false);
+            }
+            else {
+                // Store the newState
+                this.storeState(newState);
+                this.expectedStateId = newState.id;
 
-					// Push the newState
-					history.pushState(newState.id,newState.title,newState.url);
+                // Push the newState
+                history.pushState(newState.id,newState.title,newState.url);
 
-					// Fire HTML5 Event
-					History.Adapter.trigger(window,'popstate');
-				}
+                // Fire HTML5 Event
+                this.Adapter.trigger(window,'popstate');
+            }
 
-				// End pushState closure
-				return true;
-			};
+            // End pushState closure
+            return true;
+        };
 
-			/**
-			 * History.replaceState(data,title,url)
-			 * Replace the State and trigger onpopstate
-			 * We have to trigger for HTML4 compatibility
-			 * @param {object} data
-			 * @param {string} title
-			 * @param {string} url
-			 * @return {true}
-			 */
-			History.replaceState = function(data,title,url,queue){
-				//History.debug('History.replaceState: called', arguments);
+        /**
+         * replaceState(data,title,url)
+         * Replace the State and trigger onpopstate
+         * We have to trigger for HTML4 compatibility
+         * @param {object} data
+         * @param {string} title
+         * @param {string} url
+         * @return {true}
+         */
+        replaceState = function(data,title,url,queue){
+            //this.debug('this.replaceState: called', arguments);
 
-				// Check the State
-				if ( History.getHashByUrl(url) && History.emulated.pushState ) {
-					throw new Error('History.js does not support states with fragement-identifiers (hashes/anchors).');
-				}
+            // Check the State
+            if ( this.getHashByUrl(url) && this.emulated.pushState ) {
+                throw new Error('this.js does not support states with fragement-identifiers (hashes/anchors).');
+            }
 
-				// Handle Queueing
-				if ( queue !== false && History.busy() ) {
-					// Wait + Push to Queue
-					//History.debug('History.replaceState: we must wait', arguments);
-					History.pushQueue({
-						scope: History,
-						callback: History.replaceState,
-						args: arguments,
-						queue: queue
-					});
-					return false;
-				}
+            // Handle Queueing
+            if ( queue !== false && this.busy() ) {
+                // Wait + Push to Queue
+                //this.debug('this.replaceState: we must wait', arguments);
+                this.pushQueue({
+                    scope: this,
+                    callback: this.replaceState,
+                    args: arguments,
+                    queue: queue
+                });
+                return false;
+            }
 
-				// Make Busy + Continue
-				History.busy(true);
+            // Make Busy + Continue
+            this.busy(true);
 
-				// Create the newState
-				var newState = History.createStateObject(data,title,url);
+            // Create the newState
+            var newState = this.createStateObject(data,title,url);
 
-				// Check it
-				if ( History.isLastSavedState(newState) ) {
-					// Won't be a change
-					History.busy(false);
-				}
-				else {
-					// Store the newState
-					History.storeState(newState);
-					History.expectedStateId = newState.id;
+            // Check it
+            if ( this.isLastSavedState(newState) ) {
+                // Won't be a change
+                this.busy(false);
+            }
+            else {
+                // Store the newState
+                this.storeState(newState);
+                this.expectedStateId = newState.id;
 
-					// Push the newState
-					history.replaceState(newState.id,newState.title,newState.url);
+                // Push the newState
+                history.replaceState(newState.id,newState.title,newState.url);
 
-					// Fire HTML5 Event
-					History.Adapter.trigger(window,'popstate');
-				}
+                // Fire HTML5 Event
+                this.Adapter.trigger(window,'popstate');
+            }
 
-				// End replaceState closure
-				return true;
-			};
-
-		} // !History.emulated.pushState
-
+            // End replaceState closure
+            return true;
+        };
+ 
 
 		// ====================================================================
 		// Initialise
-
-		/**
-		 * Load the Store
-		 */
-		if ( sessionStorage ) {
-			// Fetch
-			try {
-				History.store = JSON.parse(sessionStorage.getItem('History.store'))||{};
-			}
-			catch ( err ) {
-				History.store = {};
-			}
-
-			// Normalize
-			History.normalizeStore();
-		}
-		else {
-			// Default Load
-			History.store = {};
-			History.normalizeStore();
-		}
-
-		/**
-		 * Clear Intervals on exit to prevent memory leaks
-		 */
-		History.Adapter.bind(window,"unload",History.clearAllIntervals);
-
-		/**
-		 * Create the initial State
-		 */
-		History.saveState(History.storeState(History.extractState(History.getLocationHref(),true)));
 
 		/**
 		 * Bind for Saving Store
