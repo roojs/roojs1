@@ -36,8 +36,16 @@ Roo.bootstrap.DateSplitField = function(config){
          * @event years
          * getting the data of years
          * @param {Roo.bootstrap.DateSplitField} this
+         * @param {Object} years
          */
-        "years" : true
+        "years" : true,
+        /**
+         * @event days
+         * getting the data of days
+         * @param {Roo.bootstrap.DateSplitField} this
+         * @param {Object} days
+         */
+        "days" : true
     });
 };
 
