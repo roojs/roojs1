@@ -1,17 +1,21 @@
 /**
  * Originally based of this code... - refactored for Roo...
- *
+ * https://github.com/browserstate/history.js
+ 
  * History.js Core
  * @author Benjamin Arthur Lupton <contact@balupton.com>
  * @copyright 2010-2011 Benjamin Arthur Lupton <contact@balupton.com>
  * @license New BSD License <http://creativecommons.org/licenses/BSD/>
+ *
+ * Hackily modifyed by alan@roojs.com
+ * 
+ * this is not initialized automatically..
+ * must call Roo.History.init( { ... options... });
+ *
+ *  TOTALLY UNTESTED...
+ *
+ *  Documentation to be done....
  */
-
-
-// this is not initialized automatically..
-// must call Roo.History.init( { ... options... });
-
-// TOTALLY UNTESTED...
 
 Roo.History = {
 	 
