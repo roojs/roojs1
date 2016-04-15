@@ -19,7 +19,9 @@
  * @cfg {string} dayPlaceholder 
  * @cfg {string} monthPlaceholder
  * @cfg {string} yearPlaceholder
- * @cfg {string} format default 'Y-m-d'
+ * @cfg {string} dayFormat default 'd'
+ * @cfg {string} monthFormat default 'm'
+ * @cfg {string} yearFormat default 'Y'
 
  *     
  * @constructor
@@ -60,7 +62,9 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     dayPlaceholder : '',
     monthPlaceholder : '',
     yearPlaceholder : '',
-    format : 'Y-m-d',
+    dayFormat : 'd',
+    monthFormat : 'm',
+    yearFormat : 'Y',
     
     getAutoCreate : function()
     {
