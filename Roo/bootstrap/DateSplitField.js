@@ -79,7 +79,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     {
         Roo.bootstrap.NavProgressBar.superclass.onRender.call(this, ct, position);
         
-        var day = new Roo.bootstrap.ComboBox({
+        this.day = new Roo.bootstrap.ComboBox({
             allowBlank : this.dayAllowBlank,
             alwaysQuery : true,
             displayField : 'value',
