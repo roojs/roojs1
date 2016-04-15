@@ -1471,20 +1471,20 @@ Roo.History = {
 		// Safari Bug Fix
 
 		/**
-		 * History.safariStatePoll()
+		 * safariStatePoll()
 		 * Poll the current state
-		 * @return {History}
+		 * @return {Roo.History}
 		 */
-		History.safariStatePoll = function(){
+		safariStatePoll = function(){
 			// Poll the URL
 
 			// Get the Last State which has the new URL
 			var
-				urlState = History.extractState(History.getLocationHref()),
+				urlState = this.extractState(this.getLocationHref()),
 				newState;
 
 			// Check for a difference
-			if ( !History.isLastSavedState(urlState) ) {
+			if ( !this.isLastSavedState(urlState) ) {
 				newState = urlState;
 			}
 			else {
@@ -1494,16 +1494,16 @@ Roo.History = {
 			// Check if we have a state with that url
 			// If not create it
 			if ( !newState ) {
-				//History.debug('History.safariStatePoll: new');
-				newState = History.createStateObject();
+				//this.debug('this.safariStatePoll: new');
+				newState = this.createStateObject();
 			}
 
 			// Apply the New State
-			//History.debug('History.safariStatePoll: trigger');
-			History.Adapter.trigger(window,'popstate');
+			//this.debug('this.safariStatePoll: trigger');
+			this.Adapter.trigger(window,'popstate');
 
 			// Chain
-			return History;
+			return this;
 		};
 
 
@@ -1511,20 +1511,20 @@ Roo.History = {
 		// State Aliases
 
 		/**
-		 * History.back(queue)
+		 * back(queue)
 		 * Send the browser history back one item
 		 * @param {Integer} queue [optional]
 		 */
-		History.back = function(queue){
-			//History.debug('History.back: called', arguments);
+		back = function(queue){
+			//this.debug('this.back: called', arguments);
 
 			// Handle Queueing
-			if ( queue !== false && History.busy() ) {
+			if ( queue !== false && this.busy() ) {
 				// Wait + Push to Queue
-				//History.debug('History.back: we must wait', arguments);
-				History.pushQueue({
-					scope: History,
-					callback: History.back,
+				//this.debug('this.back: we must wait', arguments);
+				this.pushQueue({
+					scope: this,
+					callback: this.back,
 					args: arguments,
 					queue: queue
 				});
@@ -1532,11 +1532,11 @@ Roo.History = {
 			}
 
 			// Make Busy + Continue
-			History.busy(true);
+			this.busy(true);
 
 			// Fix certain browser bugs that prevent the state from changing
-			History.doubleCheck(function(){
-				History.back(false);
+			this.doubleCheck(function(){
+				this.back(false);
 			});
 
 			// Go back
@@ -1547,20 +1547,20 @@ Roo.History = {
 		};
 
 		/**
-		 * History.forward(queue)
+		 * forward(queue)
 		 * Send the browser history forward one item
 		 * @param {Integer} queue [optional]
 		 */
-		History.forward = function(queue){
-			//History.debug('History.forward: called', arguments);
+		forward = function(queue){
+			//this.debug('this.forward: called', arguments);
 
 			// Handle Queueing
-			if ( queue !== false && History.busy() ) {
+			if ( queue !== false && this.busy() ) {
 				// Wait + Push to Queue
-				//History.debug('History.forward: we must wait', arguments);
-				History.pushQueue({
-					scope: History,
-					callback: History.forward,
+				//this.debug('this.forward: we must wait', arguments);
+				this.pushQueue({
+					scope: this,
+					callback: this.forward,
 					args: arguments,
 					queue: queue
 				});
@@ -1568,11 +1568,12 @@ Roo.History = {
 			}
 
 			// Make Busy + Continue
-			History.busy(true);
-
+			this.busy(true);
+            
+            var _t = this;
 			// Fix certain browser bugs that prevent the state from changing
-			History.doubleCheck(function(){
-				History.forward(false);
+			this.doubleCheck(function(){
+                _t.forward(false);
 			});
 
 			// Go forward
@@ -1583,12 +1584,12 @@ Roo.History = {
 		};
 
 		/**
-		 * History.go(index,queue)
+		 * go(index,queue)
 		 * Send the browser history back or forward index times
 		 * @param {Integer} queue [optional]
 		 */
-		History.go = function(index,queue){
-			//History.debug('History.go: called', arguments);
+		go = function(index,queue){
+			//this.debug('this.go: called', arguments);
 
 			// Prepare
 			var i;
@@ -1597,13 +1598,13 @@ Roo.History = {
 			if ( index > 0 ) {
 				// Forward
 				for ( i=1; i<=index; ++i ) {
-					History.forward(queue);
+					this.forward(queue);
 				}
 			}
 			else if ( index < 0 ) {
 				// Backward
 				for ( i=-1; i>=index; --i ) {
-					History.back(queue);
+					this.back(queue);
 				}
 			}
 			else {
@@ -1611,7 +1612,7 @@ Roo.History = {
 			}
 
 			// Chain
-			return History;
+			return this;
 		};
 
 
@@ -1619,7 +1620,7 @@ Roo.History = {
 		// HTML5 State Support
 
 		// Non-Native pushState Implementation
-		if ( History.emulated.pushState ) {
+		if ( this.emulated.pushState ) {
 			/*
 			 * Provide Skeleton for HTML4 Browsers
 			 */
