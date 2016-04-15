@@ -74,7 +74,33 @@ Roo.History = {
      */
     delayInit : false,
     
-      
+    /**
+    * History.bugs
+    * Which bugs are present
+    */
+    bugs : {
+        /**
+        * Safari 5 and Safari iOS 4 fail to return to the correct state once a hash is replaced by a `replaceState` call
+        * https://bugs.webkit.org/show_bug.cgi?id=56249
+        */
+        setHash: false,
+
+       /**
+        * Safari 5 and Safari iOS 4 sometimes fail to apply the state change under busy conditions
+        * https://bugs.webkit.org/show_bug.cgi?id=42940
+        */
+       safariPoll: false,
+
+       /**
+        * MSIE 6 and 7 sometimes do not apply a hash even it was told to (requiring a second call to the apply function)
+        */
+       ieDoubleCheck: false,
+
+       /**
+        * MSIE 6 requires the entire hash to be encoded for the hashes to trigger the onHashChange event
+        */
+       hashEscape: false,
+    },
      
 	// ========================================================================
 	// Initialise
@@ -175,78 +201,82 @@ Roo.History = {
 
 		 
 
-		// ====================================================================
-		// Emulated Status
+    // ====================================================================
+    // Emulated Status
 
-		/**
-		 * History.getInternetExplorerMajorVersion()
-		 * Get's the major version of Internet Explorer
-		 * @return {integer}
-		 * @license Public Domain
-		 * @author Benjamin Arthur Lupton <contact@balupton.com>
-		 * @author James Padolsey <https://gist.github.com/527683>
-		 */
-		History.getInternetExplorerMajorVersion = function(){
-			var result = History.getInternetExplorerMajorVersion.cached =
-					(typeof History.getInternetExplorerMajorVersion.cached !== 'undefined')
-				?	History.getInternetExplorerMajorVersion.cached
-				:	(function(){
-						var v = 3,
-								div = window.document.createElement('div'),
-								all = div.getElementsByTagName('i');
-						while ( (div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i><![endif]-->') && all[0] ) {}
-						return (v > 4) ? v : false;
-					})()
-				;
-			return result;
-		};
+    /**
+     * History.getInternetExplorerMajorVersion()
+     * Get's the major version of Internet Explorer
+     * @return {integer}
+     * @license Public Domain
+     * @author Benjamin Arthur Lupton <contact@balupton.com>
+     * @author James Padolsey <https://gist.github.com/527683>
+     */
+    getInternetExplorerMajorVersion = function(){
+        var result = this.getInternetExplorerMajorVersion.cached =
+                (typeof this.getInternetExplorerMajorVersion.cached !== 'undefined')
+            ?	this.getInternetExplorerMajorVersion.cached
+            :	(function(){
+                    var v = 3,
+                            div = window.document.createElement('div'),
+                            all = div.getElementsByTagName('i');
+                    while ( (div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i><![endif]-->') && all[0] ) {}
+                    return (v > 4) ? v : false;
+                })()
+            ;
+        return result;
+    };
 
-		/**
-		 * History.isInternetExplorer()
-		 * Are we using Internet Explorer?
-		 * @return {boolean}
-		 * @license Public Domain
-		 * @author Benjamin Arthur Lupton <contact@balupton.com>
-		 */
-		History.isInternetExplorer = function(){
-			var result =
-				History.isInternetExplorer.cached =
-				(typeof History.isInternetExplorer.cached !== 'undefined')
-					?	History.isInternetExplorer.cached
-					:	Boolean(History.getInternetExplorerMajorVersion())
-				;
-			return result;
-		};
+    /**
+     * isInternetExplorer()
+     * Are we using Internet Explorer?
+     * @return {boolean}
+     * @license Public Domain
+     * @author Benjamin Arthur Lupton <contact@balupton.com>
+     */
+    isInternetExplorer = function(){
+        var result =
+            this.isInternetExplorer.cached =
+            (typeof this.isInternetExplorer.cached !== 'undefined')
+                ?	this.isInternetExplorer.cached
+                :	Boolean(this.getInternetExplorerMajorVersion())
+            ;
+        return result;
+    },
+    /**
+     * emulated
+     * Which features require emulating?
+     */
 
-		/**
-		 * History.emulated
-		 * Which features require emulating?
-		 */
-
-		if (History.options.html4Mode) {
-			History.emulated = {
-				pushState : true,
-				hashChange: true
-			};
+    emulated : {
+        pushState : true,
+        hashChange: true
+    },
+    
+    initEmulated : function()
+    {
+    
+	
+		if (this.html4Mode) {
+			return;
 		}
 
-		else {
+		
 
-			History.emulated = {
-				pushState: !Boolean(
+        this.emulated.pushState = !Boolean(
 					window.history && window.history.pushState && window.history.replaceState
 					&& !(
 						(/ Mobile\/([1-7][a-z]|(8([abcde]|f(1[0-8]))))/i).test(window.navigator.userAgent) /* disable for versions of iOS before version 4.3 (8F190) */
 						|| (/AppleWebKit\/5([0-2]|3[0-2])/i).test(window.navigator.userAgent) /* disable for the mercury iOS browser, or at least older versions of the webkit engine */
 					)
-				),
-				hashChange: Boolean(
+				);
+        this.emulated.hashChange = Boolean(
 					!(('onhashchange' in window) || ('onhashchange' in window.document))
 					||
 					(History.isInternetExplorer() && History.getInternetExplorerMajorVersion() < 8)
-				)
-			};
-		}
+				);
+			
+	}
 
 		/**
 		 * History.enabled
@@ -254,33 +284,7 @@ Roo.History = {
 		 */
 		History.enabled = !History.emulated.pushState;
 
-		/**
-		 * History.bugs
-		 * Which bugs are present
-		 */
-		History.bugs = {
-			/**
-			 * Safari 5 and Safari iOS 4 fail to return to the correct state once a hash is replaced by a `replaceState` call
-			 * https://bugs.webkit.org/show_bug.cgi?id=56249
-			 */
-			setHash: Boolean(!History.emulated.pushState && window.navigator.vendor === 'Apple Computer, Inc.' && /AppleWebKit\/5([0-2]|3[0-3])/.test(window.navigator.userAgent)),
-
-			/**
-			 * Safari 5 and Safari iOS 4 sometimes fail to apply the state change under busy conditions
-			 * https://bugs.webkit.org/show_bug.cgi?id=42940
-			 */
-			safariPoll: Boolean(!History.emulated.pushState && window.navigator.vendor === 'Apple Computer, Inc.' && /AppleWebKit\/5([0-2]|3[0-3])/.test(window.navigator.userAgent)),
-
-			/**
-			 * MSIE 6 and 7 sometimes do not apply a hash even it was told to (requiring a second call to the apply function)
-			 */
-			ieDoubleCheck: Boolean(History.isInternetExplorer() && History.getInternetExplorerMajorVersion() < 8),
-
-			/**
-			 * MSIE 6 requires the entire hash to be encoded for the hashes to trigger the onHashChange event
-			 */
-			hashEscape: Boolean(History.isInternetExplorer() && History.getInternetExplorerMajorVersion() < 7)
-		};
+		
 
 		/**
 		 * History.isEmptyObject(obj)
