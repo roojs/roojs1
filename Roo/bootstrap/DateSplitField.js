@@ -34,7 +34,10 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     
     getAutoCreate : function()
     {
-        
+        var cfg = {
+            tag : 'div',
+            
+        }
     },
     
     initEvents: function() 
