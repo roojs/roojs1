@@ -140,7 +140,7 @@ Roo.History = {
 		}
         
 
-    }
+    },
 		 
 
     /**
@@ -148,28 +148,28 @@ Roo.History = {
      * Clears all setInterval instances.
      */
     clearAllIntervals: function(){
-        var i, il = History.intervalList;
+        var i, il = this.intervalList;
         if (typeof il !== "undefined" && il !== null) {
             for (i = 0; i < il.length; i++) {
                 clearInterval(il[i]);
             }
-            History.intervalList = null;
+            this.intervalList = null;
         }
     },
 
 
-		// ====================================================================
-		// Debug
+    // ====================================================================
+    // Debug
 
-		/**
-		 * History.debug(message,...)
-		 * Logs the passed arguments if debug enabled
-		 */
-		History.debugLog = function(){
-			if ( (this.debug||false) ) {
-				Roo.log.apply(History,arguments);
-			}
-		};
+    /**
+     * History.debugLog(message,...)
+     * Logs the passed arguments if debug enabled
+     */
+    debugLog : function(){
+        if ( (this.debug||false) ) {
+            Roo.log.apply(History,arguments);
+        }
+    };
 
 		 
 
