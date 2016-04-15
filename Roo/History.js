@@ -210,14 +210,12 @@ Roo.History = {
         
 		
 		// Check Load Status of Core
-		if ( typeof this.initCore !== 'undefined' ) {
-			this.initCore();
-		}
-
+		this.initCore();
+	
 		// Check Load Status of HTML4 Support
-		if ( typeof this.initHtml4 !== 'undefined' ) {
-			this.initHtml4();
-		}
+		//if ( typeof this.initHtml4 !== 'undefined' ) {
+		//	this.initHtml4();
+		//}
         
         this.initEmulated();
         
