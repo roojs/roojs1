@@ -1434,6 +1434,8 @@ Roo.History = {
      */
     busy : function(value){
         // Apply
+        
+        var _this = this;
         if ( typeof value !== 'undefined' ) {
             //this.debug('this.busy: changing ['+(this.busy.flag||false)+'] to ['+(value||false)+']', this.queues.length);
             this.busy_flag = value;
@@ -1445,6 +1447,9 @@ Roo.History = {
 
         // Queue
         if ( !this.busy_flag ) {
+            
+            
+            
             // Execute the next item in the queue
             window.clearTimeout(this.busy.timeout);
             var fireNext = function(){
