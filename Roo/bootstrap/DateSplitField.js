@@ -130,6 +130,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
             }
         });
         
+        this.monthField.render(this.el.select('.roo-date-split-field-month', true).first(), null);
         
     },
     
