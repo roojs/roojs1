@@ -305,7 +305,7 @@ Roo.History = new Roo.util.Observable({
 
 				// Setup Alias
 				this.Adapter.bind(window,'hashchange',function(){
-					_this.Adapter.trigger(window,'popstate');
+					_this.fireEvent(window,'popstate');
 				});
 
 				// Initialise Alias
