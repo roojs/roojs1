@@ -224,6 +224,7 @@ Roo.History = {
 		}
         
         this.initEmulated();
+        
        
 		this.enabled = !this.emulated.pushState;
 
@@ -235,6 +236,8 @@ Roo.History = {
 			this.replaceState = emptyFunction;
 		}   
 
+        this.initBugs();
+        
         this.Adapter.bind(window,'popstate',this.onPopState);
         
          
@@ -468,25 +471,24 @@ Roo.History = {
          * Safari 5 and Safari iOS 4 fail to return to the correct state once a hash is replaced by a `replaceState` call
          * https://bugs.webkit.org/show_bug.cgi?id=56249
          */
-        this.bugs.setHash: Boolean(!History.emulated.pushState && navigator.vendor === 'Apple Computer, Inc.' && /AppleWebKit\/5([0-2]|3[0-3])/.test(navigator.userAgent)),
+        this.bugs.setHash: Boolean(!this.emulated.pushState && navigator.vendor === 'Apple Computer, Inc.' && /AppleWebKit\/5([0-2]|3[0-3])/.test(navigator.userAgent)),
 
         /**
          * Safari 5 and Safari iOS 4 sometimes fail to apply the state change under busy conditions
          * https://bugs.webkit.org/show_bug.cgi?id=42940
          */
-        this.bugs.safariPoll: Boolean(!History.emulated.pushState && navigator.vendor === 'Apple Computer, Inc.' && /AppleWebKit\/5([0-2]|3[0-3])/.test(navigator.userAgent)),
+        this.bugs.safariPoll: Boolean(!this.emulated.pushState && navigator.vendor === 'Apple Computer, Inc.' && /AppleWebKit\/5([0-2]|3[0-3])/.test(navigator.userAgent)),
 
         /**
          * MSIE 6 and 7 sometimes do not apply a hash even it was told to (requiring a second call to the apply function)
          */
-        this.bugs.ieDoubleCheck: Boolean(History.isInternetExplorer() && History.getInternetExplorerMajorVersion() < 8),
+        this.bugs.ieDoubleCheck: Boolean(this.isInternetExplorer() && this.getInternetExplorerMajorVersion() < 8),
 
         /**
          * MSIE 6 requires the entire hash to be encoded for the hashes to trigger the onHashChange event
          */
-        this.bugs.hashEscape: Boolean(History.isInternetExplorer() && History.getInternetExplorerMajorVersion() < 7)
-    };
-        
+        this.bugs.hashEscape: Boolean(this.isInternetExplorer() && this.getInternetExplorerMajorVersion() < 7)
+    } 
     }
 
     /**
