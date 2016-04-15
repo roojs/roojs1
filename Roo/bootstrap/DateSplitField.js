@@ -115,12 +115,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
             }
         });
 
-        var bottom = new Roo.bootstrap.Element({
-            tag : 'div',
-            cls : 'roo-navigation-bar-text'
-        });
-
-        top.onRender(this.el.select('.roo-navigation-top-bar', true).first(), null);
+        day.onRender(this.el.select('.roo-date-split-field-day', true).first(), null);
         
     },
     
