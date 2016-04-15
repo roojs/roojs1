@@ -30,7 +30,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     
     fieldLabel : '',
     labelAlign : 'top',
-    labelWidth : 2,
+    labelWidth : 3,
     
     getAutoCreate : function()
     {
@@ -40,10 +40,10 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
             cn : []
         }
         
-        if(this.fieldLabel && this.labelAlign == 'top'){
+        if(this.fieldLabel){
             cfg.cn.push({
                 tag : 'div',
-                cls : 'column col-md-12 roo-date-split-field-label',
+                cls : 'column roo-date-split-field-label col-md-' + (this.labelAlign == 'top') ? '12' : (this.labelWidth),
                 cn : [
                     {
                         tag : 'label',
@@ -52,22 +52,6 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
                 ]
             });
         }
-        
-        if(this.fieldLabel && this.labelAlign == 'left'){
-            cfg.cn.push({
-                tag : 'div',
-                cls : 'column col-md-3 roo-date-split-field-label',
-                cn : [
-                    {
-                        tag : 'label',
-                        html : this.fieldLabel
-                    }
-                ]
-            });
-        }
-        
-        
-        
         
     },
     
