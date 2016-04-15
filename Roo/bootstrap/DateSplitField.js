@@ -89,7 +89,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
             mode : 'local',
             placeholder : this.dayPlaceholder,
             selectOnFocus : true,
-            tpl : '<div class=\"select2-result\"><b>{value}</b></div>',
+            tpl : '<div class="select2-result"><b>{value}</b></div>',
             triggerAction : 'all',
             typeAhead : true,
             valueField : 'value',
