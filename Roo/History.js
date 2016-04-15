@@ -587,7 +587,7 @@ Roo.History = {
 
 		
     /**
-     * History.noramlizeStore()
+     * noramlizeStore()
      * Noramlize the store by adding necessary values
      */
     normalizeStore = function(){
@@ -596,35 +596,35 @@ Roo.History = {
         this.store.stateToId = this.store.stateToId||{};
     };
 
-		/**
-		 * History.getState()
-		 * Get an object containing the data, title and url of the current state
-		 * @param {Boolean} friendly
-		 * @param {Boolean} create
-		 * @return {Object} State
-		 */
-		History.getState = function(friendly,create){
-			// Prepare
-			if ( typeof friendly === 'undefined' ) { friendly = true; }
-			if ( typeof create === 'undefined' ) { create = true; }
+    /**
+     * getState()
+     * Get an object containing the data, title and url of the current state
+     * @param {Boolean} friendly
+     * @param {Boolean} create
+     * @return {Object} State
+     */
+    getState : function(friendly,create){
+        // Prepare
+        if ( typeof friendly === 'undefined' ) { friendly = true; }
+        if ( typeof create === 'undefined' ) { create = true; }
 
-			// Fetch
-			var State = History.getLastSavedState();
+        // Fetch
+        var State = History.getLastSavedState();
 
-			// Create
-			if ( !State && create ) {
-				State = History.createStateObject();
-			}
+        // Create
+        if ( !State && create ) {
+            State = History.createStateObject();
+        }
 
-			// Adjust
-			if ( friendly ) {
-				State = History.cloneObject(State);
-				State.url = State.cleanUrl||State.url;
-			}
+        // Adjust
+        if ( friendly ) {
+            State = History.cloneObject(State);
+            State.url = State.cleanUrl||State.url;
+        }
 
-			// Return
-			return State;
-		};
+        // Return
+        return State;
+    };
 
 		/**
 		 * History.getIdByState(State)
