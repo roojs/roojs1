@@ -111,6 +111,7 @@ Roo.History = {
 	sessionStorage : false, // sessionStorage
 		 
     intervalList : false, // array normally.
+    enabled;
 
 	// Initialise History
 	init : function(options){
