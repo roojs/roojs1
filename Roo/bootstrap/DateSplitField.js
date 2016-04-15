@@ -158,10 +158,11 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
             valueField : 'value',
             store : new Roo.data.SimpleStore({
                 data : (function() {
-                    Roo.log('getting year data?????????????????????????????');
-                    var tt = _this.fireEvent('years', _this);
-                    Roo.log(tt);
-                    return tt;
+                    var years = [];
+                    
+                    _this.fireEvent('years', _this, years);
+                    
+                    return years;
                 })(),
                 fields : [ 'value' ]
             })
