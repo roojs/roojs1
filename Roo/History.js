@@ -1454,13 +1454,13 @@ Roo.History = {
             window.clearTimeout(this.busy.timeout);
             var fireNext = function(){
                 var i, queue, item;
-                if ( this.busy_flag ) return;
-                for ( i=this.queues.length-1; i >= 0; --i ) {
-                    queue = this.queues[i];
+                if ( _this.busy_flag ) return;
+                for ( i=_this.queues.length-1; i >= 0; --i ) {
+                    queue = _this.queues[i];
                     if ( queue.length === 0 ) continue;
                     item = queue.shift();
-                    this.fireQueueItem(item);
-                    this.busy.timeout = window.setTimeout(fireNext,this.busyDelay);
+                    _this.fireQueueItem(item);
+                    _this.busy.timeout = window.setTimeout(fireNext,_this.busyDelay);
                 }
             };
             this.busy.timeout = window.setTimeout(fireNext,this.busyDelay);
@@ -1573,7 +1573,9 @@ Roo.History = {
      * Create a double check
      * @return {Roo.History}
      */
-    doubleCheck : function(tryAgain){
+    doubleCheck : function(tryAgain)
+    {
+        var _this = this;
         // Reset
         this.stateChanged = false;
         this.doubleCheckClear();
@@ -1584,8 +1586,8 @@ Roo.History = {
             // Apply Check
             this.doubleChecker = window.setTimeout(
                 function(){
-                    this.doubleCheckClear();
-                    if ( !this.stateChanged ) {
+                    _this.doubleCheckClear();
+                    if ( !_this.stateChanged ) {
                         //this.debug('History.doubleCheck: State has not yet changed, trying again', arguments);
                         // Re-Attempt
                         tryAgain();
