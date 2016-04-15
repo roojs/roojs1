@@ -16,6 +16,9 @@
  * @cfg {Boolean} dayAllowBlank (true|false) default false
  * @cfg {Boolean} monthAllowBlank (true|false) default false
  * @cfg {Boolean} yearAllowBlank (true|false) default false
+ * @cfg {string} dayPlaceholder 
+ * @cfg {string} monthPlaceholder
+ * @cfg {string} yearPlaceholder
 
  *     
  * @constructor
@@ -74,16 +77,15 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
         Roo.bootstrap.NavProgressBar.superclass.onRender.call(this, ct, position);
         
         var day = new Roo.bootstrap.ComboBox({
-            allowBlank : false,
+            allowBlank : this.dayAllowBlank,
             alwaysQuery : true,
             displayField : 'value',
             editable : false,
             fieldLabel : '',
             forceSelection : true,
-            hiddenName : 'birth_day',
-            labelAlign : 'top',
+            hiddenName : 'day',
             mode : 'local',
-            name : 'birth_day_name',
+            name : 'day_name',
             placeholder : _this._strings['a441ee5f2757069eba2e93beeb9863c6'] /* Day of Birth */,
             selectOnFocus : true,
             style : 'margin-bottom:15px;',
