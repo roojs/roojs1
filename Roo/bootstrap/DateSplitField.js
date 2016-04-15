@@ -43,7 +43,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
         if(this.fieldLabel){
             cfg.cn.push({
                 tag : 'div',
-                cls : 'column roo-date-split-field-label col-md-' + (this.labelAlign == 'top') ? '12' : (this.labelWidth),
+                cls : 'column roo-date-split-field-label col-md-' + ((this.labelAlign == 'top') ? '12' : this.labelWidth),
                 cn : [
                     {
                         tag : 'label',
@@ -52,6 +52,8 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
                 ]
             });
         }
+        
+        
         
     },
     
