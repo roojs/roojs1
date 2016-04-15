@@ -658,6 +658,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * @param {Mixed} value The value to set
      */
     setValue : function(v){
+        Roo.log(v);
         this.value = v;
         if(this.rendered){
             this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
