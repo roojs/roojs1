@@ -93,7 +93,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
             triggerAction : 'all',
             typeAhead : true,
             valueField : 'value',
-            store : {
+            store : new Roo.data.SimpleStore({
                 data : (function() {             
                     var days = [];             
 
@@ -106,11 +106,8 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
                     return days;
 
                 })(),
-                fields : [ 'value' ],
-                xns : Roo.data,
-                '|xns' : 'Roo.data',
-                xtype : 'SimpleStore'
-            }
+                fields : [ 'value' ]
+            })
         });
 
         day.onRender(this.el.select('.roo-date-split-field-day', true).first(), null);
