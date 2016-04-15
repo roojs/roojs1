@@ -202,15 +202,17 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
         var m = this.monthField.validate();
         var y = this.yearField.validate();
         
-        var vaild = true;
+        var valid = true;
         
         if(
                 (!this.dayAllowBlank && !d) ||
                 (!this.monthAllowBlank && !m) ||
                 (!this.yearAllowBlank && !y)
         ){
-            vaild = false;
+            valid = false;
         }
+        
+        
         
         return valid;
     }
