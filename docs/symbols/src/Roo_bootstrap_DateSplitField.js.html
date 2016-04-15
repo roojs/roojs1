@@ -13,6 +13,15 @@
  * @cfg {string} fieldLabel - the label associated
  * @cfg {Number} labelWidth set the width of label (0-12)
  * @cfg {String} labelAlign (top|left)
+ * @cfg {Boolean} dayAllowBlank (true|false) default false
+ * @cfg {Boolean} monthAllowBlank (true|false) default false
+ * @cfg {Boolean} yearAllowBlank (true|false) default false
+ * @cfg {string} dayPlaceholder 
+ * @cfg {string} monthPlaceholder
+ * @cfg {string} yearPlaceholder
+ * @cfg {string} dayFormat default 'd'
+ * @cfg {string} monthFormat default 'm'
+ * @cfg {string} yearFormat default 'Y'
 
  *     
  * @constructor
@@ -23,7 +32,36 @@
 </span><span class="jsdoc-var">Roo.bootstrap.DateSplitField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">Roo.bootstrap.DateSplitField.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
     
-    
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">// raw events
+         /**
+         * @event years
+         * getting the data of years
+         * @param {Roo.bootstrap.DateSplitField} this
+         * @param {Object} years
+         */
+        </span><span class="jsdoc-string">&quot;years&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event days
+         * getting the data of days
+         * @param {Roo.bootstrap.DateSplitField} this
+         * @param {Object} days
+         */
+        </span><span class="jsdoc-string">&quot;days&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event invalid
+         * Fires after the field has been marked as invalid.
+         * @param {Roo.form.Field} this
+         * @param {String} msg The validation message
+         */
+        </span><span class="jsdoc-var">invalid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+       </span><span class="jsdoc-comment">/**
+         * @event valid
+         * Fires after the field has been validated with no errors.
+         * @param {Roo.form.Field} this
+         */
+        </span><span class="jsdoc-var">valid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.DateSplitField</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
@@ -31,6 +69,15 @@
     </span><span class="jsdoc-var">fieldLabel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">labelAlign </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">labelWidth </span><span class="jsdoc-syntax">: 3,
+    </span><span class="jsdoc-var">dayAllowBlank </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">monthAllowBlank </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">yearAllowBlank </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">dayPlaceholder </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">monthPlaceholder </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">yearPlaceholder </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">dayFormat </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'d'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">monthFormat </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'m'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">yearFormat </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Y'</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -53,21 +100,196 @@
             });
         }
         
-        [</span><span class="jsdoc-string">'day'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'month'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'year'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'day'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'month'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'year'</span><span class="jsdoc-syntax">], </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">({
                 </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'column roo-date-split-field-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' col-md-' </span><span class="jsdoc-syntax">+ ((</span><span class="jsdoc-var">this.labelAlign </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'4' </span><span class="jsdoc-syntax">: ((12 - </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">) / 3))
             });
-        });
+        }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
     },
     
-    </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() 
+    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">) 
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">Roo.bootstrap.NavProgressBar.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.dayField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.ComboBox</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">allowBlank </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.dayAllowBlank</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">alwaysQuery </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">displayField </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'value'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">editable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">fieldLabel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">forceSelection </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">mode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'local'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">placeholder </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.dayPlaceholder</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">selectOnFocus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">tpl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&lt;div class=&quot;select2-result&quot;&gt;&lt;b&gt;{value}&lt;/b&gt;&lt;/div&gt;'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">triggerAction </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'all'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">typeAhead </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">valueField </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'value'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">store </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.data.SimpleStore</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {    
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">days </span><span class="jsdoc-syntax">= [];
+                    </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'days'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">days</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">days</span><span class="jsdoc-syntax">;
+                })(),
+                </span><span class="jsdoc-var">fields </span><span class="jsdoc-syntax">: [ </span><span class="jsdoc-string">'value' </span><span class="jsdoc-syntax">]
+            }),
+            </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
+                </span><span class="jsdoc-var">select </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_self</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">)
+                {
+                    </span><span class="jsdoc-var">_this.validate</span><span class="jsdoc-syntax">();
+                }
+            }
+        });
+
+        </span><span class="jsdoc-var">this.dayField.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-date-split-field-day'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.monthField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.MonthField</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">after </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&lt;i class=\&quot;fa fa-calendar\&quot;&gt;&lt;/i&gt;'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">allowBlank </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.monthAllowBlank</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">placeholder </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.monthPlaceholder</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">readOnly </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
+                </span><span class="jsdoc-var">render </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_self</span><span class="jsdoc-syntax">)
+                {
+                    </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'span.input-group-addon'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+                        </span><span class="jsdoc-var">_self.focus</span><span class="jsdoc-syntax">();
+                    });
+                },
+                </span><span class="jsdoc-var">select </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_self</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">oldvalue</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newvalue</span><span class="jsdoc-syntax">)
+                {
+                    </span><span class="jsdoc-var">_this.validate</span><span class="jsdoc-syntax">();
+                }
+            }
+        });
+        
+        </span><span class="jsdoc-var">this.monthField.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-date-split-field-month'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.yearField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.ComboBox</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">allowBlank </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.yearAllowBlank</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">alwaysQuery </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">displayField </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'value'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">editable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">fieldLabel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">forceSelection </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">mode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'local'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">placeholder </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.yearPlaceholder</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">selectOnFocus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">tpl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&lt;div class=&quot;select2-result&quot;&gt;&lt;b&gt;{value}&lt;/b&gt;&lt;/div&gt;'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">triggerAction </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'all'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">typeAhead </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">valueField </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'value'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">store </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.data.SimpleStore</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">years </span><span class="jsdoc-syntax">= [];
+                    </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'years'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">years</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">years</span><span class="jsdoc-syntax">;
+                })(),
+                </span><span class="jsdoc-var">fields </span><span class="jsdoc-syntax">: [ </span><span class="jsdoc-string">'value' </span><span class="jsdoc-syntax">]
+            }),
+            </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
+                </span><span class="jsdoc-var">select </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_self</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">)
+                {
+                    </span><span class="jsdoc-var">_this.validate</span><span class="jsdoc-syntax">();
+                }
+            }
+        });
+
+        </span><span class="jsdoc-var">this.yearField.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-date-split-field-year'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">setValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">f </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">this.yearFormat </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.monthFormat </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.dayFormat</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Date.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.dayField.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dayFormat</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">this.monthField.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.monthFormat</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">this.yearField.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.yearFormat</span><span class="jsdoc-syntax">));
+        
+        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">getValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">f </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.yearFormat </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.monthFormat </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.dayFormat</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">date </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.yearField.getValue</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-string">'-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.monthField.getValue</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-string">'-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.dayField.getValue</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">validate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dayField.validate</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">m </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.monthField.validate</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.yearField.validate</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">valid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(
+                (!</span><span class="jsdoc-var">this.dayAllowBlank </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">) ||
+                (!</span><span class="jsdoc-var">this.monthAllowBlank </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">) ||
+                (!</span><span class="jsdoc-var">this.yearAllowBlank </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">)
+        ){
+            </span><span class="jsdoc-var">valid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dayAllowBlank </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.monthAllowBlank </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.yearAllowBlank</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">valid</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">valid</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.markValid</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">valid</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">valid</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">markValid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">label </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">icon </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'i.fa-star'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">label </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">icon</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">icon.remove</span><span class="jsdoc-syntax">();
+        }
         
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'valid'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+    
+     </span><span class="jsdoc-comment">/**
+     * Mark this field as invalid
+     * @param {String} msg The validation message
+     */
+    </span><span class="jsdoc-var">markInvalid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">)
+    {
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">label </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">icon </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'i.fa-star'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">label </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">icon</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-date-split-field-label'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.createChild</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'text-danger fa fa-lg fa-star'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field is required'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'margin-right:5px;'
+            </span><span class="jsdoc-syntax">}, </span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        }
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'invalid'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">);
     }
+    
 });
 
  </span></code></body></html>
