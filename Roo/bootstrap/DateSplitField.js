@@ -259,11 +259,11 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     markInvalid : function(msg)
     {
         
-        var label = formGroup.select('label', true).first();
-        var icon = formGroup.select('i.fa-star', true).first();
+        var label = this.el.select('label', true).first();
+        var icon = this.el.select('i.fa-star', true).first();
 
         if(label && !icon){
-            this.el.findParent('.form-group', false, true).createChild({
+            this.el.seelct('.roo-date-split-field-label', true).createChild({
                 tag : 'i',
                 cls : 'text-danger fa fa-lg fa-star',
                 tooltip : 'This field is required',
