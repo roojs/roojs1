@@ -111,6 +111,10 @@ Roo.History = {
 	sessionStorage : false, // sessionStorage
 		 
     intervalList : false, // array normally.
+    /**
+    * enabled
+    * Is History enabled?
+    */
     enabled : false,
 
     // ====================================================================
@@ -123,31 +127,31 @@ Roo.History = {
     store :false,
 
     /**
-     * History.idToState
+     * idToState
      * 1-1: State ID to State Object
      */
     idToState : false,
 
     /**
-     * History.stateToId
+     * stateToId
      * 1-1: State String to State ID
      */
     stateToId :false,
 
     /**
-     * History.urlToId
+     * urlToId
      * 1-1: State URL to State ID
      */
     urlToId : false,
 
     /**
-     * History.storedStates
+     * storedStates
      * Store the states in an array
      */
     storedStates : false,
 
     /**
-     * History.savedStates
+     * savedStates
      * Saved the states in an array
      */
     savedStates : false,
@@ -191,10 +195,7 @@ Roo.History = {
 		}
         
         this.initEmulated();
-        /**
-		 * History.enabled
-		 * Is History enabled?
-		 */
+       
 		this.enabled = !this.emulated.pushState;
 
          
