@@ -11,70 +11,70 @@ Roo.History = {
 	 
      
     // ====================================================================
-		// Options
+	// Options
 
-		 
-		/**
-		 * hashChangeInterval
-		 * How long should the interval be before hashchange checks
-		 */
-		thishashChangeInterval  : 100,
-
-		/**
-		 * safariPollInterval
-		 * How long should the interval be before safari poll checks
-		 */
-		safariPollInterval : 500,
-
-		/**
-		 * History.options.doubleCheckInterval
-		 * How long should the interval be before we perform a double check
-		 */
-		doubleCheckInterval : 500,
-
-		/**
-		 * History.options.disableSuid
-		 * Force this.not to append suid
-		 */
-		disableSuid : false,
-
-		/**
-		 * History.options.storeInterval
-		 * How long should we wait between store calls
-		 */
-		storeInterval : 1000,
-
-		/**
-		 * History.options.busyDelay
-		 * How long should we wait between busy events
-		 */
-		busyDelay : 250,
-
-		/**
-		 * History.options.debug
-		 * If true will enable debug messages to be logged
-		 */
-		debug : false,
-
-		/**
-		 * History.options.initialTitle
-		 * What is the title of the initial state
-		 */
-		initialTitle : '',
-
-		/**
-		 * History.options.html4Mode
-		 * If true, will force HTMl4 mode (hashtags)
-		 */
-		History.options.html4Mode = History.options.html4Mode || false;
-
-		/**
-		 * History.options.delayInit
-		 * Want to override default options and call init manually.
-		 */
-		History.options.delayInit = History.options.delayInit || false;
- 
-     
+    
+    /**
+     * hashChangeInterval
+     * How long should the interval be before hashchange checks
+     */
+    thishashChangeInterval  : 100,
+    
+    /**
+     * safariPollInterval
+     * How long should the interval be before safari poll checks
+     */
+    safariPollInterval : 500,
+    
+    /**
+     * History.options.doubleCheckInterval
+     * How long should the interval be before we perform a double check
+     */
+    doubleCheckInterval : 500,
+    
+    /**
+     * History.options.disableSuid
+     * Force this.not to append suid
+     */
+    disableSuid : false,
+    
+    /**
+     * History.options.storeInterval
+     * How long should we wait between store calls
+     */
+    storeInterval : 1000,
+    
+    /**
+     * History.options.busyDelay
+     * How long should we wait between busy events
+     */
+    busyDelay : 250,
+    
+    /**
+     * History.options.debug
+     * If true will enable debug messages to be logged
+     */
+    debug : false,
+    
+    /**
+     * History.options.initialTitle
+     * What is the title of the initial state
+     */
+    initialTitle : '',
+    
+    /**
+     * History.options.html4Mode
+     * If true, will force HTMl4 mode (hashtags)
+     */
+    html4Mode : false,
+    
+    /**
+     * History.options.delayInit
+     * Want to override default options and call init manually.
+     */
+    delayInit : false,
+    
+      
      
 	// ========================================================================
 	// Initialise
@@ -84,7 +84,7 @@ Roo.History = {
 		  
 	sessionStorage : false, // sessionStorage
 		 
-		 
+    intervalList : false, // array normally.
 
 	// Initialise History
 	init : function(options){
@@ -110,16 +110,16 @@ Roo.History = {
 
 		// Return true
 		return true;
-	};
+	},
 
 
 	// ========================================================================
 	// Initialise Core
 
 	// Initialise Core
-	History.initCore = function(options){
+	initCore = function(options){
 		// Initialise
-        
+        this.intervalList = [];
         try {
             this.sessionStorage = window.sessionStorage; // This will throw an exception in some browsers when cookies/localStorage are explicitly disabled (i.e. Chrome)
             this.sessionStorage.setItem('TEST', '1');
@@ -136,78 +136,9 @@ Roo.History = {
 		else {
 			this.initCore.initialized = true;
 		}
+        
 
-
-		// ====================================================================
-		// Options
-
-		/**
-		 * this.options
-		 * Configurable options
-		 */
-		this.options = History.options||{};
-
-		/**
-		 * History.options.hashChangeInterval
-		 * How long should the interval be before hashchange checks
-		 */
-		this.options.hashChangeInterval = this.options.hashChangeInterval || 100;
-
-		/**
-		 * History.options.safariPollInterval
-		 * How long should the interval be before safari poll checks
-		 */
-		this.options.safariPollInterval = this.options.safariPollInterval || 500;
-
-		/**
-		 * History.options.doubleCheckInterval
-		 * How long should the interval be before we perform a double check
-		 */
-		this.options.doubleCheckInterval = this.options.doubleCheckInterval || 500;
-
-		/**
-		 * History.options.disableSuid
-		 * Force this.not to append suid
-		 */
-		this.options.disableSuid = this.options.disableSuid || false;
-
-		/**
-		 * History.options.storeInterval
-		 * How long should we wait between store calls
-		 */
-		History.options.storeInterval = History.options.storeInterval || 1000;
-
-		/**
-		 * History.options.busyDelay
-		 * How long should we wait between busy events
-		 */
-		History.options.busyDelay = History.options.busyDelay || 250;
-
-		/**
-		 * History.options.debug
-		 * If true will enable debug messages to be logged
-		 */
-		History.options.debug = History.options.debug || false;
-
-		/**
-		 * History.options.initialTitle
-		 * What is the title of the initial state
-		 */
-		History.options.initialTitle = History.options.initialTitle || window.document.title;
-
-		/**
-		 * History.options.html4Mode
-		 * If true, will force HTMl4 mode (hashtags)
-		 */
-		History.options.html4Mode = History.options.html4Mode || false;
-
-		/**
-		 * History.options.delayInit
-		 * Want to override default options and call init manually.
-		 */
-		History.options.delayInit = History.options.delayInit || false;
-
-
+    }
 		// ====================================================================
 		// Interval record
 
@@ -215,13 +146,13 @@ Roo.History = {
 		 * History.intervalList
 		 * List of intervals set, to be cleared when document is unloaded.
 		 */
-		History.intervalList = [];
+		
 
 		/**
 		 * History.clearAllIntervals
 		 * Clears all setInterval instances.
 		 */
-		History.clearAllIntervals = function(){
+		clearAllIntervals = function(){
 			var i, il = History.intervalList;
 			if (typeof il !== "undefined" && il !== null) {
 				for (i = 0; i < il.length; i++) {
