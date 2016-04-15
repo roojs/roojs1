@@ -305,13 +305,13 @@ Roo.History = new Roo.util.Observable({
 
 				// Setup Alias
 				this.Adapter.bind(window,'hashchange',function(){
-					_this.fireEvent(window,'popstate');
+					Roo.get(window).fireEvent('popstate');
 				});
 
 				// Initialise Alias
 				if ( this.getHash() ) {
 					Roo.onReady(function(){
-						_this.Adapter.trigger(window,'hashchange');
+						Roo.get(window).fireEvent('hashchange');
 					});
 				}
 			}
