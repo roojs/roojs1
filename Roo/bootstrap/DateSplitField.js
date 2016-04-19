@@ -216,6 +216,27 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
         return;
     },
     
+    setDay : function(v)
+    {
+        this.dayField.setValue(v);
+        
+        return;
+    },
+    
+    setMonth : function(v)
+    {
+        this.monthField.setValue(v);
+        
+        return;
+    },
+    
+    setMonth : function(v)
+    {
+        this.monthField.setValue(v);
+        
+        return;
+    },
+    
     getValue : function()
     {
         var f = this.yearFormat + '-' + this.monthFormat + '-' + this.dayFormat;
