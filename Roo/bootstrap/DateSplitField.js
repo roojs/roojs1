@@ -223,6 +223,8 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
         
         var d = Date.parseDate(v, f);
         
+        Roo.log(d);
+        
         this.dayField.setValue(d.format(this.dayFormat));
         this.monthField.setValue(d.format(this.monthFormat));
         this.yearField.setValue(d.format(this.yearFormat));
