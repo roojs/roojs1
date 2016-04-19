@@ -337,6 +337,11 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
         }
         
         this.fireEvent('valid', this);
+    },
+    
+    getName: function()
+    {
+        return this.name;
     }
     
 });
