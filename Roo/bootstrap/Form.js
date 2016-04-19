@@ -303,7 +303,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         var items = this.getItems();
         var field = items.get(id);
         Roo.log(field);
-        return;
+        
         if(!field){
              items.each(function(f){
                 if(f.isFormField && (f.dataIndex == id || f.id == id || f.getName() == id)){
