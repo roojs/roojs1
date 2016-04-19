@@ -88,7 +88,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
                 {
                     tag : 'input',
                     type : 'hidden',
-                    cls : 'form-hidden-field',
+                    cls : 'form-hidden-field roo-date-split-field-group-value',
                     name : this.name
                 }
             ]
@@ -117,11 +117,18 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
         return cfg;
     },
     
+    inputEl: function ()
+    {
+        return this.el.select('.roo-date-split-field-group-value', true).first();
+    },
+    
     onRender : function(ct, position) 
     {
         var _this = this;
         
         Roo.bootstrap.NavProgressBar.superclass.onRender.call(this, ct, position);
+        
+        this.inputEl = this.el.select('.roo-date-split-field-group-value', true).first();
         
         this.dayField = new Roo.bootstrap.ComboBox({
             allowBlank : this.dayAllowBlank,
