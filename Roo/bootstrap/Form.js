@@ -303,12 +303,8 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         var items = this.getItems();
         var field = items.get(id);
         
-        
         if(!field){
              items.each(function(f){
-                 Roo.log(f.isFormField);
-                 Roo.log(f);
-                 Roo.log(f.getName());
                 if(f.isFormField && (f.dataIndex == id || f.id == id || f.getName() == id)){
                     field = f;
                     return false;
@@ -316,6 +312,10 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 return true;
             });
         }
+        if(field.getName() == 'jobsonboats_employhistory_employ_start_date'){
+            Roo.log(field);
+        }
+        
         return field || null;
     },
      /**
