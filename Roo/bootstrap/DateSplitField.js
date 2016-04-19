@@ -254,7 +254,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     
     setYear : function(v)
     {
-//        this.yearField.setValue(v);
+        this.yearField.setValue(v);
         return;
     },
     
