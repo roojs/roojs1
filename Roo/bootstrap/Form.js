@@ -507,6 +507,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 return;
             }
             Roo.each(el.items,function(e) {
+                Roo.log(e);
                 iter(e);
             });
             
