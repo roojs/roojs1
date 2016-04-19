@@ -224,7 +224,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     setValue : function(v, format)
     {
         this.inputEl.dom.value = v;
-        return;
+        
         var f = format || (this.yearFormat + '-' + this.monthFormat + '-' + this.dayFormat);
         
         var d = Date.parseDate(v, f);
