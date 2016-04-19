@@ -232,7 +232,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
         if(!d){
             return;
         }
-        Roo.log(this.dayField);exit;
+        Roo.log(this.dayField);
         return;
         this.setDay(d.format(this.dayFormat));
         this.setMonth(d.format(this.monthFormat));
