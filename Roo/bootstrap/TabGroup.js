@@ -270,7 +270,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             return;
         }
         var ctr = this.el.select('.carousel-bullets',true).first();
-        var i = this.el.select('.carousel-bullets .bullet',true).getCount() + 1;
+        var i = this.el.select('.carousel-bullets .bullet',true).getCount() ;
         var bullet = ctr.createChild({
             cls : 'bullet bullet-' + i
         },ctr.dom.lastChild);
