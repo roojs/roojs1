@@ -230,6 +230,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
         var d = Date.parseDate(v, f);
         
         if(!d){
+            this.validate();
             return;
         }
         
