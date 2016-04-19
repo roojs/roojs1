@@ -279,7 +279,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
 
             e.preventDefault();
 
-            _this.showPanel(ii);
+            this.showPanel(ii);
 
             if(_this.autoslide && _this.slideFn){
                 clearInterval(_this.slideFn);
