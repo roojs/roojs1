@@ -227,6 +227,10 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
         this.monthField.setValue(d.format(this.monthFormat));
         this.yearField.setValue(d.format(this.yearFormat));
         
+        this.inputEl().setValue(d.format(f));
+        
+        
+        
         return;
     },
     
