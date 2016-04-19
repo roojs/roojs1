@@ -27,7 +27,7 @@ files.forEach(function(f) {
         return;
     }
     debug_out += "\n/* -- " + f + " ---- */\n";
-    debug_out += File.read(pa + '/css-bootstrap/' +f );
+    debug_out += "@import url('./" + f + ');\n";
     out += pack(File.read(pa + '/css-bootstrap/' +f ));
     print(f);
 });
