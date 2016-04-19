@@ -82,7 +82,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     getAutoCreate : function()
     {
         var cfg = {
-            tag : 'div',
+            tag : 'input',
             cls : 'row roo-date-split-field-group',
             cn : []
         }
