@@ -13,7 +13,7 @@ if (!pa.match(/roojs1$/)) {
 }
 
 var files = File.list(pa + '/css-bootstrap');
-print(files);
+
 var out = '';
 var debug_out = '';
 files.forEach(function(f) {
@@ -29,6 +29,7 @@ files.forEach(function(f) {
     debug_out += "\n/* -- " + f + " ---- */\n";
     debug_out += File.read(pa + '/css-bootstrap/' +f );
     out += pack(File.read(pa + '/css-bootstrap/' +f ));
+    print(f);
 });
 
  
