@@ -268,8 +268,6 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
         var m = this.monthField.validate();
         var y = this.yearField.validate();
         
-        this.setValue(this.getValue());
-        
         var valid = true;
         
         if(
