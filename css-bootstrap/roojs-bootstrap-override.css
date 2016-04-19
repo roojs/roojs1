@@ -1,34 +1,12 @@
 
-div.input-group.has-feedback > .form-control-feedback {
-    right: 30px;
-}
-@media (max-width: 568px) {
-    .modal-footer .btn+.btn {
-            margin-left:0px;
-            margin-top:5px;
-    }
-}
 
 /*
     Bootstrap v4-alpha add this css
     We may delete this after update the bootstrap version...
 */
+ 
 
-a.list-group-item, button.list-group-item {
-    width: 100%;
-    color: #555;
-    text-align: inherit;
-}
 
-.label-pill {
-    padding-right: .6em;
-    padding-left: .6em;
-    border-radius: 10rem;
-}
-
-.pull-xs-right {
-    float: right!important;
-}
 
 /*
     End Bootstrap v4-alpha
