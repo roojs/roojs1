@@ -210,7 +210,6 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
             listeners : {
                 select : function (_self, record, index)
                 {
-                    Roo.log('run???');
                     _this.setValue(_this.getValue());
                 }
             }
@@ -255,7 +254,6 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     
     setYear : function(v)
     {
-        Roo.log(v);
         this.yearField.setValue(v);
         return;
     },
