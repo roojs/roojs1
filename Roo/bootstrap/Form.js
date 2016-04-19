@@ -507,7 +507,9 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 return;
             }
             Roo.each(el.items,function(e) {
-                Roo.log(e);
+                if(e.name == 'jobsonboats_employhistory_employ_start_date'){
+                    Roo.log(e);
+                }
                 iter(e);
             });
             
