@@ -26,7 +26,7 @@ files.forEach(function(f) {
     if (f.match(/^font-awesome/)) {
         return;
     }
-    debug_out += "\n/* -- " + f + " ---- */\n";
+    
     debug_out += "@import url('./" + f + ');\n";
     out += pack(File.read(pa + '/css-bootstrap/' +f ));
     print(f);
