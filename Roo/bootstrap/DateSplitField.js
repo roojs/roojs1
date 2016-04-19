@@ -249,14 +249,14 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     
     setMonth : function(v)
     {
-        Roo.log(v);
         this.monthField.setValue(v);
         return;
     },
     
     setYear : function(v)
     {
-//        this.yearField.setValue(v);
+        Roo.log(v);
+        this.yearField.setValue(v);
         return;
     },
     
