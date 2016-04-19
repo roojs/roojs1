@@ -157,6 +157,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
                 select : function (_self, record, index)
                 {
                     _this.setValue(_this.getValue());
+                    _this.validate();
                 }
             }
         });
@@ -179,6 +180,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
                 select : function (_self, oldvalue, newvalue)
                 {
                     _this.setValue(_this.getValue());
+                    _this.validate();
                 }
             }
         });
@@ -211,6 +213,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
                 select : function (_self, record, index)
                 {
                     _this.setValue(_this.getValue());
+                    _this.validate();
                 }
             }
         });
@@ -233,7 +236,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
         this.setDay(d.format(this.dayFormat));
         this.setMonth(d.format(this.monthFormat));
         this.setYear(d.format(this.yearFormat));
-        
+        return;
         this.validate();
         
         return;
