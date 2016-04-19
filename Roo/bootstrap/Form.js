@@ -312,7 +312,8 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 return true;
             });
         }
-        if(field.getName() == 'jobsonboats_employhistory_employ_start_date'){
+        
+        if(field && field.getName() == 'jobsonboats_employhistory_employ_start_date'){
             Roo.log(field);
         }
         
