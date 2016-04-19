@@ -1901,6 +1901,24 @@ table.fc-border-separate {
     margin-right: 10px;
 }
 
+/* -- input.css ---- */
+div.input-group.has-feedback > .form-control-feedback {
+    right: 30px;
+}
+
+/* -- label-pill.css ---- */
+.label-pill {
+    padding-right: .6em;
+    padding-left: .6em;
+    border-radius: 10rem;
+}
+
+/* -- list-group.css ---- */
+a.list-group-item, button.list-group-item {
+    width: 100%;
+    color: #555;
+    text-align: inherit;
+}
 /* -- mask.css ---- */
 .roo-el-mask
 {
@@ -2034,6 +2052,15 @@ table.fc-border-separate {
   width: 8.333333333333332%;
   margin: 30 auto;
 }
+
+
+@media (max-width: 568px) {
+    .modal-footer .btn+.btn {
+            margin-left:0px;
+            margin-top:5px;
+    }
+}
+
 /* -- nav-progress-bar.css ---- */
 
 .roo-navigation-bar-group,
@@ -2160,6 +2187,10 @@ table.fc-border-separate {
 	font-size: 24px;
 }
 
+/* -- pull-xs-right.css ---- */
+.pull-xs-right {
+    float: right!important;
+}
 /* -- select2.css ---- */
 /*
 Version: 3.4.8 Timestamp: Thu May  1 09:50:32 EDT 2014
