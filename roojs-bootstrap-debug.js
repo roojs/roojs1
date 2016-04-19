@@ -16102,7 +16102,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             return;
         }
         var ctr = this.el.select('.carousel-bullets',true).first();
-        var i = this.el.select('.carousel-bullets .bullet',true).length + 1;
+        var i = this.el.select('.carousel-bullets .bullet',true).getCount() ;
         var bullet = ctr.createChild({
             cls : 'bullet bullet-' + i
         },ctr.dom.lastChild);
@@ -16111,13 +16111,13 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
 
             e.preventDefault();
 
-            _this.showPanel(ii);
+            this.showPanel(ii);
 
-            if(_this.autoslide && _this.slideFn){
-                clearInterval(_this.slideFn);
-                _this.slideFn = window.setInterval(function() {
-                    _this.showPanelNext();
-                }, _this.timer);
+            if(this.autoslide && this.slideFn){
+                clearInterval(this.slideFn);
+                this.slideFn = window.setInterval(function() {
+                    this.showPanelNext();
+                }, this.timer);
             }
 
         }).createDelegate(this, [i, bullet], true));
