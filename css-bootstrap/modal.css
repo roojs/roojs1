@@ -70,3 +70,11 @@
   width: 8.333333333333332%;
   margin: 30 auto;
 }
+
+
+@media (max-width: 568px) {
+    .modal-footer .btn+.btn {
+            margin-left:0px;
+            margin-top:5px;
+    }
+}
