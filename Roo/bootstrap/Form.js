@@ -302,13 +302,8 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     findField : function(id){
         var items = this.getItems();
         var field = items.get(id);
-        Roo.log(field);
-        
         if(!field){
              items.each(function(f){
-                 Roo.log(f.isFormField);
-                 Roo.log(f);
-                 Roo.log(f.getName());
                 if(f.isFormField && (f.dataIndex == id || f.id == id || f.getName() == id)){
                     field = f;
                     return false;
