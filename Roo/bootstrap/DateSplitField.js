@@ -88,7 +88,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
                 {
                     tag : 'input',
                     type : 'hidden',
-                    cls : 'form-hidden-field roo-date-split-field-group-input-el'
+                    cls : 'form-hidden-field roo-date-split-field-group-value'
                 }
             ]
         }
