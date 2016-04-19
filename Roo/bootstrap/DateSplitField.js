@@ -244,6 +244,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     {
         this.dayField.setValue(v);
         this.inputEl.dom.value = this.getValue();
+        this.validate();
         return;
     },
     
@@ -251,6 +252,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     {
         this.monthField.setValue(v, true);
         this.inputEl.dom.value = this.getValue();
+        this.validate();
         return;
     },
     
@@ -258,6 +260,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     {
         this.yearField.setValue(v);
         this.inputEl.dom.value = this.getValue();
+        this.validate();
         return;
     },
     
