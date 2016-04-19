@@ -93,7 +93,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
                     name : this.name
                 }
             ]
-        }
+        };
         
         if(this.fieldLabel){
             cfg.cn.push({

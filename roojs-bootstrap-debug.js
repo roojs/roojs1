@@ -15843,7 +15843,7 @@ Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
  * Bootstrap Column class
  * @cfg {String} navId the navigation id (for use with navbars) - will be auto generated if it does not exist..
  * @cfg {Boolean} carousel true to make the group behave like a carousel
- * @cfg {Number} bullets show the panel pointer.. default 0
+ * @cfg {Boolean} bullets show bullets for the panels
  * @cfg {Boolean} autoslide (true|false) auto slide .. default false
  * @cfg {Boolean} slideOnTouch (true|false) slide on touch .. default false
  * @cfg {Number} timer auto slide timer .. default 0 millisecond
@@ -15888,23 +15888,23 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                cls : 'carousel-inner'
             }];
         
-            if(this.bullets > 0 && !Roo.isTouch){
+            if(this.bullets  && !Roo.isTouch){
                 
                 var bullets = {
                     cls : 'carousel-bullets',
                     cn : []
                 };
-                
+               
                 if(this.bullets_cls){
                     bullets.cls = bullets.cls + ' ' + this.bullets_cls;
                 }
-                
+                 /*
                 for (var i = 0; i < this.bullets; i++){
                     bullets.cn.push({
                         cls : 'bullet bullet-' + i
                     });
                 }
-                
+                */
                 bullets.cn.push({
                     cls : 'clear'
                 });
@@ -15920,9 +15920,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     {
         Roo.log('-------- init events on tab group ---------');
         
-        if(this.bullets > 0 && !Roo.isTouch){
-            this.initBullet();
-        }
+        
         
         Roo.log(this);
         
@@ -15962,6 +15960,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     {
         this.tabs.push( item);
         item.navId = this.navId; // not really needed..
+        this.addBullet();
     
     },
     
@@ -16096,38 +16095,36 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         this.showPanel(this.tabs[i-1]);
     },
     
-    initBullet : function()
+    
+    addBullet: function()
     {
-        if(Roo.isTouch){
+        if(!this.bullets || Roo.isTouch){
             return;
         }
+        var ctr = this.el.select('.carousel-bullets',true).first();
+        var i = this.el.select('.carousel-bullets .bullet',true).length + 1;
+        var bullet = ctr.createChild({
+            cls : 'bullet bullet-' + i
+        },ctr.dom.lastChild);
         
-        var _this = this;
-        
-        for (var i = 0; i < this.bullets; i++){
-            var bullet = this.el.select('.bullet-' + i, true).first();
+        bullet.on('click', (function(e, el, o, ii, t){
 
-            if(!bullet){
-                continue;
+            e.preventDefault();
+
+            _this.showPanel(ii);
+
+            if(_this.autoslide && _this.slideFn){
+                clearInterval(_this.slideFn);
+                _this.slideFn = window.setInterval(function() {
+                    _this.showPanelNext();
+                }, _this.timer);
             }
 
-            bullet.on('click', (function(e, el, o, ii, t){
-
-                e.preventDefault();
-
-                _this.showPanel(ii);
-
-                if(_this.autoslide && _this.slideFn){
-                    clearInterval(_this.slideFn);
-                    _this.slideFn = window.setInterval(function() {
-                        _this.showPanelNext();
-                    }, _this.timer);
-                }
-
-            }).createDelegate(this, [i, bullet], true));
-        }
+        }).createDelegate(this, [i, bullet], true));
+                
+        
     },
-    
+     
     setActiveBullet : function(i)
     {
         if(Roo.isTouch){
@@ -27531,14 +27528,22 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     dayFormat : 'd',
     monthFormat : 'm',
     yearFormat : 'Y',
+    isFormField : true,
     
     getAutoCreate : function()
     {
         var cfg = {
             tag : 'div',
             cls : 'row roo-date-split-field-group',
-            cn : []
-        }
+            cn : [
+                {
+                    tag : 'input',
+                    type : 'hidden',
+                    cls : 'form-hidden-field roo-date-split-field-group-value',
+                    name : this.name
+                }
+            ]
+        };
         
         if(this.fieldLabel){
             cfg.cn.push({
@@ -27563,11 +27568,18 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
         return cfg;
     },
     
+    inputEl: function ()
+    {
+        return this.el.select('.roo-date-split-field-group-value', true).first();
+    },
+    
     onRender : function(ct, position) 
     {
         var _this = this;
         
         Roo.bootstrap.NavProgressBar.superclass.onRender.call(this, ct, position);
+        
+        this.inputEl = this.el.select('.roo-date-split-field-group-value', true).first();
         
         this.dayField = new Roo.bootstrap.ComboBox({
             allowBlank : this.dayAllowBlank,
@@ -27594,7 +27606,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
             listeners : {
                 select : function (_self, record, index)
                 {
-                    _this.validate();
+                    _this.setValue(_this.getValue());
                 }
             }
         });
@@ -27616,7 +27628,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
                 },
                 select : function (_self, oldvalue, newvalue)
                 {
-                    _this.validate();
+                    _this.setValue(_this.getValue());
                 }
             }
         });
@@ -27648,7 +27660,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
             listeners : {
                 select : function (_self, record, index)
                 {
-                    _this.validate();
+                    _this.setValue(_this.getValue());
                 }
             }
         });
@@ -27658,15 +27670,63 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     
     setValue : function(v, format)
     {
+        this.inputEl.dom.value = v;
+        
         var f = format || (this.yearFormat + '-' + this.monthFormat + '-' + this.dayFormat);
         
         var d = Date.parseDate(v, f);
         
-        this.dayField.setValue(d.format(this.dayFormat));
-        this.monthField.setValue(d.format(this.monthFormat));
-        this.yearField.setValue(d.format(this.yearFormat));
+        if(!d){
+            this.validate();
+            return;
+        }
+        
+        this.setDay(d.format(this.dayFormat));
+        this.setMonth(d.format(this.monthFormat));
+        this.setYear(d.format(this.yearFormat));
+        
+        this.validate();
         
         return;
+    },
+    
+    setDay : function(v)
+    {
+        this.dayField.setValue(v);
+        this.inputEl.dom.value = this.getValue();
+        this.validate();
+        return;
+    },
+    
+    setMonth : function(v)
+    {
+        this.monthField.setValue(v, true);
+        this.inputEl.dom.value = this.getValue();
+        this.validate();
+        return;
+    },
+    
+    setYear : function(v)
+    {
+        this.yearField.setValue(v);
+        this.inputEl.dom.value = this.getValue();
+        this.validate();
+        return;
+    },
+    
+    getDay : function()
+    {
+        return this.dayField.getValue();
+    },
+    
+    getMonth : function()
+    {
+        return this.monthField.getValue();
+    },
+    
+    getYear : function()
+    {
+        return this.yearField.getValue();
     },
     
     getValue : function()
@@ -27676,6 +27736,16 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
         var date = this.yearField.getValue() + '-' + this.monthField.getValue() + '-' + this.dayField.getValue();
         
         return date;
+    },
+    
+    reset : function()
+    {
+        this.setDay('');
+        this.setMonth('');
+        this.setYear('');
+        this.inputEl.dom.value = '';
+        this.validate();
+        return;
     },
     
     validate : function()
@@ -27741,6 +27811,23 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
         }
         
         this.fireEvent('invalid', this, msg);
+    },
+    
+    clearInvalid : function()
+    {
+        var label = this.el.select('label', true).first();
+        var icon = this.el.select('i.fa-star', true).first();
+
+        if(label && icon){
+            icon.remove();
+        }
+        
+        this.fireEvent('valid', this);
+    },
+    
+    getName: function()
+    {
+        return this.name;
     }
     
 });
