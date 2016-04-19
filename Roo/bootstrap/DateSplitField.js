@@ -248,7 +248,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     
     setMonth : function(v)
     {
-        this.monthField.setValue(v);
+        this.monthField.setValue(v, true);
         return;
     },
     
