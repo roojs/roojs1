@@ -229,8 +229,6 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
         
         this.inputEl().setValue(d.format(f));
         
-        
-        
         return;
     },
     
