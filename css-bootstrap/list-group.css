@@ -1,0 +1,5 @@
+a.list-group-item, button.list-group-item {
+    width: 100%;
+    color: #555;
+    text-align: inherit;
+}
