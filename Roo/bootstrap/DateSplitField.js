@@ -288,6 +288,16 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
         return date;
     },
     
+    reset : function()
+    {
+        this.setDay('');
+        this.setMonth('');
+        this.setYear('');
+        this.inputEl.dom.value = '';
+        this.validate();
+        return;
+    },
+    
     validate : function()
     {
         var d = this.dayField.validate();
