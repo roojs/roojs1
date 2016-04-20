@@ -346,7 +346,9 @@ Roo.extend(Roo.Resizable, Roo.util.Observable, {
 
     // private
     snap : function(value, inc, min){
-        if(!inc || !value) return value;
+        if(!inc || !value) {
+            return value;
+        }
         var newValue = value;
         var m = value % inc;
         if(m > 0){
