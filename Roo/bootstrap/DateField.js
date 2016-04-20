@@ -211,7 +211,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             v.attr('colspan', function(i, val){
                 return parseInt(val) + 1;
             });
-        })
+        });
 			
         
         this.weekEnd = this.weekStart === 0 ? 6 : this.weekStart - 1;
