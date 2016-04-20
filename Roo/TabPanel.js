@@ -404,7 +404,9 @@ Roo.extend(Roo.TabPanel, Roo.util.Observable, {
     setTabWidth : function(width){
         this.currentTabWidth = width;
         for(var i = 0, len = this.items.length; i < len; i++) {
-        	if(!this.items[i].isHidden())this.items[i].setWidth(width);
+        	if(!this.items[i].isHidden()) {
+                this.items[i].setWidth(width);
+            }
         }
     },
 
