@@ -303,7 +303,9 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
      * @param {Boolean} skipAnim (optional) true to collapse the element without animation (if animate is true)
      */
     collapse : function(skipAnim){
-        if(this.collapsed) return;
+        if(this.collapsed) {
+            return;
+        }
         this.collapsed = true;
         if(this.split){
             this.split.el.hide();
