@@ -332,7 +332,9 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
      * @param {Boolean} keepExisting (optional) True to retain existing selections
      */
     selectRange : function(startRow, endRow, keepExisting){
-        if(this.locked) return;
+        if(this.locked) {
+            return;
+        }
         if(!keepExisting){
             this.clearSelections();
         }
