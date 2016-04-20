@@ -142,7 +142,7 @@ if(opt.anim.isAnimated()){
          */
         enableDisplayMode : function(display){
             this.setVisibilityMode(El.DISPLAY);
-            if(typeof display != "undefined") this.originalDisplay = display;
+            if(typeof display != "undefined") { this.originalDisplay = display; }
             return this;
         },
 
