@@ -401,7 +401,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 tag: 'td',
                 cls: 'day ' + clsName,
                 html: prevMonth.getDate()
-            })
+            });
             
             prevMonth.setDate(prevMonth.getDate()+1);
         }
