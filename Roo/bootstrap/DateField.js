@@ -863,7 +863,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     moveMonth: function(date, dir)
     {
-        if (!dir) return date;
+        if (!dir) {
+            return date;
+        }
         var new_date = new Date(date.valueOf()),
         day = new_date.getUTCDate(),
         month = new_date.getUTCMonth(),
