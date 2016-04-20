@@ -103,7 +103,9 @@ Roo.extend(Roo.SplitLayoutRegion, Roo.LayoutRegion, {
     beforeSlide: function(){
         if(Roo.isGecko){// firefox overflow auto bug workaround
             this.bodyEl.clip();
-            if(this.tabs) this.tabs.bodyEl.clip();
+            if(this.tabs) {
+                this.tabs.bodyEl.clip();
+            }
             if(this.activePanel){
                 this.activePanel.getEl().clip();
                 
