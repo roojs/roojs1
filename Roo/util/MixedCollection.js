@@ -289,7 +289,9 @@ mc.add(otherEl);
     indexOf : function(o){
         if(!this.items.indexOf){
             for(var i = 0, len = this.items.length; i < len; i++){
-                if(this.items[i] == o) return i;
+                if(this.items[i] == o) {
+                    return i;
+                }
             }
             return -1;
         }else{
