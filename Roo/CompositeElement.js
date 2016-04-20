@@ -37,7 +37,9 @@ Roo.CompositeElement = function(els){
 Roo.CompositeElement.prototype = {
     isComposite: true,
     addElements : function(els){
-        if(!els) return this;
+        if(!els) {
+            return this;
+        }
         if(typeof els == "string"){
             els = Roo.Element.selectorFunction(els);
         }
