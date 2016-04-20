@@ -20,7 +20,7 @@ Roo.applyIf(Array.prototype, {
      */
     indexOf : function(o){
        for (var i = 0, len = this.length; i < len; i++){
- 	      if(this[i] == o) return i;
+ 	      if(this[i] == o) { return i; }
        }
  	   return -1;
     },
