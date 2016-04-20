@@ -433,7 +433,9 @@ layout.addxtype({
             this.form = new  Roo.form.Form(cfg);
             
             
-            if ( this.form.allItems.length) this.form.render(el.dom);
+            if ( this.form.allItems.length) {
+                this.form.render(el.dom);
+            }
             return this.form;
         }
         // should only have one of theses..
