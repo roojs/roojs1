@@ -48,7 +48,7 @@ Roo.DomHelper = function(){
         }
         b += "<" + o.tag;
         for(var attr in o){
-            if(attr == "tag" || attr == "children" || attr == "cn" || attr == "html" || typeof o[attr] == "function") continue;
+            if(attr == "tag" || attr == "children" || attr == "cn" || attr == "html" || typeof o[attr] == "function") { continue; }
             if(attr == "style"){
                 var s = o["style"];
                 if(typeof s == "function"){
