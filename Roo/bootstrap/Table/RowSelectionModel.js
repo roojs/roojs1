@@ -386,7 +386,9 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
      * @param {Number} row The index of the row to deselect
      */
     deselectRow : function(index, preventViewNotify){
-        if(this.locked) return;
+        if(this.locked) {
+            return;
+        }
         if(this.last == index){
             this.last = false;
         }
