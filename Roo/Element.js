@@ -2461,7 +2461,7 @@ if(opt.anim.isAnimated()){
             var el = this.dom;
             useSet = typeof useSet == 'undefined' ? (el.setAttribute ? true : false) : useSet;
             for(var attr in o){
-                if(attr == "style" || typeof o[attr] == "function") continue;
+                if(attr == "style" || typeof o[attr] == "function")  { continue; }
                 if(attr=="cls"){
                     el.className = o["cls"];
                 }else{
