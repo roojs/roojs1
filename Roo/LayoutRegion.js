@@ -332,8 +332,12 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
      * @param {Boolean} skipAnim (optional) true to expand the element without animation (if animate is true)
      */
     expand : function(e, skipAnim){
-        if(e) e.stopPropagation();
-        if(!this.collapsed || this.el.hasActiveFx()) return;
+        if(e) {
+            e.stopPropagation();
+        }
+        if(!this.collapsed || this.el.hasActiveFx()) {
+            return;
+        }
         if(this.isSlid){
             this.afterSlideIn();
             skipAnim = true;
