@@ -232,8 +232,9 @@ Roo.extend(Roo.PagingToolbar, Roo.Toolbar, {
         {
           var v = this.field.dom.value, pageNum; 
           var increment = (e.shiftKey) ? 10 : 1;
-          if(k == e.DOWN || k == e.LEFT || k == e.PAGEDOWN)
+          if(k == e.DOWN || k == e.LEFT || k == e.PAGEDOWN) {
             increment *= -1;
+          }
           if(!v || isNaN(pageNum = parseInt(v, 10))) {
             this.field.dom.value = d.activePage;
             return;
