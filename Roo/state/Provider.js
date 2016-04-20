@@ -117,7 +117,9 @@ Roo.extend(Roo.state.Provider, Roo.util.Observable, {
             var flat = "";
             for(var i = 0, len = v.length; i < len; i++){
                 flat += this.encodeValue(v[i]);
-                if(i != len-1) flat += "^";
+                if(i != len-1) {
+                    flat += "^";
+                }
             }
             enc = "a:" + flat;
         }else if(typeof v == "object"){
