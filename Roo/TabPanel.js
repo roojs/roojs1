@@ -366,7 +366,9 @@ Roo.extend(Roo.TabPanel, Roo.util.Observable, {
     autoSizeTabs : function(){
         var count = this.items.length;
         var vcount = count - this.hiddenCount;
-        if(!this.resizeTabs || count < 1 || vcount < 1 || this.updating) return;
+        if(!this.resizeTabs || count < 1 || vcount < 1 || this.updating) {
+            return;
+        }
         var w = Math.max(this.el.getWidth() - this.cpad, 10);
         var availWidth = Math.floor(w / vcount);
         var b = this.stripBody;
