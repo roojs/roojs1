@@ -176,7 +176,9 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     
     place: function()
     {
-        if(this.isInline) return;
+        if(this.isInline) {
+            return;
+        }
         
         this.picker().removeClass(['bottom', 'top']);
         
