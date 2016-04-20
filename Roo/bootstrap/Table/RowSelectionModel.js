@@ -369,7 +369,9 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
      * @param {Boolean} keepExisting (optional) True to keep existing selections
      */
     selectRow : function(index, keepExisting, preventViewNotify){
-        if(this.locked || (index < 0 || index >= this.grid.dataSource.getCount())) return;
+        if(this.locked || (index < 0 || index >= this.grid.dataSource.getCount())) {
+            return;
+        }
         if(this.fireEvent("beforerowselect", this, index, keepExisting) !== false){
             if(!keepExisting || this.singleSelect){
                 this.clearSelections();
