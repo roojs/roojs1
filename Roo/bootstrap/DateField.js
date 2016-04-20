@@ -891,9 +891,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 new_month = (new_month + 12) % 12;
         } else {
             // For magnitudes >1, move one month at a time...
-            for (var i=0; i<mag; i++)
+            for (var i=0; i<mag; i++) {
                 // ...which might decrease the day (eg, Jan 31 to Feb 28, etc)...
                 new_date = this.moveMonth(new_date, dir);
+            }
             // ...then reset the day, keeping it in the new month
             new_month = new_date.getUTCMonth();
             new_date.setUTCDate(day);
