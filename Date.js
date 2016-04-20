@@ -775,7 +775,7 @@ document.write(dt3); //returns 'Fri Oct 06 2006 07:30:00'
  */
 Date.prototype.add = function(interval, value){
   var d = this.clone();
-  if (!interval || value === 0) return d;
+  if (!interval || value === 0) { return d; }
   switch(interval.toLowerCase()){
     case Date.MILLI:
       d.setMilliseconds(this.getMilliseconds() + value);
