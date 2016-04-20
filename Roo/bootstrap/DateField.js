@@ -887,8 +887,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             new_month = month + dir;
             new_date.setUTCMonth(new_month);
             // Dec -> Jan (12) or Jan -> Dec (-1) -- limit expected date to 0-11
-            if (new_month < 0 || new_month > 11)
+            if (new_month < 0 || new_month > 11) {
                 new_month = (new_month + 12) % 12;
+            }
         } else {
             // For magnitudes >1, move one month at a time...
             for (var i=0; i<mag; i++) {
