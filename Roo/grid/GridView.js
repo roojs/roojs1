@@ -658,7 +658,9 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         if(s){ // splitters not created yet
             var pos = 0, locked = true;
             for(var i = 0, len = cm.getColumnCount(); i < len; i++){
-                if(cm.isHidden(i)) continue;
+                if(cm.isHidden(i)) {
+                    continue;
+                }
                 var w = cm.getColumnWidth(i); // make sure it's a number
                 if(!cm.isLocked(i) && locked){
                     pos = 0;
