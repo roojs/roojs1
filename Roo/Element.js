@@ -2465,8 +2465,11 @@ if(opt.anim.isAnimated()){
                 if(attr=="cls"){
                     el.className = o["cls"];
                 }else{
-                    if(useSet) el.setAttribute(attr, o[attr]);
-                    else el[attr] = o[attr];
+                    if(useSet) {
+                        el.setAttribute(attr, o[attr]);
+                    } else {
+                        el[attr] = o[attr];
+                    }
                 }
             }
             if(o.style){
