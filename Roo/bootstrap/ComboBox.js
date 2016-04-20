@@ -1761,7 +1761,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 tag: 'div',
                 cls: 'loading select2-more-results select2-active',
                 html: 'Loading more results...'
-            })
+            });
             
             this.loading = this.list.select('.loading', true).first();
             
