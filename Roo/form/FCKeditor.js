@@ -228,8 +228,9 @@ Roo.extend(Roo.form.FCKeditor, Roo.form.TextArea,
     
     replaceTextarea : function()
     {
-        if ( document.getElementById( this.getId() + '___Frame' ) )
+        if ( document.getElementById( this.getId() + '___Frame' ) ) {
             return ;
+        }
         //if ( !this.checkBrowser || this._isCompatibleBrowser() )
         //{
             // We must check the elements firstly using the Id and then the name.
