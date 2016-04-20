@@ -220,7 +220,9 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
      * Clears all selections.
      */
     clearSelections : function(fast){
-        if(this.locked) return;
+        if(this.locked) {
+            return;
+        }
         if(fast !== true){
             var ds = this.grid.dataSource;
             var s = this.selections;
@@ -239,7 +241,9 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
      * Selects all rows.
      */
     selectAll : function(){
-        if(this.locked) return;
+        if(this.locked) {
+            return;
+        }
         this.selections.clear();
         for(var i = 0, len = this.grid.dataSource.getCount(); i < len; i++){
             this.selectRow(i, true);
