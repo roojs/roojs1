@@ -131,7 +131,7 @@ Roo.DomHelper = function(){
         for(var attr in o){
             
             if(attr == "tag" || attr == "ns" ||attr == "xmlns" ||attr == "children" || attr == "cn" || attr == "html" || 
-                    attr == "style" || typeof o[attr] == "function") continue;
+                    attr == "style" || typeof o[attr] == "function") { continue; }
                     
             if(attr=="cls" && Roo.isIE){
                 el.className = o["cls"];
