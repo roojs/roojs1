@@ -33,8 +33,12 @@ Roo.form.DateField = function(config){
     });
     
     
-    if(typeof this.minValue == "string") this.minValue = this.parseDate(this.minValue);
-    if(typeof this.maxValue == "string") this.maxValue = this.parseDate(this.maxValue);
+    if(typeof this.minValue == "string") {
+        this.minValue = this.parseDate(this.minValue);
+    }
+    if(typeof this.maxValue == "string") {
+        this.maxValue = this.parseDate(this.maxValue);
+    }
     this.ddMatch = null;
     if(this.disabledDates){
         var dd = this.disabledDates;
