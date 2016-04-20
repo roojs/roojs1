@@ -307,7 +307,9 @@ mc.add(otherEl);
     indexOfKey : function(key){
         if(!this.keys.indexOf){
             for(var i = 0, len = this.keys.length; i < len; i++){
-                if(this.keys[i] == key) return i;
+                if(this.keys[i] == key) {
+                    return i;
+                }
             }
             return -1;
         }else{
