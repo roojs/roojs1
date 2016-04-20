@@ -45,7 +45,9 @@ Roo.form.DateField = function(config){
         var re = "(?:";
         for(var i = 0; i < dd.length; i++){
             re += dd[i];
-            if(i != dd.length-1) re += "|";
+            if(i != dd.length-1) {
+                re += "|";
+            }
         }
         this.ddMatch = new RegExp(re + ")");
     }
