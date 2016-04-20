@@ -945,7 +945,9 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                         p.id = c.id;
                         p.css = p.attr = "";
                         p.value = c.renderer(r.data[c.name], p, r, rowIndex, i, ds);
-                        if(p.value == undefined || p.value === "") p.value = "&#160;";
+                        if(p.value == undefined || p.value === "") {
+                            p.value = "&#160;";
+                        }
                         if(r.dirty && typeof r.modified[c.name] !== 'undefined'){
                             p.css += p.css ? ' x-grid-dirty-cell' : 'x-grid-dirty-cell';
                         }
