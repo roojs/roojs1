@@ -97,7 +97,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             if (this.style) {
                 cfg.style = this.style;
             }
-            Roo.log("adding to ")
+            //Roo.log("adding to ");
             this.el = Roo.get(document.body).createChild(cfg, position);
             Roo.log(this.el);
         }
