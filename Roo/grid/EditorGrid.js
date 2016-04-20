@@ -117,7 +117,7 @@ Roo.extend(Roo.grid.EditorGrid, Roo.grid.Grid, {
             cancel:false,
             editor: ed
         };
-        var cell = Roo.get(this.view.getCell(ed.row,ed.col))
+        var cell = Roo.get(this.view.getCell(ed.row,ed.col));
         cell.show();
           
         if(String(value) !== String(startValue)){
