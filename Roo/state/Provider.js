@@ -68,7 +68,9 @@ Roo.extend(Roo.state.Provider, Roo.util.Observable, {
     decodeValue : function(cookie){
         var re = /^(a|n|d|b|s|o)\:(.*)$/;
         var matches = re.exec(unescape(cookie));
-        if(!matches || !matches[1]) return; // non state cookie
+        if(!matches || !matches[1]) {
+            return; // non state cookie
+        }
         var type = matches[1];
         var v = matches[2];
         switch(type){
