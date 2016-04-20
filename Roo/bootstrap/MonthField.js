@@ -251,8 +251,9 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     fireKey: function(e)
     {
         if (!this.picker().isVisible()){
-            if (e.keyCode == 27) // allow escape to hide and re-show picker
+            if (e.keyCode == 27)   {// allow escape to hide and re-show picker
                 this.show();
+            }
             return;
         }
         
