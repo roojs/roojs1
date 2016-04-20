@@ -1066,7 +1066,9 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         };
         var renderer = cm.getRenderer(colIndex);
         var val = renderer(dm.getValueAt(rowIndex, dataIndex), p, rowIndex, colIndex, dm);
-        if(typeof val == "undefined" || val === "") val = "&#160;";
+        if(typeof val == "undefined" || val === "") {
+            val = "&#160;";
+        }
         cellText.innerHTML = val;
         cell.className = this.cellClass + " " + this.idToCssName(p.cellId) + " " + p.css;
         this.syncRowHeights(rowIndex, rowIndex);
