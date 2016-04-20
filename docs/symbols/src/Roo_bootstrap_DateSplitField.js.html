@@ -78,14 +78,22 @@
     </span><span class="jsdoc-var">dayFormat </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'d'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">monthFormat </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'m'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">yearFormat </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Y'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">isFormField </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'row roo-date-split-field-group'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: []
-        }
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                {
+                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'form-hidden-field roo-date-split-field-group-value'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.name
+                </span><span class="jsdoc-syntax">}
+            ]
+        };
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fieldLabel</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">({
@@ -110,11 +118,18 @@
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
     },
     
+    </span><span class="jsdoc-var">inputEl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-date-split-field-group-value'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+    },
+    
     </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">) 
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-var">Roo.bootstrap.NavProgressBar.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.inputEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-date-split-field-group-value'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-var">this.dayField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.ComboBox</span><span class="jsdoc-syntax">({
             </span><span class="jsdoc-var">allowBlank </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.dayAllowBlank</span><span class="jsdoc-syntax">,
@@ -141,7 +156,7 @@
             </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
                 </span><span class="jsdoc-var">select </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_self</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">)
                 {
-                    </span><span class="jsdoc-var">_this.validate</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-var">_this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.getValue</span><span class="jsdoc-syntax">());
                 }
             }
         });
@@ -163,7 +178,7 @@
                 },
                 </span><span class="jsdoc-var">select </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_self</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">oldvalue</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newvalue</span><span class="jsdoc-syntax">)
                 {
-                    </span><span class="jsdoc-var">_this.validate</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-var">_this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.getValue</span><span class="jsdoc-syntax">());
                 }
             }
         });
@@ -195,7 +210,7 @@
             </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
                 </span><span class="jsdoc-var">select </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_self</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">)
                 {
-                    </span><span class="jsdoc-var">_this.validate</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-var">_this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.getValue</span><span class="jsdoc-syntax">());
                 }
             }
         });
@@ -205,15 +220,63 @@
     
     </span><span class="jsdoc-var">setValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">)
     {
+        </span><span class="jsdoc-var">this.inputEl.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">f </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">this.yearFormat </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.monthFormat </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.dayFormat</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Date.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-var">this.dayField.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dayFormat</span><span class="jsdoc-syntax">));
-        </span><span class="jsdoc-var">this.monthField.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.monthFormat</span><span class="jsdoc-syntax">));
-        </span><span class="jsdoc-var">this.yearField.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.yearFormat</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.validate</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.setDay</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dayFormat</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">this.setMonth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.monthFormat</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">this.setYear</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.yearFormat</span><span class="jsdoc-syntax">));
+        
+        </span><span class="jsdoc-var">this.validate</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">setDay </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.dayField.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.inputEl.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.validate</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">setMonth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.monthField.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.inputEl.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.validate</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">setYear </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.yearField.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.inputEl.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.validate</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">getDay </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.dayField.getValue</span><span class="jsdoc-syntax">();
+    },
+    
+    </span><span class="jsdoc-var">getMonth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.monthField.getValue</span><span class="jsdoc-syntax">();
+    },
+    
+    </span><span class="jsdoc-var">getYear </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.yearField.getValue</span><span class="jsdoc-syntax">();
     },
     
     </span><span class="jsdoc-var">getValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -223,6 +286,16 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">date </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.yearField.getValue</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-string">'-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.monthField.getValue</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-string">'-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.dayField.getValue</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">reset </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.setDay</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.setMonth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.setYear</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.inputEl.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.validate</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
     },
     
     </span><span class="jsdoc-var">validate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -288,6 +361,23 @@
         }
         
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'invalid'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">clearInvalid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">label </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">icon </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'i.fa-star'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">label </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">icon</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">icon.remove</span><span class="jsdoc-syntax">();
+        }
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'valid'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">getName</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">;
     }
     
 });

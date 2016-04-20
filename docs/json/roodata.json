@@ -34862,8 +34862,8 @@
     },
     {
      "name": "bullets",
-     "type": "Number",
-     "desc": "show the panel pointer.. default 0",
+     "type": "Boolean",
+     "desc": "show bullets for the panels",
      "memberOf": ""
     },
     {
