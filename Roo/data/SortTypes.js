@@ -81,7 +81,9 @@ Roo.data.SortTypes = {
      */
     asFloat : function(s) {
     	var val = parseFloat(String(s).replace(/,/g, ""));
-        if(isNaN(val)) val = 0;
+        if(isNaN(val)) {
+            val = 0;
+        }
     	return val;
     },
     
