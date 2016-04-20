@@ -229,7 +229,9 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
      * Clears all selections.
      */
     clearSelections : function(fast){
-        if(this.locked) return;
+        if(this.locked) {
+            return;
+        }
         if(fast !== true){
             var ds = this.grid.dataSource;
             var s = this.selections;
