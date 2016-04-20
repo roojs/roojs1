@@ -122,7 +122,9 @@ Roo.extend(Roo.BorderLayout, Roo.LayoutManager, {
      * Performs a layout update.
      */
     layout : function(){
-        if(this.updating) return;
+        if(this.updating) {
+            return;
+        }
         var size = this.getViewSize();
         var w = size.width;
         var h = size.height;
