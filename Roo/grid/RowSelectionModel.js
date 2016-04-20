@@ -250,7 +250,9 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
      * Selects all rows.
      */
     selectAll : function(){
-        if(this.locked) return;
+        if(this.locked) {
+            return;
+        }
         this.selections.clear();
         for(var i = 0, len = this.grid.dataSource.getCount(); i < len; i++){
             this.selectRow(i, true);
