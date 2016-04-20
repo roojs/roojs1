@@ -589,8 +589,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     fireKey: function(e)
     {
         if (!this.picker().isVisible()){
-            if (e.keyCode == 27) // allow escape to hide and re-show picker
+            if (e.keyCode == 27) { // allow escape to hide and re-show picker
                 this.show();
+            }
             return;
         }
         
@@ -605,7 +606,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 break;
             case 37: // left
             case 39: // right
-                if (!this.keyboardNavigation) break;
+                if (!this.keyboardNavigation) {
+                    break;
+                }
                 dir = e.keyCode == 37 ? -1 : 1;
                 
                 if (e.ctrlKey){
