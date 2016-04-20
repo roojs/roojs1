@@ -939,13 +939,16 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         var nodeIsBefore   =  ss == 1;
         var nodeIsAfter    = ee == -1;
         
-        if (nodeIsBefore && nodeIsAfter)
+        if (nodeIsBefore && nodeIsAfter) {
             return 0; // outer
-        if (!nodeIsBefore && nodeIsAfter)
+        }
+        if (!nodeIsBefore && nodeIsAfter) {
             return 1; //right trailed.
+        }
         
-        if (nodeIsBefore && !nodeIsAfter)
+        if (nodeIsBefore && !nodeIsAfter) {
             return 2;  // left trailed.
+        }
         // fully contined.
         return 3;
     },
