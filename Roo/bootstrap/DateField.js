@@ -535,7 +535,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     hide : function()
     {
-        if(this.isInline) return;
+        if(this.isInline) {
+            return;
+        }
         this.picker().hide();
         this.viewMode = this.startViewMode;
         this.showMode();
