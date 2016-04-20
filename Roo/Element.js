@@ -363,7 +363,7 @@ if(opt.anim.isAnimated()){
                     this.setHeight(oldHeight); // restore original height
                     this.setHeight(height, animate, duration, function(){
                         this.unclip();
-                        if(typeof onComplete == "function") onComplete();
+                        if(typeof onComplete == "function") { onComplete(); }
                     }.createDelegate(this), easing);
                 }
             }.createDelegate(this), 0);
