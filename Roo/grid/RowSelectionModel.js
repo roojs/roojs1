@@ -378,7 +378,9 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
      * @param {Boolean} keepExisting (optional) True to keep existing selections
      */
     selectRow : function(index, keepExisting, preventViewNotify){
-        if(this.locked || (index < 0 || index >= this.grid.dataSource.getCount())) return;
+        if(this.locked || (index < 0 || index >= this.grid.dataSource.getCount())) {
+            return;
+        }
         if(this.fireEvent("beforerowselect", this, index, keepExisting) !== false){
             if(!keepExisting || this.singleSelect){
                 this.clearSelections();
@@ -399,7 +401,9 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
      * @param {Number} row The index of the row to deselect
      */
     deselectRow : function(index, preventViewNotify){
-        if(this.locked) return;
+        if(this.locked) {
+            return;
+        }
         if(this.last == index){
             this.last = false;
         }
