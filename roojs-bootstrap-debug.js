@@ -8716,7 +8716,7 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
         }
         
         var label = this.el.select('label', true).first();
-        var icon = thie.el.select('i.fa-star', true).first();
+        var icon = this.el.select('i.fa-star', true).first();
         
         if(label && icon){
             icon.remove();
@@ -8759,7 +8759,7 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
         }
         
         var label = this.el.select('label', true).first();
-        var icon = thie.el.select('i.fa-star', true).first();
+        var icon = this.el.select('i.fa-star', true).first();
         
         if(label && icon){
             icon.remove();
@@ -8804,7 +8804,7 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
         }
         
         var label = this.el.select('label', true).first();
-        var icon = thie.el.select('i.fa-star', true).first();
+        var icon = this.el.select('i.fa-star', true).first();
         
         if(!this.getValue().length && label && !icon){
             this.el.createChild({
