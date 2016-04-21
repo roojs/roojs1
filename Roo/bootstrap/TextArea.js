@@ -207,6 +207,13 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
             return;
         }
         
+        var label = this.el.select('label', true).first();
+        var icon = thie.el.select('i.fa-star', true).first();
+        
+        if(label && icon){
+            icon.remove();
+        }
+        
         this.el.removeClass(this.invalidClass);
         
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
