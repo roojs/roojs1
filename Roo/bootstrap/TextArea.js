@@ -198,53 +198,76 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
     },
     
     /**
+     * Clear any invalid styles/messages for this field
+     */
+    clearInvalid : function(){
+        
+        if(!this.el || this.preventMark){ // not rendered
+            return;
+        }
+        
+        this.el.removeClass(this.invalidClass);
+        
+        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
+            
+            var feedback = this.el.select('.form-control-feedback', true).first();
+            
+            if(feedback){
+                this.el.select('.form-control-feedback', true).first().removeClass(this.invalidFeedbackClass);
+            }
+            
+        }
+        
+        this.fireEvent('valid', this);
+    },
+    
+     /**
      * Mark this field as valid
      */
     markValid : function()
     {
-        if(this.allowBlank || this.disabled){
+        if(!this.el  || this.preventMark){ // not rendered
             return;
         }
         
-        var _this = this;
+        this.el.removeClass([this.invalidClass, this.validClass]);
+        
+        var feedback = this.el.select('.form-control-feedback', true).first();
+            
+        if(feedback){
+            this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+        }
+
+        if(this.disabled || this.allowBlank){
+            return;
+        }
+        
+        var formGroup = this.el.findParent('.form-group', false, true);
+        
+        if(formGroup){
+            
+            var label = formGroup.select('label', true).first();
+            var icon = formGroup.select('i.fa-star', true).first();
+            
+            if(label && icon){
+                icon.remove();
+            }
+        }
+        
+        this.el.addClass(this.validClass);
+        
+        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank && (this.getValue().length || this.forceFeedback)){
+            
+            var feedback = this.el.select('.form-control-feedback', true).first();
+            
+            if(feedback){
+                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+                this.el.select('.form-control-feedback', true).first().addClass([this.validFeedbackClass]);
+            }
+            
+        }
         
         this.fireEvent('valid', this);
-        
-        var label = Roo.bootstrap.FieldLabel.get(this.name + '-group');
-        
-        if(this.groupId){
-            label = Roo.bootstrap.FieldLabel.get(this.groupId + '-group');
-        }
-        
-        if(label){
-            label.markValid();
-        }
-        
-        if(this.inputType == 'radio'){
-            Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
-                e.findParent('.form-group', false, true).removeClass([_this.invalidClass, _this.validClass]);
-                e.findParent('.form-group', false, true).addClass(_this.validClass);
-            });
-            
-            return;
-        }
-        
-        if(!this.groupId){
-            this.el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
-            this.el.findParent('.form-group', false, true).addClass(this.validClass);
-            return;
-        }
-        
-        var group = Roo.bootstrap.CheckBox.get(this.groupId);
-            
-        if(!group){
-            return;
-        }
-        
-        for(var i in group){
-            group[i].el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
-            group[i].el.findParent('.form-group', false, true).addClass(this.validClass);
-        }
     },
     
      /**
@@ -253,50 +276,52 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
      */
     markInvalid : function(msg)
     {
-        if(this.allowBlank || this.disabled){
+        if(!this.el  || this.preventMark){ // not rendered
             return;
         }
         
-        var _this = this;
+        this.el.removeClass([this.invalidClass, this.validClass]);
+        
+        var feedback = this.el.select('.form-control-feedback', true).first();
+            
+        if(feedback){
+            this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+        }
+
+        if(this.disabled || this.allowBlank){
+            return;
+        }
+        
+        var label = this.el.select('label', true).first();
+        var icon = thie.el.select('i.fa-star', true).first();
+        
+        if(!this.getValue().length && label && !icon){
+            this.el.createChild({
+                tag : 'i',
+                cls : 'text-danger fa fa-lg fa-star',
+                tooltip : 'This field is required',
+                style : 'margin-right:5px;'
+            }, label, true);
+        }
+
+        this.el.addClass(this.invalidClass);
+        
+        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
+            
+            var feedback = this.el.select('.form-control-feedback', true).first();
+            
+            if(feedback){
+                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+                
+                if(this.getValue().length || this.forceFeedback){
+                    this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
+                }
+                
+            }
+            
+        }
         
         this.fireEvent('invalid', this, msg);
-        
-        var label = Roo.bootstrap.FieldLabel.get(this.name + '-group');
-        
-        if(this.groupId){
-            label = Roo.bootstrap.FieldLabel.get(this.groupId + '-group');
-        }
-        
-        if(label){
-            label.markInvalid();
-        }
-            
-        if(this.inputType == 'radio'){
-            Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
-                e.findParent('.form-group', false, true).removeClass([_this.invalidClass, _this.validClass]);
-                e.findParent('.form-group', false, true).addClass(_this.invalidClass);
-            });
-            
-            return;
-        }
-        
-        if(!this.groupId){
-            this.el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
-            this.el.findParent('.form-group', false, true).addClass(this.invalidClass);
-            return;
-        }
-        
-        var group = Roo.bootstrap.CheckBox.get(this.groupId);
-        
-        if(!group){
-            return;
-        }
-        
-        for(var i in group){
-            group[i].el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
-            group[i].el.findParent('.form-group', false, true).addClass(this.invalidClass);
-        }
-        
     }
 });
 
