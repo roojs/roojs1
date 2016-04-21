@@ -200,7 +200,8 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
     /**
      * Clear any invalid styles/messages for this field
      */
-    clearInvalid : function(){
+    clearInvalid : function()
+    {
         
         if(!this.el || this.preventMark){ // not rendered
             return;
