@@ -195,6 +195,108 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
     inputEl: function ()
     {
         return this.el.select('textarea.form-control',true).first();
+    },
+    
+    /**
+     * Mark this field as valid
+     */
+    markValid : function()
+    {
+        if(this.allowBlank || this.disabled){
+            return;
+        }
+        
+        var _this = this;
+        
+        this.fireEvent('valid', this);
+        
+        var label = Roo.bootstrap.FieldLabel.get(this.name + '-group');
+        
+        if(this.groupId){
+            label = Roo.bootstrap.FieldLabel.get(this.groupId + '-group');
+        }
+        
+        if(label){
+            label.markValid();
+        }
+        
+        if(this.inputType == 'radio'){
+            Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
+                e.findParent('.form-group', false, true).removeClass([_this.invalidClass, _this.validClass]);
+                e.findParent('.form-group', false, true).addClass(_this.validClass);
+            });
+            
+            return;
+        }
+        
+        if(!this.groupId){
+            this.el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
+            this.el.findParent('.form-group', false, true).addClass(this.validClass);
+            return;
+        }
+        
+        var group = Roo.bootstrap.CheckBox.get(this.groupId);
+            
+        if(!group){
+            return;
+        }
+        
+        for(var i in group){
+            group[i].el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
+            group[i].el.findParent('.form-group', false, true).addClass(this.validClass);
+        }
+    },
+    
+     /**
+     * Mark this field as invalid
+     * @param {String} msg The validation message
+     */
+    markInvalid : function(msg)
+    {
+        if(this.allowBlank || this.disabled){
+            return;
+        }
+        
+        var _this = this;
+        
+        this.fireEvent('invalid', this, msg);
+        
+        var label = Roo.bootstrap.FieldLabel.get(this.name + '-group');
+        
+        if(this.groupId){
+            label = Roo.bootstrap.FieldLabel.get(this.groupId + '-group');
+        }
+        
+        if(label){
+            label.markInvalid();
+        }
+            
+        if(this.inputType == 'radio'){
+            Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
+                e.findParent('.form-group', false, true).removeClass([_this.invalidClass, _this.validClass]);
+                e.findParent('.form-group', false, true).addClass(_this.invalidClass);
+            });
+            
+            return;
+        }
+        
+        if(!this.groupId){
+            this.el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
+            this.el.findParent('.form-group', false, true).addClass(this.invalidClass);
+            return;
+        }
+        
+        var group = Roo.bootstrap.CheckBox.get(this.groupId);
+        
+        if(!group){
+            return;
+        }
+        
+        for(var i in group){
+            group[i].el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
+            group[i].el.findParent('.form-group', false, true).addClass(this.invalidClass);
+        }
+        
     }
 });
 
