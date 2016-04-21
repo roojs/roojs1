@@ -2874,7 +2874,7 @@ Roo.bootstrap.MessageBox = function(){
                 buttons["yes"] = dlg.addButton(bt["yes"], handleButton.createCallback("yes"));
                 buttons["no"] = dlg.addButton(bt["no"], handleButton.createCallback("no"));
                 buttons["cancel"] = dlg.addButton(bt["cancel"], handleButton.createCallback("cancel"));
-                Roo.log(buttons)
+                //Roo.log(buttons);
                 bodyEl = dlg.bodyEl.createChild({
 
                     html:'<span class="roo-mb-text"></span><br /><input type="text" class="roo-mb-input" />' +
@@ -8703,6 +8703,136 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
     inputEl: function ()
     {
         return this.el.select('textarea.form-control',true).first();
+    },
+    
+    /**
+     * Clear any invalid styles/messages for this field
+     */
+    clearInvalid : function()
+    {
+        
+        if(!this.el || this.preventMark){ // not rendered
+            return;
+        }
+        
+        var label = this.el.select('label', true).first();
+        var icon = thie.el.select('i.fa-star', true).first();
+        
+        if(label && icon){
+            icon.remove();
+        }
+        
+        this.el.removeClass(this.invalidClass);
+        
+        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
+            
+            var feedback = this.el.select('.form-control-feedback', true).first();
+            
+            if(feedback){
+                this.el.select('.form-control-feedback', true).first().removeClass(this.invalidFeedbackClass);
+            }
+            
+        }
+        
+        this.fireEvent('valid', this);
+    },
+    
+     /**
+     * Mark this field as valid
+     */
+    markValid : function()
+    {
+        if(!this.el  || this.preventMark){ // not rendered
+            return;
+        }
+        
+        this.el.removeClass([this.invalidClass, this.validClass]);
+        
+        var feedback = this.el.select('.form-control-feedback', true).first();
+            
+        if(feedback){
+            this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+        }
+
+        if(this.disabled || this.allowBlank){
+            return;
+        }
+        
+        var label = this.el.select('label', true).first();
+        var icon = thie.el.select('i.fa-star', true).first();
+        
+        if(label && icon){
+            icon.remove();
+        }
+        
+        this.el.addClass(this.validClass);
+        
+        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank && (this.getValue().length || this.forceFeedback)){
+            
+            var feedback = this.el.select('.form-control-feedback', true).first();
+            
+            if(feedback){
+                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+                this.el.select('.form-control-feedback', true).first().addClass([this.validFeedbackClass]);
+            }
+            
+        }
+        
+        this.fireEvent('valid', this);
+    },
+    
+     /**
+     * Mark this field as invalid
+     * @param {String} msg The validation message
+     */
+    markInvalid : function(msg)
+    {
+        if(!this.el  || this.preventMark){ // not rendered
+            return;
+        }
+        
+        this.el.removeClass([this.invalidClass, this.validClass]);
+        
+        var feedback = this.el.select('.form-control-feedback', true).first();
+            
+        if(feedback){
+            this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+        }
+
+        if(this.disabled || this.allowBlank){
+            return;
+        }
+        
+        var label = this.el.select('label', true).first();
+        var icon = thie.el.select('i.fa-star', true).first();
+        
+        if(!this.getValue().length && label && !icon){
+            this.el.createChild({
+                tag : 'i',
+                cls : 'text-danger fa fa-lg fa-star',
+                tooltip : 'This field is required',
+                style : 'margin-right:5px;'
+            }, label, true);
+        }
+
+        this.el.addClass(this.invalidClass);
+        
+        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
+            
+            var feedback = this.el.select('.form-control-feedback', true).first();
+            
+            if(feedback){
+                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+                
+                if(this.getValue().length || this.forceFeedback){
+                    this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
+                }
+                
+            }
+            
+        }
+        
+        this.fireEvent('invalid', this, msg);
     }
 });
 
@@ -9322,7 +9452,9 @@ Roo.data.SortTypes = {
      */
     asFloat : function(s) {
     	var val = parseFloat(String(s).replace(/,/g, ""));
-        if(isNaN(val)) val = 0;
+        if(isNaN(val)) {
+            val = 0;
+        }
     	return val;
     },
     
@@ -9333,7 +9465,9 @@ Roo.data.SortTypes = {
      */
     asInt : function(s) {
         var val = parseInt(String(s).replace(/,/g, ""));
-        if(isNaN(val)) val = 0;
+        if(isNaN(val)) {
+            val = 0;
+        }
     	return val;
     }
 };/*
@@ -13019,7 +13153,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         // scroll to?
         this.view.select(match);
-        var sn = Roo.get(this.view.getSelectedNodes()[0])
+        var sn = Roo.get(this.view.getSelectedNodes()[0]);
         sn.scrollIntoView(sn.dom.parentNode, false);
     },
     
@@ -13038,7 +13172,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 tag: 'div',
                 cls: 'loading select2-more-results select2-active',
                 html: 'Loading more results...'
-            })
+            });
             
             this.loading = this.list.select('.loading', true).first();
             
@@ -13092,7 +13226,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
         }, this.searchField);
         
-        var close = choice.select('a.select2-search-choice-close', true).first()
+        var close = choice.select('a.select2-search-choice-close', true).first();
         
         close.on('click', this.onRemoveItem, this, { item : choice, data : o} );
         
@@ -15535,7 +15669,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             if (this.style) {
                 cfg.style = this.style;
             }
-            Roo.log("adding to ")
+            //Roo.log("adding to ");
             this.el = Roo.get(document.body).createChild(cfg, position);
             Roo.log(this.el);
         }
@@ -16505,7 +16639,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         if(this.singleMode){
             Roo.each(this.picker().select('thead > tr > th', true).elements, function(v){
-                v.setVisibilityMode(Roo.Element.DISPLAY)
+                v.setVisibilityMode(Roo.Element.DISPLAY);
                 v.hide();
             });
             
@@ -16524,7 +16658,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             v.attr('colspan', function(i, val){
                 return parseInt(val) + 1;
             });
-        })
+        });
 			
         
         this.weekEnd = this.weekStart === 0 ? 6 : this.weekStart - 1;
@@ -16714,7 +16848,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 tag: 'td',
                 cls: 'day ' + clsName,
                 html: prevMonth.getDate()
-            })
+            });
             
             prevMonth.setDate(prevMonth.getDate()+1);
         }
@@ -16750,7 +16884,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 tag: 'span',
                 cls: 'year' + (i === -1 || i === 10 ? ' old' : '') + (currentYear === year ? ' active' : '') + (year < startYear || year > endYear ? ' disabled' : ''),
                 html: year
-            })
+            });
             
             year += 1;
         }
@@ -16771,7 +16905,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     place: function()
     {
-        if(this.isInline) return;
+        if(this.isInline) {
+            return;
+        }
         
         this.picker().removeClass(['bottom', 'top']);
         
@@ -16846,7 +16982,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     hide : function()
     {
-        if(this.isInline) return;
+        if(this.isInline) {
+            return;
+        }
         this.picker().hide();
         this.viewMode = this.startViewMode;
         this.showMode();
@@ -16898,8 +17036,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     fireKey: function(e)
     {
         if (!this.picker().isVisible()){
-            if (e.keyCode == 27) // allow escape to hide and re-show picker
+            if (e.keyCode == 27) { // allow escape to hide and re-show picker
                 this.show();
+            }
             return;
         }
         
@@ -16914,7 +17053,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 break;
             case 37: // left
             case 39: // right
-                if (!this.keyboardNavigation) break;
+                if (!this.keyboardNavigation) {
+                    break;
+                }
                 dir = e.keyCode == 37 ? -1 : 1;
                 
                 if (e.ctrlKey){
@@ -16940,7 +17081,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 break;
             case 38: // up
             case 40: // down
-                if (!this.keyboardNavigation) break;
+                if (!this.keyboardNavigation) {
+                    break;
+                }
                 dir = e.keyCode == 38 ? -1 : 1;
                 if (e.ctrlKey){
                     newDate = this.moveYear(this.date, dir);
@@ -17167,7 +17310,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     moveMonth: function(date, dir)
     {
-        if (!dir) return date;
+        if (!dir) {
+            return date;
+        }
         var new_date = new Date(date.valueOf()),
         day = new_date.getUTCDate(),
         month = new_date.getUTCMonth(),
@@ -17189,13 +17334,15 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             new_month = month + dir;
             new_date.setUTCMonth(new_month);
             // Dec -> Jan (12) or Jan -> Dec (-1) -- limit expected date to 0-11
-            if (new_month < 0 || new_month > 11)
+            if (new_month < 0 || new_month > 11) {
                 new_month = (new_month + 12) % 12;
+            }
         } else {
             // For magnitudes >1, move one month at a time...
-            for (var i=0; i<mag; i++)
+            for (var i=0; i<mag; i++) {
                 // ...which might decrease the day (eg, Jan 31 to Feb 28, etc)...
                 new_date = this.moveMonth(new_date, dir);
+            }
             // ...then reset the day, keeping it in the new month
             new_month = new_date.getUTCMonth();
             new_date.setUTCDate(day);
@@ -18065,7 +18212,9 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     
     place: function()
     {
-        if(this.isInline) return;
+        if(this.isInline) {
+            return;
+        }
         
         this.picker().removeClass(['bottom', 'top']);
         
@@ -18115,7 +18264,9 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     
     hide : function()
     {
-        if(this.isInline) return;
+        if(this.isInline) {
+            return;
+        }
         this.picker().hide();
         this.fireEvent('hide', this, this.date);
         
@@ -18136,8 +18287,9 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     fireKey: function(e)
     {
         if (!this.picker().isVisible()){
-            if (e.keyCode == 27) // allow escape to hide and re-show picker
+            if (e.keyCode == 27)   {// allow escape to hide and re-show picker
                 this.show();
+            }
             return;
         }
         
@@ -18982,7 +19134,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         
         this.inputEl().on('click', this.onClick,  this);
         if (this.boxLabel) {
-            Roo.log('find label')
+            //Roo.log('find label');
             this.el.select('span.radio label span',true).first().on('click', this.onClick,  this);
         }
         
@@ -19981,13 +20133,16 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         var nodeIsBefore   =  ss == 1;
         var nodeIsAfter    = ee == -1;
         
-        if (nodeIsBefore && nodeIsAfter)
+        if (nodeIsBefore && nodeIsAfter) {
             return 0; // outer
-        if (!nodeIsBefore && nodeIsAfter)
+        }
+        if (!nodeIsBefore && nodeIsAfter) {
             return 1; //right trailed.
+        }
         
-        if (nodeIsBefore && !nodeIsAfter)
+        if (nodeIsBefore && !nodeIsAfter) {
             return 2;  // left trailed.
+        }
         // fully contined.
         return 3;
     },
@@ -21676,7 +21831,9 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
      * Clears all selections.
      */
     clearSelections : function(fast){
-        if(this.locked) return;
+        if(this.locked) {
+            return;
+        }
         if(fast !== true){
             var ds = this.grid.dataSource;
             var s = this.selections;
@@ -21695,7 +21852,9 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
      * Selects all rows.
      */
     selectAll : function(){
-        if(this.locked) return;
+        if(this.locked) {
+            return;
+        }
         this.selections.clear();
         for(var i = 0, len = this.grid.dataSource.getCount(); i < len; i++){
             this.selectRow(i, true);
@@ -21784,7 +21943,9 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
      * @param {Boolean} keepExisting (optional) True to retain existing selections
      */
     selectRange : function(startRow, endRow, keepExisting){
-        if(this.locked) return;
+        if(this.locked) {
+            return;
+        }
         if(!keepExisting){
             this.clearSelections();
         }
@@ -21805,7 +21966,9 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
      * @param {Number} endRow The index of the last row in the range
      */
     deselectRange : function(startRow, endRow, preventViewNotify){
-        if(this.locked) return;
+        if(this.locked) {
+            return;
+        }
         for(var i = startRow; i <= endRow; i++){
             this.deselectRow(i, preventViewNotify);
         }
@@ -21817,7 +21980,9 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
      * @param {Boolean} keepExisting (optional) True to keep existing selections
      */
     selectRow : function(index, keepExisting, preventViewNotify){
-        if(this.locked || (index < 0 || index >= this.grid.dataSource.getCount())) return;
+        if(this.locked || (index < 0 || index >= this.grid.dataSource.getCount())) {
+            return;
+        }
         if(this.fireEvent("beforerowselect", this, index, keepExisting) !== false){
             if(!keepExisting || this.singleSelect){
                 this.clearSelections();
@@ -21838,7 +22003,9 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
      * @param {Number} row The index of the row to deselect
      */
     deselectRow : function(index, preventViewNotify){
-        if(this.locked) return;
+        if(this.locked) {
+            return;
+        }
         if(this.last == index){
             this.last = false;
         }
@@ -22170,8 +22337,9 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         {
           var v = this.field.dom.value, pageNum; 
           var increment = (e.shiftKey) ? 10 : 1;
-          if(k == e.DOWN || k == e.LEFT || k == e.PAGEDOWN)
-            increment *= -1;
+          if(k == e.DOWN || k == e.LEFT || k == e.PAGEDOWN) {
+                increment *= -1;
+          }
           if(!v || isNaN(pageNum = parseInt(v, 10))) {
             this.field.dom.value = d.activePage;
             return;
