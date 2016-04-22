@@ -363,6 +363,18 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
         this.fireEvent('invalid', this, msg);
     },
     
+    clearInvalid : function()
+    {
+        var label = this.el.select('label', true).first();
+        var icon = this.el.select('i.fa-star', true).first();
+
+        if(label && icon){
+            icon.remove();
+        }
+        
+        this.fireEvent('valid', this);
+    },
+    
     getName: function()
     {
         return this.name;
