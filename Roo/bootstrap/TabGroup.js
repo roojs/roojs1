@@ -285,7 +285,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 clearInterval(this.slideFn);
                 this.slideFn = window.setInterval(function() {
                     this.showPanelNext();
-                }, this.timer);
+                }, this);
             }
 
         }).createDelegate(this, [i, bullet], true));
