@@ -101,7 +101,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             
             this.slideFn = window.setInterval(function() {
                 _this.showPanelNext();
-            }, this.timer);
+            }, this);
         }
         
     },
