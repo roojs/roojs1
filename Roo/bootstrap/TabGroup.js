@@ -101,7 +101,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             
             this.slideFn = window.setInterval(function() {
                 _this.showPanelNext();
-            }, this);
+            }, this.timer);
         }
         
     },
@@ -275,6 +275,8 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             cls : 'bullet bullet-' + i
         },ctr.dom.lastChild);
         
+        var _this = this;
+        
         bullet.on('click', (function(e, el, o, ii, t){
 
             e.preventDefault();
@@ -284,8 +286,8 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             if(this.autoslide && this.slideFn){
                 clearInterval(this.slideFn);
                 this.slideFn = window.setInterval(function() {
-                    this.showPanelNext();
-                }, this);
+                    _this.showPanelNext();
+                }, this.timer);
             }
 
         }).createDelegate(this, [i, bullet], true));
