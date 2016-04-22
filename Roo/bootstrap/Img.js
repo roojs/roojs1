@@ -44,7 +44,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
     
     imgResponsive: true,
     border: '',
-    src: '',
+    src: 'about:blank',
     href: false,
     target: false,
     xsUrl: '',
@@ -122,7 +122,8 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
         var cfg = {
             tag: 'img',
             cls: (this.imgResponsive) ? 'img-responsive' : '',
-            html : null
+            html : null,
+            src : 'about:blank'  // just incase src get's set to undefined?!?
         };
         
         cfg.html = this.html || cfg.html;
