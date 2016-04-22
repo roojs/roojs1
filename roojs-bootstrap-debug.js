@@ -16241,6 +16241,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             cls : 'bullet bullet-' + i
         },ctr.dom.lastChild);
         
+        
         var _this = this;
         
         bullet.on('click', (function(e, el, o, ii, t){
