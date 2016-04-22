@@ -16241,6 +16241,8 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             cls : 'bullet bullet-' + i
         },ctr.dom.lastChild);
         
+        var _this = this;
+        
         bullet.on('click', (function(e, el, o, ii, t){
 
             e.preventDefault();
@@ -16250,7 +16252,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             if(this.autoslide && this.slideFn){
                 clearInterval(this.slideFn);
                 this.slideFn = window.setInterval(function() {
-                    this.showPanelNext();
+                    _this.showPanelNext();
                 }, this.timer);
             }
 
