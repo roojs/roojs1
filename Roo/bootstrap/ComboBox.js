@@ -92,7 +92,14 @@ Roo.bootstrap.ComboBox = function(config){
          * Fires when tick the element
             * @param {Roo.bootstrap.ComboBox} combo This combo box
             */
-        'tick' : true
+        'tick' : true,
+        /**
+         * @event touchviewdisplay
+         * Fires when touch view require special display (default is using displayField)
+            * @param {Roo.bootstrap.ComboBox} combo This combo box
+            * @param {Object} cfg set html .
+            */
+        'touchviewdisplay' : true
         
     });
     
