@@ -11504,7 +11504,14 @@ Roo.bootstrap.ComboBox = function(config){
          * Fires when tick the element
             * @param {Roo.bootstrap.ComboBox} combo This combo box
             */
-        'tick' : true
+        'tick' : true,
+        /**
+         * @event touchviewdisplay
+         * Fires when touch view require special display (default is using displayField)
+            * @param {Roo.bootstrap.ComboBox} combo This combo box
+            * @param {Object} cfg set html .
+            */
+        'touchviewdisplay' : true
         
     });
     
@@ -13720,7 +13727,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             var row = this.touchViewListGroup.createChild(template);
             
             if(this.displayField && typeof(d.data[this.displayField]) != 'undefined'){
-                row.select('.roo-combobox-list-group-item-value', true).first().dom.innerHTML = d.data[this.displayField];
+                var cfg = {
+                    html : d.data[this.displayField]
+                };
+                
+                if(this.fireEvent('touchviewdisplay', this, cfg) !== false){
+                    row.select('.roo-combobox-list-group-item-value', true).first().dom.innerHTML = cfg.html;
+                }
             }
             
             if(!this.multiple && this.valueField && typeof(d.data[this.valueField]) != 'undefined' && d.data[this.valueField] == this.getValue()){

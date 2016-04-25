@@ -2317,7 +2317,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             if(this.displayField && typeof(d.data[this.displayField]) != 'undefined'){
                 var cfg = {
                     html : d.data[this.displayField]
-                }
+                };
                 
                 if(this.fireEvent('touchviewdisplay', this, cfg) !== false){
                     row.select('.roo-combobox-list-group-item-value', true).first().dom.innerHTML = cfg.html;
