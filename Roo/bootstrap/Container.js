@@ -25,6 +25,7 @@
  * @cfg {Boolean} expandable (true|false) default false
  * @cfg {Boolean} expanded (true|false) default true
  * @cfg {String} rheader contet on the right of header
+ * @cfg {Boolean} clickable (true|false) default false
 
  *     
  * @constructor
