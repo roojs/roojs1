@@ -939,14 +939,17 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nodeIsBefore   </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">ss </span><span class="jsdoc-syntax">== 1;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nodeIsAfter    </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ee </span><span class="jsdoc-syntax">== -1;
         
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nodeIsBefore </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">nodeIsAfter</span><span class="jsdoc-syntax">)
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nodeIsBefore </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">nodeIsAfter</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">0; </span><span class="jsdoc-comment">// outer
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">nodeIsBefore </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">nodeIsAfter</span><span class="jsdoc-syntax">)
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">nodeIsBefore </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">nodeIsAfter</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">1; </span><span class="jsdoc-comment">//right trailed.
+        </span><span class="jsdoc-syntax">}
         
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nodeIsBefore </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">nodeIsAfter</span><span class="jsdoc-syntax">)
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nodeIsBefore </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">nodeIsAfter</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">2;  </span><span class="jsdoc-comment">// left trailed.
-        // fully contined.
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-comment">// fully contined.
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">3;
     },
 

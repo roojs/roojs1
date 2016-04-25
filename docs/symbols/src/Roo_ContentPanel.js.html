@@ -433,7 +433,9 @@ layout.addxtype({
             </span><span class="jsdoc-var">this.form </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new  </span><span class="jsdoc-var">Roo.form.Form</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
             
             
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.form.allItems.length</span><span class="jsdoc-syntax">) </span><span class="jsdoc-var">this.form.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.dom</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.form.allItems.length</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.form.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.dom</span><span class="jsdoc-syntax">);
+            }
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.form</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-comment">// should only have one of theses..

@@ -103,7 +103,9 @@
     </span><span class="jsdoc-var">beforeSlide</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isGecko</span><span class="jsdoc-syntax">){</span><span class="jsdoc-comment">// firefox overflow auto bug workaround
             </span><span class="jsdoc-var">this.bodyEl.clip</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tabs</span><span class="jsdoc-syntax">) </span><span class="jsdoc-var">this.tabs.bodyEl.clip</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tabs</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.tabs.bodyEl.clip</span><span class="jsdoc-syntax">();
+            }
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.activePanel</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">this.activePanel.getEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.clip</span><span class="jsdoc-syntax">();
                 
@@ -117,7 +119,9 @@
     </span><span class="jsdoc-var">afterSlide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isGecko</span><span class="jsdoc-syntax">){</span><span class="jsdoc-comment">// firefox overflow auto bug workaround
             </span><span class="jsdoc-var">this.bodyEl.unclip</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tabs</span><span class="jsdoc-syntax">) </span><span class="jsdoc-var">this.tabs.bodyEl.unclip</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tabs</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.tabs.bodyEl.unclip</span><span class="jsdoc-syntax">();
+            }
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.activePanel</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">this.activePanel.getEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.unclip</span><span class="jsdoc-syntax">();
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.activePanel.afterSlide</span><span class="jsdoc-syntax">){

@@ -34,15 +34,21 @@
     </span><span class="jsdoc-syntax">});
     
     
-    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">this.minValue </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">) </span><span class="jsdoc-var">this.minValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.minValue</span><span class="jsdoc-syntax">);
-    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">this.maxValue </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">) </span><span class="jsdoc-var">this.maxValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.maxValue</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">this.minValue </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.minValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.minValue</span><span class="jsdoc-syntax">);
+    }
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">this.maxValue </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.maxValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.maxValue</span><span class="jsdoc-syntax">);
+    }
     </span><span class="jsdoc-var">this.ddMatch </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabledDates</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.disabledDates</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">re </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;(?:&quot;</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">dd.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
             </span><span class="jsdoc-var">re </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">dd.length</span><span class="jsdoc-syntax">-1) </span><span class="jsdoc-var">re </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">&quot;|&quot;</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">dd.length</span><span class="jsdoc-syntax">-1) {
+                </span><span class="jsdoc-var">re </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">&quot;|&quot;</span><span class="jsdoc-syntax">;
+            }
         }
         </span><span class="jsdoc-var">this.ddMatch </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">RegExp</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">re </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;)&quot;</span><span class="jsdoc-syntax">);
     }

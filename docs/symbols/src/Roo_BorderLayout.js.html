@@ -122,7 +122,9 @@ the container size if it is not the body element.&lt;/b&gt;
      * Performs a layout update.
      */
     </span><span class="jsdoc-var">layout </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.updating</span><span class="jsdoc-syntax">) </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.updating</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getViewSize</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">size.width</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">size.height</span><span class="jsdoc-syntax">;

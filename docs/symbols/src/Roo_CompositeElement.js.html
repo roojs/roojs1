@@ -37,7 +37,9 @@
 </span><span class="jsdoc-var">Roo.CompositeElement.prototype </span><span class="jsdoc-syntax">= {
     </span><span class="jsdoc-var">isComposite</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">addElements </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">els</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">els</span><span class="jsdoc-syntax">) </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">els</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">els </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">els </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.Element.selectorFunction</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">els</span><span class="jsdoc-syntax">);
         }

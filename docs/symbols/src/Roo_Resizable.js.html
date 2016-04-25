@@ -346,7 +346,9 @@ resizer.on(&quot;resize&quot;, myHandler);
 
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">snap </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">inc</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">min</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">inc </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">) </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">inc </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">newValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">m </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">% </span><span class="jsdoc-var">inc</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m </span><span class="jsdoc-syntax">&gt; 0){

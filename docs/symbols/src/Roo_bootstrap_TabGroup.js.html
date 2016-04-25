@@ -275,6 +275,9 @@
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'bullet bullet-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">i
         </span><span class="jsdoc-syntax">},</span><span class="jsdoc-var">ctr.dom.lastChild</span><span class="jsdoc-syntax">);
         
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
         </span><span class="jsdoc-var">bullet.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ii</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">){
 
             </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
@@ -284,7 +287,7 @@
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoslide </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.slideFn</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">clearInterval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.slideFn</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">this.slideFn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">window.setInterval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
-                    </span><span class="jsdoc-var">this.showPanelNext</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-var">_this.showPanelNext</span><span class="jsdoc-syntax">();
                 }, </span><span class="jsdoc-var">this.timer</span><span class="jsdoc-syntax">);
             }
 

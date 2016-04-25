@@ -92,7 +92,14 @@
          * Fires when tick the element
             * @param {Roo.bootstrap.ComboBox} combo This combo box
             */
-        </span><span class="jsdoc-string">'tick' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-string">'tick' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event touchviewdisplay
+         * Fires when touch view require special display (default is using displayField)
+            * @param {Roo.bootstrap.ComboBox} combo This combo box
+            * @param {Object} cfg set html .
+            */
+        </span><span class="jsdoc-string">'touchviewdisplay' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
         
     </span><span class="jsdoc-syntax">});
     
@@ -1742,7 +1749,7 @@
         </span><span class="jsdoc-syntax">}
         </span><span class="jsdoc-comment">// scroll to?
         </span><span class="jsdoc-var">this.view.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">match</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.view.getSelectedNodes</span><span class="jsdoc-syntax">()[0])
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.view.getSelectedNodes</span><span class="jsdoc-syntax">()[0]);
         </span><span class="jsdoc-var">sn.scrollIntoView</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn.dom.parentNode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
     },
     
@@ -1761,7 +1768,7 @@
                 </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'loading select2-more-results select2-active'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Loading more results...'
-            </span><span class="jsdoc-syntax">})
+            </span><span class="jsdoc-syntax">});
             
             </span><span class="jsdoc-var">this.loading </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.list.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.loading'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
             
@@ -1815,7 +1822,7 @@
             
         }, </span><span class="jsdoc-var">this.searchField</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">close </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">choice.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'a.select2-search-choice-close'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">close </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">choice.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'a.select2-search-choice-close'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-var">close.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onRemoveItem</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, { </span><span class="jsdoc-var">item </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">choice</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">} );
         
@@ -2308,7 +2315,13 @@
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.touchViewListGroup.createChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">template</span><span class="jsdoc-syntax">);
             
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.displayField </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">]) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">row.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-combobox-list-group-item-value'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d.data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">];
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d.data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">]
+                }
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'touchviewdisplay'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">row.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-combobox-list-group-item-value'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.html</span><span class="jsdoc-syntax">;
+                }
             }
             
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.multiple </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.valueField </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.valueField</span><span class="jsdoc-syntax">]) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">d.data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.valueField</span><span class="jsdoc-syntax">] == </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">()){

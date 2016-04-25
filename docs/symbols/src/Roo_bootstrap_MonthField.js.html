@@ -176,7 +176,9 @@
     
     </span><span class="jsdoc-var">place</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isInline</span><span class="jsdoc-syntax">) </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isInline</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
         
         </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'bottom'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">]);
         
@@ -226,7 +228,9 @@
     
     </span><span class="jsdoc-var">hide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isInline</span><span class="jsdoc-syntax">) </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isInline</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.hide</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'hide'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">);
         
@@ -247,8 +251,9 @@
     </span><span class="jsdoc-var">fireKey</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.isVisible</span><span class="jsdoc-syntax">()){
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.keyCode </span><span class="jsdoc-syntax">== 27) </span><span class="jsdoc-comment">// allow escape to hide and re-show picker
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.keyCode </span><span class="jsdoc-syntax">== 27)   {</span><span class="jsdoc-comment">// allow escape to hide and re-show picker
                 </span><span class="jsdoc-var">this.show</span><span class="jsdoc-syntax">();
+            }
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         

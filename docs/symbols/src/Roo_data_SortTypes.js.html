@@ -81,7 +81,9 @@
      */
     </span><span class="jsdoc-var">asFloat </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">) {
     	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">val </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parseFloat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/,/g, </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">));
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isNaN</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">)) </span><span class="jsdoc-var">val </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isNaN</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">val </span><span class="jsdoc-syntax">= 0;
+        }
     	</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">;
     },
     
@@ -92,7 +94,9 @@
      */
     </span><span class="jsdoc-var">asInt </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">val </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/,/g, </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">));
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isNaN</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">)) </span><span class="jsdoc-var">val </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isNaN</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">val </span><span class="jsdoc-syntax">= 0;
+        }
     	</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">;
     }
 };</span></code></body></html>

@@ -192,7 +192,7 @@
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.singleMode</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'thead &gt; tr &gt; th'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">v.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)
+                </span><span class="jsdoc-var">v.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">v.hide</span><span class="jsdoc-syntax">();
             });
             
@@ -211,7 +211,7 @@
             </span><span class="jsdoc-var">v.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'colspan'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">) + 1;
             });
-        })
+        });
 			
         
         </span><span class="jsdoc-var">this.weekEnd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.weekStart </span><span class="jsdoc-syntax">=== 0 ? 6 : </span><span class="jsdoc-var">this.weekStart </span><span class="jsdoc-syntax">- 1;
@@ -401,7 +401,7 @@
                 </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'td'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'day ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">clsName</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">prevMonth.getDate</span><span class="jsdoc-syntax">()
-            })
+            });
             
             </span><span class="jsdoc-var">prevMonth.setDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">prevMonth.getDate</span><span class="jsdoc-syntax">()+1);
         }
@@ -437,7 +437,7 @@
                 </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'year' </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=== -1 || </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=== 10 ? </span><span class="jsdoc-string">' old' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) + (</span><span class="jsdoc-var">currentYear </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">year </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">' active' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) + (</span><span class="jsdoc-var">year </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">startYear </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">year </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">endYear </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">' disabled' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">),
                 </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">year
-            </span><span class="jsdoc-syntax">})
+            </span><span class="jsdoc-syntax">});
             
             </span><span class="jsdoc-var">year </span><span class="jsdoc-syntax">+= 1;
         }
@@ -458,7 +458,9 @@
     
     </span><span class="jsdoc-var">place</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isInline</span><span class="jsdoc-syntax">) </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isInline</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
         
         </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'bottom'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">]);
         
@@ -533,7 +535,9 @@
     
     </span><span class="jsdoc-var">hide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isInline</span><span class="jsdoc-syntax">) </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isInline</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.hide</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.viewMode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.startViewMode</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.showMode</span><span class="jsdoc-syntax">();
@@ -585,8 +589,9 @@
     </span><span class="jsdoc-var">fireKey</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.isVisible</span><span class="jsdoc-syntax">()){
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.keyCode </span><span class="jsdoc-syntax">== 27) </span><span class="jsdoc-comment">// allow escape to hide and re-show picker
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.keyCode </span><span class="jsdoc-syntax">== 27) { </span><span class="jsdoc-comment">// allow escape to hide and re-show picker
                 </span><span class="jsdoc-var">this.show</span><span class="jsdoc-syntax">();
+            }
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
@@ -601,7 +606,9 @@
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">37: </span><span class="jsdoc-comment">// left
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">39: </span><span class="jsdoc-comment">// right
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.keyboardNavigation</span><span class="jsdoc-syntax">) </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.keyboardNavigation</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                }
                 </span><span class="jsdoc-var">dir </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.keyCode </span><span class="jsdoc-syntax">== 37 ? -1 : 1;
                 
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.ctrlKey</span><span class="jsdoc-syntax">){
@@ -627,7 +634,9 @@
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">38: </span><span class="jsdoc-comment">// up
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">40: </span><span class="jsdoc-comment">// down
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.keyboardNavigation</span><span class="jsdoc-syntax">) </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.keyboardNavigation</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                }
                 </span><span class="jsdoc-var">dir </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.keyCode </span><span class="jsdoc-syntax">== 38 ? -1 : 1;
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.ctrlKey</span><span class="jsdoc-syntax">){
                     </span><span class="jsdoc-var">newDate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.moveYear</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dir</span><span class="jsdoc-syntax">);
@@ -854,7 +863,9 @@
     
     </span><span class="jsdoc-var">moveMonth</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dir</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">dir</span><span class="jsdoc-syntax">) </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">dir</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">new_date </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">date.valueOf</span><span class="jsdoc-syntax">()),
         </span><span class="jsdoc-var">day </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">new_date.getUTCDate</span><span class="jsdoc-syntax">(),
         </span><span class="jsdoc-var">month </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">new_date.getUTCMonth</span><span class="jsdoc-syntax">(),
@@ -876,13 +887,15 @@
             </span><span class="jsdoc-var">new_month </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">month </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">dir</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">new_date.setUTCMonth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">new_month</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-comment">// Dec -&gt; Jan (12) or Jan -&gt; Dec (-1) -- limit expected date to 0-11
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">new_month </span><span class="jsdoc-syntax">&lt; 0 || </span><span class="jsdoc-var">new_month </span><span class="jsdoc-syntax">&gt; 11)
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">new_month </span><span class="jsdoc-syntax">&lt; 0 || </span><span class="jsdoc-var">new_month </span><span class="jsdoc-syntax">&gt; 11) {
                 </span><span class="jsdoc-var">new_month </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">new_month </span><span class="jsdoc-syntax">+ 12) % 12;
+            }
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-comment">// For magnitudes &gt;1, move one month at a time...
-            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">&lt;</span><span class="jsdoc-var">mag</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++)
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">&lt;</span><span class="jsdoc-var">mag</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
                 </span><span class="jsdoc-comment">// ...which might decrease the day (eg, Jan 31 to Feb 28, etc)...
                 </span><span class="jsdoc-var">new_date </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.moveMonth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">new_date</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dir</span><span class="jsdoc-syntax">);
+            }
             </span><span class="jsdoc-comment">// ...then reset the day, keeping it in the new month
             </span><span class="jsdoc-var">new_month </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">new_date.getUTCMonth</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">new_date.setUTCDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">day</span><span class="jsdoc-syntax">);

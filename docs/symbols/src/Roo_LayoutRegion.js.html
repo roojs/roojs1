@@ -303,7 +303,9 @@
      * @param {Boolean} skipAnim (optional) true to collapse the element without animation (if animate is true)
      */
     </span><span class="jsdoc-var">collapse </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">skipAnim</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.collapsed</span><span class="jsdoc-syntax">) </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.collapsed</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-var">this.collapsed </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.split</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.split.el.hide</span><span class="jsdoc-syntax">();
@@ -330,8 +332,12 @@
      * @param {Boolean} skipAnim (optional) true to expand the element without animation (if animate is true)
      */
     </span><span class="jsdoc-var">expand </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">skipAnim</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) </span><span class="jsdoc-var">e.stopPropagation</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.collapsed </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.el.hasActiveFx</span><span class="jsdoc-syntax">()) </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">e.stopPropagation</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.collapsed </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.el.hasActiveFx</span><span class="jsdoc-syntax">()) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isSlid</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.afterSlideIn</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">skipAnim </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;

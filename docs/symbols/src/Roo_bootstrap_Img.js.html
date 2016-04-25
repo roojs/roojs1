@@ -44,7 +44,7 @@
     
     </span><span class="jsdoc-var">imgResponsive</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">border</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'about:blank'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">href</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">xsUrl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
@@ -122,7 +122,8 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">this.imgResponsive</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'img-responsive' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null
+            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">src </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'about:blank'  </span><span class="jsdoc-comment">// just incase src get's set to undefined?!?
         </span><span class="jsdoc-syntax">};
         
         </span><span class="jsdoc-var">cfg.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cfg.html</span><span class="jsdoc-syntax">;

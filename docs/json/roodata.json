@@ -17719,6 +17719,12 @@
      "desc": "Fires when tick the element"
     },
     {
+     "name": "touchviewdisplay",
+     "sig": "function (combo, cfg)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when touch view require special display (default is using displayField)"
+    },
+    {
      "name": "valid",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",

@@ -228,8 +228,9 @@
     
     </span><span class="jsdoc-var">replaceTextarea </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">document.getElementById</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.getId</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-string">'___Frame' </span><span class="jsdoc-syntax">) )
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">document.getElementById</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.getId</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-string">'___Frame' </span><span class="jsdoc-syntax">) ) {
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-comment">//if ( !this.checkBrowser || this._isCompatibleBrowser() )
         //{
             // We must check the elements firstly using the Id and then the name.
