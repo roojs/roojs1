@@ -224,17 +224,15 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        if(!this.expandable){
-            return;
+        if(this.expandable){
+            var headerEl = this.headerEl();
+        
+            if(headerEl){
+                headerEl.on('click', this.onToggleClick, this);
+            }
         }
         
-        var headerEl = this.headerEl();
         
-        if(!headerEl){
-            return;
-        }
-        
-        headerEl.on('click', this.onToggleClick, this);
         
     },
     
