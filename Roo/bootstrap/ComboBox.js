@@ -2314,13 +2314,15 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.store.data.each(function(d, rowIndex){
             var row = this.touchViewListGroup.createChild(template);
             
-            
-            
             if(this.displayField && typeof(d.data[this.displayField]) != 'undefined'){
-                row.select('.roo-combobox-list-group-item-value', true).first().dom.innerHTML = d.data[this.displayField];
+                var cfg = {
+                    html : d.data[this.displayField]
+                }
+                
+                if(this.fireEvent('touchviewdisplay', this, cfg) !== false){
+                    row.select('.roo-combobox-list-group-item-value', true).first().dom.innerHTML = cfg.html;
+                }
             }
-            
-            
             
             if(!this.multiple && this.valueField && typeof(d.data[this.valueField]) != 'undefined' && d.data[this.valueField] == this.getValue()){
                 row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
