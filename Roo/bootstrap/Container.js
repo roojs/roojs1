@@ -50,7 +50,14 @@ Roo.bootstrap.Container = function(config){
          * 
          * @param {Roo.bootstrap.Container} this
          */
-        "collapse" : true
+        "collapse" : true,
+        /**
+         * @event click
+         * When a element is chick
+         * @param {Roo.bootstrap.Element} this
+         * @param {Roo.EventObject} e
+         */
+        "click" : true
     });
 };
 
