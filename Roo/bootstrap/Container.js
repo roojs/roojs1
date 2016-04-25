@@ -54,7 +54,7 @@ Roo.bootstrap.Container = function(config){
         /**
          * @event click
          * When a element is chick
-         * @param {Roo.bootstrap.Element} this
+         * @param {Roo.bootstrap.Container} this
          * @param {Roo.EventObject} e
          */
         "click" : true
