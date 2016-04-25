@@ -25,6 +25,7 @@
  * @cfg {Boolean} expandable (true|false) default false
  * @cfg {Boolean} expanded (true|false) default true
  * @cfg {String} rheader contet on the right of header
+ * @cfg {Boolean} clickable (true|false) default false
 
  *     
  * @constructor
@@ -50,7 +51,14 @@
          * 
          * @param {Roo.bootstrap.Container} this
          */
-        </span><span class="jsdoc-string">&quot;collapse&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-string">&quot;collapse&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event click
+         * When a element is chick
+         * @param {Roo.bootstrap.Container} this
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;click&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
     </span><span class="jsdoc-syntax">});
 };
 
@@ -69,6 +77,7 @@
     </span><span class="jsdoc-var">expandable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">rheader </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">expanded </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">clickable</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
   
      
     </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
@@ -215,17 +224,17 @@
     
     </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() 
     {
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.expandable</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.expandable</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">headerEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.headerEl</span><span class="jsdoc-syntax">();
+        
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">headerEl</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">headerEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onToggleClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            }
         }
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">headerEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.headerEl</span><span class="jsdoc-syntax">();
-        
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">headerEl</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.clickable</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
-        
-        </span><span class="jsdoc-var">headerEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onToggleClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
     },
     
@@ -344,6 +353,13 @@
         }
         
         </span><span class="jsdoc-var">t.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">onClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
     }
    
 });

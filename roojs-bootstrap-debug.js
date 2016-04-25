@@ -991,6 +991,7 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
  * @cfg {Boolean} expandable (true|false) default false
  * @cfg {Boolean} expanded (true|false) default true
  * @cfg {String} rheader contet on the right of header
+ * @cfg {Boolean} clickable (true|false) default false
 
  *     
  * @constructor
@@ -1016,7 +1017,14 @@ Roo.bootstrap.Container = function(config){
          * 
          * @param {Roo.bootstrap.Container} this
          */
-        "collapse" : true
+        "collapse" : true,
+        /**
+         * @event click
+         * When a element is chick
+         * @param {Roo.bootstrap.Container} this
+         * @param {Roo.EventObject} e
+         */
+        "click" : true
     });
 };
 
@@ -1035,6 +1043,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     expandable : false,
     rheader : '',
     expanded : true,
+    clickable: false,
   
      
     getChildContainer : function() {
@@ -1181,17 +1190,17 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        if(!this.expandable){
-            return;
+        if(this.expandable){
+            var headerEl = this.headerEl();
+        
+            if(headerEl){
+                headerEl.on('click', this.onToggleClick, this);
+            }
         }
         
-        var headerEl = this.headerEl();
-        
-        if(!headerEl){
-            return;
+        if(this.clickable){
+            this.el.on('click', this.onClick, this);
         }
-        
-        headerEl.on('click', this.onToggleClick, this);
         
     },
     
@@ -1310,6 +1319,13 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         }
         
         t.dom.innerHTML = v;
+    },
+    
+    onClick : function(e)
+    {
+        e.preventDefault();
+        
+        this.fireEvent('click', this, e);
     }
    
 });

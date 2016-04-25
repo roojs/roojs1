@@ -2316,8 +2316,9 @@
             
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.displayField </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">]) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+                    </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d.data</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d.data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">]
-                }
+                };
                 
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'touchviewdisplay'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
                     </span><span class="jsdoc-var">row.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-combobox-list-group-item-value'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.html</span><span class="jsdoc-syntax">;
