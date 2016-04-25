@@ -232,7 +232,9 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             }
         }
         
-        
+        if(this.clickable){
+            this.el.on('click', this.onClick, this);
+        }
         
     },
     
@@ -351,6 +353,13 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         }
         
         t.dom.innerHTML = v;
+    },
+    
+    onClick : function(e)
+    {
+        e.preventDefault();
+        
+        this.fireEvent('click', this, e);
     }
    
 });
