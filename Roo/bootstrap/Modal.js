@@ -276,7 +276,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.el.setStyle('zIndex', '10001');
        
         this.fireEvent('show', this);
-        this.el.setStyle.defer(500, this.el, ['position', 'fixed'] ); // try and fix top jump?
+         
         
         
     },
