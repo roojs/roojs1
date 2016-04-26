@@ -2619,10 +2619,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.el.setStyle('zIndex', '10001');
        
         this.fireEvent('show', this);
-        (function() {
-            this.el.select('.modal-dialog', true).first().setStyle('transform','initial');
-        }).defer(500, this)
-        
+         
         
         
     },
