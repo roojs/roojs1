@@ -257,9 +257,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         if(this.animate){  // why??/ this should make no difference,  - delaying 50ms???
             var _this = this;
             (function(){
-                _this.el.addClass('in');
-                
-            }).defer(50);
+                this.el.addClass('in');
+            }).defer(50, this);
         }else{
             this.el.addClass('in');
             
@@ -276,7 +275,10 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.el.setStyle('zIndex', '10001');
        
         this.fireEvent('show', this);
-         
+        (function() {
+            this.el.select('.modal-dialog', true).first().setStyle('transform: initial');
+        }).defer(500, this)
+        
         
         
     },
