@@ -254,7 +254,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         this.el.setStyle('display', 'block');
         
-        if(this.animate){  // why??/ this should make no difference,  - delaying 50ms???
+        if(this.animate){  // element has 'fade'  - so stuff happens - not sure why the delay?
             var _this = this;
             (function(){
                 this.el.addClass('in');
@@ -288,7 +288,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         Roo.get(document.body).removeClass("x-body-masked");
         this.el.removeClass('in');
         this.el.select('.modal-dialog', true).first().setStyle('transform','');
-        if(this.animate){
+        
+        if(this.animate){ // why
             var _this = this;
             (function(){ _this.el.setStyle('display', 'none'); }).defer(150);
         }else{
