@@ -256,9 +256,13 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         if(this.animate){
             var _this = this;
-            (function(){ _this.el.addClass('in'); }).defer(50);
+            (function(){
+                _this.el.addClass('in');
+                
+            }).defer(50);
         }else{
             this.el.addClass('in');
+            
         }
         
         // not sure how we can show data in here.. 
@@ -272,6 +276,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.el.setStyle('zIndex', '10001');
        
         this.fireEvent('show', this);
+        this.el.setStyle.defer(500, this.el, ['position', 'fixed'] ); // try and fix top jump?
         
         
     },
