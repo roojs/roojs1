@@ -254,7 +254,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         this.el.setStyle('display', 'block');
         
-        if(this.animate){
+        if(this.animate){  // why??/ this should make no difference,  - delaying 50ms???
             var _this = this;
             (function(){
                 _this.el.addClass('in');
