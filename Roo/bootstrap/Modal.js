@@ -276,7 +276,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
        
         this.fireEvent('show', this);
         (function() {
-            this.el.select('.modal-dialog', true).first().setStyle('transform: initial');
+            this.el.select('.modal-dialog', true).first().setStyle('transform','initial');
         }).defer(500, this)
         
         
@@ -287,7 +287,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.maskEl.hide();
         Roo.get(document.body).removeClass("x-body-masked");
         this.el.removeClass('in');
-        
+        this.el.select('.modal-dialog', true).first().setStyle('transform','');
         if(this.animate){
             var _this = this;
             (function(){ _this.el.setStyle('display', 'none'); }).defer(150);
