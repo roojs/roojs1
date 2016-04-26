@@ -2598,12 +2598,11 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         this.el.setStyle('display', 'block');
         
-        if(this.animate){
+        if(this.animate){  // element has 'fade'  - so stuff happens after .3s ?- not sure why the delay?
             var _this = this;
             (function(){
-                _this.el.addClass('in');
-                
-            }).defer(50);
+                this.el.addClass('in');
+            }).defer(50, this);
         }else{
             this.el.addClass('in');
             
@@ -2620,7 +2619,10 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.el.setStyle('zIndex', '10001');
        
         this.fireEvent('show', this);
-        this.el.setStyle.defer(500, this.el, ['position', 'fixed'] ); // try and fix top jump?
+        (function() {
+            this.el.select('.modal-dialog', true).first().setStyle('transform','initial');
+        }).defer(500, this)
+        
         
         
     },
@@ -2629,8 +2631,9 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.maskEl.hide();
         Roo.get(document.body).removeClass("x-body-masked");
         this.el.removeClass('in');
+        this.el.select('.modal-dialog', true).first().setStyle('transform','');
         
-        if(this.animate){
+        if(this.animate){ // why
             var _this = this;
             (function(){ _this.el.setStyle('display', 'none'); }).defer(150);
         }else{
