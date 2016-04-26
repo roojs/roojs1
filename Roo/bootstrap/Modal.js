@@ -254,7 +254,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         this.el.setStyle('display', 'block');
         
-        if(this.animate){  // element has 'fade'  - so stuff happens - not sure why the delay?
+        if(this.animate){  // element has 'fade'  - so stuff happens after .3s ?- not sure why the delay?
             var _this = this;
             (function(){
                 this.el.addClass('in');
