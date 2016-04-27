@@ -22,6 +22,7 @@
  */
 
 Roo.bootstrap.Modal = function(config){
+    Roo.log("modal ctor style: "+config.style);
     Roo.bootstrap.Modal.superclass.constructor.call(this, config);
     this.addEvents({
         // raw events
