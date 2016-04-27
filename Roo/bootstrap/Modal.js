@@ -60,9 +60,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     
     animate : true,
     
-    style : 'margin-top:100px;',
-    
-    
      // private
     bodyEl:  false,
     footerEl:  false,
@@ -76,7 +73,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
      
         if(!this.el){
             Roo.log('begin??');
-            Roo.log(this.style);
+            Roo.log(this);
             var cfg = Roo.apply({},  this.getAutoCreate());
             cfg.id = Roo.id();
             //if(!cfg.name){
