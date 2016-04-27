@@ -192,6 +192,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         var cur = this.getActivePanel();
         
         if(!pan || !cur){
+            Roo.log('pan or acitve pan is undefined');
             return false;
         }
         
