@@ -85,6 +85,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                 cfg.cls += ' ' + this.cls;
             }
             if (this.style) {
+                Roo.log(this.style);
                 cfg.style = this.style;
             }
             this.el = Roo.get(document.body).createChild(cfg, position);
