@@ -2436,8 +2436,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         //var type = this.el.dom.type;
         
         
-        
-        
         if(this.tabIndex !== undefined){
             this.el.dom.setAttribute('tabIndex', this.tabIndex);
         }
@@ -16179,7 +16177,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
      */
     showPanel : function (pan)
     {
-        if(this.transition){
+        if(this.transition || typeof(pan) == 'undefined'){
             Roo.log("waiting for the transitionend");
             return;
         }
@@ -16187,13 +16185,21 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         if (typeof(pan) == 'number') {
             pan = this.tabs[pan];
         }
+        
         if (typeof(pan) == 'string') {
             pan = this.getPanelByName(pan);
         }
+        
+        var cur = this.getActivePanel();
+        
+        if(!pan || !cur){
+            Roo.log('pan or acitve pan is undefined');
+            return false;
+        }
+        
         if (pan.tabId == this.getActivePanel().tabId) {
             return true;
         }
-        var cur = this.getActivePanel();
         
         if (false === cur.fireEvent('beforedeactivate')) {
             return false;
