@@ -153,7 +153,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
     },
     
-    getAutoCreate : function(){
+    getAutoCreate : function()
+    {
         
         Roo.log('run getAutoCreate!!!!');
         Roo.log(this.style);
