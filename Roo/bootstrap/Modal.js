@@ -155,8 +155,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     
     getAutoCreate : function(){
         
-        Roo.log('run!!!!');
-        Roo.log(this);
+        Roo.log('run getAutoCreate!!!!');
+        Roo.log(this.style);
         var bdy = {
                 cls : 'modal-body',
                 html : this.html || ''
