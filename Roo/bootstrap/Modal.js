@@ -84,13 +84,9 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             if (this.cls) {
                 cfg.cls += ' ' + this.cls;
             }
-            Roo.log('run????');
-            Roo.log(this);
             if (this.style) {
-                Roo.log(this.style);
                 cfg.style = this.style;
             }
-            Roo.log(cfg);
             this.el = Roo.get(document.body).createChild(cfg, position);
         }
         //var type = this.el.dom.type;
@@ -154,8 +150,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     
     getAutoCreate : function(){
         
-        Roo.log('run!!!!');
-        Roo.log(this);
+        
         var bdy = {
                 cls : 'modal-body',
                 html : this.html || ''
