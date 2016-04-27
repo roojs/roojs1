@@ -60,7 +60,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     
     animate : true,
     
-    style : false,
+    style : 'margin-top:100px;',
     
     
      // private
