@@ -60,6 +60,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     
     animate : true,
     
+    style : false,
+    
     
      // private
     bodyEl:  false,
