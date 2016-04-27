@@ -85,6 +85,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                 cfg.cls += ' ' + this.cls;
             }
             Roo.log('run????');
+            Roo.log(this);
             if (this.style) {
                 Roo.log(this.style);
                 cfg.style = this.style;
