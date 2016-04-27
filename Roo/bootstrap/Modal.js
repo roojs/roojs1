@@ -22,7 +22,6 @@
  */
 
 Roo.bootstrap.Modal = function(config){
-    Roo.log("modal ctor style: "+config.style);
     Roo.bootstrap.Modal.superclass.constructor.call(this, config);
     this.addEvents({
         // raw events
@@ -61,6 +60,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     
     animate : true,
     
+    
      // private
     bodyEl:  false,
     footerEl:  false,
@@ -73,8 +73,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
      
         if(!this.el){
-            Roo.log('begin??');
-            Roo.log(this.style);
             var cfg = Roo.apply({},  this.getAutoCreate());
             cfg.id = Roo.id();
             //if(!cfg.name){
@@ -86,14 +84,9 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             if (this.cls) {
                 cfg.cls += ' ' + this.cls;
             }
-            Roo.log('run on render????');
-            Roo.log(this.style);
-            
             if (this.style) {
-                Roo.log(this.style);
                 cfg.style = this.style;
             }
-            Roo.log(cfg);
             this.el = Roo.get(document.body).createChild(cfg, position);
         }
         //var type = this.el.dom.type;
@@ -155,11 +148,9 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
     },
     
-    getAutoCreate : function()
-    {
+    getAutoCreate : function(){
         
-        Roo.log('run getAutoCreate!!!!');
-        Roo.log(this.style);
+        
         var bdy = {
                 cls : 'modal-body',
                 html : this.html || ''
