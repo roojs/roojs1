@@ -88,6 +88,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                 Roo.log(this.style);
                 cfg.style = this.style;
             }
+            Roo.log(cfg);
             this.el = Roo.get(document.body).createChild(cfg, position);
         }
         //var type = this.el.dom.type;
