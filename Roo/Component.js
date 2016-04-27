@@ -183,8 +183,7 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
             }
             if(this.style){
                 this.el.applyStyles(this.style);
-                Roo.log('run??? Roo.COmpnet')
-//                delete this.style;
+                delete this.style;
             }
             this.fireEvent("render", this);
             this.afterRender(this.container);
