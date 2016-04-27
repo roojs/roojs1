@@ -141,6 +141,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     
     onClick : function(e)
     {
+        Roo.log('nav item click');
         if(
                 this.preventDefault || 
                 this.href == '#' 
