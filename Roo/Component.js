@@ -161,6 +161,8 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
      * @param {String/HTMLElement/Element} container (optional) The element this component should be rendered into. If it is being applied to existing markup, this should be left off.
      */
     render : function(container, position){
+        Roo.log('render???');
+        Roo.log(this);
         if(!this.rendered && this.fireEvent("beforerender", this) !== false){
             if(!container && this.el){
                 this.el = Roo.get(this.el);
