@@ -154,7 +154,9 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         
     },
-    findTargetItem : function(e){
+    
+    findTargetItem : function(e)
+    {
         var t = e.getTarget(".dropdown-menu-item", this.el,  true);
         if(!t){
             return false;
@@ -170,12 +172,14 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         return false;
     },
     
-    onTouch : function(e) {
-        e.stopEvent();
+    onTouch : function(e) 
+    {
+        //e.stopEvent();
         this.onClick(e);
     },
     
-    onClick : function(e){
+    onClick : function(e)
+    {
         Roo.log("menu.onClick");
         var t = this.findTargetItem(e);
         if(!t || t.isContainer){
