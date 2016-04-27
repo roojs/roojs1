@@ -1983,9 +1983,6 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         this.triggerEl.addClass('dropdown-toggle');
         
-        
-        
-        
         if (Roo.isTouch) {
             this.el.on('touchstart'  , this.onTouch, this);
         }
@@ -1994,9 +1991,10 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         this.el.on("mouseover", this.onMouseOver, this);
         this.el.on("mouseout", this.onMouseOut, this);
         
-        
     },
-    findTargetItem : function(e){
+    
+    findTargetItem : function(e)
+    {
         var t = e.getTarget(".dropdown-menu-item", this.el,  true);
         if(!t){
             return false;
@@ -2012,12 +2010,14 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         return false;
     },
     
-    onTouch : function(e) {
-        e.stopEvent();
+    onTouch : function(e) 
+    {
+        //e.stopEvent();
         this.onClick(e);
     },
     
-    onClick : function(e){
+    onClick : function(e)
+    {
         Roo.log("menu.onClick");
         var t = this.findTargetItem(e);
         if(!t || t.isContainer){
