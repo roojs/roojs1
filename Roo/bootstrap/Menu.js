@@ -133,10 +133,24 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         this.triggerEl.on(Roo.isTouch ? 'touchstart' : 'mouseup', this.onTriggerPress, this);
         
         this.triggerEl.addClass('dropdown-toggle');
-        this.el.on(Roo.isTouch ? 'touchstart' : 'click' , this.onClick, this);
+        
+        if (Roo.isTouch) {
+            this.el.on('touchstart'  , this.onTouch, this);
+        }
+        this.el.on('click' , this.onClick, this);
 
         this.el.on("mouseover", this.onMouseOver, this);
         this.el.on("mouseout", this.onMouseOut, this);
+        
+        
+        
+//        this.triggerEl.on(Roo.isTouch ? 'touchstart' : 'mouseup', this.onTriggerPress, this);
+//        
+//        this.triggerEl.addClass('dropdown-toggle');
+//        this.el.on(Roo.isTouch ? 'touchstart' : 'click' , this.onClick, this);
+//
+//        this.el.on("mouseover", this.onMouseOver, this);
+//        this.el.on("mouseout", this.onMouseOut, this);
         
         
     },
@@ -164,7 +178,6 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     onClick : function(e){
         Roo.log("menu.onClick");
         var t = this.findTargetItem(e);
-        Roo.log(t);
         if(!t || t.isContainer){
             return;
         }
