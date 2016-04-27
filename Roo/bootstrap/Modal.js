@@ -76,7 +76,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
      
         if(!this.el){
             Roo.log('begin??');
-            Roo.log(this);return;
+            Roo.log(this);
             var cfg = Roo.apply({},  this.getAutoCreate());
             cfg.id = Roo.id();
             //if(!cfg.name){
