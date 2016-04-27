@@ -142,17 +142,6 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         this.el.on("mouseover", this.onMouseOver, this);
         this.el.on("mouseout", this.onMouseOut, this);
         
-        
-        
-//        this.triggerEl.on(Roo.isTouch ? 'touchstart' : 'mouseup', this.onTriggerPress, this);
-//        
-//        this.triggerEl.addClass('dropdown-toggle');
-//        this.el.on(Roo.isTouch ? 'touchstart' : 'click' , this.onClick, this);
-//
-//        this.el.on("mouseover", this.onMouseOver, this);
-//        this.el.on("mouseout", this.onMouseOut, this);
-        
-        
     },
     
     findTargetItem : function(e)
@@ -174,7 +163,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     
     onTouch : function(e) 
     {
-        e.stopEvent();
+        //e.stopEvent();
         this.onClick(e);
     },
     
