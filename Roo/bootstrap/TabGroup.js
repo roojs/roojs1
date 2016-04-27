@@ -192,7 +192,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         var cur = this.getActivePanel();
         
         if(!pan || !cur){
-            return;
+            return false;
         }
         
         if (pan.tabId == this.getActivePanel().tabId) {
