@@ -174,7 +174,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     
     onTouch : function(e) 
     {
-        //e.stopEvent();
+        e.stopEvent();
         this.onClick(e);
     },
     
