@@ -176,7 +176,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
      */
     showPanel : function (pan)
     {
-        if(this.transition){
+        if(this.transition || typeof(pan) == 'undefined'){
             Roo.log("waiting for the transitionend");
             return;
         }
@@ -189,11 +189,15 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             pan = this.getPanelByName(pan);
         }
         
+        var cur = this.getActivePanel();
+        
+        if(!pan || !cur){
+            return;
+        }
+        
         if (pan.tabId == this.getActivePanel().tabId) {
             return true;
         }
-        
-        var cur = this.getActivePanel();
         
         if (false === cur.fireEvent('beforedeactivate')) {
             return false;
