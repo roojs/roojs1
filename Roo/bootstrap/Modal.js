@@ -92,8 +92,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         //var type = this.el.dom.type;
         
         
-        
-        
         if(this.tabIndex !== undefined){
             this.el.dom.setAttribute('tabIndex', this.tabIndex);
         }
