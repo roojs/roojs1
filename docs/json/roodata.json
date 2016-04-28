@@ -53373,6 +53373,12 @@
      "desc": "Fires just before the field blurs if the field value has changed."
     },
     {
+     "name": "close",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the click the close btn"
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",

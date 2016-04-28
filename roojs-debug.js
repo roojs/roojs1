@@ -47309,6 +47309,14 @@ Roo.extend(Roo.form.GridField, Roo.form.Field,  {
 Roo.form.DisplayField = function(config){
     Roo.form.DisplayField.superclass.constructor.call(this, config);
     
+    this.addEvents({
+        /**
+         * @event close
+         * Fires after the click the close btn
+	     * @param {Roo.form.DisplayField} this
+	     */
+        close : true
+    });
 };
 
 Roo.extend(Roo.form.DisplayField, Roo.form.TextField,  {
@@ -47347,9 +47355,12 @@ Roo.extend(Roo.form.DisplayField, Roo.form.TextField,  {
     },
 
     initEvents : function(){
-        Roo.log('initEvents!!!!!!!!!!!!!!!!!!!!!!????????????????????????');
         // Roo.form.Checkbox.superclass.initEvents.call(this);
         // has no events...
+        
+        if(this.closable){
+            this.closeEl.on('click', this.onClose, this);
+        }
        
     },
 
@@ -47408,6 +47419,13 @@ Roo.extend(Roo.form.DisplayField, Roo.form.TextField,  {
         this.viewEl.dom.innerHTML = html;
         Roo.form.DisplayField.superclass.setValue.call(this, v);
 
+    },
+    
+    onClose : function(e)
+    {
+        e.preventDefault();
+        
+        this.fireEvent('close', this);
     }
 });/*
  * 
