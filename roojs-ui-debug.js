@@ -4458,7 +4458,9 @@ Roo.data.SortTypes = {
      */
     asFloat : function(s) {
     	var val = parseFloat(String(s).replace(/,/g, ""));
-        if(isNaN(val)) val = 0;
+        if(isNaN(val)) {
+            val = 0;
+        }
     	return val;
     },
     
@@ -4469,7 +4471,9 @@ Roo.data.SortTypes = {
      */
     asInt : function(s) {
         var val = parseInt(String(s).replace(/,/g, ""));
-        if(isNaN(val)) val = 0;
+        if(isNaN(val)) {
+            val = 0;
+        }
     	return val;
     }
 };/*
@@ -9584,7 +9588,9 @@ Roo.DatePicker = function(config){
         var re = "(?:";
         for(var i = 0; i < dd.length; i++){
             re += dd[i];
-            if(i != dd.length-1) re += "|";
+            if(i != dd.length-1) {
+                re += "|";
+            }
         }
         this.disabledDatesRE = new RegExp(re + ")");
     }
@@ -10563,7 +10569,9 @@ Roo.extend(Roo.TabPanel, Roo.util.Observable, {
     autoSizeTabs : function(){
         var count = this.items.length;
         var vcount = count - this.hiddenCount;
-        if(!this.resizeTabs || count < 1 || vcount < 1 || this.updating) return;
+        if(!this.resizeTabs || count < 1 || vcount < 1 || this.updating) {
+            return;
+        }
         var w = Math.max(this.el.getWidth() - this.cpad, 10);
         var availWidth = Math.floor(w / vcount);
         var b = this.stripBody;
@@ -10599,7 +10607,9 @@ Roo.extend(Roo.TabPanel, Roo.util.Observable, {
     setTabWidth : function(width){
         this.currentTabWidth = width;
         for(var i = 0, len = this.items.length; i < len; i++) {
-        	if(!this.items[i].isHidden())this.items[i].setWidth(width);
+        	if(!this.items[i].isHidden()) {
+                this.items[i].setWidth(width);
+            }
         }
     },
 
@@ -12620,8 +12630,9 @@ Roo.extend(Roo.PagingToolbar, Roo.Toolbar, {
         {
           var v = this.field.dom.value, pageNum; 
           var increment = (e.shiftKey) ? 10 : 1;
-          if(k == e.DOWN || k == e.LEFT || k == e.PAGEDOWN)
+          if(k == e.DOWN || k == e.LEFT || k == e.PAGEDOWN) {
             increment *= -1;
+          }
           if(!v || isNaN(pageNum = parseInt(v, 10))) {
             this.field.dom.value = d.activePage;
             return;
@@ -13041,7 +13052,9 @@ Roo.extend(Roo.Resizable, Roo.util.Observable, {
 
     // private
     snap : function(value, inc, min){
-        if(!inc || !value) return value;
+        if(!inc || !value) {
+            return value;
+        }
         var newValue = value;
         var m = value % inc;
         if(m > 0){
@@ -22080,15 +22093,21 @@ Roo.form.DateField = function(config){
     });
     
     
-    if(typeof this.minValue == "string") this.minValue = this.parseDate(this.minValue);
-    if(typeof this.maxValue == "string") this.maxValue = this.parseDate(this.maxValue);
+    if(typeof this.minValue == "string") {
+        this.minValue = this.parseDate(this.minValue);
+    }
+    if(typeof this.maxValue == "string") {
+        this.maxValue = this.parseDate(this.maxValue);
+    }
     this.ddMatch = null;
     if(this.disabledDates){
         var dd = this.disabledDates;
         var re = "(?:";
         for(var i = 0; i < dd.length; i++){
             re += dd[i];
-            if(i != dd.length-1) re += "|";
+            if(i != dd.length-1) {
+                re += "|";
+            }
         }
         this.ddMatch = new RegExp(re + ")");
     }
@@ -22443,15 +22462,21 @@ Roo.form.MonthField = function(config){
     });
     
     
-    if(typeof this.minValue == "string") this.minValue = this.parseDate(this.minValue);
-    if(typeof this.maxValue == "string") this.maxValue = this.parseDate(this.maxValue);
+    if(typeof this.minValue == "string") {
+        this.minValue = this.parseDate(this.minValue);
+    }
+    if(typeof this.maxValue == "string") {
+        this.maxValue = this.parseDate(this.maxValue);
+    }
     this.ddMatch = null;
     if(this.disabledDates){
         var dd = this.disabledDates;
         var re = "(?:";
         for(var i = 0; i < dd.length; i++){
             re += dd[i];
-            if(i != dd.length-1) re += "|";
+            if(i != dd.length-1) {
+                re += "|";
+            }
         }
         this.ddMatch = new RegExp(re + ")");
     }
@@ -23871,7 +23896,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         }
         // scroll to?
         this.view.select(match);
-        var sn = Roo.get(this.view.getSelectedNodes()[0])
+        var sn = Roo.get(this.view.getSelectedNodes()[0]);
         sn.scrollIntoView(sn.dom.parentNode, false);
     }
 
@@ -25594,13 +25619,16 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         var nodeIsBefore   =  ss == 1;
         var nodeIsAfter    = ee == -1;
         
-        if (nodeIsBefore && nodeIsAfter)
+        if (nodeIsBefore && nodeIsAfter) {
             return 0; // outer
-        if (!nodeIsBefore && nodeIsAfter)
+        }
+        if (!nodeIsBefore && nodeIsAfter) {
             return 1; //right trailed.
+        }
         
-        if (nodeIsBefore && !nodeIsAfter)
+        if (nodeIsBefore && !nodeIsAfter) {
             return 2;  // left trailed.
+        }
         // fully contined.
         return 3;
     },
@@ -30554,8 +30582,9 @@ Roo.extend(Roo.form.FCKeditor, Roo.form.TextArea,
     
     replaceTextarea : function()
     {
-        if ( document.getElementById( this.getId() + '___Frame' ) )
+        if ( document.getElementById( this.getId() + '___Frame' ) ) {
             return ;
+        }
         //if ( !this.checkBrowser || this._isCompatibleBrowser() )
         //{
             // We must check the elements firstly using the Id and then the name.
@@ -30814,6 +30843,7 @@ Roo.extend(Roo.form.GridField, Roo.form.Field,  {
  * @class Roo.form.DisplayField
  * @extends Roo.form.Field
  * A generic Field to display non-editable data.
+ * @cfg {Boolean} closable (true|false) default false
  * @constructor
  * Creates a new Display Field item.
  * @param {Object} config Configuration options
@@ -30850,13 +30880,16 @@ Roo.extend(Roo.form.DisplayField, Roo.form.TextField,  {
      */
      
  //   defaultAutoCreate : { tag: 'input', type: 'hidden', autocomplete: 'off'},
-
+ 
+    closable : false,
+    
     onResize : function(){
         Roo.form.DisplayField.superclass.onResize.apply(this, arguments);
         
     },
 
     initEvents : function(){
+        Roo.log('initEvents!!!!!!!!!!!!!!!!!!!!!!????????????????????????');
         // Roo.form.Checkbox.superclass.initEvents.call(this);
         // has no events...
        
@@ -30879,6 +30912,10 @@ Roo.extend(Roo.form.DisplayField, Roo.form.TextField,  {
         this.wrap = this.el.wrap();
         
         this.viewEl = this.wrap.createChild({ tag: 'div', cls: 'x-form-displayfield'});
+        
+        if(this.closable){
+            this.closeEl = this.wrap.createChild({ tag: 'div', cls: 'x-dlg-close'});
+        }
         
         if (this.bodyStyle) {
             this.viewEl.applyStyles(this.bodyStyle);
@@ -32927,7 +32964,9 @@ Roo.extend(Roo.BorderLayout, Roo.LayoutManager, {
      * Performs a layout update.
      */
     layout : function(){
-        if(this.updating) return;
+        if(this.updating) {
+            return;
+        }
         var size = this.getViewSize();
         var w = size.width;
         var h = size.height;
@@ -34041,7 +34080,9 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
      * @param {Boolean} skipAnim (optional) true to collapse the element without animation (if animate is true)
      */
     collapse : function(skipAnim){
-        if(this.collapsed) return;
+        if(this.collapsed) {
+            return;
+        }
         this.collapsed = true;
         if(this.split){
             this.split.el.hide();
@@ -34068,8 +34109,12 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
      * @param {Boolean} skipAnim (optional) true to expand the element without animation (if animate is true)
      */
     expand : function(e, skipAnim){
-        if(e) e.stopPropagation();
-        if(!this.collapsed || this.el.hasActiveFx()) return;
+        if(e) {
+            e.stopPropagation();
+        }
+        if(!this.collapsed || this.el.hasActiveFx()) {
+            return;
+        }
         if(this.isSlid){
             this.afterSlideIn();
             skipAnim = true;
@@ -34450,7 +34495,9 @@ Roo.extend(Roo.SplitLayoutRegion, Roo.LayoutRegion, {
     beforeSlide: function(){
         if(Roo.isGecko){// firefox overflow auto bug workaround
             this.bodyEl.clip();
-            if(this.tabs) this.tabs.bodyEl.clip();
+            if(this.tabs) {
+                this.tabs.bodyEl.clip();
+            }
             if(this.activePanel){
                 this.activePanel.getEl().clip();
                 
@@ -34464,7 +34511,9 @@ Roo.extend(Roo.SplitLayoutRegion, Roo.LayoutRegion, {
     afterSlide : function(){
         if(Roo.isGecko){// firefox overflow auto bug workaround
             this.bodyEl.unclip();
-            if(this.tabs) this.tabs.bodyEl.unclip();
+            if(this.tabs) {
+                this.tabs.bodyEl.unclip();
+            }
             if(this.activePanel){
                 this.activePanel.getEl().unclip();
                 if(this.activePanel.afterSlide){
@@ -35400,7 +35449,9 @@ layout.addxtype({
             this.form = new  Roo.form.Form(cfg);
             
             
-            if ( this.form.allItems.length) this.form.render(el.dom);
+            if ( this.form.allItems.length) {
+                this.form.render(el.dom);
+            }
             return this.form;
         }
         // should only have one of theses..
@@ -37559,7 +37610,9 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         if(s){ // splitters not created yet
             var pos = 0, locked = true;
             for(var i = 0, len = cm.getColumnCount(); i < len; i++){
-                if(cm.isHidden(i)) continue;
+                if(cm.isHidden(i)) {
+                    continue;
+                }
                 var w = cm.getColumnWidth(i); // make sure it's a number
                 if(!cm.isLocked(i) && locked){
                     pos = 0;
@@ -37788,7 +37841,9 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                         p.id = c.id;
                         p.css = p.attr = "";
                         p.value = c.renderer(r.data[c.name], p, r, rowIndex, i, ds);
-                        if(p.value == undefined || p.value === "") p.value = "&#160;";
+                        if(p.value == undefined || p.value === "") {
+                            p.value = "&#160;";
+                        }
                         if(r.dirty && typeof r.modified[c.name] !== 'undefined'){
                             p.css += p.css ? ' x-grid-dirty-cell' : 'x-grid-dirty-cell';
                         }
@@ -37842,7 +37897,9 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                         p.id = c.id;
                         p.css = p.attr = "";
                         p.value = c.renderer(r.data[c.name], p, r, rowIndex, i, ds);
-                        if(p.value == undefined || p.value === "") p.value = "&#160;";
+                        if(p.value == undefined || p.value === "") {
+                            p.value = "&#160;";
+                        }
                         if(r.dirty && typeof r.modified[c.name] !== 'undefined'){
                             p.css += p.css ? ' x-grid-dirty-cell' : 'x-grid-dirty-cell';
                         }
@@ -37961,7 +38018,9 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         };
         var renderer = cm.getRenderer(colIndex);
         var val = renderer(dm.getValueAt(rowIndex, dataIndex), p, rowIndex, colIndex, dm);
-        if(typeof val == "undefined" || val === "") val = "&#160;";
+        if(typeof val == "undefined" || val === "") {
+            val = "&#160;";
+        }
         cellText.innerHTML = val;
         cell.className = this.cellClass + " " + this.idToCssName(p.cellId) + " " + p.css;
         this.syncRowHeights(rowIndex, rowIndex);
@@ -39607,7 +39666,9 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
      * Clears all selections.
      */
     clearSelections : function(fast){
-        if(this.locked) return;
+        if(this.locked) {
+            return;
+        }
         if(fast !== true){
             var ds = this.grid.dataSource;
             var s = this.selections;
@@ -39626,7 +39687,9 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
      * Selects all rows.
      */
     selectAll : function(){
-        if(this.locked) return;
+        if(this.locked) {
+            return;
+        }
         this.selections.clear();
         for(var i = 0, len = this.grid.dataSource.getCount(); i < len; i++){
             this.selectRow(i, true);
@@ -39715,7 +39778,9 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
      * @param {Boolean} keepExisting (optional) True to retain existing selections
      */
     selectRange : function(startRow, endRow, keepExisting){
-        if(this.locked) return;
+        if(this.locked) {
+            return;
+        }
         if(!keepExisting){
             this.clearSelections();
         }
@@ -39736,7 +39801,9 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
      * @param {Number} endRow The index of the last row in the range
      */
     deselectRange : function(startRow, endRow, preventViewNotify){
-        if(this.locked) return;
+        if(this.locked) {
+            return;
+        }
         for(var i = startRow; i <= endRow; i++){
             this.deselectRow(i, preventViewNotify);
         }
@@ -39748,7 +39815,9 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
      * @param {Boolean} keepExisting (optional) True to keep existing selections
      */
     selectRow : function(index, keepExisting, preventViewNotify){
-        if(this.locked || (index < 0 || index >= this.grid.dataSource.getCount())) return;
+        if(this.locked || (index < 0 || index >= this.grid.dataSource.getCount())) {
+            return;
+        }
         if(this.fireEvent("beforerowselect", this, index, keepExisting) !== false){
             if(!keepExisting || this.singleSelect){
                 this.clearSelections();
@@ -39769,7 +39838,9 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
      * @param {Number} row The index of the row to deselect
      */
     deselectRow : function(index, preventViewNotify){
-        if(this.locked) return;
+        if(this.locked) {
+            return;
+        }
         if(this.last == index){
             this.last = false;
         }
@@ -40253,7 +40324,7 @@ Roo.extend(Roo.grid.EditorGrid, Roo.grid.Grid, {
             cancel:false,
             editor: ed
         };
-        var cell = Roo.get(this.view.getCell(ed.row,ed.col))
+        var cell = Roo.get(this.view.getCell(ed.row,ed.col));
         cell.show();
           
         if(String(value) !== String(startValue)){
