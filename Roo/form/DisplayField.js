@@ -58,9 +58,12 @@ Roo.extend(Roo.form.DisplayField, Roo.form.TextField,  {
     },
 
     initEvents : function(){
-        Roo.log('initEvents!!!!!!!!!!!!!!!!!!!!!!????????????????????????');
         // Roo.form.Checkbox.superclass.initEvents.call(this);
         // has no events...
+        
+        if(this.closable){
+            this.closeEl.on('click', this.onClose, this);
+        }
        
     },
 
