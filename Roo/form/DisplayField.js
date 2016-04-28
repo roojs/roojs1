@@ -81,6 +81,10 @@ Roo.extend(Roo.form.DisplayField, Roo.form.TextField,  {
         
         this.viewEl = this.wrap.createChild({ tag: 'div', cls: 'x-form-displayfield'});
         
+        if(this.closable){
+            this.closeEl = this.wrap.createChild({ tag: 'div', cls: 'x-dlg-close'});
+        }
+        
         if (this.bodyStyle) {
             this.viewEl.applyStyles(this.bodyStyle);
         }
