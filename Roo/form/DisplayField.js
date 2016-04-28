@@ -20,6 +20,14 @@
 Roo.form.DisplayField = function(config){
     Roo.form.DisplayField.superclass.constructor.call(this, config);
     
+    this.addEvents({
+        /**
+         * @event close
+         * Fires after the click the close btn
+	     * @param {Roo.form.DisplayField} this
+	     */
+        close : true
+    });
 };
 
 Roo.extend(Roo.form.DisplayField, Roo.form.TextField,  {
