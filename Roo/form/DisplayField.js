@@ -49,7 +49,9 @@ Roo.extend(Roo.form.DisplayField, Roo.form.TextField,  {
      */
      
  //   defaultAutoCreate : { tag: 'input', type: 'hidden', autocomplete: 'off'},
-
+ 
+    closable : false,
+    
     onResize : function(){
         Roo.form.DisplayField.superclass.onResize.apply(this, arguments);
         
