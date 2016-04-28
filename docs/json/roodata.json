@@ -53159,6 +53159,16 @@
   "Roo.form.DisplayField": {
    "props": [
     {
+     "name": "closable",
+     "type": "Boolean",
+     "desc": "default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
+    },
+    {
      "name": "focusClass",
      "type": "String",
      "desc": "The CSS class to use when the checkbox receives focus (defaults to undefined)",

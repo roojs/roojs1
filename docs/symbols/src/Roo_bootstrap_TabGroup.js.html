@@ -176,7 +176,7 @@
      */
     </span><span class="jsdoc-var">showPanel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pan</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.transition</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.transition </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pan</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;waiting for the transitionend&quot;</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
@@ -184,13 +184,21 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pan</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'number'</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">pan </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tabs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">pan</span><span class="jsdoc-syntax">];
         }
+        
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pan</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">pan </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getPanelByName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pan</span><span class="jsdoc-syntax">);
         }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cur </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getActivePanel</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">pan </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">cur</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'pan or acitve pan is undefined'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pan.tabId </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">this.getActivePanel</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.tabId</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cur </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getActivePanel</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">cur.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforedeactivate'</span><span class="jsdoc-syntax">)) {
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;

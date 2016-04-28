@@ -92,8 +92,6 @@
         </span><span class="jsdoc-comment">//var type = this.el.dom.type;
         
         
-        
-        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tabIndex </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.el.dom.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tabIndex'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.tabIndex</span><span class="jsdoc-syntax">);
         }
@@ -254,11 +252,14 @@
         
         </span><span class="jsdoc-var">this.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'display'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.animate</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.animate</span><span class="jsdoc-syntax">){  </span><span class="jsdoc-comment">// element has 'fade'  - so stuff happens after .3s ?- not sure why the delay?
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
-            (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){ </span><span class="jsdoc-var">_this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">); })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(50);
+            (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+                </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">);
+            })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(50, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">);
+            
         }
         
         </span><span class="jsdoc-comment">// not sure how we can show data in here.. 
@@ -272,6 +273,7 @@
         </span><span class="jsdoc-var">this.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'zIndex'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'10001'</span><span class="jsdoc-syntax">);
        
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'show'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+         
         
         
     },
@@ -280,8 +282,9 @@
         </span><span class="jsdoc-var">this.maskEl.hide</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-body-masked&quot;</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-dialog'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'transform'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.animate</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.animate</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// why
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
             (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){ </span><span class="jsdoc-var">_this.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'display'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'none'</span><span class="jsdoc-syntax">); })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(150);
         }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{

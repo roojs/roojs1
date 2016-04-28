@@ -12,6 +12,7 @@
  * @class Roo.form.DisplayField
  * @extends Roo.form.Field
  * A generic Field to display non-editable data.
+ * @cfg {Boolean} closable (true|false) default false
  * @constructor
  * Creates a new Display Field item.
  * @param {Object} config Configuration options
@@ -48,13 +49,16 @@
      */
      
  //   defaultAutoCreate : { tag: 'input', type: 'hidden', autocomplete: 'off'},
-
+ 
+    </span><span class="jsdoc-var">closable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
     </span><span class="jsdoc-var">onResize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-var">Roo.form.DisplayField.superclass.onResize.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
         
     },
 
     </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'initEvents!!!!!!!!!!!!!!!!!!!!!!????????????????????????'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">// Roo.form.Checkbox.superclass.initEvents.call(this);
         // has no events...
        
@@ -77,6 +81,10 @@
         </span><span class="jsdoc-var">this.wrap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.wrap</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-var">this.viewEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.wrap.createChild</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-form-displayfield'</span><span class="jsdoc-syntax">});
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.closable</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.closeEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.wrap.createChild</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-dlg-close'</span><span class="jsdoc-syntax">});
+        }
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bodyStyle</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.viewEl.applyStyles</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bodyStyle</span><span class="jsdoc-syntax">);
