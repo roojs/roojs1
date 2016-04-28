@@ -122,5 +122,12 @@ Roo.extend(Roo.form.DisplayField, Roo.form.TextField,  {
         this.viewEl.dom.innerHTML = html;
         Roo.form.DisplayField.superclass.setValue.call(this, v);
 
+    },
+    
+    onClose : function(e)
+    {
+        e.preventDefault();
+        
+        this.fireEvent('close', this);
     }
 });
