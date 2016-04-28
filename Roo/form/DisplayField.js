@@ -12,6 +12,7 @@
  * @class Roo.form.DisplayField
  * @extends Roo.form.Field
  * A generic Field to display non-editable data.
+ * @cfg {Boolean} closable (true|false) default false
  * @constructor
  * Creates a new Display Field item.
  * @param {Object} config Configuration options
