@@ -17,6 +17,8 @@
  * @cfg {String} invalidClass default "text-danger fa fa-lg fa-exclamation-triangle"
  * @cfg {String} validClass default "text-success fa fa-lg fa-check"
  * @cfg {String} iconTooltip default "This field is required"
+ * @cfg {Boolean} hideValidIcon (true|false) default false
+ * @cfg {Boolean} hideInvalidIcon (true|false) default false
  * 
  * @constructor
  * Create a new FieldLabel
@@ -53,6 +55,8 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
     invalidClass : 'text-danger fa fa-lg fa-exclamation-triangle',
     validClass : 'text-success fa fa-lg fa-check',
     iconTooltip : 'This field is required',
+    hideValidIcon : false,
+    hideInvalidIcon : false,
     
     getAutoCreate : function(){
         
