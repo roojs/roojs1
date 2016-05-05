@@ -2183,6 +2183,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             }
         }
         
+        if(!this.editable){
+            this.setEditable(false);
+        }
+        
         return;
         
         
