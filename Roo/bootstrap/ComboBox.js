@@ -2557,7 +2557,7 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
             {
                 tag: 'div',
                 cls: 'modal-dialog',
-                style : 'position:fixed', // we have to fix position....
+//                style : 'position:fixed', // we have to fix position....
                 cn: [
                     {
                         tag: 'div',
