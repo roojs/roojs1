@@ -2184,6 +2184,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             }
         }
         
+        this.inputEl().on("focus", function(){}, this);
         
         return;
         
