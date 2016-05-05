@@ -2183,7 +2183,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 close.on('click', this.removeBtnClick, this, close);
             }
         }
-        
+        /*
+         * fix the bug in Safari iOS8
+         */
         this.inputEl().on("focus", function(e){
             document.activeElement.blur();
         }, this);
