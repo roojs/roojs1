@@ -2199,7 +2199,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         this.touchViewEl = Roo.get(document.body).createChild(Roo.bootstrap.ComboBox.touchViewTemplate);
         this.touchViewEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-        this.touchViewEl.hide();
         
         this.touchViewHeaderEl = this.touchViewEl.select('.modal-header', true).first();
         this.touchViewHeaderEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
