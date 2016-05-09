@@ -13648,6 +13648,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     showTouchView : function()
     {
+        if(this.disabled){
+            return;
+        }
+        
         this.touchViewHeaderEl.hide();
 
         if(this.fieldLabel.length){
