@@ -2218,6 +2218,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     showTouchView : function()
     {
         if(this.disabled){
+            alert('disabled???');
             return;
         }
         
