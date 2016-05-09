@@ -2142,10 +2142,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     initTouchView : function()
     {
-        if(this.disabled){
-            
-            return;
-        }
         this.renderTouchView();
         
         this.touchViewEl.on('scroll', function(){
