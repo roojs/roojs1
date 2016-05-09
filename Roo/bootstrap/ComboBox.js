@@ -2148,13 +2148,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.el.dom.scrollTop = 0;
         }, this);
         
-        /*
-         * fix the bug in Safari iOS8
-         */
-        this.inputEl().on("focus", function(e){
-            document.activeElement.blur();
-        }, this);
-        
         this.inputEl().on("click", this.showTouchView, this);
         
         this.touchViewFooterEl.select('.roo-touch-view-cancel', true).first().on('click', this.hideTouchView, this);
@@ -2190,8 +2183,15 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 close.on('click', this.removeBtnClick, this, close);
             }
         }
+        /*
+         * fix the bug in Safari iOS8
+         */
+        this.inputEl().on("focus", function(e){
+            document.activeElement.blur();
+        }, this);
         
         return;
+        
         
     },
     
