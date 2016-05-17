@@ -322,7 +322,6 @@ panel.load({
     },
     
     setSize : function(width, height){
-        Roo.log('set???');
         if(this.fitToFrame && !this.ignoreResize(width, height)){
             if(this.fitContainer && this.resizeEl != this.el){
                 this.el.setSize(width, height);
