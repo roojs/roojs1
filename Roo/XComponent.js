@@ -238,7 +238,8 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                  })
             }
         }
-        
+        Roo.log('parent el');
+        Roo.log(this.parent.el);
         if (!this.parent.el) {
                 // probably an old style ctor, which has been disabled.
                 return;
