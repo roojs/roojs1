@@ -300,6 +300,7 @@ panel.load({
         if(this.resizeEl != this.el){
             width -= this.el.getFrameWidth('lr');
             height -= this.el.getFrameWidth('tb');
+            Roo.log([width, height]);
         }
         if(this.toolbar){
             var te = this.toolbar.getEl();
