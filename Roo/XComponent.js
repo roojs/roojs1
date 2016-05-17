@@ -163,6 +163,8 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
     {
         Roo.log('render?????');
         Roo.log(el);
+        Roo.log('parent el');
+        Roo.log(this.parent.el);
         el = el || false;
         var hp = this.parent ? 1 : 0;
         Roo.debug &&  Roo.log(this);
