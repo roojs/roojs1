@@ -296,6 +296,7 @@ panel.load({
     adjustForComponents : function(width, height)
     {
         Roo.log('adjustForComponents ');
+        Roo.log([width, height]);
         if(this.resizeEl != this.el){
             width -= this.el.getFrameWidth('lr');
             height -= this.el.getFrameWidth('tb');
