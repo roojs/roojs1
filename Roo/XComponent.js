@@ -161,10 +161,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
     
     render : function(el)
     {
-        Roo.log('render?????');
-        Roo.log(el);
-        Roo.log('parent el');
-        Roo.log(this.parent.el);
+        
         el = el || false;
         var hp = this.parent ? 1 : 0;
         Roo.debug &&  Roo.log(this);
@@ -204,8 +201,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
         Roo.debug && Roo.log(this.parent.el);
         
         var tree = this._tree ? this._tree() : this.tree();
-        Roo.log('tree??');
-        Roo.log(tree);
+
         // altertive root elements ??? - we need a better way to indicate these.
         var is_alt = (typeof(Roo.bootstrap) != 'undefined' && tree.xns == Roo.bootstrap) ||
                         (typeof(Roo.mailer) != 'undefined' && tree.xns == Roo.mailer) ;
@@ -240,8 +236,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                  })
             }
         }
-        Roo.log('parent el');
-        Roo.log(this.parent.el);
+        
         if (!this.parent.el) {
                 // probably an old style ctor, which has been disabled.
                 return;
