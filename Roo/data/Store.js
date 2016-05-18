@@ -411,7 +411,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
                 this.data = this.snapshot;
                 delete this.snapshot;
             }
-            Roo.log(r);
+            Roo.log(r);return;
             this.data.clear();
             this.data.addAll(r);
             this.totalLength = t;
