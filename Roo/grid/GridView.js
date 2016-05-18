@@ -878,6 +878,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
     // branch this function
     doRender : Roo.isGecko ?
             function(cs, rs, ds, startRow, colCount, stripe){
+                Roo.log('run??');
                 var ts = this.templates, ct = ts.cell, rt = ts.row;
                 // buffers
                 var buf = "", lbuf = "", cb, lcb, c, p = {}, rp = {}, r, rowIndex;
