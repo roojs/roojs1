@@ -86,7 +86,7 @@ Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
         if(!o) {
             throw {message: "JsonReader.read: Json object not found"};
         }
-        
+        Roo.log(o);
         if(o.metaData){
             
             delete this.ef;
