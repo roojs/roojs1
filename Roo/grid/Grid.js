@@ -56,7 +56,7 @@ Roo.grid.Grid = function(container, config){
     }
     if(this.cm){
         this.colModel = this.cm;
-        print_R(this.colModel);
+        Roo.log(this.colModel);
         delete this.cm;
     }
     if(this.sm){
