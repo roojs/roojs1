@@ -125,7 +125,6 @@ Roo.extend(Roo.data.HttpProxy, Roo.data.DataProxy, {
             o.request.callback.call(o.request.scope, null, o.request.arg, false);
             return;
         }
-        Roo.log(response);
         var result;
         try {
             result = o.reader.read(response);
