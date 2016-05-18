@@ -407,7 +407,6 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             for(var i = 0, len = r.length; i < len; i++){
                 r[i].join(this);
             }
-            Roo.log(this.snapshot);
             if(this.snapshot){
                 this.data = this.snapshot;
                 delete this.snapshot;
