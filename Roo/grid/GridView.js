@@ -866,6 +866,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
 
         // records to render
         var rs = ds.getRange(startRow, endRow);
+        Roo.log(rs);
 
         return this.doRender(cs, rs, ds, startRow, colCount, stripe);
     },
