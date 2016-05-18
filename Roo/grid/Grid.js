@@ -54,6 +54,9 @@ Roo.grid.Grid = function(container, config){
         this.dataSource = this.ds;
         delete this.ds;
     }
+    Roo.log(this.cm);
+    return;
+    
     if(this.cm){
         this.colModel = this.cm;
         delete this.cm;
