@@ -865,7 +865,6 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         endRow = typeof endRow == "undefined"? ds.getCount()-1 : endRow;
 
         // records to render
-        Roo.log([startRow, endRow]);
         var rs = ds.getRange(startRow, endRow);
 
         return this.doRender(cs, rs, ds, startRow, colCount, stripe);
