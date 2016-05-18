@@ -853,15 +853,12 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         var cs = [];
         for(var i = 0; i < colCount; i++){
             var name = cm.getDataIndex(i);
-            Roo.log(name);
-            Roo.log(ds);
             cs[i] = {
                 name : typeof name == 'undefined' ? ds.fields.get(i).name : name,
                 renderer : cm.getRenderer(i),
                 id : cm.getColumnId(i),
                 locked : cm.isLocked(i)
             };
-            Roo.log(cs[i]);
         }
 
         startRow = startRow || 0;
@@ -878,7 +875,6 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
     // branch this function
     doRender : Roo.isGecko ?
             function(cs, rs, ds, startRow, colCount, stripe){
-                Roo.log('run??');
                 var ts = this.templates, ct = ts.cell, rt = ts.row;
                 // buffers
                 var buf = "", lbuf = "", cb, lcb, c, p = {}, rp = {}, r, rowIndex;
