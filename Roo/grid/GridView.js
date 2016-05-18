@@ -935,7 +935,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 // buffers
                 var buf = [], lbuf = [], cb, lcb, c, p = {}, rp = {}, r, rowIndex;
                 var hasListener = this.grid.hasListener('rowclass');
- 
+                Roo.log(r.data);
                 var rowcfg = {};
                 for(var j = 0, len = rs.length; j < len; j++){
                     r = rs[j]; cb = []; lcb = []; rowIndex = (j+startRow);
