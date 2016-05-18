@@ -861,6 +861,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 id : cm.getColumnId(i),
                 locked : cm.isLocked(i)
             };
+            Roo.log(cs[i]);
         }
 
         startRow = startRow || 0;
