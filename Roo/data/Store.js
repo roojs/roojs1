@@ -397,7 +397,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             return;
         }
         var r = o.records, t = o.totalRecords || r.length;
-        Roo.log(r);return;
+        
         this.fireEvent("beforeloadadd", this, r, options, o);
         
         if(!options || options.add !== true){
