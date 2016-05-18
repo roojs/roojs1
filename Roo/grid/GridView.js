@@ -853,6 +853,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         var cs = [];
         for(var i = 0; i < colCount; i++){
             var name = cm.getDataIndex(i);
+            Roo.log(name);
             cs[i] = {
                 name : typeof name == 'undefined' ? ds.fields.get(i).name : name,
                 renderer : cm.getRenderer(i),
