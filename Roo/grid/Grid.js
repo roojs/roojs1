@@ -62,7 +62,7 @@ Roo.grid.Grid = function(container, config){
         this.selModel = this.sm;
         delete this.sm;
     }
-    Roo.log(this.colModel);return;
+
     if (this.selModel) {
         this.selModel = Roo.factory(this.selModel, Roo.grid);
         this.sm = this.selModel;
