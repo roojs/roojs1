@@ -835,7 +835,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
 
     handleWheel : function(e){
         Roo.log('calling handle Wheel???????????????????');
-        Roo.log(this.handleWheel);
+        Roo.log(this.handleWheel());
         var d = e.getWheelDelta();
         this.scroller.dom.scrollTop -= d*22;
         // set this here to prevent jumpy scrolling on large tables
@@ -1461,7 +1461,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         },this);
 
         this.scroller.on("scroll", this.handleScroll, this);
-        Roo.log(this.handleWheel);
+        
         this.lockedBody.on("mousewheel", this.handleWheel, this);
         this.mainBody.on("mousewheel", this.handleWheel, this);
 
