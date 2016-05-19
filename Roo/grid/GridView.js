@@ -826,22 +826,19 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
     },
 
     handleScroll : function(e){
-        Roo.log('calling herer??????');
         this.syncScroll();
         var sb = this.scroller.dom;
         this.grid.fireEvent("bodyscroll", sb.scrollLeft, sb.scrollTop);
         e.stopEvent();
     },
 
-//    handleWheel : function(e){
-//        Roo.log('calling handle Wheel???????????????????');
-//        Roo.log(this.handleWheel());
-//        var d = e.getWheelDelta();
-//        this.scroller.dom.scrollTop -= d*22;
-//        // set this here to prevent jumpy scrolling on large tables
-//        this.lockedBody.dom.scrollTop = this.mainBody.dom.scrollTop = this.scroller.dom.scrollTop;
-//        e.stopEvent();
-//    },
+    handleWheel : function(e){
+        var d = e.getWheelDelta();
+        this.scroller.dom.scrollTop -= d*22;
+        // set this here to prevent jumpy scrolling on large tables
+        this.lockedBody.dom.scrollTop = this.mainBody.dom.scrollTop = this.scroller.dom.scrollTop;
+        e.stopEvent();
+    },
 
     renderRows : function(startRow, endRow){
         // pull in all the crap needed to render rows
@@ -1461,7 +1458,6 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         },this);
 
         this.scroller.on("scroll", this.handleScroll, this);
-        
         this.lockedBody.on("mousewheel", this.handleWheel, this);
         this.mainBody.on("mousewheel", this.handleWheel, this);
 
