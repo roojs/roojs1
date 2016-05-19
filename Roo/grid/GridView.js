@@ -1592,9 +1592,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 expandCol = g.autoExpandColumn,
                 gv = this;
         //c.beginMeasure();
-        Roo.log('calling layout????');
-        Roo.log(g);
-        Roo.log(expandCol);
+
         if(!c.dom.offsetWidth){ // display:none?
             if(initialRender){
                 this.lockedWrap.show();
@@ -1665,7 +1663,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
 
             if(is2ndPass !== true && !gv.userResized && expandCol){
                 // high speed resize without full column calculation
-                Roo.log('in????');
+                
                 var ci = cm.getIndexById(expandCol);
                 if (ci < 0) {
                     ci = cm.findColumnIndex(expandCol);
@@ -1675,7 +1673,6 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 var  tw = cm.getTotalWidth(false);
                 var currentWidth = cm.getColumnWidth(ci);
                 var cw = Math.min(Math.max(((w-tw)+currentWidth-2)-/*scrollbar*/(w <= s.dom.offsetWidth ? 0 : 18), g.autoExpandMin), g.autoExpandMax);
-                Roo.log([currentWidth, cw]);
                 if(currentWidth != cw){
                     cm.setColumnWidth(ci, cw, true);
                     gv.css.updateRule(gv.colSelector+gv.idToCssName(expandId), "width", (cw - gv.borderWidth) + "px");
