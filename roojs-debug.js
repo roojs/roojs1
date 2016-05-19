@@ -314,7 +314,7 @@ Roo.factory(conf, Roo.data);
                 return c;
             }
             if (ns[c.xtype]) {
-                if (Roo.debug) Roo.log("Roo.Factory(" + c.xtype + ")");
+                if (Roo.debug) { Roo.log("Roo.Factory(" + c.xtype + ")"); }
                 var ret = new ns[c.xtype](c);
                 ret.xns = false;
                 return ret;
@@ -941,7 +941,7 @@ Roo.applyIf(Array.prototype, {
      */
     indexOf : function(o){
        for (var i = 0, len = this.length; i < len; i++){
- 	      if(this[i] == o) return i;
+ 	      if(this[i] == o) { return i; }
        }
  	   return -1;
     },
@@ -963,15 +963,16 @@ Roo.applyIf(Array.prototype, {
     map : function(fun )
     {
         var len = this.length >>> 0;
-        if (typeof fun != "function")
+        if (typeof fun != "function") {
             throw new TypeError();
-
+        }
         var res = new Array(len);
         var thisp = arguments[1];
         for (var i = 0; i < len; i++)
         {
-            if (i in this)
+            if (i in this) {
                 res[i] = fun.call(thisp, this[i], i, this);
+            }
         }
 
         return res;
@@ -980,7 +981,8 @@ Roo.applyIf(Array.prototype, {
 });
 
 
- /*
+ 
+/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -1757,7 +1759,7 @@ document.write(dt3); //returns 'Fri Oct 06 2006 07:30:00'
  */
 Date.prototype.add = function(interval, value){
   var d = this.clone();
-  if (!interval || value === 0) return d;
+  if (!interval || value === 0) { return d; }
   switch(interval.toLowerCase()){
     case Date.MILLI:
       d.setMilliseconds(this.getMilliseconds() + value);
@@ -4151,7 +4153,7 @@ Roo.DomHelper = function(){
         }
         b += "<" + o.tag;
         for(var attr in o){
-            if(attr == "tag" || attr == "children" || attr == "cn" || attr == "html" || typeof o[attr] == "function") continue;
+            if(attr == "tag" || attr == "children" || attr == "cn" || attr == "html" || typeof o[attr] == "function") { continue; }
             if(attr == "style"){
                 var s = o["style"];
                 if(typeof s == "function"){
@@ -4234,7 +4236,7 @@ Roo.DomHelper = function(){
         for(var attr in o){
             
             if(attr == "tag" || attr == "ns" ||attr == "xmlns" ||attr == "children" || attr == "cn" || attr == "html" || 
-                    attr == "style" || typeof o[attr] == "function") continue;
+                    attr == "style" || typeof o[attr] == "function") { continue; }
                     
             if(attr=="cls" && Roo.isIE){
                 el.className = o["cls"];
@@ -7066,7 +7068,7 @@ if(opt.anim.isAnimated()){
          */
         enableDisplayMode : function(display){
             this.setVisibilityMode(El.DISPLAY);
-            if(typeof display != "undefined") this.originalDisplay = display;
+            if(typeof display != "undefined") { this.originalDisplay = display; }
             return this;
         },
 
@@ -7287,7 +7289,7 @@ if(opt.anim.isAnimated()){
                     this.setHeight(oldHeight); // restore original height
                     this.setHeight(height, animate, duration, function(){
                         this.unclip();
-                        if(typeof onComplete == "function") onComplete();
+                        if(typeof onComplete == "function") { onComplete(); }
                     }.createDelegate(this), easing);
                 }
             }.createDelegate(this), 0);
@@ -9385,12 +9387,15 @@ if(opt.anim.isAnimated()){
             var el = this.dom;
             useSet = typeof useSet == 'undefined' ? (el.setAttribute ? true : false) : useSet;
             for(var attr in o){
-                if(attr == "style" || typeof o[attr] == "function") continue;
+                if(attr == "style" || typeof o[attr] == "function")  { continue; }
                 if(attr=="cls"){
                     el.className = o["cls"];
                 }else{
-                    if(useSet) el.setAttribute(attr, o[attr]);
-                    else el[attr] = o[attr];
+                    if(useSet) {
+                        el.setAttribute(attr, o[attr]);
+                    } else {
+                        el[attr] = o[attr];
+                    }
                 }
             }
             if(o.style){
@@ -10998,7 +11003,9 @@ Roo.CompositeElement = function(els){
 Roo.CompositeElement.prototype = {
     isComposite: true,
     addElements : function(els){
-        if(!els) return this;
+        if(!els) {
+            return this;
+        }
         if(typeof els == "string"){
             els = Roo.Element.selectorFunction(els);
         }
@@ -13089,7 +13096,9 @@ mc.add(otherEl);
     indexOf : function(o){
         if(!this.items.indexOf){
             for(var i = 0, len = this.items.length; i < len; i++){
-                if(this.items[i] == o) return i;
+                if(this.items[i] == o) {
+                    return i;
+                }
             }
             return -1;
         }else{
@@ -13105,7 +13114,9 @@ mc.add(otherEl);
     indexOfKey : function(key){
         if(!this.keys.indexOf){
             for(var i = 0, len = this.keys.length; i < len; i++){
-                if(this.keys[i] == key) return i;
+                if(this.keys[i] == key) {
+                    return i;
+                }
             }
             return -1;
         }else{
@@ -14804,7 +14815,9 @@ Roo.extend(Roo.state.Provider, Roo.util.Observable, {
     decodeValue : function(cookie){
         var re = /^(a|n|d|b|s|o)\:(.*)$/;
         var matches = re.exec(unescape(cookie));
-        if(!matches || !matches[1]) return; // non state cookie
+        if(!matches || !matches[1]) {
+            return; // non state cookie
+        }
         var type = matches[1];
         var v = matches[2];
         switch(type){
@@ -14851,7 +14864,9 @@ Roo.extend(Roo.state.Provider, Roo.util.Observable, {
             var flat = "";
             for(var i = 0, len = v.length; i < len; i++){
                 flat += this.encodeValue(v[i]);
-                if(i != len-1) flat += "^";
+                if(i != len-1) {
+                    flat += "^";
+                }
             }
             enc = "a:" + flat;
         }else if(typeof v == "object"){
