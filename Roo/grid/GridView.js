@@ -1675,6 +1675,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 var  tw = cm.getTotalWidth(false);
                 var currentWidth = cm.getColumnWidth(ci);
                 var cw = Math.min(Math.max(((w-tw)+currentWidth-2)-/*scrollbar*/(w <= s.dom.offsetWidth ? 0 : 18), g.autoExpandMin), g.autoExpandMax);
+                Roo.log([currentWidth, cw]);
                 if(currentWidth != cw){
                     cm.setColumnWidth(ci, cw, true);
                     gv.css.updateRule(gv.colSelector+gv.idToCssName(expandId), "width", (cw - gv.borderWidth) + "px");
