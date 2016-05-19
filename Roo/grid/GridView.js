@@ -1665,7 +1665,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
 
             if(is2ndPass !== true && !gv.userResized && expandCol){
                 // high speed resize without full column calculation
-                
+                Roo.log('in????');
                 var ci = cm.getIndexById(expandCol);
                 if (ci < 0) {
                     ci = cm.findColumnIndex(expandCol);
