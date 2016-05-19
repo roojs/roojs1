@@ -980,6 +980,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                         this.grid.fireEvent('rowclass', this, rowcfg);
                         alt.push(rowcfg.rowClass);
                     }
+                    Roo.log(alt);
                     rp.alt = alt.join(" ");
                     rp.cells = lcb.join("");
                     lbuf[lbuf.length] = rt.apply(rp);
