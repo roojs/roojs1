@@ -826,6 +826,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
     },
 
     handleScroll : function(e){
+        Roo.log('calling herer??????');
         this.syncScroll();
         var sb = this.scroller.dom;
         this.grid.fireEvent("bodyscroll", sb.scrollLeft, sb.scrollTop);
