@@ -833,15 +833,15 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         e.stopEvent();
     },
 
-    handleWheel : function(e){
-        Roo.log('calling handle Wheel???????????????????');
-        Roo.log(this.handleWheel());
-        var d = e.getWheelDelta();
-        this.scroller.dom.scrollTop -= d*22;
-        // set this here to prevent jumpy scrolling on large tables
-        this.lockedBody.dom.scrollTop = this.mainBody.dom.scrollTop = this.scroller.dom.scrollTop;
-        e.stopEvent();
-    },
+//    handleWheel : function(e){
+//        Roo.log('calling handle Wheel???????????????????');
+//        Roo.log(this.handleWheel());
+//        var d = e.getWheelDelta();
+//        this.scroller.dom.scrollTop -= d*22;
+//        // set this here to prevent jumpy scrolling on large tables
+//        this.lockedBody.dom.scrollTop = this.mainBody.dom.scrollTop = this.scroller.dom.scrollTop;
+//        e.stopEvent();
+//    },
 
     renderRows : function(startRow, endRow){
         // pull in all the crap needed to render rows
