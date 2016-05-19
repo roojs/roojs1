@@ -1461,7 +1461,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         },this);
 
         this.scroller.on("scroll", this.handleScroll, this);
-        
+        Roo.log(this.handleWheel);
         this.lockedBody.on("mousewheel", this.handleWheel, this);
         this.mainBody.on("mousewheel", this.handleWheel, this);
 
