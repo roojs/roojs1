@@ -835,6 +835,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
 
     handleWheel : function(e){
         Roo.log('calling handle Wheel???????????????????');
+        Roo.log(this);
         var d = e.getWheelDelta();
         this.scroller.dom.scrollTop -= d*22;
         // set this here to prevent jumpy scrolling on large tables
