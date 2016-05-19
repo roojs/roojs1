@@ -1593,6 +1593,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 gv = this;
         //c.beginMeasure();
         Roo.log('calling layout????');
+        Roo.log(expandCol);
         if(!c.dom.offsetWidth){ // display:none?
             if(initialRender){
                 this.lockedWrap.show();
