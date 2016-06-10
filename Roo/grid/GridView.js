@@ -892,7 +892,10 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                         if(p.value == undefined || p.value === "") {
                             p.value = "&#160;";
                         }
-                        if(r.dirty && typeof r.modified[c.name] !== 'undefined'){
+                        if(r.editor){
+                            p.css += 'x-grid-editable-cell';
+                        }
+                        if(c.dirty && typeof r.modified[c.name] !== 'undefined'){
                             p.css += p.css ? ' x-grid-dirty-cell' : 'x-grid-dirty-cell';
                         }
                         var markup = ct.apply(p);
