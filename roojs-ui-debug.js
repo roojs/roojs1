@@ -37922,6 +37922,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                         if(p.value == undefined || p.value === "") {
                             p.value = "&#160;";
                         }
+                        Roo.log(c);
                          if(c.editor){
                             Roo.log("adding editable celel css");
                             p.css += ' x-grid-editable-cell';
