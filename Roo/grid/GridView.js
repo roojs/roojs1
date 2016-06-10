@@ -857,7 +857,8 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 name : typeof name == 'undefined' ? ds.fields.get(i).name : name,
                 renderer : cm.getRenderer(i),
                 id : cm.getColumnId(i),
-                locked : cm.isLocked(i)
+                locked : cm.isLocked(i),
+                has_editor : cm.editor ? true : false
             };
         }
 
