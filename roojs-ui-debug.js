@@ -37827,7 +37827,8 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 name : typeof name == 'undefined' ? ds.fields.get(i).name : name,
                 renderer : cm.getRenderer(i),
                 id : cm.getColumnId(i),
-                locked : cm.isLocked(i)
+                locked : cm.isLocked(i),
+                has_editor : cm.editor ? true : false
             };
         }
 
@@ -37862,7 +37863,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                         if(p.value == undefined || p.value === "") {
                             p.value = "&#160;";
                         }
-                        if(c.editor){
+                        if(c.has_editor){
                             Roo.log("adding editable celel css");
                             p.css += ' x-grid-editable-cell';
                         }
@@ -37922,8 +37923,8 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                         if(p.value == undefined || p.value === "") {
                             p.value = "&#160;";
                         }
-                        Roo.log(c);
-                         if(c.editor){
+                        //Roo.log(c);
+                         if(c.has_editor){
                             Roo.log("adding editable celel css");
                             p.css += ' x-grid-editable-cell';
                         }
