@@ -454,7 +454,7 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
     /**
      * Returns true if the cell is editable.
      * @param {Number} colIndex The column index
-     * @param {Number} rowIndex The row index
+     * @param {Number} rowIndex The row index - this is nto actually used..?
      * @return {Boolean}
      */
     isCellEditable : function(colIndex, rowIndex){
