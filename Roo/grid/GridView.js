@@ -858,7 +858,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 renderer : cm.getRenderer(i),
                 id : cm.getColumnId(i),
                 locked : cm.isLocked(i),
-                has_editor : !!cm.editor  
+                has_editor : cm.isCellEditable (i)
             };
         }
 
