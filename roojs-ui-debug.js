@@ -37828,7 +37828,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 renderer : cm.getRenderer(i),
                 id : cm.getColumnId(i),
                 locked : cm.isLocked(i),
-                has_editor : cm.editor ? true : false
+                has_editor : !!cm.editor  
             };
         }
 
@@ -37923,7 +37923,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                         if(p.value == undefined || p.value === "") {
                             p.value = "&#160;";
                         }
-                        //Roo.log(c);
+                        Roo.log(c);
                          if(c.has_editor){
                             Roo.log("adding editable celel css");
                             p.css += ' x-grid-editable-cell';
