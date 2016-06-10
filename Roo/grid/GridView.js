@@ -892,7 +892,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                         if(p.value == undefined || p.value === "") {
                             p.value = "&#160;";
                         }
-                        if(c.editor){
+                        if(c.has_editor){
                             Roo.log("adding editable celel css");
                             p.css += ' x-grid-editable-cell';
                         }
@@ -953,7 +953,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                             p.value = "&#160;";
                         }
                         Roo.log(c);
-                         if(c.editor){
+                         if(c.has_editor){
                             Roo.log("adding editable celel css");
                             p.css += ' x-grid-editable-cell';
                         }
