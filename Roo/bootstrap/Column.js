@@ -74,7 +74,7 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
             if (settings[size] === false) {
                 return;
             }
-            Roo.log(settings[size]);
+            
             if (!settings[size]) { // 0 = hidden
                 cfg.cls += ' hidden-' + size;
                 return;
