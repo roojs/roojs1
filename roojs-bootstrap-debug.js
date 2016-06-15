@@ -13579,6 +13579,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.el.dom.scrollTop = 0;
         }, this);
         
+        this.originalValue = this.getValue();
+        
         this.inputEl().on("click", this.showTouchView, this);
         
         this.touchViewFooterEl.select('.roo-touch-view-cancel', true).first().on('click', this.hideTouchView, this);
