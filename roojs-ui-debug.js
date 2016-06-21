@@ -30280,7 +30280,7 @@ Roo.form.VTypes = function(){
     // closure these in so they are only created once.
     var alpha = /^[a-zA-Z_]+$/;
     var alphanum = /^[a-zA-Z0-9_]+$/;
-    var email = /^([\w]+)(.[\w]+)*@([\w-]+\.){1,5}([A-Za-z]){2,4}$/;
+    var email = /^([\w]+)(.[\w]+)*@([\w-]+\.){1,5}([A-Za-z]){2,24}$/;
     var url = /(((https?)|(ftp)):\/\/([\-\w]+\.)+\w{2,3}(\/[%\-\w]+(\.\w{2,})?)*(([\w\-\.\?\\\/+@&#;`~=%!]*)(\.\w{2,})?)*\/?)/i;
 
     // All these messages and functions are configurable
@@ -37864,7 +37864,6 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                             p.value = "&#160;";
                         }
                         if(c.has_editor){
-                            Roo.log("adding editable celel css");
                             p.css += ' x-grid-editable-cell';
                         }
                         if(c.dirty && typeof r.modified[c.name] !== 'undefined'){
@@ -37925,7 +37924,6 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                         }
                         //Roo.log(c);
                          if(c.has_editor){
-                            Roo.log("adding editable celel css");
                             p.css += ' x-grid-editable-cell';
                         }
                         if(r.dirty && typeof r.modified[c.name] !== 'undefined'){
@@ -37960,7 +37958,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                         this.grid.fireEvent('rowclass', this, rowcfg);
                         alt.push(rowcfg.rowClass);
                     }
-                    Roo.log(alt);
+                    
                     rp.alt = alt.join(" ");
                     rp.cells = lcb.join("");
                     lbuf[lbuf.length] = rt.apply(rp);
