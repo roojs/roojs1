@@ -349,6 +349,8 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             if (!this.reader.metaFromRemote) {
                 p._requestMeta = 1;
             }
+            Roo.log('store????');
+            Roo.log(p);
             if(this.sortInfo && this.remoteSort){
                 var pn = this.paramNames;
                 p[pn["sort"]] = this.sortInfo.field;
