@@ -350,7 +350,8 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
                 p._requestMeta = 1;
             }
             Roo.log('store????');
-            Roo.log(p);
+            Roo.log(this.sortInfo);
+            Roo.log(this.remoteSort);
             if(this.sortInfo && this.remoteSort){
                 var pn = this.paramNames;
                 p[pn["sort"]] = this.sortInfo.field;
