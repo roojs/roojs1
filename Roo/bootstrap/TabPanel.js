@@ -74,8 +74,6 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
     
     initEvents:  function()
     {
-        Roo.log('-------- init events on tab panel ---------');
-        
         var p = this.parent();
         this.navId = this.navId || p.navId;
         
