@@ -7575,7 +7575,7 @@ Roo.form.VTypes = function(){
     // closure these in so they are only created once.
     var alpha = /^[a-zA-Z_]+$/;
     var alphanum = /^[a-zA-Z0-9_]+$/;
-    var email = /^([\w]+)(.[\w]+)*@([\w-]+\.){1,5}([A-Za-z]){2,4}$/;
+    var email = /^([\w]+)(.[\w]+)*@([\w-]+\.){1,5}([A-Za-z]){2,24}$/;
     var url = /(((https?)|(ftp)):\/\/([\-\w]+\.)+\w{2,3}(\/[%\-\w]+(\.\w{2,})?)*(([\w\-\.\?\\\/+@&#;`~=%!]*)(\.\w{2,})?)*\/?)/i;
 
     // All these messages and functions are configurable
@@ -16102,10 +16102,6 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     {
         Roo.log('-------- init events on tab group ---------');
         
-        
-        
-        Roo.log(this);
-        
         if(Roo.isTouch && this.slideOnTouch){
             this.el.on("touchstart", this.onTouchStart, this);
         }
@@ -16458,7 +16454,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         if (typeof(this.navId) != 'undefined') {
             // not really needed.. but just in case.. parent should be a NavGroup.
             var tg = Roo.bootstrap.TabGroup.get(this.navId);
-            Roo.log(['register', tg, this]);
+            
             tg.register(this);
             
             var i = tg.tabs.length - 1;
