@@ -99,7 +99,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             }
             //Roo.log("adding to ");
             this.el = Roo.get(document.body).createChild(cfg, position);
-            Roo.log(this.el);
+//            Roo.log(this.el);
         }
         this.initEvents();
     },
