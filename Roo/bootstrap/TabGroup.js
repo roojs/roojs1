@@ -88,10 +88,6 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     {
         Roo.log('-------- init events on tab group ---------');
         
-        
-        
-        Roo.log(this);
-        
         if(Roo.isTouch && this.slideOnTouch){
             this.el.on("touchstart", this.onTouchStart, this);
         }
