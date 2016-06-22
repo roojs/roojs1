@@ -9051,7 +9051,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         };
         
         if(this.multiple){
-            Roo.log('multiple');
+//            Roo.log('multiple');
             
             box = {
                 tag: 'div',
@@ -9131,7 +9131,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         
         if (align ==='left' && this.fieldLabel.length) {
             
-                Roo.log("left and has label");
+//                Roo.log("left and has label");
                 cfg.cn = [
                     
                     {
@@ -9150,7 +9150,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                     
                 ];
         } else if ( this.fieldLabel.length) {
-                Roo.log(" label");
+//                Roo.log(" label");
                  cfg.cn = [
                    
                     {
@@ -9166,7 +9166,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
 
         } else {
             
-                Roo.log(" no label && no align");
+//                Roo.log(" no label && no align");
                 cfg = combobox
                      
                 
@@ -16098,8 +16098,6 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
     initEvents:  function()
     {
-        Roo.log('-------- init events on tab group ---------');
-        
         if(Roo.isTouch && this.slideOnTouch){
             this.el.on("touchstart", this.onTouchStart, this);
         }
@@ -16444,8 +16442,6 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
     
     initEvents:  function()
     {
-        Roo.log('-------- init events on tab panel ---------');
-        
         var p = this.parent();
         this.navId = this.navId || p.navId;
         
