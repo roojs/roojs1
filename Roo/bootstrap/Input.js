@@ -327,7 +327,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             }
             if (this.before && typeof(this.before) == 'object') {
                 this.before = Roo.factory(this.before);
-                Roo.log(this.before);
+                
                 inputblock.cn.push({
                     tag :'span',
                     cls : 'roo-input-before input-group-' +
@@ -346,7 +346,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             }
             if (this.after && typeof(this.after) == 'object') {
                 this.after = Roo.factory(this.after);
-                Roo.log(this.after);
+                
                 inputblock.cn.push({
                     tag :'span',
                     cls : 'roo-input-after input-group-' +
@@ -361,7 +361,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         };
         
         if (align ==='left' && this.fieldLabel.length) {
-                Roo.log("left and has label");
+                
                 cfg.cn = [
                     
                     {
@@ -380,7 +380,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                     
                 ];
         } else if ( this.fieldLabel.length) {
-                Roo.log(" label");
+                
                  cfg.cn = [
                    
                     {
@@ -396,20 +396,17 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
 
         } else {
             
-                Roo.log(" no label && no align");
                 cfg.cn = [
                     
                         inputblock
                     
                 ];
                 
-                
         };
-        Roo.log('input-parentType: ' + this.parentType);
+        
         
         if (this.parentType === 'Navbar' &&  this.parent().bar) {
            cfg.cls += ' navbar-form';
-           Roo.log(cfg);
         }
         
         return cfg;
