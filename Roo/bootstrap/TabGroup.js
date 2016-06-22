@@ -47,8 +47,6 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
         cfg.cls += ' tab-content';
         
-        Roo.log('get auto create...............');
-        
         if (this.carousel) {
             cfg.cls += ' carousel slide';
             
