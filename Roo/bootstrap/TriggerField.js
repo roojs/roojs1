@@ -192,8 +192,6 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         };
         
         if(this.multiple){
-//            Roo.log('multiple');
-            
             box = {
                 tag: 'div',
                 cn: [
