@@ -15665,7 +15665,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     },
     
     getAutoCreate : function(){
-         Roo.log('make popover?');
+         
         var cfg = {
            cls : 'popover roo-dynamic',
            style: 'display:block',
@@ -15719,7 +15719,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             }
             //Roo.log("adding to ");
             this.el = Roo.get(document.body).createChild(cfg, position);
-            Roo.log(this.el);
+//            Roo.log(this.el);
         }
         this.initEvents();
     },
@@ -16060,8 +16060,6 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         var cfg = Roo.apply({}, Roo.bootstrap.TabGroup.superclass.getAutoCreate.call(this));
         
         cfg.cls += ' tab-content';
-        
-        Roo.log('get auto create...............');
         
         if (this.carousel) {
             cfg.cls += ' carousel slide';
