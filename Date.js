@@ -704,8 +704,8 @@ Date.prototype.clearTime = function(clone){
 };
 
 // private
-// safari setMonth is broken
-if(Roo.isSafari){
+// safari setMonth is broken -- check that this is only donw once...
+if(Roo.isSafari && typeof(Date.brokenSetMonth) == 'undefined'){
     Date.brokenSetMonth = Date.prototype.setMonth;
 	Date.prototype.setMonth = function(num){
 		if(num <= -1){
