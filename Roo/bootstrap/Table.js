@@ -576,7 +576,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     onLoad : function()
     {
-        Roo.log('ds onload');
+//        Roo.log('ds onload');
         this.clear();
         
         var _this = this;
