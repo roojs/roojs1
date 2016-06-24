@@ -130,7 +130,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         }
         
         if (align ==='left' && this.fieldLabel.length) {
-                Roo.log("left and has label");
+//                Roo.log("left and has label");
                 cfg.cn = [
                     
                     {
@@ -149,7 +149,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                     
                 ];
         } else if ( this.fieldLabel.length) {
-                Roo.log(" label");
+//                Roo.log(" label");
                 cfg.cn = [
                    
                     {
@@ -167,7 +167,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
 
         } else {
             
-                Roo.log(" no label && no align");
+//                Roo.log(" no label && no align");
                 cfg.cn = [  inputblock ] ;
                 
                 
