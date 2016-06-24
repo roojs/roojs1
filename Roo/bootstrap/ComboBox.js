@@ -449,7 +449,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if (align ==='left' && this.fieldLabel.length) {
             
-                Roo.log("left and has label");
+//                Roo.log("left and has label");
                 cfg.cn = [
                     
                     {
@@ -468,7 +468,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     
                 ];
         } else if ( this.fieldLabel.length) {
-                Roo.log(" label");
+//                Roo.log(" label");
                  cfg.cn = [
                    
                     {
@@ -484,7 +484,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
         } else {
             
-                Roo.log(" no label && no align");
+//                Roo.log(" no label && no align");
                 cfg = combobox
                      
                 
