@@ -101,6 +101,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
          
         
         var cfg = Roo.apply({},  this.getAutoCreate());
+        
         cfg.id = this.id || Roo.id();
         
         // fill in the extra attributes 
@@ -9048,8 +9049,6 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         };
         
         if(this.multiple){
-//            Roo.log('multiple');
-            
             box = {
                 tag: 'div',
                 cn: [
@@ -11877,7 +11876,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if (align ==='left' && this.fieldLabel.length) {
             
-                Roo.log("left and has label");
+//                Roo.log("left and has label");
                 cfg.cn = [
                     
                     {
@@ -11896,7 +11895,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     
                 ];
         } else if ( this.fieldLabel.length) {
-                Roo.log(" label");
+//                Roo.log(" label");
                  cfg.cn = [
                    
                     {
@@ -11912,7 +11911,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
         } else {
             
-                Roo.log(" no label && no align");
+//                Roo.log(" no label && no align");
                 cfg = combobox
                      
                 
