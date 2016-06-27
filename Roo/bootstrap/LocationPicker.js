@@ -168,12 +168,10 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     initEvents: function(ct, position)
     {       
-        Roo.log('initEvent');
         if(!this.el.getWidth() || this.isApplied()){
             return;
         }
         
-        Roo.log('start init');
         this.el.setVisibilityMode(Roo.Element.DISPLAY);
         
         this.initial();
