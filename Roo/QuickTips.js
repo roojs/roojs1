@@ -385,7 +385,7 @@ target      Element/String/Array   An Element, id or array of ids that this quic
 
         // private
        tagConfig : {
-           namespace : "ext",
+           namespace : "roo",
            attribute : "qtip",
            width : "width",
            target : "target",
