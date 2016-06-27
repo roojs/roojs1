@@ -44,7 +44,7 @@ Roo.QuickTips = function(){
             t.removeAttribute("title");
             e.preventDefault();
         }else{
-            ttp = t.qtip || et.getAttributeNS(ns, cfg.attribute);
+            ttp = t.qtip || et.getAttributeNS(ns, cfg.attribute) || et.getAttributeNS(cfg.alt_namespace, cfg.attribute) ;
         }
         if(ttp){
             showProc = show.defer(tm.showDelay, tm, [{
@@ -385,7 +385,8 @@ target      Element/String/Array   An Element, id or array of ids that this quic
 
         // private
        tagConfig : {
-           namespace : "roo",
+           namespace : "roo", // was ext?? this may break..
+           alt_namespace : "ext",
            attribute : "qtip",
            width : "width",
            target : "target",
