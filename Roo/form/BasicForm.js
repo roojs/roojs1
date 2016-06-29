@@ -151,7 +151,7 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
     },
 
     /**
-     * Returns true if any fields in this form have changed since their original load.
+     * DEPRICATED Returns true if any fields in this form have changed since their original load. 
      * @return Boolean
      */
     isDirty : function(){
@@ -164,7 +164,39 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
         });
         return dirty;
     },
-
+    
+    /**
+     * Returns true if any fields in this form have changed since their original load. (New version)
+     * @return Boolean
+     */
+    
+    hasChanged : function()
+    {
+        var dirty = false;
+        this.items.each(function(f){
+           if(f.hasChanged()){
+               dirty = true;
+               return false;
+           }
+        });
+        return dirty;
+        
+    },
+    /**
+     * Resets all hasChanged to 'false' -
+     * The old 'isDirty' used 'original value..' however this breaks reset() and a few other things.
+     * So hasChanged storage is only to be used for this purpose
+     * @return Boolean
+     */
+    resetHasChanged : function()
+    {
+        this.items.each(function(f){
+           f.resetHasChanged();
+        });
+        
+    },
+    
+    
     /**
      * Performs a predefined action (submit or load) or custom actions you define on this form.
      * @param {String} actionName The name of the action type
@@ -448,9 +480,12 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 }
             }
         }
-         
+        this.resetHasChanged();
+        
+        
         Roo.each(this.childForms || [], function (f) {
             f.setValues(values);
+            f.resetHasChanged();
         });
                 
         return this;

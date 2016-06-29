@@ -121,7 +121,10 @@ side          Add an error icon to the right of the field with a popup on hover
     /**
      * @cfg {String} cls A CSS class to apply to the field's underlying element.
      */
-
+    // private
+    loadedValue : false,
+     
+     
 	// private ??
 	initComponent : function(){
         Roo.form.Field.superclass.initComponent.call(this);
@@ -242,6 +245,7 @@ side          Add an error icon to the right of the field with a popup on hover
 
     /**
      * Returns true if this field has been changed since it was originally loaded and is not disabled.
+     * DEPRICATED  - it never worked well - use hasChanged/resetHasChanged.
      */
     isDirty : function() {
         if(this.disabled) {
@@ -250,6 +254,27 @@ side          Add an error icon to the right of the field with a popup on hover
         return String(this.getValue()) !== String(this.originalValue);
     },
 
+    /**
+     * stores the current value in loadedValue
+     */
+    resetHasChanged : function()
+    {
+        this.loadedValue = String(this.getValue());
+    },
+    /**
+     * checks the current value against the 'loaded' value.
+     * Note - will return false if 'resetHasChanged' has not been called first.
+     */
+    hasChanged : function()
+    {
+        if(this.disabled) {
+            return false;
+        }
+        return this.loadedValue !== false && String(this.getValue()) !== this.loadedValue;
+    },
+    
+    
+    
     // private
     afterRender : function(){
         Roo.form.Field.superclass.afterRender.call(this);
