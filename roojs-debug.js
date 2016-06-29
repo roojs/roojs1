@@ -45627,7 +45627,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         Roo.each(this.childForms || [], function (f) {
             f.reset();
         });
-       
+        this.resetHasChanged();
         
         return this;
     },
