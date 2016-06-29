@@ -20718,7 +20718,10 @@ side          Add an error icon to the right of the field with a popup on hover
     /**
      * @cfg {String} cls A CSS class to apply to the field's underlying element.
      */
-
+    // private
+    loadedValue : false,
+     
+     
 	// private ??
 	initComponent : function(){
         Roo.form.Field.superclass.initComponent.call(this);
@@ -20839,6 +20842,7 @@ side          Add an error icon to the right of the field with a popup on hover
 
     /**
      * Returns true if this field has been changed since it was originally loaded and is not disabled.
+     * DEPRICATED  - it never worked well - use hasChanged/resetHasChanged.
      */
     isDirty : function() {
         if(this.disabled) {
@@ -20847,6 +20851,27 @@ side          Add an error icon to the right of the field with a popup on hover
         return String(this.getValue()) !== String(this.originalValue);
     },
 
+    /**
+     * stores the current value in loadedValue
+     */
+    resetHasChanged : function()
+    {
+        this.loadedValue = String(this.getValue());
+    },
+    /**
+     * checks the current value against the 'loaded' value.
+     * Note - will return false if 'resetHasChanged' has not been called first.
+     */
+    hasChanged : function()
+    {
+        if(this.disabled) {
+            return false;
+        }
+        return this.loadedValue !== false && String(this.getValue()) !== this.loadedValue;
+    },
+    
+    
+    
     // private
     afterRender : function(){
         Roo.form.Field.superclass.afterRender.call(this);
@@ -28688,7 +28713,7 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
     },
 
     /**
-     * Returns true if any fields in this form have changed since their original load.
+     * DEPRICATED Returns true if any fields in this form have changed since their original load. 
      * @return Boolean
      */
     isDirty : function(){
@@ -28701,7 +28726,39 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
         });
         return dirty;
     },
-
+    
+    /**
+     * Returns true if any fields in this form have changed since their original load. (New version)
+     * @return Boolean
+     */
+    
+    hasChanged : function()
+    {
+        var dirty = false;
+        this.items.each(function(f){
+           if(f.hasChanged()){
+               dirty = true;
+               return false;
+           }
+        });
+        return dirty;
+        
+    },
+    /**
+     * Resets all hasChanged to 'false' -
+     * The old 'isDirty' used 'original value..' however this breaks reset() and a few other things.
+     * So hasChanged storage is only to be used for this purpose
+     * @return Boolean
+     */
+    resetHasChanged : function()
+    {
+        this.items.each(function(f){
+           f.resetHasChanged();
+        });
+        
+    },
+    
+    
     /**
      * Performs a predefined action (submit or load) or custom actions you define on this form.
      * @param {String} actionName The name of the action type
@@ -28985,9 +29042,12 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 }
             }
         }
-         
+        this.resetHasChanged();
+        
+        
         Roo.each(this.childForms || [], function (f) {
             f.setValues(values);
+            f.resetHasChanged();
         });
                 
         return this;
