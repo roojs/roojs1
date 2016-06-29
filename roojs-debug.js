@@ -37337,7 +37337,7 @@ side          Add an error icon to the right of the field with a popup on hover
      */
     hasChanged : function()
     {
-        if(this.disabled) {
+        if(this.disabled || this.readOnly) {
             return false;
         }
         return this.loadedValue !== false && String(this.getValue()) !== this.loadedValue;
