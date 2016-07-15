@@ -442,6 +442,7 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     	    this.autoHeight = true;
     	}
     	var view = this.getView();
+        Roo.log('view???');
         Roo.log(view);
         view.init(this);
 
