@@ -808,8 +808,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
     },
 
     restoreScroll : function(state){
-        return;
-        Roo.log('GridView.restoreScroll');
+        //Roo.log('GridView.restoreScroll');
         var sb = this.scroller.dom;
         sb.scrollLeft = state.left;
         sb.scrollTop = state.top;
