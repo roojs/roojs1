@@ -55148,6 +55148,11 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         s.setSize(vw, vh);
 
         var bt = this.getBodyTable();
+        
+        if(cm.getLockedCount() == cm.config.length){
+            bt = this.getLockedTable();
+        }
+        
         var ltWidth = hasLock ?
                       Math.max(this.getLockedTable().offsetWidth, this.lockedHd.dom.firstChild.offsetWidth) : 0;
 
