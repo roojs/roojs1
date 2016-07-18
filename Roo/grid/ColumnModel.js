@@ -273,6 +273,7 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
 
     getLockedCount : function(){
         Roo.log('getLockedCOunt');
+        Roo.log(this.config.length);
         for(var i = 0, len = this.config.length; i < len; i++){
             if(!this.isLocked(i)){
                 return i;
