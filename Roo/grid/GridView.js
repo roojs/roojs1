@@ -1629,9 +1629,8 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         }
 
         var s = this.scroller;
-        
+
         var csize = c.getSize(true);
-        Roo.log(csize);
 
         this.el.setSize(csize.width, csize.height);
 
