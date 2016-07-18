@@ -399,6 +399,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
      */
     getCell : function(rowIndex, colIndex){
         var locked = this.cm.getLockedCount();
+        Roo.log(locked);
         var source;
         if(colIndex < locked){
             source = this.lockedBody.dom.firstChild;
