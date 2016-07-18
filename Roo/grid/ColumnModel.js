@@ -248,6 +248,8 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
     },
 
     isLocked : function(colIndex){
+        Roo.log('isLOcked');
+        Roo.log(colIndex);
         return this.config[colIndex].locked === true;
     },
 
