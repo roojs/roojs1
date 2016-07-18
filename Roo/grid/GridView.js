@@ -399,7 +399,6 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
      */
     getCell : function(rowIndex, colIndex){
         var locked = this.cm.getLockedCount();
-        Roo.log(locked);
         var source;
         if(colIndex < locked){
             source = this.lockedBody.dom.firstChild;
@@ -407,8 +406,6 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
             source = this.mainBody.dom.firstChild;
             colIndex -= locked;
         }
-        Roo.log(source);
-        Roo.log(colIndex);
         return source.rows[rowIndex].childNodes[colIndex];
     },
 
@@ -572,9 +569,8 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         while(cm.isHidden(col)){
             col++;
         }
-        Roo.log(['view : ', row, col]);
+
         var el = this.getCell(row, col);
-        Roo.log(el);
         if(!el){
             return null;
         }
