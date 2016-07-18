@@ -1640,8 +1640,6 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         var hdHeight = this.mainHd.getHeight();
         var vw = csize.width;
         var vh = csize.height - (tbh + bbh);
-        
-        Roo.log(vh);
 
         s.setSize(vw, vh);
 
