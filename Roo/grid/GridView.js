@@ -817,6 +817,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
 
     syncScroll : function(){
         Roo.log('GridView.syncScroll');
+        return;
         var sb = this.scroller.dom;
         var sh = this.mainHd.dom;
         var bs = this.mainBody.dom;
