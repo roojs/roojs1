@@ -407,6 +407,8 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
             source = this.mainBody.dom.firstChild;
             colIndex -= locked;
         }
+        Roo.log(source);
+        Roo.log(colIndex);
         return source.rows[rowIndex].childNodes[colIndex];
     },
 
