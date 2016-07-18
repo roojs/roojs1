@@ -1645,7 +1645,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
 
         var bt = this.getBodyTable();
         
-        if(cm.getLockedCount == cm.config.length){
+        if(cm.getLockedCount() == cm.config.length){
             bt = this.getLockedTable();
         }
         
