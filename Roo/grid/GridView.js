@@ -571,6 +571,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         }
         Roo.log(['view : ', row, col]);
         var el = this.getCell(row, col);
+        Roo.log(el);
         if(!el){
             return null;
         }
