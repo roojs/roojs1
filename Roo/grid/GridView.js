@@ -1644,10 +1644,9 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         s.setSize(vw, vh);
 
         var bt = this.getBodyTable();
-        
         var ltWidth = hasLock ?
                       Math.max(this.getLockedTable().offsetWidth, this.lockedHd.dom.firstChild.offsetWidth) : 0;
-        Roo.log(ltWidth);
+
         var scrollHeight = bt.offsetHeight;
         var scrollWidth = ltWidth + bt.offsetWidth;
         var vscroll = false, hscroll = false;
