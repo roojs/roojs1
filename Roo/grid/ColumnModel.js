@@ -250,6 +250,7 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
     isLocked : function(colIndex){
         Roo.log('isLOcked');
         Roo.log(colIndex);
+        Roo.log(this.config[colIndex].locked);
         return this.config[colIndex].locked === true;
     },
 
