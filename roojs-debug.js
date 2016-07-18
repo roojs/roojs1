@@ -55686,6 +55686,8 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
                 return i;
             }
         }
+        
+        return this.config.length;
     },
 
     /**
