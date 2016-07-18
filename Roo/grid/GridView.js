@@ -1638,6 +1638,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         this.footerPanel.setWidth(csize.width);
 
         var hdHeight = this.mainHd.getHeight();
+        Roo.log(hdHeight);
         var vw = csize.width;
         var vh = csize.height - (tbh + bbh);
 
