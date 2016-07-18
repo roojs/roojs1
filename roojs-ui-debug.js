@@ -24637,6 +24637,11 @@ Roo.extend(Roo.form.Checkbox, Roo.form.Field,  {
         }
          
         Roo.form.Checkbox.superclass.onDestroy.call(this);
+    },
+    
+    setBoxLabel : function(str)
+    {
+        this.wrap.select('.x-form-cb-label', true).first().dom.innerHTML = str;
     }
 
 });/*
