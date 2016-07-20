@@ -277,7 +277,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
     {
         //Roo.form.ComboBoxArray.superclass.reset.call(this); 
         this.items.clear();
-        ;
+        
         this.el.dom.value = '';
         if (this.hiddenEl) {
             this.hiddenEl.dom.value = '';
