@@ -234,6 +234,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
     
     addItem: function(rec)
     {
+        Roo.log('add Itme????');
         var valueField = this.combo.valueField;
         var displayField = this.combo.displayField;
         if (this.items.indexOfKey(rec[valueField]) > -1) {
