@@ -294,6 +294,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
          
         this.reset();
         
+        Roo.log(this.items);
         
         
         if (this.store.isLocal && (typeof(v) == 'string')) {
