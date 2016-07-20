@@ -293,6 +293,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
          
         this.reset();
         
+        Roo.log(this.items);
         Roo.log(v);
         
         
