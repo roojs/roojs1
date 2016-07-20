@@ -277,6 +277,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
     {
         //Roo.form.ComboBoxArray.superclass.reset.call(this); 
         this.items.each(function(f) {
+            Roo.log(f);
            f.remove(); 
         });
         this.el.dom.value = '';
@@ -293,9 +294,6 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
     {
          
         this.reset();
-        
-        Roo.log(this.items);
-        
         
         if (this.store.isLocal && (typeof(v) == 'string')) {
             // then we can use the store to find the values..
