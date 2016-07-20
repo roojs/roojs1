@@ -259,6 +259,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
     
     updateHiddenEl : function()
     {
+        Roo.log('udate hidden el');
         this.validate();
         if (!this.hiddenEl) {
             return;
