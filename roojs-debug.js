@@ -40692,7 +40692,6 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
     
     reset : function()
     {
-        //Roo.form.ComboBoxArray.superclass.reset.call(this); 
         this.items.clear();
         
         Roo.each(this.outerWrap.select('.x-cbarray-item', true).elements, function(el){
@@ -53660,7 +53659,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
 
         if(!tpls.hcell){
             tpls.hcell = new Roo.Template(
-                '<td class="x-grid-hd x-grid-td-{id} {cellId}"><div " title="{title}" class="x-grid-hd-inner x-grid-hd-{id}">',
+                '<td class="x-grid-hd x-grid-td-{id} {cellId}"><div title="{title}" class="x-grid-hd-inner x-grid-hd-{id}">',
                 '<div class="x-grid-hd-text ' + this.unselectableCls +  '" ' + this.unselectable +'>{value}<img class="x-grid-sort-icon" src="', Roo.BLANK_IMAGE_URL, '" /></div>',
                 "</div></td>"
              );
