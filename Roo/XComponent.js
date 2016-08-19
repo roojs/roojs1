@@ -331,6 +331,7 @@ Roo.apply(Roo.XComponent, {
      */
     register : function(obj) {
 		
+                Roo.log(obj);return;
         Roo.XComponent.event.fireEvent('register', obj);
         switch(typeof(obj.disabled) ) {
                 
