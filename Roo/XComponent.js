@@ -330,6 +330,7 @@ Roo.apply(Roo.XComponent, {
      * * @param {Object} details about module
      */
     register : function(obj) {
+        Roo.log('xcompnet!!!!!!!!!!!!!!!!!!!');
 	var test = Roo.apply({}, obj);
         Roo.log(test);
         return;
