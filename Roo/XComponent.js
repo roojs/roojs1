@@ -400,8 +400,11 @@ Roo.apply(Roo.XComponent, {
     preBuild : function ()
     {
         var _t = this;
+        
         Roo.each(this.modules , function (obj)
         {
+            Roo.log(obj);
+            return;
             Roo.XComponent.event.fireEvent('beforebuild', obj);
             
             var opar = obj.parent;
