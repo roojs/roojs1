@@ -400,6 +400,7 @@ Roo.apply(Roo.XComponent, {
     preBuild : function ()
     {
         var _t = this;
+        Roo.log(this.modules);return;
         Roo.each(this.modules , function (obj)
         {
             Roo.XComponent.event.fireEvent('beforebuild', obj);
