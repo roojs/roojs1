@@ -479,6 +479,7 @@ Roo.apply(Roo.XComponent, {
         var addMod = function(m) {
             Roo.debug && Roo.log("build Order: add: " + m.name);
             Roo.log("build Order: add: " + m.name);
+            Roo.log(m);
             mods.push(m);
             if (m.modules && !m.disabled) {
                 Roo.debug && Roo.log("build Order: " + m.modules.length + " child modules");
