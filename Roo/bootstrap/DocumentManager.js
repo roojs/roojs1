@@ -486,7 +486,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
     },
     
-    xhrOnError : function()
+    xhrOnError : function(xhr)
     {
         Roo.log('xhr on error');
         
