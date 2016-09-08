@@ -16,11 +16,11 @@
  * @param {Object} config The config object
  */
 
-Roo.mailer.Section = function(config){
-    Roo.mailer.Section.superclass.constructor.call(this, config);
+Roo.mailer.Example = function(config){
+    Roo.mailer.Example.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.mailer.Section, Roo.bootstrap.Component,  {
+Roo.extend(Roo.mailer.Example, Roo.bootstrap.Component,  {
     
     
     lang:   'php',
