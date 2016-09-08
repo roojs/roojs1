@@ -40,9 +40,9 @@ Roo.doc.Entry  = function(config){
 
 };
 
-Roo.mailer.Body._calls = 0;
+Roo.doc.Entry._calls = 0;
 
-Roo.extend(Roo.mailer.Body, Roo.bootstrap.Component,  {
+Roo.extend(Roo.doc.Entry, Roo.bootstrap.Component,  {
     
     
     name : '',
