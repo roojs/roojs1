@@ -121,8 +121,11 @@ side          Add an error icon to the right of the field with a popup on hover
     /**
      * @cfg {String} cls A CSS class to apply to the field's underlying element.
      */
-
-	// private ??
+    // private
+    </span><span class="jsdoc-var">loadedValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+     
+     
+	</span><span class="jsdoc-comment">// private ??
 	</span><span class="jsdoc-var">initComponent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-var">Roo.form.Field.superclass.initComponent.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
@@ -242,6 +245,7 @@ side          Add an error icon to the right of the field with a popup on hover
 
     </span><span class="jsdoc-comment">/**
      * Returns true if this field has been changed since it was originally loaded and is not disabled.
+     * DEPRICATED  - it never worked well - use hasChanged/resetHasChanged.
      */
     </span><span class="jsdoc-var">isDirty </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">) {
@@ -250,6 +254,27 @@ side          Add an error icon to the right of the field with a popup on hover
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">()) !== </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.originalValue</span><span class="jsdoc-syntax">);
     },
 
+    </span><span class="jsdoc-comment">/**
+     * stores the current value in loadedValue
+     */
+    </span><span class="jsdoc-var">resetHasChanged </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.loadedValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">());
+    },
+    </span><span class="jsdoc-comment">/**
+     * checks the current value against the 'loaded' value.
+     * Note - will return false if 'resetHasChanged' has not been called first.
+     */
+    </span><span class="jsdoc-var">hasChanged </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.readOnly</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.loadedValue </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">()) !== </span><span class="jsdoc-var">this.loadedValue</span><span class="jsdoc-syntax">;
+    },
+    
+    
+    
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">afterRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-var">Roo.form.Field.superclass.afterRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);

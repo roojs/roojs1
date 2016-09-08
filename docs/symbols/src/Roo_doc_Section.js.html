@@ -1,0 +1,67 @@
+<html><head><title>../roojs1/Roo/doc/Section.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ */
+
+/**
+ * @class Roo.doc.Section
+ * @extends Roo.bootstrap.Component
+ * SectionElement class
+ * @cfg {String} stype (desc|parameter|return|note|example) section type.
+ * 
+ * @constructor
+ * Create a new Synopsis
+ * @param {Object} config The config object
+ */
+
+</span><span class="jsdoc-var">Roo.mailer.Section </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.mailer.Section.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.mailer.Section</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+    
+    
+    </span><span class="jsdoc-var">stype</span><span class="jsdoc-syntax">:   </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+     
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">={
+            
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'refsection'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">// id... ?
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'h1'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'title'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.stype.charAt</span><span class="jsdoc-syntax">(0)</span><span class="jsdoc-var">.toUpperCase</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">this.stype.slice</span><span class="jsdoc-syntax">(1) </span><span class="jsdoc-comment">//ucfirst
+                </span><span class="jsdoc-syntax">}
+            ]
+        };
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.stype </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'parameter'</span><span class="jsdoc-syntax">) {
+            
+            </span><span class="jsdoc-comment">// db package uses variable list here... - it results in dd/dl but the layout is messed up..
+            </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'itemizedlist roo-params'
+            </span><span class="jsdoc-syntax">});
+        }
+        
+	
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">build_call</span><span class="jsdoc-syntax">)
+    {
+         
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.stype </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'parameter'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-params'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
+    }
+    
+    
+   
+});
+
+ 
+
+ </span></code></body></html>

@@ -192,8 +192,6 @@ trigger.applyTo('my-field');
         };
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.multiple</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'multiple'</span><span class="jsdoc-syntax">);
-            
             </span><span class="jsdoc-var">box </span><span class="jsdoc-syntax">= {
                 </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
@@ -272,7 +270,7 @@ trigger.applyTo('my-field');
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">===</span><span class="jsdoc-string">'left' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.fieldLabel.length</span><span class="jsdoc-syntax">) {
             
-                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;left and has label&quot;</span><span class="jsdoc-syntax">);
+</span><span class="jsdoc-comment">//                Roo.log(&quot;left and has label&quot;);
                 </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
                     
                     {
@@ -291,7 +289,7 @@ trigger.applyTo('my-field');
                     
                 ];
         } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.fieldLabel.length</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot; label&quot;</span><span class="jsdoc-syntax">);
+</span><span class="jsdoc-comment">//                Roo.log(&quot; label&quot;);
                  </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
                    
                     {
@@ -307,7 +305,7 @@ trigger.applyTo('my-field');
 
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
             
-                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot; no label &amp;&amp; no align&quot;</span><span class="jsdoc-syntax">);
+</span><span class="jsdoc-comment">//                Roo.log(&quot; no label &amp;&amp; no align&quot;);
                 </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">combobox
                      
                 
@@ -319,7 +317,7 @@ trigger.applyTo('my-field');
                 </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">settings</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">];
             }
         });
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+        
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
         
     },

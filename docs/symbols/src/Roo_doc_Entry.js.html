@@ -1,0 +1,88 @@
+<html><head><title>../roojs1/Roo/doc/Entry.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ *  Documentation - designed to generate HTML+Docbook!?!
+ 
+                              
+ */
+</span><span class="jsdoc-var">Roo.doc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.doc </span><span class="jsdoc-syntax">|| {};
+
+</span><span class="jsdoc-comment">/**
+ * @class Roo.doc.Entry
+ * @extends Roo.bootstrap.Component
+ * Entry Element class - describes a method etc...
+ * @name {String} name of method
+ * @purpose {String} short description of method.
+ * 
+ * @constructor
+ * Create a new E
+ * @param {Object} config The config object
+ */
+
+
+
+</span><span class="jsdoc-var">Roo.mailer.Body  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.mailer.Body.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-comment">//this.el = Roo.get(document.body);
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">body </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">body.attr</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-var">leftmargin </span><span class="jsdoc-syntax">: 0,
+        </span><span class="jsdoc-var">marginwidth </span><span class="jsdoc-syntax">: 0,
+        </span><span class="jsdoc-var">topmargin </span><span class="jsdoc-syntax">: 0,
+        </span><span class="jsdoc-var">marginheight </span><span class="jsdoc-syntax">: 0,
+        </span><span class="jsdoc-var">offset </span><span class="jsdoc-syntax">: 0
+    });
+    </span><span class="jsdoc-var">Roo.mailer.Body._calls</span><span class="jsdoc-syntax">++;
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.mailer.Body._calls </span><span class="jsdoc-syntax">&gt; 1) {
+        </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-string">&quot;test&quot;</span><span class="jsdoc-syntax">;
+    }
+    </span><span class="jsdoc-comment">// call onRender once... and block next call...?
+    </span><span class="jsdoc-var">this.onRender</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.onRender </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { };
+
+};
+
+</span><span class="jsdoc-var">Roo.mailer.Body._calls </span><span class="jsdoc-syntax">= 0;
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.mailer.Body</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+    
+    
+    </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">purpose </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">={
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'refentry'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'h1'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'refname'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.name
+                </span><span class="jsdoc-syntax">},
+                {
+                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'refnamediv'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.purpose
+                </span><span class="jsdoc-syntax">}
+            ]
+        };
+        
+        
+         
+	
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">addxtype </span><span class="jsdoc-syntax">:   </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.addxtypeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">);
+    }
+
+    
+    
+   
+});
+
+ 
+
+ </span></code></body></html>

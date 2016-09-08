@@ -277,6 +277,8 @@
                 </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">;
             }
         }
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.config.length</span><span class="jsdoc-syntax">;
     },
 
     </span><span class="jsdoc-comment">/**
@@ -454,7 +456,7 @@
     </span><span class="jsdoc-comment">/**
      * Returns true if the cell is editable.
      * @param {Number} colIndex The column index
-     * @param {Number} rowIndex The row index
+     * @param {Number} rowIndex The row index - this is nto actually used..?
      * @return {Boolean}
      */
     </span><span class="jsdoc-var">isCellEditable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">){

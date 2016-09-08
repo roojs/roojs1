@@ -327,7 +327,7 @@
             }
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.before </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.before</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'object'</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">this.before </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.before</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.before</span><span class="jsdoc-syntax">);
+                
                 </span><span class="jsdoc-var">inputblock.cn.push</span><span class="jsdoc-syntax">({
                     </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-input-before input-group-' </span><span class="jsdoc-syntax">+
@@ -346,7 +346,7 @@
             }
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.after </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.after</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'object'</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">this.after </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.after</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.after</span><span class="jsdoc-syntax">);
+                
                 </span><span class="jsdoc-var">inputblock.cn.push</span><span class="jsdoc-syntax">({
                     </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-input-after input-group-' </span><span class="jsdoc-syntax">+
@@ -361,7 +361,7 @@
         };
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">===</span><span class="jsdoc-string">'left' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.fieldLabel.length</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;left and has label&quot;</span><span class="jsdoc-syntax">);
+                
                 </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
                     
                     {
@@ -380,7 +380,7 @@
                     
                 ];
         } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.fieldLabel.length</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot; label&quot;</span><span class="jsdoc-syntax">);
+                
                  </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
                    
                     {
@@ -396,7 +396,6 @@
 
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
             
-                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot; no label &amp;&amp; no align&quot;</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
                     
                         </span><span class="jsdoc-var">inputblock
@@ -405,11 +404,9 @@
                 
                 
         };
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'input-parentType: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.parentType</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parentType </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'Navbar' </span><span class="jsdoc-syntax">&amp;&amp;  </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.bar</span><span class="jsdoc-syntax">) {
            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' navbar-form'</span><span class="jsdoc-syntax">;
-           </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
         }
         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;

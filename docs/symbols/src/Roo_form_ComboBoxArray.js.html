@@ -275,10 +275,12 @@
     
     </span><span class="jsdoc-var">reset </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-comment">//Roo.form.ComboBoxArray.superclass.reset.call(this); 
-        </span><span class="jsdoc-var">this.items.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">) {
-           </span><span class="jsdoc-var">f.remove</span><span class="jsdoc-syntax">(); 
+        </span><span class="jsdoc-var">this.items.clear</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.outerWrap.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.x-cbarray-item'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
+           </span><span class="jsdoc-var">el.remove</span><span class="jsdoc-syntax">();
         });
+        
         </span><span class="jsdoc-var">this.el.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hiddenEl</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.hiddenEl.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;

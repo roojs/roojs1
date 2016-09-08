@@ -449,7 +449,7 @@
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">===</span><span class="jsdoc-string">'left' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.fieldLabel.length</span><span class="jsdoc-syntax">) {
             
-                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;left and has label&quot;</span><span class="jsdoc-syntax">);
+</span><span class="jsdoc-comment">//                Roo.log(&quot;left and has label&quot;);
                 </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
                     
                     {
@@ -468,7 +468,7 @@
                     
                 ];
         } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.fieldLabel.length</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot; label&quot;</span><span class="jsdoc-syntax">);
+</span><span class="jsdoc-comment">//                Roo.log(&quot; label&quot;);
                  </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
                    
                     {
@@ -484,7 +484,7 @@
 
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
             
-                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot; no label &amp;&amp; no align&quot;</span><span class="jsdoc-syntax">);
+</span><span class="jsdoc-comment">//                Roo.log(&quot; no label &amp;&amp; no align&quot;);
                 </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">combobox
                      
                 
@@ -2148,7 +2148,10 @@
             </span><span class="jsdoc-var">this.el.dom.scrollTop </span><span class="jsdoc-syntax">= 0;
         }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
+        </span><span class="jsdoc-var">this.originalValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">();
+        
         </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.showTouchView</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
         </span><span class="jsdoc-var">this.touchViewFooterEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-touch-view-cancel'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.hideTouchView</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.touchViewFooterEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-touch-view-ok'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.setTouchViewValue</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
@@ -2182,6 +2185,12 @@
                 </span><span class="jsdoc-var">close.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.removeBtnClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">close</span><span class="jsdoc-syntax">);
             }
         }
+        </span><span class="jsdoc-comment">/*
+         * fix the bug in Safari iOS8
+         */
+        </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;focus&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">document.activeElement.blur</span><span class="jsdoc-syntax">();
+        }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         
@@ -2210,6 +2219,10 @@
     
     </span><span class="jsdoc-var">showTouchView </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
         </span><span class="jsdoc-var">this.touchViewHeaderEl.hide</span><span class="jsdoc-syntax">();
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fieldLabel.length</span><span class="jsdoc-syntax">){

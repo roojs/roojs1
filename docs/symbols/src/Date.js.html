@@ -704,8 +704,8 @@ document.write(orig);  //returns 'Thu Oct 01 2006'
 };
 
 </span><span class="jsdoc-comment">// private
-// safari setMonth is broken
-</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isSafari</span><span class="jsdoc-syntax">){
+// safari setMonth is broken -- check that this is only donw once...
+</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isSafari </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Date.brokenSetMonth</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">Date.brokenSetMonth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Date.prototype.setMonth</span><span class="jsdoc-syntax">;
 	</span><span class="jsdoc-var">Date.prototype.setMonth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">num</span><span class="jsdoc-syntax">){
 		</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">num </span><span class="jsdoc-syntax">&lt;= -1){

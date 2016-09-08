@@ -74,15 +74,13 @@
     
     </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'-------- init events on tab panel ---------'</span><span class="jsdoc-syntax">);
-        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.navId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.navId </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">p.navId</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.navId</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-comment">// not really needed.. but just in case.. parent should be a NavGroup.
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.TabGroup.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.navId</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'register'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">]);
+            
             </span><span class="jsdoc-var">tg.register</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
             
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tg.tabs.length </span><span class="jsdoc-syntax">- 1;

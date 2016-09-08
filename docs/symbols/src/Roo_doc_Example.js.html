@@ -1,0 +1,56 @@
+<html><head><title>../roojs1/Roo/doc/Example.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ */
+
+/**
+ * @class Roo.doc.Example
+ * @extends Roo.bootstrap.Example
+ * Example Element class
+ * @cfg {String} lang (phpcode|programlisting) section type.
+ * @cfg {String} code
+ *
+ * 
+ * @constructor
+ * Create a new Synopsis
+ * @param {Object} config The config object
+ */
+
+</span><span class="jsdoc-var">Roo.mailer.Example </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.mailer.Example.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.mailer.Example</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+    
+    
+    </span><span class="jsdoc-var">lang</span><span class="jsdoc-syntax">:   </span><span class="jsdoc-string">'php'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">code </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        
+        </span><span class="jsdoc-comment">// no colour highlighting in here....
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">={
+            
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.lang</span><span class="jsdoc-syntax">,
+            
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'code'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'{0}'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.code</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/\n/g, </span><span class="jsdoc-string">'&lt;br/&gt;'</span><span class="jsdoc-syntax">)
+                }
+            ]
+        };
+        
+	
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    }
+  
+    
+    
+   
+});
+
+ 
+
+ </span></code></body></html>

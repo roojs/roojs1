@@ -1,0 +1,453 @@
+<html><head><title>../roojs1/roojs-doc-debug.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ *  Documentation - designed to generate HTML+Docbook!?!
+ 
+                              
+ */
+</span><span class="jsdoc-var">Roo.doc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.doc </span><span class="jsdoc-syntax">|| {};
+
+</span><span class="jsdoc-comment">/**
+ * @class Roo.doc.Entry
+ * @extends Roo.bootstrap.Component
+ * Entry Element class - describes a method etc...
+ * @name {String} name of method
+ * @purpose {String} short description of method.
+ * 
+ * @constructor
+ * Create a new E
+ * @param {Object} config The config object
+ */
+
+
+
+</span><span class="jsdoc-var">Roo.mailer.Body  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.mailer.Body.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-comment">//this.el = Roo.get(document.body);
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">body </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">body.attr</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-var">leftmargin </span><span class="jsdoc-syntax">: 0,
+        </span><span class="jsdoc-var">marginwidth </span><span class="jsdoc-syntax">: 0,
+        </span><span class="jsdoc-var">topmargin </span><span class="jsdoc-syntax">: 0,
+        </span><span class="jsdoc-var">marginheight </span><span class="jsdoc-syntax">: 0,
+        </span><span class="jsdoc-var">offset </span><span class="jsdoc-syntax">: 0
+    });
+    </span><span class="jsdoc-var">Roo.mailer.Body._calls</span><span class="jsdoc-syntax">++;
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.mailer.Body._calls </span><span class="jsdoc-syntax">&gt; 1) {
+        </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-string">&quot;test&quot;</span><span class="jsdoc-syntax">;
+    }
+    </span><span class="jsdoc-comment">// call onRender once... and block next call...?
+    </span><span class="jsdoc-var">this.onRender</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.onRender </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { };
+
+};
+
+</span><span class="jsdoc-var">Roo.mailer.Body._calls </span><span class="jsdoc-syntax">= 0;
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.mailer.Body</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+    
+    
+    </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">purpose </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">={
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'refentry'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'h1'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'refname'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.name
+                </span><span class="jsdoc-syntax">},
+                {
+                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'refnamediv'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.purpose
+                </span><span class="jsdoc-syntax">}
+            ]
+        };
+        
+        
+         
+	
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">addxtype </span><span class="jsdoc-syntax">:   </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.addxtypeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">);
+    }
+
+    
+    
+   
+});
+
+ 
+
+ </span><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ */
+
+/**
+ * @class Roo.doc.Example
+ * @extends Roo.bootstrap.Example
+ * Example Element class
+ * @cfg {String} lang (phpcode|programlisting) section type.
+ * @cfg {String} code
+ *
+ * 
+ * @constructor
+ * Create a new Synopsis
+ * @param {Object} config The config object
+ */
+
+</span><span class="jsdoc-var">Roo.mailer.Example </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.mailer.Example.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.mailer.Example</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+    
+    
+    </span><span class="jsdoc-var">lang</span><span class="jsdoc-syntax">:   </span><span class="jsdoc-string">'php'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">code </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        
+        </span><span class="jsdoc-comment">// no colour highlighting in here....
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">={
+            
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.lang</span><span class="jsdoc-syntax">,
+            
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'code'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'{0}'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.code</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/\n/g, </span><span class="jsdoc-string">'&lt;br/&gt;'</span><span class="jsdoc-syntax">)
+                }
+            ]
+        };
+        
+	
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    }
+  
+    
+    
+   
+});
+
+ 
+
+ </span><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ */
+
+/**
+ * @class Roo.doc.Para
+ * @extends Roo.bootstrap.Component
+ * Param Element class
+ * @cfg {String} html
+ * 
+ * @constructor
+ * Create a new Paragraph
+ * @param {Object} config The config object
+ */
+
+</span><span class="jsdoc-var">Roo.mailer.Para </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.mailer.Para.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.mailer.Para</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+    
+    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        
+        </span><span class="jsdoc-comment">//?? this is the synopsis type....
+        
+        // this is not very fancy...
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">={
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'p'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'para'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html
+        </span><span class="jsdoc-syntax">};
+         
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.is_list</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">listitme</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [ </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">]
+            };
+            
+        }
+	
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    }
+     
+    
+    
+    
+    
+   
+});
+
+ 
+
+ </span><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ */
+
+/**
+ * @class Roo.doc.Param
+ * @extends Roo.bootstrap.Component
+ * Param Element class
+ * @cfg {bool} is_optional 
+ * @cfg {String} type  argument type
+ * @cfg {String} name
+ * @cfg {String} desc  short description
+ * @cfg {String} defaultvalue default value
+ * 
+ * @constructor
+ * Create a new Param
+ * @param {Object} config The config object
+ */
+
+</span><span class="jsdoc-var">Roo.mailer.Param </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.mailer.Param.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.mailer.Param</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+    
+    </span><span class="jsdoc-var">is_optional </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">defaultvalue</span><span class="jsdoc-syntax">:   </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">desc</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+     
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        
+        </span><span class="jsdoc-comment">//?? this is the synopsis type....
+        
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.stype </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'parameter'</span><span class="jsdoc-syntax">) {
+            
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                    {
+                        </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'p'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'para'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                            {
+                                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'code'</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.type </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.name
+                            </span><span class="jsdoc-syntax">},
+                            </span><span class="jsdoc-var">this.desc
+                        </span><span class="jsdoc-syntax">]
+                    }
+                ]
+            };
+            
+        }
+         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.stype </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'return'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'p'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'para'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                        {
+                            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'code'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.type
+                        </span><span class="jsdoc-syntax">},
+                        </span><span class="jsdoc-var">this.desc
+                    </span><span class="jsdoc-syntax">]
+                };
+                
+         }
+       
+        
+        
+        </span><span class="jsdoc-comment">// this is not very fancy...
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">={
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                </span><span class="jsdoc-var">is_optional </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'[' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">this.type</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">this.defaultvalue </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">' = '</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">this.defaultvalue</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-string">',' </span><span class="jsdoc-comment">// not really.. but let's do it anyway...
+            </span><span class="jsdoc-syntax">]
+        };
+         
+        
+        
+	
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    }
+     
+    
+    
+    
+    
+   
+});
+
+ 
+
+ </span><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ */
+
+/**
+ * @class Roo.doc.Section
+ * @extends Roo.bootstrap.Component
+ * SectionElement class
+ * @cfg {String} stype (desc|parameter|return|note|example) section type.
+ * 
+ * @constructor
+ * Create a new Synopsis
+ * @param {Object} config The config object
+ */
+
+</span><span class="jsdoc-var">Roo.mailer.Section </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.mailer.Section.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.mailer.Section</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+    
+    
+    </span><span class="jsdoc-var">stype</span><span class="jsdoc-syntax">:   </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+     
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">={
+            
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'refsection'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">// id... ?
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'h1'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'title'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.stype.charAt</span><span class="jsdoc-syntax">(0)</span><span class="jsdoc-var">.toUpperCase</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">this.stype.slice</span><span class="jsdoc-syntax">(1) </span><span class="jsdoc-comment">//ucfirst
+                </span><span class="jsdoc-syntax">}
+            ]
+        };
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.stype </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'parameter'</span><span class="jsdoc-syntax">) {
+            
+            </span><span class="jsdoc-comment">// db package uses variable list here... - it results in dd/dl but the layout is messed up..
+            </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'itemizedlist roo-params'
+            </span><span class="jsdoc-syntax">});
+        }
+        
+	
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">build_call</span><span class="jsdoc-syntax">)
+    {
+         
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.stype </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'parameter'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-params'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
+    }
+    
+    
+   
+});
+
+ 
+
+ </span><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ */
+
+/**
+ * @class Roo.doc.Synopsis
+ * @extends Roo.bootstrap.Component
+ * Synopsis Element class
+ * @cfg {String} returntype return value
+ * @cfg {String} name title really..
+ * @cfg {String} stype (function|constant)
+ * 
+ * @constructor
+ * Create a new Synopsis
+ * @param {Object} config The config object
+ */
+
+</span><span class="jsdoc-var">Roo.mailer.Synopsis </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.mailer.Synopsis.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.mailer.Synopsis</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+    
+    
+    </span><span class="jsdoc-var">returntype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">stype</span><span class="jsdoc-syntax">:   </span><span class="jsdoc-string">'function'</span><span class="jsdoc-syntax">,
+     
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">={
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'h2'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'refsynopsisdiv'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                {
+                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'funcsynopsis'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                        {
+                            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'p'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: {
+                                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'code'</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'funcprototype'</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                                    </span><span class="jsdoc-var">this.returntype </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">,
+                                    {
+                                        </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'strong'</span><span class="jsdoc-syntax">,
+                                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.stype</span><span class="jsdoc-syntax">,
+                                        </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.name
+                                    </span><span class="jsdoc-syntax">},
+                                    </span><span class="jsdoc-string">'('</span><span class="jsdoc-syntax">,
+                                    {
+                                        </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-params'
+                                    </span><span class="jsdoc-syntax">}
+                                ]
+                                
+                            }
+                        }
+                    ]
+                }
+                
+            ]
+        };
+        
+        
+	
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">build_call</span><span class="jsdoc-syntax">)
+    {
+         
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-params'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+    }
+    
+    
+    
+    
+   
+});
+
+ 
+
+ </span></code></body></html>

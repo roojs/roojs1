@@ -151,7 +151,7 @@
     },
 
     </span><span class="jsdoc-comment">/**
-     * Returns true if any fields in this form have changed since their original load.
+     * DEPRICATED Returns true if any fields in this form have changed since their original load. 
      * @return Boolean
      */
     </span><span class="jsdoc-var">isDirty </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
@@ -164,7 +164,39 @@
         });
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">dirty</span><span class="jsdoc-syntax">;
     },
-
+    
+    </span><span class="jsdoc-comment">/**
+     * Returns true if any fields in this form have changed since their original load. (New version)
+     * @return Boolean
+     */
+    
+    </span><span class="jsdoc-var">hasChanged </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dirty </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.items.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">){
+           </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.hasChanged</span><span class="jsdoc-syntax">()){
+               </span><span class="jsdoc-var">dirty </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+               </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+           }
+        });
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">dirty</span><span class="jsdoc-syntax">;
+        
+    },
+    </span><span class="jsdoc-comment">/**
+     * Resets all hasChanged to 'false' -
+     * The old 'isDirty' used 'original value..' however this breaks reset() and a few other things.
+     * So hasChanged storage is only to be used for this purpose
+     * @return Boolean
+     */
+    </span><span class="jsdoc-var">resetHasChanged </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.items.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">){
+           </span><span class="jsdoc-var">f.resetHasChanged</span><span class="jsdoc-syntax">();
+        });
+        
+    },
+    
+    
     </span><span class="jsdoc-comment">/**
      * Performs a predefined action (submit or load) or custom actions you define on this form.
      * @param {String} actionName The name of the action type
@@ -448,9 +480,12 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 }
             }
         }
-         
+        </span><span class="jsdoc-var">this.resetHasChanged</span><span class="jsdoc-syntax">();
+        
+        
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.childForms </span><span class="jsdoc-syntax">|| [], </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">f.setValues</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">f.resetHasChanged</span><span class="jsdoc-syntax">();
         });
                 
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
@@ -557,7 +592,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.childForms </span><span class="jsdoc-syntax">|| [], </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">f.reset</span><span class="jsdoc-syntax">();
         });
-       
+        </span><span class="jsdoc-var">this.resetHasChanged</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
     },

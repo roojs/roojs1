@@ -44,7 +44,7 @@
             </span><span class="jsdoc-var">t.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;title&quot;</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
         }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-            </span><span class="jsdoc-var">ttp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">t.qtip </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">et.getAttributeNS</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg.attribute</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">ttp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">t.qtip </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">et.getAttributeNS</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg.attribute</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">et.getAttributeNS</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.alt_namespace</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg.attribute</span><span class="jsdoc-syntax">) ;
         }
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ttp</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">showProc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">show.defer</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tm.showDelay</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">, [{
@@ -385,7 +385,8 @@ target      Element/String/Array   An Element, id or array of ids that this quic
 
         </span><span class="jsdoc-comment">// private
        </span><span class="jsdoc-var">tagConfig </span><span class="jsdoc-syntax">: {
-           </span><span class="jsdoc-var">namespace </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;ext&quot;</span><span class="jsdoc-syntax">,
+           </span><span class="jsdoc-var">namespace </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;roo&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// was ext?? this may break..
+           </span><span class="jsdoc-var">alt_namespace </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;ext&quot;</span><span class="jsdoc-syntax">,
            </span><span class="jsdoc-var">attribute </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;qtip&quot;</span><span class="jsdoc-syntax">,
            </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;width&quot;</span><span class="jsdoc-syntax">,
            </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;target&quot;</span><span class="jsdoc-syntax">,
