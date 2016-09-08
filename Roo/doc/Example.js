@@ -23,29 +23,23 @@ Roo.mailer.Section = function(config){
 Roo.extend(Roo.mailer.Section, Roo.bootstrap.Component,  {
     
     
-    stype:   '',
-     
+    lang:   'php',
+    code : '',
+    
     getAutoCreate : function(){
+        
+        // no colour highlighting in here....
         
         var cfg ={
             
-            cls : 'refsection',
-            // id... ?
+            cls : this.lang,
+            
             cn : [
                 {
-                    tag: 'h1',
-                    cls : 'title',
-                    html : this.stype.charAt(0).toUpperCase() + this.stype.slice(1) //ucfirst
+                    tag: 'code',
+                    html :  String.format('{0}',this.code).replace(/\n/g, '<br/>')
                 }
             ]
-        }
-        if (this.stype == 'parameter') {
-            
-            // db package uses variable list here... - it results in dd/dl but the layout is messed up..
-            cfg.cn.push({
-                tag: 'ul',
-                cls: 'itemizedlist roo-params'
-            })
         }
         
 	
