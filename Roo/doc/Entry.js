@@ -2,8 +2,6 @@
  * - LGPL
  *
  *  Documentation - designed to generate HTML+Docbook!?!
- 
-                              
  */
 Roo.doc = Roo.doc || {};
 
@@ -21,8 +19,8 @@ Roo.doc = Roo.doc || {};
 
 
 
-Roo.mailer.Body  = function(config){
-    Roo.mailer.Body.superclass.constructor.call(this, config);
+Roo.doc.Entry  = function(config){
+    Roo.doc.Entry.superclass.constructor.call(this, config);
     //this.el = Roo.get(document.body);
     var body = Roo.get(document.body);
     body.attr({
