@@ -58,7 +58,7 @@ Roo.extend(Roo.mailer.Body, Roo.bootstrap.Component,  {
                 {
                     tag: 'h1',
                     cls: 'refname',
-                    html : this.name,
+                    html : this.name
                 },
                 {
                     cls: 'refnamediv',
