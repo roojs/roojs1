@@ -24,7 +24,9 @@ Roo.bootstrap.Body = function(config){
 };
 
 Roo.extend(Roo.bootstrap.Body, Roo.bootstrap.Component,  {
-      
+    
+    is_body : true,
+    
 	autoCreate : {
         cls: 'container'
     },
