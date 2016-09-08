@@ -242,7 +242,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         
          skip_children = false;
         // render the element if it's not BODY.
-        if ((!is_body) {
+        if (!is_body) {
            
             cn = Roo.factory(tree);
            
