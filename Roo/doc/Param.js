@@ -66,7 +66,7 @@ Roo.extend(Roo.mailer.Param, Roo.bootstrap.Component,  {
                         },
                         this.desc
                     ]
-                }
+                };
                 
          }
        
@@ -85,7 +85,7 @@ Roo.extend(Roo.mailer.Param, Roo.bootstrap.Component,  {
                 this.defaultvalue,
                 ',' // not really.. but let's do it anyway...
             ]
-        }
+        };
          
         
         
