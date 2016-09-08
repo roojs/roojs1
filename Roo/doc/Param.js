@@ -18,11 +18,11 @@
  * @param {Object} config The config object
  */
 
-Roo.mailer.Param = function(config){
-    Roo.mailer.Param.superclass.constructor.call(this, config);
+Roo.doc.Param = function(config){
+    Roo.doc.Param.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.mailer.Param, Roo.bootstrap.Component,  {
+Roo.extend(Roo.doc.Param, Roo.bootstrap.Component,  {
     
     is_optional : false,
     type : '',
