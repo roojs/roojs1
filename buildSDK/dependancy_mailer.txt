@@ -1,12 +1,9 @@
 
 
 
-Roo.doc.Entry
-Roo.doc.Example
-Roo.doc.Para
-Roo.doc.Param
-Roo.doc.Section
-Roo.doc.Synopsis
-
+Roo.mailer.Body
+Roo.mailer.Block
+Roo.mailer.BodyContainer
+Roo.mailer.Column
 
 
