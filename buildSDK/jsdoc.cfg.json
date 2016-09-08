@@ -17,7 +17,8 @@
             "Roo/bootstrap/htmleditor",
             "Roo/bootstrap/dash",
             "Roo/bootstrap/menu",
-            "Roo/mailer"
+            "Roo/mailer",
+            "Roo/doc"
     ],
     "exclude-src" : [
             "roojs-all.js",
