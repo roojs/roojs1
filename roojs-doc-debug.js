@@ -2,8 +2,6 @@
  * - LGPL
  *
  *  Documentation - designed to generate HTML+Docbook!?!
- 
-                              
  */
 Roo.doc = Roo.doc || {};
 
@@ -21,8 +19,8 @@ Roo.doc = Roo.doc || {};
 
 
 
-Roo.mailer.Body  = function(config){
-    Roo.mailer.Body.superclass.constructor.call(this, config);
+Roo.doc.Entry  = function(config){
+    Roo.doc.Entry.superclass.constructor.call(this, config);
     //this.el = Roo.get(document.body);
     var body = Roo.get(document.body);
     body.attr({
@@ -42,9 +40,9 @@ Roo.mailer.Body  = function(config){
 
 };
 
-Roo.mailer.Body._calls = 0;
+Roo.doc.Entry._calls = 0;
 
-Roo.extend(Roo.mailer.Body, Roo.bootstrap.Component,  {
+Roo.extend(Roo.doc.Entry, Roo.bootstrap.Component,  {
     
     
     name : '',
@@ -103,11 +101,11 @@ Roo.extend(Roo.mailer.Body, Roo.bootstrap.Component,  {
  * @param {Object} config The config object
  */
 
-Roo.mailer.Example = function(config){
-    Roo.mailer.Example.superclass.constructor.call(this, config);
+Roo.doc.Example = function(config){
+    Roo.doc.Example.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.mailer.Example, Roo.bootstrap.Component,  {
+Roo.extend(Roo.doc.Example, Roo.bootstrap.Component,  {
     
     
     lang:   'php',
@@ -156,11 +154,11 @@ Roo.extend(Roo.mailer.Example, Roo.bootstrap.Component,  {
  * @param {Object} config The config object
  */
 
-Roo.mailer.Para = function(config){
-    Roo.mailer.Para.superclass.constructor.call(this, config);
+Roo.doc.Para = function(config){
+    Roo.doc.Para.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.mailer.Para, Roo.bootstrap.Component,  {
+Roo.extend(Roo.doc.Para, Roo.bootstrap.Component,  {
     
     html : '',
     getAutoCreate : function(){
@@ -216,11 +214,11 @@ Roo.extend(Roo.mailer.Para, Roo.bootstrap.Component,  {
  * @param {Object} config The config object
  */
 
-Roo.mailer.Param = function(config){
-    Roo.mailer.Param.superclass.constructor.call(this, config);
+Roo.doc.Param = function(config){
+    Roo.doc.Param.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.mailer.Param, Roo.bootstrap.Component,  {
+Roo.extend(Roo.doc.Param, Roo.bootstrap.Component,  {
     
     is_optional : false,
     type : '',
@@ -316,11 +314,11 @@ Roo.extend(Roo.mailer.Param, Roo.bootstrap.Component,  {
  * @param {Object} config The config object
  */
 
-Roo.mailer.Section = function(config){
-    Roo.mailer.Section.superclass.constructor.call(this, config);
+Roo.doc.Section = function(config){
+    Roo.doc.Section.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.mailer.Section, Roo.bootstrap.Component,  {
+Roo.extend(Roo.doc.Section, Roo.bootstrap.Component,  {
     
     
     stype:   '',
@@ -384,11 +382,11 @@ Roo.extend(Roo.mailer.Section, Roo.bootstrap.Component,  {
  * @param {Object} config The config object
  */
 
-Roo.mailer.Synopsis = function(config){
-    Roo.mailer.Synopsis.superclass.constructor.call(this, config);
+Roo.doc.Synopsis = function(config){
+    Roo.doc.Synopsis.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.mailer.Synopsis, Roo.bootstrap.Component,  {
+Roo.extend(Roo.doc.Synopsis, Roo.bootstrap.Component,  {
     
     
     returntype : '',
