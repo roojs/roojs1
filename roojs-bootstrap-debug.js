@@ -228,7 +228,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         return ret;
     },
     
-    addxtypeChild : function (tree, cntr)
+    addxtypeChild : function (tree, cntr, is_body)
     {
         Roo.debug && Roo.log('addxtypeChild:' + cntr);
         var cn = this;
@@ -242,7 +242,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         
          skip_children = false;
         // render the element if it's not BODY.
-        if (tree.xtype != 'Body') {
+        if ((!is_body) {
            
             cn = Roo.factory(tree);
            
