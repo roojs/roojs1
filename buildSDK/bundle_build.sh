@@ -31,8 +31,8 @@ seed ../gnome.introspection-doc-generator/pack.js \
   
 
 #build docbook library
-seed ../gnome.introspection-doc-generator/pack.js \
-     -f buildSDK/dependancy_doc.txt -o roojs-doc.js -O roojs-doc-debug.js
+roojspacker -t roojs-doc.js -T roojs-doc-debug.js -i buildSDK/dependancy_doc.txt
+
   
 
      
