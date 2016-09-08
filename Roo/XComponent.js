@@ -234,7 +234,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                          minTabWidth: 140
                      }
                  })
-            }
+            };
         }
         
         if (!this.parent.el) {

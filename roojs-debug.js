@@ -1688,8 +1688,8 @@ Date.prototype.clearTime = function(clone){
 };
 
 // private
-// safari setMonth is broken
-if(Roo.isSafari){
+// safari setMonth is broken -- check that this is only donw once...
+if(Roo.isSafari && typeof(Date.brokenSetMonth) == 'undefined'){
     Date.brokenSetMonth = Date.prototype.setMonth;
 	Date.prototype.setMonth = function(num){
 		if(num <= -1){
@@ -16022,7 +16022,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
         var tree = this._tree ? this._tree() : this.tree();
 
         // altertive root elements ??? - we need a better way to indicate these.
-        var is_alt = (typeof(Roo.bootstrap) != 'undefined' && tree.xns == Roo.bootstrap) ||
+        var is_alt = Roo.XComponent.is_alt || (typeof(Roo.bootstrap) != 'undefined' && tree.xns == Roo.bootstrap) ||
                         (typeof(Roo.mailer) != 'undefined' && tree.xns == Roo.mailer) ;
         
         if (!this.parent && is_alt) {
@@ -16053,7 +16053,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                          minTabWidth: 140
                      }
                  })
-            }
+            };
         }
         
         if (!this.parent.el) {
@@ -16064,13 +16064,14 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
 		// The 'tree' method is  '_tree now' 
             
         tree.region = tree.region || this.region;
-        
+        var is_body = false;
         if (this.parent.el === true) {
             // bootstrap... - body..
             this.parent.el = Roo.factory(tree);
+            is_body = true;
         }
         
-        this.el = this.parent.el.addxtype(tree);
+        this.el = this.parent.el.addxtype(tree, null, is_body);
         this.fireEvent('built', this);
         
         this.panel = this.el;
@@ -16119,6 +16120,14 @@ Roo.apply(Roo.XComponent, {
     elmodules : [],
 
      /**
+     * @property  is_alt
+     * Is an alternative Root - normally used by bootstrap or other systems,
+     *    where the top element in the tree can wrap 'body' 
+     * @type {boolean} true  (default false)
+     */
+     
+    is_alt : false,
+    /**
      * @property  build_from_html
      * Build elements from html - used by bootstrap HTML stuff 
      *    - this is cleared after build is completed
@@ -16126,7 +16135,6 @@ Roo.apply(Roo.XComponent, {
      */
      
     build_from_html : false,
-
     /**
      * Register components to be built later.
      *
