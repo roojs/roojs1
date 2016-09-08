@@ -8,6 +8,8 @@
  * @extends Roo.bootstrap.Example
  * Example Element class
  * @cfg {String} lang (phpcode|programlisting) section type.
+ * @cfg {String} code
+ *
  * 
  * @constructor
  * Create a new Synopsis
