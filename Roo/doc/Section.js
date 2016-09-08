@@ -36,14 +36,14 @@ Roo.extend(Roo.mailer.Section, Roo.bootstrap.Component,  {
                     html : this.stype.charAt(0).toUpperCase() + this.stype.slice(1) //ucfirst
                 }
             ]
-        }
+        };
         if (this.stype == 'parameter') {
             
             // db package uses variable list here... - it results in dd/dl but the layout is messed up..
             cfg.cn.push({
                 tag: 'ul',
                 cls: 'itemizedlist roo-params'
-            })
+            });
         }
         
 	
