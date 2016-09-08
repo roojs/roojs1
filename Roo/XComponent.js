@@ -245,13 +245,14 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
 		// The 'tree' method is  '_tree now' 
             
         tree.region = tree.region || this.region;
-        
+        var is_body = false;
         if (this.parent.el === true) {
             // bootstrap... - body..
             this.parent.el = Roo.factory(tree);
+            is_body = true;
         }
         
-        this.el = this.parent.el.addxtype(tree);
+        this.el = this.parent.el.addxtype(tree, null, is_body);
         this.fireEvent('built', this);
         
         this.panel = this.el;
