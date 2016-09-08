@@ -5,7 +5,7 @@
 
 /**
  * @class Roo.doc.Example
- * @extends Roo.bootstrap.Example
+ * @extends Roo.bootstrap.Component
  * Example Element class
  * @cfg {String} lang (phpcode|programlisting) section type.
  * @cfg {String} code
