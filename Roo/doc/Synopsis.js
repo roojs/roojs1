@@ -16,11 +16,11 @@
  * @param {Object} config The config object
  */
 
-Roo.mailer.Synopsis = function(config){
-    Roo.mailer.Synopsis.superclass.constructor.call(this, config);
+Roo.doc.Synopsis = function(config){
+    Roo.doc.Synopsis.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.mailer.Synopsis, Roo.bootstrap.Component,  {
+Roo.extend(Roo.doc.Synopsis, Roo.bootstrap.Component,  {
     
     
     returntype : '',
