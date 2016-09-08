@@ -30,6 +30,11 @@ seed ../gnome.introspection-doc-generator/pack.js \
      -f buildSDK/dependancy_mailer.txt -o roojs-mailer.js -O roojs-mailer-debug.js
   
 
+#build docbook library
+seed ../gnome.introspection-doc-generator/pack.js \
+     -f buildSDK/dependancy_doc.txt -o roojs-doc.js -O roojs-doc-debug.js
+  
+
      
 
 #build the docs.. (and properties file)
