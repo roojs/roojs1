@@ -7,7 +7,7 @@
  * @class Roo.doc.Param
  * @extends Roo.bootstrap.Component
  * Param Element class
- * @cfg {bool} is_optional 
+ * @cfg {bool} is_optional is the argument optional
  * @cfg {String} type  argument type
  * @cfg {String} name
  * @cfg {String} desc  short description
