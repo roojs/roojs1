@@ -40,7 +40,7 @@ Roo.extend(Roo.mailer.Example, Roo.bootstrap.Component,  {
                     html :  String.format('{0}',this.code).replace(/\n/g, '<br/>')
                 }
             ]
-        }
+        };
         
 	
         return cfg;
