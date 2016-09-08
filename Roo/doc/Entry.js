@@ -9,8 +9,8 @@ Roo.doc = Roo.doc || {};
  * @class Roo.doc.Entry
  * @extends Roo.bootstrap.Component
  * Entry Element class - describes a method etc...
- * @name {String} name of method
- * @purpose {String} short description of method.
+ * @cfg name {String} name of method
+ * @cfg purpose {String} short description of method.
  * 
  * @constructor
  * Create a new E
