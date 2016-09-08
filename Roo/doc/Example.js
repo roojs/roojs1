@@ -7,7 +7,7 @@
  * @class Roo.doc.Example
  * @extends Roo.bootstrap.Example
  * Example Element class
- * @cfg {String} lang (phpcode|phpcode) section type.
+ * @cfg {String} lang (phpcode|programlisting) section type.
  * 
  * @constructor
  * Create a new Synopsis
