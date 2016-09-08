@@ -9,7 +9,7 @@
  * Param Element class
  * @cfg {bool} is_optional is the argument optional
  * @cfg {String} type  argument type
- * @cfg {String} name
+ * @cfg {String} name name of the parameter
  * @cfg {String} desc  short description
  * @cfg {String} defaultvalue default value
  * 
