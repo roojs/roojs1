@@ -44,7 +44,7 @@ Roo.extend(Roo.mailer.Example, Roo.bootstrap.Component,  {
         
 	
         return cfg;
-    },
+    }
   
     
     
