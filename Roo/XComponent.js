@@ -252,7 +252,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             is_body = true;
         }
         
-        this.el = this.parent.el.addxtype(tree, null, is_body);
+        this.el = this.parent.el.addxtype(tree, undefined, is_body);
         this.fireEvent('built', this);
         
         this.panel = this.el;
