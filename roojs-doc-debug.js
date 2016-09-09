@@ -427,7 +427,8 @@ Roo.extend(Roo.doc.Synopsis, Roo.bootstrap.Component,  {
                                     {
                                         tag: 'span',
                                         cls : 'roo-params'
-                                    }
+                                    },
+                                    ')'
                                 ]
                                 
                             }

@@ -17,4 +17,4 @@ Roo.doc.Section=function(A){Roo.doc.Section.superclass.constructor.call(this,A);
 ]};if(this.stype=='parameter'){A.cn.push({tag:'ul',cls:'itemizedlist roo-params'});}return A;},getChildContainer:function(A){if(this.stype=='parameter'){return this.el.select('.roo-params',true).first();}return this.el;}});
 // Roo/doc/Synopsis.js
 Roo.doc.Synopsis=function(A){Roo.doc.Synopsis.superclass.constructor.call(this,A);};Roo.extend(Roo.doc.Synopsis,Roo.bootstrap.Component,{returntype:'',name:'',stype:'function',getAutoCreate:function(){var A={tag:'h2',cls:'refsynopsisdiv',cn:[{cls:'funcsynopsis',cn:[{tag:'p',cn:{tag:'code',cls:'funcprototype',cn:[this.returntype+' ',{tag:'strong',cls:this.stype,html:this.name}
-,'(',{tag:'span',cls:'roo-params'}]}}]}]};return A;},getChildContainer:function(A){return this.el.select('.roo-params',true).first();}});
+,'(',{tag:'span',cls:'roo-params'},')']}}]}]};return A;},getChildContainer:function(A){return this.el.select('.roo-params',true).first();}});
