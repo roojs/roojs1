@@ -48,7 +48,7 @@ Roo.extend(Roo.doc.Section, Roo.bootstrap.Component,  {
                 tag: 'ul',
                 cls: 'itemizedlist roo-params',
                 cn : []
-            }
+            };
             // might not have any..
             var params = this.parent.items[0].items;
             for (var i =0; i < params.length;i++) {
