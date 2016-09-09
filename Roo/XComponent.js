@@ -304,7 +304,7 @@ Roo.apply(Roo.XComponent, {
      * @property  is_alt
      * Is an alternative Root - normally used by bootstrap or other systems,
      *    where the top element in the tree can wrap 'body' 
-     * @type {boolean} true  (default false)
+     * @type {boolean}  (default false)
      */
      
     is_alt : false,
