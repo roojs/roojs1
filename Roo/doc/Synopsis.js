@@ -33,7 +33,7 @@ Roo.extend(Roo.doc.Synopsis, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         
         var syn = this.items[0]; // hopefully...
-        
+        Roo.log(this.items);
         
          
         var cfg ={
