@@ -102,7 +102,7 @@ Roo.extend(Roo.doc.Entry, Roo.bootstrap.Component,  {
  * @extends Roo.bootstrap.Component
  * Example Element class
  * @cfg {String} title short title describing example
- * @cfg {String} lang (phpcode|programlisting) section type.
+ * @cfg {String} lang (php|txt|sql) section type.
  * @cfg {String} code  example code
  * @cfg {String} output The expected output from the code
  *
@@ -139,7 +139,7 @@ Roo.extend(Roo.doc.Example, Roo.bootstrap.Component,  {
                     cn : [
                         {
                             tag: 'pre',
-                            cls : this.lang,
+                            cls : 'lang-' + this.lang,
                             html :  String.format('{0}',this.code).replace(/\n/g, '<br/>')
                         }
                     ]
