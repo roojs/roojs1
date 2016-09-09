@@ -127,7 +127,7 @@ Roo.extend(Roo.doc.Example, Roo.bootstrap.Component,  {
         
         // no colour highlighting in here....
         
-        var code = hljs ? hljs.highlight(this.code, this.lang.toUpperCase()) : String.format('{0}',this.code).replace(/\n/g, '<br/>');
+        var code = hljs ? hljs.highlight(this.lang.toUpperCase(),this.code) : String.format('{0}',this.code).replace(/\n/g, '<br/>');
         
         
         var cfg ={

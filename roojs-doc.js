@@ -3,7 +3,7 @@ Roo.doc=Roo.doc||{};Roo.doc.Entry=function(A){Roo.doc.Entry.superclass.construct
 ,{cls:'refnamediv',html:this.purpose}]};return A;},addxtype:function(A,B){return this.addxtypeChild(A,B);},onRender:function(ct,A){Roo.doc.Entry._calls++;if(Roo.doc.Entry._calls>1||!ct){return;}Roo.bootstrap.Component.prototype.onRender.call(this,ct,A);}}
 );
 // Roo/doc/Example.js
-Roo.doc.Example=function(A){Roo.doc.Example.superclass.constructor.call(this,A);};Roo.extend(Roo.doc.Example,Roo.bootstrap.Component,{title:'',lang:'php',code:'',output:'',getAutoCreate:function(){var A=hljs?hljs.highlight(this.code,this.lang.toUpperCase()):String.format('{0}',this.code).replace(/\n/g,'<br/>');
+Roo.doc.Example=function(A){Roo.doc.Example.superclass.constructor.call(this,A);};Roo.extend(Roo.doc.Example,Roo.bootstrap.Component,{title:'',lang:'php',code:'',output:'',getAutoCreate:function(){var A=hljs?hljs.highlight(this.lang.toUpperCase(),this.code):String.format('{0}',this.code).replace(/\n/g,'<br/>');
 var B={cls:'panel panel-info',cn:[{cls:'panel-heading',html:this.title},{cls:'panel-body',cn:[{tag:'pre',cls:'lang-'+this.lang,html:A}]}]};if(this.output){B.cn.push({cls:'panel-footer',cn:{tag:'code',html:String.format('{0}',this.output).replace(/\n/g,'<br/>')}
 });}return B;}});
 // Roo/doc/Para.js
