@@ -127,6 +127,9 @@ Roo.extend(Roo.doc.Example, Roo.bootstrap.Component,  {
         
         // no colour highlighting in here....
         
+        var code = hljs ? hljs.highlight(this.code, this.lang) : String.format('{0}',this.code).replace(/\n/g, '<br/>');
+        
+        
         var cfg ={
             cls : 'panel panel-info',
             cn : [
@@ -140,7 +143,7 @@ Roo.extend(Roo.doc.Example, Roo.bootstrap.Component,  {
                         {
                             tag: 'pre',
                             cls : 'lang-' + this.lang,
-                            html :  String.format('{0}',this.code).replace(/\n/g, '<br/>')
+                            html :  code
                         }
                     ]
                 }
