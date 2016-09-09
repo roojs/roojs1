@@ -36,7 +36,7 @@ Roo.extend(Roo.doc.Section, Roo.bootstrap.Component,  {
                 {
                     tag: 'h1',
                     cls : 'title',
-                    html : this.stype.charAt(0).toUpperCase() + this.stype.slice(1) //ucfirst
+                    html : Roo.doc.Section.map[this.stype] 
                 }
             ]
         };
