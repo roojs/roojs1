@@ -24,7 +24,8 @@ Roo.doc.Synopsis = function(config){
 
 Roo.extend(Roo.doc.Synopsis, Roo.bootstrap.Component,  {
     
-    
+    memberof : '',
+    is_static : false,
     returntype : '',
     name: '',
     stype:   'function',
