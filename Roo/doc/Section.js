@@ -52,7 +52,7 @@ Roo.extend(Roo.doc.Section, Roo.bootstrap.Component,  {
             // might not have any..
             var params = this.parent().items[0].items;
             for (var i =0; i < params.length;i++) {
-                ul.cn.push( params[i].getAutoCreateParamSection() )
+                ul.cn.push( Roo.factory(params[i]).getAutoCreateParamSection() )
             }
             
             
