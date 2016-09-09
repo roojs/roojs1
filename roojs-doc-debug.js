@@ -30,13 +30,10 @@ Roo.doc.Entry  = function(config){
         marginheight : 0,
         offset : 0
     });
-    Roo.doc.Entry._calls++;
-    if (Roo.doc.Entry._calls > 1) {
-        return;
-    }
+     
     // call onRender once... and block next call...?
     this.onRender(body);
-    this.onRender = function() { };
+    //this.onRender = function() { };
 
 };
 
@@ -74,10 +71,21 @@ Roo.extend(Roo.doc.Entry, Roo.bootstrap.Component,  {
     addxtype :   function (tree, cntr)
     {
         return this.addxtypeChild(tree,cntr);
+    },
+    
+    
+    onRender : function(ct, position)
+    {
+        
+        Roo.doc.Entry._calls++;
+        if (Roo.doc.Entry._calls > 1) {
+            return;
+        }
+        
+    // call onRender once... and block next call...?
+    
+        Roo.bootstrap.Component.prototype.onRender.call(this, ct, position);
     }
-
-    
-    
    
 });
 
