@@ -1,5 +1,5 @@
 // Roo/doc/Entry.js
-Roo.doc=Roo.doc||{};Roo.doc.Entry=function(A){Roo.doc.Entry.superclass.constructor.call(this,A);var B=Roo.get(document.body);B.attr({leftmargin:0,marginwidth:0,topmargin:0,marginheight:0,offset:0});Roo.mailer.Body._calls++;if(Roo.mailer.Body._calls>1){throw "test";
+Roo.doc=Roo.doc||{};Roo.doc.Entry=function(A){Roo.doc.Entry.superclass.constructor.call(this,A);var B=Roo.get(document.body);B.attr({leftmargin:0,marginwidth:0,topmargin:0,marginheight:0,offset:0});Roo.doc.Entry._calls++;if(Roo.doc.Entry._calls>1){throw "test";
 }this.onRender(B);this.onRender=function(){};};Roo.doc.Entry._calls=0;Roo.extend(Roo.doc.Entry,Roo.bootstrap.Component,{name:'',purpose:'',getAutoCreate:function(){var A={cls:'refentry',cn:[{tag:'h1',cls:'refname',html:this.name},{cls:'refnamediv',html:this.purpose}
 ]};return A;},addxtype:function(A,B){return this.addxtypeChild(A,B);}});
 // Roo/doc/Example.js

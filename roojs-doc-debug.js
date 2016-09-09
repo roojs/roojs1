@@ -30,8 +30,8 @@ Roo.doc.Entry  = function(config){
         marginheight : 0,
         offset : 0
     });
-    Roo.mailer.Body._calls++;
-    if (Roo.mailer.Body._calls > 1) {
+    Roo.doc.Entry._calls++;
+    if (Roo.doc.Entry._calls > 1) {
         throw "test";
     }
     // call onRender once... and block next call...?
