@@ -77,7 +77,7 @@ Roo.extend(Roo.doc.Param, Roo.bootstrap.Component,  {
         var cfg ={
             tag: 'span',
             cn : [
-                is_optional ? '[' : '',
+                this.is_optional ? '[' : '',
                 this.type,
                 ' ',
                 this.name,
