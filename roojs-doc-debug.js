@@ -282,7 +282,7 @@ Roo.extend(Roo.doc.Param, Roo.bootstrap.Component,  {
         var cfg ={
             tag: 'span',
             cn : [
-                is_optional ? '[' : '',
+                this.is_optional ? '[' : '',
                 this.type,
                 ' ',
                 this.name,
@@ -334,6 +334,9 @@ Roo.extend(Roo.doc.Section, Roo.bootstrap.Component,  {
      
     getAutoCreate : function(){
         
+        
+        
+        
         var cfg ={
             
             cls : 'refsection',
@@ -342,7 +345,7 @@ Roo.extend(Roo.doc.Section, Roo.bootstrap.Component,  {
                 {
                     tag: 'h1',
                     cls : 'title',
-                    html : this.stype.charAt(0).toUpperCase() + this.stype.slice(1) //ucfirst
+                    html : Roo.doc.Section.map[this.stype] 
                 }
             ]
         };
@@ -372,8 +375,14 @@ Roo.extend(Roo.doc.Section, Roo.bootstrap.Component,  {
 });
 
  
-
- /*
+Roo.doc.Section.map = {
+    'desc' : 'Description',
+    'parameter' : 'Parameters',
+    'return' : 'Return Value',
+    'note' : 'Notes',
+    'example' : 'Examples'
+}
+/*
  * - LGPL
  *
  */
