@@ -78,7 +78,7 @@ Roo.extend(Roo.doc.Entry, Roo.bootstrap.Component,  {
     {
         
         Roo.doc.Entry._calls++;
-        if (Roo.doc.Entry._calls > 1) {
+        if (Roo.doc.Entry._calls > 1 || !ct) {
             return;
         }
         
