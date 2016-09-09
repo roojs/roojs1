@@ -74,10 +74,21 @@ Roo.extend(Roo.doc.Entry, Roo.bootstrap.Component,  {
     addxtype :   function (tree, cntr)
     {
         return this.addxtypeChild(tree,cntr);
+    },
+    
+    
+    onRender : function(ct, position)
+    {
+        
+        Roo.doc.Entry._calls++;
+        if (Roo.doc.Entry._calls > 1) {
+            return;
+        }
+        
+    // call onRender once... and block next call...?
+    
+        Roo.doc.Component.prototype.onRender.call(this, ct, position);
     }
-
-    
-    
    
 });
 
