@@ -87,7 +87,7 @@ Roo.extend(Roo.doc.Entry, Roo.bootstrap.Component,  {
         
     // call onRender once... and block next call...?
     
-        Roo.doc.Component.prototype.onRender.call(this, ct, position);
+        Roo.bootstrap.Component.prototype.onRender.call(this, ct, position);
     }
    
 });
