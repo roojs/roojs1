@@ -10,8 +10,8 @@ Roo.doc.Para=function(A){Roo.doc.Para.superclass.constructor.call(this,A);};Roo.
 ;}return A;}});
 // Roo/doc/Param.js
 Roo.doc.Param=function(A){Roo.doc.Param.superclass.constructor.call(this,A);};Roo.extend(Roo.doc.Param,Roo.bootstrap.Component,{is_optional:false,type:'',name:'',defaultvalue:'',desc:'',getAutoCreate:function(){if(this.parent().stype=='parameter'){return {tag:'li',cn:[{tag:'p',cls:'para',cn:[{tag:'code',html:this.type+' '+this.name}
-,this.desc]}]};}if(this.parent().stype=='return'){return {tag:'p',cls:'para',cn:[{tag:'code',html:this.type},this.desc]};}var A={tag:'span',cn:[this.is_optional?'[':'',this.type,' ',this.name,this.defaultvalue==''?'':' = ',this.defaultvalue,',']};return A;
-}});
+,this.desc]}]};}if(this.parent().stype=='return'){return {tag:'p',cls:'para',cn:[{tag:'code',html:this.type},this.desc]};}var A={tag:'span',cn:[this.is_optional?'[':'',this.type,' ',{tag:'b',html:this.name},this.defaultvalue==''?'':' = ',this.defaultvalue,this.is_optional?']':'',',']}
+;return A;}});
 // Roo/doc/Section.js
 Roo.doc.Section=function(A){Roo.doc.Section.superclass.constructor.call(this,A);};Roo.extend(Roo.doc.Section,Roo.bootstrap.Component,{stype:'',getAutoCreate:function(){var A={cls:'refsection',cn:[{tag:'h1',cls:'title',html:Roo.doc.Section.map[this.stype]}]}
 ;if(this.stype=='parameter'){A.cn.push({tag:'ul',cls:'itemizedlist roo-params'});}return A;},getChildContainer:function(A){if(this.stype=='parameter'){return this.el.select('.roo-params',true).first();}return this.el;}});Roo.doc.Section.map={'desc':'Description','parameter':'Parameters','return':'Return Value','note':'Notes','example':'Examples'};
