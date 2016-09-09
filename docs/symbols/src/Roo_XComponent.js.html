@@ -203,7 +203,7 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tree </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this._tree </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this._tree</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-var">this.tree</span><span class="jsdoc-syntax">();
 
         </span><span class="jsdoc-comment">// altertive root elements ??? - we need a better way to indicate these.
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">is_alt </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">tree.xns </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">Roo.bootstrap</span><span class="jsdoc-syntax">) ||
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">is_alt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.XComponent.is_alt </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">tree.xns </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">Roo.bootstrap</span><span class="jsdoc-syntax">) ||
                         (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.mailer</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">tree.xns </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">Roo.mailer</span><span class="jsdoc-syntax">) ;
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.parent </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">is_alt</span><span class="jsdoc-syntax">) {
@@ -234,7 +234,7 @@
                          </span><span class="jsdoc-var">minTabWidth</span><span class="jsdoc-syntax">: 140
                      }
                  })
-            }
+            };
         }
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.parent.el</span><span class="jsdoc-syntax">) {
@@ -245,13 +245,14 @@
 		</span><span class="jsdoc-comment">// The 'tree' method is  '_tree now' 
             
         </span><span class="jsdoc-var">tree.region </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tree.region </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.region</span><span class="jsdoc-syntax">;
-        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">is_body </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parent.el </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-comment">// bootstrap... - body..
             </span><span class="jsdoc-var">this.parent.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">is_body </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
         }
         
-        </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parent.el.addxtype</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parent.el.addxtype</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">is_body</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'built'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-var">this.panel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
@@ -300,14 +301,21 @@
     </span><span class="jsdoc-var">elmodules </span><span class="jsdoc-syntax">: [],
 
      </span><span class="jsdoc-comment">/**
+     * @property  is_alt
+     * Is an alternative Root - normally used by bootstrap or other systems,
+     *    where the top element in the tree can wrap 'body' 
+     * @type {boolean}  (default false)
+     */
+     
+    </span><span class="jsdoc-var">is_alt </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
      * @property  build_from_html
      * Build elements from html - used by bootstrap HTML stuff 
      *    - this is cleared after build is completed
-     * @type {boolean} true  (default false)
+     * @type {boolean}    (default false)
      */
      
     </span><span class="jsdoc-var">build_from_html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-
     </span><span class="jsdoc-comment">/**
      * Register components to be built later.
      *
