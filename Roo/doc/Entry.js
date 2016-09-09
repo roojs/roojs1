@@ -30,10 +30,11 @@ Roo.doc.Entry  = function(config){
         marginheight : 0,
         offset : 0
     });
-    this.el = body;
+    
      
     // call onRender once... and block next call...?
     this.onRender(body);
+    this.el = body;
     //this.onRender = function() { };
 
 };
