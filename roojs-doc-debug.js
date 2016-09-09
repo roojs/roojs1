@@ -9,8 +9,8 @@ Roo.doc = Roo.doc || {};
  * @class Roo.doc.Entry
  * @extends Roo.bootstrap.Component
  * Entry Element class - describes a method etc...
- * @name {String} name of method
- * @purpose {String} short description of method.
+ * @cfg name {String} name of method
+ * @cfg purpose {String} short description of method.
  * 
  * @constructor
  * Create a new E
@@ -90,7 +90,7 @@ Roo.extend(Roo.doc.Entry, Roo.bootstrap.Component,  {
 
 /**
  * @class Roo.doc.Example
- * @extends Roo.bootstrap.Example
+ * @extends Roo.bootstrap.Component
  * Example Element class
  * @cfg {String} lang (phpcode|programlisting) section type.
  * @cfg {String} code
@@ -203,9 +203,9 @@ Roo.extend(Roo.doc.Para, Roo.bootstrap.Component,  {
  * @class Roo.doc.Param
  * @extends Roo.bootstrap.Component
  * Param Element class
- * @cfg {bool} is_optional 
+ * @cfg {bool} is_optional is the argument optional
  * @cfg {String} type  argument type
- * @cfg {String} name
+ * @cfg {String} name name of the parameter
  * @cfg {String} desc  short description
  * @cfg {String} defaultvalue default value
  * 
