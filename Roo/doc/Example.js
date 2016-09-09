@@ -23,7 +23,7 @@ Roo.doc.Example = function(config){
 
 Roo.extend(Roo.doc.Example, Roo.bootstrap.Component,  {
     
-    
+    title : '',
     lang:   'php',
     code : '',
     output : '',
@@ -34,18 +34,20 @@ Roo.extend(Roo.doc.Example, Roo.bootstrap.Component,  {
         
         var cfg ={
             
-            cls : this.lang,
+            
+            cls : 'panel panel-info',
             
             cn : [
                 {
                     tag: 'pre',
+                    cls : this.lang,
                     html :  String.format('{0}',this.code).replace(/\n/g, '<br/>')
                 }
             ]
         };
         if (this.output) {
             cfg.cn.push({
-                cls : 'panel panel-default',
+                cls : 'panel panel-success',
                 cn : [
                     {
                         cls : 'panel-heading',
