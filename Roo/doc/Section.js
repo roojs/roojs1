@@ -25,6 +25,9 @@ Roo.extend(Roo.doc.Section, Roo.bootstrap.Component,  {
      
     getAutoCreate : function(){
         
+        
+        
+        
         var cfg ={
             
             cls : 'refsection',
@@ -63,5 +66,10 @@ Roo.extend(Roo.doc.Section, Roo.bootstrap.Component,  {
 });
 
  
-
- 
+Roo.doc.Section.map = {
+    'desc' : 'Description',
+    'parameter' : 'Parameters',
+    'return' : 'Return Value',
+    'note' : 'Notes',
+    'example' : 'Examples'
+}
