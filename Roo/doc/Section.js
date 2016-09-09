@@ -34,7 +34,7 @@ Roo.extend(Roo.doc.Section, Roo.bootstrap.Component,  {
             // id... ?
             cn : [
                 {
-                    tag: 'h1',
+                    tag: 'h3',
                     cls : 'title',
                     html : Roo.doc.Section.map[this.stype] 
                 }

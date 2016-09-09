@@ -13,7 +13,7 @@ Roo.doc.Param=function(A){Roo.doc.Param.superclass.constructor.call(this,A);};Ro
 ,this.desc]}]};}if(this.parent().stype=='return'){return {tag:'p',cls:'para',cn:[{tag:'code',html:this.type},this.desc]};}var A={tag:'span',cn:[this.is_optional?'[':'',this.type,' ',{tag:'b',html:this.name},this.defaultvalue==''?'':' = ',this.defaultvalue,this.is_optional?']':'',',']}
 ;return A;},getAutoCreateParamSection:function(){return {tag:'li',cn:[{tag:'p',cls:'para',cn:[{tag:'code',html:this.type+' '+this.name},this.desc]}]};}});
 // Roo/doc/Section.js
-Roo.doc.Section=function(A){Roo.doc.Section.superclass.constructor.call(this,A);};Roo.extend(Roo.doc.Section,Roo.bootstrap.Component,{stype:'',getAutoCreate:function(){var A={cls:'refsection',cn:[{tag:'h1',cls:'title',html:Roo.doc.Section.map[this.stype]}]}
+Roo.doc.Section=function(A){Roo.doc.Section.superclass.constructor.call(this,A);};Roo.extend(Roo.doc.Section,Roo.bootstrap.Component,{stype:'',getAutoCreate:function(){var A={cls:'refsection',cn:[{tag:'h3',cls:'title',html:Roo.doc.Section.map[this.stype]}]}
 ;if(this.stype=='parameter'){var ul={tag:'ul',cls:'itemizedlist roo-params',cn:[]};var B=this.parent().items[0].items;for(var i=0;i<B.length;i++){ul.cn.push(Roo.factory(B[i]).getAutoCreateParamSection())}A.cn.push(ul);}return A;},getChildContainer:function(A){if(this.stype=='parameter'){return this.el.select('.roo-params',true).first();
 }return this.el;}});Roo.doc.Section.map={'desc':'Description','parameter':'Parameters','return':'Return Value','note':'Notes','example':'Examples'};
 // Roo/doc/Synopsis.js
