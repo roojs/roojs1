@@ -30,6 +30,7 @@ Roo.doc.Entry  = function(config){
         marginheight : 0,
         offset : 0
     });
+    this.el = body;
      
     // call onRender once... and block next call...?
     this.onRender(body);
@@ -72,7 +73,10 @@ Roo.extend(Roo.doc.Entry, Roo.bootstrap.Component,  {
     {
         return this.addxtypeChild(tree,cntr);
     },
-    
+    getChildContainer : function()
+    {
+        return Roo.get(document.body);
+    }
     
     onRender : function(ct, position)
     {
