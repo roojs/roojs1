@@ -32,7 +32,7 @@ Roo.doc.Entry  = function(config){
     });
     Roo.doc.Entry._calls++;
     if (Roo.doc.Entry._calls > 1) {
-        throw "test";
+        return;
     }
     // call onRender once... and block next call...?
     this.onRender(body);
