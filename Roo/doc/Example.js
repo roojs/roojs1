@@ -48,6 +48,9 @@ Roo.extend(Roo.doc.Example, Roo.bootstrap.Component,  {
                 cls : 'panel panel-default',
                 cn : [
                     {
+                        cls : 'panel-heading',
+                        html : "Outputs",
+                    {
                         cls : 'panel-body',
                         cn : {
                             
