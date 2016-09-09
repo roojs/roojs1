@@ -32,6 +32,10 @@ Roo.extend(Roo.doc.Synopsis, Roo.bootstrap.Component,  {
      
     getAutoCreate : function(){
         
+        var syn = this.items[0]; // hopefully...
+        
+        
+         
         var cfg ={
             tag: 'h5',
             cls : 'refsynopsisdiv',
