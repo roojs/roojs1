@@ -312,7 +312,7 @@ Roo.apply(Roo.XComponent, {
      * @property  build_from_html
      * Build elements from html - used by bootstrap HTML stuff 
      *    - this is cleared after build is completed
-     * @type {boolean} true  (default false)
+     * @type {boolean}    (default false)
      */
      
     build_from_html : false,
