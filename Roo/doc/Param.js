@@ -95,7 +95,29 @@ Roo.extend(Roo.doc.Param, Roo.bootstrap.Component,  {
         
 	
         return cfg;
+    },
+    getAutoCreateParamSection : function()
+    {
+        return {
+               tag : 'li',
+               cn : [
+                   {
+                       tag : 'p',
+                       cls: 'para',
+                       cn : [
+                           {
+                               tag: 'code',
+                               html : this.type + ' ' + this.name
+                           },
+                           this.desc
+                       ]
+                   }
+               ]
+           };
+        
+        
     }
+    
      
     
     
