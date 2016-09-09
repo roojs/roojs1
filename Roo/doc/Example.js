@@ -54,16 +54,13 @@ Roo.extend(Roo.doc.Example, Roo.bootstrap.Component,  {
                     {
                         cls : 'panel-body',
                         cn : {
-                            {
-                                tag: 'pre',
-                                html :  String.format('{0}',this.output).replace(/\n/g, '<br/>')
-                            }
+                            tag: 'pre',
+                            html :  String.format('{0}',this.output).replace(/\n/g, '<br/>')
                         }
                     }
                 ]
                 
-                
-            })
+            });
         }
         
         
