@@ -33,36 +33,38 @@ Roo.extend(Roo.doc.Example, Roo.bootstrap.Component,  {
         // no colour highlighting in here....
         
         var cfg ={
-            
-            
             cls : 'panel panel-info',
-            
             cn : [
                 {
-                    tag: 'pre',
-                    cls : this.lang,
-                    html :  String.format('{0}',this.code).replace(/\n/g, '<br/>')
+                    cls : 'panel-heading',
+                    html : this.title,
+                },
+                {
+                    cls : 'panel-body',
+                    cn : [
+                        {
+                            tag: 'pre',
+                            cls : this.lang,
+                            html :  String.format('{0}',this.code).replace(/\n/g, '<br/>')
+                        }
+                    ]
                 }
             ]
         };
+        
         if (this.output) {
-            cfg.cn.push({
-                cls : 'panel panel-success',
-                cn : [
-                    {
-                        cls : 'panel-heading',
-                        html : "Outputs",
-                    },
-                    {
-                        cls : 'panel-body',
-                        cn : {
-                            tag: 'pre',
-                            html :  String.format('{0}',this.output).replace(/\n/g, '<br/>')
-                        }
+            cfg.cn.push(
+
+                {
+                    cls : 'panel-footer',
+                    cn : {
+                        tag: 'code',
+                        html :  String.format('{0}',this.output).replace(/\n/g, '<br/>')
                     }
-                ]
+                }
+            
                 
-            });
+            );
         }
         
         
