@@ -8,7 +8,8 @@
  * @extends Roo.bootstrap.Component
  * Example Element class
  * @cfg {String} lang (phpcode|programlisting) section type.
- * @cfg {String} code
+ * @cfg {String} code  example code
+ * @cfg {String} output The expected output from the code
  *
  * 
  * @constructor
@@ -25,6 +26,7 @@ Roo.extend(Roo.doc.Example, Roo.bootstrap.Component,  {
     
     lang:   'php',
     code : '',
+    output : '',
     
     getAutoCreate : function(){
         
@@ -36,11 +38,15 @@ Roo.extend(Roo.doc.Example, Roo.bootstrap.Component,  {
             
             cn : [
                 {
-                    tag: 'code',
+                    tag: 'pre',
                     html :  String.format('{0}',this.code).replace(/\n/g, '<br/>')
                 }
             ]
         };
+        if (this.output) {
+            
+        }
+        
         
 	
         return cfg;
