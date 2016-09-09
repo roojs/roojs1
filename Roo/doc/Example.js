@@ -44,7 +44,19 @@ Roo.extend(Roo.doc.Example, Roo.bootstrap.Component,  {
             ]
         };
         if (this.output) {
-            
+            cfg.cn.push({
+                cls : 'panel panel-default',
+                cn : [
+                    {
+                        cls : 'panel-body',
+                        cn : {
+                            
+                        }
+                    }
+                ]
+                
+                
+            })
         }
         
         
