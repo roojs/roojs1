@@ -80,7 +80,10 @@ Roo.extend(Roo.doc.Param, Roo.bootstrap.Component,  {
                 this.is_optional ? '[' : '',
                 this.type,
                 ' ',
-                this.name,
+                {
+                    tag : 'b',
+                    html : this.name,
+                },
                 this.defaultvalue == '' ? '' : ' = ',
                 this.defaultvalue,
                 this.is_optional ? ']' : '',
