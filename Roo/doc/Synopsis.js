@@ -10,6 +10,8 @@
  * @cfg {String} returntype return value
  * @cfg {String} name title really..
  * @cfg {String} stype (function|constant)
+ * @cfg {String} memberof class name
+ * @cfg {bool} is_static is a static member
  * 
  * @constructor
  * Create a new Synopsis
