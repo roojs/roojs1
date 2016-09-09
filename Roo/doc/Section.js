@@ -43,10 +43,20 @@ Roo.extend(Roo.doc.Section, Roo.bootstrap.Component,  {
         if (this.stype == 'parameter') {
             
             // db package uses variable list here... - it results in dd/dl but the layout is messed up..
-            cfg.cn.push({
+            
+            var ul = {
                 tag: 'ul',
-                cls: 'itemizedlist roo-params'
-            });
+                cls: 'itemizedlist roo-params',
+                cn : []
+            }
+            // might not have any..
+            var params = this.parent.items[0].items;
+            for (var i =0; i < params.length;i++) {
+                ul.cn.push( params[i].getAutoCreateParam() )
+            }
+            
+            
+            cfg.cn.push(ul);
         }
         
 	
