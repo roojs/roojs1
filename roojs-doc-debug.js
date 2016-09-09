@@ -101,8 +101,10 @@ Roo.extend(Roo.doc.Entry, Roo.bootstrap.Component,  {
  * @class Roo.doc.Example
  * @extends Roo.bootstrap.Component
  * Example Element class
+ * @cfg {String} title short title describing example
  * @cfg {String} lang (phpcode|programlisting) section type.
- * @cfg {String} code
+ * @cfg {String} code  example code
+ * @cfg {String} output The expected output from the code
  *
  * 
  * @constructor
@@ -116,25 +118,50 @@ Roo.doc.Example = function(config){
 
 Roo.extend(Roo.doc.Example, Roo.bootstrap.Component,  {
     
-    
+    title : '',
     lang:   'php',
     code : '',
+    output : '',
     
     getAutoCreate : function(){
         
         // no colour highlighting in here....
         
         var cfg ={
-            
-            cls : this.lang,
-            
+            cls : 'panel panel-info',
             cn : [
                 {
-                    tag: 'code',
-                    html :  String.format('{0}',this.code).replace(/\n/g, '<br/>')
+                    cls : 'panel-heading',
+                    html : this.title
+                },
+                {
+                    cls : 'panel-body',
+                    cn : [
+                        {
+                            tag: 'pre',
+                            cls : this.lang,
+                            html :  String.format('{0}',this.code).replace(/\n/g, '<br/>')
+                        }
+                    ]
                 }
             ]
         };
+        
+        if (this.output) {
+            cfg.cn.push(
+
+                {
+                    cls : 'panel-footer',
+                    cn : {
+                        tag: 'code',
+                        html :  String.format('{0}',this.output).replace(/\n/g, '<br/>')
+                    }
+                }
+            
+                
+            );
+        }
+        
         
 	
         return cfg;
@@ -430,6 +457,8 @@ Roo.doc.Section.map = {
  * @cfg {String} returntype return value
  * @cfg {String} name title really..
  * @cfg {String} stype (function|constant)
+ * @cfg {String} memberof class name
+ * @cfg {bool} is_static is a static member
  * 
  * @constructor
  * Create a new Synopsis
@@ -442,13 +471,18 @@ Roo.doc.Synopsis = function(config){
 
 Roo.extend(Roo.doc.Synopsis, Roo.bootstrap.Component,  {
     
-    
+    memberof : '',
+    is_static : false,
     returntype : '',
     name: '',
     stype:   'function',
      
     getAutoCreate : function(){
         
+        var syn = this.items[0]; // hopefully...
+        Roo.log(this.items);
+        
+         
         var cfg ={
             tag: 'h5',
             cls : 'refsynopsisdiv',

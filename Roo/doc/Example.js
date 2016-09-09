@@ -38,7 +38,7 @@ Roo.extend(Roo.doc.Example, Roo.bootstrap.Component,  {
             cn : [
                 {
                     cls : 'panel-heading',
-                    html : this.title,
+                    html : this.title
                 },
                 {
                     cls : 'panel-body',
