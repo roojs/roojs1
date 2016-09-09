@@ -73,10 +73,6 @@ Roo.extend(Roo.doc.Entry, Roo.bootstrap.Component,  {
     {
         return this.addxtypeChild(tree,cntr);
     },
-    getChildContainer : function()
-    {
-        return Roo.get(document.body);
-    }
     
     onRender : function(ct, position)
     {
