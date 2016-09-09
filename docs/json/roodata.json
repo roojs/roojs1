@@ -48099,8 +48099,9 @@
      "desc": "section type.",
      "memberOf": "",
      "optvals": [
-      "phpcode",
-      "programlisting"
+      "php",
+      "txt",
+      "sql"
      ]
     },
     {

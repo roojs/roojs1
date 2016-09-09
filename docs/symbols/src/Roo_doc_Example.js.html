@@ -8,7 +8,7 @@
  * @extends Roo.bootstrap.Component
  * Example Element class
  * @cfg {String} title short title describing example
- * @cfg {String} lang (phpcode|programlisting) section type.
+ * @cfg {String} lang (php|txt|sql) section type.
  * @cfg {String} code  example code
  * @cfg {String} output The expected output from the code
  *
@@ -45,7 +45,7 @@
                     </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
                         {
                             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'pre'</span><span class="jsdoc-syntax">,
-                            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.lang</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'lang-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.lang</span><span class="jsdoc-syntax">,
                             </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'{0}'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.code</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/\n/g, </span><span class="jsdoc-string">'&lt;br/&gt;'</span><span class="jsdoc-syntax">)
                         }
                     ]
