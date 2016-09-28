@@ -18,7 +18,7 @@ Roo.mailer = Roo.mailer || {};
  * @param {Object} config The config object
  */
 
-_calls = 0;
+
 
 Roo.mailer.Body  = function(config){
     Roo.mailer.Body.superclass.constructor.call(this, config);
@@ -31,8 +31,9 @@ Roo.mailer.Body  = function(config){
         marginheight : 0,
         offset : 0
     });
-    _calls++;
-    if (_calls > 1) {
+    Roo.mailer.Body._calls++;
+    if (Roo.mailer.Body._calls > 1) {
+        return;
         throw "test";
     }
     
@@ -40,6 +41,8 @@ Roo.mailer.Body  = function(config){
     this.onRender = function() { };
 
 };
+
+Roo.mailer.Body._calls = 0;
 
 Roo.extend(Roo.mailer.Body, Roo.bootstrap.Component,  {
     
@@ -139,9 +142,9 @@ Roo.extend(Roo.mailer.Block, Roo.bootstrap.Component,  {
         var tr = {
             tag : 'tr',
             cls : 'roo-m-block-tr'
-        }
+        };
         if (this.blocktype != 'row') {
-           tr.cn = [
+            tr.cn = [
                 {
                     tag : 'td',
                     align : 'center',
@@ -149,7 +152,7 @@ Roo.extend(Roo.mailer.Block, Roo.bootstrap.Component,  {
                     cls : 'roo-m-' + this.blocktype + '-content',
                     html : this.html
                 }
-           ]
+            ];
         }
         
         var cfg =   {
@@ -316,7 +319,7 @@ Roo.extend(Roo.mailer.Column, Roo.bootstrap.Component,  {
         var tr = {
             tag : 'tr',
             cn : [ ]
-        }
+        };
          
        
         
