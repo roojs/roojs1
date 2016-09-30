@@ -65,7 +65,10 @@ Roo.apply = function(o, c, defaults){
         isSecure = window.location.href.toLowerCase().indexOf("https") === 0,
         isIOS = /iphone|ipad/.test(ua),
         isTouch =  (function() {
-            try {  
+            try {
+                if (ua.indexOf('chrome') != -1 && ua.indexOf('android') == -1) {
+                    return false; // no touch on chrome!?
+                }
                 document.createEvent("TouchEvent");  
                 return true;  
             } catch (e) {  
