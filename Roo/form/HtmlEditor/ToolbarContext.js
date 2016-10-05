@@ -633,6 +633,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 listeners: {
                     'change' : function(f, nv, ov) {
                         tb.selectedNode.setAttribute(f.attrname, nv);
+                        editorcore.syncValue();
                     }
                 }
             }));
