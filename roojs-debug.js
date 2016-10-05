@@ -65,7 +65,14 @@ Roo.apply = function(o, c, defaults){
         isSecure = window.location.href.toLowerCase().indexOf("https") === 0,
         isIOS = /iphone|ipad/.test(ua),
         isTouch =  (function() {
-            try {  
+            try {
+                if (ua.indexOf('chrome') != -1 && ua.indexOf('android') == -1) {
+                    window.addEventListener('touchstart', function __set_has_touch__ () {
+                        Roo.isTouch = true;
+                        winow.removeEventListener('touchstart', __set_has_touch__);
+                    });
+                    return false; // no touch on chrome!?
+                }
                 document.createEvent("TouchEvent");  
                 return true;  
             } catch (e) {  
@@ -16123,7 +16130,7 @@ Roo.apply(Roo.XComponent, {
      * @property  is_alt
      * Is an alternative Root - normally used by bootstrap or other systems,
      *    where the top element in the tree can wrap 'body' 
-     * @type {boolean} true  (default false)
+     * @type {boolean}  (default false)
      */
      
     is_alt : false,
@@ -16131,7 +16138,7 @@ Roo.apply(Roo.XComponent, {
      * @property  build_from_html
      * Build elements from html - used by bootstrap HTML stuff 
      *    - this is cleared after build is completed
-     * @type {boolean} true  (default false)
+     * @type {boolean}    (default false)
      */
      
     build_from_html : false,
@@ -44887,6 +44894,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 listeners: {
                     'change' : function(f, nv, ov) {
                         tb.selectedNode.setAttribute(f.attrname, nv);
+                        editorcore.syncValue();
                     }
                 }
             }));
