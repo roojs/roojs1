@@ -245,6 +245,8 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             // fade it?
         }
         
+        this.fireEvent('show', this);
+        
     },
     hide : function()
     {
