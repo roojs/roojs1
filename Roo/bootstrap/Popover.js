@@ -255,6 +255,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         this.el.hide();
         this.hoverState = null;
         
+        this.fireEvent('hide', this);
     }
     
 });
