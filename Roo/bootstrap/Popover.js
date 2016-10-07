@@ -23,6 +23,24 @@
 
 Roo.bootstrap.Popover = function(config){
     Roo.bootstrap.Popover.superclass.constructor.call(this, config);
+    
+    this.addEvents({
+        // raw events
+         /**
+         * @event show
+         * After the popover show
+         * 
+         * @param {Roo.bootstrap.Popover} this
+         */
+        "show" : true,
+        /**
+         * @event hide
+         * After the popover hide
+         * 
+         * @param {Roo.bootstrap.Popover} this
+         */
+        "hide" : true
+    });
 };
 
 Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
