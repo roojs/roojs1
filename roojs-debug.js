@@ -69,7 +69,7 @@ Roo.apply = function(o, c, defaults){
                 if (ua.indexOf('chrome') != -1 && ua.indexOf('android') == -1) {
                     window.addEventListener('touchstart', function __set_has_touch__ () {
                         Roo.isTouch = true;
-                        winow.removeEventListener('touchstart', __set_has_touch__);
+                        window.removeEventListener('touchstart', __set_has_touch__);
                     });
                     return false; // no touch on chrome!?
                 }
