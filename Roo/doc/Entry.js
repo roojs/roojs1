@@ -22,6 +22,7 @@ Roo.doc = Roo.doc || {};
 Roo.doc.Entry  = function(config){
     Roo.doc.Entry.superclass.constructor.call(this, config);
     //this.el = Roo.get(document.body);
+    /*
     var body = Roo.get(document.body);
     body.attr({
         leftmargin : 0,
@@ -36,10 +37,11 @@ Roo.doc.Entry  = function(config){
     this.onRender(body);
     this.el = body;
     //this.onRender = function() { };
+    */
 
 };
 
-Roo.doc.Entry._calls = 0;
+//Roo.doc.Entry._calls = 0;
 
 Roo.extend(Roo.doc.Entry, Roo.bootstrap.Component,  {
     
@@ -64,17 +66,15 @@ Roo.extend(Roo.doc.Entry, Roo.bootstrap.Component,  {
             ]
         };
         
-        
          
-	
         return cfg;
     },
     
     addxtype :   function (tree, cntr)
     {
         return this.addxtypeChild(tree,cntr);
-    },
-    
+    }
+    /*
     onRender : function(ct, position)
     {
         
@@ -87,6 +87,7 @@ Roo.extend(Roo.doc.Entry, Roo.bootstrap.Component,  {
     
         Roo.bootstrap.Component.prototype.onRender.call(this, ct, position);
     }
+    */
    
 });
 

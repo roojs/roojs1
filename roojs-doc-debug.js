@@ -22,6 +22,7 @@ Roo.doc = Roo.doc || {};
 Roo.doc.Entry  = function(config){
     Roo.doc.Entry.superclass.constructor.call(this, config);
     //this.el = Roo.get(document.body);
+    /*
     var body = Roo.get(document.body);
     body.attr({
         leftmargin : 0,
@@ -36,10 +37,11 @@ Roo.doc.Entry  = function(config){
     this.onRender(body);
     this.el = body;
     //this.onRender = function() { };
+    */
 
 };
 
-Roo.doc.Entry._calls = 0;
+//Roo.doc.Entry._calls = 0;
 
 Roo.extend(Roo.doc.Entry, Roo.bootstrap.Component,  {
     
@@ -64,17 +66,15 @@ Roo.extend(Roo.doc.Entry, Roo.bootstrap.Component,  {
             ]
         };
         
-        
          
-	
         return cfg;
     },
     
     addxtype :   function (tree, cntr)
     {
         return this.addxtypeChild(tree,cntr);
-    },
-    
+    }
+    /*
     onRender : function(ct, position)
     {
         
@@ -87,6 +87,7 @@ Roo.extend(Roo.doc.Entry, Roo.bootstrap.Component,  {
     
         Roo.bootstrap.Component.prototype.onRender.call(this, ct, position);
     }
+    */
    
 });
 
@@ -122,12 +123,14 @@ Roo.extend(Roo.doc.Example, Roo.bootstrap.Component,  {
     lang:   'php',
     code : '',
     output : '',
+    outputlang : 'txt',
     
     getAutoCreate : function(){
         
         // no colour highlighting in here....
         
-        var code = hljs ? hljs.highlight(this.lang.toUpperCase(),this.code) : String.format('{0}',this.code).replace(/\n/g, '<br/>');
+        var code = hljs ? hljs.highlight(this.lang,this.code).value :
+                String.format('{0}',this.code).replace(/\n/g, '<br/>');
         
         
         var cfg ={
@@ -151,18 +154,21 @@ Roo.extend(Roo.doc.Example, Roo.bootstrap.Component,  {
         };
         
         if (this.output) {
+            
+            var out = hljs ? hljs.highlight(this.outputlang,this.output).value :
+                    String.format('{0}',this.output).replace(/\n/g, '<br/>');
             cfg.cn.push(
 
                 {
                     cls : 'panel-footer',
                     cn : {
-                        tag: 'code',
-                        html :  String.format('{0}',this.output).replace(/\n/g, '<br/>')
+                        tag: 'pre',
+                        html : out 
                     }
                 }
             
                 
-            );
+            );      
         }
         
         
@@ -391,7 +397,7 @@ Roo.extend(Roo.doc.Section, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         
         
-        
+        var syn = Roo.factory(this.parent().items[0]);
         
         var cfg ={
             
@@ -415,7 +421,7 @@ Roo.extend(Roo.doc.Section, Roo.bootstrap.Component,  {
                 cn : []
             };
             // might not have any..
-            var params = this.parent().items[0].items;
+            var params = syn.items;
             for (var i =0; i < params.length;i++) {
                 ul.cn.push( Roo.factory(params[i]).getAutoCreateParamSection() )
             }
@@ -423,7 +429,23 @@ Roo.extend(Roo.doc.Section, Roo.bootstrap.Component,  {
             
             cfg.cn.push(ul);
         }
-        
+        if (this.stype == 'return' && syn.returndesc.length) {
+            
+            cfg.cn.push({
+                tag: 'p',
+                cls : 'para',
+                cn : [
+                
+                    {
+                        tag: 'code',
+                        cls: 'parameter',
+                        html : syn.returntype
+                    },
+                    syn.returndesc
+                ]
+                
+            });
+        }
 	
         return cfg;
     },
@@ -433,6 +455,7 @@ Roo.extend(Roo.doc.Section, Roo.bootstrap.Component,  {
         if (this.stype == 'parameter') {
             return this.el.select('.roo-params',true).first();
         }
+       
         return this.el;
     }
     
@@ -458,6 +481,7 @@ Roo.doc.Section.map = {
  * @extends Roo.bootstrap.Component
  * Synopsis Element class
  * @cfg {String} returntype return value
+ * @cfg {String} returndesc description of return value. (used in the return section if set..)
  * @cfg {String} name title really..
  * @cfg {String} stype (function|constant)
  * @cfg {String} memberof class name
@@ -477,13 +501,22 @@ Roo.extend(Roo.doc.Synopsis, Roo.bootstrap.Component,  {
     memberof : '',
     is_static : false,
     returntype : '',
+    returndesc : '',
     name: '',
     stype:   'function',
      
     getAutoCreate : function(){
         
         var syn = this.items[0]; // hopefully...
-        Roo.log(this.items);
+        
+        
+        
+        var nmp = (this.is_static ? '' : '$') +
+            this.memberof +
+            (this.is_static ? '::' : '->');
+            
+         
+        // this should probably do the params....?? then we need to disable the rendering..
         
          
         var cfg ={
@@ -499,7 +532,7 @@ Roo.extend(Roo.doc.Synopsis, Roo.bootstrap.Component,  {
                                 tag:'code',
                                 cls : 'funcprototype',
                                 cn: [
-                                    this.returntype + ' ',
+                                    this.returntype + ' ' + nmp,
                                     {
                                         tag: 'strong',
                                         cls : this.stype,
