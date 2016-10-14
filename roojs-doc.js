@@ -3,7 +3,7 @@ Roo.doc=Roo.doc||{};Roo.doc.Entry=function(A){Roo.doc.Entry.superclass.construct
 ,{cls:'refnamediv',html:this.purpose}]};return A;},addxtype:function(A,B){return this.addxtypeChild(A,B);}});
 // Roo/doc/Example.js
 Roo.doc.Example=function(A){Roo.doc.Example.superclass.constructor.call(this,A);};Roo.extend(Roo.doc.Example,Roo.bootstrap.Component,{title:'',lang:'php',code:'',output:'',outputlang:'txt',getAutoCreate:function(){var A=hljs?hljs.highlight(this.lang,this.code).value:String.format('{0}',this.code).replace(/\n/g,'<br/>');
-var B={cls:'panel panel-info',cn:[{cls:'panel-heading',html:this.title},{cls:'panel-body',cn:[{tag:'pre',cls:'lang-'+this.lang,html:A}]}]};if(this.output){var C=hljs?hljs.highlight(this.outputlang,this.output).value:String.format('{0}',this.output).replace(/\n/g,'<br/>');
+Roo.log("code="+A);var B={cls:'panel panel-info',cn:[{cls:'panel-heading',html:this.title},{cls:'panel-body',cn:[{tag:'pre',cls:'lang-'+this.lang,html:A}]}]};if(this.output){var C=hljs?hljs.highlight(this.outputlang,this.output).value:String.format('{0}',this.output).replace(/\n/g,'<br/>');
 B.cn.push({cls:'panel-footer',cn:{tag:'pre',html:C}});}return B;}});
 // Roo/doc/Para.js
 Roo.doc.Para=function(A){Roo.doc.Para.superclass.constructor.call(this,A);};Roo.extend(Roo.doc.Para,Roo.bootstrap.Component,{html:'',getAutoCreate:function(){var A={tag:'p',cls:'para',html:this.html};if(this.parent().is_list){return {tag:'li',cls:listitme,cn:[A]}
