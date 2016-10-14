@@ -37,7 +37,7 @@ Roo.extend(Roo.doc.Example, Roo.bootstrap.Component,  {
         var code = hljs ? hljs.highlight(this.lang,this.code).value :
                 String.format('{0}',this.code).replace(/\n/g, '<br/>');
         
-        Roo.log(code);
+        Roo.log("code=" + code);
         var cfg ={
             cls : 'panel panel-info',
             cn : [
