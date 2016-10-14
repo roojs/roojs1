@@ -8,9 +8,10 @@
  * @extends Roo.bootstrap.Component
  * Example Element class
  * @cfg {String} title short title describing example
- * @cfg {String} lang (php|txt|sql) section type.
+ * @cfg {String} lang (php|txt|sql) code language.
  * @cfg {String} code  example code
  * @cfg {String} output The expected output from the code
+ * @cfg {String} outputlang php|txt|sql) output language
  *
  * 
  * @constructor
