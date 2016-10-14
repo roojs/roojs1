@@ -615,8 +615,10 @@ Roo.extend(Roo.doc.NavCategory, Roo.bootstrap.Component,  {
         var cfg ={
             
             cn : [
+                
                 {
                     tag : 'a',
+                    cls: 'roo-nav-category',
                     href : '#' + this.name,
                     html : this.title
                 },
@@ -630,7 +632,7 @@ Roo.extend(Roo.doc.NavCategory, Roo.bootstrap.Component,  {
     },
     getChildContainer : function()
     {
-        return this.el.select('roo-child-ctr').first();
+        return this.el.select('roo-child-ctr',true).first();
     }
     
     
