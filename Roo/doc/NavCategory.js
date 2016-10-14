@@ -7,7 +7,8 @@
  * @class Roo.doc.NavCategory
  * @extends Roo.bootstrap.Component
  * Navigation Category class
- * @cfg {Object} settings
+ * @cfg {string} title
+ * @cfg {string} name
  *
  * Represent's an category on the left menu.
  * - phpdoc @category elements map the pages to the categories
@@ -28,7 +29,8 @@ Roo.doc.Para = function(config){
 
 Roo.extend(Roo.doc.Para, Roo.bootstrap.Component,  {
     
-    html : '',
+    title : '',
+    name : '',
     getAutoCreate : function(){
         
         //?? this is the synopsis type....
@@ -36,25 +38,19 @@ Roo.extend(Roo.doc.Para, Roo.bootstrap.Component,  {
         // this is not very fancy...
         
         var cfg ={
-            tag: 'p',
-            cls: 'para',
-            html : this.html
-        };
-         
-        if (this.parent().is_list) {
-            return {
-                tag: 'li',
-                cls : listitme,
-                cn : [ cfg ]
-            };
             
-        }
-	
+            cn : [
+                {
+                    tag : 'a',
+                    href : '#' + this.name,
+                    html : this.title
+                }
+            ]
+        };
+
         return cfg;
     }
      
-    
-    
     
     
    
