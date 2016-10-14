@@ -632,7 +632,7 @@ Roo.extend(Roo.doc.NavCategory, Roo.bootstrap.Component,  {
     },
     getChildContainer : function()
     {
-        return this.el.select('roo-child-ctr',true).first();
+        return this.el.select('.roo-child-ctr',true).first();
     }
     
     

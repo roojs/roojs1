@@ -23,4 +23,4 @@ var B=(this.is_static?'':'$')+this.memberof+(this.is_static?'::':'->');var C={ta
 ,')']}}]}]};return C;},getChildContainer:function(A){return this.el.select('.roo-params',true).first();}});
 // Roo/doc/NavCategory.js
 Roo.doc.NavCategory=function(A){Roo.doc.Para.superclass.constructor.call(this,A);};Roo.extend(Roo.doc.NavCategory,Roo.bootstrap.Component,{title:'',name:'',getAutoCreate:function(){var A={cn:[{tag:'a',cls:'roo-nav-category',href:'#'+this.name,html:this.title}
-,{cls:'container roo-child-ctr'}]};return A;},getChildContainer:function(){return this.el.select('roo-child-ctr',true).first();}});
+,{cls:'container roo-child-ctr'}]};return A;},getChildContainer:function(){return this.el.select('.roo-child-ctr',true).first();}});
