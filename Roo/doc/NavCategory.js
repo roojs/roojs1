@@ -40,8 +40,10 @@ Roo.extend(Roo.doc.NavCategory, Roo.bootstrap.Component,  {
         var cfg ={
             
             cn : [
+                
                 {
                     tag : 'a',
+                    cls: 'roo-nav-category',
                     href : '#' + this.name,
                     html : this.title
                 },
