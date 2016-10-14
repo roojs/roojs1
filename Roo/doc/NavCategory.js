@@ -23,7 +23,7 @@
  * @param {Object} config The config object
  */
 
-Roo.doc.Para = function(config){
+Roo.doc.NavCategory = function(config){
     Roo.doc.Para.superclass.constructor.call(this, config);
 };
 
@@ -44,13 +44,19 @@ Roo.extend(Roo.doc.Para, Roo.bootstrap.Component,  {
                     tag : 'a',
                     href : '#' + this.name,
                     html : this.title
+                },
+                {
+                    cls : 'container roo-child-ctr'
                 }
             ]
         };
 
         return cfg;
+    },
+    getChildContainer : function()
+    {
+        return this.el.select('roo-child-ctr').first();
     }
-     
     
     
    
