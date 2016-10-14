@@ -27,7 +27,7 @@ Roo.doc.NavCategory = function(config){
     Roo.doc.Para.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.doc.Para, Roo.bootstrap.Component,  {
+Roo.extend(Roo.doc.NavCategory, Roo.bootstrap.Component,  {
     
     title : '',
     name : '',
