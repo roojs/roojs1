@@ -65,7 +65,14 @@
         </span><span class="jsdoc-var">isSecure </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">window.location.href.toLowerCase</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;https&quot;</span><span class="jsdoc-syntax">) === 0,
         </span><span class="jsdoc-var">isIOS </span><span class="jsdoc-syntax">= /iphone|ipad/</span><span class="jsdoc-var">.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ua</span><span class="jsdoc-syntax">),
         </span><span class="jsdoc-var">isTouch </span><span class="jsdoc-syntax">=  (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
-            </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{  
+            </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ua.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'chrome'</span><span class="jsdoc-syntax">) != -1 &amp;&amp; </span><span class="jsdoc-var">ua.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'android'</span><span class="jsdoc-syntax">) == -1) {
+                    </span><span class="jsdoc-var">window.addEventListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'touchstart'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function </span><span class="jsdoc-var">__set_has_touch__ </span><span class="jsdoc-syntax">() {
+                        </span><span class="jsdoc-var">Roo.isTouch </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-var">window.removeEventListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'touchstart'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">__set_has_touch__</span><span class="jsdoc-syntax">);
+                    });
+                    </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// no touch on chrome!?
+                </span><span class="jsdoc-syntax">}
                 </span><span class="jsdoc-var">document.createEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;TouchEvent&quot;</span><span class="jsdoc-syntax">);  
                 </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;  
             } </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {  

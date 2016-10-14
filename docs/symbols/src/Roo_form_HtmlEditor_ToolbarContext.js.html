@@ -633,6 +633,7 @@
                 </span><span class="jsdoc-var">listeners</span><span class="jsdoc-syntax">: {
                     </span><span class="jsdoc-string">'change' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nv</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ov</span><span class="jsdoc-syntax">) {
                         </span><span class="jsdoc-var">tb.selectedNode.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.attrname</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nv</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">editorcore.syncValue</span><span class="jsdoc-syntax">();
                     }
                 }
             }));

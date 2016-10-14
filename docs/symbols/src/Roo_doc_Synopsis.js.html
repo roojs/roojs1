@@ -8,6 +8,7 @@
  * @extends Roo.bootstrap.Component
  * Synopsis Element class
  * @cfg {String} returntype return value
+ * @cfg {String} returndesc description of return value. (used in the return section if set..)
  * @cfg {String} name title really..
  * @cfg {String} stype (function|constant)
  * @cfg {String} memberof class name
@@ -27,13 +28,22 @@
     </span><span class="jsdoc-var">memberof </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">is_static </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">returntype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">returndesc </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">stype</span><span class="jsdoc-syntax">:   </span><span class="jsdoc-string">'function'</span><span class="jsdoc-syntax">,
      
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">syn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[0]; </span><span class="jsdoc-comment">// hopefully...
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">);
+        
+        
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nmp </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.is_static </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'$'</span><span class="jsdoc-syntax">) +
+            </span><span class="jsdoc-var">this.memberof </span><span class="jsdoc-syntax">+
+            (</span><span class="jsdoc-var">this.is_static </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'::' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'-&gt;'</span><span class="jsdoc-syntax">);
+            
+         
+        </span><span class="jsdoc-comment">// this should probably do the params....?? then we need to disable the rendering..
         
          
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">={
@@ -49,7 +59,7 @@
                                 </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'code'</span><span class="jsdoc-syntax">,
                                 </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'funcprototype'</span><span class="jsdoc-syntax">,
                                 </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
-                                    </span><span class="jsdoc-var">this.returntype </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">,
+                                    </span><span class="jsdoc-var">this.returntype </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">nmp</span><span class="jsdoc-syntax">,
                                     {
                                         </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'strong'</span><span class="jsdoc-syntax">,
                                         </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.stype</span><span class="jsdoc-syntax">,

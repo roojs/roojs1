@@ -18,7 +18,7 @@
  * @param {Object} config The config object
  */
 
-</span><span class="jsdoc-var">_calls </span><span class="jsdoc-syntax">= 0;
+
 
 </span><span class="jsdoc-var">Roo.mailer.Body  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">Roo.mailer.Body.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
@@ -31,8 +31,9 @@
         </span><span class="jsdoc-var">marginheight </span><span class="jsdoc-syntax">: 0,
         </span><span class="jsdoc-var">offset </span><span class="jsdoc-syntax">: 0
     });
-    </span><span class="jsdoc-var">_calls</span><span class="jsdoc-syntax">++;
-    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_calls </span><span class="jsdoc-syntax">&gt; 1) {
+    </span><span class="jsdoc-var">Roo.mailer.Body._calls</span><span class="jsdoc-syntax">++;
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.mailer.Body._calls </span><span class="jsdoc-syntax">&gt; 1) {
+        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-string">&quot;test&quot;</span><span class="jsdoc-syntax">;
     }
     
@@ -40,6 +41,8 @@
     </span><span class="jsdoc-var">this.onRender </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { };
 
 };
+
+</span><span class="jsdoc-var">Roo.mailer.Body._calls </span><span class="jsdoc-syntax">= 0;
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.mailer.Body</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
     
