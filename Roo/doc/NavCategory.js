@@ -19,7 +19,7 @@
  * 
  * 
  * @constructor
- * Create a new Paragraph
+ * Create a new Navigation Category
  * @param {Object} config The config object
  */
 
