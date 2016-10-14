@@ -7,6 +7,6 @@ Roo.doc.Para
 Roo.doc.Param
 Roo.doc.Section
 Roo.doc.Synopsis
-
+Roo.doc.NavCategory
 
 
