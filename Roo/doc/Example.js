@@ -28,14 +28,16 @@ Roo.extend(Roo.doc.Example, Roo.bootstrap.Component,  {
     lang:   'php',
     code : '',
     output : '',
+    outputlang : 'txt',
     
     getAutoCreate : function(){
         
         // no colour highlighting in here....
         
-        var code = hljs ? hljs.highlight(this.lang.toUpperCase(),this.code) : String.format('{0}',this.code).replace(/\n/g, '<br/>');
+        var code = hljs ? hljs.highlight(this.lang,this.code).value :
+                String.format('{0}',this.code).replace(/\n/g, '<br/>');
         
-        
+        Roo.log(code);
         var cfg ={
             cls : 'panel panel-info',
             cn : [
@@ -57,18 +59,21 @@ Roo.extend(Roo.doc.Example, Roo.bootstrap.Component,  {
         };
         
         if (this.output) {
+            
+            var out = hljs ? hljs.highlight(this.outputlang,this.output).value :
+                    String.format('{0}',this.output).replace(/\n/g, '<br/>');
             cfg.cn.push(
 
                 {
                     cls : 'panel-footer',
                     cn : {
-                        tag: 'code',
-                        html :  String.format('{0}',this.output).replace(/\n/g, '<br/>')
+                        tag: 'pre',
+                        html : out 
                     }
                 }
             
                 
-            );
+            );      
         }
         
         
