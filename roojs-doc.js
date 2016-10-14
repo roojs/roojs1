@@ -21,3 +21,6 @@ Roo.doc.Section=function(A){Roo.doc.Section.superclass.constructor.call(this,A);
 Roo.doc.Synopsis=function(A){Roo.doc.Synopsis.superclass.constructor.call(this,A);};Roo.extend(Roo.doc.Synopsis,Roo.bootstrap.Component,{memberof:'',is_static:false,returntype:'',returndesc:'',name:'',stype:'function',getAutoCreate:function(){var A=this.items[0];
 var B=(this.is_static?'':'$')+this.memberof+(this.is_static?'::':'->');var C={tag:'h5',cls:'refsynopsisdiv',cn:[{cls:'funcsynopsis',cn:[{tag:'p',cn:{tag:'code',cls:'funcprototype',cn:[this.returntype+' '+B,{tag:'strong',cls:this.stype,html:this.name},'(',{tag:'span',cls:'roo-params'}
 ,')']}}]}]};return C;},getChildContainer:function(A){return this.el.select('.roo-params',true).first();}});
+// Roo/doc/NavCategory.js
+Roo.doc.NavCategory=function(A){Roo.doc.Para.superclass.constructor.call(this,A);};Roo.extend(Roo.doc.NavCategory,Roo.bootstrap.Component,{title:'',name:'',getAutoCreate:function(){var A={cn:[{tag:'a',href:'#'+this.name,html:this.title},{cls:'container roo-child-ctr'}
+]};return A;},getChildContainer:function(){return this.el.select('roo-child-ctr').first();}});
