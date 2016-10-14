@@ -25,8 +25,9 @@
 
 Roo.doc.NavCategory = function(config){
     Roo.doc.Para.superclass.constructor.call(this, config);
+    Roo.doc.NavCategory.registry[this.name] = this;
 };
-
+Roo.doc.NavCategory.registry = {};
 Roo.extend(Roo.doc.NavCategory, Roo.bootstrap.Component,  {
     
     title : '',
