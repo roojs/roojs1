@@ -239,12 +239,20 @@
     position: relative;
 }
 
+.select2-container .has-feedback .roo-combo-removable-btn {
+    position: absolute;
+    right: 10px;
+    z-index: 2;
+    top: 5px;
+}
+
 .select2-container .roo-removable .roo-combo-removable-btn {
     position: absolute;
     right: 10px;
     z-index: 2;
     top: 5px;
 }
+
 /*
 .select2-container .roo-removable.has-feedback .roo-combo-removable-btn {
     position: absolute;
