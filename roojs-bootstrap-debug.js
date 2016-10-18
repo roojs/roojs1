@@ -8355,6 +8355,14 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         if(!this.el || this.preventMark){ // not rendered
             return;
         }
+        
+        var label = this.el.select('label', true).first();
+        var icon = this.el.select('i.fa-star', true).first();
+        
+        if(label && icon){
+            icon.remove();
+        }
+        
         this.el.removeClass(this.invalidClass);
         
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
