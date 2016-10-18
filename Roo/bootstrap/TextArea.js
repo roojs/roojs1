@@ -241,7 +241,7 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
         this.el.removeClass([this.invalidClass, this.validClass]);
         
         var feedback = this.el.select('.form-control-feedback', true).first();
-        Roo.log(feedback);
+            
         if(feedback){
             this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
         }
