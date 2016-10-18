@@ -130,6 +130,8 @@ Roo.ux.Showdown.converter = function() {
             // contorted like /[ \t]*\n+/ .
             text = text.replace(/^[ \t]+$/mg,"");
     
+            text = _DoCodeBlcoks(text);
+    
             // Turn block-level HTML blocks into hash entries
             text = _HashHTMLBlocks(text);
     
