@@ -22,8 +22,19 @@
 Roo.namespace('Roo.ux'); 
 Roo.ux.Showdown = {};
 Roo.ux.Showdown.toHtml = function(text) {
-    var c = new Roo.ux.Showdown.converter();
-    return c.makeHtml(text);
+    
+    var c = new Roo.ux.Showdown.marked.setOptions({
+            renderer: new Roo.ux.Showdown.marked.Renderer(),
+            gfm: true,
+            tables: true,
+            breaks: false,
+            pedantic: false,
+            sanitize: false,
+            smartLists: true,
+            smartypants: false
+          });
+
+    return Roo.ux.Showdown.marked(text);
 };
 //
 // converter
