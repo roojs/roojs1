@@ -885,6 +885,31 @@ Roo.ux.Showdown.converter = function() {
             // attacklab: strip sentinel
             text = text.replace(/~0/,"");
     
+    
+      
+            text += '~0';
+          
+            text = text.replace(/(?:^|\n)```(.*)\n([\s\S]*?)\n```/g, function (wholeMatch, language, codeblock) {
+                    var end =  '\n';
+                
+                    // First parse the github code block
+                    codeblock =  _EncodeCode( codeblock); 
+                    codeblock =  _Detab(codeblock);
+                    codeblock = codeblock.replace(/^\n+/g, ''); // trim leading newlines
+                    codeblock = codeblock.replace(/\n+$/g, ''); // trim trailing whitespace
+                
+                    codeblock = '<pre><code' + (language ? ' class="' + language + ' language-' + language + '"' : '') + '>' + codeblock + end + '</code></pre>';
+                
+                    return hashBlock(codeblock) + nextChar;
+            });
+          
+            // attacklab: strip sentinel
+            text = text.replace(/~0/, '');
+
+        
+    
+    
+    
             return text;
     }
     
