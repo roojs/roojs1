@@ -259,9 +259,8 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
         
         this.el.addClass(this.validClass);
         
-        Roo.log('run??');
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank && (this.getValue().length || this.forceFeedback)){
-            
+            Roo.log('in???');
             var feedback = this.el.select('.form-control-feedback', true).first();
             
             if(feedback){
