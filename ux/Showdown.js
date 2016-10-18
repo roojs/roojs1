@@ -345,6 +345,9 @@ Roo.ux.Showdown.converter = function() {
     // These are all the transformations that form block-level
     // tags like paragraphs, headers, and list items.
     //
+            // code blocks first... so content does not get translated..
+            text = _DoCodeBlocks(text);
+            
             text = _DoHeaders(text);
     
             // Do Horizontal Rules:
@@ -354,7 +357,7 @@ Roo.ux.Showdown.converter = function() {
             text = text.replace(/^[ ]{0,2}([ ]?\_[ ]?){3,}[ \t]*$/gm,key);
     
             text = _DoLists(text);
-            text = _DoCodeBlocks(text);
+    
             text = _DoBlockQuotes(text);
     
             // We already ran _HashHTMLBlocks() before, in Markdown(), but that
