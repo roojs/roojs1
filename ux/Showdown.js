@@ -867,6 +867,7 @@ Roo.ux.Showdown.converter = function() {
             */
     
             // attacklab: sentinel workarounds for lack of \A and \Z, safari\khtml bug
+            text = text.replace(/~0/,"");
             text += "~0";
             
             text = text.replace(/(?:\n\n|^)((?:(?:[ ]{4}|\t).*\n+)+)(\n*[ ]{0,3}[^ \t\n]|(?=~0))/g,
