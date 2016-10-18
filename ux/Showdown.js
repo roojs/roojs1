@@ -878,7 +878,7 @@ Roo.ux.Showdown.converter = function() {
     
                             codeblock = "<pre><code>" + codeblock + "\n</code></pre>";
     
-                            return hashBlock(codeblock) + nextChar;
+                            return hashBlock(codeblock) ;
                     }
             );
     
