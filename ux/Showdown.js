@@ -807,6 +807,7 @@ Roo.ux.Showdown.toHtml = function(text) {
           code = out;
         }
       }
+      escaped = true;
     
       if (!lang) {
         return '<pre><code>'
