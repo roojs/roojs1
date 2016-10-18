@@ -906,10 +906,7 @@ Roo.ux.Showdown.converter = function() {
             // attacklab: strip sentinel
             text = text.replace(/~0/, '');
 
-        
-    
-    
-    
+          
             return text;
     }
     
