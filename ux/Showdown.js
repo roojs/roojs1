@@ -364,9 +364,9 @@ Roo.ux.Showdown.converter = function() {
             // was to escape raw HTML in the original Markdown source. This time,
             // we're escaping the markup we've just created, so that we don't wrap
             // <p> tags around block-level tags.
-            text = _HashHTMLBlocks(text);
+           
             text = _FormParagraphs(text);
-    
+            text = _HashHTMLBlocks(text);
             return text;
     }
     
