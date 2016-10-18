@@ -262,7 +262,7 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank && (this.getValue().length || this.forceFeedback)){
             
             var feedback = this.el.select('.form-control-feedback', true).first();
-            
+            Roo.log(feedback);
             if(feedback){
                 this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
                 this.el.select('.form-control-feedback', true).first().addClass([this.validFeedbackClass]);
