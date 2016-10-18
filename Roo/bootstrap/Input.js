@@ -702,16 +702,11 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         
-        var formGroup = this.el.findParent('.form-group', false, true);
+        var label = this.el.select('label', true).first();
+        var icon = this.el.select('i.fa-star', true).first();
         
-        if(formGroup){
-            
-            var label = formGroup.select('label', true).first();
-            var icon = formGroup.select('i.fa-star', true).first();
-            
-            if(label && icon){
-                icon.remove();
-            }
+        if(label && icon){
+            icon.remove();
         }
         
         this.el.removeClass(this.invalidClass);
