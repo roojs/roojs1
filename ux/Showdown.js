@@ -806,8 +806,10 @@ Roo.ux.Showdown.toHtml = function(text) {
           escaped = true;
           code = out;
         }
+      } else {
+            // hack!!! - it's already escapeD?
+            escaped = true;
       }
-      escaped = true;
     
       if (!lang) {
         return '<pre><code>'
