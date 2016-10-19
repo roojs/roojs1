@@ -1486,7 +1486,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 if(this.mode == 'local'){
                     this.selectedIndex = -1;
                     if(forceAll){
-                        Roo.log('run??');
                         this.store.clearFilter();
                     }else{
                         
