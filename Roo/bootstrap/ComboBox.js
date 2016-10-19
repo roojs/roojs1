@@ -1640,7 +1640,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     // Implements the default empty TriggerField.onTriggerClick function
     onTriggerClick : function(e)
     {
-        Roo.log('trigger click');
+        Roo.log('trigger click??');
         
         if(this.disabled || !this.triggerList){
             return;
