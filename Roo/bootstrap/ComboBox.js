@@ -1482,6 +1482,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.hasQuery = true;
             
             if(this.lastQuery != q || this.alwaysQuery){
+                Roo.log('in???');
                 this.lastQuery = q;
                 if(this.mode == 'local'){
                     this.selectedIndex = -1;
