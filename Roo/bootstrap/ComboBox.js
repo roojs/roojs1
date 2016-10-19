@@ -1471,8 +1471,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             combo: this,
             cancel:false
         };
-        Roo.log('do query');
-        
         if(this.fireEvent('beforequery', qe)===false || qe.cancel){
             return false;
         }
