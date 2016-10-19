@@ -1645,7 +1645,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.disabled || !this.triggerList){
             return;
         }
-        Roo.log('run??');
+        
         this.page = 0;
         this.loadNext = false;
         
