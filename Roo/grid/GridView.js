@@ -498,7 +498,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
             p.splitId = "x-grid-csplit-0-" + i;
             p.id = cm.getColumnId(i);
             p.value = cm.getColumnHeader(i) || "";
-            p.title = cm.getColumnTooltip(i) || p.value.match(/\</)  ? '' :  p.value  || "";
+            p.title = cm.getColumnTooltip(i) || (''+p.value).match(/\</)  ? '' :  p.value  || "";
             p.style = (this.grid.enableColumnResize === false || !cm.isResizable(i) || cm.isFixed(i)) ? 'cursor:default' : '';
             if(!cm.isLocked(i)){
                 cb[cb.length] = ct.apply(p);
