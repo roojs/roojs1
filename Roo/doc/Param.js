@@ -34,6 +34,7 @@ Roo.extend(Roo.doc.Param, Roo.bootstrap.Component,  {
         
         //?? this is the synopsis type....
         
+        var desc = Roo.Markdown.toHtml(this.desc)
         
         if (this.parent().stype == 'parameter') {
             
@@ -48,7 +49,7 @@ Roo.extend(Roo.doc.Param, Roo.bootstrap.Component,  {
                                 tag: 'code',
                                 html : this.type + ' ' + this.name
                             },
-                            this.desc
+                            desc
                         ]
                     }
                 ]
@@ -64,7 +65,7 @@ Roo.extend(Roo.doc.Param, Roo.bootstrap.Component,  {
                             tag: 'code',
                             html : this.type
                         },
-                        this.desc
+                        desc
                     ]
                 };
                 
