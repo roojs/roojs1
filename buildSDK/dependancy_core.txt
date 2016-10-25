@@ -72,3 +72,4 @@ Roo.Component
 Roo.BoxComponent
 
 Roo.XComponent
+Roo.Markdown
