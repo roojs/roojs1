@@ -26,7 +26,7 @@ Roo.extend(Roo.doc.Section, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         
         
-        
+        var syn = Roo.factory(this.parent().items[0]);
         
         var cfg ={
             
@@ -50,7 +50,7 @@ Roo.extend(Roo.doc.Section, Roo.bootstrap.Component,  {
                 cn : []
             };
             // might not have any..
-            var params = this.parent().items[0].items;
+            var params = syn.items;
             for (var i =0; i < params.length;i++) {
                 ul.cn.push( Roo.factory(params[i]).getAutoCreateParamSection() )
             }
@@ -58,7 +58,23 @@ Roo.extend(Roo.doc.Section, Roo.bootstrap.Component,  {
             
             cfg.cn.push(ul);
         }
-        
+        if (this.stype == 'return' && syn.returndesc.length) {
+            
+            cfg.cn.push({
+                tag: 'p',
+                cls : 'para',
+                cn : [
+                
+                    {
+                        tag: 'code',
+                        cls: 'parameter',
+                        html : syn.returntype
+                    },
+                    syn.returndesc
+                ]
+                
+            });
+        }
 	
         return cfg;
     },
@@ -68,6 +84,7 @@ Roo.extend(Roo.doc.Section, Roo.bootstrap.Component,  {
         if (this.stype == 'parameter') {
             return this.el.select('.roo-params',true).first();
         }
+       
         return this.el;
     }
     
@@ -81,5 +98,6 @@ Roo.doc.Section.map = {
     'parameter' : 'Parameters',
     'return' : 'Return Value',
     'note' : 'Notes',
-    'example' : 'Examples'
+    'example' : 'Examples',
+    'throws' : 'Throws Exception'
 }
