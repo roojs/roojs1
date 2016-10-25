@@ -46,8 +46,9 @@ Roo.extend(Roo.doc.Synopsis, Roo.bootstrap.Component,  {
             
         var nm = this.name;
         // this should probably do the params....?? then we need to disable the rendering..
-        if () {
-            
+        if (this.is_constructor) {
+            nm = this.memberof;
+            nmp = 'new ';
         }
         
          
