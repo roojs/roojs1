@@ -474,7 +474,8 @@ Roo.doc.Section.map = {
     'parameter' : 'Parameters',
     'return' : 'Return Value',
     'note' : 'Notes',
-    'example' : 'Examples'
+    'example' : 'Examples',
+    'throws' : 'Throws Exception'
 }
 /*
  * - LGPL
