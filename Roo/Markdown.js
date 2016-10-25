@@ -1255,7 +1255,7 @@ Roo.Markdown.toHtml = function(text) {
         return;
       }
       try {
-        if (opt) opt = merge({}, marked.defaults, opt);
+        if (opt) { opt = merge({}, marked.defaults, opt); }
         return Parser.parse(Lexer.lex(src, opt), opt);
       } catch (e) {
         e.message += '\nPlease report this to https://github.com/chjj/marked.';
