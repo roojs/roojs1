@@ -11,19 +11,18 @@
  * Roo.Markdown - is a very crude wrapper around marked..
  *
  * usage:
-
+ * 
  * alert( Roo.Markdown.toHtml("Markdown *rocks*.") );
+ * 
  * Note: move the sample code to the bottom of this
  * file before uncommenting it.
  *
  */
-//
-// Showdown namespace
-//
+
 Roo.Markdown = {};
 Roo.Markdown.toHtml = function(text) {
     
-    var c = new Roo.ux.Markdown.marked.setOptions({
+    var c = new Roo.Markdown.marked.setOptions({
             renderer: new Roo.Markdown.marked.Renderer(),
             gfm: true,
             tables: true,
