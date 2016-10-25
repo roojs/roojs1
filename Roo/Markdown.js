@@ -366,7 +366,7 @@ Roo.Markdown.toHtml = function(text) {
             loose = next || /\n\n(?!\s*$)/.test(item);
             if (i !== l - 1) {
               next = item.charAt(item.length - 1) === '\n';
-              if (!loose) loose = next;
+              if (!loose) { loose = next; }
             }
     
             this.tokens.push({
@@ -648,7 +648,7 @@ Roo.Markdown.toHtml = function(text) {
             ? this.options.sanitizer
               ? this.options.sanitizer(cap[0])
               : escape(cap[0])
-            : cap[0]
+            : cap[0];
           continue;
         }
     
@@ -750,7 +750,7 @@ Roo.Markdown.toHtml = function(text) {
      */
     
     InlineLexer.prototype.smartypants = function(text) {
-      if (!this.options.smartypants) return text;
+      if (!this.options.smartypants)  { return text; }
       return text
         // em-dashes
         .replace(/---/g, '\u2014')
