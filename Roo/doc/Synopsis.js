@@ -8,6 +8,7 @@
  * @extends Roo.bootstrap.Component
  * Synopsis Element class
  * @cfg {String} returntype return value
+ * @cfg {String} returndesc description of return value. (used in the return section if set..)
  * @cfg {String} name title really..
  * @cfg {String} stype (function|constant)
  * @cfg {String} memberof class name
@@ -27,13 +28,22 @@ Roo.extend(Roo.doc.Synopsis, Roo.bootstrap.Component,  {
     memberof : '',
     is_static : false,
     returntype : '',
+    returndesc : '',
     name: '',
     stype:   'function',
      
     getAutoCreate : function(){
         
         var syn = this.items[0]; // hopefully...
-        Roo.log(this.items);
+        
+        
+        
+        var nmp = (this.is_static ? '' : '$') +
+            this.memberof +
+            (this.is_static ? '::' : '->');
+            
+        
+        // this should probably do the params....?? then we need to disable the rendering..
         
          
         var cfg ={
@@ -49,7 +59,7 @@ Roo.extend(Roo.doc.Synopsis, Roo.bootstrap.Component,  {
                                 tag:'code',
                                 cls : 'funcprototype',
                                 cn: [
-                                    this.returntype + ' ',
+                                    this.returntype + ' ' + nmp,
                                     {
                                         tag: 'strong',
                                         cls : this.stype,
