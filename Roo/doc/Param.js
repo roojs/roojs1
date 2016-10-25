@@ -99,6 +99,9 @@ Roo.extend(Roo.doc.Param, Roo.bootstrap.Component,  {
     },
     getAutoCreateParamSection : function()
     {
+        var desc = Roo.Markdown.toHtml(this.desc)
+        
+      
         return {
                tag : 'li',
                cn : [
@@ -110,7 +113,7 @@ Roo.extend(Roo.doc.Param, Roo.bootstrap.Component,  {
                                tag: 'code',
                                html : this.type + ' ' + this.name
                            },
-                           this.desc
+                           desc
                        ]
                    }
                ]
