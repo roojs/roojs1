@@ -13,6 +13,7 @@
  * @cfg {String} stype (function|constant)
  * @cfg {String} memberof class name
  * @cfg {bool} is_static is a static member
+ * @cfg {bool} is_constructor is a static member
  * 
  * @constructor
  * Create a new Synopsis
