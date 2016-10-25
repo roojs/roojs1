@@ -103,9 +103,10 @@ Roo.extend(Roo.doc.Entry, Roo.bootstrap.Component,  {
  * @extends Roo.bootstrap.Component
  * Example Element class
  * @cfg {String} title short title describing example
- * @cfg {String} lang (php|txt|sql) section type.
+ * @cfg {String} lang (php|txt|sql) code language.
  * @cfg {String} code  example code
  * @cfg {String} output The expected output from the code
+ * @cfg {String} outputlang php|txt|sql) output language
  *
  * 
  * @constructor
@@ -215,7 +216,7 @@ Roo.extend(Roo.doc.Para, Roo.bootstrap.Component,  {
         var cfg ={
             tag: 'p',
             cls: 'para',
-            html : this.html
+            html : Roo.Markdown.toHtml(this.html)
         };
          
         if (this.parent().is_list) {
@@ -275,6 +276,7 @@ Roo.extend(Roo.doc.Param, Roo.bootstrap.Component,  {
         
         //?? this is the synopsis type....
         
+        var desc = Roo.Markdown.toHtml(this.desc);
         
         if (this.parent().stype == 'parameter') {
             
@@ -289,7 +291,7 @@ Roo.extend(Roo.doc.Param, Roo.bootstrap.Component,  {
                                 tag: 'code',
                                 html : this.type + ' ' + this.name
                             },
-                            this.desc
+                            desc
                         ]
                     }
                 ]
@@ -305,7 +307,7 @@ Roo.extend(Roo.doc.Param, Roo.bootstrap.Component,  {
                             tag: 'code',
                             html : this.type
                         },
-                        this.desc
+                        desc
                     ]
                 };
                 
@@ -339,6 +341,9 @@ Roo.extend(Roo.doc.Param, Roo.bootstrap.Component,  {
     },
     getAutoCreateParamSection : function()
     {
+        var desc = Roo.Markdown.toHtml(this.desc);
+        
+      
         return {
                tag : 'li',
                cn : [
@@ -350,7 +355,7 @@ Roo.extend(Roo.doc.Param, Roo.bootstrap.Component,  {
                                tag: 'code',
                                html : this.type + ' ' + this.name
                            },
-                           this.desc
+                           desc
                        ]
                    }
                ]

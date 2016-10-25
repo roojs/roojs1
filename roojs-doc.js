@@ -6,12 +6,12 @@ Roo.doc.Example=function(A){Roo.doc.Example.superclass.constructor.call(this,A);
 Roo.log("code="+A);var B={cls:'panel panel-info',cn:[{cls:'panel-heading',html:this.title},{cls:'panel-body',cn:[{tag:'pre',cls:'lang-'+this.lang,html:A}]}]};if(this.output){var C=hljs?hljs.highlight(this.outputlang,this.output).value:String.format('{0}',this.output).replace(/\n/g,'<br/>');
 B.cn.push({cls:'panel-footer',cn:{tag:'pre',html:C}});}return B;}});
 // Roo/doc/Para.js
-Roo.doc.Para=function(A){Roo.doc.Para.superclass.constructor.call(this,A);};Roo.extend(Roo.doc.Para,Roo.bootstrap.Component,{html:'',getAutoCreate:function(){var A={tag:'p',cls:'para',html:this.html};if(this.parent().is_list){return {tag:'li',cls:listitme,cn:[A]}
+Roo.doc.Para=function(A){Roo.doc.Para.superclass.constructor.call(this,A);};Roo.extend(Roo.doc.Para,Roo.bootstrap.Component,{html:'',getAutoCreate:function(){var A={tag:'p',cls:'para',html:Roo.Markdown.toHtml(this.html)};if(this.parent().is_list){return {tag:'li',cls:listitme,cn:[A]}
 ;}return A;}});
 // Roo/doc/Param.js
-Roo.doc.Param=function(A){Roo.doc.Param.superclass.constructor.call(this,A);};Roo.extend(Roo.doc.Param,Roo.bootstrap.Component,{is_optional:false,type:'',name:'',defaultvalue:'',desc:'',getAutoCreate:function(){if(this.parent().stype=='parameter'){return {tag:'li',cn:[{tag:'p',cls:'para',cn:[{tag:'code',html:this.type+' '+this.name}
-,this.desc]}]};}if(this.parent().stype=='return'){return {tag:'p',cls:'para',cn:[{tag:'code',html:this.type},this.desc]};}var A={tag:'span',cn:[this.is_optional?'[':'',this.type,' ',{tag:'b',html:this.name},this.defaultvalue==''?'':' = ',this.defaultvalue,this.is_optional?']':'',',']}
-;return A;},getAutoCreateParamSection:function(){return {tag:'li',cn:[{tag:'p',cls:'para',cn:[{tag:'code',html:this.type+' '+this.name},this.desc]}]};}});
+Roo.doc.Param=function(A){Roo.doc.Param.superclass.constructor.call(this,A);};Roo.extend(Roo.doc.Param,Roo.bootstrap.Component,{is_optional:false,type:'',name:'',defaultvalue:'',desc:'',getAutoCreate:function(){var A=Roo.Markdown.toHtml(this.desc);if(this.parent().stype=='parameter'){return {tag:'li',cn:[{tag:'p',cls:'para',cn:[{tag:'code',html:this.type+' '+this.name}
+,A]}]};}if(this.parent().stype=='return'){return {tag:'p',cls:'para',cn:[{tag:'code',html:this.type},A]};}var B={tag:'span',cn:[this.is_optional?'[':'',this.type,' ',{tag:'b',html:this.name},this.defaultvalue==''?'':' = ',this.defaultvalue,this.is_optional?']':'',',']}
+;return B;},getAutoCreateParamSection:function(){var A=Roo.Markdown.toHtml(this.desc);return {tag:'li',cn:[{tag:'p',cls:'para',cn:[{tag:'code',html:this.type+' '+this.name},A]}]};}});
 // Roo/doc/Section.js
 Roo.doc.Section=function(A){Roo.doc.Section.superclass.constructor.call(this,A);};Roo.extend(Roo.doc.Section,Roo.bootstrap.Component,{stype:'',getAutoCreate:function(){var A=Roo.factory(this.parent().items[0]);var B={cls:'refsection',cn:[{tag:'h3',cls:'title',html:Roo.doc.Section.map[this.stype]}
 ]};if(this.stype=='parameter'){var ul={tag:'ul',cls:'itemizedlist roo-params',cn:[]};var C=A.items;for(var i=0;i<C.length;i++){ul.cn.push(Roo.factory(C[i]).getAutoCreateParamSection())}B.cn.push(ul);}if(this.stype=='return'&&A.returndesc.length){B.cn.push({tag:'p',cls:'para',cn:[{tag:'code',cls:'parameter',html:A.returntype}

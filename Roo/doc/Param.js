@@ -34,7 +34,7 @@ Roo.extend(Roo.doc.Param, Roo.bootstrap.Component,  {
         
         //?? this is the synopsis type....
         
-        var desc = Roo.Markdown.toHtml(this.desc)
+        var desc = Roo.Markdown.toHtml(this.desc);
         
         if (this.parent().stype == 'parameter') {
             
