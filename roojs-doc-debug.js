@@ -491,6 +491,7 @@ Roo.doc.Section.map = {
  * @cfg {String} stype (function|constant)
  * @cfg {String} memberof class name
  * @cfg {bool} is_static is a static member
+ * @cfg {bool} is_constructor is a static member
  * 
  * @constructor
  * Create a new Synopsis
@@ -509,7 +510,8 @@ Roo.extend(Roo.doc.Synopsis, Roo.bootstrap.Component,  {
     returndesc : '',
     name: '',
     stype:   'function',
-     
+    is_constructor : false,
+    
     getAutoCreate : function(){
         
         var syn = this.items[0]; // hopefully...
@@ -520,8 +522,14 @@ Roo.extend(Roo.doc.Synopsis, Roo.bootstrap.Component,  {
             this.memberof +
             (this.is_static ? '::' : '->');
             
-         
+        var nm = this.name;
         // this should probably do the params....?? then we need to disable the rendering..
+        
+        if (this.is_constructor) {
+            
+            nm = this.memberof;
+            nmp = 'new ';
+        }
         
          
         var cfg ={
@@ -541,7 +549,7 @@ Roo.extend(Roo.doc.Synopsis, Roo.bootstrap.Component,  {
                                     {
                                         tag: 'strong',
                                         cls : this.stype,
-                                        html : this.name
+                                        html : nm
                                     },
                                     '(',
                                     {
