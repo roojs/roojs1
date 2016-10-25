@@ -30,7 +30,7 @@ Roo.extend(Roo.doc.Para, Roo.bootstrap.Component,  {
         var cfg ={
             tag: 'p',
             cls: 'para',
-            html : this.html
+            html : Roo.Markdown.toHtml(this.html)
         };
          
         if (this.parent().is_list) {
