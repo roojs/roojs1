@@ -1241,7 +1241,7 @@ Roo.Markdown.toHtml = function(text) {
               return --pending || done();
             }
             return highlight(token.text, token.lang, function(err, code) {
-              if (err) return done(err);
+              if (err) { return done(err); }
               if (code == null || code === token.text) {
                 return --pending || done();
               }
