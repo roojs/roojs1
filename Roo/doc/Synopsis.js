@@ -31,7 +31,8 @@ Roo.extend(Roo.doc.Synopsis, Roo.bootstrap.Component,  {
     returndesc : '',
     name: '',
     stype:   'function',
-     
+    is_constructor : false,
+    
     getAutoCreate : function(){
         
         var syn = this.items[0]; // hopefully...
@@ -42,8 +43,11 @@ Roo.extend(Roo.doc.Synopsis, Roo.bootstrap.Component,  {
             this.memberof +
             (this.is_static ? '::' : '->');
             
-        
+        var nm = this.name;
         // this should probably do the params....?? then we need to disable the rendering..
+        if () {
+            
+        }
         
          
         var cfg ={
@@ -63,7 +67,7 @@ Roo.extend(Roo.doc.Synopsis, Roo.bootstrap.Component,  {
                                     {
                                         tag: 'strong',
                                         cls : this.stype,
-                                        html : this.name
+                                        html : nm
                                     },
                                     '(',
                                     {
