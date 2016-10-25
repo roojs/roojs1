@@ -865,7 +865,7 @@ Roo.Markdown.toHtml = function(text) {
     };
     
     Renderer.prototype.table = function(header, body) {
-      return '<table>\n'
+      return '<table class="table table-striped">\n'
         + '<thead>\n'
         + header
         + '</thead>\n'
