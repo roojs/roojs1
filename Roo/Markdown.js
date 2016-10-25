@@ -1233,7 +1233,7 @@ Roo.Markdown.toHtml = function(text) {
     
         delete opt.highlight;
     
-        if (!pending) return done();
+        if (!pending) { return done(); }
     
         for (; i < tokens.length; i++) {
           (function(token) {
