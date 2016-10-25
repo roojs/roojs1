@@ -16520,7 +16520,9 @@ Roo.Markdown.toHtml = function(text) {
             smartLists: true,
             smartypants: false
           });
-
+    // A FEW HACKS!!?
+    
+    text = text.replace(/\\\n/g,' ');
     return Roo.Markdown.marked(text);
 };
 //
