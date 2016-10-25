@@ -773,7 +773,7 @@ Roo.Markdown.toHtml = function(text) {
      */
     
     InlineLexer.prototype.mangle = function(text) {
-      if (!this.options.mangle) return text;
+      if (!this.options.mangle) { return text; }
       var out = ''
         , l = text.length
         , i = 0
