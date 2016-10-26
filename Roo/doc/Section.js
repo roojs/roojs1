@@ -58,7 +58,7 @@ Roo.extend(Roo.doc.Section, Roo.bootstrap.Component,  {
             
             cfg.cn.push(ul);
         }
-        if (this.stype == 'return' && syn.returndesc.length) {
+        if (this.stype == 'return' && (syn.returndesc.length | syn.returntype.length )) {
             
             cfg.cn.push({
                 tag: 'p',
