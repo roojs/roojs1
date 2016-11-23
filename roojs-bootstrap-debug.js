@@ -3656,7 +3656,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
     },
     getHeaderChildContainer : function()
     {
-        if (this.el.select('.navbar-header').getCount()) {
+        if (this.srButton && this.el.select('.navbar-header').getCount()) {
             return this.el.select('.navbar-header',true).first();
         }
         
@@ -4434,6 +4434,12 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
     
     initEvents : function()
     { 
+        if (typeof (this.menu) != 'undefined') {
+            this.menu.parentType = this.xtype;
+            this.menu.triggerEl = this.el;
+            this.menu = this.addxtype(Roo.apply({}, this.menu));
+        }
+        
         this.el.on('click', this.onClick, this);
        
     
