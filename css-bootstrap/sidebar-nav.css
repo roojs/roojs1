@@ -2,6 +2,11 @@
     margin-bottom: 5px;
 }
 
+/* override boostrap a:hover */
+.sidebar a:hover {
+    text-decoration: none;
+}
+
 .sidebar .sidebar-menu {
     list-style: none;
     margin: 0;
