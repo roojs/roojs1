@@ -152,7 +152,7 @@
     background: #000;
 }
 
-.sidebar-menu li li.treeview-menu.active > a {
+.sidebar .sidebar-menu li li.treeview-menu.active > a {
     font-weight: bold;
 }
 /* active sidebard... */
