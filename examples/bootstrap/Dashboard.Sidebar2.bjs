@@ -25,6 +25,7 @@
        "$ xns" : "Roo.bootstrap",
        "items" : [
         {
+         "bool open" : true,
          "String href" : "#",
          "xtype" : "NavSidebarItem",
          "$ xns" : "Roo.bootstrap",
