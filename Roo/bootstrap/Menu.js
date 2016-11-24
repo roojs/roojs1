@@ -312,7 +312,9 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         Roo.log('trigger press');
         //Roo.log(e.getTarget());
        // Roo.log(this.triggerEl.dom);
-       var pel = Roo.get(e.getTarget());
+       
+        // trigger only occurs on normal menu's -- if it's a treeview or dropdown... do not hide/show..
+        var pel = Roo.get(e.getTarget());
         if (pel.findParent('.dropdown-menu') || pel.findParent('.treeview-menu') ) {
             return;
         }
