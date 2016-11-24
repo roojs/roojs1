@@ -13,14 +13,18 @@
     padding: 0;
 }
 
-.sidebar .sidebar-menu > li {
+.sidebar .sidebar-menu > li,
+.sidebar .sidebar-menu li.active li.treeview-menu
+{
     margin: 0;
     padding: 0;
     border-bottom: 1px solid #ccc;
     background-color: #eee;
 }
 
-.sidebar .sidebar-menu > li > a {
+.sidebar .sidebar-menu > li > a ,
+.sidebar .sidebar-menu li.active li.treeview-menu > a
+{
     padding: 12px 5px 12px 15px;
     display: block;
     color: #333; 
