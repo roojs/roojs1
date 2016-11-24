@@ -134,11 +134,12 @@
 
 /* active sidebard... */
 .sidebar .sidebar-menu li.active li {
-   background-color: #fff;
+   background-color: #c;
    color: #000;
 }
-
-
+.sidebar .sidebar-menu li.active li a {
+    color: #000;
+}
 
 
 .badge-default {
