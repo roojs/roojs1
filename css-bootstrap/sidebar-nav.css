@@ -148,8 +148,8 @@
 .sidebar .sidebar-menu .treeview-menu > li > a > .ion {
   width: 20px;
 }
-.sidebar .sidebar-menu li.active li.treeview-menu.active  {
-    background: #000;
+.sidebar .sidebar-menu li li.treeview-menu.active  {
+    background: #000 !important;
 }
 
 .sidebar .sidebar-menu li li.treeview-menu.active > a {
