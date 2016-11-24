@@ -148,6 +148,10 @@
 .sidebar .sidebar-menu .treeview-menu > li > a > .ion {
   width: 20px;
 }
+.sidebar-menu li li.treeview-menu.active  {
+    background: #000;
+}
+
 .sidebar-menu li li.treeview-menu.active > a {
     font-weight: bold;
 }
