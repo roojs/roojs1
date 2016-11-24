@@ -33,6 +33,7 @@
          "items" : [
           {
            "String type" : "treeview",
+           "bool hidden" : false,
            "xtype" : "Menu",
            "$ xns" : "Roo.bootstrap",
            "* prop" : "menu",

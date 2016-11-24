@@ -48,6 +48,7 @@ Dashboard.Sidebar2 = new Roo.XComponent({
          '|xns' : 'Roo.bootstrap',
          menu : {
           xtype : 'Menu',
+          hidden : false,
           type : 'treeview',
           xns : Roo.bootstrap,
           '|xns' : 'Roo.bootstrap',
