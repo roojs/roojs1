@@ -99,6 +99,8 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     
     hidden:true,
     
+    open : false,
+    
     parentMenu : false,
     
     getChildContainer : function() {
