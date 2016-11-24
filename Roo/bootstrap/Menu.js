@@ -10,6 +10,7 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap Menu class - container for MenuItems
  * @cfg {String} type (dropdown|treeview|submenu) type of menu
+ * @cfg {bool} hidden  if the menu should be hidden when rendered.
  * 
  * @constructor
  * Create a new Menu
