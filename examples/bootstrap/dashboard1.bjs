@@ -7,19 +7,25 @@
  "modOrder" : "001",
  "strings" : {
   "dbd7790bcd23fde7607101ef6a633779" : "http://",
+  "9dffbf69ffba8bc38bc4e01abf4b1675" : "Text",
   "680e083786e18d3b9bd07bffd61dc5dc" : "after : &lt;i class=&quot;fa fa-ambulance&quot;&gt;&lt;/i&gt; before : &lt;i class=&quot;fa fa-dollar&quot;&gt;&lt;/i&gt;",
+  "bc6d090c772eedbd8e59e273620830c6" : "File Input",
   "f6b6d9142474aba10b39e88cf4e06f6e" : "before : @",
   "7c4d0cf56e05ed67ec50246c517e149b" : "md 3",
   "cb6b36c6d62d94b76628a4543517f89b" : "md 4",
   "1d042703152e2b45f3b2ee38610b9a07" : "General Elements",
   "fe65c0ed916a464efda8e6b69b846d09" : "cls = has-error",
   "5f075ae3e1f9d0382bb8c4632991f96f" : "Go",
+  "643a860f992333b8600ea264aca7c4fc" : "Email Address",
   "69165cb5e53db90fd85e2b0a98f1d77b" : "size sm",
   "a1e27e67ca3c6c3198c36a32e416a65f" : "General Form Elements  <small> Preview </small>",
   "c3d8baf1b9da3d6922aea0057717a0b7" : "Enter email",
+  "c81c5cb4cbfa1fe7cc3ae45112da3bf8" : "ComboBox disabled",
   "b85c1bc6f73a44489045c76aafbab96c" : "With checkbox and radio",
   "ac8f3751f51c35383892f7a1684e35ea" : "disabled = true",
+  "8ac5836f3de7379d49bc60dcd36913c7" : "Input with Error",
   "cb76b3c00a2436a2a0d57f1282cbd66a" : "after : &lt;i class=&quot;fa fa-after&quot;&gt;&lt;/i&gt;",
+  "fd249a0c28275ebf9d4c8464ca2225cf" : "ComboBox",
   "5485e0b19975fe1d4400e35162a7c099" : "Quick Example",
   "c4ca4238a0b923820dcc509a6f75849b" : "1",
   "e7ef9c258353d78ca676588bd59ec915" : "cls = has-warning",
@@ -31,16 +37,21 @@
   "5f7a612768f22e04c0a0c4bb0c24ce91" : "size md",
   "08583f18f5ab76dcb709f7b34eb59104" : "Different Height",
   "7099e6d377281665976e57e80ba5fe0d" : "before $, after: .00",
+  "82a3bed694a221ef4bb4f18514b05843" : "Input with Warning",
   "088eb66998a403897b60aa8ee9115c91" : "cls = has-success",
+  "dc647eb65e6711e155375218212b3964" : "Password",
   "343f7d4e4b503d9b9cb282205a4d5858" : "after: .00",
-  "3b545ecbbdf3673f195c5a692fefa928" : "disabled=true",
   "221fd7bbd5b513f2c2db2939fcefec96" : "after - a button",
   "76946ef61117810371fa41415c86a2ed" : "size lg",
+  "b5d4d25fe3fa9f8263b5f279a372b709" : "Textarea",
+  "3b545ecbbdf3673f195c5a692fefa928" : "disabled=true",
   "71f30e09efd6fac81e65a32a32a1c6ac" : "With Icons",
+  "f536bd90041a983b324d7a81de4e8089" : "Input with Success",
   "f8eae6750519389e078e1eb1bcb3d708" : "https://",
-  "1d74eaa01575d5f21d7a8e54154126e3" : "before :  - an object...    ",
+  "1c8d3efd26af385c51153c5bc082a279" : "before :  - an object...    ",
   "2f24bf395be7b31a10b6d501801d4099" : "Input Addon",
   "6f0e2583dbfc8eab280b4709a8c87b4b" : "Different Width",
+  "1dcae4807c06e16567efb6eff4f1296c" : "Multiple selection",
   "d1457b72c3fb323a2671125aef3eab5d" : "?",
   "4c3d0e43b52db64c94f842da7fc7224c" : "Enter ...",
   "a4d3b161ce1309df1c4e25df28694b7b" : "Submit"
@@ -53,8 +64,8 @@
    "items" : [
     {
      "String cls" : "header",
-     "xtype" : "Container",
      "tag" : "header",
+     "xtype" : "Container",
      "* xinclude" : "Dashboard.Header1",
      "$ xns" : "Roo.bootstrap"
     },
@@ -343,8 +354,8 @@
                     },
                     {
                      "xtype" : "Header",
-                     "$ xns" : "Roo.bootstrap",
                      "Number level" : 4,
+                     "$ xns" : "Roo.bootstrap",
                      "String html" : "With Icons"
                     },
                     {
@@ -371,8 +382,8 @@
                     },
                     {
                      "xtype" : "Header",
-                     "Number level" : 4,
                      "$ xns" : "Roo.bootstrap",
+                     "Number level" : 4,
                      "String html" : "With checkbox and radio"
                     },
                     {
@@ -398,8 +409,8 @@
                     },
                     {
                      "xtype" : "Header",
-                     "$ xns" : "Roo.bootstrap",
                      "Number level" : 4,
+                     "$ xns" : "Roo.bootstrap",
                      "String html" : "With buttons"
                     },
                     {
@@ -518,8 +529,8 @@
                     },
                     {
                      "xtype" : "TextArea",
-                     "$ xns" : "Roo.bootstrap",
-                     "String fieldLabel" : "Textarea"
+                     "String fieldLabel" : "Textarea",
+                     "$ xns" : "Roo.bootstrap"
                     },
                     {
                      "xtype" : "TextArea",
