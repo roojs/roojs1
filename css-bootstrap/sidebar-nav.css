@@ -38,9 +38,7 @@
 {
     background-color: #fff;
 }
-.sidebar .sidebar-menu li:active ul {
-   background-color: #fff;
-}
+
 
 .sidebar .sidebar-menu li:hover a,
 .sidebar .sidebar-menu li:focus a,
@@ -133,7 +131,9 @@
 .sidebar .sidebar-menu .treeview-menu > li > a > .ion {
   width: 20px;
 }
-
+.sidebar .sidebar-menu li.active ul {
+   background-color: #fff;
+}
 
 
 
