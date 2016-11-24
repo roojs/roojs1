@@ -144,7 +144,9 @@
 .sidebar .sidebar-menu .treeview-menu > li > a > .ion {
   width: 20px;
 }
-
+.sidebar .sidebar-menu .treeview-menu > li.active > a {
+    font-weight: bold;
+}
 /* active sidebard... */
  
 
