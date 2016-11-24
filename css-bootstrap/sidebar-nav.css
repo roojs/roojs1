@@ -38,6 +38,9 @@
 {
     background-color: #fff;
 }
+.sidebar .sidebar-menu li:active ul {
+   background-color: #fff;
+}
 
 .sidebar .sidebar-menu li:hover a,
 .sidebar .sidebar-menu li:focus a,
