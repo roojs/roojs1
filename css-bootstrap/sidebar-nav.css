@@ -57,7 +57,7 @@
     color: #000;
     text-decoration: none;
 }
-
+/* BLUE ACTIVE */
 .sidebar .sidebar-menu li.active, {
   color: #fff;
   background-color: #337ab7;
