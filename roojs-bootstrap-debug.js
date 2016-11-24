@@ -4417,7 +4417,7 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
             cfg.cls += ' disabled';
         }
         if (this.open) {
-            cfg.cls += ' open';
+            cfg.cls += ' open x-open';
         }
         // left icon..
         if (this.glyphicon || this.icon) {
