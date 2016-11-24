@@ -7,6 +7,7 @@ Roo.namespace('Dashboard');
 Dashboard.Sidebar2 = new Roo.XComponent({
 
  _strings : {
+  '180ad460b6c01d52766cac486d5272c0' :"test aaa",
   '098f6bcd4621d373cade4e832627b4f6' :"test"
  },
 
@@ -65,7 +66,7 @@ Dashboard.Sidebar2 = new Roo.XComponent({
            },
            {
             xtype : 'MenuItem',
-            html : _this._strings['098f6bcd4621d373cade4e832627b4f6'] /* test */,
+            html : _this._strings['180ad460b6c01d52766cac486d5272c0'] /* test aaa */,
             listeners : {
              click : function (_self, e)
               {
