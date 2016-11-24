@@ -19,7 +19,7 @@
 
 Roo.bootstrap.Menu = function(config){
     Roo.bootstrap.Menu.superclass.constructor.call(this, config);
-    if (this.registerMenu) {
+    if (this.registerMenu && this.type != 'treeview')  {
         Roo.bootstrap.MenuMgr.register(this);
     }
     this.addEvents({
