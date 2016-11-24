@@ -98,6 +98,9 @@
     display:block;
 }
 
+.sidebar .sidebar-menu li.open .treeview-menu {
+    display: block;
+}
 
 
 
