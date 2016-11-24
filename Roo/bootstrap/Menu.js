@@ -340,7 +340,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     hideMenuItems : function()
     {
         Roo.log("hide Menu Items");
-        if (!this.el) { {
+        if (!this.el) { 
             return;
         }
         //$(backdrop).remove()
@@ -353,7 +353,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
            //$parent.trigger(e = $.Event('hide.bs.dropdown', relatedTarget))
           //if (e.isDefaultPrevented()) return
            //$parent.removeClass('open').trigger('hidden.bs.dropdown', relatedTarget)
-        })
+        });
     },
     addxtypeChild : function (tree, cntr) {
         var comp= Roo.bootstrap.Menu.superclass.addxtypeChild.call(this, tree, cntr);
