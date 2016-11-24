@@ -134,7 +134,7 @@
 
 /* active sidebard... */
 .sidebar .sidebar-menu li.active li {
-   background-color: #c;
+   background-color: #fff;
    color: #000;
 }
 .sidebar .sidebar-menu li.active li a {
