@@ -1871,7 +1871,7 @@ Roo.bootstrap.MenuMgr = function(){
 
 Roo.bootstrap.Menu = function(config){
     Roo.bootstrap.Menu.superclass.constructor.call(this, config);
-    if (this.registerMenu) {
+    if (this.registerMenu && this.type != 'treeview')  {
         Roo.bootstrap.MenuMgr.register(this);
     }
     this.addEvents({
@@ -2139,7 +2139,8 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
      * Hides this menu and optionally all parent menus
      * @param {Boolean} deep (optional) True to hide all parent menus recursively, if any (defaults to false)
      */
-    hide : function(deep){
+    hide : function(deep)
+    {
         
         this.hideMenuItems();
         if(this.el && this.isVisible()){
@@ -2163,7 +2164,11 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         Roo.log('trigger press');
         //Roo.log(e.getTarget());
        // Roo.log(this.triggerEl.dom);
-        if (Roo.get(e.getTarget()).findParent('.dropdown-menu')) {
+       
+        // trigger only occurs on normal menu's -- if it's a treeview or dropdown... do not hide/show..
+        var pel = Roo.get(e.getTarget());
+        if (pel.findParent('.dropdown-menu') || pel.findParent('.treeview-menu') ) {
+           
             return;
         }
         
@@ -2285,8 +2290,9 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
     },
     
     initEvents: function() {
-        
-        //this.el.select('a').on('click', this.onClick, this);
+        if (this.parent().type == 'treeview') {
+            this.el.select('a').on('click', this.onClick, this);
+        }
         
     },
     onClick : function(e)
