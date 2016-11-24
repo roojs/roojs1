@@ -137,7 +137,7 @@
    background-color: #fff;
    color: #000;
 }
-.sidebar .sidebar-menu li.active li a {
+.sidebar .sidebar-menu li.active li.treeview-menu a {
     color: #000;
 }
 
