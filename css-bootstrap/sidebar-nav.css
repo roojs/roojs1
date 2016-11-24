@@ -93,6 +93,19 @@
     color: #fff;
 }
 
+/* --- open  */
+.sidebar .sidebar-menu li.open ul {
+    display:block;
+}
+
+
+
+
+
+
+
+
+
 
 .badge-default {
     background-color: #777;
