@@ -73,8 +73,9 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
     },
     
     initEvents: function() {
-        
-        //this.el.select('a').on('click', this.onClick, this);
+        if (this.parent().type == 'treeview') {
+            this.el.select('a').on('click', this.onClick, this);
+        }
         
     },
     onClick : function(e)
