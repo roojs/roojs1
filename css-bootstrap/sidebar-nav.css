@@ -39,6 +39,7 @@
 .sidebar .sidebar-menu li:active a
 {
     color: #000;
+    text-decoration: none;
 }
 
 .sidebar .sidebar-menu li.active {
