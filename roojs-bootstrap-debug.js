@@ -2236,8 +2236,9 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
  * Bootstrap MenuItem class
  * @cfg {String} html the menu label
  * @cfg {String} href the link
- * @cfg {Boolean} preventDefault (true | false) default true
- * @cfg {Boolean} isContainer (true | false) default false
+ * @cfg {Boolean} preventDefault do not trigger A href on clicks.
+ * @cfg {Boolean} isContainer is it a container - just returns a drop down item..
+ * @cfg {Boolean} active  used on sidebars to highlight active itesm
  * 
  * 
  * @constructor
@@ -2290,6 +2291,11 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
         if (this.parent().type == 'treeview') {
             cfg.cls = 'treeview-menu';
         }
+        if (this.active) {
+            cfg.cls += ' active';
+        }
+        
+        
         
         cfg.cn[0].href = this.href || cfg.cn[0].href ;
         cfg.cn[0].html = this.html || cfg.cn[0].html ;
