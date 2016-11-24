@@ -66,6 +66,12 @@ Dashboard.Sidebar2 = new Roo.XComponent({
            {
             xtype : 'MenuItem',
             html : _this._strings['098f6bcd4621d373cade4e832627b4f6'] /* test */,
+            listeners : {
+             click : function (_self, e)
+              {
+                  Roo.log("last one clicked");
+              }
+            },
             xns : Roo.bootstrap,
             '|xns' : 'Roo.bootstrap'
            }

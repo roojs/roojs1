@@ -47,6 +47,9 @@
              "String html" : "test"
             },
             {
+             "listeners" : {
+              "click" : "function (_self, e)\n{\n    Roo.log(\"last one clicked\");\n}"
+             },
              "xtype" : "MenuItem",
              "$ xns" : "Roo.bootstrap",
              "String html" : "test"
