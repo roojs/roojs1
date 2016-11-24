@@ -131,7 +131,9 @@
 .sidebar .sidebar-menu .treeview-menu > li > a > .ion {
   width: 20px;
 }
-.sidebar .sidebar-menu li.active ul {
+
+/* active sidebard... */
+.sidebar .sidebar-menu li.active li {
    background-color: #fff;
 }
 
