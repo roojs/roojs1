@@ -43,6 +43,7 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
     html : false,
     preventDefault: true,
     isContainer : false,
+    active : false,
     
     getAutoCreate : function(){
         
