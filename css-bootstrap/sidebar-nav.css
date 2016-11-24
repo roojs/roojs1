@@ -22,6 +22,10 @@
     border-bottom: 1px solid #ccc;
     background-color: #eee;
 }
+/* active child menu - white BG */
+.sidebar .sidebar-menu li.active li.treeview-menu {
+    background-color: #fff;
+}
 
 .sidebar .sidebar-menu > li > a ,
 .sidebar .sidebar-menu li.active li.treeview-menu > a
