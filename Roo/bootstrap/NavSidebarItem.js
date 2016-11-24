@@ -45,6 +45,8 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
     
     badgeWeight : 'default',
     
+    open: false,
+    
     getAutoCreate : function(){
         
         
@@ -73,7 +75,9 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
         if (this.disabled) {
             cfg.cls += ' disabled';
         }
-        
+        if (this.open) {
+            cfg.cls += ' open';
+        }
         // left icon..
         if (this.glyphicon || this.icon) {
             var c = this.glyphicon  ? ('glyphicon glyphicon-'+this.glyphicon)  : this.icon;
