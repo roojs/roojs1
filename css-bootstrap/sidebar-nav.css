@@ -34,7 +34,10 @@
 
 .sidebar .sidebar-menu li:hover,
 .sidebar .sidebar-menu li:focus,
-.sidebar .sidebar-menu li:active
+.sidebar .sidebar-menu li:active,
+.sidebar .sidebar-menu li.active li.treeview-menu:hover,
+.sidebar .sidebar-menu li.active li.treeview-menu:focus,
+.sidebar .sidebar-menu li.active li.treeview-menu:active
 {
     background-color: #fff;
 }
@@ -42,7 +45,10 @@
 
 .sidebar .sidebar-menu li:hover a,
 .sidebar .sidebar-menu li:focus a,
-.sidebar .sidebar-menu li:active a
+.sidebar .sidebar-menu li:active a,
+.sidebar .sidebar-menu li.active li.treeview-menu a:hover,
+.sidebar .sidebar-menu li.active li.treeview-menu a:focus,
+.sidebar .sidebar-menu li.active li.treeview-menu a:active
 {
     color: #000;
     text-decoration: none;
@@ -133,13 +139,7 @@
 }
 
 /* active sidebard... */
-.sidebar .sidebar-menu li.active li {
-   background-color: #fff;
-   color: #000;
-}
-.sidebar .sidebar-menu li.active li.treeview-menu a {
-    color: #000;
-}
+ 
 
 
 .badge-default {
