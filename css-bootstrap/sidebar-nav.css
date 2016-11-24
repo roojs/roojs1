@@ -24,7 +24,7 @@
 }
 /* active child menu - white BG */
 .sidebar .sidebar-menu li.active li.treeview-menu {
-    background-color: #fff;
+    background-color: #ddd;
 }
 
 .sidebar .sidebar-menu > li > a ,
