@@ -1862,8 +1862,6 @@ Roo.bootstrap.MenuMgr = function(){
  * @extends Roo.bootstrap.Component
  * Bootstrap Menu class - container for MenuItems
  * @cfg {String} type (dropdown|treeview|submenu) type of menu
- * @cfg {boolean} open is the menu open?
-
  * 
  * @constructor
  * Create a new Menu
@@ -1951,6 +1949,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     
     hidden:true,
     
+        
     parentMenu : false,
     
     getChildContainer : function() {
@@ -1988,9 +1987,6 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         this.triggerEl.addClass('dropdown-toggle');
         
-        if (this.open) {
-            this.triggerEl.addClass('open');
-        }
         
         if (Roo.isTouch) {
             this.el.on('touchstart'  , this.onTouch, this);
@@ -4359,6 +4355,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
  * @extends Roo.bootstrap.NavItem
  * Bootstrap Navbar.NavSidebarItem class
  * {String} badgeWeight (default|primary|success|info|warning|danger)the extra classes for the badge
+ * {bool} open is the menu open
  * @constructor
  * Create a new Navbar Button
  * @param {Object} config The config object
@@ -4389,6 +4386,8 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
     
     badgeWeight : 'default',
     
+    open: false,
+    
     getAutoCreate : function(){
         
         
@@ -4417,7 +4416,9 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
         if (this.disabled) {
             cfg.cls += ' disabled';
         }
-        
+        if (this.open) {
+            cfg.cls += ' open';
+        }
         // left icon..
         if (this.glyphicon || this.icon) {
             var c = this.glyphicon  ? ('glyphicon glyphicon-'+this.glyphicon)  : this.icon;
