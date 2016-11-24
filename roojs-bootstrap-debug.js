@@ -2190,6 +2190,8 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     
     hideMenuItems : function()
     {
+        Roo.log("hide Menu Items");
+        
         //$(backdrop).remove()
         Roo.select('.open',true).each(function(aa) {
             
