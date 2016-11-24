@@ -135,6 +135,7 @@
 /* active sidebard... */
 .sidebar .sidebar-menu li.active li {
    background-color: #fff;
+   color: #000;
 }
 
 
