@@ -1862,6 +1862,8 @@ Roo.bootstrap.MenuMgr = function(){
  * @extends Roo.bootstrap.Component
  * Bootstrap Menu class - container for MenuItems
  * @cfg {String} type (dropdown|treeview|submenu) type of menu
+ * @cfg {boolean} open is the menu open?
+
  * 
  * @constructor
  * Create a new Menu
@@ -1985,6 +1987,10 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         this.triggerEl.on(Roo.isTouch ? 'touchstart' : 'mouseup', this.onTriggerPress, this);
         
         this.triggerEl.addClass('dropdown-toggle');
+        
+        if (this.open) {
+            this.triggerEl.addClass('open');
+        }
         
         if (Roo.isTouch) {
             this.el.on('touchstart'  , this.onTouch, this);
