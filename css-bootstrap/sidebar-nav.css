@@ -148,9 +148,11 @@
 .sidebar .sidebar-menu .treeview-menu > li > a > .ion {
   width: 20px;
 }
+/* background to highlighted treeview node
 .sidebar .sidebar-menu li li.treeview-menu.active  {
     background: #fff;
 }
+*/
 
 .sidebar .sidebar-menu li li.treeview-menu.active > a {
     font-weight: bold;
