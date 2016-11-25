@@ -2706,12 +2706,12 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     {
         // skip.. ?? why??
         
-        this.el.select('.modal-dialog',true).setWidth(w);
+        this.el.select('.modal-dialog',true).first().setWidth(w);
         if (this.diff === false) {
-            this.diff = this.el.select('.modal-dialog',true).getHeight() - this.el.select('.modal-body',true).getHeight();
+            this.diff = this.el.select('.modal-dialog',true).first().getHeight() - this.el.select('.modal-body',true).first().getHeight();
         }
         
-        this.el.select('.modal-body',true).setWidth(h-this.diff);
+        this.el.select('.modal-body',true).first().setWidth(h-this.diff);
         
         
     },
