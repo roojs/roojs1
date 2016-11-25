@@ -317,11 +317,19 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     {
         //this.el.select('.modal-footer').()
     },
+    diff : false,
+    
     resizeTo: function(w,h)
     {
         // skip.. ?? why??
         
-        this.el.select('.modal-dialog',true).setSize(w,h)
+        this.el.select('.modal-dialog',true).setWidth(w);
+        if (this.diff === false) {
+            this.diff = this.el.select('.modal-dialog',true).getHeight() - .this.el.select('.modal-body',true).getHeight();
+        }
+        
+        this.el.select('.modal-body',true).setWidth(h-this.diff);
+        
         
     },
     setContentSize  : function(w, h)
