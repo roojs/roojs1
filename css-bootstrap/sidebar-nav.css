@@ -28,7 +28,7 @@
 }
 
 .sidebar .sidebar-menu > li > a ,
-.sidebar .sidebar-menu li.active li.treeview-menu > a
+.sidebar .sidebar-menu li.open li.treeview-menu > a
 {
     padding: 12px 5px 12px 15px;
     display: block;
