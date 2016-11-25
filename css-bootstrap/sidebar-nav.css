@@ -55,9 +55,9 @@
 .sidebar .sidebar-menu li:hover a,
 .sidebar .sidebar-menu li:focus a,
 .sidebar .sidebar-menu li:active a,
-.sidebar .sidebar-menu li.active li.treeview-menu a:hover,
-.sidebar .sidebar-menu li.active li.treeview-menu a:focus,
-.sidebar .sidebar-menu li.active li.treeview-menu a:active
+.sidebar .sidebar-menu li.oepn li.treeview-menu a:hover,
+.sidebar .sidebar-menu li.open li.treeview-menu a:focus,
+.sidebar .sidebar-menu li.open li.treeview-menu a:active
 {
     color: #000;
     text-decoration: none;
@@ -137,7 +137,7 @@
 .sidebar .sidebar-menu .treeview-menu > li {
   margin: 0;
 }
-.sidebar .sidebar-menu .treeview-menu > li > a {
+.sidebar .sidebar-menu li.open li.treeview-menu  > a {
   padding: 5px 5px 5px 15px;
   display: block;
   font-size: 14px;
