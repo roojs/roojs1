@@ -58,7 +58,7 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
         var ctag = {
             tag: 'span',
             html: 'Link'
-        }
+        };
         
         var anc = {
             tag : 'a',
