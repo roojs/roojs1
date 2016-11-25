@@ -67,7 +67,10 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
         };
         
         if (this.fa !== false) {
-            
+            anc.cn.push({
+                tag : 'i',
+                cls : 'fa fa-' + this.fa
+            });
         }
         
         anc.cn.push(ctag);
