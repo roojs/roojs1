@@ -15,6 +15,7 @@
  * @cfg {Boolean} preventDefault do not trigger A href on clicks.
  * @cfg {Boolean} isContainer is it a container - just returns a drop down item..
  * @cfg {Boolean} active  used on sidebars to highlight active itesm
+ * @cfg {String} fa favicon to show on left of menu item.
  * 
  * 
  * @constructor
@@ -44,6 +45,7 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
     preventDefault: true,
     isContainer : false,
     active : false,
+    fa: false,
     
     getAutoCreate : function(){
         
@@ -53,17 +55,28 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
                 cls: 'dropdown-menu-item'
             };
         }
+        var ctag = {
+            tag: 'span',
+            html: 'Link'
+        }
+        
+        var anc = {
+            tag : 'a',
+            href : '#',
+            cn : [  ]
+        };
+        
+        if (this.fa !== false) {
+            
+        }
+        
+        anc.cn.push(ctag);
+        
         
         var cfg= {
             tag: 'li',
             cls: 'dropdown-menu-item',
-            cn: [
-                    {
-                        tag : 'a',
-                        href : '#',
-                        html : 'Link'
-                    }
-                ]
+            cn: [ anc ]
         };
         if (this.parent().type == 'treeview') {
             cfg.cls = 'treeview-menu';
@@ -74,8 +87,8 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
         
         
         
-        cfg.cn[0].href = this.href || cfg.cn[0].href ;
-        cfg.cn[0].html = this.html || cfg.cn[0].html ;
+        anc.href = this.href || cfg.cn[0].href ;
+        ctag.html = this.html || cfg.cn[0].html ;
         return cfg;
     },
     
