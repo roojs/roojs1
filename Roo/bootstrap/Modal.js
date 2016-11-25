@@ -319,7 +319,10 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     },
     resizeTo: function(w,h)
     {
-        // skip..
+        // skip.. ?? why??
+        
+        this.el.select('.modal-dialog',true).setSize(w,h)
+        
     },
     setContentSize  : function(w, h)
     {
