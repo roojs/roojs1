@@ -141,11 +141,16 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     
     onClick : function(e)
     {
+        if (e.getTarget('.dropdown-menu-item')) {
+            // did you click on a menu itemm.... - then don't trigger onclick..
+            return;
+        }
+        
         if(
                 this.preventDefault || 
                 this.href == '#' 
         ){
-            
+            Roo.log("NavItem - prevent Default?");
             e.preventDefault();
         }
         
@@ -179,7 +184,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             if (ael.dom.href.split("#")[0] != document.location.toString().split("#")[0]) {
                 return; // ignore... - it's a 'hash' to another page.
             }
-            
+            Roo.log("NavItem - prevent Default?");
             e.preventDefault();
             this.scrollToElement(e);
         }

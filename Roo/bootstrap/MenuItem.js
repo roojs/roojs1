@@ -16,6 +16,7 @@
  * @cfg {Boolean} isContainer is it a container - just returns a drop down item..
  * @cfg {Boolean} active  used on sidebars to highlight active itesm
  * @cfg {String} fa favicon to show on left of menu item.
+ * @cfg {Roo.bootsrap.Menu} menu the child menu.
  * 
  * 
  * @constructor
@@ -95,9 +96,15 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
         return cfg;
     },
     
-    initEvents: function() {
+    initEvents: function()
+    {
         if (this.parent().type == 'treeview') {
             this.el.select('a').on('click', this.onClick, this);
+        }
+        if (this.menu) {
+            this.menu.parentType = this.xtype;
+            this.menu.triggerEl = this.el;
+            this.menu = this.addxtype(Roo.apply({}, this.menu));
         }
         
     },

@@ -90,8 +90,9 @@ Roo.bootstrap.MenuMgr = function(){
    // private this should really trigger on mouseup..
    function onMouseDown(e){
         Roo.log("on Mouse Up");
-        if(lastShow.getElapsed() > 50 && active.length > 0 && !e.getTarget(".x-menu") && !e.getTarget('.user-menu')){
-            Roo.log("hideAll");
+        
+        if(lastShow.getElapsed() > 50 && active.length > 0 && !e.getTarget(".dropdown-menu") && !e.getTarget('.user-menu')){
+            Roo.log("MenuManager hideAll");
             hideAll();
             e.stopEvent();
         }

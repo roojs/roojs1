@@ -1745,8 +1745,9 @@ Roo.bootstrap.MenuMgr = function(){
    // private this should really trigger on mouseup..
    function onMouseDown(e){
         Roo.log("on Mouse Up");
-        if(lastShow.getElapsed() > 50 && active.length > 0 && !e.getTarget(".x-menu") && !e.getTarget('.user-menu')){
-            Roo.log("hideAll");
+        
+        if(lastShow.getElapsed() > 50 && active.length > 0 && !e.getTarget(".dropdown-menu") && !e.getTarget('.user-menu')){
+            Roo.log("MenuManager hideAll");
             hideAll();
             e.stopEvent();
         }
@@ -2240,6 +2241,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
  * @cfg {Boolean} isContainer is it a container - just returns a drop down item..
  * @cfg {Boolean} active  used on sidebars to highlight active itesm
  * @cfg {String} fa favicon to show on left of menu item.
+ * @cfg {Roo.bootsrap.Menu} menu the child menu.
  * 
  * 
  * @constructor
@@ -2319,9 +2321,15 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
         return cfg;
     },
     
-    initEvents: function() {
+    initEvents: function()
+    {
         if (this.parent().type == 'treeview') {
             this.el.select('a').on('click', this.onClick, this);
+        }
+        if (this.menu) {
+            this.menu.parentType = this.xtype;
+            this.menu.triggerEl = this.el;
+            this.menu = this.addxtype(Roo.apply({}, this.menu));
         }
         
     },
@@ -4212,11 +4220,16 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     
     onClick : function(e)
     {
+        if (e.getTarget('.dropdown-menu-item')) {
+            // did you click on a menu itemm.... - then don't trigger onclick..
+            return;
+        }
+        
         if(
                 this.preventDefault || 
                 this.href == '#' 
         ){
-            
+            Roo.log("NavItem - prevent Default?");
             e.preventDefault();
         }
         
@@ -4250,7 +4263,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             if (ael.dom.href.split("#")[0] != document.location.toString().split("#")[0]) {
                 return; // ignore... - it's a 'hash' to another page.
             }
-            
+            Roo.log("NavItem - prevent Default?");
             e.preventDefault();
             this.scrollToElement(e);
         }
