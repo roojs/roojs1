@@ -132,7 +132,8 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
 
     },
 
-    load : function(graphtype,xdata,opts){
+    load : function(graphtype,xdata,opts)
+    {
         this.raphael.clear();
         if(!graphtype) {
             graphtype = this.graphtype;
