@@ -88,7 +88,15 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
     },
 
     onRender : function(ct,position){
+        
+        
         Roo.bootstrap.Graph.superclass.onRender.call(this,ct,position);
+        
+        if (typeof(Raphael) == 'undefined') {
+            Roo.bootstrap.MessageBox.alert("Error","Raphael is not availabe");
+            return;
+        }
+        
         this.raphael = Raphael(this.el.dom);
         
                     // data1 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
