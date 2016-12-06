@@ -35,7 +35,7 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
     startnumber : 0,
     
     digits : false, // array...
-    
+    ulWidth : 0, 
     
     getAutoCreate : function(){
         
@@ -49,7 +49,6 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
     init : function ()
     { 
         var startNum = ""+ this.startnumber;
-        this.ulWidth = 0;
         
         for (i=startNum.length-1; i>=0; i=i-1)
         {
@@ -95,14 +94,19 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
         this.digits.push(digit);
         
         // Update width
-        this.ulWidth = this.ulWidth + digit.li.outerWidth(true);
-        this.ul.css('min-width', this.ulWidth);
-        this.ul.css('min-height', digit.li.outerHeight(true));
-    };
+        this.ulWidth = this.ulWidth + digit.el.getWidth(true);
+        this.el.set({
+            'min-width' : this.ulWidth,
+            'min-height' :digit.el.getHeight(true)
+        });
+        
+    },
     
-    FlipCounter.prototype.removeDigit = function () {
+    removeDigit : function ()
+    {
         var digit = this.digits.splice(this.digits.length-1, 1)[0];
-        this.ulWidth = this.ulWidth - digit.li.outerWidth(true);
+        
+        this.ulWidth = this.ulWidth - digit.el.outerWidth(true);
         digit.li.remove();
         
         // Remove separators
@@ -117,7 +121,8 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
         this.ul.css('min-width', this.ulWidth);
     }
     
-    FlipCounter.prototype.addSeparator = function (num) {
+    addSeparator : function (num)
+    {
         this.ul.prepend('<li class="comma">,</li>');
         
         // Update width
