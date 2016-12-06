@@ -112,8 +112,8 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
         // Remove separators
         if (this.digits.length % 3 == 0)
         {
-            var comma = this.ul.find('li.comma:first-child');
-            this.ulWidth = this.ulWidth - comma.outerWidth(true);
+            var comma = this.el.select('li.comma:first-child');
+            this.ulWidth = this.ulWidth - comma.getWidth(true);
             comma.remove();
         }
         
