@@ -118,7 +118,7 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
         }
         
         // Update width to current
-        this.ul.css('min-width', this.ulWidth);
+        this.el.set( { 'min-width' : this.ulWidth});
     }
     
     addSeparator : function (num)
