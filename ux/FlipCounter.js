@@ -86,7 +86,7 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
             </div>\
         </li>');
         
-        var li = this.ul.find('li:first-child');
+        var li = this.el.select('li'.true).first();
         var digit = new Digit(li, num);
         digit.manager = this;
         this.digits.push(digit);
