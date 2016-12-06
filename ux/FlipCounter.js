@@ -33,6 +33,9 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
     speed : 0.2,
     startnumber : 0,
     
+    digits : false, // array...
+    
+    
     getAutoCreate : function(){
         
         return {
@@ -87,7 +90,7 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
         </li>');
         
         var li = this.el.select('li'.true).first();
-        var digit = new Digit(li, num);
+        var digit = new Roo.ux.FlipCounter.Digit(li, num);
         digit.manager = this;
         this.digits.push(digit);
         
