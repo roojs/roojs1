@@ -32,31 +32,14 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
     
     speed : 0.2,
     
-    
-
-;(function ( $, window, document, undefined ) {
-    
-    // Create the defaults once
-    var pluginName = 'flipCounter',
-        defaults = {
-            speed: 0.2,
-            onFlip: function() {},
-            onResize: function() {}
-        };
-
-    // Constructor
-    function FlipCounter( element, options ) {
-        this.el = $(element);
-        this.options = $.extend({}, defaults, options);
-        this._defaults = defaults;
-        this._name = pluginName;
-        this.init();
-    }
-
-    FlipCounter.prototype.init = function () {
+     
+    init : function ()
+    {
         var elem = this.el;
-        var startNum = elem.html();
-        if (startNum === "") startNum = "0";
+        var startNum = elem.dom.innerHTML();
+        if (startNum === "") {
+            startNum = "0";
+        }
         elem.html('<ul class="flipcounter"></ul>');
         
         this.ul = elem.children('ul');
