@@ -61,7 +61,7 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
             this.addSeparator();
         }
         
-        this.ul.prepend('<li>\
+        this.el.insertHtml('afterBegin', '<li>\
             <div class="numberwrap">\
                 <div class="flipper_top flipper_top1"></div>\
                 <div class="flipper_top flipper_top2 flipper_top_back">\
