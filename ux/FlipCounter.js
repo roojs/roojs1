@@ -10,13 +10,13 @@ Roo.ux.FlipCounter = function(options)
         /**
          * @event flip
          * When a box is flipped
-         * @param {Roo.ux.FlipCounter} pane
+         * @param {Roo.ux.FlipCounter} counter
          */
         "flip" : true,
         /**
-         * @event activatepane
-         * When a pane is activated
-         * @param {Roo.bootstrap.dash.TabPane} pane
+         * @event resize
+         * When a box is resized
+         * @param {Roo.ux.FlipCounter} counter
          */
         "resize" : true
         
