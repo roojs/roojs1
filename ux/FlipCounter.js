@@ -5,14 +5,30 @@ Roo.ux.FlipCounter = function(options)
     Roo.apply(this, options);
     //this.el = $(element);
     //this.options = $.extend({}, defaults, options);
-   
+     this.addEvents({
+        // raw events
+        /**
+         * @event flip
+         * When a box is flipped
+         * @param {Roo.ux.FlipCounter} pane
+         */
+        "flip" : true,
+        /**
+         * @event activatepane
+         * When a pane is activated
+         * @param {Roo.bootstrap.dash.TabPane} pane
+         */
+        "resize" : true
+        
+         
+    });
      
     //this.init();
 
 
     
 }
-Roo.extend(Roo.ux.FlipCounter, Roo.Component, {
+Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
     
     speed : 0.2,
     
