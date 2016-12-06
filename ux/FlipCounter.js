@@ -42,15 +42,8 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
         };
         
     init : function ()
-    {
-        var elem = this.el;
-        var startNum = elem.dom.innerHTML();
-        if (startNum === "") {
-            startNum = "0";
-        }
-        
-        
-        this.ul = elem.children('ul');
+    { 
+        var startNum = ""+ this.startnumber;
         this.ulWidth = 0;
         this.digits = new Array();
         
