@@ -22,7 +22,8 @@ Roo.ux.FlipCounter = function(options)
         
          
     });
-     
+    this.digits = new Array();
+       
     //this.init();
 
 
@@ -49,7 +50,6 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
     { 
         var startNum = ""+ this.startnumber;
         this.ulWidth = 0;
-        this.digits = new Array();
         
         for (i=startNum.length-1; i>=0; i=i-1)
         {
