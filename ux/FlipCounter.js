@@ -31,8 +31,16 @@ Roo.ux.FlipCounter = function(options)
 Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
     
     speed : 0.2,
+    startnumber : 0,
     
-     
+    getAutoCreate : function(){
+        
+        return {
+            tag: 'ul',
+            cls: 'flipcounter',
+            
+        };
+        
     init : function ()
     {
         var elem = this.el;
@@ -40,7 +48,7 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
         if (startNum === "") {
             startNum = "0";
         }
-        elem.html('<ul class="flipcounter"></ul>');
+        
         
         this.ul = elem.children('ul');
         this.ulWidth = 0;
