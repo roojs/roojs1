@@ -147,7 +147,9 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
 
 Roo.ux.FlipCounter.Digit = function(options)
 {
-    Roo.apply(this, options);
+    //Roo.apply(this, options);
+        Roo.bootstrap.FlipCounter.Digit.superclass.constructor.call(this, config);
+
     
     this.currentNumber = parseInt(this.currentNumber);
     
