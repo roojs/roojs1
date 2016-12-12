@@ -160,6 +160,10 @@ Roo.extend(Roo.ux.FlipCounter.Digit, Roo.bootstrap.Component, {
 
     manager : null, // the flipcounter... 
     currentNumber : 0,
+    
+    
+    currentNum : 0,
+    nextNum : 0,
     targetNum : 0,
     
     topFrontDiv  : null,
@@ -168,6 +172,8 @@ Roo.extend(Roo.ux.FlipCounter.Digit, Roo.bootstrap.Component, {
     topNumFront : null,
     bottomNumBack : null,
     bottomNumFront : null,
+    
+    
     
     
     getAutoCreate : function(){
