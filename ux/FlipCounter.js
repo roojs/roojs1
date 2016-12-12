@@ -5,7 +5,7 @@ Roo.ux.FlipCounter = function(options)
     Roo.apply(this, options);
     //this.el = $(element);
     //this.options = $.extend({}, defaults, options);
-     this.addEvents({
+    this.addEvents({
         // raw events
         /**
          * @event flip
