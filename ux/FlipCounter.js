@@ -65,7 +65,7 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
         
          
         
-        var li = this.el.select('li'.true).first();
+        var li = this.el.select('li', true).first();
         var digit = new Roo.ux.FlipCounter.Digit(li, num);
         digit.manager = this;
         this.digits.push(digit);
