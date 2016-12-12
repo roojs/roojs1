@@ -231,9 +231,9 @@ Roo.extend(Roo.ux.FlipCounter.Digit, Roo.bootstrap.Component, {
         this.bottomNumBack = this.el.select('.flipper_bottom_back span',true);
         this.bottomNumFront = this.el.select('.flipper_bottom_front span',true);
         
-        this.targetNum = currentNumber;
-        this.currentNum = currentNumber;
-        this.nextNum = currentNumber;
+        this.targetNum = this.currentNumber;
+        this.currentNum = this.currentNumber;
+        this.nextNum = this.currentNumber;
         
         this.currentlyAnimating = false;
     },
