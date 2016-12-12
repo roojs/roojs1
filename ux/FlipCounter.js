@@ -63,36 +63,14 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
             this.addSeparator();
         }
         
-        this.el.insertHtml('afterBegin', '<li>\
-            <div class="numberwrap">\
-                <div class="flipper_top flipper_top1"></div>\
-                <div class="flipper_top flipper_top2 flipper_top_back">\
-                    <span>'+num+'</span>\
-                    <div class="rings"></div>\
-                </div>\
-                <div class="flipper_top flipper_top_front">\
-                    <span>'+num+'</span>\
-                    <div class="rings"></div>\
-                </div>\
-                <div class="flipper_bottom flipper_bottom4"></div>\
-                <div class="flipper_bottom flipper_bottom3"></div>\
-                <div class="flipper_bottom flipper_bottom2"></div>\
-                <div class="flipper_bottom flipper_bottom1 flipper_bottom_back">\
-                    <span>'+num+'</span>\
-                    <div class="rings"></div>\
-                </div>\
-                <div class="flipper_bottom flipper_bottom_front">\
-                    <span>'+num+'</span>\
-                    <div class="rings"></div>\
-                </div>\
-            </div>\
-        </li>');
+         
         
         var li = this.el.select('li'.true).first();
         var digit = new Roo.ux.FlipCounter.Digit(li, num);
         digit.manager = this;
         this.digits.push(digit);
-        
+        this.digit.render(this.el);
+         
         // Update width
         this.ulWidth = this.ulWidth + digit.el.getWidth(true);
         this.el.set({
@@ -119,19 +97,20 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
         
         // Update width to current
         this.el.set( { 'min-width' : this.ulWidth});
-    }
+    },
     
     addSeparator : function (num)
     {
-        this.ul.prepend('<li class="comma">,</li>');
+        var comma = this.el.insertHtml('afterBegin','<li class="comma">,</li>',true);
         
         // Update width
-        var comma = this.ul.find('li.comma:first-child');
-        this.ulWidth = this.ulWidth + comma.outerWidth(true);
-        this.ul.css('min-width', this.ulWidth);
-    };
+        
+        this.ulWidth = this.ulWidth + comma.getWidth(true);
+        this.el.set({'min-width' : this.ulWidth});
+    },
     
-    FlipCounter.prototype.updateTo = function (num) {
+    updateTo : function (num)
+    {
         var numStr = parseInt(num).toString();
         
         // Change the number of digits displayed if needed
@@ -151,7 +130,7 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
                 }
             }
             
-            this.options['onResize']();
+            this.fireEvent('onResize',this);
         }
         
         // Change all digit values
@@ -159,38 +138,113 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
         {
             this.digits[i].flipTo(numStr[numStr.length - 1 - i]);
         }
-    };
+    }
     
-    function Digit( element, currentNumber ) {
-        currentNumber = parseInt(currentNumber);
+});
+
+Roo.ux.FlipCounter.Digit = function(options)
+{
+    //Roo.apply(this, options);
+    
+    this.currentNumber = this.parseInt(this.currentNumber);
+}
+
+Roo.extend(Roo.ux.FlipCounter.Digit, Roo.bootstrap.Component, {
+
+    currentNumber : 0,
+    targetNum : 0,
+    
+    topFrontDiv  : null,
+    bottomFrontDiv : null,
+    topNumBack : null,
+    topNumFront : null,
+    bottomNumBack : null,
+    bottomNumFront : null,
+    
+    
+    getAutoCreate : function(){
         
-        this.li = $(element);
-        this.topFrontDiv = this.li.find('.flipper_top_front');
-        this.bottomFrontDiv = this.li.find('.flipper_bottom_front');
-        this.topNumBack = this.li.find('.flipper_top_back span');
-        this.topNumFront = this.li.find('.flipper_top_front span');
-        this.bottomNumBack = this.li.find('.flipper_bottom_back span');
-        this.bottomNumFront = this.li.find('.flipper_bottom_front span');
+        return {
+                tag: 'li',
+                cn : [
+                    {
+                        cls: 'numberwrap',
+                        cn : [
+                            { cls : 'flipper_top flipper_top1' },
+                            {
+                                cls : 'flipper_top flipper_top2 flipper_top_back',
+                                cn : [
+                                    { tag: 'span', html: num },
+                                    { cls : 'rings' }
+                                ]
+                        
+                            },
+                            {
+                                cls : 'flipper_top flipper_top_front',
+                                cn : [
+                                    { tag: 'span', html: num },
+                                    { cls : 'rings' }
+                                ]
+                        
+                            },
+                            { cls : 'flipper_bottom flipper_bottom4' },
+                            { cls : 'flipper_bottom flipper_bottom3' },
+                            { cls : 'flipper_bottom flipper_bottom2' },
+                            {
+                                cls : 'flipper_bottom flipper_bottom1 flipper_bottom_back',
+                                cn : [
+                                    { tag: 'span', html: num },
+                                    { cls : 'rings' }
+                                ]
+                            },
+                            {
+                                cls : 'flipper_bottom flipper_bottom_front',
+                                cn : [
+                                    { tag: 'span', html: num },
+                                    { cls : 'rings' }
+                                ]
+                            },
+                        ]
+                    }
+                ]
+        };
+    },
+    
+    
+    initEvents : function()
+    {
+        
+         
+        
+        this.topFrontDiv = this.el.select('.flipper_top_front',true);
+        this.bottomFrontDiv = this.el.select('.flipper_bottom_front',true);
+        this.topNumBack = this.el.select('.flipper_top_back span',true);
+        this.topNumFront = this.el.select('.flipper_top_front span',true);
+        this.bottomNumBack = this.el.select('.flipper_bottom_back span',true);
+        this.bottomNumFront = this.el.select('.flipper_bottom_front span',true);
         
         this.targetNum = currentNumber;
         this.currentNum = currentNumber;
         this.nextNum = currentNumber;
         
         this.currentlyAnimating = false;
-    }
+    },
     
-    Digit.prototype.flipTo = function (num) {
+    flipTo : function (num)
+    {
         if (this.currentNum === num)
             return;
         
         this.targetNum = num;
-        if (this.currentlyAnimating)
+        if (this.currentlyAnimating) {
             return;
+        }
         
         this.animNext();
-    };
+    },
     
-    Digit.prototype.animNext = function () {
+    animNext : function ()
+    {
         if (this.currentNum == this.targetNum)
         {
             this.currentlyAnimating = false;
@@ -200,68 +254,60 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
         var doRandomDelay = !this.currentlyAnimating;
         this.currentlyAnimating = true;
         this.nextNum = this.currentNum + 1;
-        if (this.nextNum > 9)
+        if (this.nextNum > 9) {
             this.nextNum = 0;
+        }
         
         var delay = Math.random()/5;
-        if (!doRandomDelay) delay = 0.01;
+        if (!doRandomDelay) {
+            delay = 0.01;
+        }
         
         // Animate top flipper
         var digit = this;
         digit.topNumBack.html(digit.nextNum);
-        digit.topFrontDiv.tween({
-            transform: {
-                start: 'scaleY(1)',
-                stop: 'scaleY(0)',
-                time: delay,
-                duration: this.manager.options.speed,
-                units: '',
-                effect: 'easeIn'
-            }
-        }).play();
-        
-        // Animate bottom flipper with delay
-        digit.bottomFrontDiv.tween({
-            transform: {
-                start: 'scaleY(0)',
-                stop: 'scaleY(1)',
-                time: delay + this.manager.options.speed,
-                duration: this.manager.options.speed * 0.5,
-                units: '',
-                effect: 'easeOut',
-                onStart: function() {
-                    digit.bottomNumFront.html(digit.nextNum);
+        (function() {
+            digit.topFrontDiv.animate(
+                {
+                    scaleY: {from :1, to : 0}
                 },
-                onStop: function() {
-                    digit.currentNum = digit.nextNum;
-                    digit.topNumFront.html(digit.currentNum);
-                    digit.topFrontDiv.removeAttr('style', '');
-                    digit.bottomNumBack.html(digit.currentNum);
-                    digit.animNext();
-                    digit.manager.options['onFlip']();
-                }
-            }
-        }).play();
-    }
-
-    // A really lightweight plugin wrapper around the constructor, 
-    // preventing against multiple instantiations
-    $.fn[pluginName+'Init'] = function ( options ) {
-        return this.each(function () {
-            if (!$.data(this, 'plugin_' + pluginName)) {
-                $.data(this, 'plugin_' + pluginName, 
-                new FlipCounter( this, options ));
-            }
-        });
-    }
+                this.manager.speed, //duration
+                function() {}, // oncomplate
+                'easeIn', //easing,
+                'motion' // desplay type.
+            );
+        }).defer(delay, this);
         
-    $.fn[pluginName+'Update'] = function ( num ) {
-        return this.each(function () {
-            var obj = $.data(this, 'plugin_' + pluginName);
-            if (obj) {
-                obj.updateTo(num);
-            }
-        });
+        (function() {
+            
+            digit.bottomNumFront.dom.innerHTML  = digit.nextNum;
+            
+            digit.bottomFrontDiv.animate(
+                {
+                    scaleY: {from: 0, to : 1},
+                    
+                },
+                this.manager.options.speed * 0.5, //duration
+                function() {
+                    digit.currentNum = digit.nextNum;
+                    digit.topNumFront.dom.innerHTML = digit.currentNum;
+                    digit.topFrontDiv.attr('style', '');
+                    digit.bottomNumBack.dom.innerHTML = digit.currentNum;
+                    
+                    digit.animNext();
+                    digit.manager.fireEvent('onFlip', digit.manager);
+                    
+                 }, // oncomplate
+                'easeOut', //easing,
+                'motion' // desplay type.
+            )
+            
+        }).defer(delay + this.manager.speed, this);
+                
+                
+ 
+       //??? digit.bottomFrontDiv. digit.bottomNumFront.html(digit.nextNum);
+        
+       
     }
-
-})( jQuery, window, document );
+});
