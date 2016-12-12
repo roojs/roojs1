@@ -56,7 +56,8 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
         }
     },
     
-    addDigit : function (num) {
+    addDigit : function (num)
+    {
         // Add separator after every 3rd digit
         if (this.digits.length % 3 == 0 && this.digits.length != 0)
         {
@@ -65,8 +66,8 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
         
          
         
-        var li = this.el.select('li', true).first();
-        var digit = new Roo.ux.FlipCounter.Digit(li, num);
+        
+        var digit = new Roo.ux.FlipCounter.Digit({ manager : this, currentnumber : num });
         digit.manager = this;
         this.digits.push(digit);
         digit.render(this.el);
