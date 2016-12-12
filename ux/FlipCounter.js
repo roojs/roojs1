@@ -2,7 +2,7 @@
 
 Roo.ux.FlipCounter = function(options)
 {
-    Roo.ux.FlipCounter.superclass.constructor.call(this, config);
+    Roo.ux.FlipCounter.superclass.constructor.call(this, options);
     
     //Roo.apply(this, options);
     //this.el = $(element);
