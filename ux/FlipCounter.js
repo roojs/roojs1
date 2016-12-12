@@ -2,7 +2,9 @@
 
 Roo.ux.FlipCounter = function(options)
 {
-    Roo.apply(this, options);
+    Roo.bootstrap.FlipCounter.superclass.constructor.call(this, config);
+    
+    //Roo.apply(this, options);
     //this.el = $(element);
     //this.options = $.extend({}, defaults, options);
     this.addEvents({
@@ -148,6 +150,7 @@ Roo.ux.FlipCounter.Digit = function(options)
     Roo.apply(this, options);
     
     this.currentNumber = parseInt(this.currentNumber);
+    
     
 }
 
