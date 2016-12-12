@@ -147,7 +147,7 @@ Roo.ux.FlipCounter.Digit = function(options)
 {
     Roo.apply(this, options);
     
-    this.currentNumber = this.parseInt(this.currentNumber);
+    this.currentNumber = parseInt(this.currentNumber);
     
 }
 
