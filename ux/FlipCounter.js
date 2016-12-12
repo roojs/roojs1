@@ -67,7 +67,7 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
          
         
         
-        var digit = new Roo.ux.FlipCounter.Digit({ manager : this, currentnumber : num });
+        var digit = new Roo.ux.FlipCounter.Digit({ manager : this, currentNumber : num });
         digit.manager = this;
         this.digits.push(digit);
         digit.render(this.el);
