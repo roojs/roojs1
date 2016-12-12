@@ -145,13 +145,15 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
 
 Roo.ux.FlipCounter.Digit = function(options)
 {
-    //Roo.apply(this, options);
+    Roo.apply(this, options);
     
     this.currentNumber = this.parseInt(this.currentNumber);
+    
 }
 
 Roo.extend(Roo.ux.FlipCounter.Digit, Roo.bootstrap.Component, {
 
+    manager : null, // the flipcounter... 
     currentNumber : 0,
     targetNum : 0,
     
