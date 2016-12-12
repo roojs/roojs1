@@ -46,7 +46,7 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
         };
     },
         
-    init : function ()
+    initEvents : function ()
     { 
         var startNum = ""+ this.startnumber;
         
