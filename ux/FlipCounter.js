@@ -88,7 +88,7 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
         var digit = this.digits.splice(this.digits.length-1, 1)[0];
         
         this.ulWidth = this.ulWidth - digit.el.getWidth(true);
-        digit.li.remove();
+        digit.el.remove();
         
         // Remove separators
         if (this.digits.length % 3 == 0)
