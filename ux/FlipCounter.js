@@ -301,7 +301,7 @@ Roo.extend(Roo.ux.FlipCounter.Digit, Roo.bootstrap.Component, {
                     scaleY: {from: 0, to : 1},
                     
                 },
-                this.manager.options.speed * 0.5, //duration
+                this.manager.speed * 0.5, //duration
                 function() {
                     digit.currentNum = digit.nextNum;
                     digit.topNumFront.dom.innerHTML = digit.currentNum;
