@@ -128,3 +128,26 @@ ul.flipcounter.flipcounter-sm .flipper_bottom3 { top: 36px; box-shadow: 0px 2px 
 ul.flipcounter.flipcounter-sm .flipper_bottom4 { top: 36px; box-shadow: 0px 2px 12px 1px rgba(0, 0, 0, 0.4); }
 
 
+
+
+ul.flipcounter.flipcounter-sm span, 
+ul.flipcounter.flipcounter-sm li.comma {
+    font-size: 63px;
+    line-height: 63px;
+    text-shadow: 0px 0px 12px rgba(255, 255, 255, 0.1);
+}
+
+
+ul.flipcounter.flipcounter-sm div.flipper_bottom span { margin-top: -30px; }
+
+ul.flipcounter.flipcounter-sm li.comma { 
+    text-shadow: 0px 0px 12px rgba(0, 0, 0, 0.5);
+    margin-left: 8px;
+}
+
+ul.flipcounter.flipcounter-sm .flipper_top .rings { background-position: -2px 26px; }
+ul.flipcounter.flipcounter-sm .flipper_bottom .rings { background-position: -2px -4px; }
+
+
+
+
