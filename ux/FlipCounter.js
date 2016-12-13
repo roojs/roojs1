@@ -279,7 +279,7 @@ Roo.extend(Roo.ux.FlipCounter.Digit, Roo.bootstrap.Component, {
         
         // Animate top flipper
         var digit = this;
-        digit.topNumBack.html(digit.nextNum);
+        digit.topNumBack.dom.innerHTML = digit.nextNum;
         (function() {
             digit.topFrontDiv.animate(
                 {
