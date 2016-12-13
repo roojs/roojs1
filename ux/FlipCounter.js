@@ -35,6 +35,7 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
     
     speed : 0.2,
     startnumber : 0,
+    currentNumber : 0,
     
     digits : false, // array...
     ulWidth : 0,
@@ -57,6 +58,7 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
         {
             this.addDigit(startNum[i]);
         }
+        this.currentNumber = this.startnumber;
     },
     
     addDigit : function (num)
@@ -67,8 +69,7 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
             this.addSeparator();
         }
         
-         
-        
+          
         
         var digit = new Roo.ux.FlipCounter.Digit({ manager : this, currentNumber : num });
         digit.manager = this;
@@ -117,6 +118,7 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
     {
         var numStr = parseInt(num).toString();
         
+        this.currentNumber = num;
         // Change the number of digits displayed if needed
         if (numStr.length != this.digits.length)
         {
