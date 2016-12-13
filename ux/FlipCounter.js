@@ -37,13 +37,14 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
     startnumber : 0,
     
     digits : false, // array...
-    ulWidth : 0, 
+    ulWidth : 0,
+    cls : '',
     
     getAutoCreate : function(){
         
         return {
             tag: 'ul',
-            cls: 'flipcounter',
+            cls: 'flipcounter ' + this.cls,
             
         };
     },
