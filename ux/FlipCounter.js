@@ -230,12 +230,12 @@ Roo.extend(Roo.ux.FlipCounter.Digit, Roo.bootstrap.Component, {
         
          
         
-        this.topFrontDiv = this.el.select('.flipper_top_front',true);
-        this.bottomFrontDiv = this.el.select('.flipper_bottom_front',true);
-        this.topNumBack = this.el.select('.flipper_top_back span',true);
-        this.topNumFront = this.el.select('.flipper_top_front span',true);
-        this.bottomNumBack = this.el.select('.flipper_bottom_back span',true);
-        this.bottomNumFront = this.el.select('.flipper_bottom_front span',true);
+        this.topFrontDiv = this.el.select('.flipper_top_front',true).first();
+        this.bottomFrontDiv = this.el.select('.flipper_bottom_front',true).first();
+        this.topNumBack = this.el.select('.flipper_top_back span',true).first();
+        this.topNumFront = this.el.select('.flipper_top_front span',true).first();
+        this.bottomNumBack = this.el.select('.flipper_bottom_back span',true).first();
+        this.bottomNumFront = this.el.select('.flipper_bottom_front span',true).first();
         
         this.targetNum = this.currentNumber;
         this.currentNum = this.currentNumber;
