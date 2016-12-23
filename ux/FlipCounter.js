@@ -124,6 +124,8 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
         var numStr = (1.0*num).toFixed(this.decimal);
         
         this.currentNumber = num;
+        
+        var dl = this.digits.length + (this.decimal > 0 ? 1 : 0);
         // Change the number of digits displayed if needed
         if (numStr.length != this.digits.length)
         {
