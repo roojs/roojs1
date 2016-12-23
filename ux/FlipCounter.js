@@ -36,6 +36,7 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
     speed : 0.2,
     startnumber : 0,
     currentNumber : 0,
+    decimal : 0,
     
     digits : false, // array...
     ulWidth : 0,
