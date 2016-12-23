@@ -108,9 +108,9 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
         this.el.set( { 'min-width' : this.ulWidth});
     },
     
-    addSeparator : function (num)
+    addSeparator : function (str)
     {
-        var comma = this.el.insertHtml('afterBegin','<li class="comma">,</li>',true);
+        var comma = this.el.insertHtml('afterBegin','<li class="comma">'+str+'</li>',true);
         
         // Update width
         
