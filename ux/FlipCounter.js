@@ -120,7 +120,7 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
     
     updateTo : function (num)
     {
-        var numStr = parseInt(num).toString();
+        var numStr = (1.0*num).toFixed(this.decimal);
         
         this.currentNumber = num;
         // Change the number of digits displayed if needed
