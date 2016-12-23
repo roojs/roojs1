@@ -147,6 +147,9 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
         // Change all digit values
         for (i=0; i<numStr.length; i=i+1)
         {
+            if (numStr[numStr.length - 1 - i] == '.') {
+                continue;
+            }
             this.digits[i].flipTo(numStr[numStr.length - 1 - i]);
         }
     }
