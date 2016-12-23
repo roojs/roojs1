@@ -127,9 +127,9 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
         
         var dl = this.digits.length + (this.decimal > 0 ? 1 : 0);
         // Change the number of digits displayed if needed
-        if (numStr.length != this.digits.length)
+        if (numStr.length != dl)
         {
-            var diff = numStr.length - this.digits.length;
+            var diff = numStr.length - dl;
             Roo.log("DIFF LEN=" +diff);
             if (diff > 0)
             {
