@@ -53,7 +53,7 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
         
     initEvents : function ()
     { 
-        var startNum = ""+ this.startnumber;
+        var startNum = (1.0*this.startnumber).toFixed(this.decimal);
         
         for (i=startNum.length-1; i>=0; i=i-1)
         {
