@@ -210,7 +210,7 @@ Roo.extend(Roo.ux.FlipCounter.Digit, Roo.bootstrap.Component, {
                             {
                                 cls : 'flipper_top flipper_top2 flipper_top_back',
                                 cn : [
-                                    { tag: 'span', html: this.currentNumber },
+                                    { tag: 'span', html: ""+this.currentNumber },
                                     { cls : 'rings' }
                                 ]
                         
@@ -218,7 +218,7 @@ Roo.extend(Roo.ux.FlipCounter.Digit, Roo.bootstrap.Component, {
                             {
                                 cls : 'flipper_top flipper_top_front',
                                 cn : [
-                                    { tag: 'span', html: this.currentNumber },
+                                    { tag: 'span', html: ""+this.currentNumber },
                                     { cls : 'rings' }
                                 ]
                         
@@ -229,14 +229,14 @@ Roo.extend(Roo.ux.FlipCounter.Digit, Roo.bootstrap.Component, {
                             {
                                 cls : 'flipper_bottom flipper_bottom1 flipper_bottom_back',
                                 cn : [
-                                    { tag: 'span', html: this.currentNumber },
+                                    { tag: 'span', html: ""+this.currentNumber },
                                     { cls : 'rings' }
                                 ]
                             },
                             {
                                 cls : 'flipper_bottom flipper_bottom_front',
                                 cn : [
-                                    { tag: 'span', html: this.currentNumber },
+                                    { tag: 'span', html: ""+this.currentNumber },
                                     { cls : 'rings' }
                                 ]
                             },
