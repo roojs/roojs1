@@ -199,6 +199,7 @@ Roo.extend(Roo.ux.FlipCounter.Digit, Roo.bootstrap.Component, {
     
     getAutoCreate : function(){
         
+        Roo.log("render with cn=" + this.currentNumber);
         return {
                 tag: 'li',
                 cn : [
