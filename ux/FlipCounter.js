@@ -128,6 +128,7 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
         if (numStr.length != this.digits.length)
         {
             var diff = numStr.length - this.digits.length;
+            Roo.log("DIFF LEN=" +diff);
             if (diff > 0)
             {
                 for (i=0; i<diff; i=i+1) {
@@ -150,6 +151,7 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
             if (numStr[numStr.length - 1 - i] == '.') {
                 continue;
             }
+            Roo.log("UPDATE DIGIT=" + i + " to " + numStr[numStr.length - 1 - i]);
             this.digits[i].flipTo(numStr[numStr.length - 1 - i]);
         }
     }
