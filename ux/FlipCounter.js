@@ -68,6 +68,8 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
     
     addDigit : function (num)
     {
+        
+        Roo.log("Add digit "+ num);
         // Add separator after every 3rd digit
         /*if (this.digits.length % 3 == 0 && this.digits.length != 0)
         {
