@@ -57,6 +57,9 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
         
         for (i=startNum.length-1; i>=0; i=i-1)
         {
+            if (startNum[i] == '.') {
+                this.addSeparator('.');
+            }
             this.addDigit(startNum[i]);
         }
         this.currentNumber = this.startnumber;
