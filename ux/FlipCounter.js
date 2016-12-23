@@ -56,7 +56,7 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
         
         
         var startNum = (1.0*this.startnumber).toFixed(this.decimal);
-        Roo.log("STARTNUmber:  " + startNum);
+        //Roo.log("STARTNUmber:  " + startNum);
         
         for (i=startNum.length-1; i>=0; i=i-1)
         {
@@ -72,7 +72,7 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
     addDigit : function (num)
     {
         
-        Roo.log("Add digit "+ num);
+        //Roo.log("Add digit "+ num);
         // Add separator after every 3rd digit
         /*if (this.digits.length % 3 == 0 && this.digits.length != 0)
         {
@@ -135,7 +135,7 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
         if (numStr.length != dl)
         {
             var diff = numStr.length - dl;
-            Roo.log("DIFF LEN=" +diff);
+            //Roo.log("DIFF LEN=" +diff);
             if (diff > 0)
             {
                 for (i=0; i<diff; i=i+1) {
@@ -159,7 +159,7 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
             if (numStr[numStr.length - 1 - i] == '.') {
                 continue;
             }
-            Roo.log("UPDATE DIGIT=" + i + " to " + numStr[numStr.length - 1 - i]);
+            //Roo.log("UPDATE DIGIT=" + i + " to " + numStr[numStr.length - 1 - i]);
             this.digits[n++].flipTo(numStr[numStr.length - 1 - i]);
         }
     }
@@ -199,7 +199,7 @@ Roo.extend(Roo.ux.FlipCounter.Digit, Roo.bootstrap.Component, {
     
     getAutoCreate : function(){
         
-        Roo.log("render with cn=" + this.currentNumber);
+        //Roo.log("render with cn=" + this.currentNumber);
         return {
                 tag: 'li',
                 cn : [
