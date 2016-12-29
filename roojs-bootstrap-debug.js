@@ -2511,7 +2511,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                 
                 var btn = Roo.factory(b);
                 
-                btn.onRender(this.el.select('.modal-footer div').first());
+                btn.render(this.el.select('.modal-footer div').first());
                 
             },this);
         }
@@ -2698,7 +2698,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         var btn = Roo.factory(b);
            
-        btn.onRender(this.el.select('.modal-footer div').first());
+        btn.render(this.el.select('.modal-footer div').first());
         
         return btn;   
        
@@ -22780,7 +22780,15 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
     },
 
     onRender : function(ct,position){
+        
+        
         Roo.bootstrap.Graph.superclass.onRender.call(this,ct,position);
+        
+        if (typeof(Raphael) == 'undefined') {
+            Roo.bootstrap.MessageBox.alert("Error","Raphael is not availabe");
+            return;
+        }
+        
         this.raphael = Raphael(this.el.dom);
         
                     // data1 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
@@ -22816,7 +22824,8 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
 
     },
 
-    load : function(graphtype,xdata,opts){
+    load : function(graphtype,xdata,opts)
+    {
         this.raphael.clear();
         if(!graphtype) {
             graphtype = this.graphtype;
