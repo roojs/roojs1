@@ -74,11 +74,10 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
         
         //Roo.log("Add digit "+ num);
         // Add separator after every 3rd digit
-        /*if (this.digits.length % 3 == 0 && this.digits.length != 0)
-        {
+        if (this.decimal == 0 && this.digits.length % 3 == 0 && this.digits.length != 0) {
             this.addSeparator(',');
         }
-        */
+        
           
         
         var digit = new Roo.ux.FlipCounter.Digit({ manager : this, currentNumber : num });
@@ -103,12 +102,12 @@ Roo.extend(Roo.ux.FlipCounter, Roo.bootstrap.Component, {
         digit.el.remove();
         
         // Remove separators
-       // if (this.digits.length % 3 == 0)
-      //  {
-          //  var comma = this.el.select('li.comma:first-child');
-          //  this.ulWidth = this.ulWidth - comma.getWidth(true);
-          //  comma.remove();
-        //}
+        if (this.decimal == 0 & this.digits.length % 3 == 0)
+        {
+            var comma = this.el.select('li.comma:first-child');
+            this.ulWidth = this.ulWidth - comma.getWidth(true);
+            comma.remove();
+        }
         
         // Update width to current
         this.el.set( { 'min-width' : this.ulWidth});
