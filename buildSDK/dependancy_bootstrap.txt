@@ -119,3 +119,5 @@ Roo.bootstrap.NavProgressItem
 Roo.bootstrap.FieldLabel
 
 Roo.bootstrap.DateSplitField
+
+Roo.bootstrap.LayoutMasonry
