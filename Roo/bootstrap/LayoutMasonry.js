@@ -278,6 +278,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             var firstItem = this.bricks.first();
             Roo.log(firstItem);
             this.columnWidth  = this.containerWidth;
+            this.initialColumnWidth = this.columnWidth  ;
             if (firstItem && firstItem.attr('originalwidth') ) {
                 this.columnWidth = 1* (firstItem.attr('originalwidth') || firstItem.getWidth());
             }
@@ -298,7 +299,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         // this bit calcs how man columns..
             
-        var columnWidth = this.columnWidth += this.gutter;
+        var columnWidth = this.initialColumnWidth += this.gutter;
       
         // calculate columns
         var containerWidth = this.containerWidth + this.gutter;
