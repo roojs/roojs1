@@ -271,9 +271,14 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             // columnWidth fall back to item of first element
             this.columnWidth = firstItem && firstItem.getWidth() ||  this.containerWidth;
             
-              // if first elem has no width, default to size of container
+            // if first elem has no width, default to size of container
             
         }
+        
+        
+        
+        
+        
             
         // column width is fixed at the top - however if container width get's smaller we should
         // reduce it...
@@ -284,9 +289,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
       
         // calculate columns
         var containerWidth = this.containerWidth + this.gutter;
-        var cols = containerWidth / columnWidth;
+        
+        var cols = (containerWidth - this.padWidth) / (columnWidth - this.padWidth);
         // fix rounding errors, typically with gutters
-        var excess = columnWidth - containerWidth % columnWidth;
+        var excess = columnWidth - (containerWidth % columnWidth);
+        
+        
         // if overshoot is less than a pixel, round up, otherwise floor it
         var mathMethod = excess && excess < 1 ? 'round' : 'floor';
         cols = Math[ mathMethod ]( cols );
@@ -297,9 +305,21 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var totalColWidth = this.cols * this.columnWidth;
         var padavail = this.containerWidth - totalColWidth;
         // so for 2 columns - we need 3 'pads'
+        
+        var padNeeded = (1+this.cols) * this.padWidth;
+        
+        var padExtra = (padavail - padNeeded)
         this.padWidth = Math.floor(padavail /  ( this.cols));
         
         // adjust colum width so that padding is fixed??
+        
+        // we have 3 columns ... total = width * 3
+        // we have X left over... that should be used by 
+        
+        //if (this.expandC) {
+            
+        //}
+        
         
         
     },
