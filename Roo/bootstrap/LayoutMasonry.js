@@ -281,7 +281,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 this.columnWidth = 1* (firstItem.attr('originalwidth') || firstItem.getWidth());
             }
             // columnWidth fall back to item of first element
-            Roo.log()
+            Roo.log("set column width?");
             
             // if first elem has no width, default to size of container
             
