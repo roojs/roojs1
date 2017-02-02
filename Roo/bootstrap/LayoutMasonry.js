@@ -344,6 +344,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     _getItemLayoutPosition : function( item )  // what is item?
     {
         // we resize the item to our columnWidth..
+        if (typeof(item.originalWidth) != 'undefined') {
+            item.originalWidth = item.getWidth();;
+        }
         item.setWidth(this.columnWidth);
         item.autoBoxAdjust  = false;
         
