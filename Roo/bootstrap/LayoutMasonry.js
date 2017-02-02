@@ -275,6 +275,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
       // if columnWidth is 0, default to outerWidth of first item
         if ( !this.columnWidth ) {
             var firstItem = this.bricks.first();
+            Roo.log(firstItem);
             this.columnWidth  = this.containerWidth;
             if (firstItem && firstItem.attr('originalwidth') ) {
                 this.columnWidth = 1* (firstItem.attr('originalwidth') || firstItem.getWidth());
