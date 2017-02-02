@@ -324,7 +324,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         */
         if (!tree.items || !tree.items.length) {
             cn.items = nitems;
-             return cn;
+            Roo.log("no children");
+            return cn;
         }
          
         var items = tree.items;
