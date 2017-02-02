@@ -326,6 +326,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             Roo.log("no children");
             return cn;
         }
+        Roo.log("has children");
+        
         var items = tree.items;
         delete tree.items;
         
