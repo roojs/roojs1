@@ -162,7 +162,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         var cn = this;
         
         cn = Roo.factory(tree);
-        Roo.log(['addxtype', cn]);
+        //Roo.log(['addxtype', cn]);
            
         cn.parentType = this.xtype; //??
         cn.parentId = this.id;
@@ -344,7 +344,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         
         cn.items = nitems;
         
-        Roo.log("fire childrenrendered");
+        //Roo.log("fire childrenrendered");
         
         cn.fireEvent('childrenrendered', this);
         
