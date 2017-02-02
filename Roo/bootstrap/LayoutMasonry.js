@@ -142,9 +142,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         this.bricks = this.el.select('.masonry-brick', true);
         
         this.bricks.each(function(b) {
-            Roo.log(b.getSize());
+            //Roo.log(b.getSize());
             if (typeof(b.originalWidth) != 'undefined') {
-                b.originalWidth = b.getWidth();
+                b.originalWidth = b.getSize().width;
             }
             
         });
