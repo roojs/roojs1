@@ -225,6 +225,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             
             ret = this.addxtypeChild(Roo.apply({}, tree),cntr);
         }
+        this.fireEvent('childrenrendered', this);
         return ret;
     },
     
@@ -326,8 +327,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             Roo.log("no children");
             return cn;
         }
-        Roo.log("has children");
-        
+         
         var items = tree.items;
         delete tree.items;
         
@@ -340,8 +340,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         }
         
         cn.items = nitems;
-        Roo.log("fire childrenrendered");
-        this.fireEvent('childrenrendered', this);
+        
         
         return cn;
     },
