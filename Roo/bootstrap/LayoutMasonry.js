@@ -144,7 +144,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         this.bricks.each(function(b) {
             //Roo.log(b.getSize());
             if (!b.attr('originalwidth')) {
-               
                 b.attr('originalwidth',  b.getSize().width);
             }
             
@@ -276,9 +275,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
       // if columnWidth is 0, default to outerWidth of first item
         if ( !this.columnWidth ) {
             var firstItem = this.bricks.first();
-             
+            this.columnWidth  = this.containerWidth;
+            if (firstItem && firstItem.attr('originalwidth') ) {
+                this.columnWidth = firstItem.attr('originalwidth') || firstItem.getWidth();
+            }
             // columnWidth fall back to item of first element
-            this.columnWidth = firstItem && firstItem.attr('originalwidth') ||  this.containerWidth;
+            
             
             // if first elem has no width, default to size of container
             
