@@ -159,6 +159,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     },
     layout : function()
     {
+         Roo.log('layout');
         this._resetLayout();
         //this._manageStamps();
       
