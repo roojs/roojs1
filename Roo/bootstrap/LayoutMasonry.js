@@ -141,6 +141,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         this.bricks = this.el.select('.masonry-brick', true);
         
+        this.bricks.each(function(b) {
+            if (typeof(b.originalWidth) != 'undefined') {
+                b.originalWidth = b.getWidth();
+            }
+            
+        });
+        
         Roo.log(this.bricks.elements.length);
     },
     
