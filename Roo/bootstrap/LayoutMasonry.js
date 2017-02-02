@@ -299,6 +299,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         // so for 2 columns - we need 3 'pads'
         this.padWidth = Math.floor(padavail /  ( this.cols));
         
+        // adjust colum width so that padding is fixed??
+        
         
     },
     
