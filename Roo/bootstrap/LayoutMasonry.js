@@ -71,7 +71,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     colYs : null, // array.
     maxY : 0,
-    padWidth: 0,
+    padWidth: 10,
     
     
     tag: 'div',
