@@ -225,6 +225,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             
             ret = this.addxtypeChild(Roo.apply({}, tree),cntr);
         }
+        Roo.log("fire childrenrendered");
+        
         this.fireEvent('childrenrendered', this);
         return ret;
     },
