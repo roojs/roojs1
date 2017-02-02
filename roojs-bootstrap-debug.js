@@ -162,6 +162,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         var cn = this;
         
         cn = Roo.factory(tree);
+        Roo.log(['addxtype', cn]);
            
         cn.parentType = this.xtype; //??
         cn.parentId = this.id;
@@ -225,6 +226,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             
             ret = this.addxtypeChild(Roo.apply({}, tree),cntr);
         }
+       
         return ret;
     },
     
@@ -323,8 +325,11 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         */
         if (!tree.items || !tree.items.length) {
             cn.items = nitems;
+            //Roo.log(["no children", this]);
+            
             return cn;
         }
+         
         var items = tree.items;
         delete tree.items;
         
@@ -332,13 +337,16 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             // add the items..
         if (!skip_children) {    
             for(var i =0;i < items.length;i++) {
+              //  Roo.log(['add child', items[i]]);
                 nitems.push(cn.addxtype(Roo.apply({}, items[i])));
             }
         }
         
         cn.items = nitems;
         
-        this.fireEvent('childrenrendered', this);
+        Roo.log("fire childrenrendered");
+        
+        cn.fireEvent('childrenrendered', this);
         
         return cn;
     },
@@ -28270,7 +28278,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var _this = this;
         
         if(this.isAutoInitial){
+            Roo.log('hook children rendered');
             this.on('childrenrendered', function() {
+                Roo.log('children rendered');
                 _this.initial();
             } ,this);
         }
