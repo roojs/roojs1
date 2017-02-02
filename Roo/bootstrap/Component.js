@@ -337,7 +337,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         }
         
         cn.items = nitems;
-        
+        Roo.log("fire childrenrendered");
         this.fireEvent('childrenrendered', this);
         
         return cn;
