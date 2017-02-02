@@ -291,7 +291,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         
         
-        
+        this.columnWidth = this.initialColumnWidth;
         
             
         // column width is fixed at the top - however if container width get's smaller we should
@@ -299,7 +299,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         // this bit calcs how man columns..
             
-        var columnWidth = this.initialColumnWidth += this.gutter;
+        var columnWidth = this.columnWidth += this.gutter;
       
         // calculate columns
         var containerWidth = this.containerWidth + this.gutter;
