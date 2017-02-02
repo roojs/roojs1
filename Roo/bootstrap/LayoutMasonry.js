@@ -308,8 +308,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var padNeeded = (1+this.cols) * this.padWidth;
         
-        var padExtra = (padavail - padNeeded);
+        var padExtra = Math.floor((padavail - padNeeded) / this.cols);
         
+        this.columnWidth += padExtra
         //this.padWidth = Math.floor(padavail /  ( this.cols));
         
         // adjust colum width so that padding is fixed??
