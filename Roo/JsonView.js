@@ -148,6 +148,8 @@ Roo.extend(Roo.JsonView, Roo.View, {
         um.update.apply(um, arguments);
     },
 
+    // note - render is a standard framework call...
+    // using it for the response is really flaky...
     render : function(el, response){
         this.clearSelections();
         this.el.update("");
