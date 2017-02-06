@@ -157,14 +157,12 @@ Roo.extend(Roo.JsonView, Roo.View, {
         var o;
         try{
             if (response != '') {
-                    
-                }
                 o = Roo.util.JSON.decode(response.responseText);
                 if(this.jsonRoot){
                     
                     o = o[this.jsonRoot];
                 }
-        }
+            }
         } catch(e){
         }
         /**
