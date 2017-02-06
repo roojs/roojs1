@@ -27035,15 +27035,20 @@ Roo.extend(Roo.JsonView, Roo.View, {
         um.update.apply(um, arguments);
     },
 
+    // note - render is a standard framework call...
+    // using it for the response is really flaky... - it's called by UpdateManager normally, except when called by the XComponent/addXtype.
     render : function(el, response){
+        
         this.clearSelections();
         this.el.update("");
         var o;
         try{
-            o = Roo.util.JSON.decode(response.responseText);
-            if(this.jsonRoot){
-                
-                o = o[this.jsonRoot];
+            if (response != '') {
+                o = Roo.util.JSON.decode(response.responseText);
+                if(this.jsonRoot){
+                    
+                    o = o[this.jsonRoot];
+                }
             }
         } catch(e){
         }
