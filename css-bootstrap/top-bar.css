@@ -7,12 +7,14 @@
 
 
 @media (min-width: 980px)
-.top-bar .collapse {
-    display: block !important;
-    visibility: visible !important;
-    height: auto !important;
-    overflow: visible !important;
-    padding-bottom: 0;
+{
+    .top-bar .collapse {
+        display: block !important;
+        visibility: visible !important;
+        height: auto !important;
+        overflow: visible !important;
+        padding-bottom: 0;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 979px) { 
