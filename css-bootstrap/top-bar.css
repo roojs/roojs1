@@ -4,3 +4,26 @@ header .top-bar {
     border-bottom: 1px solid #eee;
     padding: 0;
 }
+
+
+@media (min-width: 980px)
+.top-bar .collapse {
+    display: block !important;
+    visibility: visible !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding-bottom: 0;
+}
+
+@media (min-width: 768px) and (max-width: 979px) { 
+  header .top-bar {
+        min-height: 0;
+        padding: 3px 0;
+    }
+    
+header .social,
+footer .social {
+    margin-right: 4px;
+    line-height: 30px;
+    padding-left: 0;
+}
