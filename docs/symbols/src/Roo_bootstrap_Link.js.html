@@ -15,6 +15,7 @@
  * @cfg {String} target (_self|_blank|_parent|_top) target for a href.
  * @cfg {String} html the content of the link.
  * @cfg {String} anchor name for the anchor link
+ * @cfg {String} fa - favicon
 
  * @cfg {Boolean} preventDefault (true | false) default false
 
@@ -45,21 +46,27 @@
     </span><span class="jsdoc-var">preventDefault</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">anchor </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">alt </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">fa</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
 
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
         
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fa </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;i class=&quot;fa fa-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.fa </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot;&gt;&lt;/i&gt;'</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'a'
         </span><span class="jsdoc-syntax">};
         </span><span class="jsdoc-comment">// anchor's do not require html/href...
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.anchor </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">cfg.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">cfg.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">cfg.href </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.href </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">;
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-var">cfg.name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.anchor</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">cfg.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.html</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.fa </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">cfg.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">;
             }
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.href </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">cfg.href </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.href</span><span class="jsdoc-syntax">;

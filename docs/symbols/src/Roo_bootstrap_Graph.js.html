@@ -88,7 +88,15 @@
     },
 
     </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">){
+        
+        
         </span><span class="jsdoc-var">Roo.bootstrap.Graph.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Raphael</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.bootstrap.MessageBox.alert</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Error&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;Raphael is not availabe&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
         </span><span class="jsdoc-var">this.raphael </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Raphael</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">);
         
                     </span><span class="jsdoc-comment">// data1 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
@@ -124,7 +132,8 @@
 
     </span><span class="jsdoc-syntax">},
 
-    </span><span class="jsdoc-var">load </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">graphtype</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">xdata</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">opts</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">load </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">graphtype</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">xdata</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">opts</span><span class="jsdoc-syntax">)
+    {
         </span><span class="jsdoc-var">this.raphael.clear</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">graphtype</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">graphtype </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.graphtype</span><span class="jsdoc-syntax">;

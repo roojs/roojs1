@@ -34,6 +34,7 @@
         
         </span><span class="jsdoc-comment">//?? this is the synopsis type....
         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">desc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.Markdown.toHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.desc</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.stype </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'parameter'</span><span class="jsdoc-syntax">) {
             
@@ -48,7 +49,7 @@
                                 </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'code'</span><span class="jsdoc-syntax">,
                                 </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.type </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.name
                             </span><span class="jsdoc-syntax">},
-                            </span><span class="jsdoc-var">this.desc
+                            </span><span class="jsdoc-var">desc
                         </span><span class="jsdoc-syntax">]
                     }
                 ]
@@ -64,7 +65,7 @@
                             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'code'</span><span class="jsdoc-syntax">,
                             </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.type
                         </span><span class="jsdoc-syntax">},
-                        </span><span class="jsdoc-var">this.desc
+                        </span><span class="jsdoc-var">desc
                     </span><span class="jsdoc-syntax">]
                 };
                 
@@ -98,6 +99,9 @@
     },
     </span><span class="jsdoc-var">getAutoCreateParamSection </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">desc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.Markdown.toHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.desc</span><span class="jsdoc-syntax">);
+        
+      
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">,
                </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
@@ -109,7 +113,7 @@
                                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'code'</span><span class="jsdoc-syntax">,
                                </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.type </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.name
                            </span><span class="jsdoc-syntax">},
-                           </span><span class="jsdoc-var">this.desc
+                           </span><span class="jsdoc-var">desc
                        </span><span class="jsdoc-syntax">]
                    }
                ]

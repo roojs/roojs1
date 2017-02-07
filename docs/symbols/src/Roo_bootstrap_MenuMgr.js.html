@@ -90,8 +90,9 @@
    </span><span class="jsdoc-comment">// private this should really trigger on mouseup..
    </span><span class="jsdoc-keyword">function </span><span class="jsdoc-var">onMouseDown</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;on Mouse Up&quot;</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lastShow.getElapsed</span><span class="jsdoc-syntax">() &gt; 50 &amp;&amp; </span><span class="jsdoc-var">active.length </span><span class="jsdoc-syntax">&gt; 0 &amp;&amp; !</span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;.x-menu&quot;</span><span class="jsdoc-syntax">) &amp;&amp; !</span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.user-menu'</span><span class="jsdoc-syntax">)){
-            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;hideAll&quot;</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lastShow.getElapsed</span><span class="jsdoc-syntax">() &gt; 50 &amp;&amp; </span><span class="jsdoc-var">active.length </span><span class="jsdoc-syntax">&gt; 0 &amp;&amp; !</span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;.dropdown-menu&quot;</span><span class="jsdoc-syntax">) &amp;&amp; !</span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.user-menu'</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;MenuManager hideAll&quot;</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">hideAll</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
         }

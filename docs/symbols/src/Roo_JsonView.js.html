@@ -148,15 +148,20 @@ moreView.load({
         </span><span class="jsdoc-var">um.update.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">um</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
     },
 
+    </span><span class="jsdoc-comment">// note - render is a standard framework call...
+    // using it for the response is really flaky... - it's called by UpdateManager normally, except when called by the XComponent/addXtype.
     </span><span class="jsdoc-var">render </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">){
+        
         </span><span class="jsdoc-var">this.clearSelections</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.el.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">try</span><span class="jsdoc-syntax">{
-            </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.util.JSON.decode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response.responseText</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.jsonRoot</span><span class="jsdoc-syntax">){
-                
-                </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.jsonRoot</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.util.JSON.decode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response.responseText</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.jsonRoot</span><span class="jsdoc-syntax">){
+                    
+                    </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.jsonRoot</span><span class="jsdoc-syntax">];
+                }
             }
         } </span><span class="jsdoc-keyword">catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
         }

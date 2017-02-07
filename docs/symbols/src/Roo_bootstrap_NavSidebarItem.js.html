@@ -14,6 +14,7 @@
  * @extends Roo.bootstrap.NavItem
  * Bootstrap Navbar.NavSidebarItem class
  * {String} badgeWeight (default|primary|success|info|warning|danger)the extra classes for the badge
+ * {bool} open is the menu open
  * @constructor
  * Create a new Navbar Button
  * @param {Object} config The config object
@@ -44,6 +45,8 @@
     
     </span><span class="jsdoc-var">badgeWeight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'default'</span><span class="jsdoc-syntax">,
     
+    </span><span class="jsdoc-var">open</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
         
@@ -72,7 +75,9 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' disabled'</span><span class="jsdoc-syntax">;
         }
-        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.open</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' open x-open'</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-comment">// left icon..
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.glyphicon </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.icon</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.glyphicon  </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-string">'glyphicon glyphicon-'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.glyphicon</span><span class="jsdoc-syntax">)  : </span><span class="jsdoc-var">this.icon</span><span class="jsdoc-syntax">;
@@ -101,6 +106,12 @@
     
     </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     { 
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.menu</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.menu.parentType </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.xtype</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.menu.triggerEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.menu </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.addxtype</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">this.menu</span><span class="jsdoc-syntax">));
+        }
+        
         </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
        
     

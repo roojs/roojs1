@@ -120,7 +120,7 @@
                 
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">btn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">);
                 
-                </span><span class="jsdoc-var">btn.onRender</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-footer div'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">());
+                </span><span class="jsdoc-var">btn.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-footer div'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">());
                 
             },</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
@@ -307,7 +307,7 @@
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">btn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">);
            
-        </span><span class="jsdoc-var">btn.onRender</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-footer div'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-var">btn.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-footer div'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">());
         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">;   
        
@@ -317,10 +317,21 @@
     {
         </span><span class="jsdoc-comment">//this.el.select('.modal-footer').()
     </span><span class="jsdoc-syntax">},
+    </span><span class="jsdoc-var">diff </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
     </span><span class="jsdoc-var">resizeTo</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-comment">// skip..
-    </span><span class="jsdoc-syntax">},
+        </span><span class="jsdoc-comment">// skip.. ?? why??
+        
+        </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-dialog'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.diff </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.diff </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-dialog'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getHeight</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-body'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getHeight</span><span class="jsdoc-syntax">();
+        }
+        
+        </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-body'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">this.diff</span><span class="jsdoc-syntax">);
+        
+        
+    },
     </span><span class="jsdoc-var">setContentSize  </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">)
     {
         

@@ -13,6 +13,7 @@
  * @cfg {String} stype (function|constant)
  * @cfg {String} memberof class name
  * @cfg {bool} is_static is a static member
+ * @cfg {bool} is_constructor is a static member
  * 
  * @constructor
  * Create a new Synopsis
@@ -31,7 +32,8 @@
     </span><span class="jsdoc-var">returndesc </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">stype</span><span class="jsdoc-syntax">:   </span><span class="jsdoc-string">'function'</span><span class="jsdoc-syntax">,
-     
+    </span><span class="jsdoc-var">is_constructor </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">syn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[0]; </span><span class="jsdoc-comment">// hopefully...
@@ -42,8 +44,14 @@
             </span><span class="jsdoc-var">this.memberof </span><span class="jsdoc-syntax">+
             (</span><span class="jsdoc-var">this.is_static </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'::' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'-&gt;'</span><span class="jsdoc-syntax">);
             
-         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-comment">// this should probably do the params....?? then we need to disable the rendering..
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.is_constructor</span><span class="jsdoc-syntax">) {
+            
+            </span><span class="jsdoc-var">nm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.memberof</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">nmp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'new '</span><span class="jsdoc-syntax">;
+        }
         
          
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">={
@@ -63,7 +71,7 @@
                                     {
                                         </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'strong'</span><span class="jsdoc-syntax">,
                                         </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.stype</span><span class="jsdoc-syntax">,
-                                        </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.name
+                                        </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">nm
                                     </span><span class="jsdoc-syntax">},
                                     </span><span class="jsdoc-string">'('</span><span class="jsdoc-syntax">,
                                     {

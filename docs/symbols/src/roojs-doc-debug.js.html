@@ -103,9 +103,10 @@
  * @extends Roo.bootstrap.Component
  * Example Element class
  * @cfg {String} title short title describing example
- * @cfg {String} lang (php|txt|sql) section type.
+ * @cfg {String} lang (php|txt|sql) code language.
  * @cfg {String} code  example code
  * @cfg {String} output The expected output from the code
+ * @cfg {String} outputlang php|txt|sql) output language
  *
  * 
  * @constructor
@@ -132,7 +133,7 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">code </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">hljs </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">hljs.highlight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lang</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.code</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.value </span><span class="jsdoc-syntax">:
                 </span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'{0}'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.code</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/\n/g, </span><span class="jsdoc-string">'&lt;br/&gt;'</span><span class="jsdoc-syntax">);
         
-        
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;code=&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">code</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">={
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'panel panel-info'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
@@ -215,8 +216,8 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">={
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'p'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'para'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html
-        </span><span class="jsdoc-syntax">};
+            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.Markdown.toHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.html</span><span class="jsdoc-syntax">)
+        };
          
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.is_list</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
@@ -275,6 +276,7 @@
         
         </span><span class="jsdoc-comment">//?? this is the synopsis type....
         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">desc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.Markdown.toHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.desc</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.stype </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'parameter'</span><span class="jsdoc-syntax">) {
             
@@ -289,7 +291,7 @@
                                 </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'code'</span><span class="jsdoc-syntax">,
                                 </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.type </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.name
                             </span><span class="jsdoc-syntax">},
-                            </span><span class="jsdoc-var">this.desc
+                            </span><span class="jsdoc-var">desc
                         </span><span class="jsdoc-syntax">]
                     }
                 ]
@@ -305,7 +307,7 @@
                             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'code'</span><span class="jsdoc-syntax">,
                             </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.type
                         </span><span class="jsdoc-syntax">},
-                        </span><span class="jsdoc-var">this.desc
+                        </span><span class="jsdoc-var">desc
                     </span><span class="jsdoc-syntax">]
                 };
                 
@@ -339,6 +341,9 @@
     },
     </span><span class="jsdoc-var">getAutoCreateParamSection </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">desc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.Markdown.toHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.desc</span><span class="jsdoc-syntax">);
+        
+      
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">,
                </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
@@ -350,7 +355,7 @@
                                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'code'</span><span class="jsdoc-syntax">,
                                </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.type </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.name
                            </span><span class="jsdoc-syntax">},
-                           </span><span class="jsdoc-var">this.desc
+                           </span><span class="jsdoc-var">desc
                        </span><span class="jsdoc-syntax">]
                    }
                ]
@@ -429,7 +434,7 @@
             
             </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ul</span><span class="jsdoc-syntax">);
         }
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.stype </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'return' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">syn.returndesc.length</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.stype </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'return' </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">syn.returndesc.length </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">syn.returntype.length </span><span class="jsdoc-syntax">)) {
             
             </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">({
                 </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'p'</span><span class="jsdoc-syntax">,
@@ -469,7 +474,8 @@
     </span><span class="jsdoc-string">'parameter' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Parameters'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-string">'return' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Return Value'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-string">'note' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Notes'</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-string">'example' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Examples'
+    </span><span class="jsdoc-string">'example' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Examples'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'throws' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Throws Exception'
 </span><span class="jsdoc-syntax">}
 </span><span class="jsdoc-comment">/*
  * - LGPL
@@ -486,6 +492,7 @@
  * @cfg {String} stype (function|constant)
  * @cfg {String} memberof class name
  * @cfg {bool} is_static is a static member
+ * @cfg {bool} is_constructor is a static member
  * 
  * @constructor
  * Create a new Synopsis
@@ -504,7 +511,8 @@
     </span><span class="jsdoc-var">returndesc </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">stype</span><span class="jsdoc-syntax">:   </span><span class="jsdoc-string">'function'</span><span class="jsdoc-syntax">,
-     
+    </span><span class="jsdoc-var">is_constructor </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">syn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[0]; </span><span class="jsdoc-comment">// hopefully...
@@ -515,8 +523,14 @@
             </span><span class="jsdoc-var">this.memberof </span><span class="jsdoc-syntax">+
             (</span><span class="jsdoc-var">this.is_static </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'::' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'-&gt;'</span><span class="jsdoc-syntax">);
             
-         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-comment">// this should probably do the params....?? then we need to disable the rendering..
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.is_constructor</span><span class="jsdoc-syntax">) {
+            
+            </span><span class="jsdoc-var">nm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.memberof</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">nmp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'new '</span><span class="jsdoc-syntax">;
+        }
         
          
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">={
@@ -536,7 +550,7 @@
                                     {
                                         </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'strong'</span><span class="jsdoc-syntax">,
                                         </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.stype</span><span class="jsdoc-syntax">,
-                                        </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.name
+                                        </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">nm
                                     </span><span class="jsdoc-syntax">},
                                     </span><span class="jsdoc-string">'('</span><span class="jsdoc-syntax">,
                                     {
@@ -600,8 +614,9 @@
 
 </span><span class="jsdoc-var">Roo.doc.NavCategory </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">Roo.doc.Para.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">Roo.doc.NavCategory.registry</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
 };
-
+</span><span class="jsdoc-var">Roo.doc.NavCategory.registry </span><span class="jsdoc-syntax">= {};
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.doc.NavCategory</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
     
     </span><span class="jsdoc-var">title </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
@@ -615,8 +630,10 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">={
             
             </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                
                 {
                     </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-nav-category'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">href </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'#' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.title
                 </span><span class="jsdoc-syntax">},
@@ -630,7 +647,7 @@
     },
     </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'roo-child-ctr'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-child-ctr'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
     }
     
     

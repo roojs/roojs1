@@ -701,6 +701,14 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.preventMark</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// not rendered
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">label </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">icon </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'i.fa-star'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">label </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">icon</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">icon.remove</span><span class="jsdoc-syntax">();
+        }
+        
         </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.invalidClass</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasFeedback </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.inputType </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'hidden' </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.allowBlank</span><span class="jsdoc-syntax">){

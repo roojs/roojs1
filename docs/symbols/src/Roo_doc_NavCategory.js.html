@@ -25,8 +25,9 @@
 
 </span><span class="jsdoc-var">Roo.doc.NavCategory </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">Roo.doc.Para.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">Roo.doc.NavCategory.registry</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
 };
-
+</span><span class="jsdoc-var">Roo.doc.NavCategory.registry </span><span class="jsdoc-syntax">= {};
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.doc.NavCategory</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
     
     </span><span class="jsdoc-var">title </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
@@ -57,7 +58,7 @@
     },
     </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'roo-child-ctr'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-child-ctr'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
     }
     
     

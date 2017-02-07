@@ -24823,6 +24823,12 @@
      "memberOf": ""
     },
     {
+     "name": "fa",
+     "type": "String",
+     "desc": "- favicon",
+     "memberOf": ""
+    },
+    {
      "name": "preventDefault",
      "type": "Boolean",
      "desc": "default false",
@@ -25624,6 +25630,12 @@
      ]
     },
     {
+     "name": "hidden",
+     "type": "bool",
+     "desc": "if the menu should be hidden when rendered.",
+     "memberOf": ""
+    },
+    {
      "name": "registerMenu",
      "type": "Boolean",
      "desc": "True (default) - means that clicking on screen etc. hides it.",
@@ -25980,22 +25992,32 @@
     {
      "name": "preventDefault",
      "type": "Boolean",
-     "desc": "default true",
-     "memberOf": "",
-     "optvals": [
-      "true",
-      "false"
-     ]
+     "desc": "do not trigger A href on clicks.",
+     "memberOf": ""
     },
     {
      "name": "isContainer",
      "type": "Boolean",
-     "desc": "default false",
-     "memberOf": "",
-     "optvals": [
-      "true",
-      "false"
-     ]
+     "desc": "is it a container - just returns a drop down item..",
+     "memberOf": ""
+    },
+    {
+     "name": "active",
+     "type": "Boolean",
+     "desc": "used on sidebars to highlight active itesm",
+     "memberOf": ""
+    },
+    {
+     "name": "fa",
+     "type": "String",
+     "desc": "favicon to show on left of menu item.",
+     "memberOf": ""
+    },
+    {
+     "name": "menu",
+     "type": "Roo.bootsrap.Menu",
+     "desc": "the child menu.",
+     "memberOf": ""
     },
     {
      "name": "cls",
@@ -48414,7 +48436,7 @@
     {
      "name": "lang",
      "type": "String",
-     "desc": "section type.",
+     "desc": "code language.",
      "memberOf": "",
      "optvals": [
       "php",
@@ -48432,6 +48454,12 @@
      "name": "output",
      "type": "String",
      "desc": "The expected output from the code",
+     "memberOf": ""
+    },
+    {
+     "name": "outputlang",
+     "type": "String",
+     "desc": "php|txt|sql) output language",
      "memberOf": ""
     },
     {
@@ -50049,6 +50077,12 @@
     },
     {
      "name": "is_static",
+     "type": "bool",
+     "desc": "is a static member",
+     "memberOf": ""
+    },
+    {
+     "name": "is_constructor",
      "type": "bool",
      "desc": "is a static member",
      "memberOf": ""

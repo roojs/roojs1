@@ -10,6 +10,7 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap Menu class - container for MenuItems
  * @cfg {String} type (dropdown|treeview|submenu) type of menu
+ * @cfg {bool} hidden  if the menu should be hidden when rendered.
  * 
  * @constructor
  * Create a new Menu
@@ -19,7 +20,7 @@
 
 </span><span class="jsdoc-var">Roo.bootstrap.Menu </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">Roo.bootstrap.Menu.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
-    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.registerMenu</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.registerMenu </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.type </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'treeview'</span><span class="jsdoc-syntax">)  {
         </span><span class="jsdoc-var">Roo.bootstrap.MenuMgr.register</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     }
     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
@@ -97,6 +98,7 @@
     
     </span><span class="jsdoc-var">hidden</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     
+        
     </span><span class="jsdoc-var">parentMenu </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
@@ -133,6 +135,7 @@
         </span><span class="jsdoc-var">this.triggerEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isTouch </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'touchstart' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'mouseup'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTriggerPress</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-var">this.triggerEl.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'dropdown-toggle'</span><span class="jsdoc-syntax">);
+        
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isTouch</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'touchstart'  </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTouch</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
@@ -287,7 +290,8 @@
      * Hides this menu and optionally all parent menus
      * @param {Boolean} deep (optional) True to hide all parent menus recursively, if any (defaults to false)
      */
-    </span><span class="jsdoc-var">hide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">deep</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">hide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">deep</span><span class="jsdoc-syntax">)
+    {
         
         </span><span class="jsdoc-var">this.hideMenuItems</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.isVisible</span><span class="jsdoc-syntax">()){
@@ -311,7 +315,11 @@
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'trigger press'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">//Roo.log(e.getTarget());
        // Roo.log(this.triggerEl.dom);
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">())</span><span class="jsdoc-var">.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.dropdown-menu'</span><span class="jsdoc-syntax">)) {
+       
+        // trigger only occurs on normal menu's -- if it's a treeview or dropdown... do not hide/show..
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pel.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.dropdown-menu'</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">pel.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.treeview-menu'</span><span class="jsdoc-syntax">) ) {
+           
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
@@ -331,8 +339,12 @@
     
     </span><span class="jsdoc-var">hideMenuItems </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;hide Menu Items&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">) { 
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-comment">//$(backdrop).remove()
-        </span><span class="jsdoc-var">Roo.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.open'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">aa</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.open'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">aa</span><span class="jsdoc-syntax">) {
             
             </span><span class="jsdoc-var">aa.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'open'</span><span class="jsdoc-syntax">);
           </span><span class="jsdoc-comment">//var parent = getParent($(this))
@@ -341,7 +353,7 @@
            //$parent.trigger(e = $.Event('hide.bs.dropdown', relatedTarget))
           //if (e.isDefaultPrevented()) return
            //$parent.removeClass('open').trigger('hidden.bs.dropdown', relatedTarget)
-        </span><span class="jsdoc-syntax">})
+        </span><span class="jsdoc-syntax">});
     },
     </span><span class="jsdoc-var">addxtypeChild </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">comp</span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.Menu.superclass.addxtypeChild.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">);

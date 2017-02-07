@@ -162,6 +162,7 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">//Roo.log(['addxtype', cn]);
            
         </span><span class="jsdoc-var">cn.parentType </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.xtype</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">//??
         </span><span class="jsdoc-var">cn.parentId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">;
@@ -225,6 +226,7 @@
             
             </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.addxtypeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">),</span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">);
         }
+       
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
     },
     
@@ -323,8 +325,11 @@
         */
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">tree.items </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">tree.items.length</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cn.items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nitems</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-comment">//Roo.log([&quot;no children&quot;, this]);
+            
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">;
         }
+         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tree.items</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">tree.items</span><span class="jsdoc-syntax">;
         
@@ -332,13 +337,16 @@
             // add the items..
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">skip_children</span><span class="jsdoc-syntax">) {    
             </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0;</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">items.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+              </span><span class="jsdoc-comment">//  Roo.log(['add child', items[i]]);
                 </span><span class="jsdoc-var">nitems.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn.addxtype</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">])));
             }
         }
         
         </span><span class="jsdoc-var">cn.items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nitems</span><span class="jsdoc-syntax">;
         
-        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'childrenrendered'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">//Roo.log(&quot;fire childrenrendered&quot;);
+        
+        </span><span class="jsdoc-var">cn.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'childrenrendered'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">;
     },

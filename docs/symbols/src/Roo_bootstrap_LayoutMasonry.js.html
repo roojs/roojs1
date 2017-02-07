@@ -67,11 +67,12 @@
     </span><span class="jsdoc-var">gutter </span><span class="jsdoc-syntax">: 0,
     
     </span><span class="jsdoc-var">containerWidth</span><span class="jsdoc-syntax">: 0,
+    </span><span class="jsdoc-var">initialColumnWidth </span><span class="jsdoc-syntax">: 0,
     </span><span class="jsdoc-var">currentSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">colYs </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// array.
     </span><span class="jsdoc-var">maxY </span><span class="jsdoc-syntax">: 0,
-    </span><span class="jsdoc-var">padWidth</span><span class="jsdoc-syntax">: 0,
+    </span><span class="jsdoc-var">padWidth</span><span class="jsdoc-syntax">: 10,
     
     
     </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
@@ -111,7 +112,9 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isAutoInitial</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'hook children rendered'</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'childrenrendered'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'children rendered'</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">_this.initial</span><span class="jsdoc-syntax">();
             } ,</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
@@ -139,6 +142,14 @@
     {
         </span><span class="jsdoc-var">this.bricks </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.masonry-brick'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         
+        </span><span class="jsdoc-var">this.bricks.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">//Roo.log(b.getSize());
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">b.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'originalwidth'</span><span class="jsdoc-syntax">)) {
+                </span><span class="jsdoc-var">b.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'originalwidth'</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">b.getSize</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.width</span><span class="jsdoc-syntax">);
+            }
+            
+        });
+        
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bricks.elements.length</span><span class="jsdoc-syntax">);
     },
     
@@ -149,6 +160,7 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getBox</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.currentSize.width </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">cs.width </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.currentSize.x </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">cs.x </span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;no change in with or X&quot;</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-var">this.currentSize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">;
@@ -156,6 +168,7 @@
     },
     </span><span class="jsdoc-var">layout </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
+         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'layout'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this._resetLayout</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-comment">//this._manageStamps();
       
@@ -263,13 +276,25 @@
       </span><span class="jsdoc-comment">// if columnWidth is 0, default to outerWidth of first item
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( !</span><span class="jsdoc-var">this.columnWidth </span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">firstItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.bricks.first</span><span class="jsdoc-syntax">();
-             
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">firstItem</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.columnWidth  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.containerWidth</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">firstItem </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">firstItem.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'originalwidth'</span><span class="jsdoc-syntax">) ) {
+                </span><span class="jsdoc-var">this.columnWidth </span><span class="jsdoc-syntax">= 1* (</span><span class="jsdoc-var">firstItem.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'originalwidth'</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">firstItem.getWidth</span><span class="jsdoc-syntax">());
+            }
             </span><span class="jsdoc-comment">// columnWidth fall back to item of first element
-            </span><span class="jsdoc-var">this.columnWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">firstItem </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">firstItem.getWidth</span><span class="jsdoc-syntax">() ||  </span><span class="jsdoc-var">this.containerWidth</span><span class="jsdoc-syntax">;
-            
-              </span><span class="jsdoc-comment">// if first elem has no width, default to size of container
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;set column width?&quot;</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">this.initialColumnWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.columnWidth  </span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-comment">// if first elem has no width, default to size of container
             
         </span><span class="jsdoc-syntax">}
+        
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.initialColumnWidth</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.columnWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.initialColumnWidth</span><span class="jsdoc-syntax">;
+        }
+        
+        
             
         </span><span class="jsdoc-comment">// column width is fixed at the top - however if container width get's smaller we should
         // reduce it...
@@ -280,9 +305,12 @@
       
         </span><span class="jsdoc-comment">// calculate columns
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">containerWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.containerWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cols </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">containerWidth </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">columnWidth</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cols </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">containerWidth </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.padWidth</span><span class="jsdoc-syntax">) / (</span><span class="jsdoc-var">columnWidth </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.padWidth</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">// fix rounding errors, typically with gutters
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">excess </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">columnWidth </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">containerWidth </span><span class="jsdoc-syntax">% </span><span class="jsdoc-var">columnWidth</span><span class="jsdoc-syntax">;
+        
+        
         </span><span class="jsdoc-comment">// if overshoot is less than a pixel, round up, otherwise floor it
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">mathMethod </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">excess </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">excess </span><span class="jsdoc-syntax">&lt; 1 ? </span><span class="jsdoc-string">'round' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'floor'</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">cols </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math</span><span class="jsdoc-syntax">[ </span><span class="jsdoc-var">mathMethod </span><span class="jsdoc-syntax">]( </span><span class="jsdoc-var">cols </span><span class="jsdoc-syntax">);
@@ -293,10 +321,26 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">totalColWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cols </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">this.columnWidth</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">padavail </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.containerWidth </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">totalColWidth</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-comment">// so for 2 columns - we need 3 'pads'
-        </span><span class="jsdoc-var">this.padWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">padavail </span><span class="jsdoc-syntax">/  ( </span><span class="jsdoc-var">this.cols</span><span class="jsdoc-syntax">));
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">padNeeded </span><span class="jsdoc-syntax">= (1+</span><span class="jsdoc-var">this.cols</span><span class="jsdoc-syntax">) * </span><span class="jsdoc-var">this.padWidth</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">padExtra </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">padavail </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">padNeeded</span><span class="jsdoc-syntax">) / </span><span class="jsdoc-var">this.cols</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.columnWidth </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">padExtra
+        </span><span class="jsdoc-comment">//this.padWidth = Math.floor(padavail /  ( this.cols));
+        
+        // adjust colum width so that padding is fixed??
+        
+        // we have 3 columns ... total = width * 3
+        // we have X left over... that should be used by 
+        
+        //if (this.expandC) {
+            
+        //}
         
         
-    },
+        
+    </span><span class="jsdoc-syntax">},
     
     </span><span class="jsdoc-var">getContainerWidth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -316,6 +360,7 @@
     </span><span class="jsdoc-var">_getItemLayoutPosition </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">item </span><span class="jsdoc-syntax">)  </span><span class="jsdoc-comment">// what is item?
     </span><span class="jsdoc-syntax">{
         </span><span class="jsdoc-comment">// we resize the item to our columnWidth..
+      
         </span><span class="jsdoc-var">item.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.columnWidth</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">item.autoBoxAdjust  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         

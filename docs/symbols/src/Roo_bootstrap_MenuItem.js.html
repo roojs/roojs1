@@ -12,8 +12,11 @@
  * Bootstrap MenuItem class
  * @cfg {String} html the menu label
  * @cfg {String} href the link
- * @cfg {Boolean} preventDefault (true | false) default true
- * @cfg {Boolean} isContainer (true | false) default false
+ * @cfg {Boolean} preventDefault do not trigger A href on clicks.
+ * @cfg {Boolean} isContainer is it a container - just returns a drop down item..
+ * @cfg {Boolean} active  used on sidebars to highlight active itesm
+ * @cfg {String} fa favicon to show on left of menu item.
+ * @cfg {Roo.bootsrap.Menu} menu the child menu.
  * 
  * 
  * @constructor
@@ -42,6 +45,8 @@
     </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">preventDefault</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">isContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">active </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">fa</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
@@ -51,32 +56,58 @@
                 </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'dropdown-menu-item'
             </span><span class="jsdoc-syntax">};
         }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ctag </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Link'
+        </span><span class="jsdoc-syntax">};
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">anc </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">href </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [  ]
+        };
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fa </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">anc.cn.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fa fa-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.fa
+            </span><span class="jsdoc-syntax">});
+        }
+        
+        </span><span class="jsdoc-var">anc.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ctag</span><span class="jsdoc-syntax">);
+        
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'dropdown-menu-item'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
-                    {
-                        </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">href </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Link'
-                    </span><span class="jsdoc-syntax">}
-                ]
+            </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [ </span><span class="jsdoc-var">anc </span><span class="jsdoc-syntax">]
         };
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.type </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'treeview'</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'treeview-menu'</span><span class="jsdoc-syntax">;
         }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.active</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' active'</span><span class="jsdoc-syntax">;
+        }
         
-        </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.href </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.href </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.href </span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">;
+        
+        
+        </span><span class="jsdoc-var">anc.href </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.href </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.href </span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">ctag.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
     },
     
-    </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+    </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.type </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'treeview'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.menu</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.menu.parentType </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.xtype</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.menu.triggerEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.menu </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.addxtype</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">this.menu</span><span class="jsdoc-syntax">));
+        }
         
-        </span><span class="jsdoc-comment">//this.el.select('a').on('click', this.onClick, this);
-        
-    </span><span class="jsdoc-syntax">},
+    },
     </span><span class="jsdoc-var">onClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'item on click '</span><span class="jsdoc-syntax">);
