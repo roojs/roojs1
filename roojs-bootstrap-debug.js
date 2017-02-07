@@ -1532,6 +1532,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
  * @cfg {String} target (_self|_blank|_parent|_top) target for a href.
  * @cfg {String} html the content of the link.
  * @cfg {String} anchor name for the anchor link
+ * @cfg {String} fa - favicon
 
  * @cfg {Boolean} preventDefault (true | false) default false
 
@@ -1562,21 +1563,27 @@ Roo.extend(Roo.bootstrap.Link, Roo.bootstrap.Component,  {
     preventDefault: false,
     anchor : false,
     alt : false,
+    fa: false,
+
 
     getAutoCreate : function()
     {
+        var html = this.html || '';
         
+        if (this.fa !== false) {
+            html = '<i class="fa fa-' + this.fa + '"></i>';
+        }
         var cfg = {
             tag: 'a'
         };
         // anchor's do not require html/href...
         if (this.anchor === false) {
-            cfg.html = this.html || '';
+            cfg.html = html;
             cfg.href = this.href || '#';
         } else {
             cfg.name = this.anchor;
-            if (this.html !== false) {
-                cfg.html = this.html;
+            if (this.html !== false || this.fa !== false) {
+                cfg.html = html;
             }
             if (this.href !== false) {
                 cfg.href = this.href;
@@ -28234,11 +28241,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     gutter : 0,
     
     containerWidth: 0,
+    initialColumnWidth : 0,
     currentSize : null,
     
     colYs : null, // array.
     maxY : 0,
-    padWidth: 0,
+    padWidth: 10,
     
     
     tag: 'div',
@@ -28308,6 +28316,14 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         this.bricks = this.el.select('.masonry-brick', true);
         
+        this.bricks.each(function(b) {
+            //Roo.log(b.getSize());
+            if (!b.attr('originalwidth')) {
+                b.attr('originalwidth',  b.getSize().width);
+            }
+            
+        });
+        
         Roo.log(this.bricks.elements.length);
     },
     
@@ -28318,6 +28334,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var cs = this.el.getBox(true);
         
         if (this.currentSize.width == cs.width && this.currentSize.x == cs.x ) {
+            Roo.log("no change in with or X");
             return;
         }
         this.currentSize = cs;
@@ -28325,6 +28342,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     },
     layout : function()
     {
+         Roo.log('layout');
         this._resetLayout();
         //this._manageStamps();
       
@@ -28432,13 +28450,25 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
       // if columnWidth is 0, default to outerWidth of first item
         if ( !this.columnWidth ) {
             var firstItem = this.bricks.first();
-             
+            Roo.log(firstItem);
+            this.columnWidth  = this.containerWidth;
+            if (firstItem && firstItem.attr('originalwidth') ) {
+                this.columnWidth = 1* (firstItem.attr('originalwidth') || firstItem.getWidth());
+            }
             // columnWidth fall back to item of first element
-            this.columnWidth = firstItem && firstItem.getWidth() ||  this.containerWidth;
-            
-              // if first elem has no width, default to size of container
+            Roo.log("set column width?");
+                        this.initialColumnWidth = this.columnWidth  ;
+
+            // if first elem has no width, default to size of container
             
         }
+        
+        
+        if (this.initialColumnWidth) {
+            this.columnWidth = this.initialColumnWidth;
+        }
+        
+        
             
         // column width is fixed at the top - however if container width get's smaller we should
         // reduce it...
@@ -28449,9 +28479,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
       
         // calculate columns
         var containerWidth = this.containerWidth + this.gutter;
-        var cols = containerWidth / columnWidth;
+        
+        var cols = (containerWidth - this.padWidth) / (columnWidth - this.padWidth);
         // fix rounding errors, typically with gutters
         var excess = columnWidth - containerWidth % columnWidth;
+        
+        
         // if overshoot is less than a pixel, round up, otherwise floor it
         var mathMethod = excess && excess < 1 ? 'round' : 'floor';
         cols = Math[ mathMethod ]( cols );
@@ -28462,7 +28495,23 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var totalColWidth = this.cols * this.columnWidth;
         var padavail = this.containerWidth - totalColWidth;
         // so for 2 columns - we need 3 'pads'
-        this.padWidth = Math.floor(padavail /  ( this.cols));
+        
+        var padNeeded = (1+this.cols) * this.padWidth;
+        
+        var padExtra = Math.floor((padavail - padNeeded) / this.cols);
+        
+        this.columnWidth += padExtra
+        //this.padWidth = Math.floor(padavail /  ( this.cols));
+        
+        // adjust colum width so that padding is fixed??
+        
+        // we have 3 columns ... total = width * 3
+        // we have X left over... that should be used by 
+        
+        //if (this.expandC) {
+            
+        //}
+        
         
         
     },
@@ -28485,6 +28534,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     _getItemLayoutPosition : function( item )  // what is item?
     {
         // we resize the item to our columnWidth..
+      
         item.setWidth(this.columnWidth);
         item.autoBoxAdjust  = false;
         
