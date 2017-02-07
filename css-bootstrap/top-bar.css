@@ -108,4 +108,7 @@
 .top-bar .languages a {
     margin-right: 20px;
     color: #555;
+        font-family: "Open Sans",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 24px;
 }
