@@ -22,11 +22,8 @@
         min-height: 0;
         padding: 3px 0;
     }
-    
-footer .social li:last-child,
-footer .social { margin-right: 0 !important }
-
-header .social li:first-child { border-left: 1px solid #ddd }
+}
+ 
 
 header .social,
 footer .social {
@@ -34,3 +31,40 @@ footer .social {
     line-height: 30px;
     padding-left: 0;
 }
+
+
+footer .social li:last-child,
+footer .social { margin-right: 0 !important }
+
+header .social li:first-child { border-left: 1px solid #ddd }
+
+header .social li,
+footer .social li {
+    border-right: 1px solid #ddd;
+    display: table-cell;
+    vertical-align: middle;
+    height: 40px;
+    margin-right: 5px;
+    width: 40px;
+    text-align: center;
+    -webkit-transition: background .5s ease-in-out;
+    -moz-transition: background .5s ease-in-out;
+    -o-transition: background .5s ease-in-out;
+    -ms-transition: background .5s ease-in-out;
+    transition: background .5s ease-in-out;
+    padding: 1px;
+}
+
+header .social i,
+footer .social i {
+    color: #555;
+    font-size: 16px;
+    -webkit-transition: color .5s ease-in-out;
+    -moz-transition: color .5s ease-in-out;
+    -o-transition: color .5s ease-in-out;
+    -ms-transition: color .5s ease-in-out;
+    transition: color .5s ease-in-out;
+}
+
+header .social li:hover a i,
+footer .social li:hover a i { color: #fff }
