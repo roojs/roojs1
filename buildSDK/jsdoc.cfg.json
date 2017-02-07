@@ -31,7 +31,8 @@
             "roojs-bootstrap-debug.js",
             "roojs-mailer-debug.js",
             "roojs-mailer.js",
-            "History.js"
+            "History.js",
+            "Markdown.js"
         
 		
     ],
