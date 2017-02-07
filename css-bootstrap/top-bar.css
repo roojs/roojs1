@@ -21,6 +21,11 @@ header .top-bar {
         padding: 3px 0;
     }
     
+footer .social li:last-child,
+footer .social { margin-right: 0 !important }
+
+header .social li:first-child { border-left: 1px solid #ddd }
+
 header .social,
 footer .social {
     margin-right: 4px;
