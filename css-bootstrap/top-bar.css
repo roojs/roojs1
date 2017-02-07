@@ -1,0 +1,6 @@
+header .top-bar {
+    min-height: 30px;
+    background: #fafafa;
+    border-bottom: 1px solid #eee;
+    padding: 0;
+}
