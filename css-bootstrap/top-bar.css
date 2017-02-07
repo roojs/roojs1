@@ -68,3 +68,39 @@
 
 .header .social li:hover a i,
 .footer .social li:hover a i { color: #fff }
+
+
+
+
+.team .item .team-member-links a.facebook:hover,
+.member-social.dark a.facebook:hover,
+.header .social li.facebook:hover,
+.footer .social li.facebook:hover { background: #4C66A4 }
+
+.team .item .team-member-links a.dribbble:hover,
+.member-social.dark a.dribbble:hover,
+.header .social li.dribbble:hover,
+.footer .social li.dribbble:hover { background: #EA4C89 }
+
+.team .item .team-member-links a.twitter:hover,
+.member-social.dark a.twitter:hover,
+.header .social li.twitter:hover,
+.footer .social li.twitter:hover { background: #2C77BA }
+
+.team .item .team-member-links a.gplus:hover,
+.member-social.dark a.gplus:hover,
+.header .social li.gplus:hover,
+.footer .social li.gplus:hover { background: #9e0b0f }
+
+.team .item .team-member-links a.linkedin:hover,
+.member-social.dark a.linkedin:hover,
+.header .social li.linkedin:hover,
+.footer .social li.linkedin:hover { background: #069 }
+
+.team .item .team-member-links a.pinterest:hover,
+.member-social.dark a.pinterest:hover,
+.header .social li.pinterest:hover,
+.footer .social li.pinterest:hover { background: #C92228 }
+
+.header .social li.rss:hover,
+.footer .social li.rss:hover { background: #f60 }
