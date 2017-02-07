@@ -18,28 +18,28 @@
 }
 
 @media (min-width: 768px) and (max-width: 979px) { 
-  header .top-bar {
+  .header .top-bar {
         min-height: 0;
         padding: 3px 0;
     }
 }
  
 
-header .social,
-footer .social {
+.header .social,
+.footer .social {
     margin-right: 4px;
     line-height: 30px;
     padding-left: 0;
 }
 
 
-footer .social li:last-child,
-footer .social { margin-right: 0 !important }
+.footer .social li:last-child,
+.footer .social { margin-right: 0 !important }
 
-header .social li:first-child { border-left: 1px solid #ddd }
+.header .social li:first-child { border-left: 1px solid #ddd }
 
-header .social li,
-footer .social li {
+.header .social li,
+.footer .social li {
     border-right: 1px solid #ddd;
     display: table-cell;
     vertical-align: middle;
@@ -55,8 +55,8 @@ footer .social li {
     padding: 1px;
 }
 
-header .social i,
-footer .social i {
+.header .social i,
+.footer .social i {
     color: #555;
     font-size: 16px;
     -webkit-transition: color .5s ease-in-out;
@@ -66,5 +66,5 @@ footer .social i {
     transition: color .5s ease-in-out;
 }
 
-header .social li:hover a i,
-footer .social li:hover a i { color: #fff }
+.header .social li:hover a i,
+.footer .social li:hover a i { color: #fff }
