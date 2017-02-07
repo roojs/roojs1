@@ -15,6 +15,7 @@
  * @cfg {String} target (_self|_blank|_parent|_top) target for a href.
  * @cfg {String} html the content of the link.
  * @cfg {String} anchor name for the anchor link
+ * @cfg {String} fa - favicon
 
  * @cfg {Boolean} preventDefault (true | false) default false
 
@@ -45,21 +46,27 @@ Roo.extend(Roo.bootstrap.Link, Roo.bootstrap.Component,  {
     preventDefault: false,
     anchor : false,
     alt : false,
+    fa: false,
+
 
     getAutoCreate : function()
     {
+        var html = this.html || '';
         
+        if (this.fa != false) {
+            html = '<i class="fa fa-' + this.fa + '"></i>';
+        }
         var cfg = {
             tag: 'a'
         };
         // anchor's do not require html/href...
         if (this.anchor === false) {
-            cfg.html = this.html || '';
+            cfg.html = html;
             cfg.href = this.href || '#';
         } else {
             cfg.name = this.anchor;
             if (this.html !== false) {
-                cfg.html = this.html;
+                cfg.html = html;
             }
             if (this.href !== false) {
                 cfg.href = this.href;
