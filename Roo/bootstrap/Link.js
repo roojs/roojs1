@@ -65,7 +65,7 @@ Roo.extend(Roo.bootstrap.Link, Roo.bootstrap.Component,  {
             cfg.href = this.href || '#';
         } else {
             cfg.name = this.anchor;
-            if (this.html !== false) {
+            if (html !== false) {
                 cfg.html = html;
             }
             if (this.href !== false) {
