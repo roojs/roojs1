@@ -53,7 +53,7 @@ Roo.extend(Roo.bootstrap.Link, Roo.bootstrap.Component,  {
     {
         var html = this.html || '';
         
-        if (this.fa != false) {
+        if (this.fa !== false) {
             html = '<i class="fa fa-' + this.fa + '"></i>';
         }
         var cfg = {
@@ -65,7 +65,7 @@ Roo.extend(Roo.bootstrap.Link, Roo.bootstrap.Component,  {
             cfg.href = this.href || '#';
         } else {
             cfg.name = this.anchor;
-            if (html !== false) {
+            if (this.html !== false || this.fa !== false) {
                 cfg.html = html;
             }
             if (this.href !== false) {
