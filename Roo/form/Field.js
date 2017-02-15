@@ -99,7 +99,7 @@ side          Add an error icon to the right of the field with a popup on hover
     /**
      * @cfg {Number} tabIndex The tabIndex for this field. Note this only applies to fields that are rendered, not those which are built via applyTo (defaults to undefined).
 	 */
-	tabIndex : undefined,
+    tabIndex : undefined,
 	
     // private
     isFormField : true,
