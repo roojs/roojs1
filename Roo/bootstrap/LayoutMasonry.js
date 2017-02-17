@@ -102,6 +102,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         if (this.boxesEl) {
             return this.boxesEl;
         }
+        
         this.boxesEl = this.el.select('.mas-boxes').first();
         
         return this.boxesEl;
