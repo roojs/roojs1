@@ -35,7 +35,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     /**
      * @cfg {String} title
      */   
-    title : '',  // options..
+    title : '',
     
     getAutoCreate : function(){
         
