@@ -32,18 +32,11 @@ Roo.bootstrap.MasonryBrick = function(config){
 
 Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     
-    tag: 'div',
-    cls: '',
-    html: '',
-    preventDefault: false, 
-    clickable: false,
-    
     getAutoCreate : function(){
         
         var cfg = {
-            tag: this.tag,
-            cls: this.cls,
-            html: this.html
+            tag: 'div',
+            cls: 'masonry-brick'
         };
         
         return cfg;
