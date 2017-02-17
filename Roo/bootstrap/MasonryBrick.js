@@ -49,9 +49,13 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
      */   
     cls : '',
     /**
-     * @cfg {String} cls
+     * @cfg {String} href
      */   
-    cls : '',
+    href : '',
+    /**
+     * @cfg {String} video
+     */   
+    video : '',
     
     
     getAutoCreate : function(){
