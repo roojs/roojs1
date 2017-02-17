@@ -36,8 +36,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         
         var cfg = {
             tag: 'div',
-            cls: 'masonry-brick',
-            style: 'background-color:lime;'
+            cls: 'masonry-brick'
         };
         
         return cfg;
