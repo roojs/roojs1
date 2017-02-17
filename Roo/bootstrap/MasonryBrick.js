@@ -65,7 +65,6 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
      */   
     size : true,
     
-    
     getAutoCreate : function(){
         
         var cfg = {
