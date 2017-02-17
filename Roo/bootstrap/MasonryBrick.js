@@ -32,6 +32,11 @@ Roo.bootstrap.MasonryBrick = function(config){
 
 Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     
+    /**
+     * @cfg {String} title
+     */   
+    title : '',  // options..
+    
     getAutoCreate : function(){
         
         var cfg = {
