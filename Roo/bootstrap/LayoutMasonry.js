@@ -155,7 +155,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         Roo.log(this.bricks.elements.length);
     },
     
-   
     resize : function()
     {
         Roo.log('resize');
@@ -168,6 +167,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         this.currentSize = cs;
         this.layout();
     },
+    
     layout : function()
     {
          Roo.log('layout');
