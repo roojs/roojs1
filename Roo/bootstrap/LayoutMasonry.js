@@ -96,6 +96,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
 	
         return cfg;
     },
+    
     getChildContainer: function( )
     {
         if (this.boxesEl) {
