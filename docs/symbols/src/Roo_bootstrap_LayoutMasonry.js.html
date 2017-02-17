@@ -96,11 +96,13 @@
 	
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
     },
+    
     </span><span class="jsdoc-var">getChildContainer</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">( )
     {
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.boxesEl</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.boxesEl</span><span class="jsdoc-syntax">;
         }
+        
         </span><span class="jsdoc-var">this.boxesEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.mas-boxes'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.boxesEl</span><span class="jsdoc-syntax">;
@@ -153,7 +155,6 @@
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bricks.elements.length</span><span class="jsdoc-syntax">);
     },
     
-   
     </span><span class="jsdoc-var">resize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'resize'</span><span class="jsdoc-syntax">);
@@ -166,6 +167,7 @@
         </span><span class="jsdoc-var">this.currentSize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.layout</span><span class="jsdoc-syntax">();
     },
+    
     </span><span class="jsdoc-var">layout </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
          </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'layout'</span><span class="jsdoc-syntax">);
