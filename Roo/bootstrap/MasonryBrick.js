@@ -72,6 +72,8 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             cls: 'masonry-brick'
         };
         
+        
+        
         return cfg;
     },
     
