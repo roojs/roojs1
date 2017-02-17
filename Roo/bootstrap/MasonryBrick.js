@@ -6,7 +6,7 @@
  */
 
 /**
- * @class Roo.bootstrap.Element
+ * @class Roo.bootstrap.MasonryBrick
  * @extends Roo.bootstrap.Component
  * Bootstrap Element class
  * @cfg {String} html contents of the element
