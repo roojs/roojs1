@@ -28270,11 +28270,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
 	
         return cfg;
     },
+    
     getChildContainer: function( )
     {
         if (this.boxesEl) {
             return this.boxesEl;
         }
+        
         this.boxesEl = this.el.select('.mas-boxes').first();
         
         return this.boxesEl;
@@ -28327,7 +28329,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         Roo.log(this.bricks.elements.length);
     },
     
-   
     resize : function()
     {
         Roo.log('resize');
@@ -28340,6 +28341,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         this.currentSize = cs;
         this.layout();
     },
+    
     layout : function()
     {
          Roo.log('layout');
