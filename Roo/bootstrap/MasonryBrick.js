@@ -44,33 +44,9 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        Roo.bootstrap.Element.superclass.initEvents.call(this);
-        
-        if(this.clickable){
-            this.el.on('click', this.onClick, this);
-        }
         
     },
     
-    onClick : function(e)
-    {
-        if(this.preventDefault){
-            e.preventDefault();
-        }
-        
-        this.fireEvent('click', this, e);
-    },
-    
-    getValue : function()
-    {
-        return this.el.dom.innerHTML;
-    },
-    
-    setValue : function(value)
-    {
-        this.el.dom.innerHTML = value;
-    }
-   
 });
 
  
