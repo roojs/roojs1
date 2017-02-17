@@ -56,6 +56,10 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
      * @cfg {String} video
      */   
     video : '',
+    /**
+     * @cfg {Boolean} square
+     */   
+    video : '',
     
     
     getAutoCreate : function(){
