@@ -40,6 +40,19 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
      * @cfg {String} html
      */   
     html : '',
+    /**
+     * @cfg {String} bgimage
+     */   
+    bgimage : '',
+    /**
+     * @cfg {String} cls
+     */   
+    cls : '',
+    /**
+     * @cfg {String} cls
+     */   
+    cls : '',
+    
     
     getAutoCreate : function(){
         
