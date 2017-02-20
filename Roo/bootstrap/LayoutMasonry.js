@@ -322,8 +322,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     resizeContainer : function()
     {
-        return;
-        
         if ( !this.isResizingContainer ) {
             return;
         }
