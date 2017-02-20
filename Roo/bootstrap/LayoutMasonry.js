@@ -290,11 +290,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         cols = cols / 3;
         
+        
+        
+        cols = Math.floor( cols / 3 );
+        
         Roo.log(['cols / 3 ', cols]);
-        
-        cols = Math.floor( cols );
-        
-        
         
         this.cols = Math.max( cols, 1 );
         
