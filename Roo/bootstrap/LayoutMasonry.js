@@ -221,7 +221,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             Roo.log("layout item");
             Roo.log(item);
             // get x/y object from method
-            var position = this._getItemLayoutPosition( item );
+            var position = this._getItemLayoutPosition( item.el );
             // enqueue
             position.item = item;
             position.isInstant = isInstant; // || item.isLayoutInstant; << not set yet...
