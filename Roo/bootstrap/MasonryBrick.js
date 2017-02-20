@@ -92,7 +92,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 {
                     tag: 'div',
                     cls: 'roo-masonry-brick-content',
-                    cn: []
+                    cn: cn
                 }
             ]
         };
@@ -106,16 +106,11 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                     {
                         tag: 'div',
                         cls: 'roo-masonry-brick-content',
-                        cn: []
+                        cn: cn
                     }
                 ]
             };
         }
-        
-        
-        
-        
-        
         
         return cfg;
     },
