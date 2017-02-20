@@ -68,7 +68,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     getAutoCreate : function()
     {
         var cfg = {
-            tag: 'div',
+            tag: 'a',
             cls: 'masonry-brick ' + ((this.href.length) ? 'masonry-brick-link' : ''),
             cn: [
                 {
@@ -105,7 +105,9 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        
+        if(this.href.length){
+            
+        }
     }
     
 });
