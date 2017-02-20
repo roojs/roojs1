@@ -275,7 +275,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     _resetLayout : function()
     {
         //this.getSize();  // -- does not really do anything.. it probably applies left/right etc. to obuject but not used
-        this.colWidth = this.el.getWidth();
+//        this.colWidth = this.el.getWidth();
         
         //this.gutter = this.el.getWidth(); 
         
