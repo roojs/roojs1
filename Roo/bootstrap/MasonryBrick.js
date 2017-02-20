@@ -76,7 +76,8 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         
         if(this.href.length > 0){
             cn.push({
-                
+               tag: 'a',
+               cls: 'masonry-brick-link'
             });
         }
         
