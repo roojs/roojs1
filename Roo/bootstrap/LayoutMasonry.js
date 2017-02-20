@@ -50,7 +50,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
      * @cfg {Number} columnWidth  width of the columns 
      */   
     
-    columnWidth : 150,
+    columnWidth : 450,
     /**
      * @cfg {Number} padHeight padding below box..
      */   
@@ -286,7 +286,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var cols = (containerWidth - this.padWidth) / (columnWidth - this.padWidth);
         
-        Roo.log(['cols', cols]);
+        cols = cols % 3
         
         // fix rounding errors, typically with gutters
         var excess = columnWidth - containerWidth % columnWidth;
