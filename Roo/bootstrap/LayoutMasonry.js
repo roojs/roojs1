@@ -302,20 +302,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var padExtra = Math.floor((padavail - padNeeded) / this.cols);
         
-        this.columnWidth += padExtra
-        //this.padWidth = Math.floor(padavail /  ( this.cols));
+        this.columnWidth += padExtra;
         
-        // adjust colum width so that padding is fixed??
-        
-        // we have 3 columns ... total = width * 3
-        // we have X left over... that should be used by 
-        
-        //if (this.expandC) {
-            
-        //}
-        
-        
-        
+        Roo.log(this.columnWidth);
     },
     
     measureColumns_old : function()
