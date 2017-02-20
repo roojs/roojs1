@@ -106,7 +106,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     initEvents: function() 
     {
         if(this.href.length){
-            Roo.log(this.el);
+            this.el.on('click', this.onClick, this);
         }
     }
     
