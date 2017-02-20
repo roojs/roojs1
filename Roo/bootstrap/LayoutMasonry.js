@@ -218,7 +218,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var block = [];
         var size = 0;
-        var xsWidth = Math.floor(this.columnWidth / 3);
         
         Roo.each(items, function(item, k){
             Roo.log("layout item");
