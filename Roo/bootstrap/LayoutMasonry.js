@@ -49,29 +49,22 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     /**
      * @cfg {Number} columnWidth  width of the columns 
      */   
-    
     columnWidth : 150,
     /**
      * @cfg {Number} columnSet 
      */   
-    
     columnSet : 3,
     /**
      * @cfg {Number} padHeight padding below box..
      */   
-    
     padHeight : 10, 
-    
     /**
      * @cfg {Number} padWidth padding below box..
      */   
-    
     padWidth : 10, 
-    
     /**
      * @cfg {Boolean} isAutoInitial defalut true
      */   
-    
     isAutoInitial : true, 
     
     // private?
