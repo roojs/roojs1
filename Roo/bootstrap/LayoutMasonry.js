@@ -248,6 +248,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
         }, this);
         
+        Roo.log(block);
+        
         /*
         items.each(function(item) {
             Roo.log("layout item");
