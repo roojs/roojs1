@@ -130,8 +130,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     initial : function()
     {
-        
-        return;
         this.reloadItems();
 
         this.currentSize = this.el.getBox(true);
