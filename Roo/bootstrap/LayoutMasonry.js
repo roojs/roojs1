@@ -415,7 +415,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         item.autoBoxAdjust  = false;
         
         var sz = item.getSize();
- 
+        
+        Roo.log(['sz', sz]);
         // how many columns does this brick span
         var remainder = this.containerWidth % this.columnWidth;
         
