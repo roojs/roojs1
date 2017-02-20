@@ -311,7 +311,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var totalColWidth = this.cols * columnWidth;
         
-        var padavail = containerWidth - totalColWidth;
+        var avail = Math.floor((containerWidth - totalColWidth) / this.cols);
         
         var padNeeded = (1 + this.cols) * this.padWidth;
         
