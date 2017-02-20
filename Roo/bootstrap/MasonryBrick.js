@@ -97,7 +97,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 tag: 'h4',
                 cls: 'masonry-brick-title',
                 html: this.title
-            })
+            });
         }
         
         
