@@ -47,10 +47,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
      */   
     isResizingContainer : true,
     /**
-     * @cfg {Number} columnWidth  width of the columns default 450
+     * @cfg {Number} columnWidth  width of the columns 
      */   
     
-    columnWidth : 450,
+    columnWidth : 0,
     /**
      * @cfg {Number} padHeight padding below box..
      */   
@@ -277,7 +277,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
 
     measureColumns : function()
     {
-        /* // we are using the new role to detect
         this.getContainerWidth();
       // if columnWidth is 0, default to outerWidth of first item
         if ( !this.columnWidth ) {
@@ -344,7 +343,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
         //}
         
-        */
+        
         
     },
     
