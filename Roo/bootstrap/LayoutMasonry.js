@@ -227,6 +227,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             if(item.size == 'md'){
                 queue.push(block);
                 block = [];
+                size = 0;
                 return;
             }
             
