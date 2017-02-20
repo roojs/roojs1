@@ -209,9 +209,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     _layoutItems : function ( items , isInstant)
     {
-       //this.fireEvent( 'layout', this, items );
-    
-
+        //this.fireEvent( 'layout', this, items );
+        
+        Roo.log(items);
+        
         if ( !items || !items.elements.length ) {
           // no items, emit event with empty array
             return;
