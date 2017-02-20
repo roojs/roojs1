@@ -151,14 +151,23 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         Roo.log(this.bricks);
         
-        Roo.log(typeof(this.bricks));
-        
         Roo.each(this.bricks, function(b){
             if (!b.el.attr('originalwidth')) {
                 b.el.attr('originalwidth',  b.getSize().width);
             }
         });
         
+        /*
+        this.bricks.each(function(b) {
+            //Roo.log(b.getSize());
+            if (!b.el.attr('originalwidth')) {
+                b.el.attr('originalwidth',  b.getSize().width);
+            }
+            
+        });
+        
+        Roo.log(this.bricks.elements.length);
+        */
     },
     
     resize : function()
