@@ -235,6 +235,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             queue.push( position );
         }, this);
         */
+       
         this._processLayoutQueue( queue );
         
     },
