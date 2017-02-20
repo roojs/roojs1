@@ -221,7 +221,19 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         Roo.each(items, function(item, k){
             Roo.log("layout item");
             
-            var position = this._getItemLayoutPosition( item.el );
+            block.push(item);
+            
+            if(item.size == 'md'){
+                queue.push(block);
+                block = [];
+                return;
+            }
+            
+            if(k == items.length - 1){
+                return;
+            }
+            
+            
             
         }, this);
         
