@@ -289,15 +289,15 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         this.measureColumns();
 
         // reset column Y
-        var i = this.cols;
-        
-        this.colYs = [];
-        
-        while (i--) {
-            this.colYs.push( 0 );
-        }
-        
-        this.maxY = 0;
+//        var i = this.cols;
+//        
+//        this.colYs = [];
+//        
+//        while (i--) {
+//            this.colYs.push( 0 );
+//        }
+//        
+//        this.maxY = 0;
     },
     
     measureColumns : function()
