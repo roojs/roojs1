@@ -270,6 +270,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var y = 0;
         
         Roo.each(queue, function(block){
+            
+            var n = Math.max(block.length - 1, 1);
+            
             Roo.each(block, function(b,k){
                 
                 b.el.setWidth(Math.floor(this.columnWidth / (4 - b.size)));
