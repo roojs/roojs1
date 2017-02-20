@@ -222,6 +222,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
         }, this);
         
+        
         /*
         items.each(function(item) {
             Roo.log("layout item");
