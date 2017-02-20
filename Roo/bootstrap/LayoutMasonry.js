@@ -122,7 +122,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             Roo.log('hook children rendered');
             this.on('childrenrendered', function() {
                 Roo.log('children rendered');
-                Roo.log(this);
                 _this.initial();
             } ,this);
         }
