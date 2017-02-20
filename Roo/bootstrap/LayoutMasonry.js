@@ -217,21 +217,20 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var queue = [];
         
         var block = [];
-        var total_size = 0;
         var size = 0;
         
         Roo.each(items, function(item, k){
             Roo.log("layout item");
             
-            if(total_size + item.size > 3){
+            if(size + item.size > 3){
                 queue.push(block);
                 block = [];
-                total_size = 0;
+                size = 0;
             }
             
-            total_size = total_size + item.size;
+            size = size + item.size;
             
-            item.el.setWidth(Math.floor(this.columnWidth / (4 - size)));
+            item.el.setWidth(Math.floor(this.columnWidth / (4 - item.size)));
             item.el.autoBoxAdjust  = false;
             item.el.position('absolute');
 //            var sz = b.el.getSize();
