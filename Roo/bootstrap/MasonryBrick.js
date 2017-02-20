@@ -110,9 +110,10 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         }
     },
     
-    onClick: function(a,b,c)
+    onClick: function(e, el)
     {
-        Roo.log([a, b,c]);
+        e.preventDefault();
+        
     }
     
 });
