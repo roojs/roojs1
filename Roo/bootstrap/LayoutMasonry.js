@@ -218,6 +218,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var block = [];
         var total_size = 0;
+        var size = 0;
         
         Roo.each(items, function(item, k){
             Roo.log("layout item");
@@ -233,7 +234,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                     size = 3;
             }
             
-            if()
+            if(total_size + size)
             
             if(size == 3){
                 queue.push(block);
