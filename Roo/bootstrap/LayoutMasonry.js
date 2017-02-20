@@ -223,6 +223,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
         });
         
+        /*
         items.each(function(item) {
             Roo.log("layout item");
             Roo.log(item);
@@ -233,8 +234,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             position.isInstant = isInstant; // || item.isLayoutInstant; << not set yet...
             queue.push( position );
         }, this);
-      
+        */
         this._processLayoutQueue( queue );
+        
     },
     /** Sets position of item in DOM
     * @param {Element} item
