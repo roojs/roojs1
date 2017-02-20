@@ -226,13 +226,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             switch (item.size){
                 case 'xs' :
-                    size += 1;
+                    size = 1;
                     break;
                 case 'sm' : 
-                    size += 2;
+                    size = 2;
                     break;
                 case 'md' :
-                    size += 3;
+                    size = 3;
             }
             
             if(size == 3){
