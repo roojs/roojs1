@@ -290,6 +290,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         this.cols = Math.max( cols, 1 );
         
+        Roo.log(['cols', cols]);
         
          // padding positioning..
         var totalColWidth = this.cols * this.columnWidth;
