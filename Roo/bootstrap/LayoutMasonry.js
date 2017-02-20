@@ -294,8 +294,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
         }
         
-        Roo.log(this.columnWidth);
-        
         if (this.initialColumnWidth) {
             this.columnWidth = this.initialColumnWidth;
         }
