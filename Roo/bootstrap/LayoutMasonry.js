@@ -274,8 +274,78 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
         this.maxY = 0;
     },
-
+    
     measureColumns : function()
+    {
+        this.getContainerWidth();
+      // if columnWidth is 0, default to outerWidth of first item
+        if ( !this.columnWidth ) {
+            var firstItem = this.bricks.first();
+            Roo.log(firstItem);
+            this.columnWidth  = this.containerWidth;
+            if (firstItem && firstItem.attr('originalwidth') ) {
+                this.columnWidth = 1* (firstItem.attr('originalwidth') || firstItem.getWidth());
+            }
+            // columnWidth fall back to item of first element
+            Roo.log("set column width?");
+            this.initialColumnWidth = this.columnWidth  ;
+
+            // if first elem has no width, default to size of container
+            
+        }
+        
+        if (this.initialColumnWidth) {
+            this.columnWidth = this.initialColumnWidth;
+        }
+            
+        // column width is fixed at the top - however if container width get's smaller we should
+        // reduce it...
+        
+        // this bit calcs how man columns..
+        
+        var columnWidth = this.columnWidth += this.gutter;
+        
+        // calculate columns
+        var containerWidth = this.containerWidth + this.gutter;
+        
+        var cols = (containerWidth - this.padWidth) / (columnWidth - this.padWidth);
+        
+        // fix rounding errors, typically with gutters
+        var excess = columnWidth - containerWidth % columnWidth;
+        
+        
+        // if overshoot is less than a pixel, round up, otherwise floor it
+        var mathMethod = excess && excess < 1 ? 'round' : 'floor';
+        cols = Math[ mathMethod ]( cols );
+        this.cols = Math.max( cols, 1 );
+        
+        
+         // padding positioning..
+        var totalColWidth = this.cols * this.columnWidth;
+        var padavail = this.containerWidth - totalColWidth;
+        // so for 2 columns - we need 3 'pads'
+        
+        var padNeeded = (1+this.cols) * this.padWidth;
+        
+        var padExtra = Math.floor((padavail - padNeeded) / this.cols);
+        
+        this.columnWidth += padExtra
+        //this.padWidth = Math.floor(padavail /  ( this.cols));
+        
+        // adjust colum width so that padding is fixed??
+        
+        // we have 3 columns ... total = width * 3
+        // we have X left over... that should be used by 
+        
+        //if (this.expandC) {
+            
+        //}
+        
+        
+        
+    },
+    
+    measureColumns_old : function()
     {
         this.getContainerWidth();
       // if columnWidth is 0, default to outerWidth of first item
