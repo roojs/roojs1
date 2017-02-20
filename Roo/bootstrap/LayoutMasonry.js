@@ -83,8 +83,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     cols : [],
     
-    _isLayoutInited : false, 
-    
+    _isLayoutInited : false,
     
     getAutoCreate : function(){
         
