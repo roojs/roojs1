@@ -277,6 +277,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
 
     measureColumns : function()
     {
+        /*
         this.getContainerWidth();
       // if columnWidth is 0, default to outerWidth of first item
         if ( !this.columnWidth ) {
@@ -343,7 +344,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
         //}
         
-        
+        */
         
     },
     
