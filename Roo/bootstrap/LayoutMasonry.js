@@ -198,6 +198,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
       
         this._postLayout();
     },
+    
     _layoutItems : function ( items , isInstant)
     {
        //this.fireEvent( 'layout', this, items );
