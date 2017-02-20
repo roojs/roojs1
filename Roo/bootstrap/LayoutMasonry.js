@@ -67,11 +67,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
      */   
     isAutoInitial : true, 
     
-    // private?
-    gutter : 0,
-    
     containerWidth: 0,
-//    initialColumnWidth : 0,
+
     currentSize : null,
     
     colYs : null, // array.
