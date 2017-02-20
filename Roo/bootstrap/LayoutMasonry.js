@@ -272,7 +272,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
 
         // reset column Y
         var i = this.cols;
+        
         this.colYs = [];
+        
         while (i--) {
             this.colYs.push( 0 );
         }
