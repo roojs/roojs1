@@ -120,9 +120,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         if(this.isAutoInitial){
             Roo.log('hook children rendered');
-            this.on('childrenrendered', function(a,b,c) {
+            this.on('childrenrendered', function() {
                 Roo.log('children rendered');
-                Roo.log([a,b,c]);
                 _this.initial();
             } ,this);
         }
