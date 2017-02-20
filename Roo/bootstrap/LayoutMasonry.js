@@ -295,7 +295,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 b.el.position('absolute');
                 var sz = b.el.getSize();
 
-            Roo.log(['sz', sz]);
+                Roo.log(['sz', sz]);
             }, this);
             
         }, this);
