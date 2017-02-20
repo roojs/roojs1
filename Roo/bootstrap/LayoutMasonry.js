@@ -289,7 +289,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         while (i--) {
             this.colYs.push( 0 );
         }
-        Roo.log(this.colYs);
+        
         this.maxY = 0;
     },
     
