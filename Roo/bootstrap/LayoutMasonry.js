@@ -156,6 +156,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         Roo.each(this.bricks, function(b){
            Roo.log(b); 
         });
+        /*
         this.bricks.each(function(b) {
             //Roo.log(b.getSize());
             if (!b.el.attr('originalwidth')) {
@@ -163,7 +164,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             }
             
         });
-        
+        */
         Roo.log(this.bricks.elements.length);
     },
     
