@@ -292,7 +292,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         Roo.each(queue, function(block){
             Roo.each(block, function(b){
-                
+                b.el.position('absolute');
             }, this);
             
         }, this);
