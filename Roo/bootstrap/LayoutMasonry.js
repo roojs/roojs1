@@ -270,12 +270,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var y = 0;
         var row = 0;
         
-        Roo.each(queue, function(block){
+        Roo.each(queue, function(block, k){
             
             var gutter = Math.max(block.length - 1, 1);
             var columnWidth = this.columnWidth - (gutter * this.padWidth);
             
-            Roo.each(block, function(b,k){
+            Roo.each(block, function(b,kk){
                 
                 b.el.setWidth(Math.floor(columnWidth / (4 - b.size)));
                 b.el.autoBoxAdjust  = false;
