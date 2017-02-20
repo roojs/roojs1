@@ -246,9 +246,15 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             block.push(item);
             
+            if(k == items.length - 1){
+                queue.push(block);
+                block = [];
+                total_size = 0;
+            }
+            
         }, this);
         
-        Roo.log(block);
+        Roo.log(queue);
         
         /*
         items.each(function(item) {
