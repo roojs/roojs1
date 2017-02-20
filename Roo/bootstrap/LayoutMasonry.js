@@ -229,7 +229,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 total_size = 0;
             }
             
-            total_size = total_size + size;
+            total_size = total_size + item.size;
             
             item.el.setWidth(Math.floor(this.columnWidth / (4 - size)));
             item.el.autoBoxAdjust  = false;
