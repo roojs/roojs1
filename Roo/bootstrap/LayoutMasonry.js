@@ -253,7 +253,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         if ( !this.isResizingContainer ) {
             return;
         }
+        
         var size = this._getContainerSize();
+        
         if ( size ) {
             this.el.setSize(size.width,size.height);
             this.boxesEl.setSize(size.width,size.height);
