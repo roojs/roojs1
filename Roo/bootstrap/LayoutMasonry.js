@@ -457,6 +457,51 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         return position;
     },
     
+    _getItemLayoutPosition_old : function( item )  // what is item?
+    {
+        // we resize the item to our columnWidth..
+      
+        item.setWidth(this.columnWidth);
+        item.autoBoxAdjust  = false;
+        
+        var sz = item.getSize();
+ 
+        // how many columns does this brick span
+        var remainder = this.containerWidth % this.columnWidth;
+        
+        var mathMethod = remainder && remainder < 1 ? 'round' : 'ceil';
+        // round if off by 1 pixel, otherwise use ceil
+        var colSpan = Math[ mathMethod ]( sz.width  / this.columnWidth );
+        colSpan = Math.min( colSpan, this.cols );
+        
+        // normally this should be '1' as we dont' currently allow multi width columns..
+        
+        var colGroup = this._getColGroup( colSpan );
+        // get the minimum Y value from the columns
+        var minimumY = Math.min.apply( Math, colGroup );
+        Roo.log([ 'setHeight',  minimumY, sz.height, setHeight ]);
+        
+        var shortColIndex = colGroup.indexOf(  minimumY ); // broken on ie8..?? probably...
+         
+        // position the brick
+        var position = {
+            x: this.currentSize.x + (this.padWidth /2) + ((this.columnWidth + this.padWidth )* shortColIndex),
+            y: this.currentSize.y + minimumY + this.padHeight
+        };
+        
+        Roo.log(position);
+        // apply setHeight to necessary columns
+        var setHeight = minimumY + sz.height + this.padHeight;
+        //Roo.log([ 'setHeight',  minimumY, sz.height, setHeight ]);
+        
+        var setSpan = this.cols + 1 - colGroup.length;
+        for ( var i = 0; i < setSpan; i++ ) {
+          this.colYs[ shortColIndex + i ] = setHeight ;
+        }
+      
+        return position;
+    },
+    
     /**
      * @param {Number} colSpan - number of columns the element spans
      * @returns {Array} colGroup
