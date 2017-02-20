@@ -304,7 +304,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         this.columnWidth += padExtra;
         
-        Roo.log(this.columnWidth);
     },
     
     measureColumns_old : function()
