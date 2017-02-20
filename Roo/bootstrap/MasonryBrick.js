@@ -65,10 +65,6 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
      */   
     size : 'xs',
     
-    parent: function() {
-        return Roo.ComponentMgr.get(this.parentId)
-    },
-    
     getAutoCreate : function()
     {
         var cls = 'masonry-brick';
