@@ -268,7 +268,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         var x = 0;
         var y = 0;
-        var row = 0;
+        var col = 0;
         
         Roo.each(queue, function(block, k){
             
