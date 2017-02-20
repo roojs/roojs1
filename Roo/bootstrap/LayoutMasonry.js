@@ -155,7 +155,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             if (!b.el.attr('originalwidth')) {
                 b.el.attr('originalwidth',  b.getSize().width);
             }
-        });
+        }, this);
         
         /*
         this.bricks.each(function(b) {
