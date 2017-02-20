@@ -218,6 +218,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         Roo.each(items, function(item, k){
             Roo.log("layout item");
+            
             var position = this._getItemLayoutPosition( item.el );
             
         }, this);
