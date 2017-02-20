@@ -82,7 +82,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     tag: 'div',
     cls: '',
-    bricks: [], //CompositeElement
+    bricks: null, //CompositeElement
     cols : 0, // array?
     // element : null, // wrapped now this.el
     _isLayoutInited : null, 
