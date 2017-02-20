@@ -80,7 +80,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             ]
         };
         
-        var cn = cfg.cn.cn;
+        var cn = cfg.cn;
         
         Roo.log("1. " + cn);
         if(this.href.length){
