@@ -63,7 +63,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     /**
      * @cfg {String} (xs|sm|md) size
      */   
-    size : true,
+    size : 'xs',
     
     getAutoCreate : function()
     {
