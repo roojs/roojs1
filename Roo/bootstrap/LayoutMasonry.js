@@ -211,9 +211,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         //this.fireEvent( 'layout', this, items );
         
-        Roo.log(items);
-        
-        if ( !items || !items.elements.length ) {
+        if ( !items || !items.length ) {
           // no items, emit event with empty array
             return;
         }
