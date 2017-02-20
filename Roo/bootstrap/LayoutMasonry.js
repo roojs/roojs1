@@ -285,7 +285,14 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         Roo.each(queue, function(block){
             Roo.each(block, function(b){
-                Roo.log(b);
+                b.el.setWidth(this.columnWidth);
+                b.el.autoBoxAdjust  = false;
+
+                var sz = b.el.getSize();
+
+                Roo.log(['sz', sz]);
+                
+                
             }, this);
             
         }, this);
