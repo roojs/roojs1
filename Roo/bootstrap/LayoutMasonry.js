@@ -278,7 +278,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     * @param {Number} y - vertical position
     * @param {Boolean} isInstant - disables transitions
     */
-    _processLayoutQueue : function( queue )
+    _processLayoutQueue : function( queue, isInstant )
     {
         for ( var i=0, len = queue.length; i < len; i++ ) {
             var obj = queue[i];
