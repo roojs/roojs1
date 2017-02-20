@@ -236,14 +236,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                     size = 3;
             }
             
-            if(total_size + size)
-            
-            if(size == 3){
+            if(total_size + size > 3){
                 queue.push(block);
                 block = [];
-                size = 0;
-                return;
+                total_size = 0;
             }
+            
+            total_size = total_size + size;
             
             if(k == items.length - 1){
                 queue.push(block);
