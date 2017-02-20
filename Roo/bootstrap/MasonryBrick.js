@@ -85,7 +85,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             cn.push({
                tag: 'a',
                cls: 'roo-masonry-brick-link',
-               href: 'http://roojs.com',
+               href: this.href,
                cn: []
             });
             
