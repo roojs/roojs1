@@ -149,6 +149,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         this.bricks.each(function(b) {
             //Roo.log(b.getSize());
             if (!b.attr('originalwidth')) {
+                Roo.log(['width', b.getSize().width]);
+                
                 b.attr('originalwidth',  b.getSize().width);
             }
             
