@@ -1,12 +1,12 @@
 
-.roo-masonry-brick {
+.masonry-brick {
     width: 200px; 
     height: 200px; 
     background-color: lime;
     padding: 15px;
 }
 
-.roo-masonry-brick-content {
+.masonry-brick-content {
     position: absolute;
     left: 0px;
     top: 0px;
