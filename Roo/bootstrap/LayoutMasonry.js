@@ -244,6 +244,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             total_size = total_size + size;
             
+            
             if(k == items.length - 1){
                 queue.push(block);
                 block = [];
