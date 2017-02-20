@@ -286,15 +286,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var cols = (containerWidth - this.padWidth) / (columnWidth - this.padWidth);
         
-        Roo.log(['cols', cols]);
+        cols = Math.floor( cols );
         
-        // fix rounding errors, typically with gutters
-        var excess = columnWidth - containerWidth % columnWidth;
-        
-        
-        // if overshoot is less than a pixel, round up, otherwise floor it
-        var mathMethod = excess && excess < 1 ? 'round' : 'floor';
-        cols = Math[ mathMethod ]( cols );
         this.cols = Math.max( cols, 1 );
         
         
