@@ -278,20 +278,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     measureColumns : function()
     {
         this.getContainerWidth();
-      // if columnWidth is 0, default to outerWidth of first item
-        if ( !this.columnWidth ) {
-            this
-        }
-        
-        if (this.initialColumnWidth) {
-            this.columnWidth = this.initialColumnWidth;
-        }
-            
-        // column width is fixed at the top - however if container width get's smaller we should
-        // reduce it...
-        
-        // this bit calcs how man columns..
-        
+      
         var columnWidth = this.columnWidth += this.gutter;
         
         // calculate columns
