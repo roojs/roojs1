@@ -50,10 +50,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
      * @cfg {Number} columnWidth  width of the columns 
      */   
     columnWidth : 150,
-    /**
-     * @cfg {Number} columnSet 
-     */   
-    columnSet : 3,
+    
     /**
      * @cfg {Number} padHeight padding below box..
      */   
@@ -308,7 +305,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         //var containerWidth = this.containerWidth + this.gutter;
         
-        var cols = this.containerWidth / this.columnWidth;
+        var cols = Math.floor(this.containerWidth / this.columnWidth / this.columnSet);
+        
+        
         
         cols = Math.floor( cols / 3 ) * this.columnSet;
         
