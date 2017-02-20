@@ -288,7 +288,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 x = x + this.padWidth + sz.width;
                 
                 
-                
             }, this);
             
         }, this);
