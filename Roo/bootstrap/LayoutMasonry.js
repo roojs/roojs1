@@ -302,7 +302,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         // reduce it...
         
         // this bit calcs how man columns..
-            
+        Roo.log(['gutter', this.gutter]);
         var columnWidth = this.columnWidth += this.gutter;
         
         // calculate columns
