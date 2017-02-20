@@ -281,7 +281,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     _processLayoutQueue : function( queue, isInstant )
     {
         Roo.each(queue, function(q){
-            
+            Roo.log(q);
             
         }, this);
         /*
