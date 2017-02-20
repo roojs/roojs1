@@ -303,6 +303,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
         }, this);
         
+        
         /*
         for ( var i=0, len = queue.length; i < len; i++ ) {
             var obj = queue[i];
