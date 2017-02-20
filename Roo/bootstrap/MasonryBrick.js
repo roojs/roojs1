@@ -70,6 +70,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         var cfg = {
             tag: 'div',
             cls: 'masonry-brick',
+            style: "width: 500px; height:500px;",
             cn: [
                 {
                     tag: 'div',
