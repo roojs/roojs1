@@ -286,8 +286,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var cols = (containerWidth - this.padWidth) / (columnWidth - this.padWidth);
         
-        cols = cols % 3
-        
         // fix rounding errors, typically with gutters
         var excess = columnWidth - containerWidth % columnWidth;
         
