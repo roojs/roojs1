@@ -286,7 +286,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
       
         var columnWidth = this.columnWidth += this.gutter;
         
-        // calculate columns
         var containerWidth = this.containerWidth + this.gutter;
         
         var cols = (containerWidth - this.padWidth) / (columnWidth - this.padWidth);
@@ -295,9 +294,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         this.cols = Math.max( cols, 1 );
         
-        Roo.log(this.cols);
-        
-         // padding positioning..
         var totalColWidth = this.cols * this.columnWidth;
         var padavail = this.containerWidth - totalColWidth;
         // so for 2 columns - we need 3 'pads'
