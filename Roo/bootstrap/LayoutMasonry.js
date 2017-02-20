@@ -271,7 +271,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         Roo.each(queue, function(block){
             
-            var n = Math.max(block.length - 1, 1);
+            var gutter = Math.max(block.length - 1, 1);
             
             Roo.each(block, function(b,k){
                 
