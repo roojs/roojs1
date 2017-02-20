@@ -50,7 +50,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
      * @cfg {Number} columnWidth  width of the columns 
      */   
     
-    columnWidth : 0,
+    columnWidth : 150,
     /**
      * @cfg {Number} padHeight padding below box..
      */   
@@ -67,7 +67,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     gutter : 0,
     
     containerWidth: 0,
-    initialColumnWidth : 0,
+//    initialColumnWidth : 0,
     currentSize : null,
     
     colYs : null, // array.
@@ -280,18 +280,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         this.getContainerWidth();
       // if columnWidth is 0, default to outerWidth of first item
         if ( !this.columnWidth ) {
-            var firstItem = this.bricks.first();
-            Roo.log(firstItem);
-            this.columnWidth  = this.containerWidth;
-            if (firstItem && firstItem.attr('originalwidth') ) {
-                this.columnWidth = 1* (firstItem.attr('originalwidth') || firstItem.getWidth());
-            }
-            // columnWidth fall back to item of first element
-            Roo.log("set column width?");
-            this.initialColumnWidth = this.columnWidth  ;
-
-            // if first elem has no width, default to size of container
-            
+            this
         }
         
         if (this.initialColumnWidth) {
