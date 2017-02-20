@@ -267,7 +267,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     _processLayoutQueue : function( queue, isInstant )
     {
         var x = 0;
-        var y = 0;
+        var y = maxY = 0;
         var col = 0;
         
         Roo.each(queue, function(block, k){
