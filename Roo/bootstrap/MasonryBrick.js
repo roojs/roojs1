@@ -97,6 +97,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             });
         }
         
+        
         return cfg;
     },
     
