@@ -230,13 +230,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             size = size + item.size;
             
-            item.el.setWidth(Math.floor(this.columnWidth / (4 - item.size)));
-            item.el.autoBoxAdjust  = false;
-            item.el.position('absolute');
-//            var sz = b.el.getSize();
-//
-//            Roo.log(['sz', sz]);
-            
             block.push(item);
             
             if(k == items.length - 1){
