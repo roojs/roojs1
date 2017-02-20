@@ -280,11 +280,17 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     */
     _processLayoutQueue : function( queue, isInstant )
     {
+        Roo.each(queue, function(q){
+            
+            
+        }, this);
+        /*
         for ( var i=0, len = queue.length; i < len; i++ ) {
             var obj = queue[i];
             obj.item.position('absolute');
             obj.item.setXY([obj.x,obj.y], obj.isInstant ? false : true);
         }
+        */
     },
       
     
