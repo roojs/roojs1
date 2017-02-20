@@ -244,6 +244,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             total_size = total_size + size;
             
+            b.el.setWidth(this.columnWidth);
+            b.el.autoBoxAdjust  = false;
+
+//            var sz = b.el.getSize();
+//
+//            Roo.log(['sz', sz]);
+            
             block.push(item);
             
             if(k == items.length - 1){
@@ -285,12 +292,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         Roo.each(queue, function(block){
             Roo.each(block, function(b){
-                b.el.setWidth(this.columnWidth);
-                b.el.autoBoxAdjust  = false;
-
-                var sz = b.el.getSize();
-
-                Roo.log(['sz', sz]);
+                
                 
                 
                 
