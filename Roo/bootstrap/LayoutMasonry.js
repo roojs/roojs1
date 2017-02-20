@@ -283,8 +283,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var x = 0;
         var y = 0;
         
-        Roo.each(queue, function(q){
-            
+        Roo.each(queue, function(block){
+            Roo.each(block, function(b){
+                Roo.log(b);
+            }, this);
             
         }, this);
         /*
