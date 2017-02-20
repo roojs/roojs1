@@ -61,7 +61,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
      */   
     square : true,
     /**
-     * @cfg {Number} (1|2|3) size
+     * @cfg {Number} (1|2|3) size (xs|sm|md)
      */   
     size : 1,
     
