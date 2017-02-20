@@ -307,6 +307,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var cols = Math.floor(containerWidth / columnWidth);
         
+        Roo.log(['cols', cols]);
+        
         cols = Math.floor( cols / 3 ) * this.columnSet;
         
         this.cols = Math.max( cols, 1 );
