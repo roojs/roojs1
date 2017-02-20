@@ -89,10 +89,9 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                cn: []
             });
             
-            cn = cn.cn;
+            cn = cn[0].cn;
         }
         
-        Roo.log(cn);
         if(this.title.length){
             cn.push({
                 tag: 'h4',
