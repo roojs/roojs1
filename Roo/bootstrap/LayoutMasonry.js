@@ -293,6 +293,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 Roo.log(['sz', sz]);
                 
                 
+                
             }, this);
             
         }, this);
