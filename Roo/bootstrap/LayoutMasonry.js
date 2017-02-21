@@ -204,6 +204,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var y = pos.y;
         var maxY = [];
         
+        
 //        var maxY = pos.y;
         
         Roo.each(queue, function(box, k){
