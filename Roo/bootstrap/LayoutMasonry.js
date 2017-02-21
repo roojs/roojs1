@@ -220,6 +220,17 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 gutterWidth = (this.colWidth - boxColWidth * 3) / gutter;
             }
             
+            Roo.each(box, function(b,kk){
+                
+                var width = boxColWidth * b.size + b.el.getPadding('lr');
+                
+                b.el.setWidth(width);
+                
+                if(b.square){
+                    b.el.setHeight(width);
+                }
+            }, this);
+            
             x = pos.x + col * (this.colWidth + this.padWidth);
             
             if(col == 0){
@@ -240,14 +251,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             }
             
             Roo.each(box, function(b,kk){
-                
-                var width = boxColWidth * b.size + b.el.getPadding('lr');
-                
-                b.el.setWidth(width);
-                
-                if(b.square){
-                    b.el.setHeight(width);
-                }
                 
                 b.el.position('absolute');
                 
