@@ -232,6 +232,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 case 1 :
                     positions = this.getOneBoxColPositions(x, box, boxColWidth);
                     break;
+                case 1 :
+                    positions = this.getTwoBoxColPositions(x, box, boxColWidth);
+                    break;
                 default :
                     break;
             }
