@@ -310,6 +310,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         pos.push(start + boxColWidth * rand);
         
         return pos;
+    },
+    
+    getTwoBoxColPositions : function(x, box, boxColWidth, gutterWidth)
+    {
+        
     }
     
     
