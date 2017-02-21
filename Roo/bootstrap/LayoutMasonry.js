@@ -333,6 +333,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         if(box[0].size == 1 && box[1].size == 2){
             
+            var h = box[0].el.getHeight();
             var h = box[1].el.getHeight();
             
             pos.push({
