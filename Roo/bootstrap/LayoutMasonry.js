@@ -202,14 +202,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var x = pos.x;
         var y = pos.y;
-        
-        var maxY = [];
-        
-        var i = this.cols;
-        
-        for (var i = 0; i < this.cols; i++){
-            maxY[i] = pos.y;
-        }
+        var maxY = pos.y;
         
         Roo.each(queue, function(box, k){
             
@@ -241,7 +234,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             x = pos.x + col * (this.colWidth + this.padWidth);
             
             if(col == 0){
-                y = maxY[col] + this.padHeight;
+                y = maxY + this.padHeight;
             }
             
             var positions = [];
@@ -270,7 +263,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
                 //x = x + gutterWidth + sz.width;
                 
-                maxY[col] = Math.max(maxY[col], y + sz.height);
+                maxY = Math.max(maxY, y + sz.height);
                 
             }, this);
             
