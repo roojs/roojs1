@@ -323,12 +323,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     getContainerWidth : function()
     {
-        Roo.log(this.el.getBox(true).width);
-        Roo.log(this.el.getBox().width);
-        Roo.log(this.el.getComputedWidth());
-        Roo.log(this.el.getWidth());
-        Roo.log(this.el.getWidth(true));
-        
         this.containerWidth = this.el.getBox(true).width;  //maybe use getComputedWidth
     }
 });
