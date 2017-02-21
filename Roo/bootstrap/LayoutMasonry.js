@@ -269,9 +269,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var pos = this.el.getBox(true);
         
         var x = pos.x;
+        var start_x = pos.x;
         var y = pos.y;
         var maxY = pos.y;
         var col = 0;
+        
         
         Roo.log(['cols', this.cols]);
         
