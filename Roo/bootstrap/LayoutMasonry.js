@@ -240,8 +240,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
         }, this);
         
-        Roo.log(queue);
-        
         /*
         items.each(function(item) {
             Roo.log("layout item");
