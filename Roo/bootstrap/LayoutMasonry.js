@@ -297,7 +297,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             Roo.each(block, function(b,kk){
                 
-                b.el.setWidth(Math.floor(columnWidth / (4 - b.size)));
+                b.el.setWidth(columnWidth);
                 
                 b.el.autoBoxAdjust  = false;
                 b.el.position('absolute');
