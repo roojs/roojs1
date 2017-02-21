@@ -72,10 +72,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
 
     currentSize : null,
     
-    colYs : [],
-    
-    maxY : 0,
-    
     tag: 'div',
     
     cls: '',
