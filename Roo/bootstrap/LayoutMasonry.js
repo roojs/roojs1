@@ -232,14 +232,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 case 1 :
                     positions = this.getOneBoxColPositions(x, y, box, boxColWidth, gutterWidth);
                     break;
-                case 1 :
+                case 2 :
                     positions = this.getTwoBoxColPositions(x, y, box, boxColWidth, gutterWidth);
                     break;
                 default :
                     break;
             }
-            
-            Roo.log(positions);
             
             Roo.each(box, function(b,kk){
                 
