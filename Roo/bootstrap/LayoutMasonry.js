@@ -315,6 +315,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     getTwoBoxColPositions : function(x, box, boxColWidth, gutterWidth)
     {
         
+        
     }
     
     
