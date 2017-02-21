@@ -237,6 +237,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
                 b.el.setWidth(width);
                 
+                if(b.square){
+                    b.el.setHeight(width);
+                }
+                
                 b.el.position('absolute');
 
                 var sz = b.el.getSize();
