@@ -157,6 +157,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             return;
         }
         
+        Roo.log('call layout');
+        
         this.currentSize = cs;
         
         this.layout();
