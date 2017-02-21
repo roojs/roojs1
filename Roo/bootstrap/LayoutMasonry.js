@@ -275,7 +275,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         Roo.each(queue, function(block, k){
             
-            var col = (k + 1) % this.cols;
+            var col = k % this.cols;
             
             Roo.log(['col', col]);
             
