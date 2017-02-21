@@ -263,7 +263,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
                 Roo.log(['setWidth', width]);
                 
-//                b.el.autoBoxAdjust  = false;
                 b.el.position('absolute');
 
                 var sz = b.el.getSize();
