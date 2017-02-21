@@ -230,10 +230,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             switch (box.length){
                 case 1 :
-                    positions = this.getOneBoxColPositions(x, box, boxColWidth, gutterWidth);
+                    positions = this.getOneBoxColPositions(x, y, box, boxColWidth, gutterWidth);
                     break;
                 case 1 :
-                    positions = this.getTwoBoxColPositions(x, box, boxColWidth, gutterWidth);
+                    positions = this.getTwoBoxColPositions(x, y, box, boxColWidth, gutterWidth);
                     break;
                 default :
                     break;
