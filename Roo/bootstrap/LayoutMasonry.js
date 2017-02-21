@@ -305,7 +305,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         switch (box[0].size) {
             case 1 :
                 
-                var p = Math.floor(Math.random() * 3) + 1;
+                var p = Math.floor(Math.random() * 2);
                 
                 var pp = start;
                 
@@ -314,7 +314,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 }
                 
                 if(p == 3){
-                    pp = start + boxColWidth;
+                    pp = start + boxColWidth * 2;
                 }
                 
                 pos.push(start);
