@@ -318,7 +318,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         this.colWidth = this.columnWidth + avail;
         
-        Roo.log(['column width', this.columnWidth]);
+        Roo.log(['column width', this.colWidth]);
         
     },
     
