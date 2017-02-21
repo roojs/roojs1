@@ -209,11 +209,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var y = pos.y;
         var maxY = pos.y;
         
-        Roo.each(queue, function(block, k){
+        Roo.each(queue, function(box, k){
             
             var col = k % this.cols;
             
-            var gutter = Math.max(block.length - 1, 0);
+            var gutter = Math.max(box.length - 1, 0);
             
             var boxWidth = this.colWidth - (gutter * this.gutter);
             
@@ -231,7 +231,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 y = maxY + this.padHeight;
             }
             
-            Roo.each(block, function(b,kk){
+            Roo.each(box, function(b,kk){
                 
                 var width = boxColWidth * b.size + b.el.getPadding('lr');
                 
