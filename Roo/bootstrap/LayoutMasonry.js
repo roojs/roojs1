@@ -229,7 +229,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             var positions = [];
             
             switch (box.length){
-                
+                case 1 :
+                    positions = this.
             }
             
             Roo.each(box, function(b,kk){
@@ -294,7 +295,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         this.containerWidth = this.el.getBox(true).width;  //maybe use getComputedWidth
     },
     
-    getBoxColPositions : function(box)
+    getOneBoxColPositions : function(box)
     {
         if(box.length == 1){
             swi
