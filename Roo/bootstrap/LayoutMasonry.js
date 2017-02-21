@@ -128,7 +128,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         this.reloadItems();
 
         this.currentSize = this.el.getBox(true);
-        
+
         /// was window resize... - let's see if this works..
         Roo.EventManager.onWindowResize(this.resize, this); 
 
@@ -143,8 +143,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     reloadItems: function()
     {
         this.bricks = this.el.select('.masonry-brick', true);
-        
-        Roo.log(this.bricks);
         
         this.bricks.each(function(b) {
             //Roo.log(b.getSize());
@@ -260,7 +258,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         //this.getSize();  // -- does not really do anything.. it probably applies left/right etc. to obuject but not used
         this.colWidth = this.el.getWidth();
-        
         //this.gutter = this.el.getWidth(); 
         
         this.measureColumns();
@@ -288,11 +285,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             }
             // columnWidth fall back to item of first element
             Roo.log("set column width?");
-            this.initialColumnWidth = this.columnWidth  ;
+                        this.initialColumnWidth = this.columnWidth  ;
 
             // if first elem has no width, default to size of container
             
         }
+        
         
         if (this.initialColumnWidth) {
             this.columnWidth = this.initialColumnWidth;
@@ -311,7 +309,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var containerWidth = this.containerWidth + this.gutter;
         
         var cols = (containerWidth - this.padWidth) / (columnWidth - this.padWidth);
-        
         // fix rounding errors, typically with gutters
         var excess = columnWidth - containerWidth % columnWidth;
         
