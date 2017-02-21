@@ -161,7 +161,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         this.currentSize = cs;
         
-        this.layout();
+        this.layout.defer(500,this);
     },
     
     layout : function()
