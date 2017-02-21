@@ -335,9 +335,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             var rand = Math.floor(Math.random() * 2);
             Roo.log(rand);
+            
             pos.push({
                 x : x,
-                y : y + ((box[1].el.getHeight() - box[0].el.getHeight()) * Math.floor(Math.random() * 2))
+                y : y + ((box[1].el.getHeight() - box[0].el.getHeight()) * rand))
             });
             
             pos.push({
