@@ -134,16 +134,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         Roo.log('resize');
         
         var cs = this.el.getBox(true);
-//        
-//        Roo.log(['current size', this.currentSize]);
-//        Roo.log(['cs', cs]);
-//        
+        
         if (this.currentSize.width == cs.width && this.currentSize.x == cs.x ) {
             Roo.log("no change in with or X");
             return;
         }
-        
-        Roo.log('call layout');
         
         this.currentSize = cs;
         
@@ -151,12 +146,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     },
     
     layout : function()
-    {
-        Roo.log('layout');
-        
+    {   
         this._resetLayout();
         
         var isInstant = this.isLayoutInstant !== undefined ? this.isLayoutInstant : !this._isLayoutInited;
+        
         this.layoutItems( isInstant );
       
         this._isLayoutInited = true;
@@ -179,7 +173,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var size = 0;
         
         Roo.each(items, function(item, k){
-            Roo.log("layout item");
             
             if(size + item.size > 3){
                 queue.push(block);
