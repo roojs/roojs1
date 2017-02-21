@@ -301,7 +301,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
                 Roo.log(['sz.height', sz.height]);
                 
-                maxY = y + Math.max(maxY, sz.height);
+                maxY = Math.max(y, y + sz.height);
                 
                 Roo.log(['maxY', maxY]);
                 
