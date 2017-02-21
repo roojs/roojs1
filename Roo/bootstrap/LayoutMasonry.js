@@ -281,7 +281,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             col = col + 1;
             
             if(col > this.cols){
-                x = 0;
+                x = pos.x;
                 y = maxY;
             }
             
