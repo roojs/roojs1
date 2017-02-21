@@ -230,7 +230,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             switch (box.length){
                 case 1 :
-                    positions = this.getOneBoxColPositions(x, box, boxColWidth);
+                    positions = this.getOneBoxColPositions(x, box, boxColWidth, gutterWidth);
                     break;
                 case 1 :
                     positions = this.getTwoBoxColPositions(x, box, boxColWidth, gutterWidth);
@@ -301,7 +301,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         this.containerWidth = this.el.getBox(true).width;  //maybe use getComputedWidth
     },
     
-    getOneBoxColPositions : function(start, box, boxColWidth)
+    getOneBoxColPositions : function(start, box, boxColWidth, gutterWidth)
     {
         var pos = [];
         
@@ -317,6 +317,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var pos = [];
         
         if(box[0].size == 1){
+            pos.push(start);
+            pos.push(start + boxColWidth + gutterWidth * (3 - box[1].size));
+        }
+        
+        if(box[0].size == 2){
             pos.push(start);
             pos.push(start + boxColWidth + gutterWidth * (3 - box[1].size));
         }
