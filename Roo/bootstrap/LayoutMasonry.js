@@ -249,6 +249,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             Roo.each(block, function(b,kk){
                 
+                Roo.log(b.el.getSize());
+                
                 b.el.setWidth(columnWidth * b.size);
                 
                 Roo.log(['setWidth', columnWidth * b.size]);
@@ -257,7 +259,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 b.el.position('absolute');
 
                 var sz = b.el.getSize();
-                Roo.log(sz);
+                
                 //Roo.log([x, y]);
                 
                 b.el.setXY([x,y], isInstant ? false : true);
