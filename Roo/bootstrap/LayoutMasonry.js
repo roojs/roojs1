@@ -246,6 +246,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             x = pos.x + col * this.columnWidth + this.padWidth;
             
+            Roo.log([x]);
+            
             if(col == 0){
                 y = maxY + this.padHeight;
             }
