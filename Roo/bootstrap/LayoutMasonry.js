@@ -26,18 +26,6 @@ Roo.bootstrap.LayoutMasonry = function(config){
 
 Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
-      /**
-     * @cfg {Boolean} isFitWidth  - resize the width..
-     */   
-    isFitWidth : false,  // options..
-    /**
-     * @cfg {Boolean} isOriginLeft = left align?
-     */   
-    isOriginLeft : true,
-    /**
-     * @cfg {Boolean} isOriginTop = top align?
-     */   
-    isOriginTop : false,
     /**
      * @cfg {Boolean} isLayoutInstant = no animation?
      */   
