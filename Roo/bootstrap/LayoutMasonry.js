@@ -318,6 +318,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         if(box[0].size == 1 && box[1].size == 1){
             
+            
         }
         
     }
