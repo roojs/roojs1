@@ -284,7 +284,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         this.colWidth = this.boxWidth + avail;
         
-        Roo.log(['column width', this.colWidth]);
     },
     
     getContainerWidth : function()
