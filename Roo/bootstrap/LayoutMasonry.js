@@ -202,8 +202,16 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var x = pos.x;
         var y = pos.y;
+        
         var maxY = [];
         
+        var i = this.cols;
+        
+        while ( --i ) {
+          if ( this.colYs[i] !== 0 ) {
+            break;
+          }
+        }
         
 //        var maxY = pos.y;
         
