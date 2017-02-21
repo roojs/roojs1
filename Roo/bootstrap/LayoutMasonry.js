@@ -152,8 +152,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         Roo.log(['current size', this.currentSize]);
         Roo.log(['cs', cs]);
         
-        return;
-        
         if (this.currentSize.width == cs.width && this.currentSize.x == cs.x ) {
             Roo.log("no change in with or X");
             return;
