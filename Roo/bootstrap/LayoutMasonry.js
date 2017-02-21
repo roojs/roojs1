@@ -183,7 +183,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             size = size + item.size;
             
-            boxes.push(item);
+            boxes.items.push(item);
             
             if(k == items.length - 1){
                 queue.push(box);
