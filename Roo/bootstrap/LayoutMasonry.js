@@ -197,20 +197,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     layoutItems : function( isInstant )
     {
-        //var items = this._getItemsForLayout( this.items );
-        // original code supports filtering layout items.. we just ignore it..
-        
         this._layoutItems( this.bricks , isInstant );
-      
-        this._postLayout();
     },
     
     _layoutItems : function ( items , isInstant)
     {
-        //this.fireEvent( 'layout', this, items );
-        
         if ( !items || !items.length ) {
-          // no items, emit event with empty array
             return;
         }
 
@@ -240,19 +232,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
         }, this);
         
-        /*
-        items.each(function(item) {
-            Roo.log("layout item");
-            Roo.log(item);
-            // get x/y object from method
-            var position = this._getItemLayoutPosition( item );
-            // enqueue
-            position.item = item;
-            position.isInstant = isInstant; // || item.isLayoutInstant; << not set yet...
-            queue.push( position );
-        }, this);
-        */
-       
         this._processLayoutQueue( queue );
         
     },
