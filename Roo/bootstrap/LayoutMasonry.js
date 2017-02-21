@@ -230,7 +230,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             switch (box.length){
                 case 1 :
-                    positions = this.
+                    positions = this.getOneBoxColPositions();
             }
             
             Roo.each(box, function(b,kk){
