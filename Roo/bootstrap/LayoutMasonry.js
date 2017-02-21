@@ -171,19 +171,23 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     resize : function()
     {
         Roo.log('resize');
+        
         var cs = this.el.getBox(true);
         
         if (this.currentSize.width == cs.width && this.currentSize.x == cs.x ) {
             Roo.log("no change in with or X");
             return;
         }
+        
         this.currentSize = cs;
+        
         this.layout();
     },
     
     layout : function()
     {
         Roo.log('layout');
+        
         this._resetLayout();
         
         var isInstant = this.isLayoutInstant !== undefined ? this.isLayoutInstant : !this._isLayoutInited;
