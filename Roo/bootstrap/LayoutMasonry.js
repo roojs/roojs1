@@ -226,7 +226,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 y = maxY + this.padHeight;
             }
             
-            var positions = this.getBoxColPositions(box);
+            var positions = [];
+            
+            switch (box.length){
+                
+            }
             
             Roo.each(box, function(b,kk){
                 
@@ -293,7 +297,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     getBoxColPositions : function(box)
     {
         if(box.length == 1){
-            
+            swi
         }
     }
     
