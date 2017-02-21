@@ -314,7 +314,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     getTwoBoxColPositions : function(start, box, boxColWidth, gutterWidth)
     {
+        var pos = [];
         
+        if(box[0].size == 1 && box[1].size == 1){
+            
+        }
         
     }
     
