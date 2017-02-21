@@ -312,7 +312,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             case 2 :
                 var p = Math.floor(Math.random() * 2) + 1;
                 
-                pos.push(start);
+                var pp = start;
+                
+                if(p == 2){
+                    pp = start + boxColWidth;
+                }
+                
+                pos.push(pp);
                 break;
             case 3 :
                 pos.push(start);
