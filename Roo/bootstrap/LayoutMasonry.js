@@ -185,13 +185,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         Roo.log('layout');
         this._resetLayout();
-        //this._manageStamps();
-      
-        // don't animate first layout
+        
         var isInstant = this.isLayoutInstant !== undefined ? this.isLayoutInstant : !this._isLayoutInited;
         this.layoutItems( isInstant );
       
-        // flag for initalized
         this._isLayoutInited = true;
     },
     
