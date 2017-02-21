@@ -301,7 +301,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         this.containerWidth = this.el.getBox(true).width;  //maybe use getComputedWidth
     },
     
-    getOneBoxColPositions : function(start, box, boxColWidth, gutterWidth)
+    getOneBoxColPositions : function(x, y, box, boxColWidth, gutterWidth)
     {
         var pos = [];
         
@@ -312,7 +312,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         return pos;
     },
     
-    getTwoBoxColPositions : function(start, box, boxColWidth, gutterWidth)
+    getTwoBoxColPositions : function(x, y, box, boxColWidth, gutterWidth)
     {
         var pos = [];
         
