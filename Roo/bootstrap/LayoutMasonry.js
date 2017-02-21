@@ -300,7 +300,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     getOneBoxColPositions : function(start, box)
     {
-        
+        switch (box[0].size)
     }
     
 });
