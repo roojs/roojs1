@@ -312,7 +312,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         return pos;
     },
     
-    getTwoBoxColPositions : function(x, box, boxColWidth, gutterWidth)
+    getTwoBoxColPositions : function(start, box, boxColWidth, gutterWidth)
     {
         
         
