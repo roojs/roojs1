@@ -233,7 +233,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             Roo.each(block, function(b,kk){
                 
-                var width = blockWidth * b.size + b.el.getPadding('lr');
+                var width = boxColWidth * b.size + b.el.getPadding('lr');
                 
                 b.el.setWidth(width);
                 
