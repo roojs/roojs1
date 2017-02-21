@@ -285,6 +285,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             if(col > this.cols){
                 x = pos.x;
                 y = maxY + this.padHeight;
+                col = 1;
             }
             
             Roo.each(block, function(b,kk){
