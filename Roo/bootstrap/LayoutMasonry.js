@@ -310,7 +310,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var totalColWidth = this.cols * this.columnWidth;
         
-        var avail = Math.floor((containerWidth - totalColWidth) / this.cols);
+        var avail = Math.floor((containerWidth - totalColWidth - this.padWidth * this.cols) / this.cols);
         
         this.columnWidth += avail;
         
