@@ -290,6 +290,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             }
             
             Roo.log(['padWidth', padWidth]);
+            Roo.log(['columnWidth', columnWidth]);
             
             x = pos.x + col * this.columnWidth;
             
