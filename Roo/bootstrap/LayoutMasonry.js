@@ -306,7 +306,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             case 2 :
                 break;
             case 3 :
-                break
+                break;
+            default :
+                break;
         }
     }
     
