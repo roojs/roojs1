@@ -141,33 +141,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         this.layout.defer(500,this);
     },
     
-    reloadItems: function()
-    {   
-        return;
-        
-        //this.bricks = this.el.select('.masonry-brick', true);
-        
-//        Roo.log(this.bricks);
-        
-        Roo.each(this.bricks, function(b){
-            if (!b.el.attr('originalwidth')) {
-                b.el.attr('originalwidth',  b.getSize().width);
-            }
-        }, this);
-        
-        /*
-        this.bricks.each(function(b) {
-            //Roo.log(b.getSize());
-            if (!b.el.attr('originalwidth')) {
-                b.el.attr('originalwidth',  b.getSize().width);
-            }
-            
-        });
-        
-        Roo.log(this.bricks.elements.length);
-        */
-    },
-    
     resize : function()
     {
         Roo.log('resize');
