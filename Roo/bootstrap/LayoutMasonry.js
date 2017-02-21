@@ -300,7 +300,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     getOneBoxColPositions : function(start, box, boxColWidth)
     {
-        return pos.push(start + boxColWidth * Math.floor(Math.random() * 4 - (box.size)));
+        var pos = [];
+        
+        pos.push(start + boxColWidth * Math.floor(Math.random() * 4 - (box.size)));
+        
+        return pos;
     }
     
 });
