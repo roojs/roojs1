@@ -30,10 +30,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
      * @cfg {Boolean} isLayoutInstant = no animation?
      */   
     isLayoutInstant : false, // needed?
-    /**
-     * @cfg {Boolean} isResizingContainer = not sure if this is used..
-     */   
-    isResizingContainer : true,
+   
     /**
      * @cfg {Number} columnWidth  width of the columns 
      */   
@@ -43,14 +40,17 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
      * @cfg {Number} padHeight padding below box..
      */   
     padHeight : 10, 
+    
     /**
      * @cfg {Number} padWidth padding below box..
      */   
     padWidth : 10, 
+    
     /**
      * @cfg {Number} gutter gutter width..
      */   
     gutter : 10, 
+    
     /**
      * @cfg {Boolean} isAutoInitial defalut true
      */   
@@ -66,7 +66,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     bricks: [], //CompositeElement
     
-    cols : [],
+    cols : 1,
     
     _isLayoutInited : false,
     
