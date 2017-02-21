@@ -60,6 +60,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
      */   
     padWidth : 10, 
     /**
+     * @cfg {Number} gutterWidth gutter width..
+     */   
+    gutterWidth : 10, 
+    /**
      * @cfg {Boolean} isAutoInitial defalut true
      */   
     isAutoInitial : true, 
