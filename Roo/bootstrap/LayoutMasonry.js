@@ -249,8 +249,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             Roo.each(block, function(b,kk){
                 
-                Roo.log(b.el.getPadding('lr'));
-                
                 b.el.setWidth(columnWidth * b.size);
                 
                 Roo.log(['setWidth', columnWidth * b.size]);
