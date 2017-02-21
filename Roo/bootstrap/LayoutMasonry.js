@@ -310,7 +310,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 pos.push(start);
                 break;
             case 2 :
-                var p = Math.floor(Math.random()) + 1;
+                var p = Math.floor(Math.random() * 2) + 1;
                 
                 pos.push(start);
                 break;
