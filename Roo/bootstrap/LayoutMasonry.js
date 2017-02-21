@@ -270,7 +270,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
                 //x = x + gutterWidth + sz.width;
                 
-                maxY = Math.max(maxY, y + sz.height);
+                maxY[col] = Math.max(maxY[col], y + sz.height);
                 
             }, this);
             
