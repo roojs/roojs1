@@ -279,7 +279,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             var gutter = Math.max(block.length - 1, 0);
             
-            var columnWidth = this.columnWidth - (gutter * this.padWidth);
+            var blockWidth = this.columnWidth - (gutter * this.padWidth);
+            
+            var columnWidth = Math.floor(blockWidth / 3)
             
             x = pos.x + col * this.columnWidth;
             
