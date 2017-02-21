@@ -308,7 +308,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
                 b.el.setXY([x,y], isInstant ? false : true);
                 
-                x = x + this.padWidth + sz.width;
+                x = x + padWidth + sz.width;
                 
                // Roo.log(['sz.height', sz.height]);
                 
