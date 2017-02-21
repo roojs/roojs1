@@ -292,7 +292,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     getBoxColPositions : function(box)
     {
-        
+        if(box.length == 1){
+            
+        }
     }
     
 });
