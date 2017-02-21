@@ -331,6 +331,18 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             });
         }
         
+        if(box[0].size == 1 && box[1].size == 2){
+            pos.push({
+                x : x,
+                y : y
+            });
+            
+            pos.push({
+                x : x + (boxColWidth + gutterWidth) * 2,
+                y : y
+            });
+        }
+        
         if(box[0].size == 2){
             pos.push(start);
             pos.push(start + boxColWidth + gutterWidth * (3 - box[1].size));
