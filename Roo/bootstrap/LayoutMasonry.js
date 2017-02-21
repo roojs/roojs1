@@ -164,7 +164,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
 
         var queue = [];
         
-        var boxes = {};
+        var boxes = {
+            size : [],
+            items : []
+        };
         var size = 0;
         
         Roo.each(items, function(item, k){
