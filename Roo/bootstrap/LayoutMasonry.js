@@ -242,10 +242,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 }
                 
                 b.el.position('absolute');
-
-                var sz = b.el.getSize();
                 
                 b.el.setXY([x,y], isInstant ? false : true);
+                
+                var sz = b.el.getSize();
                 
                 x = x + gutterWidth + sz.width;
                 
