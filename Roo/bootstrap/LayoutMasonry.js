@@ -146,7 +146,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     resize : function()
     {
         Roo.log('resize');
-        
+        this.layout();
         var cs = this.el.getBox(true);
         
         Roo.log(['current size', this.currentSize]);
