@@ -241,7 +241,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 gutterWidth = (this.columnWidth - blockWidth * 3) / gutter;
             }
             
-            Roo.log(['padWidth', padWidth]);
+            Roo.log(['gutterWidth', gutterWidth]);
             Roo.log(['columnWidth', columnWidth]);
             
             x = pos.x + col * this.columnWidth;
