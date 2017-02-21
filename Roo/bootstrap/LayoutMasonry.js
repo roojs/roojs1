@@ -266,12 +266,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     */
     _processLayoutQueue : function( queue, isInstant )
     {
-        var parent_pos = this.el.getBox(true);
-        Roo.log(parent_pos);
+        var pos = this.el.getBox(true);
         
-        var x = 0;
-        var y = 0;
-        var maxY = 0;
+        var x = pos.x;
+        var y = pos.y;
+        var maxY = pos.y;
         var col = 0;
         
         Roo.each(queue, function(block, k){
