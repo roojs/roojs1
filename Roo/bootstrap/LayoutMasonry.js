@@ -295,17 +295,17 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
 
                 var sz = b.el.getSize();
                 
-                Roo.log([x, y]);
+                //Roo.log([x, y]);
                 
                 b.el.setXY([x,y], isInstant ? false : true);
                 
                 x = x + this.padWidth + sz.width;
                 
-                Roo.log(['sz.height', sz.height]);
+               // Roo.log(['sz.height', sz.height]);
                 
                 maxY = Math.max(maxY, y + sz.height);
                 
-                Roo.log(['maxY', maxY]);
+               // Roo.log(['maxY', maxY]);
                 
             }, this);
             
