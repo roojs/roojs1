@@ -316,9 +316,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         var pos = [];
         
-        if(box[0].size == 1){
+        if(box[0].size == 1 && box[1].size == 1){
             pos.push(start);
-            pos.push(start + boxColWidth + gutterWidth * (3 - box[1].size));
+            pos.push(start + (boxColWidth + gutterWidth) * 2);
         }
         
         if(box[0].size == 2){
