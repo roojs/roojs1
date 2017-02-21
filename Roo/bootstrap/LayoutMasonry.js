@@ -231,6 +231,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             switch (box.length){
                 case 1 :
                     positions = this.getOneBoxColPositions(x, box);
+                    break;
+                default :
+                    break;
             }
             
             Roo.each(box, function(b,kk){
