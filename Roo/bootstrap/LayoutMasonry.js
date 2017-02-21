@@ -326,10 +326,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             pos.push(start + boxColWidth + gutterWidth * (3 - box[1].size));
         }
         
-        
-        
-        
-        
     }
     
     
