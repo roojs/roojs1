@@ -34,7 +34,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     /**
      * @cfg {Number} columnWidth  width of the columns 
      */   
-    columnWidth : 450,
+    boxWidth : 450,
     
     /**
      * @cfg {Number} padHeight padding below box..
