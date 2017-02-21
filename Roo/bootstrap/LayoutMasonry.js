@@ -316,14 +316,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         var pos = [];
         
-        pos.push(start);
-        
         if(box[0].size == 1){
-            
+            pos.push(start);
             pos.push(start + boxColWidth + gutterWidth * (3 - box[1].size));
         }
         
         if(box[0].size == 2){
+            pos.push(start);
             pos.push(start + boxColWidth + gutterWidth * (3 - box[1].size));
         }
         
