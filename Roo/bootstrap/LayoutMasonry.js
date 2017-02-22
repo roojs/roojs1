@@ -397,15 +397,14 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
 
         this.colWidth = this.boxWidth + avail;
         
-        this.boxColWidth = [];
-        
         var xsWidth = Math.floor((this.colWidth - (this.gutter * 2)) / 3);
         
-        this.boxColWidth.push(xsWidth);
+        this.boxColWidth = {
+            xs : xsWidth,
+            sm : this.colWidth - xsWidth - this.gutter,
+            md : this.colWidth
+        };
         
-        this.boxColWidth.push(this.colWidth - xsWidth - this.gutter);
-        
-        this.boxColWidth.push(this.colWidth);
     },
     
     horizontalMeasureColumns : function()
