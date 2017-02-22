@@ -423,7 +423,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         return pos;
     },
     
-    getTwoBoxColPositions : function(x, y, box, boxColWidth)
+    getTwoBoxColPositions : function(x, y, box)
     {
         var pos = [];
         
@@ -447,7 +447,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 });
 
                 pos.push({
-                    x : x + (boxColWidth + this.gutter) * 2,
+                    x : x + (this.boxColWidth['xs'] + this.gutter) * 2,
                     y : y
                 });
             }
