@@ -257,9 +257,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             }, this);
             
             //x = pos.x + col * (this.colWidth + this.padWidth);
-            x = maxX[col];
             
+            var minY = pos.y;
             
+            for (var i = 0; i < this.cols; i++){
+                
+                
+            }
             
             y = maxY[col];
             
