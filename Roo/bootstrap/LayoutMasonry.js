@@ -250,6 +250,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                     continue;
                 }
                 
+                col = i;
                 x = pos.x + i * (this.colWidth + this.padWidth);
             }
             
