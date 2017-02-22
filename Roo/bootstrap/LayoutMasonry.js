@@ -271,7 +271,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
                 var sz = b.el.getSize();
                 
-                maxY[col] = Math.max(maxY[col], positions[kk].y + sz.height + padWidth);
+                maxY[col] = Math.max(maxY[col], positions[kk].y + sz.height + this.padWidth);
                 
             }, this);
             
