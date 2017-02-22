@@ -240,8 +240,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                     case 1 :
                         break;
                     case 2 :
-                        width = this.colWidth - boxColWidth - this.gutter
+                        width = this.colWidth - boxColWidth - this.gutter;
                         break;
+                    case 3 :
+                        width = this.colWidth;
                 }
                  * b.size + b.el.getPadding('lr');
                 
