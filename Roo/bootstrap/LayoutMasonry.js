@@ -211,7 +211,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     * @param {Number} y - vertical position
     * @param {Boolean} isInstant - disables transitions
     */
-    _processLayoutQueue : function( queue, isInstant )
+    _processVerticalLayoutQueue : function( queue, isInstant )
     {
         var pos = this.el.getBox(true);
         
