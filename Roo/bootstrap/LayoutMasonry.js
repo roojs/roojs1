@@ -288,7 +288,76 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     _processHorizontalLayoutQueue : function( queue, isInstant )
     {
+        var pos = this.el.getBox(true);
         
+        var x = pos.x;
+        var y = pos.y;
+        var maxY = pos.y;
+        
+        Roo.each(queue, function(box, k){
+            
+            var col = k % this.cols;
+            
+            var gutter = Math.max(box.length - 1, 0);
+            
+            var boxWidth = this.colWidth - (gutter * this.gutter);
+            
+            var boxColWidth = Math.floor(boxWidth / 3);
+            
+            var gutterWidth = 0;
+            
+            if(gutter > 0){
+                gutterWidth = (this.colWidth - boxColWidth * 3) / gutter;
+            }
+            
+            Roo.each(box, function(b,kk){
+                
+                var width = boxColWidth * b.size + b.el.getPadding('lr');
+                
+                b.el.setWidth(width);
+                
+                if(b.square){
+                    b.el.setHeight(width);
+                }
+            }, this);
+            
+            x = pos.x + col * (this.colWidth + this.padWidth);
+            
+            if(col == 0){
+                y = maxY + this.padHeight;
+            }
+            
+            var positions = [];
+            
+            switch (box.length){
+                case 1 :
+                    positions = this.getOneBoxColPositions(x, y, box, boxColWidth, gutterWidth);
+                    break;
+                case 2 :
+                    positions = this.getTwoBoxColPositions(x, y, box, boxColWidth, gutterWidth);
+                    break;
+                case 3 :
+                    positions = this.getThreeBoxColPositions(x, y, box, boxColWidth, gutterWidth);
+                    break;
+                default :
+                    break;
+            }
+            
+            Roo.each(box, function(b,kk){
+                
+                b.el.position('absolute');
+                
+                b.el.setXY([positions[kk].x, positions[kk].y], isInstant ? false : true);
+                
+                var sz = b.el.getSize();
+                
+                //x = x + gutterWidth + sz.width;
+                
+                maxY = Math.max(maxY, y + sz.height);
+                
+            }, this);
+            
+        }, this);
     },
     
     _resetLayout : function()
