@@ -271,8 +271,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                     break;
             }
             
-            Roo.log(positions);
-            
             Roo.each(box, function(b,kk){
                 
                 b.el.position('absolute');
