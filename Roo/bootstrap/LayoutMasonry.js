@@ -401,9 +401,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var xsWidth = Math.floor((this.colWidth - (this.gutter * 2)) / 3);
         
-        this.boxColWidth.push();
+        this.boxColWidth.push(xsWidth);
         
-        
+        this.boxColWidth.push(this.colWidth - xsWidth - this.gutter);
     },
     
     horizontalMeasureColumns : function()
