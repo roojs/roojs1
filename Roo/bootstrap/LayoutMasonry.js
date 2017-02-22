@@ -415,7 +415,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             });
         } else {
             pos.push({
-                x : x + (boxColWidth + this.gutter) * rand,
+                x : x + (this.boxColWidth['xs'] + this.gutter) * rand,
                 y : y
             });
         }
