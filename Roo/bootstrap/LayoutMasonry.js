@@ -449,15 +449,20 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         if(box[0].size == 1 && box[1].size == 2){
             
-            pos.push({
-                x : x,
-                y : y + ((box[1].el.getHeight() - box[0].el.getHeight()) * Math.floor(Math.random() * 2))
-            });
+            if(this.isHorizontal){
+                
+            } else {
+                pos.push({
+                    x : x,
+                    y : y + ((box[1].el.getHeight() - box[0].el.getHeight()) * Math.floor(Math.random() * 2))
+                });
+
+                pos.push({
+                    x : x + boxColWidth + gutterWidth,
+                    y : y
+                });
+            }
             
-            pos.push({
-                x : x + boxColWidth + gutterWidth,
-                y : y
-            });
         }
         
         if(box[0].size == 2 && box[1].size == 1){
