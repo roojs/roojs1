@@ -224,13 +224,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             var boxColWidth = Math.floor(boxWidth / 3);
             
-            var gutterWidth = 0;
-            
-            if(gutter > 0){
-                gutterWidth = (this.colWidth - boxColWidth * 3) / gutter;
-            }
-            
-            
+//            var gutterWidth = 0;
+//            
+//            if(gutter > 0){
+//                gutterWidth = (this.colWidth - boxColWidth * 3) / gutter;
+//            }
+//            
+//            
             
             Roo.each(box, function(b,kk){
                 
