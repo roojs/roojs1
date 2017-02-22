@@ -498,21 +498,21 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         if(this.isHorizontal){
             pos.push({
                 x : x,
-                y : y + (this.boxColWidth['xs'] + this.gutter) * 1
+                y : y + this.boxColWidth['xs'] + this.gutter
             });
             
             pos.push({
                 x : x,
-                y : y + this.boxColWidth['sm']
+                y : y + this.boxColWidth['sm'] + this.gutter
             });
         } else {
             pos.push({
-                x : x + (this.boxColWidth['xs'] + this.gutter) * 1,
+                x : x + this.boxColWidth['xs'] + this.gutter,
                 y : y
             });
             
             pos.push({
-                x : x + (this.boxColWidth['xs'] + this.gutter) * 2,
+                x : x + this.boxColWidth['sm'] + this.gutter,
                 y : y
             });
         }
