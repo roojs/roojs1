@@ -450,6 +450,15 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         if(box[0].size == 1 && box[1].size == 2){
             
             if(this.isHorizontal){
+                pos.push({
+                    x : x,
+                    y : y
+                });
+                
+                pos.push({
+                    x : x,
+                    y : y + boxColWidth + gutterWidth,
+                });
                 
             } else {
                 pos.push({
