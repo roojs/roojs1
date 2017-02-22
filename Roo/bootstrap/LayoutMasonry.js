@@ -229,8 +229,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
 //            if(gutter > 0){
 //                gutterWidth = (this.colWidth - boxColWidth * 3) / gutter;
 //            }
-//            
-//            
+            
+            
             
             Roo.each(box, function(b,kk){
                 
