@@ -296,7 +296,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         Roo.each(queue, function(box, k){
             
-            var boxColHeight = Math.floor(boxWidth / 3);
+            var boxColHeight = Math.floor(boxHeight / 3);
             
             var gutterWidth = 0;
             
