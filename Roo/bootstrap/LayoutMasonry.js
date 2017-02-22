@@ -329,9 +329,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
             }, this);
             
-            
-            
         }, this);
+        
+        this._processHorizontalEndItem();
     },
     
     _resetLayout : function()
