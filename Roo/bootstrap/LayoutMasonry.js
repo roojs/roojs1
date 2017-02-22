@@ -501,13 +501,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         if(this.isHorizontal){
             pos.push({
-                x : x + (boxColWidth + this.gutter) * 2,
-                y : y + (boxColWidth + this.gutter) * 1
+                x : x,
+                y : y + (this.boxColWidth['xs'] + this.gutter) * 1
             });
             
             pos.push({
                 x : x,
-                y : y + (boxColWidth + this.gutter) * 2
+                y : y + (this.boxColWidth['xs'] + this.gutter) * 2
             });
         } else {
             pos.push({
