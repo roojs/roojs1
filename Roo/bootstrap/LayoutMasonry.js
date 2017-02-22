@@ -278,45 +278,50 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var x = pos.x;
         var y = pos.y;
+        var maxY = [];
+        
+        for (var i = 0; i < this.cols; i++){
+            maxY[i] = pos.y;
+        }
         
         Roo.each(queue, function(box, k){
             
-            var gutter = Math.max(box.length - 1, 0);
-            
-            var boxHeight = this.boxWidth - (gutter * this.gutter);
-            
-            var boxColHeight = Math.floor(boxHeight / 3);
-            
-            var gutterHeight = 0;
-            
-            if(gutter > 0){
-                gutterHeight = (this.boxWidth - boxColHeight * 3) / gutter;
-            }
+            var col = k % this.cols;
             
             Roo.each(box, function(b,kk){
                 
-                var height = boxColHeight * b.size + b.el.getPadding('tb');
+                var width = this.boxColWidth[b.size] + b.el.getPadding('lr');
                 
-                b.el.setHeight(height);
+                b.el.setWidth(width);
                 
                 if(b.square){
-                    b.el.setWidth(height);
+                    b.el.setHeight(width);
                 }
             }, this);
             
-            x = pos.x + k * (this.boxWidth + this.padWidth);
+            for (var i = 0; i < this.cols; i++){
+                if(maxY[i] >= maxY[col]){
+                    continue;
+                }
+                
+                col = i;
+            }
+            
+            x = pos.x + col * (this.colWidth + this.padWidth);
+            
+            y = maxY[col];
             
             var positions = [];
             
             switch (box.length){
                 case 1 :
-                    positions = this.getOneBoxColPositions(x, y, box, boxColHeight, gutterHeight);
+                    positions = this.getOneBoxColPositions(x, y, box);
                     break;
                 case 2 :
-                    positions = this.getTwoBoxColPositions(x, y, box, boxColHeight, gutterHeight);
+                    positions = this.getTwoBoxColPositions(x, y, box);
                     break;
                 case 3 :
-                    positions = this.getThreeBoxColPositions(x, y, box, boxColHeight, gutterHeight);
+                    positions = this.getThreeBoxColPositions(x, y, box);
                     break;
                 default :
                     break;
@@ -330,7 +335,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
                 var sz = b.el.getSize();
                 
-                //x = x + gutterWidth + sz.width;
+                maxY[col] = Math.max(maxY[col], positions[kk].y + sz.height + this.padWidth);
                 
             }, this);
             
