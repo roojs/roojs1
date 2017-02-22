@@ -163,10 +163,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             return;
         }
 
-        if(this.isHorizontal){
-            var eItems = items.slice(items.length - 3, items.length);
-            items = items.slice(0, items.length - 3);
-        }
+//        if(this.isHorizontal){
+//            var eItems = items.slice(items.length - 3, items.length);
+//            items = items.slice(0, items.length - 3);
+//        }
         
         var queue = [];
         
