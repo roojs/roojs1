@@ -113,6 +113,22 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
+        this.intSize = 1;
+        
+        switch (this.size) {
+            case 'xs' :
+                this.intSize = 1;
+                break;
+            case 'sm' :
+                this.intSize = 2;
+                break;
+            case 'md' :
+                this.intSize = 3;
+                break;
+            default :
+                break;
+        }
+        
         if(this.href.length){
             this.el.on('click', this.onClick, this);
         }
