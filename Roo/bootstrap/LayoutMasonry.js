@@ -531,12 +531,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             });
         } else {
             pos.push({
-                x : x + (boxColWidth + this.gutter) * 1,
+                x : x + (this.boxColWidth['xs'] + this.gutter) * 1,
                 y : y
             });
             
             pos.push({
-                x : x + (boxColWidth + this.gutter) * 2,
+                x : x + (this.boxColWidth['xs'] + this.gutter) * 2,
                 y : y
             });
         }
