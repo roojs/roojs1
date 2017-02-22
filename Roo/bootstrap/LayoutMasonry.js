@@ -480,7 +480,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 });
 
                 pos.push({
-                    x : x + (this.boxColWidth['xs'] + this.gutter) * 2,
+                    x : x + this.boxColWidth['sm'] + this.gutter,
                     y : y + ((box[0].el.getHeight() - box[1].el.getHeight()) * Math.floor(Math.random() * 2))
                 });
             }
