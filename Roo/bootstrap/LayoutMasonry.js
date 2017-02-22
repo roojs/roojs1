@@ -398,7 +398,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         if(this.isHorizontal){
             pos.push({
                 x : x,
-                y : y + (boxColWidth + this.gutter) * rand
+                y : y + (this.boxColWidth['xs'] + this.gutter) * rand
             });
         } else {
             pos.push({
