@@ -234,6 +234,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
                 var width = this.boxColWidth[b.size] + b.el.getPadding('lr');
                 
+                Roo.log([b.size, width]);
+                
                 b.el.setWidth(width);
                 
                 if(b.square){
