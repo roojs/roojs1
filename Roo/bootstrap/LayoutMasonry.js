@@ -421,15 +421,21 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var pos = [];
         
         if(box[0].size == 1 && box[1].size == 1){
-            pos.push({
-                x : x,
-                y : y
-            });
             
-            pos.push({
-                x : x + boxColWidth * 2 + gutterWidth,
-                y : y
-            });
+            if(this.isHorizontal){
+                
+            } else {
+                pos.push({
+                    x : x,
+                    y : y
+                });
+
+                pos.push({
+                    x : x + boxColWidth * 2 + gutterWidth,
+                    y : y
+                });
+            }
+            
         }
         
         if(box[0].size == 1 && box[1].size == 2){
