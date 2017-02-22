@@ -391,15 +391,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         this.cols = Math.max( cols, 1 );
         
-        if(this.cols == 1){
-            this.colWidth = this.containerWidth;
-        } else {
-            var totalBoxWidth = this.cols * boxWidth;
-        
-            var avail = Math.floor((containerWidth - totalBoxWidth) / this.cols);
+        var totalBoxWidth = this.cols * boxWidth;
 
-            this.colWidth = this.boxWidth + avail;
-        }
+        var avail = Math.floor((containerWidth - totalBoxWidth) / this.cols);
+
+        this.colWidth = this.boxWidth + avail;
+        
         
         
         
