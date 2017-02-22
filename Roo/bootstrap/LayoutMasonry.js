@@ -427,7 +427,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         var pos = [];
         
-        if(box[0].size == 1 && box[1].size == 1){
+        if(box[0].size == 'xs' && box[1].size == 'xs'){
             
             if(this.isHorizontal){
                 pos.push({
