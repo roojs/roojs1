@@ -415,11 +415,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         if(this.isHorizontal){
             pos.push({
                 x : x,
-                y : y + (boxColWidth + gutterWidth) * rand
+                y : y + (boxColWidth + this.gutter) * rand
             });
         } else {
             pos.push({
-                x : x + (boxColWidth + gutterWidth) * rand,
+                x : x + (boxColWidth + this.gutter) * rand,
                 y : y
             });
         }
