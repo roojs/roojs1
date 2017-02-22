@@ -259,13 +259,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             switch (box.length){
                 case 1 :
-                    positions = this.getOneBoxColPositions(x, y, box, boxColWidth);
+                    positions = this.getOneBoxColPositions(x, y, box);
                     break;
                 case 2 :
-                    positions = this.getTwoBoxColPositions(x, y, box, boxColWidth);
+                    positions = this.getTwoBoxColPositions(x, y, box);
                     break;
                 case 3 :
-                    positions = this.getThreeBoxColPositions(x, y, box, boxColWidth);
+                    positions = this.getThreeBoxColPositions(x, y, box);
                     break;
                 default :
                     break;
