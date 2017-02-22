@@ -163,6 +163,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             return;
         }
 
+        if(this.isHorizontal){
+            
+        }
+        
         var queue = [];
         
         var box = [];
