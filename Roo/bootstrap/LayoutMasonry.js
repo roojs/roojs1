@@ -286,6 +286,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
     },
     
+    _processVerticalLayoutQueue : function( queue, isInstant )
+    {
+        
+    },
+    
     _resetLayout : function()
     {
         if(this.isHorizontal){
