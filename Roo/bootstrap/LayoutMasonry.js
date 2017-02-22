@@ -318,7 +318,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             var positions = [];
             
-            
             switch (box.length){
                 case 1 :
                     positions = this.getOneBoxColPositions(x, y, box, boxColWidth, gutterWidth);
