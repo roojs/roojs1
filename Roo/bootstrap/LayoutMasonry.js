@@ -543,12 +543,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             });
         } else {
             pos.push({
-                x : x + (boxColWidth + gutterWidth) * 1,
+                x : x + (boxColWidth + this.gutter) * 1,
                 y : y
             });
             
             pos.push({
-                x : x + (boxColWidth + gutterWidth) * 2,
+                x : x + (boxColWidth + this.gutter) * 2,
                 y : y
             });
         }
