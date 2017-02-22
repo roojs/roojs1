@@ -218,18 +218,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             var col = k % this.cols;
             
-//            var gutter = Math.max(box.length - 1, 0);
-            
-//            var boxWidth = this.colWidth - (2 * this.gutter);
-            
-//            var boxColWidth = Math.floor(boxWidth / 3);
-            
-//            var gutterWidth = 0;
-//            
-//            if(gutter > 0){
-//                gutterWidth = (this.colWidth - boxColWidth * 3) / gutter;
-//            }
-            
             Roo.each(box, function(b,kk){
                 
                 var width = this.boxColWidth[b.size] + b.el.getPadding('lr');
