@@ -248,7 +248,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                     default :
                         break;
                 }
-                 * b.size + b.el.getPadding('lr');
+                
+                width = width + b.el.getPadding('lr');
                 
                 b.el.setWidth(width);
                 
