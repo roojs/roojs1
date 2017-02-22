@@ -286,7 +286,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
     },
     
-    _processVerticalLayoutQueue : function( queue, isInstant )
+    _processHorizontalLayoutQueue : function( queue, isInstant )
     {
         
     },
