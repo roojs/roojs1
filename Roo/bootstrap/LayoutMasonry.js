@@ -412,6 +412,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var rand = Math.floor(Math.random() * (4 - box[0].size));
         
+        
+        
         if(this.isHorizontal){
             pos.push({
                 x : x,
