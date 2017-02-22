@@ -287,7 +287,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
 
     },
     
-    measureColumns : function()
+    verticalMeasureColumns : function()
     {
         this.getContainerWidth();
       
