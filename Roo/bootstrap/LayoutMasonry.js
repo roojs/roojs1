@@ -343,7 +343,15 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     _processHorizontalEndItem : function(eItems, maxX, y)
     {
         Roo.each(eItems, function(b,k){
-                
+            
+            if(k == 0 || k == 2) {
+                b.size = 'xs';
+            }
+            
+            if(k == 1) {
+                b.size = 'sm';
+            }
+            
             var height = this.boxColWidth[b.size] + b.el.getPadding('tb');
                 
             b.el.setHeight(height);
