@@ -342,6 +342,23 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     _processHorizontalEndItem : function(eItems, maxX, y)
     {
+        var positions = [];
+        
+        positions.push({
+            x : maxX,
+            y : y
+        });
+        
+        positions.push({
+            x : maxX + this.boxColWidth['xs'] + this.gutter,
+            y : y
+        });
+        
+        positions.push({
+            x : maxX,
+            y : y
+        });
+        
         Roo.each(eItems, function(b,k){
             
             b.size = 'xs';
