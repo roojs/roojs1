@@ -510,7 +510,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
     },
     
-    getThreeBoxColPositions : function(x, y, box, boxColWidth)
+    getThreeBoxColPositions : function(x, y, box)
     {
         var pos = [];
         
