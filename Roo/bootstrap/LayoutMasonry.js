@@ -337,7 +337,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
         }, this);
         
-        this._processHorizontalEndItem(eItems, maxX, y);
+        this._processHorizontalEndItem(eItems, maxX, y, isInstant);
     },
     
     _processHorizontalEndItem : function(eItems, maxX, y, isInstant)
