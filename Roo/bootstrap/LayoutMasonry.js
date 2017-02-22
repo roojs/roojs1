@@ -282,7 +282,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             this.horizontalMeasureColumns();
             return;
         }
-        this.measureColumns();
+        
+        this.verticalMeasureColumns();
 
     },
     
