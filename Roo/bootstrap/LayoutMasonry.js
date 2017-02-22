@@ -359,7 +359,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             y : y + this.boxColWidth['sm'] + this.gutter
         });
         
-        Roo.log([eItems[1].el.getWidth(), eItems[2].el.getWidth()]);
+        Roo.log([eItems]);
         
         Roo.each(eItems, function(b,k){
             
