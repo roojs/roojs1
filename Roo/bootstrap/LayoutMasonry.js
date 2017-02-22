@@ -312,6 +312,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
     },
     
+    horizontalMeasureColumns : function()
+    {
+        
+    }
+    
     getContainerWidth : function()
     {
         this.containerWidth = this.el.getBox(true).width;  //maybe use getComputedWidth
