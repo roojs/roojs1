@@ -32,14 +32,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     isLayoutInstant : false, // needed?
    
     /**
-     * @cfg {Number} boxWidth  width of the columns for vertical
+     * @cfg {Number} boxWidth  width of the columns
      */   
     boxWidth : 450,
-    
-    /**
-     * @cfg {Number} boxHeight  height of the columns for horizontal
-     */   
-    boxHeight : 450,
     
     /**
      * @cfg {Number} padHeight padding below box..
