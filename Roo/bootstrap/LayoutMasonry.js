@@ -294,7 +294,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 }
             }, this);
             
-            x = pos.x + k * (this.boxWidth + this.padWidth);
+            //x = maxX;
+            
+            //x = pos.x + k * (this.boxWidth + this.padWidth);
             
             var positions = [];
             
