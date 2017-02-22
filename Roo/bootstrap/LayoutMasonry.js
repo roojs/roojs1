@@ -402,7 +402,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         this.containerWidth = this.el.getBox(true).width;  //maybe use getComputedWidth
     },
     
-    getOneBoxColPositions : function(x, y, box, boxColWidth)
+    getOneBoxColPositions : function(x, y, box)
     {
         var pos = [];
         
