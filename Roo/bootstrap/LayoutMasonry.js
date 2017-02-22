@@ -481,7 +481,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
         }
         
-        if(box[0].size == 2 && box[1].size == 1){
+        if(box[0].size == 'sm' && box[1].size == 'xs'){
             
             if(this.isHorizontal){
                 pos.push({
