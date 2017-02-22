@@ -320,7 +320,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
                 var sz = b.el.getSize();
                 
-                x = Math.max(x, positions[kk].x + sz.width + this.padWidth);
+                maxX = Math.max(maxX, positions[kk].x + sz.width + this.padWidth);
                 
             }, this);
             
