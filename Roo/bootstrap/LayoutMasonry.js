@@ -32,6 +32,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     isLayoutInstant : false, // needed?
    
     /**
+     * @cfg {Number} boxWidth  width of the columns 
+     */   
+    boxWidth : 450,
+    
+    /**
      * @cfg {Number} columnWidth  width of the columns 
      */   
     boxWidth : 450,
