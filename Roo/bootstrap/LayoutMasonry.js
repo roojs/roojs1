@@ -247,10 +247,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             y = maxY[col];
             
-            if(maxY[col] != pos.y){
-                y = maxY[col] + gutterWidth;
-            }
-            
             var positions = [];
             
             switch (box.length){
