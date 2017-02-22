@@ -533,13 +533,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         if(this.isHorizontal){
             pos.push({
-                x : x + (boxColWidth + gutterWidth) * 2,
-                y : y + (boxColWidth + gutterWidth) * 1
+                x : x + (boxColWidth + this.gutter) * 2,
+                y : y + (boxColWidth + this.gutter) * 1
             });
             
             pos.push({
                 x : x,
-                y : y + (boxColWidth + gutterWidth) * 2
+                y : y + (boxColWidth + this.gutter) * 2
             });
         } else {
             pos.push({
