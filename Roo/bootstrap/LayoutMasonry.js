@@ -258,7 +258,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             //x = pos.x + col * (this.colWidth + this.padWidth);
             
-            var minY = pos.y;
+            var minCol = 0;
             
             for (var i = 0; i < this.cols; i++){
                 
