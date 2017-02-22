@@ -337,10 +337,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
         }, this);
         
-        this._processHorizontalEndItem(eItems, maxX, y);
+        this._processHorizontalEndItem(eItems, maxX, y, isInstant);
     },
     
-    _processHorizontalEndItem : function(eItems, maxX, y)
+    _processHorizontalEndItem : function(eItems, x, y, isInstant)
     {
         var positions = [];
         
@@ -377,7 +377,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
 
             b.el.position('absolute');
 
-            b.el.setXY([positions[l].x, positions[l].y], isInstant ? false : true);
+            b.el.setXY([x, y], isInstant ? false : true);
 
             var sz = b.el.getSize();
 
