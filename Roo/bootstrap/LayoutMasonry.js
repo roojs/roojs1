@@ -320,6 +320,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
                 b.el.setXY([positions[kk].x, positions[kk].y], isInstant ? false : true);
                 
+                var sz = b.el.getSize();
+                
+                x = Math.max(x, positions[kk].x + sz.width + this.padWidth);
+                
             }, this);
             
         }, this);
