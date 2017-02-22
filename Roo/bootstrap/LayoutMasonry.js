@@ -401,10 +401,17 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var rand = Math.floor(Math.random() * (4 - box[0].size));
         
-        pos.push({
-            x : x + (boxColWidth + gutterWidth) * rand,
-            y : y
-        });
+        if(this.isHorizontal){
+            pos.push({
+                x : x,
+                y : y + (boxColWidth + gutterWidth) * rand
+            });
+        } else {
+            pos.push({
+                x : x + (boxColWidth + gutterWidth) * rand,
+                y : y
+            });
+        }
         
         return pos;
     },
