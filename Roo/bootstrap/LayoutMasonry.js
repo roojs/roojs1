@@ -382,7 +382,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         this.cols = 3;
         
+        var xsWidth = Math.floor((this.boxWidth - (this.gutter * 2)) / 3);
         
+        this.boxColWidth = {
+            xs : xsWidth,
+            sm : this.boxWidth - xsWidth - this.gutter,
+            md : this.colWidth
+        };
     },
     
     getContainerWidth : function()
