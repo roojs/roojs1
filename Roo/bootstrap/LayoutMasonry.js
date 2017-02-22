@@ -57,6 +57,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     isAutoInitial : true, 
     
     containerWidth: 0,
+    
+    /**
+     * @cfg {Boolean} isHorizontal defalut false
+     */   
+    isHorizontal : false, 
 
     currentSize : null,
     
