@@ -287,7 +287,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         Roo.each(queue, function(box, k){
             
-            var col = k % this.cols;
+            //var col = k % this.cols;
             
             Roo.each(box, function(b,kk){
                 
