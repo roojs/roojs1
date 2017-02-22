@@ -293,7 +293,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             var gutter = Math.max(box.length - 1, 0);
             
-            var boxHeight = this.boxHeight - (gutter * this.gutter);
+            var boxHeight = this.boxWidth - (gutter * this.gutter);
             
             var boxColHeight = Math.floor(boxHeight / 3);
             
