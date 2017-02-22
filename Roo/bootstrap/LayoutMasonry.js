@@ -512,7 +512,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 });
 
                 pos.push({
-                    x : x + boxColWidth * 2 + gutterWidth,
+                    x : x + boxColWidth * 2 + this.gutter,
                     y : y + ((box[0].el.getHeight() - box[1].el.getHeight()) * Math.floor(Math.random() * 2))
                 });
             }
