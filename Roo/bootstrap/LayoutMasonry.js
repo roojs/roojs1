@@ -393,6 +393,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         if(this.cols == 1){
             this.colWidth = this.containerWidth;
+        } else {
+            
         }
         
         var totalBoxWidth = this.cols * boxWidth;
