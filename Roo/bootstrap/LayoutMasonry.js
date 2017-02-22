@@ -337,10 +337,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
         }, this);
         
-        this._processHorizontalEndItem(eItems, maxX, y, isInstant);
+        this._processHorizontalEndItem(eItems, maxX, y);
     },
     
-    _processHorizontalEndItem : function(eItems, x, y, isInstant)
+    _processHorizontalEndItem : function(eItems, maxX, y)
     {
         var positions = [];
         
@@ -377,11 +377,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
 
             b.el.position('absolute');
 
-            b.el.setXY([x, y], isInstant ? false : true);
+            b.el.setXY([positions[k].x, positions[k].y], isInstant ? false : true);
 
             var sz = b.el.getSize();
-
-            maxX = Math.max(maxX, positions[kk].x + sz.width + this.padWidth);
 
         }, this);
     },
