@@ -331,7 +331,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
         }, this);
         
-        this._processHorizontalEndItem();
+        this._processHorizontalEndItem(eItems, maxX, pos.y);
     },
     
     _resetLayout : function()
