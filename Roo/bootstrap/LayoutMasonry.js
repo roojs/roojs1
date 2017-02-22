@@ -253,7 +253,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             y = maxY[col];
             
             if(maxY[col] != pos.y){
-                y = maxY + this.padHeight;
+                y = maxY[col] + this.padHeight;
             }
             
             var positions = [];
