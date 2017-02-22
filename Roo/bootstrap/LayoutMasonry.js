@@ -302,10 +302,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             var boxColHeight = Math.floor(boxHeight / 3);
             
-            var gutterWidth = 0;
+            var gutterHeight = 0;
             
             if(gutter > 0){
-                gutterWidth = (this.boxHeight - boxColWidth * 3) / gutter;
+                gutterWidth = (this.boxHeight - boxColHeight * 3) / gutter;
             }
             
             Roo.each(box, function(b,kk){
