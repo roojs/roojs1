@@ -266,13 +266,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             switch (box.length){
                 case 1 :
-                    positions = this.getOneBoxColPositions(x, y, box);
+                    positions = this.getOneBoxColPositions(x, y, box, boxColWidth);
                     break;
                 case 2 :
-                    positions = this.getTwoBoxColPositions(x, y, box);
+                    positions = this.getTwoBoxColPositions(x, y, box, boxColWidth);
                     break;
                 case 3 :
-                    positions = this.getThreeBoxColPositions(x, y, box);
+                    positions = this.getThreeBoxColPositions(x, y, box, boxColWidth);
                     break;
                 default :
                     break;
@@ -406,13 +406,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         this.containerWidth = this.el.getBox(true).width;  //maybe use getComputedWidth
     },
     
-    getOneBoxColPositions : function(x, y, box)
+    getOneBoxColPositions : function(x, y, box, boxColWidth, gutterWidth)
     {
         var pos = [];
         
         var rand = Math.floor(Math.random() * (4 - box[0].size));
-        
-        
         
         if(this.isHorizontal){
             pos.push({
