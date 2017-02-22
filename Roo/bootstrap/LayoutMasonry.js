@@ -427,8 +427,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             });
             
             pos.push({
-                x : x + boxColWidth * 2 + gutterWidth,
-                y : y
+                x : x,
+                y : y + boxColWidth * 2 + gutterWidth
             });
         }
         
