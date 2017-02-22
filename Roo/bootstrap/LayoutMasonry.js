@@ -197,10 +197,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
         }, this);
         
-        if(this.isHorizontal){
-            this._processHorizontalLayoutQueue( queue );
-            return;
-        }
+        
         
         this._processVerticalLayoutQueue( queue );
         
