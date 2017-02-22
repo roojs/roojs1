@@ -336,7 +336,17 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     _processHorizontalEndItem : function(eItems, maxX, y)
     {
-        
+        Roo.each(eItems, function(b,kk){
+                
+            b.el.position('absolute');
+
+            b.el.setXY([positions[kk].x, positions[kk].y], isInstant ? false : true);
+
+            var sz = b.el.getSize();
+
+            maxX = Math.max(maxX, positions[kk].x + sz.width + this.padWidth);
+
+        }, this);
     },
     
     _resetLayout : function()
