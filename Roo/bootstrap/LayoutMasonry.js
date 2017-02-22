@@ -342,6 +342,17 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     _processHorizontalEndItem : function(eItems, maxX, y, isInstant)
     {
+        Roo.each(box, function(b,kk){
+                
+            var height = this.boxColWidth[b.size] + b.el.getPadding('tb');
+
+            b.el.setHeight(height);
+
+            if(b.square){
+                b.el.setWidth(height);
+            }
+        }, this);
+
         var positions = [];
         
         positions.push({
@@ -363,22 +374,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         Roo.each(eItems, function(b,k){
             
-            b.size = 'xs';
-            b.intSize = 1;
-            
-            if(k == 1) {
-                b.size = 'sm';
-                b.intSize = 2;
-            }
-            
-            var height = this.boxColWidth[b.size] + b.el.getPadding('tb');
-                
-            b.el.setHeight(height);
-
-            if(b.square){
-                b.el.setWidth(height);
-            }
-
             b.el.position('absolute');
 
             b.el.setXY([positions[k].x, positions[k].y], isInstant ? false : true);
