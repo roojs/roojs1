@@ -14,7 +14,7 @@
 }
 
 .masonry-brick-text-only {
-    z-index: 12;
+    z-index: 9999;
 }
 
 .masonry-brick-image {
