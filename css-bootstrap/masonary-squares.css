@@ -15,6 +15,15 @@
     
 }
 
+.masonry-brick-paragraph {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 .masonry-brick-paragraph > .masonry-brick-title {
     margin: 15px;
 }
@@ -24,12 +33,6 @@
 }
 
 .masonry-brick-image .masonry-brick-paragraph {
-    width: 100%;
-    height: 100%;
-    background-color: #fff;
-    position: absolute;
-    top: 0;
-    left: 0;
     opacity: 0;
 }
 
