@@ -144,6 +144,8 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             this.el.on('click', this.onClick, this);
         }
         
+        
+        
         this.parent().bricks.push(this);
     },
     
