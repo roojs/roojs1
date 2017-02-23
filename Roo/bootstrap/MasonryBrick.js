@@ -81,6 +81,10 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             cls += ' masonry-' + this.size + '-brick';
         }
         
+        if(this.cls){
+            cls += ' ' + this.cls;
+        }
+        
         var cfg = {
             tag: (this.href.length) ? 'a' : 'div',
             cls: cls,
