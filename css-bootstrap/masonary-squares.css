@@ -21,11 +21,11 @@
 }
 
 .masonry-brick-text-only > .masonry-brick-title {
-    margin: 0 15px 0 15px;
+    margin: 15px;
 }
 
 .masonry-brick-text-only > .masonry-brick-html {
-    margin: 15px 15px 0 15px;
+    margin: 15px;
 }
 
 .masonry-brick-image {
