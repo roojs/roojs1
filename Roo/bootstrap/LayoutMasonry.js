@@ -153,7 +153,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
       
         this._isLayoutInited = true;
         
-        this.el.show();
     },
     
     layoutItems : function( isInstant )
