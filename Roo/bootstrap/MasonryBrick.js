@@ -158,6 +158,11 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         e.preventDefault();
         
         Roo.log('on click');
+    },
+    
+    enter: function(e, el)
+    {
+        
     }
     
 });
