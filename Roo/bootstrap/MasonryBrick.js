@@ -144,21 +144,10 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 break;
         }
         
-        if(this.href.length){
-            this.el.on('click', this.onClick, this);
-        }
-        
         this.el.on('mouseenter'  ,this.enter, this);
         this.el.on('mouseleave', this.leave, this);
         
         this.parent().bricks.push(this);
-    },
-    
-    onClick: function(e, el)
-    {
-        e.preventDefault();
-        
-        Roo.log('on click');
     },
     
     enter: function(e, el)
