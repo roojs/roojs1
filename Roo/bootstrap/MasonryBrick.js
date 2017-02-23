@@ -170,7 +170,9 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     {
         e.preventDefault();
         
-        Roo.log('leave');
+        if(this.bgimage.length){
+            this.el.select('masonry-brick-paragraph', true).first().setOpacity(0, true);
+        }
     }
     
 });
