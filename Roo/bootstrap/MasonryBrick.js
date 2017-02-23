@@ -74,7 +74,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         }
         
         if(this.bgimage.length){
-            cls += ' masonry-brick-image';
+            cls += ' masonry-brick-image-view';
         }
         
         if(this.size){
