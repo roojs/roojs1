@@ -83,7 +83,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             cn: [
                 {
                     tag: 'div',
-                    cls: 'masonry-brick-content',
+                    cls: 'masonry-brick-text-only',
                     cn: []
                 }
             ]
@@ -108,7 +108,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         }
         
         if(this.bgimage.length){
-            cn.push({
+            cfg.cn.push({
                 tag: 'img',
                 cls: 'masonry-brick-image',
                 src: this.bgimage
