@@ -159,11 +159,15 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     
     enter: function(e, el)
     {
-        Roo.log([e, el]);
+        e.preventDefault();
+        
+        
     },
     
     leave: function(e, el)
     {
+        e.preventDefault();
+        
         
     }
     
