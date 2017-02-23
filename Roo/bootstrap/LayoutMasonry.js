@@ -98,8 +98,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {
-        this.el.setVisibilityMode(Roo.Element.DISPLAY).hide();
-        
         var _this = this;
         
         if(this.isAutoInitial){
