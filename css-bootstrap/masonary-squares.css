@@ -21,6 +21,7 @@
     position: absolute;
     top: 0;
     left: 0;
+    background-color: inherit;
 }
 
 .masonry-brick-paragraph > .masonry-brick-title {
