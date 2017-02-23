@@ -121,9 +121,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             return;
         }
         
-//        this.layout();
-//        return;
-        this.layout.defer(500,this);
+        this.layout();
+        return;
+        //this.layout.defer(500,this);
         
     },
     
