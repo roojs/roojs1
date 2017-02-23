@@ -13,3 +13,9 @@
 .masonry-brick-link {
     cursor: pointer;
 }
+
+.masonry-brick-image {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
