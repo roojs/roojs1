@@ -13,6 +13,10 @@
     cursor: pointer;
 }
 
+.masonry-brick-text-only {
+    z-index: 12px;
+}
+
 .masonry-brick-image {
     width: 100%;
     height: 100%;
