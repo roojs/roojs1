@@ -702,7 +702,6 @@ if(opt.anim.isAnimated()){
                         return v;
                     }
                     if(cs = view.getComputedStyle(el, "")){
-                        Roo.log(camel);
                         if(!(camel = propCache[prop])){
                             camel = propCache[prop] = prop.replace(camelRe, camelFn);
                         }
