@@ -889,10 +889,13 @@ if(opt.anim.isAnimated()){
             Roo.log('run??');
             
             if(!animate || !A){
+                Roo.log('1');
                 D.setXY(this.dom, pos);
             }else{
+                Roo.log('1');
                 this.anim({points: {to: pos}}, this.preanim(arguments, 1), 'motion');
             }
+            Roo.log('3');
             return this;
         },
 
