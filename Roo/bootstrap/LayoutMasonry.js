@@ -144,7 +144,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     layout : function()
     {   
-        Roo.log(this.bricks);
+        Roo.log([this.id, this.bricks]);
         
         this._resetLayout();
         
