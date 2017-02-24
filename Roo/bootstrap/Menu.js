@@ -270,7 +270,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             xy[0] = xy[0] - this.el.getWidth() + this.triggerEl.getWidth();
         }
         Roo.log(xy);
-        this.el.setXY(xy);
+        this.el.setXY([0,0]);
         this.focus();
         this.fireEvent("show", this);
     },
