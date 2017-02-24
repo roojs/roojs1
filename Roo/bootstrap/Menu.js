@@ -331,6 +331,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             this.hide();
         } else {
             Roo.log('show');
+            Roo.log(this.triggerEl);
             this.show(this.triggerEl, false, false);
         }
         
