@@ -266,6 +266,8 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         Roo.log(xy);
         
+        Roo.log(this.el.getWidth() + xy[0]);
+        
         if(this.el.getWidth() + xy[0] > Roo.lib.Dom.getViewWidth()){
             xy[0] = xy[0] - this.el.getWidth() + this.triggerEl.getWidth();
         }
