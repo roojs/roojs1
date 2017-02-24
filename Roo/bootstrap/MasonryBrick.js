@@ -153,6 +153,11 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         
     },
     
+    onRender : function()
+    {
+        this.parent().bricks.push(this);
+    },
+    
     enter: function(e, el)
     {
         e.preventDefault();
