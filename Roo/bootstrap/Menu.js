@@ -323,7 +323,6 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         Roo.log(pel);
         
         if (pel.findParent('.dropdown-menu') || pel.findParent('.treeview-menu') ) {
-           
             return;
         }
         
