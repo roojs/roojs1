@@ -166,6 +166,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     
     onTouch : function(e) 
     {
+        Roo.log("menu.onTouch");
         //e.stopEvent(); this make the user popdown broken
         this.onClick(e);
     },
