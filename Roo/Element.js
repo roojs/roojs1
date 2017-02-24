@@ -885,7 +885,6 @@ if(opt.anim.isAnimated()){
          * @return {Roo.Element} this
          */
         setXY : function(pos, animate){
-            Roo.log(animate);
             if(!animate || !A){
                 D.setXY(this.dom, pos);
             }else{
