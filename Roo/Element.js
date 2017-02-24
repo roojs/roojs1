@@ -711,7 +711,7 @@ if(opt.anim.isAnimated()){
                     return null;
                 } :
                 function(prop){
-                    Roo.log('1');
+                    Roo.log('2');
                     var el = this.dom, v, cs, camel;
                     if(prop == 'opacity'){
                         if(typeof el.style.filter == 'string'){
