@@ -2610,6 +2610,7 @@ if(opt.anim.isAnimated()){
          * @return {Object} An object with left and top properties. e.g. {left: (value), top: (value)}
          */
         translatePoints : function(x, y){
+            Roo.log('translatePoints??')
             if(typeof x == 'object' || x instanceof Array){
                 y = x[1]; x = x[0];
             }
