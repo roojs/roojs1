@@ -263,7 +263,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         this.hideMenuItems();
         this.hidden = false;
         this.triggerEl.addClass('open');
-        
+        return;
         if(this.el.getWidth() + xy[0] > Roo.lib.Dom.getViewWidth()){
             xy[0] = xy[0] - this.el.getWidth() + this.triggerEl.getWidth();
         }
