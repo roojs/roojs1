@@ -694,6 +694,7 @@ if(opt.anim.isAnimated()){
         getStyle : function(){
             return view && view.getComputedStyle ?
                 function(prop){
+                    Roo.log('1');
                     var el = this.dom, v, cs, camel;
                     if(prop == 'float'){
                         prop = "cssFloat";
@@ -710,6 +711,7 @@ if(opt.anim.isAnimated()){
                     return null;
                 } :
                 function(prop){
+                    Roo.log('1');
                     var el = this.dom, v, cs, camel;
                     if(prop == 'opacity'){
                         if(typeof el.style.filter == 'string'){
