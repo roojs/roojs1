@@ -705,6 +705,7 @@ if(opt.anim.isAnimated()){
                         if(!(camel = propCache[prop])){
                             camel = propCache[prop] = prop.replace(camelRe, camelFn);
                         }
+                        Roo.log(camel);
                         return cs[camel];
                     }
                     return null;
