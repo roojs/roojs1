@@ -344,14 +344,14 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 var sz = b.el.getSize();
                 
                 maxX = Math.max(maxX, positions[kk].x + sz.width + this.padWidth);
-                
+                maxY = Math.max(maxY, positions[kk].y + sz.height);
             }, this);
             
         }, this);
         
         this._processHorizontalEndItem(eItems, maxX, y, isInstant);
         
-        this.el.setHeight(y);
+        this.el.setHeight(maxY);
     },
     
     _processHorizontalEndItem : function(eItems, maxX, y, isInstant)
