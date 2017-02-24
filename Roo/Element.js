@@ -2610,19 +2610,16 @@ if(opt.anim.isAnimated()){
          * @return {Object} An object with left and top properties. e.g. {left: (value), top: (value)}
          */
         translatePoints : function(x, y){
-            Roo.log('translatePoints??')
+            Roo.log(this);
             if(typeof x == 'object' || x instanceof Array){
                 y = x[1]; x = x[0];
             }
             var p = this.getStyle('position');
             var o = this.getXY();
-            
-            Roo.log(o);
 
             var l = parseInt(this.getStyle('left'), 10);
             var t = parseInt(this.getStyle('top'), 10);
 
-            Roo.log([l, t]);
             if(isNaN(l)){
                 l = (p == "relative") ? 0 : this.dom.offsetLeft;
             }
