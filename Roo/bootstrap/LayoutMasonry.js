@@ -283,6 +283,15 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             }, this);
             
         }, this);
+        
+        var mY = 0;
+        
+        for (var i = 0; i < this.cols; i++){
+            mY = Math.max(mY, maxY[i]);
+        }
+        
+        
+        
     },
     
     _processHorizontalLayoutQueue : function( queue, eItems, isInstant )
