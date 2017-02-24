@@ -264,13 +264,11 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         this.hidden = false;
         this.triggerEl.addClass('open');
         
-        Roo.log(xy);
-        
-        Roo.log(this.el.getWidth() + xy[0]);
-        
         if(this.el.getWidth() + xy[0] > Roo.lib.Dom.getViewWidth()){
             xy[0] = xy[0] - this.el.getWidth() + this.triggerEl.getWidth();
         }
+        
+        Roo.log(xy);
         
         this.el.setXY(xy);
         this.focus();
