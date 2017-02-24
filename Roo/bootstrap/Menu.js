@@ -316,7 +316,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     
     onTriggerPress  : function(e)
     {
-        e.preventDefault();
+        e.stopEvent();
         
         Roo.log('trigger press');
         //Roo.log(e.getTarget());
