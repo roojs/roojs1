@@ -694,7 +694,6 @@ if(opt.anim.isAnimated()){
         getStyle : function(){
             return view && view.getComputedStyle ?
                 function(prop){
-                    Roo.log(prop);
                     var el = this.dom, v, cs, camel;
                     if(prop == 'float'){
                         prop = "cssFloat";
