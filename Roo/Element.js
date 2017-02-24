@@ -885,17 +885,11 @@ if(opt.anim.isAnimated()){
          * @return {Roo.Element} this
          */
         setXY : function(pos, animate){
-            
-            Roo.log('run??');
-            
             if(!animate || !A){
-                Roo.log('1');
                 D.setXY(this.dom, pos);
             }else{
-                Roo.log('2');
                 this.anim({points: {to: pos}}, this.preanim(arguments, 1), 'motion');
             }
-            Roo.log('3');
             return this;
         },
 
