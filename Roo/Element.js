@@ -699,6 +699,7 @@ if(opt.anim.isAnimated()){
                         prop = "cssFloat";
                     }
                     if(el.style && (v = el.style[prop])){
+                        Roo.log(v);
                         return v;
                     }
                     if(cs = view.getComputedStyle(el, "")){
