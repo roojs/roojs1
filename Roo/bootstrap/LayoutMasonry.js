@@ -144,8 +144,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     layout : function()
     {   
-        Roo.log([this.id, this.bricks]);
-        
         this._resetLayout();
         
         var isInstant = this.isLayoutInstant !== undefined ? this.isLayoutInstant : !this._isLayoutInited;
