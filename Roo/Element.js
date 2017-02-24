@@ -892,7 +892,7 @@ if(opt.anim.isAnimated()){
                 Roo.log('1');
                 D.setXY(this.dom, pos);
             }else{
-                Roo.log('1');
+                Roo.log('2');
                 this.anim({points: {to: pos}}, this.preanim(arguments, 1), 'motion');
             }
             Roo.log('3');
