@@ -405,6 +405,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             maxY = Math.max(maxY, positions[k].y + sz.height);
 
         }, this);
+        
+        this.el.setHeight(maxY);
+        
     },
     
     _resetLayout : function()
