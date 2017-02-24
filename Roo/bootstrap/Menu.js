@@ -136,10 +136,10 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         this.triggerEl.addClass('dropdown-toggle');
         
+        
         if (Roo.isTouch) {
             this.el.on('touchstart'  , this.onTouch, this);
         }
-        
         this.el.on('click' , this.onClick, this);
 
         this.el.on("mouseover", this.onMouseOver, this);
@@ -173,7 +173,6 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     onClick : function(e)
     {
         Roo.log("menu.onClick");
-        
         var t = this.findTargetItem(e);
         if(!t || t.isContainer){
             return;
@@ -319,10 +318,8 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
        
         // trigger only occurs on normal menu's -- if it's a treeview or dropdown... do not hide/show..
         var pel = Roo.get(e.getTarget());
-        
-        Roo.log(pel);
-        
         if (pel.findParent('.dropdown-menu') || pel.findParent('.treeview-menu') ) {
+           
             return;
         }
         
@@ -331,7 +328,6 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             this.hide();
         } else {
             Roo.log('show');
-            Roo.log(this.triggerEl);
             this.show(this.triggerEl, false, false);
         }
         
