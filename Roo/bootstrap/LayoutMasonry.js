@@ -351,6 +351,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
         }, this);
         
+        Roo.log(maxY);
+        
         this._processHorizontalEndItem(eItems, maxX, y, isInstant);
         
         this.el.setHeight(maxY);
