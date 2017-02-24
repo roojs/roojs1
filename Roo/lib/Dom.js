@@ -179,10 +179,7 @@ Roo.lib.Dom = {
     setXY : function(el, xy) {
         el = Roo.fly(el, '_setXY');
         el.position();
-        Roo.log(el);
-        Roo.log(xy);
         var pts = el.translatePoints(xy);
-        Roo.log(['pts', pts]);
         if (xy[0] !== false) {
             el.dom.style.left = pts.left + "px";
         }
