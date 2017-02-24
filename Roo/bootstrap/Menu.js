@@ -238,9 +238,6 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
      */
     show : function(el, pos, parentMenu){
         this.parentMenu = parentMenu;
-        
-        Roo.log(this.parentMenu);exit;
-        
         if(!this.el){
             this.render();
         }
