@@ -178,6 +178,7 @@ Roo.lib.Dom = {
 
     setXY : function(el, xy) {
         el = Roo.fly(el, '_setXY');
+        Roo.log(el);
         el.position();
         var pts = el.translatePoints(xy);
         if (xy[0] !== false) {
