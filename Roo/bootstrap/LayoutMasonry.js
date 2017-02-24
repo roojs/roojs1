@@ -351,12 +351,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
         }, this);
         
-        this._processHorizontalEndItem(eItems, maxX, y, isInstant);
+        this._processHorizontalEndItem(eItems, maxX, y, maxY, isInstant);
         
-        this.el.setHeight(maxY);
     },
     
-    _processHorizontalEndItem : function(eItems, maxX, y, isInstant)
+    _processHorizontalEndItem : function(eItems, maxX, y, maxY, isInstant)
     {
         Roo.each(eItems, function(b,k){
             
