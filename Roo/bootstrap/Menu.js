@@ -268,7 +268,10 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             xy[0] = xy[0] - this.el.getWidth() + this.triggerEl.getWidth();
         }
         
-        this.el.setXY(xy);
+        if(!Roo.isTouch()){
+            this.el.setXY(xy);
+        }
+        
         this.focus();
         this.fireEvent("show", this);
     },
