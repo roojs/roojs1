@@ -2618,7 +2618,7 @@ if(opt.anim.isAnimated()){
 
             var l = parseInt(this.getStyle('left'), 10);
             var t = parseInt(this.getStyle('top'), 10);
-            Roo.log(this.dom);
+            Roo.log([l, t]);
             if(isNaN(l)){
                 l = (p == "relative") ? 0 : this.dom.offsetLeft;
             }
