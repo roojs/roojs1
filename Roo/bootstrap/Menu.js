@@ -237,6 +237,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
      * @param {Roo.menu.Menu} parentMenu (optional) This menu's parent menu, if applicable (defaults to undefined)
      */
     show : function(el, pos, parentMenu){
+        return;
         this.parentMenu = parentMenu;
         if(!this.el){
             this.render();
