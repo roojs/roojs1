@@ -268,7 +268,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             xy[0] = xy[0] - this.el.getWidth() + this.triggerEl.getWidth();
         }
         
-        if(!Roo.isTouch){
+        if(this.el.getStyle('top').slice(-1) == "%"){
             this.el.setXY(xy);
         }
         
