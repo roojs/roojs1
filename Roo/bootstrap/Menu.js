@@ -314,7 +314,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     
     onTriggerPress  : function(e)
     {
-        e.stopEvent();
+        
         Roo.log('trigger press');
         //Roo.log(e.getTarget());
        // Roo.log(this.triggerEl.dom);
@@ -334,7 +334,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             this.show(this.triggerEl, false, false);
         }
         
-        
+        e.stopEvent();
     },
     
          
