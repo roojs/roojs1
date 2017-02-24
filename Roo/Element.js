@@ -2616,6 +2616,8 @@ if(opt.anim.isAnimated()){
             }
             var p = this.getStyle('position');
             var o = this.getXY();
+            
+            Roo.log(o);
 
             var l = parseInt(this.getStyle('left'), 10);
             var t = parseInt(this.getStyle('top'), 10);
