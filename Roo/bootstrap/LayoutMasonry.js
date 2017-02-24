@@ -345,13 +345,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
                 maxX = Math.max(maxX, positions[kk].x + sz.width + this.padWidth);
                 
+                Roo.log([y, sz]);
                 maxY = Math.max(maxY, positions[kk].y + sz.height);
                 
             }, this);
             
         }, this);
-        
-        Roo.log(maxY);
         
         this._processHorizontalEndItem(eItems, maxX, y, isInstant);
         
