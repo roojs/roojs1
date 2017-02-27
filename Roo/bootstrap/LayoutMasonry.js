@@ -225,10 +225,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var eItems = items.slice(0, 3);
         
         items = items.slice(3, items.length);
-        Roo.log(items);
-        return;
-        
-        Roo.log(eItems);
         
         var pos = this.el.getBox(true);
         
