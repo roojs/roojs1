@@ -488,8 +488,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             y : minY
         });
         
-        Roo.log(positions);
-        
         Roo.each(eItems, function(b,k){
             
             b.el.position('absolute');
