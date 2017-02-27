@@ -293,6 +293,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             Roo.each(box, function(b,kk){
                 
+                b.el.position('absolute');
+                
                 var width = this.boxColWidth[b.size] + b.el.getPadding('lr');
                 
                 b.el.setWidth(width);
@@ -333,8 +335,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             Roo.each(box, function(b,kk){
                 
-                b.el.position('absolute');
-                
                 b.el.setXY([positions[kk].x, positions[kk].y], isInstant ? false : true);
                 
                 var sz = b.el.getSize();
@@ -368,8 +368,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         this._processHorizontalEndItem(eItems, maxX, minX, minY, isInstant);
         
         var maxX = maxX - this.boxColWidth['sm'] - this.boxColWidth['xs'] - this.gutter * 2;
-        
-        Roo.log(maxX);
         
         Roo.each(queue, function(box, k){
             
@@ -406,10 +404,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 default :
                     break;
             }
-            Roo.log(positions);
+            
             Roo.each(box, function(b,kk){
-                
-                
                 
                 b.el.setXY([positions[kk].x, positions[kk].y], isInstant ? false : true);
                 
