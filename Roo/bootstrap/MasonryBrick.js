@@ -73,6 +73,10 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     {
         var cls = 'masonry-brick';
         
+        if(!this.isMasonry){
+            cls = 'non-masonry-brick'
+        }
+        
         if(this.href.length){
             cls += ' masonry-brick-link';
         }
