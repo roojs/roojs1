@@ -243,6 +243,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 return false;
             }
             
+            maxX = Math.min(maxX, maxX - width);
+            
             if(size + item.intSize > 3){
                 queue.push(box);
                 box = [];
