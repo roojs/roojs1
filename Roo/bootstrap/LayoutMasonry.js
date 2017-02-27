@@ -22,6 +22,9 @@
 
 Roo.bootstrap.LayoutMasonry = function(config){
     Roo.bootstrap.LayoutMasonry.superclass.constructor.call(this, config);
+    
+    this.bricks = [];
+    
 };
 
 Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
