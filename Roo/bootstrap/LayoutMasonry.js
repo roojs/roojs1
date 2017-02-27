@@ -242,6 +242,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 size = 0;
             }
             
+            if(queue.length == this.cols - 1){
+                return false;
+            }
+            
             size = size + item.intSize;
             
             box.push(item);
