@@ -508,6 +508,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             md : this.boxColWidth
         };
         
+        
     },
     
     getContainerWidth : function()
