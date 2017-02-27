@@ -662,7 +662,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var rand = Math.floor(Math.random() * (4 - box[0].intSize));
         
-        Roo.log(rand);
+        Roo.log([rand, box[0].el.getWidth()]);
         
         pos.push({
             x : maxX - box[0].el.getWidth(),
