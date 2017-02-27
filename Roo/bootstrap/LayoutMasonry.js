@@ -351,7 +351,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var maxX = pos.right;
         
-        this._processHorizontalEndItem
+        this._processHorizontalEndItem(eItems, maxX, minX, minY, isInstant);
         
         Roo.each(queue, function(box, k){
             
