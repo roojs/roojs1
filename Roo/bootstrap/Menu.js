@@ -133,6 +133,8 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
        // Roo.log("ADD event");
        // Roo.log(this.triggerEl.dom);
         
+        Roo.log(this.triggerEl);
+        
         this.triggerEl.on('click', this.onTriggerClick, this);
         
         this.triggerEl.on(Roo.isTouch ? 'touchstart' : 'mouseup', this.onTriggerPress, this);
