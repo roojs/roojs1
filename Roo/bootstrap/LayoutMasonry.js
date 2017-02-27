@@ -221,7 +221,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         }
         Roo.log(items);
         
-        items.reverse();
+//        items.reverse();
         
         var eItems = items.slice(items.length - 3, items.length);
         items = items.slice(0, items.length - 3);
