@@ -319,8 +319,14 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     
     onTriggerClick : function(e)
     {
-        Roo.log(e);
         Roo.log('trigger click');
+        
+        var target = e.getTarget();
+        
+        if(target.nodeName.toLowerCase() === 'i'){
+            target = Roo.get(target).dom.parentNode;
+        }
+        
         e.preventDefault();
     },
     
