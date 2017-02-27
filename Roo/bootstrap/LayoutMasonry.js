@@ -346,13 +346,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         var pos = this.el.getBox(true);
         
-        Roo.log(['pos', pos]);
+        var minX = pos.x;
+        var min Y = pos.y;
         
-        var x = pos.x;
-        var y = pos.y;
-        
-        var maxX = pos.x;
-        var maxY = pos.y;
         
         Roo.each(queue, function(box, k){
             
