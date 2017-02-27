@@ -379,6 +379,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 }
             }, this);
             
+            if(!box.length){
+                return;
+            }
+            
             var positions = [];
             
             switch (box.length){
