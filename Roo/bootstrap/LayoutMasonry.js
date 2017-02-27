@@ -381,7 +381,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 if(b.square){
                     b.el.setWidth(height);
                 }
-                Roo.log(['height', b.el.getHeight())]);
+                Roo.log(['height', b.el.getHeight()]);
             }, this);
             
             if(!box.length){
