@@ -369,8 +369,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 b.el.setWidth(height);
             }
             
-            x = maxX;
-            
             var positions = [];
             
             switch (box.length){
