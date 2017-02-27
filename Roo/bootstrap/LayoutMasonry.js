@@ -351,7 +351,54 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var maxX = maxX - this.boxColWidth['sm'] - this.boxColWidth['xs'] - this.gutter * 2;
         
+        Roo.each(queue, function(box, k){
+            
+            Roo.each(box, function(b,kk){
+                
+                var height = this.boxColWidth[b.size] + b.el.getPadding('tb');
+                
+                b.el.setHeight(height);
+                
+                if(b.square){
+                    b.el.setWidth(height);
+                }
+            }, this);
+            
+            x = maxX;
+            
+            var positions = [];
+            
+            switch (box.length){
+                case 1 :
+                    positions = this.getOneBoxColPositions(x, y, box);
+                    break;
+                case 2 :
+                    positions = this.getTwoBoxColPositions(x, y, box);
+                    break;
+                case 3 :
+                    positions = this.getThreeBoxColPositions(x, y, box);
+                    break;
+                default :
+                    break;
+            }
+            
+            Roo.each(box, function(b,kk){
+                
+                b.el.position('absolute');
+                
+                b.el.setXY([positions[kk].x, positions[kk].y], isInstant ? false : true);
+                
+                var sz = b.el.getSize();
+                
+                maxX = Math.max(maxX, positions[kk].x + sz.width + this.padWidth);
+                
+                maxY = Math.max(maxY, positions[kk].y + sz.height);
+                
+            }, this);
+            
+        }, this);
         
+        /*
         Roo.each(queue, function(b, k){
             
             var height = this.boxColWidth[b.size] + b.el.getPadding('tb');
@@ -384,7 +431,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         }, this);
         
         this._processHorizontalEndItem(eItems, maxX, y, maxY, isInstant);
-        
+        */
     },
     
     _processHorizontalEndItem : function(eItems, maxX, minX, minY, isInstant)
