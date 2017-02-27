@@ -325,11 +325,10 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         Roo.log(target.nodeName.toLowerCase());
         
-//        if(target.nodeName.toLowerCase() === 'i'){
-//            target = Roo.get(target).dom.parentNode;
-//        }
+        if(target.nodeName.toLowerCase() === 'i'){
+            e.preventDefault();
+        }
         
-        e.preventDefault();
     },
     
     onTriggerPress  : function(e)
