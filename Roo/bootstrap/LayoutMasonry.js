@@ -460,6 +460,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var cols = Math.floor(containerWidth / boxWidth);
         
+        this.cols = Math.max( cols, 1 );
+        
+        
+        
         var xsWidth = Math.floor((this.boxWidth - (this.gutter * 2)) / 3);
         
         this.boxColWidth = {
