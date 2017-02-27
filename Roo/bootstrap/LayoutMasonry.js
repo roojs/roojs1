@@ -492,8 +492,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             y : minY
         });
         
-        Roo.log(positions);
-        
         Roo.each(eItems, function(b,k){
             
             b.el.position('absolute');
@@ -663,8 +661,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var pos = [];
         
         var rand = Math.floor(Math.random() * (4 - box[0].intSize));
-        
-        Roo.log([rand, box[0].el.getWidth()]);
         
         pos.push({
             x : maxX - box[0].el.getWidth(),
