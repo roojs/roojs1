@@ -731,8 +731,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         if(box[0].size == 'xs' && box[1].size == 'xs'){
             
             pos.push({
-                x : x,
-                y : y
+                x : maxX - box[0].el.getWidth(),
+                y : minY
             });
 
             pos.push({
