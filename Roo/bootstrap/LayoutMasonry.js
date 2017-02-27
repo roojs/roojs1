@@ -239,9 +239,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             var width = this.boxColWidth[item.size] + item.el.getPadding('lr');
             
-            maxX = Math.min(maxX, maxX - width);
+            var x = Math.min(maxX, maxX - width);
             
-            if(maxX < minX){
+            if(x < minX){
                 return false;
             }
             
