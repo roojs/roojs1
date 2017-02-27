@@ -5,7 +5,7 @@
     outline: 0;
 }
 
-.masonry-brick-paragraph {
+.masonry-brick .masonry-brick-paragraph {
     width: 100%;
     height: 100%;
     position: absolute;
