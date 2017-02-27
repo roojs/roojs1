@@ -304,10 +304,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                     positions = this.getVerticalOneBoxColPositions(x, y, box);
                     break;
                 case 2 :
-                    positions = this.getTwoBoxColPositions(x, y, box);
+                    positions = this.getVerticalTwoBoxColPositions(x, y, box);
                     break;
                 case 3 :
-                    positions = this.getThreeBoxColPositions(x, y, box);
+                    positions = this.getVerticalThreeBoxColPositions(x, y, box);
                     break;
                 default :
                     break;
@@ -551,7 +551,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         this.containerWidth = this.el.getBox(true).width;  //maybe use getComputedWidth
     },
     
-    getOneBoxColPositions : function(x, y, box)
+    getVerticalOneBoxColPositions : function(x, y, box)
     {
         var pos = [];
         
@@ -572,7 +572,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         return pos;
     },
     
-    getTwoBoxColPositions : function(x, y, box)
+    getVerticalTwoBoxColPositions : function(x, y, box)
     {
         var pos = [];
         
@@ -659,7 +659,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
     },
     
-    getThreeBoxColPositions : function(x, y, box)
+    getVerticalThreeBoxColPositions : function(x, y, box)
     {
         var pos = [];
         
