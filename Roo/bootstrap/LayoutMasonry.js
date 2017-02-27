@@ -210,11 +210,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
         }, this);
         
-        if(this.isHorizontal){
-            this._processHorizontalLayoutQueue( queue, eItems, isInstant );
-            return;
-        }
-        
         this._processVerticalLayoutQueue( queue, isInstant );
         
     },
@@ -231,6 +226,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var queue = [];
         
+        /*
         var box = [];
         var size = 0;
         
@@ -257,7 +253,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             }
             
         }, this);
-        
+        */
         if(this.isHorizontal){
             this._processHorizontalLayoutQueue( queue, eItems, isInstant );
             return;
