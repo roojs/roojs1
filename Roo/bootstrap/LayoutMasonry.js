@@ -355,7 +355,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         maxX = maxX - this.boxColWidth['sm'] - this.boxColWidth['xs'] - this.gutter * 2;
         
-        Roo.each(items, function(box, k){
+        Roo.each(items, function(i, k){
             
             Roo.each(box, function(b,kk){
                 
