@@ -428,24 +428,18 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
 
         var positions = [];
         
-        var x = maxX - this.boxColWidth['sm'];
-        
         positions.push({
-            x : x,
+            x : maxX - this.boxColWidth['sm'],
             y : minY
         });
         
-        x = maxX - this.boxColWidth['xs'];
-        
         positions.push({
-            x : x,
+            x : maxX - this.boxColWidth['xs'],
             y : minY + this.boxColWidth['sm'] + this.gutter
         });
         
-        x = maxX - this.boxColWidth['sm'] - this.gutter - this.boxColWidth['xs'];
-        
         positions.push({
-            x : x,
+            x : maxX - this.boxColWidth['sm'] - this.gutter - this.boxColWidth['xs'],
             y : minY
         });
         
@@ -454,10 +448,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             b.el.position('absolute');
 
             b.el.setXY([positions[k].x, positions[k].y], isInstant ? false : true);
-
-            var sz = b.el.getSize();
-            
-            maxY = Math.max(maxY, positions[k].y + sz.height);
 
         }, this);
         
