@@ -376,8 +376,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
                 var height = this.boxColWidth[b.size] + b.el.getPadding('tb');
                 
-                Roo.log(['height', height]);
-                
                 b.el.setHeight(height);
                 
                 if(b.square){
