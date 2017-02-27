@@ -64,7 +64,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     cls: '',
     
-    bricks: [], //CompositeElement
+    bricks: null, //CompositeElement
     
     cols : 1,
     
