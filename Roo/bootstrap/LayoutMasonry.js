@@ -218,6 +218,58 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         this._processVerticalLayoutQueue( queue, isInstant );
         
     },
+    
+    _horizontalLayoutItems : function ( items , isInstant)
+    {
+        if ( !items || !items.length ) {
+            return;
+        }
+
+        if(this.isHorizontal){
+            
+            if(items.length < 3){
+                return;
+            }
+            
+            var eItems = items.slice(items.length - 3, items.length);
+            items = items.slice(0, items.length - 3);
+            
+        }
+        
+        var queue = [];
+        
+        var box = [];
+        var size = 0;
+        
+        Roo.each(items, function(item, k){
+            
+            if(size + item.intSize > 3){
+                queue.push(box);
+                box = [];
+                size = 0;
+            }
+            
+            size = size + item.intSize;
+            
+            box.push(item);
+            
+            if(k == items.length - 1){
+                queue.push(box);
+                box = [];
+                size = 0;
+            }
+            
+        }, this);
+        
+        if(this.isHorizontal){
+            this._processHorizontalLayoutQueue( queue, eItems, isInstant );
+            return;
+        }
+        
+        this._processVerticalLayoutQueue( queue, isInstant );
+        
+    },
+    
     /** Sets position of item in DOM
     * @param {Element} item
     * @param {Number} x - horizontal position
