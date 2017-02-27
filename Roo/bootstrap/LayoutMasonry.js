@@ -352,7 +352,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var maxX = maxX - this.boxColWidth['sm'] - this.boxColWidth['xs'] - this.gutter * 2;
         
         
-        Roo.each(items, function(b, k){
+        Roo.each(queue, function(b, k){
             
             var height = this.boxColWidth[b.size] + b.el.getPadding('tb');
             
