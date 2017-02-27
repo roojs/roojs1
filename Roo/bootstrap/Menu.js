@@ -319,6 +319,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     
     onTriggerClick : function(e)
     {
+        Roo.log(e);
         Roo.log('trigger click');
         e.preventDefault();
     },
