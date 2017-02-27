@@ -708,7 +708,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         }
         
         return pos;
-        
     },
     
     getHorizontalOneBoxColPositions : function(maxX, minY, box)
