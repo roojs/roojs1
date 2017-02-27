@@ -346,6 +346,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         var pos = this.el.getBox(true);
         
+        Roo.log(['pos', pos]);
+        
         var x = pos.x;
         var y = pos.y;
         
