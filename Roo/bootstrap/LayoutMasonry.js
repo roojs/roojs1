@@ -747,8 +747,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var pos = [];
         
         pos.push({
-            x : x,
-            y : y
+            x : maxX - this.boxColWidth['xs'],
+            y : minY
         });
         
         if(this.isHorizontal){
