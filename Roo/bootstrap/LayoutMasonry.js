@@ -381,11 +381,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             b.el.setXY([x , y], isInstant ? false : true);
 
-            var sz = b.el.getSize();
-
-            maxX = Math.max(maxX, positions[kk].x + sz.width + this.padWidth);
-
-            maxY = Math.max(maxY, positions[kk].y + sz.height);
+            x = x - this.gutter;
             
 //            var positions = [];
 //            
