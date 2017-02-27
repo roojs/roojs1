@@ -375,6 +375,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             Roo.each(box, function(b, kk){
                 
+                b.el.position('absolute');
+                
                 var height = this.boxColWidth[b.size] + b.el.getPadding('tb');
                 
                 b.el.setHeight(height);
@@ -407,7 +409,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             Roo.log(positions);
             Roo.each(box, function(b,kk){
                 
-                b.el.position('absolute');
+                
                 
                 b.el.setXY([positions[kk].x, positions[kk].y], isInstant ? false : true);
                 
