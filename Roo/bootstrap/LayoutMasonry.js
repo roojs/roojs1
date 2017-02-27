@@ -363,8 +363,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             x = x - height;
             
-            if(minY + height > maxY){
-                minY = minY;
+            if(y + height > maxY){
+                y = minY;
             }
             
             if(x - height < minX){
