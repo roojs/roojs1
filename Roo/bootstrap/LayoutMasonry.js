@@ -224,6 +224,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         items = items.slice(0, items.length - 3);
         items.reverse();
         
+        var pos = this.el.getBox(true);
+        
+        var minX = pos.x;
+        
+        var maxX = pos.right;
+        var maxY = pos.bottom;
+        
         var queue = [];
         
         var box = [];
