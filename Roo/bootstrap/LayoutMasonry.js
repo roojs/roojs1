@@ -359,6 +359,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         var pos = this.el.getBox(true);
         
+        Roo.log(pos);
+        
         var minX = pos.x;
         var minY = pos.y;
         
