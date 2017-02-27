@@ -718,7 +718,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         pos.push({
             x : maxX - box[0].el.getWidth(),
-            y : y + (this.boxColWidth['xs'] + this.gutter) * rand
+            y : minY + (this.boxColWidth['xs'] + this.gutter) * rand
         });
         
         return pos;
