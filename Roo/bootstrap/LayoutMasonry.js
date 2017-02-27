@@ -454,7 +454,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             b.size = 'xs';
             b.intSize = 1;
             
-            if(k == 1) {
+            if(k == 0) {
                 b.size = 'sm';
                 b.intSize = 2;
             }
