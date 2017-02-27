@@ -351,9 +351,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var maxX = maxX - this.boxColWidth['sm'] - this.boxColWidth['xs'] - this.gutter * 2;
         
-        var y = minY;
-        
-        var is_full = false;
         
         Roo.each(items, function(b, k){
             
