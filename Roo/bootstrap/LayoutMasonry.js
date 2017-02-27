@@ -220,7 +220,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             return;
         }
         Roo.log(items);
-        
+        return;
 //        items.reverse();
         
         var eItems = items.slice(items.length - 3, items.length);
