@@ -356,6 +356,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var maxX = maxX - this.boxColWidth['sm'] - this.boxColWidth['xs'] - this.gutter * 2;
         
+        var y = minY;
+        
         var is_full = false;
         
         Roo.each(items, function(b, k){
@@ -363,10 +365,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             var height = this.boxColWidth[b.size] + b.el.getPadding('tb');
             
             var x = maxX - height;
-            
-            var y = minY;
-            
-            
             
             if(y + height > maxY){
                 y = minY;
