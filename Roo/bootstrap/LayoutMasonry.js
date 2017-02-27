@@ -220,9 +220,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             return;
         }
 
+        items.reverse();
+        
         var eItems = items.slice(items.length - 3, items.length);
         items = items.slice(0, items.length - 3);
-        items.reverse();
         
         var pos = this.el.getBox(true);
         
