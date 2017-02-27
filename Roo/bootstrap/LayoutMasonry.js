@@ -361,7 +361,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             var height = this.boxColWidth[b.size] + b.el.getPadding('tb');
             
-            if(maxX - height < minX){
+            if(x - height < minX){
                 return false;
             }
             
@@ -372,12 +372,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             }
             
             b.el.position('absolute');
-            
-            maxX = maxX - height;
-            
-            if(minY + height > maxY){
-                minY = minY;
-            }
             
             b.el.setXY([maxX , minY], isInstant ? false : true);
 
