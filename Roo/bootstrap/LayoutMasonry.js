@@ -219,7 +219,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         if ( !items || !items.length || items.length < 3) {
             return;
         }
-
+        Roo.log(items);
+        
         items.reverse();
         
         var eItems = items.slice(items.length - 3, items.length);
