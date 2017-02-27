@@ -357,16 +357,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         Roo.each(items, function(i, k){
             
-            Roo.each(box, function(b,kk){
+            var height = this.boxColWidth[i.size] + i.el.getPadding('tb');
                 
-                var height = this.boxColWidth[b.size] + b.el.getPadding('tb');
-                
-                b.el.setHeight(height);
-                
-                if(b.square){
-                    b.el.setWidth(height);
-                }
-            }, this);
+            b.el.setHeight(height);
+
+            if(b.square){
+                b.el.setWidth(height);
+            }
             
             x = maxX;
             
