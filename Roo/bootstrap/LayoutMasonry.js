@@ -221,15 +221,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     _horizontalLayoutItems : function ( items , isInstant)
     {
-        if ( !items || !items.length ) {
+        if ( !items || !items.length || items.length < 3) {
             return;
         }
 
         if(this.isHorizontal){
             
-            if(items.length < 3){
-                return;
-            }
             
             var eItems = items.slice(items.length - 3, items.length);
             items = items.slice(0, items.length - 3);
