@@ -382,8 +382,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             b.el.setXY([x , y], isInstant ? false : true);
 
-            x = x - this.gutter;
-            y = y + this.gutter;
             
         }, this);
         
