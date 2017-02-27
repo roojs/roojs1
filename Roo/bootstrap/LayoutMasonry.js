@@ -368,7 +368,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         Roo.each(queue, function(box, k){
             
-            Roo.each(box, function(b,kk){
+            Roo.each(box, function(b, kk){
                 
                 var height = this.boxColWidth[b.size] + b.el.getPadding('tb');
                 
