@@ -649,27 +649,16 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         if(box[0].size == 'sm' && box[1].size == 'xs'){
             
-            if(this.isHorizontal){
-                pos.push({
-                    x : x,
-                    y : y
-                });
+            pos.push({
+                x : x,
+                y : y
+            });
 
-                pos.push({
-                    x : x,
-                    y : y + this.boxColWidth['sm'] + this.gutter
-                });
-            } else {
-                pos.push({
-                    x : x,
-                    y : y
-                });
-
-                pos.push({
-                    x : x + this.boxColWidth['sm'] + this.gutter,
-                    y : y + ((box[0].el.getHeight() - box[1].el.getHeight()) * Math.floor(Math.random() * 2))
-                });
-            }
+            pos.push({
+                x : x + this.boxColWidth['sm'] + this.gutter,
+                y : y + ((box[0].el.getHeight() - box[1].el.getHeight()) * Math.floor(Math.random() * 2))
+            });
+            
         }
         
         return pos;
