@@ -388,7 +388,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             }
             
             var positions = [];
-            Roo.log(box[0].el.getHeight());
+            Roo.log(box[0].el);
             switch (box.length){
                 case 1 :
                     positions = this.getHorizontalOneBoxColPositions(maxX, minY, box);
