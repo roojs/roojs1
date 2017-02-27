@@ -14,6 +14,12 @@
     background-color: inherit;
 }
 
+.non-masonry-brick .masonry-brick-paragraph {
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+}
+
 .masonry-brick-paragraph > .masonry-brick-title {
     margin: 15px;
 }
