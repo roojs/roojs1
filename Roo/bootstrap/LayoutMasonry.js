@@ -724,7 +724,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         return pos;
     },
     
-    getHorizontalTwoBoxColPositions : function(x, y, box)
+    getHorizontalTwoBoxColPositions : function(maxX, minY, box)
     {
         var pos = [];
         
