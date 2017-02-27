@@ -222,11 +222,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         items.reverse();
         
-        var eItems = items.slice(items.length - 3, items.length);
+        var eItems = items.slice(0, 3);
         
         Roo.log(eItems);
         return;
-        items = items.slice(0, items.length - 3);
+        items = items.slice(3, items.length);
         
         Roo.log(eItems);
         
