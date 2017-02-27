@@ -109,7 +109,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 _this.initial();
             } ,this);
         }
-        
     },
     
     initial : function()
