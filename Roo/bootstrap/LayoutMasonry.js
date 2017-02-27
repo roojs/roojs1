@@ -738,59 +738,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             y : minY + box[0].el.getHeight() + this.gutter
         });
         
-        
-        if(box[0].size == 'xs' && box[1].size == 'sm'){
-            
-            if(this.isHorizontal){
-                pos.push({
-                    x : x,
-                    y : y
-                });
-                
-                pos.push({
-                    x : x,
-                    y : y + this.boxColWidth['xs'] + this.gutter
-                });
-                
-            } else {
-                pos.push({
-                    x : x,
-                    y : y + ((box[1].el.getHeight() - box[0].el.getHeight()) * Math.floor(Math.random() * 2))
-                });
-
-                pos.push({
-                    x : x + this.boxColWidth['xs'] + this.gutter,
-                    y : y
-                });
-            }
-            
-        }
-        
-        if(box[0].size == 'sm' && box[1].size == 'xs'){
-            
-            if(this.isHorizontal){
-                pos.push({
-                    x : x,
-                    y : y
-                });
-
-                pos.push({
-                    x : x,
-                    y : y + this.boxColWidth['sm'] + this.gutter
-                });
-            } else {
-                pos.push({
-                    x : x,
-                    y : y
-                });
-
-                pos.push({
-                    x : x + this.boxColWidth['sm'] + this.gutter,
-                    y : y + ((box[0].el.getHeight() - box[1].el.getHeight()) * Math.floor(Math.random() * 2))
-                });
-            }
-        }
-        
         return pos;
         
     },
