@@ -404,7 +404,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
     },
     
-    _processHorizontalEndItem : function(eItems, maxX, y, maxY, isInstant)
+    _processHorizontalEndItem : function(eItems, maxX, minX, minY, isInstant)
     {
         Roo.each(eItems, function(b,k){
             
