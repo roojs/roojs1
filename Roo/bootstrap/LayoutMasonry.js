@@ -369,21 +369,21 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 b.el.setWidth(height);
             }
             
-            var positions = [];
-            
-            switch (box.length){
-                case 1 :
-                    positions = this.getOneBoxColPositions(x, y, box);
-                    break;
-                case 2 :
-                    positions = this.getTwoBoxColPositions(x, y, box);
-                    break;
-                case 3 :
-                    positions = this.getThreeBoxColPositions(x, y, box);
-                    break;
-                default :
-                    break;
-            }
+//            var positions = [];
+//            
+//            switch (box.length){
+//                case 1 :
+//                    positions = this.getOneBoxColPositions(x, y, box);
+//                    break;
+//                case 2 :
+//                    positions = this.getTwoBoxColPositions(x, y, box);
+//                    break;
+//                case 3 :
+//                    positions = this.getThreeBoxColPositions(x, y, box);
+//                    break;
+//                default :
+//                    break;
+//            }
             
             Roo.each(box, function(b,kk){
                 
