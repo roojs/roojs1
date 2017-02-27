@@ -225,6 +225,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var eItems = items.slice(items.length - 3, items.length);
         items = items.slice(0, items.length - 3);
         
+        Roo.log(eItems);
+        
         var pos = this.el.getBox(true);
         
         var minX = pos.x;
