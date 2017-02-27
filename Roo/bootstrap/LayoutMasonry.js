@@ -239,11 +239,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             var width = this.boxColWidth[item.size] + item.el.getPadding('lr');
             
-            if(maxX - width < minX){
+            maxX = Math.min(maxX, maxX - width);
+            
+            if(maxX < minX){
                 return false;
             }
             
-            maxX = Math.min(maxX, maxX - width);
+            
             
             if(size + item.intSize > 3){
                 queue.push(box);
