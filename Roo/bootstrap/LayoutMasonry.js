@@ -228,7 +228,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var minX = pos.x;
         
-        var maxX = pos.right;
+        var maxX = pos.right - this.boxColWidth['sm'] - this.boxColWidth['xs'] - this.gutter * 2;
         
         var queue = [];
         
@@ -239,6 +239,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             var width = this.boxColWidth[item.size] + item.el.getPadding('lr');
             
+            if()
             
             if(size + item.intSize > 3){
                 queue.push(box);
