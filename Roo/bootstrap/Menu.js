@@ -323,9 +323,11 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         var target = e.getTarget();
         
-        if(target.nodeName.toLowerCase() === 'i'){
-            target = Roo.get(target).dom.parentNode;
-        }
+        Roo.log(target.nodeName.toLowerCase());
+        
+//        if(target.nodeName.toLowerCase() === 'i'){
+//            target = Roo.get(target).dom.parentNode;
+//        }
         
         e.preventDefault();
     },
