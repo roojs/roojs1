@@ -753,7 +753,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         pos.push({
             x : maxX - box[1].el.getWidth(),
-            y : minY
+            y : minY - box[0].el.getHeight() - this.gutter
         });
         
         pos.push({
