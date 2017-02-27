@@ -711,7 +711,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
     },
     
-    getHorizontalOneBoxColPositions : function(x, y, box)
+    getHorizontalOneBoxColPositions : function(maxX, minY, box)
     {
         var pos = [];
         
