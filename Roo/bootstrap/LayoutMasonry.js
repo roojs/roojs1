@@ -362,7 +362,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var minX = pos.x;
         var minY = pos.y;
         
-        var maxX = pos.right;
+        var maxX = pos.right + 15;
         var maxY = pos.bottom;
         
         this._processHorizontalEndItem(eItems, maxX, minX, minY, isInstant);
