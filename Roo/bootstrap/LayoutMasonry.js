@@ -301,8 +301,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                     b.el.setHeight(width);
                 }
                 
-                Roo.log(['height', b.el.getHeight(true)]);
-                
             }, this);
             
             for (var i = 0; i < this.cols; i++){
