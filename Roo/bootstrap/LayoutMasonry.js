@@ -434,13 +434,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         });
         
         positions.push({
-            x : maxX + this.boxColWidth['xs'],
+            x : maxX - this.boxColWidth['xs'],
             y : minY + this.boxColWidth['sm'] + this.gutter
         });
         
         positions.push({
-            x : maxX + this.boxColWidth['xs'] + this.gutter + (eItems[1].el.getWidth() - eItems[2].el.getWidth()),
-            y : y + this.boxColWidth['sm'] + this.gutter
+            x : maxX - this.boxColWidth['sm'] - this.gutter - this.boxColWidth['xs'],
+            y : minY
         });
         
         Roo.each(eItems, function(b,k){
