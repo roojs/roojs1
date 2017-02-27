@@ -226,7 +226,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var queue = [];
         
-        /*
         var box = [];
         var size = 0;
         
@@ -253,7 +252,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             }
             
         }, this);
-        */
+        
         this._processHorizontalLayoutQueue( items, eItems, isInstant );
         
     },
