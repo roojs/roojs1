@@ -225,7 +225,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var eItems = items.slice(items.length - 3, items.length);
         
         Roo.log(eItems);
-        
+        return;
         items = items.slice(0, items.length - 3);
         
         Roo.log(eItems);
