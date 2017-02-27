@@ -164,11 +164,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             return;
         }
         
-        this._layoutItems( this.bricks , isInstant );
+        this._verticalLayoutItems( this.bricks , isInstant );
         
     },
     
-    _layoutItems : function ( items , isInstant)
+    _verticalLayoutItems : function ( items , isInstant)
     {
         if ( !items || !items.length ) {
             return;
