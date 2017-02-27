@@ -229,7 +229,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var minX = pos.x;
         
         var maxX = pos.right;
-        var maxY = pos.bottom;
         
         var queue = [];
         
