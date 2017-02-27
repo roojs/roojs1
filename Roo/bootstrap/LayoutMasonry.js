@@ -350,6 +350,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var minY = pos.y;
         
         var maxX = pos.right;
+        var maxY = pos.bottom;
         
         this._processHorizontalEndItem(eItems, maxX, minX, minY, isInstant);
         
@@ -372,6 +373,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             b.el.position('absolute');
             
             maxX = maxX - height;
+            
+            if(minY + height > this.)
             
             b.el.setXY([maxX , minY], isInstant ? false : true);
 
