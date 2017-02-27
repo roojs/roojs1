@@ -362,7 +362,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             var height = this.boxColWidth[b.size] + b.el.getPadding('tb');
             
-            x = x - height;
+            var x = maxX - height;
+            
+            var y = minY;
+            
+            
             
             if(y + height > maxY){
                 y = minY;
