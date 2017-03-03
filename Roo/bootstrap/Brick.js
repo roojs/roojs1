@@ -61,17 +61,16 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
      */   
     square : true,
     
-    
     getAutoCreate : function()
     {
-        var cls = 'masonry-brick';
+        var cls = 'roo-brick';
         
         if(this.href.length){
-            cls += ' masonry-brick-link';
+            cls += ' roo-brick-link';
         }
         
         if(this.bgimage.length){
-            cls += ' masonry-brick-image';
+            cls += ' roo-brick-image';
         }
         
         if(this.size){
