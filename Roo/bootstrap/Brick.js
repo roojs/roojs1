@@ -124,8 +124,11 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        this.el.on('mouseenter'  ,this.enter, this);
-        this.el.on('mouseleave', this.leave, this);
+        if(this.title.length || this.html.length){
+            this.el.on('mouseenter'  ,this.enter, this);
+            this.el.on('mouseleave', this.leave, this);
+        }
+        
         
         Roo.EventManager.onWindowResize(this.resize, this); 
         
