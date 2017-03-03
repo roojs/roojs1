@@ -127,11 +127,6 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
         this.el.on('mouseenter'  ,this.enter, this);
         this.el.on('mouseleave', this.leave, this);
         
-        if(this.bgimage.length){
-            this.el.select('.roo-brick-image-view', true).first().on('mouseenter'  ,this.enter, this);
-            this.el.select('.roo-brick-image-view', true).first().on('mouseleave', this.leave, this);
-        }
-        
         Roo.EventManager.onWindowResize(this.resize, this); 
         
         this.resize();
