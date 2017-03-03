@@ -154,12 +154,6 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         this.parent().bricks.push(this);
     },
     
-    resize : function()
-    {
-        var paragraph = this.el.select('.masonry-brick-paragraph', true).first();
-        paragraph.setHeight(paragraph.getWidth() + paragraph.getPadding('tb'));
-    },
-    
     enter: function(e, el)
     {
         e.preventDefault();
