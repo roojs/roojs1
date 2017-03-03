@@ -30,7 +30,7 @@ Roo.bootstrap.Brick = function(config){
     });
 };
 
-Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
     
     /**
      * @cfg {String} title
