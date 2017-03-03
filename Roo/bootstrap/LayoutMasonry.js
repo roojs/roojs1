@@ -271,12 +271,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 return;
             }
             
-            size = size + item.intSize;
-            
-            box.push(item);
-            
-            
-            if(size + item.intSize > 3){
+            if(size + item.intSize >= 3){
                 queue.push(box);
                 box = [];
                 size = 0;
@@ -284,7 +279,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 Roo.log('push', maxX);
             }
             
+            size = size + item.intSize;
             
+            box.push(item);
             
             if(k == items.length - 1){
                 queue.push(box);
