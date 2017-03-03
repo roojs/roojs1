@@ -255,7 +255,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             var x = Math.min(maxX, maxX - width - this.gutter);
             
             if(x < minX){
-                return false;
+                item.hide();
+                hit_end = true;
+                return;
             }
             
             if(size + item.intSize > 3){
