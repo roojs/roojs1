@@ -155,7 +155,7 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
     enter: function(e, el)
     {
         e.preventDefault();
-        
+        Roo.log('enter');
         if(this.bgimage.length){
             this.el.select('.roo-brick-paragraph', true).first().setOpacity(0.9, true);
         }
