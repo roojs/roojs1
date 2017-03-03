@@ -32,6 +32,11 @@
     height: 100%;
 }
 
+.masonry-brick-paragraph .masonry-brick-title,
+.masonry-brick-paragraph .masonry-brick-title {
+    margin-top: 0;
+}
+
 .roo-brick .roo-brick-paragraph {
     padding: 15px;
     background-color: inherit;
