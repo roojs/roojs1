@@ -16,7 +16,8 @@
     background-color: inherit;
 }
 
-.masonry-brick-image .masonry-brick-paragraph {
+.masonry-brick-image .masonry-brick-paragraph,
+.roo-brick-image .roo-brick-paragraph {
     opacity: 0;
 }
 
