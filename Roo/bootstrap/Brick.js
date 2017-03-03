@@ -131,7 +131,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     
     resize : function()
     {
-        var paragraph = this.el.select('.masonry-brick-paragraph', true).first();
+        var paragraph = this.el.select('.roo-brick-paragraph', true).first();
         paragraph.setHeight(paragraph.getWidth() + paragraph.getPadding('tb'));
     },
     
@@ -140,7 +140,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         e.preventDefault();
         
         if(this.bgimage.length){
-            this.el.select('.masonry-brick-paragraph', true).first().setOpacity(0.9, true);
+            this.el.select('.roo-brick-paragraph', true).first().setOpacity(0.9, true);
         }
     },
     
