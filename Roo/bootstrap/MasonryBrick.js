@@ -64,18 +64,10 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
      * @cfg {String} (xs|sm|md) size
      */   
     size : 'xs',
-    /**
-     * @cfg {Boolean} (true|false) isMasonry
-     */   
-    isMasonry : true,
     
     getAutoCreate : function()
     {
         var cls = 'masonry-brick';
-        
-        if(!this.isMasonry){
-            cls = 'non-masonry-brick'
-        }
         
         if(this.href.length){
             cls += ' masonry-brick-link';
