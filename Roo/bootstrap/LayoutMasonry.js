@@ -266,7 +266,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         }, this);
         
         this._processHorizontalLayoutQueue( queue, eItems, isInstant );
-        
     },
     
     /** Sets position of item in DOM
