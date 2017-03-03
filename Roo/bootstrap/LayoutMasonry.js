@@ -227,8 +227,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var pos = this.el.getBox(true);
         
-        Roo.log(pos);
-        
         var minX = pos.x;
         
         var maxX = pos.right - this.boxColWidth['sm'] - this.boxColWidth['xs'] - this.gutter * 2;
@@ -240,21 +238,17 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var size = 0;
         var hit_end = false;
         
-        Roo.log(['minX', minX]);
-        
         Roo.each(items, function(item, k){
             
             item.el.setVisibilityMode(Roo.Element.DISPLAY);
             item.el.show();
             
             if(hit_end){
-                Roo.log(['hti end hide' , item.el]);
                 item.el.hide();
                 return;
             }
             
             if(queue.length >= this.cols - 1){
-                Roo.log(['hit max length hide' , item.el]);
                 item.el.hide();
                 return;
             }
@@ -264,18 +258,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 box = [];
                 size = 0;
                 maxX = x;
-                
-                Roo.log('push', maxX);
             }
             
             var width = this.boxColWidth[item.size] + item.el.getPadding('lr');
             
             x = Math.min(maxX, maxX - width - this.gutter);
             
-            Roo.log(['maxX', maxX, 'x', x]);
-            
             if(x < minX){
-                Roo.log(['hit minX hide' , item.el]);
                 item.el.hide();
                 hit_end = true;
                 return;
@@ -290,8 +279,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         if(box.length){
             queue.push(box);
         }
-        
-        Roo.log(queue);
         
         this._processHorizontalLayoutQueue( queue, eItems, isInstant );
         
@@ -508,8 +495,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             this.boxWidth = this.containerWidth
         }
         
-        Roo.log(['this.containerWidth', this.containerWidth]);
-        
         var boxWidth = this.boxWidth + this.padWidth;
         
         var containerWidth = this.containerWidth;
@@ -518,15 +503,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         this.cols = Math.max( cols, 1 );
         
-        Roo.log(['cols', this.cols]);
-        
         var totalBoxWidth = this.cols * boxWidth;
         
         var avail = Math.floor((containerWidth - totalBoxWidth) / this.cols);
         
         this.colWidth = this.boxWidth + avail;
-        
-        Roo.log(['this.colWidth', this.colWidth]);
         
         var xsWidth = Math.floor((this.colWidth - (this.gutter * 2)) / 3);
         
