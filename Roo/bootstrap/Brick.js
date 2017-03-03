@@ -163,6 +163,7 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
         
         if(this.bgimage.length){
             this.el.select('.roo-brick-paragraph', true).first().setOpacity(0, true);
+            this.el.select('.roo-brick-image-view', true).first().setOpacity(1, true);
         }
     }
     
