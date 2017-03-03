@@ -244,10 +244,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             item.el.setVisibilityMode(Roo.Element.DISPLAY);
             item.el.show();
             
-            Roo.log(item.el);
+            
             
             if(hit_end){
-                Roo.log('hide');
+                Roo.log(['hide' , item.el]);
                 item.el.hide();
                 return;
             }
