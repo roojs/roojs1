@@ -247,7 +247,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             }
             
             if(queue.length > this.cols - 1){
-                return false;
+                item.hide();
+                return;
             }
             
             var width = this.boxColWidth[item.size] + item.el.getPadding('lr');
