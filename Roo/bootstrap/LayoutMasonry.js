@@ -470,12 +470,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     _resetLayout : function()
     {
-        if(this.isHorizontal){
-            this.horizontalMeasureColumns();
-            return;
-        }
-        
-        this.verticalMeasureColumns();
+        this.measureColumns();
     },
     
     measureColumns : function()
