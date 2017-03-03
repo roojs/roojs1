@@ -258,6 +258,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 return;
             }
             
+            if(size >= 3){
+                queue.push(box);
+                box = [];
+                size = 0;
+                maxX = x;
+            }
+            
             var width = this.boxColWidth[item.size] + item.el.getPadding('lr');
             
             var x = Math.min(maxX, maxX - width - this.gutter);
@@ -272,11 +279,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             }
             
             if(size + item.intSize > 3){
-                queue.push(box);
-                box = [];
-                size = 0;
-                maxX = x;
-                x = Math.min(maxX, maxX - width - this.gutter);
+                
+                
                 Roo.log('push', maxX);
             }
             
