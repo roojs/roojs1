@@ -98,7 +98,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         if(this.title.length){
             cn.push({
                 tag: 'h4',
-                cls: 'masonry-brick-title',
+                cls: 'roo-brick-title',
                 html: this.title
             });
         }
@@ -106,7 +106,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         if(this.html.length){
             cn.push({
                 tag: 'p',
-                cls: 'masonry-brick-text',
+                cls: 'roo-brick-text',
                 html: this.html
             });
         }
