@@ -388,12 +388,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
                 b.el.position('absolute');
                 
-                var height = this.boxColWidth[b.size] + b.el.getPadding('tb');
+                var width = this.boxColWidth[b.size] + b.el.getPadding('lr');
                 
-                b.el.setHeight(height);
+                b.el.setWidth(width);
                 
                 if(b.square){
-                    b.el.setWidth(height);
+                    b.el.setHeight(width);
                 }
                 
             }, this);
