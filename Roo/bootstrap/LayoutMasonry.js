@@ -247,7 +247,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             
             if(hit_end){
-                Roo.log(['hide' , item.el]);
+                Roo.log(['hti end hide' , item.el]);
                 item.el.hide();
                 return;
             }
