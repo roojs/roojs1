@@ -239,6 +239,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         Roo.each(items, function(item, k){
             
+            item.el.setVisibilityMode(Roo.ELement.DISPLAY);
+            
+            if(hit_end){
+                item.hide();
+                return;
+            }
+            
             if(queue.length > this.cols - 1){
                 return false;
             }
