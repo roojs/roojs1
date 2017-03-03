@@ -239,8 +239,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         Roo.each(items, function(item, k){
             
             if(queue.length > this.cols - 1){
-                
-                return;
+                return false;
             }
             
             var width = this.boxColWidth[item.size] + item.el.getPadding('lr');
