@@ -260,6 +260,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             var width = this.boxColWidth[item.size] + item.el.getPadding('lr');
             
+            Roo.log(['maxX', maxX]);
+            
             var x = Math.min(maxX, maxX - width - this.gutter);
             
             Roo.log(['x', x]);
