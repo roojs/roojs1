@@ -252,7 +252,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 return;
             }
             
-            if(queue.length > this.cols - 1){
+            if(queue.length >= this.cols - 1){
                 Roo.log(['hit max length hide' , item.el]);
                 item.el.hide();
                 return;
