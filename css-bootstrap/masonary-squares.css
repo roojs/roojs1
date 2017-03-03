@@ -11,7 +11,8 @@
     overflow: hidden;
 }
 
-.masonry-brick .masonry-brick-paragraph {
+.masonry-brick .masonry-brick-paragraph,
+.roo-brick .roo-brick-paragraph {
     padding: 9px;
     width: 100%;
     height: 100%;
