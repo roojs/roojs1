@@ -245,11 +245,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             Roo.log(item.el);
             
             if(hit_end){
+                Roo.log('hide');
                 item.hide();
                 return;
             }
             
             if(queue.length > this.cols - 1){
+                Roo.log('hide');
                 item.hide();
                 return;
             }
