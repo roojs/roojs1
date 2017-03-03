@@ -211,7 +211,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         }, this);
         
         this._processVerticalLayoutQueue( queue, isInstant );
-        
     },
     
     _horizontalLayoutItems : function ( items , isInstant)
