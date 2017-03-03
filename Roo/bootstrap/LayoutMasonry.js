@@ -244,8 +244,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             item.el.setVisibilityMode(Roo.Element.DISPLAY);
             item.el.show();
             
-            
-            
             if(hit_end){
                 Roo.log(['hti end hide' , item.el]);
                 item.el.hide();
