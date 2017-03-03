@@ -11,7 +11,8 @@
     overflow: hidden;
 }
 
-.masonry-brick .masonry-brick-paragraph {
+.masonry-brick .masonry-brick-paragraph,
+.roo-brick .roo-brick-paragraph {
     padding: 9px;
     width: 100%;
     height: 100%;
@@ -35,9 +36,4 @@
 .masonry-brick-paragraph .masonry-brick-title,
 .roo-brick-paragraph .roo-brick-title {
     margin-top: 0;
-}
-
-.roo-brick .roo-brick-paragraph {
-    padding: 15px;
-    background-color: inherit;
 }
