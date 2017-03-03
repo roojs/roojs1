@@ -159,6 +159,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     layoutItems : function( isInstant )
     {
+        var items = Roo.apply({}, this.bricks);
+        
         if(this.isHorizontal){
             this._horizontalLayoutItems( this.bricks , isInstant );
             return;
