@@ -260,6 +260,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             var x = Math.min(maxX, maxX - width - this.gutter);
             
+            Roo.log(['x', x]);
+            
             if(x < minX){
                 Roo.log(['hit minX hide' , item.el]);
                 item.el.hide();
