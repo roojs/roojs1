@@ -285,13 +285,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             box.push(item);
             
-            if(k == items.length - 1){
-                queue.push(box);
-                box = [];
-                size = 0;
-            }
-            
         }, this);
+        
+        if(box.length){
+            queue.push(box);
+        }
         
         Roo.log(queue);
         
