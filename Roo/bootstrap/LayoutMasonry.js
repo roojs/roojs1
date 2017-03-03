@@ -279,6 +279,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 Roo.log('push', maxX);
             }
             
+            var x = Math.min(maxX, maxX - width - this.gutter);
+            
             size = size + item.intSize;
             
             box.push(item);
