@@ -22,7 +22,7 @@ Roo.bootstrap.Brick = function(config){
         // raw events
         /**
          * @event click
-         * When a MasonryBrick is chick
+         * When a Brick is click
          * @param {Roo.bootstrap.Brick} this
          * @param {Roo.EventObject} e
          */
