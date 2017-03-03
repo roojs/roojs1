@@ -503,6 +503,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             md : this.colWidth
         };
         
+        if(this.isHorizontal){
+            this.el.setHeight(this.colWidth);
+        }
+        
     },
     
     getContainerWidth : function()
