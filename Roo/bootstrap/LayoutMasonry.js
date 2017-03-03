@@ -288,6 +288,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         Roo.log(queue);
         
         this._processHorizontalLayoutQueue( queue, eItems, isInstant );
+        
     },
     
     /** Sets position of item in DOM
