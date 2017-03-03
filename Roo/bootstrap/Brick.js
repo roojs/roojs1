@@ -15,15 +15,15 @@
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.MasonryBrick = function(config){
-    Roo.bootstrap.MasonryBrick.superclass.constructor.call(this, config);
+Roo.bootstrap.Brick = function(config){
+    Roo.bootstrap.Brick.superclass.constructor.call(this, config);
     
     this.addEvents({
         // raw events
         /**
          * @event click
          * When a MasonryBrick is chick
-         * @param {Roo.bootstrap.MasonryBrick} this
+         * @param {Roo.bootstrap.Brick} this
          * @param {Roo.EventObject} e
          */
         "click" : true
