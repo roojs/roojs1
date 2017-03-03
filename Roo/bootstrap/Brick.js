@@ -112,7 +112,7 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
         }
         
         if(this.bgimage.length){
-            cn.push({
+            cfg.cn.push({
                 tag: 'img',
                 cls: 'roo-brick-image-view',
                 src: this.bgimage
