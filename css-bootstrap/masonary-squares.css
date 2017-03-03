@@ -48,3 +48,9 @@
     top: 0;
     left: 0;
 }
+
+a.roo-brick-link:focus,
+a.roo-brick-link:hover {
+    text-decoration: none;
+    outline: 0;
+}
