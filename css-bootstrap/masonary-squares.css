@@ -25,3 +25,7 @@
     height: 100%;
 }
 
+.roo-brick .roo-brick-paragraph {
+    padding: 15px;
+    background-color: inherit;
+}
