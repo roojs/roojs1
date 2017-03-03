@@ -127,6 +127,9 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
         this.el.on('mouseenter'  ,this.enter, this);
         this.el.on('mouseleave', this.leave, this);
         
+        Roo.EventManager.onWindowResize(this.resize, this); 
+        
+        this.resize();
     },
     
     resize : function()
