@@ -27,8 +27,7 @@
     opacity: 0;
 }
 
-.masonry-brick-image-view,
-.roo-brick-image-view {
+.masonry-brick-image-view  {
     width: 100%;
     height: 100%;
 }
@@ -36,4 +35,8 @@
 .masonry-brick-paragraph .masonry-brick-title,
 .roo-brick-paragraph .roo-brick-title {
     margin-top: 0;
+}
+
+.roo-brick-image-view {
+    width: 100%;
 }
