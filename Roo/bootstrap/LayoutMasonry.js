@@ -239,6 +239,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var size = 0;
         var hit_end = false;
         
+        Roo.log(['minX', minX]);
+        
         Roo.each(items, function(item, k){
             
             item.el.setVisibilityMode(Roo.Element.DISPLAY);
