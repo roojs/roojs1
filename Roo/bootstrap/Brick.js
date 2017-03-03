@@ -153,6 +153,7 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
         Roo.log('enter');
         if(this.bgimage.length){
             this.el.select('.roo-brick-paragraph', true).first().setOpacity(0.9, true);
+            this.el.select('.roo-brick-image-view', true).first().setOpacity(0, true);
         }
     },
     
