@@ -138,7 +138,7 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
         paragraph.setHeight(paragraph.getWidth() + paragraph.getPadding('tb'));
         
         if(this.bgimage.length){
-            var image = this.el.select('.roo-brick-image', true).first();
+            var image = this.el.select('.roo-brick-image-view', true).first();
             cls += ' roo-brick-image';
         }
         
