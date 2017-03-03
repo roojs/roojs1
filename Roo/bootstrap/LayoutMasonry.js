@@ -235,6 +235,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var box = [];
         var size = 0;
+        var hit_end = false;
         
         Roo.each(items, function(item, k){
             
