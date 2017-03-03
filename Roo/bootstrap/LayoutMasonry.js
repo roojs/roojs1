@@ -415,40 +415,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
         }, this);
         
-        /*
-        Roo.each(queue, function(b, k){
-            
-            var height = this.boxColWidth[b.size] + b.el.getPadding('tb');
-            
-            var x = maxX - height;
-            
-            if(!is_full){
-                x = maxX;
-            }
-            
-            if(y + height > maxY){
-                y = minY;
-            }
-            
-            if(x < minX){
-                return false;
-            }
-            
-            b.el.setHeight(height);
-
-            if(b.square){
-                b.el.setWidth(height);
-            }
-            
-            b.el.position('absolute');
-            
-            b.el.setXY([x , y], isInstant ? false : true);
-
-            
-        }, this);
-        
-        this._processHorizontalEndItem(eItems, maxX, y, maxY, isInstant);
-        */
     },
     
     _processHorizontalEndItem : function(eItems, maxX, minX, minY, isInstant)
