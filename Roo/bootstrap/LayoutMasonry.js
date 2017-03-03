@@ -460,8 +460,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         Roo.each(eItems, function(b,k){
             
-            b.el.position('absolute');
-
             b.el.setXY([positions[k].x, positions[k].y], isInstant ? false : true);
 
             var sz = b.el.getSize();
