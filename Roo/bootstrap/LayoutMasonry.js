@@ -240,6 +240,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         Roo.each(items, function(item, k){
             
             item.el.setVisibilityMode(Roo.Element.DISPLAY);
+            item.el.show();
             
             if(hit_end){
                 item.hide();
