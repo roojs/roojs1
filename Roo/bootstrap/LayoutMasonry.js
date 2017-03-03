@@ -260,11 +260,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             }
             
             if(size >= 3){
-                Roo.log('push');
                 queue.push(box);
                 box = [];
                 size = 0;
                 maxX = x;
+                
+                Roo.log('push', maxX);
             }
             
             var width = this.boxColWidth[item.size] + item.el.getPadding('lr');
