@@ -152,7 +152,6 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         this.el.on('mouseleave', this.leave, this);
         
         this.parent().bricks.push(this);
-        
     },
     
     resize : function()
