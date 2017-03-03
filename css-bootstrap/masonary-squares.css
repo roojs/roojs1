@@ -36,3 +36,12 @@
 .roo-brick-paragraph .roo-brick-title {
     margin-top: 0;
 }
+
+.roo-brick .roo-brick-paragraph {
+    padding: 9px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: inherit;
+}
