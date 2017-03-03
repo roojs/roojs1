@@ -73,10 +73,6 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             cls += ' roo-brick-image';
         }
         
-        if(this.size){
-            cls += ' masonry-' + this.size + '-brick';
-        }
-        
         if(this.cls){
             cls += ' ' + this.cls;
         }
@@ -87,7 +83,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             cn: [
                 {
                     tag: 'div',
-                    cls: 'masonry-brick-paragraph',
+                    cls: 'roo-brick-paragraph',
                     cn: []
                 }
             ]
