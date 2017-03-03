@@ -1,5 +1,6 @@
 
-.masonry-brick-link {
+.masonry-brick-link,
+.roo-brick-link {
     cursor: pointer;
     text-decoration: none;
     outline: 0;
