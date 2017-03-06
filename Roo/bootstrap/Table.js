@@ -728,7 +728,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     renderRow : function(cm, ds, rowIndex) 
     {
-        
+        Roo.log(ds);
         var d = ds.getAt(rowIndex);
         
         var row = {
