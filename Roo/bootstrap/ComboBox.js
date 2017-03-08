@@ -2333,6 +2333,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     html : d.data[this.displayField]
                 };
                 
+                Roo.log(cfg);
+                
                 if(this.fireEvent('touchviewdisplay', this, cfg) !== false){
                     row.select('.roo-combobox-list-group-item-value', true).first().dom.innerHTML = cfg.html;
                 }
