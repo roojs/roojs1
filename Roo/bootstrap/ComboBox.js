@@ -2327,6 +2327,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.store.data.each(function(d, rowIndex){
             var row = this.touchViewListGroup.createChild(template);
             
+            Roo.log(d.data);
+            
             if(d.data.cls.length){
                 row.addClass(d.data.cls);
             }
