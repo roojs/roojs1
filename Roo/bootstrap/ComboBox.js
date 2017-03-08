@@ -2330,7 +2330,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             if(this.displayField && typeof(d.data[this.displayField]) != 'undefined'){
                 var cfg = {
                     data : d.data,
-                    html : d.data[this.displayField]
+                    html : d.data[this.displayField],
+                    cls : d.data.cls
                 };
                 
                 if(this.fireEvent('touchviewdisplay', this, cfg) !== false){
