@@ -651,6 +651,6 @@ html[dir="rtl"] .select2-search-choice-close {
 
 .dropdown-menu .select2-result.disabled {
     background-color: #eee;
-    color: #000;
+    color: #777;
     cursor: not-allowed;
 }
