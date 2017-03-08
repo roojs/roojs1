@@ -2331,7 +2331,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 var cfg = {
                     data : d.data,
                     html : d.data[this.displayField],
-                    cls : d.data.cls
+                    cls : 'test'
                 };
                 
                 if(this.fireEvent('touchviewdisplay', this, cfg) !== false){
