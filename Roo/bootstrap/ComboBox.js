@@ -2402,38 +2402,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var r = this.store.getAt(rowIndex);
         
-        if(!this.multiple){
-            Roo.each(this.touchViewListGroup.select('.list-group-item > .roo-combobox-list-group-item-box > input:checked', true).elements, function(c){
-                c.dom.removeAttribute('checked');
-            }, this);
-            
-            row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
+        if(this.fireEvent('beforeselect', this, record, index) !== false){
         
-            this.setFromData(r.data);
+            this.setFromData(index > -1 ? record.data : false);
             
-            var close = this.closeTriggerEl();
-        
-            if(close){
-                close.show();
-            }
-
-            this.hideTouchView();
-            
-            this.fireEvent('select', this, r, rowIndex);
-            
-            return;
+            this.collapse();
+            this.fireEvent('select', this, record, index);
         }
-        
-        if(this.valueField && typeof(r.data[this.valueField]) != 'undefined' && this.getValue().indexOf(r.data[this.valueField]) != -1){
-            row.select('.roo-combobox-list-group-item-box > input', true).first().dom.removeAttribute('checked');
-            this.tickItems.splice(this.tickItems.indexOf(r.data), 1);
-            return;
-        }
-        
-        row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
-        this.addItem(r.data);
-        this.tickItems.push(r.data);
-        
     }
     
 
