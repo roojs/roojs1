@@ -150,8 +150,10 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         
         this.el.on('mouseenter'  ,this.enter, this);
         this.el.on('mouseleave', this.leave, this);
+        if (typeof(this.parent().bricks) != 'undefined') {
+            this.parent().bricks.push(this);   
+        }
         
-        this.parent().bricks.push(this);
     },
     
     enter: function(e, el)
