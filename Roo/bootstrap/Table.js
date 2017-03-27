@@ -323,7 +323,56 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         this.processEvent("contextmenu", e);
     },
     
-    
+    processEvent : function(name, e){
+        // does this fire select???
+        //Roo.log('grid:processEvent '  + name);
+        
+        if (name != 'touchstart' ) {
+            this.fireEvent(name, e);    
+        }
+        
+        var t = e.getTarget();
+        var v = this.view;
+        var header = v.findHeaderIndex(t);
+        if(header !== false){
+            var ename = name == 'touchstart' ? 'click' : name;
+             
+            this.fireEvent("header" + ename, this, header, e);
+        }else{
+            var row = v.findRowIndex(t);
+            var cell = v.findCellIndex(t);
+            if (name == 'touchstart') {
+                // first touch is always a click.
+                // hopefull this happens after selection is updated.?
+                name = false;
+                
+                if (typeof(this.selModel.getSelectedCell) != 'undefined') {
+                    var cs = this.selModel.getSelectedCell();
+                    if (row == cs[0] && cell == cs[1]){
+                        name = 'dblclick';
+                    }
+                }
+                if (typeof(this.selModel.getSelections) != 'undefined') {
+                    var cs = this.selModel.getSelections();
+                    var ds = this.dataSource;
+                    if (cs.length == 1 && ds.getAt(row) == cs[0]){
+                        name = 'dblclick';
+                    }
+                }
+                if (!name) {
+                    return;
+                }
+            }
+            
+            
+            if(row !== false){
+                this.fireEvent("row" + name, this, row, e);
+                if(cell !== false){
+                    this.fireEvent("cell" + name, this, row, cell, e);
+                }
+            }
+        }
+    },
     
     onMouseover : function(e, el)
     {
