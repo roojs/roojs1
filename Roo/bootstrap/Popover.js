@@ -155,11 +155,11 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     timeout : null,
     hoverState : null,
     
-    toggle : function () {
-        this.hoverState == 'in' ? this.leave() : this.enter();
+    toggle : function (on_el) {
+        this.hoverState == 'in' ? this.leave() : this.enter(on_el);
     },
     
-    enter : function () {
+    enter : function (on_el) {
        
     
         clearTimeout(this.timeout);
