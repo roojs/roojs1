@@ -352,9 +352,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             return;
         }
         
-        Roo.log(cell.findParent('thead', false, true));
-        return;
-        //if(cell.findParent('thead', false, true))
+        if(cell.findParent('thead', false, true)){
+            Roo.log('fire header' + ename);
+            var ename = name == 'touchstart' ? 'click' : name;
+            this.fireEvent("header" + ename, this, cellIndex, e);
+            return;
+        }
         
         var is_header = false;
         
@@ -376,9 +379,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var rowIndex = row.dom.rowIndex - 1;
         
         if(is_header){
-            var ename = name == 'touchstart' ? 'click' : name;
-            this.fireEvent("header" + ename, this, cellIndex, e);
-            return;
+            
         }
         
         
