@@ -371,7 +371,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var cellIndex = cell.dom.cellIndex;
         var rowIndex = row.dom.rowIndex - 1;
         
-        Roo.log([cell, is_header]);return;
+        Roo.log([is_header, cellIndex, rowIndex]);
+        return;
         
         var v = this.view;
         var header = v.findHeaderIndex(t);
