@@ -167,13 +167,13 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         this.hoverState = 'in';
     
         if (!this.delay || !this.delay.show) {
-            this.show();
+            this.show(on_el);
             return;
         }
         var _t = this;
         this.timeout = setTimeout(function () {
             if (_t.hoverState == 'in') {
-                _t.show();
+                _t.show(on_el);
             }
         }, this.delay.show)
     },
