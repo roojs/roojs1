@@ -353,12 +353,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
         
         if(cell.findParent('tfoot', false, true)){
-            Roo.log('tfoot ignore');
             return;
         }
         
         if(cell.findParent('thead', false, true)){
-            Roo.log('fire header' + ename);
             
             if(e.getTarget().nodeName.toLowerCase() != 'th'){
                 cell = Roo.get(t).findParent('th', false, true);
