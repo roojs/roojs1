@@ -363,6 +363,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             is_header = true;
         }
         
+        if(!cell){
+            return;
+        }
+        
         Roo.log([t, cell]);return;
         
         var v = this.view;
