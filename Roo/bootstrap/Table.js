@@ -383,7 +383,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         if(row !== false){
             
             Roo.log('fire header' + ename);
-            this.fireEvent("row" + name, this, row, e);
+            this.fireEvent("row" + name, this, rowIndex, e);
             
             if(cell !== false){
                 Roo.log('fire header' + ename);
