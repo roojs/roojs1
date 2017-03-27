@@ -356,6 +356,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             cell = cell.findParent('td', false, true);
         }
         
+        if(!cell){
+            cell = cell.findParent('th', false, true);
+        }
+        
         Roo.log([t, cell]);return;
         
         var v = this.view;
