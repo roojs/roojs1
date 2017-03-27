@@ -364,7 +364,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             return;
         }
         
-        if(cell.nodeName.toLowerCase() != 'td'){
+        if(e.getTarget().nodeName.toLowerCase() != 'td'){
             cell = Roo.get(t).findParent('td', false, true);
         }
         
