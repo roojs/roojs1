@@ -328,6 +328,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         
         Roo.log('process event');
+        return;
         
         if (name != 'touchstart' ) {
             this.fireEvent(name, e);    
