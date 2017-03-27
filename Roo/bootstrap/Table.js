@@ -355,12 +355,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var is_header = false;
         
         if(e.getTarget().nodeName.toLowerCase() != 'td'){
-            cell = cell.findParent('td', false, true);
+            cell = Roo.get(t).findParent('td', false, true);
         }
         
         if(!cell){
-            Roo.log(cell);
-            cell = cell.findParent('th', false, true);
+            cell = Roo.get(t).findParent('th', false, true);
             is_header = true;
         }
         
