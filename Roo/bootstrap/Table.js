@@ -387,7 +387,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             if(cell !== false){
                 Roo.log('fire header' + ename);
-                this.fireEvent("cell" + name, this, row, cell, e);
+                this.fireEvent("cell" + name, this, rowIndex, cellIndex, e);
             }
         }
         
