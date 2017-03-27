@@ -172,6 +172,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                 
                 
         }
+        
         if(this.boxLabel){
              var boxLabelCfg = {
                 tag: 'label',
