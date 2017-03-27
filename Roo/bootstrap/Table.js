@@ -363,9 +363,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             if(e.getTarget().nodeName.toLowerCase() != 'th'){
                 cell = Roo.get(t).findParent('th', false, true);
             }
-        
+            
+            var cellIndex = cell.dom.cellIndex;
+            
             var ename = name == 'touchstart' ? 'click' : name;
             this.fireEvent("header" + ename, this, cellIndex, e);
+            
             return;
         }
         
