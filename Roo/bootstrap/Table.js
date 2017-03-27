@@ -319,6 +319,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
     },
     
+    onContextMenu : function(e, t){
+        this.processEvent("contextmenu", e);
+    },
+    
+    
+    
     onMouseover : function(e, el)
     {
         var cell = Roo.get(el);
