@@ -381,8 +381,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var rowIndex = row.dom.rowIndex - 1;
         
         if(row !== false){
+            
+            Roo.log('fire header' + ename);
             this.fireEvent("row" + name, this, row, e);
+            
             if(cell !== false){
+                Roo.log('fire header' + ename);
                 this.fireEvent("cell" + name, this, row, cell, e);
             }
         }
