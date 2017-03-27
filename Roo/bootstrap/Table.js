@@ -352,12 +352,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             return;
         }
         
+        var is_header = false;
+        
         if(e.getTarget().nodeName.toLowerCase() != 'td'){
             cell = cell.findParent('td', false, true);
         }
         
         if(!cell){
             cell = cell.findParent('th', false, true);
+            is_header = true;
         }
         
         Roo.log([t, cell]);return;
