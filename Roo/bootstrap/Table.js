@@ -378,7 +378,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
         
         
-        
         Roo.log([is_header, cellIndex, rowIndex]);
         return;
         
