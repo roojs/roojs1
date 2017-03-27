@@ -145,6 +145,12 @@ Roo.bootstrap.Table = function(config){
          */
         'rowsrendered' : true,
         /**
+         * @event contextmenu
+         * The raw contextmenu event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "contextmenu" : true,
+        /**
          * @event rowcontextmenu
          * Fires when a row is right clicked
          * @param {Roo.bootstrap.Table} this
