@@ -380,28 +380,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var cellIndex = cell.dom.cellIndex;
         var rowIndex = row.dom.rowIndex - 1;
         
-        if (name == 'touchstart') {
-            name = false;
-
-            if (typeof(this.selModel.getSelectedCell) != 'undefined') {
-                var cs = this.selModel.getSelectedCell();
-                if (row == cs[0] && cell == cs[1]){
-                    name = 'dblclick';
-                }
-            }
-            if (typeof(this.selModel.getSelections) != 'undefined') {
-                var cs = this.selModel.getSelections();
-                var ds = this.dataSource;
-                if (cs.length == 1 && ds.getAt(row) == cs[0]){
-                    name = 'dblclick';
-                }
-            }
-            if (!name) {
-                return;
-            }
-        }
-
-
         if(row !== false){
             this.fireEvent("row" + name, this, row, e);
             if(cell !== false){
