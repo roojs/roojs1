@@ -352,7 +352,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             return;
         }
         
-        if(cell.findParent('thead', false, true))
+        Roo.log(cell.findParent('thead', false, true));
+        return;
+        //if(cell.findParent('thead', false, true))
         
         var is_header = false;
         
