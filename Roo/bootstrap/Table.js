@@ -315,7 +315,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         this.store.on('update', this.onUpdate, this);
         this.store.on('add', this.onAdd, this);
         
-        thie.el.on("contextmenu", this.onContextMenu, this);
+        this.el.on("contextmenu", this.onContextMenu, this);
         
     },
     
