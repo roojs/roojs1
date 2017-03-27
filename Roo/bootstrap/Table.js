@@ -382,11 +382,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         if(row !== false){
             
-            Roo.log('fire row' + name);
             this.fireEvent("row" + name, this, rowIndex, e);
             
             if(cell !== false){
-                Roo.log('fire cell' + name);
+            
                 this.fireEvent("cell" + name, this, rowIndex, cellIndex, e);
             }
         }
