@@ -174,7 +174,7 @@ Roo.bootstrap.Table = function(config){
          * @param {Number} columnIndex
          * @param {Roo.EventObject} e
          */
-        "headercontextmenu" : true,
+        "headercontextmenu" : true
     });
 };
 

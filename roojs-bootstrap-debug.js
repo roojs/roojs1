@@ -5751,6 +5751,12 @@ Roo.bootstrap.Table = function(config){
          */
         'rowsrendered' : true,
         /**
+         * @event contextmenu
+         * The raw contextmenu event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "contextmenu" : true,
+        /**
          * @event rowcontextmenu
          * Fires when a row is right clicked
          * @param {Roo.bootstrap.Table} this
@@ -5766,7 +5772,15 @@ Roo.bootstrap.Table = function(config){
          * @param {Number} cellIndex
          * @param {Roo.EventObject} e
          */
-         "cellcontextmenu" : true
+         "cellcontextmenu" : true,
+         /**
+         * @event headercontextmenu
+         * Fires when a header is right clicked
+         * @param {Roo.bootstrap.Table} this
+         * @param {Number} columnIndex
+         * @param {Roo.EventObject} e
+         */
+        "headercontextmenu" : true
     });
 };
 
@@ -5932,54 +5946,54 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     processEvent : function(name, e)
     {
-        
-        Roo.log('process event');
-        
         if (name != 'touchstart' ) {
             this.fireEvent(name, e);    
         }
         
         var t = e.getTarget();
-        var v = this.view;
-        var header = v.findHeaderIndex(t);
-        if(header !== false){
-            var ename = name == 'touchstart' ? 'click' : name;
-             
-            this.fireEvent("header" + ename, this, header, e);
-        }else{
-            var row = v.findRowIndex(t);
-            var cell = v.findCellIndex(t);
-            if (name == 'touchstart') {
-                // first touch is always a click.
-                // hopefull this happens after selection is updated.?
-                name = false;
-                
-                if (typeof(this.selModel.getSelectedCell) != 'undefined') {
-                    var cs = this.selModel.getSelectedCell();
-                    if (row == cs[0] && cell == cs[1]){
-                        name = 'dblclick';
-                    }
-                }
-                if (typeof(this.selModel.getSelections) != 'undefined') {
-                    var cs = this.selModel.getSelections();
-                    var ds = this.dataSource;
-                    if (cs.length == 1 && ds.getAt(row) == cs[0]){
-                        name = 'dblclick';
-                    }
-                }
-                if (!name) {
-                    return;
-                }
+        
+        var cell = Roo.get(t);
+        
+        if(!cell){
+            return;
+        }
+        
+        if(cell.findParent('tfoot', false, true)){
+            return;
+        }
+        
+        if(cell.findParent('thead', false, true)){
+            
+            if(e.getTarget().nodeName.toLowerCase() != 'th'){
+                cell = Roo.get(t).findParent('th', false, true);
             }
             
+            var cellIndex = cell.dom.cellIndex;
             
-            if(row !== false){
-                this.fireEvent("row" + name, this, row, e);
-                if(cell !== false){
-                    this.fireEvent("cell" + name, this, row, cell, e);
-                }
+            var ename = name == 'touchstart' ? 'click' : name;
+            this.fireEvent("header" + ename, this, cellIndex, e);
+            
+            return;
+        }
+        
+        if(e.getTarget().nodeName.toLowerCase() != 'td'){
+            cell = Roo.get(t).findParent('td', false, true);
+        }
+        
+        var row = cell.findParent('tr', false, true);
+        var cellIndex = cell.dom.cellIndex;
+        var rowIndex = row.dom.rowIndex - 1;
+        
+        if(row !== false){
+            
+            this.fireEvent("row" + name, this, rowIndex, e);
+            
+            if(cell !== false){
+            
+                this.fireEvent("cell" + name, this, rowIndex, cellIndex, e);
             }
         }
+        
     },
     
     onMouseover : function(e, el)
