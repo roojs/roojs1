@@ -177,6 +177,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             }
         }, this.delay.show)
     },
+    
     leave : function() {
         clearTimeout(this.timeout);
     
