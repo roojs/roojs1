@@ -5749,8 +5749,24 @@ Roo.bootstrap.Table = function(config){
          * Fires when all the  rows have been rendered
          * @param {Roo.bootstrap.Table} this
          */
-        'rowsrendered' : true
-        
+        'rowsrendered' : true,
+        /**
+         * @event rowcontextmenu
+         * Fires when a row is right clicked
+         * @param {Roo.bootstrap.Table} this
+         * @param {Number} rowIndex
+         * @param {Roo.EventObject} e
+         */
+        "rowcontextmenu" : true,
+        /**
+         * @event cellcontextmenu
+         * Fires when a cell is right clicked
+         * @param {Roo.bootstrap.Table} this
+         * @param {Number} rowIndex
+         * @param {Number} cellIndex
+         * @param {Roo.EventObject} e
+         */
+         "cellcontextmenu" : true
     });
 };
 
@@ -5905,6 +5921,65 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         this.store.on('update', this.onUpdate, this);
         this.store.on('add', this.onAdd, this);
         
+        this.el.on("contextmenu", this.onContextMenu, this);
+        
+    },
+    
+    onContextMenu : function(e, t)
+    {
+        this.processEvent("contextmenu", e);
+    },
+    
+    processEvent : function(name, e)
+    {
+        
+        Roo.log('process event');
+        
+        if (name != 'touchstart' ) {
+            this.fireEvent(name, e);    
+        }
+        
+        var t = e.getTarget();
+        var v = this.view;
+        var header = v.findHeaderIndex(t);
+        if(header !== false){
+            var ename = name == 'touchstart' ? 'click' : name;
+             
+            this.fireEvent("header" + ename, this, header, e);
+        }else{
+            var row = v.findRowIndex(t);
+            var cell = v.findCellIndex(t);
+            if (name == 'touchstart') {
+                // first touch is always a click.
+                // hopefull this happens after selection is updated.?
+                name = false;
+                
+                if (typeof(this.selModel.getSelectedCell) != 'undefined') {
+                    var cs = this.selModel.getSelectedCell();
+                    if (row == cs[0] && cell == cs[1]){
+                        name = 'dblclick';
+                    }
+                }
+                if (typeof(this.selModel.getSelections) != 'undefined') {
+                    var cs = this.selModel.getSelections();
+                    var ds = this.dataSource;
+                    if (cs.length == 1 && ds.getAt(row) == cs[0]){
+                        name = 'dblclick';
+                    }
+                }
+                if (!name) {
+                    return;
+                }
+            }
+            
+            
+            if(row !== false){
+                this.fireEvent("row" + name, this, row, e);
+                if(cell !== false){
+                    this.fireEvent("cell" + name, this, row, cell, e);
+                }
+            }
+        }
     },
     
     onMouseover : function(e, el)
