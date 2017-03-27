@@ -319,13 +319,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
     },
     
-    onContextMenu : function(e, t){
+    onContextMenu : function(e, t)
+    {
         this.processEvent("contextmenu", e);
     },
     
-    processEvent : function(name, e){
-        // does this fire select???
-        //Roo.log('grid:processEvent '  + name);
+    processEvent : function(name, e)
+    {
+        
+        Roo.log('process event');
         
         if (name != 'touchstart' ) {
             this.fireEvent(name, e);    
