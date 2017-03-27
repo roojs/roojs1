@@ -353,9 +353,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
         
         if(cell.findParent('tfoot', false, true)){
-            Roo.log('fire header' + ename);
-            var ename = name == 'touchstart' ? 'click' : name;
-            this.fireEvent("header" + ename, this, cellIndex, e);
+            Roo.log('tfoot ignore');
             return;
         }
         
