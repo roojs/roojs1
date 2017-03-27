@@ -382,16 +382,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         if(row !== false){
             
-            Roo.log('fire header' + ename);
+            Roo.log('fire header' + name);
             this.fireEvent("row" + name, this, rowIndex, e);
             
             if(cell !== false){
-                Roo.log('fire header' + ename);
+                Roo.log('fire header' + name);
                 this.fireEvent("cell" + name, this, rowIndex, cellIndex, e);
             }
         }
         
-        Roo.log([cellIndex, rowIndex]);
         return;
         
         var v = this.view;
