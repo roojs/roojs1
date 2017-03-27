@@ -215,7 +215,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     boxLabelEl: function()
     {
-        return this.el.select('label.control-label',true).first();
+        return this.el.select('label.box-label',true).first();
     },
     
     initEvents : function()
