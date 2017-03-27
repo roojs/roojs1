@@ -367,6 +367,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             return;
         }
         
+        var row = cell.findParent('tr', false, true);
+        var cellIndex = cell.dom.cellIndex;
+        var rowIndex = row.dom.rowIndex - 1;
         
         Roo.log([cell, is_header]);return;
         
