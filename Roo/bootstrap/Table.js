@@ -348,6 +348,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var cell = Roo.get(t);
         
+        if(!cell){
+            return;
+        }
+        
         Roo.log([t, cell]);return;
         
         var v = this.view;
