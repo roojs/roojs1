@@ -166,7 +166,15 @@ Roo.bootstrap.Table = function(config){
          * @param {Number} cellIndex
          * @param {Roo.EventObject} e
          */
-         "cellcontextmenu" : true
+         "cellcontextmenu" : true,
+         /**
+         * @event headercontextmenu
+         * Fires when a header is right clicked
+         * @param {Roo.bootstrap.Table} this
+         * @param {Number} columnIndex
+         * @param {Roo.EventObject} e
+         */
+        "headercontextmenu" : true,
     });
 };
 
