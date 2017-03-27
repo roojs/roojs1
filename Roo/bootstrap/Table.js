@@ -359,6 +359,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
         
         if(!cell){
+            Roo.log(cell);
             cell = cell.findParent('th', false, true);
             is_header = true;
         }
