@@ -143,7 +143,24 @@ Roo.bootstrap.Table = function(config){
          * Fires when all the  rows have been rendered
          * @param {Roo.bootstrap.Table} this
          */
-        'rowsrendered' : true
+        'rowsrendered' : true,
+        /**
+         * @event rowcontextmenu
+         * Fires when a row is right clicked
+         * @param {Grid} this
+         * @param {Number} rowIndex
+         * @param {Roo.EventObject} e
+         */
+        "rowcontextmenu" : true,
+        /**
+         * @event cellcontextmenu
+         * Fires when a cell is right clicked
+         * @param {Grid} this
+         * @param {Number} rowIndex
+         * @param {Number} cellIndex
+         * @param {Roo.EventObject} e
+         */
+         "cellcontextmenu" : true,
         
     });
 };
