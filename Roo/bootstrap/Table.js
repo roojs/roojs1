@@ -352,6 +352,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             return;
         }
         
+        if(cell.findParent('thead', false, true))
+        
         var is_header = false;
         
         if(e.getTarget().nodeName.toLowerCase() != 'td'){
