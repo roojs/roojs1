@@ -337,6 +337,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
         
         var t = e.getTarget();
+        
+        Roo.log(t);return;
+        
         var v = this.view;
         var header = v.findHeaderIndex(t);
         if(header !== false){
