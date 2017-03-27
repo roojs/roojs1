@@ -136,9 +136,9 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if(this.tabIndex !== undefined){
             this.el.dom.setAttribute('tabIndex', this.tabIndex);
         }
+        
         this.initEvents();
 	
-        
     },
     /**
      * Fetch the element to add children to
@@ -2000,6 +2000,9 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
        // Roo.log("ADD event");
        // Roo.log(this.triggerEl.dom);
+        
+        this.triggerEl.on('click', this.onTriggerClick, this);
+        
         this.triggerEl.on(Roo.isTouch ? 'touchstart' : 'mouseup', this.onTriggerPress, this);
         
         this.triggerEl.addClass('dropdown-toggle');
@@ -2034,6 +2037,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     
     onTouch : function(e) 
     {
+        Roo.log("menu.onTouch");
         //e.stopEvent(); this make the user popdown broken
         this.onClick(e);
     },
@@ -2041,6 +2045,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     onClick : function(e)
     {
         Roo.log("menu.onClick");
+        
         var t = this.findTargetItem(e);
         if(!t || t.isContainer){
             return;
@@ -2136,7 +2141,10 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             xy[0] = xy[0] - this.el.getWidth() + this.triggerEl.getWidth();
         }
         
-        this.el.setXY(xy);
+        if(this.el.getStyle('top').slice(-1) != "%"){
+            this.el.setXY(xy);
+        }
+        
         this.focus();
         this.fireEvent("show", this);
     },
@@ -2177,9 +2185,22 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         }
     },
     
+    onTriggerClick : function(e)
+    {
+        Roo.log('trigger click');
+        
+        var target = e.getTarget();
+        
+        Roo.log(target.nodeName.toLowerCase());
+        
+        if(target.nodeName.toLowerCase() === 'i'){
+            e.preventDefault();
+        }
+        
+    },
+    
     onTriggerPress  : function(e)
     {
-        
         Roo.log('trigger press');
         //Roo.log(e.getTarget());
        // Roo.log(this.triggerEl.dom);
@@ -4502,10 +4523,7 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
         if (this.menu) {
             a.cn.push({ tag : 'i', cls : 'glyphicon glyphicon-chevron-down pull-right'});
             a.cls += 'dropdown-toggle treeview' ;
-            
         }
-        
-        
         
         return cfg;
          
@@ -13852,6 +13870,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.store.data.each(function(d, rowIndex){
             var row = this.touchViewListGroup.createChild(template);
             
+            if(typeof(d.data.cls) != 'undefined' && d.data.cls.length){
+                row.addClass(d.data.cls);
+            }
+            
             if(this.displayField && typeof(d.data[this.displayField]) != 'undefined'){
                 var cfg = {
                     data : d.data,
@@ -13923,38 +13945,40 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var r = this.store.getAt(rowIndex);
         
-        if(!this.multiple){
-            Roo.each(this.touchViewListGroup.select('.list-group-item > .roo-combobox-list-group-item-box > input:checked', true).elements, function(c){
-                c.dom.removeAttribute('checked');
-            }, this);
+        if(this.fireEvent('beforeselect', this, r, rowIndex) !== false){
             
-            row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
-        
-            this.setFromData(r.data);
-            
-            var close = this.closeTriggerEl();
-        
-            if(close){
-                close.show();
+            if(!this.multiple){
+                Roo.each(this.touchViewListGroup.select('.list-group-item > .roo-combobox-list-group-item-box > input:checked', true).elements, function(c){
+                    c.dom.removeAttribute('checked');
+                }, this);
+
+                row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
+
+                this.setFromData(r.data);
+
+                var close = this.closeTriggerEl();
+
+                if(close){
+                    close.show();
+                }
+
+                this.hideTouchView();
+
+                this.fireEvent('select', this, r, rowIndex);
+
+                return;
             }
 
-            this.hideTouchView();
-            
-            this.fireEvent('select', this, r, rowIndex);
-            
-            return;
+            if(this.valueField && typeof(r.data[this.valueField]) != 'undefined' && this.getValue().indexOf(r.data[this.valueField]) != -1){
+                row.select('.roo-combobox-list-group-item-box > input', true).first().dom.removeAttribute('checked');
+                this.tickItems.splice(this.tickItems.indexOf(r.data), 1);
+                return;
+            }
+
+            row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
+            this.addItem(r.data);
+            this.tickItems.push(r.data);
         }
-        
-        if(this.valueField && typeof(r.data[this.valueField]) != 'undefined' && this.getValue().indexOf(r.data[this.valueField]) != -1){
-            row.select('.roo-combobox-list-group-item-box > input', true).first().dom.removeAttribute('checked');
-            this.tickItems.splice(this.tickItems.indexOf(r.data), 1);
-            return;
-        }
-        
-        row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
-        this.addItem(r.data);
-        this.tickItems.push(r.data);
-        
     }
     
 
@@ -18764,6 +18788,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                 
                 
         }
+        
         if(this.boxLabel){
              var boxLabelCfg = {
                 tag: 'label',
@@ -18802,6 +18827,11 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     label: function()
     {
         return this.labelEl();
+    },
+    
+    boxLabelEl: function()
+    {
+        return this.el.select('label.box-label',true).first();
     },
     
     initEvents : function()
@@ -28196,66 +28226,56 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
 
 Roo.bootstrap.LayoutMasonry = function(config){
     Roo.bootstrap.LayoutMasonry.superclass.constructor.call(this, config);
+    
+    this.bricks = [];
+    
 };
 
 Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
-      /**
-     * @cfg {Boolean} isFitWidth  - resize the width..
-     */   
-    isFitWidth : false,  // options..
-    /**
-     * @cfg {Boolean} isOriginLeft = left align?
-     */   
-    isOriginLeft : true,
-    /**
-     * @cfg {Boolean} isOriginTop = top align?
-     */   
-    isOriginTop : false,
     /**
      * @cfg {Boolean} isLayoutInstant = no animation?
      */   
     isLayoutInstant : false, // needed?
+   
     /**
-     * @cfg {Boolean} isResizingContainer = not sure if this is used..
+     * @cfg {Number} boxWidth  width of the columns
      */   
-    isResizingContainer : true,
-    /**
-     * @cfg {Number} columnWidth  width of the columns 
-     */   
+    boxWidth : 450,
     
-    columnWidth : 0,
     /**
-     * @cfg {Number} padHeight padding below box..
+     * @cfg {Number} padWidth padding below box..
      */   
+    padWidth : 10, 
     
-    padHeight : 10, 
+    /**
+     * @cfg {Number} gutter gutter width..
+     */   
+    gutter : 10, 
     
     /**
      * @cfg {Boolean} isAutoInitial defalut true
      */   
-    
     isAutoInitial : true, 
     
-    // private?
-    gutter : 0,
-    
     containerWidth: 0,
-    initialColumnWidth : 0,
+    
+    /**
+     * @cfg {Boolean} isHorizontal defalut false
+     */   
+    isHorizontal : false, 
+
     currentSize : null,
     
-    colYs : null, // array.
-    maxY : 0,
-    padWidth: 10,
-    
-    
     tag: 'div',
-    cls: '',
-    bricks: null, //CompositeElement
-    cols : 0, // array?
-    // element : null, // wrapped now this.el
-    _isLayoutInited : null, 
     
+    cls: '',
+    
+    bricks: null, //CompositeElement
+    
+    cols : 1,
+    
+    _isLayoutInited : false,
     
     getAutoCreate : function(){
         
@@ -28267,7 +28287,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             }
         };
         
-	
         return cfg;
     },
     
@@ -28294,16 +28313,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 _this.initial();
             } ,this);
         }
-        
     },
     
     initial : function()
     {
-        this.reloadItems();
-
         this.currentSize = this.el.getBox(true);
-
-        /// was window resize... - let's see if this works..
+        
         Roo.EventManager.onWindowResize(this.resize, this); 
 
         if(!this.isAutoInitial){
@@ -28311,358 +28326,554 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             return;
         }
         
-        this.layout.defer(500,this);
-    },
-    
-    reloadItems: function()
-    {
-        this.bricks = this.el.select('.masonry-brick', true);
+        this.layout();
         
-        this.bricks.each(function(b) {
-            //Roo.log(b.getSize());
-            if (!b.attr('originalwidth')) {
-                b.attr('originalwidth',  b.getSize().width);
-            }
-            
-        });
+        return;
+        //this.layout.defer(500,this);
         
-        Roo.log(this.bricks.elements.length);
     },
     
     resize : function()
     {
         Roo.log('resize');
+        
         var cs = this.el.getBox(true);
         
         if (this.currentSize.width == cs.width && this.currentSize.x == cs.x ) {
             Roo.log("no change in with or X");
             return;
         }
+        
         this.currentSize = cs;
+        
         this.layout();
     },
     
     layout : function()
-    {
-         Roo.log('layout');
+    {   
         this._resetLayout();
-        //this._manageStamps();
-      
-        // don't animate first layout
+        
         var isInstant = this.isLayoutInstant !== undefined ? this.isLayoutInstant : !this._isLayoutInited;
+        
         this.layoutItems( isInstant );
       
-        // flag for initalized
         this._isLayoutInited = true;
+        
     },
     
     layoutItems : function( isInstant )
     {
-        //var items = this._getItemsForLayout( this.items );
-        // original code supports filtering layout items.. we just ignore it..
+        var items = Roo.apply([], this.bricks);
         
-        this._layoutItems( this.bricks , isInstant );
-      
-        this._postLayout();
+        if(this.isHorizontal){
+            this._horizontalLayoutItems( items , isInstant );
+            return;
+        }
+        
+        this._verticalLayoutItems( items , isInstant );
+        
     },
-    _layoutItems : function ( items , isInstant)
-    {
-       //this.fireEvent( 'layout', this, items );
     
-
-        if ( !items || !items.elements.length ) {
-          // no items, emit event with empty array
+    _verticalLayoutItems : function ( items , isInstant)
+    {
+        if ( !items || !items.length ) {
             return;
         }
 
+        if(this.isHorizontal){
+            
+            if(items.length < 3){
+                return;
+            }
+            
+            var eItems = items.slice(items.length - 3, items.length);
+            items = items.slice(0, items.length - 3);
+            
+        }
+        
         var queue = [];
-        items.each(function(item) {
-            Roo.log("layout item");
-            Roo.log(item);
-            // get x/y object from method
-            var position = this._getItemLayoutPosition( item );
-            // enqueue
-            position.item = item;
-            position.isInstant = isInstant; // || item.isLayoutInstant; << not set yet...
-            queue.push( position );
+        
+        var box = [];
+        var size = 0;
+        
+        Roo.each(items, function(item, k){
+            
+            if(size + item.intSize > 3){
+                queue.push(box);
+                box = [];
+                size = 0;
+            }
+            
+            size = size + item.intSize;
+            
+            box.push(item);
+            
+            if(k == items.length - 1){
+                queue.push(box);
+                box = [];
+                size = 0;
+            }
+            
         }, this);
-      
-        this._processLayoutQueue( queue );
+        
+        this._processVerticalLayoutQueue( queue, isInstant );
     },
+    
+    _horizontalLayoutItems : function ( items , isInstant)
+    {
+        if ( !items || !items.length || items.length < 3) {
+            return;
+        }
+        
+        items.reverse();
+        
+        var eItems = items.slice(0, 3);
+        
+        items = items.slice(3, items.length);
+        
+        var pos = this.el.getBox(true);
+        
+        var minX = pos.x;
+        
+        var maxX = pos.right - this.boxColWidth['sm'] - this.boxColWidth['xs'] - this.gutter * 2;
+        var x = maxX;
+        
+        var queue = [];
+        
+        var box = [];
+        var size = 0;
+        var hit_end = false;
+        
+        Roo.each(items, function(item, k){
+            
+            item.el.setVisibilityMode(Roo.Element.DISPLAY);
+            item.el.show();
+            
+            if(hit_end){
+                item.el.hide();
+                return;
+            }
+            
+            if(queue.length >= this.cols - 1){
+                item.el.hide();
+                return;
+            }
+            
+            if(size + item.intSize > 3){
+                queue.push(box);
+                box = [];
+                size = 0;
+                maxX = x;
+            }
+            
+            var width = this.boxColWidth[item.size] + item.el.getPadding('lr');
+            
+            x = Math.min(maxX, maxX - width - this.gutter);
+            
+            if(x < minX){
+                item.el.hide();
+                hit_end = true;
+                return;
+            }
+            
+            size = size + item.intSize;
+            
+            box.push(item);
+            
+        }, this);
+        
+        if(box.length){
+            queue.push(box);
+        }
+        
+        this._processHorizontalLayoutQueue( queue, eItems, isInstant );
+    },
+    
     /** Sets position of item in DOM
     * @param {Element} item
     * @param {Number} x - horizontal position
     * @param {Number} y - vertical position
     * @param {Boolean} isInstant - disables transitions
     */
-    _processLayoutQueue : function( queue )
+    _processVerticalLayoutQueue : function( queue, isInstant )
     {
-        for ( var i=0, len = queue.length; i < len; i++ ) {
-            var obj = queue[i];
-            obj.item.position('absolute');
-            obj.item.setXY([obj.x,obj.y], obj.isInstant ? false : true);
+        var pos = this.el.getBox(true);
+        var x = pos.x;
+        var y = pos.y;
+        var maxY = [];
+        
+        for (var i = 0; i < this.cols; i++){
+            maxY[i] = pos.y;
         }
+        
+        Roo.each(queue, function(box, k){
+            
+            var col = k % this.cols;
+            
+            Roo.each(box, function(b,kk){
+                
+                b.el.position('absolute');
+                
+                var width = this.boxColWidth[b.size] + b.el.getPadding('lr');
+                
+                b.el.setWidth(width);
+                
+                if(b.square){
+                    b.el.setHeight(width);
+                }
+                
+            }, this);
+            
+            for (var i = 0; i < this.cols; i++){
+                if(maxY[i] >= maxY[col]){
+                    continue;
+                }
+                
+                col = i;
+            }
+            
+            x = pos.x + col * (this.colWidth + this.padWidth);
+            
+            y = maxY[col];
+            
+            var positions = [];
+            
+            switch (box.length){
+                case 1 :
+                    positions = this.getVerticalOneBoxColPositions(x, y, box);
+                    break;
+                case 2 :
+                    positions = this.getVerticalTwoBoxColPositions(x, y, box);
+                    break;
+                case 3 :
+                    positions = this.getVerticalThreeBoxColPositions(x, y, box);
+                    break;
+                default :
+                    break;
+            }
+            
+            Roo.each(box, function(b,kk){
+                
+                b.el.setXY([positions[kk].x, positions[kk].y], isInstant ? false : true);
+                
+                var sz = b.el.getSize();
+                
+                maxY[col] = Math.max(maxY[col], positions[kk].y + sz.height + this.padWidth);
+                
+            }, this);
+            
+        }, this);
+        
+        var mY = 0;
+        
+        for (var i = 0; i < this.cols; i++){
+            mY = Math.max(mY, maxY[i]);
+        }
+        
+        this.el.setHeight(mY);
+        
     },
-      
     
-    /**
-    * Any logic you want to do after each layout,
-    * i.e. size the container
-    */
-    _postLayout : function()
+    _processHorizontalLayoutQueue : function( queue, eItems, isInstant )
     {
-        this.resizeContainer();
+        var pos = this.el.getBox(true);
+        
+        var minX = pos.x;
+        var minY = pos.y;
+        
+        var maxX = pos.right - (pos.width - this.containerWidth) - this.padWidth;
+        var maxY = pos.bottom;
+        
+        this._processHorizontalEndItem(eItems, maxX, minX, minY, isInstant);
+        
+        var maxX = maxX - this.boxColWidth['sm'] - this.boxColWidth['xs'] - this.gutter * 2;
+        
+        Roo.each(queue, function(box, k){
+            
+            Roo.each(box, function(b, kk){
+                
+                b.el.position('absolute');
+                
+                var width = this.boxColWidth[b.size] + b.el.getPadding('lr');
+                
+                b.el.setWidth(width);
+                
+                if(b.square){
+                    b.el.setHeight(width);
+                }
+                
+            }, this);
+            
+            if(!box.length){
+                return;
+            }
+            
+            var positions = [];
+            
+            switch (box.length){
+                case 1 :
+                    positions = this.getHorizontalOneBoxColPositions(maxX, minY, box);
+                    break;
+                case 2 :
+                    positions = this.getHorizontalTwoBoxColPositions(maxX, minY, box);
+                    break;
+                case 3 :
+                    positions = this.getHorizontalThreeBoxColPositions(maxX, minY, box);
+                    break;
+                default :
+                    break;
+            }
+            
+            Roo.each(box, function(b,kk){
+                
+                b.el.setXY([positions[kk].x, positions[kk].y], isInstant ? false : true);
+                
+                maxX = Math.min(maxX, positions[kk].x - this.gutter);
+                
+            }, this);
+            
+        }, this);
+        
     },
     
-    resizeContainer : function()
+    _processHorizontalEndItem : function(eItems, maxX, minX, minY, isInstant)
     {
-        if ( !this.isResizingContainer ) {
-            return;
-        }
-        var size = this._getContainerSize();
-        if ( size ) {
-            this.el.setSize(size.width,size.height);
-            this.boxesEl.setSize(size.width,size.height);
-        }
+        Roo.each(eItems, function(b,k){
+            
+            b.size = 'xs';
+            b.intSize = 1;
+            
+            if(k == 0) {
+                b.size = 'sm';
+                b.intSize = 2;
+            }
+            
+            b.el.position('absolute');
+            
+            var width = this.boxColWidth[b.size] + b.el.getPadding('lr');
+                
+            b.el.setWidth(width);
+
+            if(b.square){
+                b.el.setHeight(width);
+            }
+            
+        }, this);
+
+        var positions = [];
+        
+        positions.push({
+            x : maxX - this.boxColWidth['sm'],
+            y : minY
+        });
+        
+        positions.push({
+            x : maxX - this.boxColWidth['xs'],
+            y : minY + this.boxColWidth['sm'] + this.gutter
+        });
+        
+        positions.push({
+            x : maxX - this.boxColWidth['sm'] - this.gutter - this.boxColWidth['xs'],
+            y : minY
+        });
+        
+        Roo.each(eItems, function(b,k){
+            
+            b.el.setXY([positions[k].x, positions[k].y], isInstant ? false : true);
+
+            var sz = b.el.getSize();
+            
+        }, this);
+        
     },
-    
-    
     
     _resetLayout : function()
     {
-        //this.getSize();  // -- does not really do anything.. it probably applies left/right etc. to obuject but not used
-        this.colWidth = this.el.getWidth();
-        //this.gutter = this.el.getWidth(); 
-        
         this.measureColumns();
-
-        // reset column Y
-        var i = this.cols;
-        this.colYs = [];
-        while (i--) {
-            this.colYs.push( 0 );
-        }
-    
-        this.maxY = 0;
     },
-
+    
     measureColumns : function()
     {
         this.getContainerWidth();
-      // if columnWidth is 0, default to outerWidth of first item
-        if ( !this.columnWidth ) {
-            var firstItem = this.bricks.first();
-            Roo.log(firstItem);
-            this.columnWidth  = this.containerWidth;
-            if (firstItem && firstItem.attr('originalwidth') ) {
-                this.columnWidth = 1* (firstItem.attr('originalwidth') || firstItem.getWidth());
-            }
-            // columnWidth fall back to item of first element
-            Roo.log("set column width?");
-                        this.initialColumnWidth = this.columnWidth  ;
-
-            // if first elem has no width, default to size of container
-            
+        
+        if(this.containerWidth < this.boxWidth){
+            this.boxWidth = this.containerWidth
         }
         
+        var boxWidth = this.boxWidth + this.padWidth;
         
-        if (this.initialColumnWidth) {
-            this.columnWidth = this.initialColumnWidth;
-        }
+        var containerWidth = this.containerWidth;
         
+        var cols = Math.floor(containerWidth / boxWidth);
         
-            
-        // column width is fixed at the top - however if container width get's smaller we should
-        // reduce it...
-        
-        // this bit calcs how man columns..
-            
-        var columnWidth = this.columnWidth += this.gutter;
-      
-        // calculate columns
-        var containerWidth = this.containerWidth + this.gutter;
-        
-        var cols = (containerWidth - this.padWidth) / (columnWidth - this.padWidth);
-        // fix rounding errors, typically with gutters
-        var excess = columnWidth - containerWidth % columnWidth;
-        
-        
-        // if overshoot is less than a pixel, round up, otherwise floor it
-        var mathMethod = excess && excess < 1 ? 'round' : 'floor';
-        cols = Math[ mathMethod ]( cols );
         this.cols = Math.max( cols, 1 );
         
+        var totalBoxWidth = this.cols * boxWidth;
         
-         // padding positioning..
-        var totalColWidth = this.cols * this.columnWidth;
-        var padavail = this.containerWidth - totalColWidth;
-        // so for 2 columns - we need 3 'pads'
+        var avail = Math.floor((containerWidth - totalBoxWidth) / this.cols);
         
-        var padNeeded = (1+this.cols) * this.padWidth;
+        this.colWidth = this.boxWidth + avail;
         
-        var padExtra = Math.floor((padavail - padNeeded) / this.cols);
+        var xsWidth = Math.floor((this.colWidth - (this.gutter * 2)) / 3);
         
-        this.columnWidth += padExtra
-        //this.padWidth = Math.floor(padavail /  ( this.cols));
+        this.boxColWidth = {
+            xs : xsWidth,
+            sm : this.colWidth - xsWidth - this.gutter,
+            md : this.colWidth
+        };
         
-        // adjust colum width so that padding is fixed??
-        
-        // we have 3 columns ... total = width * 3
-        // we have X left over... that should be used by 
-        
-        //if (this.expandC) {
-            
-        //}
-        
-        
+        if(this.isHorizontal){
+            this.el.setHeight(this.colWidth);
+        }
         
     },
     
     getContainerWidth : function()
     {
-       /* // container is parent if fit width
-        var container = this.isFitWidth ? this.element.parentNode : this.element;
-        // check that this.size and size are there
-        // IE8 triggers resize on body size change, so they might not be
-        
-        var size = getSize( container );  //FIXME
-        this.containerWidth = size && size.innerWidth; //FIXME
-        */
-         
         this.containerWidth = this.el.getBox(true).width;  //maybe use getComputedWidth
-        
     },
     
-    _getItemLayoutPosition : function( item )  // what is item?
+    getVerticalOneBoxColPositions : function(x, y, box)
     {
-        // we resize the item to our columnWidth..
-      
-        item.setWidth(this.columnWidth);
-        item.autoBoxAdjust  = false;
+        var pos = [];
         
-        var sz = item.getSize();
- 
-        // how many columns does this brick span
-        var remainder = this.containerWidth % this.columnWidth;
+        var rand = Math.floor(Math.random() * (4 - box[0].intSize));
         
-        var mathMethod = remainder && remainder < 1 ? 'round' : 'ceil';
-        // round if off by 1 pixel, otherwise use ceil
-        var colSpan = Math[ mathMethod ]( sz.width  / this.columnWidth );
-        colSpan = Math.min( colSpan, this.cols );
+        pos.push({
+            x : x + (this.boxColWidth['xs'] + this.gutter) * rand,
+            y : y
+        });
         
-        // normally this should be '1' as we dont' currently allow multi width columns..
-        
-        var colGroup = this._getColGroup( colSpan );
-        // get the minimum Y value from the columns
-        var minimumY = Math.min.apply( Math, colGroup );
-        Roo.log([ 'setHeight',  minimumY, sz.height, setHeight ]);
-        
-        var shortColIndex = colGroup.indexOf(  minimumY ); // broken on ie8..?? probably...
-         
-        // position the brick
-        var position = {
-            x: this.currentSize.x + (this.padWidth /2) + ((this.columnWidth + this.padWidth )* shortColIndex),
-            y: this.currentSize.y + minimumY + this.padHeight
-        };
-        
-        Roo.log(position);
-        // apply setHeight to necessary columns
-        var setHeight = minimumY + sz.height + this.padHeight;
-        //Roo.log([ 'setHeight',  minimumY, sz.height, setHeight ]);
-        
-        var setSpan = this.cols + 1 - colGroup.length;
-        for ( var i = 0; i < setSpan; i++ ) {
-          this.colYs[ shortColIndex + i ] = setHeight ;
-        }
-      
-        return position;
+        return pos;
     },
     
-    /**
-     * @param {Number} colSpan - number of columns the element spans
-     * @returns {Array} colGroup
-     */
-    _getColGroup : function( colSpan )
+    getVerticalTwoBoxColPositions : function(x, y, box)
     {
-        if ( colSpan < 2 ) {
-          // if brick spans only one column, use all the column Ys
-          return this.colYs;
-        }
-      
-        var colGroup = [];
-        // how many different places could this brick fit horizontally
-        var groupCount = this.cols + 1 - colSpan;
-        // for each group potential horizontal position
-        for ( var i = 0; i < groupCount; i++ ) {
-          // make an array of colY values for that one group
-          var groupColYs = this.colYs.slice( i, i + colSpan );
-          // and get the max value of the array
-          colGroup[i] = Math.max.apply( Math, groupColYs );
-        }
-        return colGroup;
-    },
-    /*
-    _manageStamp : function( stamp )
-    {
-        var stampSize =  stamp.getSize();
-        var offset = stamp.getBox();
-        // get the columns that this stamp affects
-        var firstX = this.isOriginLeft ? offset.x : offset.right;
-        var lastX = firstX + stampSize.width;
-        var firstCol = Math.floor( firstX / this.columnWidth );
-        firstCol = Math.max( 0, firstCol );
+        var pos = [];
         
-        var lastCol = Math.floor( lastX / this.columnWidth );
-        // lastCol should not go over if multiple of columnWidth #425
-        lastCol -= lastX % this.columnWidth ? 0 : 1;
-        lastCol = Math.min( this.cols - 1, lastCol );
-        
-        // set colYs to bottom of the stamp
-        var stampMaxY = ( this.isOriginTop ? offset.y : offset.bottom ) +
-            stampSize.height;
+        if(box[0].size == 'xs' && box[1].size == 'xs'){
             
-        for ( var i = firstCol; i <= lastCol; i++ ) {
-          this.colYs[i] = Math.max( stampMaxY, this.colYs[i] );
+            pos.push({
+                x : x,
+                y : y
+            });
+
+            pos.push({
+                x : x + (this.boxColWidth['xs'] + this.gutter) * 2,
+                y : y
+            });
+            
         }
-    },
-    */
-    
-    _getContainerSize : function()
-    {
-        this.maxY = Math.max.apply( Math, this.colYs );
-        var size = {
-            height: this.maxY
-        };
-      
-        if ( this.isFitWidth ) {
-            size.width = this._getContainerFitWidth();
+        
+        if(box[0].size == 'xs' && box[1].size == 'sm'){
+            
+            pos.push({
+                x : x,
+                y : y + ((box[1].el.getHeight() - box[0].el.getHeight()) * Math.floor(Math.random() * 2))
+            });
+
+            pos.push({
+                x : x + this.boxColWidth['xs'] + this.gutter,
+                y : y
+            });
+            
         }
-      
-        return size;
-    },
-    
-    _getContainerFitWidth : function()
-    {
-        var unusedCols = 0;
-        // count unused columns
-        var i = this.cols;
-        while ( --i ) {
-          if ( this.colYs[i] !== 0 ) {
-            break;
-          }
-          unusedCols++;
+        
+        if(box[0].size == 'sm' && box[1].size == 'xs'){
+            
+            pos.push({
+                x : x,
+                y : y
+            });
+
+            pos.push({
+                x : x + this.boxColWidth['sm'] + this.gutter,
+                y : y + ((box[0].el.getHeight() - box[1].el.getHeight()) * Math.floor(Math.random() * 2))
+            });
+            
         }
-        // fit container to columns that have been used
-        return ( this.cols - unusedCols ) * this.columnWidth - this.gutter;
+        
+        return pos;
+        
     },
     
-    needsResizeLayout : function()
+    getVerticalThreeBoxColPositions : function(x, y, box)
     {
-        var previousWidth = this.containerWidth;
-        this.getContainerWidth();
-        return previousWidth !== this.containerWidth;
+        var pos = [];
+        
+        pos.push({
+            x : x,
+            y : y
+        });
+        
+        pos.push({
+            x : x + this.boxColWidth['xs'] + this.gutter,
+            y : y
+        });
+
+        pos.push({
+            x : x + this.boxColWidth['sm'] + this.gutter,
+            y : y
+        });
+            
+        return pos;
+    },
+    
+    getHorizontalOneBoxColPositions : function(maxX, minY, box)
+    {
+        var pos = [];
+        
+        var rand = Math.floor(Math.random() * (4 - box[0].intSize));
+        
+        pos.push({
+            x : maxX - box[0].el.getWidth(),
+            y : minY + (this.boxColWidth['xs'] + this.gutter) * rand
+        });
+        
+        return pos;
+    },
+    
+    getHorizontalTwoBoxColPositions : function(maxX, minY, box)
+    {
+        var pos = [];
+        
+        pos.push({
+            x : maxX - box[0].el.getWidth(),
+            y : minY
+        });
+
+        pos.push({
+            x : maxX - box[1].el.getWidth(),
+            y : minY + box[0].el.getHeight() + this.gutter
+        });
+        
+        return pos;
+        
+    },
+    
+    getHorizontalThreeBoxColPositions : function(maxX, minY, box)
+    {
+        var pos = [];
+        
+        pos.push({
+            x : maxX - box[0].el.getWidth(),
+            y : minY
+        });
+        
+        pos.push({
+            x : maxX - box[1].el.getWidth(),
+            y : minY - box[0].el.getHeight() - this.gutter
+        });
+        
+        pos.push({
+            x : maxX - box[2].el.getWidth(),
+            y : minY - box[0].el.getHeight() - box[1].el.getHeight() - this.gutter * 2
+        });
+        
+        return pos;
+        
     }
- 
+    
 });
 
  
