@@ -359,6 +359,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         if(cell.findParent('thead', false, true)){
             Roo.log('fire header' + ename);
+            
+            if(e.getTarget().nodeName.toLowerCase() != 'th'){
+                cell = Roo.get(t).findParent('th', false, true);
+            }
+        
             var ename = name == 'touchstart' ? 'click' : name;
             this.fireEvent("header" + ename, this, cellIndex, e);
             return;
