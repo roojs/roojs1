@@ -368,15 +368,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             cell = Roo.get(t).findParent('td', false, true);
         }
         
-        if(!cell){
-            cell = Roo.get(t).findParent('th', false, true);
-            is_header = true;
-        }
-        
-        if(!cell){
-            return;
-        }
-        
         var row = cell.findParent('tr', false, true);
         var cellIndex = cell.dom.cellIndex;
         var rowIndex = row.dom.rowIndex - 1;
