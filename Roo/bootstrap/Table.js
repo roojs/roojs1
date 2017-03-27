@@ -352,6 +352,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             return;
         }
         
+        if(e.getTarget().nodeName.toLowerCase() != 'td'){
+            cell = cell.findParent('td', false, true);
+        }
+        
         Roo.log([t, cell]);return;
         
         var v = this.view;
