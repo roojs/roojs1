@@ -380,6 +380,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var cellIndex = cell.dom.cellIndex;
         var rowIndex = row.dom.rowIndex - 1;
         
+        
+        
         Roo.log([cellIndex, rowIndex]);
         return;
         
