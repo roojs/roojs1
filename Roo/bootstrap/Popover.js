@@ -156,6 +156,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     hoverState : null,
     
     toggle : function (on_el) {
+        Roo.log(['toggle', on_el]);
         this.hoverState == 'in' ? this.leave() : this.enter(on_el);
     },
     
@@ -194,7 +195,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         }, this.delay.hide)
     },
     
-    show : function (on_el)
+    show : function (e, on_el)
     {
         Roo.log(['el', on_el]);
         if (!on_el) {
