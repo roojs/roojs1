@@ -156,7 +156,6 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     hoverState : null,
     
     toggle : function (on_el) {
-        Roo.log(['toggle', on_el]);
         this.hoverState == 'in' ? this.leave() : this.enter(on_el);
     },
     
