@@ -196,10 +196,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     
     show : function (e, on_el)
     {
-        Roo.log(['el', on_el]);
-        if (!on_el) {
-            on_el= (this.over == 'parent') ? this.parent().el : Roo.get(this.over);
-        }
+        on_el= (this.over == 'parent') ? this.parent().el : Roo.get(this.over);
         
         // set content.
         this.el.select('.popover-title',true).first().dom.innerHtml = this.title;
