@@ -155,8 +155,8 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     timeout : null,
     hoverState : null,
     
-    toggle : function (on_el) {
-        this.hoverState == 'in' ? this.leave() : this.enter(on_el);
+    toggle : function () {
+        this.hoverState == 'in' ? this.leave() : this.enter();
     },
     
     enter : function (on_el) {
@@ -166,13 +166,13 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         this.hoverState = 'in';
     
         if (!this.delay || !this.delay.show) {
-            this.show(on_el);
+            this.show();
             return;
         }
         var _t = this;
         this.timeout = setTimeout(function () {
             if (_t.hoverState == 'in') {
-                _t.show(on_el);
+                _t.show();
             }
         }, this.delay.show)
     },
@@ -194,9 +194,9 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         }, this.delay.hide)
     },
     
-    show : function (e, on_el)
+    show : function ()
     {
-        on_el= (this.over == 'parent') ? this.parent().el : Roo.get(this.over);
+        var on_el= (this.over == 'parent') ? this.parent().el : Roo.get(this.over);
         
         // set content.
         this.el.select('.popover-title',true).first().dom.innerHtml = this.title;
