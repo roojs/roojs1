@@ -71,11 +71,9 @@
 }
 
 .roo-brick .roo-brick-paragraph .masonry-brick-center-title {
-    padding: 9px;
-    width: 100%;
-    height: 100%;
-    background-color: inherit;
-    display: table;
+    display:table-cell;
+    vertical-align:middle;
+    text-align:center;
 }
 
 .roo-brick-image-view  {
