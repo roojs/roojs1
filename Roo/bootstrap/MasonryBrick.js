@@ -82,7 +82,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         }
         
         if(!this.html.length && this.bgimage.length){
-            cls += ' masonry-center-title';
+            cls += ' masonry-bottom-title';
         }
         
         if(this.cls){
