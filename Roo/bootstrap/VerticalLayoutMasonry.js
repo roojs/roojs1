@@ -150,11 +150,11 @@ Roo.extend(Roo.bootstrap.VerticalLayoutMasonry, Roo.bootstrap.Component,  {
     {
         var items = Roo.apply([], this.bricks);
         
-        this._verticalLayoutItems( items , isInstant );
+        this._LayoutItems( items , isInstant );
         
     },
     
-    _verticalLayoutItems : function ( items , isInstant)
+    _LayoutItems : function ( items , isInstant)
     {
         if ( !items || !items.length ) {
             return;
