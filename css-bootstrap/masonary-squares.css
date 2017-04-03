@@ -70,6 +70,14 @@
     display: table;
 }
 
+.roo-brick .roo-brick-paragraph {
+    padding: 9px;
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+    display: table;
+}
+
 .roo-brick-image-view  {
     position: absolute;
     top: 0;
