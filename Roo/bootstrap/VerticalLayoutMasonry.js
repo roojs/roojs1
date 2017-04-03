@@ -56,6 +56,11 @@ Roo.extend(Roo.bootstrap.VerticalLayoutMasonry, Roo.bootstrap.Component,  {
     
     containerWidth: 0,
     
+    /**
+     * @cfg {Boolean} isHorizontal defalut false
+     */   
+    isHorizontal : false, 
+
     currentSize : null,
     
     tag: 'div',
@@ -155,11 +160,6 @@ Roo.extend(Roo.bootstrap.VerticalLayoutMasonry, Roo.bootstrap.Component,  {
     layoutItems : function( isInstant )
     {
         var items = Roo.apply([], this.bricks);
-        
-        if(this.isHorizontal){
-            this._horizontalLayoutItems( items , isInstant );
-            return;
-        }
         
         this._verticalLayoutItems( items , isInstant );
         
