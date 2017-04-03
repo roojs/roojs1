@@ -77,6 +77,8 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             cls += ' masonry-' + this.size + '-brick';
         }
         
+        if()
+        
         if(this.cls){
             cls += ' ' + this.cls;
         }
@@ -102,7 +104,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         if(this.title.length){
             cn.push({
                 tag: 'h4',
-                cls: (this.html.length) ? 'masonry-brick-title' : 'masonry-brick-center-title',
+                cls: 'masonry-brick-title',
                 html: this.title
             });
         }
