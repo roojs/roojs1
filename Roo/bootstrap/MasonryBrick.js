@@ -65,6 +65,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             cls += ' masonry-brick-link';
         }
         
+        
         if(this.bgimage.length){
             cls += ' masonry-brick-image';
         }
