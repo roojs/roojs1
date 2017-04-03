@@ -120,7 +120,6 @@ Roo.extend(Roo.bootstrap.VerticalLayoutMasonry, Roo.bootstrap.Component,  {
         this.layout();
         
         return;
-        //this.layout.defer(500,this);
         
     },
     
