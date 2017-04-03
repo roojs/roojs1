@@ -27,7 +27,7 @@ Roo.bootstrap.VerticalLayoutMasonry = function(config){
     
 };
 
-Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.VerticalLayoutMasonry, Roo.bootstrap.Component,  {
     
     /**
      * @cfg {Boolean} isLayoutInstant = no animation?
