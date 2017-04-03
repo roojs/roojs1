@@ -170,17 +170,6 @@ Roo.extend(Roo.bootstrap.VerticalLayoutMasonry, Roo.bootstrap.Component,  {
         if ( !items || !items.length ) {
             return;
         }
-
-        if(this.isHorizontal){
-            
-            if(items.length < 3){
-                return;
-            }
-            
-            var eItems = items.slice(items.length - 3, items.length);
-            items = items.slice(0, items.length - 3);
-            
-        }
         
         var queue = [];
         
