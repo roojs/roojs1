@@ -106,8 +106,6 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         var content = [];
         
         
-        if(!this.html.length)
-        
         var cn = cfg.cn[0].cn;
         
         if(this.title.length){
