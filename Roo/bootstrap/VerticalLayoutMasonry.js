@@ -56,11 +56,6 @@ Roo.extend(Roo.bootstrap.VerticalLayoutMasonry, Roo.bootstrap.Component,  {
     
     containerWidth: 0,
     
-    /**
-     * @cfg {Boolean} isHorizontal defalut false
-     */   
-    isHorizontal : false, 
-
     currentSize : null,
     
     tag: 'div',
