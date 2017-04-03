@@ -66,6 +66,12 @@
     text-align:center;
 }
 
+.masonry-bottom-title .masonry-brick-paragraph .masonry-brick-title {
+    display:table-cell;
+    vertical-align:middle;
+    text-align:center;
+}
+
 .masonry-brick-image .masonry-brick-paragraph,
 .roo-brick-image .roo-brick-paragraph {
     opacity: 0;
