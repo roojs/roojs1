@@ -48,7 +48,7 @@
     display: table;
 }
 
-.masonry-xs-brick.masonry-center-title .masonry-brick-paragraph .masonry-brick-title {
+.masonry-center-title .masonry-brick-paragraph .masonry-brick-title {
     display:table-cell;
     vertical-align:middle;
     text-align:center;
