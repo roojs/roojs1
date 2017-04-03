@@ -68,8 +68,8 @@
 
 .masonry-bottom-title .masonry-brick-paragraph .masonry-brick-title {
     display:table-cell;
-    vertical-align:middle;
-    text-align:center;
+    vertical-align:bottom;
+    text-align:right;
 }
 
 .masonry-brick-image .masonry-brick-paragraph,
