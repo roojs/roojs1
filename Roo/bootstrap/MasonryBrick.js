@@ -102,7 +102,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         if(this.href.length){
             cfg.href = this.href;
         }
-        
+        /*
         cfg.cn = [
             {
                 tag: 'div',
@@ -110,7 +110,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 cn: []
             }
         ];
-        
+        */
         
         var cn = cfg.cn[0].cn;
         
