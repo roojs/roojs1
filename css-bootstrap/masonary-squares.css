@@ -45,7 +45,15 @@
     top: 0;
     left: 0;
     background-color: inherit;
+    display: table;
 }
+
+.masonry-brick .masonry-brick-paragraph .masonry-brick-center-title {
+    display:table-cell;
+    vertical-align:middle;
+    text-align:center;
+}
+
 
 .masonry-brick-image .masonry-brick-paragraph,
 .roo-brick-image .roo-brick-paragraph {
