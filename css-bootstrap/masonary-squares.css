@@ -45,6 +45,10 @@
     top: 0;
     left: 0;
     background-color: inherit;
+}
+
+.masonry-center-title,
+.masonry-bottom-title {
     display: table;
 }
 
