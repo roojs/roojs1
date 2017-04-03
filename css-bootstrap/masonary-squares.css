@@ -63,6 +63,9 @@
     opacity: 0;
 }
 
+.masonry-bottom-title .masonry-brick-paragraph {
+    opacity: 1;
+}
 
 
 .masonry-brick-image-view  {
