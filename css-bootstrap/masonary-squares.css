@@ -1,5 +1,14 @@
 
+deep-blue #677798
+deep-grey #818a91
+light-red #b66d74
+deep-orange #c6682b
+deep-green #7f8c20
 
+.masonary .deep-blue {
+    background-color: #677798;
+    color: #fff;
+}
 
 .masonry-brick-link,
 .roo-brick-link {
