@@ -112,11 +112,6 @@ Roo.extend(Roo.bootstrap.VerticalLayoutMasonry, Roo.bootstrap.Component,  {
         
         Roo.EventManager.onWindowResize(this.resize, this); 
 
-        if(!this.isAutoInitial){
-            this.layout();
-            return;
-        }
-        
         this.layout();
         
         return;
