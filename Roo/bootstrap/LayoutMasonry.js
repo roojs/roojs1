@@ -314,9 +314,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
                 b.el.setWidth(width);
                 
-                if(b.square){
+//                if(b.square){
                     b.el.setHeight(width);
-                }
+//                }
                 
             }, this);
             
@@ -394,9 +394,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
                 b.el.setWidth(width);
                 
-                if(b.square){
+//                if(b.square){
                     b.el.setHeight(width);
-                }
+//                }
                 
             }, this);
             
@@ -450,9 +450,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
             b.el.setWidth(width);
 
-            if(b.square){
+//            if(b.square){
                 b.el.setHeight(width);
-            }
+//            }
             
         }, this);
 
