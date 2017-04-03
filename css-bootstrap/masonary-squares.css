@@ -48,16 +48,11 @@
     display: table;
 }
 
-.masonry-brick .masonry-brick-paragraph .masonry-brick-center-title {
+.masonry-xs-brick.masonry-center-title .masonry-brick-paragraph .masonry-brick-title {
     display:table-cell;
     vertical-align:middle;
     text-align:center;
 }
-
-.masonry-brick-image .masonry-brick-paragraph .masonry-brick-center-title {
-    
-}
-
 
 .masonry-brick-image .masonry-brick-paragraph,
 .roo-brick-image .roo-brick-paragraph {
