@@ -13,15 +13,15 @@
 /**
  * @class Roo.bootstrap.VerticalLayoutMasonry
  * @extends Roo.bootstrap.Component
- * Bootstrap Layout Masonry class
+ * Bootstrap Vertical Layout Masonry class
  * 
  * @constructor
  * Create a new Element
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.LayoutMasonry = function(config){
-    Roo.bootstrap.LayoutMasonry.superclass.constructor.call(this, config);
+Roo.bootstrap.VerticalLayoutMasonry = function(config){
+    Roo.bootstrap.VerticalLayoutMasonry.superclass.constructor.call(this, config);
     
     this.bricks = [];
     
