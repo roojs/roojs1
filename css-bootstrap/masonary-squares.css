@@ -47,8 +47,8 @@
     background-color: inherit;
 }
 
-.masonry-center-title,
-.masonry-bottom-title {
+.masonry-center-title .masonry-brick-paragraph,
+.masonry-bottom-title .masonry-brick-paragraph {
     display: table;
 }
 
