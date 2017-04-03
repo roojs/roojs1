@@ -67,13 +67,6 @@
     width: 100%;
     height: 100%;
     background-color: inherit;
-    display: table;
-}
-
-.roo-brick .roo-brick-paragraph .masonry-brick-center-title {
-    display:table-cell;
-    vertical-align:middle;
-    text-align:center;
 }
 
 .roo-brick-image-view  {
