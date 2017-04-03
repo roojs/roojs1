@@ -83,12 +83,6 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         
         var cfg = {
             tag: (this.href.length) ? 'a' : 'div',
-            cls: cls
-        };
-        
-        /*
-        var cfg = {
-            tag: (this.href.length) ? 'a' : 'div',
             cls: cls,
             cn: [
                 {
@@ -98,19 +92,10 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 }
             ]
         };
-        */
+        
         if(this.href.length){
             cfg.href = this.href;
         }
-        /*
-        cfg.cn = [
-            {
-                tag: 'div',
-                cls: 'masonry-brick-paragraph',
-                cn: []
-            }
-        ];
-        */
         
         var cn = cfg.cn[0].cn;
         
