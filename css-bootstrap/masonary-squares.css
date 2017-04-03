@@ -25,11 +25,11 @@
     color: #fff;
 }
 
-.masonary .masonry-bottom-title .deep-blue,
-.masonary .masonry-bottom-title .deep-grey,
-.masonary .masonry-bottom-title .light-red,
-.masonary .masonry-bottom-title .deep-orange,
-.masonary .masonry-bottom-title .deep-green {
+.masonary .masonry-bottom-title.deep-blue,
+.masonary .masonry-bottom-title.deep-grey,
+.masonary .masonry-bottom-title.light-red,
+.masonary .masonry-bottom-title.deep-orange,
+.masonary .masonry-bottom-title.deep-green {
     background-color: transparent;
 }
 
