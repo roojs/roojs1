@@ -470,61 +470,6 @@ Roo.extend(Roo.bootstrap.VerticalLayoutMasonry, Roo.bootstrap.Component,  {
         });
             
         return pos;
-    },
-    
-    getHorizontalOneBoxColPositions : function(maxX, minY, box)
-    {
-        var pos = [];
-        
-        var rand = Math.floor(Math.random() * (4 - box[0].intSize));
-        
-        pos.push({
-            x : maxX - box[0].el.getWidth(),
-            y : minY + (this.boxColWidth['xs'] + this.gutter) * rand
-        });
-        
-        return pos;
-    },
-    
-    getHorizontalTwoBoxColPositions : function(maxX, minY, box)
-    {
-        var pos = [];
-        
-        pos.push({
-            x : maxX - box[0].el.getWidth(),
-            y : minY
-        });
-
-        pos.push({
-            x : maxX - box[1].el.getWidth(),
-            y : minY + box[0].el.getHeight() + this.gutter
-        });
-        
-        return pos;
-        
-    },
-    
-    getHorizontalThreeBoxColPositions : function(maxX, minY, box)
-    {
-        var pos = [];
-        
-        pos.push({
-            x : maxX - box[0].el.getWidth(),
-            y : minY
-        });
-        
-        pos.push({
-            x : maxX - box[1].el.getWidth(),
-            y : minY - box[0].el.getHeight() - this.gutter
-        });
-        
-        pos.push({
-            x : maxX - box[2].el.getWidth(),
-            y : minY - box[0].el.getHeight() - box[1].el.getHeight() - this.gutter * 2
-        });
-        
-        return pos;
-        
     }
     
 });
