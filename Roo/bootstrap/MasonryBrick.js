@@ -87,7 +87,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             cn: [
                 {
                     tag: 'div',
-                    cls: 'masonry-brick-paragraph',
+                    cls: (this.html.length) ? 'masonry-brick-title' : 'masonry-brick-center-title', 'masonry-brick-paragraph',
                     cn: []
                 }
             ]
