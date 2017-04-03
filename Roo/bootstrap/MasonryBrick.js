@@ -153,7 +153,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 break;
             case 'tall' :
 //                this.intSize = 3;
-                this.x = 3;
+                this.x = 2;
                 this.y = 3;
                 break;
             default :
