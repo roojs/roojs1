@@ -81,6 +81,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             cls += ' ' + this.cls;
         }
         
+        /*
         var cfg = {
             tag: (this.href.length) ? 'a' : 'div',
             cls: cls,
@@ -92,12 +93,12 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 }
             ]
         };
-        
+        */
         if(this.href.length){
             cfg.href = this.href;
         }
         
-        
+        if(!this.html.length)
         
         var cn = cfg.cn[0].cn;
         
