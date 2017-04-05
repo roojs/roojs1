@@ -487,7 +487,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             if(k == 0) {
                 b.size = 'sm';
-                b.intSize = 2;
+                b.x = 2;
+                b.y = 2;
             }
             
             b.el.position('absolute');
