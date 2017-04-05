@@ -219,8 +219,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         this.getContainerHeight();
         
-        if(this.containerHeight < this.boxWidth){
-            this.boxWidth = this.containerWidth
+        if(this.containerHeight < this.boxHeight){
+            this.boxHeight = this.containerHeight
         }
         
         var boxWidth = this.boxWidth;
