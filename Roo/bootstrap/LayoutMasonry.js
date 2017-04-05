@@ -201,17 +201,14 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         this.getContainerHeight();
         
-        if(this.containerHeight < this.boxWidth){
-            this.boxWidth = this.containerHeight
+        var size = Math.min(this.containerWidth, this.containerHeight);
+        
+        if(size < this.boxWidth){
+            this.boxWidth = size;
         }
         
         this.unitWidth = Math.floor((this.boxWidth - (this.gutter * 2)) / 3);
         
-        
-        
-        if(this.containerWidth < this.boxWidth){
-            this.boxWidth = this.containerWidth
-        }
     },
     
     getContainerWidth : function()
