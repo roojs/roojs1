@@ -304,6 +304,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
                 b.el.setWidth(width);
                 
+                Roo.log([width, width / box.x * box.y]);
                 b.el.setHeight(width / box.x * box.y);
                 
             }, this);
