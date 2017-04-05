@@ -173,8 +173,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     _verticalLayoutItems : function ( items , isInstant)
     {
-        Roo.log(['items', items]);
-        
         if ( !items || !items.length ) {
             return;
         }
