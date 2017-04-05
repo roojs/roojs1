@@ -304,6 +304,15 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 maxX = x;
             }
             
+            var width = Math.floor(this.unitWidth * item.x + (this.gutter * (item.x - 1)) + item.el.getPadding('lr'));
+                
+                b.el.setWidth(width);
+                
+                //var height = Math.floor(width / b.x * b.y);
+                
+                var height = Math.floor(this.unitWidth * b.y + (this.gutter * (b.y - 1)) + b.el.getPadding('tb'));
+                
+                
             var width = this.boxColWidth[item.size] + item.el.getPadding('lr');
             
             x = Math.min(maxX, maxX - width - this.gutter);
