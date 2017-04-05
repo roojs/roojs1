@@ -320,6 +320,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             y = maxY[col];
             
+            Roo.log([x, y]);
             var positions = [];
             
             switch (box.length){
