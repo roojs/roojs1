@@ -308,7 +308,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
             //var height = Math.floor(this.unitWidth * item.y + (this.gutter * (item.y - 1)) + item.el.getPadding('tb'));
             
-            x = Math.min(maxX, maxX - width - this.gutter);
+            x = Math.min(maxX, maxX - width);
             
             if(x < minX){
                 item.el.hide();
