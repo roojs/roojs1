@@ -179,7 +179,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         this.cols = Math.max( cols, 1 );
         
-        Roo.log([containerWidth, this.cols]);
+        Roo.log([containerWidth, boxWidth, this.cols]);
         
         var totalBoxWidth = this.cols * boxWidth;
         
