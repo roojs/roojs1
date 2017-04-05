@@ -318,13 +318,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 return;
             }
             
-            /*
-            if(queue.length >= this.cols - 1){
-                item.el.hide();
-                return;
-            }
-            */
-           
             if(size + item.y > 3){
                 queue.push(box);
                 box = [];
