@@ -489,11 +489,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             var width = Math.floor(this.unitWidth * b.x + (this.gutter * (b.x - 1)) + b.el.getPadding('lr'));
                 
-            //var height = Math.floor(this.unitWidth * item.y + (this.gutter * (item.y - 1)) + item.el.getPadding('tb'));
+            b.el.setWidth(width);
+            
+            var height = Math.floor(this.unitWidth * b.y + (this.gutter * (b.y - 1)) + b.el.getPadding('tb'));
             
             var width =  this.boxColWidth[b.size] + b.el.getPadding('lr');
                 
-            b.el.setWidth(width);
+            
 
 //            if(b.square){
                 b.el.setHeight(width);
