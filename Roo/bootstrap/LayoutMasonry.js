@@ -291,7 +291,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 item.el.hide();
                 return;
             }
-            Roo.log(this.cols);
+            
             if(queue.length >= this.cols - 1){
                 item.el.hide();
                 return;
