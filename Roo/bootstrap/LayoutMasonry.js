@@ -582,12 +582,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             pos.push({
                 x : x,
-                y : y
+                y : y + ((box[1].el.getHeight() - box[0].el.getHeight()) * Math.floor(Math.random() * 3))
             });
+            
 
             pos.push({
-                x : x + this.boxColWidth['sm'] + this.gutter,
-                y : y + ((box[0].el.getHeight() - box[1].el.getHeight()) * Math.floor(Math.random() * 2))
+                x : x + this.boxColWidth['xs'] + this.gutter,
+                y : y
             });
             
         }
