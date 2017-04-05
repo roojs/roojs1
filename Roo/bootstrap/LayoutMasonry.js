@@ -225,26 +225,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         this.cols = 3; // horizontal layout fix to 3 cols...
         
-        var avail = Math.floor((containerWidth - totalBoxWidth) / this.cols);
-        
-        this.colWidth = this.boxWidth + avail;
-        
         this.unitWidth = Math.floor((this.colWidth - (this.gutter * 2)) / 3);
-        
-        /*
-        this.boxColWidth = {
-            xs : xsWidth,
-            sm : this.colWidth - xsWidth - this.gutter,
-            md : this.colWidth,
-            wide : this.colWidth
-        };
-        */
-        
-        /*
-        if(this.isHorizontal){
-            this.el.setHeight(this.colWidth);
-        }
-        */
         
     },
     
