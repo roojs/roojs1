@@ -504,7 +504,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             xs : xsWidth,
             sm : this.colWidth - xsWidth - this.gutter,
             md : this.colWidth,
-            wide : this.colWid
+            wide : this.colWidth
         };
         
         if(this.isHorizontal){
