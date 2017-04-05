@@ -521,7 +521,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         var pos = [];
         
-        var rand = Math.floor(Math.random() * (4 - box[0].intSize));
+        var rand = Math.floor(Math.random() * (4 - box[0].x));
         
         pos.push({
             x : x + (this.boxColWidth['xs'] + this.gutter) * rand,
