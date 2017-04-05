@@ -500,7 +500,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var positions = [];
         
         positions.push({
-            x : maxX - this.unitWidth * 2 + this.gutter,
+            x : maxX - this.unitWidth * 2 - this.gutter,
             y : minY
         });
         
@@ -510,7 +510,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         });
         
         positions.push({
-            x : maxX - this.boxColWidth['sm'] - this.gutter - this.boxColWidth['xs'],
+            x : maxX - this.unitWidth * 3 - this.gutter * 2
             y : minY
         });
         
