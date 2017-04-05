@@ -165,7 +165,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             return;
         }
         
-        this.measureColumns();
+        this.verticalMeasureColumns();
         
     },
     
