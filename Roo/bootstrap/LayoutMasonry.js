@@ -471,55 +471,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
     },
     
-    _resetLayout : function()
-    {
-        this.measureColumns();
-    },
-    
-    measureColumns : function()
-    {
-        this.getContainerWidth();
-        
-        if(this.containerWidth < this.boxWidth){
-            this.boxWidth = this.containerWidth
-        }
-        
-        var boxWidth = this.boxWidth + this.padWidth;
-        
-        var containerWidth = this.containerWidth;
-        
-        var cols = Math.floor(containerWidth / boxWidth);
-        
-        this.cols = Math.max( cols, 1 );
-        
-        var totalBoxWidth = this.cols * boxWidth;
-        
-        var avail = Math.floor((containerWidth - totalBoxWidth) / this.cols);
-        
-        this.colWidth = this.boxWidth + avail;
-        
-        this.unitWidth = Math.floor((this.colWidth - (this.gutter * 2)) / 3);
-        
-        /*
-        this.boxColWidth = {
-            xs : xsWidth,
-            sm : this.colWidth - xsWidth - this.gutter,
-            md : this.colWidth,
-            wide : this.colWidth
-        };
-        */
-       
-        if(this.isHorizontal){
-            this.el.setHeight(this.colWidth);
-        }
-        
-    },
-    
-    getContainerWidth : function()
-    {
-        this.containerWidth = this.el.getBox(true).width;  //maybe use getComputedWidth
-    },
-    
     getVerticalOneBoxColPositions : function(x, y, box)
     {
         var pos = [];
