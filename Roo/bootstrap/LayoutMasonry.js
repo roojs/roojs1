@@ -218,8 +218,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             this.boxWidth = this.containerHeight
         }
         
-        //this.cols = 3; // horizontal layout fix to 3 cols...
-        
         this.unitWidth = Math.floor((this.boxWidth - (this.gutter * 2)) / 3);
         
 //        this.el.setHeight(this.boxWidth);
