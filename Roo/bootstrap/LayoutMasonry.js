@@ -329,11 +329,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             var width = Math.floor(this.unitWidth * item.x + (this.gutter * (item.x - 1)) + item.el.getPadding('lr'));
             
-            x = Math.min(maxX, x - width - this.padWidth);
+            var xx = Math.min(maxX, x - width - this.padWidth);
             
-            Roo.log([width, x]);
+            Roo.log([width, xx]);
             
-            if(x < minX){
+            if(xx < minX){
                 item.el.hide();
                 hit_end = true;
                 return;
