@@ -203,8 +203,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var boxWidth = this.boxWidth;
         
-        if(size < boxWidth){
-            boxWidth = size;
+        if(this.containerWidth < boxWidth){
+            boxWidth = this.containerWidth;
         }
         
         this.unitWidth = Math.floor((boxWidth - (this.gutter * 2)) / 3);
