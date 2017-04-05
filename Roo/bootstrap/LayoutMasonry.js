@@ -331,6 +331,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             x = Math.min(maxX, maxX - width - this.padWidth);
             
+            Roo.log([width, x]);
+            
             Roo.log(x);
             
             if(x < minX){
