@@ -429,6 +429,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
             }, this);
             
+            Roo.log(maxY[col]);
+            
         }, this);
         
         var mY = 0;
