@@ -329,6 +329,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             x = Math.min(maxX, maxX - width - this.padWidth);
             
+            Roo.log(x);
+            
             if(x < minX){
                 item.el.hide();
                 hit_end = true;
