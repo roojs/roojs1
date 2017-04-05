@@ -500,7 +500,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var positions = [];
         
         positions.push({
-            x : maxX - this.boxColWidth['sm'],
+            x : maxX - this.unitWidth * 2 + this.gutter,
             y : minY
         });
         
