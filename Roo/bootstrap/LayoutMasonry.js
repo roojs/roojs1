@@ -349,13 +349,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
                 b.el.position('absolute');
                 
-                var width = Math.floor(this.unitWidth * b.x + (this.gutter * b.x - 1) + b.el.getPadding('lr'));
+                var width = Math.floor(this.unitWidth * b.x + (this.gutter * (b.x - 1)) + b.el.getPadding('lr'));
                 
                 b.el.setWidth(width);
                 
                 //var height = Math.floor(width / b.x * b.y);
                 
-                var height = Math.floor(this.unitWidth * b.y + (this.gutter * b.y - 1) + b.el.getPadding('tb'));
+                var height = Math.floor(this.unitWidth * b.y + (this.gutter * (b.y - 1)) + b.el.getPadding('tb'));
                 
                 b.el.setHeight(height);
                 
