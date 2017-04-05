@@ -394,7 +394,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
                 col = i;
             }
-            
+            Roo.log(col);
             x = pos.x + col * (this.colWidth + this.padWidth);
             
             y = maxY[col];
