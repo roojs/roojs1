@@ -199,8 +199,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         this.getContainerWidth();
         
-        this.getContainerHeight();
-        
         var size = Math.min(this.containerWidth, this.containerHeight);
         
         var boxWidth = this.boxWidth;
