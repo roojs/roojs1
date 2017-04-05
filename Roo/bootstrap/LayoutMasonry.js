@@ -205,11 +205,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var boxWidth = this.boxWidth;
         
-        if(size < this.boxWidth){
-            this.boxWidth = size;
+        if(size < boxWidth){
+            boxWidth = size;
         }
         
-        this.unitWidth = Math.floor((this.boxWidth - (this.gutter * 2)) / 3);
+        this.unitWidth = Math.floor((boxWidth - (this.gutter * 2)) / 3);
         
     },
     
