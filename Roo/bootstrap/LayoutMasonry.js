@@ -593,6 +593,20 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
         }
         
+        if(box[0].size == 'tall' && box[1].size == 'xs'){
+            
+            pos.push({
+                x : x,
+                y : y
+            });
+
+            pos.push({
+                x : x + this.boxColWidth['sm'] + this.gutter,
+                y : y + ((box[0].el.getHeight() - box[1].el.getHeight()) * Math.floor(Math.random() * 2))
+            });
+            
+        }
+        
         return pos;
         
     },
