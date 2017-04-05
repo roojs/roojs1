@@ -571,20 +571,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
         }
         
-        if(box[0].size == 'sm' && box[1].size == 'xs'){
-            
-            pos.push({
-                x : x,
-                y : y
-            });
-
-            pos.push({
-                x : x + (this.unitWidth + this.gutter) * 2,
-                y : y + ((this.unitWidth + this.gutter) * Math.floor(Math.random() * 2))
-            });
-            
-        }
-        
         if(box[0].size == 'xs' && box[1].size == 'tall'){
             
             pos.push({
@@ -599,6 +585,22 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             });
             
         }
+        
+        if(box[0].size == 'sm' && box[1].size == 'xs'){
+            
+            pos.push({
+                x : x,
+                y : y
+            });
+
+            pos.push({
+                x : x + (this.unitWidth + this.gutter) * 2,
+                y : y + ((this.unitWidth + this.gutter) * Math.floor(Math.random() * 2))
+            });
+            
+        }
+        
+        
         
         if(box[0].size == 'tall' && box[1].size == 'xs'){
             
