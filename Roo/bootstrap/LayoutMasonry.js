@@ -325,7 +325,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             }
             */
            
-            if(size + item.x > 3){
+            if(size + item.y > 3){
                 queue.push(box);
                 box = [];
                 size = 0;
