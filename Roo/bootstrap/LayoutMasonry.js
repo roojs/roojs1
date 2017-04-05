@@ -316,7 +316,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 return;
             }
             
-            size = size + item.intSize;
+            size = size + item.x;
             
             box.push(item);
             
