@@ -419,7 +419,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     _processHorizontalLayoutQueue : function( queue, eItems, isInstant )
     {
         var pos = this.el.getBox(true);
-        Roo.log(pos);
+        
         var minX = pos.x;
         var minY = pos.y;
         
