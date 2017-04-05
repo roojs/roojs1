@@ -540,7 +540,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     getVerticalTwoBoxColPositions : function(x, y, box)
     {
-        Roo.log(this.unitWidth);
         var pos = [];
         
         if(box[0].size == 'xs'){
