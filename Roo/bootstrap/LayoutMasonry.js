@@ -481,15 +481,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         Roo.each(eItems, function(b,k){
             
-            b.size = 'xs';
-            b.x = 1;
-            b.y = 1;
-            
-            if(k == 0) {
-                b.size = (k == 0) ? 'sm' : 'xs';
-                b.x = 2;
-                b.y = 2;
-            }
+            b.size = (k == 0) ? 'sm' : 'xs';
+            b.x = (k == 0) ? 2 : 1;
+            b.y = (k == 0) ? 2 : 1;
             
             b.el.position('absolute');
             
