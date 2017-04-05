@@ -35,9 +35,14 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     isLayoutInstant : false, // needed?
    
     /**
-     * @cfg {Number} boxWidth  width of the columns
+     * @cfg {Number} boxWidth  width of the columns (Use for Vertical)
      */   
     boxWidth : 450,
+    
+    /**
+     * @cfg {Number} boxHeight  width of the columns (Use for Horizontal)
+     */   
+    boxHeight : 450,
     
     /**
      * @cfg {Number} padWidth padding below box..
@@ -214,7 +219,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         this.getContainerHeight();
         
-        if(this.containerWidth < this.boxWidth){
+        if(this.containerHeight < this.boxWidth){
             this.boxWidth = this.containerWidth
         }
         
