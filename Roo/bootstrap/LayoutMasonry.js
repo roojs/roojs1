@@ -550,7 +550,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             });
 
             pos.push({
-                x : x + (this.unitWidth + this.gutter) * 2,
+                x : x + (this.unitWidth + this.gutter) * ((box[1].size == 'xs') ? 2 : 1),
                 y : y
             });
             
