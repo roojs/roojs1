@@ -393,7 +393,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                     continue;
                 }
                 
-//                col = Math.min(col, i);
+                col = Math.min(col, i);
                 
             }
             
