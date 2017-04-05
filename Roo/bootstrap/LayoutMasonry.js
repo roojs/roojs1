@@ -302,6 +302,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var x = maxX;
         
+        Roo.log([minX, pos.right, maxX]);
+        
         var queue = [];
         
         var box = [];
