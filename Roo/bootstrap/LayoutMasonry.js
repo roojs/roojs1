@@ -324,7 +324,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 queue.push(box);
                 box = [];
                 size = 0;
-                maxX = x;
             }
             
             var width = Math.floor(this.unitWidth * item.x + (this.gutter * (item.x - 1)) + item.el.getPadding('lr'));
