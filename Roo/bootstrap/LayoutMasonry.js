@@ -554,6 +554,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 y : y
             });
             
+            return pos;
+            
         }
         
         if(box[0].size == 'sm'){
