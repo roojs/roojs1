@@ -388,11 +388,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             for (var i = 0; i < this.cols; i++){
                 
-                if(maxY[i] >= maxY[col]){
+                if(maxY[i] < maxY[col]){
+                    col = i;
                     continue;
                 }
                 
-                col = i;
+                col = Math.min(col, i);
+                
             }
             
             x = pos.x + col * (this.colWidth + this.padWidth);
