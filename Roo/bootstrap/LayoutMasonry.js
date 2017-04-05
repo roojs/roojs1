@@ -258,7 +258,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     getContainerWidth : function()
     {
-        this.containerWidth = this.el.getBox(true).height;
+        this.containerHeight = this.el.getBox(true).height;
     },
     
     layoutItems : function( isInstant )
