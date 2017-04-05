@@ -342,7 +342,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 return;
             }
             
-            size = size + item.x;
+            size = size + item.y;
             
             box.push(item);
             
