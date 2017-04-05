@@ -494,6 +494,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
         }, this);
         
+        this.el.setHeight(this.boxWidth);
+        
     },
     
     _processHorizontalEndItem : function(eItems, maxX, minX, minY, isInstant)
