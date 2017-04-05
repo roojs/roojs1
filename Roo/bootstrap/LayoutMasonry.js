@@ -482,7 +482,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         Roo.each(eItems, function(b,k){
             
             b.size = 'xs';
-            b.intSize = 1;
+            b.x = 1;
+            b.y = 1;
             
             if(k == 0) {
                 b.size = 'sm';
