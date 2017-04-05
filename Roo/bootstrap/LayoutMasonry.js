@@ -300,7 +300,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var maxX = pos.right - this.unitWidth * 3 - this.gutter * 2 - this.padWidth;
         
-        Roo.log(maxX);
+        Roo.log([minX, pos.right, maxX]);
         
         var x = maxX;
         
