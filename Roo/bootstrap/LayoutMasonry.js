@@ -556,7 +556,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
         }
         
-        if(box[0].size == 'sm' && box[1].size == 'xs'){
+        if(box[0].size == 'sm'){
             
             pos.push({
                 x : x,
