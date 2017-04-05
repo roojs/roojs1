@@ -187,8 +187,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         this.unitWidth = Math.floor((this.colWidth - (this.gutter * 2)) / 3);
         
-        Roo.log(this.colWidth);
-        
         /*
         this.boxColWidth = {
             xs : xsWidth,
@@ -197,10 +195,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             wide : this.colWidth
         };
         */
-       
+        
+        /*
         if(this.isHorizontal){
             this.el.setHeight(this.colWidth);
         }
+        */
         
     },
     
