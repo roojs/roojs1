@@ -488,7 +488,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
                 b.el.setXY([positions[kk].x, positions[kk].y], isInstant ? false : true);
                 
-                maxX = Math.min(maxX, positions[kk].x - this.gutter);
+                maxX = Math.min(maxX, positions[kk].x - this.padWidth);
                 
             }, this);
             
