@@ -310,7 +310,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
                 //var height = Math.floor(width / b.x * b.y);
                 
-                var height = Math.floor(this.unitWidth * b.y + (this.gutter * (b.y - 1)) + b.el.getPadding('tb'));
+                var height = Math.floor(this.unitWidth * item.y + (this.gutter * (item.y - 1)) + item.el.getPadding('tb'));
                 
                 
             var width = this.boxColWidth[item.size] + item.el.getPadding('lr');
