@@ -605,16 +605,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         return pos;
         
-        var pos = [];
-        
-        var rand = Math.floor(Math.random() * ((4 - box[0].x)));
-        
-        pos.push({
-            x : x + (this.unitWidth + this.gutter) * rand,
-            y : y
-        });
-        
-        return pos;
     },
     
     getHorizontalTwoBoxColPositions : function(maxX, minY, box)
