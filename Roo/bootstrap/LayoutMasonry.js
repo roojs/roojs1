@@ -353,6 +353,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
                 b.el.setWidth(width);
                 
+                //var height = Math.floor(width / b.x * b.y);
+                
+                var height = 
+                
                 b.el.setHeight(Math.floor(width / b.x * b.y));
                 
             }, this);
