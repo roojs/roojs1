@@ -546,7 +546,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             pos.push({
                 x : x,
-                y : y
+                y : y + ((this.unitWidth + this.gutter) * Math.floor(Math.random() * box[1].y))
             });
 
             pos.push({
