@@ -564,8 +564,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         });
 
         pos.push({
-            x : x + (this.unitWidth) * 2 + this.gutter,
-            y : y + ((this.unitWidth ) * Math.floor(Math.random() * box[0].y)) + this.gutter * Math.floor(Math.random() * box[0].y)
+            x : x + (this.unitWidth + this.gutter) * 2,
+            y : y + ((this.unitWidth + this.gutter) * Math.floor(Math.random() * box[0].y))
         });
         
         return pos;
