@@ -302,8 +302,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var x = maxX;
         
-        Roo.log([minX, pos.right, maxX]);
-        
         var queue = [];
         
         var box = [];
@@ -330,8 +328,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             var width = Math.floor(this.unitWidth * item.x + (this.gutter * (item.x - 1)) + item.el.getPadding('lr'));
             
             x = Math.min(x, maxX - width - this.padWidth);
-            
-            Roo.log([width, x]);
             
             if(x < minX){
                 item.el.hide();
