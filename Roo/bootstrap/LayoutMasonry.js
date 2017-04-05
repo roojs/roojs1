@@ -222,7 +222,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     getContainerHeight : function()
     {
-        Roo.log(this.el);
+        Roo.log(this.el.getBox(true));
         this.containerHeight = this.el.getBox(true).height;
     },
     
