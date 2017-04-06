@@ -188,6 +188,8 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         
         var time = this.endTimer - this.startTimer;
         
+        alert(time);
+        
         if(time < 1000){
             return;
         }
