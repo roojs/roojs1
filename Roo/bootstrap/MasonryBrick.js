@@ -195,6 +195,11 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         if(this.bgimage.length && this.html.length){
             this.el.select('.masonry-brick-paragraph', true).first().setOpacity(0, true);
         }
+    },
+    
+    onTouchStart: function(e, el)
+    {
+        
     }
     
 });
