@@ -73,7 +73,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     _isLayoutInited : false,
     
-    isAlternative : false,
+    isAlternative : false, // only use for vertical layout...
     
     getAutoCreate : function(){
         
