@@ -205,7 +205,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         this.fireEvent("click", this, t, e);
         
-        (function() { this.hide() }).defer(500);
+        (function() { this.hide(); }).defer(500);
     },
     
     onMouseOver : function(e){
