@@ -180,6 +180,11 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         
     },
     
+    onClick: function(e, el)
+    {
+        e.preventDefault();
+    },
+    
     enter: function(e, el)
     {
         e.preventDefault();
