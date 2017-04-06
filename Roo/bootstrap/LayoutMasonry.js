@@ -177,11 +177,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         if(Roo.lib.Dom.getViewWidth() < 768 && this.isMobileVerticalList){
             this.colWidth = Math.floor(this.containerWidth * 0.8);
-        
-            this.unitWidth = Math.floor((this.colWidth - (this.gutter * 2)) / 3);
         }
-        
-        
         
         var boxWidth = this.boxWidth + this.padWidth;
         
