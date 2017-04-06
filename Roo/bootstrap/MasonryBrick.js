@@ -201,14 +201,14 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     {
         e.preventDefault();
         
-        Roo.log('touch start');
+        alert('touch start');
     },
     
     onTouchEnd: function(e, el)
     {
         e.preventDefault();
         
-        Roo.log('touch end');
+        alert('touch end');
     }
     
 });
