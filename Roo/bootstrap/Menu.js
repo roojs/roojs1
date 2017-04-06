@@ -207,7 +207,8 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         this.hide();
     },
-     onMouseOver : function(e){
+    
+    onMouseOver : function(e){
         var t  = this.findTargetItem(e);
         //Roo.log(t);
         //if(t){
