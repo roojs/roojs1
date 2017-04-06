@@ -467,6 +467,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 item.el.setXY([maxX - width, y], isInstant ? false : true);
             }
             
+            y = y + height + this.padWidth;
+            
         }, this);
         
     },
