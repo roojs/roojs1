@@ -440,6 +440,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
     },
     
+    _processVerticalAlternativeLayoutQueue : function()
+    {
+        
+    },
+    
     _processHorizontalLayoutQueue : function( queue, eItems, isInstant )
     {
         var pos = this.el.getBox(true);
