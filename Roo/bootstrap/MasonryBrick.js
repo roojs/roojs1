@@ -183,6 +183,8 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     onClick: function(e, el)
     {
         e.preventDefault();
+        
+        alert('click')
     },
     
     enter: function(e, el)
