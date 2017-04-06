@@ -281,8 +281,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             return;
         }
 
-        var queue = [];
-        
+        this._processVerticalLayoutQueue( items, isInstant );
         
     },
     
