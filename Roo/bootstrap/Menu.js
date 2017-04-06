@@ -203,6 +203,8 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         t.onClick(e);
         
+        Roo.log(t);
+        
         this.fireEvent("click", this, t, e);
         
         this.hide();
