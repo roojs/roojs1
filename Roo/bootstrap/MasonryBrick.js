@@ -166,9 +166,8 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         
         
         if(Roo.isTouch){
-            this.bodyEl.on('touchstart', this.onTouchStart, this);
-            this.bodyEl.on('touchmove', this.onTouchMove, this);
-            this.bodyEl.on('touchend', this.onTouchEnd, this);
+            this.el.on('touchstart', this.onTouchStart, this);
+            this.el.on('touchend', this.onTouchEnd, this);
         } else {
             this.el.on('mouseenter'  ,this.enter, this);
             this.el.on('mouseleave', this.leave, this);
