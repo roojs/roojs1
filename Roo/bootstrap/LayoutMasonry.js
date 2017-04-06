@@ -205,8 +205,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         this.colWidth = boxWidth + avail;
         
-        Roo.log([this.cols, this.colWidth]);
-        
         this.unitWidth = Math.floor((this.colWidth - (this.gutter * 2)) / 3);
         
     },
