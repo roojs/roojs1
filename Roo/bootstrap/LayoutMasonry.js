@@ -232,7 +232,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             return;
         }
         
-        if(Roo.lib.Dom.getViewWidth() < 768 && this.isMobileVerticalList){
+        if(Roo.lib.Dom.getViewWidth() < 768 && this.isAlternative){
             this._verticalListLayoutItems( items , isInstant );
             return;
         }
