@@ -235,6 +235,10 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         
         if(!this.bgimage.length || !this.html.length){
             
+            if(this.href.length){
+                window.location.href = this.href;
+            }
+            
             return;
         }
         
