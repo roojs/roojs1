@@ -232,9 +232,11 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     {
         e.preventDefault();
         
-        if(this.bgimage.length && this.html.length){
-            this.el.select('.masonry-brick-paragraph', true).first().setOpacity(0, true);
+        if(!this.bgimage.length || !this.html.length){
+            return;
         }
+        
+        this.el.select('.masonry-brick-paragraph', true).first().setOpacity(0, true);
         
         this.endTimer = new Date().getTime();
     }
