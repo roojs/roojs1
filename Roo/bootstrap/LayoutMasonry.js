@@ -233,7 +233,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         }
         
         if(Roo.lib.Dom.getViewWidth() < 768 && this.isAlternative){
-            this._verticalListLayoutItems( items , isInstant );
+            this._verticalAlternativeLayoutItems( items , isInstant );
             return;
         }
         
