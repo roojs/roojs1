@@ -182,6 +182,16 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     
     onClick: function(e, el)
     {
+        if(!Roo.isTouch){
+            return;
+        }
+        
+        var time = this.endTimer - this.startTimer;
+        
+        if(time < 1000){
+            return;
+        }
+        
         e.preventDefault();
     },
     
