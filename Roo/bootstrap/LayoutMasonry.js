@@ -277,6 +277,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     _verticalAlternativeLayoutItems : function( items , isInstant )
     {
+        if ( !items || !items.length ) {
+            return;
+        }
+
+        var queue = [];
+        
         
     },
     
