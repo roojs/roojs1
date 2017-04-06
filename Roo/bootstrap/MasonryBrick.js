@@ -234,6 +234,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         e.preventDefault();
         
         if(!this.bgimage.length || !this.html.length){
+            
             return;
         }
         
