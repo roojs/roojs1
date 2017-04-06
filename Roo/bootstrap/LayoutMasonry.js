@@ -440,7 +440,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
     },
     
-    _processVerticalAlternativeLayoutQueue : function()
+    _processVerticalAlternativeLayoutQueue : function( items, isInstant )
     {
         
     },
