@@ -75,6 +75,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     isAlternative : false, // only use for vertical layout...
     
+    /**
+     * @cfg {Number} alternativePadWidth padding below box..
+     */   
+    alternativePadWidth : 50, 
+    
     getAutoCreate : function(){
         
         var cfg = {
