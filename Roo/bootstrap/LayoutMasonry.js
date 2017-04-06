@@ -73,6 +73,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     _isLayoutInited : false,
     
+    isMobileVertical : false,
+    
     getAutoCreate : function(){
         
         var cfg = {
