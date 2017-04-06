@@ -446,6 +446,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var x = pos.x;
         var y = pos.y;
         
+        var maxHeight = 0;
+        
         Roo.each(items, function(item, k){
             item.el.position('absolute');
                 
@@ -457,7 +459,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
 
             item.el.setHeight(height);
             
-            
+            item.el.setXY([positions[kk].x, positions[kk].y], isInstant ? false : true);
         });
         
     },
