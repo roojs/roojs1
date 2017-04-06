@@ -446,7 +446,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var x = pos.x;
         var y = pos.y;
         
-        
+        Roo.each(queue, function(box, k){
+            
+        }
     },
     
     _processHorizontalLayoutQueue : function( queue, eItems, isInstant )
