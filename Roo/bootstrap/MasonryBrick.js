@@ -199,12 +199,16 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     
     onTouchStart: function(e, el)
     {
+        e.preventDefault();
         
+        Roo.log('touch start');
     },
     
     onTouchEnd: function(e, el)
     {
+        e.preventDefault();
         
+        Roo.log('touch end');
     }
     
 });
