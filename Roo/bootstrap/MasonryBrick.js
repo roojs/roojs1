@@ -239,7 +239,12 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         
         this.el.select('.masonry-brick-paragraph', true).first().setOpacity(0, true);
         
-        this.endTimer = new Date().getTime();
+        if((new Date().getTime() - this.timer > 1000) || !this.href.length){
+            return;
+        }
+        
+        window.location.href = this.href;
+        
     }
     
 });
