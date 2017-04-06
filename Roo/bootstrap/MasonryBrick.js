@@ -200,6 +200,11 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     onTouchStart: function(e, el)
     {
         
+    },
+    
+    onTouchEnd: function(e, el)
+    {
+        
     }
     
 });
