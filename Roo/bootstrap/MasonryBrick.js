@@ -207,7 +207,9 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     {
         e.preventDefault();
         
-        alert('touch start');
+        if(this.bgimage.length && this.html.length){
+            this.el.select('.masonry-brick-paragraph', true).first().setOpacity(0.9, true);
+        }
     },
     
     onTouchEnd: function(e, el)
