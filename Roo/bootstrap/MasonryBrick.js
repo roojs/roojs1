@@ -210,6 +210,8 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         if(this.bgimage.length && this.html.length){
             this.el.select('.masonry-brick-paragraph', true).first().setOpacity(0.9, true);
         }
+        
+        this.timer = new Date().getTime();
     },
     
     onTouchEnd: function(e, el)
