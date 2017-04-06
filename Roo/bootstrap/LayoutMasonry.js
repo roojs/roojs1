@@ -450,6 +450,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var maxHeight = 0;
         
         Roo.each(items, function(item, k){
+            
+            var c = k % 2;
+            
             item.el.position('absolute');
                 
             var width = Math.floor(this.colWidth + item.el.getPadding('lr'));
