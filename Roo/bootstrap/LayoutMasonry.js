@@ -203,7 +203,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var avail = Math.floor((containerWidth - totalBoxWidth) / this.cols);
         
-        this.colWidth = boxWidth + avail;
+        this.colWidth = this.boxWidth + avail;
         
         Roo.log([this.cols, this.colWidth]);
         
