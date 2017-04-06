@@ -185,7 +185,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             return;
         }
         
-        var boxWidth = this.boxWidth;
+        var boxWidth = this.boxWidth + this.padWidth;
         
         if(this.containerWidth < this.boxWidth){
             boxWidth = this.containerWidth
