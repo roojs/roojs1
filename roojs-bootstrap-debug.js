@@ -2073,9 +2073,10 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         this.fireEvent("click", this, t, e);
         
-        this.hide();
+        (function() { this.hide(); }).defer(500);
     },
-     onMouseOver : function(e){
+    
+    onMouseOver : function(e){
         var t  = this.findTargetItem(e);
         //Roo.log(t);
         //if(t){
@@ -28497,7 +28498,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var avail = Math.floor((containerWidth - totalBoxWidth) / this.cols);
         
-        this.colWidth = boxWidth + avail;
+        this.colWidth = this.boxWidth + avail;
         
         this.unitWidth = Math.floor((this.colWidth - (this.gutter * 2)) / 3);
         
@@ -28665,6 +28666,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var x = pos.x;
         var y = pos.y;
         var maxY = [];
+        
+        Roo.log(this.el);
+        
+        Roo.log(pos);
         
         for (var i = 0; i < this.cols; i++){
             maxY[i] = pos.y;
