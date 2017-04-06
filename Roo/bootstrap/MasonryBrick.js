@@ -249,7 +249,6 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         }
         
         window.location.href = this.href;
-        
     }
     
 });
