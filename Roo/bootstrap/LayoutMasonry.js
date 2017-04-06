@@ -73,7 +73,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     _isLayoutInited : false,
     
-    isMobileVerticalList : false,
+    isAlternative : false,
     
     getAutoCreate : function(){
         
@@ -229,6 +229,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         if(this.isHorizontal){
             this._horizontalLayoutItems( items , isInstant );
+            return;
+        }
+        
+        if(Roo.lib.Dom.getViewWidth() < 768 && this.isMobileVerticalList){
+            this._verticalListLayoutItems( items , isInstant );
             return;
         }
         
