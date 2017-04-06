@@ -463,6 +463,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             if(c == 0){
                 item.el.setXY([x, y], isInstant ? false : true);
+            } else {
+                item.el.setXY([maxX - width, y], isInstant ? false : true);
             }
             
         }, this);
