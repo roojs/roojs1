@@ -445,6 +445,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var pos = this.el.getBox(true);
         var x = pos.x;
         var y = pos.y;
+        var maxX = pos.right;
         
         var maxHeight = 0;
         
