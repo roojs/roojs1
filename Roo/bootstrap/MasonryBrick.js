@@ -190,6 +190,8 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     
     leave: function(e, el)
     {
+        Roo.log(e);
+        
         e.preventDefault();
         
         if(this.bgimage.length && this.html.length){
