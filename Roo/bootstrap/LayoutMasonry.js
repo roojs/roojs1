@@ -281,7 +281,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             return;
         }
 
-        this._processVerticalLayoutQueue( items, isInstant );
+        this._processVerticalAlternativeLayoutQueue( items, isInstant );
         
     },
     
