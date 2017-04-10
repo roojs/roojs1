@@ -275,6 +275,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 size = 0;
             }
             
+            if(box.length >= this.cols){
+                queue.push(box);
+                box = [];
+                size = 0;
+            }
+            
         }, this);
         
         this._processVerticalLayoutQueue( queue, isInstant );
