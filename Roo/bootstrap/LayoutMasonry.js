@@ -205,7 +205,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         this.unitWidth = Math.floor((this.colWidth - (this.gutter * 2)) / 3);
         
-        Roo.log([this.containerWidth, boxWidth, this.unitWidth]);
+        Roo.log([this.containerWidth, boxWidth, this.unitWidth, this.cols]);
     },
     
     horizontalMeasureColumns : function()
