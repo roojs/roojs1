@@ -265,6 +265,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 size = 0;
             }
             
+            Roo.log(box.length);
             
             size = size + item.x;
             
