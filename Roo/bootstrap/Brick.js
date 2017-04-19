@@ -147,13 +147,13 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
     {
         var paragraph = this.el.select('.roo-brick-paragraph', true).first();
 //        paragraph.setHeight(paragraph.getWidth() + paragraph.getPadding('tb'));
-//        paragraph.setHeight(paragraph.getWidth());
+        paragraph.setHeight(paragraph.getWidth());
         
-//        if(this.bgimage.length){
-//            var image = this.el.select('.roo-brick-image-view', true).first();
-//            image.setWidth(paragraph.getWidth());
-//            image.setHeight(paragraph.getHeight());
-//        }
+        if(this.bgimage.length){
+            var image = this.el.select('.roo-brick-image-view', true).first();
+            image.setWidth(paragraph.getWidth());
+            image.setHeight(paragraph.getHeight());
+        }
         
     },
     
