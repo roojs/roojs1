@@ -147,7 +147,7 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
     {
         var paragraph = this.el.select('.roo-brick-paragraph', true).first();
         
-        Roo.log(paragraph);
+        Roo.log(paragraph.getWidth());
         
 //        paragraph.setHeight(paragraph.getWidth() + paragraph.getPadding('tb'));
 //        paragraph.setHeight(paragraph.getWidth());
