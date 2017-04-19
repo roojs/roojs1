@@ -103,6 +103,8 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
             });
         }
         
+        Roo.log(cn);
+        
         if(this.html.length){
             cn.push({
                 tag: 'p',
