@@ -55,7 +55,9 @@
 }
 
 .masonry-center-title .masonry-brick-paragraph,
-.masonry-bottom-title .masonry-brick-paragraph {
+.masonry-bottom-title .masonry-brick-paragraph,
+.roo-brick-center-title .roo-brick-paragraph,
+.roo-brick-bottom-title .roo-brick-paragraph {
     display: table;
 }
 
