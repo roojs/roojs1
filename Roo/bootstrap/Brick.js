@@ -149,13 +149,11 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
 //        paragraph.setHeight(paragraph.getWidth() + paragraph.getPadding('tb'));
         paragraph.setHeight(paragraph.getWidth());
         
-        Roo.log(paragraph.getHeight());
-        
-        if(this.bgimage.length){
+//        if(this.bgimage.length){
 //            var image = this.el.select('.roo-brick-image-view', true).first();
 //            image.setWidth(paragraph.getWidth());
 //            image.setHeight(paragraph.getHeight());
-        }
+//        }
         
     },
     
