@@ -95,8 +95,6 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
         
         var cn = cfg.cn[0].cn;
         
-        Roo.log(this.title);
-        
         if(this.title.length){
             Roo.log('run???');
             cn.push({
