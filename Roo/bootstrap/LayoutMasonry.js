@@ -178,6 +178,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     verticalMeasureColumns : function()
     {
+        this.padWidth = 0;
+        
         this.getContainerWidth();
         
         if(Roo.lib.Dom.getViewWidth() < 768 && this.isAlternative){
