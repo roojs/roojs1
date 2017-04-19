@@ -400,6 +400,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         
         if(this.fireEvent("remove", this) !== false){
             this.reset();
+            this.fireEvent("afterremove", this)
         }
     },
     
