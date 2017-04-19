@@ -73,6 +73,14 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
             cls += ' roo-brick-image';
         }
         
+        if(!this.html.length && !this.bgimage.length){
+            cls += ' masonry-center-title';
+        }
+        
+        if(!this.html.length && this.bgimage.length){
+            cls += ' masonry-bottom-title';
+        }
+        
         if(this.cls){
             cls += ' ' + this.cls;
         }
