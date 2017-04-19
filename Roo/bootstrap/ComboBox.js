@@ -82,6 +82,12 @@ Roo.bootstrap.ComboBox = function(config){
 	     */
         'remove' : true,
         /**
+         * @event afterremove
+         * Fires when the remove value from the combobox array
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     */
+        'afterremove' : true,
+        /**
          * @event specialfilter
          * Fires when specialfilter
             * @param {Roo.bootstrap.ComboBox} combo This combo box
