@@ -74,11 +74,11 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
         }
         
         if(!this.html.length && !this.bgimage.length){
-            cls += ' masonry-center-title';
+            cls += ' roo-brick-center-title';
         }
         
         if(!this.html.length && this.bgimage.length){
-            cls += ' masonry-bottom-title';
+            cls += ' roo-brick-bottom-title';
         }
         
         if(this.cls){
