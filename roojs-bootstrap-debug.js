@@ -28491,7 +28491,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             return;
         }
         
-        var boxWidth = this.boxWidth + this.padWidth;
+        var boxWidth = this.boxWidth; //this.boxWidth + this.padWidth;
         
         if(this.containerWidth < this.boxWidth){
             boxWidth = this.containerWidth
@@ -28511,6 +28511,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         this.unitWidth = Math.floor((this.colWidth - (this.gutter * 2)) / 3);
         
+        Roo.log([this.colWidth, this.unitWidth, this.cols, this.containerWidth]);
     },
     
     horizontalMeasureColumns : function()
