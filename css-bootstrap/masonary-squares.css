@@ -105,6 +105,7 @@
 .roo-brick-image-view  {
     position: absolute;
     top: 0;
+    object-fit: cover;
 }
 
 a.roo-brick-link:focus,
