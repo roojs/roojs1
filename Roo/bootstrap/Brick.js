@@ -96,6 +96,7 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
         var cn = cfg.cn[0].cn;
         
         if(this.title.length){
+            Roo.log('run???');
             cn.push({
                 tag: 'h4',
                 cls: 'roo-brick-title',
