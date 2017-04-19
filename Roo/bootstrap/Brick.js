@@ -99,7 +99,7 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
             cn.push({
                 tag: 'h4',
                 cls: 'roo-brick-title',
-                html: this.title
+                html: '2016'
             });
         }
         
