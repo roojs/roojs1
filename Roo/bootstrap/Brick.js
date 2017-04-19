@@ -95,6 +95,8 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
         
         var cn = cfg.cn[0].cn;
         
+        Roo.log(this.title);
+        
         if(this.title.length){
             cn.push({
                 tag: 'h4',
