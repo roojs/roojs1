@@ -9465,6 +9465,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         
         if(this.fireEvent("remove", this) !== false){
             this.reset();
+            this.fireEvent("afterremove", this)
         }
     },
     
@@ -11716,6 +11717,12 @@ Roo.bootstrap.ComboBox = function(config){
 	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     */
         'remove' : true,
+        /**
+         * @event afterremove
+         * Fires when the remove value from the combobox array
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     */
+        'afterremove' : true,
         /**
          * @event specialfilter
          * Fires when specialfilter
