@@ -180,10 +180,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         this.getContainerWidth();
         
-        if(Roo.lib.Dom.getViewWidth() < 768 && this.isAlternative){
-            this.colWidth = Math.floor(this.containerWidth * 0.8);
-            return;
-        }
+//        if(Roo.lib.Dom.getViewWidth() < 768 && this.isAlternative){
+//            this.colWidth = Math.floor(this.containerWidth * 0.8);
+//            return;
+//        }
         
         var boxWidth = this.boxWidth + this.padWidth;
         
@@ -236,10 +236,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             return;
         }
         
-        if(Roo.lib.Dom.getViewWidth() < 768 && this.isAlternative){
-            this._verticalAlternativeLayoutItems( items , isInstant );
-            return;
-        }
+//        if(Roo.lib.Dom.getViewWidth() < 768 && this.isAlternative){
+//            this._verticalAlternativeLayoutItems( items , isInstant );
+//            return;
+//        }
         
         this._verticalLayoutItems( items , isInstant );
         
