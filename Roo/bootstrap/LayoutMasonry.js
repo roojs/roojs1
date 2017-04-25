@@ -285,15 +285,15 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         this._processVerticalLayoutQueue( queue, isInstant );
     },
     
-    _verticalAlternativeLayoutItems : function( items , isInstant )
-    {
-        if ( !items || !items.length ) {
-            return;
-        }
-
-        this._processVerticalAlternativeLayoutQueue( items, isInstant );
-        
-    },
+//    _verticalAlternativeLayoutItems : function( items , isInstant )
+//    {
+//        if ( !items || !items.length ) {
+//            return;
+//        }
+//
+//        this._processVerticalAlternativeLayoutQueue( items, isInstant );
+//        
+//    },
     
     _horizontalLayoutItems : function ( items , isInstant)
     {
@@ -453,44 +453,44 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
     },
     
-    _processVerticalAlternativeLayoutQueue : function( items, isInstant )
-    {
-        var pos = this.el.getBox(true);
-        var x = pos.x;
-        var y = pos.y;
-        var maxX = pos.right;
-        
-        var maxHeight = 0;
-        
-        Roo.each(items, function(item, k){
-            
-            var c = k % 2;
-            
-            item.el.position('absolute');
-                
-            var width = Math.floor(this.colWidth + item.el.getPadding('lr'));
-
-            item.el.setWidth(width);
-
-            var height = Math.floor(this.colWidth * item.y / item.x + item.el.getPadding('tb'));
-
-            item.el.setHeight(height);
-            
-            if(c == 0){
-                item.el.setXY([x, y], isInstant ? false : true);
-            } else {
-                item.el.setXY([maxX - width, y], isInstant ? false : true);
-            }
-            
-            y = y + height + this.alternativePadWidth;
-            
-            maxHeight = maxHeight + height + this.alternativePadWidth;
-            
-        }, this);
-        
-        this.el.setHeight(maxHeight);
-        
-    },
+//    _processVerticalAlternativeLayoutQueue : function( items, isInstant )
+//    {
+//        var pos = this.el.getBox(true);
+//        var x = pos.x;
+//        var y = pos.y;
+//        var maxX = pos.right;
+//        
+//        var maxHeight = 0;
+//        
+//        Roo.each(items, function(item, k){
+//            
+//            var c = k % 2;
+//            
+//            item.el.position('absolute');
+//                
+//            var width = Math.floor(this.colWidth + item.el.getPadding('lr'));
+//
+//            item.el.setWidth(width);
+//
+//            var height = Math.floor(this.colWidth * item.y / item.x + item.el.getPadding('tb'));
+//
+//            item.el.setHeight(height);
+//            
+//            if(c == 0){
+//                item.el.setXY([x, y], isInstant ? false : true);
+//            } else {
+//                item.el.setXY([maxX - width, y], isInstant ? false : true);
+//            }
+//            
+//            y = y + height + this.alternativePadWidth;
+//            
+//            maxHeight = maxHeight + height + this.alternativePadWidth;
+//            
+//        }, this);
+//        
+//        this.el.setHeight(maxHeight);
+//        
+//    },
     
     _processHorizontalLayoutQueue : function( queue, eItems, isInstant )
     {
