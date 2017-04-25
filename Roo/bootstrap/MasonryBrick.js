@@ -53,7 +53,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
      */   
     href : '',
     /**
-     * @cfg {String} (xs|sm|md|tall|wide) size
+     * @cfg {String} (xs|sm|md|md-left|md-right|tall|wide) size
      */   
     size : 'xs',
     
