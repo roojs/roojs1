@@ -512,11 +512,14 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 b.el.position('absolute');
                 
                 var width = Math.floor(this.unitWidth * b.x + (this.gutter * (b.x - 1)) + b.el.getPadding('lr'));
+                var height = Math.floor(this.unitWidth * b.y + (this.gutter * (b.y - 1)) + b.el.getPadding('tb'));
+                
+                if(b.size == 'md-left' || b.size == 'md-right'){
+                    width = Math.floor(this.unitWidth * (b.x - 1) + (this.gutter * (b.x - 2)) + b.el.getPadding('lr'));
+                    height = Math.floor(this.unitWidth * (b.y - 1) + (this.gutter * (b.y - 2)) + b.el.getPadding('tb'));
+                }
                 
                 b.el.setWidth(width);
-
-                var height = Math.floor(this.unitWidth * b.y + (this.gutter * (b.y - 1)) + b.el.getPadding('tb'));
-
                 b.el.setHeight(height);
                 
             }, this);
