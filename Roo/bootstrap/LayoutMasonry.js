@@ -693,7 +693,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         }
         
         if(box[0].size == 'md-right'){
-            rand = 1;
+            pos.push({
+                x : maxX - this.unitWidth * (box[0].x - 1) - this.gutter * (box[0].x - 2),
+                y : minY + (this.unitWidth + this.gutter) * 1
+            });
+            
+            return pos;
         }
         
         var rand = Math.floor(Math.random() * (4 - box[0].y));
