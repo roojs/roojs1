@@ -602,14 +602,15 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         var pos = [];
         
+        var rand = Math.floor(Math.random() * ((4 - box[0].x)));
+        
         if(box[0].size == 'md-left'){
-            pos.push({
-                x : x + (this.unitWidth + this.gutter) * rand,
-                y : y
-            });
+            rand = 0;
         }
         
-        var rand = Math.floor(Math.random() * ((4 - box[0].x)));
+        if(box[0].size == 'md-right'){
+            rand = 1;
+        }
         
         pos.push({
             x : x + (this.unitWidth + this.gutter) * rand,
