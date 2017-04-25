@@ -145,6 +145,8 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 this.y = 2;
                 break;
             case 'md' :
+            case 'md-left' :
+            case 'md-right' :
 //                this.intSize = 3;
                 this.x = 3;
                 this.y = 3;
