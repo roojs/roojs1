@@ -411,7 +411,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             ['xs', 'xs', 'wide'],
             ['xs', 'xs', 'sm'],
             ['xs', 'xs', 'xs'],
-            ['xs', 'tall'],
+            ['xs', 'wide'],
             ['xs', 'sm'],
             ['xs', 'xs'],
             ['xs'],
