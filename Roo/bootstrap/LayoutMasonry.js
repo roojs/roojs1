@@ -256,8 +256,19 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var box = [];
         var size = 0;
         
-        var w = 0;
-        var h = 0;
+        var standard = [
+            ['xs'],
+            ['xs', 'xs'],
+            ['xs', 'xs', 'xs'],
+            ['xs', 'xs', 'sm'],
+            ['xs', 'sm'],
+            
+            ['xs', 'xs', 'xs', 'tall'],
+            ['xs', 'xs', 'xs'],
+            ['xs', 'xs', 'sm'],
+            ['xs', 'xs', 'tall'],
+            ['xs', ]
+        ];
         
         Roo.each(items, function(item, k){
             
