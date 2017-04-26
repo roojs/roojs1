@@ -307,34 +307,16 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                     
             }
             
-            /*
-            if(size + item.x > 3){
-                queue.push(box);
-                box = [];
-                size = 0;
-            }
-            
-            size = size + item.x;
-            
-            box.push(item);
-            
-            if(k == items.length - 1){
-                queue.push(box);
-                box = [];
-                size = 0;
-            }
-            
-            if(box.length >= this.cols){
-                queue.push(box);
-                box = [];
-                size = 0;
-            }
-            */
         }, this);
         
         if(box.length){
             boxes.push(box);
             box = [];
+        }
+        
+        var filterPattern = function(v){
+            
+            
         }
         
         Roo.each(boxes, function(box, k){
@@ -354,9 +336,18 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             Roo.each(standard, function(s){
                 
+                if(String(s) != String(part)){
+                    return;
+                }
+                
+                match = true;
+                return false;
+                
             }, this);
             
-            
+            if(match){
+                
+            }
             
         }, this);
         
