@@ -1008,7 +1008,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         if(box[0].size == 'md-left'){
             pos.push({
-                x : maxX - this.unitWidth * (box[0].x - 1) - this.gutter * (box[0].x - 2),
+                x : maxX - this.unitWidth * box[0].x - this.gutter * (box[0].x - 1),
                 y : minY
             });
             
