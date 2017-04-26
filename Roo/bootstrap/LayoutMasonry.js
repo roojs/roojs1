@@ -299,11 +299,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 case 'sm' :
                 case 'tall' :
                     
-                    if(size + item.x > 3){
-                        queue.push(box);
-                        box = [];
-                        size = 0;
-                    }
+                    box.push(item);
                     
                     break;
                 default :
@@ -335,6 +331,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             }
             */
         }, this);
+        
+        if(box.length){
+            boxes.push(box);
+        }
         
         this._processVerticalLayoutQueue( queue, isInstant );
         
