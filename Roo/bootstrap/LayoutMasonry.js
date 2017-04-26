@@ -530,7 +530,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         }, this);
         
         
+        var prune = [];
         
+        Roo.each(queue, function(box){
+            Roo.log(box);
+        }, this);
         
         
         
