@@ -314,10 +314,32 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             box = [];
         }
         
-        var filterPattern = function(box){
+        var filterPattern = function(box, length){
             
-            Roo.log('filter pattern');
-            Roo.log(box);
+            var match = false;
+            
+            var pattern = box.slice(0, length);
+            
+            Roo.each(standard, function(s){
+                
+                if(String(s) != String(pattern)){
+                    return;
+                }
+                
+                match = true;
+                return false;
+                
+            }, this);
+            
+            if(match){
+                
+                queue.push(pattern)
+                
+                var b = box.slice(length, box.length);
+                
+                filterPattern(b, length - 1);
+            }
+            
         }
         
         Roo.each(boxes, function(box, k){
@@ -331,7 +353,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 return;
             }
             
-            filterPattern(box);
+            filterPattern(box, 4);
             
         }, this);
         
