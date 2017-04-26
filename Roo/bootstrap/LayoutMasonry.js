@@ -256,6 +256,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var box = [];
         var size = 0;
         
+        
+        
         Roo.each(items, function(item, k){
             
             if(size + item.x > 3){
