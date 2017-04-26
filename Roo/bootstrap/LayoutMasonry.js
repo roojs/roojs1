@@ -334,9 +334,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         if(box.length){
             boxes.push(box);
+            box = [];
         }
         
-        Roo.each(items, function(item, k){
+        Roo.each(boxes, function(box, k){
             
         }, this);
         
