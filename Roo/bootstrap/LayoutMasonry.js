@@ -468,6 +468,67 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             box = [];
         }
         
+        var filterPattern = function(box, length)
+        {
+            if(!box.length){
+                return;
+            }
+            
+            var match = false;
+            
+            var pattern = box.slice(0, length);
+            
+            var format = [];
+            
+            Roo.each(pattern, function(i){
+                format.push(i.size);
+            }, this);
+            
+            Roo.each(standard, function(s){
+                
+                if(String(s) != String(format)){
+                    return;
+                }
+                
+                match = true;
+                return false;
+                
+            }, this);
+            
+            if(!match && length == 1){
+                return;
+            }
+            
+            if(!match){
+                filterPattern(box, length - 1);
+                return;
+            }
+                
+            queue.push(pattern);
+
+            box = box.slice(length, box.length);
+
+            filterPattern(box, 4);
+
+            return;
+            
+        }
+        
+        Roo.each(boxes, function(box, k){
+            
+            if(!box.length){
+                return;
+            }
+            
+            if(box.length == 1){
+                queue.push(box);
+                return;
+            }
+            
+            filterPattern(box, 4);
+            
+        }, this);
+        
         
         
         
