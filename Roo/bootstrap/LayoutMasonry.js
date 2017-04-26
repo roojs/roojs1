@@ -261,6 +261,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         Roo.each(items, function(item, k){
             
+            
+            
+            /*
             if(size + item.x > 3){
                 queue.push(box);
                 box = [];
@@ -282,7 +285,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 box = [];
                 size = 0;
             }
-            
+            */
         }, this);
         
         this._processVerticalLayoutQueue( queue, isInstant );
