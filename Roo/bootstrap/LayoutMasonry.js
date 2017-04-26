@@ -251,11 +251,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             return;
         }
         
-        var queue = [];
-        
-        var box = [];
-        var size = 0;
-        
         var standard = [
             ['xs', 'xs', 'xs', 'tall'],
             ['xs', 'xs', 'tall'],
@@ -277,6 +272,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
         ];
         
+        var queue = [];
+        
+        var boxes = [];
+        
+        var box = [];
         
         Roo.each(items, function(item, k){
             
