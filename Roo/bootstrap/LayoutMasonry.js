@@ -314,7 +314,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             box = [];
         }
         
-        var filterPattern = function(v){
+        var filterPattern = function(box){
             
             
         }
