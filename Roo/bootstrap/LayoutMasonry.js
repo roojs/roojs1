@@ -337,6 +337,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
             }, this);
             
+            if(!match && length == 1){
+                Roo.log('in????');
+                return;
+            }
+            
             if(!match){
                 filterPattern(box, length - 1);
                 return;
