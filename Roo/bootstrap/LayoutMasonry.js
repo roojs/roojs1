@@ -269,7 +269,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             ['tall', 'xs', 'xs'],
             ['tall', 'xs'],
             ['tall']
-            
         ];
         
         var queue = [];
