@@ -438,7 +438,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 case 'md' :
                 case 'md-left' :
                 case 'md-right' :
-                case 'wide' :
+                case 'tall' :
                     
                     if(box.length){
                         boxes.push(box);
@@ -451,7 +451,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                     
                 case 'xs' :
                 case 'sm' :
-                case 'tall' :
+                case 'wide' :
                     
                     box.push(item);
                     
