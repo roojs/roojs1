@@ -420,10 +420,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             ['sm', 'xs'],
             ['sm'],
             
-            ['tall', 'xs', 'xs', 'xs'],
-            ['tall', 'xs', 'xs'],
-            ['tall', 'xs'],
-            ['tall']
+            ['wide', 'xs', 'xs', 'xs'],
+            ['wide', 'xs', 'xs'],
+            ['wide', 'xs'],
+            ['wide']
         ];
         
         var queue = [];
