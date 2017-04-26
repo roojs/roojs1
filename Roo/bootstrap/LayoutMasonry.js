@@ -316,6 +316,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var filterPattern = function(box, length){
             
+            Roo.log(box);
+            
             if(!box.length){
                 return;
             }
