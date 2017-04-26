@@ -316,6 +316,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var filterPattern = function(box, length){
             
+            if(!box.length){
+                return;
+            }
+            
             var match = false;
             
             var pattern = box.slice(0, length);
