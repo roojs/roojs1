@@ -337,7 +337,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             if(match){
                 
-                queue.push(pattern)
+                queue.push(pattern);
                 
                 var b = box.slice(length, box.length);
                 
