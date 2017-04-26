@@ -28379,7 +28379,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     _isLayoutInited : false,
     
-    isAlternative : false, // only use for vertical layout...
+//    isAlternative : false, // only use for vertical layout...
     
     /**
      * @cfg {Number} alternativePadWidth padding below box..
@@ -28486,10 +28486,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         this.getContainerWidth();
         
-        if(Roo.lib.Dom.getViewWidth() < 768 && this.isAlternative){
-            this.colWidth = Math.floor(this.containerWidth * 0.8);
-            return;
-        }
+//        if(Roo.lib.Dom.getViewWidth() < 768 && this.isAlternative){
+//            this.colWidth = Math.floor(this.containerWidth * 0.8);
+//            return;
+//        }
         
         var boxWidth = this.boxWidth + this.padWidth;
         
@@ -28542,10 +28542,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             return;
         }
         
-        if(Roo.lib.Dom.getViewWidth() < 768 && this.isAlternative){
-            this._verticalAlternativeLayoutItems( items , isInstant );
-            return;
-        }
+//        if(Roo.lib.Dom.getViewWidth() < 768 && this.isAlternative){
+//            this._verticalAlternativeLayoutItems( items , isInstant );
+//            return;
+//        }
         
         this._verticalLayoutItems( items , isInstant );
         
@@ -28556,50 +28556,143 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         if ( !items || !items.length ) {
             return;
         }
-
+        
+        var standard = [
+            ['xs', 'xs', 'xs', 'tall'],
+            ['xs', 'xs', 'tall'],
+            ['xs', 'xs', 'sm'],
+            ['xs', 'xs', 'xs'],
+            ['xs', 'tall'],
+            ['xs', 'sm'],
+            ['xs', 'xs'],
+            ['xs'],
+            
+            ['sm', 'xs', 'xs'],
+            ['sm', 'xs'],
+            ['sm'],
+            
+            ['tall', 'xs', 'xs', 'xs'],
+            ['tall', 'xs', 'xs'],
+            ['tall', 'xs'],
+            ['tall']
+        ];
+        
         var queue = [];
         
+        var boxes = [];
+        
         var box = [];
-        var size = 0;
         
         Roo.each(items, function(item, k){
             
-            if(size + item.x > 3){
-                queue.push(box);
-                box = [];
-                size = 0;
-            }
-            
-            size = size + item.x;
-            
-            box.push(item);
-            
-            if(k == items.length - 1){
-                queue.push(box);
-                box = [];
-                size = 0;
-            }
-            
-            if(box.length >= this.cols){
-                queue.push(box);
-                box = [];
-                size = 0;
+            switch (item.size) {
+                case 'md' :
+                case 'md-left' :
+                case 'md-right' :
+                case 'wide' :
+                    
+                    if(box.length){
+                        boxes.push(box);
+                        box = [];
+                    }
+                    
+                    boxes.push([item]);
+                    
+                    break;
+                    
+                case 'xs' :
+                case 'sm' :
+                case 'tall' :
+                    
+                    box.push(item);
+                    
+                    break;
+                default :
+                    break;
+                    
             }
             
         }, this);
         
-        this._processVerticalLayoutQueue( queue, isInstant );
-    },
-    
-    _verticalAlternativeLayoutItems : function( items , isInstant )
-    {
-        if ( !items || !items.length ) {
-            return;
+        if(box.length){
+            boxes.push(box);
+            box = [];
         }
+        
+        var filterPattern = function(box, length)
+        {
+            if(!box.length){
+                return;
+            }
+            
+            var match = false;
+            
+            var pattern = box.slice(0, length);
+            
+            var format = [];
+            
+            Roo.each(pattern, function(i){
+                format.push(i.size);
+            }, this);
+            
+            Roo.each(standard, function(s){
+                
+                if(String(s) != String(format)){
+                    return;
+                }
+                
+                match = true;
+                return false;
+                
+            }, this);
+            
+            if(!match && length == 1){
+                return;
+            }
+            
+            if(!match){
+                filterPattern(box, length - 1);
+                return;
+            }
+                
+            queue.push(pattern);
 
-        this._processVerticalAlternativeLayoutQueue( items, isInstant );
+            box = box.slice(length, box.length);
+
+            filterPattern(box, 4);
+
+            return;
+            
+        }
+        
+        Roo.each(boxes, function(box, k){
+            
+            if(!box.length){
+                return;
+            }
+            
+            if(box.length == 1){
+                queue.push(box);
+                return;
+            }
+            
+            filterPattern(box, 4);
+            
+        }, this);
+        
+        this._processVerticalLayoutQueue( queue, isInstant );
         
     },
+    
+//    _verticalAlternativeLayoutItems : function( items , isInstant )
+//    {
+//        if ( !items || !items.length ) {
+//            return;
+//        }
+//
+//        this._processVerticalAlternativeLayoutQueue( items, isInstant );
+//        
+//    },
     
     _horizontalLayoutItems : function ( items , isInstant)
     {
@@ -28613,59 +28706,186 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         items = items.slice(3, items.length);
         
+        var standard = [
+            ['xs', 'xs', 'xs', 'wide'],
+            ['xs', 'xs', 'wide'],
+            ['xs', 'xs', 'sm'],
+            ['xs', 'xs', 'xs'],
+            ['xs', 'wide'],
+            ['xs', 'sm'],
+            ['xs', 'xs'],
+            ['xs'],
+            
+            ['sm', 'xs', 'xs'],
+            ['sm', 'xs'],
+            ['sm'],
+            
+            ['wide', 'xs', 'xs', 'xs'],
+            ['wide', 'xs', 'xs'],
+            ['wide', 'xs'],
+            ['wide']
+        ];
+        
+        var queue = [];
+        
+        var boxes = [];
+        
+        var box = [];
+        
+        Roo.each(items, function(item, k){
+            
+            switch (item.size) {
+                case 'md' :
+                case 'md-left' :
+                case 'md-right' :
+                case 'tall' :
+                    
+                    if(box.length){
+                        boxes.push(box);
+                        box = [];
+                    }
+                    
+                    boxes.push([item]);
+                    
+                    break;
+                    
+                case 'xs' :
+                case 'sm' :
+                case 'wide' :
+                    
+                    box.push(item);
+                    
+                    break;
+                default :
+                    break;
+                    
+            }
+            
+        }, this);
+        
+        if(box.length){
+            boxes.push(box);
+            box = [];
+        }
+        
+        var filterPattern = function(box, length)
+        {
+            if(!box.length){
+                return;
+            }
+            
+            var match = false;
+            
+            var pattern = box.slice(0, length);
+            
+            var format = [];
+            
+            Roo.each(pattern, function(i){
+                format.push(i.size);
+            }, this);
+            
+            Roo.each(standard, function(s){
+                
+                if(String(s) != String(format)){
+                    return;
+                }
+                
+                match = true;
+                return false;
+                
+            }, this);
+            
+            if(!match && length == 1){
+                return;
+            }
+            
+            if(!match){
+                filterPattern(box, length - 1);
+                return;
+            }
+                
+            queue.push(pattern);
+
+            box = box.slice(length, box.length);
+
+            filterPattern(box, 4);
+
+            return;
+            
+        }
+        
+        Roo.each(boxes, function(box, k){
+            
+            if(!box.length){
+                return;
+            }
+            
+            if(box.length == 1){
+                queue.push(box);
+                return;
+            }
+            
+            filterPattern(box, 4);
+            
+        }, this);
+        
+        
+        var prune = [];
+        
         var pos = this.el.getBox(true);
         
         var minX = pos.x;
         
         var maxX = pos.right - this.unitWidth * 3 - this.gutter * 2 - this.padWidth;
         
-        var x = maxX;
-        
-        var queue = [];
-        
-        var box = [];
-        var size = 0;
         var hit_end = false;
         
-        Roo.each(items, function(item, k){
-            
-            item.el.setVisibilityMode(Roo.Element.DISPLAY);
-            item.el.show();
+        Roo.each(queue, function(box){
             
             if(hit_end){
-                item.el.hide();
+                
+                Roo.each(box, function(b){
+                
+                    b.el.setVisibilityMode(Roo.Element.DISPLAY);
+                    b.el.hide();
+
+                }, this);
+
                 return;
             }
             
-            if(size + item.y > 3){
-                queue.push(box);
-                box = [];
-                size = 0;
-                maxX = x;
-            }
+            var mx = 0;
             
-            var width = Math.floor(this.unitWidth * item.x + (this.gutter * (item.x - 1)) + item.el.getPadding('lr'));
+            Roo.each(box, function(b){
+                
+                b.el.setVisibilityMode(Roo.Element.DISPLAY);
+                b.el.show();
+
+                mx = Math.max(mx, b.x);
+                
+            }, this);
             
-            x = Math.min(x, maxX - width - this.padWidth);
+            maxX = maxX - this.unitWidth * mx - this.gutter * (mx - 1) - this.padWidth;
             
-            if(x < minX){
-                item.el.hide();
+            if(maxX < minX){
+                
+                Roo.each(box, function(b){
+                
+                    b.el.setVisibilityMode(Roo.Element.DISPLAY);
+                    b.el.hide();
+                    
+                }, this);
+                
                 hit_end = true;
+                
                 return;
             }
             
-            size = size + item.y;
-            
-            box.push(item);
-            
+            prune.push(box);
             
         }, this);
         
-        if(box.length){
-            queue.push(box);
-        }
-        
-        this._processHorizontalLayoutQueue( queue, eItems, isInstant );
+        this._processHorizontalLayoutQueue( prune, eItems, isInstant );
     },
     
     /** Sets position of item in DOM
@@ -28694,11 +28914,14 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 b.el.position('absolute');
                 
                 var width = Math.floor(this.unitWidth * b.x + (this.gutter * (b.x - 1)) + b.el.getPadding('lr'));
-                
-                b.el.setWidth(width);
-                
                 var height = Math.floor(this.unitWidth * b.y + (this.gutter * (b.y - 1)) + b.el.getPadding('tb'));
                 
+                if(b.size == 'md-left' || b.size == 'md-right'){
+                    width = Math.floor(this.unitWidth * (b.x - 1) + (this.gutter * (b.x - 2)) + b.el.getPadding('lr'));
+                    height = Math.floor(this.unitWidth * (b.y - 1) + (this.gutter * (b.y - 2)) + b.el.getPadding('tb'));
+                }
+                
+                b.el.setWidth(width);
                 b.el.setHeight(height);
                 
             }, this);
@@ -28730,6 +28953,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 case 3 :
                     positions = this.getVerticalThreeBoxColPositions(x, y, box);
                     break;
+                case 4 :
+                    positions = this.getVerticalFourBoxColPositions(x, y, box);
+                    break;
                 default :
                     break;
             }
@@ -28756,44 +28982,44 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
     },
     
-    _processVerticalAlternativeLayoutQueue : function( items, isInstant )
-    {
-        var pos = this.el.getBox(true);
-        var x = pos.x;
-        var y = pos.y;
-        var maxX = pos.right;
-        
-        var maxHeight = 0;
-        
-        Roo.each(items, function(item, k){
-            
-            var c = k % 2;
-            
-            item.el.position('absolute');
-                
-            var width = Math.floor(this.colWidth + item.el.getPadding('lr'));
-
-            item.el.setWidth(width);
-
-            var height = Math.floor(this.colWidth * item.y / item.x + item.el.getPadding('tb'));
-
-            item.el.setHeight(height);
-            
-            if(c == 0){
-                item.el.setXY([x, y], isInstant ? false : true);
-            } else {
-                item.el.setXY([maxX - width, y], isInstant ? false : true);
-            }
-            
-            y = y + height + this.alternativePadWidth;
-            
-            maxHeight = maxHeight + height + this.alternativePadWidth;
-            
-        }, this);
-        
-        this.el.setHeight(maxHeight);
-        
-    },
+//    _processVerticalAlternativeLayoutQueue : function( items, isInstant )
+//    {
+//        var pos = this.el.getBox(true);
+//        var x = pos.x;
+//        var y = pos.y;
+//        var maxX = pos.right;
+//        
+//        var maxHeight = 0;
+//        
+//        Roo.each(items, function(item, k){
+//            
+//            var c = k % 2;
+//            
+//            item.el.position('absolute');
+//                
+//            var width = Math.floor(this.colWidth + item.el.getPadding('lr'));
+//
+//            item.el.setWidth(width);
+//
+//            var height = Math.floor(this.colWidth * item.y / item.x + item.el.getPadding('tb'));
+//
+//            item.el.setHeight(height);
+//            
+//            if(c == 0){
+//                item.el.setXY([x, y], isInstant ? false : true);
+//            } else {
+//                item.el.setXY([maxX - width, y], isInstant ? false : true);
+//            }
+//            
+//            y = y + height + this.alternativePadWidth;
+//            
+//            maxHeight = maxHeight + height + this.alternativePadWidth;
+//            
+//        }, this);
+//        
+//        this.el.setHeight(maxHeight);
+//        
+//    },
     
     _processHorizontalLayoutQueue : function( queue, eItems, isInstant )
     {
@@ -28815,11 +29041,14 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 b.el.position('absolute');
                 
                 var width = Math.floor(this.unitWidth * b.x + (this.gutter * (b.x - 1)) + b.el.getPadding('lr'));
+                var height = Math.floor(this.unitWidth * b.y + (this.gutter * (b.y - 1)) + b.el.getPadding('tb'));
+                
+                if(b.size == 'md-left' || b.size == 'md-right'){
+                    width = Math.floor(this.unitWidth * (b.x - 1) + (this.gutter * (b.x - 2)) + b.el.getPadding('lr'));
+                    height = Math.floor(this.unitWidth * (b.y - 1) + (this.gutter * (b.y - 2)) + b.el.getPadding('tb'));
+                }
                 
                 b.el.setWidth(width);
-
-                var height = Math.floor(this.unitWidth * b.y + (this.gutter * (b.y - 1)) + b.el.getPadding('tb'));
-
                 b.el.setHeight(height);
                 
             }, this);
@@ -28839,6 +29068,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                     break;
                 case 3 :
                     positions = this.getHorizontalThreeBoxColPositions(maxX, minY, box);
+                    break;
+                case 4 :
+                    positions = this.getHorizontalFourBoxColPositions(maxX, minY, box);
                     break;
                 default :
                     break;
@@ -28907,6 +29139,14 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var rand = Math.floor(Math.random() * ((4 - box[0].x)));
         
+        if(box[0].size == 'md-left'){
+            rand = 0;
+        }
+        
+        if(box[0].size == 'md-right'){
+            rand = 1;
+        }
+        
         pos.push({
             x : x + (this.unitWidth + this.gutter) * rand,
             y : y
@@ -28953,13 +29193,50 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         var pos = [];
         
-        pos.push({
-            x : x,
-            y : y
-        });
+        if(box[0].size == 'xs' && box[1].size == 'xs' && box[2].size == 'xs'){
+            
+            pos.push({
+                x : x,
+                y : y
+            });
+
+            pos.push({
+                x : x + (this.unitWidth + this.gutter) * 1,
+                y : y
+            });
+            
+            pos.push({
+                x : x + (this.unitWidth + this.gutter) * 2,
+                y : y
+            });
+            
+            return pos;
+            
+        }
+        
+        if(box[0].size == 'xs' && box[1].size == 'xs'){
+            
+            pos.push({
+                x : x,
+                y : y
+            });
+
+            pos.push({
+                x : x,
+                y : y + ((this.unitWidth + this.gutter) * (box[2].y - 1))
+            });
+            
+            pos.push({
+                x : x + (this.unitWidth + this.gutter) * 1,
+                y : y
+            });
+            
+            return pos;
+            
+        }
         
         pos.push({
-            x : x + this.unitWidth + this.gutter,
+            x : x,
             y : y
         });
 
@@ -28967,13 +29244,91 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             x : x + (this.unitWidth + this.gutter) * 2,
             y : y
         });
+
+        pos.push({
+            x : x + (this.unitWidth + this.gutter) * 2,
+            y : y + (this.unitWidth + this.gutter) * (box[0].y - 1)
+        });
             
         return pos;
+        
+    },
+    
+    getVerticalFourBoxColPositions : function(x, y, box)
+    {
+        var pos = [];
+        
+        if(box[0].size == 'xs'){
+            
+            pos.push({
+                x : x,
+                y : y
+            });
+
+            pos.push({
+                x : x,
+                y : y + (this.unitWidth + this.gutter) * 1
+            });
+            
+            pos.push({
+                x : x,
+                y : y + (this.unitWidth + this.gutter) * 2
+            });
+            
+            pos.push({
+                x : x + (this.unitWidth + this.gutter) * 1,
+                y : y
+            });
+            
+            return pos;
+            
+        }
+        
+        pos.push({
+            x : x,
+            y : y
+        });
+
+        pos.push({
+            x : x + (this.unitWidth + this.gutter) * 2,
+            y : y
+        });
+
+        pos.push({
+            x : x + (this.unitWidth + this.gutter) * 2,
+            y : y + (this.unitWidth + this.gutter) * 1
+        });
+
+        pos.push({
+            x : x + (this.unitWidth + this.gutter) * 2,
+            y : y + (this.unitWidth + this.gutter) * 2
+        });
+
+        return pos;
+        
     },
     
     getHorizontalOneBoxColPositions : function(maxX, minY, box)
     {
         var pos = [];
+        
+        if(box[0].size == 'md-left'){
+            pos.push({
+                x : maxX - this.unitWidth * (box[0].x - 1) - this.gutter * (box[0].x - 2),
+                y : minY
+            });
+            
+            return pos;
+        }
+        
+        if(box[0].size == 'md-right'){
+            pos.push({
+                x : maxX - this.unitWidth * (box[0].x - 1) - this.gutter * (box[0].x - 2),
+                y : minY + (this.unitWidth + this.gutter) * 1
+            });
+            
+            return pos;
+        }
         
         var rand = Math.floor(Math.random() * (4 - box[0].y));
         
@@ -28990,6 +29345,22 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         var pos = [];
         
+        if(box[0].size == 'xs'){
+            
+            pos.push({
+                x : maxX - this.unitWidth * box[0].x - this.gutter * (box[0].x - 1),
+                y : minY
+            });
+
+            pos.push({
+                x : maxX - this.unitWidth * box[1].x - this.gutter * (box[1].x - 1),
+                y : minY + (this.unitWidth + this.gutter) * (3 - box[1].y)
+            });
+            
+            return pos;
+            
+        }
+        
         pos.push({
             x : maxX - this.unitWidth * box[0].x - this.gutter * (box[0].x - 1),
             y : minY
@@ -28997,7 +29368,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
 
         pos.push({
             x : maxX - this.unitWidth * box[1].x - this.gutter * (box[1].x - 1),
-            y : minY + (this.unitWidth + this.gutter) * (3 - box[1].y)
+            y : minY + (this.unitWidth + this.gutter) * 2
         });
         
         return pos;
@@ -29008,21 +29379,117 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         var pos = [];
         
+        if(box[0].size == 'xs' && box[1].size == 'xs' && box[2].size == 'xs'){
+            
+            pos.push({
+                x : maxX - this.unitWidth * box[0].x - this.gutter * (box[0].x - 1),
+                y : minY
+            });
+
+            pos.push({
+                x : maxX - this.unitWidth * box[1].x - this.gutter * (box[1].x - 1),
+                y : minY + (this.unitWidth + this.gutter) * 1
+            });
+            
+            pos.push({
+                x : maxX - this.unitWidth * box[2].x - this.gutter * (box[2].x - 1),
+                y : minY + (this.unitWidth + this.gutter) * 2
+            });
+            
+            return pos;
+            
+        }
+        
+        if(box[0].size == 'xs' && box[1].size == 'xs'){
+            
+            pos.push({
+                x : maxX - this.unitWidth * box[0].x - this.gutter * (box[0].x - 1),
+                y : minY
+            });
+
+            pos.push({
+                x : maxX - this.unitWidth * box[0].x - this.gutter * (box[0].x - 1) - this.unitWidth * box[1].x - this.gutter * (box[1].x - 1),
+                y : minY
+            });
+            
+            pos.push({
+                x : maxX - this.unitWidth * box[2].x - this.gutter * (box[2].x - 1),
+                y : minY + (this.unitWidth + this.gutter) * 1
+            });
+            
+            return pos;
+            
+        }
+        
         pos.push({
-            x : maxX - this.unitWidth,
+            x : maxX - this.unitWidth * box[0].x - this.gutter * (box[0].x - 1),
+            y : minY
+        });
+
+        pos.push({
+            x : maxX - this.unitWidth * box[1].x - this.gutter * (box[1].x - 1),
+            y : minY + (this.unitWidth + this.gutter) * 2
+        });
+
+        pos.push({
+            x : maxX - this.unitWidth * box[1].x - this.gutter * (box[1].x - 1) - this.unitWidth * box[2].x - this.gutter * (box[2].x - 1),
+            y : minY + (this.unitWidth + this.gutter) * 2
+        });
+            
+        return pos;
+        
+    },
+    
+    getHorizontalFourBoxColPositions : function(maxX, minY, box)
+    {
+        var pos = [];
+        
+        if(box[0].size == 'xs'){
+            
+            pos.push({
+                x : maxX - this.unitWidth * box[0].x - this.gutter * (box[0].x - 1),
+                y : minY
+            });
+
+            pos.push({
+                x : maxX - this.unitWidth * box[0].x - this.gutter * (box[0].x - 1) - this.unitWidth * box[1].x - this.gutter * (box[1].x - 1),
+                y : minY
+            });
+            
+            pos.push({
+                x : maxX - this.unitWidth * box[0].x - this.gutter * (box[0].x - 1) - this.unitWidth * box[1].x - this.gutter * (box[1].x - 1) - this.unitWidth * box[2].x - this.gutter * (box[2].x - 1),
+                y : minY
+            });
+            
+            pos.push({
+                x : maxX - this.unitWidth * box[3].x - this.gutter * (box[3].x - 1),
+                y : minY + (this.unitWidth + this.gutter) * 1
+            });
+            
+            return pos;
+            
+        }
+        
+        pos.push({
+            x : maxX - this.unitWidth * box[0].x - this.gutter * (box[0].x - 1),
             y : minY
         });
         
         pos.push({
-            x : maxX - this.unitWidth,
-            y : minY - this.unitWidth - this.gutter
+            x : maxX - this.unitWidth * box[1].x - this.gutter * (box[1].x - 1),
+            y : minY + (this.unitWidth + this.gutter) * 2
         });
         
         pos.push({
-            x : maxX - this.unitWidth,
-            y : minY - (this.unitWidth + this.gutter) * 2
+            x : maxX - this.unitWidth * box[1].x - this.gutter * (box[1].x - 1) - this.unitWidth * box[2].x - this.gutter * (box[2].x - 1),
+            y : minY + (this.unitWidth + this.gutter) * 2
         });
         
+        pos.push({
+            x : maxX - this.unitWidth * box[1].x - this.gutter * (box[1].x - 1) - this.unitWidth * box[2].x - this.gutter * (box[2].x - 1) - this.unitWidth * box[3].x - this.gutter * (box[3].x - 1),
+            y : minY + (this.unitWidth + this.gutter) * 2
+        });
+
         return pos;
         
     }
