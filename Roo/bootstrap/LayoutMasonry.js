@@ -262,10 +262,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         Roo.each(items, function(item, k){
             
             switch (this.size) {
-                case 'xs' :
-                    break;
-                case 'sm' :
-                    break;
                 case 'md' :
                 case 'md-left' :
                 case 'md-right' :
@@ -280,8 +276,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                     queue.push([item]);
                     
                     break;
-                
+                    
+                case 'xs' :
+                case 'sm' :
                 case 'tall' :
+                    
+                    
+                    
                     break;
                 default :
                     break;
