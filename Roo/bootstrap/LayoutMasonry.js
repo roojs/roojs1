@@ -338,6 +338,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 var b = box.slice(length, box.length);
                 
                 filterPattern(b, length - 1);
+                
+                return;
             }
             
         }
