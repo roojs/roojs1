@@ -261,7 +261,22 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         Roo.each(items, function(item, k){
             
-            if(item.)
+            switch (this.size) {
+                case 'xs' :
+                    break;
+                case 'sm' :
+                    break;
+                case 'md' :
+                case 'md-left' :
+                case 'md-right' :
+                    break;
+                case 'tall' :
+                    break;
+                case 'wide' :
+                    break;
+                default :
+                    break;
+            }
             
             /*
             if(size + item.x > 3){
