@@ -330,8 +330,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 pattern.push(i.size);
             }, this);
             
-            Roo.log(pattern);
-            
             Roo.each(standard, function(s){
                 
                 if(String(s) != String(pattern)){
@@ -344,7 +342,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             }, this);
             
             if(!match && length == 1){
-                Roo.log('in????');
                 return;
             }
             
