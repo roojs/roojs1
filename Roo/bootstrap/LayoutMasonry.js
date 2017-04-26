@@ -324,7 +324,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             var match = false;
             
-            var pattern = box.slice(0, length);
+            var pattern = [];
+            
+            Roo.each(box.slice(0, length), function(i){
+                pattern.push(i.size);
+            }, this);
+            
+            Roo.log(pattern);
             
             Roo.each(standard, function(s){
                 
