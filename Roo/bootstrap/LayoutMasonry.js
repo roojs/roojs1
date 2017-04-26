@@ -809,7 +809,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
 
         pos.push({
             x : x + (this.unitWidth + this.gutter) * 2,
-            y : y + (this.unitWidth + this.gutter) * 1
+            y : y + (this.unitWidth + this.gutter) * (box[0].y - 1)
         });
             
         return pos;
