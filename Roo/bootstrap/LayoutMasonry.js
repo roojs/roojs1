@@ -521,6 +521,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 case 3 :
                     positions = this.getVerticalThreeBoxColPositions(x, y, box);
                     break;
+                case 4 :
+                    positions = this.getVerticalFourBoxColPositions(x, y, box);
+                    break;
                 default :
                     break;
             }
