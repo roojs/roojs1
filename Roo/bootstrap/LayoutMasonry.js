@@ -561,6 +561,14 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             maxX = maxX - this.unitWidth * mx - this.gutter * (mx - 1) - this.padWidth;
             
+            if(maxX < minX){
+                Roo.each(box, function(b){
+                
+                    b.el.setVisibilityMode(Roo.Element.DISPLAY);
+                    b.el.hide();
+                    
+                }, this);
+            }
             
         }, this);
         
