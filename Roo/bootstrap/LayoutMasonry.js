@@ -251,8 +251,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             return;
         }
         
-        Roo.log(items);
-
         var queue = [];
         
         var box = [];
