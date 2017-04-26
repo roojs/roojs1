@@ -316,7 +316,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var filterPattern = function(box){
             
-            
+            Roo.log('filter pattern');
+            Roo.log(box);
         }
         
         Roo.each(boxes, function(box, k){
