@@ -314,10 +314,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             box = [];
         }
         
-        var filterPattern = function(box, length){
-            
-            Roo.log(box);
-            
+        var filterPattern = function(box, length)
+        {
             if(!box.length){
                 return;
             }
