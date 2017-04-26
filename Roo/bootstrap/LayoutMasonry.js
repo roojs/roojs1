@@ -322,15 +322,17 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             var match = false;
             
-            var pattern = [];
+            var pattern = box.slice(0, length);
             
-            Roo.each(box.slice(0, length), function(i){
-                pattern.push(i.size);
+            var format = [];
+            
+            Roo.each(pattern, function(i){
+                format.push(i.size);
             }, this);
             
             Roo.each(standard, function(s){
                 
-                if(String(s) != String(pattern)){
+                if(String(s) != String(format)){
                     return;
                 }
                 
