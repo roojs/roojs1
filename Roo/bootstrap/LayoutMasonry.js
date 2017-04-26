@@ -755,6 +755,27 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         var pos = [];
         
+        if(box[0].size == 'xs' && box[1].size == 'xs' && box[2].size == 'xs'){
+            
+            pos.push({
+                x : x,
+                y : y
+            });
+
+            pos.push({
+                x : x + (this.unitWidth + this.gutter) * 1,
+                y : y
+            });
+            
+            pos.push({
+                x : x + (this.unitWidth + this.gutter) * 2,
+                y : y
+            });
+            
+            return pos;
+            
+        }
+        
         pos.push({
             x : x,
             y : y
