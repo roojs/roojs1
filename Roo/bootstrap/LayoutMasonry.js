@@ -406,6 +406,74 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var maxX = pos.right - this.unitWidth * 3 - this.gutter * 2 - this.padWidth;
         
+        var standard = [
+            ['xs', 'xs', 'xs', 'wide'],
+            ['xs', 'xs', 'wide'],
+            ['xs', 'xs', 'sm'],
+            ['xs', 'xs', 'xs'],
+            ['xs', 'tall'],
+            ['xs', 'sm'],
+            ['xs', 'xs'],
+            ['xs'],
+            
+            ['sm', 'xs', 'xs'],
+            ['sm', 'xs'],
+            ['sm'],
+            
+            ['tall', 'xs', 'xs', 'xs'],
+            ['tall', 'xs', 'xs'],
+            ['tall', 'xs'],
+            ['tall']
+        ];
+        
+        var queue = [];
+        
+        var boxes = [];
+        
+        var box = [];
+        
+        Roo.each(items, function(item, k){
+            
+            switch (item.size) {
+                case 'md' :
+                case 'md-left' :
+                case 'md-right' :
+                case 'wide' :
+                    
+                    if(box.length){
+                        boxes.push(box);
+                        box = [];
+                    }
+                    
+                    boxes.push([item]);
+                    
+                    break;
+                    
+                case 'xs' :
+                case 'sm' :
+                case 'tall' :
+                    
+                    box.push(item);
+                    
+                    break;
+                default :
+                    break;
+                    
+            }
+            
+        }, this);
+        
+        if(box.length){
+            boxes.push(box);
+            box = [];
+        }
+        
+        
+        
+        
+        
+        
+        
         var x = maxX;
         
         var queue = [];
