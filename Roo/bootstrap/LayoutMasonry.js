@@ -1008,7 +1008,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         if(box[0].size == 'md-left'){
             pos.push({
-                x : maxX - this.unitWidth * 3 - this.gutter * 2,
+                x : maxX - this.unitWidth * (box[0].x - 1) - this.gutter * (box[0].x - 2),
                 y : minY
             });
             
@@ -1037,6 +1037,38 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     getHorizontalTwoBoxColPositions : function(maxX, minY, box)
     {
+        var pos = [];
+        
+        if(box[0].size == 'xs'){
+            
+            pos.push({
+                x : maxX - this.unitWidth * box[0].x - this.gutter * (box[0].x - 1),
+                y : y
+            });
+
+            pos.push({
+                x : x + (this.unitWidth + this.gutter) * (3 - box[1].x),
+                y : y
+            });
+            
+            return pos;
+            
+        }
+        
+        pos.push({
+            x : x,
+            y : y
+        });
+
+        pos.push({
+            x : x + (this.unitWidth + this.gutter) * 2,
+            y : y + ((this.unitWidth + this.gutter) * Math.floor(Math.random() * box[0].y))
+        });
+        
+        return pos;
+        
+        
+        
         var pos = [];
         
         pos.push({
