@@ -338,7 +338,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         }
         
         Roo.each(boxes, function(box, k){
-            
+            Roo.log(box);
         }, this);
         
         return;
