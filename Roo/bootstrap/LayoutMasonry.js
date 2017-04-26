@@ -532,6 +532,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var maxX = pos.right - this.unitWidth * 3 - this.gutter * 2 - this.padWidth;
         
+        var hit_end = false;
+        
         Roo.each(queue, function(box){
             
             var mx = 0;
