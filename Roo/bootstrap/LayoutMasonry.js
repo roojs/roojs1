@@ -537,7 +537,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             var mx = 0;
             
             Roo.each(box, function(b){
+                
+                b.el.setVisibilityMode(Roo.Element.DISPLAY);
+                b.el.show();
+
                 mx = Math.max(mx, b.x);
+                
             }, this);
             
             maxX = maxX - this.unitWidth * mx - this.gutter * (mx - 1) - this.padWidth;
