@@ -1,34 +1,6 @@
-
-.deep-blue {
-    background-color: #677798;
-    color: #fff;
-}
-
-.deep-grey {
-    background-color: #818a91;
-    color: #fff;
-}
-
-.light-red {
-    background-color: #b66d74;
-    color: #fff;
-}
-
-.deep-orange {
-    background-color: #c6682b;
-    color: #fff;
-}
-
-.deep-green {
-    background-color: #7f8c20;
-    color: #fff;
-}
-
-.masonary .masonry-bottom-title.deep-blue,
-.masonary .masonry-bottom-title.deep-grey,
-.masonary .masonry-bottom-title.light-red,
-.masonary .masonry-bottom-title.deep-orange,
-.masonary .masonry-bottom-title.deep-green {
+ 
+ 
+.masonary .masonry-bottom-title  {
     background-color: transparent;
 }
 
