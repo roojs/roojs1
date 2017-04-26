@@ -797,34 +797,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
         }
         
-        if(box[0].size == 'sm'){
-            
-            pos.push({
-                x : x,
-                y : y
-            });
-
-            pos.push({
-                x : x + (this.unitWidth + this.gutter) * 2,
-                y : y
-            });
-            
-            pos.push({
-                x : x + (this.unitWidth + this.gutter) * 2,
-                y : y + (this.unitWidth + this.gutter) * 1
-            });
-            
-            return pos;
-            
-        }
-        
         pos.push({
             x : x,
-            y : y
-        });
-        
-        pos.push({
-            x : x + this.unitWidth + this.gutter,
             y : y
         });
 
@@ -832,8 +806,14 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             x : x + (this.unitWidth + this.gutter) * 2,
             y : y
         });
+
+        pos.push({
+            x : x + (this.unitWidth + this.gutter) * 2,
+            y : y + (this.unitWidth + this.gutter) * 1
+        });
             
         return pos;
+        
     },
     
     getHorizontalOneBoxColPositions : function(maxX, minY, box)
