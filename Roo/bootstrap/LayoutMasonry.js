@@ -536,10 +536,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         Roo.each(queue, function(box){
             
-            if(hit_end){
-                return;
-            }
-            
             var mx = 0;
             
             Roo.each(box, function(b){
