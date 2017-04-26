@@ -250,6 +250,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         if ( !items || !items.length ) {
             return;
         }
+        
+        Roo.log(items);
 
         var queue = [];
         
