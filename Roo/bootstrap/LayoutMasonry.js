@@ -375,8 +375,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         Roo.log(queue);
         
-        return;
-        
         this._processVerticalLayoutQueue( queue, isInstant );
         
     },
