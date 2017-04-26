@@ -335,16 +335,18 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
             }, this);
             
-            if(match){
-                
-                queue.push(pattern);
-                
-                var b = box.slice(length, box.length);
-                
-                filterPattern(b, length - 1);
-                
+            if(!match){
+                filterPattern(box, length - 1);
                 return;
             }
+                
+            queue.push(pattern);
+
+            box = box.slice(length, box.length);
+
+            filterPattern(box, length - 1);
+
+            return;
             
         }
         
