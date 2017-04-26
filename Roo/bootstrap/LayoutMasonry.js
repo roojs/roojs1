@@ -267,6 +267,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 case 'sm' :
                     break;
                 case 'md' :
+                    
+                    if(box.length){
+                        queue.push(box);
+                        box = [];
+                        size = 0;
+                    }
+                    
                     break;
                 case 'md-left' :
                     break;
