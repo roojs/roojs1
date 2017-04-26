@@ -534,6 +534,15 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         Roo.each(queue, function(box){
             
+            var mx = 0;
+            
+            Roo.each(box, function(b){
+                mx = Math.max(mx, b.x);
+            }, this);
+            
+            
+            
+            
         }, this);
         
         
