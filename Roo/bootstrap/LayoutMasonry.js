@@ -464,8 +464,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     */
     _processVerticalLayoutQueue : function( queue, isInstant )
     {
-        Roo.log(queue);
-        
         var pos = this.el.getBox(true);
         var x = pos.x;
         var y = pos.y;
@@ -477,6 +475,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         Roo.each(queue, function(box, k){
             
+            Roo.log(box);
             var col = k % this.cols;
             
             Roo.each(box, function(b,kk){
