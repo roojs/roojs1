@@ -540,7 +540,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 mx = Math.max(mx, b.x);
             }, this);
             
-            
+            maxX = maxX - this.unitWidth * mx - this.gutter * (mx - 1) - this.padWidth;
             
             
         }, this);
