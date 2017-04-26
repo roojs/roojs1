@@ -400,12 +400,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         items = items.slice(3, items.length);
         
-        var pos = this.el.getBox(true);
-        
-        var minX = pos.x;
-        
-        var maxX = pos.right - this.unitWidth * 3 - this.gutter * 2 - this.padWidth;
-        
         var standard = [
             ['xs', 'xs', 'xs', 'wide'],
             ['xs', 'xs', 'wide'],
