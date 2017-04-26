@@ -277,6 +277,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
         ];
         
+        
         Roo.each(items, function(item, k){
             
             switch (this.size) {
