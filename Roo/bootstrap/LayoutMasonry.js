@@ -287,12 +287,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 case 'wide' :
                     
                     if(box.length){
-                        queue.push(box);
+                        boxes.push(box);
                         box = [];
-                        size = 0;
                     }
                     
-                    queue.push([item]);
+                    boxes.push([item]);
                     
                     break;
                     
