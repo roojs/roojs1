@@ -536,6 +536,18 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         Roo.each(queue, function(box){
             
+            if(hit_end){
+                
+                Roo.each(box, function(b){
+                
+                    b.el.setVisibilityMode(Roo.Element.DISPLAY);
+                    b.el.hide();
+
+                }, this);
+
+                return;
+            }
+            
             var mx = 0;
             
             Roo.each(box, function(b){
