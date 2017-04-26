@@ -764,7 +764,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                     positions = this.getHorizontalThreeBoxColPositions(maxX, minY, box);
                     break;
                 case 4 :
-                    positions = this.getHorizontalFourBoxColPositions(x, y, box);
+                    positions = this.getHorizontalFourBoxColPositions(maxX, minY, box);
                     break;
                 default :
                     break;
