@@ -281,11 +281,16 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 case 'sm' :
                 case 'tall' :
                     
-                    
+                    if(size + item.x > 3){
+                        queue.push(box);
+                        box = [];
+                        size = 0;
+                    }
                     
                     break;
                 default :
                     break;
+                    
             }
             
             /*
