@@ -258,12 +258,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var standard = [
             ['xs', 'xs', 'xs', 'tall'],
-            ['xs', 'xs', 'xs'],
-            ['xs', 'xs', 'sm'],
             ['xs', 'xs', 'tall'],
-            ['xs', 'xs'],
-            ['xs', 'sm'],
+            ['xs', 'xs', 'sm'],
+            ['xs', 'xs', 'xs'],
             ['xs', 'tall'],
+            ['xs', 'sm'],
+            ['xs', 'xs'],
             ['xs']
         ];
         
