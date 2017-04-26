@@ -267,7 +267,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 case 'sm' :
                     break;
                 case 'md' :
+                    break;
                 case 'md-left' :
+                    break;
                 case 'md-right' :
                     break;
                 case 'tall' :
