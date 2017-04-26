@@ -1132,7 +1132,61 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
         return pos;
         
-    }
+    },
+    
+    getHorizontalFourBoxColPositions : function(maxX, minY, box)
+    {
+        var pos = [];
+        
+        if(box[0].size == 'xs'){
+            
+            pos.push({
+                x : x,
+                y : y
+            });
+
+            pos.push({
+                x : x,
+                y : y + (this.unitWidth + this.gutter) * 1
+            });
+            
+            pos.push({
+                x : x,
+                y : y + (this.unitWidth + this.gutter) * 2
+            });
+            
+            pos.push({
+                x : x + (this.unitWidth + this.gutter) * 1,
+                y : y
+            });
+            
+            return pos;
+            
+        }
+        
+        pos.push({
+            x : x,
+            y : y
+        });
+
+        pos.push({
+            x : x + (this.unitWidth + this.gutter) * 2,
+            y : y
+        });
+
+        pos.push({
+            x : x + (this.unitWidth + this.gutter) * 2,
+            y : y + (this.unitWidth + this.gutter) * 1
+        });
+
+        pos.push({
+            x : x + (this.unitWidth + this.gutter) * 2,
+            y : y + (this.unitWidth + this.gutter) * 2
+        });
+
+        return pos;
+        
+    },
     
 });
 
