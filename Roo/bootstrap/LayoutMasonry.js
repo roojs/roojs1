@@ -342,7 +342,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
             queue.push(pattern);
 
-            box = box.slice(length, box.length);
+            box = box.slice(length, 4);
 
             filterPattern(box, length - 1);
 
