@@ -579,56 +579,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
         }, this);
         
-        
-        
-        
-        var x = maxX;
-        
-        var queue = [];
-        
-        var box = [];
-        var size = 0;
-        var hit_end = false;
-        
-        Roo.each(items, function(item, k){
-            
-            item.el.setVisibilityMode(Roo.Element.DISPLAY);
-            item.el.show();
-            
-            if(hit_end){
-                item.el.hide();
-                return;
-            }
-            
-            if(size + item.y > 3){
-                queue.push(box);
-                box = [];
-                size = 0;
-                maxX = x;
-            }
-            
-            var width = Math.floor(this.unitWidth * item.x + (this.gutter * (item.x - 1)) + item.el.getPadding('lr'));
-            
-            x = Math.min(x, maxX - width - this.padWidth);
-            
-            if(x < minX){
-                item.el.hide();
-                hit_end = true;
-                return;
-            }
-            
-            size = size + item.y;
-            
-            box.push(item);
-            
-            
-        }, this);
-        
-        if(box.length){
-            queue.push(box);
-        }
-        
-        this._processHorizontalLayoutQueue( queue, eItems, isInstant );
+        this._processHorizontalLayoutQueue( prune, eItems, isInstant );
     },
     
     /** Sets position of item in DOM
