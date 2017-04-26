@@ -348,6 +348,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 return;
             }
             
+            var part = box.slice(0, 4);
+            
+            Roo.each(standard, function(s){
+                
+            });
+            
             
             
         }, this);
