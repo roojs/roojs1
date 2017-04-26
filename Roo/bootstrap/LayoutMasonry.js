@@ -336,7 +336,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             boxes.push(box);
         }
         
-        Roo.log(boxes);
+        Roo.each(items, function(item, k){
+            
+        }, this);
+        
         return;
         
         this._processVerticalLayoutQueue( queue, isInstant );
