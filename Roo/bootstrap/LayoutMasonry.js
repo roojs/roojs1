@@ -1082,12 +1082,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
 
             pos.push({
                 x : maxX - this.unitWidth * box[1].x - this.gutter * (box[1].x - 1),
-                y : minY + (this.unitWidth + this.gutter) * 1,
+                y : minY + (this.unitWidth + this.gutter) * 1
             });
             
             pos.push({
                 x : maxX - this.unitWidth * box[2].x - this.gutter * (box[2].x - 1),
-                y : minY + (this.unitWidth + this.gutter) * 2,
+                y : minY + (this.unitWidth + this.gutter) * 2
             });
             
             return pos;
