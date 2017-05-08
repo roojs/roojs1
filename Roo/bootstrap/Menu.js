@@ -356,7 +356,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             this.show(this.triggerEl, false, false);
         }
         
-        if(this.stopEvent || target.nodeName.toLowerCase() === 'i'){
+        if(this.stopEvent || e.getTarget().nodeName.toLowerCase() === 'i'){
             e.stopEvent();
         }
         
