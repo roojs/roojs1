@@ -133,19 +133,19 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
        // Roo.log("ADD event");
        // Roo.log(this.triggerEl.dom);
         
-        this.triggerEl.on('click', this.onTriggerClick, this);
+//        this.triggerEl.on('click', this.onTriggerClick, this);
         
         this.triggerEl.on(Roo.isTouch ? 'touchstart' : 'mouseup', this.onTriggerPress, this);
         
-        this.triggerEl.addClass('dropdown-toggle');
-        
-        if (Roo.isTouch) {
-            this.el.on('touchstart'  , this.onTouch, this);
-        }
-        this.el.on('click' , this.onClick, this);
-
-        this.el.on("mouseover", this.onMouseOver, this);
-        this.el.on("mouseout", this.onMouseOut, this);
+//        this.triggerEl.addClass('dropdown-toggle');
+//        
+//        if (Roo.isTouch) {
+//            this.el.on('touchstart'  , this.onTouch, this);
+//        }
+//        this.el.on('click' , this.onClick, this);
+//
+//        this.el.on("mouseover", this.onMouseOver, this);
+//        this.el.on("mouseout", this.onMouseOut, this);
         
     },
     
