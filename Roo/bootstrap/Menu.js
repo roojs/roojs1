@@ -356,8 +356,6 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         e.stopEvent();
     },
-    
-         
        
     
     hideMenuItems : function()
