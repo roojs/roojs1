@@ -80,7 +80,6 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         
         if(this.placetitle.length){
             
-            Roo.log('in????');
             switch (this.placetitle) {
                 case 'center' :
                     cls += ' masonry-center-title';
