@@ -18,7 +18,15 @@
 
 Roo.bootstrap.Navbar = function(config){
     Roo.bootstrap.Navbar.superclass.constructor.call(this, config);
-    
+    this.addEvents({
+        // raw events
+        /**
+         * @event beforetoggle
+         * Fire before toggle the menu
+         * @param {Roo.EventObject} e
+         */
+        "beforetoggle" : true
+    });
 };
 
 Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
