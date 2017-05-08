@@ -2007,7 +2007,6 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         this.triggerEl.addClass('dropdown-toggle');
         
-        
         if (Roo.isTouch) {
             this.el.on('touchstart'  , this.onTouch, this);
         }
@@ -2211,7 +2210,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         // trigger only occurs on normal menu's -- if it's a treeview or dropdown... do not hide/show..
         var pel = Roo.get(e.getTarget());
         if (pel.findParent('.dropdown-menu') || pel.findParent('.treeview-menu') ) {
-           
+            Roo.log('is treeview or dropdown?');
             return;
         }
         
@@ -3436,7 +3435,15 @@ Roo.Msg = Roo.Msg || Roo.MessageBox;
 
 Roo.bootstrap.Navbar = function(config){
     Roo.bootstrap.Navbar.superclass.constructor.call(this, config);
-    
+    this.addEvents({
+        // raw events
+        /**
+         * @event beforetoggle
+         * Fire before toggle the menu
+         * @param {Roo.EventObject} e
+         */
+        "beforetoggle" : true
+    });
 };
 
 Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
@@ -3459,8 +3466,10 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     {
         //Roo.log(this.el.select('.navbar-toggle',true));
         this.el.select('.navbar-toggle',true).on('click', function() {
-           // Roo.log('click');
-            this.el.select('.navbar-collapse',true).toggleClass('in');                                 
+            if(this.fireEvent('beforetoggle', this) !== false){
+               this.el.select('.navbar-collapse',true).toggleClass('in');                                 
+            }
+            
         }, this);
         
         var mark = {
