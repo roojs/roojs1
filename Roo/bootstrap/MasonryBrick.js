@@ -79,6 +79,8 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         }
         
         if(!this.placetitle.length){
+            
+            Roo.log('in????');
             switch (this.placetitle) {
                 case 'center' :
                     cls += ' masonry-center-title';
@@ -89,6 +91,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 default:
                     break;
             }
+            
         } else {
             if(!this.html.length && !this.bgimage.length){
                 cls += ' masonry-center-title';
