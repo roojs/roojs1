@@ -90,5 +90,8 @@ a.roo-brick-link:hover {
 .services .masonry-brick-image.masonry-center-title > .masonry-brick-paragraph {
     opacity: 1;
     color: #fff;
-    font-size: 18px;
+}
+
+.services .masonry-brick-image.masonry-center-title > .masonry-brick-paragraph .masonry-brick-title {
+    font-size: 32px;
 }
