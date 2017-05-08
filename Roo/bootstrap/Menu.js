@@ -331,6 +331,8 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             e.preventDefault();
         }
         
+        e.preventDefault();
+        
     },
     
     onTriggerPress  : function(e)
