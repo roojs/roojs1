@@ -354,7 +354,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             this.show(this.triggerEl, false, false);
         }
         
-//        e.stopEvent();
+        e.stopEvent();
     },
     
          
