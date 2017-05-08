@@ -86,16 +86,3 @@ a.roo-brick-link:hover {
     text-decoration: none;
     outline: 0;
 }
-
-.services .masonry-brick-image.masonry-center-title > .masonry-brick-paragraph {
-    opacity: 1;
-    color: #fff;
-}
-
-.services .masonry-brick-image.masonry-center-title > .masonry-brick-paragraph .masonry-brick-title {
-    font-size: 28px;
-}
-
-.services .main-content {
-    margin-top: 130px;
-}
