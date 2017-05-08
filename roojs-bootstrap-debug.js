@@ -1879,6 +1879,7 @@ Roo.bootstrap.MenuMgr = function(){
  * Bootstrap Menu class - container for MenuItems
  * @cfg {String} type (dropdown|treeview|submenu) type of menu
  * @cfg {bool} hidden  if the menu should be hidden when rendered.
+ * @cfg {bool} stopEvent (true|false)  Stop event after trigger press (default true)
  * 
  * @constructor
  * Create a new Menu
@@ -1965,9 +1966,10 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     menuItems :false, // stores the menu items..
     
     hidden:true,
-    
         
     parentMenu : false,
+    
+    stopEvent : true,
     
     getChildContainer : function() {
         return this.el;  
@@ -2222,10 +2224,11 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             this.show(this.triggerEl, false, false);
         }
         
-        e.stopEvent();
+        if(this.stopEvent || e.getTarget().nodeName.toLowerCase() === 'i'){
+            e.stopEvent();
+        }
+        
     },
-    
-         
        
     
     hideMenuItems : function()
