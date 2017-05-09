@@ -121,3 +121,6 @@ Roo.bootstrap.FieldLabel
 Roo.bootstrap.DateSplitField
 
 Roo.bootstrap.LayoutMasonry
+Roo.bootstrap.LayoutMasonryAuto
+Roo.bootstrap.MasonryBrick
+Roo.bootstrap.Brick
