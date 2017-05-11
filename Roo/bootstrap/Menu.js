@@ -348,6 +348,9 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             return;
         }
         
+        if(e.getTarget().nodeName.toLowerCase() !== 'i' && this.isLink){
+            return;
+        }
         
         
         if (this.isVisible()) {
