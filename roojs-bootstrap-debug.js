@@ -2220,10 +2220,9 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         }
         
         if(e.getTarget().nodeName.toLowerCase() !== 'i' && this.isLink){
-            Roo.log('is link we are not trigger the expand or collaspe');
             return;
         }
-        Roo.log('is link we are not trigger the expand or collaspe????????????????');
+        
         if (this.isVisible()) {
             Roo.log('hide');
             this.hide();

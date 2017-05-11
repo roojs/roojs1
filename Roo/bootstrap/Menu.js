@@ -352,7 +352,6 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         }
         
         if(e.getTarget().nodeName.toLowerCase() !== 'i' && this.isLink){
-            Roo.log('is link we are not trigger the expand or collaspe');
             return;
         }
         
