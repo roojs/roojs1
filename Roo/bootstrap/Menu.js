@@ -372,7 +372,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     
     hideMenuItems : function()
     {
-        Roo.log("hide Menu Items ???");
+        Roo.log("hide Menu Items");
         if (!this.el) { 
             return;
         }
