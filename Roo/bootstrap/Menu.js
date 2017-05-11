@@ -12,7 +12,7 @@
  * @cfg {String} type (dropdown|treeview|submenu) type of menu
  * @cfg {bool} hidden  if the menu should be hidden when rendered.
  * @cfg {bool} stopEvent (true|false)  Stop event after trigger press (default true)
- * @cfg {bool} isLink (true|false)  Stop event after trigger press (default false)
+ * @cfg {bool} isLink (true|false)  the menu has link disable auto expand and collaspe (default false)
  * 
  * @constructor
  * Create a new Menu
