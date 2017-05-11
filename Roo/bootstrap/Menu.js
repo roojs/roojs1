@@ -103,6 +103,8 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     
     stopEvent : true,
     
+    isLink : false,
+    
     getChildContainer : function() {
         return this.el;  
     },
