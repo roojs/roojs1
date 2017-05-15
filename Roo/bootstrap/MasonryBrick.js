@@ -256,6 +256,8 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     
     onTouchMove: function(e, el)
     {
+        e.preventDefault();
+        
         this.touchmoved = true;
     },
     
