@@ -276,6 +276,8 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         
         this.el.select('.masonry-brick-paragraph', true).first().setOpacity(0, true);
         
+        alert(this.touchmoved ? 'yes' : 'no');
+        
         if((new Date().getTime() - this.timer > 1000) || !this.href.length || this.touchmoved){
             return;
         }
