@@ -30202,6 +30202,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         
         if(Roo.isTouch){
             this.el.on('touchstart', this.onTouchStart, this);
+            this.el.on('touchmove', this.onTouchMove, this);
             this.el.on('touchend', this.onTouchEnd, this);
         } else {
             this.el.on('mouseenter'  ,this.enter, this);
@@ -30253,7 +30254,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     
     onTouchStart: function(e, el)
     {
-        e.preventDefault();
+//        e.preventDefault();
         
         if(!this.bgimage.length || !this.html.length){
             return;
@@ -30262,11 +30263,22 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         this.el.select('.masonry-brick-paragraph', true).first().setOpacity(0.9, true);
         
         this.timer = new Date().getTime();
+        
+        this.touchmoved = false;
+    },
+    
+    onTouchMove: function(e, el)
+    {
+        this.touchmoved = true;
     },
     
     onTouchEnd: function(e, el)
     {
-        e.preventDefault();
+//        e.preventDefault();
+        
+        if((new Date().getTime() - this.timer > 1000) || !this.href.length || this.touchmoved){
+            return;
+        }
         
         if(!this.bgimage.length || !this.html.length){
             
@@ -30278,10 +30290,6 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         }
         
         this.el.select('.masonry-brick-paragraph', true).first().setOpacity(0, true);
-        
-        if((new Date().getTime() - this.timer > 1000) || !this.href.length){
-            return;
-        }
         
         window.location.href = this.href;
     }
