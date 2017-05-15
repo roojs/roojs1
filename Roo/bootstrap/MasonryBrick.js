@@ -252,6 +252,11 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         this.timer = new Date().getTime();
     },
     
+    onTouchMove: function(e, el)
+    {
+        
+    },
+    
     onTouchEnd: function(e, el)
     {
 //        e.preventDefault();
