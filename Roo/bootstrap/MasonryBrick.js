@@ -241,6 +241,9 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     
     onTouchStart: function(e, el)
     {
+        if( navigator.userAgent.match(/Android/i) ) {   // if you already work on Android system, you can        skip this step
+            e.preventDefault();;     //THIS IS THE KEY. You can read the difficult doc released by W3C to learn more.
+        }
 //        e.preventDefault();
         
         if(!this.bgimage.length || !this.html.length){
