@@ -241,7 +241,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     
     onTouchStart: function(e, el)
     {
-        e.preventDefault();
+//        e.preventDefault();
         
         if(!this.bgimage.length || !this.html.length){
             return;
@@ -261,9 +261,9 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     
     onTouchEnd: function(e, el)
     {
-        if(!this.touchmoved){
+//        if(!this.touchmoved){
             e.preventDefault();
-        }
+//        }
         
         if(!this.bgimage.length || !this.html.length){
             
