@@ -33621,6 +33621,12 @@ Roo.BasicLayoutRegion = function(mgr, config, pos, skipConfig){
          */
         "panelremoved" : true,
         /**
+         * @event beforecollapse
+         * Fires when this region before collapse.
+         * @param {Roo.LayoutRegion} this
+         */
+        "beforecollapse" : true,
+        /**
          * @event collapsed
          * Fires when this region is collapsed.
          * @param {Roo.LayoutRegion} this
@@ -34175,20 +34181,25 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
         if(this.collapsed) {
             return;
         }
-        this.collapsed = true;
-        if(this.split){
-            this.split.el.hide();
+        
+        if(this.fireEvent("beforecollapse", this) != false){
+            
+            this.collapsed = true;
+            if(this.split){
+                this.split.el.hide();
+            }
+            if(this.config.animate && skipAnim !== true){
+                this.fireEvent("invalidated", this);
+                this.animateCollapse();
+            }else{
+                this.el.setLocation(-20000,-20000);
+                this.el.hide();
+                this.collapsedEl.show();
+                this.fireEvent("collapsed", this);
+                this.fireEvent("invalidated", this);
+            }
         }
-        if(this.config.animate && skipAnim !== true){
-            this.fireEvent("invalidated", this);
-            this.animateCollapse();
-        }else{
-            this.el.setLocation(-20000,-20000);
-            this.el.hide();
-            this.collapsedEl.show();
-            this.fireEvent("collapsed", this);
-            this.fireEvent("invalidated", this);
-        }
+        
     },
 
     animateCollapse : function(){
