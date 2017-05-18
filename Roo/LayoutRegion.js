@@ -307,7 +307,7 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
             return;
         }
         
-        if(this.fireEvent("beforecollapse", this) != false || skipCheck){
+        if(skipCheck || this.fireEvent("beforecollapse", this) != false){
             
             this.collapsed = true;
             if(this.split){
