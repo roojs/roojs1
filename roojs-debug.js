@@ -51984,12 +51984,12 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
      * Collapses this region.
      * @param {Boolean} skipAnim (optional) true to collapse the element without animation (if animate is true)
      */
-    collapse : function(skipAnim){
+    collapse : function(skipAnim, skipCheck = false){
         if(this.collapsed) {
             return;
         }
         
-        if(this.fireEvent("beforecollapse", this) != false){
+        if(this.fireEvent("beforecollapse", this) != false || skipCheck){
             
             this.collapsed = true;
             if(this.split){
