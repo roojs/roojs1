@@ -60,6 +60,12 @@ Roo.BasicLayoutRegion = function(mgr, config, pos, skipConfig){
          */
         "panelremoved" : true,
         /**
+         * @event beforecollapse
+         * Fires when this region before collapse.
+         * @param {Roo.LayoutRegion} this
+         */
+        "beforecollapse" : true,
+        /**
          * @event collapsed
          * Fires when this region is collapsed.
          * @param {Roo.LayoutRegion} this
