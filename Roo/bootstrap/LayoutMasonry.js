@@ -819,7 +819,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         positions.push({
             x : maxX - this.unitWidth,
-            y : minY + (this.unitWidth + this.gutter) * 2
+            y : minY + (this.unitHeight + this.gutter) * 2
         });
         
         positions.push({
