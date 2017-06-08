@@ -804,7 +804,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
             b.el.setWidth(width);
             
-            var height = Math.floor(this.unitHeight * b.y + (this.gutter * (b.y - 1)) + b.el.getPadding('tb'));
+            var height = Math.floor(this.unitWidth * b.y + (this.gutter * (b.y - 1)) + b.el.getPadding('tb'));
             
             b.el.setHeight(height);
             
@@ -819,7 +819,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         positions.push({
             x : maxX - this.unitWidth,
-            y : minY + (this.unitHeight + this.gutter) * 2
+            y : minY + (this.unitWidth + this.gutter) * 2
         });
         
         positions.push({
@@ -865,7 +865,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             pos.push({
                 x : x,
-                y : y + ((this.unitWidth + this.gutter) * Math.floor(Math.random() * box[1].y))
+                y : y + ((this.unitHeight + this.gutter) * Math.floor(Math.random() * box[1].y))
             });
 
             pos.push({
@@ -884,7 +884,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
 
         pos.push({
             x : x + (this.unitWidth + this.gutter) * 2,
-            y : y + ((this.unitWidth + this.gutter) * Math.floor(Math.random() * box[0].y))
+            y : y + ((this.unitHeight + this.gutter) * Math.floor(Math.random() * box[0].y))
         });
         
         return pos;
@@ -925,7 +925,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
 
             pos.push({
                 x : x,
-                y : y + ((this.unitWidth + this.gutter) * (box[2].y - 1))
+                y : y + ((this.unitHeight + this.gutter) * (box[2].y - 1))
             });
             
             pos.push({
@@ -949,7 +949,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
 
         pos.push({
             x : x + (this.unitWidth + this.gutter) * 2,
-            y : y + (this.unitWidth + this.gutter) * (box[0].y - 1)
+            y : y + (this.unitHeight + this.gutter) * (box[0].y - 1)
         });
             
         return pos;
@@ -969,12 +969,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
 
             pos.push({
                 x : x,
-                y : y + (this.unitWidth + this.gutter) * 1
+                y : y + (this.unitHeight + this.gutter) * 1
             });
             
             pos.push({
                 x : x,
-                y : y + (this.unitWidth + this.gutter) * 2
+                y : y + (this.unitHeight + this.gutter) * 2
             });
             
             pos.push({
@@ -997,8 +997,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         });
 
         pos.push({
-            x : x + (this.unitWidth + this.gutter) * 2,
-            y : y + (this.unitWidth + this.gutter) * 1
+            x : x + (this.unitHeightunitWidth + this.gutter) * 2,
+            y : y + (this.unitHeight + this.gutter) * 1
         });
 
         pos.push({
