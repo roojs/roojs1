@@ -28364,6 +28364,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
      */   
     boxWidth : 450,
     
+      /**
+     * @cfg {Number} boxHeight  - 0 for square, or fix it at a certian height
+     */   
+    boxHeight : 0,
+    
     /**
      * @cfg {Number} padWidth padding below box..
      */   
@@ -28529,6 +28534,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         this.colWidth = boxWidth + avail - this.padWidth;
         
         this.unitWidth = Math.floor((this.colWidth - (this.gutter * 2)) / 3);
+        this.unitHeight = this.boxHeight > 0 ? this.boxHeight  : this.unitWidth;
     },
     
     horizontalMeasureColumns : function()
@@ -28594,6 +28600,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             ['tall', 'xs', 'xs'],
             ['tall', 'xs'],
             ['tall']
+            
         ];
         
         var queue = [];
@@ -28605,6 +28612,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         Roo.each(items, function(item, k){
             
             switch (item.size) {
+                // these layouts take up a full box,
                 case 'md' :
                 case 'md-left' :
                 case 'md-right' :
@@ -28742,7 +28750,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             ['wide', 'xs', 'xs', 'xs'],
             ['wide', 'xs', 'xs'],
             ['wide', 'xs'],
-            ['wide']
+            ['wide'],
+            
+            ['wide-thin']
         ];
         
         var queue = [];
@@ -28771,6 +28781,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 case 'xs' :
                 case 'sm' :
                 case 'wide' :
+                case 'wide-thin' :
                     
                     box.push(item);
                     
@@ -28933,11 +28944,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 b.el.position('absolute');
                 
                 var width = Math.floor(this.unitWidth * b.x + (this.gutter * (b.x - 1)) + b.el.getPadding('lr'));
-                var height = Math.floor(this.unitWidth * b.y + (this.gutter * (b.y - 1)) + b.el.getPadding('tb'));
+                var height = Math.floor(this.unitHeight * b.y + (this.gutter * (b.y - 1)) + b.el.getPadding('tb'));
                 
                 if(b.size == 'md-left' || b.size == 'md-right'){
                     width = Math.floor(this.unitWidth * (b.x - 1) + (this.gutter * (b.x - 2)) + b.el.getPadding('lr'));
-                    height = Math.floor(this.unitWidth * (b.y - 1) + (this.gutter * (b.y - 2)) + b.el.getPadding('tb'));
+                    height = Math.floor(this.unitHeight * (b.y - 1) + (this.gutter * (b.y - 2)) + b.el.getPadding('tb'));
                 }
                 
                 b.el.setWidth(width);
@@ -29182,7 +29193,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             pos.push({
                 x : x,
-                y : y + ((this.unitWidth + this.gutter) * Math.floor(Math.random() * box[1].y))
+                y : y + ((this.unitHeight + this.gutter) * Math.floor(Math.random() * box[1].y))
             });
 
             pos.push({
@@ -29201,7 +29212,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
 
         pos.push({
             x : x + (this.unitWidth + this.gutter) * 2,
-            y : y + ((this.unitWidth + this.gutter) * Math.floor(Math.random() * box[0].y))
+            y : y + ((this.unitHeight + this.gutter) * Math.floor(Math.random() * box[0].y))
         });
         
         return pos;
@@ -29242,7 +29253,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
 
             pos.push({
                 x : x,
-                y : y + ((this.unitWidth + this.gutter) * (box[2].y - 1))
+                y : y + ((this.unitHeight + this.gutter) * (box[2].y - 1))
             });
             
             pos.push({
@@ -29266,7 +29277,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
 
         pos.push({
             x : x + (this.unitWidth + this.gutter) * 2,
-            y : y + (this.unitWidth + this.gutter) * (box[0].y - 1)
+            y : y + (this.unitHeight + this.gutter) * (box[0].y - 1)
         });
             
         return pos;
@@ -29286,12 +29297,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
 
             pos.push({
                 x : x,
-                y : y + (this.unitWidth + this.gutter) * 1
+                y : y + (this.unitHeight + this.gutter) * 1
             });
             
             pos.push({
                 x : x,
-                y : y + (this.unitWidth + this.gutter) * 2
+                y : y + (this.unitHeight + this.gutter) * 2
             });
             
             pos.push({
@@ -29314,8 +29325,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         });
 
         pos.push({
-            x : x + (this.unitWidth + this.gutter) * 2,
-            y : y + (this.unitWidth + this.gutter) * 1
+            x : x + (this.unitHeightunitWidth + this.gutter) * 2,
+            y : y + (this.unitHeight + this.gutter) * 1
         });
 
         pos.push({
