@@ -418,7 +418,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             ['wide', 'xs', 'xs'],
             ['wide', 'xs'],
             ['wide'],
-            ['wide-thin'],
+            
+            ['wide-thin']
         ];
         
         var queue = [];
@@ -447,6 +448,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 case 'xs' :
                 case 'sm' :
                 case 'wide' :
+                case 'wide-thin' :
                     
                     box.push(item);
                     
