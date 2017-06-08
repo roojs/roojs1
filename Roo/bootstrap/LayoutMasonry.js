@@ -283,6 +283,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         Roo.each(items, function(item, k){
             
             switch (item.size) {
+                // these layouts take up a full box,
                 case 'md' :
                 case 'md-left' :
                 case 'md-right' :
