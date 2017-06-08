@@ -39,6 +39,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
      */   
     boxWidth : 450,
     
+      /**
+     * @cfg {Number} boxHeight  - 0 for square, or fix it at a certian height
+     */   
+    boxHeight : 0,
+    
     /**
      * @cfg {Number} padWidth padding below box..
      */   
