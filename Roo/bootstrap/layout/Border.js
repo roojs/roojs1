@@ -374,7 +374,7 @@ layout.addxtype({
                     this.add(region, ret);
                 } else {
                 */
-                    alert("Can not add '" + cfg.xtype + "' to BorderLayout");
+                    alert("Can not add '" + cfg.xtype + "' to Border");
                     return null;
              
                                 
