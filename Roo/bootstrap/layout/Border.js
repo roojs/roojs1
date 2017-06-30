@@ -30,7 +30,7 @@ Roo.bootstrap.layout.Border = function(config){
     
     Roo.each(Roo.bootstrap.layout.Border.regions, function(target) {
         if(config[target]){
-            config[target].target = region;
+            config[target].target = target;
     	    this.addRegion(config[target]);
     	}
     },this);
