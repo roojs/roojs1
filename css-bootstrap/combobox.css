@@ -188,27 +188,27 @@
     user-select: none;
 }
 
-.select2-container,
-.select2-choices .select2-search-field{
+.root-select2-container,
+.root-select2-choices .root-select2-search-field{
     width: 100%
 }
-.select2-container .x-combo-noedit {
+.root-select2-container .x-combo-noedit {
    cursor: pointer;
    background-color: #fff;
 
 }
-.select2-container .x-combo-noedit[disabled] {
+.root-select2-container .x-combo-noedit[disabled] {
    cursor: not-allowed;
    background-color: #eee;
 
 }
 
-.roo-combobox-tickable .select2-choices {
+.roo-combobox-tickable .root-select2-choices {
    border: none;
    background-image: none;
 }
 
-.roo-combobox-tickable .select2-result label {
+.roo-combobox-tickable .root-select2-result label {
     width: 100%;
 }
 
