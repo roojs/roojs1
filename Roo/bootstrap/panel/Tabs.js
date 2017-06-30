@@ -438,8 +438,8 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
     
     createStrip : function(container)
     {
-        var strip = document.createElement("div");
-        strip.className = "x-tabs-wrap";
+        var strip = document.createElement("nav");
+        strip.className = "navbar navbar-default"; //"x-tabs-wrap";
         container.appendChild(strip);
         return strip;
     },
