@@ -51,8 +51,8 @@ Roo.extend(Roo.bootstrap.layout.Center, Roo.bootstrap.layout.Region, {
 
 
 
-Roo.NorthLayoutRegion = function(mgr, config){
-    Roo.LayoutRegion.call(this, mgr, config, "north", "n-resize");
+Roo.bootstrap.layout.North= function(mgr, config){
+    Roo.bootstrap.layout.Region.call(this, mgr, config, "north", "n-resize");
     if(this.split){
         this.split.placement = Roo.SplitBar.TOP;
         this.split.orientation = Roo.SplitBar.VERTICAL;
