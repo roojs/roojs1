@@ -71,7 +71,8 @@ Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
     /**
      * Performs a layout update.
      */
-    layout : function(){
+    layout : function()
+    {
         if(this.updating) {
             return;
         }
