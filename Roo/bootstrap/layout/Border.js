@@ -476,20 +476,21 @@ layout.addxtype({
         var validRegions = ["north","south","east","west","center"];
 
         var target = cfg.region;
+        cfg.manager = this;
         
         var r = Roo.bootstrap.layout;
         
         switch(target){
             case "north":
-                return new r.North(mgr, config);
+                return new r.North(config);
             case "south":
-                return new r.South(mgr, config);
+                return new r.South(config);
             case "east":
-                return new r.East(mgr, config);
+                return new r.East(config);
             case "west":
-                return new r.West(mgr, config);
+                return new r.West(config);
             case "center":
-                return new r.Center(mgr, config);
+                return new r.Center(config);
         }
         throw 'Layout region "'+target+'" not supported.';
     }
