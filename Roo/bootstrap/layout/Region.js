@@ -98,7 +98,7 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         * @type Roo.Element */
         this.bodyEl = this.el.createChild({
                 tag: "div",
-                cls: "roo-layout-panel-body"});
+                cls: "roo-layout-panel-body tab-content"});
     },
 
     applyConfig : function(c){
