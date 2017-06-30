@@ -41,12 +41,14 @@
  * @cfg {Number}    height          For North/South panels
  * @cfg {Boolean}   split           To show the splitter
  * @cfg {Boolean}   toolbar         xtype configuration for a toolbar - shows on right of tabbar
+ * @cfg {Roo.bootstrap.layout.Manager}   mgr The manager
+ * @cfg {string}   region  the region that it inhabits..
  */
 Roo.bootstrap.layout.Region = function(config)
 {
     
-    var mgr = config.manager;
-    var pos = config.pos;
+    var mgr = config.mgr;
+    var pos = config.region;
     
     Roo.LayoutRegion.superclass.constructor.call(this, mgr, config, pos, true);
     var dh = Roo.DomHelper;
