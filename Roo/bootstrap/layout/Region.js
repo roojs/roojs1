@@ -10,7 +10,7 @@
  */
  
 /**
- * @class Roo.LayoutRegion
+ * @class Roo.bootstrap.layout.Region
  * @extends Roo.BasicLayoutRegion
  * This class represents a region in a layout manager.
  * @cfg {Boolean}   collapsible     False to disable collapsing (defaults to true)
@@ -42,7 +42,12 @@
  * @cfg {Boolean}   split           To show the splitter
  * @cfg {Boolean}   toolbar         xtype configuration for a toolbar - shows on right of tabbar
  */
-Roo.bootstrap.layout.Region = function(mgr, config, pos){
+Roo.bootstrap.layout.Region = function(config)
+{
+    
+    var mgr = config.manager;
+    var pos = config.target;
+    
     Roo.LayoutRegion.superclass.constructor.call(this, mgr, config, pos, true);
     var dh = Roo.DomHelper;
     /** This region's container element 
