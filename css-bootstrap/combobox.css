@@ -163,7 +163,7 @@
     
 }
 
-.select2-container .dropdown-menu {
+.root-select2-container .dropdown-menu {
     border: 1px solid #5897fb;
 }
 
@@ -176,7 +176,7 @@
     color: #fff;
 }
 
-.dropdown-menu .select2-result {
+.dropdown-menu .root-select2-result {
     padding: 3px 7px 4px;
     margin: 0;
     cursor: pointer;
