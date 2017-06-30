@@ -222,6 +222,7 @@ Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
      * Restores this layout's state using Roo.state.Manager or the state provided by the passed provider.
      * @param {Roo.state.Provider} provider (optional) An alternate state provider
      */
+   /*
     restoreState : function(provider){
         if(!provider){
             provider = Roo.state.Manager;
@@ -229,7 +230,7 @@ Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
         var sm = new Roo.LayoutStateManager();
         sm.init(this, provider);
     },
-
+*/
     /**
      * Adds a batch of multiple ContentPanels dynamically by passing a special regions config object.  This config
      * object should contain properties for each region to add ContentPanels to, and each property's value should be
