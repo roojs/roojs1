@@ -62,6 +62,10 @@ Roo.bootstrap.layout.Manager = function(config)
 };
 
 Roo.extend(Roo.bootstrap.layout.Manager, Roo.util.Observable, {
+    
+    
+    regions : null,
+    
     /**
      * Returns true if this layout is currently being updated
      * @return {Boolean}
