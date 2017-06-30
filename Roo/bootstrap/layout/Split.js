@@ -41,7 +41,8 @@ Roo.extend(Roo.bootstrap.layout.Split, Roo.bootstrap.layout.Region,
                 });
                 /** The SplitBar for this region 
                 * @type Roo.SplitBar */
-                this.split = new Roo.SplitBar(splitEl, this.el, this.orientation);
+                this.split = new Roo.bootstrap.SplitBar(splitEl, this.el, this.orientation);
+                
                 this.split.on("moved", this.onSplitMove, this);
                 this.split.useShim = config.useShim === true;
                 this.split.getMaximumSize = this[this.position == 'north' || this.position == 'south' ? 'getVMaxSize' : 'getHMaxSize'].createDelegate(this);
