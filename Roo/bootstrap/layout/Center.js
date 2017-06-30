@@ -40,13 +40,7 @@ Roo.extend(Roo.bootstrap.layout.Center, Roo.bootstrap.layout.Region, {
 
 
 
-
-
-
-
-
-
-
+ 
 
 
 
@@ -186,7 +180,7 @@ Roo.extend(Roo.bootstrap.layout.East, Roo.bootstrap.layout.Split, {
         if(this.collapsed){
             this.updateBody(null, box.height);
         }
-        Roo.LayoutRegion.prototype.updateBox.call(this, box);
+        Roo.bootstrap.layout.Region.prototype.updateBox.call(this, box);
     }
 });
 
@@ -204,8 +198,8 @@ Roo.bootstrap.layout.West = function(config){
         this.el.setWidth(size);
     }
 };
-Roo.extend(Roo.WestLayoutRegion, Roo.SplitLayoutRegion, {
-    orientation: Roo.SplitBar.HORIZONTAL,
+Roo.extend(Roo.bootstrap.layout.West, Roo.bootstrap.layout.Split, {
+    //orientation: Roo.SplitBar.HORIZONTAL,
     getBox : function(){
         if(this.collapsed){
             return this.collapsedEl.getBox();
@@ -228,6 +222,6 @@ Roo.extend(Roo.WestLayoutRegion, Roo.SplitLayoutRegion, {
         if(this.collapsed){
             this.updateBody(null, box.height);
         }
-        Roo.LayoutRegion.prototype.updateBox.call(this, box);
+        Roo.bootstrap.layout.Region.prototype.updateBox.call(this, box);
     }
 });
