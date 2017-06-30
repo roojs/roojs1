@@ -27,35 +27,46 @@
 	 
     </style>
 	<script type="text/javascript">
-	Example = function(){
-	        return {
-	            init : function(){
-	               //
-                   Roo.{
-                        layout : 'Border',
-                        xns : Roo.bootstrap.layout
-                        el : document.body,
-	                    west: {
-                            xtype : 'Region',
-                            xns: Roo.bootstrap.layout,
-	                        split:true,
-	                        initialSize: 200,
-	                        titlebar: true,
-	                        collapsible: true,
-	                        minSize: 100,
-	                        maxSize: 400
-	                    },
-	                    center: {
-                            xtype : 'Region',
-                            xns: Roo.bootstrap.layout,
-	                        autoScroll: false
-	                    }
-                        items : [
-                                
-                            
-                        }
-	                });
-	                layout.beginUpdate();
+
+Example.Nested = new Roo.XComponent({
+    part     :  ["example", "nested" ],
+    order    : '001-Example-Nested',
+    region   : 'center',
+    parent   : false,
+    name     : "unnamed module",
+    disabled : false, 
+    permname : '', 
+    _tree : function()
+    {
+        var _this = this;
+        var MODULE = this;
+        return {	
+            xtype : 'Border',
+            xns : Roo.bootstrap.layout,
+            el : document.body,
+            west: {
+                xtype : 'Region',
+                xns: Roo.bootstrap.layout,
+                split:true,
+                initialSize: 200,
+                titlebar: true,
+                collapsible: true,
+                minSize: 100,
+                maxSize: 400
+            },
+            center: {
+                xtype : 'Region',
+                xns: Roo.bootstrap.layout,
+                autoScroll: false
+            }
+            items : [
+                
+                
+                    
+                
+            }
+        });
+        layout.beginUpdate();
 	                
 	                layout.add('west', new Roo.bootstrap.panel.Content('nav', {title: 'Navigation', fitToFrame:true, closable:false}));
 	                var innerLayout = new Roo.bootstrap.layout.Border('content', {
