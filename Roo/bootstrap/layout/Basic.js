@@ -15,9 +15,14 @@
  * This class represents a lightweight region in a layout manager. This region does not move dom nodes
  * and does not have a titlebar, tabs or any other features. All it does is size and position 
  * panels. To create a BasicLayoutRegion, add lightweight:true or basic:true to your regions config.
+ * @cfg {Roo.bootstrap.layout.Manager}   mgr The manager
+ * @cfg {string}   region  the region that it inhabits..
+ * 
+
  */
-Roo.BasicLayoutRegion = function(mgr, config, pos, skipConfig){
-    this.mgr = mgr;
+Roo.Roo.bootstrap.layout.Basic = function(config mgr, config, pos, skipConfig){
+    
+    this.mgr = config.mgr;
     this.position  = pos;
     this.events = {
         /**
