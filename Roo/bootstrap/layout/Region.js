@@ -443,6 +443,7 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         ti.on("activate", function(){
               this.setActivePanel(panel);
         }, this);
+        
         if(this.config.closeOnTab){
             ti.on("beforeclose", function(t, e){
                 e.cancel = true;
@@ -452,7 +453,8 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         return ti;
     },
 
-    updatePanelTitle : function(panel, title){
+    updatePanelTitle : function(panel, title)
+    {
         if(this.activePanel == panel){
             this.updateTitle(title);
         }
@@ -471,7 +473,8 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         }
     },
 
-    setActivePanel : function(panel){
+    setActivePanel : function(panel)
+    {
         panel = this.getPanel(panel);
         if(this.activePanel && this.activePanel != panel){
             this.activePanel.setActiveState(false);
@@ -603,7 +606,8 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
      * @param {Boolean} preservePanel Overrides the config preservePanel option
      * @return {Roo.ContentPanel} The panel that was removed
      */
-    remove : function(panel, preservePanel){
+    remove : function(panel, preservePanel)
+    {
         panel = this.getPanel(panel);
         if(!panel){
             return null;
@@ -656,9 +660,16 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
     },
 
     createTool : function(parentEl, className){
-        var btn = Roo.DomHelper.append(parentEl, {tag: "div", cls: "x-layout-tools-button",
-            children: [{tag: "div", cls: "x-layout-tools-button-inner " + className, html: "&#160;"}]}, true);
-        btn.addClassOnOver("x-layout-tools-button-over");
+        var btn = Roo.DomHelper.append(parentEl, {
+            tag: "div",
+            cls: "x-layout-tools-button",
+            children: [ {
+                tag: "div",
+                cls: "roo-layout-tools-button-inner " + className,
+                html: "&#160;"
+            }]
+        }, true);
+        btn.addClassOnOver("roo-layout-tools-button-over");
         return btn;
     }
 });
