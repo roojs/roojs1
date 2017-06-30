@@ -73,6 +73,7 @@ Roo.bootstrap.layout.Region = function(config)
     * @type HTMLElement */
     this.titleTextEl = this.titleEl.dom.firstChild;
     this.tools = Roo.get(this.titleEl.dom.childNodes[1], true);
+    
     this.closeBtn = this.createTool(this.tools.dom, "roo-layout-close");
     this.closeBtn.enableDisplayMode();
     this.closeBtn.on("click", this.closeClicked, this);
@@ -90,7 +91,7 @@ Roo.bootstrap.layout.Region = function(config)
     this.applyConfig(config);
 };
 
-Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
+Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
 
     createBody : function(){
         /** This region's body element 
