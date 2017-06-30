@@ -162,7 +162,7 @@ Roo.bootstrap.panel.Content = function( config){
     this.fireEvent('render', this);
 };
 
-Roo.extend(Roo.ContentPanel, Roo.util.Observable, {
+Roo.extend(Roo.bootstrap.panel.Content, Roo.util.Observable, {
     tabTip:'',
     setRegion : function(region){
         this.region = region;
