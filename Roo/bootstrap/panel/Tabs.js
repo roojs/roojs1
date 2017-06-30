@@ -480,7 +480,7 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
         var td = document.createElement("td");
         stripEl.insertBefore(td, stripEl.childNodes[stripEl.childNodes.length-1]);
         //stripEl.appendChild(td);
-        if(closable){
+        /*if(closable){
             td.className = "x-tabs-closable";
             if(!this.closeTpl){
                 this.closeTpl = new Roo.Template(
@@ -494,6 +494,7 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
             var inner = el.getElementsByTagName("em")[0];
             return {"el": el, "close": close, "inner": inner};
         } else {
+        */
             if(!this.tabTpl){
                 this.tabTpl = new Roo.Template(
                    '<a href="#" class="x-tabs-right"><span class="x-tabs-left"><em class="x-tabs-inner">' +
