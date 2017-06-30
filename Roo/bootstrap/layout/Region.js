@@ -295,13 +295,13 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
      * Hides this region.
      */
     hide : function(){
-        if(!this.collapsed){
+        //if(!this.collapsed){
             this.el.dom.style.left = "-2000px";
             this.el.hide();
-        }else{
-            this.collapsedEl.dom.style.left = "-2000px";
-            this.collapsedEl.hide();
-        }
+        //}else{
+         //   this.collapsedEl.dom.style.left = "-2000px";
+         //   this.collapsedEl.hide();
+       // }
         this.visible = false;
         this.fireEvent("visibilitychange", this, false);
     },
@@ -310,15 +310,15 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
      * Shows this region if it was previously hidden.
      */
     show : function(){
-        if(!this.collapsed){
+        //if(!this.collapsed){
             this.el.show();
-        }else{
-            this.collapsedEl.show();
-        }
+        //}else{
+        //    this.collapsedEl.show();
+       // }
         this.visible = true;
         this.fireEvent("visibilitychange", this, true);
     },
-
+/*
     closeClicked : function(){
         if(this.activePanel){
             this.remove(this.activePanel);
@@ -334,7 +334,7 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
            this.slideOut();
         }
     },
-
+*/
     /**
      * Collapses this region.
      * @param {Boolean} skipAnim (optional) true to collapse the element without animation (if animate is true)
