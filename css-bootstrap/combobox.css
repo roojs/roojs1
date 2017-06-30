@@ -220,33 +220,33 @@
     width: 100%;
 }
 
-.select2-container-multi .dropdown-menu .select2-result .checkbox {
+.root-select2-container-multi .dropdown-menu .root-select2-result .checkbox {
     margin-top: 0px;
     margin-bottom: 0px;
 }
-.dropdown-menu .select2-result .checkbox {
+.dropdown-menu .root-select2-result .checkbox {
     margin-top: 3px;
     margin-bottom: 3px;
 }
 
-.select2-container .input-group-addon {
+.root-select2-container .input-group-addon {
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-left: 0px;
 }
 
-.select2-container .roo-removable {
+.root-select2-container .roo-removable {
     position: relative;
 }
 
-.select2-container .roo-removable .roo-combo-removable-btn {
+.root-select2-container .roo-removable .roo-combo-removable-btn {
     position: absolute;
     right: 10px;
     z-index: 2;
     top: 5px;
 }
 
-.select2-container .has-feedback .roo-combo-removable-btn {
+.root-select2-container .has-feedback .roo-combo-removable-btn {
     position: absolute;
     right: 35px;
     z-index: 2;
@@ -254,7 +254,7 @@
 }
 
 /*
-.select2-container .roo-removable.has-feedback .roo-combo-removable-btn {
+.root-select2-container .roo-removable.has-feedback .roo-combo-removable-btn {
     position: absolute;
     right: 40px;
     z-index: 2;
