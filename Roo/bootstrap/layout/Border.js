@@ -482,15 +482,15 @@ layout.addxtype({
         
         switch(target){
             case "north":
-                return new r.North(config);
+                return new r.North(cfg);
             case "south":
-                return new r.South(config);
+                return new r.South(cfg);
             case "east":
-                return new r.East(config);
+                return new r.East(cfg);
             case "west":
-                return new r.West(config);
+                return new r.West(cfg);
             case "center":
-                return new r.Center(config);
+                return new r.Center(cfg);
         }
         throw 'Layout region "'+target+'" not supported.';
     }
