@@ -17,13 +17,17 @@
  * panels. To create a BasicLayoutRegion, add lightweight:true or basic:true to your regions config.
  * @cfg {Roo.bootstrap.layout.Manager}   mgr The manager
  * @cfg {string}   region  the region that it inhabits..
+ * @cfg {bool}   skipConfig skip config?
  * 
 
  */
 Roo.Roo.bootstrap.layout.Basic = function(config mgr, config, pos, skipConfig){
     
     this.mgr = config.mgr;
-    this.position  = pos;
+    
+    this.position = config.region;
+    
+    var skipConfig = config.skipConfig
     this.events = {
         /**
          * @scope Roo.BasicLayoutRegion
