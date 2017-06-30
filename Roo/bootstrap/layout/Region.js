@@ -46,7 +46,7 @@ Roo.bootstrap.layout.Region = function(config)
 {
     
     var mgr = config.manager;
-    var pos = config.target;
+    var pos = config.pos;
     
     Roo.LayoutRegion.superclass.constructor.call(this, mgr, config, pos, true);
     var dh = Roo.DomHelper;
