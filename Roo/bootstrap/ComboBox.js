@@ -1821,14 +1821,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 {
                     tag: 'a',
                     href: '#',
-                    cls: 'select2-search-choice-close',
+                    cls: 'roo-select2-search-choice-close',
                     tabindex: '-1'
                 }
             ]
             
         }, this.searchField);
         
-        var close = choice.select('a.select2-search-choice-close', true).first();
+        var close = choice.select('a.roo-select2-search-choice-close', true).first();
         
         close.on('click', this.onRemoveItem, this, { item : choice, data : o} );
         
@@ -1902,7 +1902,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.item = [];
         
-        Roo.each(this.choices.select('>li.select2-search-choice', true).elements, function(c){
+        Roo.each(this.choices.select('>li.roo-select2-search-choice', true).elements, function(c){
            c.remove();
         });
         
@@ -1976,7 +1976,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return this.inputEl();
         }
         
-        return this.inputEl().select('.select2-search-field-input', true).first();
+        return this.inputEl().select('.roo-select2-search-field-input', true).first();
     },
     
     
@@ -2083,11 +2083,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     },
                     {
                         tag: 'ul',
-                        cls: 'select2-choices',
+                        cls: 'roo-select2-choices',
                         cn:[
                             {
                                 tag: 'li',
-                                cls: 'select2-search-field',
+                                cls: 'roo-select2-search-field',
                                 cn: [
 
                                     inputblock
