@@ -39,15 +39,7 @@ Roo.bootstrap.panel.Content= function( config){
     
     var el = config.el;
     var content = config.content;
-    /*
-    if(el.autoCreate || el.xtype){ // xtype is available if this is called from factory
-        config = el;
-        el = Roo.id();
-    }
-    if (config && config.parentLayout) { 
-        el = config.parentLayout.el.createChild(); 
-    }
-    */
+
     if(el.autoCreate){ // xtype is available if this is called from factory
         config = el;
         el = Roo.id();
@@ -62,7 +54,7 @@ Roo.bootstrap.panel.Content= function( config){
                         config.autoCreate, true);
         }else{
             this.el = Roo.DomHelper.append(document.body,
-                        {tag: "div", cls: "x-layout-inactive-content", id: config.id||el}, true);
+                        {tag: "div", cls: "roo-layout-inactive-content", id: config.id||el}, true);
         }
     }
     this.closable = false;
