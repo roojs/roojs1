@@ -261,7 +261,7 @@
     top: 5px;
 }
 
-.select2-container .roo-removable.has-feedback.input-group .roo-combo-removable-btn {
+.root-select2-container .roo-removable.has-feedback.input-group .roo-combo-removable-btn {
     position: absolute;
     right: 70px;
     z-index: 2;
@@ -269,13 +269,13 @@
 }
 
 
-.select2-container.input-group .has-feedback .roo-combo-removable-btn {
+.root-select2-container.input-group .has-feedback .roo-combo-removable-btn {
     position: absolute;
     right: 35px;
     z-index: 2;
     top: 5px;
 }*/
 
-.has-warning .select2-container-multi {
+.has-warning .root-select2-container-multi {
     border: 1px solid #8a6d3b;
 }
