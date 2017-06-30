@@ -12,7 +12,8 @@
  * These classes are private internal classes
  */
 Roo.bootstrap.layout.Center = function(config){
-    Roo.LayoutRegion.call(this, mgr, config, "center");
+    config.region = "center";
+    Roo.LayoutRegion.call(this, config);
     this.visible = true;
     this.minWidth = config.minWidth || 20;
     this.minHeight = config.minHeight || 20;
