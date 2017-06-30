@@ -799,8 +799,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
 //        this.list = this.el.select('ul.dropdown-menu',true).first();
         
-        this.choices = this.el.select('ul.select2-choices', true).first();
-        this.searchField = this.el.select('ul li.select2-search-field', true).first();
+        this.choices = this.el.select('ul.roo-select2-choices', true).first();
+        this.searchField = this.el.select('ul li.roo-select2-search-field', true).first();
         if(this.triggerList){
             this.searchField.on("click", this.onSearchFieldClick, this, {preventDefault:true});
         }
