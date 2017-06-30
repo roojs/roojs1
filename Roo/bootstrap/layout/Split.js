@@ -93,7 +93,7 @@ Roo.extend(Roo.bootstrap.layout.Split, Roo.bootstrap.layout.Region,
     
     hide : function(){
         this.hideSplitter();
-        Roo.SplitLayoutRegion.superclass.hide.call(this);
+        Roo.bootstrap.layout.Split.superclass.hide.call(this);
     },
 
     hideSplitter : function(){
@@ -107,7 +107,7 @@ Roo.extend(Roo.bootstrap.layout.Split, Roo.bootstrap.layout.Region,
         if(this.split){
             this.split.el.show();
         }
-        Roo.SplitLayoutRegion.superclass.show.call(this);
+        Roo.bootstrap.layout.Split.superclass.show.call(this);
     },
     
     beforeSlide: function(){
