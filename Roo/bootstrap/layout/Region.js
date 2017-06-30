@@ -408,9 +408,10 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
     initTabs : function()
     {
         this.bodyEl.setStyle("overflow", "hidden");
-        var ts = new Roo.bootstrap.layout.tab(
-                this.bodyEl.dom,
+        var ts = new Roo.bootstrap.layout.Tab(
+                
                 {
+                    el: this.bodyEl.dom,
                     tabPosition: this.bottomTabs ? 'bottom' : 'top',
                     disableTooltips: this.config.disableTabTips,
                     toolbar : this.config.toolbar
