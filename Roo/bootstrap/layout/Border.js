@@ -302,12 +302,13 @@ layout.addxtype({
                 this.add(region, ret);
                 break;
             
-            
+            /*
             case 'TreePanel': // our new panel!
                 cfg.el = this.el.createChild();
                 ret = new Roo[cfg.xtype](cfg); // new panel!!!!!
                 this.add(region, ret);
                 break;
+            */
             
             case 'NestedLayoutPanel': 
                 // create a new Layout (which is  a Border Layout...
