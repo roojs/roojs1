@@ -310,7 +310,7 @@ layout.addxtype({
                 break;
             */
             
-            case 'NestedLayoutPanel': 
+            case 'Nest': 
                 // create a new Layout (which is  a Border Layout...
                 var el = this.el.createChild();
                 var clayout = cfg.layout;
@@ -319,7 +319,7 @@ layout.addxtype({
                 // replace this exitems with the clayout ones..
                 xitems = clayout.items;
                  
-                
+                // force background off if it's in center...
                 if (region == 'center' && this.active && this.getRegion('center').panels.length < 1) {
                     cfg.background = false;
                 }
