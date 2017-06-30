@@ -28,15 +28,15 @@ Roo.bootstrap.layout.Border = function(config){
     Roo.bootstrap.layout.Border.superclass.constructor.call(this, config);
     this.factory = config.factory || Roo.BorderLayout.RegionFactory;
     
-    for(var i = 0, len = this.factory.validRegions.length; i < len; i++) {
-    	var target = this.factory.validRegions[i];
-    	if(config[target]){
+    Roo.each(Roo.bootstrap.layout.Border.regions, function(target) {
+        if(config[target]){
     	    this.addRegion(target, config[target]);
     	}
-    }
+    },this);
+    
 };
 
-Roo.bootstrap.layout.Border.regions = 
+Roo.bootstrap.layout.Border.regions =  ["north","south","east","west","center"];
 
 Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
     /**
