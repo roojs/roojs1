@@ -222,7 +222,8 @@ Roo.extend(Roo.Roo.bootstrap.layout.Basic, Roo.util.Observable,
      * @return {Roo.ContentPanel} The shown panel or null
      */
     showPanel : function(panel){
-        if(panel = this.getPanel(panel)){
+        panel = this.getPanel(panel);
+        if(panel){
             this.setActivePanel(panel);
         }
         return panel;
