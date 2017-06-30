@@ -59,6 +59,7 @@ Roo.bootstrap.panel.Tabs = function(config){
             Roo.apply(this, config);
         }
     }
+    
     if(this.tabPosition == "bottom"){
         this.bodyEl = Roo.get(this.createBody(this.el.dom));
         this.el.addClass("roo-tabs-bottom");
@@ -108,6 +109,8 @@ Roo.bootstrap.panel.Tabs = function(config){
 
     // toolbar on the tabbar support...
     if (this.toolbar) {
+        alert("no toolbar support yet");
+        /*
         var tcfg = this.toolbar;
         tcfg.container = this.stripEl.child('td.x-tab-strip-toolbar');  
         this.toolbar = new Roo.Toolbar(tcfg);
@@ -115,6 +118,7 @@ Roo.bootstrap.panel.Tabs = function(config){
             var tbl = tcfg.container.child('table', true);
             tbl.setAttribute('width', '100%');
         }
+        */
         
     }
    
