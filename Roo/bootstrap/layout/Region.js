@@ -109,7 +109,8 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
 
     applyConfig : function(c)
     {
-        /*if(c.collapsible && this.position != "center" && !this.collapsedEl){
+        /*
+         *if(c.collapsible && this.position != "center" && !this.collapsedEl){
             var dh = Roo.DomHelper;
             if(c.titlebar !== false){
                 this.collapseBtn = this.createTool(this.tools.dom, "roo-layout-collapse-"+this.position);
@@ -122,8 +123,9 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
                     this.stickBtn.on("click", this.expand, this);
                     this.stickBtn.hide();
                 }
-                */
+                
             }
+            */
             /** This region's collapsed element
             * @type Roo.Element */
             /*
@@ -156,7 +158,7 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
                              {top: 0, left: 2, right:2, bottom: 0} :
                              {top: 2, left: 0, right:0, bottom: 2});
         */
-            this.margins = c.margins || this.margins || {top: 0, left: 0, right:0, bottom: 0};
+        this.margins = c.margins || this.margins || {top: 0, left: 0, right:0, bottom: 0};
         
         
         this.bottomTabs = c.tabPosition != "top";
