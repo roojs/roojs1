@@ -426,7 +426,7 @@ layout.addxtype({
         var validRegions = Roo.bootstrap.layout.Border.regions;
 
         var target = cfg.region;
-        cfg.manager = this;
+        cfg.mgr = this;
         
         var r = Roo.bootstrap.layout;
         
