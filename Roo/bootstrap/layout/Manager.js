@@ -24,8 +24,9 @@ Roo.bootstrap.layout.Manager = function(config)
     }else if(this.el.dom != document.body && this.el.getStyle('position') == 'static'){
         this.el.position('relative');
     }
+    
     this.id = this.el.id;
-    this.el.addClass("x-layout-container");
+    this.el.addClass("roo-layout-container");
     /** false to disable window resize monitoring @type Boolean */
     this.monitorWindowResize = true;
     this.regions = {};
@@ -60,7 +61,7 @@ Roo.bootstrap.layout.Manager = function(config)
     Roo.EventManager.onWindowResize(this.onWindowResize, this, true);
 };
 
-Roo.extend(Roo.LayoutManager, Roo.util.Observable, {
+Roo.extend(Roo.bootstrap.layout.Manager, Roo.util.Observable, {
     /**
      * Returns true if this layout is currently being updated
      * @return {Boolean}
