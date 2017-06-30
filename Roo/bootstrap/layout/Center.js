@@ -13,7 +13,7 @@
  */
 Roo.bootstrap.layout.Center = function(config){
     config.region = "center";
-    Roo.LayoutRegion.call(this, config);
+    Roo.bootstrap.layout.Region.call(this, config);
     this.visible = true;
     this.minWidth = config.minWidth || 20;
     this.minHeight = config.minHeight || 20;
