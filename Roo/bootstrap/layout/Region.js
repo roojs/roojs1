@@ -339,6 +339,7 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
      * Collapses this region.
      * @param {Boolean} skipAnim (optional) true to collapse the element without animation (if animate is true)
      */
+    /*
     collapse : function(skipAnim, skipCheck = false){
         if(this.collapsed) {
             return;
@@ -363,7 +364,7 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         }
         
     },
-
+*/
     animateCollapse : function(){
         // overridden
     },
@@ -373,6 +374,7 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
      * @param {Roo.EventObject} e The event that triggered the expand (or null if calling manually)
      * @param {Boolean} skipAnim (optional) true to expand the element without animation (if animate is true)
      */
+    /*
     expand : function(e, skipAnim){
         if(e) {
             e.stopPropagation();
@@ -398,7 +400,7 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
             this.fireEvent("expanded", this);
         }
     },
-
+*/
     animateExpand : function(){
         // overridden
     },
@@ -406,7 +408,7 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
     initTabs : function()
     {
         this.bodyEl.setStyle("overflow", "hidden");
-        var ts = new Roo.TabPanel(
+        var ts = new Roo.bootstrap.layout.tab(
                 this.bodyEl.dom,
                 {
                     tabPosition: this.bottomTabs ? 'bottom' : 'top',
