@@ -4,3 +4,6 @@ roo-layout-container  // was x-layout-container
 
 
 roo-layout-panel roo-layout-panel-{east|west|center|south|north}
+
+// titlebar?
+roo-unselectable roo-layout-panel-hd roo-layout-title
