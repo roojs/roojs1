@@ -30,8 +30,14 @@
 	Example = function(){
 	        return {
 	            init : function(){
-	               var layout = new Roo.BorderLayout(document.body, {
+	               //
+                   Roo.{
+                        layout : 'Border',
+                        xns : Roo.bootstrap.layout
+                        el : document.body,
 	                    west: {
+                            xtype : 'Region',
+                            xns: Roo.bootstrap.layout,
 	                        split:true,
 	                        initialSize: 200,
 	                        titlebar: true,
@@ -40,13 +46,19 @@
 	                        maxSize: 400
 	                    },
 	                    center: {
+                            xtype : 'Region',
+                            xns: Roo.bootstrap.layout,
 	                        autoScroll: false
 	                    }
+                        items : [
+                                
+                            
+                        }
 	                });
 	                layout.beginUpdate();
 	                
-	                layout.add('west', new Roo.ContentPanel('nav', {title: 'Navigation', fitToFrame:true, closable:false}));
-	                var innerLayout = new Roo.BorderLayout('content', {
+	                layout.add('west', new Roo.bootstrap.panel.Content('nav', {title: 'Navigation', fitToFrame:true, closable:false}));
+	                var innerLayout = new Roo.bootstrap.layout.Border('content', {
 	                    south: {
 	                        split:true,
 	                        initialSize: 200,
@@ -60,7 +72,7 @@
 	                        autoScroll:true
 	                    }
 	                });
-	                innerLayout.add('south', new Roo.ContentPanel('inner1', "More Information"));
+	                innerLayout.add('south', new Roo.bootstrap.panel.Content('inner1', "More Information"));
 	                innerLayout.add('center', new Roo.ContentPanel('inner2'));
 	                layout.add('center', new Roo.NestedLayoutPanel(innerLayout));
 	                layout.endUpdate();
