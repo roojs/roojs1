@@ -17,7 +17,7 @@
 Roo.bootstrap.layout.Manager = function(config)
 {
     Roo.bootstrap.layout.Manager.superclass.constructor.call(this);
-    this.el = Roo.get(container);
+    this.el = Roo.get(config.el);
     // ie scrollbar fix
     if(this.el.dom == document.body && Roo.isIE && !config.allowScroll){
         document.body.scroll = "no";
