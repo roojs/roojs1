@@ -38,12 +38,13 @@
  * @cfg {Number}    height          For North/South panels
  * @cfg {Boolean}   split           To show the splitter
  * @cfg {Boolean}   toolbar         xtype configuration for a toolbar - shows on right of tabbar
+ * 
  * @cfg {Roo.bootstrap.layout.Manager}   mgr The manager
  * @cfg {string}   region  the region that it inhabits..
  *
 
- * @cfg {Boolean}   collapsible     DISABLED False to disable collapsing (defaults to true)
- * @cfg {Boolean}   collapsed       DISABLED True to set the initial display to collapsed (defaults to false)
+ * @xxxcfg {Boolean}   collapsible     DISABLED False to disable collapsing (defaults to true)
+ * @xxxcfg {Boolean}   collapsed       DISABLED True to set the initial display to collapsed (defaults to false)
 
  * @xxxcfg {String}    collapsedTitle  DISABLED Optional string message to display in the collapsed block of a north or south region
  * @xxxxcfg {Boolean}   floatable       DISABLED False to disable floating (defaults to true)
