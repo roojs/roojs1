@@ -610,7 +610,7 @@
                      "Boolean editable" : false,
                      "String fieldLabel" : "ComboBox",
                      "$ xns" : "Roo.bootstrap",
-                     "String/Roo.Template tpl" : "<li class=\"select2-result\"><b>{item}</b></div>",
+                     "String/Roo.Template tpl" : "<li class=\"roo-select2-result\"><b>{item}</b></div>",
                      "String displayField" : "item",
                      "items" : [
                       {
@@ -632,7 +632,7 @@
                      "Boolean disabled" : true,
                      "String fieldLabel" : "ComboBox disabled",
                      "$ xns" : "Roo.bootstrap",
-                     "String/Roo.Template tpl" : "<li class=\"select2-result\"><b>{item}</b></div>",
+                     "String/Roo.Template tpl" : "<li class=\"roo-select2-result\"><b>{item}</b></div>",
                      "String displayField" : "item",
                      "items" : [
                       {
@@ -653,7 +653,7 @@
                      "Boolean editable" : false,
                      "String fieldLabel" : "Multiple selection",
                      "$ xns" : "Roo.bootstrap",
-                     "String/Roo.Template tpl" : "<li class=\"select2-result\"><b>{item}</b></div>",
+                     "String/Roo.Template tpl" : "<li class=\"roo-select2-result\"><b>{item}</b></div>",
                      "Boolean multiple" : true,
                      "String displayField" : "item",
                      "items" : [
