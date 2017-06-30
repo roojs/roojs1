@@ -231,73 +231,8 @@ Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
         sm.init(this, provider);
     },
 */
-    /**
-     * Adds a batch of multiple ContentPanels dynamically by passing a special regions config object.  This config
-     * object should contain properties for each region to add ContentPanels to, and each property's value should be
-     * a valid ContentPanel config object.  Example:
-     * <pre><code>
-// Create the main layout
-var layout = new Roo.BorderLayout('main-ct', {
-    west: {
-        split:true,
-        minSize: 175,
-        titlebar: true
-    },
-    center: {
-        title:'Components'
-    }
-}, 'main-ct');
-
-// Create and add multiple ContentPanels at once via configs
-layout.batchAdd({
-   west: {
-       id: 'source-files',
-       autoCreate:true,
-       title:'Ext Source Files',
-       autoScroll:true,
-       fitToFrame:true
-   },
-   center : {
-       el: cview,
-       autoScroll:true,
-       fitToFrame:true,
-       toolbar: tb,
-       resizeEl:'cbody'
-   }
-});
-</code></pre>
-     * @param {Object} regions An object containing ContentPanel configs by region name
-     */
-    batchAdd : function(regions){
-        this.beginUpdate();
-        for(var rname in regions){
-            var lr = this.regions[rname];
-            if(lr){
-                this.addTypedPanels(lr, regions[rname]);
-            }
-        }
-        this.endUpdate();
-    },
-
-    // private
-    addTypedPanels : function(lr, ps){
-        if(typeof ps == 'string'){
-            lr.add(new Roo.ContentPanel(ps));
-        }
-        else if(ps instanceof Array){
-            for(var i =0, len = ps.length; i < len; i++){
-                this.addTypedPanels(lr, ps[i]);
-            }
-        }
-        else if(!ps.events){ // raw config?
-            var el = ps.el;
-            delete ps.el; // prevent conflict
-            lr.add(new Roo.ContentPanel(el || Roo.id(), ps));
-        }
-        else {  // panel object assumed!
-            lr.add(ps);
-        }
-    },
+ 
+ 
     /**
      * Adds a xtype elements to the layout.
      * <pre><code>
@@ -328,9 +263,11 @@ layout.addxtype({
         // can accept a layout region..!?!?
         //Roo.log('Roo.BorderLayout add ' + cfg.xtype)
         
-        if (!cfg.xtype.match(/Panel$/)) {
-            return false;
-        }
+        
+        // theory?  children can only be panels??
+        //if (!cfg.xtype.match(/Panel$/)) {
+        //    return false;
+        //}
         var ret = false;
         
         if (typeof(cfg.region) == 'undefined') {
