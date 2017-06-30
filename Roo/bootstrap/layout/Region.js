@@ -33,7 +33,7 @@
  *                      the space available, similar to FireFox 1.5 tabs (defaults to false)
  * @cfg {Number}    minTabWidth     The minimum tab width (defaults to 40)
  * @cfg {Number}    preferredTabWidth The preferred tab width (defaults to 150)
- * @cfg {Boolean}   showPin         True to show a pin button
+ * @cfg {Boolean}   showPin         True to show a pin button NOT SUPPORTED YET
  * @cfg {Boolean}   hidden          True to start the region hidden (defaults to false)
  * @cfg {Boolean}   hideWhenEmpty   True to hide the region when it has no panels
  * @cfg {Boolean}   disableTabTips  True to disable tab tooltips
