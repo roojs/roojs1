@@ -172,7 +172,7 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
      */
     addTab : function(id, text, content, closable)
     {
-        var item = new Roo.TabPanelItem(this, id, text, closable);
+        var item = Roo.bootstrap.panel.TabItem(this, id, text, closable);
         this.addTabItem(item);
         if(content){
             item.setContent(content);
