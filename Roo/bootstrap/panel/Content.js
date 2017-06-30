@@ -167,9 +167,9 @@ Roo.extend(Roo.ContentPanel, Roo.util.Observable, {
     setRegion : function(region){
         this.region = region;
         if(region){
-           this.el.replaceClass("x-layout-inactive-content", "x-layout-active-content");
+           this.el.replaceClass("roo-layout-inactive-content", "roo-layout-active-content");
         }else{
-           this.el.replaceClass("x-layout-active-content", "x-layout-inactive-content");
+           this.el.replaceClass("roo-layout-active-content", "roo-layout-inactive-content");
         } 
     },
     
