@@ -90,7 +90,7 @@ Roo.extend(Roo.bootstrap.layout.North, Roo.bootstrap.layout.Split,
         if(this.collapsed){
             this.updateBody(box.width, null);
         }
-        Roo.LayoutRegion.prototype.updateBox.call(this, box);
+        Roo.bootstrap.layout.Region.prototype.updateBox.call(this, box);
     }
 });
 
