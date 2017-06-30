@@ -50,7 +50,7 @@ Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
     {
         if(!this.regions[target]){
             var r = this.factory(config);
-    	    this.bindRegion(target, r);
+    	    this.bindRegion(r);
         }
         return this.regions[target];
     },
