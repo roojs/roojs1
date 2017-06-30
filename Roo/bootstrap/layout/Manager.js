@@ -120,7 +120,8 @@ Roo.extend(Roo.bootstrap.layout.Manager, Roo.util.Observable, {
      * performs box-model adjustments.
      * @return {Object} The size as an object {width: (the width), height: (the height)}
      */
-    getViewSize : function(){
+    getViewSize : function()
+    {
         var size;
         if(this.el.dom != document.body){
             size = this.el.getSize();
