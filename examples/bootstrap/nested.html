@@ -58,19 +58,28 @@ Example.Nested = new Roo.XComponent({
                 xtype : 'Region',
                 xns: Roo.bootstrap.layout,
                 autoScroll: false
-            }
+            },
             items : [
-                
-                
+                {
+                    xtype : 'Content',
+                    xns: Roo.bootstrap.panel,
+                    title : "Navigation",
+                    fitToFrame:true,
+                    closable:false,
+                    region : 'west',
+                    html : 'some body'
                     
-                
-            }
-        });
-        layout.beginUpdate();
-	                
-	                layout.add('west', new Roo.bootstrap.panel.Content('nav', {title: 'Navigation', fitToFrame:true, closable:false}));
-	                var innerLayout = new Roo.bootstrap.layout.Border('content', {
-	                    south: {
+                },
+                {
+                    xtype : 'Nested',
+                    xns: Roo.bootstrap.layout,
+                    region : 'center',
+                    layout : {
+                        xtype : 'Border',
+                        xns: Roo.bootstrap.layout,
+                        south: {
+                            xtype : 'Region',
+                            xns: Roo.bootstrap.layout,
 	                        split:true,
 	                        initialSize: 200,
 	                        minSize: 100,
@@ -80,9 +89,37 @@ Example.Nested = new Roo.XComponent({
 	                        titlebar: true
 	                    },
 	                    center: {
-	                        autoScroll:true
+                            xtype : 'Region',
+                            xns: Roo.bootstrap.layout,
+	                        autoScroll:true,
 	                    }
-	                });
+                    },
+                    items : [
+                        {
+                            xtype : 'Content',
+                            xns: Roo.bootstrap.panel,
+                            title : "More Info",
+                            region : 'south',
+                            html : 'some body south'
+                        },
+                        {
+                            xtype : 'Content',
+                            xns: Roo.bootstrap.panel,
+                            title : "the body",
+                            region : 'center',
+                            html : 'some body center'
+                        },
+                    ]
+                    
+                }
+                    
+                
+            }
+        });
+        layout.beginUpdate();
+	                
+	                
+	               
 	                innerLayout.add('south', new Roo.bootstrap.panel.Content('inner1', "More Information"));
 	                innerLayout.add('center', new Roo.ContentPanel('inner2'));
 	                layout.add('center', new Roo.NestedLayoutPanel(innerLayout));
