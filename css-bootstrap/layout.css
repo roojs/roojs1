@@ -7,3 +7,6 @@ roo-layout-panel roo-layout-panel-{east|west|center|south|north}
 
 // titlebar?
 roo-unselectable roo-layout-panel-hd roo-layout-title
+
+// close panel..
+roo-layout-close
