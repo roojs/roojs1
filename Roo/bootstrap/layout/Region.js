@@ -150,12 +150,13 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         if(this.collapseBtn){
             this.collapseBtn.setVisible(c.collapsible == true);
         }
-        */
+        
         this.cmargins = c.cmargins || this.cmargins ||
                          (this.position == "west" || this.position == "east" ?
                              {top: 0, left: 2, right:2, bottom: 0} :
                              {top: 2, left: 0, right:0, bottom: 2});
-        this.margins = c.margins || this.margins || {top: 0, left: 0, right:0, bottom: 0};
+        */
+            this.margins = c.margins || this.margins || {top: 0, left: 0, right:0, bottom: 0};
         
         
         this.bottomTabs = c.tabPosition != "top";
@@ -198,27 +199,28 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
      * Updates the title for collapsed north/south regions (used with {@link #collapsedTitle} config option)
      * @param {String} title (optional) The title text (accepts HTML markup, defaults to the numeric character reference for a non-breaking space, "&amp;#160;")
      */
-    setCollapsedTitle : function(title){
-        title = title || "&#160;";
-        if(this.collapsedTitleTextEl){
-            this.collapsedTitleTextEl.innerHTML = title;
-        }
-    },
+    //setCollapsedTitle : function(title){
+    //    title = title || "&#160;";
+     //   if(this.collapsedTitleTextEl){
+      //      this.collapsedTitleTextEl.innerHTML = title;
+       // }
+    //},
 
     getBox : function(){
         var b;
-        if(!this.collapsed){
+      //  if(!this.collapsed){
             b = this.el.getBox(false, true);
-        }else{
-            b = this.collapsedEl.getBox(false, true);
-        }
+       // }else{
+          //  b = this.collapsedEl.getBox(false, true);
+        //}
         return b;
     },
 
     getMargins : function(){
-        return this.collapsed ? this.cmargins : this.margins;
+        return this.margins;
+        //return this.collapsed ? this.cmargins : this.margins;
     },
-
+/*
     highlight : function(){
         this.el.addClass("x-layout-panel-dragover");
     },
@@ -226,8 +228,9 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
     unhighlight : function(){
         this.el.removeClass("x-layout-panel-dragover");
     },
-
-    updateBox : function(box){
+*/
+    updateBox : function(box)
+    {
         this.box = box;
         if(!this.collapsed){
             this.el.dom.style.left = box.x + "px";
@@ -243,7 +246,8 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         }
     },
 
-    updateBody : function(w, h){
+    updateBody : function(w, h)
+    {
         if(w !== null){
             this.el.setWidth(w);
             w -= this.el.getBorderWidth("rl");
