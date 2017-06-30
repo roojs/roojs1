@@ -448,10 +448,11 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
     {
         // div wrapper for retard IE
         // returns the "tr" element.
-        strip.innerHTML = '<div class="x-tabs-strip-wrap">'+
-            '<table class="x-tabs-strip" cellspacing="0" cellpadding="0" border="0"><tbody><tr>'+
-            '<td class="x-tab-strip-toolbar"></td></tr></tbody></table></div>';
-        return strip.firstChild.firstChild.firstChild.firstChild;
+        strip.innerHTML = '<ul class="nav nav-tabs" role="tablist"></ul>';
+        //'<div class="x-tabs-strip-wrap">'+
+          //  '<table class="x-tabs-strip" cellspacing="0" cellpadding="0" border="0"><tbody><tr>'+
+          //  '<td class="x-tab-strip-toolbar"></td></tr></tbody></table></div>';
+        return strip.firstChild; //.firstChild.firstChild.firstChild;
     },
     createBody : function(container)
     {
