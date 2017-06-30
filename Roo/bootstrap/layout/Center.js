@@ -11,7 +11,7 @@
 /*
  * These classes are private internal classes
  */
-Roo.bootstrap.layout.Center = function(mgr, config){
+Roo.bootstrap.layout.Center = function(config){
     Roo.LayoutRegion.call(this, mgr, config, "center");
     this.visible = true;
     this.minWidth = config.minWidth || 20;
@@ -51,7 +51,7 @@ Roo.extend(Roo.bootstrap.layout.Center, Roo.bootstrap.layout.Region, {
 
 
 
-Roo.bootstrap.layout.North = function(mgr, config)
+Roo.bootstrap.layout.North = function(config)
 {
     config.region = 'north';
     config.cursor = 'n-resize';
@@ -98,7 +98,7 @@ Roo.extend(Roo.bootstrap.layout.North, Roo.bootstrap.layout.Split,
 
 
 
-Roo.SouthLayoutRegion = function(mgr, config){
+Roo.bootstrap.layout.South = function(config){
     config.region = 'south';
     config.cursor = 's-resize';
     Roo.bootstrap.layout.Split.call(this, config);
