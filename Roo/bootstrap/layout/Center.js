@@ -51,7 +51,8 @@ Roo.extend(Roo.bootstrap.layout.Center, Roo.bootstrap.layout.Region, {
 
 
 
-Roo.bootstrap.layout.North= function(mgr, config){
+Roo.bootstrap.layout.North = function(mgr, config)
+{
     config.region = 'north';
     config.cursor = "n-resize";
     Roo.bootstrap.layout.Split.call(this, config);
@@ -65,8 +66,9 @@ Roo.bootstrap.layout.North= function(mgr, config){
         this.el.setHeight(size);
     }
 };
-Roo.extend(Roo.NorthLayoutRegion, Roo.SplitLayoutRegion, {
-    orientation: Roo.SplitBar.VERTICAL,
+Roo.extend(Roo.bootstrap.layout.North, Roo.bootstrap.layout.Split,
+{
+    //orientation: Roo.SplitBar.VERTICAL,
     getBox : function(){
         if(this.collapsed){
             return this.collapsedEl.getBox();
