@@ -220,7 +220,7 @@
     width: 100%;
 }
 
-.select2-container-multi .dropdown-menu .roo-select2-result .checkbox {
+.roo-select2-container-multi .dropdown-menu .roo-select2-result .checkbox {
     margin-top: 0px;
     margin-bottom: 0px;
 }
@@ -235,18 +235,18 @@
     border-left: 0px;
 }
 
-.select2-container .roo-removable {
+.roo-select2-container .roo-removable {
     position: relative;
 }
 
-.select2-container .roo-removable .roo-combo-removable-btn {
+.roo-select2-container .roo-removable .roo-combo-removable-btn {
     position: absolute;
     right: 10px;
     z-index: 2;
     top: 5px;
 }
 
-.select2-container .has-feedback .roo-combo-removable-btn {
+.roo-select2-container .has-feedback .roo-combo-removable-btn {
     position: absolute;
     right: 35px;
     z-index: 2;
@@ -254,14 +254,14 @@
 }
 
 /*
-.select2-container .roo-removable.has-feedback .roo-combo-removable-btn {
+.roo-select2-container .roo-removable.has-feedback .roo-combo-removable-btn {
     position: absolute;
     right: 40px;
     z-index: 2;
     top: 5px;
 }
 
-.select2-container .roo-removable.has-feedback.input-group .roo-combo-removable-btn {
+.roo-select2-container .roo-removable.has-feedback.input-group .roo-combo-removable-btn {
     position: absolute;
     right: 70px;
     z-index: 2;
@@ -269,13 +269,13 @@
 }
 
 
-.select2-container.input-group .has-feedback .roo-combo-removable-btn {
+.roo-select2-container.input-group .has-feedback .roo-combo-removable-btn {
     position: absolute;
     right: 35px;
     z-index: 2;
     top: 5px;
 }*/
 
-.has-warning .select2-container-multi {
+.has-warning .roo-select2-container-multi {
     border: 1px solid #8a6d3b;
 }
