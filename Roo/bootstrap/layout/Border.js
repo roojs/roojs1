@@ -46,13 +46,13 @@ Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
      * @param {Object} config The regions config object
      * @return {BorderLayoutRegion} The new region
      */
-    addRegion : function(target, config)
+    addRegion : function(config)
     {
-        if(!this.regions[target]){
+        if(!this.regions[config.region]){
             var r = this.factory(config);
     	    this.bindRegion(r);
         }
-        return this.regions[target];
+        return this.regions[config.target];
     },
 
     // private (kinda)
