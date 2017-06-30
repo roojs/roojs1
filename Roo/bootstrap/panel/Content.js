@@ -65,7 +65,7 @@ Roo.bootstrap.panel.Content= function( config){
     }else{
         Roo.apply(this, config);
     }
-    
+    /*
     if (this.toolbar && !this.toolbar.el && this.toolbar.xtype) {
         this.wrapEl = this.el.wrap();
         this.toolbar.container = this.el.insertSibling(false, 'before');
@@ -83,7 +83,7 @@ Roo.bootstrap.panel.Content= function( config){
         this.footer = Roo.factory(this.footer, Roo);
         
     }
-    
+    */
     if(this.resizeEl){
         this.resizeEl = Roo.get(this.resizeEl, true);
     }else{
