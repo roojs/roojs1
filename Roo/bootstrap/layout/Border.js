@@ -12,77 +12,22 @@
  * @class Roo.bootstrap.layout.Border
  * @extends Roo.bootstrap.layout.Manager
  * This class represents a common layout manager used in desktop applications. For screenshots and more details,
- * please see: <br><br>
- * <a href="http://www.jackslocum.com/yui/2006/10/19/cross-browser-web-20-layouts-with-yahoo-ui/">Cross Browser Layouts - Part 1</a><br>
- * <a href="http://www.jackslocum.com/yui/2006/10/28/cross-browser-web-20-layouts-part-2-ajax-feed-viewer-20/">Cross Browser Layouts - Part 2</a><br><br>
- * Example:
- <pre><code>
- var layout = new Roo.BorderLayout(document.body, {
-    north: {
-        initialSize: 25,
-        titlebar: false
-    },
-    west: {
-        split:true,
-        initialSize: 200,
-        minSize: 175,
-        maxSize: 400,
-        titlebar: true,
-        collapsible: true
-    },
-    east: {
-        split:true,
-        initialSize: 202,
-        minSize: 175,
-        maxSize: 400,
-        titlebar: true,
-        collapsible: true
-    },
-    south: {
-        split:true,
-        initialSize: 100,
-        minSize: 100,
-        maxSize: 200,
-        titlebar: true,
-        collapsible: true
-    },
-    center: {
-        titlebar: true,
-        autoScroll:true,
-        resizeTabs: true,
-        minTabWidth: 50,
-        preferredTabWidth: 150
-    }
-});
-
-// shorthand
-var CP = Roo.ContentPanel;
-
-layout.beginUpdate();
-layout.add("north", new CP("north", "North"));
-layout.add("south", new CP("south", {title: "South", closable: true}));
-layout.add("west", new CP("west", {title: "West"}));
-layout.add("east", new CP("autoTabs", {title: "Auto Tabs", closable: true}));
-layout.add("center", new CP("center1", {title: "Close Me", closable: true}));
-layout.add("center", new CP("center2", {title: "Center Panel", closable: false}));
-layout.getRegion("center").showPanel("center1");
-layout.endUpdate();
-</code></pre>
-
+ * please see: examples/bootstrap/nested.html<br><br>
+ 
 <b>The container the layout is rendered into can be either the body element or any other element.
 If it is not the body element, the container needs to either be an absolute positioned element,
 or you will need to add "position:relative" to the css of the container.  You will also need to specify
 the container size if it is not the body element.</b>
 
 * @constructor
-* Create a new BorderLayout
-* @param {String/HTMLElement/Element} container The container this layout is bound to
+* Create a new Border
 * @param {Object} config Configuration options
  */
-Roo.BorderLayout = function(container, config){
+Roo.bootstrap.layout.Border= function(config){
     config = config || {};
-    Roo.BorderLayout.superclass.constructor.call(this, container, config);
+    Roo.bootstrap.layout.Border.superclass.constructor.call(this, config);
     this.factory = config.factory || Roo.BorderLayout.RegionFactory;
+    
     for(var i = 0, len = this.factory.validRegions.length; i < len; i++) {
     	var target = this.factory.validRegions[i];
     	if(config[target]){
@@ -521,108 +466,35 @@ layout.addxtype({
         }
         return ret;
         
-    }
-});
-
-/**
- * Shortcut for creating a new BorderLayout object and adding one or more ContentPanels to it in a single step, handling
- * the beginUpdate and endUpdate calls internally.  The key to this method is the <b>panels</b> property that can be
- * provided with each region config, which allows you to add ContentPanel configs in addition to the region configs
- * during creation.  The following code is equivalent to the constructor-based example at the beginning of this class:
- * <pre><code>
-// shorthand
-var CP = Roo.ContentPanel;
-
-var layout = Roo.BorderLayout.create({
-    north: {
-        initialSize: 25,
-        titlebar: false,
-        panels: [new CP("north", "North")]
     },
-    west: {
-        split:true,
-        initialSize: 200,
-        minSize: 175,
-        maxSize: 400,
-        titlebar: true,
-        collapsible: true,
-        panels: [new CP("west", {title: "West"})]
-    },
-    east: {
-        split:true,
-        initialSize: 202,
-        minSize: 175,
-        maxSize: 400,
-        titlebar: true,
-        collapsible: true,
-        panels: [new CP("autoTabs", {title: "Auto Tabs", closable: true})]
-    },
-    south: {
-        split:true,
-        initialSize: 100,
-        minSize: 100,
-        maxSize: 200,
-        titlebar: true,
-        collapsible: true,
-        panels: [new CP("south", {title: "South", closable: true})]
-    },
-    center: {
-        titlebar: true,
-        autoScroll:true,
-        resizeTabs: true,
-        minTabWidth: 50,
-        preferredTabWidth: 150,
-        panels: [
-            new CP("center1", {title: "Close Me", closable: true}),
-            new CP("center2", {title: "Center Panel", closable: false})
-        ]
-    }
-}, document.body);
-
-layout.getRegion("center").showPanel("center1");
-</code></pre>
- * @param config
- * @param targetEl
- */
-Roo.BorderLayout.create = function(config, targetEl){
-    var layout = new Roo.BorderLayout(targetEl || document.body, config);
-    layout.beginUpdate();
-    var regions = Roo.BorderLayout.RegionFactory.validRegions;
-    for(var j = 0, jlen = regions.length; j < jlen; j++){
-        var lr = regions[j];
-        if(layout.regions[lr] && config[lr].panels){
-            var r = layout.regions[lr];
-            var ps = config[lr].panels;
-            layout.addTypedPanels(r, ps);
-        }
-    }
-    layout.endUpdate();
-    return layout;
-};
-
+    
+    
 // private
-Roo.BorderLayout.RegionFactory = {
-    // private
-    validRegions : ["north","south","east","west","center"],
+    factory : function(cfg)
+    {
+        
+        var validRegions = ["north","south","east","west","center"];
 
-    // private
-    create : function(target, mgr, config){
-        target = target.toLowerCase();
-        if(config.lightweight || config.basic){
-            return new Roo.BasicLayoutRegion(mgr, config, target);
-        }
+        var target = cfg.region;
+        
+        var r = Roo.bootstrap.layout;
+        
         switch(target){
             case "north":
-                return new Roo.NorthLayoutRegion(mgr, config);
+                return new r.North(mgr, config);
             case "south":
-                return new Roo.SouthLayoutRegion(mgr, config);
+                return new r.South(mgr, config);
             case "east":
-                return new Roo.EastLayoutRegion(mgr, config);
+                return new r.East(mgr, config);
             case "west":
-                return new Roo.WestLayoutRegion(mgr, config);
+                return new r.West(mgr, config);
             case "center":
-                return new Roo.CenterLayoutRegion(mgr, config);
+                return new r.Center(mgr, config);
         }
         throw 'Layout region "'+target+'" not supported.';
     }
 };
+    
+    
+});
+ 
