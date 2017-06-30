@@ -265,6 +265,7 @@ layout.addxtype({
         
         
         // theory?  children can only be panels??
+        
         //if (!cfg.xtype.match(/Panel$/)) {
         //    return false;
         //}
@@ -288,15 +289,15 @@ layout.addxtype({
         
         switch(cfg.xtype) 
         {
-            case 'ContentPanel':  // ContentPanel (el, cfg)
-            case 'ScrollPanel':  // ContentPanel (el, cfg)
-            case 'ViewPanel': 
-                if(cfg.autoCreate) {
-                    ret = new Roo[cfg.xtype](cfg); // new panel!!!!!
-                } else {
-                    var el = this.el.createChild();
-                    ret = new Roo[cfg.xtype](el, cfg); // new panel!!!!!
-                }
+            case 'Content':  // ContentPanel (el, cfg)
+            case 'Scroll':  // ContentPanel (el, cfg)
+            case 'View': 
+                cfg.autoCreate = true;
+                ret = new Roo[cfg.xtype](cfg); // new panel!!!!!
+                //} else {
+                //    var el = this.el.createChild();
+                //    ret = new Roo[cfg.xtype](el, cfg); // new panel!!!!!
+                //}
                 
                 this.add(region, ret);
                 break;
