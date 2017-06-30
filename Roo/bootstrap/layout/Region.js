@@ -156,7 +156,10 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
                              {top: 0, left: 2, right:2, bottom: 0} :
                              {top: 2, left: 0, right:0, bottom: 2});
         this.margins = c.margins || this.margins || {top: 0, left: 0, right:0, bottom: 0};
+        
+        
         this.bottomTabs = c.tabPosition != "top";
+        
         this.autoScroll = c.autoScroll || false;
         if(this.autoScroll){
             this.bodyEl.setStyle("overflow", "auto");
