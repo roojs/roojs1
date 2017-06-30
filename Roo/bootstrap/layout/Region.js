@@ -408,15 +408,13 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
     initTabs : function()
     {
         this.bodyEl.setStyle("overflow", "hidden");
-        var ts = new Roo.bootstrap.layout.Tab(
-                
-                {
-                    el: this.bodyEl.dom,
-                    tabPosition: this.bottomTabs ? 'bottom' : 'top',
-                    disableTooltips: this.config.disableTabTips,
-                    toolbar : this.config.toolbar
-                }
-        );
+        var ts = new Roo.bootstrap.layout.Tab({
+                el: this.bodyEl.dom,
+                tabPosition: this.bottomTabs ? 'bottom' : 'top',
+                disableTooltips: this.config.disableTabTips,
+                toolbar : this.config.toolbar
+            });
+        
         if(this.config.hideTabs){
             ts.stripWrap.setDisplayed(false);
         }
@@ -427,7 +425,7 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         ts.preferredTabWidth = this.config.preferredTabWidth || 150;
         ts.monitorResize = false;
         ts.bodyEl.setStyle("overflow", this.config.autoScroll ? "auto" : "hidden");
-        ts.bodyEl.addClass('x-layout-tabs-body');
+        ts.bodyEl.addClass('roo-layout-tabs-body');
         this.panels.each(this.initPanelAsTab, this);
     },
 
