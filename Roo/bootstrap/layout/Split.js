@@ -32,8 +32,12 @@ Roo.extend(Roo.bootstrap.layout.Split, Roo.bootstrap.layout.Region,
         
         if(config.split){
             if(!this.split){
-                var splitEl = Roo.DomHelper.append(this.mgr.el.dom, 
-                        {tag: "div", id: this.el.id + "-split", cls: "roo-layout-split roo-layout-split-"+this.position, html: "&#160;"});
+                var splitEl = Roo.DomHelper.append(this.mgr.el.dom,  {
+                                tag: "div",
+                                id: this.el.id + "-split",
+                                cls: "roo-layout-split roo-layout-split-"+this.position,
+                                html: "&#160;"
+                });
                 /** The SplitBar for this region 
                 * @type Roo.SplitBar */
                 this.split = new Roo.SplitBar(splitEl, this.el, this.orientation);
