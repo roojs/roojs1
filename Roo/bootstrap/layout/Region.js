@@ -96,7 +96,9 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
     createBody : function(){
         /** This region's body element 
         * @type Roo.Element */
-        this.bodyEl = this.el.createChild({tag: "div", cls: "x-layout-panel-body"});
+        this.bodyEl = this.el.createChild({
+                tag: "div",
+                cls: "roo-layout-panel-body"});
     },
 
     applyConfig : function(c){
