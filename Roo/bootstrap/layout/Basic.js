@@ -21,7 +21,7 @@
  * 
 
  */
-Roo.Roo.bootstrap.layout.Basic = function(config){
+Roo.bootstrap.layout.Basic = function(config){
     
     this.mgr = config.mgr;
     
