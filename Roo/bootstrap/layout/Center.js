@@ -145,8 +145,10 @@ Roo.extend(Roo.bootstrap.layout.South, Roo.bootstrap.layout.Split, {
     }
 });
 
-Roo.EastLayoutRegion = function(mgr, config){
-    Roo.SplitLayoutRegion.call(this, mgr, config, "east", "e-resize");
+Roo.bootstrap.layout.East = function(config){
+    config.region = "east";
+    config.cursor = "e-resize";
+    Roo.bootstrap.layout.Split.call(this, config);
     if(this.split){
         this.split.placement = Roo.SplitBar.RIGHT;
         this.split.orientation = Roo.SplitBar.HORIZONTAL;
@@ -157,8 +159,8 @@ Roo.EastLayoutRegion = function(mgr, config){
         this.el.setWidth(size);
     }
 };
-Roo.extend(Roo.EastLayoutRegion, Roo.SplitLayoutRegion, {
-    orientation: Roo.SplitBar.HORIZONTAL,
+Roo.extend(Roo.bootstrap.layout.East, Roo.bootstrap.layout.Split, {
+    //orientation: Roo.SplitBar.HORIZONTAL,
     getBox : function(){
         if(this.collapsed){
             return this.collapsedEl.getBox();
@@ -188,8 +190,10 @@ Roo.extend(Roo.EastLayoutRegion, Roo.SplitLayoutRegion, {
     }
 });
 
-Roo.WestLayoutRegion = function(mgr, config){
-    Roo.SplitLayoutRegion.call(this, mgr, config, "west", "w-resize");
+Roo.bootstrap.layout.West = function(config){
+    config.region = "west";
+    config.cursor = "w-resize";
+    Roo.bootstrap.layout.Split.call(this, config);
     if(this.split){
         this.split.placement = Roo.SplitBar.LEFT;
         this.split.orientation = Roo.SplitBar.HORIZONTAL;
