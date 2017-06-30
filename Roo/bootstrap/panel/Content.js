@@ -35,7 +35,7 @@
  * @param {String} content (optional) Set the HTML content for this panel
  * @param {String} region (optional) Used by xtype constructors to add to regions. (values center,east,west,south,north)
  */
-Roo.bootstrap.panel.Content= function(el, config, content){
+Roo.bootstrap.panel.Content= function( config){
     
     var el = config.el;
     var content = config.content;
