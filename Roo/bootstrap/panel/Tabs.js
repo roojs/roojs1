@@ -46,7 +46,7 @@ jtabs.activate("jtabs-1");
  * @param {String/HTMLElement/Roo.Element} container The id, DOM element or Roo.Element container where this TabPanel is to be rendered.
  * @param {Object/Boolean} config Config object to set any properties for this TabPanel, or true to render the tabs on the bottom.
  */
-Roo.bootstrap.panel.Tabs = function(container, config){
+Roo.bootstrap.panel.Tabs = function(config){
     /**
     * The container element for this TabPanel.
     * @type Roo.Element
