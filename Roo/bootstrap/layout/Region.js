@@ -79,12 +79,12 @@ Roo.bootstrap.layout.Region = function(config)
     * @type HTMLElement */
     this.titleTextEl = this.titleEl.dom.firstChild;
     this.tools = Roo.get(this.titleEl.dom.childNodes[1], true);
-    
+    /*
     this.closeBtn = this.createTool(this.tools.dom, "roo-layout-close");
     this.closeBtn.enableDisplayMode();
     this.closeBtn.on("click", this.closeClicked, this);
     this.closeBtn.hide();
-
+*/
     this.createBody(config);
     this.visible = true;
     this.collapsed = false;
