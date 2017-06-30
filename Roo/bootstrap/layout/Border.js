@@ -423,7 +423,7 @@ layout.addxtype({
     factory : function(cfg)
     {
         
-        var validRegions = ["north","south","east","west","center"];
+        var validRegions = Roo.bootstrap.layout.Border.regions;
 
         var target = cfg.region;
         cfg.manager = this;
