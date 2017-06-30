@@ -434,5 +434,73 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
             this.el.update("");
             this.el.remove();
         }
+    },
+    
+    createStrip : function(container)
+    {
+        var strip = document.createElement("div");
+        strip.className = "x-tabs-wrap";
+        container.appendChild(strip);
+        return strip;
+    },
+    
+    createStripList : function(strip)
+    {
+        // div wrapper for retard IE
+        // returns the "tr" element.
+        strip.innerHTML = '<div class="x-tabs-strip-wrap">'+
+            '<table class="x-tabs-strip" cellspacing="0" cellpadding="0" border="0"><tbody><tr>'+
+            '<td class="x-tab-strip-toolbar"></td></tr></tbody></table></div>';
+        return strip.firstChild.firstChild.firstChild.firstChild;
+    },
+    createBody : function(container)
+    {
+        var body = document.createElement("div");
+        Roo.id(body, "tab-body");
+        Roo.fly(body).addClass("x-tabs-body");
+        container.appendChild(body);
+        return body;
+    },
+    createItemBody :function(bodyEl, id){
+        var body = Roo.getDom(id);
+        if(!body){
+            body = document.createElement("div");
+            body.id = id;
+        }
+        Roo.fly(body).addClass("x-tabs-item-body");
+        bodyEl.insertBefore(body, bodyEl.firstChild);
+        return body;
+    },
+    /** @private */
+    createStripElements :  function(stripEl, text, closable){
+        var td = document.createElement("td");
+        stripEl.insertBefore(td, stripEl.childNodes[stripEl.childNodes.length-1]);
+        //stripEl.appendChild(td);
+        if(closable){
+            td.className = "x-tabs-closable";
+            if(!this.closeTpl){
+                this.closeTpl = new Roo.Template(
+                   '<a href="#" class="x-tabs-right"><span class="x-tabs-left"><em class="x-tabs-inner">' +
+                   '<span unselectable="on"' + (this.disableTooltips ? '' : ' title="{text}"') +' class="x-tabs-text">{text}</span>' +
+                   '<div unselectable="on" class="close-icon">&#160;</div></em></span></a>'
+                );
+            }
+            var el = this.closeTpl.overwrite(td, {"text": text});
+            var close = el.getElementsByTagName("div")[0];
+            var inner = el.getElementsByTagName("em")[0];
+            return {"el": el, "close": close, "inner": inner};
+        } else {
+            if(!this.tabTpl){
+                this.tabTpl = new Roo.Template(
+                   '<a href="#" class="x-tabs-right"><span class="x-tabs-left"><em class="x-tabs-inner">' +
+                   '<span unselectable="on"' + (this.disableTooltips ? '' : ' title="{text}"') +' class="x-tabs-text">{text}</span></em></span></a>'
+                );
+            }
+            var el = this.tabTpl.overwrite(td, {"text": text});
+            var inner = el.getElementsByTagName("em")[0];
+            return {"el": el, "inner": inner};
+        }
     }
+        
+    
 });
