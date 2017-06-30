@@ -61,7 +61,7 @@ Roo.bootstrap.panel.Tabs = function(config){
     }
     if(this.tabPosition == "bottom"){
         this.bodyEl = Roo.get(this.createBody(this.el.dom));
-        this.el.addClass("x-tabs-bottom");
+        this.el.addClass("roo-tabs-bottom");
     }
     this.stripWrap = Roo.get(this.createStrip(this.el.dom), true);
     this.stripEl = Roo.get(this.createStripList(this.stripWrap.dom), true);
