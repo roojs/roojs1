@@ -49,8 +49,8 @@ Roo.bootstrap.layout.Region = function(config)
     
     var mgr = config.mgr;
     var pos = config.region;
-    
-    Roo.LayoutRegion.superclass.constructor.call(this, mgr, config, pos, true);
+    config.skipConfig = true;
+    Roo.LayoutRegion.superclass.constructor.call(this, config);
     var dh = Roo.DomHelper;
     /** This region's container element 
     * @type Roo.Element */
