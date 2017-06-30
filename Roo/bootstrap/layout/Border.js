@@ -312,10 +312,13 @@ layout.addxtype({
             
             case 'Nest': 
                 // create a new Layout (which is  a Border Layout...
-                var el = this.el.createChild();
+                
                 var clayout = cfg.layout;
-                delete cfg.layout;
+                clayout.el  = this.el.createChild();
                 clayout.items   = clayout.items  || [];
+                
+                delete cfg.layout;
+                
                 // replace this exitems with the clayout ones..
                 xitems = clayout.items;
                  
@@ -323,7 +326,7 @@ layout.addxtype({
                 if (region == 'center' && this.active && this.getRegion('center').panels.length < 1) {
                     cfg.background = false;
                 }
-                var layout = new Roo.BorderLayout(el, clayout);
+                var layout = new Roo.bootstrap.layout.Border(clayout);
                 
                 ret = new Roo[cfg.xtype](layout, cfg); // new panel!!!!!
                 //console.log('adding nested layout panel '  + cfg.toSource());
