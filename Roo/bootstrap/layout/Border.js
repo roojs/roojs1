@@ -444,7 +444,6 @@ layout.addxtype({
         }
         throw 'Layout region "'+target+'" not supported.';
     }
-};
     
     
 });
