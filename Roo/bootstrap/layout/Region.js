@@ -432,8 +432,11 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
     },
 
     initPanelAsTab : function(panel){
-        var ti = this.tabs.addTab(panel.getEl().id, panel.getTitle(), null,
-                    this.config.closeOnTab && panel.isClosable());
+        var ti = this.tabs.addTab(
+                    panel.getEl().id,
+                    panel.getTitle(), null,
+                    this.config.closeOnTab && panel.isClosable()
+            );
         if(panel.tabTip !== undefined){
             ti.setTooltip(panel.tabTip);
         }
