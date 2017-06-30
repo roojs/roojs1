@@ -265,7 +265,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         }
         
         if(this.multiple){
-            combobox.cls += ' select2-container-multi';
+            combobox.cls += ' root-select2-container-multi';
         }
         
         if (align ==='left' && this.fieldLabel.length) {
