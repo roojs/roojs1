@@ -11,7 +11,7 @@
  
 /**
  * @class Roo.bootstrap.layout.Region
- * @extends Roo.BasicLayoutRegion
+ * @extends Roo.bootstrap.layout.Basic
  * This class represents a region in a layout manager.
  * @cfg {Boolean}   collapsible     False to disable collapsing (defaults to true)
  * @cfg {Boolean}   collapsed       True to set the initial display to collapsed (defaults to false)
