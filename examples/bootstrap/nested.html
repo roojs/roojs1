@@ -65,7 +65,8 @@ Example.Nested = new Roo.XComponent({
     {
         var _this = this;
         var MODULE = this;
-        return {	
+        return {
+            is_root : true,
             xtype : 'Border',
             xns : Roo.bootstrap.layout,
             el : document.body, // border layout can be applied to the outer one...
