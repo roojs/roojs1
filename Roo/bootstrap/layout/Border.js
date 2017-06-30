@@ -326,14 +326,14 @@ layout.addxtype({
                 if (region == 'center' && this.active && this.getRegion('center').panels.length < 1) {
                     cfg.background = false;
                 }
-                var layout = new Roo.bootstrap.layout.Border(clayout);
+                cfg.layout  = new Roo.bootstrap.layout.Border(clayout);
                 
-                ret = new Roo[cfg.xtype](layout, cfg); // new panel!!!!!
+                ret = new Roo[cfg.xtype](cfg); // new panel!!!!!
                 //console.log('adding nested layout panel '  + cfg.toSource());
                 this.add(region, ret);
                 nb = {}; /// find first...
                 break;
-                
+                /*
             case 'GridPanel': 
             
                 // needs grid and region
@@ -361,22 +361,23 @@ layout.addxtype({
                 }
                 break;
            
-           
+           */
            
                 
                 
                 
             default:
+                /*
                 if (typeof(Roo[cfg.xtype]) != 'undefined') {
                     
                     ret = new Roo[cfg.xtype](cfg); // new panel!!!!!
                     this.add(region, ret);
                 } else {
-                
+                */
                     alert("Can not add '" + cfg.xtype + "' to BorderLayout");
                     return null;
-                }
-                
+             
+                                
              // GridPanel (grid, cfg)
             
         }
