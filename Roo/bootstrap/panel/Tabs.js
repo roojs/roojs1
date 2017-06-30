@@ -110,6 +110,7 @@ Roo.bootstrap.panel.Tabs = function(config){
     // toolbar on the tabbar support...
     if (this.toolbar) {
         alert("no toolbar support yet");
+        this.toolbar  = false;
         /*
         var tcfg = this.toolbar;
         tcfg.container = this.stripEl.child('td.x-tab-strip-toolbar');  
