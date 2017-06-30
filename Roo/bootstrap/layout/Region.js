@@ -110,13 +110,14 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
                 this.collapseBtn = this.createTool(this.tools.dom, "roo-layout-collapse-"+this.position);
                 this.collapseBtn.on("click", this.collapse, this);
                 this.collapseBtn.enableDisplayMode();
-
+                /*
                 if(c.showPin === true || this.showPin){
-                    this.stickBtn = this.createTool(this.tools.dom, "x-layout-stick");
+                    this.stickBtn = this.createTool(this.tools.dom, "roo-layout-stick");
                     this.stickBtn.enableDisplayMode();
                     this.stickBtn.on("click", this.expand, this);
                     this.stickBtn.hide();
                 }
+                */
             }
             /** This region's collapsed element
             * @type Roo.Element */
