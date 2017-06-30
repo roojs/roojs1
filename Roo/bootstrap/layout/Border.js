@@ -23,7 +23,7 @@ the container size if it is not the body element.</b>
 * Create a new Border
 * @param {Object} config Configuration options
  */
-Roo.bootstrap.layout.Border= function(config){
+Roo.bootstrap.layout.Border = function(config){
     config = config || {};
     Roo.bootstrap.layout.Border.superclass.constructor.call(this, config);
     this.factory = config.factory || Roo.BorderLayout.RegionFactory;
@@ -36,7 +36,9 @@ Roo.bootstrap.layout.Border= function(config){
     }
 };
 
-Roo.extend(Roo.BorderLayout, Roo.LayoutManager, {
+Roo.bootstrap.layout.Border.regions = 
+
+Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
     /**
      * Creates and adds a new region if it doesn't already exist.
      * @param {String} target The target region key (north, south, east, west or center).
