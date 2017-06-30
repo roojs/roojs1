@@ -13,13 +13,10 @@
  * @class Roo.bootstrap.layout.Region
  * @extends Roo.bootstrap.layout.Basic
  * This class represents a region in a layout manager.
- * @cfg {Boolean}   collapsible     False to disable collapsing (defaults to true)
- * @cfg {Boolean}   collapsed       True to set the initial display to collapsed (defaults to false)
- * @cfg {Boolean}   floatable       False to disable floating (defaults to true)
+ 
  * @cfg {Object}    margins         Margins for the element (defaults to {top: 0, left: 0, right:0, bottom: 0})
  * @cfg {Object}    cmargins        Margins for the element when collapsed (defaults to: north/south {top: 2, left: 0, right:0, bottom: 2} or east/west {top: 0, left: 2, right:2, bottom: 0})
  * @cfg {String}    tabPosition     (top|bottom) "top" or "bottom" (defaults to "bottom")
- * @cfg {String}    collapsedTitle  Optional string message to display in the collapsed block of a north or south region
  * @cfg {Boolean}   alwaysShowTabs  True to always display tabs even when there is only 1 panel (defaults to false)
  * @cfg {Boolean}   autoScroll      True to enable overflow scrolling (defaults to false)
  * @cfg {Boolean}   titlebar        True to display a title bar (defaults to true)
@@ -33,7 +30,7 @@
  *                      the space available, similar to FireFox 1.5 tabs (defaults to false)
  * @cfg {Number}    minTabWidth     The minimum tab width (defaults to 40)
  * @cfg {Number}    preferredTabWidth The preferred tab width (defaults to 150)
- * @cfg {Boolean}   showPin         True to show a pin button NOT SUPPORTED YET
+
  * @cfg {Boolean}   hidden          True to start the region hidden (defaults to false)
  * @cfg {Boolean}   hideWhenEmpty   True to hide the region when it has no panels
  * @cfg {Boolean}   disableTabTips  True to disable tab tooltips
@@ -43,6 +40,14 @@
  * @cfg {Boolean}   toolbar         xtype configuration for a toolbar - shows on right of tabbar
  * @cfg {Roo.bootstrap.layout.Manager}   mgr The manager
  * @cfg {string}   region  the region that it inhabits..
+ *
+
+ * @cfg {Boolean}   collapsible     DISABLED False to disable collapsing (defaults to true)
+ * @cfg {Boolean}   collapsed       DISABLED True to set the initial display to collapsed (defaults to false)
+
+ * @xxxcfg {String}    collapsedTitle  DISABLED Optional string message to display in the collapsed block of a north or south region
+ * @xxxxcfg {Boolean}   floatable       DISABLED False to disable floating (defaults to true)
+ * @xxxxcfg {Boolean}   showPin         True to show a pin button NOT SUPPORTED YET
  */
 Roo.bootstrap.layout.Region = function(config)
 {
@@ -104,7 +109,7 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
 
     applyConfig : function(c)
     {
-        if(c.collapsible && this.position != "center" && !this.collapsedEl){
+        /*if(c.collapsible && this.position != "center" && !this.collapsedEl){
             var dh = Roo.DomHelper;
             if(c.titlebar !== false){
                 this.collapseBtn = this.createTool(this.tools.dom, "roo-layout-collapse-"+this.position);
@@ -121,9 +126,12 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
             }
             /** This region's collapsed element
             * @type Roo.Element */
+            /*
+             *
             this.collapsedEl = dh.append(this.mgr.el.dom, {cls: "x-layout-collapsed x-layout-collapsed-"+this.position, children:[
                 {cls: "x-layout-collapsed-tools", children:[{cls: "x-layout-ctools-inner"}]}
             ]}, true);
+            
             if(c.floatable !== false){
                this.collapsedEl.addClassOnOver("x-layout-collapsed-over");
                this.collapsedEl.on("click", this.collapseClick, this);
@@ -136,10 +144,13 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
              }
             this.expandBtn = this.createTool(this.collapsedEl.dom.firstChild.firstChild, "x-layout-expand-"+this.position);
             this.expandBtn.on("click", this.expand, this);
+            
         }
+        
         if(this.collapseBtn){
             this.collapseBtn.setVisible(c.collapsible == true);
         }
+        */
         this.cmargins = c.cmargins || this.cmargins ||
                          (this.position == "west" || this.position == "east" ?
                              {top: 0, left: 2, right:2, bottom: 0} :
