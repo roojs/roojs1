@@ -133,7 +133,8 @@ Roo.Roo.bootstrap.layout.Basic = function(config){
     }
 };
 
-Roo.extend(Roo.BasicLayoutRegion, Roo.util.Observable, {
+Roo.extend(Roo.BasicLayoutRegion, Roo.util.Observable,
+{
     getPanelId : function(p){
         return p.getId();
     },
