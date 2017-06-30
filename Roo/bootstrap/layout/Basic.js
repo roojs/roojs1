@@ -122,7 +122,7 @@ Roo.bootstrap.layout.Basic = function(config){
     // ensure listeners are added...
     
     if (config.listeners || config.events) {
-        Roo.Roo.bootstrap.layout.Basic.superclass.constructor.call(this, {
+        Roo.bootstrap.layout.Basic.superclass.constructor.call(this, {
             listeners : config.listeners || {},
             events : config.events || {}
         });
@@ -133,7 +133,7 @@ Roo.bootstrap.layout.Basic = function(config){
     }
 };
 
-Roo.extend(Roo.Roo.bootstrap.layout.Basic, Roo.util.Observable,
+Roo.extend(Roo.bootstrap.layout.Basic, Roo.util.Observable,
 {
     getPanelId : function(p){
         return p.getId();
