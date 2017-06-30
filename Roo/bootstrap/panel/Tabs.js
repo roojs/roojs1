@@ -495,6 +495,7 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
             return {"el": el, "close": close, "inner": inner};
         } else {
         */
+        // not sure what this is..
             if(!this.tabTpl){
                 this.tabTpl = new Roo.Template(
                    '<a href="#" class="x-tabs-right"><span class="x-tabs-left"><em class="x-tabs-inner">' +
