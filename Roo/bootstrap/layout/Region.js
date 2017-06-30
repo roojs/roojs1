@@ -98,10 +98,12 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         * @type Roo.Element */
         this.bodyEl = this.el.createChild({
                 tag: "div",
-                cls: "roo-layout-panel-body tab-content"});
+                cls: "roo-layout-panel-body tab-content" // bootstrap added...
+        });
     },
 
-    applyConfig : function(c){
+    applyConfig : function(c)
+    {
         if(c.collapsible && this.position != "center" && !this.collapsedEl){
             var dh = Roo.DomHelper;
             if(c.titlebar !== false){
