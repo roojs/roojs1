@@ -26,7 +26,7 @@ the container size if it is not the body element.</b>
 Roo.bootstrap.layout.Border = function(config){
     config = config || {};
     Roo.bootstrap.layout.Border.superclass.constructor.call(this, config);
-    this.factory = config.factory || Roo.BorderLayout.RegionFactory;
+    
     
     Roo.each(Roo.bootstrap.layout.Border.regions, function(target) {
         if(config[target]){
