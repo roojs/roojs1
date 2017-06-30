@@ -16,12 +16,12 @@
  * @extends Roo.LayoutRegion
  * Adds a splitbar and other (private) useful functionality to a {@link Roo.LayoutRegion}.
  */
-Roo.SplitLayoutRegion = function(mgr, config, pos, cursor){
+Roo.bootstrap.layout.Split = function(mgr, config, pos, cursor){
     this.cursor = cursor;
-    Roo.SplitLayoutRegion.superclass.constructor.call(this, mgr, config, pos);
+    Roo.bootstrap.layout.Split.superclass.constructor.call(this, mgr, config, pos);
 };
 
-Roo.extend(Roo.SplitLayoutRegion, Roo.LayoutRegion, {
+Roo.extend(Roo.bootstrap.layout.Split, Roo.bootstrap.layout.Region, {
     splitTip : "Drag to resize.",
     collapsibleSplitTip : "Drag to resize. Double click to hide.",
     useSplitTips : false,
