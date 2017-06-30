@@ -84,10 +84,10 @@ Roo.bootstrap.panel.TabItem = function(config){
     });
     this.hidden = false;
 
-    Roo.TabPanelItem.superclass.constructor.call(this);
+    Roo.bootstrap.panel.TabItem.superclass.constructor.call(this);
 };
 
-Roo.extend(Roo.TabPanelItem, Roo.util.Observable, {
+Roo.extend(Roo.bootstrap.panel.TabItem, Roo.util.Observable, {
     purgeListeners : function(){
        Roo.util.Observable.prototype.purgeListeners.call(this);
        this.el.removeAllListeners();
