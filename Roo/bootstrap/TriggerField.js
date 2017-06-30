@@ -202,11 +202,11 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                     },
                     {
                         tag: 'ul',
-                        cls: 'root-select2-choices',
+                        cls: 'roo-select2-choices',
                         cn:[
                             {
                                 tag: 'li',
-                                cls: 'root-select2-search-field',
+                                cls: 'roo-select2-search-field',
                                 cn: [
 
                                     inputblock
@@ -219,7 +219,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         };
         
         var combobox = {
-            cls: 'root-select2-container input-group',
+            cls: 'roo-select2-container input-group',
             cn: [
                 box
 //                {
