@@ -113,7 +113,8 @@ Roo.bootstrap.layout.South = function(config){
         this.el.setHeight(size);
     }
 };
-Roo.extend(Roo.SouthLayoutRegion, Roo.bootstrap.layout.Split, {
+
+Roo.extend(Roo.bootstrap.layout.South, Roo.bootstrap.layout.Split, {
    //orientation: Roo.SplitBar.VERTICAL,
     getBox : function(){
         if(this.collapsed){
@@ -140,7 +141,7 @@ Roo.extend(Roo.SouthLayoutRegion, Roo.bootstrap.layout.Split, {
         if(this.collapsed){
             this.updateBody(box.width, null);
         }
-        Roo.LayoutRegion.prototype.updateBox.call(this, box);
+        Roo.bootstrap.layout.Region.prototype.updateBox.call(this, box);
     }
 });
 
