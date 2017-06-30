@@ -1772,7 +1772,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.loading === null){
             this.list.createChild({
                 tag: 'div',
-                cls: 'loading select2-more-results select2-active',
+                cls: 'loading roo-select2-more-results roo-select2-active',
                 html: 'Loading more results...'
             });
             
@@ -1812,7 +1812,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var choice = this.choices.createChild({
             tag: 'li',
-            cls: 'select2-search-choice',
+            cls: 'roo-select2-search-choice',
             cn: [
                 {
                     tag: 'div',
