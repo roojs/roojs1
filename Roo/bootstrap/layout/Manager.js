@@ -68,6 +68,9 @@ Roo.extend(Roo.bootstrap.layout.Manager, Roo.util.Observable, {
     
     monitorWindowResize : true,
     
+    
+    updating : false,
+    
     /**
      * Returns true if this layout is currently being updated
      * @return {Boolean}
@@ -96,7 +99,7 @@ Roo.extend(Roo.bootstrap.layout.Manager, Roo.util.Observable, {
     },
     
     layout: function(){
-        
+        // abstract...
     },
     
     onRegionResized : function(region, newSize){
