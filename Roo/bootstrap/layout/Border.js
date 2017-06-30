@@ -374,7 +374,8 @@ layout.addxtype({
                     this.add(region, ret);
                 } else {
                 */
-                    alert("Can not add '" + cfg.xtype + "' to Border");
+                    Roo.log(cfg);
+                    throw "Can not add '" + cfg.xtype + "' to Border";
                     return null;
              
                                 
