@@ -2100,14 +2100,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         };
         
         var combobox = {
-            cls: 'select2-container input-group',
+            cls: 'roo-select2-container input-group',
             cn: [
                 box
             ]
         };
         
         if(this.multiple){
-            combobox.cls += ' select2-container-multi';
+            combobox.cls += ' roo-select2-container-multi';
         }
         
         var align = this.labelAlign || this.parentLabelAlign();
@@ -2180,8 +2180,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         if(this.multiple){
-            this.choices = this.el.select('ul.select2-choices', true).first();
-            this.searchField = this.el.select('ul li.select2-search-field', true).first();
+            this.choices = this.el.select('ul.roo-select2-choices', true).first();
+            this.searchField = this.el.select('ul li.roo-select2-search-field', true).first();
         }
         
         if(this.removable && !this.multiple){
