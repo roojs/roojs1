@@ -8,7 +8,7 @@
  * @param {String} text The text for the tab of this TabPanelItem
  * @param {Boolean} closable True to allow this TabPanelItem to be closable (defaults to false)
  */
-Roo.bootstrap.panel.TabItem = function(tabPanel, id, text, closable){
+Roo.bootstrap.panel.TabItem = function(config tabPanel, id, text, closable){
     /**
      * The {@link Roo.TabPanel} this TabPanelItem belongs to
      * @type Roo.TabPanel
@@ -18,14 +18,14 @@ Roo.bootstrap.panel.TabItem = function(tabPanel, id, text, closable){
      * The id for this TabPanelItem
      * @type String
      */
-    this.id = id;
+    this.id = config.id;
     /** @private */
     this.disabled = false;
     /** @private */
-    this.text = text;
+    this.text = config.text;
     /** @private */
     this.loaded = false;
-    this.closable = closable;
+    this.closable = config.closable;
 
     /**
      * The body element for this TabPanelItem.
