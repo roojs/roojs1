@@ -32,6 +32,7 @@ Roo.extend(Roo.bootstrap.layout.Split, Roo.bootstrap.layout.Region,
         
         if(config.split){
             if(!this.split){
+                alerT("not split yet!");
                 var splitEl = Roo.DomHelper.append(this.mgr.el.dom,  {
                                 tag: "div",
                                 id: this.el.id + "-split",
