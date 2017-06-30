@@ -21,13 +21,14 @@
  * 
 
  */
-Roo.Roo.bootstrap.layout.Basic = function(config mgr, config, pos, skipConfig){
+Roo.Roo.bootstrap.layout.Basic = function(config){
     
     this.mgr = config.mgr;
     
     this.position = config.region;
     
-    var skipConfig = config.skipConfig
+    var skipConfig = config.skipConfig;
+    
     this.events = {
         /**
          * @scope Roo.BasicLayoutRegion
@@ -121,7 +122,7 @@ Roo.Roo.bootstrap.layout.Basic = function(config mgr, config, pos, skipConfig){
     // ensure listeners are added...
     
     if (config.listeners || config.events) {
-        Roo.BasicLayoutRegion.superclass.constructor.call(this, {
+        Roo.Roo.bootstrap.layout.Basic.superclass.constructor.call(this, {
             listeners : config.listeners || {},
             events : config.events || {}
         });
