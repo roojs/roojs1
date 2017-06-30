@@ -475,7 +475,8 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
         return body;
     },
     /** @private */
-    createStripElements :  function(stripEl, text, closable){
+    createStripElements :  function(stripEl, text, closable)
+    {
         var td = document.createElement("td");
         stripEl.insertBefore(td, stripEl.childNodes[stripEl.childNodes.length-1]);
         //stripEl.appendChild(td);
