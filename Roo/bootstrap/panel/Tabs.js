@@ -458,7 +458,8 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
     {
         var body = document.createElement("div");
         Roo.id(body, "tab-body");
-        Roo.fly(body).addClass("x-tabs-body");
+        //Roo.fly(body).addClass("x-tabs-body");
+        Roo.fly(body).addClass("tab-content");
         container.appendChild(body);
         return body;
     },
