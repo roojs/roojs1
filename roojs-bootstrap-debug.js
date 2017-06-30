@@ -9286,11 +9286,11 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                     },
                     {
                         tag: 'ul',
-                        cls: 'select2-choices',
+                        cls: 'roo-select2-choices',
                         cn:[
                             {
                                 tag: 'li',
-                                cls: 'select2-search-field',
+                                cls: 'roo-select2-search-field',
                                 cn: [
 
                                     inputblock
@@ -9303,7 +9303,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         };
         
         var combobox = {
-            cls: 'select2-container input-group',
+            cls: 'roo-select2-container input-group',
             cn: [
                 box
 //                {
@@ -9349,7 +9349,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         }
         
         if(this.multiple){
-            combobox.cls += ' select2-container-multi';
+            combobox.cls += ' roo-select2-container-multi';
         }
         
         if (align ==='left' && this.fieldLabel.length) {
@@ -12045,7 +12045,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.editable){
             buttons.cn.unshift({
                 tag: 'input',
-                cls: 'select2-search-field-input'
+                cls: 'roo-select2-search-field-input'
             });
         }
         
@@ -12071,11 +12071,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 },
                 {
                     tag: 'ul',
-                    cls: 'select2-choices',
+                    cls: 'roo-select2-choices',
                     cn:[
                         {
                             tag: 'li',
-                            cls: 'select2-search-field',
+                            cls: 'roo-select2-search-field',
                             cn: [
 
                                 buttons
@@ -12087,7 +12087,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         };
         
         var combobox = {
-            cls: 'select2-container input-group select2-container-multi',
+            cls: 'roo-select2-container input-group roo-select2-container-multi',
             cn: [
                 box
 //                {
@@ -12428,8 +12428,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         if(this.multiple){
-            this.choices = this.el.select('ul.select2-choices', true).first();
-            this.searchField = this.el.select('ul li.select2-search-field', true).first();
+            this.choices = this.el.select('ul.roo-select2-choices', true).first();
+            this.searchField = this.el.select('ul li.roo-select2-search-field', true).first();
         }
     },
     
@@ -12454,8 +12454,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
 //        this.list = this.el.select('ul.dropdown-menu',true).first();
         
-        this.choices = this.el.select('ul.select2-choices', true).first();
-        this.searchField = this.el.select('ul li.select2-search-field', true).first();
+        this.choices = this.el.select('ul.roo-select2-choices', true).first();
+        this.searchField = this.el.select('ul li.roo-select2-search-field', true).first();
         if(this.triggerList){
             this.searchField.on("click", this.onSearchFieldClick, this, {preventDefault:true});
         }
@@ -12489,7 +12489,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.list.on('scroll', this.onViewScroll, this);
         
         if(!this.tpl){
-            this.tpl = '<li class="select2-result"><div class="checkbox"><input id="{roo-id}" type="checkbox" {roo-data-checked}><label for="{roo-id}"><b>{' + this.displayField + '}</b></label></li>';
+            this.tpl = '<li class="roo-select2-result"><div class="checkbox"><input id="{roo-id}" type="checkbox" {roo-data-checked}><label for="{roo-id}"><b>{' + this.displayField + '}</b></label></li>';
         }
 
         this.view = new Roo.View(this.list, this.tpl, {
@@ -13427,7 +13427,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.loading === null){
             this.list.createChild({
                 tag: 'div',
-                cls: 'loading select2-more-results select2-active',
+                cls: 'loading roo-select2-more-results roo-select2-active',
                 html: 'Loading more results...'
             });
             
@@ -13467,7 +13467,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var choice = this.choices.createChild({
             tag: 'li',
-            cls: 'select2-search-choice',
+            cls: 'roo-select2-search-choice',
             cn: [
                 {
                     tag: 'div',
@@ -13476,14 +13476,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 {
                     tag: 'a',
                     href: '#',
-                    cls: 'select2-search-choice-close',
+                    cls: 'roo-select2-search-choice-close',
                     tabindex: '-1'
                 }
             ]
             
         }, this.searchField);
         
-        var close = choice.select('a.select2-search-choice-close', true).first();
+        var close = choice.select('a.roo-select2-search-choice-close', true).first();
         
         close.on('click', this.onRemoveItem, this, { item : choice, data : o} );
         
@@ -13557,7 +13557,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.item = [];
         
-        Roo.each(this.choices.select('>li.select2-search-choice', true).elements, function(c){
+        Roo.each(this.choices.select('>li.roo-select2-search-choice', true).elements, function(c){
            c.remove();
         });
         
@@ -13631,7 +13631,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return this.inputEl();
         }
         
-        return this.inputEl().select('.select2-search-field-input', true).first();
+        return this.inputEl().select('.roo-select2-search-field-input', true).first();
     },
     
     
@@ -13738,11 +13738,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     },
                     {
                         tag: 'ul',
-                        cls: 'select2-choices',
+                        cls: 'roo-select2-choices',
                         cn:[
                             {
                                 tag: 'li',
-                                cls: 'select2-search-field',
+                                cls: 'roo-select2-search-field',
                                 cn: [
 
                                     inputblock
@@ -13755,14 +13755,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         };
         
         var combobox = {
-            cls: 'select2-container input-group',
+            cls: 'roo-select2-container input-group',
             cn: [
                 box
             ]
         };
         
         if(this.multiple){
-            combobox.cls += ' select2-container-multi';
+            combobox.cls += ' roo-select2-container-multi';
         }
         
         var align = this.labelAlign || this.parentLabelAlign();
@@ -13835,8 +13835,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         if(this.multiple){
-            this.choices = this.el.select('ul.select2-choices', true).first();
-            this.searchField = this.el.select('ul li.select2-search-field', true).first();
+            this.choices = this.el.select('ul.roo-select2-choices', true).first();
+            this.searchField = this.el.select('ul li.roo-select2-search-field', true).first();
         }
         
         if(this.removable && !this.multiple){
@@ -28082,7 +28082,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
             mode : 'local',
             placeholder : this.dayPlaceholder,
             selectOnFocus : true,
-            tpl : '<div class="select2-result"><b>{value}</b></div>',
+            tpl : '<div class="roo-select2-result"><b>{value}</b></div>',
             triggerAction : 'all',
             typeAhead : true,
             valueField : 'value',
@@ -28136,7 +28136,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
             mode : 'local',
             placeholder : this.yearPlaceholder,
             selectOnFocus : true,
-            tpl : '<div class="select2-result"><b>{value}</b></div>',
+            tpl : '<div class="roo-select2-result"><b>{value}</b></div>',
             triggerAction : 'all',
             typeAhead : true,
             valueField : 'value',
