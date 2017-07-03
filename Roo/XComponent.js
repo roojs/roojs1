@@ -249,7 +249,8 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
 		// The 'tree' method is  '_tree now' 
             
         tree.region = tree.region || this.region;
-        var is_body = false;
+        var is_body = tree_el === document.body;
+        
         if (this.parent.el === true) {
             // bootstrap... - body..
             this.parent.el = Roo.factory(tree);
