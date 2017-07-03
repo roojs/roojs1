@@ -31,13 +31,13 @@ Roo.bootstrap.panel.TabItem = function(config){
      * The body element for this TabPanelItem.
      * @type Roo.Element
      */
-    this.bodyEl = Roo.get(tabPanel.createItemBody(tabPanel.bodyEl.dom, id));
+    this.bodyEl = Roo.get(this.tabPanel.createItemBody(this.tabPanel.bodyEl.dom, id));
     this.bodyEl.setVisibilityMode(Roo.Element.VISIBILITY);
     this.bodyEl.setStyle("display", "block");
     this.bodyEl.setStyle("zoom", "1");
     this.hideAction();
 
-    var els = tabPanel.createStripElements(tabPanel.stripEl.dom, text, closable);
+    var els = this.tabPanel.createStripElements(this.tabPanel.stripEl.dom, text, closable);
     /** @private */
     this.el = Roo.get(els.el, true);
     this.inner = Roo.get(els.inner, true);
