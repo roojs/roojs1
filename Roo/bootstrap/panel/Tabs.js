@@ -511,7 +511,7 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
                 
             }
             var el = this.tabTpl.overwrite(td, {"text": text});
-            var inner = el.getElementsByTagName("em")[0];
+            var inner = el.getElementsByTagName("span")[0];
             return {"el": el, "inner": inner};
         //}
     }
