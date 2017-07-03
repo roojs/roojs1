@@ -58,7 +58,7 @@ Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
 
     // private (kinda)
     bindRegion : function(r){
-        this.regions[r.target] = r;
+        this.regions[r.config.region] = r;
         
         r.on("visibilitychange",    this.layout, this);
         r.on("paneladded",          this.layout, this);
