@@ -478,7 +478,7 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
     /** @private */
     createStripElements :  function(stripEl, text, closable)
     {
-        var td = document.createElement("div"); // was td..
+        var td = document.createElement("li"); // was td..
         stripEl.insertBefore(td, stripEl.childNodes[stripEl.childNodes.length-1]);
         //stripEl.appendChild(td);
         /*if(closable){
@@ -503,10 +503,10 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
                 //   '<span unselectable="on"' + (this.disableTooltips ? '' : ' title="{text}"') +' class="x-tabs-text">{text}</span></em></span></a>'
                 //);
                 this.tabTpl = new Roo.Template(
-                   '<li><a href="#">' +
+                   '<a href="#">' +
                    '<span unselectable="on"' +
                             (this.disableTooltips ? '' : ' title="{text}"') +
-                            ' >{text}</span></span></a></li>'
+                            ' >{text}</span></span></a>'
                 );
                 
             }
