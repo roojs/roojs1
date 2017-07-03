@@ -52,6 +52,7 @@ Roo.bootstrap.panel.Tabs = function(config){
     * @type Roo.Element
     */
     this.el = Roo.get(config.el);
+    delete config.el;
     if(config){
         if(typeof config == "boolean"){
             this.tabPosition = config ? "bottom" : "top";
