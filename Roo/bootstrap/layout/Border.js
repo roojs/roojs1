@@ -328,7 +328,8 @@ layout.addxtype({
                 }
                 cfg.layout  = new Roo.bootstrap.layout.Border(clayout);
                 
-                ret = new Roo[cfg.xtype](cfg); // new panel!!!!!
+                
+                ret = new cfg.xns[cfg.xtype](cfg); // new panel!!!!!
                 //console.log('adding nested layout panel '  + cfg.toSource());
                 this.add(region, ret);
                 nb = {}; /// find first...
