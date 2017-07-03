@@ -228,12 +228,12 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
     addTabItem : function(item){
         this.items[item.id] = item;
         this.items.push(item);
-        if(this.resizeTabs){
-           item.setWidth(this.currentTabWidth || this.preferredTabWidth);
-           this.autoSizeTabs();
-        }else{
-            item.autoSize();
-        }
+      //  if(this.resizeTabs){
+    //       item.setWidth(this.currentTabWidth || this.preferredTabWidth);
+  //         this.autoSizeTabs();
+//        }else{
+//            item.autoSize();
+       // }
     },
 
     /**
