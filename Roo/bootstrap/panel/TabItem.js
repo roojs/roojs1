@@ -37,7 +37,7 @@ Roo.bootstrap.panel.TabItem = function(config){
     this.bodyEl.setStyle("zoom", "1");
     //this.hideAction();
 
-    var els = this.tabPanel.createStripElements(this.tabPanel.stripEl.dom, text, closable);
+    var els = this.tabPanel.createStripElements(this.tabPanel.stripEl.dom, config.text, config.closable);
     /** @private */
     this.el = Roo.get(els.el, true);
     this.inner = Roo.get(els.inner, true);
