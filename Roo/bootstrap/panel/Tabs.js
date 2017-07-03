@@ -76,7 +76,7 @@ Roo.bootstrap.panel.Tabs = function(config){
          * @type Roo.Element
          */
         this.bodyEl = Roo.get(this.createBody(this.el.dom));
-        this.el.addClass("x-tabs-top");
+        this.el.addClass("roo-tabs-top");
     }
     this.items = [];
 
