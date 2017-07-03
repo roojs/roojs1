@@ -158,7 +158,7 @@ Roo.extend(Roo.bootstrap.panel.TabItem, Roo.util.Observable,
         e.preventDefault();
         this.tabPanel.activate(this.id);
     },
-
+/*
     getWidth : function(){
         return this.inner.getWidth();
     },
@@ -169,7 +169,7 @@ Roo.extend(Roo.bootstrap.panel.TabItem, Roo.util.Observable,
         this.textEl.setWidth(iwidth-this.inner.getPadding("lr"));
         this.pnode.setWidth(width);
     },
-
+*/
     /**
      * Show or hide the tab
      * @param {Boolean} hidden True to hide or false to show.
