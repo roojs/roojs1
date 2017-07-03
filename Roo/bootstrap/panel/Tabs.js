@@ -126,7 +126,7 @@ Roo.bootstrap.panel.Tabs = function(config){
    
 
 
-    Roo.TabPanel.superclass.constructor.call(this);
+    Roo.bootstrap.panel.Tabs.superclass.constructor.call(this);
 };
 
 Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
