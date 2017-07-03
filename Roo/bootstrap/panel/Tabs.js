@@ -503,10 +503,10 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
                 //   '<span unselectable="on"' + (this.disableTooltips ? '' : ' title="{text}"') +' class="x-tabs-text">{text}</span></em></span></a>'
                 //);
                 this.tabTpl = new Roo.Template(
-                   '<a href="#">' +
+                   '<li><a href="#">' +
                    '<span unselectable="on"' +
                             (this.disableTooltips ? '' : ' title="{text}"') +
-                            ' >{text}</span></span></a>'
+                            ' >{text}</span></span></a></li>'
                 );
                 
             }
