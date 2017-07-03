@@ -46,7 +46,7 @@ Roo.bootstrap.panel.TabItem = function(config){
     this.el.on("mousedown", this.onTabMouseDown, this);
     this.el.on("click", this.onTabClick, this);
     /** @private */
-    if(closable){
+    if(config.closable){
         var c = Roo.get(els.close, true);
         c.dom.title = this.closeText;
         c.addClassOnOver("close-over");
