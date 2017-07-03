@@ -40,8 +40,7 @@ Roo.bootstrap.panel.Content = function( config){
     var el = config.el;
     var content = config.content;
 
-    if(el.autoCreate){ // xtype is available if this is called from factory
-        config = el;
+    if(config.autoCreate){ // xtype is available if this is called from factory
         el = Roo.id();
     }
     this.el = Roo.get(el);
