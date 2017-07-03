@@ -44,7 +44,7 @@ Roo.bootstrap.panel.Content = function( config){
         el = Roo.id();
     }
     this.el = Roo.get(el);
-    if(!this.el && config && config.autoCreate){
+   /* if(!this.el && config && config.autoCreate){
         if(typeof config.autoCreate == "object"){
             if(!config.autoCreate.id){
                 config.autoCreate.id = config.id||el;
@@ -52,10 +52,11 @@ Roo.bootstrap.panel.Content = function( config){
             this.el = Roo.DomHelper.append(document.body,
                         config.autoCreate, true);
         }else{
+        */
             this.el = Roo.DomHelper.append(document.body,
                         {tag: "div", cls: "roo-panel-content roo-layout-inactive-content", id: config.id||el}, true);
-        }
-    }
+        //}
+    //}
     this.closable = false;
     this.loaded = false;
     this.active = false;
