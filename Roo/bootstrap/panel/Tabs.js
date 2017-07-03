@@ -498,10 +498,17 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
         */
         // not sure what this is..
             if(!this.tabTpl){
+                //this.tabTpl = new Roo.Template(
+                //   '<a href="#" class="x-tabs-right"><span class="x-tabs-left"><em class="x-tabs-inner">' +
+                //   '<span unselectable="on"' + (this.disableTooltips ? '' : ' title="{text}"') +' class="x-tabs-text">{text}</span></em></span></a>'
+                //);
                 this.tabTpl = new Roo.Template(
-                   '<a href="#" class="x-tabs-right"><span class="x-tabs-left"><em class="x-tabs-inner">' +
-                   '<span unselectable="on"' + (this.disableTooltips ? '' : ' title="{text}"') +' class="x-tabs-text">{text}</span></em></span></a>'
+                   '<li><a href="#">' +
+                   '<span unselectable="on"' +
+                            (this.disableTooltips ? '' : ' title="{text}"') +
+                            ' >{text}</span></span></a>'
                 );
+                
             }
             var el = this.tabTpl.overwrite(td, {"text": text});
             var inner = el.getElementsByTagName("em")[0];
