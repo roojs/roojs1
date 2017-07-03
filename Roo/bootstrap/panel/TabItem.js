@@ -35,7 +35,7 @@ Roo.bootstrap.panel.TabItem = function(config){
     this.bodyEl.setVisibilityMode(Roo.Element.VISIBILITY);
     this.bodyEl.setStyle("display", "block");
     this.bodyEl.setStyle("zoom", "1");
-    this.hideAction();
+    //this.hideAction();
 
     var els = this.tabPanel.createStripElements(this.tabPanel.stripEl.dom, text, closable);
     /** @private */
