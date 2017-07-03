@@ -194,7 +194,7 @@ Roo.extend(Roo.bootstrap.panel.TabItem, Roo.util.Observable,
     getText : function(){
         return this.text;
     },
-
+    /*
     autoSize : function(){
         //this.el.beginMeasure();
         this.textEl.setWidth(1);
@@ -202,9 +202,9 @@ Roo.extend(Roo.bootstrap.panel.TabItem, Roo.util.Observable,
          *  #2804 [new] Tabs in Roojs
          *  increase the width by 2-4 pixels to prevent the ellipssis showing in chrome
          */
-        this.setWidth(this.textEl.dom.scrollWidth+this.pnode.getPadding("lr")+this.inner.getPadding("lr") + 2);
+        //this.setWidth(this.textEl.dom.scrollWidth+this.pnode.getPadding("lr")+this.inner.getPadding("lr") + 2);
         //this.el.endMeasure();
-    },
+    //},
 
     /**
      * Sets the text for the tab (Note: this also sets the tooltip text)
