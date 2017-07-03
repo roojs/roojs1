@@ -53,7 +53,7 @@ Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
             var r = this.factory(config);
     	    this.bindRegion(r);
         }
-        return this.regions[config.target];
+        return this.regions[config.region];
     },
 
     // private (kinda)
