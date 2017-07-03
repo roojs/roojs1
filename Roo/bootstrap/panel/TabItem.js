@@ -214,9 +214,9 @@ Roo.extend(Roo.bootstrap.panel.TabItem, Roo.util.Observable,
         this.text = text;
         this.textEl.update(text);
         this.setTooltip(text);
-        if(!this.tabPanel.resizeTabs){
-            this.autoSize();
-        }
+        //if(!this.tabPanel.resizeTabs){
+        //    this.autoSize();
+        //}
     },
     /**
      * Activates this TabPanelItem -- this <b>does</b> deactivate the currently active TabPanelItem.
