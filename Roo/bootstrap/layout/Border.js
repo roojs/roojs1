@@ -28,6 +28,7 @@ Roo.bootstrap.layout.Border = function(config){
     Roo.bootstrap.layout.Border.superclass.constructor.call(this, config);
     
     
+    
     Roo.each(Roo.bootstrap.layout.Border.regions, function(region) {
         if(config[region]){
             config[region].region = region;
