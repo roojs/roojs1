@@ -39,7 +39,7 @@ Roo.bootstrap.panel.TabItem = function(config){
 
     var els = this.tabPanel.createStripElements(this.tabPanel.stripEl.dom, config.text, config.closable);
     /** @private */
-    this.el = Roo.get(els.el, true);
+    this.el = Roo.get(els.el);
     this.inner = Roo.get(els.inner, true);
     this.textEl = Roo.get(this.el.dom.firstChild.firstChild.firstChild, true);
     this.pnode = Roo.get(els.el.parentNode, true);
