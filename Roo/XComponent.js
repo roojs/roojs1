@@ -204,7 +204,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
 
         // altertive root elements ??? - we need a better way to indicate these.
         var is_alt = Roo.XComponent.is_alt ||
-                    typeof(tree.el) != 'undefined' && tree.el == document.body) ||
+                    (typeof(tree.el) != 'undefined' && tree.el == document.body) ||
                     (typeof(Roo.bootstrap) != 'undefined' && tree.xns == Roo.bootstrap) ||
                     (typeof(Roo.mailer) != 'undefined' && tree.xns == Roo.mailer) ;
         
