@@ -208,11 +208,11 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                     (typeof(Roo.bootstrap) != 'undefined' && tree.xns == Roo.bootstrap) ||
                     (typeof(Roo.mailer) != 'undefined' && tree.xns == Roo.mailer) ;
         
-        var tree_el = (typeof(tree.el) != 'undefined' && tree.el == document.body) ? document.body : true;
+        
         
         if (!this.parent && is_alt) {
             //el = Roo.get(document.body);
-            this.parent = { el : tree_el };
+            this.parent = { el : true };
         }
             
             
@@ -249,8 +249,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
 		// The 'tree' method is  '_tree now' 
             
         tree.region = tree.region || this.region;
-        var is_body = tree_el === document.body;
-        
+        var is_body = false;
         if (this.parent.el === true) {
             // bootstrap... - body..
             this.parent.el = Roo.factory(tree);
