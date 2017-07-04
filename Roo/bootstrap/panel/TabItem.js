@@ -97,7 +97,7 @@ Roo.extend(Roo.bootstrap.panel.TabItem, Roo.util.Observable,
      * Shows this TabPanelItem -- this <b>does not</b> deactivate the currently active TabPanelItem.
      */
     show : function(){
-        this.pnode.addClass("on");
+        this.pnode.addClass("active");
         this.showAction();
         if(Roo.isOpera){
             this.tabPanel.stripWrap.repaint();
@@ -117,7 +117,7 @@ Roo.extend(Roo.bootstrap.panel.TabItem, Roo.util.Observable,
      * Hides this TabPanelItem -- if you don't activate another TabPanelItem this could look odd.
      */
     hide : function(){
-        this.pnode.removeClass("on");
+        this.pnode.removeClass("active");
         this.hideAction();
         this.fireEvent("deactivate", this.tabPanel, this);
     },
