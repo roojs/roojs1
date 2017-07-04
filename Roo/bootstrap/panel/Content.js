@@ -420,6 +420,11 @@ layout.addxtype({
      */
     
     addxtype : function(cfg) {
+        
+        var  ret = new Roo.factory(cfg);
+        return ret;
+        
+        
         // add form..
         if (cfg.xtype.match(/^Form$/)) {
             
