@@ -38,13 +38,14 @@ Roo.bootstrap.SplitBar = function(cfg){
     
     /** @private */
     
-    {   dragElement : elm
-        resizingElement: el,
+    //{
+    //  dragElement : elm
+    //  resizingElement: el,
         // optional..
-        orientation : Either Roo.bootstrap.SplitBar.HORIZONTAL
-        placement : Roo.bootstrap.SplitBar.LEFT  ,
+    //    orientation : Either Roo.bootstrap.SplitBar.HORIZONTAL
+    //    placement : Roo.bootstrap.SplitBar.LEFT  ,
         // existingProxy ???
-    }
+    //}
     
     this.el = Roo.get(cfg.dragElement, true);
     this.el.dom.unselectable = "on";
