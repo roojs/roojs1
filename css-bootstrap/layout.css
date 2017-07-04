@@ -102,7 +102,12 @@ roo-layout-collapse-{east|west|center|south|north}
     z-index:3;
     background-color:#f5f5f5;
 }
-
+.roo-layout-split-south, .roo-layout-split-north {
+    border-bottom 1px oslid #ddd;
+}
+.roo-layout-split-east, .roo-layout-split-west {
+    border-right: 1px oslid #ddd;
+}
  
 
 .roo-layout-panel-hd{
