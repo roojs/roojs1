@@ -253,21 +253,22 @@ roo-layout-collapse-{east|west|center|south|north}
 }
 
 /** --- split bar dragging ---*/
-/*
-.x-splitbar-proxy{
+
+.roo-splitbar-proxy{
         z-index:40009;
         visibility:hidden;
         position:absolute;
-        background:#666;
+        background:#f6f6f6;
         border: 1px solid #000;
         overflow:hidden;
 }
-.x-splitbar-h,.x-splitbar-proxy-h{
+.roo-splitbar-h,.roo-splitbar-proxy-h{
     cursor:col-resize;
 }
-.x-splitbar-v,.x-splitbar-proxy-v{
+.roo-splitbar-v,.roo-splitbar-proxy-v{
     cursor:row-resize;
 }
+/*
 .x-grid-resize-proxy
 {
         z-index:40009;
