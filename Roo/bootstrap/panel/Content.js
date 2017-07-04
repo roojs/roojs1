@@ -420,7 +420,7 @@ layout.addxtype({
      */
     
     addxtype : function(cfg) {
-        Roo.bootstrap.Component.addxtype.call(this,cfg);
+        Roo.bootstrap.Component.prototype.addxtype.call(this,cfg);
     }
     /*
         var  ret = new Roo.factory(cfg);
