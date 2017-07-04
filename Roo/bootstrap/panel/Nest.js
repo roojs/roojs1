@@ -9,7 +9,7 @@
  * @param {Roo.BorderLayout} layout The layout for this panel
  * @param {String/Object} config A string to set only the title or a config object
  */
-Roo.NestedLayoutPanel = function(layout, config)
+Roo.boostrap.panel.Nest = function(layout, config)
 {
     // construct with only one argument..
     /* FIXME - implement nicer consturctors
@@ -25,7 +25,7 @@ Roo.NestedLayoutPanel = function(layout, config)
     */
     
     
-    Roo.NestedLayoutPanel.superclass.constructor.call(this, layout.getEl(), config);
+    Roo.boostrap.panel.Nest.superclass.constructor.call(this, layout.getEl(), config);
     
     layout.monitorWindowResize = false; // turn off autosizing
     this.layout = layout;
