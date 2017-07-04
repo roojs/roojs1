@@ -281,3 +281,11 @@ roo-layout-collapse-{east|west|center|south|north}
 
 
 */
+.roo-layout-panel-body  .navbar ul.nav-tabs {
+    margin-top: 9px;
+    display: table;
+}
+
+.roo-layout-panel-body  .navbar {
+    margin-bottom: 0px;
+}
