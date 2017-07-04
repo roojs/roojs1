@@ -472,6 +472,7 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
         }
         //Roo.fly(body).addClass("x-tabs-item-body");
         Roo.fly(body).addClass("tab-pane");
+        throw "about to add?";
         bodyEl.insertBefore(body, bodyEl.firstChild);
         return body;
     },
