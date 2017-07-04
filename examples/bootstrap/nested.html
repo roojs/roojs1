@@ -88,6 +88,15 @@ Example.Nested = new Roo.XComponent({
                 minSize: 100,
                 maxSize: 400
             },
+            north: {
+                xtype : 'Region',
+                xns: Roo.bootstrap.layout,
+                
+                
+                initialSize: 100
+                titlebar: false,
+               
+            },
             center: {
                 xtype : 'Region',
                 xns: Roo.bootstrap.layout,
@@ -95,6 +104,20 @@ Example.Nested = new Roo.XComponent({
                 tabPosition:'top',
                  titlebar: true
             },
+            items : [
+                {
+                    xtype : 'Content',
+                    xns: Roo.bootstrap.panel,
+                    title : "Title west" ,
+                    fitToFrame:true,
+                    closable:false,
+                    region : 'north',
+                    items : [
+                        
+                    ]
+                    
+                },
+            
             items : [
                 {
                     xtype : 'Content',
