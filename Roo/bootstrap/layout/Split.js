@@ -33,6 +33,7 @@ Roo.extend(Roo.bootstrap.layout.Split, Roo.bootstrap.layout.Region,
         if(config.split){
             if(!this.split){
                 
+                
                 var splitEl = Roo.DomHelper.append(this.mgr.el.dom,  {
                                 tag: "div",
                                 id: this.el.id + "-split",
@@ -42,6 +43,8 @@ Roo.extend(Roo.bootstrap.layout.Split, Roo.bootstrap.layout.Region,
                 /** The SplitBar for this region 
                 * @type Roo.SplitBar */
                 // does not exist yet...
+                Roo.log(this.position);
+                
                 this.split = new Roo.bootstrap.SplitBar({
                     dragElement : splitEl,
                     resizingElement: this.el,
