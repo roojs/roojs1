@@ -33448,6 +33448,10 @@ panel.load({
         return this.wrapEl || this.el;
     },
     
+    getChildContainer: function () {
+        return this.getEl();
+    },
+    
     adjustForComponents : function(width, height)
     {
         //Roo.log('adjustForComponents ');
@@ -33575,6 +33579,13 @@ layout.addxtype({
      */
     
     addxtype : function(cfg) {
+        Roo.bootstrap.Component.prototype.addxtype.call(this,cfg);
+    }
+    /*
+        var  ret = new Roo.factory(cfg);
+        return ret;
+        
+        
         // add form..
         if (cfg.xtype.match(/^Form$/)) {
             
@@ -33608,6 +33619,7 @@ layout.addxtype({
         }
         return false;
     }
+    \*/
 });
  
 /**

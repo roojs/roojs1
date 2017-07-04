@@ -295,7 +295,7 @@ panel.load({
     
     getChildContainer: function () {
         return this.getEl();
-    }
+    },
     
     adjustForComponents : function(width, height)
     {
