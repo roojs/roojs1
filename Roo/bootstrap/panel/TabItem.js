@@ -31,7 +31,7 @@ Roo.bootstrap.panel.TabItem = function(config){
      * The body element for this TabPanelItem.
      * @type Roo.Element
      */
-    this.bodyEl = Roo.get(this.tabPanel.createItemBody(this.tabPanel.bodyEl.dom, id));
+    this.bodyEl = Roo.get(this.tabPanel.createItemBody(this.tabPanel.bodyEl.dom, config.id));
     this.bodyEl.setVisibilityMode(Roo.Element.VISIBILITY);
     this.bodyEl.setStyle("display", "block");
     this.bodyEl.setStyle("zoom", "1");
