@@ -436,7 +436,7 @@ layout.addxtype({
         cfg.mgr = this;
         
         var r = Roo.bootstrap.layout;
-        
+        Roo.log(target);
         switch(target){
             case "north":
                 return new r.North(cfg);
