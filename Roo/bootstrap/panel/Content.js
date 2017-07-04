@@ -54,7 +54,7 @@ Roo.bootstrap.panel.Content = function( config){
         }else{
             this.el = Roo.DomHelper.append(document.body,
                         {tag: "div", cls: "roo-layout-inactive-content "  , id: config.id||el}, true);
-            throw "an issue";
+            
         }
     }
     this.closable = false;
