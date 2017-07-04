@@ -52,8 +52,17 @@ Roo.bootstrap.panel.Content = function( config){
             this.el = Roo.DomHelper.append(document.body,
                         config.autoCreate, true);
         }else{
+            var elcfg =  {   tag: "div",
+                            cls: "roo-layout-inactive-content " + config.title,
+                            id: config.id||el
+                            };
+            if (config.html) {
+                elcfg.html = config.html;
+                
+            }
+                        
             this.el = Roo.DomHelper.append(document.body,
-                        {tag: "div", cls: "roo-layout-inactive-content " + config.title, id: config.id||el}, true);
+                       , true);
         }
     } 
     this.closable = false;
