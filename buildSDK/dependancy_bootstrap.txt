@@ -125,10 +125,21 @@ Roo.bootstrap.LayoutMasonryAuto
 Roo.bootstrap.MasonryBrick
 Roo.bootstrap.Brick
 
+
+
+Roo.bootstrap.SplitBar
+
+Roo.bootstrap.layout.layout-ns
+Roo.bootstrap.layout.Manager
+Roo.bootstrap.layout.Border
+Roo.bootstrap.layout.Basic
+Roo.bootstrap.layout.Region
+Roo.bootstrap.layout.Split
+Roo.bootstrap.layout.Center
+
 Roo.bootstrap.panel.panel-ns
 Roo.bootstrap.panel.Content
 Roo.bootstrap.panel.Nest
 Roo.bootstrap.panel.Tabs
 Roo.bootstrap.panel.TabItem
-
 
