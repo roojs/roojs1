@@ -44,7 +44,7 @@ Roo.extend(Roo.bootstrap.layout.Split, Roo.bootstrap.layout.Region,
                 // does not exist yet...
                 this.split = new Roo.bootstrap.SplitBar({
                     dragElement : splitEl,
-                    resizingElement: el,
+                    resizingElement: this.el,
                     orientation : this.orientation
                 });
                 
