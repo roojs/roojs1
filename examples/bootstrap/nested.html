@@ -93,8 +93,8 @@ Example.Nested = new Roo.XComponent({
                 xns: Roo.bootstrap.layout,
                 
                 
-                initialSize: 100
-                titlebar: false,
+                initialSize: 100,
+                titlebar: false
                
             },
             center: {
@@ -113,7 +113,13 @@ Example.Nested = new Roo.XComponent({
                     closable:false,
                     region : 'north',
                     items : [
-                        
+                        Roo.apply(Dashboard.Header1._tree(), {
+                        xtype : 'Container',
+                        cls : 'header',
+                        tag : 'header',
+                        xns : Roo.bootstrap,
+                        '|xns' : 'Roo.bootstrap'
+                       })
                     ]
                     
                 },
