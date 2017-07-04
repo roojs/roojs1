@@ -418,9 +418,11 @@ layout.addxtype({
 </code></pre>
      * @param {Object} cfg Xtype definition of item to add.
      */
-    /*
+    
     addxtype : function(cfg) {
-        
+        Roo.bootstrap.Component.addxtype.call(this,cfg);
+    }
+    /*
         var  ret = new Roo.factory(cfg);
         return ret;
         
