@@ -1,6 +1,6 @@
 
 /**
- * @class Roo.boostrap.panel.Nest
+ * @class Roo.bootstrap.panel.Nest
  * @extends Roo.bootstrap.panel.Content
  * @constructor
  * Create a new Panel, that can contain a layout.Border.
@@ -9,7 +9,7 @@
  * @param {Roo.BorderLayout} layout The layout for this panel
  * @param {String/Object} config A string to set only the title or a config object
  */
-Roo.boostrap.panel.Nest = function(layout, config)
+Roo.bootstrap.panel.Nest = function(layout, config)
 {
     // construct with only one argument..
     /* FIXME - implement nicer consturctors
@@ -25,7 +25,7 @@ Roo.boostrap.panel.Nest = function(layout, config)
     */
     
     
-    Roo.boostrap.panel.Nest.superclass.constructor.call(this, layout.getEl(), config);
+    Roo.bootstrap.panel.Nest.superclass.constructor.call(this, layout.getEl(), config);
     
     layout.monitorWindowResize = false; // turn off autosizing
     this.layout = layout;
@@ -36,7 +36,7 @@ Roo.boostrap.panel.Nest = function(layout, config)
     
 };
 
-Roo.extend(Roo.boostrap.panel.Nest, Roo.boostrap.panel.Content, {
+Roo.extend(Roo.bootstrap.panel.Nest, Roo.bootstrap.panel.Content, {
 
     setSize : function(width, height){
         if(!this.ignoreResize(width, height)){
