@@ -172,7 +172,7 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         if(this.autoScroll){
             this.bodyEl.setStyle("overflow", "auto");
         }else{
-            this.bodyEl.setStyle("overflow", "hidden");
+            this.bodyEl.setStyle("overflow", this.overflow);
         }
         //if(c.titlebar !== false){
             if((!c.titlebar && !c.title) || c.titlebar === false){
