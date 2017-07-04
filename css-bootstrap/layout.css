@@ -62,6 +62,7 @@ roo-layout-collapse-{east|west|center|south|north}
 }
 .roo-layout-active-content{
     visibility:visible;
+    padding: 10px;
 }
 .roo-layout-panel{
     position:absolute;
