@@ -293,6 +293,10 @@ panel.load({
         return this.wrapEl || this.el;
     },
     
+    getChildContainer: function () {
+        return this.getEl();
+    }
+    
     adjustForComponents : function(width, height)
     {
         //Roo.log('adjustForComponents ');
