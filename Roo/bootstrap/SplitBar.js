@@ -50,7 +50,7 @@ Roo.bootstrap.SplitBar = function(cfg){
     this.el = Roo.get(cfg.dragElement, true);
     this.el.dom.unselectable = "on";
     /** @private */
-    this.resizingEl = Roo.get(cfg resizingElement, true);
+    this.resizingEl = Roo.get(cfg.resizingElement, true);
 
     /**
      * @private
