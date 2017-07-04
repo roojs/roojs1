@@ -106,6 +106,10 @@ roo-layout-collapse-{east|west|center|south|north}
     
     position:relative;
 }
+.roo-layout-panel-hd.breadcrumb {
+    padding-bottom: 0;
+}
+
 .roo-layout-panel-hd-text{
     padding: 4px;
     padding-left: 4px;
