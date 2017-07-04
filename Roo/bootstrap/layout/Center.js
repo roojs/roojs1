@@ -147,7 +147,7 @@ Roo.bootstrap.layout.East = function(config){
     if(this.split){
         this.split.placement = Roo.bootstrap.SplitBar.RIGHT;
         this.split.orientation = Roo.bootstrap.SplitBar.HORIZONTAL;
-        this.split.el.addClass("x-layout-split-h");
+        this.split.el.addClass("roo-layout-split-h");
     }
     var size = config.initialSize || config.width;
     if(typeof size != "undefined"){
@@ -193,7 +193,7 @@ Roo.bootstrap.layout.West = function(config){
     if(this.split){
         this.split.placement = Roo.bootstrap.SplitBar.LEFT;
         this.split.orientation = Roo.bootstrap.SplitBar.HORIZONTAL;
-        this.split.el.addClass("x-layout-split-h");
+        this.split.el.addClass("roo-layout-split-h");
     }
     var size = config.initialSize || config.width;
     if(typeof size != "undefined"){
