@@ -68,7 +68,7 @@ Roo.bootstrap.layout.Region = function(config)
         {
                 tag: "div",
                 unselectable: "on",
-                cls: "roo-unselectable roo-layout-panel-hd roo-layout-title-" + this.position,
+                cls: "roo-unselectable roo-layout-panel-hd breadcrumb roo-layout-title-" + this.position,
                 children:[
                     {tag: "span", cls: "roo-unselectable roo-layout-panel-hd-text", unselectable: "on", html: "&#160;"},
                     {tag: "div", cls: "roo-unselectable roo-layout-panel-hd-tools", unselectable: "on"}
