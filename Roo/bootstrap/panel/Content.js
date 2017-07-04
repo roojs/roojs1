@@ -53,7 +53,7 @@ Roo.bootstrap.panel.Content = function( config){
                         config.autoCreate, true);
         }else{
             var elcfg =  {   tag: "div",
-                            cls: "roo-layout-inactive-content " + config.title,
+                            cls: "roo-layout-inactive-content",
                             id: config.id||el
                             };
             if (config.html) {
