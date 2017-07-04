@@ -29,14 +29,14 @@ Roo.boostrap.panel.Nest = function(layout, config)
     
     layout.monitorWindowResize = false; // turn off autosizing
     this.layout = layout;
-    this.layout.getEl().addClass("x-layout-nested-layout");
+    this.layout.getEl().addClass("roo-layout-nested-layout");
     
     
     
     
 };
 
-Roo.extend(Roo.NestedLayoutPanel, Roo.ContentPanel, {
+Roo.extend(Roo.boostrap.panel.Nest, Roo.boostrap.panel.Content, {
 
     setSize : function(width, height){
         if(!this.ignoreResize(width, height)){
