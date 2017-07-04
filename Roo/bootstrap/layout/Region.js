@@ -100,6 +100,9 @@ Roo.bootstrap.layout.Region = function(config)
 
 Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
 
+
+    overflow : 'hidden';
+
     createBody : function(){
         /** This region's body element 
         * @type Roo.Element */
