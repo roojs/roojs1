@@ -118,7 +118,7 @@ Roo.bootstrap.SplitBar = function(cfg){
     }else{
         /** @private */
         this.placement = cfg.placement || (this.el.getY() > this.resizingEl.getY() ? Roo.bootstrap.SplitBar.TOP : Roo.bootstrap.SplitBar.BOTTOM);
-        this.el.addClass("too-splitbar-v");
+        this.el.addClass("roo-splitbar-v");
     }
     
     this.addEvents({
