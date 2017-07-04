@@ -96,6 +96,7 @@ Roo.extend(Roo.bootstrap.layout.North, Roo.bootstrap.layout.Split,
 Roo.bootstrap.layout.South = function(config){
     config.region = 'south';
     config.cursor = 's-resize';
+    config.orinentation = Roo.bootstrap.SplitBar.VERTICAL;
     Roo.bootstrap.layout.Split.call(this, config);
     if(this.split){
         this.split.placement = Roo.bootstrap.SplitBar.BOTTOM;
@@ -187,6 +188,7 @@ Roo.extend(Roo.bootstrap.layout.East, Roo.bootstrap.layout.Split, {
 Roo.bootstrap.layout.West = function(config){
     config.region = "west";
     config.cursor = "w-resize";
+    
     Roo.bootstrap.layout.Split.call(this, config);
     if(this.split){
         this.split.placement = Roo.bootstrap.SplitBar.LEFT;
