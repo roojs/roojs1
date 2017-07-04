@@ -101,7 +101,6 @@ Roo.bootstrap.layout.Region = function(config)
 Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
 
 
-    overflow : 'hidden';
 
     createBody : function(){
         /** This region's body element 
@@ -169,10 +168,12 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         this.bottomTabs = c.tabPosition != "top";
         
         this.autoScroll = c.autoScroll || false;
+        
+        
         if(this.autoScroll){
             this.bodyEl.setStyle("overflow", "auto");
         }else{
-            this.bodyEl.setStyle("overflow", this.overflow);
+            this.bodyEl.setStyle("overflow", c.overflow || 'hidden');
         }
         //if(c.titlebar !== false){
             if((!c.titlebar && !c.title) || c.titlebar === false){
