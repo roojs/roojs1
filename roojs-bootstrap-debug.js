@@ -30619,7 +30619,7 @@ Roo.bootstrap.SplitBar = function(cfg){
     }else{
         /** @private */
         this.placement = cfg.placement || (this.el.getY() > this.resizingEl.getY() ? Roo.bootstrap.SplitBar.TOP : Roo.bootstrap.SplitBar.BOTTOM);
-        this.el.addClass("too-splitbar-v");
+        this.el.addClass("roo-splitbar-v");
     }
     
     this.addEvents({
@@ -31545,7 +31545,7 @@ layout.addxtype({
         cfg.mgr = this;
         
         var r = Roo.bootstrap.layout;
-        
+        Roo.log(target);
         switch(target){
             case "north":
                 return new r.North(cfg);
@@ -32973,6 +32973,7 @@ Roo.bootstrap.layout.North = function(config)
 {
     config.region = 'north';
     config.cursor = 'n-resize';
+    
     Roo.bootstrap.layout.Split.call(this, config);
     if(this.split){
         this.split.placement = Roo.bootstrap.SplitBar.TOP;
@@ -33019,6 +33020,7 @@ Roo.extend(Roo.bootstrap.layout.North, Roo.bootstrap.layout.Split,
 Roo.bootstrap.layout.South = function(config){
     config.region = 'south';
     config.cursor = 's-resize';
+    Roo.log(config);
     Roo.bootstrap.layout.Split.call(this, config);
     if(this.split){
         this.split.placement = Roo.bootstrap.SplitBar.BOTTOM;
@@ -33110,6 +33112,7 @@ Roo.extend(Roo.bootstrap.layout.East, Roo.bootstrap.layout.Split, {
 Roo.bootstrap.layout.West = function(config){
     config.region = "west";
     config.cursor = "w-resize";
+    
     Roo.bootstrap.layout.Split.call(this, config);
     if(this.split){
         this.split.placement = Roo.bootstrap.SplitBar.LEFT;
