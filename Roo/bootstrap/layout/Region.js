@@ -568,6 +568,8 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         }else{
             this.initPanelAsTab(panel);
         }
+        
+        
         if(panel.background !== true){
             this.tabs.activate(panel.getEl().id);
         }
