@@ -38,7 +38,13 @@ Roo.bootstrap.SplitBar = function(cfg){
     
     /** @private */
     
-    dragElement, resizingElement, orientation, placement, existingProxy
+    {   dragElement : elm
+        resizingElement: el,
+        // optional..
+        orientation : Either Roo.bootstrap.SplitBar.HORIZONTAL
+        placement : Roo.bootstrap.SplitBar.LEFT  ,
+        // existingProxy ???
+    }
     
     this.el = Roo.get(cfg.dragElement, true);
     this.el.dom.unselectable = "on";
@@ -80,11 +86,11 @@ Roo.bootstrap.SplitBar = function(cfg){
     /** @private */
     this.shim = null;
     
-    if(!existingProxy){
+    if(!cfg.existingProxy){
         /** @private */
         this.proxy = Roo.bootstrap.SplitBar.createProxy(this.orientation);
     }else{
-        this.proxy = Roo.get(existingProxy).dom;
+        this.proxy = Roo.get(cfg.existingProxy).dom;
     }
     /** @private */
     this.dd = new Roo.dd.DDProxy(this.el.dom.id, "XSplitBars", {dragElId : this.proxy.id});
@@ -106,11 +112,11 @@ Roo.bootstrap.SplitBar = function(cfg){
     
     if(this.orientation == Roo.bootstrap.SplitBar.HORIZONTAL){
         /** @private */
-        this.placement = placement || (this.el.getX() > this.resizingEl.getX() ? Roo.bootstrap.SplitBar.LEFT : Roo.bootstrap.SplitBar.RIGHT);
+        this.placement = cfg.placement || (this.el.getX() > this.resizingEl.getX() ? Roo.bootstrap.SplitBar.LEFT : Roo.bootstrap.SplitBar.RIGHT);
         this.el.addClass("x-splitbar-h");
     }else{
         /** @private */
-        this.placement = placement || (this.el.getY() > this.resizingEl.getY() ? Roo.bootstrap.SplitBar.TOP : Roo.bootstrap.SplitBar.BOTTOM);
+        this.placement = cfg.placement || (this.el.getY() > this.resizingEl.getY() ? Roo.bootstrap.SplitBar.TOP : Roo.bootstrap.SplitBar.BOTTOM);
         this.el.addClass("x-splitbar-v");
     }
     
