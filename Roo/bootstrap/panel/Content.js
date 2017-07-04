@@ -169,7 +169,7 @@ Roo.bootstrap.panel.Content = function( config){
     this.fireEvent('render', this);
 };
 
-Roo.extend(Roo.bootstrap.panel.Content, Roo.util.Observable, {
+Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
     tabTip:'',
     setRegion : function(region){
         this.region = region;
@@ -293,9 +293,7 @@ panel.load({
         return this.wrapEl || this.el;
     },
     
-    getChildContainer: function () {
-        return this.getEl();
-    },
+   
     
     adjustForComponents : function(width, height)
     {
@@ -423,9 +421,12 @@ layout.addxtype({
      * @param {Object} cfg Xtype definition of item to add.
      */
     
-    addxtype : function(cfg) {
-        Roo.bootstrap.Component.prototype.addxtype.call(this,cfg);
-    }
+    
+    getChildContainer: function () {
+        return this.getEl();
+    },
+    
+    
     /*
         var  ret = new Roo.factory(cfg);
         return ret;
