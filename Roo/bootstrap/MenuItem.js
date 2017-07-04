@@ -121,7 +121,12 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
     getEl : function()
     {
         return this.el;
+    },
+    getChildContainer : function()
+    {
+        return Roo.get(document.body); // add children to body?  
     }
+
 });
 
  
