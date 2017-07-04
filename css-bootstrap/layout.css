@@ -91,7 +91,9 @@ roo-layout-collapse-{east|west|center|south|north}
 .roo-layout-grid-wrapper{
 
 }
-.roo-layout-split{
+*/
+.roo-layout-split
+{
     position:absolute;
     height:5px;
     width:5px;
@@ -101,7 +103,7 @@ roo-layout-collapse-{east|west|center|south|north}
     background-color:#c3daf9;
 }
 
-*/
+ 
 
 .roo-layout-panel-hd{
     
