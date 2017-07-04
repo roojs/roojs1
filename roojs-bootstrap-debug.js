@@ -2394,7 +2394,7 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
     getEl : function()
     {
         return this.el;
-    }
+    } 
 });
 
  
@@ -31921,6 +31921,7 @@ Roo.extend(Roo.bootstrap.layout.Basic, Roo.util.Observable,
  *                      the space available, similar to FireFox 1.5 tabs (defaults to false)
  * @cfg {Number}    minTabWidth     The minimum tab width (defaults to 40)
  * @cfg {Number}    preferredTabWidth The preferred tab width (defaults to 150)
+ * @cfg {String}    overflow       (hidden|visible) if you have menus in the region, then you need to set this to visible.
 
  * @cfg {Boolean}   hidden          True to start the region hidden (defaults to false)
  * @cfg {Boolean}   hideWhenEmpty   True to hide the region when it has no panels
@@ -31990,6 +31991,8 @@ Roo.bootstrap.layout.Region = function(config)
 
 Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
 
+
+
     createBody : function(){
         /** This region's body element 
         * @type Roo.Element */
@@ -32056,10 +32059,12 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         this.bottomTabs = c.tabPosition != "top";
         
         this.autoScroll = c.autoScroll || false;
+        
+        
         if(this.autoScroll){
             this.bodyEl.setStyle("overflow", "auto");
         }else{
-            this.bodyEl.setStyle("overflow", "hidden");
+            this.bodyEl.setStyle("overflow", c.overflow || 'hidden');
         }
         //if(c.titlebar !== false){
             if((!c.titlebar && !c.title) || c.titlebar === false){
@@ -33324,7 +33329,7 @@ Roo.bootstrap.panel.Content = function( config){
     this.fireEvent('render', this);
 };
 
-Roo.extend(Roo.bootstrap.panel.Content, Roo.util.Observable, {
+Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
     tabTip:'',
     setRegion : function(region){
         this.region = region;
@@ -33448,9 +33453,7 @@ panel.load({
         return this.wrapEl || this.el;
     },
     
-    getChildContainer: function () {
-        return this.getEl();
-    },
+   
     
     adjustForComponents : function(width, height)
     {
@@ -33578,9 +33581,12 @@ layout.addxtype({
      * @param {Object} cfg Xtype definition of item to add.
      */
     
-    addxtype : function(cfg) {
-        Roo.bootstrap.Component.prototype.addxtype.call(this,cfg);
+    
+    getChildContainer: function () {
+        return this.getEl();
     }
+    
+    
     /*
         var  ret = new Roo.factory(cfg);
         return ret;

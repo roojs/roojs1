@@ -424,7 +424,7 @@ layout.addxtype({
     
     getChildContainer: function () {
         return this.getEl();
-    },
+    }
     
     
     /*
