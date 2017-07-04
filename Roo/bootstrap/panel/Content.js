@@ -61,8 +61,7 @@ Roo.bootstrap.panel.Content = function( config){
                 
             }
                         
-            this.el = Roo.DomHelper.append(document.body,
-                       , true);
+            this.el = Roo.DomHelper.append(document.body, elcfg , true);
         }
     } 
     this.closable = false;
