@@ -55,7 +55,7 @@ Roo.bootstrap.layout.North = function(config)
     if(this.split){
         this.split.placement = Roo.bootstrap.SplitBar.TOP;
         this.split.orientation = Roo.bootstrap.SplitBar.VERTICAL;
-        this.split.el.addClass("x-layout-split-v");
+        this.split.el.addClass("roo-layout-split-v");
     }
     var size = config.initialSize || config.height;
     if(typeof size != "undefined"){
@@ -97,12 +97,11 @@ Roo.extend(Roo.bootstrap.layout.North, Roo.bootstrap.layout.Split,
 Roo.bootstrap.layout.South = function(config){
     config.region = 'south';
     config.cursor = 's-resize';
-    config.orientation = Roo.bootstrap.SplitBar.VERTICAL;
-    Roo.bootstrap.layout.Split.call(this, config);
+     Roo.bootstrap.layout.Split.call(this, config);
     if(this.split){
         this.split.placement = Roo.bootstrap.SplitBar.BOTTOM;
         this.split.orientation = Roo.bootstrap.SplitBar.VERTICAL;
-        this.split.el.addClass("x-layout-split-v");
+        this.split.el.addClass("roo-layout-split-v");
     }
     var size = config.initialSize || config.height;
     if(typeof size != "undefined"){
