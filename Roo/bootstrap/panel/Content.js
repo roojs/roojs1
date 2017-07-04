@@ -418,7 +418,7 @@ layout.addxtype({
 </code></pre>
      * @param {Object} cfg Xtype definition of item to add.
      */
-    
+    /*
     addxtype : function(cfg) {
         
         var  ret = new Roo.factory(cfg);
@@ -458,5 +458,6 @@ layout.addxtype({
         }
         return false;
     }
+    \*/
 });
  
