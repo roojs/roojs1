@@ -54,9 +54,9 @@ Roo.extend(Roo.bootstrap.layout.Split, Roo.bootstrap.layout.Region,
                 if(this.useSplitTips){
                     this.split.el.dom.title = config.collapsible ? this.collapsibleSplitTip : this.splitTip;
                 }
-                if(config.collapsible){
-                    this.split.el.on("dblclick", this.collapse,  this);
-                }
+                //if(config.collapsible){
+                //    this.split.el.on("dblclick", this.collapse,  this);
+                //}
             }
             if(typeof config.minSize != "undefined"){
                 this.split.minSize = config.minSize;
