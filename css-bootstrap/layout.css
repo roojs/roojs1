@@ -66,7 +66,7 @@ roo-layout-collapse-{east|west|center|south|north}
 }
 .roo-layout-panel{
     position:absolute;
-    overflow:hidden;
+    /* overflow:hidden;  -- menus inside of contains do not work with this */
     /*
     background-color:white;
     border:1px solid #98c0f4;
