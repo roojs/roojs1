@@ -461,7 +461,7 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
         Roo.id(body, "tab-body");
         //Roo.fly(body).addClass("x-tabs-body");
         Roo.fly(body).addClass("tab-content");
-        Roo.fly(container).insertFirst(body);
+        container.appendChild(body);
         return body;
     },
     createItemBody :function(bodyEl, id){
