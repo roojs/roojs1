@@ -125,6 +125,7 @@ Roo.bootstrap.LayoutMasonryAuto
 Roo.bootstrap.MasonryBrick
 Roo.bootstrap.Brick
 
+Roo.bootstrap.panel.panel-ns
 Roo.bootstrap.panel.Content
 Roo.bootstrap.panel.Nest
 Roo.bootstrap.panel.Tabs
