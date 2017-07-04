@@ -1,9 +1,9 @@
 
 /**
  * @class Roo.boostrap.panel.Nest
- * @extends Roo.ContentPanel
+ * @extends Roo.bootstrap.panel.Content
  * @constructor
- * Create a new NestedLayoutPanel.
+ * Create a new Panel, that can contain a layout.Border.
  * 
  * 
  * @param {Roo.BorderLayout} layout The layout for this panel
