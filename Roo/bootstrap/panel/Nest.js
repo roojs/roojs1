@@ -25,7 +25,7 @@ Roo.bootstrap.panel.Nest = function(config)
     */
     
     
-    Roo.bootstrap.panel.Nest.superclass.constructor.call(this, layout.getEl(), config);
+    Roo.bootstrap.panel.Nest.superclass.constructor.call(this, config.layout.getEl(), config);
     
     layout.monitorWindowResize = false; // turn off autosizing
     this.layout = config.layout;
