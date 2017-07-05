@@ -61,7 +61,7 @@ Roo.bootstrap.layout.Manager = function(config)
     Roo.EventManager.onWindowResize(this.onWindowResize, this, true);
 };
 
-Roo.extend(Roo.bootstrap.layout.Manager, Roo.util.Observable, {
+Roo.extend(Roo.bootstrap.layout.Manager, Roo.bootstrap.Component, {
     
     
     regions : null,
