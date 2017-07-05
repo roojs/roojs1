@@ -166,13 +166,20 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
         var hp = this.parent ? 1 : 0;
         Roo.debug &&  Roo.log(this);
         
+        var tree = this._tree ? this._tree() : this.tree();
+
+        
         if (!el && typeof(this.parent) == 'string' && this.parent.substring(0,1) == '#') {
             // if parent is a '#.....' string, then let's use that..
             var ename = this.parent.substr(1);
             this.parent = false;
             Roo.debug && Roo.log(ename);
             switch (ename) {
-                case 'bootstrap-body' :
+                case 'bootstrap-body':
+                    if () {
+                        
+                    }
+                    
                     if (typeof(Roo.bootstrap.Body) != 'undefined') {
                         this.parent = { el :  new  Roo.bootstrap.Body() };
                         Roo.debug && Roo.log("setting el to doc body");
@@ -200,7 +207,6 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
         Roo.debug && Roo.log("this.parent.el:");
         Roo.debug && Roo.log(this.parent.el);
         
-        var tree = this._tree ? this._tree() : this.tree();
 
         // altertive root elements ??? - we need a better way to indicate these.
         var is_alt = Roo.XComponent.is_alt ||
