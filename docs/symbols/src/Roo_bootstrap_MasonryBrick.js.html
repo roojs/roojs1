@@ -53,17 +53,14 @@
      */   
     </span><span class="jsdoc-var">href </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-comment">/**
-     * @cfg {String} video
-     */   
-    </span><span class="jsdoc-var">video </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-comment">/**
-     * @cfg {Boolean} square
-     */   
-    </span><span class="jsdoc-var">square </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-comment">/**
-     * @cfg {String} (xs|sm|md) size
+     * @cfg {String} (xs|sm|md|md-left|md-right|tall|wide) size
      */   
     </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} (center|bottom) placetitle
+     */   
+    </span><span class="jsdoc-var">placetitle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -79,6 +76,29 @@
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.size</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' masonry-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.size </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-brick'</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.placetitle.length</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-keyword">switch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.placetitle</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'center' </span><span class="jsdoc-syntax">:
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' masonry-center-title'</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'bottom' </span><span class="jsdoc-syntax">:
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' masonry-bottom-title'</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">default</span><span class="jsdoc-syntax">:
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            }
+            
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.html.length </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.bgimage.length</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' masonry-center-title'</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.html.length </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.bgimage.length</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' masonry-bottom-title'</span><span class="jsdoc-syntax">;
+            }
         }
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">){
@@ -128,39 +148,90 @@
         }
         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+        
     },
     
     </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() 
     {
-        </span><span class="jsdoc-var">this.intSize </span><span class="jsdoc-syntax">= 1;
-        
         </span><span class="jsdoc-keyword">switch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.size</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'xs' </span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-var">this.intSize </span><span class="jsdoc-syntax">= 1;
+</span><span class="jsdoc-comment">//                this.intSize = 1;
+                </span><span class="jsdoc-var">this.x </span><span class="jsdoc-syntax">= 1;
+                </span><span class="jsdoc-var">this.y </span><span class="jsdoc-syntax">= 1;
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'sm' </span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-var">this.intSize </span><span class="jsdoc-syntax">= 2;
+</span><span class="jsdoc-comment">//                this.intSize = 2;
+                </span><span class="jsdoc-var">this.x </span><span class="jsdoc-syntax">= 2;
+                </span><span class="jsdoc-var">this.y </span><span class="jsdoc-syntax">= 2;
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'md' </span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-var">this.intSize </span><span class="jsdoc-syntax">= 3;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'md-left' </span><span class="jsdoc-syntax">:
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'md-right' </span><span class="jsdoc-syntax">:
+</span><span class="jsdoc-comment">//                this.intSize = 3;
+                </span><span class="jsdoc-var">this.x </span><span class="jsdoc-syntax">= 3;
+                </span><span class="jsdoc-var">this.y </span><span class="jsdoc-syntax">= 3;
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'tall' </span><span class="jsdoc-syntax">:
+</span><span class="jsdoc-comment">//                this.intSize = 3;
+                </span><span class="jsdoc-var">this.x </span><span class="jsdoc-syntax">= 2;
+                </span><span class="jsdoc-var">this.y </span><span class="jsdoc-syntax">= 3;
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'wide' </span><span class="jsdoc-syntax">:
+</span><span class="jsdoc-comment">//                this.intSize = 3;
+                </span><span class="jsdoc-var">this.x </span><span class="jsdoc-syntax">= 3;
+                </span><span class="jsdoc-var">this.y </span><span class="jsdoc-syntax">= 2;
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'wide-thin' </span><span class="jsdoc-syntax">:
+</span><span class="jsdoc-comment">//                this.intSize = 3;
+                </span><span class="jsdoc-var">this.x </span><span class="jsdoc-syntax">= 3;
+                </span><span class="jsdoc-var">this.y </span><span class="jsdoc-syntax">= 1;
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                        
             </span><span class="jsdoc-keyword">default </span><span class="jsdoc-syntax">:
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
         }
         
-        </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseenter'  </span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.enter</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseleave'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.leave</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isTouch</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'touchstart'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTouchStart</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'touchmove'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTouchMove</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'touchend'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTouchEnd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseenter'  </span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.enter</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseleave'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.leave</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+        
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.bricks</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'object' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.bricks </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.bricks.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);   
         }
         
     },
     
+    </span><span class="jsdoc-var">onClick</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">alert</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">Roo.isTouch</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">time </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.endTimer </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.startTimer</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">alert</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">time</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">time </span><span class="jsdoc-syntax">&lt; 1000){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+    },
+    
     </span><span class="jsdoc-var">enter</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bgimage.length</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bgimage.length </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.html.length</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.masonry-brick-paragraph'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setOpacity</span><span class="jsdoc-syntax">(0.9, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         }
     },
@@ -169,9 +240,51 @@
     {
         </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bgimage.length</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bgimage.length </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.html.length</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.masonry-brick-paragraph'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setOpacity</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         }
+    },
+    
+    </span><span class="jsdoc-var">onTouchStart</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)
+    {
+</span><span class="jsdoc-comment">//        e.preventDefault();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.bgimage.length </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.html.length</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.masonry-brick-paragraph'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setOpacity</span><span class="jsdoc-syntax">(0.9, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.timer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getTime</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">this.touchmoved </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">onTouchMove</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.touchmoved </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">onTouchEnd</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)
+    {
+</span><span class="jsdoc-comment">//        e.preventDefault();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">((</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getTime</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.timer </span><span class="jsdoc-syntax">&gt; 1000) || !</span><span class="jsdoc-var">this.href.length </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.touchmoved</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.bgimage.length </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.html.length</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.href.length</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">window.location.href </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.href</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.masonry-brick-paragraph'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setOpacity</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">window.location.href </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.href</span><span class="jsdoc-syntax">;
     }
     
 });

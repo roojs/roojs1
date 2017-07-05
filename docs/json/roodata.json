@@ -288,12 +288,6 @@
      "desc": "Returns true if the passed value is null, undefined or an empty string (optional)."
     },
     {
-     "name": "log",
-     "sig": "(String|Object string)",
-     "type": "function",
-     "desc": "Logs to console if it can."
-    },
-    {
      "name": "namespace",
      "sig": "(String namespace1, String namespace2, String etc)",
      "type": "function",
@@ -933,6 +927,12 @@
     }
    ],
    "events": [
+    {
+     "name": "beforecollapse",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this region before collapse."
+    },
     {
      "name": "beforeremove",
      "sig": "function (_self, panel, e)\n{\n\n}",
@@ -8149,6 +8149,12 @@
    ],
    "events": [
     {
+     "name": "beforecollapse",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this region before collapse."
+    },
+    {
      "name": "beforeremove",
      "sig": "function (_self, panel, e)\n{\n\n}",
      "type": "function",
@@ -10673,6 +10679,12 @@
     }
    ],
    "events": [
+    {
+     "name": "beforecollapse",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this region before collapse."
+    },
     {
      "name": "beforeremove",
      "sig": "function (_self, panel, e)\n{\n\n}",
@@ -17911,6 +17923,12 @@
      "desc": "Fires when the 'add' icon is pressed (add a listener to enable add button)"
     },
     {
+     "name": "afterremove",
+     "sig": "function (combo)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the remove value from the combobox array"
+    },
+    {
      "name": "beforedestroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -24793,6 +24811,12 @@
      "memberOf": ""
     },
     {
+     "name": "boxHeight",
+     "type": "Number",
+     "desc": "- 0 for square, or fix it at a certian height",
+     "memberOf": ""
+    },
+    {
      "name": "padWidth",
      "type": "Number",
      "desc": "padding below box..",
@@ -24814,6 +24838,12 @@
      "name": "isHorizontal",
      "type": "Boolean",
      "desc": "defalut false",
+     "memberOf": ""
+    },
+    {
+     "name": "alternativePadWidth",
+     "type": "Number",
+     "desc": "padding below box..",
      "memberOf": ""
     },
     {
@@ -26339,21 +26369,15 @@
      "memberOf": ""
     },
     {
-     "name": "video",
-     "type": "String",
-     "desc": "",
-     "memberOf": ""
-    },
-    {
-     "name": "square",
-     "type": "Boolean",
-     "desc": "",
-     "memberOf": ""
-    },
-    {
-     "name": "(xs|sm|md)",
+     "name": "(xs|sm|md|md-left|md-right|tall|wide)",
      "type": "String",
      "desc": "size",
+     "memberOf": ""
+    },
+    {
+     "name": "(center|bottom)",
+     "type": "String",
+     "desc": "placetitle",
      "memberOf": ""
     },
     {
@@ -26678,6 +26702,26 @@
      "type": "bool",
      "desc": "if the menu should be hidden when rendered.",
      "memberOf": ""
+    },
+    {
+     "name": "stopEvent",
+     "type": "bool",
+     "desc": "Stop event after trigger press (default true)",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
+    },
+    {
+     "name": "isLink",
+     "type": "bool",
+     "desc": "the menu has link disable auto expand and collaspe (default false)",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "registerMenu",
@@ -29801,6 +29845,12 @@
      "desc": "Fires before the component is shown.  Return false to stop the show."
     },
     {
+     "name": "beforetoggle",
+     "sig": "function (e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fire before toggle the menu"
+    },
+    {
      "name": "childrenrendered",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -31192,6 +31242,12 @@
      "desc": "Fires before the component is shown.  Return false to stop the show."
     },
     {
+     "name": "beforetoggle",
+     "sig": "function (e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fire before toggle the menu"
+    },
+    {
      "name": "childrenrendered",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -31976,6 +32032,12 @@
      "desc": "Fires before the component is shown.  Return false to stop the show."
     },
     {
+     "name": "beforetoggle",
+     "sig": "function (e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fire before toggle the menu"
+    },
+    {
      "name": "childrenrendered",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -32280,6 +32342,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "beforetoggle",
+     "sig": "function (e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fire before toggle the menu"
     },
     {
      "name": "childrenrendered",
@@ -33355,6 +33423,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "beforetoggle",
+     "sig": "function (e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fire before toggle the menu"
     },
     {
      "name": "childrenrendered",
@@ -35931,6 +36005,182 @@
      "sig": "(String eventName, Function handler, Object scope)",
      "type": "function",
      "desc": "Removes a listener (shorthand for removeListener)"
+    }
+   ]
+  },
+  "Roo.bootstrap.SplitBar": {
+   "props": [
+    {
+     "name": "listeners",
+     "type": "Object",
+     "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+     "memberOf": "Roo.util.Observable"
+    }
+   ],
+   "events": [
+    {
+     "name": "beforeresize",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires before the splitter is dragged"
+    },
+    {
+     "name": "moved",
+     "sig": "function (_self, newSize)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the splitter is moved"
+    },
+    {
+     "name": "resize",
+     "sig": "function (_self, newSize)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the splitter is moved (alias for {@link #event-moved})"
+    }
+   ],
+   "methods": [
+    {
+     "name": "addEvents",
+     "sig": "(Object object)",
+     "type": "function",
+     "desc": "Used to define events on this Observable"
+    },
+    {
+     "name": "addListener",
+     "sig": "(String eventName, Function handler, Object scope, Object options)",
+     "type": "function",
+     "desc": "Appends an event handler to this component"
+    },
+    {
+     "name": "capture",
+     "sig": "(Observable o, Function fn, Object scope)",
+     "type": "function",
+     "desc": "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire."
+    },
+    {
+     "name": "destroy",
+     "sig": "(Boolean removeEl)",
+     "type": "function",
+     "desc": "Destroy this splitbar."
+    },
+    {
+     "name": "fireEvent",
+     "sig": "(String eventName, Object... args)",
+     "type": "function",
+     "desc": "Fires the specified event with the passed parameters (minus the event name)."
+    },
+    {
+     "name": "getAdapter",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the adapter this SplitBar uses"
+    },
+    {
+     "name": "getMaximumSize",
+     "sig": "()",
+     "type": "function",
+     "desc": "Gets the maximum size for the resizing element"
+    },
+    {
+     "name": "getMinimumSize",
+     "sig": "()",
+     "type": "function",
+     "desc": "Gets the minimum size for the resizing element"
+    },
+    {
+     "name": "hasListener",
+     "sig": "(String eventName)",
+     "type": "function",
+     "desc": "Checks to see if this object has any listeners for a specified event"
+    },
+    {
+     "name": "on",
+     "sig": "(String eventName, Function handler, Object scope, Object options)",
+     "type": "function",
+     "desc": "Appends an event handler to this element (shorthand for addListener)"
+    },
+    {
+     "name": "purgeListeners",
+     "sig": "()",
+     "type": "function",
+     "desc": "Removes all listeners for this object"
+    },
+    {
+     "name": "releaseCapture",
+     "sig": "(Observable o)",
+     "type": "function",
+     "desc": "Removes <b>all</b> added captures from the Observable."
+    },
+    {
+     "name": "removeListener",
+     "sig": "(String eventName, Function handler, Object scope)",
+     "type": "function",
+     "desc": "Removes a listener"
+    },
+    {
+     "name": "setAdapter",
+     "sig": "(Object adapter)",
+     "type": "function",
+     "desc": "Set the adapter this SplitBar uses"
+    },
+    {
+     "name": "setCurrentSize",
+     "sig": "(Number size)",
+     "type": "function",
+     "desc": "Sets the initialize size for the resizing element"
+    },
+    {
+     "name": "setMaximumSize",
+     "sig": "(Number maxSize)",
+     "type": "function",
+     "desc": "Sets the maximum size for the resizing element"
+    },
+    {
+     "name": "setMinimumSize",
+     "sig": "(Number minSize)",
+     "type": "function",
+     "desc": "Sets the minimum size for the resizing element"
+    },
+    {
+     "name": "un",
+     "sig": "(String eventName, Function handler, Object scope)",
+     "type": "function",
+     "desc": "Removes a listener (shorthand for removeListener)"
+    }
+   ]
+  },
+  "Roo.bootstrap.SplitBar.AbsoluteLayoutAdapter": {
+   "props": [],
+   "events": [],
+   "methods": [
+    {
+     "name": "getElementSize",
+     "sig": "(Roo.bootstrap.SplitBar s)",
+     "type": "function",
+     "desc": "Called before drag operations to get the current size of the resizing element."
+    },
+    {
+     "name": "setElementSize",
+     "sig": "(Roo.bootstrap.SplitBar s, Number newSize, Function onComplete)",
+     "type": "function",
+     "desc": "Called after drag operations to set the size of the resizing element."
+    }
+   ]
+  },
+  "Roo.bootstrap.SplitBar.BasicLayoutAdapter": {
+   "props": [],
+   "events": [],
+   "methods": [
+    {
+     "name": "getElementSize",
+     "sig": "(Roo.bootstrap.SplitBar s)",
+     "type": "function",
+     "desc": "Called before drag operations to get the current size of the resizing element."
+    },
+    {
+     "name": "setElementSize",
+     "sig": "(Roo.bootstrap.SplitBar s, Number newSize, Function onComplete)",
+     "type": "function",
+     "desc": "Called after drag operations to set the size of the resizing element."
     }
    ]
   },
@@ -42355,6 +42605,1243 @@
     }
    ]
   },
+  "Roo.bootstrap.layout": {
+   "props": [],
+   "events": [],
+   "methods": []
+  },
+  "Roo.bootstrap.layout.Basic": {
+   "props": [
+    {
+     "name": "mgr",
+     "type": "Roo.bootstrap.layout.Manager",
+     "desc": "The manager",
+     "memberOf": ""
+    },
+    {
+     "name": "region",
+     "type": "string",
+     "desc": "the region that it inhabits..",
+     "memberOf": ""
+    },
+    {
+     "name": "skipConfig",
+     "type": "bool",
+     "desc": "skip config?",
+     "memberOf": ""
+    },
+    {
+     "name": "listeners",
+     "type": "Object",
+     "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+     "memberOf": "Roo.util.Observable"
+    }
+   ],
+   "events": [],
+   "methods": [
+    {
+     "name": "add",
+     "sig": "(ContentPanel... panel)",
+     "type": "function",
+     "desc": "Add the passed ContentPanel(s)"
+    },
+    {
+     "name": "addEvents",
+     "sig": "(Object object)",
+     "type": "function",
+     "desc": "Used to define events on this Observable"
+    },
+    {
+     "name": "addListener",
+     "sig": "(String eventName, Function handler, Object scope, Object options)",
+     "type": "function",
+     "desc": "Appends an event handler to this component"
+    },
+    {
+     "name": "capture",
+     "sig": "(Observable o, Function fn, Object scope)",
+     "type": "function",
+     "desc": "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire."
+    },
+    {
+     "name": "fireEvent",
+     "sig": "(String eventName, Object... args)",
+     "type": "function",
+     "desc": "Fires the specified event with the passed parameters (minus the event name)."
+    },
+    {
+     "name": "getActivePanel",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the active panel for this region."
+    },
+    {
+     "name": "getEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns the container element for this region."
+    },
+    {
+     "name": "getPanel",
+     "sig": "(Number/String/ContentPanel panel)",
+     "type": "function",
+     "desc": "Returns the panel specified or null if it's not in this region."
+    },
+    {
+     "name": "getPosition",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns this regions position (north/south/east/west/center)."
+    },
+    {
+     "name": "hasListener",
+     "sig": "(String eventName)",
+     "type": "function",
+     "desc": "Checks to see if this object has any listeners for a specified event"
+    },
+    {
+     "name": "hasPanel",
+     "sig": "(Number/String/ContentPanel panel)",
+     "type": "function",
+     "desc": "Returns true if the panel is in this region."
+    },
+    {
+     "name": "isVisible",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns true if this region is currently visible."
+    },
+    {
+     "name": "on",
+     "sig": "(String eventName, Function handler, Object scope, Object options)",
+     "type": "function",
+     "desc": "Appends an event handler to this element (shorthand for addListener)"
+    },
+    {
+     "name": "purgeListeners",
+     "sig": "()",
+     "type": "function",
+     "desc": "Removes all listeners for this object"
+    },
+    {
+     "name": "releaseCapture",
+     "sig": "(Observable o)",
+     "type": "function",
+     "desc": "Removes <b>all</b> added captures from the Observable."
+    },
+    {
+     "name": "remove",
+     "sig": "(Number/String/ContentPanel panel, Boolean preservePanel)",
+     "type": "function",
+     "desc": "Removes the specified panel. If preservePanel is not true (either here or in the config), the panel is destroyed."
+    },
+    {
+     "name": "removeListener",
+     "sig": "(String eventName, Function handler, Object scope)",
+     "type": "function",
+     "desc": "Removes a listener"
+    },
+    {
+     "name": "resizeTo",
+     "sig": "(Number newSize)",
+     "type": "function",
+     "desc": "Resizes the region to the specified size. For vertical regions (west, east) this adjusts \nthe width, for horizontal (north, south) the height."
+    },
+    {
+     "name": "showPanel",
+     "sig": "(Number/String/ContentPanel panelId)",
+     "type": "function",
+     "desc": "Show the specified panel."
+    },
+    {
+     "name": "un",
+     "sig": "(String eventName, Function handler, Object scope)",
+     "type": "function",
+     "desc": "Removes a listener (shorthand for removeListener)"
+    }
+   ]
+  },
+  "Roo.bootstrap.layout.Border": {
+   "props": [
+    {
+     "name": "listeners",
+     "type": "Object",
+     "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+     "memberOf": "Roo.util.Observable"
+    }
+   ],
+   "events": [
+    {
+     "name": "layout",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when a layout is performed."
+    },
+    {
+     "name": "regioncollapsed",
+     "sig": "function (region)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when a region is collapsed."
+    },
+    {
+     "name": "regionexpanded",
+     "sig": "function (region)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when a region is expanded."
+    },
+    {
+     "name": "regionresized",
+     "sig": "function (region, newSize)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the user resizes a region."
+    }
+   ],
+   "methods": [
+    {
+     "name": "add",
+     "sig": "(String target, Roo.ContentPanel panel)",
+     "type": "function",
+     "desc": "Adds a ContentPanel (or subclass) to this layout."
+    },
+    {
+     "name": "addEvents",
+     "sig": "(Object object)",
+     "type": "function",
+     "desc": "Used to define events on this Observable"
+    },
+    {
+     "name": "addListener",
+     "sig": "(String eventName, Function handler, Object scope, Object options)",
+     "type": "function",
+     "desc": "Appends an event handler to this component"
+    },
+    {
+     "name": "addRegion",
+     "sig": "(String target, Object config)",
+     "type": "function",
+     "desc": "Creates and adds a new region if it doesn't already exist."
+    },
+    {
+     "name": "addxtype",
+     "sig": "(Object cfg)",
+     "type": "function",
+     "desc": "Adds a xtype elements to the layout.\n<pre><code>\n\nlayout.addxtype({\n       xtype : 'ContentPanel',\n       region: 'west',\n       items: [ .... ]\n   }\n);\n\nlayout.addxtype({\n        xtype : 'NestedLayoutPanel',\n        region: 'west',\n        layout: {\n           center: { },\n           west: { }   \n        },\n        items : [ ... list of content panels or nested layout panels.. ]\n   }\n);\n</code></pre>"
+    },
+    {
+     "name": "beginUpdate",
+     "sig": "()",
+     "type": "function",
+     "desc": "Suspend the LayoutManager from doing auto-layouts while\nmaking multiple add or remove calls"
+    },
+    {
+     "name": "capture",
+     "sig": "(Observable o, Function fn, Object scope)",
+     "type": "function",
+     "desc": "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire."
+    },
+    {
+     "name": "endUpdate",
+     "sig": "(Boolean noLayout)",
+     "type": "function",
+     "desc": "Restore auto-layouts and optionally disable the manager from performing a layout"
+    },
+    {
+     "name": "findPanel",
+     "sig": "(String panelId)",
+     "type": "function",
+     "desc": "Searches all regions for a panel with the specified id"
+    },
+    {
+     "name": "fireEvent",
+     "sig": "(String eventName, Object... args)",
+     "type": "function",
+     "desc": "Fires the specified event with the passed parameters (minus the event name)."
+    },
+    {
+     "name": "getEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns the Element this layout is bound to."
+    },
+    {
+     "name": "getRegion",
+     "sig": "(String target)",
+     "type": "function",
+     "desc": "Returns the specified region."
+    },
+    {
+     "name": "getViewSize",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns the size of the current view. This method normalizes document.body and element embedded layouts and\nperforms box-model adjustments."
+    },
+    {
+     "name": "hasListener",
+     "sig": "(String eventName)",
+     "type": "function",
+     "desc": "Checks to see if this object has any listeners for a specified event"
+    },
+    {
+     "name": "isUpdating",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns true if this layout is currently being updated"
+    },
+    {
+     "name": "layout",
+     "sig": "()",
+     "type": "function",
+     "desc": "Performs a layout update."
+    },
+    {
+     "name": "on",
+     "sig": "(String eventName, Function handler, Object scope, Object options)",
+     "type": "function",
+     "desc": "Appends an event handler to this element (shorthand for addListener)"
+    },
+    {
+     "name": "purgeListeners",
+     "sig": "()",
+     "type": "function",
+     "desc": "Removes all listeners for this object"
+    },
+    {
+     "name": "releaseCapture",
+     "sig": "(Observable o)",
+     "type": "function",
+     "desc": "Removes <b>all</b> added captures from the Observable."
+    },
+    {
+     "name": "remove",
+     "sig": "(String target, Number/String/Roo.ContentPanel panel)",
+     "type": "function",
+     "desc": "Remove a ContentPanel (or subclass) to this layout."
+    },
+    {
+     "name": "removeListener",
+     "sig": "(String eventName, Function handler, Object scope)",
+     "type": "function",
+     "desc": "Removes a listener"
+    },
+    {
+     "name": "showPanel",
+     "sig": "(String/ContentPanel panelId)",
+     "type": "function",
+     "desc": "Searches all regions for a panel with the specified id and activates (shows) it."
+    },
+    {
+     "name": "un",
+     "sig": "(String eventName, Function handler, Object scope)",
+     "type": "function",
+     "desc": "Removes a listener (shorthand for removeListener)"
+    }
+   ]
+  },
+  "Roo.bootstrap.layout.Manager": {
+   "props": [
+    {
+     "name": "listeners",
+     "type": "Object",
+     "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+     "memberOf": "Roo.util.Observable"
+    }
+   ],
+   "events": [
+    {
+     "name": "layout",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when a layout is performed."
+    },
+    {
+     "name": "regioncollapsed",
+     "sig": "function (region)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when a region is collapsed."
+    },
+    {
+     "name": "regionexpanded",
+     "sig": "function (region)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when a region is expanded."
+    },
+    {
+     "name": "regionresized",
+     "sig": "function (region, newSize)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the user resizes a region."
+    }
+   ],
+   "methods": [
+    {
+     "name": "addEvents",
+     "sig": "(Object object)",
+     "type": "function",
+     "desc": "Used to define events on this Observable"
+    },
+    {
+     "name": "addListener",
+     "sig": "(String eventName, Function handler, Object scope, Object options)",
+     "type": "function",
+     "desc": "Appends an event handler to this component"
+    },
+    {
+     "name": "beginUpdate",
+     "sig": "()",
+     "type": "function",
+     "desc": "Suspend the LayoutManager from doing auto-layouts while\nmaking multiple add or remove calls"
+    },
+    {
+     "name": "capture",
+     "sig": "(Observable o, Function fn, Object scope)",
+     "type": "function",
+     "desc": "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire."
+    },
+    {
+     "name": "endUpdate",
+     "sig": "(Boolean noLayout)",
+     "type": "function",
+     "desc": "Restore auto-layouts and optionally disable the manager from performing a layout"
+    },
+    {
+     "name": "fireEvent",
+     "sig": "(String eventName, Object... args)",
+     "type": "function",
+     "desc": "Fires the specified event with the passed parameters (minus the event name)."
+    },
+    {
+     "name": "getEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns the Element this layout is bound to."
+    },
+    {
+     "name": "getRegion",
+     "sig": "(String target)",
+     "type": "function",
+     "desc": "Returns the specified region."
+    },
+    {
+     "name": "getViewSize",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns the size of the current view. This method normalizes document.body and element embedded layouts and\nperforms box-model adjustments."
+    },
+    {
+     "name": "hasListener",
+     "sig": "(String eventName)",
+     "type": "function",
+     "desc": "Checks to see if this object has any listeners for a specified event"
+    },
+    {
+     "name": "isUpdating",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns true if this layout is currently being updated"
+    },
+    {
+     "name": "on",
+     "sig": "(String eventName, Function handler, Object scope, Object options)",
+     "type": "function",
+     "desc": "Appends an event handler to this element (shorthand for addListener)"
+    },
+    {
+     "name": "purgeListeners",
+     "sig": "()",
+     "type": "function",
+     "desc": "Removes all listeners for this object"
+    },
+    {
+     "name": "releaseCapture",
+     "sig": "(Observable o)",
+     "type": "function",
+     "desc": "Removes <b>all</b> added captures from the Observable."
+    },
+    {
+     "name": "removeListener",
+     "sig": "(String eventName, Function handler, Object scope)",
+     "type": "function",
+     "desc": "Removes a listener"
+    },
+    {
+     "name": "un",
+     "sig": "(String eventName, Function handler, Object scope)",
+     "type": "function",
+     "desc": "Removes a listener (shorthand for removeListener)"
+    }
+   ]
+  },
+  "Roo.bootstrap.layout.Region": {
+   "props": [
+    {
+     "name": "margins",
+     "type": "Object",
+     "desc": "Margins for the element (defaults to {top: 0, left: 0, right:0, bottom: 0})",
+     "memberOf": ""
+    },
+    {
+     "name": "cmargins",
+     "type": "Object",
+     "desc": "Margins for the element when collapsed (defaults to: north/south {top: 2, left: 0, right:0, bottom: 2} or east/west {top: 0, left: 2, right:2, bottom: 0})",
+     "memberOf": ""
+    },
+    {
+     "name": "tabPosition",
+     "type": "String",
+     "desc": "\"top\" or \"bottom\" (defaults to \"bottom\")",
+     "memberOf": "",
+     "optvals": [
+      "top",
+      "bottom"
+     ]
+    },
+    {
+     "name": "alwaysShowTabs",
+     "type": "Boolean",
+     "desc": "True to always display tabs even when there is only 1 panel (defaults to false)",
+     "memberOf": ""
+    },
+    {
+     "name": "autoScroll",
+     "type": "Boolean",
+     "desc": "True to enable overflow scrolling (defaults to false)",
+     "memberOf": ""
+    },
+    {
+     "name": "titlebar",
+     "type": "Boolean",
+     "desc": "True to display a title bar (defaults to true)",
+     "memberOf": ""
+    },
+    {
+     "name": "title",
+     "type": "String",
+     "desc": "The title for the region (overrides panel titles)",
+     "memberOf": ""
+    },
+    {
+     "name": "animate",
+     "type": "Boolean",
+     "desc": "True to animate expand/collapse (defaults to false)",
+     "memberOf": ""
+    },
+    {
+     "name": "autoHide",
+     "type": "Boolean",
+     "desc": "False to disable auto hiding when the mouse leaves the \"floated\" region (defaults to true)",
+     "memberOf": ""
+    },
+    {
+     "name": "preservePanels",
+     "type": "Boolean",
+     "desc": "True to preserve removed panels so they can be readded later (defaults to false)",
+     "memberOf": ""
+    },
+    {
+     "name": "closeOnTab",
+     "type": "Boolean",
+     "desc": "True to place the close icon on the tabs instead of the region titlebar (defaults to false)",
+     "memberOf": ""
+    },
+    {
+     "name": "hideTabs",
+     "type": "Boolean",
+     "desc": "True to hide the tab strip (defaults to false)",
+     "memberOf": ""
+    },
+    {
+     "name": "resizeTabs",
+     "type": "Boolean",
+     "desc": "True to enable automatic tab resizing. This will resize the tabs so they are all the same size and fit within\n                     the space available, similar to FireFox 1.5 tabs (defaults to false)",
+     "memberOf": ""
+    },
+    {
+     "name": "minTabWidth",
+     "type": "Number",
+     "desc": "The minimum tab width (defaults to 40)",
+     "memberOf": ""
+    },
+    {
+     "name": "preferredTabWidth",
+     "type": "Number",
+     "desc": "The preferred tab width (defaults to 150)",
+     "memberOf": ""
+    },
+    {
+     "name": "overflow",
+     "type": "String",
+     "desc": "if you have menus in the region, then you need to set this to visible.",
+     "memberOf": "",
+     "optvals": [
+      "hidden",
+      "visible"
+     ]
+    },
+    {
+     "name": "hidden",
+     "type": "Boolean",
+     "desc": "True to start the region hidden (defaults to false)",
+     "memberOf": ""
+    },
+    {
+     "name": "hideWhenEmpty",
+     "type": "Boolean",
+     "desc": "True to hide the region when it has no panels",
+     "memberOf": ""
+    },
+    {
+     "name": "disableTabTips",
+     "type": "Boolean",
+     "desc": "True to disable tab tooltips",
+     "memberOf": ""
+    },
+    {
+     "name": "width",
+     "type": "Number",
+     "desc": "For East/West panels",
+     "memberOf": ""
+    },
+    {
+     "name": "height",
+     "type": "Number",
+     "desc": "For North/South panels",
+     "memberOf": ""
+    },
+    {
+     "name": "split",
+     "type": "Boolean",
+     "desc": "To show the splitter",
+     "memberOf": ""
+    },
+    {
+     "name": "toolbar",
+     "type": "Boolean",
+     "desc": "xtype configuration for a toolbar - shows on right of tabbar",
+     "memberOf": ""
+    },
+    {
+     "name": "mgr",
+     "type": "Roo.bootstrap.layout.Manager",
+     "desc": "The manager",
+     "memberOf": ""
+    },
+    {
+     "name": "region",
+     "type": "string",
+     "desc": "the region that it inhabits..",
+     "memberOf": ""
+    },
+    {
+     "name": "skipConfig",
+     "type": "bool",
+     "desc": "skip config?",
+     "memberOf": "Roo.bootstrap.layout.Basic"
+    },
+    {
+     "name": "listeners",
+     "type": "Object",
+     "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+     "memberOf": "Roo.util.Observable"
+    }
+   ],
+   "events": [],
+   "methods": [
+    {
+     "name": "add",
+     "sig": "(ContentPanel... panel)",
+     "type": "function",
+     "desc": "Adds the passed ContentPanel(s) to this region."
+    },
+    {
+     "name": "addEvents",
+     "sig": "(Object object)",
+     "type": "function",
+     "desc": "Used to define events on this Observable"
+    },
+    {
+     "name": "addListener",
+     "sig": "(String eventName, Function handler, Object scope, Object options)",
+     "type": "function",
+     "desc": "Appends an event handler to this component"
+    },
+    {
+     "name": "animateCollapse",
+     "sig": "(Boolean skipAnim)",
+     "type": "function",
+     "desc": "Collapses this region."
+    },
+    {
+     "name": "animateExpand",
+     "sig": "(Roo.EventObject e, Boolean skipAnim)",
+     "type": "function",
+     "desc": "Expands this region if it was previously collapsed."
+    },
+    {
+     "name": "capture",
+     "sig": "(Observable o, Function fn, Object scope)",
+     "type": "function",
+     "desc": "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire."
+    },
+    {
+     "name": "fireEvent",
+     "sig": "(String eventName, Object... args)",
+     "type": "function",
+     "desc": "Fires the specified event with the passed parameters (minus the event name)."
+    },
+    {
+     "name": "getActivePanel",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the active panel for this region."
+    },
+    {
+     "name": "getBox",
+     "sig": "(String title)",
+     "type": "function",
+     "desc": "Updates the title for collapsed north/south regions (used with {@link #collapsedTitle} config option)"
+    },
+    {
+     "name": "getEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns the container element for this region."
+    },
+    {
+     "name": "getPanel",
+     "sig": "(Number/String/ContentPanel panel)",
+     "type": "function",
+     "desc": "Returns the panel specified or null if it's not in this region."
+    },
+    {
+     "name": "getPosition",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns this regions position (north/south/east/west/center)."
+    },
+    {
+     "name": "getTabs",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns the TabPanel component used by this region"
+    },
+    {
+     "name": "hasListener",
+     "sig": "(String eventName)",
+     "type": "function",
+     "desc": "Checks to see if this object has any listeners for a specified event"
+    },
+    {
+     "name": "hasPanel",
+     "sig": "(Number/String/ContentPanel panel)",
+     "type": "function",
+     "desc": "Returns true if the panel is in this region."
+    },
+    {
+     "name": "hide",
+     "sig": "()",
+     "type": "function",
+     "desc": "Hides this region."
+    },
+    {
+     "name": "hidePanel",
+     "sig": "(Number/String/ContentPanel panel)",
+     "type": "function",
+     "desc": "Hides the tab for the specified panel."
+    },
+    {
+     "name": "isVisible",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns true if this region is currently visible."
+    },
+    {
+     "name": "on",
+     "sig": "(String eventName, Function handler, Object scope, Object options)",
+     "type": "function",
+     "desc": "Appends an event handler to this element (shorthand for addListener)"
+    },
+    {
+     "name": "purgeListeners",
+     "sig": "()",
+     "type": "function",
+     "desc": "Removes all listeners for this object"
+    },
+    {
+     "name": "releaseCapture",
+     "sig": "(Observable o)",
+     "type": "function",
+     "desc": "Removes <b>all</b> added captures from the Observable."
+    },
+    {
+     "name": "remove",
+     "sig": "(Number/String/ContentPanel panel, Boolean preservePanel)",
+     "type": "function",
+     "desc": "Removes the specified panel. If preservePanel is not true (either here or in the config), the panel is destroyed."
+    },
+    {
+     "name": "removeListener",
+     "sig": "(String eventName, Function handler, Object scope)",
+     "type": "function",
+     "desc": "Removes a listener"
+    },
+    {
+     "name": "resizeTo",
+     "sig": "(Number newSize)",
+     "type": "function",
+     "desc": "Resizes the region to the specified size. For vertical regions (west, east) this adjusts \nthe width, for horizontal (north, south) the height."
+    },
+    {
+     "name": "show",
+     "sig": "()",
+     "type": "function",
+     "desc": "Shows this region if it was previously hidden."
+    },
+    {
+     "name": "showPanel",
+     "sig": "(Number/String/ContentPanel panelId)",
+     "type": "function",
+     "desc": "Shows the specified panel."
+    },
+    {
+     "name": "un",
+     "sig": "(String eventName, Function handler, Object scope)",
+     "type": "function",
+     "desc": "Removes a listener (shorthand for removeListener)"
+    },
+    {
+     "name": "unhidePanel",
+     "sig": "(Number/String/ContentPanel panel)",
+     "type": "function",
+     "desc": "Unhides the tab for a previously hidden panel."
+    }
+   ]
+  },
+  "Roo.bootstrap.layout.Split": {
+   "props": [
+    {
+     "name": "collapsible",
+     "type": "Boolean",
+     "desc": "False to disable collapsing (defaults to true)",
+     "memberOf": "Roo.LayoutRegion"
+    },
+    {
+     "name": "collapsed",
+     "type": "Boolean",
+     "desc": "True to set the initial display to collapsed (defaults to false)",
+     "memberOf": "Roo.LayoutRegion"
+    },
+    {
+     "name": "floatable",
+     "type": "Boolean",
+     "desc": "False to disable floating (defaults to true)",
+     "memberOf": "Roo.LayoutRegion"
+    },
+    {
+     "name": "margins",
+     "type": "Object",
+     "desc": "Margins for the element (defaults to {top: 0, left: 0, right:0, bottom: 0})",
+     "memberOf": "Roo.LayoutRegion"
+    },
+    {
+     "name": "cmargins",
+     "type": "Object",
+     "desc": "Margins for the element when collapsed (defaults to: north/south {top: 2, left: 0, right:0, bottom: 2} or east/west {top: 0, left: 2, right:2, bottom: 0})",
+     "memberOf": "Roo.LayoutRegion"
+    },
+    {
+     "name": "tabPosition",
+     "type": "String",
+     "desc": "\"top\" or \"bottom\" (defaults to \"bottom\")",
+     "memberOf": "Roo.LayoutRegion",
+     "optvals": [
+      "top",
+      "bottom"
+     ]
+    },
+    {
+     "name": "collapsedTitle",
+     "type": "String",
+     "desc": "Optional string message to display in the collapsed block of a north or south region",
+     "memberOf": "Roo.LayoutRegion"
+    },
+    {
+     "name": "alwaysShowTabs",
+     "type": "Boolean",
+     "desc": "True to always display tabs even when there is only 1 panel (defaults to false)",
+     "memberOf": "Roo.LayoutRegion"
+    },
+    {
+     "name": "autoScroll",
+     "type": "Boolean",
+     "desc": "True to enable overflow scrolling (defaults to false)",
+     "memberOf": "Roo.LayoutRegion"
+    },
+    {
+     "name": "titlebar",
+     "type": "Boolean",
+     "desc": "True to display a title bar (defaults to true)",
+     "memberOf": "Roo.LayoutRegion"
+    },
+    {
+     "name": "title",
+     "type": "String",
+     "desc": "The title for the region (overrides panel titles)",
+     "memberOf": "Roo.LayoutRegion"
+    },
+    {
+     "name": "animate",
+     "type": "Boolean",
+     "desc": "True to animate expand/collapse (defaults to false)",
+     "memberOf": "Roo.LayoutRegion"
+    },
+    {
+     "name": "autoHide",
+     "type": "Boolean",
+     "desc": "False to disable auto hiding when the mouse leaves the \"floated\" region (defaults to true)",
+     "memberOf": "Roo.LayoutRegion"
+    },
+    {
+     "name": "preservePanels",
+     "type": "Boolean",
+     "desc": "True to preserve removed panels so they can be readded later (defaults to false)",
+     "memberOf": "Roo.LayoutRegion"
+    },
+    {
+     "name": "closeOnTab",
+     "type": "Boolean",
+     "desc": "True to place the close icon on the tabs instead of the region titlebar (defaults to false)",
+     "memberOf": "Roo.LayoutRegion"
+    },
+    {
+     "name": "hideTabs",
+     "type": "Boolean",
+     "desc": "True to hide the tab strip (defaults to false)",
+     "memberOf": "Roo.LayoutRegion"
+    },
+    {
+     "name": "resizeTabs",
+     "type": "Boolean",
+     "desc": "True to enable automatic tab resizing. This will resize the tabs so they are all the same size and fit within\n                     the space available, similar to FireFox 1.5 tabs (defaults to false)",
+     "memberOf": "Roo.LayoutRegion"
+    },
+    {
+     "name": "minTabWidth",
+     "type": "Number",
+     "desc": "The minimum tab width (defaults to 40)",
+     "memberOf": "Roo.LayoutRegion"
+    },
+    {
+     "name": "preferredTabWidth",
+     "type": "Number",
+     "desc": "The preferred tab width (defaults to 150)",
+     "memberOf": "Roo.LayoutRegion"
+    },
+    {
+     "name": "showPin",
+     "type": "Boolean",
+     "desc": "True to show a pin button",
+     "memberOf": "Roo.LayoutRegion"
+    },
+    {
+     "name": "hidden",
+     "type": "Boolean",
+     "desc": "True to start the region hidden (defaults to false)",
+     "memberOf": "Roo.LayoutRegion"
+    },
+    {
+     "name": "hideWhenEmpty",
+     "type": "Boolean",
+     "desc": "True to hide the region when it has no panels",
+     "memberOf": "Roo.LayoutRegion"
+    },
+    {
+     "name": "disableTabTips",
+     "type": "Boolean",
+     "desc": "True to disable tab tooltips",
+     "memberOf": "Roo.LayoutRegion"
+    },
+    {
+     "name": "width",
+     "type": "Number",
+     "desc": "For East/West panels",
+     "memberOf": "Roo.LayoutRegion"
+    },
+    {
+     "name": "height",
+     "type": "Number",
+     "desc": "For North/South panels",
+     "memberOf": "Roo.LayoutRegion"
+    },
+    {
+     "name": "split",
+     "type": "Boolean",
+     "desc": "To show the splitter",
+     "memberOf": "Roo.LayoutRegion"
+    },
+    {
+     "name": "toolbar",
+     "type": "Boolean",
+     "desc": "xtype configuration for a toolbar - shows on right of tabbar",
+     "memberOf": "Roo.LayoutRegion"
+    },
+    {
+     "name": "listeners",
+     "type": "Object",
+     "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+     "memberOf": "Roo.util.Observable"
+    }
+   ],
+   "events": [
+    {
+     "name": "beforecollapse",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this region before collapse."
+    },
+    {
+     "name": "beforeremove",
+     "sig": "function (_self, panel, e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires before a panel is removed (or closed). To cancel the removal set \"e.cancel = true\" on the event argument."
+    },
+    {
+     "name": "collapsed",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this region is collapsed."
+    },
+    {
+     "name": "expanded",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this region is expanded."
+    },
+    {
+     "name": "invalidated",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the layout for this region is changed."
+    },
+    {
+     "name": "panelactivated",
+     "sig": "function (_self, panel)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when a panel is activated."
+    },
+    {
+     "name": "paneladded",
+     "sig": "function (_self, panel)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when a panel is added."
+    },
+    {
+     "name": "panelremoved",
+     "sig": "function (_self, panel)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when a panel is removed."
+    },
+    {
+     "name": "resized",
+     "sig": "function (_self, newSize)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the user resizes this region."
+    },
+    {
+     "name": "slidehide",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this region slides out of view."
+    },
+    {
+     "name": "slideshow",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this region is slid into view."
+    },
+    {
+     "name": "visibilitychange",
+     "sig": "function (_self, visibility)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this region is shown or hidden"
+    }
+   ],
+   "methods": [
+    {
+     "name": "add",
+     "sig": "(ContentPanel... panel)",
+     "type": "function",
+     "desc": "Adds the passed ContentPanel(s) to this region."
+    },
+    {
+     "name": "addEvents",
+     "sig": "(Object object)",
+     "type": "function",
+     "desc": "Used to define events on this Observable"
+    },
+    {
+     "name": "addListener",
+     "sig": "(String eventName, Function handler, Object scope, Object options)",
+     "type": "function",
+     "desc": "Appends an event handler to this component"
+    },
+    {
+     "name": "capture",
+     "sig": "(Observable o, Function fn, Object scope)",
+     "type": "function",
+     "desc": "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire."
+    },
+    {
+     "name": "collapse",
+     "sig": "(Boolean skipAnim)",
+     "type": "function",
+     "desc": "Collapses this region."
+    },
+    {
+     "name": "expand",
+     "sig": "(Roo.EventObject e, Boolean skipAnim)",
+     "type": "function",
+     "desc": "Expands this region if it was previously collapsed."
+    },
+    {
+     "name": "fireEvent",
+     "sig": "(String eventName, Object... args)",
+     "type": "function",
+     "desc": "Fires the specified event with the passed parameters (minus the event name)."
+    },
+    {
+     "name": "getActivePanel",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the active panel for this region."
+    },
+    {
+     "name": "getEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns the container element for this region."
+    },
+    {
+     "name": "getPanel",
+     "sig": "(Number/String/ContentPanel panel)",
+     "type": "function",
+     "desc": "Returns the panel specified or null if it's not in this region."
+    },
+    {
+     "name": "getPosition",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns this regions position (north/south/east/west/center)."
+    },
+    {
+     "name": "getSplitBar",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns the {@link Roo.SplitBar} for this region."
+    },
+    {
+     "name": "getTabs",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns the TabPanel component used by this region"
+    },
+    {
+     "name": "hasListener",
+     "sig": "(String eventName)",
+     "type": "function",
+     "desc": "Checks to see if this object has any listeners for a specified event"
+    },
+    {
+     "name": "hasPanel",
+     "sig": "(Number/String/ContentPanel panel)",
+     "type": "function",
+     "desc": "Returns true if the panel is in this region."
+    },
+    {
+     "name": "hide",
+     "sig": "()",
+     "type": "function",
+     "desc": "Hides this region."
+    },
+    {
+     "name": "hidePanel",
+     "sig": "(Number/String/ContentPanel panel)",
+     "type": "function",
+     "desc": "Hides the tab for the specified panel."
+    },
+    {
+     "name": "isVisible",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns true if this region is currently visible."
+    },
+    {
+     "name": "on",
+     "sig": "(String eventName, Function handler, Object scope, Object options)",
+     "type": "function",
+     "desc": "Appends an event handler to this element (shorthand for addListener)"
+    },
+    {
+     "name": "purgeListeners",
+     "sig": "()",
+     "type": "function",
+     "desc": "Removes all listeners for this object"
+    },
+    {
+     "name": "releaseCapture",
+     "sig": "(Observable o)",
+     "type": "function",
+     "desc": "Removes <b>all</b> added captures from the Observable."
+    },
+    {
+     "name": "remove",
+     "sig": "(Number/String/ContentPanel panel, Boolean preservePanel)",
+     "type": "function",
+     "desc": "Removes the specified panel. If preservePanel is not true (either here or in the config), the panel is destroyed."
+    },
+    {
+     "name": "removeListener",
+     "sig": "(String eventName, Function handler, Object scope)",
+     "type": "function",
+     "desc": "Removes a listener"
+    },
+    {
+     "name": "resizeTo",
+     "sig": "(Number newSize)",
+     "type": "function",
+     "desc": "Resizes the region to the specified size. For vertical regions (west, east) this adjusts \nthe width, for horizontal (north, south) the height."
+    },
+    {
+     "name": "setCollapsedTitle",
+     "sig": "(String title)",
+     "type": "function",
+     "desc": "Updates the title for collapsed north/south regions (used with {@link #collapsedTitle} config option)"
+    },
+    {
+     "name": "show",
+     "sig": "()",
+     "type": "function",
+     "desc": "Shows this region if it was previously hidden."
+    },
+    {
+     "name": "showPanel",
+     "sig": "(Number/String/ContentPanel panelId)",
+     "type": "function",
+     "desc": "Shows the specified panel."
+    },
+    {
+     "name": "un",
+     "sig": "(String eventName, Function handler, Object scope)",
+     "type": "function",
+     "desc": "Removes a listener (shorthand for removeListener)"
+    },
+    {
+     "name": "unhidePanel",
+     "sig": "(Number/String/ContentPanel panel)",
+     "type": "function",
+     "desc": "Unhides the tab for a previously hidden panel."
+    }
+   ]
+  },
   "Roo.bootstrap.menu": {
    "props": [],
    "events": [],
@@ -43386,6 +44873,945 @@
      "sig": "(String eventName, Function handler, Object scope)",
      "type": "function",
      "desc": "Removes a listener (shorthand for removeListener)"
+    }
+   ]
+  },
+  "Roo.bootstrap.panel": {
+   "props": [],
+   "events": [],
+   "methods": []
+  },
+  "Roo.bootstrap.panel.Content": {
+   "props": [
+    {
+     "name": "fitToFrame",
+     "type": "Boolean",
+     "desc": "True for this panel to adjust its size to fit when the region resizes  (defaults to false)",
+     "memberOf": ""
+    },
+    {
+     "name": "fitContainer",
+     "type": "Boolean",
+     "desc": "When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)",
+     "memberOf": ""
+    },
+    {
+     "name": "autoCreate",
+     "type": "Boolean/Object",
+     "desc": "True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create",
+     "memberOf": ""
+    },
+    {
+     "name": "closable",
+     "type": "Boolean",
+     "desc": "True if the panel can be closed/removed",
+     "memberOf": ""
+    },
+    {
+     "name": "background",
+     "type": "Boolean",
+     "desc": "True if the panel should not be activated when it is added (defaults to false)",
+     "memberOf": ""
+    },
+    {
+     "name": "resizeEl",
+     "type": "String/HTMLElement/Element",
+     "desc": "An element to resize if {@link #fitToFrame} is true (instead of this panel's element)",
+     "memberOf": ""
+    },
+    {
+     "name": "toolbar",
+     "type": "Toolbar",
+     "desc": "A toolbar for this panel",
+     "memberOf": ""
+    },
+    {
+     "name": "autoScroll",
+     "type": "Boolean",
+     "desc": "True to scroll overflow in this panel (use with {@link #fitToFrame})",
+     "memberOf": ""
+    },
+    {
+     "name": "title",
+     "type": "String",
+     "desc": "The title for this panel",
+     "memberOf": ""
+    },
+    {
+     "name": "adjustments",
+     "type": "Array",
+     "desc": "Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])",
+     "memberOf": ""
+    },
+    {
+     "name": "url",
+     "type": "String",
+     "desc": "Calls {@link #setUrl} with this value",
+     "memberOf": ""
+    },
+    {
+     "name": "region",
+     "type": "String",
+     "desc": "which region to put this panel on (when used with xtype constructors)",
+     "memberOf": "",
+     "optvals": [
+      "center",
+      "north",
+      "south",
+      "east",
+      "west"
+     ]
+    },
+    {
+     "name": "params",
+     "type": "String/Object",
+     "desc": "When used with {@link #url}, calls {@link #setUrl} with this value",
+     "memberOf": ""
+    },
+    {
+     "name": "loadOnce",
+     "type": "Boolean",
+     "desc": "When used with {@link #url}, calls {@link #setUrl} with this value",
+     "memberOf": ""
+    },
+    {
+     "name": "content",
+     "type": "String",
+     "desc": "Raw content to fill content panel with (uses setContent on construction.)",
+     "memberOf": ""
+    },
+    {
+     "name": "listeners",
+     "type": "Object",
+     "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+     "memberOf": "Roo.util.Observable"
+    }
+   ],
+   "events": [
+    {
+     "name": "activate",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this panel is activated."
+    },
+    {
+     "name": "deactivate",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this panel is activated."
+    },
+    {
+     "name": "render",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this tab is created"
+    },
+    {
+     "name": "resize",
+     "sig": "function (_self, width, height)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this panel is resized if fitToFrame is true."
+    }
+   ],
+   "methods": [
+    {
+     "name": "addEvents",
+     "sig": "(Object object)",
+     "type": "function",
+     "desc": "Used to define events on this Observable"
+    },
+    {
+     "name": "addListener",
+     "sig": "(String eventName, Function handler, Object scope, Object options)",
+     "type": "function",
+     "desc": "Appends an event handler to this component"
+    },
+    {
+     "name": "capture",
+     "sig": "(Observable o, Function fn, Object scope)",
+     "type": "function",
+     "desc": "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire."
+    },
+    {
+     "name": "destroy",
+     "sig": "()",
+     "type": "function",
+     "desc": "Destroys this panel"
+    },
+    {
+     "name": "fireEvent",
+     "sig": "(String eventName, Object... args)",
+     "type": "function",
+     "desc": "Fires the specified event with the passed parameters (minus the event name)."
+    },
+    {
+     "name": "getChildContainer",
+     "sig": "(Object cfg)",
+     "type": "function",
+     "desc": "Adds a xtype elements to the panel - currently only supports Forms, View, JsonView.\n<pre><code>\n\nlayout.addxtype({\n       xtype : 'Form',\n       items: [ .... ]\n   }\n);\n\n</code></pre>"
+    },
+    {
+     "name": "getEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns this panel's element - used by regiosn to add."
+    },
+    {
+     "name": "getId",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns this panel's id"
+    },
+    {
+     "name": "getTitle",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns this panel's title"
+    },
+    {
+     "name": "getToolbar",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns the toolbar for this Panel if one was configured."
+    },
+    {
+     "name": "getUpdateManager",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the {@link Roo.UpdateManager} for this panel. Enables you to perform Ajax updates."
+    },
+    {
+     "name": "hasListener",
+     "sig": "(String eventName)",
+     "type": "function",
+     "desc": "Checks to see if this object has any listeners for a specified event"
+    },
+    {
+     "name": "isClosable",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns true is this panel was configured to be closable"
+    },
+    {
+     "name": "load",
+     "sig": "(Object/String/Function url, String/Object params, Function callback, Boolean discardUrl)",
+     "type": "function",
+     "desc": "Loads this content panel immediately with content from XHR. Note: to delay loading until the panel is activated, use {@link #setUrl}."
+    },
+    {
+     "name": "on",
+     "sig": "(String eventName, Function handler, Object scope, Object options)",
+     "type": "function",
+     "desc": "Appends an event handler to this element (shorthand for addListener)"
+    },
+    {
+     "name": "purgeListeners",
+     "sig": "()",
+     "type": "function",
+     "desc": "Removes all listeners for this object"
+    },
+    {
+     "name": "refresh",
+     "sig": "()",
+     "type": "function",
+     "desc": "Force a content refresh from the URL specified in the {@link #setUrl} method.\n  Will fail silently if the {@link #setUrl} method has not been called.\n  This does not activate the panel, just updates its content."
+    },
+    {
+     "name": "releaseCapture",
+     "sig": "(Observable o)",
+     "type": "function",
+     "desc": "Removes <b>all</b> added captures from the Observable."
+    },
+    {
+     "name": "removeListener",
+     "sig": "(String eventName, Function handler, Object scope)",
+     "type": "function",
+     "desc": "Removes a listener"
+    },
+    {
+     "name": "setContent",
+     "sig": "(String content, Boolean loadScripts)",
+     "type": "function",
+     "desc": "Updates this panel's element"
+    },
+    {
+     "name": "setTitle",
+     "sig": "(String title)",
+     "type": "function",
+     "desc": "Set this panel's title"
+    },
+    {
+     "name": "setUrl",
+     "sig": "(String/Function url, String/Object params, Boolean loadOnce)",
+     "type": "function",
+     "desc": "Set a URL to be used to load the content for this panel. When this panel is activated, the content will be loaded from that URL."
+    },
+    {
+     "name": "un",
+     "sig": "(String eventName, Function handler, Object scope)",
+     "type": "function",
+     "desc": "Removes a listener (shorthand for removeListener)"
+    }
+   ]
+  },
+  "Roo.bootstrap.panel.Nest": {
+   "props": [
+    {
+     "name": "fitToFrame",
+     "type": "Boolean",
+     "desc": "True for this panel to adjust its size to fit when the region resizes  (defaults to false)",
+     "memberOf": "Roo.bootstrap.panel.Content"
+    },
+    {
+     "name": "fitContainer",
+     "type": "Boolean",
+     "desc": "When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)",
+     "memberOf": "Roo.bootstrap.panel.Content"
+    },
+    {
+     "name": "autoCreate",
+     "type": "Boolean/Object",
+     "desc": "True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create",
+     "memberOf": "Roo.bootstrap.panel.Content"
+    },
+    {
+     "name": "closable",
+     "type": "Boolean",
+     "desc": "True if the panel can be closed/removed",
+     "memberOf": "Roo.bootstrap.panel.Content"
+    },
+    {
+     "name": "background",
+     "type": "Boolean",
+     "desc": "True if the panel should not be activated when it is added (defaults to false)",
+     "memberOf": "Roo.bootstrap.panel.Content"
+    },
+    {
+     "name": "resizeEl",
+     "type": "String/HTMLElement/Element",
+     "desc": "An element to resize if {@link #fitToFrame} is true (instead of this panel's element)",
+     "memberOf": "Roo.bootstrap.panel.Content"
+    },
+    {
+     "name": "toolbar",
+     "type": "Toolbar",
+     "desc": "A toolbar for this panel",
+     "memberOf": "Roo.bootstrap.panel.Content"
+    },
+    {
+     "name": "autoScroll",
+     "type": "Boolean",
+     "desc": "True to scroll overflow in this panel (use with {@link #fitToFrame})",
+     "memberOf": "Roo.bootstrap.panel.Content"
+    },
+    {
+     "name": "title",
+     "type": "String",
+     "desc": "The title for this panel",
+     "memberOf": "Roo.bootstrap.panel.Content"
+    },
+    {
+     "name": "adjustments",
+     "type": "Array",
+     "desc": "Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])",
+     "memberOf": "Roo.bootstrap.panel.Content"
+    },
+    {
+     "name": "url",
+     "type": "String",
+     "desc": "Calls {@link #setUrl} with this value",
+     "memberOf": "Roo.bootstrap.panel.Content"
+    },
+    {
+     "name": "region",
+     "type": "String",
+     "desc": "which region to put this panel on (when used with xtype constructors)",
+     "memberOf": "Roo.bootstrap.panel.Content",
+     "optvals": [
+      "center",
+      "north",
+      "south",
+      "east",
+      "west"
+     ]
+    },
+    {
+     "name": "params",
+     "type": "String/Object",
+     "desc": "When used with {@link #url}, calls {@link #setUrl} with this value",
+     "memberOf": "Roo.bootstrap.panel.Content"
+    },
+    {
+     "name": "loadOnce",
+     "type": "Boolean",
+     "desc": "When used with {@link #url}, calls {@link #setUrl} with this value",
+     "memberOf": "Roo.bootstrap.panel.Content"
+    },
+    {
+     "name": "content",
+     "type": "String",
+     "desc": "Raw content to fill content panel with (uses setContent on construction.)",
+     "memberOf": "Roo.bootstrap.panel.Content"
+    },
+    {
+     "name": "listeners",
+     "type": "Object",
+     "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+     "memberOf": "Roo.util.Observable"
+    }
+   ],
+   "events": [
+    {
+     "name": "activate",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this panel is activated."
+    },
+    {
+     "name": "deactivate",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this panel is activated."
+    },
+    {
+     "name": "render",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this tab is created"
+    },
+    {
+     "name": "resize",
+     "sig": "function (_self, width, height)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this panel is resized if fitToFrame is true."
+    }
+   ],
+   "methods": [
+    {
+     "name": "addEvents",
+     "sig": "(Object object)",
+     "type": "function",
+     "desc": "Used to define events on this Observable"
+    },
+    {
+     "name": "addListener",
+     "sig": "(String eventName, Function handler, Object scope, Object options)",
+     "type": "function",
+     "desc": "Appends an event handler to this component"
+    },
+    {
+     "name": "addxtype",
+     "sig": "(Object cfg)",
+     "type": "function",
+     "desc": "Adds a xtype elements to the layout of the nested panel\n<pre><code>\n\npanel.addxtype({\n       xtype : 'ContentPanel',\n       region: 'west',\n       items: [ .... ]\n   }\n);\n\npanel.addxtype({\n        xtype : 'NestedLayoutPanel',\n        region: 'west',\n        layout: {\n           center: { },\n           west: { }   \n        },\n        items : [ ... list of content panels or nested layout panels.. ]\n   }\n);\n</code></pre>"
+    },
+    {
+     "name": "capture",
+     "sig": "(Observable o, Function fn, Object scope)",
+     "type": "function",
+     "desc": "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire."
+    },
+    {
+     "name": "destroy",
+     "sig": "()",
+     "type": "function",
+     "desc": "Destroys this panel"
+    },
+    {
+     "name": "fireEvent",
+     "sig": "(String eventName, Object... args)",
+     "type": "function",
+     "desc": "Fires the specified event with the passed parameters (minus the event name)."
+    },
+    {
+     "name": "getChildContainer",
+     "sig": "(Object cfg)",
+     "type": "function",
+     "desc": "Adds a xtype elements to the panel - currently only supports Forms, View, JsonView.\n<pre><code>\n\nlayout.addxtype({\n       xtype : 'Form',\n       items: [ .... ]\n   }\n);\n\n</code></pre>"
+    },
+    {
+     "name": "getEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns this panel's element - used by regiosn to add."
+    },
+    {
+     "name": "getId",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns this panel's id"
+    },
+    {
+     "name": "getLayout",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns the nested BorderLayout for this panel"
+    },
+    {
+     "name": "getTitle",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns this panel's title"
+    },
+    {
+     "name": "getToolbar",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns the toolbar for this Panel if one was configured."
+    },
+    {
+     "name": "getUpdateManager",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the {@link Roo.UpdateManager} for this panel. Enables you to perform Ajax updates."
+    },
+    {
+     "name": "hasListener",
+     "sig": "(String eventName)",
+     "type": "function",
+     "desc": "Checks to see if this object has any listeners for a specified event"
+    },
+    {
+     "name": "isClosable",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns true is this panel was configured to be closable"
+    },
+    {
+     "name": "load",
+     "sig": "(Object/String/Function url, String/Object params, Function callback, Boolean discardUrl)",
+     "type": "function",
+     "desc": "Loads this content panel immediately with content from XHR. Note: to delay loading until the panel is activated, use {@link #setUrl}."
+    },
+    {
+     "name": "on",
+     "sig": "(String eventName, Function handler, Object scope, Object options)",
+     "type": "function",
+     "desc": "Appends an event handler to this element (shorthand for addListener)"
+    },
+    {
+     "name": "purgeListeners",
+     "sig": "()",
+     "type": "function",
+     "desc": "Removes all listeners for this object"
+    },
+    {
+     "name": "refresh",
+     "sig": "()",
+     "type": "function",
+     "desc": "Force a content refresh from the URL specified in the {@link #setUrl} method.\n  Will fail silently if the {@link #setUrl} method has not been called.\n  This does not activate the panel, just updates its content."
+    },
+    {
+     "name": "releaseCapture",
+     "sig": "(Observable o)",
+     "type": "function",
+     "desc": "Removes <b>all</b> added captures from the Observable."
+    },
+    {
+     "name": "removeListener",
+     "sig": "(String eventName, Function handler, Object scope)",
+     "type": "function",
+     "desc": "Removes a listener"
+    },
+    {
+     "name": "setContent",
+     "sig": "(String content, Boolean loadScripts)",
+     "type": "function",
+     "desc": "Updates this panel's element"
+    },
+    {
+     "name": "setTitle",
+     "sig": "(String title)",
+     "type": "function",
+     "desc": "Set this panel's title"
+    },
+    {
+     "name": "setUrl",
+     "sig": "(String/Function url, String/Object params, Boolean loadOnce)",
+     "type": "function",
+     "desc": "Set a URL to be used to load the content for this panel. When this panel is activated, the content will be loaded from that URL."
+    },
+    {
+     "name": "un",
+     "sig": "(String eventName, Function handler, Object scope)",
+     "type": "function",
+     "desc": "Removes a listener (shorthand for removeListener)"
+    }
+   ]
+  },
+  "Roo.bootstrap.panel.TabItem": {
+   "props": [
+    {
+     "name": "listeners",
+     "type": "Object",
+     "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+     "memberOf": "Roo.util.Observable"
+    }
+   ],
+   "events": [
+    {
+     "name": "activate",
+     "sig": "function (tabPanel, _self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this tab becomes the active tab."
+    },
+    {
+     "name": "beforeclose",
+     "sig": "function (_self, e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires before this tab is closed. To cancel the close, set cancel to true on e (e.cancel = true)."
+    },
+    {
+     "name": "close",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this tab is closed."
+    },
+    {
+     "name": "deactivate",
+     "sig": "function (tabPanel, _self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this tab is no longer the active tab."
+    }
+   ],
+   "methods": [
+    {
+     "name": "activate",
+     "sig": "()",
+     "type": "function",
+     "desc": "Activates this TabPanelItem -- this <b>does</b> deactivate the currently active TabPanelItem."
+    },
+    {
+     "name": "addEvents",
+     "sig": "(Object object)",
+     "type": "function",
+     "desc": "Used to define events on this Observable"
+    },
+    {
+     "name": "addListener",
+     "sig": "(String eventName, Function handler, Object scope, Object options)",
+     "type": "function",
+     "desc": "Appends an event handler to this component"
+    },
+    {
+     "name": "capture",
+     "sig": "(Observable o, Function fn, Object scope)",
+     "type": "function",
+     "desc": "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire."
+    },
+    {
+     "name": "disable",
+     "sig": "()",
+     "type": "function",
+     "desc": "Disables this TabPanelItem -- this does nothing if this is the active TabPanelItem."
+    },
+    {
+     "name": "enable",
+     "sig": "()",
+     "type": "function",
+     "desc": "Enables this TabPanelItem if it was previously disabled."
+    },
+    {
+     "name": "fireEvent",
+     "sig": "(String eventName, Object... args)",
+     "type": "function",
+     "desc": "Fires the specified event with the passed parameters (minus the event name)."
+    },
+    {
+     "name": "getText",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns the text for this tab"
+    },
+    {
+     "name": "getUpdateManager",
+     "sig": "()",
+     "type": "function",
+     "desc": "Gets the {@link Roo.UpdateManager} for the body of this TabPanelItem. Enables you to perform Ajax updates."
+    },
+    {
+     "name": "hasListener",
+     "sig": "(String eventName)",
+     "type": "function",
+     "desc": "Checks to see if this object has any listeners for a specified event"
+    },
+    {
+     "name": "hide",
+     "sig": "()",
+     "type": "function",
+     "desc": "Hides this TabPanelItem -- if you don't activate another TabPanelItem this could look odd."
+    },
+    {
+     "name": "isActive",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns true if this tab is the active tab."
+    },
+    {
+     "name": "isHidden",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns true if this tab is \"hidden\""
+    },
+    {
+     "name": "on",
+     "sig": "(String eventName, Function handler, Object scope, Object options)",
+     "type": "function",
+     "desc": "Appends an event handler to this element (shorthand for addListener)"
+    },
+    {
+     "name": "purgeListeners",
+     "sig": "()",
+     "type": "function",
+     "desc": "Removes all listeners for this object"
+    },
+    {
+     "name": "refresh",
+     "sig": "()",
+     "type": "function",
+     "desc": "Forces a content refresh from the URL specified in the {@link #setUrl} method.\n  Will fail silently if the setUrl method has not been called.\n  This does not activate the panel, just updates its content."
+    },
+    {
+     "name": "releaseCapture",
+     "sig": "(Observable o)",
+     "type": "function",
+     "desc": "Removes <b>all</b> added captures from the Observable."
+    },
+    {
+     "name": "removeListener",
+     "sig": "(String eventName, Function handler, Object scope)",
+     "type": "function",
+     "desc": "Removes a listener"
+    },
+    {
+     "name": "setContent",
+     "sig": "(String content, Boolean loadScripts)",
+     "type": "function",
+     "desc": "Sets the content for this TabPanelItem."
+    },
+    {
+     "name": "setHidden",
+     "sig": "(Boolean hidden)",
+     "type": "function",
+     "desc": "Show or hide the tab"
+    },
+    {
+     "name": "setText",
+     "sig": "(String text)",
+     "type": "function",
+     "desc": "Sets the text for the tab (Note: this also sets the tooltip text)"
+    },
+    {
+     "name": "setTooltip",
+     "sig": "(String tooltip)",
+     "type": "function",
+     "desc": "Set the tooltip for the tab."
+    },
+    {
+     "name": "setUrl",
+     "sig": "(String/Function url, String/Object params, Boolean loadOnce)",
+     "type": "function",
+     "desc": "Set a URL to be used to load the content for this TabPanelItem."
+    },
+    {
+     "name": "show",
+     "sig": "()",
+     "type": "function",
+     "desc": "Shows this TabPanelItem -- this <b>does not</b> deactivate the currently active TabPanelItem."
+    },
+    {
+     "name": "un",
+     "sig": "(String eventName, Function handler, Object scope)",
+     "type": "function",
+     "desc": "Removes a listener (shorthand for removeListener)"
+    }
+   ]
+  },
+  "Roo.bootstrap.panel.Tabs": {
+   "props": [
+    {
+     "name": "listeners",
+     "type": "Object",
+     "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+     "memberOf": "Roo.util.Observable"
+    }
+   ],
+   "events": [
+    {
+     "name": "beforetabchange",
+     "sig": "function (_self, e, tab)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires before the active tab changes, set cancel to true on the \"e\" parameter to cancel the change"
+    },
+    {
+     "name": "tabchange",
+     "sig": "function (_self, activePanel)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the active tab changes"
+    }
+   ],
+   "methods": [
+    {
+     "name": "activate",
+     "sig": "(String/Number id)",
+     "type": "function",
+     "desc": "Activates a {@link Roo.TabPanelItem}. The currently active one will be deactivated."
+    },
+    {
+     "name": "addEvents",
+     "sig": "(Object object)",
+     "type": "function",
+     "desc": "Used to define events on this Observable"
+    },
+    {
+     "name": "addListener",
+     "sig": "(String eventName, Function handler, Object scope, Object options)",
+     "type": "function",
+     "desc": "Appends an event handler to this component"
+    },
+    {
+     "name": "addTab",
+     "sig": "(String id, String text, String content, Boolean closable)",
+     "type": "function",
+     "desc": "Creates a new {@link Roo.TabPanelItem} by looking for an existing element with the provided id -- if it's not found it creates one."
+    },
+    {
+     "name": "addTabItem",
+     "sig": "(Roo.TabPanelItem item)",
+     "type": "function",
+     "desc": "Adds an existing {@link Roo.TabPanelItem}."
+    },
+    {
+     "name": "autoSizeTabs",
+     "sig": "()",
+     "type": "function",
+     "desc": "Manual call to resize the tabs (if {@link #resizeTabs} is false this does nothing)"
+    },
+    {
+     "name": "beginUpdate",
+     "sig": "()",
+     "type": "function",
+     "desc": "Disables tab resizing while tabs are being added (if {@link #resizeTabs} is false this does nothing)"
+    },
+    {
+     "name": "capture",
+     "sig": "(Observable o, Function fn, Object scope)",
+     "type": "function",
+     "desc": "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire."
+    },
+    {
+     "name": "destroy",
+     "sig": "(Boolean removeEl)",
+     "type": "function",
+     "desc": "Destroys this TabPanel"
+    },
+    {
+     "name": "disableTab",
+     "sig": "(String/Number id)",
+     "type": "function",
+     "desc": "Disables a {@link Roo.TabPanelItem}. It cannot be the active tab, if it is this call is ignored."
+    },
+    {
+     "name": "enableTab",
+     "sig": "(String/Number id)",
+     "type": "function",
+     "desc": "Enables a {@link Roo.TabPanelItem} that is disabled."
+    },
+    {
+     "name": "endUpdate",
+     "sig": "()",
+     "type": "function",
+     "desc": "Stops an update and resizes the tabs (if {@link #resizeTabs} is false this does nothing)"
+    },
+    {
+     "name": "fireEvent",
+     "sig": "(String eventName, Object... args)",
+     "type": "function",
+     "desc": "Fires the specified event with the passed parameters (minus the event name)."
+    },
+    {
+     "name": "getActiveTab",
+     "sig": "()",
+     "type": "function",
+     "desc": "Gets the active {@link Roo.TabPanelItem}."
+    },
+    {
+     "name": "getCount",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns the number of tabs in this TabPanel."
+    },
+    {
+     "name": "getTab",
+     "sig": "(String/Number id)",
+     "type": "function",
+     "desc": "Returns the {@link Roo.TabPanelItem} with the specified id/index"
+    },
+    {
+     "name": "hasListener",
+     "sig": "(String eventName)",
+     "type": "function",
+     "desc": "Checks to see if this object has any listeners for a specified event"
+    },
+    {
+     "name": "hideTab",
+     "sig": "(String/Number id)",
+     "type": "function",
+     "desc": "Hides the {@link Roo.TabPanelItem} with the specified id/index"
+    },
+    {
+     "name": "on",
+     "sig": "(String eventName, Function handler, Object scope, Object options)",
+     "type": "function",
+     "desc": "Appends an event handler to this element (shorthand for addListener)"
+    },
+    {
+     "name": "purgeListeners",
+     "sig": "()",
+     "type": "function",
+     "desc": "Removes all listeners for this object"
+    },
+    {
+     "name": "releaseCapture",
+     "sig": "(Observable o)",
+     "type": "function",
+     "desc": "Removes <b>all</b> added captures from the Observable."
+    },
+    {
+     "name": "removeListener",
+     "sig": "(String eventName, Function handler, Object scope)",
+     "type": "function",
+     "desc": "Removes a listener"
+    },
+    {
+     "name": "removeTab",
+     "sig": "(String/Number id)",
+     "type": "function",
+     "desc": "Removes a {@link Roo.TabPanelItem}."
+    },
+    {
+     "name": "setTabWidth",
+     "sig": "(Number The)",
+     "type": "function",
+     "desc": "Resizes all the tabs to the passed width"
+    },
+    {
+     "name": "syncHeight",
+     "sig": "(Number targetHeight)",
+     "type": "function",
+     "desc": "Updates the tab body element to fit the height of the container element\nfor overflow scrolling"
+    },
+    {
+     "name": "un",
+     "sig": "(String eventName, Function handler, Object scope)",
+     "type": "function",
+     "desc": "Removes a listener (shorthand for removeListener)"
+    },
+    {
+     "name": "unhideTab",
+     "sig": "(String/Number id)",
+     "type": "function",
+     "desc": "\"Unhides\" the {@link Roo.TabPanelItem} with the specified id/index."
     }
    ]
   },

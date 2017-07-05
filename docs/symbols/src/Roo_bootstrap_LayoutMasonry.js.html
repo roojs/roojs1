@@ -39,6 +39,11 @@
      */   
     </span><span class="jsdoc-var">boxWidth </span><span class="jsdoc-syntax">: 450,
     
+      </span><span class="jsdoc-comment">/**
+     * @cfg {Number} boxHeight  - 0 for square, or fix it at a certian height
+     */   
+    </span><span class="jsdoc-var">boxHeight </span><span class="jsdoc-syntax">: 0,
+    
     </span><span class="jsdoc-comment">/**
      * @cfg {Number} padWidth padding below box..
      */   
@@ -72,6 +77,13 @@
     </span><span class="jsdoc-var">cols </span><span class="jsdoc-syntax">: 1,
     
     </span><span class="jsdoc-var">_isLayoutInited </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+</span><span class="jsdoc-comment">//    isAlternative : false, // only use for vertical layout...
+    
+    /**
+     * @cfg {Number} alternativePadWidth padding below box..
+     */   
+    </span><span class="jsdoc-var">alternativePadWidth </span><span class="jsdoc-syntax">: 50, 
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
@@ -143,6 +155,7 @@
         </span><span class="jsdoc-var">this.currentSize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-var">this.layout</span><span class="jsdoc-syntax">();
+        
     },
     
     </span><span class="jsdoc-var">layout </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -157,6 +170,69 @@
         
     },
     
+    </span><span class="jsdoc-var">_resetLayout </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isHorizontal</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.horizontalMeasureColumns</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.verticalMeasureColumns</span><span class="jsdoc-syntax">();
+        
+    },
+    
+    </span><span class="jsdoc-var">verticalMeasureColumns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.getContainerWidth</span><span class="jsdoc-syntax">();
+        
+</span><span class="jsdoc-comment">//        if(Roo.lib.Dom.getViewWidth() &lt; 768 &amp;&amp; this.isAlternative){
+//            this.colWidth = Math.floor(this.containerWidth * 0.8);
+//            return;
+//        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">boxWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.boxWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.padWidth</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.containerWidth </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.boxWidth</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">boxWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.containerWidth
+        </span><span class="jsdoc-syntax">}
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">containerWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.containerWidth</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cols </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">containerWidth </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">boxWidth</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.cols </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">cols</span><span class="jsdoc-syntax">, 1 );
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">totalBoxWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cols </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">boxWidth </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.padWidth</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">avail </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">containerWidth </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">totalBoxWidth</span><span class="jsdoc-syntax">) / </span><span class="jsdoc-var">this.cols</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.colWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">boxWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">avail </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.padWidth</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">this.colWidth </span><span class="jsdoc-syntax">- (</span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* 2)) / 3);
+        </span><span class="jsdoc-var">this.unitHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.boxHeight </span><span class="jsdoc-syntax">&gt; 0 ? </span><span class="jsdoc-var">this.boxHeight  </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.unitWidth</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">horizontalMeasureColumns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.getContainerWidth</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">boxWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.boxWidth</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.containerWidth </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">boxWidth</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">boxWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.containerWidth</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">boxWidth </span><span class="jsdoc-syntax">- (</span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* 2)) / 3);
+        
+        </span><span class="jsdoc-var">this.el.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">boxWidth</span><span class="jsdoc-syntax">);
+        
+    },
+    
+    </span><span class="jsdoc-var">getContainerWidth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.containerWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getBox</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.width</span><span class="jsdoc-syntax">;  </span><span class="jsdoc-comment">//maybe use getComputedWidth
+    </span><span class="jsdoc-syntax">},
+    
     </span><span class="jsdoc-var">layoutItems </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">isInstant </span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">([], </span><span class="jsdoc-var">this.bricks</span><span class="jsdoc-syntax">);
@@ -165,6 +241,11 @@
             </span><span class="jsdoc-var">this._horizontalLayoutItems</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">isInstant </span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
+        
+</span><span class="jsdoc-comment">//        if(Roo.lib.Dom.getViewWidth() &lt; 768 &amp;&amp; this.isAlternative){
+//            this._verticalAlternativeLayoutItems( items , isInstant );
+//            return;
+//        }
         
         </span><span class="jsdoc-var">this._verticalLayoutItems</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">isInstant </span><span class="jsdoc-syntax">);
         
@@ -175,45 +256,145 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( !</span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">items.length </span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
-
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isHorizontal</span><span class="jsdoc-syntax">){
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">standard </span><span class="jsdoc-syntax">= [
+            [</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'tall'</span><span class="jsdoc-syntax">],
+            [</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'tall'</span><span class="jsdoc-syntax">],
+            [</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">],
+            [</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">],
+            [</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'tall'</span><span class="jsdoc-syntax">],
+            [</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">],
+            [</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">],
+            [</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">],
             
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">items.length </span><span class="jsdoc-syntax">&lt; 3){
-                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-            }
+            [</span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">],
+            [</span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">],
+            [</span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">],
             
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">eItems </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">items.slice</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">items.length </span><span class="jsdoc-syntax">- 3, </span><span class="jsdoc-var">items.length</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">items.slice</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-var">items.length </span><span class="jsdoc-syntax">- 3);
+            [</span><span class="jsdoc-string">'tall'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">],
+            [</span><span class="jsdoc-string">'tall'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">],
+            [</span><span class="jsdoc-string">'tall'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">],
+            [</span><span class="jsdoc-string">'tall'</span><span class="jsdoc-syntax">]
             
-        }
+        ];
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">queue </span><span class="jsdoc-syntax">= [];
         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">boxes </span><span class="jsdoc-syntax">= [];
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">box </span><span class="jsdoc-syntax">= [];
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">= 0;
         
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">){
             
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">item.intSize </span><span class="jsdoc-syntax">&gt; 3){
-                </span><span class="jsdoc-var">queue.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">box </span><span class="jsdoc-syntax">= [];
-                </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">= 0;
-            }
-            
-            </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">item.intSize</span><span class="jsdoc-syntax">;
-            
-            </span><span class="jsdoc-var">box.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">);
-            
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">items.length </span><span class="jsdoc-syntax">- 1){
-                </span><span class="jsdoc-var">queue.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">box </span><span class="jsdoc-syntax">= [];
-                </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">= 0;
+            </span><span class="jsdoc-keyword">switch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item.size</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-comment">// these layouts take up a full box,
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'md' </span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'md-left' </span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'md-right' </span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'wide' </span><span class="jsdoc-syntax">:
+                    
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box.length</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-var">boxes.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">box </span><span class="jsdoc-syntax">= [];
+                    }
+                    
+                    </span><span class="jsdoc-var">boxes.push</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">]);
+                    
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'xs' </span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'sm' </span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'tall' </span><span class="jsdoc-syntax">:
+                    
+                    </span><span class="jsdoc-var">box.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">);
+                    
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">default </span><span class="jsdoc-syntax">:
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    
             }
             
         }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box.length</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">boxes.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">box </span><span class="jsdoc-syntax">= [];
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">filterPattern </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">length</span><span class="jsdoc-syntax">)
+        {
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">box.length</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">match </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pattern </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">box.slice</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-var">length</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">= [];
+            
+            </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pattern</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">format.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i.size</span><span class="jsdoc-syntax">);
+            }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">standard</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">){
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">)){
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+                
+                </span><span class="jsdoc-var">match </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+                
+            }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">match </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">length </span><span class="jsdoc-syntax">== 1){
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">match</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">filterPattern</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">length </span><span class="jsdoc-syntax">- 1);
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+                
+            </span><span class="jsdoc-var">queue.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pattern</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-var">box </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">box.slice</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">length</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">box.length</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-var">filterPattern</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">, 4);
+
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            
+        }
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">boxes</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">box.length</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box.length </span><span class="jsdoc-syntax">== 1){
+                </span><span class="jsdoc-var">queue.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-var">filterPattern</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">, 4);
+            
+        }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
         </span><span class="jsdoc-var">this._processVerticalLayoutQueue</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">queue</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">isInstant </span><span class="jsdoc-syntax">);
+        
     },
+    
+</span><span class="jsdoc-comment">//    _verticalAlternativeLayoutItems : function( items , isInstant )
+//    {
+//        if ( !items || !items.length ) {
+//            return;
+//        }
+//
+//        this._processVerticalAlternativeLayoutQueue( items, isInstant );
+//        
+//    },
     
     </span><span class="jsdoc-var">_horizontalLayoutItems </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">isInstant</span><span class="jsdoc-syntax">)
     {
@@ -227,62 +408,189 @@
         
         </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">items.slice</span><span class="jsdoc-syntax">(3, </span><span class="jsdoc-var">items.length</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getBox</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
-        
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">minX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pos.x</span><span class="jsdoc-syntax">;
-        
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pos.right </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.boxColWidth</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">] - </span><span class="jsdoc-var">this.boxColWidth</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">] - </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* 2;
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">maxX</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">standard </span><span class="jsdoc-syntax">= [
+            [</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'wide'</span><span class="jsdoc-syntax">],
+            [</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'wide'</span><span class="jsdoc-syntax">],
+            [</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">],
+            [</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">],
+            [</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'wide'</span><span class="jsdoc-syntax">],
+            [</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">],
+            [</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">],
+            [</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">],
+            
+            [</span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">],
+            [</span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">],
+            [</span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">],
+            
+            [</span><span class="jsdoc-string">'wide'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">],
+            [</span><span class="jsdoc-string">'wide'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">],
+            [</span><span class="jsdoc-string">'wide'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">],
+            [</span><span class="jsdoc-string">'wide'</span><span class="jsdoc-syntax">],
+            
+            [</span><span class="jsdoc-string">'wide-thin'</span><span class="jsdoc-syntax">]
+        ];
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">queue </span><span class="jsdoc-syntax">= [];
         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">boxes </span><span class="jsdoc-syntax">= [];
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">box </span><span class="jsdoc-syntax">= [];
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">= 0;
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hit_end </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">){
             
-            </span><span class="jsdoc-var">item.el.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">item.el.show</span><span class="jsdoc-syntax">();
-            
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hit_end</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">item.el.hide</span><span class="jsdoc-syntax">();
-                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">switch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item.size</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'md' </span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'md-left' </span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'md-right' </span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'tall' </span><span class="jsdoc-syntax">:
+                    
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box.length</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-var">boxes.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">box </span><span class="jsdoc-syntax">= [];
+                    }
+                    
+                    </span><span class="jsdoc-var">boxes.push</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">]);
+                    
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'xs' </span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'sm' </span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'wide' </span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'wide-thin' </span><span class="jsdoc-syntax">:
+                    
+                    </span><span class="jsdoc-var">box.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">);
+                    
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">default </span><span class="jsdoc-syntax">:
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    
             }
-            
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">queue.length </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-var">this.cols </span><span class="jsdoc-syntax">- 1){
-                </span><span class="jsdoc-var">item.el.hide</span><span class="jsdoc-syntax">();
-                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-            }
-            
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">item.intSize </span><span class="jsdoc-syntax">&gt; 3){
-                </span><span class="jsdoc-var">queue.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">box </span><span class="jsdoc-syntax">= [];
-                </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">= 0;
-                </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">;
-            }
-            
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.boxColWidth</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">item.size</span><span class="jsdoc-syntax">] + </span><span class="jsdoc-var">item.el.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'lr'</span><span class="jsdoc-syntax">);
-            
-            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">maxX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">);
-            
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">minX</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">item.el.hide</span><span class="jsdoc-syntax">();
-                </span><span class="jsdoc-var">hit_end </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-            }
-            
-            </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">item.intSize</span><span class="jsdoc-syntax">;
-            
-            </span><span class="jsdoc-var">box.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">);
             
         }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box.length</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">queue.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">boxes.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">box </span><span class="jsdoc-syntax">= [];
         }
         
-        </span><span class="jsdoc-var">this._processHorizontalLayoutQueue</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">queue</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">eItems</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">isInstant </span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">filterPattern </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">length</span><span class="jsdoc-syntax">)
+        {
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">box.length</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">match </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pattern </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">box.slice</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-var">length</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">= [];
+            
+            </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pattern</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">format.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i.size</span><span class="jsdoc-syntax">);
+            }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">standard</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">){
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">)){
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+                
+                </span><span class="jsdoc-var">match </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+                
+            }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">match </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">length </span><span class="jsdoc-syntax">== 1){
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">match</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">filterPattern</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">length </span><span class="jsdoc-syntax">- 1);
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+                
+            </span><span class="jsdoc-var">queue.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pattern</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-var">box </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">box.slice</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">length</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">box.length</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-var">filterPattern</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">, 4);
+
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            
+        }
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">boxes</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">box.length</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box.length </span><span class="jsdoc-syntax">== 1){
+                </span><span class="jsdoc-var">queue.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-var">filterPattern</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">, 4);
+            
+        }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">prune </span><span class="jsdoc-syntax">= [];
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getBox</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">minX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pos.x</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pos.right </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* 3 - </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* 2 - </span><span class="jsdoc-var">this.padWidth</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hit_end </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">queue</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hit_end</span><span class="jsdoc-syntax">){
+                
+                </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">){
+                
+                    </span><span class="jsdoc-var">b.el.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">b.el.hide</span><span class="jsdoc-syntax">();
+
+                }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">mx </span><span class="jsdoc-syntax">= 0;
+            
+            </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">){
+                
+                </span><span class="jsdoc-var">b.el.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">b.el.show</span><span class="jsdoc-syntax">();
+
+                </span><span class="jsdoc-var">mx </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">b.x</span><span class="jsdoc-syntax">);
+                
+            }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">mx </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">mx </span><span class="jsdoc-syntax">- 1) - </span><span class="jsdoc-var">this.padWidth</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">minX</span><span class="jsdoc-syntax">){
+                
+                </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">){
+                
+                    </span><span class="jsdoc-var">b.el.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">b.el.hide</span><span class="jsdoc-syntax">();
+                    
+                }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                
+                </span><span class="jsdoc-var">hit_end </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+                
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-var">prune.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">);
+            
+        }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this._processHorizontalLayoutQueue</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">prune</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">eItems</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">isInstant </span><span class="jsdoc-syntax">);
     },
     
     </span><span class="jsdoc-comment">/** Sets position of item in DOM
@@ -310,22 +618,28 @@
                 
                 </span><span class="jsdoc-var">b.el.position</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'absolute'</span><span class="jsdoc-syntax">);
                 
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.boxColWidth</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">b.size</span><span class="jsdoc-syntax">] + </span><span class="jsdoc-var">b.el.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'lr'</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">b.x </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">b.x </span><span class="jsdoc-syntax">- 1)) + </span><span class="jsdoc-var">b.el.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'lr'</span><span class="jsdoc-syntax">));
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.unitHeight </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">b.y </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">b.y </span><span class="jsdoc-syntax">- 1)) + </span><span class="jsdoc-var">b.el.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tb'</span><span class="jsdoc-syntax">));
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b.size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'md-left' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">b.size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'md-right'</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">b.x </span><span class="jsdoc-syntax">- 1) + (</span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">b.x </span><span class="jsdoc-syntax">- 2)) + </span><span class="jsdoc-var">b.el.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'lr'</span><span class="jsdoc-syntax">));
+                    </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.unitHeight </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">b.y </span><span class="jsdoc-syntax">- 1) + (</span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">b.y </span><span class="jsdoc-syntax">- 2)) + </span><span class="jsdoc-var">b.el.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tb'</span><span class="jsdoc-syntax">));
+                }
                 
                 </span><span class="jsdoc-var">b.el.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">);
-                
-                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b.square</span><span class="jsdoc-syntax">){
-                    </span><span class="jsdoc-var">b.el.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">);
-                }
+                </span><span class="jsdoc-var">b.el.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">);
                 
             }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
             
             </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.cols</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
-                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">maxY</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] &gt;= </span><span class="jsdoc-var">maxY</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">]){
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">maxY</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] &lt; </span><span class="jsdoc-var">maxY</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">]){
+                    </span><span class="jsdoc-var">col </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">;
                     </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
                 }
                 
-                </span><span class="jsdoc-var">col </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">col </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">);
+                
             }
             
             </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pos.x </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">col </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">this.colWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.padWidth</span><span class="jsdoc-syntax">);
@@ -343,6 +657,9 @@
                     </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">3 :
                     </span><span class="jsdoc-var">positions </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getVerticalThreeBoxColPositions</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">4 :
+                    </span><span class="jsdoc-var">positions </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getVerticalFourBoxColPositions</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">default </span><span class="jsdoc-syntax">:
                     </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
@@ -366,9 +683,48 @@
             </span><span class="jsdoc-var">mY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mY</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">maxY</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
         }
         
-        </span><span class="jsdoc-var">this.el.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mY</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mY </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">pos.y</span><span class="jsdoc-syntax">);
         
     },
+    
+</span><span class="jsdoc-comment">//    _processVerticalAlternativeLayoutQueue : function( items, isInstant )
+//    {
+//        var pos = this.el.getBox(true);
+//        var x = pos.x;
+//        var y = pos.y;
+//        var maxX = pos.right;
+//        
+//        var maxHeight = 0;
+//        
+//        Roo.each(items, function(item, k){
+//            
+//            var c = k % 2;
+//            
+//            item.el.position('absolute');
+//                
+//            var width = Math.floor(this.colWidth + item.el.getPadding('lr'));
+//
+//            item.el.setWidth(width);
+//
+//            var height = Math.floor(this.colWidth * item.y / item.x + item.el.getPadding('tb'));
+//
+//            item.el.setHeight(height);
+//            
+//            if(c == 0){
+//                item.el.setXY([x, y], isInstant ? false : true);
+//            } else {
+//                item.el.setXY([maxX - width, y], isInstant ? false : true);
+//            }
+//            
+//            y = y + height + this.alternativePadWidth;
+//            
+//            maxHeight = maxHeight + height + this.alternativePadWidth;
+//            
+//        }, this);
+//        
+//        this.el.setHeight(maxHeight);
+//        
+//    },
     
     </span><span class="jsdoc-var">_processHorizontalLayoutQueue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">queue</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">eItems</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">isInstant </span><span class="jsdoc-syntax">)
     {
@@ -377,12 +733,11 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">minX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pos.x</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">minY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pos.y</span><span class="jsdoc-syntax">;
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pos.right </span><span class="jsdoc-syntax">- (</span><span class="jsdoc-var">pos.width </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.containerWidth</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">this.padWidth</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">maxY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pos.bottom</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pos.right</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-var">this._processHorizontalEndItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">eItems</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">maxX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">minX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">minY</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">isInstant</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.boxColWidth</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">] - </span><span class="jsdoc-var">this.boxColWidth</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">] - </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* 2;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* 3 - </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* 2 - </span><span class="jsdoc-var">this.padWidth</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">queue</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">){
             
@@ -390,13 +745,16 @@
                 
                 </span><span class="jsdoc-var">b.el.position</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'absolute'</span><span class="jsdoc-syntax">);
                 
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.boxColWidth</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">b.size</span><span class="jsdoc-syntax">] + </span><span class="jsdoc-var">b.el.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'lr'</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">b.x </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">b.x </span><span class="jsdoc-syntax">- 1)) + </span><span class="jsdoc-var">b.el.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'lr'</span><span class="jsdoc-syntax">));
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">b.y </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">b.y </span><span class="jsdoc-syntax">- 1)) + </span><span class="jsdoc-var">b.el.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tb'</span><span class="jsdoc-syntax">));
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b.size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'md-left' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">b.size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'md-right'</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">b.x </span><span class="jsdoc-syntax">- 1) + (</span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">b.x </span><span class="jsdoc-syntax">- 2)) + </span><span class="jsdoc-var">b.el.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'lr'</span><span class="jsdoc-syntax">));
+                    </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">b.y </span><span class="jsdoc-syntax">- 1) + (</span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">b.y </span><span class="jsdoc-syntax">- 2)) + </span><span class="jsdoc-var">b.el.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tb'</span><span class="jsdoc-syntax">));
+                }
                 
                 </span><span class="jsdoc-var">b.el.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">);
-                
-                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b.square</span><span class="jsdoc-syntax">){
-                    </span><span class="jsdoc-var">b.el.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">);
-                }
+                </span><span class="jsdoc-var">b.el.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">);
                 
             }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
             
@@ -416,6 +774,9 @@
                 </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">3 :
                     </span><span class="jsdoc-var">positions </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getHorizontalThreeBoxColPositions</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">maxX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">minY</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">4 :
+                    </span><span class="jsdoc-var">positions </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getHorizontalFourBoxColPositions</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">maxX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">minY</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">default </span><span class="jsdoc-syntax">:
                     </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             }
@@ -424,7 +785,7 @@
                 
                 </span><span class="jsdoc-var">b.el.setXY</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">positions</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">kk</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">positions</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">kk</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.y</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">isInstant </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
                 
-                </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">maxX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">positions</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">kk</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">maxX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">positions</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">kk</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.padWidth</span><span class="jsdoc-syntax">);
                 
             }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
             
@@ -436,40 +797,36 @@
     {
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">eItems</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">){
             
-            </span><span class="jsdoc-var">b.size </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-var">b.intSize </span><span class="jsdoc-syntax">= 1;
-            
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== 0) {
-                </span><span class="jsdoc-var">b.size </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-var">b.intSize </span><span class="jsdoc-syntax">= 2;
-            }
+            </span><span class="jsdoc-var">b.size </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== 0) ? </span><span class="jsdoc-string">'sm' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">b.x </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== 0) ? 2 : 1;
+            </span><span class="jsdoc-var">b.y </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== 0) ? 2 : 1;
             
             </span><span class="jsdoc-var">b.el.position</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'absolute'</span><span class="jsdoc-syntax">);
             
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.boxColWidth</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">b.size</span><span class="jsdoc-syntax">] + </span><span class="jsdoc-var">b.el.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'lr'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">b.x </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">b.x </span><span class="jsdoc-syntax">- 1)) + </span><span class="jsdoc-var">b.el.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'lr'</span><span class="jsdoc-syntax">));
                 
             </span><span class="jsdoc-var">b.el.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">);
-
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b.square</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">b.el.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">);
-            }
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">b.y </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">b.y </span><span class="jsdoc-syntax">- 1)) + </span><span class="jsdoc-var">b.el.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tb'</span><span class="jsdoc-syntax">));
+            
+            </span><span class="jsdoc-var">b.el.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">);
             
         }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">positions </span><span class="jsdoc-syntax">= [];
         
         </span><span class="jsdoc-var">positions.push</span><span class="jsdoc-syntax">({
-            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.boxColWidth</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">],
+            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* 2 - </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY
         </span><span class="jsdoc-syntax">});
         
         </span><span class="jsdoc-var">positions.push</span><span class="jsdoc-syntax">({
-            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.boxColWidth</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">],
-            </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.boxColWidth</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">] + </span><span class="jsdoc-var">this.gutter
-        </span><span class="jsdoc-syntax">});
+            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.unitWidth</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * 2
+        });
         
         </span><span class="jsdoc-var">positions.push</span><span class="jsdoc-syntax">({
-            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.boxColWidth</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">] - </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.boxColWidth</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">],
+            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* 3 - </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* 2,
             </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY
         </span><span class="jsdoc-syntax">});
         
@@ -477,66 +834,26 @@
             
             </span><span class="jsdoc-var">b.el.setXY</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">positions</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">positions</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.y</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">isInstant </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
 
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sz </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">b.el.getSize</span><span class="jsdoc-syntax">();
-            
         }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
     },
-    
-    </span><span class="jsdoc-var">_resetLayout </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
-    {
-        </span><span class="jsdoc-var">this.measureColumns</span><span class="jsdoc-syntax">();
-    },
-    
-    </span><span class="jsdoc-var">measureColumns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
-    {
-        </span><span class="jsdoc-var">this.getContainerWidth</span><span class="jsdoc-syntax">();
-        
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.containerWidth </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.boxWidth</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.boxWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.containerWidth
-        </span><span class="jsdoc-syntax">}
-        
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">boxWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.boxWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.padWidth</span><span class="jsdoc-syntax">;
-        
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">containerWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.containerWidth</span><span class="jsdoc-syntax">;
-        
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cols </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">containerWidth </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">boxWidth</span><span class="jsdoc-syntax">);
-        
-        </span><span class="jsdoc-var">this.cols </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">cols</span><span class="jsdoc-syntax">, 1 );
-        
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">totalBoxWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cols </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">boxWidth</span><span class="jsdoc-syntax">;
-        
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">avail </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">containerWidth </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">totalBoxWidth</span><span class="jsdoc-syntax">) / </span><span class="jsdoc-var">this.cols</span><span class="jsdoc-syntax">);
-        
-        </span><span class="jsdoc-var">this.colWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.boxWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">avail</span><span class="jsdoc-syntax">;
-        
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">xsWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">this.colWidth </span><span class="jsdoc-syntax">- (</span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* 2)) / 3);
-        
-        </span><span class="jsdoc-var">this.boxColWidth </span><span class="jsdoc-syntax">= {
-            </span><span class="jsdoc-var">xs </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">xsWidth</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">sm </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.colWidth </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">xsWidth </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">md </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.colWidth
-        </span><span class="jsdoc-syntax">};
-        
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isHorizontal</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.el.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.colWidth</span><span class="jsdoc-syntax">);
-        }
-        
-    },
-    
-    </span><span class="jsdoc-var">getContainerWidth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
-    {
-        </span><span class="jsdoc-var">this.containerWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getBox</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.width</span><span class="jsdoc-syntax">;  </span><span class="jsdoc-comment">//maybe use getComputedWidth
-    </span><span class="jsdoc-syntax">},
     
     </span><span class="jsdoc-var">getVerticalOneBoxColPositions </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">= [];
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rand </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.random</span><span class="jsdoc-syntax">() * (4 - </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.intSize</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rand </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.random</span><span class="jsdoc-syntax">() * ((4 - </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.x</span><span class="jsdoc-syntax">)));
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'md-left'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">rand </span><span class="jsdoc-syntax">= 0;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'md-right'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">rand </span><span class="jsdoc-syntax">= 1;
+        }
         
         </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
-            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.boxColWidth</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">] + </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * </span><span class="jsdoc-var">rand</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * </span><span class="jsdoc-var">rand</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">y
         </span><span class="jsdoc-syntax">});
         
@@ -547,47 +864,31 @@
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">= [];
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'xs' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">){
             
             </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
                 </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">y
-            </span><span class="jsdoc-syntax">});
-
-            </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
-                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.boxColWidth</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">] + </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * 2,
-                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">y
-            </span><span class="jsdoc-syntax">});
-            
-        }
-        
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'xs' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">){
-            
-            </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
-                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">+ ((</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.el.getHeight</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.el.getHeight</span><span class="jsdoc-syntax">()) * </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.random</span><span class="jsdoc-syntax">() * 2))
+                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">+ ((</span><span class="jsdoc-var">this.unitHeight </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.random</span><span class="jsdoc-syntax">() * </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.y</span><span class="jsdoc-syntax">))
             });
 
             </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
-                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.boxColWidth</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">] + </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * (3 - </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.x</span><span class="jsdoc-syntax">),
                 </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">y
             </span><span class="jsdoc-syntax">});
+            
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">;
             
         }
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'sm' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">){
-            
-            </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
-                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">y
-            </span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">y
+        </span><span class="jsdoc-syntax">});
 
-            </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
-                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.boxColWidth</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">] + </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">+ ((</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.el.getHeight</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.el.getHeight</span><span class="jsdoc-syntax">()) * </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.random</span><span class="jsdoc-syntax">() * 2))
-            });
-            
-        }
+        </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * 2,
+            </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">+ ((</span><span class="jsdoc-var">this.unitHeight </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.random</span><span class="jsdoc-syntax">() * </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.y</span><span class="jsdoc-syntax">))
+        });
         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">;
         
@@ -597,51 +898,183 @@
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">= [];
         
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'xs' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'xs' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[2]</span><span class="jsdoc-var">.size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">y
+            </span><span class="jsdoc-syntax">});
+
+            </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * 1,
+                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">y
+            </span><span class="jsdoc-syntax">});
+            
+            </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * 2,
+                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">y
+            </span><span class="jsdoc-syntax">});
+            
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">;
+            
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'xs' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">y
+            </span><span class="jsdoc-syntax">});
+
+            </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">+ ((</span><span class="jsdoc-var">this.unitHeight </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[2]</span><span class="jsdoc-var">.y </span><span class="jsdoc-syntax">- 1))
+            });
+            
+            </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * 1,
+                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">y
+            </span><span class="jsdoc-syntax">});
+            
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">;
+            
+        }
+        
         </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
             </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">y
         </span><span class="jsdoc-syntax">});
-        
+
         </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
-            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.boxColWidth</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">] + </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * 2,
             </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">y
         </span><span class="jsdoc-syntax">});
 
         </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
-            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.boxColWidth</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">] + </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">y
-        </span><span class="jsdoc-syntax">});
+            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * 2,
+            </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitHeight </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.y </span><span class="jsdoc-syntax">- 1)
+        });
             
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">;
+        
+    },
+    
+    </span><span class="jsdoc-var">getVerticalFourBoxColPositions </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">= [];
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">y
+            </span><span class="jsdoc-syntax">});
+
+            </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitHeight </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * 1
+            });
+            
+            </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitHeight </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * 2
+            });
+            
+            </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * 1,
+                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">y
+            </span><span class="jsdoc-syntax">});
+            
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">;
+            
+        }
+        
+        </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">y
+        </span><span class="jsdoc-syntax">});
+
+        </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * 2,
+            </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">y
+        </span><span class="jsdoc-syntax">});
+
+        </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitHeightunitWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * 2,
+            </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitHeight </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * 1
+        });
+
+        </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * 2,
+            </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * 2
+        });
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">;
+        
     },
     
     </span><span class="jsdoc-var">getHorizontalOneBoxColPositions </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">maxX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">minY</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">= [];
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rand </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.random</span><span class="jsdoc-syntax">() * (4 - </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.intSize</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'md-left'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1) - </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 2),
+                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY
+            </span><span class="jsdoc-syntax">});
+            
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'md-right'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1) - </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 2),
+                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * 1
+            });
+            
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rand </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.random</span><span class="jsdoc-syntax">() * (4 - </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.y</span><span class="jsdoc-syntax">));
         
         </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
-            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.el.getWidth</span><span class="jsdoc-syntax">(),
-            </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.boxColWidth</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">] + </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * </span><span class="jsdoc-var">rand
+            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1),
+            </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * </span><span class="jsdoc-var">rand
         </span><span class="jsdoc-syntax">});
         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">;
+        
     },
     
     </span><span class="jsdoc-var">getHorizontalTwoBoxColPositions </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">maxX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">minY</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">= [];
         
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1),
+                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY
+            </span><span class="jsdoc-syntax">});
+
+            </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1),
+                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * (3 - </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.y</span><span class="jsdoc-syntax">)
+            });
+            
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">;
+            
+        }
+        
         </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
-            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.el.getWidth</span><span class="jsdoc-syntax">(),
+            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1),
             </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY
         </span><span class="jsdoc-syntax">});
 
         </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
-            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.el.getWidth</span><span class="jsdoc-syntax">(),
-            </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.el.getHeight</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">this.gutter
-        </span><span class="jsdoc-syntax">});
+            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1),
+            </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * 2
+        });
         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">;
         
@@ -651,21 +1084,117 @@
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">= [];
         
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'xs' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'xs' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[2]</span><span class="jsdoc-var">.size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1),
+                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY
+            </span><span class="jsdoc-syntax">});
+
+            </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1),
+                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * 1
+            });
+            
+            </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[2]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[2]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1),
+                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * 2
+            });
+            
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">;
+            
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'xs' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1),
+                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY
+            </span><span class="jsdoc-syntax">});
+
+            </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1) - </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1),
+                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY
+            </span><span class="jsdoc-syntax">});
+            
+            </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[2]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[2]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1),
+                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * 1
+            });
+            
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">;
+            
+        }
+        
         </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
-            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.el.getWidth</span><span class="jsdoc-syntax">(),
+            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1),
+            </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY
+        </span><span class="jsdoc-syntax">});
+
+        </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1),
+            </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * 2
+        });
+
+        </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1) - </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[2]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[2]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1),
+            </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * 2
+        });
+            
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">;
+        
+    },
+    
+    </span><span class="jsdoc-var">getHorizontalFourBoxColPositions </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">maxX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">minY</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">= [];
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1),
+                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY
+            </span><span class="jsdoc-syntax">});
+
+            </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1) - </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1),
+                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY
+            </span><span class="jsdoc-syntax">});
+            
+            </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1) - </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1) - </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[2]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[2]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1),
+                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY
+            </span><span class="jsdoc-syntax">});
+            
+            </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[3]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[3]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1),
+                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * 1
+            });
+            
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">;
+            
+        }
+        
+        </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1),
             </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY
         </span><span class="jsdoc-syntax">});
         
         </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
-            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.el.getWidth</span><span class="jsdoc-syntax">(),
-            </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.el.getHeight</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.gutter
-        </span><span class="jsdoc-syntax">});
-        
-        </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
-            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[2]</span><span class="jsdoc-var">.el.getWidth</span><span class="jsdoc-syntax">(),
-            </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.el.getHeight</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.el.getHeight</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* 2
+            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1),
+            </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * 2
         });
         
+        </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1) - </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[2]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[2]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1),
+            </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * 2
+        });
+        
+        </span><span class="jsdoc-var">pos.push</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1) - </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[2]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[2]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1) - </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[3]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">[3]</span><span class="jsdoc-var">.x </span><span class="jsdoc-syntax">- 1),
+            </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">minY </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.gutter</span><span class="jsdoc-syntax">) * 2
+        });
+
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">;
         
     }

@@ -73,6 +73,14 @@
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' roo-brick-image'</span><span class="jsdoc-syntax">;
         }
         
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.html.length </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.bgimage.length</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' roo-brick-center-title'</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.html.length </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.bgimage.length</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' roo-brick-bottom-title'</span><span class="jsdoc-syntax">;
+        }
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">;
         }
@@ -138,13 +146,14 @@
     </span><span class="jsdoc-var">resize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">paragraph </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-brick-paragraph'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-</span><span class="jsdoc-comment">//        paragraph.setHeight(paragraph.getWidth() + paragraph.getPadding('tb'));
-        </span><span class="jsdoc-var">paragraph.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">paragraph.getWidth</span><span class="jsdoc-syntax">());
+        
+        </span><span class="jsdoc-var">paragraph.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">paragraph.getWidth</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">paragraph.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tb'</span><span class="jsdoc-syntax">));
+</span><span class="jsdoc-comment">//        paragraph.setHeight(paragraph.getWidth());
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bgimage.length</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">image </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-brick-image-view'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">image.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">paragraph.getWidth</span><span class="jsdoc-syntax">());
-            </span><span class="jsdoc-var">image.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">paragraph.getHeight</span><span class="jsdoc-syntax">());
+            </span><span class="jsdoc-var">image.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">paragraph.getWidth</span><span class="jsdoc-syntax">());
         }
         
     },

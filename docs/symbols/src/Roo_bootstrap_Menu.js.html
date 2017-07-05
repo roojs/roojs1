@@ -11,6 +11,8 @@
  * Bootstrap Menu class - container for MenuItems
  * @cfg {String} type (dropdown|treeview|submenu) type of menu
  * @cfg {bool} hidden  if the menu should be hidden when rendered.
+ * @cfg {bool} stopEvent (true|false)  Stop event after trigger press (default true)
+ * @cfg {bool} isLink (true|false)  the menu has link disable auto expand and collaspe (default false)
  * 
  * @constructor
  * Create a new Menu
@@ -97,9 +99,12 @@
     </span><span class="jsdoc-var">menuItems </span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// stores the menu items..
     
     </span><span class="jsdoc-var">hidden</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-    
         
     </span><span class="jsdoc-var">parentMenu </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">stopEvent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">isLink </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;  
@@ -138,7 +143,6 @@
         </span><span class="jsdoc-var">this.triggerEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isTouch </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'touchstart' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'mouseup'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTriggerPress</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-var">this.triggerEl.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'dropdown-toggle'</span><span class="jsdoc-syntax">);
-        
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isTouch</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'touchstart'  </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTouch</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
@@ -205,9 +209,12 @@
         
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
+        (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { </span><span class="jsdoc-var">_this.hide</span><span class="jsdoc-syntax">(); })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(500);
     },
-     </span><span class="jsdoc-var">onMouseOver </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+    
+    </span><span class="jsdoc-var">onMouseOver </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.findTargetItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">//Roo.log(t);
         //if(t){
@@ -340,7 +347,11 @@
         // trigger only occurs on normal menu's -- if it's a treeview or dropdown... do not hide/show..
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">());
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pel.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.dropdown-menu'</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">pel.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.treeview-menu'</span><span class="jsdoc-syntax">) ) {
-           
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'is treeview or dropdown?'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.nodeName.toLowerCase</span><span class="jsdoc-syntax">() !== </span><span class="jsdoc-string">'i' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.isLink</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
@@ -352,10 +363,11 @@
             </span><span class="jsdoc-var">this.show</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.triggerEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
         }
         
-        </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.stopEvent </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.nodeName.toLowerCase</span><span class="jsdoc-syntax">() === </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
+        }
+        
     },
-    
-         
        
     
     </span><span class="jsdoc-var">hideMenuItems </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
