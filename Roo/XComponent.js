@@ -188,13 +188,13 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                                  el : document.body, 
                      
                                  center: {
-                                     titlebar: false,
-                                     autoScroll:false,
-                                     closeOnTab: true,
-                                     tabPosition: 'top',
+                                    titlebar: false,
+                                    autoScroll:false,
+                                    closeOnTab: true,
+                                    tabPosition: 'top',
                                       //resizeTabs: true,
-                                     alwaysShowTabs: true,
-                                     hideTabs: true
+                                    alwaysShowTabs: true,
+                                    hideTabs: false
                                      //minTabWidth: 140
                                  }
                              })
