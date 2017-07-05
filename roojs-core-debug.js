@@ -16003,7 +16003,9 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             switch (ename) {
                 case 'bootstrap-body':
                     if (typeof(tree.el) != 'undefined' && tree.el == document.body)  {
-                       this.parent = { el : true };;
+                        // this is the BorderLayout standard?
+                       this.parent = { el : true };
+                       break;
                     }
                     
                     if (typeof(Roo.bootstrap.Body) != 'undefined') {

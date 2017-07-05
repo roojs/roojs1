@@ -179,6 +179,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                     if (typeof(tree.el) != 'undefined' && tree.el == document.body)  {
                         // this is the BorderLayout standard?
                        this.parent = { el : true };
+                       break;
                     }
                     
                     if (typeof(Roo.bootstrap.Body) != 'undefined') {
