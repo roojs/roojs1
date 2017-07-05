@@ -16014,13 +16014,13 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                                  el : document.body, 
                      
                                  center: {
-                                     titlebar: false,
-                                     autoScroll:false,
-                                     closeOnTab: true,
-                                     tabPosition: 'top',
+                                    titlebar: false,
+                                    autoScroll:false,
+                                    closeOnTab: true,
+                                    tabPosition: 'top',
                                       //resizeTabs: true,
-                                     alwaysShowTabs: false,
-                                     hideTabs: true
+                                    alwaysShowTabs: true,
+                                    hideTabs: false
                                      //minTabWidth: 140
                                  }
                              })
@@ -16077,8 +16077,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             Roo.debug && Roo.log("no parent - creating one");
             
             el = el ? Roo.get(el) : false; 	
-             if (typeof(Roo.bootstrap.Body) != 'undefined') {
-            
+             
             
             // it's a top level one..
             this.parent =  {
