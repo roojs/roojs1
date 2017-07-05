@@ -11,7 +11,7 @@
  
 /**
  * @class Roo.bootstrap.layout.Manager
- * @extends Roo.util.Observable
+ * @extends Roo.bootstrap.Component
  * Base class for layout managers.
  */
 Roo.bootstrap.layout.Manager = function(config)
