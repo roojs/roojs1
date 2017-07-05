@@ -193,7 +193,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                                      closeOnTab: true,
                                      tabPosition: 'top',
                                       //resizeTabs: true,
-                                     alwaysShowTabs: false,
+                                     alwaysShowTabs: true,
                                      hideTabs: true
                                      //minTabWidth: 140
                                  }
