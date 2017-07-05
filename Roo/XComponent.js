@@ -181,7 +181,10 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                        this.parent = { el : true };
                        break;
                     }
+                    if (["Nest", "Content"].indexOf(tree.xtype)  > -1)  {
+                        // need to insert stuff...
                     
+                    }
                     if (typeof(Roo.bootstrap.Body) != 'undefined') {
                         this.parent = { el :  new  Roo.bootstrap.Body() };
                         Roo.debug && Roo.log("setting el to doc body");
