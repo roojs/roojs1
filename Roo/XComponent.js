@@ -176,8 +176,8 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             Roo.debug && Roo.log(ename);
             switch (ename) {
                 case 'bootstrap-body':
-                    if () {
-                        
+                    if (typeof(tree.el) != 'undefined' && tree.el == document.body)  {
+                        break;
                     }
                     
                     if (typeof(Roo.bootstrap.Body) != 'undefined') {
