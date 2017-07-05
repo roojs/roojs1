@@ -306,6 +306,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 // multiple copies here...
                 //Roo.log('render');
                 //Roo.log(this[cntr]());
+                // some elements do not have render methods.. like the layouts...
                 cn.render && cn.render(this[cntr](true));
              }
             // then add the element..
