@@ -230,6 +230,8 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             Roo.debug && Roo.log("no parent - creating one");
             
             el = el ? Roo.get(el) : false; 	
+             
+            
             
             // it's a top level one..
             this.parent =  {
