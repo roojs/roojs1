@@ -16003,6 +16003,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             switch (ename) {
                 case 'bootstrap-body':
                     if (typeof(tree.el) != 'undefined' && tree.el == document.body)  {
+                        this.parent = false;
                         break;
                     }
                     
