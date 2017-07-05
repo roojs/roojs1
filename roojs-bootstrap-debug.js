@@ -30963,7 +30963,7 @@ Roo.namespace("Roo.bootstrap.layout");/*
  
 /**
  * @class Roo.bootstrap.layout.Manager
- * @extends Roo.util.Observable
+ * @extends Roo.bootstrap.Component
  * Base class for layout managers.
  */
 Roo.bootstrap.layout.Manager = function(config)
@@ -31013,7 +31013,7 @@ Roo.bootstrap.layout.Manager = function(config)
     Roo.EventManager.onWindowResize(this.onWindowResize, this, true);
 };
 
-Roo.extend(Roo.bootstrap.layout.Manager, Roo.util.Observable, {
+Roo.extend(Roo.bootstrap.layout.Manager, Roo.bootstrap.Component, {
     
     
     regions : null,
