@@ -183,23 +183,26 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                     }
                     if (["Nest", "Content"].indexOf(tree.xtype)  > -1)  {
                         // need to insert stuff...
-                   this.parent =  {
-                        el : new Roo.bootstrap.layout.Border({
-                            el : document.body, 
-                
-                            center: {
-                                titlebar: false,
-                                autoScroll:false,
-                                closeOnTab: true,
-                                tabPosition: 'top',
-                                 //resizeTabs: true,
-                                alwaysShowTabs: false,
-                                hideTabs: true,
-                                //minTabWidth: 140
-                            }
-                        })
-                   
-                    };
+                        this.parent =  {
+                             el : new Roo.bootstrap.layout.Border({
+                                 el : document.body, 
+                     
+                                 center: {
+                                     titlebar: false,
+                                     autoScroll:false,
+                                     closeOnTab: true,
+                                     tabPosition: 'top',
+                                      //resizeTabs: true,
+                                     alwaysShowTabs: false,
+                                     hideTabs: true,
+                                     //minTabWidth: 140
+                                 }
+                             })
+                        
+                         };
+                         break;
+                    }
+                         
                     if (typeof(Roo.bootstrap.Body) != 'undefined') {
                         this.parent = { el :  new  Roo.bootstrap.Body() };
                         Roo.debug && Roo.log("setting el to doc body");
