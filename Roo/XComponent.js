@@ -176,7 +176,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             Roo.debug && Roo.log(ename);
             switch (ename) {
                 case 'bootstrap-body':
-                    if (typeof(tree.xtype) == "Border") != 'undefined' && tree.el == document.body)  {
+                    if (typeof(tree.el) != 'undefined' && tree.el == document.body)  {
                         // this is the BorderLayout standard?
                        this.parent = { el : true };
                        break;
@@ -230,7 +230,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             Roo.debug && Roo.log("no parent - creating one");
             
             el = el ? Roo.get(el) : false; 	
-             
+             if (typeof(Roo.bootstrap.Body) != 'undefined') {
             
             
             // it's a top level one..
