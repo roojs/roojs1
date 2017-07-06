@@ -6,7 +6,16 @@
  * Create a new GridPanel.
  * @param {Roo.grid.Grid} grid The grid for this panel
  * @param {String/Object} config A string to set only the panel's title, or a config object
+
+  new Roo.bootstrap.panel.Grid({
+		grid: .....
+		....
+  }
+
  */
+
+
+
 Roo.bootstrap.panel.Grid = function(grid, config){
     
   
@@ -29,10 +38,10 @@ Roo.bootstrap.panel.Grid = function(grid, config){
         
     }
     
-    grid.monitorWindowResize = false; // turn off autosizing
-    grid.autoHeight = false;
-    grid.autoWidth = false;
-    this.grid = grid;
+    config.grid.monitorWindowResize = false; // turn off autosizing
+    config.grid.autoHeight = false;
+    config.grid.autoWidth = false;
+    this.grid = config.grid;
     this.grid.getGridEl().replaceClass("x-layout-inactive-content", "x-layout-component-panel");
 };
 
