@@ -24,7 +24,7 @@ Roo.bootstrap.panel.Grid = function(grid, config){
         
     this.wrapper.dom.appendChild(grid.getGridEl().dom);
     
-    Roo.GridPanel.superclass.constructor.call(this, this.wrapper, config);
+    Roo.bootstrap.panel.Grid.superclass.constructor.call(this, this.wrapper, config);
     
     if(this.toolbar){
         this.toolbar.el.insertBefore(this.wrapper.dom.firstChild);
@@ -45,7 +45,7 @@ Roo.bootstrap.panel.Grid = function(grid, config){
     this.grid.getGridEl().replaceClass("x-layout-inactive-content", "x-layout-component-panel");
 };
 
-Roo.extend(Roo.GridPanel, Roo.ContentPanel, {
+Roo.extend(Roo.bootstrap.panel.Grid, Roo.ContentPanel, {
     getId : function(){
         return this.grid.id;
     },
@@ -78,6 +78,6 @@ Roo.extend(Roo.GridPanel, Roo.ContentPanel, {
     destroy : function(){
         this.grid.destroy();
         delete this.grid;
-        Roo.GridPanel.superclass.destroy.call(this); 
+        Roo.bootstrap.panel.Grid.superclass.destroy.call(this); 
     }
 });
