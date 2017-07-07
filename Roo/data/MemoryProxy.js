@@ -24,6 +24,7 @@ Roo.data.MemoryProxy = function(data){
 };
 
 Roo.extend(Roo.data.MemoryProxy, Roo.data.DataProxy, {
+    
     /**
      * Load data from the requested source (in this case an in-memory
      * data object passed to the constructor), read the data object into
