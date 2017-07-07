@@ -335,9 +335,9 @@ layout.addxtype({
                 this.add(region, ret);
                 nb = {}; /// find first...
                 break;
-                /*
-            case 'GridPanel': 
             
+            case 'Grid':
+                
                 // needs grid and region
                 
                 //var el = this.getRegion(region).el.createChild();
