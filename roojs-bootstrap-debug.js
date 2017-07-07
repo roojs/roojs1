@@ -6021,6 +6021,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         if(e.getTarget().nodeName.toLowerCase() != 'td'){
             cell = Roo.get(t).findParent('td', false, true);
+            if (!cell) {
+                Roo.log("failed to find th in thead?");
+                Roo.log(e.getTarget());
+                return;
+            }
         }
         
         var row = cell.findParent('tr', false, true);
