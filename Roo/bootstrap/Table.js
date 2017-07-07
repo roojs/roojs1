@@ -217,7 +217,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     layout : false,
     
     // Roo.Element - the tbody
-    mainBody: false, 
+    mainBody: false,
+    
+    
+    container: false, // used by gridpanel...
     
     getAutoCreate : function()
     {
