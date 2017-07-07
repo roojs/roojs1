@@ -169,7 +169,303 @@ Example.Nested = new Roo.XComponent({
                     closable:false,
                     region : 'west',
                     
-                    grid : 
+                    grid : {
+                        loadMask : true,
+                        striped : true,
+                        xns : Roo.bootstrap,
+                        xtype : 'Table',
+                        store : {
+                            remoteSort : true,
+                            sortInfo : {field:'firstname',direction:'ASC'},
+                            xns : Roo.data,
+                            xtype : 'Store',
+                         
+                            proxy : {
+                                method : 'GET',
+                                url : baseURL + '/Roo/Analyse',
+                                xns : Roo.data,
+                                xtype : 'HttpProxy'
+                         },
+                         reader : {
+                          fields : [
+                              {
+                                  'name': 'id',
+                                  'type': 'int'
+                              },
+                              {
+                                  'name': 'person_id',
+                                  'type': 'int'
+                              },
+                              {
+                                  'name': 'detail_id',
+                                  'type': 'int'
+                              },
+                              {
+                                  'name': 'opt_out',
+                                  'type': 'int'
+                              },
+                              {
+                                  'name': 'unsubscribed',
+                                  'type': 'string'
+                              },
+                              {
+                                  'name': 'person_id_name',
+                                  'type': 'string'
+                              },
+                              {
+                                  'name': 'person_id_phone',
+                                  'type': 'string'
+                              },
+                              {
+                                  'name': 'person_id_email',
+                                  'type': 'string'
+                              },
+                              {
+                                  'name': 'person_id_alt_email',
+                                  'type': 'string'
+                              },
+                              {
+                                  'name': 'person_id_honor',
+                                  'type': 'string'
+                              },
+                              {
+                                  'name': 'detail_id_name',
+                                  'type': 'string'
+                              },
+                              {
+                                  'name': 'detail_id_client_name',
+                                  'type': 'string'
+                              },
+                              {
+                                  'name': 'referer_id_display_name',
+                                  'type': 'string'
+                              },
+                              {
+                                  'name': 'person_id_country_name',
+                                  'type': 'string'
+                              },
+                              {
+                                  'name': 'detail_id_x_category_display_name',
+                                  'type': 'string'
+                              },
+                              {
+                                  'name': 'person_id_user_agent_os',
+                                  'type': 'string'
+                              },
+                              {
+                                  'name': 'opens',
+                                  'type': 'int'
+                              },
+                              {
+                                  'name': 'clicks',
+                                  'type': 'int'
+                              },
+                              {
+                                  'name': 'entered',
+                                  'type': 'int'
+                              },
+                              {
+                                  'name': 'aggregated',
+                                  'type': 'string'
+                              }
+                              
+                          ],
+                          id : 'id',
+                          root : 'data',
+                          totalProperty : 'total',
+                          xns : Roo.data,
+                          '|xns' : 'Roo.data',
+                          xtype : 'JsonReader'
+                         }
+                        },
+                        cm : [
+                         {
+                          dataIndex : 'person_id',
+                          header : _this._strings['40bed7cf9b3d4bb3a3d7a7e3eb18c5eb'] /* Person */,
+                          renderer : function(v,x,r) 
+                          { 
+                              var cn = [];
+                              
+                              var has_name = false;
+                              
+                              if(r.data.person_id_name.length){
+                                  has_name = true;
+                                  
+                                  cn.push(
+                                      new Roo.bootstrap.Container({
+                                          cn : [
+                                              new Roo.bootstrap.Link({
+                                                  html: r.data.person_id_name,
+                                                  preventDefault: true,
+                                                  listeners : {
+                                                      click : function (e) {
+                                                          Campaign.Dialog.DatabaseManagerEditPerson.show({id : r.data.person_id}, function(){
+                                                              _this.analyseTable.footer.onClick('refresh');
+                                                          });
+                                                          return;
+                                                      }
+                                                  }
+                                              })
+                                          ],
+                                          style : 'padding:0px;'
+                                      })
+                                  );
+                              }
+                              
+                          
+                              
+                              Roo.each([
+                                  'person_id_email', 
+                                  'person_id_alt_email', 
+                                  'person_id_phone', 
+                                  'person_id_honor', 
+                                  'person_id_country_name',
+                                  'person_id_user_agent_os'
+                              ], function(f){
+                                  if(typeof(r.data[f]) == 'undefined' || !r.data[f].length){
+                                      return;
+                                  }
+                                  
+                                  if(!has_name && f == 'person_id_email'){
+                                      cn.push(
+                                          new Roo.bootstrap.Container({
+                                              cn : [
+                                                  new Roo.bootstrap.Link({
+                                                      html: r.data[f],
+                                                      preventDefault: true,
+                                                      listeners : {
+                                                          click : function (e) {
+                                                              Campaign.Dialog.DatabaseManagerEditPerson.show({id : r.data.person_id}, function(){
+                                                                  _this.analyseTable.footer.onClick('refresh');
+                                                              });
+                                                              return;
+                                                          }
+                                                      }
+                                                  })
+                                              ],
+                                              style : 'padding:0px;'
+                                          })
+                                      );
+                                  
+                                      return;
+                                  }
+                                  
+                                  cn.push(
+                                      new Roo.bootstrap.Container({
+                                          cn : [
+                                              new Roo.bootstrap.Element({
+                                                  html: r.data[f],
+                                                  tag: 'span'
+                                              })
+                                          ],
+                                          style : 'padding:0px;'
+                                      })
+                                  );
+                                  
+                                  return;
+                              });
+                              
+                              var ret = new Roo.bootstrap.Container({
+                                  cn : cn,
+                                  style : 'padding:0px;'
+                              });
+                              
+                              return ret;
+                              
+                              return ret.join("<br/>");
+                          },
+                          xns : Roo.grid,
+                          '|xns' : 'Roo.grid',
+                          xtype : 'ColumnModel'
+                         },
+                         {
+                          dataIndex : 'detail_id',
+                          header : _this._strings['337d36d903a0fc3bca4488e8bfe48a03'] /* Campaign / Num / Referrer */,
+                          renderer : function(v,x,r) 
+                          {
+                              var ret = [];
+                              
+                              if(typeof(r.data.detail_id_client_name) != 'undefined' && r.data.detail_id_client_name.length){
+                                  ret.push(r.data.detail_id_client_name);
+                              }
+                              
+                              if(typeof(r.data.detail_id) != 'undefined' && r.data.detail_id * 1 > 0){
+                                  ret.push(String.format('<span><a href="{0}/CampaignScoreBoard/{1}" tooltip="{2}" style="margin:0px;">#{3}</a></span>', 
+                                      baseURL,
+                                      r.data.detail_id,
+                                      r.data.detail_id_name,
+                                      r.data.detail_id
+                                  ));
+                              }
+                              
+                              if(typeof(r.data.referer_id_display_name) != 'undefined' && r.data.referer_id_display_name.length){
+                                  ret.push(r.data.referer_id_display_name);
+                              }
+                              
+                              return ret.join(", ");
+                              
+                          },
+                          xns : Roo.grid,
+                          '|xns' : 'Roo.grid',
+                          xtype : 'ColumnModel'
+                         },
+                         {
+                          dataIndex : 'opt_out',
+                          header : _this._strings['903a033e59d970c9c97ae0bee21b7e3b'] /* Opt */,
+                          hidden : false,
+                          renderer : function(v,x,r) 
+                          {
+                              if(r.data.unsubscribed * 1 > 0){
+                                  return 'UNSUB';
+                              }
+                              
+                              return String.format('{0}', ((v * 1) == 1) ? 'OUT' : 'IN');
+                          },
+                          xns : Roo.grid,
+                          '|xns' : 'Roo.grid',
+                          xtype : 'ColumnModel'
+                         },
+                         {
+                          dataIndex : 'detail_id_x_category_display_name',
+                          header : _this._strings['a8696ab25ea59de6137d73a4c954ba43'] /* W X Y Z (score) */,
+                          hidden : false,
+                          renderer : function(v,x,r) 
+                          {
+                              if(!r.data.detail_id_x_category_display_name.length){
+                                  return '-';
+                              }
+                              
+                              var opens = r.data.opens * 1;
+                              var clicks = r.data.clicks * 1;
+                              var entered = r.data.entered * 1;
+                              var sum = (entered == 1) ? ((opens + clicks) * 2) : (opens + clicks);
+                              
+                              return String.format('{0} {1} {2} {3} ({4})', r.data.detail_id_x_category_display_name, opens, clicks, entered, sum);
+                          },
+                          xns : Roo.grid,
+                          '|xns' : 'Roo.grid',
+                          xtype : 'ColumnModel'
+                         },
+                         {
+                          dataIndex : 'aggregated',
+                          header : _this._strings['db3d95f459000e90d533acf467d001a2'] /* W scores */,
+                          hidden : false,
+                          renderer : function(v,x,r) 
+                          {
+                             return v.length ? v : '-';
+                             
+                          },
+                          xns : Roo.grid,
+                          '|xns' : 'Roo.grid',
+                          xtype : 'ColumnModel'
+                         }
+                        ]
+                       }
+                      ]
+                     }
+                    ]
+                   }
+                  ]
                     
                     
                     
