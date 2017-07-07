@@ -370,6 +370,7 @@ layout.addxtype({
            
             case 'Border': // it can get called on it'self... - might need to check if this is fixed?
                 // it was the old xcomponent building that caused this before.
+                // espeically if border is the top element in the tree.
                 ret = this;
                 break; 
                 
