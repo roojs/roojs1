@@ -75,7 +75,7 @@ Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content, {
             grid.autoSize();
         }
     },
-    onResize : function()
+    onResize : function(pan, w, h)
     {
         
         
