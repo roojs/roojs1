@@ -621,6 +621,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             if(typeof(config.width) != 'undefined'){
                 c.style += ' width:' + config.width + 'px;';
                 this.totalWidth += config.width;
+            } else {
+                this.totalWidth += 100; // assume minimum of 100 per column?
             }
             
             if(typeof(config.cls) != 'undefined'){
