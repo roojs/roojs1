@@ -6652,6 +6652,14 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
      * @return {Element} The element
      */
     autoSize : function(){
+        var ctr = Roo.get(this.container.dom.parentElement);
+        
+        var thd = this.getGridEl().select('thead',true).first();
+          var tbd = this.getGridEl().select('tbody', true).first();
+          if (tbd) {
+              tbd.setSize(ctr.getWidth(), ctr.getHeight() - thd.getHeight());
+          }
+        
         return; // we doe not have a view in this design..
         if(this.rendered){
             this.view.layout();
@@ -33739,12 +33747,13 @@ Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content, {
             var grid = this.grid;
             var size = this.adjustForComponents(width, height);
             grid.getGridEl().setSize(size.width, size.height);
+            /*
             var thd = grid.getGridEl().select('thead',true).first();
             var tbd = grid.getGridEl().select('tbody', true).first();
             if (tbd) {
                 tbd.setSize(width, height - thd.getHeight());
             }
-            
+            */
             grid.autoSize();
         }
     },
