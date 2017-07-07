@@ -1,7 +1,7 @@
 
 /**
- * @class Roo.GridPanel
- * @extends Roo.ContentPanel
+ * @class Roo.bootstrap.panel.Grid
+ * @extends Roo.bootstrap.panel.Content
  * @constructor
  * Create a new GridPanel.
  * @cfg {Roo.bootstrap.Table} grid The grid for this panel
