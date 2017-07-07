@@ -70,8 +70,7 @@ Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content, {
             var thd = grid.getGridEl().select('thead',true).first();
             var tbd = grid.getGridEl().select('tbody', true).first();
             if (tbd) {
-                var hsz = thd.getSize();
-                tbd.setSize(width, height - hsz.heigth);
+                tbd.setSize(width, height - thd.getHeight());
             }
             
             grid.autoSize();
