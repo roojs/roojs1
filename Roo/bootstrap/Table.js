@@ -1006,8 +1006,14 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         });
         
         return rowIndex;
+    },
+     /**
+     * Returns the grid's underlying element = used by panel.Grid
+     * @return {Element} The element
+     */
+    getGridEl : function(){
+        return this.container;
     }
-   
 });
 
  
