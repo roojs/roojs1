@@ -234,7 +234,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             cls : 'table table-body-fixed',
             cn : []
         };
-            
+        if (this.fixedHader) {
+            cfg.cls += ' table-body-fixed';
+        }    
         if (this.striped) {
             cfg.cls += ' table-striped';
         }
