@@ -33711,11 +33711,15 @@ Roo.bootstrap.panel.Grid = function(config){
         
     }
     
+    
     config.grid.monitorWindowResize = false; // turn off autosizing
     config.grid.autoHeight = false;
     config.grid.autoWidth = false;
     this.grid = config.grid;
     this.grid.getGridEl().replaceClass("x-layout-inactive-content", "x-layout-component-panel");
+    
+    this.on('resize', this.onResize, this);
+    
 };
 
 Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content, {
@@ -33736,9 +33740,17 @@ Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content, {
             var grid = this.grid;
             var size = this.adjustForComponents(width, height);
             grid.getGridEl().setSize(size.width, size.height);
+            
             grid.autoSize();
         }
     },
+    onResize : function(pan, w, h)
+    {
+        var thd = grid.getGridEl().select('thead');
+        var tbd = grid.getGridEl().select('tbody');
+        
+    },
+    
     
     beforeSlide : function(){
         this.grid.getView().scroller.clip();
