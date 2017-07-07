@@ -1023,6 +1023,14 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
      * @return {Element} The element
      */
     autoSize : function(){
+        var ctr = Roo.get(this.container.dom.parentElement);
+        
+          var thd = grid.getGridEl().select('thead',true).first();
+            var tbd = grid.getGridEl().select('tbody', true).first();
+            if (tbd) {
+                tbd.setSize(ctr.getWidth(), ctr.getHeight() - thd.getHeight());
+            }
+        
         return; // we doe not have a view in this design..
         if(this.rendered){
             this.view.layout();
