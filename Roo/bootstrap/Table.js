@@ -43,11 +43,14 @@
 Roo.bootstrap.Table = function(config){
     Roo.bootstrap.Table.superclass.constructor.call(this, config);
     
-    this.container = Roo.get(config.container);
-	this.container.update("");
-	this.container.setStyle("overflow", "hidden");
-    this.container.addClass('x-grid-container');
+    if (config.container) {
+        // ctor'ed from a Border/panel.grid
+        this.container = Roo.get(config.container);
+        this.container.update("");
+        this.container.setStyle("overflow", "hidden");
+        this.container.addClass('x-grid-container');
 
+    }
     
     // BC...
     this.rowSelection = (typeof(config.RowSelection) != 'undefined') ? config.RowSelection : this.rowSelection;
