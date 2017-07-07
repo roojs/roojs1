@@ -689,14 +689,17 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
             e.removeClass(['glyphicon', 'glyphicon-arrow-up', 'glyphicon-arrow-down']);
-            
-            if(e.hasClass('sortable') && e.attr('sort') == _this.store.sortInfo.field && _this.store.sortInfo.direction.toUpperCase() == 'ASC'){
-                e.addClass(['glyphicon', 'glyphicon-arrow-up']);
-            }
-            
-            if(e.hasClass('sortable') && e.attr('sort') == _this.store.sortInfo.field && _this.store.sortInfo.direction.toUpperCase() == 'DESC'){
-                e.addClass(['glyphicon', 'glyphicon-arrow-down']);
-            }
+            if (_this.store.sortInfo) {
+                    
+                }
+                if(e.hasClass('sortable') && e.attr('sort') == _this.store.sortInfo.field && _this.store.sortInfo.direction.toUpperCase() == 'ASC'){
+                    e.addClass(['glyphicon', 'glyphicon-arrow-up']);
+                }
+                
+                if(e.hasClass('sortable') && e.attr('sort') == _this.store.sortInfo.field && _this.store.sortInfo.direction.toUpperCase() == 'DESC'){
+                    e.addClass(['glyphicon', 'glyphicon-arrow-down']);
+                }
+        }
         });
         
         var tbody =  this.mainBody;
