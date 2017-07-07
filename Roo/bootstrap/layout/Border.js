@@ -344,7 +344,7 @@ layout.addxtype({
                 var el = this.el.createChild();
                 // create the grid first...
                 cfg.grid.el = el;
-                cfg.grid = new cfg.grid.ns[cfg.grid.xtype](cfg.grid);
+                cfg.grid = new cfg.grid.xns[cfg.grid.xtype](cfg.grid);
                 
                 
                 if (region == 'center' && this.active ) {
