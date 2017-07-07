@@ -6022,7 +6022,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         if(e.getTarget().nodeName.toLowerCase() != 'td'){
             cell = Roo.get(t).findParent('td', false, true);
             if (!cell) {
-                Roo.log("failed to find th in thead?");
+                Roo.log("failed to find th in tbody?");
                 Roo.log(e.getTarget());
                 return;
             }
@@ -6189,6 +6189,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         };
         
         var cm = this.cm;
+        this.totalWidth = 0;
         
         for(var i = 0, len = cm.getColumnCount(); i < len; i++){
             
@@ -6248,6 +6249,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             if(typeof(config.width) != 'undefined'){
                 c.style += ' width:' + config.width + 'px;';
+                this.totalWidth += config.width;
+            } else {
+                this.totalWidth += 100; // assume minimum of 100 per column?
             }
             
             if(typeof(config.cls) != 'undefined'){
