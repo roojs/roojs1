@@ -32,7 +32,7 @@
  * @cfg {Boolean} headerShow (true|false) generate thead, default true
  * @cfg {Boolean} rowSelection (true|false) default false
  * @cfg {Boolean} cellSelection (true|false) default false
- * @cfg {Boolean} fixedHeader (true|false) default false - body scrolled / fixed header
+ * @cfg {Boolean} scrollBody (true|false) default false - body scrolled / fixed header
  * @cfg {Roo.bootstrap.PagingToolbar} footer  a paging toolbar
  
  * 
