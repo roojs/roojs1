@@ -731,6 +731,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         //if(this.loadMask){
         //    this.maskEl.hide();
         //}
+        
+        this.autoSize();
     },
     
     
