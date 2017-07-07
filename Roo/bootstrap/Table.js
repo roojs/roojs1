@@ -1013,6 +1013,19 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
      */
     getGridEl : function(){
         return this.container;
+    },
+     /**
+     * Forces a resize - used by panel.Grid
+     * @return {Element} The element
+     */
+    autoSize : function(){
+        return; // we doe not have a view in this design..
+        if(this.rendered){
+            this.view.layout();
+            if(this.view.adjustForScroll){
+                this.view.adjustForScroll();
+            }
+        }
     }
 });
 
