@@ -1033,10 +1033,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var ctr = Roo.get(this.container.dom.parentElement);
         
         var thd = this.getGridEl().select('thead',true).first();
-          var tbd = this.getGridEl().select('tbody', true).first();
-          if (tbd) {
-              tbd.setSize(ctr.getWidth(), ctr.getHeight() - thd.getHeight());
-          }
+        var tbd = this.getGridEl().select('tbody', true).first();
+        if (tbd) {
+            tbd.setSize(ctr.getWidth(), ctr.getHeight() - thd.getHeight());
+        }
+        this.getGridEl().select('tr',true).setWidth(ctr.getWidth());
         
         return; // we doe not have a view in this design..
         if(this.rendered){
