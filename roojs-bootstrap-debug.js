@@ -33741,8 +33741,11 @@ Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content, {
             grid.getGridEl().setSize(size.width, size.height);
             var thd = grid.getGridEl().select('thead',true).first();
             var tbd = grid.getGridEl().select('tbody', true).first();
-            var hsz = thb.getSize();
-            tbd.setSize(width, height - hsz.heigth);
+            if (tbd) {
+                var hsz = thb.getSize();
+                tbd.setSize(width, height - hsz.heigth);
+            }
+            
             grid.autoSize();
         }
     },
