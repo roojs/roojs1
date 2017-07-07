@@ -5857,7 +5857,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         cfg = {
             tag: 'table',
-            cls : 'table',
+            cls : 'table table-body-fixed',
             cn : []
         };
             
@@ -5928,8 +5928,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             if(this.footerShow){
                 cfg.cn.push(this.renderFooter());
             }
-            
-            cfg.cls+=  ' TableGrid';
+            // where does this come from?
+            //cfg.cls+=  ' TableGrid';
         }
         
         return { cn : [ cfg ] };
