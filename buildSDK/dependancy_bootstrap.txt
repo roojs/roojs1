@@ -139,6 +139,7 @@ Roo.bootstrap.layout.Center
 
 Roo.bootstrap.panel.panel-ns
 Roo.bootstrap.panel.Content
+Roo.bootstrap.panel.Grid
 Roo.bootstrap.panel.Nest
 Roo.bootstrap.panel.Tabs
 Roo.bootstrap.panel.TabItem
