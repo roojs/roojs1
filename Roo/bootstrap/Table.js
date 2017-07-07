@@ -375,6 +375,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             if(e.getTarget().nodeName.toLowerCase() != 'th'){
                 cell = Roo.get(t).findParent('th', false, true);
+                if (!cell) {
+                    return;
+                }
             }
             
             var cellIndex = cell.dom.cellIndex;
