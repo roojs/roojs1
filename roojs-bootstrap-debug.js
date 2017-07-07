@@ -5672,6 +5672,15 @@ Roo.LoadMask.prototype = {
 Roo.bootstrap.Table = function(config){
     Roo.bootstrap.Table.superclass.constructor.call(this, config);
     
+    if (config.container) {
+        // ctor'ed from a Border/panel.grid
+        this.container = Roo.get(config.container);
+        this.container.update("");
+        this.container.setStyle("overflow", "hidden");
+        this.container.addClass('x-grid-container');
+
+    }
+    
     // BC...
     this.rowSelection = (typeof(config.RowSelection) != 'undefined') ? config.RowSelection : this.rowSelection;
     this.cellSelection = (typeof(config.CellSelection) != 'undefined') ? config.CellSelection : this.cellSelection;
@@ -5837,7 +5846,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     layout : false,
     
     // Roo.Element - the tbody
-    mainBody: false, 
+    mainBody: false,
+    
+    
+    container: false, // used by gridpanel...
     
     getAutoCreate : function()
     {
@@ -6623,8 +6635,14 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         });
         
         return rowIndex;
+    },
+     /**
+     * Returns the grid's underlying element = used by panel.Grid
+     * @return {Element} The element
+     */
+    getGridEl : function(){
+        return this.container;
     }
-   
 });
 
  
@@ -31454,7 +31472,7 @@ layout.addxtype({
                 //var el = this.getRegion(region).el.createChild();
                 var el = this.el.createChild();
                 // create the grid first...
-                //cfg.grid.el = el;
+                cfg.grid.container = el;
                 cfg.grid = new cfg.grid.xns[cfg.grid.xtype](cfg.grid);
                 
                 
@@ -31470,11 +31488,11 @@ layout.addxtype({
                     // render grid on panel activation (if panel background)
                     ret.on('activate', function(gp) {
                         if (!gp.grid.rendered) {
-                            gp.grid.render(el);
+                            gp.grid.render(gp.grid.getGridEl());
                         }
                     });
                 } else {
-                    cfg.grid.render(el);
+                    cfg.grid.render(cfg.grid.getGridEl());
                 }
                 break;
            
