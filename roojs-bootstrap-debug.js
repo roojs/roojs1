@@ -5661,6 +5661,7 @@ Roo.LoadMask.prototype = {
  * @cfg {Boolean} headerShow (true|false) generate thead, default true
  * @cfg {Boolean} rowSelection (true|false) default false
  * @cfg {Boolean} cellSelection (true|false) default false
+ * @cfg {Boolean} scrollBody (true|false) default false - body scrolled / fixed header
  * @cfg {Roo.bootstrap.PagingToolbar} footer  a paging toolbar
  
  * 
@@ -5830,6 +5831,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     summary: false,
     width: false,
     striped : false,
+    scrollBody : false,
     bordered: false,
     hover:  false,
     condensed : false,
@@ -5858,10 +5860,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         cfg = {
             tag: 'table',
-            cls : 'table table-body-fixed',
+            cls : 'table',
             cn : []
         };
-            
+        if (this.scrollBody) {
+            cfg.cls += ' table-body-fixed';
+        }    
         if (this.striped) {
             cfg.cls += ' table-striped';
         }
@@ -31542,6 +31546,7 @@ layout.addxtype({
                 var el = this.el.createChild();
                 // create the grid first...
                 cfg.grid.container = el;
+                cfg.grid.scrollBody = true;
                 cfg.grid = new cfg.grid.xns[cfg.grid.xtype](cfg.grid);
                 
                 

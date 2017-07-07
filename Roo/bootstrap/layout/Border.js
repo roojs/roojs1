@@ -344,6 +344,7 @@ layout.addxtype({
                 var el = this.el.createChild();
                 // create the grid first...
                 cfg.grid.container = el;
+                cfg.grid.scrollBody = true;
                 cfg.grid = new cfg.grid.xns[cfg.grid.xtype](cfg.grid);
                 
                 
