@@ -709,15 +709,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var ds = this.store;
         
         Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
-            e.removeClass(['glyphicon', 'glyphicon-arrow-up', 'glyphicon-arrow-down']);
+            e.select('i', true).removeClass(['glyphicon', 'glyphicon-arrow-up', 'glyphicon-arrow-down']);
             if (_this.store.sortInfo) {
                     
                 if(e.hasClass('sortable') && e.attr('sort') == _this.store.sortInfo.field && _this.store.sortInfo.direction.toUpperCase() == 'ASC'){
-                    e.addClass(['glyphicon', 'glyphicon-arrow-up']);
+                    e.select('i', true).addClass(['glyphicon-arrow-up']);
                 }
                 
                 if(e.hasClass('sortable') && e.attr('sort') == _this.store.sortInfo.field && _this.store.sortInfo.direction.toUpperCase() == 'DESC'){
-                    e.addClass(['glyphicon', 'glyphicon-arrow-down']);
+                    e.select('i', true).addClass(['glyphicon-arrow-down']);
                 }
             }
         });
