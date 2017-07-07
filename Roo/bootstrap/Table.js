@@ -578,9 +578,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             var hh = '';
             
-             if(typeof(config.sortable) != 'undefined' && config.sortable){
+            if(typeof(config.sortable) != 'undefined' && config.sortable){
                 c.cls = 'sortable';
-                hh += '<i class="glyphicon"></i>';
+                c.html = '<i class="glyphicon"></i>' + c.html;
             }
             
             if(typeof(config.lgHeader) != 'undefined'){
