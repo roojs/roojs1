@@ -16,15 +16,16 @@
 
 
 
-Roo.bootstrap.panel.Grid = function(grid, config){
+Roo.bootstrap.panel.Grid = function(config){
     
   
     this.wrapper = Roo.DomHelper.append(document.body, // wrapper for IE7 strict & safari scroll issue
         {tag: "div", cls: "x-layout-grid-wrapper x-layout-inactive-content"}, true);
         
-    this.wrapper.dom.appendChild(grid.getGridEl().dom);
+    this.wrapper.dom.appendChild(config.grid.getGridEl().dom);
+    config.el = this.wrapper;
     
-    Roo.bootstrap.panel.Grid.superclass.constructor.call(this, this.wrapper, config);
+    Roo.bootstrap.panel.Grid.superclass.constructor.call(this, config);
     
     if(this.toolbar){
         this.toolbar.el.insertBefore(this.wrapper.dom.firstChild);
@@ -45,7 +46,7 @@ Roo.bootstrap.panel.Grid = function(grid, config){
     this.grid.getGridEl().replaceClass("x-layout-inactive-content", "x-layout-component-panel");
 };
 
-Roo.extend(Roo.bootstrap.panel.Grid, Roo.ContentPanel, {
+Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Panel, {
     getId : function(){
         return this.grid.id;
     },
