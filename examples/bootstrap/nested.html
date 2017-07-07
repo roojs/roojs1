@@ -184,291 +184,81 @@ Example.Nested = new Roo.XComponent({
                                 method : 'GET',
                                 url : baseURL + '/Roo/Analyse',
                                 xns : Roo.data,
-                                xtype : 'HttpProxy'
-                         },
-                         reader : {
-                          fields : [
-                              {
-                                  'name': 'id',
-                                  'type': 'int'
-                              },
-                              {
-                                  'name': 'person_id',
-                                  'type': 'int'
-                              },
-                              {
-                                  'name': 'detail_id',
-                                  'type': 'int'
-                              },
-                              {
-                                  'name': 'opt_out',
-                                  'type': 'int'
-                              },
-                              {
-                                  'name': 'unsubscribed',
-                                  'type': 'string'
-                              },
-                              {
-                                  'name': 'person_id_name',
-                                  'type': 'string'
-                              },
-                              {
-                                  'name': 'person_id_phone',
-                                  'type': 'string'
-                              },
-                              {
-                                  'name': 'person_id_email',
-                                  'type': 'string'
-                              },
-                              {
-                                  'name': 'person_id_alt_email',
-                                  'type': 'string'
-                              },
-                              {
-                                  'name': 'person_id_honor',
-                                  'type': 'string'
-                              },
-                              {
-                                  'name': 'detail_id_name',
-                                  'type': 'string'
-                              },
-                              {
-                                  'name': 'detail_id_client_name',
-                                  'type': 'string'
-                              },
-                              {
-                                  'name': 'referer_id_display_name',
-                                  'type': 'string'
-                              },
-                              {
-                                  'name': 'person_id_country_name',
-                                  'type': 'string'
-                              },
-                              {
-                                  'name': 'detail_id_x_category_display_name',
-                                  'type': 'string'
-                              },
-                              {
-                                  'name': 'person_id_user_agent_os',
-                                  'type': 'string'
-                              },
-                              {
-                                  'name': 'opens',
-                                  'type': 'int'
-                              },
-                              {
-                                  'name': 'clicks',
-                                  'type': 'int'
-                              },
-                              {
-                                  'name': 'entered',
-                                  'type': 'int'
-                              },
-                              {
-                                  'name': 'aggregated',
-                                  'type': 'string'
-                              }
-                              
-                          ],
-                          id : 'id',
-                          root : 'data',
-                          totalProperty : 'total',
-                          xns : Roo.data,
-                          '|xns' : 'Roo.data',
-                          xtype : 'JsonReader'
-                         }
-                        },
-                        cm : [
-                         {
-                          dataIndex : 'person_id',
-                          header : _this._strings['40bed7cf9b3d4bb3a3d7a7e3eb18c5eb'] /* Person */,
-                          renderer : function(v,x,r) 
-                          { 
-                              var cn = [];
-                              
-                              var has_name = false;
-                              
-                              if(r.data.person_id_name.length){
-                                  has_name = true;
-                                  
-                                  cn.push(
-                                      new Roo.bootstrap.Container({
-                                          cn : [
-                                              new Roo.bootstrap.Link({
-                                                  html: r.data.person_id_name,
-                                                  preventDefault: true,
-                                                  listeners : {
-                                                      click : function (e) {
-                                                          Campaign.Dialog.DatabaseManagerEditPerson.show({id : r.data.person_id}, function(){
-                                                              _this.analyseTable.footer.onClick('refresh');
-                                                          });
-                                                          return;
-                                                      }
-                                                  }
-                                              })
-                                          ],
-                                          style : 'padding:0px;'
-                                      })
-                                  );
-                              }
-                              
-                          
-                              
-                              Roo.each([
-                                  'person_id_email', 
-                                  'person_id_alt_email', 
-                                  'person_id_phone', 
-                                  'person_id_honor', 
-                                  'person_id_country_name',
-                                  'person_id_user_agent_os'
-                              ], function(f){
-                                  if(typeof(r.data[f]) == 'undefined' || !r.data[f].length){
-                                      return;
-                                  }
-                                  
-                                  if(!has_name && f == 'person_id_email'){
-                                      cn.push(
-                                          new Roo.bootstrap.Container({
-                                              cn : [
-                                                  new Roo.bootstrap.Link({
-                                                      html: r.data[f],
-                                                      preventDefault: true,
-                                                      listeners : {
-                                                          click : function (e) {
-                                                              Campaign.Dialog.DatabaseManagerEditPerson.show({id : r.data.person_id}, function(){
-                                                                  _this.analyseTable.footer.onClick('refresh');
-                                                              });
-                                                              return;
-                                                          }
-                                                      }
-                                                  })
-                                              ],
-                                              style : 'padding:0px;'
-                                          })
-                                      );
-                                  
-                                      return;
-                                  }
-                                  
-                                  cn.push(
-                                      new Roo.bootstrap.Container({
-                                          cn : [
-                                              new Roo.bootstrap.Element({
-                                                  html: r.data[f],
-                                                  tag: 'span'
-                                              })
-                                          ],
-                                          style : 'padding:0px;'
-                                      })
-                                  );
-                                  
-                                  return;
-                              });
-                              
-                              var ret = new Roo.bootstrap.Container({
-                                  cn : cn,
-                                  style : 'padding:0px;'
-                              });
-                              
-                              return ret;
-                              
-                              return ret.join("<br/>");
-                          },
-                          xns : Roo.grid,
-                          '|xns' : 'Roo.grid',
-                          xtype : 'ColumnModel'
-                         },
-                         {
-                          dataIndex : 'detail_id',
-                          header : _this._strings['337d36d903a0fc3bca4488e8bfe48a03'] /* Campaign / Num / Referrer */,
-                          renderer : function(v,x,r) 
-                          {
-                              var ret = [];
-                              
-                              if(typeof(r.data.detail_id_client_name) != 'undefined' && r.data.detail_id_client_name.length){
-                                  ret.push(r.data.detail_id_client_name);
-                              }
-                              
-                              if(typeof(r.data.detail_id) != 'undefined' && r.data.detail_id * 1 > 0){
-                                  ret.push(String.format('<span><a href="{0}/CampaignScoreBoard/{1}" tooltip="{2}" style="margin:0px;">#{3}</a></span>', 
-                                      baseURL,
-                                      r.data.detail_id,
-                                      r.data.detail_id_name,
-                                      r.data.detail_id
-                                  ));
-                              }
-                              
-                              if(typeof(r.data.referer_id_display_name) != 'undefined' && r.data.referer_id_display_name.length){
-                                  ret.push(r.data.referer_id_display_name);
-                              }
-                              
-                              return ret.join(", ");
-                              
-                          },
-                          xns : Roo.grid,
-                          '|xns' : 'Roo.grid',
-                          xtype : 'ColumnModel'
-                         },
-                         {
-                          dataIndex : 'opt_out',
-                          header : _this._strings['903a033e59d970c9c97ae0bee21b7e3b'] /* Opt */,
-                          hidden : false,
-                          renderer : function(v,x,r) 
-                          {
-                              if(r.data.unsubscribed * 1 > 0){
-                                  return 'UNSUB';
-                              }
-                              
-                              return String.format('{0}', ((v * 1) == 1) ? 'OUT' : 'IN');
-                          },
-                          xns : Roo.grid,
-                          '|xns' : 'Roo.grid',
-                          xtype : 'ColumnModel'
-                         },
-                         {
-                          dataIndex : 'detail_id_x_category_display_name',
-                          header : _this._strings['a8696ab25ea59de6137d73a4c954ba43'] /* W X Y Z (score) */,
-                          hidden : false,
-                          renderer : function(v,x,r) 
-                          {
-                              if(!r.data.detail_id_x_category_display_name.length){
-                                  return '-';
-                              }
-                              
-                              var opens = r.data.opens * 1;
-                              var clicks = r.data.clicks * 1;
-                              var entered = r.data.entered * 1;
-                              var sum = (entered == 1) ? ((opens + clicks) * 2) : (opens + clicks);
-                              
-                              return String.format('{0} {1} {2} {3} ({4})', r.data.detail_id_x_category_display_name, opens, clicks, entered, sum);
-                          },
-                          xns : Roo.grid,
-                          '|xns' : 'Roo.grid',
-                          xtype : 'ColumnModel'
-                         },
-                         {
-                          dataIndex : 'aggregated',
-                          header : _this._strings['db3d95f459000e90d533acf467d001a2'] /* W scores */,
-                          hidden : false,
-                          renderer : function(v,x,r) 
-                          {
-                             return v.length ? v : '-';
-                             
-                          },
-                          xns : Roo.grid,
-                          '|xns' : 'Roo.grid',
-                          xtype : 'ColumnModel'
-                         }
-                        ]
-                       }
-                      ]
-                     }
-                    ]
-                   }
-                  ]
-                    
-                    
-                    
+                                xtype : 'MemoryProxy',
+                                data: [
+                                    ['3m Co',71.72,0.02,0.03,'9/1 12:00am'],
+                                    ['Alcoa Inc',29.01,0.42,1.47,'9/1 12:00am'],
+                                    ['Altria Group Inc',83.81,0.28,0.34,'9/1 12:00am'],
+                                    ['American Express Company',52.55,0.01,0.02,'9/1 12:00am'],
+                                    ['American International Group, Inc.',64.13,0.31,0.49,'9/1 12:00am'],
+                                    ['AT&T Inc.',31.61,-0.48,-1.54,'9/1 12:00am'],
+                                    ['Boeing Co.',75.43,0.53,0.71,'9/1 12:00am'],
+                                    ['Caterpillar Inc.',67.27,0.92,1.39,'9/1 12:00am'],
+                                    ['Citigroup, Inc.',49.37,0.02,0.04,'9/1 12:00am'],
+                                    ['E.I. du Pont de Nemours and Company',40.48,0.51,1.28,'9/1 12:00am'],
+                                    ['Exxon Mobil Corp',68.1,-0.43,-0.64,'9/1 12:00am'],
+                                    ['General Electric Company',34.14,-0.08,-0.23,'9/1 12:00am'],
+                                    ['General Motors Corporation',30.27,1.09,3.74,'9/1 12:00am'],
+                                    ['Hewlett-Packard Co.',36.53,-0.03,-0.08,'9/1 12:00am'],
+                                    ['Honeywell Intl Inc',38.77,0.05,0.13,'9/1 12:00am'],
+                                    ['Intel Corporation',19.88,0.31,1.58,'9/1 12:00am'],
+                                    ['International Business Machines',81.41,0.44,0.54,'9/1 12:00am'],
+                                    ['Johnson & Johnson',64.72,0.06,0.09,'9/1 12:00am'],
+                                    ['JP Morgan & Chase & Co',45.73,0.07,0.15,'9/1 12:00am'],
+                                    ['McDonald\'s Corporation',36.76,0.86,2.40,'9/1 12:00am'],
+                                    ['Merck & Co., Inc.',40.96,0.41,1.01,'9/1 12:00am'],
+                                    ['Microsoft Corporation',25.84,0.14,0.54,'9/1 12:00am'],
+                                    ['Pfizer Inc',27.96,0.4,1.45,'9/1 12:00am'],
+                                    ['The Coca-Cola Company',45.07,0.26,0.58,'9/1 12:00am'],
+                                    ['The Home Depot, Inc.',34.64,0.35,1.02,'9/1 12:00am'],
+                                    ['The Procter & Gamble Company',61.91,0.01,0.02,'9/1 12:00am'],
+                                    ['United Technologies Corporation',63.26,0.55,0.88,'9/1 12:00am'],
+                                    ['Verizon Communications',35.57,0.39,1.11,'9/1 12:00am'],
+                                    ['Wal-Mart Stores, Inc.',45.45,0.73,1.63,'9/1 12:00am'],
+                                    ['Walt Disney Company (The) (Holding Company)',29.89,0.24,0.81,'9/1 12:00am']
+                                ]
+                            },
+                            reader : {
+                           
+                                id : 'id',
+                                root : 'data',
+                                xns : Roo.data,
+                                '|xns' : 'Roo.data',
+                                xtype : 'Roo.data.ArrayReader',
+                                fields: [
+                                    {name: 'company'},
+                                    {name: 'price', type: 'float'},
+                                    {name: 'change', type: 'float'},
+                                    {name: 'pctChange', type: 'float'},
+                                    {name: 'lastChange', type: 'date', dateFormat: 'n/j h:ia'}
+                                ]
+                            },
+                            cm : [
+                                
+                                {
+                                    id:'company',
+                                    header: "Company",
+                                    width: 160,
+                                    sortable: true,
+                                    locked:false,
+                                    dataIndex: 'company',
+                                    xns : Roo.grid,
+                                    xtype : 'ColumnModel'
+                                },
+                                {
+                                    header: "Price",
+                                    width: 75,
+                                    sortable: true,
+                                    renderer: Roo.util.Format.usMoney,
+                                    dataIndex: 'price',
+                                    xns : Roo.grid,
+                                    xtype : 'ColumnModel'
+                                }
+                                
+                            ]
+                            
+                        }
+                    }
                 },
                 {
                     xtype : 'Content',
