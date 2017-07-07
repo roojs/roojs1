@@ -1037,7 +1037,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var cw = Math.max(ctr.getWidth(), this.totalWidth)
         if (tbd) {
-            tbd.setSize(cw, ctr.getHeight() - thd.getHeight());
+            tbd.setSize(ctr.getWidth(), ctr.getHeight() - thd.getHeight());
         }
         this.getGridEl().select('tr',true).setWidth(cw);
         
