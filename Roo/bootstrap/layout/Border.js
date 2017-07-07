@@ -345,11 +345,12 @@ layout.addxtype({
                 // create the grid first...
                 cfg.grid.el = el;
                 var grid = new cfg.grid.ns[cfg.grid.xtype](el);
+                
                 delete cfg.grid;
                 if (region == 'center' && this.active ) {
                     cfg.background = false;
                 }
-                ret = new Roo[cfg.xtype](grid, cfg); // new panel!!!!!
+                ret = new cfg.ns[cfg.xtype](grid, cfg); // new panel!!!!!
                 
                 this.add(region, ret);
                 if (cfg.background) {
