@@ -4,7 +4,7 @@
  * @extends Roo.ContentPanel
  * @constructor
  * Create a new GridPanel.
- * @param {Roo.grid.Grid} grid The grid for this panel
+ * @cfg {Roo.bootstrap.Table} grid The grid for this panel
  * @param {String/Object} config A string to set only the panel's title, or a config object
 
   new Roo.bootstrap.panel.Grid({
@@ -53,7 +53,7 @@ Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Panel, {
     
     /**
      * Returns the grid for this panel
-     * @return {Roo.grid.Grid} 
+     * @return {Roo.bootstrap.Table} 
      */
     getGrid : function(){
         return this.grid;    
