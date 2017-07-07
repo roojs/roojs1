@@ -367,7 +367,7 @@ layout.addxtype({
                 }
                 break;
            
-           */
+           
             case 'Border': // it can get called on it'self...
                 ret = this;
                 break; 
