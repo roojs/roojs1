@@ -6703,7 +6703,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         Roo.log("body scrolled');" + this.mainBody.dom.scrollLeft);
         this.mainHead.setStyle({
                     'position' : 'relative',
-                    'left': this.mainBody.dom.scrollLeft + 'px'
+                    'left': (-1* this.mainBody.dom.scrollLeft) + 'px'
         });
         
         
