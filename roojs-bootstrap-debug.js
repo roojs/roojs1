@@ -5973,6 +5973,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         this.el.on("contextmenu", this.onContextMenu, this);
         
+        
+        
     },
     
     onContextMenu : function(e, t)
@@ -6316,13 +6318,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
             e.removeClass(['glyphicon', 'glyphicon-arrow-up', 'glyphicon-arrow-down']);
-            
-            if(e.hasClass('sortable') && e.attr('sort') == _this.store.sortInfo.field && _this.store.sortInfo.direction.toUpperCase() == 'ASC'){
-                e.addClass(['glyphicon', 'glyphicon-arrow-up']);
-            }
-            
-            if(e.hasClass('sortable') && e.attr('sort') == _this.store.sortInfo.field && _this.store.sortInfo.direction.toUpperCase() == 'DESC'){
-                e.addClass(['glyphicon', 'glyphicon-arrow-down']);
+            if (_this.store.sortInfo) {
+                    
+                if(e.hasClass('sortable') && e.attr('sort') == _this.store.sortInfo.field && _this.store.sortInfo.direction.toUpperCase() == 'ASC'){
+                    e.addClass(['glyphicon', 'glyphicon-arrow-up']);
+                }
+                
+                if(e.hasClass('sortable') && e.attr('sort') == _this.store.sortInfo.field && _this.store.sortInfo.direction.toUpperCase() == 'DESC'){
+                    e.addClass(['glyphicon', 'glyphicon-arrow-down']);
+                }
             }
         });
         
@@ -11013,6 +11017,7 @@ Roo.data.MemoryProxy = function(data){
 };
 
 Roo.extend(Roo.data.MemoryProxy, Roo.data.DataProxy, {
+    
     /**
      * Load data from the requested source (in this case an in-memory
      * data object passed to the constructor), read the data object into
