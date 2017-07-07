@@ -341,7 +341,7 @@ layout.addxtype({
                 // needs grid and region
                 
                 //var el = this.getRegion(region).el.createChild();
-                //var el = this.el.createChild();
+                var el = this.el.createChild();
                 // create the grid first...
                 //cfg.grid.el = el;
                 cfg.grid = new cfg.grid.xns[cfg.grid.xtype](cfg.grid);
@@ -363,7 +363,7 @@ layout.addxtype({
                         }
                     });
                 } else {
-                    cfg.grid.render();
+                    cfg.grid.render(el);
                 }
                 break;
            
