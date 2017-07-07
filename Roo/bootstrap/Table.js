@@ -345,9 +345,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         this.el.on("contextmenu", this.onContextMenu, this);
         
         // if the store is a memoryproxy??
-        if (this.store.proxy.prototype == Roo.data.MemoryProxy) {
-            
-        }
+  
         
     },
     
