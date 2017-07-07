@@ -359,11 +359,11 @@ layout.addxtype({
                     // render grid on panel activation (if panel background)
                     ret.on('activate', function(gp) {
                         if (!gp.grid.rendered) {
-                            gp.grid.render(el);
+                            gp.grid.render(cfg.grid.getGridEl());
                         }
                     });
                 } else {
-                    cfg.grid.render(el);
+                    cfg.grid.render(cfg.grid.getGridEl());
                 }
                 break;
            
