@@ -351,7 +351,7 @@ layout.addxtype({
                     cfg.background = false;
                 }
                 
-                ret = new cfg.ns[cfg.xtype](cfg); // new panel!!!!!
+                ret = new cfg.xns[cfg.xtype](cfg); // new panel!!!!!
                 
                 this.add(region, ret);
                 
