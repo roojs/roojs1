@@ -391,8 +391,7 @@ layout.addxtype({
                     return null;
              
                                 
-             // GridPanel (grid, cfg)
-            
+             
         }
         this.beginUpdate();
         // add children..
