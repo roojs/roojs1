@@ -168,18 +168,18 @@ Example.Nested = new Roo.XComponent({
                     fitToFrame:true,
                     closable:false,
                     region : 'west',
-                    
+                    listeners : {
+                            actovate : function()
+                            {
+                                this.grid.store.load();
+                            }
+                        },
                     grid : {
                         loadMask : true,
                         striped : true,
                         xns : Roo.bootstrap,
                         xtype : 'Table',
-                        listeners : {
-                            render : function()
-                            {
-                                this.store.load();
-                            }
-                        },
+                        
                         store : {
                             xns : Roo.data,
                             xtype : 'Store',
