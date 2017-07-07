@@ -344,16 +344,19 @@ layout.addxtype({
                 var el = this.el.createChild();
                 // create the grid first...
                 cfg.grid.el = el;
-                var grid = new cfg.grid.ns[cfg.grid.xtype](el);
+                cfg.grid = new cfg.grid.ns[cfg.grid.xtype](el);
                 
-                delete cfg.grid;
+                
                 if (region == 'center' && this.active ) {
                     cfg.background = false;
                 }
-                ret = new cfg.ns[cfg.xtype](grid, cfg); // new panel!!!!!
+                
+                ret = new cfg.ns[cfg.xtype](cfg); // new panel!!!!!
                 
                 this.add(region, ret);
+                
                 if (cfg.background) {
+                    // render grid on panel activation (if panel background)
                     ret.on('activate', function(gp) {
                         if (!gp.grid.rendered) {
                             gp.grid.render();
