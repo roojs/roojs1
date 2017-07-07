@@ -541,7 +541,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var sort = col.attr('sort');
         var dir = 'ASC';
         
-        if(col.hasClass('glyphicon-arrow-up')){
+        if(col.select('i', true).first().hasClass('glyphicon-arrow-up')){
             dir = 'DESC';
         }
         
