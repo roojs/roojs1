@@ -75,6 +75,12 @@ Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content, {
             grid.autoSize();
         }
     },
+    onResize : function()
+    {
+        
+        
+    }
+    
     
     beforeSlide : function(){
         this.grid.getView().scroller.clip();
