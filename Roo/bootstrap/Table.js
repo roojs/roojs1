@@ -202,6 +202,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     summary: false,
     width: false,
     striped : false,
+    fixedHeader : false,
     bordered: false,
     hover:  false,
     condensed : false,
