@@ -1044,10 +1044,16 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var thd = this.getGridEl().select('thead',true).first();
         var tbd = this.getGridEl().select('tbody', true).first();
         
-        var cw = Math.max(ctr.getWidth(), this.totalWidth);
+        
+        var cw = ctr.getWidth();
+        
         if (tbd) {
+            
             tbd.setSize(ctr.getWidth(), ctr.getHeight() - thd.getHeight());
+            var barsize = (tbd.dom.offsetWidth - tbd.dom.clientWidth);
+            cw -= barsize;
         }
+        cw = Math.max(cw, this.totalWidth);
         this.getGridEl().select('tr',true).setWidth(cw);
         
         return; // we doe not have a view in this design..
