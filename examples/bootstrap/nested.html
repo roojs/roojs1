@@ -41,14 +41,19 @@ Roo.namespace("Dashboard");
 }
 
  
-.table-fixed tbody {
+.table-body-fixed tbody {
    overflow-y: auto;
   width: 100%;
 }
-.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+.table-body-fixed  thead,
+.table-body-fixed  tbody,
+/*.table-body-fixed tr, */
+.table-body-fixed td,
+.table-body-fixed th {
   display: block;
 }
-.table-fixed tbody td, .table-fixed thead > tr> th {
+.table-body-fixed tbody td,
+.table-body-fixed thead > tr> th {
   float: left;
   border-bottom-width: 0;
 }
