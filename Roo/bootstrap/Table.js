@@ -578,6 +578,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             var hh = '';
             
+             if(typeof(config.sortable) != 'undefined' && config.sortable){
+                c.cls = 'sortable';
+                hh += '<i class="glyphicon"></i>';
+            }
+            
             if(typeof(config.lgHeader) != 'undefined'){
                 hh += '<span class="hidden-xs hidden-sm hidden-md">' + config.lgHeader + '</span>';
             }
@@ -614,9 +619,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 c.sort = config.dataIndex;
             }
             
-            if(typeof(config.sortable) != 'undefined' && config.sortable){
-                c.cls = 'sortable';
-            }
+           
             
             if(typeof(config.align) != 'undefined' && config.align.length){
                 c.style += ' text-align:' + config.align + ';';
