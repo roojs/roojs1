@@ -5839,7 +5839,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     // Roo.Element - the tbody
     mainBody: false, 
     
-    getAutoCreate : function(){
+    getAutoCreate : function()
+    {
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
         
         cfg = {
@@ -31453,7 +31454,7 @@ layout.addxtype({
                 //var el = this.getRegion(region).el.createChild();
                 var el = this.el.createChild();
                 // create the grid first...
-                cfg.grid.el = el;
+                //cfg.grid.el = el;
                 cfg.grid = new cfg.grid.xns[cfg.grid.xtype](cfg.grid);
                 
                 
@@ -31469,11 +31470,11 @@ layout.addxtype({
                     // render grid on panel activation (if panel background)
                     ret.on('activate', function(gp) {
                         if (!gp.grid.rendered) {
-                            gp.grid.render();
+                            gp.grid.render(el);
                         }
                     });
                 } else {
-                    grid.render();
+                    cfg.grid.render(el);
                 }
                 break;
            
