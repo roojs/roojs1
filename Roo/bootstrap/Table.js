@@ -231,7 +231,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         cfg = {
             tag: 'table',
-            cls : 'table table-body-fixed',
+            cls : 'table',
             cn : []
         };
         if (this.scrollBody) {
