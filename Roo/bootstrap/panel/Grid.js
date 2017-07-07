@@ -67,12 +67,13 @@ Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content, {
             var grid = this.grid;
             var size = this.adjustForComponents(width, height);
             grid.getGridEl().setSize(size.width, size.height);
+            /*
             var thd = grid.getGridEl().select('thead',true).first();
             var tbd = grid.getGridEl().select('tbody', true).first();
             if (tbd) {
                 tbd.setSize(width, height - thd.getHeight());
             }
-            
+            */
             grid.autoSize();
         }
     },
