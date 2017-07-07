@@ -43,3 +43,31 @@
     cursor: pointer;
 }
 
+.table-body-fixed tbody {
+   overflow-y: scroll;
+   width: 100%;
+}
+.table-body-fixed  thead,
+.table-body-fixed  tbody,
+/*.table-body-fixed tr,
+.table-body-fixed td, */
+.table-body-fixed th   {
+  display: block;
+}
+.table-body-fixed thead {
+    overflow:  hidden;
+}
+
+
+.table-body-fixed tbody td, 
+.table-body-fixed thead > tr> th {
+  float: left;
+  border-bottom-width: 0;
+}
+/* fake infinate widt.. */
+.table-body-fixed thead > tr,
+.table-body-fixed tbody > tr
+{
+    display: block;
+    overflow: hidden;
+}
