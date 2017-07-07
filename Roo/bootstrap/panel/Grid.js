@@ -46,7 +46,7 @@ Roo.bootstrap.panel.Grid = function(config){
     this.grid.getGridEl().replaceClass("x-layout-inactive-content", "x-layout-component-panel");
 };
 
-Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Panel, {
+Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content, {
     getId : function(){
         return this.grid.id;
     },
