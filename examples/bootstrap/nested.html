@@ -232,32 +232,33 @@ Example.Nested = new Roo.XComponent({
                                     {name: 'lastChange', type: 'date', dateFormat: 'n/j h:ia'}
                                 ]
                             },
-                            cm : [
-                                
-                                {
-                                    id:'company',
-                                    header: "Company",
-                                    width: 160,
-                                    sortable: true,
-                                    locked:false,
-                                    dataIndex: 'company',
-                                    xns : Roo.grid,
-                                    xtype : 'ColumnModel'
-                                },
-                                {
-                                    header: "Price",
-                                    width: 75,
-                                    sortable: true,
-                                    renderer: Roo.util.Format.usMoney,
-                                    dataIndex: 'price',
-                                    xns : Roo.grid,
-                                    xtype : 'ColumnModel'
-                                }
-                                
-                            ]
+                        },
+                        cm : [
                             
-                        }
+                            {
+                                id:'company',
+                                header: "Company",
+                                width: 160,
+                                sortable: true,
+                                locked:false,
+                                dataIndex: 'company',
+                                xns : Roo.grid,
+                                xtype : 'ColumnModel'
+                            },
+                            {
+                                header: "Price",
+                                width: 75,
+                                sortable: true,
+                                renderer: Roo.util.Format.usMoney,
+                                dataIndex: 'price',
+                                xns : Roo.grid,
+                                xtype : 'ColumnModel'
+                            }
+                            
+                        ]
+                        
                     }
+                
                 },
                 {
                     xtype : 'Content',
