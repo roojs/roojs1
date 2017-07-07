@@ -5847,7 +5847,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     // Roo.Element - the tbody
     mainBody: false,
-    
+    // Roo.Element - thead element
+    mainHead: false,
     
     container: false, // used by gridpanel...
     
@@ -5944,6 +5945,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         //Roo.log('initEvents with ds!!!!');
         
         this.mainBody = this.el.select('tbody', true).first();
+        this.mainHead = this.el.select('thead', true).first();
         
         
         
@@ -6699,6 +6701,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         
         Roo.log("body scrolled');" + this.mainBody.dom.scrollLeft);
+        this.mainHead.css({
+                    'position' : 'relative',
+                    'left': this.mainBody.dom.scrollLeft + 'px'
+        });
+        
         
     }
 });

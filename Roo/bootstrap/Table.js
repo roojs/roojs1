@@ -1072,7 +1072,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         
         Roo.log("body scrolled');" + this.mainBody.dom.scrollLeft);
-        this.
+        this.mainHead.css({
+                    'position' : 'relative',
+                    'left': this.mainBody.dom.scrollLeft + 'px'
+        });
+        
         
     }
 });
