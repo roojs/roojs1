@@ -368,7 +368,8 @@ layout.addxtype({
                 break;
            
            
-            case 'Border': // it can get called on it'self...
+            case 'Border': // it can get called on it'self... - might need to check if this is fixed?
+                
                 ret = this;
                 break; 
                 
