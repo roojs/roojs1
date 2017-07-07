@@ -317,6 +317,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         this.mainBody = this.el.select('tbody', true).first();
         
         
+        
         var _this = this;
         
         Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
@@ -344,6 +345,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         this.el.on("contextmenu", this.onContextMenu, this);
         
+        this.mainBody.on('scroll', this.onBodyScroll, this);
         
         
     },
@@ -1063,6 +1065,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 this.view.adjustForScroll();
             }
         }
+    },
+    onBodyScroll: function()
+    {
+        
+        Roo.log("body scrolled');" + this.mainBody.dom.scrollLeft);
+        
     }
 });
 
