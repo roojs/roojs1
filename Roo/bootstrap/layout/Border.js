@@ -363,7 +363,7 @@ layout.addxtype({
                         }
                     });
                 } else {
-                    grid.render();
+                    cfg.grid.render();
                 }
                 break;
            
