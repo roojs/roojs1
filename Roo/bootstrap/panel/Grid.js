@@ -34,9 +34,7 @@ Roo.bootstrap.panel.Grid = function(config){
     
     Roo.bootstrap.panel.Grid.superclass.constructor.call(this, config);
     
-    if(this.toolbar){
-        
-    }
+  
     // xtype created footer. - not sure if will work as we normally have to render first..
     if (this.footer && !this.footer.el && this.footer.xtype) {
         
