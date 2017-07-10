@@ -42,6 +42,7 @@ Roo.bootstrap.panel.Grid = function(config){
         
         delete config.toolbar;
     }
+    
     this.wrapper.dom.appendChild(config.grid.getGridEl().dom);
     config.el = this.wrapper;
     
