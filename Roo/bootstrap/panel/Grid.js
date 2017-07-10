@@ -26,7 +26,20 @@ Roo.bootstrap.panel.Grid = function(config){
     if(config.toolbar){
         var tool_el = this.wrapper.createChild();    
         this.toolbar = Roo.factory(config.toolbar);
+        var ti = [];
+        if (config.toolbar.items) {
+            ti = config.toolbar.items ;
+            delete config.toolbar.items ;
+        }
+        
+        
         this.toolbar.render(tool_el);
+        for(var i =0;i < ti.length;i++) {
+          //  Roo.log(['add child', items[i]]);
+            nitems.push(this.toolbar.addxtype(Roo.apply({}, ti[i])));
+        }
+        ti.items = nitems;
+        
         delete config.toolbar;
     }
     this.wrapper.dom.appendChild(config.grid.getGridEl().dom);
