@@ -38,7 +38,7 @@ Roo.bootstrap.panel.Grid = function(config){
           //  Roo.log(['add child', items[i]]);
             nitems.push(this.toolbar.addxtype(Roo.apply({}, ti[i])));
         }
-        ti.items = nitems;
+        this.toolbar.items = nitems;
         
         delete config.toolbar;
     }
