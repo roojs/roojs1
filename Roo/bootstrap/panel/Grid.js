@@ -32,7 +32,7 @@ Roo.bootstrap.panel.Grid = function(config){
             delete config.toolbar.items ;
         }
         
-        var nitmes = [];
+        var nitems = [];
         this.toolbar.render(tool_el);
         for(var i =0;i < ti.length;i++) {
           //  Roo.log(['add child', items[i]]);
