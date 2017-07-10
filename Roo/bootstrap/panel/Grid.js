@@ -28,6 +28,8 @@ Roo.bootstrap.panel.Grid = function(config){
     Roo.bootstrap.panel.Grid.superclass.constructor.call(this, config);
     
     if(this.toolbar){
+        
+        
         this.toolbar.el.insertBefore(this.wrapper.dom.firstChild);
     }
     // xtype created footer. - not sure if will work as we normally have to render first..
