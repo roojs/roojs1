@@ -27,7 +27,7 @@ Roo.bootstrap.panel.Grid = function(config){
         var tool_el = this.wrapper.createChild();    
         this.toolbar = Roo.factory(config.toolbar);
         this.toolbar.render(tool_el);
-        
+        delete config.toolbar;
     }
     this.wrapper.dom.appendChild(config.grid.getGridEl().dom);
     config.el = this.wrapper;
