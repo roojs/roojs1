@@ -205,6 +205,25 @@ Example.Nested = new Roo.XComponent({
                                 this.grid.store.load.defer(100, this.grid.store);
                             }
                         },
+                    toolbar : {
+                        xtype: 'NavSimplebar',
+                        xns : Roo.bootstrap,
+                        items: [
+                            {
+                                xtype: 'NavGroup',
+                                xns: Roo.bootstrap,
+                                items : [
+                                    {
+                                        xtype: 'NavItem',
+                                        xns: Roo.bootstrap,
+                                        html: 'a button'
+                                        
+                                    }
+                                ]
+                            }
+                        ]
+                        
+                    },
                     grid : {
                         loadMask : true,
                         striped : true,
