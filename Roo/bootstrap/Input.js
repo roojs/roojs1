@@ -248,10 +248,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         var cfg = {};
         
-        var p = this.parent();
-        if (p.type == 'nav') {
-            cfg
-        }
+       
         
         if(this.inputType != 'hidden'){
             cfg.cls = 'form-group' //input-group
@@ -413,8 +410,9 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         if (this.parentType === 'Navbar' &&  this.parent().bar) {
            cfg.cls += ' navbar-form';
         }
-        if (this.parentType === 'NavGroup' &&  this.parent().bar) {
+        if (this.parentType === 'NavGroup') {
            cfg.cls += ' navbar-form';
+           cfg.tag = 'li';
         }
         return cfg;
         
