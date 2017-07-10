@@ -23,9 +23,9 @@ Roo.bootstrap.panel.Grid = function(config){
         {tag: "div", cls: "x-layout-grid-wrapper x-layout-inactive-content"}, true);
 
     
-    if(this.toolbar){
+    if(config.toolbar){
         var tool_el = this.el.createChild();    
-        this.toolbar = Roo.factory(this.toolbar);
+        this.toolbar = Roo.factory(config.toolbar);
         this.toolbar.render(tool_el);
         
     }
