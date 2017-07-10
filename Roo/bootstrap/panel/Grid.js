@@ -21,7 +21,14 @@ Roo.bootstrap.panel.Grid = function(config){
   
     this.wrapper = Roo.DomHelper.append(document.body, // wrapper for IE7 strict & safari scroll issue
         {tag: "div", cls: "x-layout-grid-wrapper x-layout-inactive-content"}, true);
+
+    
+    if(this.toolbar){
+        var tool_el = this.el.createChild();    
+        this.footer = Roo.factory(this.footer);
+        this.footer.render(tool_el);
         
+    }
     this.wrapper.dom.appendChild(config.grid.getGridEl().dom);
     config.el = this.wrapper;
     
@@ -29,8 +36,6 @@ Roo.bootstrap.panel.Grid = function(config){
     
     if(this.toolbar){
         
-        
-        this.toolbar.el.insertBefore(this.wrapper.dom.firstChild);
     }
     // xtype created footer. - not sure if will work as we normally have to render first..
     if (this.footer && !this.footer.el && this.footer.xtype) {
