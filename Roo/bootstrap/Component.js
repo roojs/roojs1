@@ -230,6 +230,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         return ret;
     },
     
+    
     addxtypeChild : function (tree, cntr, is_body)
     {
         Roo.debug && Roo.log('addxtypeChild:' + cntr);
