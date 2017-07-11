@@ -265,6 +265,13 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     {
         this.touchmoved = true;
     },
+    onContextMenu : function(e,el)
+    {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+    },
+    
     
     onTouchEnd: function(e, el)
     {
