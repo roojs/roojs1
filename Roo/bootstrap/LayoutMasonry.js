@@ -52,7 +52,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     /**
      * @cfg {Number} gutter gutter width..
      */   
-    gutter : 10, 
+    gutter : 10,
+    
+     /**
+     * @cfg {Number} maxCols maximum number of columns
+     */   
+    
+    maxCols: 0,
     
     /**
      * @cfg {Boolean} isAutoInitial defalut true
