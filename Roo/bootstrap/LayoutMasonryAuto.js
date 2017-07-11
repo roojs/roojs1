@@ -51,6 +51,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonryAuto, Roo.bootstrap.Component,  {
      */   
     
     columnWidth : 0,
+    
+    /**
+     * @cfg {Number} maxCols maximum number of columns
+     */   
+    
+    maxCols: 0,
     /**
      * @cfg {Number} padHeight padding below box..
      */   
@@ -316,7 +322,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonryAuto, Roo.bootstrap.Component,  {
         var mathMethod = excess && excess < 1 ? 'round' : 'floor';
         cols = Math[ mathMethod ]( cols );
         this.cols = Math.max( cols, 1 );
-        
+        this.cols = this.maxCols > 0 ? Math.min( this.cols, this.maxCols ) : this.cols;
         
          // padding positioning..
         var totalColWidth = this.cols * this.columnWidth;

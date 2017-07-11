@@ -230,6 +230,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         return ret;
     },
     
+    
     addxtypeChild : function (tree, cntr, is_body)
     {
         Roo.debug && Roo.log('addxtypeChild:' + cntr);
@@ -8209,6 +8210,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         var cfg = {};
         
+       
+        
         if(this.inputType != 'hidden'){
             cfg.cls = 'form-group' //input-group
         }
@@ -8369,7 +8372,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         if (this.parentType === 'Navbar' &&  this.parent().bar) {
            cfg.cls += ' navbar-form';
         }
-        
+        if (this.parentType === 'NavGroup') {
+           cfg.cls += ' navbar-form';
+           cfg.tag = 'li';
+        }
         return cfg;
         
     },
@@ -29674,6 +29680,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonryAuto, Roo.bootstrap.Component,  {
      */   
     
     columnWidth : 0,
+    
+    /**
+     * @cfg {Number} maxCols maximum number of columns
+     */   
+    
+    maxCols: 0,
     /**
      * @cfg {Number} padHeight padding below box..
      */   
@@ -29939,7 +29951,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonryAuto, Roo.bootstrap.Component,  {
         var mathMethod = excess && excess < 1 ? 'round' : 'floor';
         cols = Math[ mathMethod ]( cols );
         this.cols = Math.max( cols, 1 );
-        
+        this.cols = this.maxCols > 0 ? Math.min( this.cols, this.maxCols ) : this.cols;
         
          // padding positioning..
         var totalColWidth = this.cols * this.columnWidth;
@@ -33749,21 +33761,41 @@ Roo.bootstrap.panel.Grid = function(config){
   
     this.wrapper = Roo.DomHelper.append(document.body, // wrapper for IE7 strict & safari scroll issue
         {tag: "div", cls: "x-layout-grid-wrapper x-layout-inactive-content"}, true);
+
+    
+    if(config.toolbar){
+        var tool_el = this.wrapper.createChild();    
+        this.toolbar = Roo.factory(config.toolbar);
+        var ti = [];
+        if (config.toolbar.items) {
+            ti = config.toolbar.items ;
+            delete config.toolbar.items ;
+        }
         
+        var nitems = [];
+        this.toolbar.render(tool_el);
+        for(var i =0;i < ti.length;i++) {
+          //  Roo.log(['add child', items[i]]);
+            nitems.push(this.toolbar.addxtype(Roo.apply({}, ti[i])));
+        }
+        this.toolbar.items = nitems;
+        
+        delete config.toolbar;
+    }
+    
     this.wrapper.dom.appendChild(config.grid.getGridEl().dom);
     config.el = this.wrapper;
     
     Roo.bootstrap.panel.Grid.superclass.constructor.call(this, config);
     
-    if(this.toolbar){
-        this.toolbar.el.insertBefore(this.wrapper.dom.firstChild);
-    }
+  
     // xtype created footer. - not sure if will work as we normally have to render first..
     if (this.footer && !this.footer.el && this.footer.xtype) {
         
-        this.footer.container = this.grid.getView().getFooterPanel(true);
+        var ctr = this.grid.getView().getFooterPanel(true);
         this.footer.dataSource = this.grid.dataSource;
         this.footer = Roo.factory(this.footer, Roo);
+        this.footer.render(ctr);
         
     }
     
