@@ -30334,7 +30334,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             this.el.on('touchstart', this.onTouchStart, this);
             this.el.on('touchmove', this.onTouchMove, this);
             this.el.on('touchend', this.onTouchEnd, this);
-            this.el.on('contextmenu', this.onContext, this);
+            this.el.on('contextmenu', this.onContextMenu, this);
         } else {
             this.el.on('mouseenter'  ,this.enter, this);
             this.el.on('mouseleave', this.leave, this);
@@ -30348,7 +30348,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     
     onClick: function(e, el)
     {
-        alert('click');
+       // alert('click');
         
         if(!Roo.isTouch){
             return;
@@ -30356,7 +30356,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         
         var time = this.endTimer - this.startTimer;
         
-        alert(time);
+        //alert(time);
         
         if(time < 1000){
             return;
