@@ -28476,7 +28476,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     /**
      * @cfg {Number} gutter gutter width..
      */   
-    gutter : 10, 
+    gutter : 10,
+    
+     /**
+     * @cfg {Number} maxCols maximum number of columns
+     */   
+    
+    maxCols: 0,
     
     /**
      * @cfg {Boolean} isAutoInitial defalut true
@@ -28625,6 +28631,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var cols = Math.floor(containerWidth / boxWidth);
         
         this.cols = Math.max( cols, 1 );
+        
+        this.cols = this.maxCols > 0 ? Math.min( this.cols, this.maxCols ) : this.cols;
         
         var totalBoxWidth = this.cols * boxWidth - this.padWidth;
         
