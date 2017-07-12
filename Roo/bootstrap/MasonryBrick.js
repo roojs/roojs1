@@ -142,7 +142,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 html: this.html
             });
         }  else {
-            cn.cls += ' hide';
+            cfg.cn[0].cls += ' hide';
         }
         
         if(this.bgimage.length){
