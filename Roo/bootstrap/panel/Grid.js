@@ -5,7 +5,7 @@
  * @constructor
  * Create a new GridPanel.
  * @cfg {Roo.bootstrap.Table} grid The grid for this panel
- * @param {String/Object} config A string to set only the panel's title, or a config object
+ * @param {Object} config A the config object
   
  */
 
