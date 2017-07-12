@@ -30281,7 +30281,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 html: this.html
             });
         }  
-        if (!this.title.length && this.html.length) {
+        if (!this.title.length && !this.html.length) {
             cfg.cn[0].cls += ' hide';
         }
         
