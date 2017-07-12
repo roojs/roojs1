@@ -117,6 +117,8 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
                 cls: 'roo-brick-text',
                 html: this.html
             });
+        } else {
+            cn.cls += ' hidden';
         }
         
         if(this.bgimage.length){
