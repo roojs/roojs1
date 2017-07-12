@@ -118,7 +118,7 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
                 html: this.html
             });
         } else {
-            cn.cls += ' hidden';
+            cn.cls += ' hide';
         }
         
         if(this.bgimage.length){
