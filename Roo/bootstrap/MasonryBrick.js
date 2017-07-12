@@ -141,7 +141,8 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 cls: 'masonry-brick-text',
                 html: this.html
             });
-        }  else {
+        }  
+        if (!this.title.length && this.html.length) {
             cfg.cn[0].cls += ' hide';
         }
         
