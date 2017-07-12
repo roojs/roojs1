@@ -29060,6 +29060,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 
                 b.el.setWidth(width);
                 b.el.setHeight(height);
+                // iframe?
+                b.el.select('iframe',true).setSize(width,height);
                 
             }, this);
             
@@ -30182,6 +30184,10 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
      */   
     bgimage : '',
     /**
+     * @cfg {String} videourl
+     */   
+    videourl : '',
+    /**
      * @cfg {String} cls
      */   
     cls : '',
@@ -30274,6 +30280,8 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 cls: 'masonry-brick-text',
                 html: this.html
             });
+        }  else {
+            cfg.cn[0].cls += ' hide';
         }
         
         if(this.bgimage.length){
@@ -30283,7 +30291,19 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 src: this.bgimage
             });
         }
-        
+        if(this.videourl.length){
+            var vurl = this.videourl.replace(/https:\/\/youtu\.be/, 'https://www.youtube.com/embed/');
+            // youtube support only?
+            cfg.cn.push({
+                tag: 'iframe',
+                cls: 'masonry-brick-image-view',
+                src: vurl,
+                frameborder : 0,
+                allowfullscreen : true
+            });
+            
+            
+        }
         return cfg;
         
     },
@@ -30558,6 +30578,8 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
                 cls: 'roo-brick-text',
                 html: this.html
             });
+        } else {
+            cn.cls += ' hide';
         }
         
         if(this.bgimage.length){
@@ -33764,13 +33786,8 @@ layout.addxtype({
  * @constructor
  * Create a new GridPanel.
  * @cfg {Roo.bootstrap.Table} grid The grid for this panel
- * @param {String/Object} config A string to set only the panel's title, or a config object
-
-  new Roo.bootstrap.panel.Grid({
-		grid: .....
-		....
-  }
-
+ * @param {Object} config A the config object
+  
  */
 
 
