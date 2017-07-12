@@ -51,6 +51,12 @@
      */   
     
     </span><span class="jsdoc-var">columnWidth </span><span class="jsdoc-syntax">: 0,
+    
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Number} maxCols maximum number of columns
+     */   
+    
+    </span><span class="jsdoc-var">maxCols</span><span class="jsdoc-syntax">: 0,
     </span><span class="jsdoc-comment">/**
      * @cfg {Number} padHeight padding below box..
      */   
@@ -316,7 +322,7 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">mathMethod </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">excess </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">excess </span><span class="jsdoc-syntax">&lt; 1 ? </span><span class="jsdoc-string">'round' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'floor'</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">cols </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math</span><span class="jsdoc-syntax">[ </span><span class="jsdoc-var">mathMethod </span><span class="jsdoc-syntax">]( </span><span class="jsdoc-var">cols </span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.cols </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">cols</span><span class="jsdoc-syntax">, 1 );
-        
+        </span><span class="jsdoc-var">this.cols </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.maxCols </span><span class="jsdoc-syntax">&gt; 0 ? </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.cols</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.maxCols </span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">this.cols</span><span class="jsdoc-syntax">;
         
          </span><span class="jsdoc-comment">// padding positioning..
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">totalColWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cols </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">this.columnWidth</span><span class="jsdoc-syntax">;

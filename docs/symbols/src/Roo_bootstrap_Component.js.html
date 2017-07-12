@@ -230,6 +230,7 @@
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
     },
     
+    
     </span><span class="jsdoc-var">addxtypeChild </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">is_body</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-var">Roo.debug </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'addxtypeChild:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">);
@@ -306,7 +307,8 @@
                 // multiple copies here...
                 //Roo.log('render');
                 //Roo.log(this[cntr]());
-                </span><span class="jsdoc-var">cn.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">](</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
+                // some elements do not have render methods.. like the layouts...
+                </span><span class="jsdoc-var">cn.render </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">cn.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">](</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
              }
             </span><span class="jsdoc-comment">// then add the element..
         </span><span class="jsdoc-syntax">}

@@ -197,6 +197,7 @@
             </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'touchstart'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTouchStart</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'touchmove'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTouchMove</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'touchend'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTouchEnd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'contextmenu'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onContextMenu</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseenter'  </span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.enter</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseleave'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.leave</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
@@ -210,7 +211,7 @@
     
     </span><span class="jsdoc-var">onClick</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-var">alert</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">);
+       </span><span class="jsdoc-comment">// alert('click');
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">Roo.isTouch</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
@@ -218,7 +219,7 @@
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">time </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.endTimer </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.startTimer</span><span class="jsdoc-syntax">;
         
-        </span><span class="jsdoc-var">alert</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">time</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">//alert(time);
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">time </span><span class="jsdoc-syntax">&lt; 1000){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
@@ -264,12 +265,22 @@
     {
         </span><span class="jsdoc-var">this.touchmoved </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
     },
+    </span><span class="jsdoc-var">onContextMenu </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)
+    {
+            </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">e.stopPropagation</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+    },
+    
     
     </span><span class="jsdoc-var">onTouchEnd</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)
     {
 </span><span class="jsdoc-comment">//        e.preventDefault();
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">((</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getTime</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.timer </span><span class="jsdoc-syntax">&gt; 1000) || !</span><span class="jsdoc-var">this.href.length </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.touchmoved</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-var">this.leave</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+            
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         

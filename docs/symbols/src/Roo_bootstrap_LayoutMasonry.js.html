@@ -52,7 +52,13 @@
     </span><span class="jsdoc-comment">/**
      * @cfg {Number} gutter gutter width..
      */   
-    </span><span class="jsdoc-var">gutter </span><span class="jsdoc-syntax">: 10, 
+    </span><span class="jsdoc-var">gutter </span><span class="jsdoc-syntax">: 10,
+    
+     </span><span class="jsdoc-comment">/**
+     * @cfg {Number} maxCols maximum number of columns
+     */   
+    
+    </span><span class="jsdoc-var">maxCols</span><span class="jsdoc-syntax">: 0,
     
     </span><span class="jsdoc-comment">/**
      * @cfg {Boolean} isAutoInitial defalut true
@@ -201,6 +207,8 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cols </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">containerWidth </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">boxWidth</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-var">this.cols </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">cols</span><span class="jsdoc-syntax">, 1 );
+        
+        </span><span class="jsdoc-var">this.cols </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.maxCols </span><span class="jsdoc-syntax">&gt; 0 ? </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.cols</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.maxCols </span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">this.cols</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">totalBoxWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cols </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">boxWidth </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.padWidth</span><span class="jsdoc-syntax">;
         

@@ -248,6 +248,8 @@
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {};
         
+       
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputType </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'form-group' </span><span class="jsdoc-comment">//input-group
         </span><span class="jsdoc-syntax">}
@@ -408,7 +410,10 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parentType </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'Navbar' </span><span class="jsdoc-syntax">&amp;&amp;  </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.bar</span><span class="jsdoc-syntax">) {
            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' navbar-form'</span><span class="jsdoc-syntax">;
         }
-        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parentType </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'NavGroup'</span><span class="jsdoc-syntax">) {
+           </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' navbar-form'</span><span class="jsdoc-syntax">;
+           </span><span class="jsdoc-var">cfg.tag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
         
     },

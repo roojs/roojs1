@@ -166,13 +166,43 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parent </span><span class="jsdoc-syntax">? 1 : 0;
         </span><span class="jsdoc-var">Roo.debug </span><span class="jsdoc-syntax">&amp;&amp;  </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tree </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this._tree </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this._tree</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-var">this.tree</span><span class="jsdoc-syntax">();
+
+        
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.parent.substring</span><span class="jsdoc-syntax">(0,1) == </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-comment">// if parent is a '#.....' string, then let's use that..
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ename </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parent.substr</span><span class="jsdoc-syntax">(1);
             </span><span class="jsdoc-var">this.parent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">Roo.debug </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ename</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">switch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ename</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'bootstrap-body' </span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'bootstrap-body'</span><span class="jsdoc-syntax">:
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree.el</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">tree.el </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)  {
+                        </span><span class="jsdoc-comment">// this is the BorderLayout standard?
+                       </span><span class="jsdoc-var">this.parent </span><span class="jsdoc-syntax">= { </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">};
+                       </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    }
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">&quot;Nest&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Content&quot;</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree.xtype</span><span class="jsdoc-syntax">)  &gt; -1)  {
+                        </span><span class="jsdoc-comment">// need to insert stuff...
+                        </span><span class="jsdoc-var">this.parent </span><span class="jsdoc-syntax">=  {
+                             </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.layout.Border</span><span class="jsdoc-syntax">({
+                                 </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">, 
+                     
+                                 </span><span class="jsdoc-var">center</span><span class="jsdoc-syntax">: {
+                                    </span><span class="jsdoc-var">titlebar</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+                                    </span><span class="jsdoc-var">autoScroll</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+                                    </span><span class="jsdoc-var">closeOnTab</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                                    </span><span class="jsdoc-var">tabPosition</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">,
+                                      </span><span class="jsdoc-comment">//resizeTabs: true,
+                                    </span><span class="jsdoc-var">alwaysShowTabs</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                                    </span><span class="jsdoc-var">hideTabs</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false
+                                     </span><span class="jsdoc-comment">//minTabWidth: 140
+                                 </span><span class="jsdoc-syntax">}
+                             })
+                        
+                         };
+                         </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    }
+                         
                     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Body</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
                         </span><span class="jsdoc-var">this.parent </span><span class="jsdoc-syntax">= { </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">new  </span><span class="jsdoc-var">Roo.bootstrap.Body</span><span class="jsdoc-syntax">() };
                         </span><span class="jsdoc-var">Roo.debug </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;setting el to doc body&quot;</span><span class="jsdoc-syntax">);
@@ -200,7 +230,6 @@
         </span><span class="jsdoc-var">Roo.debug </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;this.parent.el:&quot;</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">Roo.debug </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parent.el</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tree </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this._tree </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this._tree</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-var">this.tree</span><span class="jsdoc-syntax">();
 
         </span><span class="jsdoc-comment">// altertive root elements ??? - we need a better way to indicate these.
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">is_alt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.XComponent.is_alt </span><span class="jsdoc-syntax">||
@@ -222,6 +251,7 @@
             </span><span class="jsdoc-var">Roo.debug </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;no parent - creating one&quot;</span><span class="jsdoc-syntax">);
             
             </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">; 	
+             
             
             </span><span class="jsdoc-comment">// it's a top level one..
             </span><span class="jsdoc-var">this.parent </span><span class="jsdoc-syntax">=  {
