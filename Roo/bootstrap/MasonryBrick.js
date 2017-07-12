@@ -45,6 +45,10 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
      */   
     bgimage : '',
     /**
+     * @cfg {String} videourl
+     */   
+    videourl : '',
+    /**
      * @cfg {String} cls
      */   
     cls : '',
