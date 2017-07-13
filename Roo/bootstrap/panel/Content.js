@@ -73,7 +73,7 @@ Roo.bootstrap.panel.Content = function( config){
         this.wrapEl = this.el.wrap();
         
         this.toolbar = new config.toolbar.xns[config.toolbar.xtype](config.toolbar);
-        this.toolbar.render(this.el 'before');
+        this.toolbar.render(this.el, 'before');
     }
     /*
     // xtype created footer. - not sure if will work as we normally have to render first..
