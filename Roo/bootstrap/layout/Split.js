@@ -34,7 +34,7 @@ Roo.extend(Roo.bootstrap.layout.Split, Roo.bootstrap.layout.Region,
     onRender : function(ctr,pos) {
         
         Roo.bootstrap.layout.Split.superclass.onRender.call(this, ctr,pos);
-        if(!config.split){
+        if(!this.config.split){
             return;
         }
         if(!this.split){
