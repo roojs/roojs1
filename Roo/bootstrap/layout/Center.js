@@ -207,7 +207,7 @@ Roo.extend(Roo.bootstrap.layout.West, Roo.bootstrap.layout.Split, {
     
     onRender: function(ctr, pos)
     {
-        Roo.bootstrap.layout.West.superclass.onRender,call(this, ctr,pos);
+        Roo.bootstrap.layout.West.superclass.onRender.call(this, ctr,pos);
         var size = this.config.initialSize || this.config.width;
         if(typeof size != "undefined"){
             this.el.setWidth(size);
