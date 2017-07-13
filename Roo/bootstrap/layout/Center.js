@@ -52,6 +52,8 @@ Roo.bootstrap.layout.North = function(config)
     config.cursor = 'n-resize';
     
     Roo.bootstrap.layout.Split.call(this, config);
+    
+    
     if(this.split){
         this.split.placement = Roo.bootstrap.SplitBar.TOP;
         this.split.orientation = Roo.bootstrap.SplitBar.VERTICAL;
@@ -65,6 +67,9 @@ Roo.bootstrap.layout.North = function(config)
 Roo.extend(Roo.bootstrap.layout.North, Roo.bootstrap.layout.Split,
 {
     orientation: Roo.bootstrap.SplitBar.VERTICAL,
+    
+    
+    
     getBox : function(){
         if(this.collapsed){
             return this.collapsedEl.getBox();
@@ -195,13 +200,20 @@ Roo.bootstrap.layout.West = function(config){
         this.split.orientation = Roo.bootstrap.SplitBar.HORIZONTAL;
         this.split.el.addClass("roo-layout-split-h");
     }
-    var size = config.initialSize || config.width;
-    if(typeof size != "undefined"){
-        this.el.setWidth(size);
-    }
+    
 };
 Roo.extend(Roo.bootstrap.layout.West, Roo.bootstrap.layout.Split, {
     orientation: Roo.bootstrap.SplitBar.HORIZONTAL,
+    
+    onRender: function(ctr, pos)
+    {
+        Roo.bootstrap.layout.West.superclass.prototype.onRender,call(this, ctr,pos);
+        var size = config.initialSize || config.width;
+        if(typeof size != "undefined"){
+            this.el.setWidth(size);
+        }
+        }
+    
     getBox : function(){
         if(this.collapsed){
             return this.collapsedEl.getBox();
