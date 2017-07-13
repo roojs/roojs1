@@ -40,6 +40,8 @@
  * @cfg {Boolean}   split           To show the splitter
  * @cfg {Boolean}   toolbar         xtype configuration for a toolbar - shows on right of tabbar
  * 
+ * @cfg {string}   cls             Extra CSS classes to add to region
+ * 
  * @cfg {Roo.bootstrap.layout.Manager}   mgr The manager
  * @cfg {string}   region  the region that it inhabits..
  *
