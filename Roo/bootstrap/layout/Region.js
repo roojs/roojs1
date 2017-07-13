@@ -134,7 +134,7 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
             }else{
                 this.titleEl.show();
                 if(this.config.title){
-                    this.titleTextEl.innerHTML = c.title;
+                    this.titleTextEl.innerHTML = this.config.title;
                 }
             }
         //}
