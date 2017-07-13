@@ -373,7 +373,37 @@ Example.Nested = new Roo.XComponent({
                                 xns: Roo.bootstrap.panel,
                                 title : "the body",
                                 region : 'center',
-                                html : 'some body center'
+                                html : 'some body center',
+                                toolbar : {
+                                    xtype: 'NavSimplebar',
+                                    xns : Roo.bootstrap,
+                                    items: [
+                                        {
+                                            xtype: 'NavGroup',
+                                            xns: Roo.bootstrap,
+                                            items : [
+                                                {
+                                                    xtype: 'NavItem',
+                                                    xns: Roo.bootstrap,
+                                                    html: 'show dialog',
+                                                    listeners : {
+                                                        click : function() {
+                                                            Example.NestedDialog.show({});
+                                                        }
+                                                    }
+                                                    
+                                                },
+                                                {
+                                                    xtype: 'Input',
+                                                    xns: Roo.bootstrap,
+                                                    placeholder: 'a text input'
+                                                    
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                    
+                                },
                             },
                         ]
                     }
