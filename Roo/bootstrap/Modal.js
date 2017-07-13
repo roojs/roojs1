@@ -247,8 +247,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     {
         this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true),  Roo.lib.Dom.getViewHeight(true));
         if (this.fitwindow) {
-            var w = this.width || Roo.lib.Dom.getViewWidth(true) - 10;
-            var h = this.height || Roo.lib.Dom.getViewHeight(true) - 10;
+            var w = this.width || Roo.lib.Dom.getViewWidth(true) - 20;
+            var h = this.height || Roo.lib.Dom.getViewHeight(true) - 20;
             this.setSize(w,h)
         }
     },
