@@ -118,7 +118,7 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         this.closeBtn.hide();
     */
         this.createBody(this.config);
-        if(config.hideWhenEmpty){
+        if(this.config.hideWhenEmpty){
             this.hide();
             this.on("paneladded", this.validateVisibility, this);
             this.on("panelremoved", this.validateVisibility, this);
