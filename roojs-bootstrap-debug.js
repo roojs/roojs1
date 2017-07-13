@@ -31112,16 +31112,11 @@ Roo.namespace("Roo.bootstrap.layout");/*
 Roo.bootstrap.layout.Manager = function(config)
 {
     Roo.bootstrap.layout.Manager.superclass.constructor.call(this);
-    this.el = Roo.get(config.el);
-    // ie scrollbar fix
-    if(this.el.dom == document.body && Roo.isIE && !config.allowScroll){
-        document.body.scroll = "no";
-    }else if(this.el.dom != document.body && this.el.getStyle('position') == 'static'){
-        this.el.position('relative');
-    }
     
-    this.id = this.el.id;
-    this.el.addClass("roo-layout-container");
+    
+     
+    
+    
     /** false to disable window resize monitoring @type Boolean */
     this.monitorWindowResize = true;
     this.regions = {};
@@ -31153,7 +31148,12 @@ Roo.bootstrap.layout.Manager = function(config)
         "regionexpanded" : true
     });
     this.updating = false;
-    Roo.EventManager.onWindowResize(this.onWindowResize, this, true);
+    
+    if (config.el) {
+        this.el = Roo.get(config.el);
+        this.initEvents();
+    }
+    
 };
 
 Roo.extend(Roo.bootstrap.layout.Manager, Roo.bootstrap.Component, {
@@ -31165,6 +31165,32 @@ Roo.extend(Roo.bootstrap.layout.Manager, Roo.bootstrap.Component, {
     
     
     updating : false,
+    
+    
+    onRender : function(ct, position)
+    {
+        if(!this.el){
+            this.el = Roo.get(ct);
+            this.initEvents();
+        }
+    },
+    
+    
+    initEvents: function()
+    {
+        
+        
+        // ie scrollbar fix
+        if(this.el.dom == document.body && Roo.isIE && !config.allowScroll){
+            document.body.scroll = "no";
+        }else if(this.el.dom != document.body && this.el.getStyle('position') == 'static'){
+            this.el.position('relative');
+        }
+        this.id = this.el.id;
+        this.el.addClass("roo-layout-container");
+        Roo.EventManager.onWindowResize(this.onWindowResize, this, true);
+
+    },
     
     /**
      * Returns true if this layout is currently being updated
@@ -31293,6 +31319,20 @@ Roo.bootstrap.layout.Border = function(config){
 Roo.bootstrap.layout.Border.regions =  ["north","south","east","west","center"];
 
 Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
+    
+    onRender : function(ctr, pos)
+    {
+        Roo.bootstrap.layout.Border.superclass.onRender.call(this,ctr,pos);
+        Roo.each(Roo.bootstrap.layout.Border.regions, function(region) {
+            if(this.regions[region]){
+                this.regions[region].onRender(this.el, pos);
+            }
+        },this);
+        
+        
+    },
+    
+    
     /**
      * Creates and adds a new region if it doesn't already exist.
      * @param {String} target The target region key (north, south, east, west or center).
@@ -32095,57 +32135,24 @@ Roo.extend(Roo.bootstrap.layout.Basic, Roo.util.Observable,
  */
 Roo.bootstrap.layout.Region = function(config)
 {
-    
+    this.applyConfig(config);
+
     var mgr = config.mgr;
     var pos = config.region;
     config.skipConfig = true;
     Roo.bootstrap.layout.Region.superclass.constructor.call(this, config);
-    var dh = Roo.DomHelper;
-    /** This region's container element 
-    * @type Roo.Element */
-    this.el = dh.append(mgr.el.dom, {
-            tag: "div",
-            cls: (config.cls || '') + " roo-layout-region roo-layout-panel roo-layout-panel-" + this.position
-        }, true);
-    /** This region's title element 
-    * @type Roo.Element */
-
-    this.titleEl = dh.append(this.el.dom,
-        {
-                tag: "div",
-                unselectable: "on",
-                cls: "roo-unselectable roo-layout-panel-hd breadcrumb roo-layout-title-" + this.position,
-                children:[
-                    {tag: "span", cls: "roo-unselectable roo-layout-panel-hd-text", unselectable: "on", html: "&#160;"},
-                    {tag: "div", cls: "roo-unselectable roo-layout-panel-hd-tools", unselectable: "on"}
-                ]}, true);
     
-    this.titleEl.enableDisplayMode();
-    /** This region's title text element 
-    * @type HTMLElement */
-    this.titleTextEl = this.titleEl.dom.firstChild;
-    this.tools = Roo.get(this.titleEl.dom.childNodes[1], true);
-    /*
-    this.closeBtn = this.createTool(this.tools.dom, "roo-layout-close");
-    this.closeBtn.enableDisplayMode();
-    this.closeBtn.on("click", this.closeClicked, this);
-    this.closeBtn.hide();
-*/
-    this.createBody(config);
+    if (mgr.el) {
+        this.onRender(mgr.el);   
+    }
+     
     this.visible = true;
     this.collapsed = false;
-
-    if(config.hideWhenEmpty){
-        this.hide();
-        this.on("paneladded", this.validateVisibility, this);
-        this.on("panelremoved", this.validateVisibility, this);
-    }
-    this.applyConfig(config);
 };
 
 Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
 
-
+    position: '', // set by wrapper (eg. north/south etc..)
 
     createBody : function(){
         /** This region's body element 
@@ -32156,6 +32163,68 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         });
     },
 
+    onRender: function(ctr, pos)
+    {
+        var dh = Roo.DomHelper;
+        /** This region's container element 
+        * @type Roo.Element */
+        this.el = dh.append(ctr.dom, {
+                tag: "div",
+                cls: (this.config.cls || '') + " roo-layout-region roo-layout-panel roo-layout-panel-" + this.position
+            }, true);
+        /** This region's title element 
+        * @type Roo.Element */
+    
+        this.titleEl = dh.append(this.el.dom,
+            {
+                    tag: "div",
+                    unselectable: "on",
+                    cls: "roo-unselectable roo-layout-panel-hd breadcrumb roo-layout-title-" + this.position,
+                    children:[
+                        {tag: "span", cls: "roo-unselectable roo-layout-panel-hd-text", unselectable: "on", html: "&#160;"},
+                        {tag: "div", cls: "roo-unselectable roo-layout-panel-hd-tools", unselectable: "on"}
+                    ]}, true);
+        
+        this.titleEl.enableDisplayMode();
+        /** This region's title text element 
+        * @type HTMLElement */
+        this.titleTextEl = this.titleEl.dom.firstChild;
+        this.tools = Roo.get(this.titleEl.dom.childNodes[1], true);
+        /*
+        this.closeBtn = this.createTool(this.tools.dom, "roo-layout-close");
+        this.closeBtn.enableDisplayMode();
+        this.closeBtn.on("click", this.closeClicked, this);
+        this.closeBtn.hide();
+    */
+        this.createBody(this.config);
+        if(this.config.hideWhenEmpty){
+            this.hide();
+            this.on("paneladded", this.validateVisibility, this);
+            this.on("panelremoved", this.validateVisibility, this);
+        }
+        if(this.autoScroll){
+            this.bodyEl.setStyle("overflow", "auto");
+        }else{
+            this.bodyEl.setStyle("overflow", this.config.overflow || 'hidden');
+        }
+        //if(c.titlebar !== false){
+            if((!this.config.titlebar && !this.config.title) || this.config.titlebar === false){
+                this.titleEl.hide();
+            }else{
+                this.titleEl.show();
+                if(this.config.title){
+                    this.titleTextEl.innerHTML = this.config.title;
+                }
+            }
+        //}
+        if(this.config.collapsed){
+            this.collapse(true);
+        }
+        if(this.config.hidden){
+            this.hide();
+        }
+    },
+    
     applyConfig : function(c)
     {
         /*
@@ -32215,30 +32284,12 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         this.autoScroll = c.autoScroll || false;
         
         
-        if(this.autoScroll){
-            this.bodyEl.setStyle("overflow", "auto");
-        }else{
-            this.bodyEl.setStyle("overflow", c.overflow || 'hidden');
-        }
-        //if(c.titlebar !== false){
-            if((!c.titlebar && !c.title) || c.titlebar === false){
-                this.titleEl.hide();
-            }else{
-                this.titleEl.show();
-                if(c.title){
-                    this.titleTextEl.innerHTML = c.title;
-                }
-            }
-        //}
+       
+        
         this.duration = c.duration || .30;
         this.slideDuration = c.slideDuration || .45;
         this.config = c;
-        if(c.collapsed){
-            this.collapse(true);
-        }
-        if(c.hidden){
-            this.hide();
-        }
+       
     },
     /**
      * Returns true if this region is currently visible.
@@ -32756,48 +32807,53 @@ Roo.extend(Roo.bootstrap.layout.Split, Roo.bootstrap.layout.Region,
 
     applyConfig : function(config){
         Roo.bootstrap.layout.Split.superclass.applyConfig.call(this, config);
+    },
+    
+    onRender : function(ctr,pos) {
         
-        if(config.split){
-            if(!this.split){
-                
-                
-                var splitEl = Roo.DomHelper.append(this.mgr.el.dom,  {
-                                tag: "div",
-                                id: this.el.id + "-split",
-                                cls: "roo-layout-split roo-layout-split-"+this.position,
-                                html: "&#160;"
-                });
-                /** The SplitBar for this region 
-                * @type Roo.SplitBar */
-                // does not exist yet...
-                Roo.log([this.position, this.orientation]);
-                
-                this.split = new Roo.bootstrap.SplitBar({
-                    dragElement : splitEl,
-                    resizingElement: this.el,
-                    orientation : this.orientation
-                });
-                
-                this.split.on("moved", this.onSplitMove, this);
-                this.split.useShim = config.useShim === true;
-                this.split.getMaximumSize = this[this.position == 'north' || this.position == 'south' ? 'getVMaxSize' : 'getHMaxSize'].createDelegate(this);
-                if(this.useSplitTips){
-                    this.split.el.dom.title = config.collapsible ? this.collapsibleSplitTip : this.splitTip;
-                }
-                //if(config.collapsible){
-                //    this.split.el.on("dblclick", this.collapse,  this);
-                //}
-            }
-            if(typeof config.minSize != "undefined"){
-                this.split.minSize = config.minSize;
-            }
-            if(typeof config.maxSize != "undefined"){
-                this.split.maxSize = config.maxSize;
-            }
-            if(config.hideWhenEmpty || config.hidden || config.collapsed){
-                this.hideSplitter();
-            }
+        Roo.bootstrap.layout.Split.superclass.onRender.call(this, ctr,pos);
+        if(!this.config.split){
+            return;
         }
+        if(!this.split){
+            
+            var splitEl = Roo.DomHelper.append(ctr.dom,  {
+                            tag: "div",
+                            id: this.el.id + "-split",
+                            cls: "roo-layout-split roo-layout-split-"+this.position,
+                            html: "&#160;"
+            });
+            /** The SplitBar for this region 
+            * @type Roo.SplitBar */
+            // does not exist yet...
+            Roo.log([this.position, this.orientation]);
+            
+            this.split = new Roo.bootstrap.SplitBar({
+                dragElement : splitEl,
+                resizingElement: this.el,
+                orientation : this.orientation
+            });
+            
+            this.split.on("moved", this.onSplitMove, this);
+            this.split.useShim = this.config.useShim === true;
+            this.split.getMaximumSize = this[this.position == 'north' || this.position == 'south' ? 'getVMaxSize' : 'getHMaxSize'].createDelegate(this);
+            if(this.useSplitTips){
+                this.split.el.dom.title = this.config.collapsible ? this.collapsibleSplitTip : this.splitTip;
+            }
+            //if(config.collapsible){
+            //    this.split.el.on("dblclick", this.collapse,  this);
+            //}
+        }
+        if(typeof this.config.minSize != "undefined"){
+            this.split.minSize = this.config.minSize;
+        }
+        if(typeof this.config.maxSize != "undefined"){
+            this.split.maxSize = this.config.maxSize;
+        }
+        if(this.config.hideWhenEmpty || this.config.hidden || this.config.collapsed){
+            this.hideSplitter();
+        }
+        
     },
 
     getHMaxSize : function(){
@@ -33137,6 +33193,8 @@ Roo.bootstrap.layout.North = function(config)
     config.cursor = 'n-resize';
     
     Roo.bootstrap.layout.Split.call(this, config);
+    
+    
     if(this.split){
         this.split.placement = Roo.bootstrap.SplitBar.TOP;
         this.split.orientation = Roo.bootstrap.SplitBar.VERTICAL;
@@ -33150,6 +33208,9 @@ Roo.bootstrap.layout.North = function(config)
 Roo.extend(Roo.bootstrap.layout.North, Roo.bootstrap.layout.Split,
 {
     orientation: Roo.bootstrap.SplitBar.VERTICAL,
+    
+    
+    
     getBox : function(){
         if(this.collapsed){
             return this.collapsedEl.getBox();
@@ -33280,13 +33341,20 @@ Roo.bootstrap.layout.West = function(config){
         this.split.orientation = Roo.bootstrap.SplitBar.HORIZONTAL;
         this.split.el.addClass("roo-layout-split-h");
     }
-    var size = config.initialSize || config.width;
-    if(typeof size != "undefined"){
-        this.el.setWidth(size);
-    }
+    
 };
 Roo.extend(Roo.bootstrap.layout.West, Roo.bootstrap.layout.Split, {
     orientation: Roo.bootstrap.SplitBar.HORIZONTAL,
+    
+    onRender: function(ctr, pos)
+    {
+        Roo.bootstrap.layout.West.superclass.onRender.call(this, ctr,pos);
+        var size = this.config.initialSize || this.config.width;
+        if(typeof size != "undefined"){
+            this.el.setWidth(size);
+        }
+    },
+    
     getBox : function(){
         if(this.collapsed){
             return this.collapsedEl.getBox();
