@@ -78,3 +78,9 @@
             margin-top:5px;
     }
 }
+
+.modal-body.roo-layout-container {
+    padding: 0;
+}
+
+

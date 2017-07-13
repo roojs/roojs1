@@ -2456,6 +2456,8 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
  * @cfg {String} buttonPosition (left|right|center) default right
  * @cfg {Boolean} animate default true
  * @cfg {Boolean} allow_close default true
+ * @cfg {Boolean} fitwindow default true
+ * 
  * 
  * @constructor
  * Create a new Modal Dialog
@@ -2500,6 +2502,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     allow_close : true,
     
     animate : true,
+    
+    fitwindow: false,
     
     
      // private
@@ -2674,20 +2678,26 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         if (this.allow_close) {
             this.closeEl.on('click', this.hide, this);
         }
+        Roo.EventManager.onWindowResize(this.resize, this, true);
         
-        var _this = this;
-        
-        window.addEventListener("resize", function() { _this.resize(); } );
-
+ 
     },
     
     resize : function()
     {
         this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true),  Roo.lib.Dom.getViewHeight(true));
+        if (this.fitwindow) {
+            var w = this.width || Roo.lib.Dom.getViewportWidth(true) - 30;
+            var h = this.height || Roo.lib.Dom.getViewportHeight(true) - 30;
+            this.setSize(w,h)
+        }
     },
     
     setSize : function(w,h)
     {
+        if (!w && !h) {
+            return;
+        }
         this.resizeTo(w,h);
     },
     
@@ -2724,6 +2734,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             e.layout ? e.layout() : false;
                 
         });
+        this.resize();
         
         
         
@@ -2776,10 +2787,10 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         this.dialogEl.setWidth(w);
         if (this.diff === false) {
-            this.diff = this.dialogEl.getHeight() - this.el.select('.modal-body',true).first().getHeight();
+            this.diff = this.dialogEl.getHeight() - this.bodyEl.getHeight();
         }
         
-        this.el.select('.modal-body',true).first().setHeight(h-this.diff);
+        this.bodyEl.setHeight(h-this.diff);
         
         
     },
@@ -33463,16 +33474,29 @@ Roo.bootstrap.panel.Content = function( config){
     this.closable = false;
     this.loaded = false;
     this.active = false;
-    if(typeof config == "string"){
-        this.title = config;
-    }else{
-        Roo.apply(this, config);
-    }
+   
       
-    if (this.toolbar && !this.toolbar.el && this.toolbar.xtype) {
+    if (config.toolbar && !config.toolbar.el && config.toolbar.xtype) {
+        
+        this.toolbar = new config.toolbar.xns[config.toolbar.xtype](config.toolbar);
+        
         this.wrapEl = this.el.wrap();
-        this.toolbar.container = this.el.insertSibling(false, 'before');
-        this.toolbar = new this.toolbar.xns[this.toolbar.xtype](this.toolbar);
+        var ti = [];
+        if (config.toolbar.items) {
+            ti = config.toolbar.items ;
+            delete config.toolbar.items ;
+        }
+        
+        var nitems = [];
+        this.toolbar.render(this.wrapEl, 'before');
+        for(var i =0;i < ti.length;i++) {
+          //  Roo.log(['add child', items[i]]);
+            nitems.push(this.toolbar.addxtype(Roo.apply({}, ti[i])));
+        }
+        this.toolbar.items = nitems;
+        this.toolbar.el.insertBefore(this.wrapEl.dom.firstChild);
+        delete config.toolbar;
+        
     }
     /*
     // xtype created footer. - not sure if will work as we normally have to render first..
@@ -33487,6 +33511,13 @@ Roo.bootstrap.panel.Content = function( config){
         
     }
     */
+    
+     if(typeof config == "string"){
+        this.title = config;
+    }else{
+        Roo.apply(this, config);
+    }
+    
     if(this.resizeEl){
         this.resizeEl = Roo.get(this.resizeEl, true);
     }else{
