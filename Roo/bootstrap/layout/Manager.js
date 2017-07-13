@@ -86,7 +86,7 @@ Roo.extend(Roo.bootstrap.layout.Manager, Roo.bootstrap.Component, {
         this.el.addClass("roo-layout-container");
         Roo.EventManager.onWindowResize(this.onWindowResize, this, true);
 
-    }
+    },
     
     /**
      * Returns true if this layout is currently being updated
