@@ -46,7 +46,7 @@ Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
     {
         Roo.each(Roo.bootstrap.layout.Border.regions, function(region) {
             if(this.regions[region]){
-                this.regions.render(this.el, pos);
+                this.regions[region].render(this.el, pos);
             }
         },this);
         
