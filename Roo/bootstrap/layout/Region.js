@@ -63,7 +63,10 @@ Roo.bootstrap.layout.Region = function(config)
     var dh = Roo.DomHelper;
     /** This region's container element 
     * @type Roo.Element */
-    this.el = dh.append(mgr.el.dom, {tag: "div", cls: "roo-layout-region roo-layout-panel roo-layout-panel-" + this.position}, true);
+    this.el = dh.append(mgr.el.dom, {
+            tag: "div",
+            cls: (config.cls || '') + " roo-layout-region roo-layout-panel roo-layout-panel-" + this.position
+        }, true);
     /** This region's title element 
     * @type Roo.Element */
 
