@@ -75,10 +75,7 @@ Roo.extend(Roo.bootstrap.layout.Manager, Roo.bootstrap.Component, {
     updating : false,
     
     
-    initEvents: function()
-    {
-        
-    }
+   
     
     /**
      * Returns true if this layout is currently being updated
