@@ -36,7 +36,8 @@ Example.NestedDialog = {
             buttonPosition : 'center',
             buttons : Roo.bootstrap.Modal.OKCANCEL,
             xns : Roo.bootstrap,
-            height: 500,
+            fitwindow : true,
+            //height: 500,
             listeners : {
                 btnclick : function (e)
                  {
