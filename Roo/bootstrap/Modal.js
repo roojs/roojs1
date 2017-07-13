@@ -62,7 +62,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     
     animate : true,
     
-    fitwindow: true,
+    fitwindow: false,
     
     
      // private
