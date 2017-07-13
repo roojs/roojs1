@@ -61,7 +61,10 @@ Roo.bootstrap.layout.Manager = function(config)
         "regionexpanded" : true
     });
     this.updating = false;
-    Roo.EventManager.onWindowResize(this.onWindowResize, this, true);
+    if (this.el) {
+        this.initEvents();
+    }
+    
 };
 
 Roo.extend(Roo.bootstrap.layout.Manager, Roo.bootstrap.Component, {
@@ -75,7 +78,11 @@ Roo.extend(Roo.bootstrap.layout.Manager, Roo.bootstrap.Component, {
     updating : false,
     
     
-   
+    initEvents: function()
+    {
+        Roo.EventManager.onWindowResize(this.onWindowResize, this, true);
+
+    }
     
     /**
      * Returns true if this layout is currently being updated
