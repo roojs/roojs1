@@ -29,47 +29,50 @@ Roo.extend(Roo.bootstrap.layout.Split, Roo.bootstrap.layout.Region,
 
     applyConfig : function(config){
         Roo.bootstrap.layout.Split.superclass.applyConfig.call(this, config);
+    }
+    onRender : function(ctr,this) {
         
-        if(config.split){
-            if(!this.split){
-                
-                
-                var splitEl = Roo.DomHelper.append(this.mgr.el.dom,  {
-                                tag: "div",
-                                id: this.el.id + "-split",
-                                cls: "roo-layout-split roo-layout-split-"+this.position,
-                                html: "&#160;"
-                });
-                /** The SplitBar for this region 
-                * @type Roo.SplitBar */
-                // does not exist yet...
-                Roo.log([this.position, this.orientation]);
-                
-                this.split = new Roo.bootstrap.SplitBar({
-                    dragElement : splitEl,
-                    resizingElement: this.el,
-                    orientation : this.orientation
-                });
-                
-                this.split.on("moved", this.onSplitMove, this);
-                this.split.useShim = config.useShim === true;
-                this.split.getMaximumSize = this[this.position == 'north' || this.position == 'south' ? 'getVMaxSize' : 'getHMaxSize'].createDelegate(this);
-                if(this.useSplitTips){
-                    this.split.el.dom.title = config.collapsible ? this.collapsibleSplitTip : this.splitTip;
-                }
-                //if(config.collapsible){
-                //    this.split.el.on("dblclick", this.collapse,  this);
-                //}
+        if(!config.split){
+            return;
+        }
+        if(!this.split){
+            
+            var splitEl = Roo.DomHelper.append(ctr.dom,  {
+                            tag: "div",
+                            id: this.el.id + "-split",
+                            cls: "roo-layout-split roo-layout-split-"+this.position,
+                            html: "&#160;"
+            });
+            /** The SplitBar for this region 
+            * @type Roo.SplitBar */
+            // does not exist yet...
+            Roo.log([this.position, this.orientation]);
+            
+            this.split = new Roo.bootstrap.SplitBar({
+                dragElement : splitEl,
+                resizingElement: this.el,
+                orientation : this.orientation
+            });
+            
+            this.split.on("moved", this.onSplitMove, this);
+            this.split.useShim = config.useShim === true;
+            this.split.getMaximumSize = this[this.position == 'north' || this.position == 'south' ? 'getVMaxSize' : 'getHMaxSize'].createDelegate(this);
+            if(this.useSplitTips){
+                this.split.el.dom.title = config.collapsible ? this.collapsibleSplitTip : this.splitTip;
             }
-            if(typeof config.minSize != "undefined"){
-                this.split.minSize = config.minSize;
-            }
-            if(typeof config.maxSize != "undefined"){
-                this.split.maxSize = config.maxSize;
-            }
-            if(config.hideWhenEmpty || config.hidden || config.collapsed){
-                this.hideSplitter();
-            }
+            //if(config.collapsible){
+            //    this.split.el.on("dblclick", this.collapse,  this);
+            //}
+        }
+        if(typeof config.minSize != "undefined"){
+            this.split.minSize = config.minSize;
+        }
+        if(typeof config.maxSize != "undefined"){
+            this.split.maxSize = config.maxSize;
+        }
+        if(config.hideWhenEmpty || config.hidden || config.collapsed){
+            this.hideSplitter();
+        }
         }
     },
 
