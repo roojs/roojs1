@@ -123,7 +123,21 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
             this.on("paneladded", this.validateVisibility, this);
             this.on("panelremoved", this.validateVisibility, this);
         }
-       
+        if(this.autoScroll){
+            this.bodyEl.setStyle("overflow", "auto");
+        }else{
+            this.bodyEl.setStyle("overflow", c.overflow || 'hidden');
+        }
+        //if(c.titlebar !== false){
+            if((!c.titlebar && !c.title) || c.titlebar === false){
+                this.titleEl.hide();
+            }else{
+                this.titleEl.show();
+                if(c.title){
+                    this.titleTextEl.innerHTML = c.title;
+                }
+            }
+        //}
     },
     
     applyConfig : function(c)
@@ -185,21 +199,8 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         this.autoScroll = c.autoScroll || false;
         
         
-        if(this.autoScroll){
-            this.bodyEl.setStyle("overflow", "auto");
-        }else{
-            this.bodyEl.setStyle("overflow", c.overflow || 'hidden');
-        }
-        //if(c.titlebar !== false){
-            if((!c.titlebar && !c.title) || c.titlebar === false){
-                this.titleEl.hide();
-            }else{
-                this.titleEl.show();
-                if(c.title){
-                    this.titleTextEl.innerHTML = c.title;
-                }
-            }
-        //}
+       
+        
         this.duration = c.duration || .30;
         this.slideDuration = c.slideDuration || .45;
         if(c.collapsed){
