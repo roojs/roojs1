@@ -44,6 +44,7 @@ Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
     
     onRender : function(ctr, pos)
     {
+        Roo.bootstrap.layout.Border.superclass.onRender.call(this,ctr,pos);
         Roo.each(Roo.bootstrap.layout.Border.regions, function(region) {
             if(this.regions[region]){
                 this.regions[region].onRender(this.el, pos);
