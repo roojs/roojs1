@@ -19,17 +19,9 @@ Roo.bootstrap.layout.Manager = function(config)
     Roo.bootstrap.layout.Manager.superclass.constructor.call(this);
     
     
+     
     
-    this.el = Roo.get(config.el);
-    // ie scrollbar fix
-    if(this.el.dom == document.body && Roo.isIE && !config.allowScroll){
-        document.body.scroll = "no";
-    }else if(this.el.dom != document.body && this.el.getStyle('position') == 'static'){
-        this.el.position('relative');
-    }
     
-    this.id = this.el.id;
-    this.el.addClass("roo-layout-container");
     /** false to disable window resize monitoring @type Boolean */
     this.monitorWindowResize = true;
     this.regions = {};
@@ -61,7 +53,8 @@ Roo.bootstrap.layout.Manager = function(config)
         "regionexpanded" : true
     });
     this.updating = false;
-    if (this.el) {
+    if (config.el) {
+        this.el = Roo.get(config.el);
         this.initEvents();
     }
     
@@ -80,6 +73,16 @@ Roo.extend(Roo.bootstrap.layout.Manager, Roo.bootstrap.Component, {
     
     initEvents: function()
     {
+        
+        
+        // ie scrollbar fix
+        if(this.el.dom == document.body && Roo.isIE && !config.allowScroll){
+            document.body.scroll = "no";
+        }else if(this.el.dom != document.body && this.el.getStyle('position') == 'static'){
+            this.el.position('relative');
+        }
+        this.id = this.el.id;
+        this.el.addClass("roo-layout-container");
         Roo.EventManager.onWindowResize(this.onWindowResize, this, true);
 
     }
