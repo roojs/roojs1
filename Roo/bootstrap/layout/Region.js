@@ -208,6 +208,7 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         
         this.duration = c.duration || .30;
         this.slideDuration = c.slideDuration || .45;
+        this.config = config;
        
     },
     /**
