@@ -55,7 +55,7 @@
  */
 Roo.bootstrap.layout.Region = function(config)
 {
-    this.config = config;
+    this.applyConfig(config);
 
     var mgr = config.mgr;
     var pos = config.region;
@@ -68,7 +68,6 @@ Roo.bootstrap.layout.Region = function(config)
      
     this.visible = true;
     this.collapsed = false;
-    this.applyConfig(config);
 };
 
 Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
