@@ -332,7 +332,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     {
         // skip.. ?? why??
         
-        this.dialogEl).setWidth(w);
+        this.dialogEl.setWidth(w);
         if (this.diff === false) {
             this.diff = this.dialogEl.getHeight() - this.el.select('.modal-body',true).first().getHeight();
         }
