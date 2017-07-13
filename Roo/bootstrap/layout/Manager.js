@@ -53,6 +53,7 @@ Roo.bootstrap.layout.Manager = function(config)
         "regionexpanded" : true
     });
     this.updating = false;
+    
     if (config.el) {
         this.el = Roo.get(config.el);
         this.initEvents();
