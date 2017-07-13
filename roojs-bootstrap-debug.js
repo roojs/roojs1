@@ -6680,7 +6680,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
      * @return {Element} The element
      */
     autoSize : function(){
-        var ctr = Roo.get(this.container.dom.parentElement);
+        //var ctr = Roo.get(this.container.dom.parentElement);
+        var ctr = Roo.get(this.container.dom);
         
         var thd = this.getGridEl().select('thead',true).first();
         var tbd = this.getGridEl().select('tbody', true).first();
@@ -6698,17 +6699,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         this.getGridEl().select('tr',true).setWidth(cw);
         
         return; // we doe not have a view in this design..
-        if(this.rendered){
-            this.view.layout();
-            if(this.view.adjustForScroll){
-                this.view.adjustForScroll();
-            }
-        }
+        
     },
     onBodyScroll: function()
     {
         
-        Roo.log("body scrolled');" + this.mainBody.dom.scrollLeft);
+        //Roo.log("body scrolled');" + this.mainBody.dom.scrollLeft);
         this.mainHead.setStyle({
                     'position' : 'relative',
                     'left': (-1* this.mainBody.dom.scrollLeft) + 'px'
@@ -32084,6 +32080,8 @@ Roo.extend(Roo.bootstrap.layout.Basic, Roo.util.Observable,
  * @cfg {Boolean}   split           To show the splitter
  * @cfg {Boolean}   toolbar         xtype configuration for a toolbar - shows on right of tabbar
  * 
+ * @cfg {string}   cls             Extra CSS classes to add to region
+ * 
  * @cfg {Roo.bootstrap.layout.Manager}   mgr The manager
  * @cfg {string}   region  the region that it inhabits..
  *
@@ -32105,7 +32103,10 @@ Roo.bootstrap.layout.Region = function(config)
     var dh = Roo.DomHelper;
     /** This region's container element 
     * @type Roo.Element */
-    this.el = dh.append(mgr.el.dom, {tag: "div", cls: "roo-layout-region roo-layout-panel roo-layout-panel-" + this.position}, true);
+    this.el = dh.append(mgr.el.dom, {
+            tag: "div",
+            cls: (config.cls || '') + " roo-layout-region roo-layout-panel roo-layout-panel-" + this.position
+        }, true);
     /** This region's title element 
     * @type Roo.Element */
 
@@ -33863,7 +33864,8 @@ Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content, {
         if(!this.ignoreResize(width, height)){
             var grid = this.grid;
             var size = this.adjustForComponents(width, height);
-            grid.getGridEl().setSize(size.width, size.height);
+            var gridel = grid.getGridEl();
+            gridel.setSize(size.width, size.height);
             /*
             var thd = grid.getGridEl().select('thead',true).first();
             var tbd = grid.getGridEl().select('tbody', true).first();
