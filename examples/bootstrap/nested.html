@@ -225,7 +225,7 @@ Example.Nested = new Roo.XComponent({
                                         xns: Roo.bootstrap,
                                         html: 'show dialog',
                                         listeners : {
-                                            click : {
+                                            click : function() {
                                                 Example.NestedDialog.show({});
                                             }
                                         }
