@@ -52,8 +52,7 @@ Example.NestedDialog = {
                 {
                     xtype : 'Border',
                     xns : Roo.bootstrap.layout,
-                    el : document.body, // border layout can be applied to the outer one...
-                    west: {
+                     west: {
                         xtype : 'Region',
                         xns: Roo.bootstrap.layout,
                         split:true,
