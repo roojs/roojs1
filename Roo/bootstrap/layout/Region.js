@@ -55,7 +55,8 @@
  */
 Roo.bootstrap.layout.Region = function(config)
 {
-    
+    this.config = config;
+
     var mgr = config.mgr;
     var pos = config.region;
     config.skipConfig = true;
@@ -203,7 +204,6 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         //}
         this.duration = c.duration || .30;
         this.slideDuration = c.slideDuration || .45;
-        this.config = c;
         if(c.collapsed){
             this.collapse(true);
         }
