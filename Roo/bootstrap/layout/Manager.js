@@ -17,6 +17,9 @@
 Roo.bootstrap.layout.Manager = function(config)
 {
     Roo.bootstrap.layout.Manager.superclass.constructor.call(this);
+    
+    
+    
     this.el = Roo.get(config.el);
     // ie scrollbar fix
     if(this.el.dom == document.body && Roo.isIE && !config.allowScroll){
@@ -70,6 +73,12 @@ Roo.extend(Roo.bootstrap.layout.Manager, Roo.bootstrap.Component, {
     
     
     updating : false,
+    
+    
+    initEvents: function()
+    {
+        
+    }
     
     /**
      * Returns true if this layout is currently being updated
