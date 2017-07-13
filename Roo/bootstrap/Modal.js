@@ -273,7 +273,11 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.el.setStyle('zIndex', '10001');
        
         this.fireEvent('show', this);
-         
+        this.items.forEach(function(e) {
+            e.layout ? e.layout() : false;
+                
+        });
+        
         
         
     },
