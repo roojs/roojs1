@@ -71,14 +71,15 @@
   margin: 30 auto;
 }
 
-
+/*
+ this  appears to break the layout on dialog buttons on mobile?
 @media (max-width: 568px) {
     .modal-footer .btn+.btn {
-            margin-left:0px;
-            margin-top:5px;
+            margin-left: 0px;
+            margin-top: 5px;
     }
 }
-
+*/
 .modal-body.roo-layout-container {
     padding: 0;
 }
