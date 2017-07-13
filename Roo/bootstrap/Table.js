@@ -1068,17 +1068,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         this.getGridEl().select('tr',true).setWidth(cw);
         
         return; // we doe not have a view in this design..
-        if(this.rendered){
-            this.view.layout();
-            if(this.view.adjustForScroll){
-                this.view.adjustForScroll();
-            }
-        }
+        
     },
     onBodyScroll: function()
     {
         
-        Roo.log("body scrolled');" + this.mainBody.dom.scrollLeft);
+        //Roo.log("body scrolled');" + this.mainBody.dom.scrollLeft);
         this.mainHead.setStyle({
                     'position' : 'relative',
                     'left': (-1* this.mainBody.dom.scrollLeft) + 'px'
