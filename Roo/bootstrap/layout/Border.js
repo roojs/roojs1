@@ -51,7 +51,7 @@ Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
         },this);
         
         
-    }
+    },
     
     
     /**
