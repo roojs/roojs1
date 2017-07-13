@@ -70,8 +70,7 @@ Roo.bootstrap.panel.Content = function( config){
    
       
     if (config.toolbar && !config.toolbar.el && config.toolbar.xtype) {
-        this.wrapEl = this.el.wrap();
-        var tool_el = this.wrapEl.createChild(); 
+        
         this.toolbar = new config.toolbar.xns[config.toolbar.xtype](config.toolbar);
         
         
@@ -82,13 +81,13 @@ Roo.bootstrap.panel.Content = function( config){
         }
         
         var nitems = [];
-        this.toolbar.render(tool_el);
+        this.toolbar.render(this.el, 'before');
         for(var i =0;i < ti.length;i++) {
           //  Roo.log(['add child', items[i]]);
             nitems.push(this.toolbar.addxtype(Roo.apply({}, ti[i])));
         }
         this.toolbar.items = nitems;
-        
+        this.toolbar.el.insertBefore(this.wrapper.dom.firstChild);
         delete config.toolbar;
         
     }
