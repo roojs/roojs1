@@ -66,40 +66,7 @@ Roo.bootstrap.layout.Region = function(config)
     }
     
     
-    var dh = Roo.DomHelper;
-    /** This region's container element 
-    * @type Roo.Element */
-    this.el = dh.append(mgr.el.dom, {
-            tag: "div",
-            cls: (config.cls || '') + " roo-layout-region roo-layout-panel roo-layout-panel-" + this.position
-        }, true);
-    /** This region's title element 
-    * @type Roo.Element */
-
-    this.titleEl = dh.append(this.el.dom,
-        {
-                tag: "div",
-                unselectable: "on",
-                cls: "roo-unselectable roo-layout-panel-hd breadcrumb roo-layout-title-" + this.position,
-                children:[
-                    {tag: "span", cls: "roo-unselectable roo-layout-panel-hd-text", unselectable: "on", html: "&#160;"},
-                    {tag: "div", cls: "roo-unselectable roo-layout-panel-hd-tools", unselectable: "on"}
-                ]}, true);
     
-    this.titleEl.enableDisplayMode();
-    /** This region's title text element 
-    * @type HTMLElement */
-    this.titleTextEl = this.titleEl.dom.firstChild;
-    this.tools = Roo.get(this.titleEl.dom.childNodes[1], true);
-    /*
-    this.closeBtn = this.createTool(this.tools.dom, "roo-layout-close");
-    this.closeBtn.enableDisplayMode();
-    this.closeBtn.on("click", this.closeClicked, this);
-    this.closeBtn.hide();
-*/
-    this.createBody(config);
-    this.visible = true;
-    this.collapsed = false;
 
     if(config.hideWhenEmpty){
         this.hide();
@@ -124,7 +91,40 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
 
     onRender: function(ctr, pos)
     {
+        var dh = Roo.DomHelper;
+        /** This region's container element 
+        * @type Roo.Element */
+        this.el = dh.append(ctr.dom, {
+                tag: "div",
+                cls: (config.cls || '') + " roo-layout-region roo-layout-panel roo-layout-panel-" + this.position
+            }, true);
+        /** This region's title element 
+        * @type Roo.Element */
+    
+        this.titleEl = dh.append(this.el.dom,
+            {
+                    tag: "div",
+                    unselectable: "on",
+                    cls: "roo-unselectable roo-layout-panel-hd breadcrumb roo-layout-title-" + this.position,
+                    children:[
+                        {tag: "span", cls: "roo-unselectable roo-layout-panel-hd-text", unselectable: "on", html: "&#160;"},
+                        {tag: "div", cls: "roo-unselectable roo-layout-panel-hd-tools", unselectable: "on"}
+                    ]}, true);
         
+        this.titleEl.enableDisplayMode();
+        /** This region's title text element 
+        * @type HTMLElement */
+        this.titleTextEl = this.titleEl.dom.firstChild;
+        this.tools = Roo.get(this.titleEl.dom.childNodes[1], true);
+        /*
+        this.closeBtn = this.createTool(this.tools.dom, "roo-layout-close");
+        this.closeBtn.enableDisplayMode();
+        this.closeBtn.on("click", this.closeClicked, this);
+        this.closeBtn.hide();
+    */
+        this.createBody(this.config);
+        this.visible = true;
+        this.collapsed = false;
     }
     
     applyConfig : function(c)
