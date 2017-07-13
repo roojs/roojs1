@@ -87,7 +87,7 @@ Roo.bootstrap.panel.Content = function( config){
             nitems.push(this.toolbar.addxtype(Roo.apply({}, ti[i])));
         }
         this.toolbar.items = nitems;
-        this.toolbar.el.insertBefore(this.wrapper.dom.firstChild);
+        this.toolbar.el.insertBefore(this.wrapEl.dom.firstChild);
         delete config.toolbar;
         
     }
