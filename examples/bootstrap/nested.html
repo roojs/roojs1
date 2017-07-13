@@ -223,7 +223,12 @@ Example.Nested = new Roo.XComponent({
                                     {
                                         xtype: 'NavItem',
                                         xns: Roo.bootstrap,
-                                        html: 'a button'
+                                        html: 'show dialog',
+                                        listeners : {
+                                            click : {
+                                                Example.NestedDialog.show({});
+                                            }
+                                        }
                                         
                                     },
                                     {
