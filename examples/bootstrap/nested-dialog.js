@@ -52,18 +52,7 @@ Example.NestedDialog = {
                 {
                     xtype : 'Border',
                     xns : Roo.bootstrap.layout,
-                     west: {
-                        xtype : 'Region',
-                        xns: Roo.bootstrap.layout,
-                        split:true,
-                        tabPosition: 'top',
-                        initialSize: 400,
-                        titlebar: false,
-                       // collapsible: true,
-                        minSize: 100,
-                        maxSize: 500,
-                        cls : 'hidden-xs'
-                    },
+                     
                     
                     center: {
                         xtype : 'Region',
@@ -73,15 +62,7 @@ Example.NestedDialog = {
                          titlebar: false
                     },
                     items : [
-                        {
-                            xtype : 'Content',
-                            xns: Roo.bootstrap.panel,
-                            title : "Title west" ,
-                            fitToFrame:true,
-                            closable:false,
-                            region : 'west',
-                            html: "west"
-                        },
+                       
                         {
                             xtype : 'Content',
                             xns: Roo.bootstrap.panel,
