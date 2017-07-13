@@ -208,11 +208,11 @@ Roo.extend(Roo.bootstrap.layout.West, Roo.bootstrap.layout.Split, {
     onRender: function(ctr, pos)
     {
         Roo.bootstrap.layout.West.superclass.prototype.onRender,call(this, ctr,pos);
-        var size = config.initialSize || config.width;
+        var size = this.config.initialSize || this.config.width;
         if(typeof size != "undefined"){
             this.el.setWidth(size);
         }
-        }
+    },
     
     getBox : function(){
         if(this.collapsed){
