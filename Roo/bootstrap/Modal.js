@@ -15,6 +15,8 @@
  * @cfg {String} buttonPosition (left|right|center) default right
  * @cfg {Boolean} animate default true
  * @cfg {Boolean} allow_close default true
+ * @cfg {Boolean} fitwindow default true
+ * 
  * 
  * @constructor
  * Create a new Modal Dialog
