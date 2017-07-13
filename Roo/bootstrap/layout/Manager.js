@@ -72,6 +72,15 @@ Roo.extend(Roo.bootstrap.layout.Manager, Roo.bootstrap.Component, {
     updating : false,
     
     
+    onRender : function(ct, position)
+    {
+        if(!this.el){
+            this.el = Roo.get(ct);
+            this.initEvents();
+        }
+    },
+    
+    
     initEvents: function()
     {
         
