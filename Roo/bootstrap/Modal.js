@@ -62,6 +62,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     
     animate : true,
     
+    fitwindow: true,
+    
     
      // private
     dialogEl: false,
