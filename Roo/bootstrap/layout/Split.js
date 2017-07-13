@@ -57,22 +57,22 @@ Roo.extend(Roo.bootstrap.layout.Split, Roo.bootstrap.layout.Region,
             });
             
             this.split.on("moved", this.onSplitMove, this);
-            this.split.useShim = config.useShim === true;
+            this.split.useShim = this.config.useShim === true;
             this.split.getMaximumSize = this[this.position == 'north' || this.position == 'south' ? 'getVMaxSize' : 'getHMaxSize'].createDelegate(this);
             if(this.useSplitTips){
-                this.split.el.dom.title = config.collapsible ? this.collapsibleSplitTip : this.splitTip;
+                this.split.el.dom.title = this.config.collapsible ? this.collapsibleSplitTip : this.splitTip;
             }
             //if(config.collapsible){
             //    this.split.el.on("dblclick", this.collapse,  this);
             //}
         }
-        if(typeof config.minSize != "undefined"){
-            this.split.minSize = config.minSize;
+        if(typeof this.config.minSize != "undefined"){
+            this.split.minSize = this.config.minSize;
         }
-        if(typeof config.maxSize != "undefined"){
-            this.split.maxSize = config.maxSize;
+        if(typeof this.config.maxSize != "undefined"){
+            this.split.maxSize = this.config.maxSize;
         }
-        if(config.hideWhenEmpty || config.hidden || config.collapsed){
+        if(this.config.hideWhenEmpty || this.config.hidden || this.config.collapsed){
             this.hideSplitter();
         }
         
