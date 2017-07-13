@@ -71,7 +71,7 @@ Roo.bootstrap.panel.Content = function( config){
       
     if (config.toolbar && !config.toolbar.el && config.toolbar.xtype) {
         this.wrapEl = this.el.wrap();
-        var tool_el = this.wrapper.createChild(); 
+        var tool_el = this.wrapEl.createChild(); 
         this.toolbar = new config.toolbar.xns[config.toolbar.xtype](config.toolbar);
         
         
