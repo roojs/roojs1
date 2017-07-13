@@ -67,11 +67,7 @@ Roo.bootstrap.panel.Content = function( config){
     this.closable = false;
     this.loaded = false;
     this.active = false;
-    if(typeof config == "string"){
-        this.title = config;
-    }else{
-        Roo.apply(this, config);
-    }
+   
       
     if (config.toolbar && !config.toolbar.el && config.toolbar.xtype) {
         this.wrapEl = this.el.wrap();
@@ -91,6 +87,13 @@ Roo.bootstrap.panel.Content = function( config){
         
     }
     */
+    
+     if(typeof config == "string"){
+        this.title = config;
+    }else{
+        Roo.apply(this, config);
+    }
+    
     if(this.resizeEl){
         this.resizeEl = Roo.get(this.resizeEl, true);
     }else{
