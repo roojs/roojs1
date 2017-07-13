@@ -69,11 +69,9 @@ Roo.bootstrap.layout.Region = function(config)
     
     
 
-    if(config.hideWhenEmpty){
-        this.hide();
-        this.on("paneladded", this.validateVisibility, this);
-        this.on("panelremoved", this.validateVisibility, this);
-    }
+  
+    this.visible = true;
+    this.collapsed = false;
     this.applyConfig(config);
 };
 
@@ -124,9 +122,13 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         this.closeBtn.hide();
     */
         this.createBody(this.config);
-        this.visible = true;
-        this.collapsed = false;
-    }
+        if(config.hideWhenEmpty){
+            this.hide();
+            this.on("paneladded", this.validateVisibility, this);
+            this.on("panelremoved", this.validateVisibility, this);
+        }
+       
+    },
     
     applyConfig : function(c)
     {
