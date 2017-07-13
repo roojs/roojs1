@@ -138,6 +138,12 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
                 }
             }
         //}
+        if(this.config.collapsed){
+            this.collapse(true);
+        }
+        if(this.config.hidden){
+            this.hide();
+        }
     },
     
     applyConfig : function(c)
@@ -203,12 +209,7 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         
         this.duration = c.duration || .30;
         this.slideDuration = c.slideDuration || .45;
-        if(c.collapsed){
-            this.collapse(true);
-        }
-        if(c.hidden){
-            this.hide();
-        }
+       
     },
     /**
      * Returns true if this region is currently visible.
