@@ -60,6 +60,12 @@ Roo.bootstrap.layout.Region = function(config)
     var pos = config.region;
     config.skipConfig = true;
     Roo.bootstrap.layout.Region.superclass.constructor.call(this, config);
+    
+    if (mgr.el) {
+        this.onRender(mgr.el);   
+    }
+    
+    
     var dh = Roo.DomHelper;
     /** This region's container element 
     * @type Roo.Element */
@@ -116,6 +122,11 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         });
     },
 
+    onRender: function(ctr, pos)
+    {
+        
+    }
+    
     applyConfig : function(c)
     {
         /*
