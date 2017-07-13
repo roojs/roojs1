@@ -65,11 +65,7 @@ Roo.bootstrap.layout.Region = function(config)
     if (mgr.el) {
         this.onRender(mgr.el);   
     }
-    
-    
-    
-
-  
+     
     this.visible = true;
     this.collapsed = false;
     this.applyConfig(config);
