@@ -289,6 +289,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             e.layout ? e.layout() : false;
                 
         });
+        this.resize();
         
         
         
