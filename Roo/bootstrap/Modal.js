@@ -237,10 +237,9 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         if (this.allow_close) {
             this.closeEl.on('click', this.hide, this);
         }
+        Roo.EventManager.onWindowResize(this.resize, this, true);
         
-        
-        window.addEventListener("resize", this.resize , this );
-
+ 
     },
     
     resize : function()
