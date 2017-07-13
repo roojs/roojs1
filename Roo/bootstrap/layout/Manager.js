@@ -96,6 +96,7 @@ Roo.extend(Roo.bootstrap.layout.Manager, Roo.bootstrap.Component, {
         Roo.EventManager.onWindowResize(this.onWindowResize, this, true);
         if(this.el.dom != document.body ) {
             this.el.on('resize', this.layout,this);
+            this.el.on('show', this.layout,this);
         }
 
     },
