@@ -246,7 +246,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     
     setSize : function(w,h)
     {
-        
+        this.resizeTo(w,h);
     },
     
     show : function() {
