@@ -79,7 +79,7 @@ Roo.bootstrap.layout.Region = function(config)
 
 Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
 
-
+    position: '', // set by wrapper (eg. north/south etc..)
 
     createBody : function(){
         /** This region's body element 
@@ -97,7 +97,7 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         * @type Roo.Element */
         this.el = dh.append(ctr.dom, {
                 tag: "div",
-                cls: (config.cls || '') + " roo-layout-region roo-layout-panel roo-layout-panel-" + this.position
+                cls: (this.config.cls || '') + " roo-layout-region roo-layout-panel roo-layout-panel-" + this.position
             }, true);
         /** This region's title element 
         * @type Roo.Element */
