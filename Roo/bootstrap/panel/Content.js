@@ -73,7 +73,7 @@ Roo.bootstrap.panel.Content = function( config){
         
         this.toolbar = new config.toolbar.xns[config.toolbar.xtype](config.toolbar);
         
-        
+        this.wrapEl = this.el.wrap();
         var ti = [];
         if (config.toolbar.items) {
             ti = config.toolbar.items ;
@@ -81,7 +81,7 @@ Roo.bootstrap.panel.Content = function( config){
         }
         
         var nitems = [];
-        this.toolbar.render(this.el, 'before');
+        this.toolbar.render(this.wrapEl, 'before');
         for(var i =0;i < ti.length;i++) {
           //  Roo.log(['add child', items[i]]);
             nitems.push(this.toolbar.addxtype(Roo.apply({}, ti[i])));
