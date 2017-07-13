@@ -75,7 +75,7 @@ Roo.extend(Roo.bootstrap.layout.Split, Roo.bootstrap.layout.Region,
         if(config.hideWhenEmpty || config.hidden || config.collapsed){
             this.hideSplitter();
         }
-        }
+        
     },
 
     getHMaxSize : function(){
