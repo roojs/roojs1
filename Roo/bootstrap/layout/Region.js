@@ -129,11 +129,11 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
             this.bodyEl.setStyle("overflow", c.overflow || 'hidden');
         }
         //if(c.titlebar !== false){
-            if((!c.titlebar && !c.title) || c.titlebar === false){
+            if((!this.config.titlebar && !this.config.title) || this.config.titlebar === false){
                 this.titleEl.hide();
             }else{
                 this.titleEl.show();
-                if(c.title){
+                if(this.config.title){
                     this.titleTextEl.innerHTML = c.title;
                 }
             }
