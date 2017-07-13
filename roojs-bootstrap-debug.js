@@ -2503,6 +2503,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     
     
      // private
+    dialogEl: false,
     bodyEl:  false,
     footerEl:  false,
     titleEl:  false,
@@ -2537,7 +2538,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.el.dom.setAttribute('tabIndex', this.tabIndex);
         }
         
-        
+        this.dialogEl = this.el.select('.modal-dialog',true).first();
         this.bodyEl = this.el.select('.modal-body',true).first();
         this.closeEl = this.el.select('.modal-header .close', true).first();
         this.footerEl = this.el.select('.modal-footer',true).first();
@@ -2682,7 +2683,12 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     
     resize : function()
     {
-        this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
+        this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true),  Roo.lib.Dom.getViewHeight(true));
+    },
+    
+    setSize : function(w,h)
+    {
+        this.resizeTo(w,h);
     },
     
     show : function() {
@@ -2709,12 +2715,16 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         //}
         
         Roo.get(document.body).addClass("x-body-masked");
-        this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
+        this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true),   Roo.lib.Dom.getViewHeight(true));
         this.maskEl.show();
         this.el.setStyle('zIndex', '10001');
        
         this.fireEvent('show', this);
-         
+        this.items.forEach(function(e) {
+            e.layout ? e.layout() : false;
+                
+        });
+        
         
         
     },
@@ -2764,9 +2774,9 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     {
         // skip.. ?? why??
         
-        this.el.select('.modal-dialog',true).first().setWidth(w);
+        this.dialogEl.setWidth(w);
         if (this.diff === false) {
-            this.diff = this.el.select('.modal-dialog',true).first().getHeight() - this.el.select('.modal-body',true).first().getHeight();
+            this.diff = this.dialogEl.getHeight() - this.el.select('.modal-body',true).first().getHeight();
         }
         
         this.el.select('.modal-body',true).first().setHeight(h-this.diff);
@@ -31189,6 +31199,10 @@ Roo.extend(Roo.bootstrap.layout.Manager, Roo.bootstrap.Component, {
         this.id = this.el.id;
         this.el.addClass("roo-layout-container");
         Roo.EventManager.onWindowResize(this.onWindowResize, this, true);
+        if(this.el.dom != document.body ) {
+            this.el.on('resize', this.layout,this);
+            this.el.on('show', this.layout,this);
+        }
 
     },
     
@@ -33454,13 +33468,13 @@ Roo.bootstrap.panel.Content = function( config){
     }else{
         Roo.apply(this, config);
     }
-    /*
+      
     if (this.toolbar && !this.toolbar.el && this.toolbar.xtype) {
         this.wrapEl = this.el.wrap();
         this.toolbar.container = this.el.insertSibling(false, 'before');
-        this.toolbar = new Roo.Toolbar(this.toolbar);
+        this.toolbar = new this.toolbar.xns[this.toolbar.xtype](this.toolbar);
     }
-    
+    /*
     // xtype created footer. - not sure if will work as we normally have to render first..
     if (this.footer && !this.footer.el && this.footer.xtype) {
         if (!this.wrapEl) {
