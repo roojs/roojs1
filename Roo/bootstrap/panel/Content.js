@@ -73,7 +73,24 @@ Roo.bootstrap.panel.Content = function( config){
         this.wrapEl = this.el.wrap();
         
         this.toolbar = new config.toolbar.xns[config.toolbar.xtype](config.toolbar);
+        
+        
+        var ti = [];
+        if (config.toolbar.items) {
+            ti = config.toolbar.items ;
+            delete config.toolbar.items ;
+        }
+        
+        var nitems = [];
         this.toolbar.render(this.el, 'before');
+        for(var i =0;i < ti.length;i++) {
+          //  Roo.log(['add child', items[i]]);
+            nitems.push(this.toolbar.addxtype(Roo.apply({}, ti[i])));
+        }
+        this.toolbar.items = nitems;
+        
+        delete config.toolbar;
+        
     }
     /*
     // xtype created footer. - not sure if will work as we normally have to render first..
