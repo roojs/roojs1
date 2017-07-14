@@ -95,11 +95,6 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 _this.showPanelNext();
             }, this.timer);
         }
-        Roo.log(this.tabs.length);
-        if(this.tabs.length < 2){
-            var bulletsEl = this.el.select('.carousel-bullets',true).first();
-            bulletsEl.setVisibilityMode(Roo.Element.DISPLAY).hide();
-        }
         
     },
     
@@ -123,7 +118,6 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     */
     register : function(item)
     {
-        Roo.log('run???');
         this.tabs.push( item);
         item.navId = this.navId; // not really needed..
         this.addBullet();
