@@ -97,7 +97,8 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         }
         
         if(this.tabs.length < 2){
-            
+            var bulletsEl = this.el.select('.carousel-bullets',true).first();
+            bulletsEl.setVisibilityMode(Roo.Element.DISPLAY).hide();
         }
         
     },
