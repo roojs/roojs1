@@ -31344,20 +31344,6 @@ Roo.bootstrap.layout.Border = function(config){
 Roo.bootstrap.layout.Border.regions =  ["north","south","east","west","center"];
 
 Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
-    
-    onRender : function(ctr, pos)
-    {
-        Roo.bootstrap.layout.Border.superclass.onRender.call(this,ctr,pos);
-        Roo.each(Roo.bootstrap.layout.Border.regions, function(region) {
-            if(this.regions[region]){
-                this.regions[region].onRender(this.el, pos);
-            }
-        },this);
-        
-        
-    },
-    
-    
     /**
      * Creates and adds a new region if it doesn't already exist.
      * @param {String} target The target region key (north, south, east, west or center).
@@ -31658,12 +31644,12 @@ layout.addxtype({
                 // needs grid and region
                 
                 //var el = this.getRegion(region).el.createChild();
-                var el = this.el.createChild();
+                /*
+                 *var el = this.el.createChild();
                 // create the grid first...
                 cfg.grid.container = el;
-                cfg.grid.scrollBody = true;
                 cfg.grid = new cfg.grid.xns[cfg.grid.xtype](cfg.grid);
-                
+                */
                 
                 if (region == 'center' && this.active ) {
                     cfg.background = false;
@@ -31672,17 +31658,18 @@ layout.addxtype({
                 ret = new cfg.xns[cfg.xtype](cfg); // new panel!!!!!
                 
                 this.add(region, ret);
-                
+                /*
                 if (cfg.background) {
                     // render grid on panel activation (if panel background)
                     ret.on('activate', function(gp) {
                         if (!gp.grid.rendered) {
-                            gp.grid.render(gp.grid.getGridEl());
+                    //        gp.grid.render(el);
                         }
                     });
                 } else {
-                    cfg.grid.render(cfg.grid.getGridEl());
+                  //  cfg.grid.render(el);
                 }
+                */
                 break;
            
            
@@ -33569,10 +33556,10 @@ Roo.bootstrap.panel.Content = function( config){
         this.resizeEl.setStyle("overflow", "auto");
     } else {
         // fix randome scrolling
-        this.el.on('scroll', function() {
-            Roo.log('fix random scolling');
-            this.scrollTo('top',0); 
-        });
+        //this.el.on('scroll', function() {
+        //    Roo.log('fix random scolling');
+        //    this.scrollTo('top',0); 
+        //});
     }
     content = content || this.content;
     if(content){
@@ -33907,12 +33894,15 @@ layout.addxtype({
 
 
 
-Roo.bootstrap.panel.Grid = function(config){
+Roo.bootstrap.panel.Grid = function(config)
+{
     
-  
+      
     this.wrapper = Roo.DomHelper.append(document.body, // wrapper for IE7 strict & safari scroll issue
         {tag: "div", cls: "x-layout-grid-wrapper x-layout-inactive-content"}, true);
 
+    config.el = this.wrapper;
+    //this.el = this.wrapper;
     
     if(config.toolbar){
         var tool_el = this.wrapper.createChild();    
@@ -33934,10 +33924,33 @@ Roo.bootstrap.panel.Grid = function(config){
         delete config.toolbar;
     }
     
-    this.wrapper.dom.appendChild(config.grid.getGridEl().dom);
-    config.el = this.wrapper;
-    
     Roo.bootstrap.panel.Grid.superclass.constructor.call(this, config);
+    
+    config.grid.monitorWindowResize = false; // turn off autosizing
+    config.grid.autoHeight = false;
+    config.grid.autoWidth = false;
+    
+    this.grid = new config.grid.xns[config.grid.xtype](config.grid);
+    
+    if (config.background) {
+        // render grid on panel activation (if panel background)
+        this.on('activate', function(gp) {
+            if (!gp.grid.rendered) {
+                gp.grid.render(el);
+                gp.grid.getGridEl().replaceClass("roo-layout-inactive-content", "roo-layout-component-panel");               
+
+            }
+        });
+            
+    } else {
+        this.grid.render(this.wrapper);
+        this.grid.getGridEl().replaceClass("roo-layout-inactive-content", "roo-layout-component-panel");               
+
+    }
+    //this.wrapper.dom.appendChild(config.grid.getGridEl().dom);
+    // ??? needed ??? config.el = this.wrapper;
+    
+    
     
   
     // xtype created footer. - not sure if will work as we normally have to render first..
@@ -33951,11 +33964,7 @@ Roo.bootstrap.panel.Grid = function(config){
     }
     
     
-    config.grid.monitorWindowResize = false; // turn off autosizing
-    config.grid.autoHeight = false;
-    config.grid.autoWidth = false;
-    this.grid = config.grid;
-    this.grid.getGridEl().replaceClass("x-layout-inactive-content", "x-layout-component-panel");
+    
     
      
 };
