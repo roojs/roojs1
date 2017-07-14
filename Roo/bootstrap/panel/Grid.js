@@ -46,17 +46,20 @@ Roo.bootstrap.panel.Grid = function(config){
     
     this.grid = new config.grid.xns[config.grid.xtype](config.grid);
     
-    this.grid.getGridEl().replaceClass("roo-layout-inactive-content", "roo-layout-component-panel");               
     if (config.background) {
         // render grid on panel activation (if panel background)
         this.on('activate', function(gp) {
             if (!gp.grid.rendered) {
                 gp.grid.render(el);
+                gp.grid.getGridEl().replaceClass("roo-layout-inactive-content", "roo-layout-component-panel");               
+
             }
         });
             
     } else {
         this.grid.render(this.wrapper);
+        this.grid.getGridEl().replaceClass("roo-layout-inactive-content", "roo-layout-component-panel");               
+
     }
     //this.wrapper.dom.appendChild(config.grid.getGridEl().dom);
     // ??? needed ??? config.el = this.wrapper;
