@@ -22,7 +22,7 @@
         },
         listeners : {
             'ready' : function() {
-                // fired on Ext.onReady()
+                // fired on Roo.onReady()
             }
         }
  * 
@@ -33,10 +33,14 @@ Roo.Document = function(cfg) {
         'ready' : true
     });
     Roo.util.Observable.call(this,cfg);
+    
     var _this = this;
+    
     Roo.onReady(function() {
         _this.fireEvent('ready');
     },null,false);
     
+    
 }
+
 Roo.extend(Roo.Document, Roo.util.Observable, {});
