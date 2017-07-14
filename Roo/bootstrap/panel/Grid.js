@@ -21,6 +21,16 @@ Roo.bootstrap.panel.Grid = function(config)
     config.el = this.wrapper;
     //this.el = this.wrapper;
     
+      if (config.container) {
+        // ctor'ed from a Border/panel.grid
+        
+        
+        this.wrapper.setStyle("overflow", "hidden");
+        this.wrapper.addClass('roo-grid-container');
+
+    }
+    
+    
     if(config.toolbar){
         var tool_el = this.wrapper.createChild();    
         this.toolbar = Roo.factory(config.toolbar);
