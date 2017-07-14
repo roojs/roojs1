@@ -1,0 +1,116 @@
+{
+ "name" : "Grid",
+ "parent" : "",
+ "title" : "",
+ "path" : "/home/alan/gitlive/roojs1/examples/bootstrap/Grid.bjs",
+ "permname" : "",
+ "modOrder" : "001",
+ "strings" : {
+  "ce8ae9da5b7cd6c3df2929543a9af92d" : "Email",
+  "b4f18f5b05307bd1e3cc00e0802d641b" : "investor",
+  "bcc254b55c4a1babdf1dcb82c207506b" : "Phone",
+  "d76c3244d1460406c2a67421c64ed44a" : "Incomplete Items",
+  "49ee3087348e8d44e1feda1917443987" : "Name",
+  "f561aaf6ef0bf14d4208bb46a4ccb3ad" : "xxx"
+ },
+ "items" : [
+  {
+   "xtype" : "Grid",
+   "Boolean fitToFrame" : true,
+   "$ xns" : "Roo.bootstrap.panel",
+   "String region" : "center",
+   "String title" : "investor",
+   "Boolean autoScroll" : true,
+   "Boolean closable" : false,
+   "items" : [
+    {
+     "listeners" : {
+      "render" : "function (_self)\n{\n   this.ds.load({});\n}"
+     },
+     "String cls" : "table-fixed",
+     "boolean striped" : true,
+     "xtype" : "Table",
+     "$ xns" : "Roo.bootstrap",
+     "Boolean loadMask" : true,
+     "* prop" : "grid",
+     "items" : [
+      {
+       "xtype" : "Store",
+       "$ xns" : "Roo.data",
+       "* prop" : "store",
+       "items" : [
+        {
+         "$ string data" : "[\n    ['Fred Blogs', 'fred@fred.com', '+852 123 123 12', 'Contact, KYC/AM, Banking, Documents, Declarations, Signed Forms']\n]",
+         "xtype" : "MemoryProxy",
+         "$ xns" : "Roo.data",
+         "* prop" : "proxy"
+        },
+        {
+         "xtype" : "ArrayReader",
+         "$ string fields" : "[\n    {name: 'name', type : 'string'},\n    {name: 'email', type : 'string'},\n    {name: 'phone', type : 'string'},\n    {name: 'incompleteItems', type : 'string'}\n]",
+         "$ xns" : "Roo.data",
+         "* prop" : "reader"
+        }
+       ]
+      },
+      {
+       "String header" : "Name",
+       "String dataIndex" : "name",
+       "Number width" : 150,
+       "xtype" : "ColumnModel",
+       "$ xns" : "Roo.grid",
+       "Boolean sortable" : false,
+       "* prop" : "cm[]",
+       "Boolean locked" : false
+      },
+      {
+       "String header" : "Email",
+       "String dataIndex" : "email",
+       "Number width" : 150,
+       "xtype" : "ColumnModel",
+       "$ xns" : "Roo.grid",
+       "Boolean sortable" : false,
+       "* prop" : "cm[]"
+      },
+      {
+       "String header" : "Phone",
+       "String dataIndex" : "phone",
+       "Number width" : 150,
+       "xtype" : "ColumnModel",
+       "$ xns" : "Roo.grid",
+       "Boolean sortable" : false,
+       "* prop" : "cm[]"
+      },
+      {
+       "String header" : "Incomplete Items",
+       "String dataIndex" : "incompleteItems",
+       "Number width" : 800,
+       "xtype" : "ColumnModel",
+       "$ xns" : "Roo.grid",
+       "Boolean sortable" : false,
+       "* prop" : "cm[]"
+      }
+     ]
+    },
+    {
+     "xtype" : "NavSimplebar",
+     "$ xns" : "Roo.bootstrap",
+     "* prop" : "toolbar",
+     "items" : [
+      {
+       "xtype" : "NavGroup",
+       "$ xns" : "Roo.bootstrap",
+       "items" : [
+        {
+         "xtype" : "NavItem",
+         "$ xns" : "Roo.bootstrap",
+         "String html" : "xxx"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
