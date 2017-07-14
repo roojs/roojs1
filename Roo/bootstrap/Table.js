@@ -1036,7 +1036,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
      * @return {Element} The element
      */
     getGridEl : function(){
-        return this.container;
+        return this.el;
     },
      /**
      * Forces a resize - used by panel.Grid
