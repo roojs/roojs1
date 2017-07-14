@@ -353,7 +353,7 @@ layout.addxtype({
                 }
                 
                 ret = new cfg.xns[cfg.xtype](cfg); // new panel!!!!!
-                ret.render()
+                
                 this.add(region, ret);
                 /*
                 if (cfg.background) {
