@@ -38,10 +38,16 @@ Roo.bootstrap.panel.Grid = function(config){
         delete config.toolbar;
     }
     
-    this.wrapper.dom.appendChild(config.grid.getGridEl().dom);
-    config.el = this.wrapper;
-    
     Roo.bootstrap.panel.Grid.superclass.constructor.call(this, config);
+       
+    this.grid = new config.grid.xns[config.grid.xtype](config.grid);
+    this.grid.render(this.wrapper);
+                
+    
+    //this.wrapper.dom.appendChild(config.grid.getGridEl().dom);
+    // ??? needed ??? config.el = this.wrapper;
+    
+    
     
   
     // xtype created footer. - not sure if will work as we normally have to render first..
