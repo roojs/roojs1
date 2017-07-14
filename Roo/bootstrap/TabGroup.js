@@ -96,6 +96,10 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             }, this.timer);
         }
         
+        if(this.tabs.length < 2){
+            
+        }
+        
     },
     
     onTouchStart : function(e, el, o)
