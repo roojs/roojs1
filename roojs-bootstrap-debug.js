@@ -5695,14 +5695,7 @@ Roo.LoadMask.prototype = {
 Roo.bootstrap.Table = function(config){
     Roo.bootstrap.Table.superclass.constructor.call(this, config);
     
-    if (config.container) {
-        // ctor'ed from a Border/panel.grid
-        this.container = Roo.get(config.container);
-        this.container.update("");
-        this.container.setStyle("overflow", "hidden");
-        this.container.addClass('x-grid-container');
-
-    }
+  
     
     // BC...
     this.rowSelection = (typeof(config.RowSelection) != 'undefined') ? config.RowSelection : this.rowSelection;
@@ -6694,7 +6687,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
      * @return {Element} The element
      */
     getGridEl : function(){
-        return this.container;
+        return this.el;
     },
      /**
      * Forces a resize - used by panel.Grid
@@ -33899,10 +33892,20 @@ Roo.bootstrap.panel.Grid = function(config)
     
       
     this.wrapper = Roo.DomHelper.append(document.body, // wrapper for IE7 strict & safari scroll issue
-        {tag: "div", cls: "x-layout-grid-wrapper x-layout-inactive-content"}, true);
+        {tag: "div", cls: "roo-layout-grid-wrapper roo-layout-inactive-content"}, true);
 
     config.el = this.wrapper;
     //this.el = this.wrapper;
+    
+      if (config.container) {
+        // ctor'ed from a Border/panel.grid
+        
+        
+        this.wrapper.setStyle("overflow", "hidden");
+        this.wrapper.addClass('roo-grid-container');
+
+    }
+    
     
     if(config.toolbar){
         var tool_el = this.wrapper.createChild();    
@@ -33925,7 +33928,7 @@ Roo.bootstrap.panel.Grid = function(config)
     }
     
     Roo.bootstrap.panel.Grid.superclass.constructor.call(this, config);
-    
+    config.grid.scrollBody = true;;
     config.grid.monitorWindowResize = false; // turn off autosizing
     config.grid.autoHeight = false;
     config.grid.autoWidth = false;
