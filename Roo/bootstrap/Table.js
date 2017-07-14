@@ -1044,7 +1044,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
      */
     autoSize : function(){
         //var ctr = Roo.get(this.container.dom.parentElement);
-        var ctr = Roo.get(this.container.dom);
+        var ctr = Roo.get(this.el.dom);
         
         var thd = this.getGridEl().select('thead',true).first();
         var tbd = this.getGridEl().select('tbody', true).first();
