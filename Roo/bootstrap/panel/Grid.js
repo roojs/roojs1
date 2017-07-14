@@ -52,7 +52,7 @@ Roo.bootstrap.panel.Grid = function(config)
     }
     
     Roo.bootstrap.panel.Grid.superclass.constructor.call(this, config);
-    config.grid.scrollBody;
+    config.grid.scrollBody = true;;
     config.grid.monitorWindowResize = false; // turn off autosizing
     config.grid.autoHeight = false;
     config.grid.autoWidth = false;
