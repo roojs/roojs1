@@ -41,20 +41,6 @@ Roo.bootstrap.layout.Border = function(config){
 Roo.bootstrap.layout.Border.regions =  ["north","south","east","west","center"];
 
 Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
-    
-    onRender : function(ctr, pos)
-    {
-        Roo.bootstrap.layout.Border.superclass.onRender.call(this,ctr,pos);
-        Roo.each(Roo.bootstrap.layout.Border.regions, function(region) {
-            if(this.regions[region]){
-                this.regions[region].onRender(this.el, pos);
-            }
-        },this);
-        
-        
-    },
-    
-    
     /**
      * Creates and adds a new region if it doesn't already exist.
      * @param {String} target The target region key (north, south, east, west or center).
@@ -355,12 +341,12 @@ layout.addxtype({
                 // needs grid and region
                 
                 //var el = this.getRegion(region).el.createChild();
-                var el = this.el.createChild();
+                /*
+                 *var el = this.el.createChild();
                 // create the grid first...
                 cfg.grid.container = el;
-                cfg.grid.scrollBody = true;
                 cfg.grid = new cfg.grid.xns[cfg.grid.xtype](cfg.grid);
-                
+                */
                 
                 if (region == 'center' && this.active ) {
                     cfg.background = false;
@@ -374,11 +360,11 @@ layout.addxtype({
                     // render grid on panel activation (if panel background)
                     ret.on('activate', function(gp) {
                         if (!gp.grid.rendered) {
-                            gp.grid.render(gp.grid.getGridEl());
+                    //        gp.grid.render(el);
                         }
                     });
                 } else {
-                    cfg.grid.render(cfg.grid.getGridEl());
+                  //  cfg.grid.render(el);
                 }
                 break;
            
