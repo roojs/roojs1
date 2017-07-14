@@ -162,10 +162,10 @@ Roo.bootstrap.panel.Content = function( config){
         this.resizeEl.setStyle("overflow", "auto");
     } else {
         // fix randome scrolling
-        this.el.on('scroll', function() {
-            Roo.log('fix random scolling');
-            this.scrollTo('top',0); 
-        });
+        //this.el.on('scroll', function() {
+        //    Roo.log('fix random scolling');
+        //    this.scrollTo('top',0); 
+        //});
     }
     content = content || this.content;
     if(content){
