@@ -16007,7 +16007,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                        this.parent = { el : true };
                        break;
                     }
-                    if (["Nest", "Content"].indexOf(tree.xtype)  > -1)  {
+                    if (["Nest", "Content", "Grid", "Tree"].indexOf(tree.xtype)  > -1)  {
                         // need to insert stuff...
                         this.parent =  {
                              el : new Roo.bootstrap.layout.Border({
