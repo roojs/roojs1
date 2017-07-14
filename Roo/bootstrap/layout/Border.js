@@ -355,7 +355,7 @@ layout.addxtype({
                 ret = new cfg.xns[cfg.xtype](cfg); // new panel!!!!!
                 
                 this.add(region, ret);
-                
+                /*
                 if (cfg.background) {
                     // render grid on panel activation (if panel background)
                     ret.on('activate', function(gp) {
@@ -366,6 +366,7 @@ layout.addxtype({
                 } else {
                   //  cfg.grid.render(el);
                 }
+                */
                 break;
            
            
