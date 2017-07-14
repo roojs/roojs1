@@ -35,6 +35,7 @@ Roo.DomHelper
 Roo.Template
 Roo.DomQuery
 Roo.util.Observable
+Roo.Document
 Roo.EventManager
 Roo.Element
 Roo.Fx
