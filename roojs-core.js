@@ -271,6 +271,8 @@ setTimeout(function(){h.apply(D,E);},o.delay||10);};};Roo.util.Event=function(D,
 var ls=this.listeners;for(var i=0,E=ls.length;i<E;i++){var l=ls[i];if(l.fn==fn&&l.scope==D){return i;}}return -1;},isListening:function(fn,D){return this.findListener(fn,D)!=-1;},removeListener:function(fn,D){var E;if((E=this.findListener(fn,D))!=-1){if(!this.firing){this.listeners.splice(E,1);
 }else{this.listeners=this.listeners.slice(0);this.listeners.splice(E,1);}return true;}return false;},clearListeners:function(){this.listeners=[];},fire:function(){var ls=this.listeners,D,E=ls.length;if(E>0){this.firing=true;var F=Array.prototype.slice.call(arguments,0);
 for(var i=0;i<E;i++){var l=ls[i];if(l.fireFn.apply(l.scope||this.obj||window,arguments)===false){this.firing=false;return false;}}this.firing=false;}return true;}};})();
+// Roo/Document.js
+Roo.Document=function(A){this.addEvents({'ready':true});Roo.util.Observable.call(this,A);var B=this;Roo.onReady(function(){B.fireEvent('ready');},null,false);};Roo.extend(Roo.Document,Roo.util.Observable,{});
 // Roo/EventManager.js
 Roo.EventManager=function(){var A,B,C=false;var F,G,H,I;var E=Roo.lib.Event;var D=Roo.lib.Dom;var J=function(){if(!C){C=true;Roo.isReady=true;if(B){clearInterval(B);}if(Roo.isGecko||Roo.isOpera){document.removeEventListener("DOMContentLoaded",J,false);}if(Roo.isIE){var T=document.getElementById("ie-deferred-loader");
 if(T){T.onreadystatechange=null;T.parentNode.removeChild(T);}}if(A){A.fire();A.clearListeners();}}};var K=function(){A=new Roo.util.Event();if(Roo.isGecko||Roo.isOpera){document.addEventListener("DOMContentLoaded",J,false);}else if(Roo.isIE){document.write("<s"+'cript id="ie-deferred-loader" defer="defer" src="/'+'/:"></s'+"cript>");
