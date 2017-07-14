@@ -39,10 +39,14 @@ Roo.bootstrap.panel.Grid = function(config){
     }
     
     Roo.bootstrap.panel.Grid.superclass.constructor.call(this, config);
-       
+    
+    config.grid.monitorWindowResize = false; // turn off autosizing
+    config.grid.autoHeight = false;
+    config.grid.autoWidth = false;
+    
     this.grid = new config.grid.xns[config.grid.xtype](config.grid);
     this.grid.render(this.wrapper);
-                
+    this.grid.getGridEl().replaceClass("x-layout-inactive-content", "x-layout-component-panel");               
     
     //this.wrapper.dom.appendChild(config.grid.getGridEl().dom);
     // ??? needed ??? config.el = this.wrapper;
@@ -61,11 +65,7 @@ Roo.bootstrap.panel.Grid = function(config){
     }
     
     
-    config.grid.monitorWindowResize = false; // turn off autosizing
-    config.grid.autoHeight = false;
-    config.grid.autoWidth = false;
-    this.grid = config.grid;
-    this.grid.getGridEl().replaceClass("x-layout-inactive-content", "x-layout-component-panel");
+    
     
      
 };
