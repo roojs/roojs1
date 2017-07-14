@@ -7,8 +7,7 @@ porting tst for layout classes from original roo library into bootstrap one.
 <html>
 <head>
   <title>Nested Layout</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
+  
    <!-- Bootstrap -->
     <link rel="stylesheet" href="../../css-bootstrap/bootstrap.min.css">
        
@@ -23,22 +22,20 @@ porting tst for layout classes from original roo library into bootstrap one.
     <script type="text/javascript" src="../../roojs-core-debug.js"></script>
     <!-- bootstrap js.. needs to compile it later.. -->
     <script type="text/javascript" src="../../roojs-bootstrap-debug.js"></script>
-
-  <!--
+  
+  <script type="text/javascript" src="../../Roo/bootstrap/panel/Border.js"></script>
   <script type="text/javascript" src="../../Roo/bootstrap/panel/Grid.js"></script>
-  <script type="text/javascript" src="../../Roo/bootstrap/Table.js"></script>
   <script type="text/javascript" src="../../Roo/bootstrap/Input.js"></script>
-    -->
-    <script type="text/javascript" src="../../Roo/bootstrap/layout/Manager.js"></script>
-    <script type="text/javascript" src="../../Roo/bootstrap/layout/Border.js"></script>
-    <script type="text/javascript" src="../../Roo/bootstrap/layout/Region.js"></script>
-    <script type="text/javascript" src="../../Roo/bootstrap/layout/Split.js"></script>
+	<script type="text/javascript">
 
-    <script type="text/javascript" src="../../Roo/bootstrap/layout/Center.js"></script>
-    <script type="text/javascript" src="../../Roo/bootstrap/panel/Content.js"></script>
-    <script type="text/javascript" src="../../Roo/bootstrap/Modal.js"></script>
-    <script type="text/javascript" src="./nested-dialog.js"></script>
+Roo.namespace("Dashboard");
+    </script>
+     
+         <script type="text/javascript" src="Dashboard.Header1.js"></script>
 
+     
+     
+     
     <style type="text/css">
 .navbar {
     padding: 0;
@@ -100,11 +97,10 @@ Example.Nested = new Roo.XComponent({
                 split:true,
                 tabPosition: 'top',
                 initialSize: 400,
-                titlebar: false,
+                titlebar: true,
                // collapsible: true,
                 minSize: 100,
-                maxSize: 500,
-                cls : 'hidden-xs'
+                maxSize: 500
             },
             north: {
                 xtype : 'Region',
@@ -120,7 +116,7 @@ Example.Nested = new Roo.XComponent({
                 xns: Roo.bootstrap.layout,
                 autoScroll: false,
                 tabPosition:'top',
-                 titlebar: false
+                 titlebar: true
             },
             items : [
                 {
@@ -219,12 +215,7 @@ Example.Nested = new Roo.XComponent({
                                     {
                                         xtype: 'NavItem',
                                         xns: Roo.bootstrap,
-                                        html: 'show dialog',
-                                        listeners : {
-                                            click : function() {
-                                                Example.NestedDialog.show({});
-                                            }
-                                        }
+                                        html: 'a button'
                                         
                                     },
                                     {
@@ -354,8 +345,7 @@ Example.Nested = new Roo.XComponent({
 	                        maxSize: 400,
 	                        autoScroll:true,
 	                        collapsible:true,
-	                        titlebar: true,
-                            cls : 'hidden-xs'
+	                        titlebar: true
 	                    },
 	                    center: {
                             xtype : 'Region',
@@ -375,37 +365,7 @@ Example.Nested = new Roo.XComponent({
                                 xns: Roo.bootstrap.panel,
                                 title : "the body",
                                 region : 'center',
-                                html : 'some body center 2',
-                                toolbar : {
-                                    xtype: 'NavSimplebar',
-                                    xns : Roo.bootstrap,
-                                    items: [
-                                        {
-                                            xtype: 'NavGroup',
-                                            xns: Roo.bootstrap,
-                                            items : [
-                                                {
-                                                    xtype: 'NavItem',
-                                                    xns: Roo.bootstrap,
-                                                    html: 'show dialog',
-                                                    listeners : {
-                                                        click : function() {
-                                                            Example.NestedDialog.show({});
-                                                        }
-                                                    }
-                                                    
-                                                },
-                                                {
-                                                    xtype: 'Input',
-                                                    xns: Roo.bootstrap,
-                                                    placeholder: 'a text input'
-                                                    
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                    
-                                },
+                                html : 'some body center'
                             },
                         ]
                     }
@@ -427,8 +387,7 @@ Example.Nested = new Roo.XComponent({
   
 	</script>
 </head>
-<body  >
+<body class="xtheme-gray">
 
  </body>
 </html>
-
