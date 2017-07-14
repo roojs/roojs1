@@ -18,8 +18,8 @@ Roo.bootstrap.panel.Grid = function(config)
     this.wrapper = Roo.DomHelper.append(document.body, // wrapper for IE7 strict & safari scroll issue
         {tag: "div", cls: "x-layout-grid-wrapper x-layout-inactive-content"}, true);
 
-    
-    this.el = this.wrapper;
+    config.el = this.wrapper;
+    //this.el = this.wrapper;
     
     if(config.toolbar){
         var tool_el = this.wrapper.createChild();    
