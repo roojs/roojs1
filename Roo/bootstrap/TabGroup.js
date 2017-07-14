@@ -123,6 +123,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     */
     register : function(item)
     {
+        Roo.log('run???');
         this.tabs.push( item);
         item.navId = this.navId; // not really needed..
         this.addBullet();
