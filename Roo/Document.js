@@ -13,12 +13,7 @@
  * 
  * @param {Object} config the methods and properties of the 'base' class for the application.
  * 
- */
-/**
- * 
  *  Generic Page handler - implement this to start your app..
- * 
- * 
  * 
  * eg.
  *  MyProject = new Roo.Document({
