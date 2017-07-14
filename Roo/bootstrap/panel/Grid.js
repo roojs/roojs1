@@ -45,9 +45,19 @@ Roo.bootstrap.panel.Grid = function(config){
     config.grid.autoWidth = false;
     
     this.grid = new config.grid.xns[config.grid.xtype](config.grid);
-    this.grid.render(this.wrapper);
-    this.grid.getGridEl().replaceClass("roo-layout-inactive-content", "roo-layout-component-panel");               
     
+    this.grid.getGridEl().replaceClass("roo-layout-inactive-content", "roo-layout-component-panel");               
+    if (config.background) {
+        // render grid on panel activation (if panel background)
+        this.on('activate', function(gp) {
+            if (!gp.grid.rendered) {
+                gp.grid.render(el);
+            }
+        });
+            
+    } else {
+        this.grid.render(this.wrapper);
+    }
     //this.wrapper.dom.appendChild(config.grid.getGridEl().dom);
     // ??? needed ??? config.el = this.wrapper;
     
