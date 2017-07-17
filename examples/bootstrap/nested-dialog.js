@@ -18,7 +18,7 @@ Example.NestedDialog = {
       
         this.callback = cb;
         this.data = data;
-        this.dialog.show(this.data._el);
+        this.dialog.show( data ? this.data._el : false);
         if (this.form) {
          this.form.reset();
          this.form.setValues(data);
