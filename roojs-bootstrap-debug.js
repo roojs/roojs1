@@ -14003,7 +14003,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.touchViewEl.show();
 
         this.touchViewEl.select('.modal-dialog', true).first().setStyle('margin', '0px');
-        this.touchViewEl.select('.modal-dialog > .modal-content', true).first().setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
+        this.touchViewEl.select('.modal-dialog > .modal-content', true).first().setSize(
+                Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
 
         var bodyHeight = Roo.lib.Dom.getViewHeight() - this.touchViewFooterEl.getHeight() + this.touchViewBodyEl.getPadding('tb');
 
@@ -14111,12 +14112,20 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     row.select('.roo-combobox-list-group-item-value', true).first().dom.innerHTML = cfg.html;
                 }
             }
-            
-            if(!this.multiple && this.valueField && typeof(d.data[this.valueField]) != 'undefined' && d.data[this.valueField] == this.getValue()){
+            row.select('.roo-combobox-list-group-item-box', true).removeClass('selected');
+            if(!this.multiple && this.valueField &&
+                    typeof(d.data[this.valueField]) != 'undefined' && d.data[this.valueField] == this.getValue())
+            {
+                // radio buttons..
                 row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
+                row.select('.roo-combobox-list-group-item-box', true).addClass('selected');
             }
             
-            if(this.multiple && this.valueField && typeof(d.data[this.valueField]) != 'undefined' && this.getValue().indexOf(d.data[this.valueField]) != -1){
+            if(this.multiple && this.valueField &&
+                    typeof(d.data[this.valueField]) != 'undefined' && this.getValue().indexOf(d.data[this.valueField]) != -1)
+            {
+                
+                // checkboxes...
                 row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
                 this.tickItems.push(d.data);
             }
