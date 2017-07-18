@@ -2348,13 +2348,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     row.select('.roo-combobox-list-group-item-value', true).first().dom.innerHTML = cfg.html;
                 }
             }
-            row.select('.roo-combobox-list-group-item-box', true).removeClass('selected');
+            row.removeClass('selected');
             if(!this.multiple && this.valueField &&
                     typeof(d.data[this.valueField]) != 'undefined' && d.data[this.valueField] == this.getValue())
             {
                 // radio buttons..
                 row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
-                row.select('.roo-combobox-list-group-item-box', true).addClass('selected');
+                row.addClass('selected');
             }
             
             if(this.multiple && this.valueField &&
