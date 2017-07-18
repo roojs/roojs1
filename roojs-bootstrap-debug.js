@@ -13878,7 +13878,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         cfg.cn = combobox;
         
-        if(this.fieldLabel.length){
+        if(this.fieldLabel.length && this.labelWidth){
             
             var lw = align === 'left' ? ('col-sm' + this.labelWidth) : '';
             var cw = align === 'left' ? ('col-sm' + (12 - this.labelWidth)) : '';
