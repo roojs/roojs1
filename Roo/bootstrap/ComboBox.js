@@ -2348,7 +2348,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     row.select('.roo-combobox-list-group-item-value', true).first().dom.innerHTML = cfg.html;
                 }
             }
-            
+            row.select('.roo-combobox-list-group-item-box', true).removeClass('selected');
             if(!this.multiple && this.valueField &&
                     typeof(d.data[this.valueField]) != 'undefined' && d.data[this.valueField] == this.getValue())
             {
