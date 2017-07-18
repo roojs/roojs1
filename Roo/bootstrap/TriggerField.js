@@ -268,7 +268,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             combobox.cls += ' roo-select2-container-multi';
         }
         
-        if (align ==='left' && this.fieldLabel.length) {
+        if (align ==='left' && this.fieldLabel.length && this.labelWidth) {
             
 //                Roo.log("left and has label");
                 cfg.cn = [
