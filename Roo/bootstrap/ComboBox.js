@@ -2352,12 +2352,16 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             if(!this.multiple && this.valueField &&
                     typeof(d.data[this.valueField]) != 'undefined' && d.data[this.valueField] == this.getValue())
             {
+                // radio buttons..
                 row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
+                row.select('.roo-combobox-list-group-item-box', true).addClass('selected');
             }
             
             if(this.multiple && this.valueField &&
                     typeof(d.data[this.valueField]) != 'undefined' && this.getValue().indexOf(d.data[this.valueField]) != -1)
             {
+                
+                // checkboxes...
                 row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
                 this.tickItems.push(d.data);
             }
