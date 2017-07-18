@@ -2239,7 +2239,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.touchViewEl.show();
 
         this.touchViewEl.select('.modal-dialog', true).first().setStyle('margin', '0px');
-        this.touchViewEl.select('.modal-dialog > .modal-content', true).first().setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
+        this.touchViewEl.select('.modal-dialog > .modal-content', true).first().setSize(
+                Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
 
         var bodyHeight = Roo.lib.Dom.getViewHeight() - this.touchViewFooterEl.getHeight() + this.touchViewBodyEl.getPadding('tb');
 
@@ -2348,11 +2349,15 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 }
             }
             
-            if(!this.multiple && this.valueField && typeof(d.data[this.valueField]) != 'undefined' && d.data[this.valueField] == this.getValue()){
+            if(!this.multiple && this.valueField &&
+                    typeof(d.data[this.valueField]) != 'undefined' && d.data[this.valueField] == this.getValue())
+            {
                 row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
             }
             
-            if(this.multiple && this.valueField && typeof(d.data[this.valueField]) != 'undefined' && this.getValue().indexOf(d.data[this.valueField]) != -1){
+            if(this.multiple && this.valueField &&
+                    typeof(d.data[this.valueField]) != 'undefined' && this.getValue().indexOf(d.data[this.valueField]) != -1)
+            {
                 row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
                 this.tickItems.push(d.data);
             }
