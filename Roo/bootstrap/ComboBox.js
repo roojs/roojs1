@@ -2191,7 +2191,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.originalValue = this.getValue();
         
-        this.inputEl().on("click", this.showTouchView, this);
+        this.inputEl().on("touch", this.showTouchView, this);
         
         this.touchViewFooterEl.select('.roo-touch-view-cancel', true).first().on('click', this.hideTouchView, this);
         this.touchViewFooterEl.select('.roo-touch-view-ok', true).first().on('click', this.setTouchViewValue, this);
