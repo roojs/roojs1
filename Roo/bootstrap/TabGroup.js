@@ -150,7 +150,6 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     */
     register : function(item)
     {
-        Roo.log('up');
         this.tabs.push( item);
         item.navId = this.navId; // not really needed..
         this.addBullet();
@@ -365,7 +364,6 @@ Roo.apply(Roo.bootstrap.TabGroup, {
     */
     register : function(navgrp)
     {
-        Roo.log('down');
         this.groups[navgrp.navId] = navgrp;
 	
     },
