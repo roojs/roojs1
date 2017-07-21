@@ -54,6 +54,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             
             cfg.cn = [{
                cls : 'carousel-inner'
+               cn : []
             }];
         
             if(this.bullets  && !Roo.isTouch){
