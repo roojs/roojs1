@@ -329,9 +329,9 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
      
     setActiveBullet : function(i)
     {
-        if(Roo.isTouch){
-            return;
-        }
+//        if(Roo.isTouch){
+//            return;
+//        }
         
         Roo.each(this.el.select('.bullet', true).elements, function(el){
             el.removeClass('selected');
