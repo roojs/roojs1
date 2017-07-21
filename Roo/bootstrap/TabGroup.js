@@ -40,7 +40,6 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     autoslide : false,
     slideFn : false,
     slideOnTouch : false,
-    Roo.isTouch : false;
     
     getAutoCreate : function()
     {
