@@ -77,6 +77,8 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 
                 cfg.cn[0].cn = bullets;
             }
+            
+            
         }
         
         return cfg;
