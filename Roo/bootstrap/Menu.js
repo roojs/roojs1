@@ -280,6 +280,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             xy[0] = xy[0] - this.el.getWidth() + this.triggerEl.getWidth();
         }
         
+        var test = '100px';
         /*
          * This not working on ios
          */
