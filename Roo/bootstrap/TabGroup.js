@@ -93,6 +93,16 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                                 class : 'fa fa-chevron-left'
                             }
                         ]
+                    },
+                    {
+                        tag : 'div',
+                        class : 'carousel-next',
+                        cn : [
+                            {
+                                tag : 'i',
+                                class : 'fa fa-chevron-right'
+                            }
+                        ]
                     }
                 ]
             })
