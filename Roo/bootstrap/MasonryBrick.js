@@ -281,6 +281,8 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     
     onTouchMove: function(e, el)
     {
+        Roo.log('touch moved');
+        
         this.touchmoved = true;
     },
     onContextMenu : function(e,el)
@@ -294,6 +296,8 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     onTouchEnd: function(e, el)
     {
 //        e.preventDefault();
+        
+        Roo.log('touch end');
         
         if((new Date().getTime() - this.timer > 1000) || !this.href.length || this.touchmoved){
             
