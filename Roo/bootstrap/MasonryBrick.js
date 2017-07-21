@@ -311,11 +311,9 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             return;
         }
         
-        Roo.log('trigger link and paragraph');
-        
         this.el.select('.masonry-brick-paragraph', true).first().setOpacity(0, true);
         
-//        (function() { window.location.href = this.href; }).defer(3000);
+        window.location.href = this.href;
     }
     
 });
