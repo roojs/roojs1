@@ -311,7 +311,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             
             if(this.href.length){
                 Roo.log('trigger link');
-                (function() { window.location.href = this.href; }).defer(3000);
+                (function() { window.location.href = this.href; }).defer(1000);
 //                window.location.href = this.href;
             }
             
@@ -322,7 +322,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         
         this.el.select('.masonry-brick-paragraph', true).first().setOpacity(0, true);
         
-//        (function() { window.location.href = this.href; }).defer(3000);
+//        (function() { window.location.href = this.href; }).defer(1000);
     }
     
 });
