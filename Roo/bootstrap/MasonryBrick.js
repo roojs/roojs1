@@ -230,8 +230,6 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     
     onClick: function(e, el)
     {
-        alert('click');
-        
         if(!Roo.isTouch){
             return;
         }
