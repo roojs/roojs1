@@ -121,7 +121,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
     initEvents:  function()
     {
-        if(Roo.isTouch && this.slideOnTouch){
+        if(Roo.isTouch && this.slideOnTouch && !this.showarrow){
             this.el.on("touchstart", this.onTouchStart, this);
         }
         
@@ -134,7 +134,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         }
         
         if(this.showarrow){
-            
+            this.el.on
         }
         
         
