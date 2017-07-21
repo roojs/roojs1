@@ -296,7 +296,8 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
     addBullet: function()
     {
-        if(!this.bullets || Roo.isTouch){
+//        if(!this.bullets || Roo.isTouch){
+        if(!this.bullets){
             return;
         }
         var ctr = this.el.select('.carousel-bullets',true).first();
