@@ -69,3 +69,15 @@
     margin-top: -25px;
     left: 0;
 }
+
+.carousel-inner > .carousel-nav > .carousel-next {
+    position: absolute;
+    display: block;
+    top: 50%;
+    color: white;
+    z-index: 100;
+    cursor: pointer;
+    padding: 10px;
+    margin-top: -25px;
+    right: 0;
+}
