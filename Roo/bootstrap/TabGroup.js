@@ -57,7 +57,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                cn : []
             }];
         
-            if(this.bullets  && !Roo.isTouch){
+            if(this.bullets){
                 
                 var bullets = {
                     cls : 'carousel-bullets',
