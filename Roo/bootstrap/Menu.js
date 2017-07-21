@@ -281,6 +281,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         }
         
         if(this.el.getStyle('top').slice(-1) != "%"){
+            Roo.log('run??');
             this.el.setXY(xy);
         }
         
