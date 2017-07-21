@@ -279,7 +279,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         if(this.el.getWidth() + xy[0] > Roo.lib.Dom.getViewWidth()){
             xy[0] = xy[0] - this.el.getWidth() + this.triggerEl.getWidth();
         }
-        
+        Roo.log(xy);
         if(this.el.getStyle('top').slice(-1) != "%"){
             this.el.setXY(xy);
         }
