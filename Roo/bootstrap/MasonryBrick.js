@@ -266,7 +266,6 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     onTouchStart: function(e, el)
     {
 //        e.preventDefault();
-        Roo.log('touch start');
         
         this.touchmoved = false;
         
@@ -282,8 +281,6 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     
     onTouchMove: function(e, el)
     {
-        Roo.log('touch moved');
-        
         this.touchmoved = true;
     },
     
@@ -298,10 +295,8 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     {
 //        e.preventDefault();
         
-        Roo.log('touch end');
-        
         if((new Date().getTime() - this.timer > 1000) || !this.href.length || this.touchmoved){
-            Roo.log('leave');
+        
             this.leave(e,el);
             
             return;
