@@ -364,6 +364,7 @@ Roo.apply(Roo.bootstrap.TabGroup, {
     */
     register : function(navgrp)
     {
+        Roo.log('down');
         this.groups[navgrp.navId] = navgrp;
 	
     },
