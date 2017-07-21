@@ -282,7 +282,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         var test = '100px';
         
-        if(this.el.getStyle('top').slice(-1) != "%"){
+        if(this.el.getStyle('top') != 'auto' && this.el.getStyle('top').slice(-1) != "%"){
             this.el.setXY(xy);
         }
         
