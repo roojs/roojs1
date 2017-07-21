@@ -58,7 +58,7 @@
     border: 5px solid rgba(0, 0, 0, 1) !important;
 }
 
-.carousel-inner > .carousel-nav > .carousel-prev {
+.carousel-inner > .carousel-arrow > .carousel-prev {
     position: absolute;
     display: block;
     top: 50%;
@@ -70,7 +70,7 @@
     left: 0;
 }
 
-.carousel-inner > .carousel-nav > .carousel-next {
+.carousel-inner > .carousel-arrow > .carousel-next {
     position: absolute;
     display: block;
     top: 50%;
@@ -82,7 +82,7 @@
     right: 0;
 }
 
-.carousel-inner > .carousel-nav > .carousel-prev > i,
-.carousel-inner > .carousel-nav > .carousel-next > i {
+.carousel-inner > .carousel-arrow > .carousel-prev > i,
+.carousel-inner > .carousel-arrow > .carousel-next > i {
     font-size: 24px;
 }
