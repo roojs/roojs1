@@ -195,7 +195,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             style : 'display: none',
             cn : [
                 {
-                    cls: "modal-dialog " + (this.size.length) ? '',
+                    cls: "modal-dialog " + size,
                     cn : [
                         {
                             cls : "modal-content",
