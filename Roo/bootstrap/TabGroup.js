@@ -15,7 +15,7 @@
  * @cfg {Boolean} autoslide (true|false) auto slide .. default false
  * @cfg {Boolean} slideOnTouch (true|false) slide on touch .. default false
  * @cfg {Number} timer auto slide timer .. default 0 millisecond
- * @cfg {Boolean} show auto slide timer .. default 0 millisecond
+ * @cfg {Boolean} showarrow (true|false) show arrow default true
  * 
  * @constructor
  * Create a new TabGroup
