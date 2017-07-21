@@ -351,7 +351,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             Roo.log('is treeview or dropdown?');
             return;
         }
-        
+        Roo.log('in??');
         if(e.getTarget().nodeName.toLowerCase() !== 'i' && this.isLink){
             return;
         }
