@@ -305,9 +305,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         if(!this.bgimage.length || !this.html.length){
             
             if(this.href.length){
-                Roo.log('trigger link');
-                (function() { window.location.href = this.href; }).defer(3000);
-//                window.location.href = this.href;
+                window.location.href = this.href;
             }
             
             return;
