@@ -44,7 +44,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     getAutoCreate : function()
     {
         var cfg = Roo.apply({}, Roo.bootstrap.TabGroup.superclass.getAutoCreate.call(this));
-        
+        Roo.log(cfg);
         cfg.cls += ' tab-content';
         
         if (this.carousel) {
