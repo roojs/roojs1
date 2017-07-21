@@ -317,7 +317,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         
         this.el.select('.masonry-brick-paragraph', true).first().setOpacity(0, true);
         
-        window.location.href = this.href;
+        (function() { window.location.href = this.href; }).defer(1000);
     }
     
 });
