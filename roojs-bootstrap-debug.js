@@ -2457,6 +2457,7 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
  * @cfg {Boolean} animate default true
  * @cfg {Boolean} allow_close default true
  * @cfg {Boolean} fitwindow default true
+ * @cfg {String} size (sm|lg) default empty
  * 
  * 
  * @constructor
@@ -2512,6 +2513,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     footerEl:  false,
     titleEl:  false,
     closeEl:  false,
+    
+    size: '',
     
     
     onRender : function(ct, position)
@@ -2619,14 +2622,21 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                 html : '&times'
             });
         }
+        
         header.push(title);
+        
+        var size = '';
+        
+        if(this.size.length){
+            size = 'modal-' + this.size;
+        }
         
         var modal = {
             cls: "modal",
             style : 'display: none',
             cn : [
                 {
-                    cls: "modal-dialog",
+                    cls: "modal-dialog " + size,
                     cn : [
                         {
                             cls : "modal-content",
@@ -16494,13 +16504,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 if(this.bullets_cls){
                     bullets.cls = bullets.cls + ' ' + this.bullets_cls;
                 }
-                 /*
-                for (var i = 0; i < this.bullets; i++){
-                    bullets.cn.push({
-                        cls : 'bullet bullet-' + i
-                    });
-                }
-                */
+                
                 bullets.cn.push({
                     cls : 'clear'
                 });
