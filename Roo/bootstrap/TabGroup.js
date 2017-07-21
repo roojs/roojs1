@@ -134,7 +134,8 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         }
         
         if(this.showarrow){
-            this.el.select('.carousel-prev', true).first().on('click', this.showPanelNext(), this);
+            this.el.select('.carousel-prev', true).first().on('click', this.showPanelPrev(), this);
+            this.el.select('.carousel-next', true).first().on('click', this.showPanelNext(), this);
         }
         
         
