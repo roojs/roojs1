@@ -15,6 +15,7 @@
  * @cfg {Boolean} autoslide (true|false) auto slide .. default false
  * @cfg {Boolean} slideOnTouch (true|false) slide on touch .. default false
  * @cfg {Number} timer auto slide timer .. default 0 millisecond
+ * @cfg {Boolean} show auto slide timer .. default 0 millisecond
  * 
  * @constructor
  * Create a new TabGroup
@@ -85,7 +86,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             
             cfg.cn[0].cn.push({
                 tag : 'div',
-                class : 'carousel-nav',
+                class : 'carousel-arrow',
                 cn : [
                     {
                         tag : 'div',
@@ -127,6 +128,8 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 _this.showPanelNext();
             }, this.timer);
         }
+        
+        
         
     },
     
