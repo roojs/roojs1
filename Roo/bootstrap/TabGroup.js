@@ -80,7 +80,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 cfg.cn[0].cn = bullets;
             }
             
-            cfg.cn[0].push({
+            cfg.cn[0].cn.push({
                 tag : 'div',
                 class : 'carousel-nav',
                 cn : [
