@@ -16442,6 +16442,7 @@ Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
  * @cfg {Boolean} autoslide (true|false) auto slide .. default false
  * @cfg {Boolean} slideOnTouch (true|false) slide on touch .. default false
  * @cfg {Number} timer auto slide timer .. default 0 millisecond
+ * @cfg {Boolean} showarrow (true|false) show arrow default true
  * 
  * @constructor
  * Create a new TabGroup
@@ -16467,6 +16468,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     autoslide : false,
     slideFn : false,
     slideOnTouch : false,
+    showarrow : true,
     
     getAutoCreate : function()
     {
@@ -16478,7 +16480,8 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             cfg.cls += ' carousel slide';
             
             cfg.cn = [{
-               cls : 'carousel-inner'
+               cls : 'carousel-inner',
+               cn : []
             }];
         
             if(this.bullets  && !Roo.isTouch){
@@ -16502,8 +16505,38 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                     cls : 'clear'
                 });
                 
-                cfg.cn[0].cn = bullets;
+                cfg.cn[0].cn.push(bullets);
             }
+            
+            if(this.showarrow){
+                cfg.cn[0].cn.push({
+                    tag : 'div',
+                    class : 'carousel-arrow',
+                    cn : [
+                        {
+                            tag : 'div',
+                            class : 'carousel-prev',
+                            cn : [
+                                {
+                                    tag : 'i',
+                                    class : 'fa fa-chevron-left'
+                                }
+                            ]
+                        },
+                        {
+                            tag : 'div',
+                            class : 'carousel-next',
+                            cn : [
+                                {
+                                    tag : 'i',
+                                    class : 'fa fa-chevron-right'
+                                }
+                            ]
+                        }
+                    ]
+                });
+            }
+            
         }
         
         return cfg;
@@ -16511,7 +16544,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
     initEvents:  function()
     {
-        if(Roo.isTouch && this.slideOnTouch){
+        if(Roo.isTouch && this.slideOnTouch && !this.showarrow){
             this.el.on("touchstart", this.onTouchStart, this);
         }
         
@@ -16522,6 +16555,12 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 _this.showPanelNext();
             }, this.timer);
         }
+        
+        if(this.showarrow){
+            this.el.select('.carousel-prev', true).first().on('click', this.showPanelPrev, this);
+            this.el.select('.carousel-next', true).first().on('click', this.showPanelNext, this);
+        }
+        
         
     },
     
