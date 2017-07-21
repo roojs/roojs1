@@ -45,8 +45,6 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
     getAutoCreate : function()
     {
-        Roo.isTouch = false;
-        
         var cfg = Roo.apply({}, Roo.bootstrap.TabGroup.superclass.getAutoCreate.call(this));
         
         Roo.log(cfg);
