@@ -284,7 +284,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
          * This not working on ios
          */
 //        if(this.el.getStyle('top').slice(-1) != "%"){
-//            
+//            this.el.setXY(xy);
 //        }
         
         if(!isNaN(this.el.getStyle('top') * 1)){
