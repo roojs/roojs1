@@ -268,6 +268,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     onTouchStart: function(e, el)
     {
 //        e.preventDefault();
+        Roo.log('touch start');
         
         if(!this.bgimage.length || !this.html.length){
             return;
