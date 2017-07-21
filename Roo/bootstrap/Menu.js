@@ -285,8 +285,8 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             this.el.setXY(xy);
         }
         
-        this.focus();
-        this.fireEvent("show", this);
+//        this.focus();
+//        this.fireEvent("show", this);
     },
     
     focus : function(){
