@@ -13870,6 +13870,41 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             ]
         };
         
+//        if(!this.multiple && this.showToggleBtn){
+//            
+//            var caret = {
+//                        tag: 'span',
+//                        cls: 'caret'
+//            };
+//            
+//            if (this.caret != false) {
+//                caret = {
+//                     tag: 'i',
+//                     cls: 'fa fa-' + this.caret
+//                };
+//                
+//            }
+//            
+//            combobox.cn.push({
+//                tag :'span',
+//                cls : 'input-group-addon btn dropdown-toggle',
+//                cn : [
+//                    caret,
+//                    {
+//                        tag: 'span',
+//                        cls: 'combobox-clear',
+//                        cn  : [
+//                            {
+//                                tag : 'i',
+//                                cls: 'icon-remove'
+//                            }
+//                        ]
+//                    }
+//                ]
+//
+//            })
+//        }
+        
         if(this.multiple){
             combobox.cls += ' roo-select2-container-multi';
         }
@@ -13920,7 +13955,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.originalValue = this.getValue();
         
-        this.inputEl().on("click", this.showTouchView, this);
+        this.inputEl().on("touch", this.showTouchView, this);
         
         this.touchViewFooterEl.select('.roo-touch-view-cancel', true).first().on('click', this.hideTouchView, this);
         this.touchViewFooterEl.select('.roo-touch-view-ok', true).first().on('click', this.setTouchViewValue, this);
@@ -30388,8 +30423,6 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     
     onClick: function(e, el)
     {
-       // alert('click');
-        
         if(!Roo.isTouch){
             return;
         }
@@ -30427,6 +30460,8 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     {
 //        e.preventDefault();
         
+        this.touchmoved = false;
+        
         if(!this.bgimage.length || !this.html.length){
             return;
         }
@@ -30435,27 +30470,26 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         
         this.timer = new Date().getTime();
         
-        this.touchmoved = false;
     },
     
     onTouchMove: function(e, el)
     {
         this.touchmoved = true;
     },
+    
     onContextMenu : function(e,el)
     {
-            e.preventDefault();
-            e.stopPropagation();
-            return false;
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
     },
-    
     
     onTouchEnd: function(e, el)
     {
 //        e.preventDefault();
         
         if((new Date().getTime() - this.timer > 1000) || !this.href.length || this.touchmoved){
-            
+        
             this.leave(e,el);
             
             return;
