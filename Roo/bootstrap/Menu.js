@@ -289,7 +289,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
 //            this.el.setXY(xy);
 //        }
         
-        if(!isNaN(this.el.getStyle('top') * 1)){
+        if(!isNaN(this.el.getStyle('top') * 1) && this.el.getStyle('top').slice(-2) != 'px'){
             this.el.setXY(xy);
         }
         
