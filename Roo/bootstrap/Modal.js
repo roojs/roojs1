@@ -178,6 +178,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                 html : '&times'
             });
         }
+        
         header.push(title);
         
         var modal = {
