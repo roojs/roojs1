@@ -57,8 +57,8 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                cn : []
             }];
         
-//            if(this.bullets  && !Roo.isTouch){
-            if(this.bullets){    
+            if(this.bullets  && !Roo.isTouch){
+                
                 var bullets = {
                     cls : 'carousel-bullets',
                     cn : []
@@ -296,8 +296,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
     addBullet: function()
     {
-//        if(!this.bullets || Roo.isTouch){
-        if(!this.bullets){
+        if(!this.bullets || Roo.isTouch){
             return;
         }
         var ctr = this.el.select('.carousel-bullets',true).first();
@@ -329,9 +328,9 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
      
     setActiveBullet : function(i)
     {
-//        if(Roo.isTouch){
-//            return;
-//        }
+        if(Roo.isTouch){
+            return;
+        }
         
         Roo.each(this.el.select('.bullet', true).elements, function(el){
             el.removeClass('selected');
