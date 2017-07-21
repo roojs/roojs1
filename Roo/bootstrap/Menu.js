@@ -354,7 +354,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         if(e.getTarget().nodeName.toLowerCase() !== 'i' && this.isLink){
             return;
         }
-        Roo.log(this.triggerEl);
+        
         if (this.isVisible()) {
             Roo.log('hide');
             this.hide();
