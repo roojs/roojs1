@@ -53,7 +53,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             cfg.cls += ' carousel slide';
             
             cfg.cn = [{
-               cls : 'carousel-inner'
+               cls : 'carousel-inner',
                cn : []
             }];
         
@@ -78,9 +78,9 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                     cls : 'clear'
                 });
                 
-                cfg.cn[0].cn = bullets;
+                cfg.cn[0].cn.push(bullets);
             }
-            Roo.log(cfg);
+            
             cfg.cn[0].cn.push({
                 tag : 'div',
                 class : 'carousel-nav',
