@@ -300,7 +300,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         Roo.log('touch end');
         return;
         if((new Date().getTime() - this.timer > 1000) || !this.href.length || this.touchmoved){
-            
+            Roo.log('leave');
             this.leave(e,el);
             
             return;
