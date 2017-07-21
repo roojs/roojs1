@@ -133,6 +133,9 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             }, this.timer);
         }
         
+        if(this.showarrow){
+            
+        }
         
         
     },
