@@ -2150,7 +2150,14 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             xy[0] = xy[0] - this.el.getWidth() + this.triggerEl.getWidth();
         }
         
-        if(this.el.getStyle('top').slice(-1) != "%"){
+        /*
+         * This not working on ios
+         */
+//        if(this.el.getStyle('top').slice(-1) != "%"){
+//            this.el.setXY(xy);
+//        }
+        
+        if(!isNaN(this.el.getStyle('top') * 1)){
             this.el.setXY(xy);
         }
         
