@@ -16,6 +16,7 @@
  * @cfg {Boolean} animate default true
  * @cfg {Boolean} allow_close default true
  * @cfg {Boolean} fitwindow default true
+ * @cfg {String} size (sm|lg) default empty
  * 
  * 
  * @constructor
