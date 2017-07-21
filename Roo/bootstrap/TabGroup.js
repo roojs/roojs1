@@ -105,7 +105,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                         ]
                     }
                 ]
-            })
+            });
         }
         
         return cfg;
