@@ -1042,7 +1042,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
      * Forces a resize - used by panel.Grid
      * @return {Element} The element
      */
-    autoSize : function(){
+    autoSize : function()
+    {
         //var ctr = Roo.get(this.container.dom.parentElement);
         var ctr = Roo.get(this.el.dom);
         
