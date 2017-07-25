@@ -1061,6 +1061,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
         cw = Math.max(cw, this.totalWidth);
         this.getGridEl().select('tr',true).setWidth(cw);
+        // resize 'expandable coloumn?
         
         return; // we doe not have a view in this design..
         
