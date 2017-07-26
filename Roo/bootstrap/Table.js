@@ -341,6 +341,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         this.store.on('beforeload', this.onBeforeLoad, this);
         this.store.on('update', this.onUpdate, this);
         this.store.on('add', this.onAdd, this);
+        this.store.on("clear", this.onClear, this);
         
         this.el.on("contextmenu", this.onContextMenu, this);
         
