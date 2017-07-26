@@ -6002,6 +6002,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         this.store.on('beforeload', this.onBeforeLoad, this);
         this.store.on('update', this.onUpdate, this);
         this.store.on('add', this.onAdd, this);
+        this.store.on("clear", this.clear, this);
         
         this.el.on("contextmenu", this.onContextMenu, this);
         
@@ -6703,7 +6704,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
      * Forces a resize - used by panel.Grid
      * @return {Element} The element
      */
-    autoSize : function(){
+    autoSize : function()
+    {
         //var ctr = Roo.get(this.container.dom.parentElement);
         var ctr = Roo.get(this.el.dom);
         
@@ -6721,6 +6723,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
         cw = Math.max(cw, this.totalWidth);
         this.getGridEl().select('tr',true).setWidth(cw);
+        // resize 'expandable coloumn?
         
         return; // we doe not have a view in this design..
         
