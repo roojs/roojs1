@@ -86,3 +86,7 @@
 .carousel-inner > .carousel-arrow > .carousel-next > i {
     font-size: 24px;
 }
+
+.carousel-inner .tab-pane.clickable {
+    cursor: pointer;
+}
