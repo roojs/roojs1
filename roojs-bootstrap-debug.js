@@ -13883,40 +13883,40 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             ]
         };
         
-//        if(!this.multiple && this.showToggleBtn){
-//            
-//            var caret = {
-//                        tag: 'span',
-//                        cls: 'caret'
-//            };
-//            
-//            if (this.caret != false) {
-//                caret = {
-//                     tag: 'i',
-//                     cls: 'fa fa-' + this.caret
-//                };
-//                
-//            }
-//            
-//            combobox.cn.push({
-//                tag :'span',
-//                cls : 'input-group-addon btn dropdown-toggle',
-//                cn : [
-//                    caret,
-//                    {
-//                        tag: 'span',
-//                        cls: 'combobox-clear',
-//                        cn  : [
-//                            {
-//                                tag : 'i',
-//                                cls: 'icon-remove'
-//                            }
-//                        ]
-//                    }
-//                ]
-//
-//            })
-//        }
+        if(!this.multiple && this.showToggleBtn){
+            
+            var caret = {
+                        tag: 'span',
+                        cls: 'caret'
+            };
+            
+            if (this.caret != false) {
+                caret = {
+                     tag: 'i',
+                     cls: 'fa fa-' + this.caret
+                };
+                
+            }
+            
+            combobox.cn.push({
+                tag :'span',
+                cls : 'input-group-addon btn dropdown-toggle',
+                cn : [
+                    caret,
+                    {
+                        tag: 'span',
+                        cls: 'combobox-clear',
+                        cn  : [
+                            {
+                                tag : 'i',
+                                cls: 'icon-remove'
+                            }
+                        ]
+                    }
+                ]
+
+            })
+        }
         
         if(this.multiple){
             combobox.cls += ' roo-select2-container-multi';
@@ -13968,7 +13968,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.originalValue = this.getValue();
         
-        this.inputEl().on("touch", this.showTouchView, this);
+        this.triggerEl = this.el.select('span.dropdown-toggle',true).first();
+        
+        this.inputEl().on("click", this.showTouchView, this);
+        this.triggerEl.on("click", this.showTouchView, this);
         
         this.touchViewFooterEl.select('.roo-touch-view-cancel', true).first().on('click', this.hideTouchView, this);
         this.touchViewFooterEl.select('.roo-touch-view-ok', true).first().on('click', this.setTouchViewValue, this);
