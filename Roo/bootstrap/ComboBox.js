@@ -2191,6 +2191,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.originalValue = this.getValue();
         
+        this.triggerEl = this.el.select('span.dropdown-toggle',true).first();
+        
         this.inputEl().on("click", this.showTouchView, this);
         
         Roo.log(this.inputEl());
