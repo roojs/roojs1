@@ -1983,7 +1983,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     getAutoCreateTouchView : function()
     {
         var id = Roo.id();
-        
+        Roo.log(id);
         var cfg = {
             cls: 'form-group' //input-group
         };
