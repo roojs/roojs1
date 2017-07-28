@@ -353,7 +353,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         /*
          *  ComboBox with tickable selections
          */
-             
+        Roo.log('run???');
         var align = this.labelAlign || this.parentLabelAlign();
         
         cfg = {
