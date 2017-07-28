@@ -336,7 +336,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         /*
          * Touch Devices
          */
-        
+        Roo.isTouch = true;
         if(Roo.isTouch && this.mobileTouchView){
             cfg = this.getAutoCreateTouchView();
             return cfg;;
