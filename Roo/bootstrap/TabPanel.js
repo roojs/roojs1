@@ -92,6 +92,8 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
             }
         }
         
+        Roo.log(this.el);
+        
     },
     
     
