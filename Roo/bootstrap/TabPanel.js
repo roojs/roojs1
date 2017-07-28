@@ -98,7 +98,6 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         
     },
     
-    
     onRender : function(ct, position)
     {
        // Roo.log("Call onRender: " + this.xtype);
