@@ -1982,6 +1982,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     getAutoCreateTouchView : function()
     {
+        Roo.log('run??');
         var id = Roo.id();
         
         var cfg = {
