@@ -52,6 +52,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
     html: false,
     tabId: false,
     navId : false,
+    href : '',
     
     getAutoCreate : function(){
         var cfg = {
