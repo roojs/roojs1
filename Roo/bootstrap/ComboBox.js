@@ -339,14 +339,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if(Roo.isTouch && this.mobileTouchView){
             cfg = this.getAutoCreateTouchView();
-            return cfg;
+            return cfg;;
         }
         
         /*
          *  Normal ComboBox
          */
         if(!this.tickable){
-            Roo.log('ru///;');
             cfg = Roo.bootstrap.ComboBox.superclass.getAutoCreate.call(this);
             return cfg;
         }
@@ -354,7 +353,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         /*
          *  ComboBox with tickable selections
          */
-        Roo.log('run???');
+             
         var align = this.labelAlign || this.parentLabelAlign();
         
         cfg = {
@@ -1983,7 +1982,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     getAutoCreateTouchView : function()
     {
-        Roo.log('run??');
         var id = Roo.id();
         
         var cfg = {
