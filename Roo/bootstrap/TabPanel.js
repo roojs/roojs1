@@ -93,9 +93,8 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         }
         
         if(this.href.length){
-            
+            this.el.on('click', this.onClick, this);
         }
-        Roo.log(this.el);
         
     },
     
