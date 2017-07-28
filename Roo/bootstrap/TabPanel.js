@@ -124,6 +124,13 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         }
         
         this.fireEvent('changed', this, state);
+    },
+    
+    onClick: function(e)
+    {
+        e.preventDefault();
+        
+        Roo.log(this.href);
     }
     
     
