@@ -16888,7 +16888,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         var cfg = {
             tag: 'div',
             // item is needed for carousel - not sure if it has any effect otherwise
-            cls: 'tab-pane item',
+            cls: 'tab-pane item' + ((this.href.length) ? ' clickable ' : ''),
             html: this.html || ''
         };
         
@@ -16927,7 +16927,6 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         }
         
     },
-    
     
     onRender : function(ct, position)
     {
