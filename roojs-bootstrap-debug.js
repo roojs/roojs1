@@ -11939,7 +11939,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * in order for a value to be mapped.
      */
     valueField: undefined,
-    
+    /**
+     * @cfg {String} modalTitle The title of the dialog that pops up on mobile views.
+     */
+    modalTitle : '',
     
     /**
      * @cfg {String} hiddenName If specified, a hidden form field with this name is dynamically generated to store the
@@ -14046,8 +14049,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.touchViewHeaderEl.hide();
 
-        if(this.fieldLabel.length){
-            this.touchViewHeaderEl.dom.innerHTML = this.fieldLabel;
+        if(this.modalTitle.length){
+            this.touchViewHeaderEl.dom.innerHTML = this.modalTitle;
             this.touchViewHeaderEl.show();
         }
 
@@ -14059,7 +14062,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
         var bodyHeight = Roo.lib.Dom.getViewHeight() - this.touchViewFooterEl.getHeight() + this.touchViewBodyEl.getPadding('tb');
 
-        if(this.fieldLabel.length){
+        if(this.modalTitle.length){
             bodyHeight = bodyHeight - this.touchViewHeaderEl.getHeight();
         }
         
@@ -14189,7 +14192,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var bodyHeight = Roo.lib.Dom.getViewHeight() - this.touchViewFooterEl.getHeight() + this.touchViewBodyEl.getPadding('tb');
 
-        if(this.fieldLabel.length){
+        if(this.modalTitle.length){
             bodyHeight = bodyHeight - this.touchViewHeaderEl.getHeight();
         }
 
