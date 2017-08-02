@@ -11939,10 +11939,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * in order for a value to be mapped.
      */
     valueField: undefined,
-    /**
-     * @cfg {String} modalTitle The title of the dialog that pops up on mobile views.
-     */
-    modalTitle : '',
+    
     
     /**
      * @cfg {String} hiddenName If specified, a hidden form field with this name is dynamically generated to store the
@@ -14049,8 +14046,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.touchViewHeaderEl.hide();
 
-        if(this.modalTitle.length){
-            this.touchViewHeaderEl.dom.innerHTML = this.modalTitle;
+        if(this.fieldLabel.length){
+            this.touchViewHeaderEl.dom.innerHTML = this.fieldLabel;
             this.touchViewHeaderEl.show();
         }
 
@@ -14062,7 +14059,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
         var bodyHeight = Roo.lib.Dom.getViewHeight() - this.touchViewFooterEl.getHeight() + this.touchViewBodyEl.getPadding('tb');
 
-        if(this.modalTitle.length){
+        if(this.fieldLabel.length){
             bodyHeight = bodyHeight - this.touchViewHeaderEl.getHeight();
         }
         
@@ -14192,7 +14189,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var bodyHeight = Roo.lib.Dom.getViewHeight() - this.touchViewFooterEl.getHeight() + this.touchViewBodyEl.getPadding('tb');
 
-        if(this.modalTitle.length){
+        if(this.fieldLabel.length){
             bodyHeight = bodyHeight - this.touchViewHeaderEl.getHeight();
         }
 
@@ -24355,6 +24352,13 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
             if(xy[0] + this.el.getWidth() > Roo.lib.Dom.getViewWidth()){
                 placement = 'left';
             }
+            
+            var scroll = Roo.select('body', true).first().getScroll();
+            
+            if(xy[1] > Roo.lib.Dom.getViewHeight() + scroll.top - this.el.getHeight()){
+                placement = 'top';
+            }
+            
         }
         
         align = Roo.bootstrap.Tooltip.alignment[placement];
