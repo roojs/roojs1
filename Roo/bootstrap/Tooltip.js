@@ -249,23 +249,15 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         
         Roo.log(xy);
         
-        if(xy[0] < 0){
-            placement = 'right';
+        if(placement == 'top' || placement == 'bottom'){
+            if(xy[0] < 0){
+                placement = 'right';
+            }
+            
+            if(xy[0] + this.el.getWidth() > Roo.lib.Dom.getViewWidth()){
+                placement = 'left';
+            }
         }
-
-        if(xy[0] + this.el.getWidth() > Roo.lib.Dom.getViewWidth()){
-            placement = 'left';
-        }
-                
-//        if(placement == 'top' || placement == 'bottom'){
-//            if(xy[0] < 0){
-//                placement = 'right';
-//            }
-//            
-//            if(xy[0] + this.el.getWidth() > Roo.lib.Dom.getViewWidth()){
-//                placement = 'left';
-//            }
-//        }
         
         align = Roo.bootstrap.Tooltip.alignment[placement];
         
