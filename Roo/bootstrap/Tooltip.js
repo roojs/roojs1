@@ -249,7 +249,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         
         Roo.log(xy);
         
-        Roo.log(this.bindEl);
+        Roo.log(this.el);
         
         if(placement == 'top' || placement == 'bottom'){
             if(xy[0] < 0){
