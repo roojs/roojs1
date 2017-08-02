@@ -82,6 +82,9 @@ Roo.apply(Roo.bootstrap.Tooltip, {
             //Roo.log("child element over..");
             
         }
+        
+        this.currenTip.replacement = el.attr('xxxx');
+        
         this.currentEl = bindEl;
         this.currentTip.bind(bindEl);
         this.currentRegion = Roo.lib.Region.getRegion(dom);
