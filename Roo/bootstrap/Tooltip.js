@@ -260,7 +260,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
             
             var scroll = Roo.select('body', true).first().getScroll();
             
-            if(xy[1] > Roo.lib.Dom.getViewHeight() + scroll.top){
+            if(xy[1] > Roo.lib.Dom.getViewHeight() + scroll.top - 100){
                 placement = 'top';
             }
             
