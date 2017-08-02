@@ -121,7 +121,7 @@ Roo.apply(Roo.bootstrap.Tooltip, {
         'left' : ['r-l', [-2,0], 'right'],
         'right' : ['l-r', [2,0], 'left'],
         'bottom' : ['t-b', [0,2], 'top'],
-        'top' : [ 'b-t', [0,-2], 'bottom']
+        'top' : [ 'b-t', [0,-3], 'bottom']
     }
     
 });
