@@ -24165,7 +24165,7 @@ Roo.apply(Roo.bootstrap.Tooltip, {
         }    
         //Roo.log(ev);
         
-        if(!el){
+        if(!el || el.dom == document){
             return;
         }
         

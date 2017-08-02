@@ -66,13 +66,12 @@ Roo.apply(Roo.bootstrap.Tooltip, {
         }    
         //Roo.log(ev);
         
-        if(!el){
+        if(!el || el.dom == document){
             return;
         }
         
         var bindEl = el;
         
-        Roo.log(el.dom);
         // you can not look for children, as if el is the body.. then everythign is the child..
         if (!el.attr('tooltip')) { //
             if (!el.select("[tooltip]").elements.length) {
