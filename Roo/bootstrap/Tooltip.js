@@ -257,6 +257,13 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
             if(xy[0] + this.el.getWidth() > Roo.lib.Dom.getViewWidth()){
                 placement = 'left';
             }
+            
+            var scroll = Roo.select('body', true).first().getScroll();
+            
+            if(xy[1] < Roo.lib.Dom.getViewHeight() + scroll.top){
+                placement = 'top';
+            }
+            
         }
         
         align = Roo.bootstrap.Tooltip.alignment[placement];
