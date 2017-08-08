@@ -240,15 +240,13 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
     },
     
-    getAutoCreate : function(){
-        
+    getAutoCreate : function()
+    {
         var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
         
         var id = Roo.id();
         
         var cfg = {};
-        
-       
         
         if(this.inputType != 'hidden'){
             cfg.cls = 'form-group' //input-group
@@ -263,7 +261,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             placeholder : this.placeholder || '',
             autocomplete : this.autocomplete || 'new-password'
         };
-        
         
         if(this.align){
             input.style = (typeof(input.style) == 'undefined') ? ('text-align:' + this.align) : (input.style + 'text-align:' + this.align);
@@ -284,9 +281,11 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         if (this.name) {
             input.name = this.name;
         }
+        
         if (this.size) {
             input.cls += ' input-' + this.size;
         }
+        
         var settings=this;
         ['xs','sm','md','lg'].map(function(size){
             if (settings[size]) {
