@@ -831,6 +831,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         
+        if(this.indicator){
+            this.indicator.hide();
+        }
+        
 //        var formGroup = this.el.findParent('.form-group', false, true);
 //        
 //        if(formGroup){
