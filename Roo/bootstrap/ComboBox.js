@@ -349,6 +349,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
          *  Normal ComboBox
          */
         if(!this.tickable){
+            Roo.log('run??????????');
             cfg = Roo.bootstrap.ComboBox.superclass.getAutoCreate.call(this);
             return cfg;
         }
