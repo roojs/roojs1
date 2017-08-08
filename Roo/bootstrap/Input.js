@@ -367,7 +367,11 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         if (align ==='left' && this.fieldLabel.length) {
             
             cfg.cn = [
-                
+                {
+                    tag : 'i',
+                    cls : 'text-danger fa fa-lg fa-star',
+                    tooltip : 'This field is required'
+                },
                 {
                     tag: 'label',
                     'for' :  id,
