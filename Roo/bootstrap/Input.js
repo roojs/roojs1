@@ -543,6 +543,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         }
         if(this.maskRe || (this.vtype && this.disableKeyFilter !== true && (this.maskRe = Roo.form.VTypes[this.vtype+'Mask']))){
             this.inputEl().on("keypress", this.filterKeys, this);
+        } else {
+            this.inputEl().on("keypress", this.keypress, this);
         }
        /* if(this.grow){
             this.el.on("keyup", this.onKeyUp,  this, {buffer:50});
