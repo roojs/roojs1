@@ -292,6 +292,31 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 }
 
             ];
+            
+            if(this.indicatorpos == 'right'){
+                cfg.cn = [
+                    {
+                        tag: 'label',
+                        'for' :  id,
+                        cls : 'control-label col-sm-' + this.labelWidth,
+                        html : this.fieldLabel
+
+                    },
+                    {
+                        tag : 'i',
+                        cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
+                        tooltip : 'This field is required'
+                    },
+                    {
+                        cls : "col-sm-" + (12 - this.labelWidth), 
+                        cn: [
+                            inputblock
+                        ]
+                    }
+
+                ];
+            }
+            
         } else if ( this.fieldLabel.length) {
 //                Roo.log(" label");
                  cfg.cn = [
