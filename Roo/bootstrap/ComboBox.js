@@ -1897,6 +1897,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         this.store.fireEvent("datachanged", this.store);
+        
+        this.validate();
     },
     
     clearItem : function()
