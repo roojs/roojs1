@@ -5713,13 +5713,14 @@ Roo.bootstrap.Table = function(config){
     this.headerShow = (typeof(config.thead) != 'undefined') ? config.thead : this.headerShow;
     this.footerShow = (typeof(config.tfoot) != 'undefined') ? config.tfoot : this.footerShow;
     
-    
+    this.sm = this.sm || {xtype: 'RowSelectionModel'};
     if (this.sm) {
         this.sm.grid = this;
         this.selModel = Roo.factory(this.sm, Roo.bootstrap.Table);
         this.sm = this.selModel;
         this.sm.xmodule = this.xmodule || false;
     }
+    
     if (this.cm && typeof(this.cm.config) == 'undefined') {
         this.colModel = new Roo.grid.ColumnModel(this.cm);
         this.cm = this.colModel;
