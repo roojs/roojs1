@@ -517,7 +517,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         this.inputEl().on("focus", this.onFocus,  this);
         this.inputEl().on("blur", this.onBlur,  this);
         
-        this.inputEl().relayEvent('keyup', this);
+        //this.inputEl().relayEvent('keyup', this);
         
         this.indicator = this.indicatorEl();
         
