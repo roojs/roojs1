@@ -2187,7 +2187,27 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 }
             ];
             
-            
+            if(this.indicatorpos == 'right'){
+                cfg.cn = [
+                    {
+                        tag: 'label',
+                        cls : 'control-label ' + lw,
+                        html : this.fieldLabel
+
+                    },
+                    {
+                       tag : 'i',
+                       cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
+                       tooltip : 'This field is required'
+                    },
+                    {
+                        cls : cw, 
+                        cn: [
+                            combobox
+                        ]
+                    }
+                ];
+            }
         }
         
         var settings = this;
