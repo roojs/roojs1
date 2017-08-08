@@ -490,7 +490,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     
     indicatorEl : function()
     {
-        
+        var indicator = this.el.select('i.roo-required-indicator',true).first();
     },
     
     setDisabled : function(v)
