@@ -372,6 +372,8 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             }
         });
         
+        Roo.log(cfg);
+        
         return cfg;
         
     },
