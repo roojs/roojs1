@@ -15,6 +15,7 @@
  * @cfg {Boolean} autoslide (true|false) auto slide .. default false
  * @cfg {Boolean} slideOnTouch (true|false) slide on touch .. default false
  * @cfg {Number} timer auto slide timer .. default 0 millisecond
+ * @cfg {Boolean} showarrow (true|false) show arrow default true
  * 
  * @constructor
  * Create a new TabGroup
@@ -40,6 +41,7 @@
     </span><span class="jsdoc-var">autoslide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">slideFn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">slideOnTouch </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">showarrow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -51,8 +53,9 @@
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' carousel slide'</span><span class="jsdoc-syntax">;
             
             </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [{
-               </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'carousel-inner'
-            </span><span class="jsdoc-syntax">}];
+               </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'carousel-inner'</span><span class="jsdoc-syntax">,
+               </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: []
+            }];
         
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bullets  </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">Roo.isTouch</span><span class="jsdoc-syntax">){
                 
@@ -64,19 +67,43 @@
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bullets_cls</span><span class="jsdoc-syntax">){
                     </span><span class="jsdoc-var">bullets.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">bullets.cls </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.bullets_cls</span><span class="jsdoc-syntax">;
                 }
-                 </span><span class="jsdoc-comment">/*
-                for (var i = 0; i &lt; this.bullets; i++){
-                    bullets.cn.push({
-                        cls : 'bullet bullet-' + i
-                    });
-                }
-                */
+                
                 </span><span class="jsdoc-var">bullets.cn.push</span><span class="jsdoc-syntax">({
                     </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'clear'
                 </span><span class="jsdoc-syntax">});
                 
-                </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">bullets</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bullets</span><span class="jsdoc-syntax">);
             }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.showarrow</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cn.push</span><span class="jsdoc-syntax">({
+                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">class </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'carousel-arrow'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                        {
+                            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">class </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'carousel-prev'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                                {
+                                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
+                                    </span><span class="jsdoc-var">class </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fa fa-chevron-left'
+                                </span><span class="jsdoc-syntax">}
+                            ]
+                        },
+                        {
+                            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">class </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'carousel-next'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                                {
+                                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
+                                    </span><span class="jsdoc-var">class </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fa fa-chevron-right'
+                                </span><span class="jsdoc-syntax">}
+                            ]
+                        }
+                    ]
+                });
+            }
+            
         }
         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
@@ -84,7 +111,7 @@
     
     </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isTouch </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.slideOnTouch</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isTouch </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.slideOnTouch </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.showarrow</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;touchstart&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTouchStart</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
         
@@ -95,6 +122,12 @@
                 </span><span class="jsdoc-var">_this.showPanelNext</span><span class="jsdoc-syntax">();
             }, </span><span class="jsdoc-var">this.timer</span><span class="jsdoc-syntax">);
         }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.showarrow</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.carousel-prev'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.showPanelPrev</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.carousel-next'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.showPanelNext</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+        
         
     },
     

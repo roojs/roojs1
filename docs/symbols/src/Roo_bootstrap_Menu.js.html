@@ -280,7 +280,7 @@
             </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[0] = </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[0] - </span><span class="jsdoc-var">this.el.getWidth</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">this.triggerEl.getWidth</span><span class="jsdoc-syntax">();
         }
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.slice</span><span class="jsdoc-syntax">(-1) != </span><span class="jsdoc-string">&quot;%&quot;</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'auto' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.el.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.slice</span><span class="jsdoc-syntax">(-1) != </span><span class="jsdoc-string">&quot;%&quot;</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.el.setXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">);
         }
         

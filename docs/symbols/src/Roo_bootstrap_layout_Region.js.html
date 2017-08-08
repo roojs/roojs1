@@ -40,6 +40,8 @@
  * @cfg {Boolean}   split           To show the splitter
  * @cfg {Boolean}   toolbar         xtype configuration for a toolbar - shows on right of tabbar
  * 
+ * @cfg {string}   cls             Extra CSS classes to add to region
+ * 
  * @cfg {Roo.bootstrap.layout.Manager}   mgr The manager
  * @cfg {string}   region  the region that it inhabits..
  *
@@ -53,54 +55,24 @@
  */
 </span><span class="jsdoc-var">Roo.bootstrap.layout.Region </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">)
 {
-    
+    </span><span class="jsdoc-var">this.applyConfig</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">mgr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.mgr</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.region</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-var">config.skipConfig </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-var">Roo.bootstrap.layout.Region.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
-    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dh </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper</span><span class="jsdoc-syntax">;
-    </span><span class="jsdoc-comment">/** This region's container element 
-    * @type Roo.Element */
-    </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dh.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mgr.el.dom</span><span class="jsdoc-syntax">, {</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;roo-layout-region roo-layout-panel roo-layout-panel-&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">}, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
-    </span><span class="jsdoc-comment">/** This region's title element 
-    * @type Roo.Element */
-
-    </span><span class="jsdoc-var">this.titleEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dh.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">,
-        {
-                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">unselectable</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;on&quot;</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;roo-unselectable roo-layout-panel-hd breadcrumb roo-layout-title-&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">children</span><span class="jsdoc-syntax">:[
-                    {</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;span&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;roo-unselectable roo-layout-panel-hd-text&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">unselectable</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;on&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&amp;#160;&quot;</span><span class="jsdoc-syntax">},
-                    {</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;roo-unselectable roo-layout-panel-hd-tools&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">unselectable</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;on&quot;</span><span class="jsdoc-syntax">}
-                ]}, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
     
-    </span><span class="jsdoc-var">this.titleEl.enableDisplayMode</span><span class="jsdoc-syntax">();
-    </span><span class="jsdoc-comment">/** This region's title text element 
-    * @type HTMLElement */
-    </span><span class="jsdoc-var">this.titleTextEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.titleEl.dom.firstChild</span><span class="jsdoc-syntax">;
-    </span><span class="jsdoc-var">this.tools </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.titleEl.dom.childNodes</span><span class="jsdoc-syntax">[1], </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
-    </span><span class="jsdoc-comment">/*
-    this.closeBtn = this.createTool(this.tools.dom, &quot;roo-layout-close&quot;);
-    this.closeBtn.enableDisplayMode();
-    this.closeBtn.on(&quot;click&quot;, this.closeClicked, this);
-    this.closeBtn.hide();
-*/
-    </span><span class="jsdoc-var">this.createBody</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mgr.el</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.onRender</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mgr.el</span><span class="jsdoc-syntax">);   
+    }
+     
     </span><span class="jsdoc-var">this.visible </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-var">this.collapsed </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
-
-    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.hideWhenEmpty</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;paneladded&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.validateVisibility</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;panelremoved&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.validateVisibility</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-    }
-    </span><span class="jsdoc-var">this.applyConfig</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.layout.Region</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.layout.Basic</span><span class="jsdoc-syntax">, {
 
-
+    </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// set by wrapper (eg. north/south etc..)
 
     </span><span class="jsdoc-var">createBody </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-comment">/** This region's body element 
@@ -111,6 +83,68 @@
         </span><span class="jsdoc-syntax">});
     },
 
+    </span><span class="jsdoc-var">onRender</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ctr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dh </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">/** This region's container element 
+        * @type Roo.Element */
+        </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dh.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ctr.dom</span><span class="jsdoc-syntax">, {
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">this.config.cls </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">&quot; roo-layout-region roo-layout-panel roo-layout-panel-&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.position
+            </span><span class="jsdoc-syntax">}, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">/** This region's title element 
+        * @type Roo.Element */
+    
+        </span><span class="jsdoc-var">this.titleEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dh.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">,
+            {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">unselectable</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;on&quot;</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;roo-unselectable roo-layout-panel-hd breadcrumb roo-layout-title-&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">children</span><span class="jsdoc-syntax">:[
+                        {</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;span&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;roo-unselectable roo-layout-panel-hd-text&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">unselectable</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;on&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&amp;#160;&quot;</span><span class="jsdoc-syntax">},
+                        {</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;roo-unselectable roo-layout-panel-hd-tools&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">unselectable</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;on&quot;</span><span class="jsdoc-syntax">}
+                    ]}, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.titleEl.enableDisplayMode</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-comment">/** This region's title text element 
+        * @type HTMLElement */
+        </span><span class="jsdoc-var">this.titleTextEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.titleEl.dom.firstChild</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.tools </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.titleEl.dom.childNodes</span><span class="jsdoc-syntax">[1], </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">/*
+        this.closeBtn = this.createTool(this.tools.dom, &quot;roo-layout-close&quot;);
+        this.closeBtn.enableDisplayMode();
+        this.closeBtn.on(&quot;click&quot;, this.closeClicked, this);
+        this.closeBtn.hide();
+    */
+        </span><span class="jsdoc-var">this.createBody</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.config.hideWhenEmpty</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;paneladded&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.validateVisibility</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;panelremoved&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.validateVisibility</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoScroll</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.bodyEl.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;overflow&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;auto&quot;</span><span class="jsdoc-syntax">);
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.bodyEl.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;overflow&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.config.overflow </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-comment">//if(c.titlebar !== false){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">((!</span><span class="jsdoc-var">this.config.titlebar </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.config.title</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">this.config.titlebar </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.titleEl.hide</span><span class="jsdoc-syntax">();
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">this.titleEl.show</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.config.title</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">this.titleTextEl.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.config.title</span><span class="jsdoc-syntax">;
+                }
+            }
+        </span><span class="jsdoc-comment">//}
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.config.collapsed</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.collapse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.config.hidden</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
+        }
+    },
+    
     </span><span class="jsdoc-var">applyConfig </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-comment">/*
@@ -170,30 +204,12 @@
         </span><span class="jsdoc-var">this.autoScroll </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">c.autoScroll </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoScroll</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.bodyEl.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;overflow&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;auto&quot;</span><span class="jsdoc-syntax">);
-        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-            </span><span class="jsdoc-var">this.bodyEl.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;overflow&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c.overflow </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">);
-        }
-        </span><span class="jsdoc-comment">//if(c.titlebar !== false){
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">((!</span><span class="jsdoc-var">c.titlebar </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">c.title</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">c.titlebar </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">this.titleEl.hide</span><span class="jsdoc-syntax">();
-            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-                </span><span class="jsdoc-var">this.titleEl.show</span><span class="jsdoc-syntax">();
-                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.title</span><span class="jsdoc-syntax">){
-                    </span><span class="jsdoc-var">this.titleTextEl.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">c.title</span><span class="jsdoc-syntax">;
-                }
-            }
-        </span><span class="jsdoc-comment">//}
+       
+        
         </span><span class="jsdoc-var">this.duration </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">c.duration </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">.</span><span class="jsdoc-syntax">30;
         </span><span class="jsdoc-var">this.slideDuration </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">c.slideDuration </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">.</span><span class="jsdoc-syntax">45;
         </span><span class="jsdoc-var">this.config </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.collapsed</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.collapse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
-        }
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.hidden</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
-        }
+       
     },
     </span><span class="jsdoc-comment">/**
      * Returns true if this region is currently visible.

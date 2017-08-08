@@ -67,18 +67,31 @@
     </span><span class="jsdoc-var">this.closable </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-var">this.loaded </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-var">this.active </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
-    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-var">this.title </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">;
-    }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-        </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+   
+      
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.toolbar </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">config.toolbar.el </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">config.toolbar.xtype</span><span class="jsdoc-syntax">) {
+        
+        </span><span class="jsdoc-var">this.toolbar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">config.toolbar.xns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">config.toolbar.xtype</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">config.toolbar</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.wrapEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.wrap</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ti </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.toolbar.items</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">ti </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.toolbar.items </span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">config.toolbar.items </span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nitems </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-var">this.toolbar.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.wrapEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'before'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0;</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">ti.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+          </span><span class="jsdoc-comment">//  Roo.log(['add child', items[i]]);
+            </span><span class="jsdoc-var">nitems.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbar.addxtype</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">ti</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">])));
+        }
+        </span><span class="jsdoc-var">this.toolbar.items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nitems</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.toolbar.el.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.wrapEl.dom.firstChild</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">config.toolbar</span><span class="jsdoc-syntax">;
+        
     }
     </span><span class="jsdoc-comment">/*
-    if (this.toolbar &amp;&amp; !this.toolbar.el &amp;&amp; this.toolbar.xtype) {
-        this.wrapEl = this.el.wrap();
-        this.toolbar.container = this.el.insertSibling(false, 'before');
-        this.toolbar = new Roo.Toolbar(this.toolbar);
-    }
-    
     // xtype created footer. - not sure if will work as we normally have to render first..
     if (this.footer &amp;&amp; !this.footer.el &amp;&amp; this.footer.xtype) {
         if (!this.wrapEl) {
@@ -91,6 +104,13 @@
         
     }
     */
+    
+     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.title </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">;
+    }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    }
+    
     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizeEl</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.resizeEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizeEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
     }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
@@ -142,11 +162,11 @@
         </span><span class="jsdoc-var">this.resizeEl.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;overflow&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;auto&quot;</span><span class="jsdoc-syntax">);
     } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
         </span><span class="jsdoc-comment">// fix randome scrolling
-        </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'scroll'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
-            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fix random scolling'</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">this.scrollTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">,0); 
-        });
-    }
+        //this.el.on('scroll', function() {
+        //    Roo.log('fix random scolling');
+        //    this.scrollTo('top',0); 
+        //});
+    </span><span class="jsdoc-syntax">}
     </span><span class="jsdoc-var">content </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">content </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.content</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.setContent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">);

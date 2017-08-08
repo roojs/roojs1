@@ -29,48 +29,53 @@
 
     </span><span class="jsdoc-var">applyConfig </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">Roo.bootstrap.layout.Split.superclass.applyConfig.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ctr</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">) {
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.split</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.split</span><span class="jsdoc-syntax">){
-                
-                
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">splitEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.mgr.el.dom</span><span class="jsdoc-syntax">,  {
-                                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">,
-                                </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.el.id </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;-split&quot;</span><span class="jsdoc-syntax">,
-                                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;roo-layout-split roo-layout-split-&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">,
-                                </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&amp;#160;&quot;
-                </span><span class="jsdoc-syntax">});
-                </span><span class="jsdoc-comment">/** The SplitBar for this region 
-                * @type Roo.SplitBar */
-                // does not exist yet...
-                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.orientation</span><span class="jsdoc-syntax">]);
-                
-                </span><span class="jsdoc-var">this.split </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.SplitBar</span><span class="jsdoc-syntax">({
-                    </span><span class="jsdoc-var">dragElement </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">splitEl</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">resizingElement</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">orientation </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.orientation
-                </span><span class="jsdoc-syntax">});
-                
-                </span><span class="jsdoc-var">this.split.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;moved&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onSplitMove</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">this.split.useShim </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.useShim </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-var">this.split.getMaximumSize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.position </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'north' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.position </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'south' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'getVMaxSize' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'getHMaxSize'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.useSplitTips</span><span class="jsdoc-syntax">){
-                    </span><span class="jsdoc-var">this.split.el.dom.title </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.collapsible </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.collapsibleSplitTip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.splitTip</span><span class="jsdoc-syntax">;
-                }
-                </span><span class="jsdoc-comment">//if(config.collapsible){
-                //    this.split.el.on(&quot;dblclick&quot;, this.collapse,  this);
-                //}
-            </span><span class="jsdoc-syntax">}
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">config.minSize </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;undefined&quot;</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">this.split.minSize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.minSize</span><span class="jsdoc-syntax">;
-            }
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">config.maxSize </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;undefined&quot;</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">this.split.maxSize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.maxSize</span><span class="jsdoc-syntax">;
-            }
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.hideWhenEmpty </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">config.hidden </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">config.collapsed</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">this.hideSplitter</span><span class="jsdoc-syntax">();
-            }
+        </span><span class="jsdoc-var">Roo.bootstrap.layout.Split.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ctr</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.config.split</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.split</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">splitEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ctr.dom</span><span class="jsdoc-syntax">,  {
+                            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.el.id </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;-split&quot;</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;roo-layout-split roo-layout-split-&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&amp;#160;&quot;
+            </span><span class="jsdoc-syntax">});
+            </span><span class="jsdoc-comment">/** The SplitBar for this region 
+            * @type Roo.SplitBar */
+            // does not exist yet...
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.orientation</span><span class="jsdoc-syntax">]);
+            
+            </span><span class="jsdoc-var">this.split </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.SplitBar</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">dragElement </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">splitEl</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">resizingElement</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">orientation </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.orientation
+            </span><span class="jsdoc-syntax">});
+            
+            </span><span class="jsdoc-var">this.split.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;moved&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onSplitMove</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.split.useShim </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.config.useShim </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.split.getMaximumSize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.position </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'north' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.position </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'south' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'getVMaxSize' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'getHMaxSize'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.useSplitTips</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.split.el.dom.title </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.config.collapsible </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.collapsibleSplitTip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.splitTip</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-comment">//if(config.collapsible){
+            //    this.split.el.on(&quot;dblclick&quot;, this.collapse,  this);
+            //}
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">this.config.minSize </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;undefined&quot;</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.split.minSize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.config.minSize</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">this.config.maxSize </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;undefined&quot;</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.split.maxSize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.config.maxSize</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.config.hideWhenEmpty </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.config.hidden </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.config.collapsed</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.hideSplitter</span><span class="jsdoc-syntax">();
+        }
+        
     },
 
     </span><span class="jsdoc-var">getHMaxSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){

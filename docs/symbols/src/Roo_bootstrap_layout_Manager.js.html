@@ -17,16 +17,11 @@
 </span><span class="jsdoc-var">Roo.bootstrap.layout.Manager </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">)
 {
     </span><span class="jsdoc-var">Roo.bootstrap.layout.Manager.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-    </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.el</span><span class="jsdoc-syntax">);
-    </span><span class="jsdoc-comment">// ie scrollbar fix
-    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">document.body </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.isIE </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">config.allowScroll</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-var">document.body.scroll </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;no&quot;</span><span class="jsdoc-syntax">;
-    }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">document.body </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.el.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'position'</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'static'</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-var">this.el.position</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'relative'</span><span class="jsdoc-syntax">);
-    }
     
-    </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.id</span><span class="jsdoc-syntax">;
-    </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;roo-layout-container&quot;</span><span class="jsdoc-syntax">);
+    
+     
+    
+    
     </span><span class="jsdoc-comment">/** false to disable window resize monitoring @type Boolean */
     </span><span class="jsdoc-var">this.monitorWindowResize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-var">this.regions </span><span class="jsdoc-syntax">= {};
@@ -58,7 +53,12 @@
         </span><span class="jsdoc-string">&quot;regionexpanded&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
     </span><span class="jsdoc-syntax">});
     </span><span class="jsdoc-var">this.updating </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
-    </span><span class="jsdoc-var">Roo.EventManager.onWindowResize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.onWindowResize</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+    
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.el</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.el</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.initEvents</span><span class="jsdoc-syntax">();
+    }
+    
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.layout.Manager</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">, {
@@ -70,6 +70,36 @@
     
     
     </span><span class="jsdoc-var">updating </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    
+    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.initEvents</span><span class="jsdoc-syntax">();
+        }
+    },
+    
+    
+    </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        
+        
+        </span><span class="jsdoc-comment">// ie scrollbar fix
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">document.body </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.isIE </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">config.allowScroll</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">document.body.scroll </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;no&quot;</span><span class="jsdoc-syntax">;
+        }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">document.body </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.el.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'position'</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'static'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.position</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'relative'</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.id</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;roo-layout-container&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.EventManager.onWindowResize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.onWindowResize</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">document.body </span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'resize'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.layout</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'show'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.layout</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+
+    },
     
     </span><span class="jsdoc-comment">/**
      * Returns true if this layout is currently being updated

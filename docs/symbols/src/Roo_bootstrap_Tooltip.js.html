@@ -65,6 +65,11 @@
             </span><span class="jsdoc-var">this.currentTip.el.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.hide</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-comment">// force hiding...
         </span><span class="jsdoc-syntax">}    
         </span><span class="jsdoc-comment">//Roo.log(ev);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">el.dom </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bindEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-comment">// you can not look for children, as if el is the body.. then everythign is the child..
@@ -253,6 +258,13 @@
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[0] + </span><span class="jsdoc-var">this.el.getWidth</span><span class="jsdoc-syntax">() &gt; </span><span class="jsdoc-var">Roo.lib.Dom.getViewWidth</span><span class="jsdoc-syntax">()){
                 </span><span class="jsdoc-var">placement </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">;
             }
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">scroll </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'body'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getScroll</span><span class="jsdoc-syntax">();
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[1] &gt; </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">scroll.top </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.el.getHeight</span><span class="jsdoc-syntax">()){
+                </span><span class="jsdoc-var">placement </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">;
+            }
+            
         }
         
         </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.Tooltip.alignment</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">placement</span><span class="jsdoc-syntax">];

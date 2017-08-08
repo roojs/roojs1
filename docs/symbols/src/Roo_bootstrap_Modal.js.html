@@ -15,6 +15,9 @@
  * @cfg {String} buttonPosition (left|right|center) default right
  * @cfg {Boolean} animate default true
  * @cfg {Boolean} allow_close default true
+ * @cfg {Boolean} fitwindow default true
+ * @cfg {String} size (sm|lg) default empty
+ * 
  * 
  * @constructor
  * Create a new Modal Dialog
@@ -60,12 +63,17 @@
     
     </span><span class="jsdoc-var">animate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     
+    </span><span class="jsdoc-var">fitwindow</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
     
      </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">dialogEl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">bodyEl</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">footerEl</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">titleEl</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">closeEl</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     
     
     </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">)
@@ -96,7 +104,7 @@
             </span><span class="jsdoc-var">this.el.dom.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tabIndex'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.tabIndex</span><span class="jsdoc-syntax">);
         }
         
-        
+        </span><span class="jsdoc-var">this.dialogEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-dialog'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.bodyEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-body'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.closeEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-header .close'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.footerEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-footer'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
@@ -173,14 +181,21 @@
                 </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&amp;times'
             </span><span class="jsdoc-syntax">});
         }
+        
         </span><span class="jsdoc-var">header.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.size.length</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'modal-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.size</span><span class="jsdoc-syntax">;
+        }
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">modal </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;modal&quot;</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'display: none'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
                 {
-                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;modal-dialog&quot;</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;modal-dialog &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
                         {
                             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;modal-content&quot;</span><span class="jsdoc-syntax">,
@@ -232,16 +247,27 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.allow_close</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.closeEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
+        </span><span class="jsdoc-var">Roo.EventManager.onWindowResize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resize</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
-        
-        </span><span class="jsdoc-var">window.addEventListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;resize&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { </span><span class="jsdoc-var">_this.resize</span><span class="jsdoc-syntax">(); } );
-
+ 
     },
     
     </span><span class="jsdoc-var">resize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-var">this.maskEl.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.lib.Dom.getViewWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">this.maskEl.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.lib.Dom.getViewWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">),  </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fitwindow</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.lib.Dom.getViewportWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) - 30;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.height </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.lib.Dom.getViewportHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) - 30;
+            </span><span class="jsdoc-var">this.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">)
+        }
+    },
+    
+    </span><span class="jsdoc-var">setSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.resizeTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">);
     },
     
     </span><span class="jsdoc-var">show </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
@@ -268,12 +294,17 @@
         //}
         
         </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-body-masked&quot;</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.maskEl.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.lib.Dom.getViewWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">this.maskEl.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.lib.Dom.getViewWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">),   </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
         </span><span class="jsdoc-var">this.maskEl.show</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'zIndex'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'10001'</span><span class="jsdoc-syntax">);
        
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'show'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-         
+        </span><span class="jsdoc-var">this.items.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">e.layout </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">e.layout</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                
+        });
+        </span><span class="jsdoc-var">this.resize</span><span class="jsdoc-syntax">();
+        
         
         
     },
@@ -323,12 +354,12 @@
     {
         </span><span class="jsdoc-comment">// skip.. ?? why??
         
-        </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-dialog'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.dialogEl.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.diff </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">this.diff </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-dialog'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getHeight</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-body'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getHeight</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.diff </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dialogEl.getHeight</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.bodyEl.getHeight</span><span class="jsdoc-syntax">();
         }
         
-        </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-body'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">this.diff</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.bodyEl.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">this.diff</span><span class="jsdoc-syntax">);
         
         
     },

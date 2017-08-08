@@ -26,6 +26,7 @@
  * @cfg {String} labelAlign (top|left)
  * @cfg {Boolean} readOnly Specifies that the field should be read-only
  * @cfg {String} autocomplete - default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en
+ * @cfg {String} indicatorpos (left|right) default left
 
  * @cfg {String} align (left|center|right) Default left
  * @cfg {Boolean} forceFeedback (true|false) Default false
@@ -227,6 +228,8 @@
     </span><span class="jsdoc-var">formatedValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">forceFeedback </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
+    </span><span class="jsdoc-var">indicatorpos </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">,
+    
     </span><span class="jsdoc-var">parentLabelAlign </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">parent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
@@ -240,15 +243,13 @@
         
     },
     
-    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-        
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">= (!</span><span class="jsdoc-var">this.labelAlign</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">this.parentLabelAlign</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-var">this.labelAlign</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {};
-        
-       
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputType </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'form-group' </span><span class="jsdoc-comment">//input-group
@@ -263,7 +264,6 @@
             </span><span class="jsdoc-var">placeholder </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.placeholder </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">autocomplete </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.autocomplete </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'new-password'
         </span><span class="jsdoc-syntax">};
-        
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.align</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">input.style </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input.style</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ? (</span><span class="jsdoc-string">'text-align:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.align</span><span class="jsdoc-syntax">) : (</span><span class="jsdoc-var">input.style </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'text-align:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.align</span><span class="jsdoc-syntax">);
@@ -284,9 +284,11 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">input.name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">;
         }
+        
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.size</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">input.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' input-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.size</span><span class="jsdoc-syntax">;
         }
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">settings</span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         [</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'md'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'lg'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.map</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">settings</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">]) {
@@ -363,15 +365,42 @@
         };
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">===</span><span class="jsdoc-string">'left' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.fieldLabel.length</span><span class="jsdoc-syntax">) {
-                
+            
+            </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
+                {
+                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-required-indicator left-indicator text-danger fa fa-lg fa-star'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field is required'
+                </span><span class="jsdoc-syntax">},
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'for' </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'control-label col-sm-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel
+
+                </span><span class="jsdoc-syntax">},
+                {
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;col-sm-&quot; </span><span class="jsdoc-syntax">+ (12 - </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">), 
+                    </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                        </span><span class="jsdoc-var">inputblock
+                    </span><span class="jsdoc-syntax">]
+                }
+
+            ];
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.indicatorpos </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
-                    
                     {
                         </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-string">'for' </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'control-label col-sm-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel
-                        
+
+                    </span><span class="jsdoc-syntax">},
+                    {
+                        </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-required-indicator right-indicator text-danger fa fa-lg fa-star'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field is required'
                     </span><span class="jsdoc-syntax">},
                     {
                         </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;col-sm-&quot; </span><span class="jsdoc-syntax">+ (12 - </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">), 
@@ -379,30 +408,57 @@
                             </span><span class="jsdoc-var">inputblock
                         </span><span class="jsdoc-syntax">]
                     }
-                    
+
                 ];
+            }
+            
         } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.fieldLabel.length</span><span class="jsdoc-syntax">) {
                 
-                 </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
-                   
+            </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
+                {
+                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-required-indicator left-indicator text-danger fa fa-lg fa-star'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field is required'
+                </span><span class="jsdoc-syntax">},
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
+                   </span><span class="jsdoc-comment">//cls : 'input-group-addon',
+                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel
+
+                </span><span class="jsdoc-syntax">},
+
+               </span><span class="jsdoc-var">inputblock
+
+           </span><span class="jsdoc-syntax">];
+           
+           </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.indicatorpos </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">){
+                
+                </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
                     {
                         </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-comment">//cls : 'input-group-addon',
+                       </span><span class="jsdoc-comment">//cls : 'input-group-addon',
                         </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel
-                        
+
                     </span><span class="jsdoc-syntax">},
-                    
-                    </span><span class="jsdoc-var">inputblock
-                    
-                </span><span class="jsdoc-syntax">];
+                    {
+                        </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-required-indicator right-indicator text-danger fa fa-lg fa-star'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field is required'
+                    </span><span class="jsdoc-syntax">},
+
+                   </span><span class="jsdoc-var">inputblock
+
+               </span><span class="jsdoc-syntax">];
+
+            }
 
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
             
-                </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
-                    
-                        </span><span class="jsdoc-var">inputblock
-                    
-                </span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
+
+                    </span><span class="jsdoc-var">inputblock
+
+            </span><span class="jsdoc-syntax">];
                 
                 
         };
@@ -410,10 +466,12 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parentType </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'Navbar' </span><span class="jsdoc-syntax">&amp;&amp;  </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.bar</span><span class="jsdoc-syntax">) {
            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' navbar-form'</span><span class="jsdoc-syntax">;
         }
+        
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parentType </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'NavGroup'</span><span class="jsdoc-syntax">) {
            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' navbar-form'</span><span class="jsdoc-syntax">;
            </span><span class="jsdoc-var">cfg.tag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">;
         }
+        
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
         
     },
@@ -428,6 +486,18 @@
     </span><span class="jsdoc-var">tooltipEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">();
+    },
+    
+    </span><span class="jsdoc-var">indicatorEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">indicator </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'i.roo-required-indicator'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">indicator</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">indicator</span><span class="jsdoc-syntax">;
+        
     },
     
     </span><span class="jsdoc-var">setDisabled </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)
@@ -448,6 +518,13 @@
         </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;blur&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onBlur</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.relayEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'keyup'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.indicator </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.indicatorEl</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.indicator</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.indicator.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.indicator.hide</span><span class="jsdoc-syntax">();
+        }
  
         </span><span class="jsdoc-comment">// reference to original value for reset
         </span><span class="jsdoc-var">this.originalValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">();
@@ -707,11 +784,8 @@
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">label </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">icon </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'i.fa-star'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-        
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">label </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">icon</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">icon.remove</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.indicator</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.indicator.hide</span><span class="jsdoc-syntax">();
         }
         
         </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.invalidClass</span><span class="jsdoc-syntax">);
@@ -750,16 +824,8 @@
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">formGroup </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-group'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
-        
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">formGroup</span><span class="jsdoc-syntax">){
-            
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">label </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">formGroup.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">icon </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">formGroup.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'i.fa-star'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-            
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">label </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">icon</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">icon.remove</span><span class="jsdoc-syntax">();
-            }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.indicator</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.indicator.hide</span><span class="jsdoc-syntax">();
         }
         
         </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.validClass</span><span class="jsdoc-syntax">);
@@ -800,22 +866,9 @@
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">formGroup </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-group'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
-        
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">formGroup</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">label </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">formGroup.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">icon </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">formGroup.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'i.fa-star'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.length </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">label </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">icon</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">this.el.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-group'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.createChild</span><span class="jsdoc-syntax">({
-                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'text-danger fa fa-lg fa-star'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field is required'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'margin-right:5px;'
-                </span><span class="jsdoc-syntax">}, </span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
-            }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.indicator</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.indicator.show</span><span class="jsdoc-syntax">();
         }
-        
         
         </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.invalidClass</span><span class="jsdoc-syntax">);
         
