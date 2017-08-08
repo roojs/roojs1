@@ -8473,6 +8473,18 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         return this.inputEl();
     },
     
+    indicatorEl : function()
+    {
+        var indicator = this.el.select('i.roo-required-indicator',true).first();
+        
+        if(!indicator){
+            return false;
+        }
+        
+        return indicator;
+        
+    },
+    
     setDisabled : function(v)
     {
         var i  = this.inputEl().dom;
@@ -8491,6 +8503,13 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         this.inputEl().on("blur", this.onBlur,  this);
         
         this.inputEl().relayEvent('keyup', this);
+        
+        this.indicator = this.indicatorEl();
+        
+        if(this.indicator){
+            this.indicator.setVisibilityMode(Roo.Element.DISPLAY);
+            this.indicator.hide();
+        }
  
         // reference to original value for reset
         this.originalValue = this.getValue();
@@ -8750,12 +8769,9 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         
-//        var label = this.el.select('label', true).first();
-//        var icon = this.el.select('i.fa-star', true).first();
-//        
-//        if(label && icon){
-//            icon.remove();
-//        }
+        if(this.indicator){
+            this.indicator.hide();
+        }
         
         this.el.removeClass(this.invalidClass);
         
@@ -8793,17 +8809,9 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         
-//        var formGroup = this.el.findParent('.form-group', false, true);
-//        
-//        if(formGroup){
-//            
-//            var label = formGroup.select('label', true).first();
-//            var icon = formGroup.select('i.fa-star', true).first();
-//            
-//            if(label && icon){
-//                icon.remove();
-//            }
-//        }
+        if(this.indicator){
+            this.indicator.hide();
+        }
         
         this.el.addClass(this.validClass);
         
@@ -8843,41 +8851,9 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         
-//        var formGroup = this.el.findParent('.form-group', false, true);
-//        
-//        if(formGroup){
-//            var label = formGroup.select('label', true).first();
-//            var icon = formGroup.select('i.fa-star', true).first();
-//
-//            if(!this.getValue().length && label && !icon){
-//                
-//                if(this.indicatorpos == 'left'){
-//                    this.el.findParent('.form-group', false, true).createChild({
-//                        tag : 'i',
-//                        cls : 'text-danger fa fa-lg fa-star',
-//                        tooltip : 'This field is required',
-//                        style : 'margin-right:5px;'
-//                    }, label, true);
-//                } else {
-//                    
-//                    var target = formGroup.select('input', true).first();
-//                    
-//                    if(this.hasFeedback){
-//                        target = formGroup.select('.has-feedback', true).first();
-//                    }
-//                    
-//                    this.el.findParent('.form-group', false, true).createChild({
-//                        tag : 'i',
-//                        cls : 'text-danger fa fa-lg fa-star',
-//                        tooltip : 'This field is required',
-//                        style : 'margin-left:5px;'
-//                    }, target, true);
-//                    
-//                }
-//                
-//            }
-//        }
-        
+        if(this.indicator){
+            this.indicator.show();
+        }
         
         this.el.addClass(this.invalidClass);
         
@@ -9553,14 +9529,41 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         if (align ==='left' && this.fieldLabel.length && this.labelWidth) {
             
 //                Roo.log("left and has label");
+            cfg.cn = [
+                {
+                    tag : 'i',
+                    cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
+                    tooltip : 'This field is required'
+                },
+                {
+                    tag: 'label',
+                    'for' :  id,
+                    cls : 'control-label col-sm-' + this.labelWidth,
+                    html : this.fieldLabel
+
+                },
+                {
+                    cls : "col-sm-" + (12 - this.labelWidth), 
+                    cn: [
+                        combobox
+                    ]
+                }
+
+            ];
+            
+            if(this.indicatorpos == 'right'){
                 cfg.cn = [
-                    
                     {
                         tag: 'label',
                         'for' :  id,
                         cls : 'control-label col-sm-' + this.labelWidth,
                         html : this.fieldLabel
-                        
+
+                    },
+                    {
+                        tag : 'i',
+                        cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
+                        tooltip : 'This field is required'
                     },
                     {
                         cls : "col-sm-" + (12 - this.labelWidth), 
@@ -9568,22 +9571,49 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                             combobox
                         ]
                     }
-                    
+
                 ];
+            }
+            
         } else if ( this.fieldLabel.length) {
 //                Roo.log(" label");
-                 cfg.cn = [
-                   
+            cfg.cn = [
+                {
+                   tag : 'i',
+                   cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
+                   tooltip : 'This field is required'
+               },
+               {
+                   tag: 'label',
+                   //cls : 'input-group-addon',
+                   html : this.fieldLabel
+
+               },
+
+               combobox
+
+            ];
+            
+            if(this.indicatorpos == 'right'){
+                
+                cfg.cn = [
                     {
-                        tag: 'label',
-                        //cls : 'input-group-addon',
-                        html : this.fieldLabel
-                        
+                       tag: 'label',
+                       //cls : 'input-group-addon',
+                       html : this.fieldLabel
+
+                    },
+                    {
+                       tag : 'i',
+                       cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
+                       tooltip : 'This field is required'
                     },
                     
                     combobox
-                    
+
                 ];
+
+            }
 
         } else {
             
