@@ -3,7 +3,7 @@ div.input-group.has-feedback > .form-control-feedback {
 }
 
 .roo-required-indicator.left-indicator {
-    
+    margin-left: 5px;
 }
 
 .roo-required-indicator.right-indicator {
