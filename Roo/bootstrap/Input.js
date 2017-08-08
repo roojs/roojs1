@@ -488,6 +488,11 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         return this.inputEl();
     },
     
+    indicatorEl : function()
+    {
+        
+    },
+    
     setDisabled : function(v)
     {
         var i  = this.inputEl().dom;
