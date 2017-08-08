@@ -2,6 +2,10 @@ div.input-group.has-feedback > .form-control-feedback {
     right: 30px;
 }
 
+.roo-required-indicator {
+    position: absolute;
+}
+
 .roo-required-indicator.left-indicator {
     margin-right: 5px;
 }
