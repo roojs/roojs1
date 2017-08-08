@@ -526,6 +526,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     combobox
                     
                 ];
+                
+                if(this.indicatorpos == 'right'){
+                    
+                    
+                }
 
         } else {
             
