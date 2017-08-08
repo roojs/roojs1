@@ -1132,6 +1132,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             close.hide();
         }
         
+        this.validate();
+        
     },
 
     /**
