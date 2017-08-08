@@ -69,12 +69,13 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
     initEvents : function()
     {
 
-        if(!this.grid.enableDragDrop && !this.grid.enableDrag){
-            this.grid.on("mousedown", this.handleMouseDown, this);
-        }else{ // allow click to work like normal
-            this.grid.on("rowclick", this.handleDragableRowClick, this);
-        }
-
+        //if(!this.grid.enableDragDrop && !this.grid.enableDrag){
+        //    this.growclickrid.on("mousedown", this.handleMouseDown, this);
+        //}else{ // allow click to work like normal
+         //   this.grid.on("rowclick", this.handleDragableRowClick, this);
+        //}
+        this.grid.on("mousedown", this.handleMouseDown, this);
+        
         this.rowNav = new Roo.KeyNav(this.grid.getGridEl(), {
             "up" : function(e){
                 if(!e.shiftKey){
