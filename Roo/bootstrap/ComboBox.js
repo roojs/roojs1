@@ -459,27 +459,31 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if (align ==='left' && this.fieldLabel.length && this.labelWidth) {
             
 //                Roo.log("left and has label");
-                cfg.cn = [
-                    {
-                        tag : 'i',
-                        cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
-                        tooltip : 'This field is required'
-                    },
-                    {
-                        tag: 'label',
-                        'for' :  id,
-                        cls : 'control-label col-sm-' + this.labelWidth,
-                        html : this.fieldLabel
-                        
-                    },
-                    {
-                        cls : "col-sm-" + (12 - this.labelWidth), 
-                        cn: [
-                            combobox
-                        ]
-                    }
-                    
-                ];
+            cfg.cn = [
+                {
+                    tag : 'i',
+                    cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
+                    tooltip : 'This field is required'
+                },
+                {
+                    tag: 'label',
+                    'for' :  id,
+                    cls : 'control-label col-sm-' + this.labelWidth,
+                    html : this.fieldLabel
+
+                },
+                {
+                    cls : "col-sm-" + (12 - this.labelWidth), 
+                    cn: [
+                        combobox
+                    ]
+                }
+
+            ];
+
+            if(this.indicatorpos == 'right'){
+
+            }
                 
                 
         } else if ( this.fieldLabel.length) {
