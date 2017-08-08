@@ -811,7 +811,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                     cls : 'text-danger fa fa-lg fa-star',
                     tooltip : 'This field is required',
                     style : 'margin-right:5px;'
-                }, false, true);
+                }, label, true);
             }
         }
         
