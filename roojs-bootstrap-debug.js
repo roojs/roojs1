@@ -22401,6 +22401,7 @@ Roo.bootstrap.Table.RowSelectionModel = function(config){
     });
     Roo.bootstrap.Table.RowSelectionModel.superclass.constructor.call(this);
     this.locked = false;
+    this.initEvents();
 };
 
 Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSelectionModel,  {
@@ -22411,7 +22412,8 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
     singleSelect : false,
 
     // private
-    initEvents : function(){
+    initEvents : function()
+    {
 
         if(!this.grid.enableDragDrop && !this.grid.enableDrag){
             this.grid.on("mousedown", this.handleMouseDown, this);
