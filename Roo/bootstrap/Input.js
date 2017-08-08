@@ -805,6 +805,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             var label = formGroup.select('label', true).first();
             var icon = formGroup.select('i.fa-star', true).first();
 
+            
             if(!this.getValue().length && label && !icon){
                 this.el.findParent('.form-group', false, true).createChild({
                     tag : 'i',
