@@ -631,6 +631,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         if(e.isNavKeyPress()){
             this.fireEvent("specialkey", this, e);
         }
+        
+        this.fireEvent("keydown", this, e);
     },
     focus : function (selectText){
         if(this.rendered){
