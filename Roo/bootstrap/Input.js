@@ -765,12 +765,12 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         
-        var label = this.el.select('label', true).first();
-        var icon = this.el.select('i.fa-star', true).first();
-        
-        if(label && icon){
-            icon.remove();
-        }
+//        var label = this.el.select('label', true).first();
+//        var icon = this.el.select('i.fa-star', true).first();
+//        
+//        if(label && icon){
+//            icon.remove();
+//        }
         
         this.el.removeClass(this.invalidClass);
         
