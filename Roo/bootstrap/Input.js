@@ -808,17 +808,17 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         
-        var formGroup = this.el.findParent('.form-group', false, true);
-        
-        if(formGroup){
-            
-            var label = formGroup.select('label', true).first();
-            var icon = formGroup.select('i.fa-star', true).first();
-            
-            if(label && icon){
-                icon.remove();
-            }
-        }
+//        var formGroup = this.el.findParent('.form-group', false, true);
+//        
+//        if(formGroup){
+//            
+//            var label = formGroup.select('label', true).first();
+//            var icon = formGroup.select('i.fa-star', true).first();
+//            
+//            if(label && icon){
+//                icon.remove();
+//            }
+//        }
         
         this.el.addClass(this.validClass);
         
