@@ -90,14 +90,7 @@ Roo.bootstrap.Input = function(config){
              * @param {Roo.form.Field} this
              * @param {Roo.EventObject}  e The event Object
              */
-            keyup : true,
-             /**
-             * @event keydown
-             * Fires after the key down
-             * @param {Roo.form.Field} this
-             * @param {Roo.EventObject}  e The event Object
-             */
-            keydown : true
+            keyup : true
         });
 };
 
@@ -637,10 +630,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         //Roo.log('field ' + e.getKey());
         if(e.isNavKeyPress()){
             this.fireEvent("specialkey", this, e);
-            return;
         }
-        
-        this.fireEvent("keydown", this, e);
     },
     focus : function (selectText){
         if(this.rendered){
