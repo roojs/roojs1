@@ -430,6 +430,27 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                inputblock
 
            ];
+           
+           if(this.indicatorpos == 'right'){
+                
+                cfg.cn = [
+                    {
+                        tag : 'i',
+                        cls : 'roo-required-indicator-left text-danger fa fa-lg fa-star',
+                        tooltip : 'This field is required'
+                    },
+                    {
+                        tag: 'label',
+                       //cls : 'input-group-addon',
+                        html : this.fieldLabel
+
+                    },
+
+                   inputblock
+
+               ];
+
+            }
 
         } else {
             
