@@ -1236,11 +1236,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         this.setValue(this.originalValue);
-        this.clearInvalid();
+        //this.clearInvalid();
         this.lastData = false;
         if (this.view) {
             this.view.clearSelections();
         }
+        
+        this.validate();
     },
     // private
     findRecord : function(prop, value){
