@@ -518,6 +518,13 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         this.inputEl().on("blur", this.onBlur,  this);
         
         this.inputEl().relayEvent('keyup', this);
+        
+        this.indicator = this.indicatorEl();
+        
+        if(this.indicator){
+            this.indicator.setVisibilityMode(Roo.Element.DISPLAY);
+            this.indicator.hide();
+        }
  
         // reference to original value for reset
         this.originalValue = this.getValue();
