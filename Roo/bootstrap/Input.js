@@ -398,6 +398,11 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
 
                     },
                     {
+                        tag : 'i',
+                        cls : 'roo-required-indicator-left text-danger fa fa-lg fa-star',
+                        tooltip : 'This field is required'
+                    },
+                    {
                         cls : "col-sm-" + (12 - this.labelWidth), 
                         cn: [
                             inputblock
