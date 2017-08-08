@@ -858,40 +858,40 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         
-        var formGroup = this.el.findParent('.form-group', false, true);
-        
-        if(formGroup){
-            var label = formGroup.select('label', true).first();
-            var icon = formGroup.select('i.fa-star', true).first();
-
-            if(!this.getValue().length && label && !icon){
-                
-                if(this.indicatorpos == 'left'){
-                    this.el.findParent('.form-group', false, true).createChild({
-                        tag : 'i',
-                        cls : 'text-danger fa fa-lg fa-star',
-                        tooltip : 'This field is required',
-                        style : 'margin-right:5px;'
-                    }, label, true);
-                } else {
-                    
-                    var target = formGroup.select('input', true).first();
-                    
-                    if(this.hasFeedback){
-                        target = formGroup.select('.has-feedback', true).first();
-                    }
-                    
-                    this.el.findParent('.form-group', false, true).createChild({
-                        tag : 'i',
-                        cls : 'text-danger fa fa-lg fa-star',
-                        tooltip : 'This field is required',
-                        style : 'margin-left:5px;'
-                    }, target, true);
-                    
-                }
-                
-            }
-        }
+//        var formGroup = this.el.findParent('.form-group', false, true);
+//        
+//        if(formGroup){
+//            var label = formGroup.select('label', true).first();
+//            var icon = formGroup.select('i.fa-star', true).first();
+//
+//            if(!this.getValue().length && label && !icon){
+//                
+//                if(this.indicatorpos == 'left'){
+//                    this.el.findParent('.form-group', false, true).createChild({
+//                        tag : 'i',
+//                        cls : 'text-danger fa fa-lg fa-star',
+//                        tooltip : 'This field is required',
+//                        style : 'margin-right:5px;'
+//                    }, label, true);
+//                } else {
+//                    
+//                    var target = formGroup.select('input', true).first();
+//                    
+//                    if(this.hasFeedback){
+//                        target = formGroup.select('.has-feedback', true).first();
+//                    }
+//                    
+//                    this.el.findParent('.form-group', false, true).createChild({
+//                        tag : 'i',
+//                        cls : 'text-danger fa fa-lg fa-star',
+//                        tooltip : 'This field is required',
+//                        style : 'margin-left:5px;'
+//                    }, target, true);
+//                    
+//                }
+//                
+//            }
+//        }
         
         
         this.el.addClass(this.invalidClass);
