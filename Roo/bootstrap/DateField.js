@@ -960,9 +960,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             return false;
         }
         
-//        if (this.endDate !== Infinity) {
-//            this.endDate = this.parseDate(this.endDate);
-//        }      
+        if (this.endDate !== Infinity && this.parseDate(value).getTime() > this.endDate.getTime()) {
+            return false;
+        }      
+        
+        
         
         return true;
     },
