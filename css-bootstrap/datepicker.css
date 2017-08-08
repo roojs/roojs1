@@ -82,6 +82,7 @@
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
   border-top: 7px solid #ccc;
+  border-bottom: 0;
   border-top-color: rgba(0, 0, 0, 0.2);
   position: absolute;
   bottom: -7px;
