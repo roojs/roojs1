@@ -366,8 +366,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         if (align ==='left' && this.fieldLabel.length) {
             
-            
-            
             cfg.cn = [
                 {
                     tag: 'label',
