@@ -790,6 +790,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
 //        if(label && icon){
 //            icon.remove();
 //        }
+
+        if(this.indicator){
+            this.indicator.hide();
+        }
         
         this.el.removeClass(this.invalidClass);
         
