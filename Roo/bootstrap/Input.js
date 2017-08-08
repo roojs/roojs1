@@ -825,6 +825,13 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                         target = formGroup.select('.has-feedback', true).first();
                     }
                     
+                    this.el.findParent('.form-group', false, true).createChild({
+                        tag : 'i',
+                        cls : 'text-danger fa fa-lg fa-star',
+                        tooltip : 'This field is required',
+                        style : 'margin-left:5px;'
+                    }, label, true);
+                    
                 }
                 
             }
