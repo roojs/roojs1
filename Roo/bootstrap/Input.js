@@ -784,13 +784,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         
-//        var label = this.el.select('label', true).first();
-//        var icon = this.el.select('i.fa-star', true).first();
-//        
-//        if(label && icon){
-//            icon.remove();
-//        }
-
         if(this.indicator){
             this.indicator.hide();
         }
@@ -835,18 +828,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             this.indicator.hide();
         }
         
-//        var formGroup = this.el.findParent('.form-group', false, true);
-//        
-//        if(formGroup){
-//            
-//            var label = formGroup.select('label', true).first();
-//            var icon = formGroup.select('i.fa-star', true).first();
-//            
-//            if(label && icon){
-//                icon.remove();
-//            }
-//        }
-        
         this.el.addClass(this.validClass);
         
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank && (this.getValue().length || this.forceFeedback)){
@@ -885,41 +866,9 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         
-//        var formGroup = this.el.findParent('.form-group', false, true);
-//        
-//        if(formGroup){
-//            var label = formGroup.select('label', true).first();
-//            var icon = formGroup.select('i.fa-star', true).first();
-//
-//            if(!this.getValue().length && label && !icon){
-//                
-//                if(this.indicatorpos == 'left'){
-//                    this.el.findParent('.form-group', false, true).createChild({
-//                        tag : 'i',
-//                        cls : 'text-danger fa fa-lg fa-star',
-//                        tooltip : 'This field is required',
-//                        style : 'margin-right:5px;'
-//                    }, label, true);
-//                } else {
-//                    
-//                    var target = formGroup.select('input', true).first();
-//                    
-//                    if(this.hasFeedback){
-//                        target = formGroup.select('.has-feedback', true).first();
-//                    }
-//                    
-//                    this.el.findParent('.form-group', false, true).createChild({
-//                        tag : 'i',
-//                        cls : 'text-danger fa fa-lg fa-star',
-//                        tooltip : 'This field is required',
-//                        style : 'margin-left:5px;'
-//                    }, target, true);
-//                    
-//                }
-//                
-//            }
-//        }
-        
+        if(this.indicator){
+            this.indicator.show();
+        }
         
         this.el.addClass(this.invalidClass);
         
