@@ -8011,6 +8011,7 @@ Roo.form.VTypes = function(){
  * @cfg {String} labelAlign (top|left)
  * @cfg {Boolean} readOnly Specifies that the field should be read-only
  * @cfg {String} autocomplete - default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en
+ * @cfg {String} indicatorpos (left|right) default left
 
  * @cfg {String} align (left|center|right) Default left
  * @cfg {Boolean} forceFeedback (true|false) Default false
@@ -8212,6 +8213,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     formatedValue : false,
     forceFeedback : false,
     
+    indicatorpos : 'left',
+    
     parentLabelAlign : function()
     {
         var parent = this;
@@ -8225,15 +8228,13 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
     },
     
-    getAutoCreate : function(){
-        
+    getAutoCreate : function()
+    {
         var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
         
         var id = Roo.id();
         
         var cfg = {};
-        
-       
         
         if(this.inputType != 'hidden'){
             cfg.cls = 'form-group' //input-group
@@ -8248,7 +8249,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             placeholder : this.placeholder || '',
             autocomplete : this.autocomplete || 'new-password'
         };
-        
         
         if(this.align){
             input.style = (typeof(input.style) == 'undefined') ? ('text-align:' + this.align) : (input.style + 'text-align:' + this.align);
@@ -8269,9 +8269,11 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         if (this.name) {
             input.name = this.name;
         }
+        
         if (this.size) {
             input.cls += ' input-' + this.size;
         }
+        
         var settings=this;
         ['xs','sm','md','lg'].map(function(size){
             if (settings[size]) {
@@ -8792,12 +8794,31 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             var icon = formGroup.select('i.fa-star', true).first();
 
             if(!this.getValue().length && label && !icon){
-                this.el.findParent('.form-group', false, true).createChild({
-                    tag : 'i',
-                    cls : 'text-danger fa fa-lg fa-star',
-                    tooltip : 'This field is required',
-                    style : 'margin-right:5px;'
-                }, label, true);
+                
+                if(this.indicatorpos == 'left'){
+                    this.el.findParent('.form-group', false, true).createChild({
+                        tag : 'i',
+                        cls : 'text-danger fa fa-lg fa-star',
+                        tooltip : 'This field is required',
+                        style : 'margin-right:5px;'
+                    }, label, true);
+                } else {
+                    
+                    var target = formGroup.select('input', true).first();
+                    
+                    if(this.hasFeedback){
+                        target = formGroup.select('.has-feedback', true).first();
+                    }
+                    
+                    this.el.findParent('.form-group', false, true).createChild({
+                        tag : 'i',
+                        cls : 'text-danger fa fa-lg fa-star',
+                        tooltip : 'This field is required',
+                        style : 'margin-left:5px;'
+                    }, target, true);
+                    
+                }
+                
             }
         }
         
