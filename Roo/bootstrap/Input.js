@@ -637,7 +637,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         //Roo.log('field ' + e.getKey());
         if(e.isNavKeyPress()){
             this.fireEvent("specialkey", this, e);
+            return;
         }
+        
+        this.fireEvent("keydown", this, e);
     },
     focus : function (selectText){
         if(this.rendered){
