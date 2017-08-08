@@ -369,7 +369,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             cfg.cn = [
                 {
                     tag : 'i',
-                    cls : 'text-danger fa fa-lg fa-star',
+                    cls : 'roo-field-required text-danger fa fa-lg fa-star',
                     tooltip : 'This field is required'
                 },
                 {
