@@ -1170,6 +1170,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(close){
             (v && (v.length || v * 1 > 0)) ? close.show() : close.hide();
         }
+        
+        this.validate();
     },
     /**
      * @property {Object} the last set data for the element
