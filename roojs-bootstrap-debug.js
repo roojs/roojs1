@@ -5715,6 +5715,7 @@ Roo.bootstrap.Table = function(config){
     
     
     if (this.sm) {
+        this.sm.grid = this;
         this.selModel = Roo.factory(this.sm, Roo.bootstrap.Table);
         this.sm = this.selModel;
         this.sm.xmodule = this.xmodule || false;
@@ -6655,7 +6656,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     getSelectionModel : function(){
         if(!this.selModel){
-            this.selModel = new Roo.bootstrap.Table.RowSelectionModel();
+            this.selModel = new Roo.bootstrap.Table.RowSelectionModel({grid: this});
         }
         return this.selModel;
     },
