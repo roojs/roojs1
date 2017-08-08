@@ -22458,11 +22458,12 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
             },
             scope: this
         });
-
+        /*
         var view = this.grid.view;
         view.on("refresh", this.onRefresh, this);
         view.on("rowupdated", this.onRowUpdated, this);
         view.on("rowremoved", this.onRemove, this);
+        */
     },
 
     // private
