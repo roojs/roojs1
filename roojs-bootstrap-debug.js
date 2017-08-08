@@ -5973,10 +5973,13 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             return;
         }
         
+        this.selModel.initEvents();
+        
         //Roo.log('initEvents with ds!!!!');
         
         this.mainBody = this.el.select('tbody', true).first();
         this.mainHead = this.el.select('thead', true).first();
+        
         
         
         
@@ -22403,8 +22406,7 @@ Roo.bootstrap.Table.RowSelectionModel = function(config){
     });
     Roo.bootstrap.Table.RowSelectionModel.superclass.constructor.call(this);
     this.locked = false;
-    this.initEvents();
-};
+ };
 
 Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSelectionModel,  {
     /**

@@ -56,8 +56,7 @@ Roo.bootstrap.Table.RowSelectionModel = function(config){
     });
     Roo.bootstrap.Table.RowSelectionModel.superclass.constructor.call(this);
     this.locked = false;
-    this.initEvents();
-};
+ };
 
 Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSelectionModel,  {
     /**
