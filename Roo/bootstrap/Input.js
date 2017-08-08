@@ -496,6 +496,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return false;
         }
         
+        return indicator;
         
     },
     
