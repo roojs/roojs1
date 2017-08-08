@@ -415,13 +415,17 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         } else if ( this.fieldLabel.length) {
                 
             cfg.cn = [
-
-               {
-                   tag: 'label',
+                {
+                    tag : 'i',
+                    cls : 'roo-required-indicator-left text-danger fa fa-lg fa-star',
+                    tooltip : 'This field is required'
+                },
+                {
+                    tag: 'label',
                    //cls : 'input-group-addon',
-                   html : this.fieldLabel
+                    html : this.fieldLabel
 
-               },
+                },
 
                inputblock
 
