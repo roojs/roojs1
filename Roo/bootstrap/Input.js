@@ -817,6 +817,14 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                         tooltip : 'This field is required',
                         style : 'margin-right:5px;'
                     }, label, true);
+                } else {
+                    
+                    var target = formGroup.select('input', true).first();
+                    
+                    if(this.hasFeedback){
+                        target = formGroup.select('.has-feedback', true).first();
+                    }
+                    
                 }
                 
             }
