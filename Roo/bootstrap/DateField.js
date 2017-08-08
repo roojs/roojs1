@@ -926,7 +926,18 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     remove: function() 
     {
         this.picker().remove();
-    }
+    },
+    
+    validate : function()
+    {
+        if(this.disabled || this.validateValue(this.getRawValue())){
+            this.markValid();
+            return true;
+        }
+        
+        this.markInvalid();
+        return false;
+    },
    
 });
 
