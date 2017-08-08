@@ -54,6 +54,7 @@ Roo.bootstrap.Table = function(config){
     
     
     if (this.sm) {
+        this.sm.grid = this;
         this.selModel = Roo.factory(this.sm, Roo.bootstrap.Table);
         this.sm = this.selModel;
         this.sm.xmodule = this.xmodule || false;
