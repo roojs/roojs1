@@ -554,7 +554,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     keyup: function(e)
     {
-        Roo.log('key????');
         Roo.bootstrap.DateField.superclass.keyup.call(this);
         this.update();
     },
