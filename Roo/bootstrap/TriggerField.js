@@ -520,6 +520,60 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         var ae = this.getActionEl();
         ae.dom.style.display = 'none';
     },
+    
+    markInvalid : function(msg)
+    {
+        if(!this.el  || this.preventMark){ // not rendered
+            return;
+        }
+        
+        this.el.removeClass([this.invalidClass, this.validClass]);
+        
+        var feedback = this.el.select('.form-control-feedback', true).first();
+            
+        if(feedback){
+            this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+        }
+
+        if(this.disabled || this.allowBlank){
+            return;
+        }
+        
+        var formGroup = this.el.findParent('.form-group', false, true);
+        
+        if(formGroup){
+            var label = formGroup.select('label', true).first();
+            var icon = formGroup.select('i.fa-star', true).first();
+
+            if(!this.getValue().length && label && !icon){
+                
+                if(this.indicatorpos == 'left'){
+                    this.el.findParent('.form-group', false, true).createChild({
+                        tag : 'i',
+                        cls : 'text-danger fa fa-lg fa-star',
+                        tooltip : 'This field is required',
+                        style : 'margin-right:5px;'
+                    }, label, true);
+                } else {
+                    
+                    var target = formGroup.select('input', true).first();
+                    
+                    if(this.hasFeedback){
+                        target = formGroup.select('.has-feedback', true).first();
+                    }
+                    
+                    this.el.findParent('.form-group', false, true).createChild({
+                        tag : 'i',
+                        cls : 'text-danger fa fa-lg fa-star',
+                        tooltip : 'This field is required',
+                        style : 'margin-left:5px;'
+                    }, target, true);
+                    
+                }
+                
+            }
+        }
+    },
 
     /**
      * The function that should handle the trigger's click event.  This method does nothing by default until overridden
