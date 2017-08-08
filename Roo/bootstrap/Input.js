@@ -228,6 +228,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     formatedValue : false,
     forceFeedback : false,
     
+    indicatorpos : 'left',
+    
     parentLabelAlign : function()
     {
         var parent = this;
