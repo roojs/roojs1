@@ -147,7 +147,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.isInput = true;
         this.component = this.el.select('.add-on', true).first() || false;
         this.component = (this.component && this.component.length === 0) ? false : this.component;
-        this.hasInput = this.component && this.inputEL().length;
+        this.hasInput = this.component && this.inputEl().length;
         
         if (typeof(this.minViewMode === 'string')) {
             switch (this.minViewMode) {
