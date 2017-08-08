@@ -928,15 +928,39 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.picker().remove();
     },
     
-    validate : function()
+    validateValue : function(value)
     {
-        if(this.disabled || this.validateValue(this.getRawValue())){
-            this.markValid();
-            return true;
+        if(value.length < 1)  {
+            if(this.allowBlank){
+                return true;
+            }
+            return false;
         }
         
-        this.markInvalid();
-        return false;
+        if(value.length < this.minLength){
+            return false;
+        }
+        if(value.length > this.maxLength){
+            return false;
+        }
+        if(this.vtype){
+            var vt = Roo.form.VTypes;
+            if(!vt[this.vtype](value, this)){
+                return false;
+            }
+        }
+        if(typeof this.validator == "function"){
+            var msg = this.validator(value);
+            if(msg !== true){
+                return false;
+            }
+        }
+        
+        if(this.regex && !this.regex.test(value)){
+            return false;
+        }
+        
+        return true;
     },
    
 });
