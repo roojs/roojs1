@@ -1,3 +1,4 @@
+
 /**
  * @extends Roo.bootstrap.Table.AbstractSelectionModel
  * @class Roo.bootstrap.Table.RowSelectionModel
@@ -119,6 +120,7 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
 
     // private
     onRefresh : function(){
+	//edited by KH Lau 9-Aug-2017
         //var ds = this.grid.dataSource, i, v = this.grid.view;
         var ds = this.grid.store, i, v = this.grid.view;
         var s = this.selections;
@@ -152,6 +154,7 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
         if(!keepExisting){
             this.clearSelections();
         }
+	//edited by KH Lau 9-Aug-2017
         //var ds = this.grid.dataSource;
         var ds = this.grid.store;
         for(var i = 0, len = records.length; i < len; i++){
@@ -188,6 +191,7 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
      * @param {Boolean} keepExisting (optional) True to keep existing selections
      */
     selectNext : function(keepExisting){
+	//edited by KH Lau 9-Aug-2017
         //if(this.last !== false && (this.last+1) < this.grid.dataSource.getCount()){
         if(this.last !== false && (this.last+1) < this.grid.store.getCount()){
             this.selectRow(this.last+1, keepExisting);
@@ -231,6 +235,7 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
             return;
         }
         if(fast !== true){
+	    //edited by KH Lau 9-Aug-2017
             //var ds = this.grid.dataSource;
             var ds = this.grid.store;
             var s = this.selections;
@@ -254,6 +259,7 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
         }
         this.selections.clear();
         //for(var i = 0, len = this.grid.dataSource.getCount(); i < len; i++){
+	//edited by KH Lau 9-Aug-2017
         for(var i = 0, len = this.grid.store.getCount(); i < len; i++){
             this.selectRow(i, true);
         }
@@ -273,6 +279,7 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
      * @return {Boolean}
      */
     isSelected : function(index){
+	//edited by KH Lau 9-Aug-2017
         //var r = typeof index == "number" ? this.grid.dataSource.getAt(index) : index;
         var r = typeof index == "number" ? this.grid.store.getAt(index -1 ) : index;
         return (r && this.selections.key(r.id) ? true : false);
@@ -294,6 +301,7 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
     },
     // private
     handleMouseDown : function(e, t){
+	//edited by KH Lau 9-Aug-2017
         //var view = this.grid.getView(), rowIndex;
         var rowIndex = t.dom.rowIndex;
         if(this.isLocked() || rowIndex ==0 ){
@@ -303,20 +311,20 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
             var last = this.last;
             this.selectRange(last, rowIndex, e.ctrlKey);
             this.last = last; // reset the last
-	    //alert('select rowIndex: ' + rowIndex);
+	    //edited by KH Lau 9-Aug-2017
 	    t.focus();
             //view.focusRow(rowIndex);
         }else{
             var isSelected = this.isSelected(rowIndex);
 
             if(isSelected){
-	    	//alert('unselect rowIndex: ' + rowIndex);
                 this.deselectRow(rowIndex);
             } else {
-	    	//alert('select rowIndex: ' + rowIndex);
+		//edited by KH Lau 9-Aug-2017
                 //this.selectRow(rowIndex, e.button === 0 && (e.ctrlKey || e.shiftKey));
                 this.selectRow(rowIndex, true);
 	    }
+	    //edited by KH Lau 9-Aug-2017
 	    /*
             if(e.button !== 0 && isSelected){
 	    	alert('rowIndex 2: ' + rowIndex);
@@ -399,6 +407,7 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
      * @param {Boolean} keepExisting (optional) True to keep existing selections
      */
     selectRow : function(index, keepExisting, preventViewNotify){
+	//edited by KH Lau 9-Aug-2017
         //if(this.locked || (index < 0 || index >= this.grid.dataSource.getCount())) {
         if(this.locked || (index < 0 || index > this.grid.store.getCount())) {
             return;
@@ -407,6 +416,7 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
             if(!keepExisting || this.singleSelect){
                 this.clearSelections();
             }
+  	    //edited by KH Lau 9-Aug-2017
             //var r = this.grid.dataSource.getAt(index);
             var r = this.grid.store.getAt(index-1);
 	    console.log('selectRow - record id :' + r.id);
@@ -414,11 +424,10 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
             this.selections.add(r);
             this.last = this.lastActive = index;
             if(!preventViewNotify){
+		//edited by KH Lau 9-Aug-2017
                 //this.grid.getView().onRowSelect(index);
     		var proxy = new Roo.Element(this.grid.getEl().child('table',false).child('tbody',false).dom.childNodes[index -1]);
 		proxy.addClass('bg-success');
-		//proxy.setStyle('background-color','#f2dede');
-		//this.grid.getEl().child('table',false).child('tbody',false).dom.childNodes[0].addClass('table-info');
             }
             this.fireEvent("rowselect", this, index, r);
             this.fireEvent("selectionchange", this);
@@ -439,11 +448,13 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
         if(this.lastActive == index){
             this.lastActive = false;
         }
+	//edited by KH Lau 9-Aug-2017
         var r = this.grid.store.getAt(index-1);
         //var r = this.grid.dataSource.getAt(index);
         this.selections.remove(r);
 	console.log('deselectRow - record id :' + r.id);
         if(!preventViewNotify){
+   	    //edited by KH Lau 9-Aug-2017
             //this.grid.getView().onRowDeselect(index);
     	    var proxy = new Roo.Element(this.grid.getEl().child('table',false).child('tbody',false).dom.childNodes[index -1]);
 	    proxy.removeClass('bg-success');
