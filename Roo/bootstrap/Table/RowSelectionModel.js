@@ -404,7 +404,7 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
                 this.clearSelections();
             }
   	    
-            var r = this.grid.store.getAt(index-1);
+            var r = this.grid.store.getAt(index);
             //console.log('selectRow - record id :' + r.id);
             
             this.selections.add(r);
