@@ -110,6 +110,7 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
             },
             scope: this
         });
+        this.grid.store.on('load', this.clearSelections, this);
         /*
         var view = this.grid.view;
         view.on("refresh", this.onRefresh, this);
