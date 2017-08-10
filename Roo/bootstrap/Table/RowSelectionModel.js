@@ -273,7 +273,7 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
      * @return {Boolean}
      */
     isSelected : function(index){
-	    var r = typeof index == "number" ? this.grid.store.getAt(index -1 ) : index;
+	    var r = typeof index == "number" ? this.grid.store.getAt(index) : index;
         return (r && this.selections.key(r.id) ? true : false);
     },
 
