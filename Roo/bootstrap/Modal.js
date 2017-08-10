@@ -257,8 +257,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true),  Roo.lib.Dom.getViewHeight(true));
         if (this.fitwindow) {
             var w = this.width || Roo.lib.Dom.getViewportWidth(true) - 30;
-            var h = this.height || Roo.lib.Dom.getViewportHeight(true) - 30;
-            this.setSize(w,h)
+            var h = this.height || Roo.lib.Dom.getViewportHeight(true) - 60;
+            this.setSize(w,h);
         }
     },
     
@@ -299,13 +299,15 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.el.setStyle('zIndex', '10001');
        
         this.fireEvent('show', this);
-        this.items.forEach(function(e) {
-            e.layout ? e.layout() : false;
-                
-        });
+        
         this.resize();
         
-        
+        (function () {
+            this.items.forEach( function(e) {
+                e.layout ? e.layout() : false;
+                    
+            });
+        }).defer(100,this);
         
     },
     hide : function()

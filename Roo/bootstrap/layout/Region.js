@@ -68,12 +68,13 @@ Roo.bootstrap.layout.Region = function(config)
      
     this.visible = true;
     this.collapsed = false;
+    this.unrendered_panels = [];
 };
 
 Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
 
     position: '', // set by wrapper (eg. north/south etc..)
-
+    unrendered_panels : null,  // unrendered panels.
     createBody : function(){
         /** This region's body element 
         * @type Roo.Element */
@@ -143,6 +144,15 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         if(this.config.hidden){
             this.hide();
         }
+        
+        if (this.unrendered_panels && this.unrendered_panels.length) {
+            for (var i =0;i< this.unrendered_panels.length; i++) {
+                this.add(this.unrendered_panels[i]);
+            }
+            this.unrendered_panels = null;
+            
+        }
+        
     },
     
     applyConfig : function(c)
@@ -255,6 +265,10 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
 */
     updateBox : function(box)
     {
+        if (!this.bodyEl) {
+            return; // not rendered yet..
+        }
+        
         this.box = box;
         if(!this.collapsed){
             this.el.dom.style.left = box.x + "px";
@@ -456,7 +470,8 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
     initPanelAsTab : function(panel){
         var ti = this.tabs.addTab(
                     panel.getEl().id,
-                    panel.getTitle(), null,
+                    panel.getTitle(),
+                    null,
                     this.config.closeOnTab && panel.isClosable()
             );
         if(panel.tabTip !== undefined){
@@ -563,20 +578,33 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
      * @param {ContentPanel...} panel The ContentPanel(s) to add (you can pass more than one)
      * @return {Roo.ContentPanel} The panel added (if only one was added; null otherwise)
      */
-    add : function(panel){
+    add : function(panel)
+    {
         if(arguments.length > 1){
             for(var i = 0, len = arguments.length; i < len; i++) {
                 this.add(arguments[i]);
             }
             return null;
         }
+        
+        // if we have not been rendered yet, then we can not really do much of this..
+        if (!this.bodyEl) {
+            this.unrendered_panels.push(panel);
+            return panel;
+        }
+        
+        
+        
+        
         if(this.hasPanel(panel)){
             this.showPanel(panel);
             return panel;
         }
         panel.setRegion(this);
         this.panels.add(panel);
-        if(this.panels.getCount() == 1 && !this.config.alwaysShowTabs){
+       /* if(this.panels.getCount() == 1 && !this.config.alwaysShowTabs){
+            // sinle panel - no tab...?? would it not be better to render it with the tabs,
+            // and hide them... ???
             this.bodyEl.dom.appendChild(panel.getEl().dom);
             if(panel.background !== true){
                 this.setActivePanel(panel);
@@ -584,6 +612,7 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
             this.fireEvent("paneladded", this, panel);
             return panel;
         }
+        */
         if(!this.tabs){
             this.initTabs();
         }else{

@@ -77,6 +77,14 @@ Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
         if(this.updating) {
             return;
         }
+        
+        // render all the rebions if they have not been done alreayd?
+        Roo.each(Roo.bootstrap.layout.Border.regions, function(region) {
+            if(this.regions[region] && !this.regions[region].bodyEl){
+                this.regions[region].onRender(this.el)
+            }
+        },this);
+        
         var size = this.getViewSize();
         var w = size.width;
         var h = size.height;

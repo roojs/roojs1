@@ -69,7 +69,7 @@ Example.NestedDialog = {
                         {
                             xtype : 'Content',
                             xns: Roo.bootstrap.panel,
-                            title : "Title center" ,
+                            title : "Title center 1" ,
                             fitToFrame:true,
                             closable:false,
                             region : 'center',

@@ -479,8 +479,12 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
     createStripElements :  function(stripEl, text, closable)
     {
         var td = document.createElement("li"); // was td..
-        stripEl.insertBefore(td, stripEl.childNodes[stripEl.childNodes.length-1]);
-        //stripEl.appendChild(td);
+        
+        
+        //stripEl.insertBefore(td, stripEl.childNodes[stripEl.childNodes.length-1]);
+        
+        
+        stripEl.appendChild(td);
         /*if(closable){
             td.className = "x-tabs-closable";
             if(!this.closeTpl){

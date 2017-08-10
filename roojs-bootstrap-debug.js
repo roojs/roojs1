@@ -2456,7 +2456,7 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
  * @cfg {String} buttonPosition (left|right|center) default right
  * @cfg {Boolean} animate default true
  * @cfg {Boolean} allow_close default true
- * @cfg {Boolean} fitwindow default true
+ * @cfg {Boolean} fitwindow default false
  * @cfg {String} size (sm|lg) default empty
  * 
  * 
@@ -2698,8 +2698,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true),  Roo.lib.Dom.getViewHeight(true));
         if (this.fitwindow) {
             var w = this.width || Roo.lib.Dom.getViewportWidth(true) - 30;
-            var h = this.height || Roo.lib.Dom.getViewportHeight(true) - 30;
-            this.setSize(w,h)
+            var h = this.height || Roo.lib.Dom.getViewportHeight(true) - 60;
+            this.setSize(w,h);
         }
     },
     
@@ -2740,13 +2740,15 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.el.setStyle('zIndex', '10001');
        
         this.fireEvent('show', this);
-        this.items.forEach(function(e) {
-            e.layout ? e.layout() : false;
-                
-        });
+        
         this.resize();
         
-        
+        (function () {
+            this.items.forEach( function(e) {
+                e.layout ? e.layout() : false;
+                    
+            });
+        }).defer(100,this);
         
     },
     hide : function()
@@ -8535,6 +8537,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         }
         if(this.maskRe || (this.vtype && this.disableKeyFilter !== true && (this.maskRe = Roo.form.VTypes[this.vtype+'Mask']))){
             this.inputEl().on("keypress", this.filterKeys, this);
+        } else {
+            this.inputEl().relayEvent('keypress', this);
         }
        /* if(this.grow){
             this.el.on("keyup", this.onKeyUp,  this, {buffer:50});
@@ -17329,7 +17333,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.isInput = true;
         this.component = this.el.select('.add-on', true).first() || false;
         this.component = (this.component && this.component.length === 0) ? false : this.component;
-        this.hasInput = this.component && this.inputEL().length;
+        this.hasInput = this.component && this.inputEl().length;
         
         if (typeof(this.minViewMode === 'string')) {
             switch (this.minViewMode) {
@@ -18108,6 +18112,54 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     remove: function() 
     {
         this.picker().remove();
+    },
+    
+    validateValue : function(value)
+    {
+        if(value.length < 1)  {
+            if(this.allowBlank){
+                return true;
+            }
+            return false;
+        }
+        
+        if(value.length < this.minLength){
+            return false;
+        }
+        if(value.length > this.maxLength){
+            return false;
+        }
+        if(this.vtype){
+            var vt = Roo.form.VTypes;
+            if(!vt[this.vtype](value, this)){
+                return false;
+            }
+        }
+        if(typeof this.validator == "function"){
+            var msg = this.validator(value);
+            if(msg !== true){
+                return false;
+            }
+        }
+        
+        if(this.regex && !this.regex.test(value)){
+            return false;
+        }
+        
+        if(typeof(this.parseDate(value)) == 'undefined'){
+            return false;
+        }
+        
+        if (this.endDate !== Infinity && this.parseDate(value).getTime() > this.endDate.getTime()) {
+            return false;
+        }      
+        
+        if (this.startDate !== -Infinity && this.parseDate(value).getTime() < this.startDate.getTime()) {
+            return false;
+        } 
+        
+        
+        return true;
     }
    
 });
@@ -31704,6 +31756,14 @@ Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
         if(this.updating) {
             return;
         }
+        
+        // render all the rebions if they have not been done alreayd?
+        Roo.each(Roo.bootstrap.layout.Border.regions, function(region) {
+            if(this.regions[region] && !this.regions[region].bodyEl){
+                this.regions[region].onRender(this.el)
+            }
+        },this);
+        
         var size = this.getViewSize();
         var w = size.width;
         var h = size.height;
@@ -32484,12 +32544,13 @@ Roo.bootstrap.layout.Region = function(config)
      
     this.visible = true;
     this.collapsed = false;
+    this.unrendered_panels = [];
 };
 
 Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
 
     position: '', // set by wrapper (eg. north/south etc..)
-
+    unrendered_panels : null,  // unrendered panels.
     createBody : function(){
         /** This region's body element 
         * @type Roo.Element */
@@ -32559,6 +32620,15 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         if(this.config.hidden){
             this.hide();
         }
+        
+        if (this.unrendered_panels && this.unrendered_panels.length) {
+            for (var i =0;i< this.unrendered_panels.length; i++) {
+                this.add(this.unrendered_panels[i]);
+            }
+            this.unrendered_panels = null;
+            
+        }
+        
     },
     
     applyConfig : function(c)
@@ -32671,6 +32741,10 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
 */
     updateBox : function(box)
     {
+        if (!this.bodyEl) {
+            return; // not rendered yet..
+        }
+        
         this.box = box;
         if(!this.collapsed){
             this.el.dom.style.left = box.x + "px";
@@ -32872,7 +32946,8 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
     initPanelAsTab : function(panel){
         var ti = this.tabs.addTab(
                     panel.getEl().id,
-                    panel.getTitle(), null,
+                    panel.getTitle(),
+                    null,
                     this.config.closeOnTab && panel.isClosable()
             );
         if(panel.tabTip !== undefined){
@@ -32979,20 +33054,33 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
      * @param {ContentPanel...} panel The ContentPanel(s) to add (you can pass more than one)
      * @return {Roo.ContentPanel} The panel added (if only one was added; null otherwise)
      */
-    add : function(panel){
+    add : function(panel)
+    {
         if(arguments.length > 1){
             for(var i = 0, len = arguments.length; i < len; i++) {
                 this.add(arguments[i]);
             }
             return null;
         }
+        
+        // if we have not been rendered yet, then we can not really do much of this..
+        if (!this.bodyEl) {
+            this.unrendered_panels.push(panel);
+            return panel;
+        }
+        
+        
+        
+        
         if(this.hasPanel(panel)){
             this.showPanel(panel);
             return panel;
         }
         panel.setRegion(this);
         this.panels.add(panel);
-        if(this.panels.getCount() == 1 && !this.config.alwaysShowTabs){
+       /* if(this.panels.getCount() == 1 && !this.config.alwaysShowTabs){
+            // sinle panel - no tab...?? would it not be better to render it with the tabs,
+            // and hide them... ???
             this.bodyEl.dom.appendChild(panel.getEl().dom);
             if(panel.background !== true){
                 this.setActivePanel(panel);
@@ -33000,6 +33088,7 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
             this.fireEvent("paneladded", this, panel);
             return panel;
         }
+        */
         if(!this.tabs){
             this.initTabs();
         }else{
@@ -34955,8 +35044,12 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
     createStripElements :  function(stripEl, text, closable)
     {
         var td = document.createElement("li"); // was td..
-        stripEl.insertBefore(td, stripEl.childNodes[stripEl.childNodes.length-1]);
-        //stripEl.appendChild(td);
+        
+        
+        //stripEl.insertBefore(td, stripEl.childNodes[stripEl.childNodes.length-1]);
+        
+        
+        stripEl.appendChild(td);
         /*if(closable){
             td.className = "x-tabs-closable";
             if(!this.closeTpl){
