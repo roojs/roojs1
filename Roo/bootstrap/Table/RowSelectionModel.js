@@ -444,7 +444,7 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
     	    var proxy = new Roo.Element(
                 this.grid.getRowDom(index)
             );
-            proxy.removeClass('bg-success');
+            proxy.removeClass('bg-info');
         }
         this.fireEvent("rowdeselect", this, index);
         this.fireEvent("selectionchange", this);
