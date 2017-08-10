@@ -294,7 +294,7 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
     // private
     handleMouseDown : function(e, t)
     {
-	    var rowIndex = t.dom.rowIndex;
+	    var rowIndex = t.dom.rowIndex - 1; // first row is header???
         if(this.isLocked() || rowIndex ==0 ){
             return;
         };
