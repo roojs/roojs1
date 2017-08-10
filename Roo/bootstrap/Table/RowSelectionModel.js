@@ -413,7 +413,7 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
                 var proxy = new Roo.Element(
                                 this.grid.getRowDom(index)
                 );
-                proxy.addClass('bg-success');
+                proxy.addClass('bg-info');
             }
             this.fireEvent("rowselect", this, index, r);
             this.fireEvent("selectionchange", this);
