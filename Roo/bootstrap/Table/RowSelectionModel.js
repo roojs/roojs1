@@ -294,8 +294,8 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
     // private
     handleMouseDown : function(e, t)
     {
-	    var rowIndex = t.dom.rowIndex - 1; // first row is header???
-        if(this.isLocked() || rowIndex ==0 ){
+	    var rowIndex = this.grid.headerShow  ? t.dom.rowIndex - 1 : t.dom.rowIndex ; // first row is header???
+        if(this.isLocked() || rowIndex < 0 ){
             return;
         };
         if(e.shiftKey && this.last !== false){
