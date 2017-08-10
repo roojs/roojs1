@@ -434,16 +434,17 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
         if(this.lastActive == index){
             this.lastActive = false;
         }
-	//edited by KH Lau 9-Aug-2017
-        var r = this.grid.store.getAt(index-1);
+	
+        var r = this.grid.store.getAt(index);
         //var r = this.grid.dataSource.getAt(index);
         this.selections.remove(r);
-	console.log('deselectRow - record id :' + r.id);
+        //.console.log('deselectRow - record id :' + r.id);
         if(!preventViewNotify){
-   	    //edited by KH Lau 9-Aug-2017
-            //this.grid.getView().onRowDeselect(index);
-    	    var proxy = new Roo.Element(this.grid.getEl().child('table',false).child('tbody',false).dom.childNodes[index -1]);
-	    proxy.removeClass('bg-success');
+   	
+    	    var proxy = new Roo.Element(
+                this.grid.getRowDom(index)
+            );
+            proxy.removeClass('bg-success');
         }
         this.fireEvent("rowdeselect", this, index);
         this.fireEvent("selectionchange", this);
