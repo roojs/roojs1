@@ -110,7 +110,9 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
             },
             scope: this
         });
-        this.grid.store.on('load', this.clearSelections, this);
+        this.grid.store.on('load', function(){
+            this.selections.clear();
+        },this);
         /*
         var view = this.grid.view;
         view.on("refresh", this.onRefresh, this);
@@ -438,7 +440,10 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
         }
 	
         var r = this.grid.store.getAt(index);
-        //var r = this.grid.dataSource.getAt(index);
+        if (!r) {
+            return;
+        }
+        
         this.selections.remove(r);
         //.console.log('deselectRow - record id :' + r.id);
         if(!preventViewNotify){
