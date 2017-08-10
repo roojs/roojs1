@@ -411,7 +411,7 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
             this.last = this.lastActive = index;
             if(!preventViewNotify){
                 var proxy = new Roo.Element(
-                                this.grid.getRowDom(index -1)
+                                this.grid.getRowDom(index)
                 );
                 proxy.addClass('bg-success');
             }
