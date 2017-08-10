@@ -119,9 +119,8 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
     },
 
     // private
-    onRefresh : function(){
-	//edited by KH Lau 9-Aug-2017
-        //var ds = this.grid.dataSource, i, v = this.grid.view;
+    onRefresh : function()
+    {
         var ds = this.grid.store, i, v = this.grid.view;
         var s = this.selections;
         s.each(function(r){
@@ -150,13 +149,12 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
      * @param {Array} records The records to select
      * @param {Boolean} keepExisting (optional) True to keep existing selections
      */
-    selectRecords : function(records, keepExisting){
+    selectRecords : function(records, keepExisting)
+    {
         if(!keepExisting){
             this.clearSelections();
         }
-	//edited by KH Lau 9-Aug-2017
-        //var ds = this.grid.dataSource;
-        var ds = this.grid.store;
+	    var ds = this.grid.store;
         for(var i = 0, len = records.length; i < len; i++){
             this.selectRow(ds.indexOf(records[i]), true);
         }
@@ -190,10 +188,9 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
      * Selects the row immediately following the last selected row.
      * @param {Boolean} keepExisting (optional) True to keep existing selections
      */
-    selectNext : function(keepExisting){
-	//edited by KH Lau 9-Aug-2017
-        //if(this.last !== false && (this.last+1) < this.grid.dataSource.getCount()){
-        if(this.last !== false && (this.last+1) < this.grid.store.getCount()){
+    selectNext : function(keepExisting)
+    {
+	    if(this.last !== false && (this.last+1) < this.grid.store.getCount()){
             this.selectRow(this.last+1, keepExisting);
             this.grid.getView().focusRow(this.last);
         }
@@ -230,14 +227,13 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
     /**
      * Clears all selections.
      */
-    clearSelections : function(fast){
+    clearSelections : function(fast)
+    {
         if(this.locked) {
             return;
         }
         if(fast !== true){
-	    //edited by KH Lau 9-Aug-2017
-            //var ds = this.grid.dataSource;
-            var ds = this.grid.store;
+	        var ds = this.grid.store;
             var s = this.selections;
             s.each(function(r){
                 this.deselectRow(ds.indexOfId(r.id));
@@ -258,8 +254,6 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
             return;
         }
         this.selections.clear();
-        //for(var i = 0, len = this.grid.dataSource.getCount(); i < len; i++){
-	//edited by KH Lau 9-Aug-2017
         for(var i = 0, len = this.grid.store.getCount(); i < len; i++){
             this.selectRow(i, true);
         }
@@ -279,9 +273,7 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
      * @return {Boolean}
      */
     isSelected : function(index){
-	//edited by KH Lau 9-Aug-2017
-        //var r = typeof index == "number" ? this.grid.dataSource.getAt(index) : index;
-        var r = typeof index == "number" ? this.grid.store.getAt(index -1 ) : index;
+	    var r = typeof index == "number" ? this.grid.store.getAt(index -1 ) : index;
         return (r && this.selections.key(r.id) ? true : false);
     },
 
@@ -300,10 +292,9 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
 	
     },
     // private
-    handleMouseDown : function(e, t){
-	//edited by KH Lau 9-Aug-2017
-        //var view = this.grid.getView(), rowIndex;
-        var rowIndex = t.dom.rowIndex;
+    handleMouseDown : function(e, t)
+    {
+	    var rowIndex = t.dom.rowIndex;
         if(this.isLocked() || rowIndex ==0 ){
             return;
         };
@@ -311,31 +302,28 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
             var last = this.last;
             this.selectRange(last, rowIndex, e.ctrlKey);
             this.last = last; // reset the last
-	    //edited by KH Lau 9-Aug-2017
-	    t.focus();
-            //view.focusRow(rowIndex);
+            t.focus();
+    
         }else{
             var isSelected = this.isSelected(rowIndex);
 
             if(isSelected){
                 this.deselectRow(rowIndex);
             } else {
-		//edited by KH Lau 9-Aug-2017
-                //this.selectRow(rowIndex, e.button === 0 && (e.ctrlKey || e.shiftKey));
-                this.selectRow(rowIndex, true);
-	    }
-	    //edited by KH Lau 9-Aug-2017
-	    /*
-            if(e.button !== 0 && isSelected){
-	    	alert('rowIndex 2: ' + rowIndex);
-                view.focusRow(rowIndex);
-            }else if(e.ctrlKey && isSelected){
-                this.deselectRow(rowIndex);
-            }else if(!isSelected){
-                this.selectRow(rowIndex, e.button === 0 && (e.ctrlKey || e.shiftKey));
-                view.focusRow(rowIndex);
+		        this.selectRow(rowIndex, true);
             }
-	    */
+    
+            /*
+                if(e.button !== 0 && isSelected){
+                alert('rowIndex 2: ' + rowIndex);
+                    view.focusRow(rowIndex);
+                }else if(e.ctrlKey && isSelected){
+                    this.deselectRow(rowIndex);
+                }else if(!isSelected){
+                    this.selectRow(rowIndex, e.button === 0 && (e.ctrlKey || e.shiftKey));
+                    view.focusRow(rowIndex);
+                }
+            */
         }
         this.fireEvent("afterselectionchange", this);
     },
@@ -406,28 +394,26 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
      * @param {Number} row The index of the row to select
      * @param {Boolean} keepExisting (optional) True to keep existing selections
      */
-    selectRow : function(index, keepExisting, preventViewNotify){
-	//edited by KH Lau 9-Aug-2017
-        //if(this.locked || (index < 0 || index >= this.grid.dataSource.getCount())) {
-        if(this.locked || (index < 0 || index > this.grid.store.getCount())) {
+    selectRow : function(index, keepExisting, preventViewNotify)
+    {
+	    if(this.locked || (index < 0 || index > this.grid.store.getCount())) {
             return;
         }
         if(this.fireEvent("beforerowselect", this, index, keepExisting) !== false){
             if(!keepExisting || this.singleSelect){
                 this.clearSelections();
             }
-  	    //edited by KH Lau 9-Aug-2017
-            //var r = this.grid.dataSource.getAt(index);
+  	    
             var r = this.grid.store.getAt(index-1);
-	    console.log('selectRow - record id :' + r.id);
-	    //alert(r.id);
+            //console.log('selectRow - record id :' + r.id);
+            
             this.selections.add(r);
             this.last = this.lastActive = index;
             if(!preventViewNotify){
-		//edited by KH Lau 9-Aug-2017
-                //this.grid.getView().onRowSelect(index);
-    		var proxy = new Roo.Element(this.grid.getEl().child('table',false).child('tbody',false).dom.childNodes[index -1]);
-		proxy.addClass('bg-success');
+                var proxy = new Roo.Element(
+                                this.grid.getEl().child('table',false).child('tbody',false).dom.childNodes[index -1]
+                );
+                proxy.addClass('bg-success');
             }
             this.fireEvent("rowselect", this, index, r);
             this.fireEvent("selectionchange", this);
