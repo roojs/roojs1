@@ -306,7 +306,7 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
     
         }else{
             var isSelected = this.isSelected(rowIndex);
-
+            Roo.log("select row:" + rowIndex)
             if(isSelected){
                 this.deselectRow(rowIndex);
             } else {
