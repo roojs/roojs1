@@ -345,6 +345,10 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     validateRadio : function()
     {
+        if(this.allowBlank){
+            return true;
+        }
+        
         var valid = false;
         
         Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
