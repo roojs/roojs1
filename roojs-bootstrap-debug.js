@@ -370,7 +370,24 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             this.el.addClass('hidden');
         }
         
+    },
+    
+    isVisible : function(deep) 
+    {
+        var vis = !(this.getStyle("visibility") == "hidden" || this.getStyle("display") == "none");
+        if(deep !== true || !vis){
+            return vis;
+        }
+        var p = this.dom.parentNode;
+        while(p && p.tagName.toLowerCase() != "body"){
+            if(!Roo.fly(p, '_isVisible').isVisible()){
+                return false;
+            }
+            p = p.parentNode;
+        }
+        return true;
     }
+    
 });
 
  /*

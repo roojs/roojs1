@@ -11,7 +11,8 @@ var D=(typeof(A['flexy:if'])!='undefined')||(typeof(A['flexy:foreach'])!='undefi
 var G=F?F.child('>*[xtype]'):false;if(G){}if(G&&G.attr('xtype').split('.').pop()==cn.xtype){cn.el=G;}else{Roo.debug&&Roo.log("MISSING "+cn.xtype+" on child of "+(this.el?this.el.attr('xbuilderid'):'no parent'));Roo.debug&&Roo.log(F);Roo.debug&&Roo.log(G);
 Roo.debug&&Roo.log(cn);}}if(E&&D&&!cn.el&&cn.can_build_overlaid){Roo.debug&&Roo.log('skipping render');Roo.debug&&Roo.log(A);if(!cn.el){Roo.debug&&Roo.log('skipping all children');skip_children=true;}}else{cn.render&&cn.render(this[B](true));}}var H=[];if(!A.items||!A.items.length){cn.items=H;
 return cn;}var I=A.items;delete A.items;if(!skip_children){for(var i=0;i<I.length;i++){H.push(cn.addxtype(Roo.apply({},I[i])));}}cn.items=H;cn.fireEvent('childrenrendered',this);return cn;},show:function(){if(this.el){this.el.removeClass('hidden');}},hide:function(){if(this.el&&!this.el.hasClass('hidden')){this.el.addClass('hidden');
-}}});
+}},isVisible:function(A){var B=!(this.getStyle("visibility")=="hidden"||this.getStyle("display")=="none");if(A!==true||!B){return B;}var p=this.dom.parentNode;while(p&&p.tagName.toLowerCase()!="body"){if(!Roo.fly(p,'_isVisible').isVisible()){return false;
+}p=p.parentNode;}return true;}});
 // Roo/bootstrap/Body.js
 Roo.bootstrap.Body=function(A){Roo.bootstrap.Body.superclass.constructor.call(this,A);this.el=Roo.get(document.body);if(this.cls&&this.cls.length){Roo.get(document.body).addClass(this.cls);}};Roo.extend(Roo.bootstrap.Body,Roo.bootstrap.Component,{is_body:true,autoCreate:{cls:'container'}
 ,onRender:function(ct,A){}});
