@@ -817,7 +817,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             index = ds.indexOf(record);
         }
         this.insertRow(ds, index, true);
+        this.autoSize();
         this.onRemove(ds, record, index+1, true);
+        this.autoSize();
         //this.syncRowHeights(index, index);
         //this.layout();
         this.fireEvent("rowupdated", this, index, record);
