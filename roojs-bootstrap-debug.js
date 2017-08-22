@@ -6428,6 +6428,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     onUpdate : function(ds,record)
     {
         this.refreshRow(record);
+        this.autoSize();
     },
     
     onRemove : function(ds, record, index, isUpdate){
