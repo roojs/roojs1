@@ -5710,8 +5710,8 @@ Roo.bootstrap.Table = function(config){
   
     
     // BC...
-    this.rowSelection = (typeof(config.RowSelection) != 'undefined') ? config.RowSelection : this.rowSelection;
-    this.cellSelection = (typeof(config.CellSelection) != 'undefined') ? config.CellSelection : this.cellSelection;
+    this.rowSelection = (typeof(config.rowSelection) != 'undefined') ? config.rowSelection : this.rowSelection;
+    this.cellSelection = (typeof(config.cellSelection) != 'undefined') ? config.cellSelection : this.cellSelection;
     this.headerShow = (typeof(config.thead) != 'undefined') ? config.thead : this.headerShow;
     this.footerShow = (typeof(config.tfoot) != 'undefined') ? config.tfoot : this.footerShow;
     
@@ -6163,12 +6163,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         
     },
-    
+        
     onDblClick : function(e,el)
     {
         var cell = Roo.get(el);
         
-        if(!cell || (!this.CellSelection && !this.RowSelection)){
+        if(!cell || (!this.cellSelection && !this.rowSelection)){
             return;
         }
         
@@ -6189,11 +6189,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var cellIndex = cell.dom.cellIndex;
         var rowIndex = this.getRowIndex(row);
         
-        if(this.CellSelection){
+        if(this.cellSelection){
             this.fireEvent('celldblclick', this, cell, rowIndex, cellIndex, e);
         }
         
-        if(this.RowSelection){
+        if(this.rowSelection){
             this.fireEvent('rowdblclick', this, row, rowIndex, e);
         }
     },
