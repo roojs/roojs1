@@ -500,12 +500,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         
     },
-    
+        
     onDblClick : function(e,el)
     {
         var cell = Roo.get(el);
         
-        if(!cell || (!this.CellSelection && !this.RowSelection)){
+        if(!cell || (!this.cellSelection && !this.rowSelection)){
             return;
         }
         
@@ -526,11 +526,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var cellIndex = cell.dom.cellIndex;
         var rowIndex = this.getRowIndex(row);
         
-        if(this.CellSelection){
+        if(this.cellSelection){
             this.fireEvent('celldblclick', this, cell, rowIndex, cellIndex, e);
         }
         
-        if(this.RowSelection){
+        if(this.rowSelection){
             this.fireEvent('rowdblclick', this, row, rowIndex, e);
         }
     },
