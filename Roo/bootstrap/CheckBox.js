@@ -503,7 +503,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         if(this.rendered){
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
                 _this.getActionEl().addClass(this.disabledClass);
-                _this.el.dom.disabled = true;
+                e.dom.disabled = true;
             });
         }
         
@@ -523,8 +523,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         if(this.rendered){
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
-                _this.getActionEl().addClass(this.disabledClass);
-                _this.el.dom.disabled = true;
+                _this.getActionEl().removeClass(this.disabledClass);
+                e.dom.disabled = false;
             });
         }
         
