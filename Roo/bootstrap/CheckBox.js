@@ -514,9 +514,20 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
 
     enable : function()
     {
-        if(this.rendered){
-            this.onEnable();
+        if(this.inputType != 'radio'){
+            Roo.bootstrap.CheckBox.superclass.enable.call(this);
+            return;
         }
+        
+        var _this = this;
+        
+        if(this.rendered){
+            Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
+                _this.getActionEl().addClass(this.disabledClass);
+                _this.el.dom.disabled = true;
+            });
+        }
+        
         this.disabled = false;
         this.fireEvent("enable", this);
         return this;
