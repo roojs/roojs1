@@ -498,13 +498,15 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             return;
         }
         
+        var _this = this;
+        
         Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
             this.getActionEl().addClass(this.disabledClass);
             this.el.dom.disabled = true;
         
             e.findParent('.form-group', false, true).removeClass([_this.invalidClass, _this.validClass]);
             e.findParent('.form-group', false, true).addClass(_this.invalidClass);
-        }, this);
+        });
         
         this.disabled = true;
         this.fireEvent("disable", this);
