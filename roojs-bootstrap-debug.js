@@ -19707,8 +19707,50 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             group[i].el.findParent('.form-group', false, true).addClass(this.invalidClass);
         }
         
-    }
+    },
     
+    disable : function()
+    {
+        if(this.inputType != 'radio'){
+            Roo.bootstrap.CheckBox.superclass.disable.call(this);
+            return;
+        }
+        
+        var _this = this;
+        
+        if(this.rendered){
+            Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
+                _this.getActionEl().addClass(this.disabledClass);
+                e.dom.disabled = true;
+            });
+        }
+        
+        this.disabled = true;
+        this.fireEvent("disable", this);
+        return this;
+    },
+
+    enable : function()
+    {
+        if(this.inputType != 'radio'){
+            Roo.bootstrap.CheckBox.superclass.enable.call(this);
+            return;
+        }
+        
+        var _this = this;
+        
+        if(this.rendered){
+            Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
+                _this.getActionEl().removeClass(this.disabledClass);
+                e.dom.disabled = false;
+            });
+        }
+        
+        this.disabled = false;
+        this.fireEvent("enable", this);
+        return this;
+    }
+
 });
 
 Roo.apply(Roo.bootstrap.CheckBox, {
