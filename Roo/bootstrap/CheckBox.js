@@ -489,8 +489,32 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             group[i].el.findParent('.form-group', false, true).addClass(this.invalidClass);
         }
         
-    }
+    },
     
+    disable : function()
+    {
+        if(this.inputType != 'radio'){
+            
+        }
+        
+        if(this.rendered){
+            this.onDisable();
+        }
+        this.disabled = true;
+        this.fireEvent("disable", this);
+        return this;
+    },
+
+    enable : function()
+    {
+        if(this.rendered){
+            this.onEnable();
+        }
+        this.disabled = false;
+        this.fireEvent("enable", this);
+        return this;
+    }
+
 });
 
 Roo.apply(Roo.bootstrap.CheckBox, {
