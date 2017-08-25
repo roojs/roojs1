@@ -494,12 +494,12 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     disable : function()
     {
         if(this.inputType != 'radio'){
-            
+            Roo.bootstrap.CheckBox.superclass.disable.call(this);
+            return;
         }
         
-        if(this.rendered){
-            this.onDisable();
-        }
+        
+        
         this.disabled = true;
         this.fireEvent("disable", this);
         return this;
