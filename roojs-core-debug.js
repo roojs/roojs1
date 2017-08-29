@@ -16096,6 +16096,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                 return;
             }
         }
+        
         Roo.debug && Roo.log("EL:");
         Roo.debug && Roo.log(el);
         Roo.debug && Roo.log("this.parent.el:");
@@ -16122,24 +16123,43 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             Roo.debug && Roo.log("no parent - creating one");
             
             el = el ? Roo.get(el) : false; 	
-             
             
-            // it's a top level one..
-            this.parent =  {
-                el : new Roo.BorderLayout(el || document.body, {
-                
-                     center: {
-                         titlebar: false,
-                         autoScroll:false,
-                         closeOnTab: true,
-                         tabPosition: 'top',
-                          //resizeTabs: true,
-                         alwaysShowTabs: el && hp? false :  true,
-                         hideTabs: el || !hp ? true :  false,
-                         minTabWidth: 140
-                     }
-                 })
-            };
+            if (typeof(Roo.BorderLayout) == 'undefined' ) {
+                this.parent =  {
+                    el : new Roo.bootstrap.layout.border({
+                        el: el || document.body,
+                    
+                        center: {
+                             titlebar: false,
+                             autoScroll:false,
+                             closeOnTab: true,
+                             tabPosition: 'top',
+                              //resizeTabs: true,
+                             alwaysShowTabs: el && hp? false :  true,
+                             hideTabs: el || !hp ? true :  false,
+                             minTabWidth: 140
+                         }
+                     })
+                };
+            } else {
+            
+                // it's a top level one..
+                this.parent =  {
+                    el : new Roo.BorderLayout(el || document.body, {
+                    
+                         center: {
+                             titlebar: false,
+                             autoScroll:false,
+                             closeOnTab: true,
+                             tabPosition: 'top',
+                              //resizeTabs: true,
+                             alwaysShowTabs: el && hp? false :  true,
+                             hideTabs: el || !hp ? true :  false,
+                             minTabWidth: 140
+                         }
+                     })
+                };
+            }
         }
         
         if (!this.parent.el) {
