@@ -16125,8 +16125,9 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             el = el ? Roo.get(el) : false; 	
             
             if (typeof(Roo.BorderLayout) == 'undefined' ) {
+                
                 this.parent =  {
-                    el : new Roo.bootstrap.layout.border({
+                    el : new Roo.bootstrap.layout.Border({
                         el: el || document.body,
                     
                         center: {
@@ -16135,8 +16136,8 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                              closeOnTab: true,
                              tabPosition: 'top',
                               //resizeTabs: true,
-                             alwaysShowTabs: el && hp? false :  true,
-                             hideTabs: el || !hp ? true :  false,
+                             alwaysShowTabs: false,
+                             hideTabs: true,
                              minTabWidth: 140
                          }
                      })
