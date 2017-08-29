@@ -255,7 +255,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             
             if (typeof(Roo.BorderLayout) == 'undefined' ) {
                 this.parent =  {
-                    el : new Roo.bootstrap.layout.border({
+                    el : new Roo.bootstrap.layout.Border({
                         el: el || document.body,
                     
                         center: {
