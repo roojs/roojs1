@@ -445,7 +445,8 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
 
     initTabs : function()
     {
-        this.bodyEl.setStyle("overflow", "hidden");
+        //this.bodyEl.setStyle("overflow", "hidden"); -- this is set in render?
+        
         var ts = new Roo.bootstrap.panel.Tabs({
                 el: this.bodyEl.dom,
                 tabPosition: this.bottomTabs ? 'bottom' : 'top',
