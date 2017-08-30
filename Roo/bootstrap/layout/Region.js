@@ -293,7 +293,7 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
                 w += this.config.adjustments[0];
             }
         }
-        if(h !== null){
+        if(h !== null && h > 0){
             this.el.setHeight(h);
             h = this.titleEl && this.titleEl.isDisplayed() ? h - (this.titleEl.getHeight()||0) : h;
             h -= this.el.getBorderWidth("tb");
