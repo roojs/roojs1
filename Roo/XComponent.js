@@ -267,7 +267,8 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                               //resizeTabs: true,
                              alwaysShowTabs: false,
                              hideTabs: true,
-                             minTabWidth: 140
+                             minTabWidth: 140,
+                             overflow: 'visible'
                          }
                      })
                 };
