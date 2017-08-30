@@ -33034,7 +33034,7 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         ts.maxTabWidth = this.config.maxTabWidth || 250;
         ts.preferredTabWidth = this.config.preferredTabWidth || 150;
         ts.monitorResize = false;
-        ts.bodyEl.setStyle("overflow", this.config.autoScroll ? "auto" : "hidden"); // this is set in render?
+        //ts.bodyEl.setStyle("overflow", this.config.autoScroll ? "auto" : "hidden"); // this is set in render?
         ts.bodyEl.addClass('roo-layout-tabs-body');
         this.panels.each(this.initPanelAsTab, this);
     },
