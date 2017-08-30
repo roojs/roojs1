@@ -32864,7 +32864,7 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
                 w += this.config.adjustments[0];
             }
         }
-        if(h !== null){
+        if(h !== null && h > 0){
             this.el.setHeight(h);
             h = this.titleEl && this.titleEl.isDisplayed() ? h - (this.titleEl.getHeight()||0) : h;
             h -= this.el.getBorderWidth("tb");
@@ -34579,7 +34579,11 @@ Roo.extend(Roo.bootstrap.panel.Nest, Roo.bootstrap.panel.Content, {
         if(!this.ignoreResize(width, height)){
             var size = this.adjustForComponents(width, height);
             var el = this.layout.getEl();
-            el.setSize(size.width, size.height);
+            if (size.height < 1) {
+                el.setWidth(size.width);   
+            } else {
+                el.setSize(size.width, size.height);
+            }
             var touch = el.dom.offsetWidth;
             this.layout.layout();
             // ie requires a double layout on the first pass
