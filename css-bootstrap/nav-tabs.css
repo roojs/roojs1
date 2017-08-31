@@ -76,3 +76,6 @@
   background: #fff;
   padding: 10px;
 }
+.tab-content > .tab-pane {
+    position: absolute;
+}
