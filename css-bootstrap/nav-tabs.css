@@ -76,7 +76,7 @@
   background: #fff;
   padding: 10px;
 }
-/* --- override it appears it's done un-reliably in JS normally.. (/)
+/* --- override it appears it's done un-reliably in JS normally.. */
 .tab-content > .tab-pane {
     position: absolute;
 }
