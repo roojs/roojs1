@@ -169,6 +169,10 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
         Roo.log('img onclick');
         this.fireEvent('click', this, e);
     },
+    /**
+     * Sets the url of the image - used to update it
+     * @param {String} url the url of the image
+     */
     
     setSrc : function(url)
     {
