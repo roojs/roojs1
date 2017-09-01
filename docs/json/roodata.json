@@ -24213,6 +24213,12 @@
      "desc": "Convenience function for setting disabled/enabled by boolean."
     },
     {
+     "name": "setSrc",
+     "sig": "(String url)",
+     "type": "function",
+     "desc": "Sets the url of the image - used to update it"
+    },
+    {
      "name": "setVisible",
      "sig": "(Boolean visible)",
      "type": "function",
@@ -28368,7 +28374,7 @@
     {
      "name": "fitwindow",
      "type": "Boolean",
-     "desc": "default true",
+     "desc": "default false",
      "memberOf": ""
     },
     {
