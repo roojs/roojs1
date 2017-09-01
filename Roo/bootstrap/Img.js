@@ -168,7 +168,14 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
     {
         Roo.log('img onclick');
         this.fireEvent('click', this, e);
+    },
+    
+    setSrc : function(url)
+    {
+        this.el.dom.src =  url;
     }
+    
+    
    
 });
 
