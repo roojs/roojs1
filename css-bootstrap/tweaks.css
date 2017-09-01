@@ -43,3 +43,9 @@
 .pagination .x-paging-position span  input {
     margin: 0 3px;
 }
+
+.panel-header-right {
+    float: right;
+    text-align: right;
+    font-size: 16px;
+}
