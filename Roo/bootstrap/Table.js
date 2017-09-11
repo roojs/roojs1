@@ -340,7 +340,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         if (this.footer) {
             this.footer.parentId = this.id;
             this.footer.onRender(this.el.select('tfoot tr td').first(), null);        
-        }
+        } 
         
         this.maskEl = new Roo.LoadMask(this.el, { store : this.ds, msgCls: 'roo-el-mask-msg' });
         
@@ -1067,7 +1067,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         if (tbd) {
             
             tbd.setSize(ctr.getWidth(),
-                        ctr.getHeight() - (thd.getHeight() + tfd.getHeight())
+                        ctr.getHeight() - (thd.getHeight() + (tfd ? tfd.getHeight() : 0))
             );
             var barsize = (tbd.dom.offsetWidth - tbd.dom.clientWidth);
             cw -= barsize;
