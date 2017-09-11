@@ -1521,7 +1521,8 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
     
     setSrc : function(url)
     {
-        this.el.dom.src =  url;
+        this.src =  url;
+        this.el.select('img', true).first().dom.src =  url;
     }
     
     
@@ -6014,7 +6015,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         if (this.footer) {
             this.footer.parentId = this.id;
             this.footer.onRender(this.el.select('tfoot tr td').first(), null);        
-        }
+        } 
         
         this.maskEl = new Roo.LoadMask(this.el, { store : this.ds, msgCls: 'roo-el-mask-msg' });
         
@@ -6734,13 +6735,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var thd = this.getGridEl().select('thead',true).first();
         var tbd = this.getGridEl().select('tbody', true).first();
-        
+        var tfd = this.getGridEl().select('tfoot', true).first();
         
         var cw = ctr.getWidth();
         
         if (tbd) {
             
-            tbd.setSize(ctr.getWidth(), ctr.getHeight() - thd.getHeight());
+            tbd.setSize(ctr.getWidth(),
+                        ctr.getHeight() - (thd.getHeight() + (tfd ? tfd.getHeight() : 0))
+            );
             var barsize = (tbd.dom.offsetWidth - tbd.dom.clientWidth);
             cw -= barsize;
         }
