@@ -1060,7 +1060,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var thd = this.getGridEl().select('thead',true).first();
         var tbd = this.getGridEl().select('tbody', true).first();
-        
+        var tfd = this.getGridEl().select('tfoot', true).first();
         
         var cw = ctr.getWidth();
         
