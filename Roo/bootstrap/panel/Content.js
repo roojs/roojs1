@@ -206,7 +206,7 @@ Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
            this.el.replaceClass("roo-layout-active-content", "roo-layout-inactive-content");
            this.el.setStyle('position', 'absolute');
         } 
-    }
+    },
     
     /**
      * Returns the toolbar for this Panel if one was configured. 

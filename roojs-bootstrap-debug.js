@@ -34127,7 +34127,13 @@ Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
     tabTip:'',
     setRegion : function(region){
         this.region = region;
-        if(region && !this.background){
+        this.setActiveClass(region && !this.background);
+    },
+    
+    
+    setActiveClass: function(state)
+    {
+        if(state){
            this.el.replaceClass("roo-layout-inactive-content", "roo-layout-active-content");
            this.el.setStyle('position','relative');
         }else{
@@ -34631,6 +34637,8 @@ Roo.extend(Roo.bootstrap.panel.Nest, Roo.bootstrap.panel.Content, {
     
     setActiveState : function(active){
         this.active = active;
+        this.setActiveClass(active);
+        
         if(!active){
             this.fireEvent("deactivate", this);
             return;
