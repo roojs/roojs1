@@ -19298,12 +19298,20 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             tag: 'input',
             id : id,
             type : this.inputType,
-            value : this.inputType == 'radio' ? this.inputValue : ((!this.checked) ? this.valueOff : this.inputValue),
+            value : this.inputValue,
             cls : 'roo-' + this.inputType, //'form-box',
             placeholder : this.placeholder || ''
             
         };
         
+         
+        var hidden =  {
+            tag: 'input',
+            type : 'hidden',
+            cls : 'roo-hidden-value',
+            value : this.checked ? this.valueOff : this.inputValue
+        };
+            
         if (this.weight) { // Validity check?
             cfg.cls += " " + this.inputType + "-" + this.weight;
         }
@@ -19314,10 +19322,13 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         if(this.checked){
             input.checked = this.checked;
+            
         }
         
+        
         if (this.name) {
-            input.name = this.name;
+            hidden.name = this.name;
+            input.name = '_hidden_' + this.name;
         }
         
         if (this.size) {
@@ -19332,7 +19343,13 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             }
         });
         
-        var inputblock = input;
+        var inputblock = {
+            tag: 'span',
+            cn : [
+                    input,
+                    hidden
+                ]
+        };
          
         if (this.before || this.after) {
             
@@ -19350,6 +19367,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             }
             
             inputblock.cn.push(input);
+            inputblock.cn.push(hidden);
             
             if (this.after) {
                 inputblock.cn.push({
@@ -19433,6 +19451,10 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     {
         return this.el.select('input.roo-' + this.inputType,true).first();
     },
+    hiddenEl: function ()
+    {
+        return this.el.select('input.hidden-value',true).first();
+    },
     
     labelEl: function()
     {
@@ -19499,7 +19521,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         this.inputEl().dom.checked = state;
         
-        this.inputEl().dom.value = state ? this.inputValue : this.valueOff;
+        
+        this.hiddenEl().dom.value = state ? this.inputValue : this.valueOff;
         
         if(suppressEvent !== true){
             this.fireEvent('check', this, state);
@@ -19514,7 +19537,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             return this.getGroupValue();
         }
         
-        return this.inputEl().getValue();
+        return this.hiddenEl() ? this.hiddenEl().dom.value : this.value;
         
     },
     

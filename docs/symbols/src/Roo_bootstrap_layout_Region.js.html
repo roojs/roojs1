@@ -68,12 +68,13 @@
      
     </span><span class="jsdoc-var">this.visible </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-var">this.collapsed </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.unrendered_panels </span><span class="jsdoc-syntax">= [];
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.layout.Region</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.layout.Basic</span><span class="jsdoc-syntax">, {
 
     </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// set by wrapper (eg. north/south etc..)
-
+    </span><span class="jsdoc-var">unrendered_panels </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-comment">// unrendered panels.
     </span><span class="jsdoc-var">createBody </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-comment">/** This region's body element 
         * @type Roo.Element */
@@ -143,6 +144,15 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.config.hidden</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
         }
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.unrendered_panels </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.unrendered_panels.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.unrendered_panels.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.unrendered_panels</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+            }
+            </span><span class="jsdoc-var">this.unrendered_panels </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+            
+        }
+        
     },
     
     </span><span class="jsdoc-var">applyConfig </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">)
@@ -255,6 +265,10 @@
 */
     </span><span class="jsdoc-var">updateBox </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">)
     {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.bodyEl</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// not rendered yet..
+        </span><span class="jsdoc-syntax">}
+        
         </span><span class="jsdoc-var">this.box </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.collapsed</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.el.dom.style.left </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">box.x </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;px&quot;</span><span class="jsdoc-syntax">;
@@ -279,7 +293,7 @@
                 </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.config.adjustments</span><span class="jsdoc-syntax">[0];
             }
         }
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">null </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">&gt; 0){
             </span><span class="jsdoc-var">this.el.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.titleEl </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.titleEl.isDisplayed</span><span class="jsdoc-syntax">() ? </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">- (</span><span class="jsdoc-var">this.titleEl.getHeight</span><span class="jsdoc-syntax">()||0) : </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">this.el.getBorderWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;tb&quot;</span><span class="jsdoc-syntax">);
@@ -431,7 +445,8 @@
 
     </span><span class="jsdoc-var">initTabs </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-var">this.bodyEl.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;overflow&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;hidden&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">//this.bodyEl.setStyle(&quot;overflow&quot;, &quot;hidden&quot;); -- this is set in render?
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ts </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.panel.Tabs</span><span class="jsdoc-syntax">({
                 </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.bodyEl.dom</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">tabPosition</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.bottomTabs </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'bottom' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">,
@@ -448,7 +463,7 @@
         </span><span class="jsdoc-var">ts.maxTabWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.config.maxTabWidth </span><span class="jsdoc-syntax">|| 250;
         </span><span class="jsdoc-var">ts.preferredTabWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.config.preferredTabWidth </span><span class="jsdoc-syntax">|| 150;
         </span><span class="jsdoc-var">ts.monitorResize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">ts.bodyEl.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;overflow&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.config.autoScroll </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">&quot;auto&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;hidden&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">//ts.bodyEl.setStyle(&quot;overflow&quot;, this.config.autoScroll ? &quot;auto&quot; : &quot;hidden&quot;); // this is set in render?
         </span><span class="jsdoc-var">ts.bodyEl.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'roo-layout-tabs-body'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.panels.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.initPanelAsTab</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     },
@@ -456,7 +471,8 @@
     </span><span class="jsdoc-var">initPanelAsTab </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ti </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tabs.addTab</span><span class="jsdoc-syntax">(
                     </span><span class="jsdoc-var">panel.getEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.id</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">panel.getTitle</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">panel.getTitle</span><span class="jsdoc-syntax">(),
+                    </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">this.config.closeOnTab </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">panel.isClosable</span><span class="jsdoc-syntax">()
             );
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel.tabTip </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">){
@@ -563,27 +579,41 @@
      * @param {ContentPanel...} panel The ContentPanel(s) to add (you can pass more than one)
      * @return {Roo.ContentPanel} The panel added (if only one was added; null otherwise)
      */
-    </span><span class="jsdoc-var">add </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">add </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">)
+    {
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">arguments.length </span><span class="jsdoc-syntax">&gt; 1){
             </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">arguments.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
                 </span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
             }
             </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
         }
+        
+        </span><span class="jsdoc-comment">// if we have not been rendered yet, then we can not really do much of this..
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.bodyEl</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.unrendered_panels.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">;
+        }
+        
+        
+        
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">)){
             </span><span class="jsdoc-var">this.showPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-var">panel.setRegion</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.panels.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.panels.getCount</span><span class="jsdoc-syntax">() == 1 &amp;&amp; !</span><span class="jsdoc-var">this.config.alwaysShowTabs</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.bodyEl.dom.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel.getEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel.background </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">this.setActivePanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">);
+       </span><span class="jsdoc-comment">/* if(this.panels.getCount() == 1 &amp;&amp; !this.config.alwaysShowTabs){
+            // sinle panel - no tab...?? would it not be better to render it with the tabs,
+            // and hide them... ???
+            this.bodyEl.dom.appendChild(panel.getEl().dom);
+            if(panel.background !== true){
+                this.setActivePanel(panel);
             }
-            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;paneladded&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">;
+            this.fireEvent(&quot;paneladded&quot;, this, panel);
+            return panel;
         }
+        */
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.tabs</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.initTabs</span><span class="jsdoc-syntax">();
         }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{

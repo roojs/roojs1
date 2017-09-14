@@ -147,7 +147,7 @@
         </span><span class="jsdoc-var">this.isInput </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.component </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.add-on'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">() || </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.component </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.component </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.component.length </span><span class="jsdoc-syntax">=== 0) ? </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.component</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">this.hasInput </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.component </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.inputEL</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.length</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.hasInput </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.component </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.length</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.minViewMode </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">)) {
             </span><span class="jsdoc-keyword">switch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.minViewMode</span><span class="jsdoc-syntax">) {
@@ -926,6 +926,54 @@
     </span><span class="jsdoc-var">remove</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() 
     {
         </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.remove</span><span class="jsdoc-syntax">();
+    },
+    
+    </span><span class="jsdoc-var">validateValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value.length </span><span class="jsdoc-syntax">&lt; 1)  {
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.allowBlank</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value.length </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.minLength</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value.length </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.maxLength</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.vtype</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">vt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.form.VTypes</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">vt</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.vtype</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">)){
+                </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+            }
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">this.validator </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;function&quot;</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">msg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.validator</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">msg </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+            }
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.regex </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.regex.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.endDate </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">Infinity </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.getTime</span><span class="jsdoc-syntax">() &gt; </span><span class="jsdoc-var">this.endDate.getTime</span><span class="jsdoc-syntax">()) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }      
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.startDate </span><span class="jsdoc-syntax">!== -</span><span class="jsdoc-var">Infinity </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.getTime</span><span class="jsdoc-syntax">() &lt; </span><span class="jsdoc-var">this.startDate.getTime</span><span class="jsdoc-syntax">()) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        } 
+        
+        
+        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
     }
    
 });

@@ -479,9 +479,13 @@ jtabs.activate(&quot;jtabs-1&quot;);
     </span><span class="jsdoc-var">createStripElements </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">stripEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">closable</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">td </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;li&quot;</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// was td..
-        </span><span class="jsdoc-var">stripEl.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">stripEl.childNodes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">stripEl.childNodes.length</span><span class="jsdoc-syntax">-1]);
-        </span><span class="jsdoc-comment">//stripEl.appendChild(td);
-        /*if(closable){
+        
+        
+        //stripEl.insertBefore(td, stripEl.childNodes[stripEl.childNodes.length-1]);
+        
+        
+        </span><span class="jsdoc-var">stripEl.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">/*if(closable){
             td.className = &quot;x-tabs-closable&quot;;
             if(!this.closeTpl){
                 this.closeTpl = new Roo.Template(

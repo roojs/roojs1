@@ -543,6 +543,8 @@
         }
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.maskRe </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">this.vtype </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.disableKeyFilter </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">this.maskRe </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.form.VTypes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.vtype</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'Mask'</span><span class="jsdoc-syntax">]))){
             </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;keypress&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.filterKeys</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.relayEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'keypress'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
        </span><span class="jsdoc-comment">/* if(this.grow){
             this.el.on(&quot;keyup&quot;, this.onKeyUp,  this, {buffer:50});

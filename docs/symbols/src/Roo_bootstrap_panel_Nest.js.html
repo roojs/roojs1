@@ -43,7 +43,11 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.ignoreResize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">)){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.adjustForComponents</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.layout.getEl</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-var">el.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">size.height</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size.height </span><span class="jsdoc-syntax">&lt; 1) {
+                </span><span class="jsdoc-var">el.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size.width</span><span class="jsdoc-syntax">);   
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">el.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">size.height</span><span class="jsdoc-syntax">);
+            }
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">touch </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.dom.offsetWidth</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">this.layout.layout</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-comment">// ie requires a double layout on the first pass

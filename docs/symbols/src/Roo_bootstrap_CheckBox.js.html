@@ -345,6 +345,10 @@
     
     </span><span class="jsdoc-var">validateRadio </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.allowBlank</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">valid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.up</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'form'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'input[name='</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">']'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
@@ -485,8 +489,51 @@
             </span><span class="jsdoc-var">group</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.el.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-group'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.invalidClass</span><span class="jsdoc-syntax">);
         }
         
+    },
+    
+    </span><span class="jsdoc-var">disable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputType </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'radio'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.bootstrap.CheckBox.superclass.disable.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rendered</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.up</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'form'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'input[name='</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">']'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">_this.getActionEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabledClass</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">e.dom.disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            });
+        }
+        
+        </span><span class="jsdoc-var">this.disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;disable&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">enable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputType </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'radio'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.bootstrap.CheckBox.superclass.enable.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rendered</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.up</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'form'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'input[name='</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">']'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">_this.getActionEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabledClass</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">e.dom.disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            });
+        }
+        
+        </span><span class="jsdoc-var">this.disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;enable&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
     }
     
+
 });
 
 </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.CheckBox</span><span class="jsdoc-syntax">, {

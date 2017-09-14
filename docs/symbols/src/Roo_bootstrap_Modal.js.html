@@ -15,7 +15,7 @@
  * @cfg {String} buttonPosition (left|right|center) default right
  * @cfg {Boolean} animate default true
  * @cfg {Boolean} allow_close default true
- * @cfg {Boolean} fitwindow default true
+ * @cfg {Boolean} fitwindow default false
  * @cfg {String} size (sm|lg) default empty
  * 
  * 
@@ -257,8 +257,8 @@
         </span><span class="jsdoc-var">this.maskEl.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.lib.Dom.getViewWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">),  </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fitwindow</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.lib.Dom.getViewportWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) - 30;
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.height </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.lib.Dom.getViewportHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) - 30;
-            </span><span class="jsdoc-var">this.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">)
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.height </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.lib.Dom.getViewportHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) - 60;
+            </span><span class="jsdoc-var">this.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">);
         }
     },
     
@@ -299,13 +299,15 @@
         </span><span class="jsdoc-var">this.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'zIndex'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'10001'</span><span class="jsdoc-syntax">);
        
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'show'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.items.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">e.layout </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">e.layout</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
-                
-        });
+        
         </span><span class="jsdoc-var">this.resize</span><span class="jsdoc-syntax">();
         
-        
+        (</span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-var">this.items.forEach</span><span class="jsdoc-syntax">( </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">e.layout </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">e.layout</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                    
+            });
+        })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(100,</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
     },
     </span><span class="jsdoc-var">hide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()

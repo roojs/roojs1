@@ -77,6 +77,14 @@ the container size if it is not the body element.&lt;/b&gt;
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.updating</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
+        
+        </span><span class="jsdoc-comment">// render all the rebions if they have not been done alreayd?
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.layout.Border.regions</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.regions</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">] &amp;&amp; !</span><span class="jsdoc-var">this.regions</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.bodyEl</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.regions</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.onRender</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">)
+            }
+        },</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getViewSize</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">size.width</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">size.height</span><span class="jsdoc-syntax">;
