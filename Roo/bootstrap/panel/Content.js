@@ -216,8 +216,10 @@ Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
         return this.toolbar;
     },
     
-    setActiveState : function(active){
+    setActiveState : function(active)
+    {
         this.active = active;
+        this.setActiveClass(active);
         if(!active){
             this.fireEvent("deactivate", this);
         }else{
