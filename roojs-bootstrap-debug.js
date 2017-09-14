@@ -19453,7 +19453,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     },
     hiddenEl: function ()
     {
-        return this.el.select('input.hidden-value',true).first();
+        return this.el.select('input.roo-hidden-value',true).first();
     },
     
     labelEl: function()
@@ -19537,7 +19537,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             return this.getGroupValue();
         }
         
-        return this.hiddenEl() ? this.hiddenEl().dom.value : this.value;
+        return this.hiddenEl().dom.value;
         
     },
     
