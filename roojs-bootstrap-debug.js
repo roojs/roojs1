@@ -19343,13 +19343,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             }
         });
         
-        var inputblock = {
-            tag: 'span',
-            cn : [
-                    input,
-                    hidden
-                ]
-        };
+        var inputblock = input;
          
         if (this.before || this.after) {
             
@@ -19367,7 +19361,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             }
             
             inputblock.cn.push(input);
-            inputblock.cn.push(hidden);
+            
             
             if (this.after) {
                 inputblock.cn.push({
@@ -19437,7 +19431,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
              
             cfg.cn.push(boxLabelCfg);
         }
-        
+        cfg.cn.push(hidden);
         
        
         return cfg;
