@@ -193,13 +193,7 @@ Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
     tabTip:'',
     setRegion : function(region){
         this.region = region;
-        if(region && !this.background){
-           this.el.replaceClass("roo-layout-inactive-content", "roo-layout-active-content");
-           this.el.setStyle('position','relative');
-        }else{
-           this.el.replaceClass("roo-layout-active-content", "roo-layout-inactive-content");
-           this.el.setStyle('position', 'absolute');
-        } 
+        this.setActiveClass(region && !this.background);
     },
     
     
