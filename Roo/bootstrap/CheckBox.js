@@ -199,7 +199,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
              
             cfg.cn.push(boxLabelCfg);
         }
-        
+        cfg.cn.push(hidden);
         
        
         return cfg;
