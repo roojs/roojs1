@@ -1238,9 +1238,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
     setValue : function(v)
     {
-        this.setIOSValue(v);
-            return;
-            
         if(Roo.isIOS && this.useNativeIOS){
             this.setIOSValue(v);
             return;
