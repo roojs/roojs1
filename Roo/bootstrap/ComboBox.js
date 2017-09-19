@@ -2673,7 +2673,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             })
         }
         
-        this.ios_options = [];
+        this.ios_options = {};
         
         this.store.data.each(function(d, rowIndex){
             
