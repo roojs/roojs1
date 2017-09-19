@@ -2699,6 +2699,78 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.store.load();
     },
+    
+    onIOSViewLoad : function()
+    {
+        if(this.store.getCount() < 1){
+            this.onTouchViewEmptyResults();
+            return;
+        }
+        
+        this.clearTouchView();
+        
+        var rawValue = this.getRawValue();
+        
+        var template = (this.multiple) ? Roo.bootstrap.ComboBox.listItemCheckbox : Roo.bootstrap.ComboBox.listItemRadio;
+        
+        this.tickItems = [];
+        
+        this.store.data.each(function(d, rowIndex){
+            var row = this.touchViewListGroup.createChild(template);
+            
+            if(typeof(d.data.cls) != 'undefined' && d.data.cls.length){
+                row.addClass(d.data.cls);
+            }
+            
+            if(this.displayField && typeof(d.data[this.displayField]) != 'undefined'){
+                var cfg = {
+                    data : d.data,
+                    html : d.data[this.displayField]
+                };
+                
+                if(this.fireEvent('touchviewdisplay', this, cfg) !== false){
+                    row.select('.roo-combobox-list-group-item-value', true).first().dom.innerHTML = cfg.html;
+                }
+            }
+            row.removeClass('selected');
+            if(!this.multiple && this.valueField &&
+                    typeof(d.data[this.valueField]) != 'undefined' && d.data[this.valueField] == this.getValue())
+            {
+                // radio buttons..
+                row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
+                row.addClass('selected');
+            }
+            
+            if(this.multiple && this.valueField &&
+                    typeof(d.data[this.valueField]) != 'undefined' && this.getValue().indexOf(d.data[this.valueField]) != -1)
+            {
+                
+                // checkboxes...
+                row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
+                this.tickItems.push(d.data);
+            }
+            
+            row.on('click', this.onTouchViewClick, this, {row : row, rowIndex : rowIndex});
+            
+        }, this);
+        
+        var firstChecked = this.touchViewListGroup.select('.list-group-item > .roo-combobox-list-group-item-box > input:checked', true).first();
+        
+        var bodyHeight = Roo.lib.Dom.getViewHeight() - this.touchViewFooterEl.getHeight() + this.touchViewBodyEl.getPadding('tb');
+
+        if(this.modalTitle.length){
+            bodyHeight = bodyHeight - this.touchViewHeaderEl.getHeight();
+        }
+
+        var listHeight = this.touchViewListGroup.getHeight();
+        
+        var _this = this;
+        
+        if(firstChecked && listHeight > bodyHeight){
+            (function() { firstChecked.findParent('li').scrollIntoView(_this.touchViewListGroup.dom); }).defer(500);
+        }
+        
+    },
 
 
     /** 
