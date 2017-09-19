@@ -409,6 +409,8 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     // private
     initEvents : function(){
         
+        Roo.log('test');
+        
         this.createList();
         
         Roo.bootstrap.TriggerField.superclass.initEvents.call(this);
