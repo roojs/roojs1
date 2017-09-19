@@ -2696,7 +2696,17 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }, this);
         
         return;
-    }
+    },
+    
+    inputEl: function ()
+    {
+        Roo.log(this.el);
+        
+        if(Roo.isIOS && this.useNativeIOS){
+            
+        }
+        return this.el.select('input.form-control',true).first();
+    },
     
 
     /** 
