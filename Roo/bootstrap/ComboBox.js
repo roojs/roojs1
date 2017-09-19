@@ -2650,7 +2650,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         this.originalValue = this.getValue();
         
-        this.triggerEl = this.el.select('span.dropdown-toggle',true).first();
+        Roo.log(this.inputEl)
         
         this.inputEl().on("click", this.showTouchView, this);
         this.triggerEl.on("click", this.showTouchView, this);
@@ -2696,18 +2696,18 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }, this);
         
         return;
-    },
+    }
     
-    inputEl: function ()
-    {
-        return this.el.select('select.roo-ios-select, true').first();
-        
-        if(Roo.isIOS && this.useNativeIOS){
-            return this.el.select('select.roo-ios-select, true').first();
-        }
-        
-        return this.el.select('input.form-control',true).first();
-    },
+//    inputEl: function ()
+//    {
+//        return this.el.select('select.roo-ios-select, true').first();
+//        
+//        if(Roo.isIOS && this.useNativeIOS){
+//            return this.el.select('select.roo-ios-select, true').first();
+//        }
+//        
+//        return this.el.select('input.form-control',true).first();
+//    },
     
 
     /** 
