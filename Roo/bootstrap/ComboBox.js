@@ -590,6 +590,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     initEvents: function()
     {
         Roo.log('get??');
+        
         if (this._initEventsCalled) { // as we call render... prevent looping...
             return;
         }
