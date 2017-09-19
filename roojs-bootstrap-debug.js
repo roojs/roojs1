@@ -12226,9 +12226,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     mobileTouchView : true,
     
     /**
-     * @cfg {Boolean} useNativeIOS (true|false) render it as classic select for ios (default false)
+     * @cfg {Boolean} useNativeIOS (true|false) render it as classic select for ios, not support dynamic load data (default false)
      */
     useNativeIOS : false,
+    
+    ios_options : false,
     
     //private
     addicon : false,
@@ -12256,9 +12258,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         /*
          * Render classic select for iso
          */
-//        cfg = this.getAutoCreateNativeIOS();
-//        return cfg;
-//        
+        
         if(Roo.isIOS && this.useNativeIOS){
             cfg = this.getAutoCreateNativeIOS();
             return cfg;
@@ -12500,8 +12500,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     // private
     initEvents: function()
-    {
-        
+    {   
         if (this._initEventsCalled) { // as we call render... prevent looping...
             return;
         }
@@ -12532,10 +12531,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
             
         }
-        
-//        this.initIOSView();
-//        return;
-
         
         if(Roo.isIOS && this.useNativeIOS){
             this.initIOSView();
@@ -13095,7 +13090,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * Returns the currently selected field value or empty string if no value is set.
      * @return {String} value The selected value
      */
-    getValue : function(){
+    getValue : function()
+    {
+        if(Roo.isIOS && this.useNativeIOS){
+            return this.ios_options[this.inputEl().dom.selectedIndex].data[this.valueField];
+        }
         
         if(this.multiple){
             return (this.hiddenField) ? this.hiddenField.dom.value : this.value;
@@ -13107,11 +13106,23 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return Roo.bootstrap.ComboBox.superclass.getValue.call(this);
         }
     },
+    
+    getRawValue : function()
+    {
+        if(Roo.isIOS && this.useNativeIOS){
+            return this.ios_options[this.inputEl().dom.selectedIndex].data[this.displayField];
+        }
+        
+        var v = this.inputEl().getValue();
+        
+        return v;
+    },
 
     /**
      * Clears any text/value currently set in the field
      */
     clearValue : function(){
+        
         if(this.hiddenField){
             this.hiddenField.dom.value = '';
         }
@@ -13137,7 +13148,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * Otherwise the field will be blank (although the value will still be set).
      * @param {String} value The value to match
      */
-    setValue : function(v){
+    setValue : function(v)
+    {
+        if(Roo.isIOS && this.useNativeIOS){
+            this.setIOSValue(v);
+            return;
+        }
+        
         if(this.multiple){
             this.syncValue();
             return;
@@ -13924,6 +13941,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     inputEl: function ()
     {
+        if(Roo.isIOS && this.useNativeIOS){
+            return this.el.select('select.roo-ios-select', true).first();
+        }
+        
         if(Roo.isTouch && this.mobileTouchView){
             return this.el.select('input.form-control',true).first();
         }
@@ -13934,7 +13955,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         return this.el.select('input.form-control',true).first();
     },
-    
     
     onTickableFooterButtonClick : function(e, btn, el)
     {
@@ -14544,10 +14564,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             combobox.disabled = true;
         }
         
-        if(this.multiple){
-            combobox.multiple = true;
-        };
-        
         var settings = this;
         
         ['xs','sm','md','lg'].map(function(size){
@@ -14564,68 +14580,106 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     initIOSView : function()
     {
-        this.originalValue = this.getValue();
-        
-        this.triggerEl = this.el.select('select.roo-ios-select, true').first();
-        Roo.log(this.el);
-        Roo.log(this.triggerEl);
-        
-        this.triggerEl.on("click", this.showTouchView, this);
-        
-        this.touchViewFooterEl.select('.roo-touch-view-cancel', true).first().on('click', this.hideTouchView, this);
-        this.touchViewFooterEl.select('.roo-touch-view-ok', true).first().on('click', this.setTouchViewValue, this);
-        
-        this.maskEl = new Roo.LoadMask(this.touchViewEl, { store : this.store, msgCls: 'roo-el-mask-msg' });
-        
-        this.store.on('beforeload', this.onTouchViewBeforeLoad, this);
-        this.store.on('load', this.onTouchViewLoad, this);
-        this.store.on('loadexception', this.onTouchViewLoadException, this);
-        
-        if(this.hiddenName){
-            
-            this.hiddenField = this.el.select('input.form-hidden-field',true).first();
-            
-            this.hiddenField.dom.value =
-                this.hiddenValue !== undefined ? this.hiddenValue :
-                this.value !== undefined ? this.value : '';
-        
-            this.el.dom.removeAttribute('name');
-            this.hiddenField.dom.setAttribute('name', this.hiddenName);
-        }
-        
-        if(this.multiple){
-            this.choices = this.el.select('ul.roo-select2-choices', true).first();
-            this.searchField = this.el.select('ul li.roo-select2-search-field', true).first();
-        }
-        
-        if(this.removable && !this.multiple){
-            var close = this.closeTriggerEl();
-            if(close){
-                close.setVisibilityMode(Roo.Element.DISPLAY).hide();
-                close.on('click', this.removeBtnClick, this, close);
-            }
-        }
-        /*
-         * fix the bug in Safari iOS8
-         */
-        this.inputEl().on("focus", function(e){
-            document.activeElement.blur();
-        }, this);
+        this.store.on('load', this.onIOSViewLoad, this);
         
         return;
+    },
+    
+    onIOSViewLoad : function()
+    {
+        if(this.store.getCount() < 1){
+            return;
+        }
+        
+        this.clearIOSView();
+        
+        if(this.allowBlank) {
+            
+            var default_text = '-- SELECT --';
+            
+            var opt = this.inputEl().createChild({
+                tag: 'option',
+                value : 0,
+                html : default_text
+            });
+            
+            var o = {};
+            o[this.valueField] = 0;
+            o[this.displayField] = default_text;
+            
+            this.ios_options.push({
+                data : o,
+                el : opt
+            });
+            
+        }
+        
+        this.store.data.each(function(d, rowIndex){
+            
+            var html = '';
+            
+            if(this.displayField && typeof(d.data[this.displayField]) != 'undefined'){
+                html = d.data[this.displayField];
+            }
+            
+            var value = '';
+            
+            if(this.valueField && typeof(d.data[this.valueField]) != 'undefined'){
+                value = d.data[this.valueField];
+            }
+            
+            var option = {
+                tag: 'option',
+                value : value,
+                html : html
+            };
+            
+            if(this.value == d.data[this.valueField]){
+                option['selected'] = true;
+            }
+            
+            var opt = this.inputEl().createChild(option);
+            
+            this.ios_options.push({
+                data : d.data,
+                el : opt
+            });
+            
+        }, this);
+        
+        this.inputEl().on('change', function(){
+           this.fireEvent('select', this);
+        }, this);
+        
+    },
+    
+    clearIOSView: function()
+    {
+        this.inputEl().dom.innerHTML = '';
+        
+        this.ios_options = [];
+    },
+    
+    setIOSValue: function(v)
+    {
+        this.value = v;
+        
+        if(!this.ios_options){
+            return;
+        }
+        
+        Roo.each(this.ios_options, function(opts){
+           
+           opts.el.dom.removeAttribute('selected');
+           
+           if(opts.data[this.valueField] != v){
+               return;
+           }
+           
+           opts.el.dom.setAttribute('selected', true);
+           
+        }, this);
     }
-    
-//    inputEl: function ()
-//    {
-//        return this.el.select('select.roo-ios-select, true').first();
-//        
-//        if(Roo.isIOS && this.useNativeIOS){
-//            return this.el.select('select.roo-ios-select, true').first();
-//        }
-//        
-//        return this.el.select('input.form-control',true).first();
-//    },
-    
 
     /** 
     * @cfg {Boolean} grow 
