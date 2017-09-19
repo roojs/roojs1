@@ -314,7 +314,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     mobileTouchView : true,
     
     /**
-     * @cfg {Boolean} useNativeIOS (true|false) render it as classic select for ios (default false)
+     * @cfg {Boolean} useNativeIOS (true|false) render it as classic select for ios, not support dynamic load data (default false)
      */
     useNativeIOS : false,
     
