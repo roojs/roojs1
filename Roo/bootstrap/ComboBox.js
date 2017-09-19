@@ -2712,7 +2712,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 display = d.data[this.displayField];
             }
             
-            this.inputEl().appendChild('<option value="">' + display + '</option>')
+            var value = '';
+            
+            if(this.valueField && typeof(d.data[this.valueField]) != 'undefined'){
+                value = d.data[this.valueField];
+            }
+            
+            this.inputEl().appendChild('<option value="' + value + '">' + display + '</option>')
             
             
         }, this);
