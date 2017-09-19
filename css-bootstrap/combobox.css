@@ -279,3 +279,7 @@
 .has-warning .roo-select2-container-multi {
     border: 1px solid #8a6d3b;
 }
+
+.roo-ios-select {
+    width: 100%;
+}
