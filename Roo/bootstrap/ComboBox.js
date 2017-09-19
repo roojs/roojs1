@@ -337,6 +337,15 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var cfg = false;
         
         /*
+         * Render classic select for iso
+         */
+        
+        if(Roo.isIOS && this.useNativeIOS){
+            cfg = this.getAutoCreateTouchView();
+            return cfg;;
+        }
+        
+        /*
          * Touch Devices
          */
         
