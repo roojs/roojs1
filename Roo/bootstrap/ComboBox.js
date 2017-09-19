@@ -2658,44 +2658,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         this.originalValue = this.getValue();
         
-        this.inputEl().on("click", this.showTouchView, this);
+        this.inputEl().on("click", this.showIOSView, this);
         
 //        this.maskEl = new Roo.LoadMask(this.touchViewEl, { store : this.store, msgCls: 'roo-el-mask-msg' });
         
         this.store.on('beforeload', this.onIOSViewBeforeLoad, this);
         this.store.on('load', this.onIOSViewLoad, this);
         this.store.on('loadexception', this.onIosViewLoadException, this);
-        
-        if(this.hiddenName){
-            
-            this.hiddenField = this.el.select('input.form-hidden-field',true).first();
-            
-            this.hiddenField.dom.value =
-                this.hiddenValue !== undefined ? this.hiddenValue :
-                this.value !== undefined ? this.value : '';
-        
-            this.el.dom.removeAttribute('name');
-            this.hiddenField.dom.setAttribute('name', this.hiddenName);
-        }
-        
-        if(this.multiple){
-            this.choices = this.el.select('ul.roo-select2-choices', true).first();
-            this.searchField = this.el.select('ul li.roo-select2-search-field', true).first();
-        }
-        
-        if(this.removable && !this.multiple){
-            var close = this.closeTriggerEl();
-            if(close){
-                close.setVisibilityMode(Roo.Element.DISPLAY).hide();
-                close.on('click', this.removeBtnClick, this, close);
-            }
-        }
-        /*
-         * fix the bug in Safari iOS8
-         */
-        this.inputEl().on("focus", function(e){
-            document.activeElement.blur();
-        }, this);
         
         return;
     }
