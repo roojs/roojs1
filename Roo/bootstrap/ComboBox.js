@@ -2690,11 +2690,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             var option = {
                 tag: 'option',
                 value : value,
-                selected : true,
                 html : html
             };
             
-            this.inputEl().createChild(option);
+            var o = this.inputEl().createChild(option);
+            
+            Roo.log(o);
             
         }, this);
         
