@@ -2647,7 +2647,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     initIOSView : function()
     {
-        
+        return;
     }
     
 
