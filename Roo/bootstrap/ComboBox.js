@@ -2663,7 +2663,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         
-        this.clearTouchView();
+        this.clearIOSView();
         
         if(this.allowBlank) {
             this.inputEl().createChild({
@@ -2700,7 +2700,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
     },
     
-    clearTouchView: function()
+    clearIOSView: function()
     {
         this.inputEl().dom.innerHTML = '';
     }
