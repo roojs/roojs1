@@ -1245,6 +1245,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
     setValue : function(v)
     {
+        this.setIOSValue(v);
+            return;
+            
         if(Roo.isIOS && this.useNativeIOS){
             this.setIOSValue(v);
             return;
@@ -2708,7 +2711,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
             this.ios_options.push({
                 data : o,
-                option : opt
+                el : opt
             });
             
         }
@@ -2737,7 +2740,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
             this.ios_options.push({
                 data : d.data,
-                option : opt
+                el : opt
             });
             
         }, this);
@@ -2753,9 +2756,19 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.inputEl().dom.innerHTML = '';
     },
     
-    setIOSValue: function()
+    setIOSValue: function(v)
     {
-        
+        Roo.each(this.ios_options, function(opts){
+           
+           opts.el.dom.removeAttribute('selected');
+           
+           if(opts.data[this.valueField] != v){
+               return;
+           }
+           
+           opts.el.dom.setAttribute('selected', true);
+           
+        }, this);
     }
 
     /** 
