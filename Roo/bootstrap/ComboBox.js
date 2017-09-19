@@ -2675,15 +2675,24 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.ios_options = [];
         
         if(this.allowBlank) {
+            
+            var default_o = '-- SELECT --';
+            
             this.inputEl().createChild({
                 tag: 'option',
                 value : 0,
-                html : '-- SELECT --'
+                html : default_o
             });
             
-            this.ios_options.push({});
+            var dk = this.displayField;
+            var vk = this.valueField;
+            
+            this.ios_options.push({
+                vk : default_o,
+                dk : 0
+            });
         }
-        
+        Roo.log(this.ios_options);
         this.store.data.each(function(d, rowIndex){
             
             var html = '';
