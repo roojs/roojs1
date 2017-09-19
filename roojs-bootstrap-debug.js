@@ -12225,6 +12225,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
     mobileTouchView : true,
     
+    /**
+     * @cfg {Boolean} useNativeIOS (true|false) render it as classic select for ios (default false)
+     */
+    useNativeIOS : false,
+    
     //private
     addicon : false,
     editicon: false,
@@ -12247,6 +12252,17 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     getAutoCreate : function()
     {
         var cfg = false;
+        
+        /*
+         * Render classic select for iso
+         */
+        cfg = this.getAutoCreateNativeIOS();
+        return cfg;
+        
+        if(Roo.isIOS && this.useNativeIOS){
+            cfg = this.getAutoCreateNativeIOS();
+            return cfg;
+        }
         
         /*
          * Touch Devices
@@ -12517,6 +12533,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
         }
         
+        this.initIOSView();
+        return;
+        
+        if(Roo.isIOS && this.useNativeIOS){
+            this.initIOSView();
+            return;
+        }
         
         /*
          * Touch Devices
@@ -14499,7 +14522,108 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.addItem(r.data);
             this.tickItems.push(r.data);
         }
+    },
+    
+    getAutoCreateNativeIOS : function()
+    {
+        var cfg = {
+            cls: 'form-group' //input-group,
+        };
+        
+        var combobox =  {
+            tag: 'select',
+            cls : 'roo-ios-select'
+        };
+        
+        if (this.name) {
+            combobox.name = this.name;
+        }
+        
+        if (this.disabled) {
+            combobox.disabled = true;
+        }
+        
+        if(this.multiple){
+            combobox.multiple = true;
+        };
+        
+        var settings = this;
+        
+        ['xs','sm','md','lg'].map(function(size){
+            if (settings[size]) {
+                cfg.cls += ' col-' + size + '-' + settings[size];
+            }
+        });
+        
+        cfg.cn = combobox;
+        
+        return cfg;
+        
+    },
+    
+    initIOSView : function()
+    {
+        this.originalValue = this.getValue();
+        
+        this.triggerEl = this.el.select('select.roo-ios-select, true').first();
+        Roo.log(this.el);
+        Roo.log(this.triggerEl);
+        
+        this.triggerEl.on("click", this.showTouchView, this);
+        
+        this.touchViewFooterEl.select('.roo-touch-view-cancel', true).first().on('click', this.hideTouchView, this);
+        this.touchViewFooterEl.select('.roo-touch-view-ok', true).first().on('click', this.setTouchViewValue, this);
+        
+        this.maskEl = new Roo.LoadMask(this.touchViewEl, { store : this.store, msgCls: 'roo-el-mask-msg' });
+        
+        this.store.on('beforeload', this.onTouchViewBeforeLoad, this);
+        this.store.on('load', this.onTouchViewLoad, this);
+        this.store.on('loadexception', this.onTouchViewLoadException, this);
+        
+        if(this.hiddenName){
+            
+            this.hiddenField = this.el.select('input.form-hidden-field',true).first();
+            
+            this.hiddenField.dom.value =
+                this.hiddenValue !== undefined ? this.hiddenValue :
+                this.value !== undefined ? this.value : '';
+        
+            this.el.dom.removeAttribute('name');
+            this.hiddenField.dom.setAttribute('name', this.hiddenName);
+        }
+        
+        if(this.multiple){
+            this.choices = this.el.select('ul.roo-select2-choices', true).first();
+            this.searchField = this.el.select('ul li.roo-select2-search-field', true).first();
+        }
+        
+        if(this.removable && !this.multiple){
+            var close = this.closeTriggerEl();
+            if(close){
+                close.setVisibilityMode(Roo.Element.DISPLAY).hide();
+                close.on('click', this.removeBtnClick, this, close);
+            }
+        }
+        /*
+         * fix the bug in Safari iOS8
+         */
+        this.inputEl().on("focus", function(e){
+            document.activeElement.blur();
+        }, this);
+        
+        return;
     }
+    
+//    inputEl: function ()
+//    {
+//        return this.el.select('select.roo-ios-select, true').first();
+//        
+//        if(Roo.isIOS && this.useNativeIOS){
+//            return this.el.select('select.roo-ios-select, true').first();
+//        }
+//        
+//        return this.el.select('input.form-control',true).first();
+//    },
     
 
     /** 
@@ -19854,8 +19978,8 @@ Roo.apply(Roo.bootstrap.CheckBox, {
   <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
 </label>
 <span>
- * 
- * 
+ *
+ *
  */
 
 /**
@@ -19870,32 +19994,32 @@ Roo.apply(Roo.bootstrap.CheckBox, {
 
 Roo.bootstrap.Radio = function(config){
     Roo.bootstrap.Radio.superclass.constructor.call(this, config);
-   
+
 };
 
 Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
-    
+
     inputType: 'radio',
     inputValue: '',
     valueOff: '',
-    
+
     getAutoCreate : function()
     {
         var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
         align = align || 'left'; // default...
-        
-        
-        
+
+
+
         var id = Roo.id();
-        
+
         var cfg = {
                 tag : this.inline ? 'span' : 'div',
-                cls : '',
+                cls : 'form-group',
                 cn : []
         };
-        
+
         var inline = this.inline ? ' radio-inline' : '';
-        
+
         var lbl = {
                 tag: 'label' ,
                 // does not need for, as we wrap the input with it..
@@ -19904,17 +20028,17 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
                 cn : []
         };
         var labelWidth = this.labelWidth ? this.labelWidth *1 : 100;
-        
+
         var fieldLabel = {
             tag: 'label' ,
             //cls : 'control-label' + inline,
             html : this.fieldLabel,
             style : 'width:' +  labelWidth  + 'px;line-height:1;vertical-align:bottom;cursor:default;' // should be css really.
         };
-        
- 
-        
-        
+
+
+
+
         var input =  {
             tag: 'input',
             id : id,
@@ -19923,7 +20047,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
             value : this.inputValue,
             cls : 'roo-radio',
             placeholder : this.placeholder || '' // ?? needed????
-            
+
         };
         if (this.weight) { // Validity check?
             input.cls += " radio-" + this.weight;
@@ -19931,36 +20055,36 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         if (this.disabled) {
             input.disabled=true;
         }
-        
+
         if(this.checked){
             input.checked = this.checked;
         }
-        
+
         if (this.name) {
             input.name = this.name;
         }
-        
+
         if (this.size) {
             input.cls += ' input-' + this.size;
         }
-        
+
         //?? can span's inline have a width??
-        
+
         var settings=this;
         ['xs','sm','md','lg'].map(function(size){
             if (settings[size]) {
                 cfg.cls += ' col-' + size + '-' + settings[size];
             }
         });
-        
+
         var inputblock = input;
-        
+
         if (this.before || this.after) {
-            
+
             inputblock = {
                 cls : 'input-group',
                 tag : 'span',
-                cn :  [] 
+                cn :  []
             };
             if (this.before) {
                 inputblock.cn.push({
@@ -19977,19 +20101,19 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
                     html : this.after
                 });
             }
-            
+
         };
-        
-        
+
+
         if (this.fieldLabel && this.fieldLabel.length) {
             cfg.cn.push(fieldLabel);
         }
-       
+
         // normal bootstrap puts the input inside the label.
         // however with our styled version - it has to go after the input.
-       
+
         //lbl.cn.push(inputblock);
-        
+
         var lblwrap =  {
             tag: 'span',
             cls: 'radio' + inline,
@@ -19998,43 +20122,43 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
                 lbl
             ]
         };
-        
+
         cfg.cn.push( lblwrap);
-        
+
         if(this.boxLabel){
             lbl.cn.push({
                 tag: 'span',
                 html: this.boxLabel
             })
         }
-         
-        
+
+
         return cfg;
-        
+
     },
-    
+
     initEvents : function()
     {
 //        Roo.bootstrap.CheckBox.superclass.initEvents.call(this);
-        
+
         this.inputEl().on('click', this.onClick,  this);
         if (this.boxLabel) {
             //Roo.log('find label');
             this.el.select('span.radio label span',true).first().on('click', this.onClick,  this);
         }
-        
+
     },
-    
+
     inputEl: function ()
     {
         return this.el.select('input.roo-radio',true).first();
     },
     onClick : function()
-    {   
+    {
         Roo.log("click");
         this.setChecked(true);
     },
-    
+
     setChecked : function(state,suppressEvent)
     {
         if(state){
@@ -20045,15 +20169,15 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         Roo.log(this.inputEl().dom);
         this.checked = state;
         this.inputEl().dom.checked = state;
-        
+
         if(suppressEvent !== true){
             this.fireEvent('check', this, state);
         }
-        
+
         //this.inputEl().dom.value = state ? this.inputValue : this.valueOff;
-        
+
     },
-    
+
     getGroupValue : function()
     {
         var value = '';
@@ -20062,10 +20186,10 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
                 value = v.dom.value;
             }
         });
-        
+
         return value;
     },
-    
+
     /**
      * Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}.
      * @return {Mixed} value The field value
@@ -20073,10 +20197,8 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
     getValue : function(){
         return this.getGroupValue();
     }
-    
-});
 
- 
+});
 //<script type="text/javascript">
 
 /*
