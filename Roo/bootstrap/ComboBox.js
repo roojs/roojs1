@@ -344,8 +344,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         /*
          * Render classic select for iso
          */
-        cfg = this.getAutoCreateNativeIOS();
-        return cfg;
+//        cfg = this.getAutoCreateNativeIOS();
+//        return cfg;
         
         if(Roo.isIOS && this.useNativeIOS){
             cfg = this.getAutoCreateNativeIOS();
@@ -589,7 +589,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     // private
     initEvents: function()
     {
-        
+        Roo.log('get??');
         if (this._initEventsCalled) { // as we call render... prevent looping...
             return;
         }
