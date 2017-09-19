@@ -2304,208 +2304,21 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             cls: 'form-group' //input-group,
         };
         
-        var select =  {
+        var combobox =  {
             tag: 'select'
         };
         
         if (this.name) {
-            select.name = this.name;
-        }
-        
-        if (this.size) {
-            select.cls += ' input-' + this.size;
+            combobox.name = this.name;
         }
         
         if (this.disabled) {
-            select.disabled = true;
-        }
-        
-        var inputblock = {
-            cls : '',
-            cn : [
-                input
-            ]
-        };
-        
-        if(this.before){
-            inputblock.cls += ' input-group';
-            
-            inputblock.cn.unshift({
-                tag :'span',
-                cls : 'input-group-addon',
-                html : this.before
-            });
-        }
-        
-        if(this.removable && !this.multiple){
-            inputblock.cls += ' roo-removable';
-            
-            inputblock.cn.push({
-                tag: 'button',
-                html : 'x',
-                cls : 'roo-combo-removable-btn close'
-            });
-        }
-
-        if(this.hasFeedback && !this.allowBlank){
-            
-            inputblock.cls += ' has-feedback';
-            
-            inputblock.cn.push({
-                tag: 'span',
-                cls: 'glyphicon form-control-feedback'
-            });
-            
-        }
-        
-        if (this.after) {
-            
-            inputblock.cls += (this.before) ? '' : ' input-group';
-            
-            inputblock.cn.push({
-                tag :'span',
-                cls : 'input-group-addon',
-                html : this.after
-            });
-        }
-
-        var box = {
-            tag: 'div',
-            cn: [
-                {
-                    tag: 'input',
-                    type : 'hidden',
-                    cls: 'form-hidden-field'
-                },
-                inputblock
-            ]
-            
-        };
-        
-        if(this.multiple){
-            box = {
-                tag: 'div',
-                cn: [
-                    {
-                        tag: 'input',
-                        type : 'hidden',
-                        cls: 'form-hidden-field'
-                    },
-                    {
-                        tag: 'ul',
-                        cls: 'roo-select2-choices',
-                        cn:[
-                            {
-                                tag: 'li',
-                                cls: 'roo-select2-search-field',
-                                cn: [
-
-                                    inputblock
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            }
-        };
-        
-        var combobox = {
-            cls: 'roo-select2-container input-group roo-touchview-combobox ',
-            cn: [
-                box
-            ]
-        };
-        
-        if(!this.multiple && this.showToggleBtn){
-            
-            var caret = {
-                        tag: 'span',
-                        cls: 'caret'
-            };
-            
-            if (this.caret != false) {
-                caret = {
-                     tag: 'i',
-                     cls: 'fa fa-' + this.caret
-                };
-                
-            }
-            
-            combobox.cn.push({
-                tag :'span',
-                cls : 'input-group-addon btn dropdown-toggle',
-                cn : [
-                    caret,
-                    {
-                        tag: 'span',
-                        cls: 'combobox-clear',
-                        cn  : [
-                            {
-                                tag : 'i',
-                                cls: 'icon-remove'
-                            }
-                        ]
-                    }
-                ]
-
-            })
+            combobox.disabled = true;
         }
         
         if(this.multiple){
-            combobox.cls += ' roo-select2-container-multi';
-        }
-        
-        var align = this.labelAlign || this.parentLabelAlign();
-        
-        cfg.cn = combobox;
-        
-        if(this.fieldLabel.length && this.labelWidth){
-            
-            var lw = align === 'left' ? ('col-sm' + this.labelWidth) : '';
-            var cw = align === 'left' ? ('col-sm' + (12 - this.labelWidth)) : '';
-            
-            cfg.cn = [
-                {
-                   tag : 'i',
-                   cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
-                   tooltip : 'This field is required'
-                },
-                {
-                    tag: 'label',
-                    cls : 'control-label ' + lw,
-                    html : this.fieldLabel
-
-                },
-                {
-                    cls : cw, 
-                    cn: [
-                        combobox
-                    ]
-                }
-            ];
-            
-            if(this.indicatorpos == 'right'){
-                cfg.cn = [
-                    {
-                        tag: 'label',
-                        cls : 'control-label ' + lw,
-                        html : this.fieldLabel
-
-                    },
-                    {
-                       tag : 'i',
-                       cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
-                       tooltip : 'This field is required'
-                    },
-                    {
-                        cls : cw, 
-                        cn: [
-                            combobox
-                        ]
-                    }
-                ];
-            }
-        }
+            combobox.multiple = true;
+        };
         
         var settings = this;
         
