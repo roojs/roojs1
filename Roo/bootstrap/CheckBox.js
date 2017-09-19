@@ -209,9 +209,11 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
              
             cfg.cn.push(boxLabelCfg);
         }
-        cfg.cn.push(hidden);
         
-       
+        if(this.inputType != 'radio'){
+            cfg.cn.push(hidden);
+        }
+        
         return cfg;
         
     },
