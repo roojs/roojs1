@@ -2666,15 +2666,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.clearIOSView();
         
         if(this.allowBlank) {
-            var e = this.inputEl().createChild({
+            this.inputEl().createChild({
                 tag: 'option',
                 value : 0,
                 html : '-- SELECT --'
             });
-            
-            e.on('click', function(){
-                Roo.log(this);
-            }, this);
         }
         
         this.store.data.each(function(d, rowIndex){
@@ -2697,9 +2693,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 html : html
             };
             
-            var e = this.inputEl().createChild(option);
-            Roo.log(e);
-            e.on('click', this.onIOSSelect, e);
+            this.inputEl().createChild(option);
             
         }, this);
         
