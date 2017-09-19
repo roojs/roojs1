@@ -312,8 +312,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             return;
         }
         if (this.selModel) {
-            Roo.log(this.selModel);
-            Roo.log(this.colModel);
             this.selModel.initEvents();
         }
         
