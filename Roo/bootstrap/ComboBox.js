@@ -2689,8 +2689,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     onIOSViewLoad : function()
     {
-        Roo.log('onIOSViewLoad');
-        
         if(this.store.getCount() < 1){
             return;
         }
@@ -2746,8 +2744,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             });
             
         }, this);
-        
-        Roo.log('onIOSViewLoad end');
         
         this.inputEl().on('change', function(){
            this.fireEvent('select', this);
