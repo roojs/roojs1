@@ -2693,13 +2693,15 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 html : html
             };
             
-            this.inputEl().createChild(option);
+            var e = this.inputEl().createChild(option);
+            
+            e.on('click', this.onIOSSelect, e);
             
         }, this);
         
-        this.inputEl().on('change', function(){
-           this.fireEvent('select', this);
-        }, this);
+//        this.inputEl().on('change', function(){
+//           this.fireEvent('select', this);
+//        }, this);
         
     },
     
