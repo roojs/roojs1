@@ -2771,7 +2771,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
     },
 
-
     /** 
     * @cfg {Boolean} grow 
     * @hide 
