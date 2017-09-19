@@ -2619,7 +2619,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         };
         
         var combobox =  {
-            tag: 'select'
+            tag: 'select',
+            cls : 'roo-ios-select'
         };
         
         if (this.name) {
@@ -2647,6 +2648,53 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     initIOSView : function()
     {
+        this.originalValue = this.getValue();
+        
+        this.triggerEl = this.el.select('span.dropdown-toggle',true).first();
+        
+        this.inputEl().on("click", this.showTouchView, this);
+        this.triggerEl.on("click", this.showTouchView, this);
+        
+        this.touchViewFooterEl.select('.roo-touch-view-cancel', true).first().on('click', this.hideTouchView, this);
+        this.touchViewFooterEl.select('.roo-touch-view-ok', true).first().on('click', this.setTouchViewValue, this);
+        
+        this.maskEl = new Roo.LoadMask(this.touchViewEl, { store : this.store, msgCls: 'roo-el-mask-msg' });
+        
+        this.store.on('beforeload', this.onTouchViewBeforeLoad, this);
+        this.store.on('load', this.onTouchViewLoad, this);
+        this.store.on('loadexception', this.onTouchViewLoadException, this);
+        
+        if(this.hiddenName){
+            
+            this.hiddenField = this.el.select('input.form-hidden-field',true).first();
+            
+            this.hiddenField.dom.value =
+                this.hiddenValue !== undefined ? this.hiddenValue :
+                this.value !== undefined ? this.value : '';
+        
+            this.el.dom.removeAttribute('name');
+            this.hiddenField.dom.setAttribute('name', this.hiddenName);
+        }
+        
+        if(this.multiple){
+            this.choices = this.el.select('ul.roo-select2-choices', true).first();
+            this.searchField = this.el.select('ul li.roo-select2-search-field', true).first();
+        }
+        
+        if(this.removable && !this.multiple){
+            var close = this.closeTriggerEl();
+            if(close){
+                close.setVisibilityMode(Roo.Element.DISPLAY).hide();
+                close.on('click', this.removeBtnClick, this, close);
+            }
+        }
+        /*
+         * fix the bug in Safari iOS8
+         */
+        this.inputEl().on("focus", function(e){
+            document.activeElement.blur();
+        }, this);
+        
         return;
     }
     
