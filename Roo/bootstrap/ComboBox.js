@@ -1184,7 +1184,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     getValue : function()
     {
         if(Roo.isIOS && this.useNativeIOS){
-            return this.ios_options[this.inputEl().selectedIndex][this.valueField];
+            return this.ios_options[this.inputEl().selectedIndex].data.[this.valueField];
         }
         
         if(this.multiple){
