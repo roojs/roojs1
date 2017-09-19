@@ -2302,39 +2302,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         return cfg;
     },
     
-    getAutoCreateNativeIOS : function()
-    {
-        var cfg = {
-            cls: 'form-group' //input-group,
-        };
-        
-        var combobox =  {
-            tag: 'select'
-        };
-        
-        if (this.name) {
-            combobox.name = this.name;
-        }
-        
-        if (this.disabled) {
-            combobox.disabled = true;
-        }
-        
-        if(this.multiple){
-            combobox.multiple = true;
-        };
-        
-        var settings = this;
-        
-        ['xs','sm','md','lg'].map(function(size){
-            if (settings[size]) {
-                cfg.cls += ' col-' + size + '-' + settings[size];
-            }
-        });
-        
-        return cfg;
-    },
-    
     initTouchView : function()
     {
         this.renderTouchView();
