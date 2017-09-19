@@ -2707,6 +2707,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.clearTouchView();
         
+        if(this.allowBlank) {
+            this.inputEl().createChild({
+                tag: 'option',
+                value : 0,
+                html : '-- SELECT --'
+            })
+        }
+        
         this.store.data.each(function(d, rowIndex){
             
             var html = '';
