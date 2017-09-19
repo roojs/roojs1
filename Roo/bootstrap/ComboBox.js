@@ -2657,39 +2657,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         return;
     },
     
-    showIOSView : function()
-    {
-        if(this.disabled){
-            return;
-        }
-        
-        Roo.log('showIOSView');
-        
-        this.doIOSViewQuery();
-        
-    },
-    
-    doIOSViewQuery : function()
-    {
-        var qe = {
-            query: '',
-            forceAll: true,
-            combo: this,
-            cancel:false
-        };
-        
-        if(this.fireEvent('beforequery', qe) ===false || qe.cancel){
-            return false;
-        }
-        
-        if(!this.alwaysQuery || this.mode == 'local'){
-            this.onIOSViewLoad();
-            return;
-        }
-        
-        this.store.load();
-    },
-    
     onIOSViewLoad : function()
     {
         if(this.store.getCount() < 1){
@@ -2720,11 +2687,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 value = d.data[this.valueField];
             }
             
-            this.inputEl().createChild({
+            var option = {
                 tag: 'option',
                 value : value,
                 html : html
-            })
+            };
+            
+            this.inputEl().createChild(option);
             
             
         }, this);
