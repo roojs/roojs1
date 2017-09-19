@@ -96,9 +96,14 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         }
         
         
-        if (this.name && this.inputType != 'radio') {
-            hidden.name = this.name;
-            input.name = '_hidden_' + this.name;
+        if (this.name) {
+            
+            input.name = this.name;
+            
+            if(this.inputType != 'radio'){
+                hidden.name = this.name;
+                input.name = '_hidden_' + this.name;
+            }
         }
         
         if (this.size) {
