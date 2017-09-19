@@ -2709,10 +2709,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.store.data.each(function(d, rowIndex){
             
-            var display = '';
+            var html = '';
             
             if(this.displayField && typeof(d.data[this.displayField]) != 'undefined'){
-                display = d.data[this.displayField];
+                html = d.data[this.displayField];
             }
             
             var value = '';
@@ -2724,7 +2724,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.inputEl().createChild({
                 tag: 'option',
                 value : value,
-                display : display
+                html : html
             })
             
             
