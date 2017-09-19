@@ -2689,19 +2689,22 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if(this.allowBlank) {
             
-            var default_o = '-- SELECT --';
+            var default_text = '-- SELECT --';
             
-            this.inputEl().createChild({
+            var opt = this.inputEl().createChild({
                 tag: 'option',
                 value : 0,
-                html : default_o
+                html : default_text
             });
             
             var o = {};
             o[this.valueField] = 0;
-            o[this.displayField] = default_o;
+            o[this.displayField] = default_text;
             
-            this.ios_options.push(o);
+            this.ios_options.push({
+                data : o,
+                el : opt
+            });
             
         }
         
