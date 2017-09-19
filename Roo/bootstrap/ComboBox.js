@@ -2664,7 +2664,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.store.on('beforeload', this.onIOSViewBeforeLoad, this);
         this.store.on('load', this.onIOSViewLoad, this);
-        this.store.on('loadexception', this.onIosViewLoadException, this);
+        this.store.on('loadexception', this.onIOSViewLoadException, this);
         
         return;
     }
