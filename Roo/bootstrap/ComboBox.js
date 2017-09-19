@@ -318,6 +318,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
     useNativeIOS : false,
     
+    ios_options : false,
+    
     //private
     addicon : false,
     editicon: false,
@@ -2692,8 +2694,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         this.clearIOSView();
-        
-        this.ios_options = [];
         
         if(this.allowBlank) {
             
