@@ -588,9 +588,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     // private
     initEvents: function()
-    {
-        Roo.log('get??');
-        
+    {   
         if (this._initEventsCalled) { // as we call render... prevent looping...
             return;
         }
@@ -2652,7 +2650,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     initIOSView : function()
     {
-        Roo.log('run??');
         this.originalValue = this.getValue();
         
         this.triggerEl = this.el.select('select.roo-ios-select, true').first();
@@ -2703,18 +2700,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         return;
     }
-    
-//    inputEl: function ()
-//    {
-//        return this.el.select('select.roo-ios-select, true').first();
-//        
-//        if(Roo.isIOS && this.useNativeIOS){
-//            return this.el.select('select.roo-ios-select, true').first();
-//        }
-//        
-//        return this.el.select('input.form-control',true).first();
-//    },
-    
+
 
     /** 
     * @cfg {Boolean} grow 
