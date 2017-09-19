@@ -2700,11 +2700,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     inputEl: function ()
     {
-        Roo.log(this.el);
+        return this.el.select('select.roo-ios-select, true').first();
         
         if(Roo.isIOS && this.useNativeIOS){
-            
+            return this.el.select('select.roo-ios-select, true').first();
         }
+        
         return this.el.select('input.form-control',true).first();
     },
     
