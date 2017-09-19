@@ -2658,20 +2658,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         this.originalValue = this.getValue();
         
-        this.triggerEl = this.el.select('select.roo-ios-select, true').first();
-        Roo.log(this.el);
-        Roo.log(this.triggerEl);
+        this.inputEl().on("click", this.showTouchView, this);
         
-        this.triggerEl.on("click", this.showTouchView, this);
+//        this.maskEl = new Roo.LoadMask(this.touchViewEl, { store : this.store, msgCls: 'roo-el-mask-msg' });
         
-        this.touchViewFooterEl.select('.roo-touch-view-cancel', true).first().on('click', this.hideTouchView, this);
-        this.touchViewFooterEl.select('.roo-touch-view-ok', true).first().on('click', this.setTouchViewValue, this);
-        
-        this.maskEl = new Roo.LoadMask(this.touchViewEl, { store : this.store, msgCls: 'roo-el-mask-msg' });
-        
-        this.store.on('beforeload', this.onTouchViewBeforeLoad, this);
-        this.store.on('load', this.onTouchViewLoad, this);
-        this.store.on('loadexception', this.onTouchViewLoadException, this);
+        this.store.on('beforeload', this.onIOSViewBeforeLoad, this);
+        this.store.on('load', this.onIOSViewLoad, this);
+        this.store.on('loadexception', this.onIosViewLoadException, this);
         
         if(this.hiddenName){
             
