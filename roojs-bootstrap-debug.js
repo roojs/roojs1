@@ -12256,9 +12256,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         /*
          * Render classic select for iso
          */
-        cfg = this.getAutoCreateNativeIOS();
-        return cfg;
-        
+//        cfg = this.getAutoCreateNativeIOS();
+//        return cfg;
+//        
         if(Roo.isIOS && this.useNativeIOS){
             cfg = this.getAutoCreateNativeIOS();
             return cfg;
@@ -20035,9 +20035,6 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
             html : this.fieldLabel,
             style : 'width:' +  labelWidth  + 'px;line-height:1;vertical-align:bottom;cursor:default;' // should be css really.
         };
-
-
-
 
         var input =  {
             tag: 'input',
