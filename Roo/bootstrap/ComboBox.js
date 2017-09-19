@@ -2667,7 +2667,45 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.store.on('loadexception', this.onIOSViewLoadException, this);
         
         return;
-    }
+    },
+    
+    showIOSView : function()
+    {
+        if(this.disabled){
+            return;
+        }
+        
+        this.touchViewHeaderEl.hide();
+
+        if(this.modalTitle.length){
+            this.touchViewHeaderEl.dom.innerHTML = this.modalTitle;
+            this.touchViewHeaderEl.show();
+        }
+
+        this.touchViewEl.show();
+
+        this.touchViewEl.select('.modal-dialog', true).first().setStyle('margin', '0px');
+        this.touchViewEl.select('.modal-dialog > .modal-content', true).first().setSize(
+                Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
+
+        var bodyHeight = Roo.lib.Dom.getViewHeight() - this.touchViewFooterEl.getHeight() + this.touchViewBodyEl.getPadding('tb');
+
+        if(this.modalTitle.length){
+            bodyHeight = bodyHeight - this.touchViewHeaderEl.getHeight();
+        }
+        
+        this.touchViewBodyEl.setHeight(bodyHeight);
+
+        if(this.animate){
+            var _this = this;
+            (function(){ _this.touchViewEl.addClass('in'); }).defer(50);
+        }else{
+            this.touchViewEl.addClass('in');
+        }
+
+        this.doTouchViewQuery();
+        
+    },
 
 
     /** 
