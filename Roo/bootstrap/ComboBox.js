@@ -2760,7 +2760,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     setIOSValue: function(v)
     {
-        Roo.log('setIOSValue');
+        if(!this.ios_options){
+            return;
+        }
+        
         Roo.each(this.ios_options, function(opts){
            
            opts.el.dom.removeAttribute('selected');
