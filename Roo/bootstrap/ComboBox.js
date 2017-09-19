@@ -2636,10 +2636,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             combobox.disabled = true;
         }
         
-        if(this.multiple){
-            combobox.multiple = true;
-        };
-        
         var settings = this;
         
         ['xs','sm','md','lg'].map(function(size){
