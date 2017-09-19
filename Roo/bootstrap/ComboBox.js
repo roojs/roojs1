@@ -2671,12 +2671,16 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.clearIOSView();
         
+        this.ios_options = [];
+        
         if(this.allowBlank) {
             this.inputEl().createChild({
                 tag: 'option',
                 value : 0,
                 html : '-- SELECT --'
             });
+            
+            this.ios_options.push({});
         }
         
         this.store.data.each(function(d, rowIndex){
