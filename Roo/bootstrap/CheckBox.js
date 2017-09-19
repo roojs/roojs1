@@ -136,7 +136,10 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             }
             
             inputblock.cn.push(input);
-            inputblock.cn.push(hidden);
+            
+            if(this.inputType != 'radio'){
+                inputblock.cn.push(hidden);
+            }
             
             if (this.after) {
                 inputblock.cn.push({
