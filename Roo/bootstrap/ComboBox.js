@@ -2643,6 +2643,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             }
         });
         
+        cfg.cn = combobox;
+        
         return cfg;
     },
     
