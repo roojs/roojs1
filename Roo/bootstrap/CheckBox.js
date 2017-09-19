@@ -549,7 +549,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         this.fireEvent("enable", this);
         return this;
     }
-    
 
 });
 
