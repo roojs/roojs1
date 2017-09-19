@@ -1181,7 +1181,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * Returns the currently selected field value or empty string if no value is set.
      * @return {String} value The selected value
      */
-    getValue : function(){
+    getValue : function()
+    {
+        Roo.log(this.el);
+        return;
+        if(Roo.isIOS && this.useNativeIOS){
+            
+        }
         
         if(this.multiple){
             return (this.hiddenField) ? this.hiddenField.dom.value : this.value;
