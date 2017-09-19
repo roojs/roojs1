@@ -1202,10 +1202,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     getRawValue : function()
     {
-        return this.ios_options[this.inputEl().selectedIndex].data[this.displayField];
+        return this.ios_options[this.inputEl().dom.selectedIndex].data[this.displayField];
         
         if(Roo.isIOS && this.useNativeIOS){
-            return this.ios_options[this.inputEl().selectedIndex].data[this.displayField];
+            return this.ios_options[this.inputEl().dom.selectedIndex].data[this.displayField];
         }
         
         var v = this.inputEl().getValue();
@@ -1217,6 +1217,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * Clears any text/value currently set in the field
      */
     clearValue : function(){
+        
         if(this.hiddenField){
             this.hiddenField.dom.value = '';
         }
