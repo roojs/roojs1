@@ -2697,29 +2697,16 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
         }, this);
         
-//        this.inputEl().on('change', function(){
-//           this.fireEvent('select', this);
-//        }, this);
+        this.inputEl().on('change', function(){
+           this.fireEvent('select', this);
+        }, this);
         
     },
     
     clearIOSView: function()
     {
         this.inputEl().dom.innerHTML = '';
-    },
-    
-    onIOSSelect : function(record, index)
-    {
-        Roo.log('test');
-        
-//        if(this.fireEvent('beforeselect', this, record, index) !== false){
-//        
-//            this.setFromData(index > -1 ? record.data : false);
-//            
-//            this.collapse();
-//            this.fireEvent('select', this, record, index);
-//        }
-    },
+    }
 
     /** 
     * @cfg {Boolean} grow 
