@@ -2740,6 +2740,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     clearIOSView: function()
     {
         this.inputEl().dom.innerHTML = '';
+    },
+    
+    setIOSValue: function()
+    {
+        
     }
 
     /** 
