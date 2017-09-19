@@ -2708,7 +2708,18 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     clearIOSView: function()
     {
         this.inputEl().dom.innerHTML = '';
-    }
+    },
+    
+    onIOSSelect : function(record, index){
+        
+        if(this.fireEvent('beforeselect', this, record, index) !== false){
+        
+            this.setFromData(index > -1 ? record.data : false);
+            
+            this.collapse();
+            this.fireEvent('select', this, record, index);
+        }
+    },
 
     /** 
     * @cfg {Boolean} grow 
