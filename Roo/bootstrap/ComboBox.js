@@ -2718,7 +2718,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 value = d.data[this.valueField];
             }
             Roo.log(this.inputEl());
-            this.inputEl().appendChild({
+            this.inputEl().createChild({
                 tag: 'option',
                 value : value,
                 display : display
