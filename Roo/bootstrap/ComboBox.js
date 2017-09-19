@@ -2684,14 +2684,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 html : default_o
             });
             
-            var dk = this.displayField;
-            var vk = this.valueField;
+            var o = {};
+            o[this.valueField] = 0;
+            o[this.displayField] = default_o;
             
-            this.ios_options.push({
-                vk : default_o,
-                dk : 0
-            });
+            this.ios_options.push(o);
+            
         }
+        
         Roo.log(this.ios_options);
         this.store.data.each(function(d, rowIndex){
             
