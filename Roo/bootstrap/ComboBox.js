@@ -2010,10 +2010,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     inputEl: function ()
     {
-        return this.el.select('select.roo-ios-select, true').first();
+        return this.el.select('select.roo-ios-select', true).first();
         
         if(Roo.isIOS && this.useNativeIOS){
-            return this.el.select('select.roo-ios-select, true').first();
+            return this.el.select('select.roo-ios-select', true).first();
         }
         
         if(Roo.isTouch && this.mobileTouchView){
