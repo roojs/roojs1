@@ -620,7 +620,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
         }
         
-        
+        this.initIOSView();
+            return;
         if(Roo.isIOS && this.useNativeIOS){
             this.initIOSView();
             return;
