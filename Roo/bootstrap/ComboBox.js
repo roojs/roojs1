@@ -2736,6 +2736,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 html : html
             };
             
+            if(this.value == d.data[this.valueField]){
+                option['selected'] = true;
+            }
+            
             var opt = this.inputEl().createChild(option);
             
             this.ios_options.push({
