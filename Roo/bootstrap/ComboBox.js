@@ -2298,6 +2298,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         return cfg;
     },
     
+    getAutoCreateNativeIOS : function()
+    {
+        
+    },
+    
     initTouchView : function()
     {
         this.renderTouchView();
