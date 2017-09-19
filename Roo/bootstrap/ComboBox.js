@@ -314,9 +314,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     mobileTouchView : true,
     
     /**
-     * @cfg {Boolean} useNativeIOS (true|false) render it as classic select for ios
+     * @cfg {Boolean} useNativeIOS (true|false) render it as classic select for ios (default false)
      */
-    useNativeIOS : true,
+    useNativeIOS : false,
     
     //private
     addicon : false,
@@ -346,7 +346,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
          */
         
         if(Roo.isIOS && this.useNativeIOS){
-            cfg = this.getAutoCreateTouchView();
+            cfg = this.getAutoCreateNativeIOS();
             return cfg;;
         }
         
