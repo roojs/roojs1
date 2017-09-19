@@ -78,9 +78,6 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
             style : 'width:' +  labelWidth  + 'px;line-height:1;vertical-align:bottom;cursor:default;' // should be css really.
         };
 
-
-
-
         var input =  {
             tag: 'input',
             id : id,
