@@ -2703,9 +2703,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 html : html
             };
             
-            var o = this.inputEl().createChild(option);
-            Roo.log(rowIndex);
-            Roo.log(o);
+            this.inputEl().createChild(option);
+            
+            this.ios_options.push(d);
             
         }, this);
         
