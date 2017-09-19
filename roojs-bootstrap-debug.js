@@ -19304,13 +19304,15 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             
         };
         
-         
-        var hidden =  {
-            tag: 'input',
-            type : 'hidden',
-            cls : 'roo-hidden-value',
-            value : this.checked ? this.valueOff : this.inputValue
-        };
+        if(this.inputType != 'radio'){
+            var hidden =  {
+                tag: 'input',
+                type : 'hidden',
+                cls : 'roo-hidden-value',
+                value : this.checked ? this.valueOff : this.inputValue
+            };
+        }
+        
             
         if (this.weight) { // Validity check?
             cfg.cls += " " + this.inputType + "-" + this.weight;
@@ -19327,8 +19329,13 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         
         if (this.name) {
-            hidden.name = this.name;
-            input.name = '_hidden_' + this.name;
+            
+            input.name = this.name;
+            
+            if(this.inputType != 'radio'){
+                hidden.name = this.name;
+                input.name = '_hidden_' + this.name;
+            }
         }
         
         if (this.size) {
@@ -19362,6 +19369,9 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             
             inputblock.cn.push(input);
             
+            if(this.inputType != 'radio'){
+                inputblock.cn.push(hidden);
+            }
             
             if (this.after) {
                 inputblock.cn.push({
@@ -19431,9 +19441,11 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
              
             cfg.cn.push(boxLabelCfg);
         }
-        cfg.cn.push(hidden);
         
-       
+        if(this.inputType != 'radio'){
+            cfg.cn.push(hidden);
+        }
+        
         return cfg;
         
     },
@@ -19781,7 +19793,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         this.fireEvent("enable", this);
         return this;
     }
-    
 
 });
 
