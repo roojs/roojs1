@@ -2760,6 +2760,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     setIOSValue: function(v)
     {
+        this.value = v;
+        
         if(!this.ios_options){
             return;
         }
