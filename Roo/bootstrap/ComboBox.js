@@ -344,10 +344,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         /*
          * Render classic select for iso
          */
-        
+        cfg = this.getAutoCreateNativeIOS();
+            return cfg;
         if(Roo.isIOS && this.useNativeIOS){
             cfg = this.getAutoCreateNativeIOS();
-            return cfg;;
+            return cfg;
         }
         
         /*
