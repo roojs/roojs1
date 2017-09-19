@@ -2699,7 +2699,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.inputEl().on('change', function(){
            Roo.log('change??') ;
-        });
+           Roo.log(this);
+        }, this);
         
     },
     
