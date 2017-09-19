@@ -1238,7 +1238,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * Otherwise the field will be blank (although the value will still be set).
      * @param {String} value The value to match
      */
-    setValue : function(v){
+    setValue : function(v)
+    {
+        if(Roo.isIOS && this.useNativeIOS){
+            this.setIOSValue(v);
+            return;
+        }
+        
         if(this.multiple){
             this.syncValue();
             return;
