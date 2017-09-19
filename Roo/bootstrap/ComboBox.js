@@ -1180,8 +1180,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
     getValue : function()
     {
-        return this.ios_options[this.inputEl().dom.selectedIndex].data[this.valueField];
-        
         if(Roo.isIOS && this.useNativeIOS){
             return this.ios_options[this.inputEl().dom.selectedIndex].data[this.valueField];
         }
@@ -1199,8 +1197,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     getRawValue : function()
     {
-        return this.ios_options[this.inputEl().dom.selectedIndex].data[this.displayField];
-        
         if(Roo.isIOS && this.useNativeIOS){
             return this.ios_options[this.inputEl().dom.selectedIndex].data[this.displayField];
         }
