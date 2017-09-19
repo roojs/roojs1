@@ -2675,8 +2675,29 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         
-        this.doTouchViewQuery();
+        this.doIOSViewQuery();
         
+    },
+    
+    doIOSViewQuery : function()
+    {
+        var qe = {
+            query: '',
+            forceAll: true,
+            combo: this,
+            cancel:false
+        };
+        
+        if(this.fireEvent('beforequery', qe) ===false || qe.cancel){
+            return false;
+        }
+        
+        if(!this.alwaysQuery || this.mode == 'local'){
+            this.onIOSViewLoad();
+            return;
+        }
+        
+        this.store.load();
     },
 
 
