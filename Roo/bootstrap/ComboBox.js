@@ -2700,7 +2700,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             };
             
             var o = this.inputEl().createChild(option);
-            
+            Roo.log(rowIndex);
             Roo.log(o);
             
         }, this);
