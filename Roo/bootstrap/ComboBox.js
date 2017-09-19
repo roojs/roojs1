@@ -2710,15 +2710,17 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.inputEl().dom.innerHTML = '';
     },
     
-    onIOSSelect : function(record, index){
+    onIOSSelect : function(record, index)
+    {
+        Roo.log('test');
         
-        if(this.fireEvent('beforeselect', this, record, index) !== false){
-        
-            this.setFromData(index > -1 ? record.data : false);
-            
-            this.collapse();
-            this.fireEvent('select', this, record, index);
-        }
+//        if(this.fireEvent('beforeselect', this, record, index) !== false){
+//        
+//            this.setFromData(index > -1 ? record.data : false);
+//            
+//            this.collapse();
+//            this.fireEvent('select', this, record, index);
+//        }
     },
 
     /** 
