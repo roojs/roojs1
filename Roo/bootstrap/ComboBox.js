@@ -2651,6 +2651,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     initIOSView : function()
     {
+        Roo.log('run??');
         this.originalValue = this.getValue();
         
         this.triggerEl = this.el.select('select.roo-ios-select, true').first();
