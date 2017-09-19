@@ -2690,6 +2690,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             var option = {
                 tag: 'option',
                 value : value,
+                selected : true,
                 html : html
             };
             
