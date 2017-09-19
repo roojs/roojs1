@@ -2032,7 +2032,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         return this.el.select('input.form-control',true).first();
     },
     
-    
     onTickableFooterButtonClick : function(e, btn, el)
     {
         e.preventDefault();
