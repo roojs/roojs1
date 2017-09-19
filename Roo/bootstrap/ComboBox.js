@@ -2703,14 +2703,15 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         this.clearTouchView();
-        
-        var rawValue = this.getRawValue();
-        
-        var template = (this.multiple) ? Roo.bootstrap.ComboBox.listItemCheckbox : Roo.bootstrap.ComboBox.listItemRadio;
-        
-        this.tickItems = [];
+//        
+//        var rawValue = this.getRawValue();
+//        
+//        var template = (this.multiple) ? Roo.bootstrap.ComboBox.listItemCheckbox : Roo.bootstrap.ComboBox.listItemRadio;
+//        
+//        this.tickItems = [];
         
         this.store.data.each(function(d, rowIndex){
+            
             var row = this.touchViewListGroup.createChild(template);
             
             if(typeof(d.data.cls) != 'undefined' && d.data.cls.length){
@@ -2766,6 +2767,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
     },
+    
+    clearTouchView: function()
+    {
+        this.inputEl().dom.innerHTML = '';
+    }
 
     /** 
     * @cfg {Boolean} grow 
