@@ -2703,7 +2703,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
             this.ios_options.push({
                 data : o,
-                el : opt
+                option : opt
             });
             
         }
@@ -2732,7 +2732,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
             this.ios_options.push({
                 data : d.data,
-                el : opt
+                option : opt
             });
             
         }, this);
