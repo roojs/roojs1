@@ -2654,6 +2654,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         this.originalValue = this.getValue();
         
+        Roo.log(this.el);
         this.inputEl().on("click", this.showIOSView, this);
         
 //        this.maskEl = new Roo.LoadMask(this.touchViewEl, { store : this.store, msgCls: 'roo-el-mask-msg' });
