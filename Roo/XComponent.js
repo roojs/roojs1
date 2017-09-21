@@ -167,7 +167,6 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
         Roo.debug &&  Roo.log(this);
         
         var tree = this._tree ? this._tree() : this.tree();
-        var named_el = false;
 
         
         if (!el && typeof(this.parent) == 'string' && this.parent.substring(0,1) == '#') {
@@ -175,7 +174,6 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             var ename = this.parent.substr(1);
             this.parent = false;
             Roo.debug && Roo.log(ename);
-            named_el = true;
             switch (ename) {
                 case 'bootstrap-body':
                     if (typeof(tree.el) != 'undefined' && tree.el == document.body)  {
@@ -218,7 +216,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                     // fall through
                 default:
                     el = Roo.get(ename);
-                     
+                    this.parent = { el : true};
                     break;
             }
                 
@@ -307,6 +305,9 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
         var is_body = false;
         if (this.parent.el === true) {
             // bootstrap... - body..
+            if (el) {
+                tree.el = el;
+            }
             this.parent.el = Roo.factory(tree);
             is_body = true;
         }

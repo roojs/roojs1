@@ -17,7 +17,7 @@
 
 Roo.bootstrap.Body = function(config){
     Roo.bootstrap.Body.superclass.constructor.call(this, config);
-    this.el = Roo.get(document.body);
+    this.el = Roo.get(config.el ? config.el : document.body );
     if (this.cls && this.cls.length) {
         Roo.get(document.body).addClass(this.cls);
     }
