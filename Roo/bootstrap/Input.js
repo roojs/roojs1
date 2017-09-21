@@ -895,6 +895,9 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     SafariOnKeyDown : function(event)
     {
         // this is a workaround for a password hang bug on chrome/ webkit.
+        if (this.inputEl().dom.type != 'password') {
+            return;
+        }
         
         var isSelectAll = false;
         
