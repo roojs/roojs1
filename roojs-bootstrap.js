@@ -13,7 +13,7 @@ Roo.debug&&Roo.log(cn);}}if(E&&D&&!cn.el&&cn.can_build_overlaid){Roo.debug&&Roo.
 return cn;}var I=A.items;delete A.items;if(!skip_children){for(var i=0;i<I.length;i++){H.push(cn.addxtype(Roo.apply({},I[i])));}}cn.items=H;cn.fireEvent('childrenrendered',this);return cn;},show:function(){if(this.el){this.el.removeClass('hidden');}},hide:function(){if(this.el&&!this.el.hasClass('hidden')){this.el.addClass('hidden');
 }}});
 // Roo/bootstrap/Body.js
-Roo.bootstrap.Body=function(A){Roo.bootstrap.Body.superclass.constructor.call(this,A);this.el=Roo.get(A.el?A.el:document.body);if(this.cls&&this.cls.length){Roo.get(document.body).addClass(this.cls);}};Roo.extend(Roo.bootstrap.Body,Roo.bootstrap.Component,{is_body:true,autoCreate:{cls:'container'}
+Roo.bootstrap.Body=function(A){A=A||{};Roo.bootstrap.Body.superclass.constructor.call(this,A);this.el=Roo.get(A.el?A.el:document.body);if(this.cls&&this.cls.length){Roo.get(document.body).addClass(this.cls);}};Roo.extend(Roo.bootstrap.Body,Roo.bootstrap.Component,{is_body:true,autoCreate:{cls:'container'}
 ,onRender:function(ct,A){}});
 // Roo/bootstrap/ButtonGroup.js
 Roo.bootstrap.ButtonGroup=function(A){Roo.bootstrap.ButtonGroup.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.ButtonGroup,Roo.bootstrap.Component,{size:'',align:'',direction:'',toolbar:false,btn:true,getAutoCreate:function(){var A={cls:'btn-group',html:null}

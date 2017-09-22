@@ -377,20 +377,23 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
  * - LGPL
  *
  * Body
- * 
+ *
  */
 
 /**
  * @class Roo.bootstrap.Body
  * @extends Roo.bootstrap.Component
  * Bootstrap Body class
- * 
+ *
  * @constructor
  * Create a new body
  * @param {Object} config The config object
  */
 
 Roo.bootstrap.Body = function(config){
+
+    config = config || {};
+
     Roo.bootstrap.Body.superclass.constructor.call(this, config);
     this.el = Roo.get(config.el ? config.el : document.body );
     if (this.cls && this.cls.length) {
@@ -399,9 +402,9 @@ Roo.bootstrap.Body = function(config){
 };
 
 Roo.extend(Roo.bootstrap.Body, Roo.bootstrap.Component,  {
-    
+
     is_body : true,// just to make sure it's constructed?
-    
+
 	autoCreate : {
         cls: 'container'
     },
@@ -414,13 +417,12 @@ Roo.extend(Roo.bootstrap.Body, Roo.bootstrap.Component,  {
         // style??? xttr???
         */
     }
-    
-    
- 
-   
-});
 
- /*
+
+
+
+});
+/*
  * - LGPL
  *
  * button group
