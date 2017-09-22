@@ -910,7 +910,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         
-        if(isSelectAll  && event.getCharCode() > 31){ // not backspace and delete key
+        if(isSelectAll  && event.getCharCode() > 31 && !event.ctrlKey) { // not backspace and delete key (or ctrl-v)
             
             event.preventDefault();
             // this is very hacky as keydown always get's upper case.
