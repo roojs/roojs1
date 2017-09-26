@@ -31816,7 +31816,7 @@ Roo.namespace("Roo.bootstrap.layout");/*
  * Fork - LGPL
  * <script type="text/javascript">
  */
- 
+
 /**
  * @class Roo.bootstrap.layout.Manager
  * @extends Roo.bootstrap.Component
@@ -31825,74 +31825,75 @@ Roo.namespace("Roo.bootstrap.layout");/*
 Roo.bootstrap.layout.Manager = function(config)
 {
     Roo.bootstrap.layout.Manager.superclass.constructor.call(this);
-    
-    
-     
-    
-    
+
+
+
+
+
     /** false to disable window resize monitoring @type Boolean */
     this.monitorWindowResize = true;
     this.regions = {};
     this.addEvents({
         /**
          * @event layout
-         * Fires when a layout is performed. 
+         * Fires when a layout is performed.
          * @param {Roo.LayoutManager} this
          */
         "layout" : true,
         /**
          * @event regionresized
-         * Fires when the user resizes a region. 
+         * Fires when the user resizes a region.
          * @param {Roo.LayoutRegion} region The resized region
          * @param {Number} newSize The new size (width for east/west, height for north/south)
          */
         "regionresized" : true,
         /**
          * @event regioncollapsed
-         * Fires when a region is collapsed. 
+         * Fires when a region is collapsed.
          * @param {Roo.LayoutRegion} region The collapsed region
          */
         "regioncollapsed" : true,
         /**
          * @event regionexpanded
-         * Fires when a region is expanded.  
+         * Fires when a region is expanded.
          * @param {Roo.LayoutRegion} region The expanded region
          */
         "regionexpanded" : true
     });
     this.updating = false;
-    
+
     if (config.el) {
         this.el = Roo.get(config.el);
         this.initEvents();
     }
-    
+
 };
 
 Roo.extend(Roo.bootstrap.layout.Manager, Roo.bootstrap.Component, {
-    
-    
+
+
     regions : null,
-    
+
     monitorWindowResize : true,
-    
-    
+
+
     updating : false,
-    
-    
+
+
     onRender : function(ct, position)
     {
         if(!this.el){
             this.el = Roo.get(ct);
             this.initEvents();
         }
+        this.fireEvent('render',this);
     },
-    
-    
+
+
     initEvents: function()
     {
-        
-        
+
+
         // ie scrollbar fix
         if(this.el.dom == document.body && Roo.isIE && !config.allowScroll){
             document.body.scroll = "no";
@@ -31908,51 +31909,51 @@ Roo.extend(Roo.bootstrap.layout.Manager, Roo.bootstrap.Component, {
         }
 
     },
-    
+
     /**
      * Returns true if this layout is currently being updated
      * @return {Boolean}
      */
     isUpdating : function(){
-        return this.updating; 
+        return this.updating;
     },
-    
+
     /**
      * Suspend the LayoutManager from doing auto-layouts while
      * making multiple add or remove calls
      */
     beginUpdate : function(){
-        this.updating = true;    
+        this.updating = true;
     },
-    
+
     /**
      * Restore auto-layouts and optionally disable the manager from performing a layout
-     * @param {Boolean} noLayout true to disable a layout update 
+     * @param {Boolean} noLayout true to disable a layout update
      */
     endUpdate : function(noLayout){
         this.updating = false;
         if(!noLayout){
             this.layout();
-        }    
+        }
     },
-    
+
     layout: function(){
         // abstract...
     },
-    
+
     onRegionResized : function(region, newSize){
         this.fireEvent("regionresized", region, newSize);
         this.layout();
     },
-    
+
     onRegionCollapsed : function(region){
         this.fireEvent("regioncollapsed", region);
     },
-    
+
     onRegionExpanded : function(region){
         this.fireEvent("regionexpanded", region);
     },
-        
+
     /**
      * Returns the size of the current view. This method normalizes document.body and element embedded layouts and
      * performs box-model adjustments.
@@ -31970,7 +31971,7 @@ Roo.extend(Roo.bootstrap.layout.Manager, Roo.bootstrap.Component, {
         size.height -= this.el.getBorderWidth("tb")-this.el.getPadding("tb");
         return size;
     },
-    
+
     /**
      * Returns the Element this layout is bound to.
      * @return {Roo.Element}
@@ -31978,7 +31979,7 @@ Roo.extend(Roo.bootstrap.layout.Manager, Roo.bootstrap.Component, {
     getEl : function(){
         return this.el;
     },
-    
+
     /**
      * Returns the specified region.
      * @param {String} target The region key ('center', 'north', 'south', 'east' or 'west')
@@ -31987,13 +31988,14 @@ Roo.extend(Roo.bootstrap.layout.Manager, Roo.bootstrap.Component, {
     getRegion : function(target){
         return this.regions[target.toLowerCase()];
     },
-    
+
     onWindowResize : function(){
         if(this.monitorWindowResize){
             this.layout();
         }
     }
-});/*
+});
+/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
