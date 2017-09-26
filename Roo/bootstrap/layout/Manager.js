@@ -16,7 +16,7 @@
  */
 Roo.bootstrap.layout.Manager = function(config)
 {
-    Roo.bootstrap.layout.Manager.superclass.constructor.call(this);
+    Roo.bootstrap.layout.Manager.superclass.constructor.call(this,config);
 
 
 
@@ -78,7 +78,7 @@ Roo.extend(Roo.bootstrap.layout.Manager, Roo.bootstrap.Component, {
             this.el = Roo.get(ct);
             this.initEvents();
         }
-        this.fireEvent('render',this);
+        //this.fireEvent('render',this);
     },
 
 
