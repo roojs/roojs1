@@ -216,7 +216,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                     // fall through
                 default:
                     el = Roo.get(ename);
-                    if (typeof(Roo.bootstrap) != 'undefined') {
+                    if (typeof(Roo.bootstrap) != 'undefined' && tree['|xns'] == 'Roo.bootstrap') {
                         this.parent = { el : true};
                     }
                     
