@@ -216,7 +216,10 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                     // fall through
                 default:
                     el = Roo.get(ename);
-                    this.parent = { el : true};
+                    if (typeof(Roo.bootstrap) != 'undefined') {
+                        this.parent = { el : true};
+                    }
+                    
                     break;
             }
                 
