@@ -203,7 +203,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                          break;
                     }
                          
-                    if (typeof(Roo.bootstrap.Body) != 'undefined') {
+                    if (typeof(Roo.bootstrap.Body) != 'undefined' && tree['|xns'] == 'Roo.bootstrap') {
                         this.parent = { el :  new  Roo.bootstrap.Body() };
                         Roo.debug && Roo.log("setting el to doc body");
                          
