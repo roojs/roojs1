@@ -16087,7 +16087,10 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                     // fall through
                 default:
                     el = Roo.get(ename);
-                    this.parent = { el : true};
+                    if (typeof(Roo.bootstrap) != 'undefined') {
+                        this.parent = { el : true};
+                    }
+                    
                     break;
             }
                 
@@ -16132,15 +16135,15 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                         el: el || document.body,
                     
                         center: {
-                             titlebar: false,
-                             autoScroll:false,
-                             closeOnTab: true,
-                             tabPosition: 'top',
-                              //resizeTabs: true,
-                             alwaysShowTabs: false,
-                             hideTabs: true,
-                             minTabWidth: 140,
-                             overflow: 'visible'
+                            titlebar: false,
+                            autoScroll:false,
+                            closeOnTab: true,
+                            tabPosition: 'top',
+                             //resizeTabs: true,
+                            alwaysShowTabs: false,
+                            hideTabs: true,
+                            minTabWidth: 140,
+                            overflow: 'visible'
                          }
                      })
                 };
@@ -16149,18 +16152,17 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                 // it's a top level one..
                 this.parent =  {
                     el : new Roo.BorderLayout(el || document.body, {
-                    
-                         center: {
-                             titlebar: false,
-                             autoScroll:false,
-                             closeOnTab: true,
-                             tabPosition: 'top',
-                              //resizeTabs: true,
-                             alwaysShowTabs: el && hp? false :  true,
-                             hideTabs: el || !hp ? true :  false,
-                             minTabWidth: 140
+                        center: {
+                            titlebar: false,
+                            autoScroll:false,
+                            closeOnTab: true,
+                            tabPosition: 'top',
+                             //resizeTabs: true,
+                            alwaysShowTabs: el && hp? false :  true,
+                            hideTabs: el || !hp ? true :  false,
+                            minTabWidth: 140
                          }
-                     })
+                    })
                 };
             }
         }
