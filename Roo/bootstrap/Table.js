@@ -330,8 +330,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             e.on('click', _this.sort, _this);
         });
         
-        this.el.on("click", this.onClick, this);
-        this.el.on("dblclick", this.onDblClick, this);
+        this.mainBody.on("click", this.onClick, this);
+        this.mainBody.on("dblclick", this.onDblClick, this);
         
         // why is this done????? = it breaks dialogs??
         //this.parent().el.setStyle('position', 'relative');
