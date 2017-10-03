@@ -7398,7 +7398,7 @@ Roo.form.Action.ACTION_TYPES = {
  * - LGPL
  *
  * form
- * 
+ *
  */
 
 /**
@@ -7410,7 +7410,7 @@ Roo.form.Action.ACTION_TYPES = {
  * @cfg {String} align left  | right - for navbars
  * @cfg {Boolean} loadMask load mask when submit (default true)
 
- * 
+ *
  * @constructor
  * Create a new Form
  * @param {Object} config The config object
@@ -7449,11 +7449,11 @@ Roo.bootstrap.Form = function(config){
          */
         actioncomplete : true
     });
-    
+
 };
 
 Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
-      
+
      /**
      * @cfg {String} method
      * The request method to use (GET or POST) for form actions if one isn't supplied in the action options.
@@ -7467,12 +7467,12 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
      * @cfg {Boolean} fileUpload
      * Set to true if this form is a file upload.
      */
-     
+
     /**
      * @cfg {Object} baseParams
      * Parameters to pass with all requests. e.g. baseParams: {id: '123', foo: 'bar'}.
      */
-      
+
     /**
      * @cfg {Number} timeout Timeout for form actions in seconds (default is 30 seconds).
      */
@@ -7484,18 +7484,18 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
 
     // private
     activeAction : null,
- 
+
     /**
      * By default wait messages are displayed with Roo.MessageBox.wait. You can target a specific
      * element by passing it or its id or mask the form itself by passing in true.
      * @type Mixed
      */
     waitMsgTarget : false,
-    
+
     loadMask : true,
-    
+
     getAutoCreate : function(){
-        
+
         var cfg = {
             tag: 'form',
             method : this.method || 'POST',
@@ -7504,14 +7504,14 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         };
         if (this.parent().xtype.match(/^Nav/)) {
             cfg.cls = 'navbar-form navbar-' + this.align;
-            
+
         }
-        
+
         if (this.labelAlign == 'left' ) {
             cfg.cls += ' form-horizontal';
         }
-        
-        
+
+
         return cfg;
     },
     initEvents : function()
@@ -7524,23 +7524,23 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             }
             // we might need to allow it for textareas.. and some other items.
             // check e.getTarget().
-            
+
             if(e.getTarget().nodeName.toLowerCase() === 'textarea'){
                 return true;
             }
-        
+
             Roo.log("keypress blocked");
-            
+
             e.preventDefault();
             return false;
         });
-        
+
     },
     // private
     onSubmit : function(e){
         e.stopEvent();
     },
-    
+
      /**
      * Returns true if client-side validation on the form is successful.
      * @return Boolean
@@ -7551,7 +7551,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         items.each(function(f){
            if(!f.validate()){
                valid = false;
-               
+
            }
         });
         return valid;
@@ -7599,16 +7599,16 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         }
         return this;
     },
-    
+
     // private
     beforeAction : function(action){
         var o = action.options;
-        
+
         if(this.loadMask){
             this.el.mask(o.waitMsg || "Sending", 'x-mask-loading');
         }
         // not really supported yet.. ??
-        
+
         //if(this.waitMsgTarget === true){
         //  this.el.mask(o.waitMsg || "Sending", 'x-mask-loading');
         //}else if(this.waitMsgTarget){
@@ -7617,14 +7617,14 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         //}else {
         //    Roo.MessageBox.wait(o.waitMsg || "Sending", o.waitTitle || this.waitTitle || 'Please Wait...');
        // }
-         
+
     },
 
     // private
     afterAction : function(action, success){
         this.activeAction = null;
         var o = action.options;
-        
+
         //if(this.waitMsgTarget === true){
             this.el.unmask();
         //}else if(this.waitMsgTarget){
@@ -7633,16 +7633,16 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         //    Roo.MessageBox.updateProgress(1);
         //    Roo.MessageBox.hide();
        // }
-        // 
+        //
         if(success){
             if(o.reset){
                 this.reset();
             }
             Roo.callback(o.success, o.scope, [this, action]);
             this.fireEvent('actioncomplete', this, action);
-            
+
         }else{
-            
+
             // failure condition..
             // we have a scenario where updates need confirming.
             // eg. if a locking scenario exists..
@@ -7655,7 +7655,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 var _t = this;
                 Roo.log("not supported yet");
                  /*
-                
+
                 Roo.MessageBox.confirm(
                     "Change requires confirmation",
                     action.result.errorMsg,
@@ -7665,14 +7665,14 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                         }
                         _t.doAction('submit', { params :  { _submit_confirmed : 1 } }  );
                     }
-                    
+
                 );
                 */
-                
-                
+
+
                 return;
             }
-            
+
             Roo.callback(o.failure, o.scope, [this, action]);
             // show an error message if no failed handler is set..
             if (!this.hasListener('actionfailed')) {
@@ -7685,10 +7685,10 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 );
                 */
             }
-            
+
             this.fireEvent('actionfailed', this, action);
         }
-        
+
     },
     /**
      * Find a Roo.form.Field in this form by id, dataIndex, name or hiddenName
@@ -7734,7 +7734,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         //Roo.each(this.childForms || [], function (f) {
         //    f.markInvalid(errors);
         //});
-        
+
         return this;
     },
 
@@ -7748,6 +7748,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             for(var i = 0, len = values.length; i < len; i++){
                 var v = values[i];
                 var f = this.findField(v.id);
+                Roo.log(v);
                 if(f){
                     f.setValue(v.value);
                     if(this.trackResetOnLoad){
@@ -7759,11 +7760,11 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             var field, id;
             for(id in values){
                 if(typeof values[id] != 'function' && (field = this.findField(id))){
-                    
-                    if (field.setFromData && 
-                        field.valueField && 
+
+                    if (field.setFromData &&
+                        field.valueField &&
                         field.displayField &&
-                        // combos' with local stores can 
+                        // combos' with local stores can
                         // be queried via setValue()
                         // to set their value..
                         (field.store && !field.store.isLocal)
@@ -7773,23 +7774,23 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                         sd[field.valueField] = typeof(values[field.hiddenName]) == 'undefined' ? '' : values[field.hiddenName];
                         sd[field.displayField] = typeof(values[field.name]) == 'undefined' ? '' : values[field.name];
                         field.setFromData(sd);
-                        
+
                     } else {
                         field.setValue(values[id]);
                     }
-                    
-                    
+
+
                     if(this.trackResetOnLoad){
                         field.originalValue = field.getValue();
                     }
                 }
             }
         }
-         
+
         //Roo.each(this.childForms || [], function (f) {
         //    f.setValues(values);
         //});
-                
+
         return this;
     },
 
@@ -7806,18 +7807,18 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         //        this.setValues(f.getValues());
         //    }, this);
         //}
-        
-        
-        
+
+
+
         var fs = Roo.lib.Ajax.serializeForm(this.el.dom);
         if(asString === true){
             return fs;
         }
         return Roo.urlDecode(fs);
     },
-    
+
     /**
-     * Returns the fields in this form as an object with key/value pairs. 
+     * Returns the fields in this form as an object with key/value pairs.
      * This differs from getValues as it calls getValue on each child item, rather than using dom data.
      * @return {Object}
      */
@@ -7834,15 +7835,15 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 if (typeof(ret[f.getName()]) == 'undefined') {
                     ret[f.getName()] = ''; // empty..
                 }
-                
+
                 if (!f.el.dom.checked) {
                     return;
-                    
+
                 }
                 v = f.el.dom.value;
-                
+
             }
-            
+
             // not sure if this supported any more..
             if ((typeof(v) == 'object') && f.getRawValue) {
                 v = f.getRawValue() ; // dates..
@@ -7853,7 +7854,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             }
             ret[f.getName()] = v;
         });
-        
+
         return ret;
     },
 
@@ -7863,13 +7864,13 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
      */
     clearInvalid : function(){
         var items = this.getItems();
-        
+
         items.each(function(f){
            f.clearInvalid();
         });
-        
-        
-        
+
+
+
         return this;
     },
 
@@ -7882,12 +7883,12 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         items.each(function(f){
             f.reset();
         });
-        
+
         Roo.each(this.childForms || [], function (f) {
             f.reset();
         });
-       
-        
+
+
         return this;
     },
     getItems : function()
@@ -7905,21 +7906,19 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             Roo.each(el.items,function(e) {
                 iter(e);
             });
-            
-            
+
+
         };
-        
+
         iter(this);
         return r;
-        
-        
-        
-        
-    }
-    
-});
 
- 
+
+
+
+    }
+
+});
 /*
  * Based on:
  * Ext JS Library 1.1.1
