@@ -7748,7 +7748,6 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             for(var i = 0, len = values.length; i < len; i++){
                 var v = values[i];
                 var f = this.findField(v.id);
-                Roo.log(v);
                 if(f){
                     f.setValue(v.value);
                     if(this.trackResetOnLoad){
