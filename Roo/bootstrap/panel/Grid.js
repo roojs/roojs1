@@ -64,8 +64,7 @@ Roo.bootstrap.panel.Grid = function(config)
         this.on('activate', function(gp) {
             if (!gp.grid.rendered) {
                 gp.grid.render(this.wrapper);
-                gp.grid.getGridEl().replaceClass("roo-layout-inactive-content", "roo-layout-component-panel");               
-
+                gp.grid.getGridEl().replaceClass("roo-layout-inactive-content", "roo-layout-component-panel");   
             }
         });
             
