@@ -63,7 +63,7 @@ Roo.bootstrap.panel.Grid = function(config)
         // render grid on panel activation (if panel background)
         this.on('activate', function(gp) {
             if (!gp.grid.rendered) {
-                gp.grid.render(el);
+                gp.grid.render(this.wrapper);
                 gp.grid.getGridEl().replaceClass("roo-layout-inactive-content", "roo-layout-component-panel");               
 
             }
