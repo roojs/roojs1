@@ -104,7 +104,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     inputName : '',
     thumbSize : 300,
     multiple : true,
-    files : [],
+    files : false,
     method : 'POST',
     url : '',
     paramName : 'imageUpload',
@@ -112,7 +112,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     labelWidth : 4,
     labelAlign : 'left',
     editable : true,
-    delegates : [],
+    delegates : false,
     
     
     xhr : false, 
