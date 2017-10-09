@@ -26,6 +26,9 @@
 Roo.bootstrap.DocumentManager = function(config){
     Roo.bootstrap.DocumentManager.superclass.constructor.call(this, config);
     
+    this.files = [];
+    this.delegates = [];
+    
     this.addEvents({
         /**
          * @event initial
