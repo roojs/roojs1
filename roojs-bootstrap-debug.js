@@ -27359,6 +27359,9 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
 Roo.bootstrap.DocumentManager = function(config){
     Roo.bootstrap.DocumentManager.superclass.constructor.call(this, config);
     
+    this.files = [];
+    this.delegates = [];
+    
     this.addEvents({
         /**
          * @event initial
@@ -27437,7 +27440,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     inputName : '',
     thumbSize : 300,
     multiple : true,
-    files : [],
+    files : false,
     method : 'POST',
     url : '',
     paramName : 'imageUpload',
@@ -27445,7 +27448,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     labelWidth : 4,
     labelAlign : 'left',
     editable : true,
-    delegates : [],
+    delegates : false,
     
     
     xhr : false, 
@@ -34687,8 +34690,7 @@ Roo.bootstrap.panel.Grid = function(config)
         this.on('activate', function(gp) {
             if (!gp.grid.rendered) {
                 gp.grid.render(this.wrapper);
-                gp.grid.getGridEl().replaceClass("roo-layout-inactive-content", "roo-layout-component-panel");               
-
+                gp.grid.getGridEl().replaceClass("roo-layout-inactive-content", "roo-layout-component-panel");   
             }
         });
             
