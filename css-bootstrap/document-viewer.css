@@ -48,11 +48,10 @@
     border-color: #333;
 }
 
-.roo-document-viewer-btn-group > btn-group {
-    /*border-top-left-radius: 0;*/
-    color : red;
+.roo-document-viewer-btn-group > .btn-group:first-child > button {
+    border-top-left-radius: 0;
 }
 
-/*.roo-document-viewer-btn-group > btn-group:last-child > button {
+.roo-document-viewer-btn-group > .btn-group:last-child > button {
     border-top-right-radius: 0;
-}*/
+}
