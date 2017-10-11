@@ -33,6 +33,12 @@ Roo.bootstrap.DocumentViewer = function(config){
          */
         "click" : true,
         /**
+         * @event download
+         * Fire after download button
+         * @param {Roo.bootstrap.DocumentViewer} this
+         */
+        "download" : true,
+        /**
          * @event trash
          * Fire after trash button
          * @param {Roo.bootstrap.DocumentViewer} this
