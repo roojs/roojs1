@@ -43,6 +43,10 @@ Roo.bootstrap.DocumentViewer = function(config){
 
 Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
     
+    showDownload : true,
+    
+    showTrash : true,
+    
     getAutoCreate : function()
     {
         var cfg = {
