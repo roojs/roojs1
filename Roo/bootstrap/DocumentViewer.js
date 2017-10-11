@@ -9,7 +9,6 @@
  * Bootstrap DocumentViewer class
  * @cfg {Boolean} showDownload (true|false) show download button (default true)
  * @cfg {Boolean} showTrash (true|false) show trash button (default true)
- * @cfg {Boolean} clickToDownload (true|false) click to download (default true)
  * 
  * @constructor
  * Create a new DocumentViewer
@@ -53,8 +52,6 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
     showDownload : true,
     
     showTrash : true,
-    
-    clickToDownload : true,
     
     getAutoCreate : function()
     {
@@ -137,10 +134,16 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
         this.trashBtn = this.el.select('.roo-document-viewer-trash', true).first();
         this.trashBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
+        showDownload : true,
+    
+    showTrash : true,
+    
+    clickToDownload : true,
+    
+        if()
+        
         this.bodyEl.on('click', this.onClick, this);
-        
         this.downloadBtn.on('click', this.onDownload, this);
-        
         this.trashBtn.on('click', this.onTrash, this);
         
     },
