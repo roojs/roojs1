@@ -28066,6 +28066,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
  * @class Roo.bootstrap.DocumentViewer
  * @extends Roo.bootstrap.Component
  * Bootstrap DocumentViewer class
+ * @cfg {Boolean} showDownload (true|false) show download button (default true)
+ * @cfg {Boolean} showTrash (true|false) show trash button (default true)
  * 
  * @constructor
  * Create a new DocumentViewer
@@ -28089,6 +28091,12 @@ Roo.bootstrap.DocumentViewer = function(config){
          */
         "click" : true,
         /**
+         * @event download
+         * Fire after download button
+         * @param {Roo.bootstrap.DocumentViewer} this
+         */
+        "download" : true,
+        /**
          * @event trash
          * Fire after trash button
          * @param {Roo.bootstrap.DocumentViewer} this
@@ -28099,6 +28107,10 @@ Roo.bootstrap.DocumentViewer = function(config){
 };
 
 Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
+    
+    showDownload : true,
+    
+    showTrash : true,
     
     getAutoCreate : function()
     {
@@ -28131,11 +28143,22 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
                         cn : [
                             {
                                 tag : 'div',
-                                cls : 'btn-group',
+                                cls : 'btn-group roo-document-viewer-download',
                                 cn : [
                                     {
                                         tag : 'button',
-                                        cls : 'btn btn-default roo-document-viewer-trash',
+                                        cls : 'btn btn-default',
+                                        html : '<i class="fa fa-download"></i>'
+                                    }
+                                ]
+                            },
+                            {
+                                tag : 'div',
+                                cls : 'btn-group roo-document-viewer-trash',
+                                cn : [
+                                    {
+                                        tag : 'button',
+                                        cls : 'btn btn-default',
                                         html : '<i class="fa fa-trash"></i>'
                                     }
                                 ]
@@ -28153,23 +28176,41 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
     {
         
         this.bodyEl = this.el.select('.roo-document-viewer-body', true).first();
-        this.bodyEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.bodyEl.setVisibilityMode(Roo.Element.DISPLAY);
         
         this.thumbEl = this.el.select('.roo-document-viewer-thumb', true).first();
-        this.thumbEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.thumbEl.setVisibilityMode(Roo.Element.DISPLAY);
         
         this.imageEl = this.el.select('.roo-document-viewer-image', true).first();
-        this.imageEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.imageEl.setVisibilityMode(Roo.Element.DISPLAY);
         
         this.footerEl = this.el.select('.roo-document-viewer-footer', true).first();
-        this.footerEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.footerEl.setVisibilityMode(Roo.Element.DISPLAY);
+        
+        this.downloadBtn = this.el.select('.roo-document-viewer-download', true).first();
+        this.downloadBtn.setVisibilityMode(Roo.Element.DISPLAY);
         
         this.trashBtn = this.el.select('.roo-document-viewer-trash', true).first();
-        this.trashBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.trashBtn.setVisibilityMode(Roo.Element.DISPLAY);
         
         this.bodyEl.on('click', this.onClick, this);
-        
+        this.downloadBtn.on('click', this.onDownload, this);
         this.trashBtn.on('click', this.onTrash, this);
+        
+        this.downloadBtn.hide();
+        this.trashBtn.hide();
+        
+        if(this.showDownload){
+            this.downloadBtn.show();
+        }
+        
+        if(this.showTrash){
+            this.trashBtn.show();
+        }
+        
+        if(!this.showDownload && !this.showTrash) {
+            this.footerEl.hide();
+        }
         
     },
     
@@ -28187,6 +28228,13 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
         e.preventDefault();
         
         this.fireEvent('click', this);
+    },
+    
+    onDownload : function(e)
+    {
+        e.preventDefault();
+        
+        this.fireEvent('download', this);
     },
     
     onTrash : function(e)
