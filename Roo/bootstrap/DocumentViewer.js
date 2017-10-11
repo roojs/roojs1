@@ -134,17 +134,24 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
         this.trashBtn = this.el.select('.roo-document-viewer-trash', true).first();
         this.trashBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
-        showDownload : true,
-    
-    showTrash : true,
-    
-    clickToDownload : true,
-    
-        if()
-        
         this.bodyEl.on('click', this.onClick, this);
         this.downloadBtn.on('click', this.onDownload, this);
         this.trashBtn.on('click', this.onTrash, this);
+        
+        this.downloadBtn.hide();
+        this.trashBtn.hide();
+        
+        if(this.showDownload){
+            this.downloadBtn.show();
+        }
+        
+        if(this.showTrash){
+            this.trashBtn.show();
+        }
+        
+        if(!)
+
+        
         
     },
     
