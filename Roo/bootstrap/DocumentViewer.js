@@ -155,6 +155,13 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
         this.fireEvent('click', this);
     },
     
+    onDownload : function(e)
+    {
+        e.preventDefault();
+        
+        this.fireEvent('download', this);
+    },
+    
     onTrash : function(e)
     {
         e.preventDefault();
