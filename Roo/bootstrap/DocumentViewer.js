@@ -133,6 +133,8 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
         
         this.bodyEl.on('click', this.onClick, this);
         
+        this.downloadBtn.on('click', this.onDownload, this);
+        
         this.trashBtn.on('click', this.onTrash, this);
         
     },
