@@ -48,6 +48,8 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
     
     showTrash : true,
     
+    clickToDownload : true,
+    
     getAutoCreate : function()
     {
         var cfg = {
@@ -81,6 +83,11 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
                                 tag : 'div',
                                 cls : 'btn-group',
                                 cn : [
+                                    {
+                                        tag : 'button',
+                                        cls : 'btn btn-default roo-document-viewer-download',
+                                        html : '<i class="fa fa-download"></i>'
+                                    },
                                     {
                                         tag : 'button',
                                         cls : 'btn btn-default roo-document-viewer-trash',
