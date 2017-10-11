@@ -84,22 +84,22 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
                         cn : [
                             {
                                 tag : 'div',
-                                cls : 'btn-group roo-document-viewer-download',
+                                cls : 'btn-group',
                                 cn : [
                                     {
                                         tag : 'button',
-                                        cls : 'btn btn-default',
+                                        cls : 'btn btn-default roo-document-viewer-download',
                                         html : '<i class="fa fa-download"></i>'
                                     }
                                 ]
                             },
                             {
                                 tag : 'div',
-                                cls : 'btn-group roo-document-viewer-trash',
+                                cls : 'btn-group',
                                 cn : [
                                     {
                                         tag : 'button',
-                                        cls : 'btn btn-default',
+                                        cls : 'btn btn-default roo-document-viewer-trash',
                                         html : '<i class="fa fa-trash"></i>'
                                     }
                                 ]
