@@ -152,8 +152,6 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
         if(!this.showDownload && !this.showTrash) {
             this.footerEl.hide();
         }
-
-        
         
     },
     
