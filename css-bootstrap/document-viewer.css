@@ -48,7 +48,7 @@
     border-color: #333;
 }
 
-.roo-document-viewer-btn-group > btn-group:first-child {
+.roo-document-viewer-btn-group > btn-group {
     /*border-top-left-radius: 0;*/
     color : red;
 }
