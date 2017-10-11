@@ -117,22 +117,22 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
     {
         
         this.bodyEl = this.el.select('.roo-document-viewer-body', true).first();
-        this.bodyEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.bodyEl.setVisibilityMode(Roo.Element.DISPLAY);
         
         this.thumbEl = this.el.select('.roo-document-viewer-thumb', true).first();
-        this.thumbEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.thumbEl.setVisibilityMode(Roo.Element.DISPLAY);
         
         this.imageEl = this.el.select('.roo-document-viewer-image', true).first();
-        this.imageEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.imageEl.setVisibilityMode(Roo.Element.DISPLAY);
         
         this.footerEl = this.el.select('.roo-document-viewer-footer', true).first();
-        this.footerEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.footerEl.setVisibilityMode(Roo.Element.DISPLAY);
         
         this.downloadBtn = this.el.select('.roo-document-viewer-download', true).first();
-        this.downloadBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.downloadBtn.setVisibilityMode(Roo.Element.DISPLAY);
         
         this.trashBtn = this.el.select('.roo-document-viewer-trash', true).first();
-        this.trashBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.trashBtn.setVisibilityMode(Roo.Element.DISPLAY);
         
         this.bodyEl.on('click', this.onClick, this);
         this.downloadBtn.on('click', this.onDownload, this);
