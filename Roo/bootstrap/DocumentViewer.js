@@ -138,20 +138,19 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
         this.downloadBtn.on('click', this.onDownload, this);
         this.trashBtn.on('click', this.onTrash, this);
         
+        this.footerEl.hide();
         this.downloadBtn.hide();
         this.trashBtn.hide();
         
         if(this.showDownload){
+            this.footerEl.show();
             this.downloadBtn.show();
         }
         
         if(this.showTrash){
+            this.footerEl.show();
             this.trashBtn.show();
         }
-        
-        if(!)
-
-        
         
     },
     
