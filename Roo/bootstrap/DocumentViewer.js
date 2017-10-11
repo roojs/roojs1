@@ -7,6 +7,8 @@
  * @class Roo.bootstrap.DocumentViewer
  * @extends Roo.bootstrap.Component
  * Bootstrap DocumentViewer class
+ * @cfg {Boolean} showDownload (true|false) show download button (default true)
+ * @cfg {Boolean} showTrash (true|false) show trash button (default true)
  * 
  * @constructor
  * Create a new DocumentViewer
