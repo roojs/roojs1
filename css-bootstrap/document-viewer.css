@@ -19,7 +19,7 @@
     height: 450px;
     max-height: 450px;
     position: relative;
-    overflow: hidden;
+    overflow: auto;
     cursor:move;
 }
 
