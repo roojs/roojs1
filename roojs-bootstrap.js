@@ -216,7 +216,7 @@ for(var i=0,B=this.config.length;i<B;i++){var c=this.config[i];if(fn.call(A||thi
 },setDataIndex:function(A,B){this.config[A].dataIndex=B;},isCellEditable:function(A,B){return (this.config[A].editable||(typeof this.config[A].editable=="undefined"&&this.config[A].editor))?true:false;},getCellEditor:function(A,B){return this.config[A].editor;
 },setEditable:function(A,B){this.config[A].editable=B;},isHidden:function(A){return this.config[A].hidden;},isFixed:function(A){return this.config[A].fixed;},isResizable:function(A){return A>=0&&this.config[A].resizable!==false&&this.config[A].fixed!==true;
 },setHidden:function(A,B){this.config[A].hidden=B;this.totalWidth=null;this.fireEvent("hiddenchange",this,A,B);},setEditor:function(A,B){this.config[A].editor=B;}});Roo.grid.ColumnModel.defaultRenderer=function(A){if(typeof A=="object"){return A;}if(typeof A=="string"&&A.length<1){return "&#160;";
-}return String.format("{1}",A);};Roo.grid.DefaultColumnModel=Roo.grid.ColumnModel;
+}return String.format("{0}",A);};Roo.grid.DefaultColumnModel=Roo.grid.ColumnModel;
 // Roo/LoadMask.js
 Roo.LoadMask=function(el,A){this.el=Roo.get(el);Roo.apply(this,A);if(this.store){this.store.on('beforeload',this.onBeforeLoad,this);this.store.on('load',this.onLoad,this);this.store.on('loadexception',this.onLoadException,this);this.removeMask=false;}else{var um=this.el.getUpdateManager();
 um.showLoadIndicator=false;um.on('beforeupdate',this.onBeforeLoad,this);um.on('update',this.onLoad,this);um.on('failure',this.onLoad,this);this.removeMask=true;}};Roo.LoadMask.prototype={msg:'Loading...',msgCls:'x-mask-loading',disabled:false,disable:function(){this.disabled=true;

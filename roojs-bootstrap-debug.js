@@ -5552,7 +5552,7 @@ Roo.grid.ColumnModel.defaultRenderer = function(value)
 	    return "&#160;";
 	}
     
-	return String.format("{1}", value);
+	return String.format("{0}", value);
 };
 
 // Alias for backwards compatibility
