@@ -73,7 +73,7 @@ Roo.bootstrap.panel.Content = function( config){
         
         this.toolbar = new config.toolbar.xns[config.toolbar.xtype](config.toolbar);
         
-        this.wrapEl = this.el.wrap();
+        this.wrapEl = thie.el; //this.el.wrap();
         var ti = [];
         if (config.toolbar.items) {
             ti = config.toolbar.items ;
