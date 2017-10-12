@@ -5167,7 +5167,7 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
     /**
      * @cfg {Function} renderer (Optional) A function used to generate HTML markup for a cell
      * given the cell's data value. See {@link #setRenderer}. If not specified, the
-     * default renderer uses the raw data value. If an object is returned (bootstrap only)
+     * default renderer returns the escaped data value. If an object is returned (bootstrap only)
      * then it is treated as a Roo Component object instance, and it is rendered after the initial row is rendered
      */
        /**
@@ -5543,11 +5543,16 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
     }
 });
 
-Roo.grid.ColumnModel.defaultRenderer = function(value){
+Roo.grid.ColumnModel.defaultRenderer = function(value)
+{
+    if(typeof value == "object") {
+        return value;
+    }
 	if(typeof value == "string" && value.length < 1){
 	    return "&#160;";
 	}
-	return value;
+    
+	return String.format("{1}", value);
 };
 
 // Alias for backwards compatibility
