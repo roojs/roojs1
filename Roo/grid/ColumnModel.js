@@ -530,9 +530,13 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
 });
 
 Roo.grid.ColumnModel.defaultRenderer = function(value){
+    if(typeof value == "object") {
+        return value;
+    }
 	if(typeof value == "string" && value.length < 1){
 	    return "&#160;";
 	}
+    
 	return String.format("{1}", value);
 };
 
