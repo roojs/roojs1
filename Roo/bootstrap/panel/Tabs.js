@@ -477,7 +477,7 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
         return body;
     },
     /** @private */
-    createStripElements :  function(stripEl, text, closable)
+    createStripElements :  function(stripEl, text, closable, tpl)
     {
         var td = document.createElement("li"); // was td..
         
@@ -515,6 +515,18 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
                 );
                 
             }
+            
+            switch (typeof(tpl)) {
+                case 'object' :
+                    this.tabTpl = tpl;
+                    break;
+                case 'string' :
+                    this.tabTpl = new Roo.Template(tpl);
+                    break;
+                default :
+                    break;
+            }
+            
             var el = this.tabTpl.overwrite(td, {"text": text});
             var inner = el.getElementsByTagName("span")[0];
             return {"el": el, "inner": inner};
