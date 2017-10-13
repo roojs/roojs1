@@ -33337,6 +33337,9 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
                 this.remove(panel);
             }, this);
         }
+        
+        panel.tabItem = ti;
+        
         return ti;
     },
 
@@ -34208,6 +34211,7 @@ Roo.namespace("Roo.bootstrap.panel");/*
  * @cfg {String/Object} params  When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {Boolean} loadOnce      When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {String}    content        Raw content to fill content panel with (uses setContent on construction.)
+ * @cfg {Boolean} badges render the badges
 
  * @constructor
  * Create a new ContentPanel.
@@ -35013,6 +35017,14 @@ Roo.bootstrap.panel.Tabs = function(config){
         }else{
             Roo.apply(this, config);
         }
+    }
+    
+    if(typeof(config.tpl) == 'object'){
+        this.tabTpl = config.tpl;
+    }
+    
+    if(typeof(config.tpl) == 'string'){
+        this.tabTpl = new Roo.Template(config.tpl);
     }
     
     if(this.tabPosition == "bottom"){
