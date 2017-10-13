@@ -473,7 +473,8 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
                     panel.getEl().id,
                     panel.getTitle(),
                     null,
-                    this.config.closeOnTab && panel.isClosable()
+                    this.config.closeOnTab && panel.isClosable(),
+                    panel.tpl
             );
         if(panel.tabTip !== undefined){
             ti.setTooltip(panel.tabTip);
