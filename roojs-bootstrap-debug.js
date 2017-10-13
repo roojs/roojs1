@@ -33322,7 +33322,8 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
                     panel.getEl().id,
                     panel.getTitle(),
                     null,
-                    this.config.closeOnTab && panel.isClosable()
+                    this.config.closeOnTab && panel.isClosable(),
+                    panel.tpl
             );
         if(panel.tabTip !== undefined){
             ti.setTooltip(panel.tabTip);
@@ -35019,14 +35020,6 @@ Roo.bootstrap.panel.Tabs = function(config){
         }
     }
     
-    if(typeof(config.tpl) == 'object'){
-        this.tabTpl = config.tpl;
-    }
-    
-    if(typeof(config.tpl) == 'string'){
-        this.tabTpl = new Roo.Template(config.tpl);
-    }
-    
     if(this.tabPosition == "bottom"){
         this.bodyEl = Roo.get(this.createBody(this.el.dom));
         this.el.addClass("roo-tabs-bottom");
@@ -35137,13 +35130,14 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
      * @param {Boolean} closable (optional) True to create a close icon on the tab
      * @return {Roo.TabPanelItem} The created TabPanelItem
      */
-    addTab : function(id, text, content, closable)
+    addTab : function(id, text, content, closable, tpl)
     {
         var item = new Roo.bootstrap.panel.TabItem({
             panel: this,
             id : id,
             text : text,
-            closable : closable
+            closable : closable,
+            tpl : tpl
         });
         this.addTabItem(item);
         if(content){
@@ -35442,7 +35436,7 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
         return body;
     },
     /** @private */
-    createStripElements :  function(stripEl, text, closable)
+    createStripElements :  function(stripEl, text, closable, tpl)
     {
         var td = document.createElement("li"); // was td..
         
@@ -35480,6 +35474,18 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
                 );
                 
             }
+            
+            switch (typeof(tpl)) {
+                case 'object' :
+                    this.tabTpl = tpl;
+                    break;
+                case 'string' :
+                    this.tabTpl = new Roo.Template(tpl);
+                    break;
+                default :
+                    break;
+            }
+            
             var el = this.tabTpl.overwrite(td, {"text": text});
             var inner = el.getElementsByTagName("span")[0];
             return {"el": el, "inner": inner};
@@ -35527,7 +35533,7 @@ Roo.bootstrap.panel.TabItem = function(config){
     this.bodyEl.setStyle("zoom", "1");
     //this.hideAction();
 
-    var els = this.tabPanel.createStripElements(this.tabPanel.stripEl.dom, config.text, config.closable);
+    var els = this.tabPanel.createStripElements(this.tabPanel.stripEl.dom, config.text, config.closable, config.tpl);
     /** @private */
     this.el = Roo.get(els.el);
     this.inner = Roo.get(els.inner, true);
