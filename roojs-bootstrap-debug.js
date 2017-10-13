@@ -35486,11 +35486,7 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
                     break;
             }
             
-            Roo.log(this.tabTpl);
-            
             var el = this.tabTpl.overwrite(td, {"text": text});
-            
-            Roo.log(el);
             
             var inner = el.getElementsByTagName("span")[0];
             return {"el": el, "inner": inner};
