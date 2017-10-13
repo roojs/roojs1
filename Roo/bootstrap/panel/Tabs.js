@@ -171,13 +171,14 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
      * @param {Boolean} closable (optional) True to create a close icon on the tab
      * @return {Roo.TabPanelItem} The created TabPanelItem
      */
-    addTab : function(id, text, content, closable)
+    addTab : function(id, text, content, closable, tpl)
     {
         var item = new Roo.bootstrap.panel.TabItem({
             panel: this,
             id : id,
             text : text,
-            closable : closable
+            closable : closable,
+            tpl : tpl
         });
         this.addTabItem(item);
         if(content){
