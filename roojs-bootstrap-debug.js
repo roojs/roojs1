@@ -35470,7 +35470,7 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
                    '<a href="#">' +
                    '<span unselectable="on"' +
                             (this.disableTooltips ? '' : ' title="{text}"') +
-                            ' >{text}</span></span></a>'
+                            ' >{text}</span></a>'
                 );
                 
             }
