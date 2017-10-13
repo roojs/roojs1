@@ -489,6 +489,8 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
             }, this);
         }
         
+        panel.tabItem = ti;
+        
         return ti;
     },
 
