@@ -61,14 +61,6 @@ Roo.bootstrap.panel.Tabs = function(config){
         }
     }
     
-    if(typeof(config.tpl) == 'object'){
-        this.tabTpl = config.tpl;
-    }
-    
-    if(typeof(config.tpl) == 'string'){
-        this.tabTpl = new Roo.Template(config.tpl);
-    }
-    
     if(this.tabPosition == "bottom"){
         this.bodyEl = Roo.get(this.createBody(this.el.dom));
         this.el.addClass("roo-tabs-bottom");
