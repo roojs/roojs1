@@ -513,10 +513,6 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
                             (this.disableTooltips ? '' : ' title="{text}"') +
                             ' >{text}</span></a>'
                 );
-        
-                var el = this.tabTpl.overwrite(td, {"text": text});
-                var inner = el.getElementsByTagName("span")[0];
-                return {"el": el, "inner": inner};
                 
             }
             
@@ -531,7 +527,9 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
                     break;
             }
             
-            
+            var el = this.tabTpl.overwrite(td, {"text": text});
+            var inner = el.getElementsByTagName("span")[0];
+            return {"el": el, "inner": inner};
         //}
     }
         
