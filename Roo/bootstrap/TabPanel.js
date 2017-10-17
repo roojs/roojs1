@@ -107,17 +107,10 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
     
     onRender : function(ct, position)
     {
-       // Roo.log("Call onRender: " + this.xtype);
-        
         Roo.bootstrap.TabPanel.superclass.onRender.call(this, ct, position);
-        
-        
-        
-        
-        
     },
     
-    setActive: function(state)
+    setActive : function(state)
     {
         Roo.log("panel - set active " + this.tabId + "=" + state);
         
@@ -132,11 +125,16 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         this.fireEvent('changed', this, state);
     },
     
-    onClick: function(e)
+    onClick : function(e)
     {
         e.preventDefault();
         
         window.location.href = this.href;
+    },
+    
+    onTouchStart : function(e)
+    {
+        e.preventDefault();
     }
     
     
