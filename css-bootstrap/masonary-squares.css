@@ -98,3 +98,15 @@ a.roo-brick-link:hover {
     color: #000;
     font-size: 11px;
 }
+
+.enable-mask:hover .masonry-brick-mask {
+    width:100%;
+    height:100%;
+    position:absolute;
+    top: 0;
+    left: 0;
+    background-color:#000;
+    opacity:0.5;
+}
+
+
