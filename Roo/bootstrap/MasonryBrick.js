@@ -239,7 +239,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             cfg.href = this.href;
         }
         
-        var cn = cfg.cn[0].cn;
+        var cn = cfg.cn[0].cn[0].cn;
         
         if(this.title.length){
             cn.push({
