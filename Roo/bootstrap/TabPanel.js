@@ -144,6 +144,8 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
     {
         e.preventDefault();
         
+        this.swiping = false;
+        
         this.startX = e.browserEvent.touches[0].clientX;
         this.startY = e.browserEvent.touches[0].clientY;
     },
@@ -164,6 +166,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         
         if(!this.swiping){
             this.onClick(e);
+            return;
         }
         
         var tabGroup = this.parent();
