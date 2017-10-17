@@ -180,6 +180,112 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         
     },
     
+    getSplitAutoCreate : function()
+    {
+        var cls = 'masonry-brick';
+        
+        if(this.href.length){
+            cls += ' masonry-brick-link';
+        }
+        
+        if(this.bgimage.length){
+            cls += ' masonry-brick-image';
+        }
+        
+        if(this.size){
+            cls += ' masonry-' + this.size + '-brick';
+        }
+        
+        switch (this.placetitle) {
+            case 'center' :
+                cls += ' masonry-center-title';
+                break;
+            case 'bottom' :
+                cls += ' masonry-bottom-title';
+                break;
+            default:
+                if(!this.bgimage.length){
+                    cls += ' masonry-center-title';
+                }
+
+                if(this.bgimage.length){
+                    cls += ' masonry-bottom-title';
+                }
+                break;
+        }
+        if(this.placetitle.length){
+            
+            
+            
+        } else {
+            
+        }
+        
+        if(this.cls){
+            cls += ' ' + this.cls;
+        }
+        
+        var cfg = {
+            tag: (this.href.length) ? 'a' : 'div',
+            cls: cls,
+            cn: [
+                {
+                    tag: 'div',
+                    cls: 'masonry-brick-paragraph',
+                    cn: []
+                }
+            ]
+        };
+        
+        if(this.href.length){
+            cfg.href = this.href;
+        }
+        
+        var cn = cfg.cn[0].cn;
+        
+        if(this.title.length){
+            cn.push({
+                tag: 'h4',
+                cls: 'masonry-brick-title',
+                html: this.title
+            });
+        }
+        
+        if(this.html.length){
+            cn.push({
+                tag: 'p',
+                cls: 'masonry-brick-text',
+                html: this.html
+            });
+        }  
+        if (!this.title.length && !this.html.length) {
+            cfg.cn[0].cls += ' hide';
+        }
+        
+        if(this.bgimage.length){
+            cfg.cn.push({
+                tag: 'img',
+                cls: 'masonry-brick-image-view',
+                src: this.bgimage
+            });
+        }
+        if(this.videourl.length){
+            var vurl = this.videourl.replace(/https:\/\/youtu\.be/, 'https://www.youtube.com/embed/');
+            // youtube support only?
+            cfg.cn.push({
+                tag: 'iframe',
+                cls: 'masonry-brick-image-view',
+                src: vurl,
+                frameborder : 0,
+                allowfullscreen : true
+            });
+            
+            
+        }
+        
+        return cfg;
+    },
+    
     initEvents: function() 
     {
         switch (this.size) {
