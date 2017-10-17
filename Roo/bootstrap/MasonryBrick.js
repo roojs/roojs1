@@ -258,7 +258,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 cls: 'masonry-brick-text',
                 html: this.html
             });
-        }  
+        }
 
         if(this.bgimage.length){
             cfg.cn[0].cn.push({
