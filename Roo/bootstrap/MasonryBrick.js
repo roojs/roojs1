@@ -430,6 +430,10 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             return;
         }
         
+        if(!this.isFitContainer){
+            return;
+        }
+        
         this.el.select('.masonry-brick-paragraph', true).first().setOpacity(0, true);
         
         window.location.href = this.href;
