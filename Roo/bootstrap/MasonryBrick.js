@@ -181,7 +181,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     
     getSplitAutoCreate : function()
     {
-        var cls = 'masonry-brick';
+        var cls = 'masonry-brick masonry-brick-split';
         
         if(this.href.length){
             cls += ' masonry-brick-link';
@@ -223,7 +223,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             cn: [
                 {
                     tag: 'div',
-                    cls: 'masonry-brick-splite-head',
+                    cls: 'masonry-brick-split-head',
                     cn: [
                         {
                             tag: 'div',
@@ -272,7 +272,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         if(this.videourl.length){
             var vurl = this.videourl.replace(/https:\/\/youtu\.be/, 'https://www.youtube.com/embed/');
             // youtube support only?
-            cfg.cn.push({
+            cfg.cn[0].cn.cn.push({
                 tag: 'iframe',
                 cls: 'masonry-brick-image-view',
                 src: vurl,
