@@ -166,9 +166,13 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
             return;
         }
         
-        if(this.startX > this.endX){ // swiping left
+        if(this.startX - this.endX > 10){ // swiping left
             tabGroup.showPanelNext();
             return;
+        }
+        
+        if(this.href.length){
+            this.onClick(e);
         }
         
     }
