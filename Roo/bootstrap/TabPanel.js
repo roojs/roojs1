@@ -53,6 +53,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
     html: false,
     tabId: false,
     navId : false,
+    swiping : true,
     href : '',
     
     getAutoCreate : function(){
@@ -98,7 +99,9 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
             this.el.on('click', this.onClick, this);
         }
         
-        if(Roo.isTouch)
+        if(Roo.isTouch && this.swiping){
+            this.el.on("touchstart", this.onTouchStart, this);
+        }
         
     },
     
