@@ -135,6 +135,15 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
     onTouchStart : function(e)
     {
         e.preventDefault();
+        
+        Roo.log('on touch start');
+    },
+    
+    onTouchEnd : function(e)
+    {
+        e.preventDefault();
+        
+        Roo.log('on touch end');
     }
     
     
