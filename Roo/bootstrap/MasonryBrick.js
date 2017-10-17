@@ -243,16 +243,17 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             });
         }
         
-        if(this.html.length){
-            cn.push({
-                tag: 'p',
-                cls: 'masonry-brick-text',
-                html: this.html
-            });
-        }  
-        if (!this.title.length && !this.html.length) {
-            cfg.cn[0].cls += ' hide';
-        }
+//        if(this.html.length){
+//            cn.push({
+//                tag: 'p',
+//                cls: 'masonry-brick-text',
+//                html: this.html
+//            });
+//        }  
+//        
+//        if (!this.title.length && !this.html.length) {
+//            cfg.cn[0].cls += ' hide';
+//        }
         
         if(this.bgimage.length){
             cfg.cn.push({
@@ -261,6 +262,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 src: this.bgimage
             });
         }
+        
         if(this.videourl.length){
             var vurl = this.videourl.replace(/https:\/\/youtu\.be/, 'https://www.youtube.com/embed/');
             // youtube support only?
@@ -271,8 +273,6 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 frameborder : 0,
                 allowfullscreen : true
             });
-            
-            
         }
         
         return cfg;
