@@ -31020,8 +31020,17 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
      */   
     placetitle : '',
     
+    /**
+     * @cfg {Boolean} isFitContainer defalut true
+     */   
+    isFitContainer : true, 
+    
     getAutoCreate : function()
     {
+        if(!this.isFitContainer){
+            return this.getSplitAutoCreate();
+        }
+        
         var cls = 'masonry-brick';
         
         if(this.href.length){
@@ -31124,38 +31133,136 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         
     },
     
+    getSplitAutoCreate : function()
+    {
+        var cls = 'masonry-brick masonry-brick-split';
+        
+        if(this.href.length){
+            cls += ' masonry-brick-link';
+        }
+        
+        if(this.bgimage.length){
+            cls += ' masonry-brick-image';
+        }
+        
+        if(this.size){
+            cls += ' masonry-' + this.size + '-brick';
+        }
+        
+        switch (this.placetitle) {
+            case 'center' :
+                cls += ' masonry-center-title';
+                break;
+            case 'bottom' :
+                cls += ' masonry-bottom-title';
+                break;
+            default:
+                if(!this.bgimage.length){
+                    cls += ' masonry-center-title';
+                }
+
+                if(this.bgimage.length){
+                    cls += ' masonry-bottom-title';
+                }
+                break;
+        }
+        
+        if(this.cls){
+            cls += ' ' + this.cls;
+        }
+        
+        var cfg = {
+            tag: (this.href.length) ? 'a' : 'div',
+            cls: cls,
+            cn: [
+                {
+                    tag: 'div',
+                    cls: 'masonry-brick-split-head',
+                    cn: [
+                        {
+                            tag: 'div',
+                            cls: 'masonry-brick-paragraph',
+                            cn: []
+                        }
+                    ]
+                },
+                {
+                    tag: 'div',
+                    cls: 'masonry-brick-split-body',
+                    cn: []
+                }
+            ]
+        };
+        
+        if(this.href.length){
+            cfg.href = this.href;
+        }
+        
+        if(this.title.length){
+            cfg.cn[0].cn[0].cn.push({
+                tag: 'h4',
+                cls: 'masonry-brick-title',
+                html: this.title
+            });
+        }
+        
+        if(this.html.length){
+            cfg.cn[1].cn.push({
+                tag: 'p',
+                cls: 'masonry-brick-text',
+                html: this.html
+            });
+        }
+
+        if(this.bgimage.length){
+            cfg.cn[0].cn.push({
+                tag: 'img',
+                cls: 'masonry-brick-image-view',
+                src: this.bgimage
+            });
+        }
+        
+        if(this.videourl.length){
+            var vurl = this.videourl.replace(/https:\/\/youtu\.be/, 'https://www.youtube.com/embed/');
+            // youtube support only?
+            cfg.cn[0].cn.cn.push({
+                tag: 'iframe',
+                cls: 'masonry-brick-image-view',
+                src: vurl,
+                frameborder : 0,
+                allowfullscreen : true
+            });
+        }
+        
+        return cfg;
+    },
+    
     initEvents: function() 
     {
         switch (this.size) {
             case 'xs' :
-//                this.intSize = 1;
                 this.x = 1;
                 this.y = 1;
                 break;
             case 'sm' :
-//                this.intSize = 2;
                 this.x = 2;
                 this.y = 2;
                 break;
             case 'md' :
             case 'md-left' :
             case 'md-right' :
-//                this.intSize = 3;
                 this.x = 3;
                 this.y = 3;
                 break;
             case 'tall' :
-//                this.intSize = 3;
                 this.x = 2;
                 this.y = 3;
                 break;
             case 'wide' :
-//                this.intSize = 3;
                 this.x = 3;
                 this.y = 2;
                 break;
             case 'wide-thin' :
-//                this.intSize = 3;
                 this.x = 3;
                 this.y = 1;
                 break;
@@ -31203,6 +31310,10 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     {
         e.preventDefault();
         
+        if(!this.isFitContainer){
+            return;
+        }
+        
         if(this.bgimage.length && this.html.length){
             this.el.select('.masonry-brick-paragraph', true).first().setOpacity(0.9, true);
         }
@@ -31211,6 +31322,10 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     leave: function(e, el)
     {
         e.preventDefault();
+        
+        if(!this.isFitContainer){
+            return;
+        }
         
         if(this.bgimage.length && this.html.length){
             this.el.select('.masonry-brick-paragraph', true).first().setOpacity(0, true);
@@ -31222,6 +31337,10 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
 //        e.preventDefault();
         
         this.touchmoved = false;
+        
+        if(!this.isFitContainer){
+            return;
+        }
         
         if(!this.bgimage.length || !this.html.length){
             return;
@@ -31262,6 +31381,10 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 window.location.href = this.href;
             }
             
+            return;
+        }
+        
+        if(!this.isFitContainer){
             return;
         }
         
