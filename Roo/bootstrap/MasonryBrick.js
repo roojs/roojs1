@@ -213,13 +213,6 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 }
                 break;
         }
-        if(this.placetitle.length){
-            
-            
-            
-        } else {
-            
-        }
         
         if(this.cls){
             cls += ' ' + this.cls;
