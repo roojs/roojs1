@@ -111,9 +111,9 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
     initEvents:  function()
     {
-        if(Roo.isTouch && this.slideOnTouch && !this.showarrow){
-            this.el.on("touchstart", this.onTouchStart, this);
-        }
+//        if(Roo.isTouch && this.slideOnTouch && !this.showarrow){
+//            this.el.on("touchstart", this.onTouchStart, this);
+//        }
         
         if(this.autoslide){
             var _this = this;
@@ -133,8 +133,6 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
     onTouchStart : function(e, el, o)
     {
-        Roo.log('on touch start...');
-        
         if(!this.slideOnTouch || !Roo.isTouch || Roo.get(e.getTarget()).hasClass('roo-button-text')){
             return;
         }
