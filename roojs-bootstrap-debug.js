@@ -31041,6 +31041,10 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             cls += ' masonry-brick-image';
         }
         
+        if(!this.html.length){
+            cls += ' enable-mask';
+        }
+        
         if(this.size){
             cls += ' masonry-' + this.size + '-brick';
         }
@@ -31129,6 +31133,12 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             
             
         }
+        
+        cfg.cn.push({
+            tag: 'div',
+            cls: 'masonry-brick-mask'
+        });
+        
         return cfg;
         
     },
