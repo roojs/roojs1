@@ -171,23 +171,15 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         
         var tabGroup = this.parent();
         
-        if(this.endX - this.startX > 20 ){ // swiping right
+        if(this.endX > this.startX){ // swiping right
             tabGroup.showPanelPrev();
             return;
         }
         
-        Roo.log('this.startX - this.endX');
-        Roo.log(this.startX - this.endX);
-        
-        if(this.startX - this.endX > 20){ // swiping left
+        if(this.startX > this.endX){ // swiping left
             tabGroup.showPanelNext();
             return;
         }
-        
-        if(){
-            this.onClick(e);
-        }
-        
     }
     
     
