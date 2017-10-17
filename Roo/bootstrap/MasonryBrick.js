@@ -224,7 +224,13 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 {
                     tag: 'div',
                     cls: 'masonry-brick-splite-head',
-                    cn: []
+                    cn: [
+                        {
+                            tag: 'div',
+                            cls: 'masonry-brick-paragraph',
+                            cn: []
+                        }
+                    ]
                 }
             ]
         };
