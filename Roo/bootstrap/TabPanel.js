@@ -162,6 +162,8 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         var tabGroup = this.parent();
         
         Roo.log('this.endX - this.startX');
+        Roo.log(this.endX);
+        Roo.log(this.startX);
         Roo.log(this.endX - this.startX);
         
         if(this.endX - this.startX > 10 ){ // swiping right
