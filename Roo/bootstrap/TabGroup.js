@@ -13,7 +13,6 @@
  * @cfg {Boolean} carousel true to make the group behave like a carousel
  * @cfg {Boolean} bullets show bullets for the panels
  * @cfg {Boolean} autoslide (true|false) auto slide .. default false
- * @cfg {Boolean} slideOnTouch (true|false) slide on touch .. default false
  * @cfg {Number} timer auto slide timer .. default 0 millisecond
  * @cfg {Boolean} showarrow (true|false) show arrow default true
  * 
