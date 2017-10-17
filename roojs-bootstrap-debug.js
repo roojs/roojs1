@@ -16877,7 +16877,6 @@ Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
  * @cfg {Boolean} carousel true to make the group behave like a carousel
  * @cfg {Boolean} bullets show bullets for the panels
  * @cfg {Boolean} autoslide (true|false) auto slide .. default false
- * @cfg {Boolean} slideOnTouch (true|false) slide on touch .. default false
  * @cfg {Number} timer auto slide timer .. default 0 millisecond
  * @cfg {Boolean} showarrow (true|false) show arrow default true
  * 
@@ -16975,9 +16974,9 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
     initEvents:  function()
     {
-        if(Roo.isTouch && this.slideOnTouch && !this.showarrow){
-            this.el.on("touchstart", this.onTouchStart, this);
-        }
+//        if(Roo.isTouch && this.slideOnTouch && !this.showarrow){
+//            this.el.on("touchstart", this.onTouchStart, this);
+//        }
         
         if(this.autoslide){
             var _this = this;
@@ -16995,14 +16994,15 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
     },
     
-    onTouchStart : function(e, el, o)
-    {
-        if(!this.slideOnTouch || !Roo.isTouch || Roo.get(e.getTarget()).hasClass('roo-button-text')){
-            return;
-        }
-        
-        this.showPanelNext();
-    },
+//    onTouchStart : function(e, el, o)
+//    {
+//        if(!this.slideOnTouch || !Roo.isTouch || Roo.get(e.getTarget()).hasClass('roo-button-text')){
+//            return;
+//        }
+//        
+//        this.showPanelNext();
+//    },
+    
     
     getChildContainer : function()
     {
@@ -17328,6 +17328,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
     initEvents:  function()
     {
         var p = this.parent();
+        
         this.navId = this.navId || p.navId;
         
         if (typeof(this.navId) != 'undefined') {
@@ -17343,25 +17344,22 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
             }
         }
         
-        if(this.href.length){
-            this.el.on('click', this.onClick, this);
+        this.el.on('click', this.onClick, this);
+        
+        if(Roo.isTouch){
+            this.el.on("touchstart", this.onTouchStart, this);
+            this.el.on("touchmove", this.onTouchMove, this);
+            this.el.on("touchend", this.onTouchEnd, this);
         }
         
     },
     
     onRender : function(ct, position)
     {
-       // Roo.log("Call onRender: " + this.xtype);
-        
         Roo.bootstrap.TabPanel.superclass.onRender.call(this, ct, position);
-        
-        
-        
-        
-        
     },
     
-    setActive: function(state)
+    setActive : function(state)
     {
         Roo.log("panel - set active " + this.tabId + "=" + state);
         
@@ -17376,11 +17374,63 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         this.fireEvent('changed', this, state);
     },
     
-    onClick: function(e)
+    onClick : function(e)
     {
         e.preventDefault();
         
+        if(!this.href.length){
+            return;
+        }
+        
         window.location.href = this.href;
+    },
+    
+    startX : 0,
+    startY : 0,
+    endX : 0,
+    endY : 0,
+    swiping : false,
+    
+    onTouchStart : function(e)
+    {
+        e.preventDefault();
+        
+        this.swiping = false;
+        
+        this.startX = e.browserEvent.touches[0].clientX;
+        this.startY = e.browserEvent.touches[0].clientY;
+    },
+    
+    onTouchMove : function(e)
+    {
+        e.preventDefault();
+        
+        this.swiping = true;
+        
+        this.endX = e.browserEvent.touches[0].clientX;
+        this.endY = e.browserEvent.touches[0].clientY;
+    },
+    
+    onTouchEnd : function(e)
+    {
+        e.preventDefault();
+        
+        if(!this.swiping){
+            this.onClick(e);
+            return;
+        }
+        
+        var tabGroup = this.parent();
+        
+        if(this.endX > this.startX){ // swiping right
+            tabGroup.showPanelPrev();
+            return;
+        }
+        
+        if(this.startX > this.endX){ // swiping left
+            tabGroup.showPanelNext();
+            return;
+        }
     }
     
     
