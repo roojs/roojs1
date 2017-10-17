@@ -244,23 +244,21 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             cfg.href = this.href;
         }
         
-        var cn = cfg.cn[0].cn[0].cn;
-        
         if(this.title.length){
-            cn.push({
+            cfg.cn[0].cn[0].cn.push({
                 tag: 'h4',
                 cls: 'masonry-brick-title',
                 html: this.title
             });
         }
         
-//        if(this.html.length){
-//            cn.push({
-//                tag: 'p',
-//                cls: 'masonry-brick-text',
-//                html: this.html
-//            });
-//        }  
+        if(this.html.length){
+            cfg.cn[1].cn.push({
+                tag: 'p',
+                cls: 'masonry-brick-text',
+                html: this.html
+            });
+        }  
 //        
 //        if (!this.title.length && !this.html.length) {
 //            cfg.cn[0].cls += ' hide';
