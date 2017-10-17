@@ -91,3 +91,9 @@ a.roo-brick-link:hover {
 .masonry-brick-split .masonry-brick-split-head .masonry-brick-paragraph {
     height: 75%;
 }
+
+.masonry-brick-split .masonry-brick-split-body {
+    height: 25%;
+    padding: 10px;
+    color: #000;
+}
