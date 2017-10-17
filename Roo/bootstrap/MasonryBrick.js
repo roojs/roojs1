@@ -218,8 +218,6 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             cls += ' ' + this.cls;
         }
         
-        Roo.log(cls);
-        
         var cfg = {
             tag: (this.href.length) ? 'a' : 'div',
             cls: cls,
@@ -231,6 +229,8 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 }
             ]
         };
+        
+        Roo.log(cfg);
         
         if(this.href.length){
             cfg.href = this.href;
