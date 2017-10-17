@@ -161,6 +161,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         
         var tabGroup = this.parent();
         
+        Roo.log('this.endX - this.startX');
         Roo.log(this.endX - this.startX);
         
         if(this.endX - this.startX > 10 ){ // swiping right
@@ -168,6 +169,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
             return;
         }
         
+        Roo.log('this.startX - this.endX');
         Roo.log(this.startX - this.endX);
         
         if(this.startX - this.endX > 10){ // swiping left
