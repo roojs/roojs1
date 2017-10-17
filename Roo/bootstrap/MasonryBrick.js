@@ -356,6 +356,10 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     {
         e.preventDefault();
         
+        if(!this.isFitContainer){
+            return;
+        }
+        
         if(this.bgimage.length && this.html.length){
             this.el.select('.masonry-brick-paragraph', true).first().setOpacity(0.9, true);
         }
@@ -364,6 +368,10 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     leave: function(e, el)
     {
         e.preventDefault();
+        
+        if(!this.isFitContainer){
+            return;
+        }
         
         if(this.bgimage.length && this.html.length){
             this.el.select('.masonry-brick-paragraph', true).first().setOpacity(0, true);
@@ -375,6 +383,10 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
 //        e.preventDefault();
         
         this.touchmoved = false;
+        
+        if(!this.isFitContainer){
+            return;
+        }
         
         if(!this.bgimage.length || !this.html.length){
             return;
