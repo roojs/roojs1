@@ -152,6 +152,9 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         Roo.log('on touch move');
         
         Roo.log(e);
+        
+        Roo.log(e.browserEvent.touches[0].clientX);
+        
     },
     
     onTouchEnd : function(e)
