@@ -145,6 +145,8 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         
         Roo.log('start?????');
         
+        Roo.log(e.browserEvent.touches[0].clientX);
+        
         this.startX = e.browserEvent.touches[0].clientX;
         this.startY = e.browserEvent.touches[0].clientY;
     },
