@@ -12,7 +12,7 @@
  * Bootstrap MenuItem class
  * @cfg {String} html the menu label
  * @cfg {String} href the link
- * @cfg {Boolean} preventDefault do not trigger A href on clicks.
+ * @cfg {Boolean} preventDefault do not trigger A href on clicks (default false).
  * @cfg {Boolean} isContainer is it a container - just returns a drop down item..
  * @cfg {Boolean} active  used on sidebars to highlight active itesm
  * @cfg {String} fa favicon to show on left of menu item.
@@ -43,7 +43,7 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
     
     href : false,
     html : false,
-    preventDefault: true,
+    preventDefault: false,
     isContainer : false,
     active : false,
     fa: false,
