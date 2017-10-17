@@ -181,7 +181,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     
     getSplitAutoCreate : function()
     {
-        var cls = 'masonry-brick masonry-brick-split';
+        var cls = 'masonry-brick';
         
         if(this.href.length){
             cls += ' masonry-brick-link';
