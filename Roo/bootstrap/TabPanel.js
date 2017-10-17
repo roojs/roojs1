@@ -77,6 +77,9 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
     initEvents:  function()
     {
         var p = this.parent();
+        
+        Roo.log(p);
+        
         this.navId = this.navId || p.navId;
         
         if (typeof(this.navId) != 'undefined') {
