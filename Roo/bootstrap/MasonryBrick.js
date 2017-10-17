@@ -88,7 +88,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         }
         
         if(!this.html.length){
-            cls += ' masonry-brick-mask';
+            cls += ' enable-mask';
         }
         
         if(this.size){
