@@ -101,6 +101,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         
         if(Roo.isTouch && this.swiping){
             this.el.on("touchstart", this.onTouchStart, this);
+            this.el.on("touchmove", this.onTouchMove, this);
             this.el.on("touchend", this.onTouchEnd, this);
         }
         
@@ -131,30 +132,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         e.preventDefault();
         
         window.location.href = this.href;
-    },
-    
-    onTouchStart : function(e)
-    {
-        e.preventDefault();
-        
-        Roo.log('on touch start');
-        
-        Roo.log(e);
-        
-        Roo.log(e.browserEvent.touches[0].clientX);
-    },
-    
-    onTouchEnd : function(e)
-    {
-        e.preventDefault();
-        
-        Roo.log('on touch end');
-        
-        Roo.log(e);
-        
-        Roo.log(e.browserEvent.touches[0].clientX);
     }
-    
     
 });
  
