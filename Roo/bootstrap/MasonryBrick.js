@@ -229,8 +229,6 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             ]
         };
         
-        Roo.log(cfg);
-        
         if(this.href.length){
             cfg.href = this.href;
         }
