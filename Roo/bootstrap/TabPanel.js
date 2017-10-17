@@ -143,10 +143,6 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
     {
         e.preventDefault();
         
-        Roo.log('on touch start');
-        
-        Roo.log(e);
-        
         this.startX = e.browserEvent.touches[0].clientX;
         this.startY = e.browserEvent.touches[0].clientY;
     },
@@ -157,16 +153,23 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         
         this.endX = e.browserEvent.touches[0].clientX;
         this.endY = e.browserEvent.touches[0].clientY;
-        
     },
     
     onTouchEnd : function(e)
     {
         e.preventDefault();
         
-        Roo.log('on touch end');
+        var tabGroup = this.parent();
         
-        Roo.log(e);
+        if(this.startX < this.endX){ // swiping right
+            tabGroup.showPanelNext();
+            return;
+        }
+        
+        if(this.startX > this.endX){ // swiping left
+            tabGroup.showPanelPrev();
+            return;
+        }
         
     }
     
