@@ -74,8 +74,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     getAutoCreate : function()
     {
         if(!this.isFitContainer){
-            this.getSplitAutoCreate();
-            return;
+            return this.getSplitAutoCreate();
         }
         
         var cls = 'masonry-brick';
