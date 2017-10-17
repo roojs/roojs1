@@ -130,13 +130,43 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
     },
     
-    onTouchStart : function(e, el, o)
+//    onTouchStart : function(e, el, o)
+//    {
+//        if(!this.slideOnTouch || !Roo.isTouch || Roo.get(e.getTarget()).hasClass('roo-button-text')){
+//            return;
+//        }
+//        
+//        this.showPanelNext();
+//    },
+    
+    onTouchStart : function(e)
     {
-        if(!this.slideOnTouch || !Roo.isTouch || Roo.get(e.getTarget()).hasClass('roo-button-text')){
-            return;
-        }
+        e.preventDefault();
         
-        this.showPanelNext();
+        Roo.log('on touch start');
+        
+        Roo.log(e);
+        
+        Roo.log(e.browserEvent.touches[0].clientX);
+    },
+    
+    onTouchMove : function(e)
+    {
+        e.preventDefault();
+        
+        Roo.log('on touch move');
+        
+        Roo.log(e);
+    },
+    
+    onTouchEnd : function(e)
+    {
+        e.preventDefault();
+        
+        Roo.log('on touch end');
+        
+        Roo.log(e);
+        
     },
     
     getChildContainer : function()
