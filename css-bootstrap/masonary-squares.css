@@ -87,6 +87,7 @@ a.roo-brick-link:hover {
     outline: 0;
 }
 
-.masonry-brick-split .masonry-brick-split-head {
+.masonry-brick-split .masonry-brick-split-head,
+.masonry-brick-split .masonry-brick-split-head .masonry-brick-paragraph {
     height: 75%;
 }
