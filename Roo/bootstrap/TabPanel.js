@@ -52,7 +52,6 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
     html: false,
     tabId: false,
     navId : false,
-    swiping : true,
     href : '',
     
     getAutoCreate : function(){
@@ -98,7 +97,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
             this.el.on('click', this.onClick, this);
         }
         
-        if(Roo.isTouch && this.swiping){
+        if(Roo.isTouch){
             this.el.on("touchstart", this.onTouchStart, this);
             this.el.on("touchmove", this.onTouchMove, this);
             this.el.on("touchend", this.onTouchEnd, this);
@@ -137,7 +136,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
     startY : 0,
     endX : 0,
     endY : 0,
-    
+    swiping : false,
     
     onTouchStart : function(e)
     {
@@ -150,6 +149,8 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
     onTouchMove : function(e)
     {
         e.preventDefault();
+        
+        this.swiping = true;
         
         this.endX = e.browserEvent.touches[0].clientX;
         this.endY = e.browserEvent.touches[0].clientY;
