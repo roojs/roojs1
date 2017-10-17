@@ -100,9 +100,9 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         }
         
         if(Roo.isTouch && this.swiping){
-            this.el.on("touchstart", this.onTouchStart, this);
-            this.el.on("touchmove", this.onTouchMove, this);
-            this.el.on("touchend", this.onTouchEnd, this);
+            p.el.on("touchstart", this.onTouchStart, this);
+            p.el.on("touchmove", this.onTouchMove, this);
+            p.el.on("touchend", this.onTouchEnd, this);
         }
         
     },
