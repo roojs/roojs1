@@ -93,9 +93,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
             }
         }
         
-        if(this.href.length){
-            this.el.on('click', this.onClick, this);
-        }
+        this.el.on('click', this.onClick, this);
         
         if(Roo.isTouch){
             this.el.on("touchstart", this.onTouchStart, this);
@@ -129,6 +127,10 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
     {
         e.preventDefault();
         
+        if(!this.href.length){
+            return;
+        }
+        
         window.location.href = this.href;
     },
     
@@ -160,12 +162,11 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
     {
         e.preventDefault();
         
-        var tabGroup = this.parent();
+        if(!this.swiping){
+            this.onClick(e);
+        }
         
-        Roo.log('this.endX - this.startX');
-        Roo.log(this.endX);
-        Roo.log(this.startX);
-        Roo.log(this.endX - this.startX);
+        var tabGroup = this.parent();
         
         if(this.endX - this.startX > 20 ){ // swiping right
             tabGroup.showPanelPrev();
@@ -180,7 +181,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
             return;
         }
         
-        if(this.href.length){
+        if(){
             this.onClick(e);
         }
         
