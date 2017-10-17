@@ -66,6 +66,11 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
      */   
     placetitle : '',
     
+    /**
+     * @cfg {Boolean} isFitContainer defalut false
+     */   
+    isFitContainer : false, 
+    
     getAutoCreate : function()
     {
         var cls = 'masonry-brick';
