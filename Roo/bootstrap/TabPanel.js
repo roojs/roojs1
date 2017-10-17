@@ -139,7 +139,9 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         
         Roo.log('on touch start');
         
-        Roo.log(e.originalEvent.touches[0].clientX);
+        Roo.log(e);
+        
+        Roo.log(e.browserEvent.touches[0].clientX);
     },
     
     onTouchEnd : function(e)
@@ -148,7 +150,9 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         
         Roo.log('on touch end');
         
-        Roo.log(e.originalEvent.touches[0].clientX);
+        Roo.log(e);
+        
+        Roo.log(e.browserEvent.touches[0].clientX);
     }
     
     
