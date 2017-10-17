@@ -175,6 +175,12 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             
             
         }
+        
+        cfg.cn.push({
+            tag: 'div',
+            cls: 'masonry-brick-mask'
+        });
+        
         return cfg;
         
     },
