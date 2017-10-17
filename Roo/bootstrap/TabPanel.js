@@ -161,6 +161,9 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         
         var tabGroup = this.parent();
         
+        Roo.log(this.startX);
+        Roo.log(this.startY);
+        
         if(this.startX < this.endX){ // swiping right
             tabGroup.showPanelPrev();
             return;
