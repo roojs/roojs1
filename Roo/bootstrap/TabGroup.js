@@ -139,35 +139,6 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
 //        this.showPanelNext();
 //    },
     
-    onTouchStart : function(e)
-    {
-        e.preventDefault();
-        
-        Roo.log('on touch start');
-        
-        Roo.log(e);
-        
-        Roo.log(e.browserEvent.touches[0].clientX);
-    },
-    
-    onTouchMove : function(e)
-    {
-        e.preventDefault();
-        
-        Roo.log('on touch move');
-        
-        Roo.log(e);
-    },
-    
-    onTouchEnd : function(e)
-    {
-        e.preventDefault();
-        
-        Roo.log('on touch end');
-        
-        Roo.log(e);
-        
-    },
     
     getChildContainer : function()
     {
