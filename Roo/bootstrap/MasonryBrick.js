@@ -74,7 +74,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     /**
      * @cfg {Boolean} preventDefault defalut false
      */   
-    preventDefault : true, 
+    preventDefault : false, 
     
     getAutoCreate : function()
     {
