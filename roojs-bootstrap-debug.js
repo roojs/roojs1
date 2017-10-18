@@ -31019,6 +31019,11 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
      */   
     isFitContainer : true, 
     
+    /**
+     * @cfg {Boolean} preventDefault defalut false
+     */   
+    preventDefault : true, 
+    
     getAutoCreate : function()
     {
         if(!this.isFitContainer){
@@ -31114,6 +31119,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 src: this.bgimage
             });
         }
+        
         if(this.videourl.length){
             var vurl = this.videourl.replace(/https:\/\/youtu\.be/, 'https://www.youtube.com/embed/');
             // youtube support only?
@@ -31275,8 +31281,6 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 break;
         }
         
-        
-        
         if(Roo.isTouch){
             this.el.on('touchstart', this.onTouchStart, this);
             this.el.on('touchmove', this.onTouchMove, this);
@@ -31285,6 +31289,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         } else {
             this.el.on('mouseenter'  ,this.enter, this);
             this.el.on('mouseleave', this.leave, this);
+            this.el.on('click', this.onClick, this);
         }
         
         if (typeof(this.parent().bricks) == 'object' && this.parent().bricks != null) {
@@ -31295,19 +31300,23 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     
     onClick: function(e, el)
     {
-        if(!Roo.isTouch){
-            return;
-        }
+        Roo.log('click');
         
         var time = this.endTimer - this.startTimer;
         
-        //alert(time);
+        if(Roo.isTouch){
+            if(time > 1000){
+                e.preventDefault();
+                return;
+            }
+        }
         
-        if(time < 1000){
+        if(!this.preventDefault){
             return;
         }
         
         e.preventDefault();
+        this.fireEvent('click', this);
     },
     
     enter: function(e, el)
