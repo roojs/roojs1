@@ -71,6 +71,11 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
      */   
     isFitContainer : true, 
     
+    /**
+     * @cfg {Boolean} preventDefault defalut false
+     */   
+    preventDefault : true, 
+    
     getAutoCreate : function()
     {
         if(!this.isFitContainer){
