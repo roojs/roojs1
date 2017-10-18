@@ -134,22 +134,30 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         window.location.href = this.href;
     },
     
+    startX : 0,
+    startY : 0,
+    endX : 0,
+    endY : 0,
     swiping : false,
     
     onTouchStart : function(e)
     {
         this.swiping = false;
+        
+        this.startX = e.browserEvent.touches[0].clientX;
+        this.startY = e.browserEvent.touches[0].clientY;
     },
     
     onTouchMove : function(e)
     {
         this.swiping = true;
+        
+        this.endX = e.browserEvent.touches[0].clientX;
+        this.endY = e.browserEvent.touches[0].clientY;
     },
     
     onTouchEnd : function(e)
     {
-        e.preventDefault();
-        
         if(!this.swiping){
             this.onClick(e);
             return;
