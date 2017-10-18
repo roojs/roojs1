@@ -328,8 +328,6 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 break;
         }
         
-        
-        
         if(Roo.isTouch){
             this.el.on('touchstart', this.onTouchStart, this);
             this.el.on('touchmove', this.onTouchMove, this);
