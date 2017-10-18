@@ -31025,7 +31025,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             return this.getSplitAutoCreate();
         }
         
-        var cls = 'masonry-brick';
+        var cls = 'masonry-brick masonry-brick-full';
         
         if(this.href.length){
             cls += ' masonry-brick-link';
