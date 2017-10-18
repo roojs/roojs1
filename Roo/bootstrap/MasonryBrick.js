@@ -167,19 +167,19 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             });
         }
         
-//        if(this.videourl.length){
-//            var vurl = this.videourl.replace(/https:\/\/youtu\.be/, 'https://www.youtube.com/embed/');
-//            // youtube support only?
-//            cfg.cn.push({
-//                tag: 'iframe',
-//                cls: 'masonry-brick-image-view',
-//                src: vurl,
-//                frameborder : 0,
-//                allowfullscreen : true
-//            });
-//            
-//            
-//        }
+        if(this.videourl.length){
+            var vurl = this.videourl.replace(/https:\/\/youtu\.be/, 'https://www.youtube.com/embed/');
+            // youtube support only?
+            cfg.cn.push({
+                tag: 'iframe',
+                cls: 'masonry-brick-image-view',
+                src: vurl,
+                frameborder : 0,
+                allowfullscreen : true
+            });
+            
+            
+        }
         
         cfg.cn.push({
             tag: 'div',
