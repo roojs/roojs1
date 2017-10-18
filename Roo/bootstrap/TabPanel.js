@@ -131,8 +131,6 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
             return;
         }
         
-        Roo.log(this.href);
-        
         window.location.href = this.href;
     },
     
