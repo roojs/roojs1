@@ -346,17 +346,17 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     
     onClick: function(e, el)
     {
-        if(!Roo.isTouch){
-            return;
-        }
-        
         var time = this.endTimer - this.startTimer;
         
-        if(time < 1000){
-            return;
+        if(Roo.isTouch){
+            if(time > 1000){
+                e.preventDefault();
+                return;
+            }
         }
         
-        e.preventDefault();
+        this.fireEvent('click', this);
+        
     },
     
     enter: function(e, el)
