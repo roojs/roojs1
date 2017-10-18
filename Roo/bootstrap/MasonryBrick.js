@@ -363,8 +363,12 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             }
         }
         
-        this.fireEvent('click', this);
+        if(!this.preventDefault){
+            return;
+        }
         
+        e.preventDefault();
+        this.fireEvent('click', this);
     },
     
     enter: function(e, el)
