@@ -38,6 +38,8 @@
  */
 Roo.bootstrap.panel.Content = function( config){
     
+    this.tpl = config.tpl || false;
+    
     var el = config.el;
     var content = config.content;
 
@@ -193,8 +195,6 @@ Roo.bootstrap.panel.Content = function( config){
 Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
     
     tabTip : '',
-    
-    tpl : '',
     
     setRegion : function(region){
         this.region = region;
