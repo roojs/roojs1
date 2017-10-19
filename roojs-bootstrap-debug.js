@@ -34563,8 +34563,6 @@ Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
     
     tabTip : '',
     
-    tpl : '',
-    
     setRegion : function(region){
         this.region = region;
         this.setActiveClass(region && !this.background);
@@ -35663,15 +35661,17 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
                 
             }
             
-            switch (typeof(tpl)) {
-                case 'object' :
-                    this.tabTpl = tpl;
-                    break;
-                case 'string' :
-                    this.tabTpl = new Roo.Template(tpl);
-                    break;
-                default :
-                    break;
+            if(tpl){
+                switch (typeof(tpl)) {
+                    case 'object' :
+                        this.tabTpl = tpl;
+                        break;
+                    case 'string' :
+                        this.tabTpl = new Roo.Template(tpl);
+                        break;
+                    default :
+                        break;
+                }
             }
             
             var el = this.tabTpl.overwrite(td, {"text": text});
