@@ -60,6 +60,10 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
      * @cfg {Boolean} square
      */   
     square : true,
+    /**
+     * @cfg {Boolean} mouseEvent
+     */   
+    mouseEvent : true,
     
     getAutoCreate : function()
     {
