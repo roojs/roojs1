@@ -542,49 +542,9 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
             var el = template.overwrite(td, {"text": text});
             
             var inner = el.getElementsByTagName("span")[0];
+            
             return {"el": el, "inner": inner};
             
-            
-//            if(this.tabTpl){
-//                el = this.tabTpl.overwrite(td, {"text": text});
-//            } else {
-//                el = new Roo.Template(
-//                   '<a href="#">' +
-//                   '<span unselectable="on"' +
-//                            (this.disableTooltips ? '' : ' title="{text}"') +
-//                            ' >{text}</span></a>'
-//                );
-//            }
-//            
-//            if(!this.tabTpl){
-//                
-//                this.tabTpl = new Roo.Template(
-//                   '<a href="#">' +
-//                   '<span unselectable="on"' +
-//                            (this.disableTooltips ? '' : ' title="{text}"') +
-//                            ' >{text}</span></a>'
-//                );
-//                
-//            }
-//            
-//            if(tpl){
-//                switch (typeof(tpl)) {
-//                    case 'object' :
-//                        this.tabTpl = tpl;
-//                        break;
-//                    case 'string' :
-//                        this.tabTpl = new Roo.Template(tpl);
-//                        break;
-//                    default :
-//                        break;
-//                }
-//            }
-//            
-//            var el = this.tabTpl.overwrite(td, {"text": text});
-//            
-//            var inner = el.getElementsByTagName("span")[0];
-//            return {"el": el, "inner": inner};
-        //}
     }
         
     
