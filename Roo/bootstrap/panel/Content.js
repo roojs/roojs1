@@ -191,7 +191,11 @@ Roo.bootstrap.panel.Content = function( config){
 };
 
 Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
-    tabTip:'',
+    
+    tabTip : '',
+    
+    tpl : '',
+    
     setRegion : function(region){
         this.region = region;
         this.setActiveClass(region && !this.background);
