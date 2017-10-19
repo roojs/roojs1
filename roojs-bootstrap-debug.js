@@ -31561,7 +31561,7 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
         
         paragraph.setHeight(paragraph.getWidth() + paragraph.getPadding('tb'));
         
-        Roo.log(this.el);
+        this.el.setHeight(paragraph.getWidth() + paragraph.getPadding('tb'));
         
         if(this.bgimage.length){
             var image = this.el.select('.roo-brick-image-view', true).first();
