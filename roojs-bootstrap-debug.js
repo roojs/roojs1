@@ -34407,6 +34407,8 @@ Roo.namespace("Roo.bootstrap.panel");/*
  */
 Roo.bootstrap.panel.Content = function( config){
     
+    this.tpl = config.tpl || false;
+    
     var el = config.el;
     var content = config.content;
 

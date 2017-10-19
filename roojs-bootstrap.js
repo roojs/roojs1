@@ -1445,7 +1445,7 @@ A.width-=sw;this.split.el.setLeft(A.x+A.width);this.split.el.setTop(A.y);this.sp
 // Roo/bootstrap/panel/panel-ns.js
 Roo.namespace("Roo.bootstrap.panel");
 // Roo/bootstrap/panel/Content.js
-Roo.bootstrap.panel.Content=function(A){var el=A.el;var B=A.content;if(A.autoCreate){el=Roo.id();}this.el=Roo.get(el);if(!this.el&&A&&A.autoCreate){if(typeof A.autoCreate=="object"){if(!A.autoCreate.id){A.autoCreate.id=A.id||el;}this.el=Roo.DomHelper.append(document.body,A.autoCreate,true);
+Roo.bootstrap.panel.Content=function(A){this.tpl=A.tpl||false;var el=A.el;var B=A.content;if(A.autoCreate){el=Roo.id();}this.el=Roo.get(el);if(!this.el&&A&&A.autoCreate){if(typeof A.autoCreate=="object"){if(!A.autoCreate.id){A.autoCreate.id=A.id||el;}this.el=Roo.DomHelper.append(document.body,A.autoCreate,true);
 }else{var C={tag:"div",cls:"roo-layout-inactive-content",id:A.id||el};if(A.html){C.html=A.html;}this.el=Roo.DomHelper.append(document.body,C,true);}}this.closable=false;this.loaded=false;this.active=false;if(A.toolbar&&!A.toolbar.el&&A.toolbar.xtype){this.toolbar=new A.toolbar.xns[A.toolbar.xtype](A.toolbar);
 this.wrapEl=this.el;var ti=[];if(A.toolbar.items){ti=A.toolbar.items;delete A.toolbar.items;}var D=[];this.toolbar.render(this.wrapEl,'before');for(var i=0;i<ti.length;i++){D.push(this.toolbar.addxtype(Roo.apply({},ti[i])));}this.toolbar.items=D;this.toolbar.el.insertBefore(this.wrapEl.dom.firstChild);
 delete A.toolbar;}if(typeof A=="string"){this.title=A;}else{Roo.apply(this,A);}if(this.resizeEl){this.resizeEl=Roo.get(this.resizeEl,true);}else{this.resizeEl=this.el;}this.addEvents({"activate":true,"deactivate":true,"resize":true,"render":true});if(this.autoScroll){this.resizeEl.setStyle("overflow","auto");
