@@ -2465,7 +2465,7 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
  * Bootstrap Modal class
  * @cfg {String} title Title of dialog
  * @cfg {String} html - the body of the dialog (for simple ones) - you can also use template..
- * @cfg {Roo.Template} tmpl - a template with variables. to use it, add a handler in show:method  adn 
+ * @cfg {Roo.Template} tmpl - a template with variables. to use it, add a handler in show:method  adn
  * @cfg {Boolean} specificTitle default false
  * @cfg {Array} buttons Array of buttons or standard button set..
  * @cfg {String} buttonPosition (left|right|center) default right
@@ -2473,8 +2473,8 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
  * @cfg {Boolean} allow_close default true
  * @cfg {Boolean} fitwindow default false
  * @cfg {String} size (sm|lg) default empty
- * 
- * 
+ *
+ *
  * @constructor
  * Create a new Modal Dialog
  * @param {Object} config The config object
@@ -2492,50 +2492,50 @@ Roo.bootstrap.Modal = function(config){
         "btnclick" : true
     });
     this.buttons = this.buttons || [];
-     
+
     if (this.tmpl) {
         this.tmpl = Roo.factory(this.tmpl);
     }
-    
+
 };
 
 Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
-    
+
     title : 'test dialog',
-   
+
     buttons : false,
-    
+
     // set on load...
-     
+
     html: false,
-    
+
     tmp: false,
-    
+
     specificTitle: false,
-    
+
     buttonPosition: 'right',
-    
+
     allow_close : true,
-    
+
     animate : true,
-    
+
     fitwindow: false,
-    
-    
+
+
      // private
     dialogEl: false,
     bodyEl:  false,
     footerEl:  false,
     titleEl:  false,
     closeEl:  false,
-    
+
     size: '',
-    
-    
+
+
     onRender : function(ct, position)
     {
         Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
-     
+
         if(!this.el){
             var cfg = Roo.apply({},  this.getAutoCreate());
             cfg.id = Roo.id();
@@ -2554,25 +2554,25 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.el = Roo.get(document.body).createChild(cfg, position);
         }
         //var type = this.el.dom.type;
-        
-        
+
+
         if(this.tabIndex !== undefined){
             this.el.dom.setAttribute('tabIndex', this.tabIndex);
         }
-        
+
         this.dialogEl = this.el.select('.modal-dialog',true).first();
         this.bodyEl = this.el.select('.modal-body',true).first();
         this.closeEl = this.el.select('.modal-header .close', true).first();
         this.footerEl = this.el.select('.modal-footer',true).first();
         this.titleEl = this.el.select('.modal-title',true).first();
-        
-        
-         
+
+
+
         this.maskEl = Roo.DomHelper.append(document.body, {tag: "div", cls:"x-dlg-mask"}, true);
         this.maskEl.enableDisplayMode("block");
         this.maskEl.hide();
         //this.el.addClass("x-dlg-modal");
-    
+
         if (this.buttons.length) {
             Roo.each(this.buttons, function(bb) {
                 var b = Roo.apply({}, bb);
@@ -2581,16 +2581,16 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                 if (typeof(b.listeners) == 'undefined') {
                     b.listeners = { click : this.onButtonClick.createDelegate(this)  };
                 }
-                
+
                 var btn = Roo.factory(b);
-                
+
                 btn.render(this.el.select('.modal-footer div').first());
-                
+
             },this);
         }
         // render the children.
         var nitems = [];
-        
+
         if(typeof(this.items) != 'undefined'){
             var items = this.items;
             delete this.items;
@@ -2599,36 +2599,36 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                 nitems.push(this.addxtype(Roo.apply({}, items[i])));
             }
         }
-        
+
         this.items = nitems;
-        
+
         // where are these used - they used to be body/close/footer
-        
-       
+
+
         this.initEvents();
         //this.el.addClass([this.fieldClass, this.cls]);
-        
+
     },
-    
+
     getAutoCreate : function(){
-        
-        
+
+
         var bdy = {
                 cls : 'modal-body',
                 html : this.html || ''
         };
-        
+
         var title = {
             tag: 'h4',
             cls : 'modal-title',
             html : this.title
         };
-        
+
         if(this.specificTitle){
             title = this.title;
-            
+
         };
-        
+
         var header = [];
         if (this.allow_close) {
             header.push({
@@ -2637,15 +2637,15 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                 html : '&times'
             });
         }
-        
+
         header.push(title);
-        
+
         var size = '';
-        
+
         if(this.size.length){
             size = 'modal-' + this.size;
         }
-        
+
         var modal = {
             cls: "modal",
             style : 'display: none',
@@ -2669,34 +2669,34 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                                             cls: 'btn-' + this.buttonPosition
                                         }
                                     ]
-                                    
+
                                 }
-                                
-                                
+
+
                             ]
-                            
+
                         }
                     ]
-                        
+
                 }
             ]
         };
-        
+
         if(this.animate){
             modal.cls += ' fade';
         }
-        
+
         return modal;
-          
+
     },
     getChildContainer : function() {
-         
+
          return this.bodyEl;
-        
+
     },
     getButtonContainer : function() {
          return this.el.select('.modal-footer div',true).first();
-        
+
     },
     initEvents : function()
     {
@@ -2704,10 +2704,10 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.closeEl.on('click', this.hide, this);
         }
         Roo.EventManager.onWindowResize(this.resize, this, true);
-        
- 
+
+
     },
-    
+
     resize : function()
     {
         this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true),  Roo.lib.Dom.getViewHeight(true));
@@ -2717,7 +2717,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.setSize(w,h);
         }
     },
-    
+
     setSize : function(w,h)
     {
         if (!w && !h) {
@@ -2725,15 +2725,15 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         }
         this.resizeTo(w,h);
     },
-    
+
     show : function() {
-        
+
         if (!this.rendered) {
             this.render();
         }
-        
+
         this.el.setStyle('display', 'block');
-        
+
         if(this.animate){  // element has 'fade'  - so stuff happens after .3s ?- not sure why the delay?
             var _this = this;
             (function(){
@@ -2741,89 +2741,90 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             }).defer(50, this);
         }else{
             this.el.addClass('in');
-            
+
         }
-        
-        // not sure how we can show data in here.. 
+
+        // not sure how we can show data in here..
         //if (this.tmpl) {
         //    this.getChildContainer().dom.innerHTML = this.tmpl.applyTemplate(this);
         //}
-        
+
         Roo.get(document.body).addClass("x-body-masked");
         this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true),   Roo.lib.Dom.getViewHeight(true));
         this.maskEl.show();
         this.el.setStyle('zIndex', '10001');
-       
+
         this.fireEvent('show', this);
-        
+
         this.resize();
-        
+
         (function () {
             this.items.forEach( function(e) {
                 e.layout ? e.layout() : false;
-                    
+
             });
         }).defer(100,this);
-        
+
     },
     hide : function()
     {
-        this.maskEl.hide();
-        Roo.get(document.body).removeClass("x-body-masked");
-        this.el.removeClass('in');
-        this.el.select('.modal-dialog', true).first().setStyle('transform','');
-        
-        if(this.animate){ // why
-            var _this = this;
-            (function(){ _this.el.setStyle('display', 'none'); }).defer(150);
-        }else{
-            this.el.setStyle('display', 'none');
+        if(this.fireEvent("beforehide", this) !== false){
+            this.maskEl.hide();
+            Roo.get(document.body).removeClass("x-body-masked");
+            this.el.removeClass('in');
+            this.el.select('.modal-dialog', true).first().setStyle('transform','');
+
+            if(this.animate){ // why
+                var _this = this;
+                (function(){ _this.el.setStyle('display', 'none'); }).defer(150);
+            }else{
+                this.el.setStyle('display', 'none');
+            }
+            this.fireEvent('hide', this);
         }
-        
-        this.fireEvent('hide', this);
     },
-    
+
     addButton : function(str, cb)
     {
-         
-        
+
+
         var b = Roo.apply({}, { html : str } );
         b.xns = b.xns || Roo.bootstrap;
         b.xtype = b.xtype || 'Button';
         if (typeof(b.listeners) == 'undefined') {
             b.listeners = { click : cb.createDelegate(this)  };
         }
-        
+
         var btn = Roo.factory(b);
-           
+
         btn.render(this.el.select('.modal-footer div').first());
-        
-        return btn;   
-       
+
+        return btn;
+
     },
-    
+
     setDefaultButton : function(btn)
     {
         //this.el.select('.modal-footer').()
     },
     diff : false,
-    
+
     resizeTo: function(w,h)
     {
         // skip.. ?? why??
-        
+
         this.dialogEl.setWidth(w);
         if (this.diff === false) {
             this.diff = this.dialogEl.getHeight() - this.bodyEl.getHeight();
         }
-        
+
         this.bodyEl.setHeight(h-this.diff);
-        
-        
+
+
     },
     setContentSize  : function(w, h)
     {
-        
+
     },
     onButtonClick: function(btn,e)
     {
@@ -2835,14 +2836,14 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
      * @param {String} str new Title
      */
     setTitle: function(str) {
-        this.titleEl.dom.innerHTML = str;    
+        this.titleEl.dom.innerHTML = str;
     },
     /**
      * Set the body of the Dialog
      * @param {String} str new Title
      */
     setBody: function(str) {
-        this.bodyEl.dom.innerHTML = str;    
+        this.bodyEl.dom.innerHTML = str;
     },
     /**
      * Set the body of the Dialog using the template
@@ -2856,7 +2857,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         }
         this.tmpl.overwrite(this.bodyEl, obj);
     }
-    
+
 });
 
 
@@ -2869,7 +2870,7 @@ Roo.apply(Roo.bootstrap.Modal,  {
             name : 'ok',
             weight : 'primary',
             html : 'OK'
-        }], 
+        }],
         /**
          * Button config that displays Yes and No buttons
          * @type Object
@@ -2885,7 +2886,7 @@ Roo.apply(Roo.bootstrap.Modal,  {
                 html : 'Yes'
             }
         ],
-        
+
         /**
          * Button config that displays OK and Cancel buttons
          * @type Object
@@ -2921,8 +2922,7 @@ Roo.apply(Roo.bootstrap.Modal,  {
             }
         ]
 });
- 
- /*
+/*
  * - LGPL
  *
  * messagebox - can be used as a replace
@@ -31300,8 +31300,6 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     
     onClick: function(e, el)
     {
-        Roo.log('click');
-        
         var time = this.endTimer - this.startTimer;
         
         if(Roo.isTouch){
@@ -33505,12 +33503,12 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
 
     initPanelAsTab : function(panel){
         var ti = this.tabs.addTab(
-                    panel.getEl().id,
-                    panel.getTitle(),
-                    null,
-                    this.config.closeOnTab && panel.isClosable(),
-                    panel.tpl
-            );
+            panel.getEl().id,
+            panel.getTitle(),
+            null,
+            this.config.closeOnTab && panel.isClosable(),
+            panel.tpl
+        );
         if(panel.tabTip !== undefined){
             ti.setTooltip(panel.tabTip);
         }
@@ -34562,7 +34560,11 @@ Roo.bootstrap.panel.Content = function( config){
 };
 
 Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
-    tabTip:'',
+    
+    tabTip : '',
+    
+    tpl : '',
+    
     setRegion : function(region){
         this.region = region;
         this.setActiveClass(region && !this.background);
