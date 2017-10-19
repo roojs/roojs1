@@ -60,10 +60,6 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
      * @cfg {Boolean} square
      */   
     square : true,
-    /**
-     * @cfg {Boolean} mouseEvent
-     */   
-    mouseEvent : true,
     
     getAutoCreate : function()
     {
@@ -138,7 +134,7 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        if((this.title.length || this.html.length) && this.mouseEvent){
+        if(this.title.length || this.html.length){
             this.el.on('mouseenter'  ,this.enter, this);
             this.el.on('mouseleave', this.leave, this);
         }
