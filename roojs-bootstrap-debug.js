@@ -27434,6 +27434,13 @@ Roo.bootstrap.DocumentManager = function(config){
          */
         "exception" : true,
         /**
+         * @event afterupload
+         * Fire when xhr load exception
+         * @param {Roo.bootstrap.DocumentManager} this
+         * @param {XMLHttpRequest} xhr
+         */
+        "afterupload" : true,
+        /**
          * @event prepare
          * prepare the form data
          * @param {Roo.bootstrap.DocumentManager} this
@@ -27869,6 +27876,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         this.files.push(file);
         
         this.arrange();
+        
+        this.fireEvent('afterupload', this, xhr);
         
     },
     
