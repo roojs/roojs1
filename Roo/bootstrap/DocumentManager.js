@@ -487,6 +487,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         this.arrange();
         
+        this.fireEvent('onUpload', this, xhr);
+        
     },
     
     xhrOnError : function(xhr)
