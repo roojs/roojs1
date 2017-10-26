@@ -75,17 +75,17 @@
 }
 
 .dropdown-button > i {
-    margin-right: 10px;
+    margin-right: 5px;
 }
 
 li.dropdown-toggle i.glyphicon + span {
-    margin-left: 10px;
+    margin-left: 5px;
 }
 
 li.dropdown-toggle span + i.glyphicon {
-    margin-left: 10px;
+    margin-left: 5px;
 }
 
 li.dropdown-menu-item i.fa + span {
-    margin-left: 10px;
+    margin-left: 5px;
 }
