@@ -27979,7 +27979,9 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         if(this.fireEvent('prepare', this, formData, options) != false){
             
-            Roo.log(options);
+            if(options.manually){
+                return;
+            }
             
             this.xhr.send(formData);
             return;
