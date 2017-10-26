@@ -119,13 +119,12 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     method : 'POST',
     url : '',
     paramName : 'imageUpload',
+    toolTipName : 'filename',
     fieldLabel : '',
     labelWidth : 4,
     labelAlign : 'left',
     editable : true,
     delegates : false,
-    
-    
     xhr : false, 
     
     getAutoCreate : function()
