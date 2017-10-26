@@ -8,6 +8,7 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap DocumentManager class
  * @cfg {String} paramName default 'imageUpload'
+ * @cfg {String} toolTipName default 'filename'
  * @cfg {String} method default POST
  * @cfg {String} url action url
  * @cfg {Number} boxes number of boxes, 0 is no limit.. default 0
