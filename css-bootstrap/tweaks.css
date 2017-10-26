@@ -79,3 +79,7 @@
 .badge-inverse:hover {
     background-color: #1a1a1a;
 }
+
+.tooltip.fade.in {
+    z-index: 10002;
+}
