@@ -508,7 +508,7 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
  * @extends Roo.bootstrap.Component
  * Bootstrap Button class
  * @cfg {String} html The button content
- * @cfg {String} weight (  primary | success | info | warning | danger | link ) default 
+ * @cfg {String} weight (default | primary | success | info | warning | danger | link ) default 
  * @cfg {String} size ( lg | sm | xs)
  * @cfg {String} tag ( a | input | submit)
  * @cfg {String} href empty or href
