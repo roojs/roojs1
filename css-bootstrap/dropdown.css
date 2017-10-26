@@ -85,3 +85,7 @@ li.dropdown-toggle i.glyphicon + span {
 li.dropdown-toggle span + i.glyphicon {
     padding-left: 10px;
 }
+
+li.dropdown-menu-item i.fa + span {
+    padding-left: 10px;
+}
