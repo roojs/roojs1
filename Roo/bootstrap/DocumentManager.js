@@ -385,8 +385,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         this.progressBar.update(this.progressBar.aria_valuemax - this.delegates.length);
         
-        Roo.log('call delegate????');
-        
         delegate();
     },
     
@@ -513,8 +511,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     process : function(file)
     {
-        Roo.log('call process????');
-        
         if(this.fireEvent('process', this, file) !== false){
             if(this.editable && file.type.indexOf('image') != -1){
                 this.fireEvent('edit', this, file);
@@ -530,8 +526,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     uploadStart : function(file, crop)
     {
-        Roo.log('call upload start????');
-        
         this.xhr = new XMLHttpRequest();
         
         if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
@@ -596,8 +590,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             file : file, 
             manually : false
         };
-        
-        Roo.log('call prepare????');
         
         if(this.fireEvent('prepare', this, formData, options) != false){
             
