@@ -530,6 +530,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     uploadStart : function(file, crop)
     {
+        Roo.log('call upload start????');
+        
         this.xhr = new XMLHttpRequest();
         
         if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
@@ -594,6 +596,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             file : file, 
             manually : false
         };
+        
+        Roo.log('call prepare????');
         
         if(this.fireEvent('prepare', this, formData, options) != false){
             
