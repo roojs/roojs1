@@ -588,10 +588,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         if(this.fireEvent('prepare', this, formData) != false){
             this.xhr.send(formData);
-            return;
+            return
         };
         
-        this.arrange();
+        this.uploadCancel();
     },
     
     uploadCancel : function()
@@ -599,7 +599,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         if (this.xhr) {
             this.xhr.abort();
         }
-        
         
         this.delegates = [];
         
