@@ -79,13 +79,13 @@
 }
 
 li.dropdown-toggle i.glyphicon + span {
-    padding-left: 10px;
+    margin-left: 10px;
 }
 
 li.dropdown-toggle span + i.glyphicon {
-    padding-left: 10px;
+    margin-left: 10px;
 }
 
 li.dropdown-menu-item i.fa + span {
-    padding-left: 10px;
+    margin-left: 10px;
 }
