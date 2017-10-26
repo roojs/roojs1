@@ -48,11 +48,7 @@ Roo.apply(Roo.bootstrap.Tooltip, {
         
         //Roo.log(['enter',dom]);
         var el = Roo.fly(dom);
-        
-        Roo.debug && Roo.log(dom);
-        
         if (this.currentEl) {
-            
             //Roo.log(dom);
             //Roo.log(this.currentEl);
             //Roo.log(this.currentEl.contains(dom));
@@ -173,6 +169,8 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
       
     
     enter : function () {
+       
+       Roo.log('tooltip enter??');
        
         if (this.timeout != null) {
             clearTimeout(this.timeout);
