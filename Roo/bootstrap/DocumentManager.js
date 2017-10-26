@@ -633,7 +633,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                     tag : 'div',
                     tooltip : file.filename,
                     cls : 'roo-document-manager-thumb',
-                    html : '<img src="' + baseURL +'/Images/Thumb/' + this.thumbSize + '/' + file.id + '/' + file.filename + '">'
+                    html : '<img tooltip="' + file.filename + '" src="' + baseURL +'/Images/Thumb/' + this.thumbSize + '/' + file.id + '/' + file.filename + '">'
                 },
                 {
                     tag : 'button',
