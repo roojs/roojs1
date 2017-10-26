@@ -588,7 +588,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         if(this.fireEvent('prepare', this, formData) != false){
             this.xhr.send(formData);
+            return;
         };
+        
+        this.arrange();
     },
     
     uploadCancel : function()
