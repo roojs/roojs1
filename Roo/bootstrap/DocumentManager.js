@@ -586,7 +586,12 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         formData.append(this.paramName, file, file.name);
         
-        if(this.fireEvent('prepare', this, formData, file) != false){
+        var options = {
+            file : file, 
+            manually : false
+        }
+        
+        if(this.fireEvent('prepare', this, formData, options) != false){
             this.xhr.send(formData);
             return;
         };
