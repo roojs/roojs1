@@ -170,8 +170,6 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
     
     enter : function () {
        
-       Roo.log('tooltip enter??');
-       
         if (this.timeout != null) {
             clearTimeout(this.timeout);
         }
@@ -212,7 +210,6 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
     
     show : function ()
     {
-        Roo.log('tooltip show???????');
         if (!this.el) {
             this.render(document.body);
         }
