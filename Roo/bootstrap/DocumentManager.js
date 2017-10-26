@@ -385,6 +385,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         this.progressBar.update(this.progressBar.aria_valuemax - this.delegates.length);
         
+        Roo.log('call delegate????');
+        
         delegate();
     },
     
