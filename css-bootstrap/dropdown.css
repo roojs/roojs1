@@ -78,6 +78,6 @@
     margin-right: 10px;
 }
 
-li.dropdown-toggle > i.glyphicon + span {
+li.dropdown-toggle i.glyphicon + span {
     padding-left: 10px;
 }
