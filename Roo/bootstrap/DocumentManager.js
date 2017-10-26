@@ -589,7 +589,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         var options = {
             file : file, 
             manually : false
-        }
+        };
         
         if(this.fireEvent('prepare', this, formData, options) != false){
             
