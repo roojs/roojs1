@@ -78,7 +78,7 @@
     margin-right: 10px;
 }
 
-/*li.dropdown-toggle i.glyphicon + span {
+li.dropdown-toggle i.glyphicon + span {
     margin-left: 10px;
 }
 
@@ -88,4 +88,4 @@ li.dropdown-toggle span + i.glyphicon {
 
 li.dropdown-menu-item i.fa + span {
     margin-left: 10px;
-}*/
+}
