@@ -626,6 +626,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         }
         Roo.log('render preview....................');
         Roo.log(this.toolTipName);
+        Roo.log(file);
+        Roo.log(file[this.toolTipName]);
         var previewEl = this.managerEl.createChild({
             tag : 'div',
             cls : 'roo-document-manager-preview',
