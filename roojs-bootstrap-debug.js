@@ -24782,6 +24782,8 @@ Roo.apply(Roo.bootstrap.Tooltip, {
         //Roo.log(['enter',dom]);
         var el = Roo.fly(dom);
         if (this.currentEl) {
+            
+            Roo.debug && Roo.log(dom);
             //Roo.log(dom);
             //Roo.log(this.currentEl);
             //Roo.log(this.currentEl.contains(dom));
