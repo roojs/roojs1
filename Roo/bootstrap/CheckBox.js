@@ -450,7 +450,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             Roo.each(this.el.up('form').select('label[for='+this.name+']', true).elements, function(e){
                 e.removeClass([_this.invalidClass, _this.validClass]);
                 e.addClass(_this.validClass);
-                Roo.log('it is running');
             });
             
             return;
