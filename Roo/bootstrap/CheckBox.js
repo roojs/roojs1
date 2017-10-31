@@ -441,7 +441,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             label.markValid();
         }
         
-        Roo.log('quit here');
+        Roo.log('not responding');
         
         if(this.inputType == 'radio'){
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
