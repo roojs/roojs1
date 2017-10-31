@@ -498,6 +498,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                 e.findParent('.form-group', false, true).addClass(_this.invalidClass);
             });
             
+            Roo.log('invaliding testing');
+            
             Roo.each(this.el.up('form').select('label[for='+this.name+']', true).elements, function(e){
                 e.removeClass([_this.invalidClass, _this.validClass]);
                 e.addClass(_this.validClass);
