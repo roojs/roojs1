@@ -447,8 +447,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                 e.findParent('.form-group', false, true).addClass(_this.validClass);
             });
             
-            Roo.log('should be here this time');
-            
             return;
         }
         
