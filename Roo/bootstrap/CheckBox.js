@@ -367,7 +367,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             this.markValid();
             return true;
         }
-        
+        Roo.log('name: '+this.name);
         this.markInvalid();
         return false;
     },
