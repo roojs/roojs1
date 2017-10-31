@@ -447,6 +447,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
                 e.findParent('.form-group', false, true).removeClass([_this.invalidClass, _this.validClass]);
                 e.findParent('.form-group', false, true).addClass(_this.validClass);
+                Roo.log('this shd be runnign');
             });
             
             Roo.each(this.el.up('form').select('label[for='+this.name+']', true).elements, function(e){
