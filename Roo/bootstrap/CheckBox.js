@@ -491,6 +491,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         if(label){
             label.markInvalid();
         }
+        
+        Roo.log('so there is no input type for radio?');
             
         if(this.inputType == 'radio'){
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
