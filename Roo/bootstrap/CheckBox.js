@@ -374,6 +374,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     validateRadio : function()
     {
+        Roo.log('are you running this one??');
+        
         if(this.allowBlank){
             return true;
         }
@@ -492,10 +494,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             label.markInvalid();
         }
         
-        // Roo.log('so there is no input type for radio?');
-        // Roo.log(this.xtype);
-        // Roo.log(this.name);
-            
         if(this.inputType == 'radio'){
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
                 e.findParent('.form-group', false, true).removeClass([_this.invalidClass, _this.validClass]);
