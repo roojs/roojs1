@@ -440,7 +440,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         if(label){
             label.markValid();
         }
-        
+        Roo.log('testign');
         if(this.inputType == 'radio'){
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
                 e.findParent('.form-group', false, true).removeClass([_this.invalidClass, _this.validClass]);
@@ -451,7 +451,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             //     e.removeClass([_this.invalidClass, _this.validClass]);
             //     e.addClass(_this.validClass);
             // });
-            Roo.log('radio entering');
             return;
         }
         
