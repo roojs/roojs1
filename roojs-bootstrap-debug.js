@@ -5994,9 +5994,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         if(!this.store || !this.cm){
             return;
         }
-        if (this.selModel) {
-            this.selModel.initEvents();
-        }
+//        if (this.selModel) {
+//            this.selModel.initEvents();
+//        }
         
         
         //Roo.log('initEvents with ds!!!!');
@@ -19826,6 +19826,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     validate : function()
     {
+        //Roo.log("name: "+this.name+" | inputType: "+this.inputType+" | validateRadio: "+this.validateRadio());
         if(
                 this.disabled || 
                 (this.inputType == 'radio' && this.validateRadio()) ||
@@ -19907,13 +19908,17 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         if(label){
             label.markValid();
         }
-        
+
         if(this.inputType == 'radio'){
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
                 e.findParent('.form-group', false, true).removeClass([_this.invalidClass, _this.validClass]);
                 e.findParent('.form-group', false, true).addClass(_this.validClass);
             });
             
+            // Roo.each(this.el.up('form').select('label[for='+this.name+']', true).elements, function(e){
+            //     e.removeClass([_this.invalidClass, _this.validClass]);
+            //     e.addClass(_this.validClass);
+            // });
             return;
         }
         
@@ -24782,8 +24787,6 @@ Roo.apply(Roo.bootstrap.Tooltip, {
         //Roo.log(['enter',dom]);
         var el = Roo.fly(dom);
         if (this.currentEl) {
-            
-            Roo.debug && Roo.log(dom);
             //Roo.log(dom);
             //Roo.log(this.currentEl);
             //Roo.log(this.currentEl.contains(dom));
@@ -27396,6 +27399,7 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
  * @extends Roo.bootstrap.Component
  * Bootstrap DocumentManager class
  * @cfg {String} paramName default 'imageUpload'
+ * @cfg {String} toolTipName default 'filename'
  * @cfg {String} method default POST
  * @cfg {String} url action url
  * @cfg {Number} boxes number of boxes, 0 is no limit.. default 0
@@ -27506,13 +27510,12 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     method : 'POST',
     url : '',
     paramName : 'imageUpload',
+    toolTipName : 'filename',
     fieldLabel : '',
     labelWidth : 4,
     labelAlign : 'left',
     editable : true,
     delegates : false,
-    
-    
     xhr : false, 
     
     getAutoCreate : function()
@@ -28019,9 +28022,9 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             cn : [
                 {
                     tag : 'div',
-                    tooltip : file.filename,
+                    tooltip : file[this.toolTipName],
                     cls : 'roo-document-manager-thumb',
-                    html : '<img src="' + baseURL +'/Images/Thumb/' + this.thumbSize + '/' + file.id + '/' + file.filename + '">'
+                    html : '<img tooltip="' + file[this.toolTipName] + '" src="' + baseURL +'/Images/Thumb/' + this.thumbSize + '/' + file.id + '/' + file.filename + '">'
                 },
                 {
                     tag : 'button',
