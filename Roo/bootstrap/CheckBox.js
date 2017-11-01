@@ -451,7 +451,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             //     e.removeClass([_this.invalidClass, _this.validClass]);
             //     e.addClass(_this.validClass);
             // });
-            
+            Roo.log('radio entering');
             return;
         }
         
