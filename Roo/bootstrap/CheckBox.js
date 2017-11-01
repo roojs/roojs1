@@ -426,7 +426,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         if(this.allowBlank){
             return;
         }
-        Roo.log('testing');
+        
         var _this = this;
         
         this.fireEvent('valid', this);
