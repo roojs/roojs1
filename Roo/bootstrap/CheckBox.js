@@ -364,6 +364,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                 (this.inputType == 'radio' && this.validateRadio()) ||
                 (this.inputType == 'checkbox' && this.validateCheckbox())
         ){
+            Roo.log('name: '+this.name);
             this.markValid();
             return true;
         }
