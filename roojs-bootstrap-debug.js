@@ -5994,9 +5994,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         if(!this.store || !this.cm){
             return;
         }
-//        if (this.selModel) {
-//            this.selModel.initEvents();
-//        }
+        if (this.selModel) {
+            this.selModel.initEvents();
+        }
         
         
         //Roo.log('initEvents with ds!!!!');
