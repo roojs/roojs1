@@ -177,7 +177,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
     setSrc : function(url)
     {
         this.src =  url;
-        this.el.select('img', true).first().dom.src =  url;
+        this.el.dom.src =  url;
     }
     
     
