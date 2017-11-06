@@ -519,6 +519,15 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     fieldLabel : 'test'
                                 },
                                 {
+                                	   allowBlank : true,                
+                                    xtype: 'SecurePass',
+                                    inputType : 'password',
+                                    xns: Roo.bootstrap,
+                                    name : 'test1',
+                                    imageRoot : rootURL + '/Pman/templates/images',
+                                    fieldLabel : 'test password'
+                                },
+                                {
                                     xtype: 'Button',
                                     xns: Roo.bootstrap,
                                     html : 'Submit'
