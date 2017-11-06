@@ -84,27 +84,22 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input,  {
         this.stripCharsRe = new RegExp('[^'+allowed+']', 'gi');
         
         var keyPress = function(e){
+            var k = e.getKey();
             
+            if(!Roo.isIE && (e.isSpecialKey() || k == e.BACKSPACE || k == e.DELETE)){
+                return;
+            }
+            
+            var c = e.getCharCode();
+            
+            if(allowed.indexOf(String.fromCharCode(c)) === -1){
+                e.stopEvent();
+            }
         };
         
-        this.el.on("keypress", this.onKeyPress, this);
+        this.el.on("keypress", keyPress, this);
     },
     
-    onKeyPress : function(e)
-    {
-        var k = e.getKey();
-            
-        if(!Roo.isIE && (e.isSpecialKey() || k == e.BACKSPACE || k == e.DELETE)){
-            return;
-        }
-
-        var c = e.getCharCode();
-
-        if(allowed.indexOf(String.fromCharCode(c)) === -1){
-            e.stopEvent();
-        }
-    },
-
     // private
     validateValue : function(value){
         if(!Roo.form.NumberField.superclass.validateValue.call(this, value)){
