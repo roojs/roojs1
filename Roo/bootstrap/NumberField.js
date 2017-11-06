@@ -89,10 +89,6 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
             
             var c = e.getCharCode();
             
-            Roo.log(k);
-            Roo.log(e.MINUS);
-            Roo.log(allowed);
-            
             if(k == e.MINUS && allowed.indexOf(String.fromCharCode(c)) === -1){ // coz minus is mask as specialKey...
                 e.stopEvent();
                 return;
