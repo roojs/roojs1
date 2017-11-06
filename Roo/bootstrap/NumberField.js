@@ -25,10 +25,6 @@ Roo.bootstrap.NumberField = function(config){
 Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input,  {
     
     /**
-     * @cfg {String} fieldClass The default CSS class for the field (defaults to "x-form-field x-form-num-field")
-     */
-    fieldClass: "x-form-field x-form-num-field",
-    /**
      * @cfg {Boolean} allowDecimals False to disallow decimal values (defaults to true)
      */
     allowDecimals : true,
