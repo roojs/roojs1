@@ -68,26 +68,41 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input,  {
 
     // private
     initEvents : function(){
-        Roo.form.NumberField.superclass.initEvents.call(this);
+        
+        Roo.bootstrap.NumberField.superclass.initEvents.call(this);
+        
         var allowed = "0123456789";
+        
         if(this.allowDecimals){
             allowed += this.decimalSeparator;
         }
+        
         if(this.allowNegative){
             allowed += "-";
         }
+        
         this.stripCharsRe = new RegExp('[^'+allowed+']', 'gi');
+        
         var keyPress = function(e){
-            var k = e.getKey();
-            if(!Roo.isIE && (e.isSpecialKey() || k == e.BACKSPACE || k == e.DELETE)){
-                return;
-            }
-            var c = e.getCharCode();
-            if(allowed.indexOf(String.fromCharCode(c)) === -1){
-                e.stopEvent();
-            }
+            
         };
-        this.el.on("keypress", keyPress, this);
+        
+        this.el.on("keypress", this.onKeyPress, this);
+    },
+    
+    onKeyPress : function(e)
+    {
+        var k = e.getKey();
+            
+        if(!Roo.isIE && (e.isSpecialKey() || k == e.BACKSPACE || k == e.DELETE)){
+            return;
+        }
+
+        var c = e.getCharCode();
+
+        if(allowed.indexOf(String.fromCharCode(c)) === -1){
+            e.stopEvent();
+        }
     },
 
     // private
