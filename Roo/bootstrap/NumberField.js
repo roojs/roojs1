@@ -22,7 +22,7 @@ Roo.bootstrap.NumberField = function(config){
     Roo.bootstrap.NumberField.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input,  {
+Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
     
     /**
      * @cfg {Boolean} allowDecimals False to disallow decimal values (defaults to true)
@@ -64,8 +64,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input,  {
 
     // private
     initEvents : function()
-    {
-        
+    {   
         Roo.bootstrap.NumberField.superclass.initEvents.call(this);
         
         var allowed = "0123456789";
