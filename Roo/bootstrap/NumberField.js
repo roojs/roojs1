@@ -92,6 +92,9 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
             
             var c = e.getCharCode();
             
+            Roo.log(c);
+            Roo.log(allowed);
+            
             if(allowed.indexOf(String.fromCharCode(c)) === -1){
                 e.stopEvent();
             }
