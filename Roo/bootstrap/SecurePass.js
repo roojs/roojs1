@@ -149,7 +149,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         this._lastPwd = pwd;
     },
     reset: function () {
-        Roo.bootstrapSecurePass.superclass.reset.call(this);
+        Roo.bootstrap.SecurePass.superclass.reset.call(this);
         this._lastPwd = '';
         var pm = this.trigger.child('div/div/div').dom;
         pm.style.width = 0;
@@ -158,7 +158,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
     // private
     validateValue: function (value) {
         
-        if (!Roo.bootstrap.TextField.superclass.validateValue.call(this, value)) {
+        if (!Roo.bootstrap.SecurePass.superclass.validateValue.call(this, value)) {
             return false;
         }
         if (value.length == 0) {
