@@ -524,7 +524,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     inputType : 'password',
                                     xns: Roo.bootstrap,
                                     name : 'test1',
-                                    imageRoot : rootURL + '/Pman/templates/images',
+                                    imageRoot : '/Pman/templates/images',
                                     fieldLabel : 'test password'
                                 },
                                 {
