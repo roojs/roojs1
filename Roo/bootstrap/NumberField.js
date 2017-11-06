@@ -161,6 +161,10 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
 
     beforeBlur : function()
     {
+        if(!this.castInt){
+            return;
+        }
+        
         var v = this.parseValue(this.getRawValue());
         if(v){
             this.setValue(v);
