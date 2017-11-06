@@ -6768,9 +6768,6 @@ Roo.EventObject = function(){
         DOWN : 40,
         /** Key constant 
         * @type Number */
-        MINUS : 45,
-        /** Key constant 
-        * @type Number */
         DELETE : 46,
         /** Key constant 
         * @type Number */
