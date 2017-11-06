@@ -8845,7 +8845,11 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
         }
 
-        if(this.disabled || this.allowBlank){
+        if(this.disabled){
+            return;
+        }
+        
+        if(this.allowBlank && !this.getRawValue().length){
             return;
         }
         
@@ -8887,7 +8891,11 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
         }
 
-        if(this.disabled || this.allowBlank){
+        if(this.disabled){
+            return;
+        }
+        
+        if(this.allowBlank && !this.getRawValue().length){
             return;
         }
         
@@ -31689,6 +31697,10 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
      * if a valid character like '.' or '-' is left in the field with no number (defaults to "{value} is not a valid number")
      */
     nanText : "{0} is not a valid number",
+    /**
+     * @cfg {Boolean} castInt (true|false) cast int if true (defalut true)
+     */
+    castInt : true,
 
     // private
     initEvents : function()
@@ -31785,6 +31797,10 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
 
     beforeBlur : function()
     {
+        if(!this.castInt){
+            return;
+        }
+        
         var v = this.parseValue(this.getRawValue());
         if(v){
             this.setValue(v);
