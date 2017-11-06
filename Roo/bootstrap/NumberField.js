@@ -137,6 +137,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input,  {
 
     fixPrecision : function(value){
         var nan = isNaN(value);
+        
         if(!this.allowDecimals || this.decimalPrecision == -1 || nan || !value){
             return nan ? '' : value;
         }
