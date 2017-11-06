@@ -85,6 +85,8 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         
         var keyPress = function(e){
             
+            Roo.log('run??');
+            
             var k = e.getKey();
             
             var c = e.getCharCode();
