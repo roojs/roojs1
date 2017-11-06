@@ -89,18 +89,17 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
             
             var c = e.getCharCode();
             
-            Roo.log([k, c, String.fromCharCode(c), e.MINUS, allowed, e.isSpecialKey()]);
-            
-            if(k == e.MINUS && allowed.indexOf(String.fromCharCode(c)) === -1){ // coz minus is mask as specialKey...
+            if(
+                    (String.fromCharCode(c) == '.' || String.fromCharCode(c) == '-') &&
+                    allowed.indexOf(String.fromCharCode(c)) === -1
+            ){
                 e.stopEvent();
                 return;
             }
             
-            if(!Roo.isIE && e.isSpecialKey()){
+            if(!Roo.isIE && (e.isSpecialKey() || k == e.BACKSPACE || k == e.DELETE)){
                 return;
             }
-            
-            Roo.log(allowed.indexOf(String.fromCharCode(c)));
             
             if(allowed.indexOf(String.fromCharCode(c)) === -1){
                 e.stopEvent();
