@@ -61,6 +61,10 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
      * if a valid character like '.' or '-' is left in the field with no number (defaults to "{value} is not a valid number")
      */
     nanText : "{0} is not a valid number",
+    /**
+     * @cfg {Boolean} isString (true|false) Not cast int if true (defalut false)
+     */
+    allowNegative : true,
 
     // private
     initEvents : function()
@@ -157,8 +161,6 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
 
     beforeBlur : function()
     {
-        Roo.log('before Blur');
-        
         var v = this.parseValue(this.getRawValue());
         if(v){
             this.setValue(v);
