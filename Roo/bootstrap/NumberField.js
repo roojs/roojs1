@@ -86,6 +86,8 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         var keyPress = function(e){
             var k = e.getKey();
             
+            Roo.log(e.isSpecialKey());
+            
             if(!Roo.isIE && (e.isSpecialKey() || k == e.BACKSPACE || k == e.DELETE)){
                 return;
             }
