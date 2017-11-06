@@ -7,7 +7,7 @@
 
 /**
  * @class Roo.bootstrap.NumberField
- * @extends Roo.bootstrap.Component
+ * @extends Roo.bootstrap.Input
  * Bootstrap NumberField class
  * 
  * 
