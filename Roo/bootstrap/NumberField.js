@@ -127,16 +127,14 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input,  {
     },
 
     getValue : function(){
-        return this.fixPrecision(this.parseValue(Roo.form.NumberField.superclass.getValue.call(this)));
+        return this.fixPrecision(this.parseValue(Roo.bootstrap.NumberField.superclass.getValue.call(this)));
     },
 
-    // private
     parseValue : function(value){
         value = parseFloat(String(value).replace(this.decimalSeparator, "."));
         return isNaN(value) ? '' : value;
     },
 
-    // private
     fixPrecision : function(value){
         var nan = isNaN(value);
         if(!this.allowDecimals || this.decimalPrecision == -1 || nan || !value){
@@ -150,7 +148,6 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input,  {
         Roo.form.NumberField.superclass.setValue.call(this, String(v).replace(".", this.decimalSeparator));
     },
 
-    // private
     decimalPrecisionFcn : function(v){
         return Math.floor(v);
     },
