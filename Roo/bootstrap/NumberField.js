@@ -100,9 +100,9 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input,  {
         this.el.on("keypress", keyPress, this);
     },
     
-    // private
     validateValue : function(value){
-        if(!Roo.form.NumberField.superclass.validateValue.call(this, value)){
+        
+        if(!Roo.bootstrap.NumberField.superclass.validateValue.call(this, value)){
             return false;
         }
         if(value.length < 1){ // if it's blank and textfield didn't flag it then it's valid
