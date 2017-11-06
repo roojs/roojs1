@@ -157,6 +157,8 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
 
     beforeBlur : function()
     {
+        Roo.log('before Blur');
+        
         var v = this.parseValue(this.getRawValue());
         if(v){
             this.setValue(v);
