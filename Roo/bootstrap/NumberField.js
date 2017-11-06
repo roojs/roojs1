@@ -97,7 +97,6 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
             }
             
             if(!Roo.isIE && (e.isSpecialKey() || k == e.BACKSPACE || k == e.DELETE)){
-                Roo.log('in???');
                 return;
             }
             
