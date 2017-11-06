@@ -171,13 +171,14 @@ jtabs.activate(&quot;jtabs-1&quot;);
      * @param {Boolean} closable (optional) True to create a close icon on the tab
      * @return {Roo.TabPanelItem} The created TabPanelItem
      */
-    </span><span class="jsdoc-var">addTab </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">closable</span><span class="jsdoc-syntax">)
+    </span><span class="jsdoc-var">addTab </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">closable</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tpl</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">item </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.panel.TabItem</span><span class="jsdoc-syntax">({
             </span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">closable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">closable
+            </span><span class="jsdoc-var">closable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">closable</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">tpl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">tpl
         </span><span class="jsdoc-syntax">});
         </span><span class="jsdoc-var">this.addTabItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">){
@@ -476,7 +477,7 @@ jtabs.activate(&quot;jtabs-1&quot;);
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">;
     },
     </span><span class="jsdoc-comment">/** @private */
-    </span><span class="jsdoc-var">createStripElements </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">stripEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">closable</span><span class="jsdoc-syntax">)
+    </span><span class="jsdoc-var">createStripElements </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">stripEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">closable</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tpl</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">td </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;li&quot;</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// was td..
         
@@ -501,24 +502,50 @@ jtabs.activate(&quot;jtabs-1&quot;);
         } else {
         */
         // not sure what this is..
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.tabTpl</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-comment">//this.tabTpl = new Roo.Template(
+//            if(!this.tabTpl){
+                //this.tabTpl = new Roo.Template(
                 //   '&lt;a href=&quot;#&quot; class=&quot;x-tabs-right&quot;&gt;&lt;span class=&quot;x-tabs-left&quot;&gt;&lt;em class=&quot;x-tabs-inner&quot;&gt;' +
                 //   '&lt;span unselectable=&quot;on&quot;' + (this.disableTooltips ? '' : ' title=&quot;{text}&quot;') +' class=&quot;x-tabs-text&quot;&gt;{text}&lt;/span&gt;&lt;/em&gt;&lt;/span&gt;&lt;/a&gt;'
                 //);
-                </span><span class="jsdoc-var">this.tabTpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">(
+//                this.tabTpl = new Roo.Template(
+//                   '&lt;a href=&quot;#&quot;&gt;' +
+//                   '&lt;span unselectable=&quot;on&quot;' +
+//                            (this.disableTooltips ? '' : ' title=&quot;{text}&quot;') +
+//                            ' &gt;{text}&lt;/span&gt;&lt;/a&gt;'
+//                );
+//                
+//            }
+
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">template </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tpl </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.tabTpl </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">template</span><span class="jsdoc-syntax">){
+                
+                </span><span class="jsdoc-var">template </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">(
                    </span><span class="jsdoc-string">'&lt;a href=&quot;#&quot;&gt;' </span><span class="jsdoc-syntax">+
                    </span><span class="jsdoc-string">'&lt;span unselectable=&quot;on&quot;' </span><span class="jsdoc-syntax">+
                             (</span><span class="jsdoc-var">this.disableTooltips </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">' title=&quot;{text}&quot;'</span><span class="jsdoc-syntax">) +
-                            </span><span class="jsdoc-string">' &gt;{text}&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;'
+                            </span><span class="jsdoc-string">' &gt;{text}&lt;/span&gt;&lt;/a&gt;'
                 </span><span class="jsdoc-syntax">);
-                
             }
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tabTpl.overwrite</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">, {</span><span class="jsdoc-string">&quot;text&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">});
+            
+            </span><span class="jsdoc-keyword">switch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">template</span><span class="jsdoc-syntax">)) {
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'object' </span><span class="jsdoc-syntax">:
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">:
+                    </span><span class="jsdoc-var">template </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">template</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">default </span><span class="jsdoc-syntax">:
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">template.overwrite</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">, {</span><span class="jsdoc-string">&quot;text&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">});
+            
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">inner </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;span&quot;</span><span class="jsdoc-syntax">)[0];
+            
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{</span><span class="jsdoc-string">&quot;el&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;inner&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">inner</span><span class="jsdoc-syntax">};
-        </span><span class="jsdoc-comment">//}
-    </span><span class="jsdoc-syntax">}
+            
+    }
         
     
 });

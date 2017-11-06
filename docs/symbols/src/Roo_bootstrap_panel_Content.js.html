@@ -27,6 +27,7 @@
  * @cfg {String/Object} params  When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {Boolean} loadOnce      When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {String}    content        Raw content to fill content panel with (uses setContent on construction.)
+ * @cfg {Boolean} badges render the badges
 
  * @constructor
  * Create a new ContentPanel.
@@ -36,6 +37,8 @@
  * @param {String} region (optional) Used by xtype constructors to add to regions. (values center,east,west,south,north)
  */
 </span><span class="jsdoc-var">Roo.bootstrap.panel.Content </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    
+    </span><span class="jsdoc-var">this.tpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.tpl </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
     
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.el</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">content </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.content</span><span class="jsdoc-syntax">;
@@ -73,7 +76,7 @@
         
         </span><span class="jsdoc-var">this.toolbar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">config.toolbar.xns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">config.toolbar.xtype</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">config.toolbar</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-var">this.wrapEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.wrap</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.wrapEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">//this.el.wrap();
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ti </span><span class="jsdoc-syntax">= [];
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.toolbar.items</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">ti </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.toolbar.items </span><span class="jsdoc-syntax">;
@@ -190,13 +193,23 @@
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.panel.Content</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">, {
-    </span><span class="jsdoc-var">tabTip</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">tabTip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    
     </span><span class="jsdoc-var">setRegion </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.region </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.setActiveClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.background</span><span class="jsdoc-syntax">);
+    },
+    
+    
+    </span><span class="jsdoc-var">setActiveClass</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">){
            </span><span class="jsdoc-var">this.el.replaceClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;roo-layout-inactive-content&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;roo-layout-active-content&quot;</span><span class="jsdoc-syntax">);
+           </span><span class="jsdoc-var">this.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'position'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'relative'</span><span class="jsdoc-syntax">);
         }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
            </span><span class="jsdoc-var">this.el.replaceClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;roo-layout-active-content&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;roo-layout-inactive-content&quot;</span><span class="jsdoc-syntax">);
+           </span><span class="jsdoc-var">this.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'position'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'absolute'</span><span class="jsdoc-syntax">);
         } 
     },
     
@@ -208,8 +221,10 @@
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.toolbar</span><span class="jsdoc-syntax">;
     },
     
-    </span><span class="jsdoc-var">setActiveState </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">active</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">setActiveState </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">active</span><span class="jsdoc-syntax">)
+    {
         </span><span class="jsdoc-var">this.active </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">active</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.setActiveClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">active</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">active</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;deactivate&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{

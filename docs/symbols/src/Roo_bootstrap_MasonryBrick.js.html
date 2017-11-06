@@ -66,9 +66,23 @@
      */   
     </span><span class="jsdoc-var">placetitle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} isFitContainer defalut true
+     */   
+    </span><span class="jsdoc-var">isFitContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, 
+    
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} preventDefault defalut false
+     */   
+    </span><span class="jsdoc-var">preventDefault </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, 
+    
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'masonry-brick'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.isFitContainer</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getSplitAutoCreate</span><span class="jsdoc-syntax">();
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'masonry-brick masonry-brick-full'</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.href.length</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' masonry-brick-link'</span><span class="jsdoc-syntax">;
@@ -76,6 +90,10 @@
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bgimage.length</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' masonry-brick-image'</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.html.length</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' enable-mask'</span><span class="jsdoc-syntax">;
         }
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.size</span><span class="jsdoc-syntax">){
@@ -153,6 +171,7 @@
                 </span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.bgimage
             </span><span class="jsdoc-syntax">});
         }
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.videourl.length</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">vurl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.videourl.replace</span><span class="jsdoc-syntax">(/https:\/\/youtu\.be/, </span><span class="jsdoc-string">'https://www.youtube.com/embed/'</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-comment">// youtube support only?
@@ -166,42 +185,146 @@
             
             
         }
+        
+        </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'masonry-brick-mask'
+        </span><span class="jsdoc-syntax">});
+        
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
         
+    },
+    
+    </span><span class="jsdoc-var">getSplitAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'masonry-brick masonry-brick-split'</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.href.length</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' masonry-brick-link'</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bgimage.length</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' masonry-brick-image'</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.size</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' masonry-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.size </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-brick'</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">switch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.placetitle</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'center' </span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' masonry-center-title'</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'bottom' </span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' masonry-bottom-title'</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">default</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.bgimage.length</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' masonry-center-title'</span><span class="jsdoc-syntax">;
+                }
+
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bgimage.length</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' masonry-bottom-title'</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">this.href.length</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'a' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'masonry-brick-split-head'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                        {
+                            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'masonry-brick-paragraph'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: []
+                        }
+                    ]
+                },
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'masonry-brick-split-body'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: []
+                }
+            ]
+        };
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.href.length</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.href </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.href</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.title.length</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cn.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'h4'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'masonry-brick-title'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.title
+            </span><span class="jsdoc-syntax">});
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.html.length</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.cn.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'p'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'masonry-brick-text'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html
+            </span><span class="jsdoc-syntax">});
+        }
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bgimage.length</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cn.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'masonry-brick-image-view'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.bgimage
+            </span><span class="jsdoc-syntax">});
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.videourl.length</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">vurl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.videourl.replace</span><span class="jsdoc-syntax">(/https:\/\/youtu\.be/, </span><span class="jsdoc-string">'https://www.youtube.com/embed/'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-comment">// youtube support only?
+            </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cn.cn.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'iframe'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'masonry-brick-image-view'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">vurl</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">frameborder </span><span class="jsdoc-syntax">: 0,
+                </span><span class="jsdoc-var">allowfullscreen </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+            </span><span class="jsdoc-syntax">});
+        }
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
     },
     
     </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() 
     {
         </span><span class="jsdoc-keyword">switch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.size</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'xs' </span><span class="jsdoc-syntax">:
-</span><span class="jsdoc-comment">//                this.intSize = 1;
                 </span><span class="jsdoc-var">this.x </span><span class="jsdoc-syntax">= 1;
                 </span><span class="jsdoc-var">this.y </span><span class="jsdoc-syntax">= 1;
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'sm' </span><span class="jsdoc-syntax">:
-</span><span class="jsdoc-comment">//                this.intSize = 2;
                 </span><span class="jsdoc-var">this.x </span><span class="jsdoc-syntax">= 2;
                 </span><span class="jsdoc-var">this.y </span><span class="jsdoc-syntax">= 2;
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'md' </span><span class="jsdoc-syntax">:
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'md-left' </span><span class="jsdoc-syntax">:
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'md-right' </span><span class="jsdoc-syntax">:
-</span><span class="jsdoc-comment">//                this.intSize = 3;
                 </span><span class="jsdoc-var">this.x </span><span class="jsdoc-syntax">= 3;
                 </span><span class="jsdoc-var">this.y </span><span class="jsdoc-syntax">= 3;
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'tall' </span><span class="jsdoc-syntax">:
-</span><span class="jsdoc-comment">//                this.intSize = 3;
                 </span><span class="jsdoc-var">this.x </span><span class="jsdoc-syntax">= 2;
                 </span><span class="jsdoc-var">this.y </span><span class="jsdoc-syntax">= 3;
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'wide' </span><span class="jsdoc-syntax">:
-</span><span class="jsdoc-comment">//                this.intSize = 3;
                 </span><span class="jsdoc-var">this.x </span><span class="jsdoc-syntax">= 3;
                 </span><span class="jsdoc-var">this.y </span><span class="jsdoc-syntax">= 2;
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'wide-thin' </span><span class="jsdoc-syntax">:
-</span><span class="jsdoc-comment">//                this.intSize = 3;
                 </span><span class="jsdoc-var">this.x </span><span class="jsdoc-syntax">= 3;
                 </span><span class="jsdoc-var">this.y </span><span class="jsdoc-syntax">= 1;
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
@@ -209,8 +332,6 @@
             </span><span class="jsdoc-keyword">default </span><span class="jsdoc-syntax">:
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
         }
-        
-        
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isTouch</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'touchstart'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTouchStart</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
@@ -220,6 +341,7 @@
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseenter'  </span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.enter</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseleave'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.leave</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.bricks</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'object' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.bricks </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) {
@@ -230,24 +352,30 @@
     
     </span><span class="jsdoc-var">onClick</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">Roo.isTouch</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-        }
-        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">time </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.endTimer </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.startTimer</span><span class="jsdoc-syntax">;
         
-        </span><span class="jsdoc-comment">//alert(time);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isTouch</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">time </span><span class="jsdoc-syntax">&gt; 1000){
+                </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+        }
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">time </span><span class="jsdoc-syntax">&lt; 1000){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.preventDefault</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
         </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     },
     
     </span><span class="jsdoc-var">enter</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.isFitContainer</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bgimage.length </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.html.length</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.masonry-brick-paragraph'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setOpacity</span><span class="jsdoc-syntax">(0.9, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
@@ -257,6 +385,10 @@
     </span><span class="jsdoc-var">leave</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.isFitContainer</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bgimage.length </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.html.length</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.masonry-brick-paragraph'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setOpacity</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
@@ -268,6 +400,10 @@
 </span><span class="jsdoc-comment">//        e.preventDefault();
         
         </span><span class="jsdoc-var">this.touchmoved </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.isFitContainer</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.bgimage.length </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.html.length</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
@@ -308,6 +444,10 @@
                 </span><span class="jsdoc-var">window.location.href </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.href</span><span class="jsdoc-syntax">;
             }
             
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.isFitContainer</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         

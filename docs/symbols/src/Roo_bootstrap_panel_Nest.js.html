@@ -62,6 +62,8 @@
     
     </span><span class="jsdoc-var">setActiveState </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">active</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.active </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">active</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.setActiveClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">active</span><span class="jsdoc-syntax">);
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">active</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;deactivate&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;

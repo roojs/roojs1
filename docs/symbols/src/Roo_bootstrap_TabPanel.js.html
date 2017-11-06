@@ -77,6 +77,7 @@
     </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">();
+        
         </span><span class="jsdoc-var">this.navId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.navId </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">p.navId</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.navId</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
@@ -92,25 +93,22 @@
             }
         }
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.href.length</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isTouch</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;touchstart&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTouchStart</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;touchmove&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTouchMove</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;touchend&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTouchEnd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
         
     },
     
     </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">)
     {
-       </span><span class="jsdoc-comment">// Roo.log(&quot;Call onRender: &quot; + this.xtype);
-        
         </span><span class="jsdoc-var">Roo.bootstrap.TabPanel.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
-        
-        
-        
-        
-        
     },
     
-    </span><span class="jsdoc-var">setActive</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">)
+    </span><span class="jsdoc-var">setActive </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;panel - set active &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.tabId </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;=&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">);
         
@@ -125,11 +123,57 @@
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'changed'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">);
     },
     
-    </span><span class="jsdoc-var">onClick</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    </span><span class="jsdoc-var">onClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
         
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.href.length</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
         </span><span class="jsdoc-var">window.location.href </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.href</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">startX </span><span class="jsdoc-syntax">: 0,
+    </span><span class="jsdoc-var">startY </span><span class="jsdoc-syntax">: 0,
+    </span><span class="jsdoc-var">endX </span><span class="jsdoc-syntax">: 0,
+    </span><span class="jsdoc-var">endY </span><span class="jsdoc-syntax">: 0,
+    </span><span class="jsdoc-var">swiping </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">onTouchStart </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.swiping </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.startX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.browserEvent.touches</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.clientX</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.startY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.browserEvent.touches</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.clientY</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">onTouchMove </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.swiping </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.endX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.browserEvent.touches</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.clientX</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.endY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.browserEvent.touches</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.clientY</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">onTouchEnd </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.swiping</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tabGroup </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.endX </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.startX</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// swiping right
+            </span><span class="jsdoc-var">tabGroup.showPanelPrev</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.startX </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.endX</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// swiping left
+            </span><span class="jsdoc-var">tabGroup.showPanelNext</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
     }
     
     

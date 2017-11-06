@@ -203,7 +203,7 @@
                          </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
                     }
                          
-                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Body</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Body</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">) {
                         </span><span class="jsdoc-var">this.parent </span><span class="jsdoc-syntax">= { </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">new  </span><span class="jsdoc-var">Roo.bootstrap.Body</span><span class="jsdoc-syntax">() };
                         </span><span class="jsdoc-var">Roo.debug </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;setting el to doc body&quot;</span><span class="jsdoc-syntax">);
                          
@@ -216,6 +216,10 @@
                     </span><span class="jsdoc-comment">// fall through
                 </span><span class="jsdoc-keyword">default</span><span class="jsdoc-syntax">:
                     </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ename</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'|xns'</span><span class="jsdoc-syntax">] == </span><span class="jsdoc-string">'Roo.bootstrap'</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">this.parent </span><span class="jsdoc-syntax">= { </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">};
+                    }
+                    
                     </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             }
                 
@@ -260,15 +264,15 @@
                         </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">,
                     
                         </span><span class="jsdoc-var">center</span><span class="jsdoc-syntax">: {
-                             </span><span class="jsdoc-var">titlebar</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-                             </span><span class="jsdoc-var">autoScroll</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-                             </span><span class="jsdoc-var">closeOnTab</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-                             </span><span class="jsdoc-var">tabPosition</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">,
-                              </span><span class="jsdoc-comment">//resizeTabs: true,
-                             </span><span class="jsdoc-var">alwaysShowTabs</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-                             </span><span class="jsdoc-var">hideTabs</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-                             </span><span class="jsdoc-var">minTabWidth</span><span class="jsdoc-syntax">: 140,
-                             </span><span class="jsdoc-var">overflow</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'visible'
+                            </span><span class="jsdoc-var">titlebar</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">autoScroll</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">closeOnTab</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">tabPosition</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">,
+                             </span><span class="jsdoc-comment">//resizeTabs: true,
+                            </span><span class="jsdoc-var">alwaysShowTabs</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">hideTabs</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">minTabWidth</span><span class="jsdoc-syntax">: 140,
+                            </span><span class="jsdoc-var">overflow</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'visible'
                          </span><span class="jsdoc-syntax">}
                      })
                 };
@@ -277,18 +281,17 @@
                 </span><span class="jsdoc-comment">// it's a top level one..
                 </span><span class="jsdoc-var">this.parent </span><span class="jsdoc-syntax">=  {
                     </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.BorderLayout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">, {
-                    
-                         </span><span class="jsdoc-var">center</span><span class="jsdoc-syntax">: {
-                             </span><span class="jsdoc-var">titlebar</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-                             </span><span class="jsdoc-var">autoScroll</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-                             </span><span class="jsdoc-var">closeOnTab</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-                             </span><span class="jsdoc-var">tabPosition</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">,
-                              </span><span class="jsdoc-comment">//resizeTabs: true,
-                             </span><span class="jsdoc-var">alwaysShowTabs</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">hp</span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-                             </span><span class="jsdoc-var">hideTabs</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">hp </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-                             </span><span class="jsdoc-var">minTabWidth</span><span class="jsdoc-syntax">: 140
+                        </span><span class="jsdoc-var">center</span><span class="jsdoc-syntax">: {
+                            </span><span class="jsdoc-var">titlebar</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">autoScroll</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">closeOnTab</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">tabPosition</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">,
+                             </span><span class="jsdoc-comment">//resizeTabs: true,
+                            </span><span class="jsdoc-var">alwaysShowTabs</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">hp</span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">hideTabs</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">hp </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">minTabWidth</span><span class="jsdoc-syntax">: 140
                          }
-                     })
+                    })
                 };
             }
         }
@@ -304,6 +307,9 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">is_body </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parent.el </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-comment">// bootstrap... - body..
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">tree.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">;
+            }
             </span><span class="jsdoc-var">this.parent.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">is_body </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
         }

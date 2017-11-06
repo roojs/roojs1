@@ -2,7 +2,7 @@
  * - LGPL
  *
  * form
- * 
+ *
  */
 
 /**
@@ -14,7 +14,7 @@
  * @cfg {String} align left  | right - for navbars
  * @cfg {Boolean} loadMask load mask when submit (default true)
 
- * 
+ *
  * @constructor
  * Create a new Form
  * @param {Object} config The config object
@@ -53,11 +53,11 @@
          */
         </span><span class="jsdoc-var">actioncomplete </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
     </span><span class="jsdoc-syntax">});
-    
+
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Form</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
-      
+
      </span><span class="jsdoc-comment">/**
      * @cfg {String} method
      * The request method to use (GET or POST) for form actions if one isn't supplied in the action options.
@@ -71,12 +71,12 @@
      * @cfg {Boolean} fileUpload
      * Set to true if this form is a file upload.
      */
-     
+
     /**
      * @cfg {Object} baseParams
      * Parameters to pass with all requests. e.g. baseParams: {id: '123', foo: 'bar'}.
      */
-      
+
     /**
      * @cfg {Number} timeout Timeout for form actions in seconds (default is 30 seconds).
      */
@@ -88,18 +88,18 @@
 
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">activeAction </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
- 
+
     </span><span class="jsdoc-comment">/**
      * By default wait messages are displayed with Roo.MessageBox.wait. You can target a specific
      * element by passing it or its id or mask the form itself by passing in true.
      * @type Mixed
      */
     </span><span class="jsdoc-var">waitMsgTarget </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    
+
     </span><span class="jsdoc-var">loadMask </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-    
+
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-        
+
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'form'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">method </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.method </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'POST'</span><span class="jsdoc-syntax">,
@@ -108,14 +108,14 @@
         </span><span class="jsdoc-syntax">};
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.xtype.match</span><span class="jsdoc-syntax">(/^Nav/)) {
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'navbar-form navbar-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.align</span><span class="jsdoc-syntax">;
-            
+
         }
-        
+
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelAlign </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'left' </span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' form-horizontal'</span><span class="jsdoc-syntax">;
         }
-        
-        
+
+
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
     },
     </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -128,23 +128,23 @@
             }
             </span><span class="jsdoc-comment">// we might need to allow it for textareas.. and some other items.
             // check e.getTarget().
-            
+
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.nodeName.toLowerCase</span><span class="jsdoc-syntax">() === </span><span class="jsdoc-string">'textarea'</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
             }
-        
+
             </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;keypress blocked&quot;</span><span class="jsdoc-syntax">);
-            
+
             </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         });
-        
+
     },
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">onSubmit </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
     },
-    
+
      </span><span class="jsdoc-comment">/**
      * Returns true if client-side validation on the form is successful.
      * @return Boolean
@@ -155,7 +155,7 @@
         </span><span class="jsdoc-var">items.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">){
            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">f.validate</span><span class="jsdoc-syntax">()){
                </span><span class="jsdoc-var">valid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
-               
+
            }
         });
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">valid</span><span class="jsdoc-syntax">;
@@ -203,16 +203,16 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         }
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
     },
-    
+
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">beforeAction </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">action</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">action.options</span><span class="jsdoc-syntax">;
-        
+
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loadMask</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.el.mask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.waitMsg </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">&quot;Sending&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'x-mask-loading'</span><span class="jsdoc-syntax">);
         }
         </span><span class="jsdoc-comment">// not really supported yet.. ??
-        
+
         //if(this.waitMsgTarget === true){
         //  this.el.mask(o.waitMsg || &quot;Sending&quot;, 'x-mask-loading');
         //}else if(this.waitMsgTarget){
@@ -221,14 +221,14 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         //}else {
         //    Roo.MessageBox.wait(o.waitMsg || &quot;Sending&quot;, o.waitTitle || this.waitTitle || 'Please Wait...');
        // }
-         
+
     </span><span class="jsdoc-syntax">},
 
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">afterAction </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">action</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">success</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.activeAction </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">action.options</span><span class="jsdoc-syntax">;
-        
+
         </span><span class="jsdoc-comment">//if(this.waitMsgTarget === true){
             </span><span class="jsdoc-var">this.el.unmask</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-comment">//}else if(this.waitMsgTarget){
@@ -237,16 +237,16 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         //    Roo.MessageBox.updateProgress(1);
         //    Roo.MessageBox.hide();
        // }
-        // 
+        //
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">success</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.reset</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">this.reset</span><span class="jsdoc-syntax">();
             }
             </span><span class="jsdoc-var">Roo.callback</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.success</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o.scope</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">action</span><span class="jsdoc-syntax">]);
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'actioncomplete'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">action</span><span class="jsdoc-syntax">);
-            
+
         }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-            
+
             </span><span class="jsdoc-comment">// failure condition..
             // we have a scenario where updates need confirming.
             // eg. if a locking scenario exists..
@@ -259,7 +259,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;not supported yet&quot;</span><span class="jsdoc-syntax">);
                  </span><span class="jsdoc-comment">/*
-                
+
                 Roo.MessageBox.confirm(
                     &quot;Change requires confirmation&quot;,
                     action.result.errorMsg,
@@ -269,14 +269,14 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                         }
                         _t.doAction('submit', { params :  { _submit_confirmed : 1 } }  );
                     }
-                    
+
                 );
                 */
-                
-                
+
+
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
-            
+
             </span><span class="jsdoc-var">Roo.callback</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.failure</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o.scope</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">action</span><span class="jsdoc-syntax">]);
             </span><span class="jsdoc-comment">// show an error message if no failed handler is set..
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.hasListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'actionfailed'</span><span class="jsdoc-syntax">)) {
@@ -289,10 +289,10 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 );
                 */
             </span><span class="jsdoc-syntax">}
-            
+
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'actionfailed'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">action</span><span class="jsdoc-syntax">);
         }
-        
+
     },
     </span><span class="jsdoc-comment">/**
      * Find a Roo.form.Field in this form by id, dataIndex, name or hiddenName
@@ -338,7 +338,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         </span><span class="jsdoc-comment">//Roo.each(this.childForms || [], function (f) {
         //    f.markInvalid(errors);
         //});
-        
+
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
     },
 
@@ -363,11 +363,11 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">field</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">] != </span><span class="jsdoc-string">'function' </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">field </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.findField</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">))){
-                    
-                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">field.setFromData </span><span class="jsdoc-syntax">&amp;&amp; 
-                        </span><span class="jsdoc-var">field.valueField </span><span class="jsdoc-syntax">&amp;&amp; 
+
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">field.setFromData </span><span class="jsdoc-syntax">&amp;&amp;
+                        </span><span class="jsdoc-var">field.valueField </span><span class="jsdoc-syntax">&amp;&amp;
                         </span><span class="jsdoc-var">field.displayField </span><span class="jsdoc-syntax">&amp;&amp;
-                        </span><span class="jsdoc-comment">// combos' with local stores can 
+                        </span><span class="jsdoc-comment">// combos' with local stores can
                         // be queried via setValue()
                         // to set their value..
                         </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">field.store </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">field.store.isLocal</span><span class="jsdoc-syntax">)
@@ -377,23 +377,23 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                         </span><span class="jsdoc-var">sd</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">field.valueField</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">field.hiddenName</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">field.hiddenName</span><span class="jsdoc-syntax">];
                         </span><span class="jsdoc-var">sd</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">field.displayField</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">field.name</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">field.name</span><span class="jsdoc-syntax">];
                         </span><span class="jsdoc-var">field.setFromData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sd</span><span class="jsdoc-syntax">);
-                        
+
                     } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
                         </span><span class="jsdoc-var">field.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">]);
                     }
-                    
-                    
+
+
                     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.trackResetOnLoad</span><span class="jsdoc-syntax">){
                         </span><span class="jsdoc-var">field.originalValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">field.getValue</span><span class="jsdoc-syntax">();
                     }
                 }
             }
         }
-         
+
         </span><span class="jsdoc-comment">//Roo.each(this.childForms || [], function (f) {
         //    f.setValues(values);
         //});
-                
+
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
     },
 
@@ -410,18 +410,18 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         //        this.setValues(f.getValues());
         //    }, this);
         //}
-        
-        
-        
+
+
+
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Ajax.serializeForm</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">asString </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">fs</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.urlDecode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fs</span><span class="jsdoc-syntax">);
     },
-    
+
     </span><span class="jsdoc-comment">/**
-     * Returns the fields in this form as an object with key/value pairs. 
+     * Returns the fields in this form as an object with key/value pairs.
      * This differs from getValues as it calls getValue on each child item, rather than using dom data.
      * @return {Object}
      */
@@ -438,15 +438,15 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">f.getName</span><span class="jsdoc-syntax">()]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
                     </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">f.getName</span><span class="jsdoc-syntax">()] = </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// empty..
                 </span><span class="jsdoc-syntax">}
-                
+
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">f.el.dom.checked</span><span class="jsdoc-syntax">) {
                     </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-                    
+
                 }
                 </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">f.el.dom.value</span><span class="jsdoc-syntax">;
-                
+
             }
-            
+
             </span><span class="jsdoc-comment">// not sure if this supported any more..
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'object'</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">f.getRawValue</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">f.getRawValue</span><span class="jsdoc-syntax">() ; </span><span class="jsdoc-comment">// dates..
@@ -457,7 +457,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             }
             </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">f.getName</span><span class="jsdoc-syntax">()] = </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
         });
-        
+
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
     },
 
@@ -467,13 +467,13 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
      */
     </span><span class="jsdoc-var">clearInvalid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getItems</span><span class="jsdoc-syntax">();
-        
+
         </span><span class="jsdoc-var">items.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">){
            </span><span class="jsdoc-var">f.clearInvalid</span><span class="jsdoc-syntax">();
         });
-        
-        
-        
+
+
+
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
     },
 
@@ -486,12 +486,12 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         </span><span class="jsdoc-var">items.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">f.reset</span><span class="jsdoc-syntax">();
         });
-        
+
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.childForms </span><span class="jsdoc-syntax">|| [], </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">f.reset</span><span class="jsdoc-syntax">();
         });
-       
-        
+
+
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
     },
     </span><span class="jsdoc-var">getItems </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -509,19 +509,17 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.items</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">iter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
             });
-            
-            
+
+
         };
-        
+
         </span><span class="jsdoc-var">iter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
-        
-        
-        
-        
-    }
-    
-});
 
- 
+
+
+
+    }
+
+});
 </span></code></body></html>

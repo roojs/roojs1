@@ -470,11 +470,12 @@
 
     </span><span class="jsdoc-var">initPanelAsTab </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ti </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tabs.addTab</span><span class="jsdoc-syntax">(
-                    </span><span class="jsdoc-var">panel.getEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.id</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">panel.getTitle</span><span class="jsdoc-syntax">(),
-                    </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">this.config.closeOnTab </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">panel.isClosable</span><span class="jsdoc-syntax">()
-            );
+            </span><span class="jsdoc-var">panel.getEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.id</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">panel.getTitle</span><span class="jsdoc-syntax">(),
+            </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">this.config.closeOnTab </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">panel.isClosable</span><span class="jsdoc-syntax">(),
+            </span><span class="jsdoc-var">panel.tpl
+        </span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel.tabTip </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">ti.setTooltip</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel.tabTip</span><span class="jsdoc-syntax">);
         }
@@ -488,6 +489,9 @@
                 </span><span class="jsdoc-var">this.remove</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">);
             }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
+        
+        </span><span class="jsdoc-var">panel.tabItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ti</span><span class="jsdoc-syntax">;
+        
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ti</span><span class="jsdoc-syntax">;
     },
 

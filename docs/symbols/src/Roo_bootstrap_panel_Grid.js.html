@@ -63,9 +63,8 @@
         </span><span class="jsdoc-comment">// render grid on panel activation (if panel background)
         </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'activate'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">gp</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">gp.grid.rendered</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">gp.grid.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">gp.grid.getGridEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.replaceClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;roo-layout-inactive-content&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;roo-layout-component-panel&quot;</span><span class="jsdoc-syntax">);               
-
+                </span><span class="jsdoc-var">gp.grid.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.wrapper</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">gp.grid.getGridEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.replaceClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;roo-layout-inactive-content&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;roo-layout-component-panel&quot;</span><span class="jsdoc-syntax">);   
             }
         });
             

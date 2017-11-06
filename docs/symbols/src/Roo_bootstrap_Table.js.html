@@ -330,8 +330,8 @@
             </span><span class="jsdoc-var">e.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this.sort</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">);
         });
         
-        </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;dblclick&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onDblClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.mainBody.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.mainBody.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;dblclick&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onDblClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-comment">// why is this done????? = it breaks dialogs??
         //this.parent().el.setStyle('position', 'relative');
@@ -340,7 +340,7 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.footer</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.footer.parentId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">this.footer.onRender</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tfoot tr td'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);        
-        }
+        } 
         
         </span><span class="jsdoc-var">this.maskEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.LoadMask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">, { </span><span class="jsdoc-var">store </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.ds</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">msgCls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-el-mask-msg' </span><span class="jsdoc-syntax">});
         
@@ -1060,13 +1060,15 @@
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">thd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getGridEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'thead'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tbd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getGridEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tbody'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tfd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getGridEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tfoot'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ctr.getWidth</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tbd</span><span class="jsdoc-syntax">) {
             
-            </span><span class="jsdoc-var">tbd.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ctr.getWidth</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">ctr.getHeight</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">thd.getHeight</span><span class="jsdoc-syntax">());
+            </span><span class="jsdoc-var">tbd.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ctr.getWidth</span><span class="jsdoc-syntax">(),
+                        </span><span class="jsdoc-var">ctr.getHeight</span><span class="jsdoc-syntax">() - (</span><span class="jsdoc-var">thd.getHeight</span><span class="jsdoc-syntax">() + (</span><span class="jsdoc-var">tfd </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">tfd.getHeight</span><span class="jsdoc-syntax">() : 0))
+            );
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">barsize </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">tbd.dom.offsetWidth </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">tbd.dom.clientWidth</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">cw </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">barsize</span><span class="jsdoc-syntax">;
         }

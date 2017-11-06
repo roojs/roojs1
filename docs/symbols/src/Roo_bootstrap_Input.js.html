@@ -895,6 +895,9 @@
     </span><span class="jsdoc-var">SafariOnKeyDown </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-comment">// this is a workaround for a password hang bug on chrome/ webkit.
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.type </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'password'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">isSelectAll </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         
@@ -907,7 +910,7 @@
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isSelectAll  </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">event.getCharCode</span><span class="jsdoc-syntax">() &gt; 31){ </span><span class="jsdoc-comment">// not backspace and delete key
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isSelectAll  </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">event.getCharCode</span><span class="jsdoc-syntax">() &gt; 31 &amp;&amp; !</span><span class="jsdoc-var">event.ctrlKey</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// not backspace and delete key (or ctrl-v)
             
             </span><span class="jsdoc-var">event.preventDefault</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-comment">// this is very hacky as keydown always get's upper case.

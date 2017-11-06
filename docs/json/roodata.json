@@ -14808,6 +14808,7 @@
      "desc": "default",
      "memberOf": "",
      "optvals": [
+      "default",
       "primary",
       "success",
       "info",
@@ -17651,6 +17652,16 @@
      ]
     },
     {
+     "name": "useNativeIOS",
+     "type": "Boolean",
+     "desc": "render it as classic select for ios, not support dynamic load data (default false)",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
+    },
+    {
      "name": "triggerClass",
      "type": "String",
      "desc": "An additional CSS class used to style the trigger button.  The trigger will always get the\nclass 'x-form-trigger' by default and triggerClass will be <b>appended</b> if specified.",
@@ -20472,6 +20483,12 @@
      "memberOf": ""
     },
     {
+     "name": "toolTipName",
+     "type": "String",
+     "desc": "default 'filename'",
+     "memberOf": ""
+    },
+    {
      "name": "method",
      "type": "String",
      "desc": "default POST",
@@ -20617,6 +20634,12 @@
     }
    ],
    "events": [
+    {
+     "name": "afterupload",
+     "sig": "function (_self, xhr)\n{\n\n}",
+     "type": "function",
+     "desc": "Fire when xhr load exception"
+    },
     {
      "name": "beforedestroy",
      "sig": "function (_self)\n{\n\n}",
@@ -20900,6 +20923,26 @@
   "Roo.bootstrap.DocumentViewer": {
    "props": [
     {
+     "name": "showDownload",
+     "type": "Boolean",
+     "desc": "show download button (default true)",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
+    },
+    {
+     "name": "showTrash",
+     "type": "Boolean",
+     "desc": "show trash button (default true)",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
@@ -21030,6 +21073,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires after the component is disabled."
+    },
+    {
+     "name": "download",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fire after download button"
     },
     {
      "name": "enable",
@@ -22261,7 +22310,7 @@
      "name": "getFieldValues",
      "sig": "()",
      "type": "function",
-     "desc": "Returns the fields in this form as an object with key/value pairs. \nThis differs from getValues as it calls getValue on each child item, rather than using dom data."
+     "desc": "Returns the fields in this form as an object with key/value pairs.\nThis differs from getValues as it calls getValue on each child item, rather than using dom data."
     },
     {
      "name": "getId",
@@ -26534,6 +26583,18 @@
      "memberOf": ""
     },
     {
+     "name": "isFitContainer",
+     "type": "Boolean",
+     "desc": "defalut true",
+     "memberOf": ""
+    },
+    {
+     "name": "preventDefault",
+     "type": "Boolean",
+     "desc": "defalut false",
+     "memberOf": ""
+    },
+    {
      "name": "style",
      "type": "String",
      "desc": "any extra css",
@@ -27233,7 +27294,7 @@
     {
      "name": "preventDefault",
      "type": "Boolean",
-     "desc": "do not trigger A href on clicks.",
+     "desc": "do not trigger A href on clicks (default false).",
      "memberOf": ""
     },
     {
@@ -32724,6 +32785,366 @@
     }
    ]
   },
+  "Roo.bootstrap.NumberField": {
+   "props": [
+    {
+     "name": "allowDecimals",
+     "type": "Boolean",
+     "desc": "False to disallow decimal values (defaults to true)",
+     "memberOf": ""
+    },
+    {
+     "name": "decimalSeparator",
+     "type": "String",
+     "desc": "Character(s) to allow as the decimal separator (defaults to '.')",
+     "memberOf": ""
+    },
+    {
+     "name": "decimalPrecision",
+     "type": "Number",
+     "desc": "The maximum precision to display after the decimal separator (defaults to 2)",
+     "memberOf": ""
+    },
+    {
+     "name": "allowNegative",
+     "type": "Boolean",
+     "desc": "False to prevent entering a negative sign (defaults to true)",
+     "memberOf": ""
+    },
+    {
+     "name": "minValue",
+     "type": "Number",
+     "desc": "The minimum allowed value (defaults to Number.NEGATIVE_INFINITY)",
+     "memberOf": ""
+    },
+    {
+     "name": "maxValue",
+     "type": "Number",
+     "desc": "The maximum allowed value (defaults to Number.MAX_VALUE)",
+     "memberOf": ""
+    },
+    {
+     "name": "minText",
+     "type": "String",
+     "desc": "Error text to display if the minimum value validation fails (defaults to \"The minimum value for this field is {minValue}\")",
+     "memberOf": ""
+    },
+    {
+     "name": "maxText",
+     "type": "String",
+     "desc": "Error text to display if the maximum value validation fails (defaults to \"The maximum value for this field is {maxValue}\")",
+     "memberOf": ""
+    },
+    {
+     "name": "nanText",
+     "type": "String",
+     "desc": "Error text to display if the value is not a valid number.  For example, this can happen\nif a valid character like '.' or '-' is left in the field with no number (defaults to \"{value} is not a valid number\")",
+     "memberOf": ""
+    },
+    {
+     "name": "cls",
+     "type": "String",
+     "desc": "css class",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "style",
+     "type": "String",
+     "desc": "any extra css",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "xattr",
+     "type": "Object",
+     "desc": "extra attributes to add to 'element' (used by builder to store stuff.)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "dataId",
+     "type": "string",
+     "desc": "cutomer id",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "name",
+     "type": "string",
+     "desc": "Specifies name attribute",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "disableClass",
+     "type": "String",
+     "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
+     "memberOf": "Roo.Component"
+    },
+    {
+     "name": "allowDomMove",
+     "type": "Boolean",
+     "desc": "Whether the component can move the Dom node when rendering (defaults to true).",
+     "memberOf": "Roo.Component"
+    },
+    {
+     "name": "hideMode",
+     "type": "String",
+     "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
+    },
+    {
+     "name": "actionMode",
+     "type": "String",
+     "desc": "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el'",
+     "memberOf": "Roo.Component"
+    },
+    {
+     "name": "listeners",
+     "type": "Object",
+     "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+     "memberOf": "Roo.util.Observable"
+    }
+   ],
+   "events": [
+    {
+     "name": "beforedestroy",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires before the component is destroyed. Return false to stop the destroy."
+    },
+    {
+     "name": "beforehide",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires before the component is hidden. Return false to stop the hide."
+    },
+    {
+     "name": "beforerender",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires before the component is rendered. Return false to stop the render."
+    },
+    {
+     "name": "beforeshow",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
+     "name": "destroy",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the component is destroyed."
+    },
+    {
+     "name": "disable",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the component is disabled."
+    },
+    {
+     "name": "enable",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the component is enabled."
+    },
+    {
+     "name": "hide",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the component is hidden."
+    },
+    {
+     "name": "render",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the component is rendered."
+    },
+    {
+     "name": "show",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the component is shown."
+    }
+   ],
+   "methods": [
+    {
+     "name": "addEvents",
+     "sig": "(Object object)",
+     "type": "function",
+     "desc": "Used to define events on this Observable"
+    },
+    {
+     "name": "addListener",
+     "sig": "(String eventName, Function handler, Object scope, Object options)",
+     "type": "function",
+     "desc": "Appends an event handler to this component"
+    },
+    {
+     "name": "capture",
+     "sig": "(Observable o, Function fn, Object scope)",
+     "type": "function",
+     "desc": "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire."
+    },
+    {
+     "name": "destroy",
+     "sig": "()",
+     "type": "function",
+     "desc": "Destroys this component by purging any event listeners, removing the component's element from the DOM,\nremoving the component from its {@link Roo.Container} (if applicable) and unregistering it from {@link Roo.ComponentMgr}."
+    },
+    {
+     "name": "disable",
+     "sig": "()",
+     "type": "function",
+     "desc": "Disable this component."
+    },
+    {
+     "name": "enable",
+     "sig": "()",
+     "type": "function",
+     "desc": "Enable this component."
+    },
+    {
+     "name": "fireEvent",
+     "sig": "(String eventName, Object... args)",
+     "type": "function",
+     "desc": "Fires the specified event with the passed parameters (minus the event name)."
+    },
+    {
+     "name": "focus",
+     "sig": "(Boolean selectText)",
+     "type": "function",
+     "desc": "Try to focus this component."
+    },
+    {
+     "name": "getChildContainer",
+     "sig": "()",
+     "type": "function",
+     "desc": "Fetch the element to add children to"
+    },
+    {
+     "name": "getEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns the underlying {@link Roo.Element}."
+    },
+    {
+     "name": "getId",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns the id of this component."
+    },
+    {
+     "name": "hasListener",
+     "sig": "(String eventName)",
+     "type": "function",
+     "desc": "Checks to see if this object has any listeners for a specified event"
+    },
+    {
+     "name": "hide",
+     "sig": "()",
+     "type": "function",
+     "desc": "Hide a component - adds 'hidden' class"
+    },
+    {
+     "name": "initEvents",
+     "sig": "()",
+     "type": "function",
+     "desc": "Initialize Events for the element"
+    },
+    {
+     "name": "isVisible",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns true if this component is visible."
+    },
+    {
+     "name": "on",
+     "sig": "(String eventName, Function handler, Object scope, Object options)",
+     "type": "function",
+     "desc": "Appends an event handler to this element (shorthand for addListener)"
+    },
+    {
+     "name": "purgeListeners",
+     "sig": "()",
+     "type": "function",
+     "desc": "Removes all listeners for this object"
+    },
+    {
+     "name": "releaseCapture",
+     "sig": "(Observable o)",
+     "type": "function",
+     "desc": "Removes <b>all</b> added captures from the Observable."
+    },
+    {
+     "name": "removeListener",
+     "sig": "(String eventName, Function handler, Object scope)",
+     "type": "function",
+     "desc": "Removes a listener"
+    },
+    {
+     "name": "render",
+     "sig": "(String/HTMLElement/Element container)",
+     "type": "function",
+     "desc": "If this is a lazy rendering component, render it to its container element."
+    },
+    {
+     "name": "setDisabled",
+     "sig": "(Boolean disabled)",
+     "type": "function",
+     "desc": "Convenience function for setting disabled/enabled by boolean."
+    },
+    {
+     "name": "setVisible",
+     "sig": "(Boolean visible)",
+     "type": "function",
+     "desc": "Convenience function to hide or show this component by boolean."
+    },
+    {
+     "name": "show",
+     "sig": "()",
+     "type": "function",
+     "desc": "Show a component - removes 'hidden' class"
+    },
+    {
+     "name": "tooltipEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Fetch the element to display the tooltip on."
+    },
+    {
+     "name": "un",
+     "sig": "(String eventName, Function handler, Object scope)",
+     "type": "function",
+     "desc": "Removes a listener (shorthand for removeListener)"
+    }
+   ]
+  },
   "Roo.bootstrap.Pagination": {
    "props": [
     {
@@ -36397,16 +36818,6 @@
      "name": "autoslide",
      "type": "Boolean",
      "desc": "auto slide .. default false",
-     "memberOf": "",
-     "optvals": [
-      "true",
-      "false"
-     ]
-    },
-    {
-     "name": "slideOnTouch",
-     "type": "Boolean",
-     "desc": "slide on touch .. default false",
      "memberOf": "",
      "optvals": [
       "true",
@@ -45696,6 +46107,12 @@
      "memberOf": ""
     },
     {
+     "name": "badges",
+     "type": "Boolean",
+     "desc": "render the badges",
+     "memberOf": ""
+    },
+    {
      "name": "listeners",
      "type": "Object",
      "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
@@ -45975,6 +46392,12 @@
      "memberOf": "Roo.bootstrap.panel.Content"
     },
     {
+     "name": "badges",
+     "type": "Boolean",
+     "desc": "render the badges",
+     "memberOf": "Roo.bootstrap.panel.Content"
+    },
+    {
      "name": "listeners",
      "type": "Object",
      "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
@@ -46251,6 +46674,12 @@
      "name": "content",
      "type": "String",
      "desc": "Raw content to fill content panel with (uses setContent on construction.)",
+     "memberOf": "Roo.bootstrap.panel.Content"
+    },
+    {
+     "name": "badges",
+     "type": "Boolean",
+     "desc": "render the badges",
      "memberOf": "Roo.bootstrap.panel.Content"
     },
     {
@@ -71653,7 +72082,7 @@
     {
      "name": "renderer",
      "type": "Function",
-     "desc": "(Optional) A function used to generate HTML markup for a cell\ngiven the cell's data value. See {@link #setRenderer}. If not specified, the\ndefault renderer uses the raw data value. If an object is returned (bootstrap only)\nthen it is treated as a Roo Component object instance, and it is rendered after the initial row is rendered",
+     "desc": "(Optional) A function used to generate HTML markup for a cell\ngiven the cell's data value. See {@link #setRenderer}. If not specified, the\ndefault renderer returns the escaped data value. If an object is returned (bootstrap only)\nthen it is treated as a Roo Component object instance, and it is rendered after the initial row is rendered",
      "memberOf": ""
     },
     {

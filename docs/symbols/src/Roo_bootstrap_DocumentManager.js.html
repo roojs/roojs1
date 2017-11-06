@@ -8,6 +8,7 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap DocumentManager class
  * @cfg {String} paramName default 'imageUpload'
+ * @cfg {String} toolTipName default 'filename'
  * @cfg {String} method default POST
  * @cfg {String} url action url
  * @cfg {Number} boxes number of boxes, 0 is no limit.. default 0
@@ -25,6 +26,9 @@
 
 </span><span class="jsdoc-var">Roo.bootstrap.DocumentManager </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">Roo.bootstrap.DocumentManager.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    
+    </span><span class="jsdoc-var">this.files </span><span class="jsdoc-syntax">= [];
+    </span><span class="jsdoc-var">this.delegates </span><span class="jsdoc-syntax">= [];
     
     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
         </span><span class="jsdoc-comment">/**
@@ -47,6 +51,13 @@
          * @param {XMLHttpRequest} xhr
          */
         </span><span class="jsdoc-string">&quot;exception&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event afterupload
+         * Fire when xhr load exception
+         * @param {Roo.bootstrap.DocumentManager} this
+         * @param {XMLHttpRequest} xhr
+         */
+        </span><span class="jsdoc-string">&quot;afterupload&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
          * @event prepare
          * prepare the form data
@@ -104,17 +115,16 @@
     </span><span class="jsdoc-var">inputName </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">thumbSize </span><span class="jsdoc-syntax">: 300,
     </span><span class="jsdoc-var">multiple </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">files </span><span class="jsdoc-syntax">: [],
+    </span><span class="jsdoc-var">files </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">method </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'POST'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">url </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">paramName </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'imageUpload'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">toolTipName </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'filename'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">fieldLabel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">labelWidth </span><span class="jsdoc-syntax">: 4,
     </span><span class="jsdoc-var">labelAlign </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">editable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">delegates </span><span class="jsdoc-syntax">: [],
-    
-    
+    </span><span class="jsdoc-var">delegates </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">xhr </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, 
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -484,6 +494,8 @@
         
         </span><span class="jsdoc-var">this.arrange</span><span class="jsdoc-syntax">();
         
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'afterupload'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">xhr</span><span class="jsdoc-syntax">);
+        
     },
     
     </span><span class="jsdoc-var">xhrOnError </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xhr</span><span class="jsdoc-syntax">)
@@ -574,9 +586,22 @@
         
         </span><span class="jsdoc-var">formData.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.paramName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">file.name</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'prepare'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">formData</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">options </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">file </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">, 
+            </span><span class="jsdoc-var">manually </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false
+        </span><span class="jsdoc-syntax">};
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'prepare'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">formData</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">options.manually</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
             </span><span class="jsdoc-var">this.xhr.send</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">formData</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         };
+        
+        </span><span class="jsdoc-var">this.uploadCancel</span><span class="jsdoc-syntax">();
     },
     
     </span><span class="jsdoc-var">uploadCancel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -584,7 +609,6 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.xhr</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.xhr.abort</span><span class="jsdoc-syntax">();
         }
-        
         
         </span><span class="jsdoc-var">this.delegates </span><span class="jsdoc-syntax">= [];
         
@@ -607,9 +631,9 @@
             </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
                 {
                     </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">file.filename</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.toolTipName</span><span class="jsdoc-syntax">],
                     </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-document-manager-thumb'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&lt;img src=&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">baseURL </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'/Images/Thumb/' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.thumbSize </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'/' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">file.id </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'/' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">file.filename </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot;&gt;'
+                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&lt;img tooltip=&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.toolTipName</span><span class="jsdoc-syntax">] + </span><span class="jsdoc-string">'&quot; src=&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">baseURL </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'/Images/Thumb/' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.thumbSize </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'/' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">file.id </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'/' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">file.filename </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot;&gt;'
                 </span><span class="jsdoc-syntax">},
                 {
                     </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,

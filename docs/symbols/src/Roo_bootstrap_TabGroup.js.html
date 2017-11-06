@@ -13,7 +13,6 @@
  * @cfg {Boolean} carousel true to make the group behave like a carousel
  * @cfg {Boolean} bullets show bullets for the panels
  * @cfg {Boolean} autoslide (true|false) auto slide .. default false
- * @cfg {Boolean} slideOnTouch (true|false) slide on touch .. default false
  * @cfg {Number} timer auto slide timer .. default 0 millisecond
  * @cfg {Boolean} showarrow (true|false) show arrow default true
  * 
@@ -111,9 +110,9 @@
     
     </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isTouch </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.slideOnTouch </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.showarrow</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;touchstart&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTouchStart</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-        }
+</span><span class="jsdoc-comment">//        if(Roo.isTouch &amp;&amp; this.slideOnTouch &amp;&amp; !this.showarrow){
+//            this.el.on(&quot;touchstart&quot;, this.onTouchStart, this);
+//        }
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoslide</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
@@ -131,14 +130,15 @@
         
     },
     
-    </span><span class="jsdoc-var">onTouchStart </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">)
-    {
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.slideOnTouch </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">Roo.isTouch </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">())</span><span class="jsdoc-var">.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'roo-button-text'</span><span class="jsdoc-syntax">)){
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-        }
-        
-        </span><span class="jsdoc-var">this.showPanelNext</span><span class="jsdoc-syntax">();
-    },
+</span><span class="jsdoc-comment">//    onTouchStart : function(e, el, o)
+//    {
+//        if(!this.slideOnTouch || !Roo.isTouch || Roo.get(e.getTarget()).hasClass('roo-button-text')){
+//            return;
+//        }
+//        
+//        this.showPanelNext();
+//    },
+    
     
     </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
