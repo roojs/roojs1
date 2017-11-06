@@ -62,9 +62,9 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
      */
     nanText : "{0} is not a valid number",
     /**
-     * @cfg {Boolean} isString (true|false) Not cast int if true (defalut false)
+     * @cfg {Boolean} castInt (true|false) cast int if true (defalut true)
      */
-    allowNegative : true,
+    castInt : true,
 
     // private
     initEvents : function()
