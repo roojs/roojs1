@@ -105,22 +105,24 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input,  {
         if(!Roo.bootstrap.NumberField.superclass.validateValue.call(this, value)){
             return false;
         }
-        if(value.length < 1){ // if it's blank and textfield didn't flag it then it's valid
-             return true;
-        }
+        
         var num = this.parseValue(value);
+        
         if(isNaN(num)){
             this.markInvalid(String.format(this.nanText, value));
             return false;
         }
+        
         if(num < this.minValue){
             this.markInvalid(String.format(this.minText, this.minValue));
             return false;
         }
+        
         if(num > this.maxValue){
             this.markInvalid(String.format(this.maxText, this.maxValue));
             return false;
         }
+        
         return true;
     },
 
