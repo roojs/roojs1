@@ -67,7 +67,8 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input,  {
     nanText : "{0} is not a valid number",
 
     // private
-    initEvents : function(){
+    initEvents : function()
+    {
         
         Roo.bootstrap.NumberField.superclass.initEvents.call(this);
         
@@ -100,7 +101,8 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input,  {
         this.el.on("keypress", keyPress, this);
     },
     
-    validateValue : function(value){
+    validateValue : function(value)
+    {
         
         if(!Roo.bootstrap.NumberField.superclass.validateValue.call(this, value)){
             return false;
@@ -126,16 +128,19 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input,  {
         return true;
     },
 
-    getValue : function(){
+    getValue : function()
+    {
         return this.fixPrecision(this.parseValue(Roo.bootstrap.NumberField.superclass.getValue.call(this)));
     },
 
-    parseValue : function(value){
+    parseValue : function(value)
+    {
         value = parseFloat(String(value).replace(this.decimalSeparator, "."));
         return isNaN(value) ? '' : value;
     },
 
-    fixPrecision : function(value){
+    fixPrecision : function(value)
+    {
         var nan = isNaN(value);
         
         if(!this.allowDecimals || this.decimalPrecision == -1 || nan || !value){
@@ -144,16 +149,19 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input,  {
         return parseFloat(value).toFixed(this.decimalPrecision);
     },
 
-    setValue : function(v){
+    setValue : function(v)
+    {
         v = this.fixPrecision(v);
-        Roo.form.NumberField.superclass.setValue.call(this, String(v).replace(".", this.decimalSeparator));
+        Roo.bootstrap.NumberField.superclass.setValue.call(this, String(v).replace(".", this.decimalSeparator));
     },
 
-    decimalPrecisionFcn : function(v){
+    decimalPrecisionFcn : function(v)
+    {
         return Math.floor(v);
     },
 
-    beforeBlur : function(){
+    beforeBlur : function()
+    {
         var v = this.parseValue(this.getRawValue());
         if(v){
             this.setValue(v);
