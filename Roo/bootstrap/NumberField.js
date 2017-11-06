@@ -84,16 +84,19 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         this.stripCharsRe = new RegExp('[^'+allowed+']', 'gi');
         
         var keyPress = function(e){
+            
             var k = e.getKey();
+            
+            var c = e.getCharCode();
+            
+            if(k == e.MINUS && allowed.indexOf(String.fromCharCode(c)) === -1){ // coz minus is mask as specialKey...
+                e.stopEvent();
+                return;
+            }
             
             if(!Roo.isIE && (e.isSpecialKey() || k == e.BACKSPACE || k == e.DELETE)){
                 return;
             }
-            
-            var c = e.getCharCode();
-            
-            Roo.log(c);
-            Roo.log(allowed);
             
             if(allowed.indexOf(String.fromCharCode(c)) === -1){
                 e.stopEvent();
