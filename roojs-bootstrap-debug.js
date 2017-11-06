@@ -31725,7 +31725,10 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
             
             var c = e.getCharCode();
             
-            if(k == e.MINUS && allowed.indexOf(String.fromCharCode(c)) === -1){ // coz minus is mask as specialKey...
+            if(
+                    (String.fromCharCode(c) == '.' || String.fromCharCode(c) == '-') &&
+                    allowed.indexOf(String.fromCharCode(c)) === -1
+            ){
                 e.stopEvent();
                 return;
             }
