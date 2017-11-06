@@ -1,1 +1,320 @@
-<html><head><title>../roojs1/Roo/bootstrap/SecurePass.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-var">undefined</span></code></body></html>
+<html><head><title>../roojs1/Roo/bootstrap/SecurePass.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-var">Roo.bootstrap.SecurePass </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-comment">// these go here, so the translation tool can replace them..
+    </span><span class="jsdoc-var">this.errors </span><span class="jsdoc-syntax">= {
+        </span><span class="jsdoc-var">PwdEmpty</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Please type a password, and then retype it to confirm.&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">PwdShort</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Your password must be at least 6 characters long. Please type a different password.&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">PwdLong</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Your password can't contain more than 16 characters. Please type a different password.&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">PwdBadChar</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;The password contains characters that aren't allowed. Please type a different password.&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">IDInPwd</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Your password can't include the part of your ID. Please type a different password.&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">FNInPwd</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Your password can't contain your first name. Please type a different password.&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">LNInPwd</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Your password can't contain your last name. Please type a different password.&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">TooWeak</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Your password is Too Weak.&quot;
+    </span><span class="jsdoc-syntax">},
+    </span><span class="jsdoc-var">this.meterLabel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;Password strength:&quot;</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.pwdStrengths </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-string">&quot;Too Weak&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Weak&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Medium&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Strong&quot;</span><span class="jsdoc-syntax">];
+    </span><span class="jsdoc-var">Roo.bootstrap.SecurePass.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+}
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.SecurePass</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Input</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String/Object} errors A Error spec, or true for a default spec (defaults to
+     * {
+     *  PwdEmpty: &quot;Please type a password, and then retype it to confirm.&quot;,
+     *  PwdShort: &quot;Your password must be at least 6 characters long. Please type a different password.&quot;,
+     *  PwdLong: &quot;Your password can't contain more than 16 characters. Please type a different password.&quot;,
+     *  PwdBadChar: &quot;The password contains characters that aren't allowed. Please type a different password.&quot;,
+     *  IDInPwd: &quot;Your password can't include the part of your ID. Please type a different password.&quot;,
+     *  FNInPwd: &quot;Your password can't contain your first name. Please type a different password.&quot;,
+     *  LNInPwd: &quot;Your password can't contain your last name. Please type a different password.&quot;
+     * })
+     */
+    // private
+    </span><span class="jsdoc-var">errors</span><span class="jsdoc-syntax">: {},
+    </span><span class="jsdoc-var">imageRoot</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'/'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String/Object} Label for the strength meter (defaults to
+     * 'Password strength:')
+     */
+    // private
+    </span><span class="jsdoc-var">meterLabel</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String/Object} pwdStrengths A pwdStrengths spec, or true for a default spec (defaults to
+     * ['Weak', 'Medium', 'Strong'])
+     */
+    // private
+    </span><span class="jsdoc-var">pwdStrengths</span><span class="jsdoc-syntax">: [],
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String/Object} fieldsFilter A fieldsFilter spec, as [['field_name', 'error_id'], ...]
+     */
+    // private
+    </span><span class="jsdoc-var">fieldsFilter</span><span class="jsdoc-syntax">: [],
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">strength</span><span class="jsdoc-syntax">: 0,
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">_lastPwd</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">kCapitalLetter</span><span class="jsdoc-syntax">: 0,
+    </span><span class="jsdoc-var">kSmallLetter</span><span class="jsdoc-syntax">: 1,
+    </span><span class="jsdoc-var">kDigit</span><span class="jsdoc-syntax">: 2,
+    </span><span class="jsdoc-var">kPunctuation</span><span class="jsdoc-syntax">: 3,
+    
+    </span><span class="jsdoc-var">insecure</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-var">Ext.form.SecurePass.superclass.initEvents.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.is</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'input[type=password]'</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">Roo.isSafari</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'keydown'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.SafariOnKeyDown</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+
+        </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'keyup'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.checkStrength</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, {</span><span class="jsdoc-var">buffer</span><span class="jsdoc-syntax">: 50});
+    },
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onRender</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">Ext.form.SecurePass.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.wrap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.wrap</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-form-field-wrap'</span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-var">this.trigger </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.wrap.createChild</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'StrengthMeter ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.triggerClass</span><span class="jsdoc-syntax">});
+
+        </span><span class="jsdoc-var">this.trigger.createChild</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">: {
+                </span><span class="jsdoc-string">'margin-bottom'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'10px'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px'
+            </span><span class="jsdoc-syntax">},
+            </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: {
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">: {
+                    </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'9px'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'background-image'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'url(\'' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.imageRoot </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'/password_meter_grey.gif\')'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'background-position'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'center center'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'background-repeat'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'no-repeat'
+                </span><span class="jsdoc-syntax">},
+                </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: {
+                    </span><span class="jsdoc-comment">//id: 'PwdMeter',
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">: {
+                        </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 0,
+                        </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'9px'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-string">'background-image'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'url(\'' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.imageRoot </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'/password_meter.gif\')'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-string">'background-position'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'center center'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-string">'background-repeat'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'no-repeat'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-string">'font-size'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'9px'
+                    </span><span class="jsdoc-syntax">}
+                }
+            }
+        });
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hideTrigger</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.trigger.setDisplayed</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">this.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.height </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+    },
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onDestroy</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.trigger</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.trigger.removeAllListeners</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.trigger.remove</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.wrap</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.wrap.remove</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">Ext.form.TriggerField.superclass.onDestroy.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">checkStrength</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pwd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getValue</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pwd </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">this._lastPwd</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">strength</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.ClientSideStrongPassword</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pwd</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">strength </span><span class="jsdoc-syntax">= 3;
+        } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.ClientSideMediumPassword</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pwd</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">strength </span><span class="jsdoc-syntax">= 2;
+        } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.ClientSideWeakPassword</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pwd</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">strength </span><span class="jsdoc-syntax">= 1;
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">strength </span><span class="jsdoc-syntax">= 0;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.trigger.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'div/div/div'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.dom</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">pm.style.width </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">/ 3) * </span><span class="jsdoc-var">strength </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">//if(this.pwdStrengths != null &amp;&amp; strength &gt; 0) {
+        </span><span class="jsdoc-var">pm.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.meterLabel </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&amp;nbsp;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.pwdStrengths</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">strength</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-comment">//} else {
+        //	pm.innerHTML = '';
+        //}
+
+        </span><span class="jsdoc-var">this._lastPwd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pwd</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-var">reset</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-var">Ext.form.SecurePass.superclass.reset.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this._lastPwd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.trigger.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'div/div/div'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.dom</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">pm.style.width </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-var">pm.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">validateValue</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">) {
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">Ext.form.TextField.superclass.validateValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value.length </span><span class="jsdoc-syntax">== 0) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.allowBlank</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.clearInvalid</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.errors.PwdEmpty</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.insecure</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'[\x21-\x7e]*'</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.errors.PwdBadChar</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value.length </span><span class="jsdoc-syntax">&lt; 6) {
+            </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.errors.PwdShort</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value.length </span><span class="jsdoc-syntax">&gt; 16) {
+            </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.errors.PwdLong</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">strength</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.ClientSideStrongPassword</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">strength </span><span class="jsdoc-syntax">= 3;
+        } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.ClientSideMediumPassword</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">strength </span><span class="jsdoc-syntax">= 2;
+        } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.ClientSideWeakPassword</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">strength </span><span class="jsdoc-syntax">= 1;
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">strength </span><span class="jsdoc-syntax">= 0;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">strength </span><span class="jsdoc-syntax">&lt; 2) {
+            </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.errors.TooWeak</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-comment">/*
+         for (var index = 0; index &lt; this.fieldsFilter.length; ++index) {
+         filter = document.getElementById(this.fieldsFilter[index][0]).value;
+         if (filter != '')
+         {
+         re = new RegExp(filter);
+         if (re.test(value)) {
+         this.markInvalid(eval('this.errors.'+ this.fieldsFilter[index][1]));
+         return false;
+         }
+         }
+         }
+         */
+        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">CharacterSetChecks</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.type </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.fResult </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">isctype</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">character</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">switch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">//why needed break after return in js ? very odd bug
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">this.kCapitalLetter</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">character </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-string">'A' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">character </span><span class="jsdoc-syntax">&lt;= </span><span class="jsdoc-string">'Z'</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">this.kSmallLetter</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">character </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-string">'a' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">character </span><span class="jsdoc-syntax">&lt;= </span><span class="jsdoc-string">'z'</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">this.kDigit</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">character </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-string">'0' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">character </span><span class="jsdoc-syntax">&lt;= </span><span class="jsdoc-string">'9'</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">this.kPunctuation</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'!@#$%^&amp;*()_+-=\'&quot;;:[{]}|.&gt;,&lt;/?`~'</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">character</span><span class="jsdoc-syntax">) &gt;= 0) {
+                    </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">default</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+
+    },
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">IsLongEnough</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pwd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">!(</span><span class="jsdoc-var">pwd </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">null </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">isNaN</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">pwd.length </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">);
+    },
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">SpansEnoughCharacterSets</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">word</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nb</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.IsLongEnough</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">word</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nb</span><span class="jsdoc-syntax">))
+        {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">characterSetChecks </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Array</span><span class="jsdoc-syntax">(
+                </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">this.CharacterSetChecks</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.kCapitalLetter</span><span class="jsdoc-syntax">), </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">this.CharacterSetChecks</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.kSmallLetter</span><span class="jsdoc-syntax">),
+                </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">this.CharacterSetChecks</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.kDigit</span><span class="jsdoc-syntax">), </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">this.CharacterSetChecks</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.kPunctuation</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">word.length</span><span class="jsdoc-syntax">; ++</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nCharSet </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">nCharSet </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">characterSetChecks.length</span><span class="jsdoc-syntax">; ++</span><span class="jsdoc-var">nCharSet</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">characterSetChecks</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">nCharSet</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.fResult </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.isctype</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">word.charAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">characterSetChecks</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">nCharSet</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.type</span><span class="jsdoc-syntax">)) {
+                    </span><span class="jsdoc-var">characterSetChecks</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">nCharSet</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.fResult </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                }
+            }
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nCharSets </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nCharSet </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">nCharSet </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">characterSetChecks.length</span><span class="jsdoc-syntax">; ++</span><span class="jsdoc-var">nCharSet</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">characterSetChecks</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">nCharSet</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.fResult</span><span class="jsdoc-syntax">) {
+                ++</span><span class="jsdoc-var">nCharSets</span><span class="jsdoc-syntax">;
+            }
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nCharSets </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">nb</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">ClientSideStrongPassword</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pwd</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.IsLongEnough</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pwd</span><span class="jsdoc-syntax">, 8) &amp;&amp; </span><span class="jsdoc-var">this.SpansEnoughCharacterSets</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pwd</span><span class="jsdoc-syntax">, 3);
+    },
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">ClientSideMediumPassword</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pwd</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.IsLongEnough</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pwd</span><span class="jsdoc-syntax">, 7) &amp;&amp; </span><span class="jsdoc-var">this.SpansEnoughCharacterSets</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pwd</span><span class="jsdoc-syntax">, 2);
+    },
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">ClientSideWeakPassword</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pwd</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.IsLongEnough</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pwd</span><span class="jsdoc-syntax">, 6) || !</span><span class="jsdoc-var">this.IsLongEnough</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pwd</span><span class="jsdoc-syntax">, 0);
+    }</span><span class="jsdoc-comment">/*,
+     
+     // private -- see TextFiedl... - not sure why we are duping the code?
+     SafariOnKeyDown : function(event){
+     
+     var isSelectAll = false;
+     if(this.el.dom.selectionEnd &gt; 0){
+     isSelectAll = (this.el.dom.selectionEnd - this.el.dom.selectionStart - this.getValue().length == 0) ? true : false;
+     }
+     if(((event.getKey() == 8 || event.getKey() == 46) &amp;&amp; this.getValue().length ==1)){ // backspace and delete key
+     event.preventDefault();
+     this.setValue('');
+     return;
+     };
+     if(isSelectAll){ // backspace and delete key
+     
+     event.preventDefault();
+     this.setValue(String.fromCharCode(
+     this.shiftKey ? event.getKey() : event.getKey().toLowerCase()
+     ));  
+     };
+     } */
+</span><span class="jsdoc-syntax">})</span></code></body></html>
