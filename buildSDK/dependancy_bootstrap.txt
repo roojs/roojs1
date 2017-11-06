@@ -125,6 +125,8 @@ Roo.bootstrap.LayoutMasonryAuto
 Roo.bootstrap.MasonryBrick
 Roo.bootstrap.Brick
 
+Roo.bootstrap.NumberField
+
 
 
 Roo.bootstrap.SplitBar
