@@ -3338,6 +3338,7 @@ Roo.Msg.show({
                 msg : msg,
                 buttons: this.OK,
                 fn: fn,
+                closeable : false,
                 scope : scope,
                 modal : true
             });
