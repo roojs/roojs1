@@ -3097,9 +3097,11 @@ Roo.bootstrap.MessageBox = function(){
          * the XHTML-compliant non-breaking space character '&amp;#160;')
          * @return {Roo.MessageBox} This message box
          */
-        updateText : function(text){
+        updateText : function(text)
+        {
             if(!dlg.isVisible() && !opt.width){
-                dlg.resizeTo(this.maxWidth, 100); // resize first so content is never clipped from previous shows
+                dlg.setWidth(this.maxWidth);
+                // dlg.resizeTo(this.maxWidth, 100); // forcing the height breaks long alerts()
             }
             msgEl.innerHTML = text || '&#160;';
       
