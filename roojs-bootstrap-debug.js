@@ -3332,13 +3332,14 @@ Roo.Msg.show({
          * @param {Object} scope (optional) The scope of the callback function
          * @return {Roo.MessageBox} This message box
          */
-        alert : function(title, msg, fn, scope){
+        alert : function(title, msg, fn, scope)
+        {
             this.show({
                 title : title,
                 msg : msg,
                 buttons: this.OK,
                 fn: fn,
-                closeable : false,
+                closable : false,
                 scope : scope,
                 modal : true
             });
