@@ -149,11 +149,13 @@ Roo.bootstrap.MessageBox = function(){
                 textareaEl.enableDisplayMode();
                 progressEl = Roo.get(bodyEl.dom.childNodes[4]);
                 progressEl.enableDisplayMode();
-                var pf = progressEl.dom.firstChild;
-                if (pf) {
-                    pp = Roo.get(pf.firstChild);
-                    pp.setHeight(pf.offsetHeight);
-                }
+                
+                // This is supposed to be the progessElement.. but I think it's controlling the height of everything..
+                //var pf = progressEl.dom.firstChild;
+                //if (pf) {
+                    //pp = Roo.get(pf.firstChild);
+                    //pp.setHeight(pf.offsetHeight);
+                //}
                 
             }
             return dlg;
