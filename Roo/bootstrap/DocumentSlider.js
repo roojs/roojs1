@@ -17,6 +17,8 @@
 Roo.bootstrap.DocumentSlider = function(config){
     Roo.bootstrap.DocumentSlider.superclass.constructor.call(this, config);
     
+    this.files = [];
+    
     this.addEvents({
         /**
          * @event initial
@@ -29,7 +31,7 @@ Roo.bootstrap.DocumentSlider = function(config){
 
 Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
     
-    src : false,
+    files : false,
     
     getAutoCreate : function()
     {
