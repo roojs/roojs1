@@ -125,7 +125,7 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
     initial : function()
     {
         if(this.files.length){
-            this.indicator = 0;
+            this.indicator = 1;
             this.update()
         }
         
@@ -134,20 +134,19 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
     
     update : function()
     {
-        this.imageEl.attr('src', this.files[this.indicator]);
+        this.imageEl.attr('src', this.files[this.indicator - 1]);
         
         this.titleEl.dom.innerHTML = String.format('{0} / {1}', this.indicator, this.files.length);
         
-        if(this.indicator <= 0){
+        if(this.indicator <= 1){
             this.prevIndicator.hide();
         }
         
-        if(this.indicator == this.files.length){
+        if(this.indicator == 0 || this.indicator == this.files.length){
             this.nextIndicator.hide();
         }
         
         this.thumbEl.scrollTo('top');
-        
     },
     
     prev : function()
