@@ -127,6 +127,8 @@ Roo.bootstrap.Brick
 
 Roo.bootstrap.NumberField
 
+Roo.bootstrap.DocumentSlider
+
 
 Roo.bootstrap.SplitBar
 
