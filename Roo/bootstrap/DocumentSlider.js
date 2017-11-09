@@ -91,7 +91,7 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
         this.headerEl = this.el.select('.roo-document-slider-header', true).first();
         this.headerEl.setVisibilityMode(Roo.Element.DISPLAY);
         
-        this.titleEl = this.el.select('.roo-document-slider-header-text', true).first();
+        this.titleEl = this.el.select('.roo-document-slider-header .roo-document-slider-header-title', true).first();
         this.titleEl.setVisibilityMode(Roo.Element.DISPLAY);
         
         this.bodyEl = this.el.select('.roo-document-slider-body', true).first();
