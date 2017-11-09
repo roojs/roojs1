@@ -9,7 +9,7 @@
     cursor:move;
 }
 
-.roo-document-slider-body .roo-document-viewer-thumb {
+.roo-document-slider-body .roo-document-slider-thumb {
     position: absolute;
     width: 80%;
     height: 80%;
