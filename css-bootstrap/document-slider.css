@@ -11,7 +11,7 @@
 .roo-document-slider-body .roo-document-slider-thumb {
     position: absolute;
     width: 80%;
-    height: 80%;
+    height: 100%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -25,4 +25,13 @@
 
 .roo-document-slider-body .roo-document-slider-image{
     width: 100%;
+}
+
+.roo-document-slider-prev {
+    width: 10%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
 }
