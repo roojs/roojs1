@@ -464,5 +464,7 @@ Roo.apply(Roo.bootstrap.Modal,  {
                 name : 'cancel',
                 html : 'Cancel'
             }
-        ]
+        ],
+        
+        zIndex : 10001
 });
