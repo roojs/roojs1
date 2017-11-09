@@ -7,7 +7,7 @@
  * @class Roo.bootstrap.DocumentSlider
  * @extends Roo.bootstrap.Component
  * Bootstrap DocumentSlider class
- * @cfg {Number} showDownload (true|false) show download button (default true)
+ * @cfg {Number} total 
  * 
  * @constructor
  * Create a new DocumentViewer
@@ -28,6 +28,8 @@ Roo.bootstrap.DocumentSlider = function(config){
 };
 
 Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
+    
+    src : false,
     
     getAutoCreate : function()
     {
