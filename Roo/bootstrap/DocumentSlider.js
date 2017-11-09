@@ -138,11 +138,11 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
         
         this.titleEl.dom.innerHTML = String.format('{0} / {1}', this.indicator, this.files.length);
         
-        if(this.indicator <= 1){
+        if(this.indicator <= 0){
             this.prevIndicator.hide();
         }
         
-        if(this.indicator == 0 || this.indicator == this.files.length){
+        if(this.indicator == this.files.length){
             this.nextIndicator.hide();
         }
         
