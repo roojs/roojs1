@@ -146,9 +146,13 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
         
         this.titleEl.dom.innerHTML = String.format('{0} / {1}', this.indicator, this.files.length);
         
+        this.prevIndicator.show();
+        
         if(this.indicator == 1){
             this.prevIndicator.hide();
         }
+        
+        this.nextIndicator.show();
         
         if(this.indicator == this.files.length){
             this.nextIndicator.hide();
