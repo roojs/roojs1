@@ -83,23 +83,18 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
             },
             cn: {
                 tag: 'div',
+                cls: 'password_meter_grey',
                 style: {
                     width: this.width + 'px',
-                    height: '9px',
-                    'background-image': 'url(\'' + this.imageRoot + '/password_meter_grey.gif\')',
-                    'background-position': 'center center',
-                    'background-repeat': 'no-repeat'
+                    height: '9px'                    
                 },
                 cn: {
                     //id: 'PwdMeter',
                     tag: 'div',
+                    cls: 'password_meter',
                     style: {
                         width: 0,
-                        height: '9px',
-                        'background-image': 'url(\'' + this.imageRoot + '/password_meter.gif\')',
-                        'background-position': 'center center',
-                        'background-repeat': 'no-repeat',
-                        'font-size': '9px'
+                        height: '9px'                        
                     }
                 }
             }
