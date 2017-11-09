@@ -138,8 +138,6 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
         
         this.titleEl.dom.innerHTML = String.format('{0} / {1}', this.indicator, this.files.length);
         
-        this.thumbEl.scrollTo('top');
-        
         if(this.indicator <= 1){
             this.prevIndicator.hide();
         }
@@ -147,6 +145,9 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
         if(this.indicator == 0 || this.indicator == this.files.length){
             this.nextIndicator.hide();
         }
+        
+        this.thumbEl.scrollTo('top');
+        
     },
     
     prev : function()
