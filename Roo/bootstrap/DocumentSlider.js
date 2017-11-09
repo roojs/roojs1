@@ -57,6 +57,16 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
                                     cls : 'roo-document-slider-image'
                                 }
                             ]
+                        },
+                        {
+                            tag : 'div',
+                            cls : 'roo-document-slider-next',
+                            cn : [
+                                {
+                                    tag : 'i',
+                                    cls : 'fa fa-chevron-right'
+                                }
+                            ]
                         }
                     ]
                 }
