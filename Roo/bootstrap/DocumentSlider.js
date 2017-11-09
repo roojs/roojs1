@@ -35,8 +35,6 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
     
     indicator : 0,
     
-    total : 0,
-    
     getAutoCreate : function()
     {
         var cfg = {
@@ -126,12 +124,17 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
     initial : function()
     {
         if(this.files.length){
-            this.total = this.files.length;
             this.indicator = 1;
             this.update()
         }
         
         this.fireEvent('initial', this);
+    },
+    
+    update : function()
+    {
+        this.imageEl.attr('src', this.files[this.indicator]);
+        this.titleEl.dom.innerHTML = String.format('{0} / {1}', this.indicator, this.files.length);
     },
     
     prev : function()
