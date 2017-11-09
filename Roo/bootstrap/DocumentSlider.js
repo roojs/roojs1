@@ -117,5 +117,15 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
     initial : function()
     {
         this.fireEvent('initial', this);
+    },
+    
+    prev : function()
+    {
+        
+    },
+    
+    next : function()
+    {
+        
     }
 });
