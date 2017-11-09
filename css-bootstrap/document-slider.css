@@ -28,10 +28,20 @@
 }
 
 .roo-document-slider-prev {
-    width: 10%;
-    height: 100%;
     position: absolute;
     top: 0;
     left: 0;
     text-align: center;
+    width: 10%;
+    height: 100%;
 }
+
+.roo-document-slider-next {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    width: 10%;
+    height: 100%;
+}
+
