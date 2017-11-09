@@ -32,55 +32,23 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
     {
         var cfg = {
             tag : 'div',
-            cls : 'roo-document-viewer',
+            cls : 'roo-document-slider',
             cn : [
                 {
                     tag : 'div',
-                    cls : 'roo-document-viewer-body',
+                    cls : 'roo-document-slider-body',
                     cn : [
                         {
                             tag : 'div',
-                            cls : 'roo-document-viewer-thumb',
+                            cls : 'roo-document-slider-thumb',
                             cn : [
                                 {
                                     tag : 'img',
-                                    cls : 'roo-document-viewer-image'
+                                    cls : 'roo-document-slider-image'
                                 }
                             ]
                         }
                     ]
-                },
-                {
-                    tag : 'div',
-                    cls : 'roo-document-viewer-footer',
-                    cn : {
-                        tag : 'div',
-                        cls : 'btn-group btn-group-justified roo-document-viewer-btn-group',
-                        cn : [
-                            {
-                                tag : 'div',
-                                cls : 'btn-group roo-document-viewer-download',
-                                cn : [
-                                    {
-                                        tag : 'button',
-                                        cls : 'btn btn-default',
-                                        html : '<i class="fa fa-download"></i>'
-                                    }
-                                ]
-                            },
-                            {
-                                tag : 'div',
-                                cls : 'btn-group roo-document-viewer-trash',
-                                cn : [
-                                    {
-                                        tag : 'button',
-                                        cls : 'btn btn-default',
-                                        html : '<i class="fa fa-trash"></i>'
-                                    }
-                                ]
-                            }
-                        ]
-                    }
                 }
             ]
         };
