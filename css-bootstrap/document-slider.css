@@ -3,6 +3,10 @@
     padding: 0px;
 }
 
+.roo-document-slider-header {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 .roo-document-slider-body {
     background-color: #fff;
     width: 100%;
