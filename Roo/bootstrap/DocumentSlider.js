@@ -156,6 +156,8 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
     
     next : function()
     {
+        this.indicator = Math.min(this.files.length, this.indicator + 1);
         
+        this.update();
     }
 });
