@@ -33,6 +33,8 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
     
     files : false,
     
+    indicator : 0,
+    
     total : 0,
     
     getAutoCreate : function()
@@ -124,8 +126,11 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
     initial : function()
     {
         if(this.files.length){
-            
+            this.total = this.files.length;
+            this.indicator = 1;
+            this.update()
         }
+        
         this.fireEvent('initial', this);
     },
     
