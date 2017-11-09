@@ -133,7 +133,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
             strength = 0;
         }
         var pm = this.trigger.child('div/div/div').dom;
-        console.log('strength: ' + strength);
+        
         pm.style.width = (this.width / 3) * strength + 'px';
         //if(this.pwdStrengths != null && strength > 0) {
         pm.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
@@ -197,6 +197,12 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
             this.markInvalid(this.errors.TooWeak);
             return false;
         }
+        var pm = this.trigger.child('div/div/div').dom;
+        
+        pm.style.width = (this.width / 3) * strength + 'px';
+        //if(this.pwdStrengths != null && strength > 0) {
+        pm.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
+        
         /*
          for (var index = 0; index < this.fieldsFilter.length; ++index) {
          filter = document.getElementById(this.fieldsFilter[index][0]).value;
