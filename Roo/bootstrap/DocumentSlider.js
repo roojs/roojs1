@@ -40,8 +40,7 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
                     cn : [
                         {
                             tag : 'div',
-                            cls : 'roo-document-slider-header-text',
-                            html : 'test'
+                            cls : 'roo-document-slider-header-text'
                         }
                     ]
                 },
