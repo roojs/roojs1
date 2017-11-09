@@ -34,6 +34,7 @@
     text-align: center;
     width: 10%;
     height: 100%;
+    cursor: pointer;
 }
 
 .roo-document-slider-next {
@@ -43,6 +44,7 @@
     text-align: center;
     width: 10%;
     height: 100%;
+    cursor: pointer;
 }
 
 .roo-document-slider-prev > i,
