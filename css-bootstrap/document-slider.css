@@ -7,6 +7,11 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+.roo-document-slider-header .roo-document-slider-header-text {
+    width: 80%;
+    margin: 0 auto;
+}
+
 .roo-document-slider-body {
     background-color: #fff;
     width: 100%;
