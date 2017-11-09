@@ -149,7 +149,9 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
     
     prev : function()
     {
+        this.indicator = Math.min(1, this.indicator - 1);
         
+        this.update();
     },
     
     next : function()
