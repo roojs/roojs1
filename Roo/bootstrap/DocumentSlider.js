@@ -125,7 +125,7 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
     initial : function()
     {
         if(this.files.length){
-            this.indicator = 1;
+            this.indicator = 0;
             this.update()
         }
         
