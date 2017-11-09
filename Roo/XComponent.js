@@ -644,7 +644,7 @@ Roo.apply(Roo.XComponent, {
                     " of " + total + 
                     (m.name ? (' - ' + m.name) : '');
 			Roo.debug && Roo.log(msg);
-            if (!this.hideProgress &&  Roo.MessageBox) { 
+            if (!_this.hideProgress &&  Roo.MessageBox) { 
                 Roo.MessageBox.updateProgress(  (total  - mods.length)/total, msg  );
             }
             
