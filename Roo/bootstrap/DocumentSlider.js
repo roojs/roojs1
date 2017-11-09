@@ -140,6 +140,8 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
     
     update : function()
     {
+        Roo.log(this.indicator);
+        
         this.imageEl.attr('src', this.files[this.indicator - 1]);
         
         this.titleEl.dom.innerHTML = String.format('{0} / {1}', this.indicator, this.files.length);
