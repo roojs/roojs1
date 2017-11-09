@@ -115,7 +115,6 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {
-        
         this.bodyEl = this.el.select('.roo-document-viewer-body', true).first();
         this.bodyEl.setVisibilityMode(Roo.Element.DISPLAY);
         
