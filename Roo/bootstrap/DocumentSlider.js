@@ -139,11 +139,11 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
         this.titleEl.dom.innerHTML = String.format('{0} / {1}', this.indicator, this.files.length);
         
         if(this.indicator == 1){
-            this.prevIndicator.hide();
+//            this.prevIndicator.hide();
         }
         
         if(this.indicator == this.files.length){
-            this.nextIndicator.hide();
+//            this.nextIndicator.hide();
         }
         
         this.thumbEl.scrollTo('top');
