@@ -102,6 +102,14 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
         
         this.imageEl = this.el.select('.roo-document-slider-image', true).first();
         this.imageEl.setVisibilityMode(Roo.Element.DISPLAY);
+        
+        this.prevEl = this.el.select('.roo-document-slider-prev', true).first();
+        this.prevEl.setVisibilityMode(Roo.Element.DISPLAY);
+        
+        this.nextEl = this.el.select('.roo-document-slider-next', true).first();
+        this.nextEl.setVisibilityMode(Roo.Element.DISPLAY);
+        
+        
     },
     
     initial : function()
