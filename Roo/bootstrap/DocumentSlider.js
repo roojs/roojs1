@@ -7,6 +7,7 @@
  * @class Roo.bootstrap.DocumentSlider
  * @extends Roo.bootstrap.Component
  * Bootstrap DocumentSlider class
+ * @cfg {Number} showDownload (true|false) show download button (default true)
  * 
  * @constructor
  * Create a new DocumentViewer
