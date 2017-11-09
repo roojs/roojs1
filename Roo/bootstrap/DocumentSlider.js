@@ -149,7 +149,6 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
         }
         
         if(this.indicator == this.files.length){
-            Roo.log('run???');
             this.nextIndicator.hide();
         }
         
