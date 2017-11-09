@@ -40,6 +40,16 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
                     cn : [
                         {
                             tag : 'div',
+                            cls : 'roo-document-slider-prev',
+                            cn : [
+                                {
+                                    tag : 'i',
+                                    cls : 'fa fa-chevron-left'
+                                }
+                            ]
+                        },
+                        {
+                            tag : 'div',
                             cls : 'roo-document-slider-thumb',
                             cn : [
                                 {
