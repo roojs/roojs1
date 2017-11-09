@@ -33,6 +33,8 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
     
     files : false,
     
+    total : 0,
+    
     getAutoCreate : function()
     {
         var cfg = {
@@ -121,6 +123,9 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
     
     initial : function()
     {
+        if(this.files.length){
+            
+        }
         this.fireEvent('initial', this);
     },
     
