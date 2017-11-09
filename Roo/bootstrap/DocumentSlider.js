@@ -147,6 +147,8 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
         }
         
         this.thumbEl.scrollTo('top');
+        
+        this.fireEvent('initial', this);
     },
     
     prev : function()
