@@ -192,6 +192,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         } else {
             strength = 0;
         }
+        console.log('strength: ' + strength);
         if (strength < 2) {
             this.markInvalid(this.errors.TooWeak);
             return false;
