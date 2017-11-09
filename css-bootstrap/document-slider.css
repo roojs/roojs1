@@ -51,5 +51,6 @@
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
+    font-size: 2em;
 }
 
