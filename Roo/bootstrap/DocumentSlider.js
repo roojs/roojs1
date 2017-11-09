@@ -23,9 +23,15 @@ Roo.bootstrap.DocumentSlider = function(config){
         /**
          * @event initial
          * Fire after initEvent
-         * @param {Roo.bootstrap.DocumentViewer} this
+         * @param {Roo.bootstrap.DocumentSlider} this
          */
-        "initial" : true
+        "initial" : true,
+        /**
+         * @event update
+         * Fire after update
+         * @param {Roo.bootstrap.DocumentSlider} this
+         */
+        "update" : true
     });
 };
 
@@ -148,7 +154,7 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
         
         this.thumbEl.scrollTo('top');
         
-        this.fireEvent('initial', this);
+        this.fireEvent('update', this);
     },
     
     prev : function()
