@@ -103,14 +103,14 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
         this.imageEl = this.el.select('.roo-document-slider-image', true).first();
         this.imageEl.setVisibilityMode(Roo.Element.DISPLAY);
         
-        this.prevEl = this.el.select('.roo-document-slider-prev i', true).first();
-        this.prevEl.setVisibilityMode(Roo.Element.DISPLAY);
+        this.prevIndicator = this.el.select('.roo-document-slider-prev i', true).first();
+        this.prevIndicator.setVisibilityMode(Roo.Element.DISPLAY);
         
-        this.nextEl = this.el.select('.roo-document-slider-next i', true).first();
-        this.nextEl.setVisibilityMode(Roo.Element.DISPLAY);
+        this.nextIndicator = this.el.select('.roo-document-slider-next i', true).first();
+        this.nextIndicator.setVisibilityMode(Roo.Element.DISPLAY);
         
-        this.prevEl.on('click', this.prev, this);
-        this.nextEl.on('click', this.next, this);
+        this.prevIndicator.on('click', this.prev, this);
+        this.nextIndicator.on('click', this.next, this);
         
     },
     
