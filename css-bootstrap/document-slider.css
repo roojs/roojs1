@@ -27,19 +27,8 @@
     width: 100%;
 }
 
-.roo-document-slider-prev {
-    position: absolute;
-    top: 0;
-    left: 0;
-    text-align: center;
-    width: 10%;
-    height: 100%;
-}
-
+.roo-document-slider-prev,
 .roo-document-slider-next {
-    position: absolute;
-    top: 0;
-    right: 0;
     text-align: center;
     width: 10%;
     height: 100%;
