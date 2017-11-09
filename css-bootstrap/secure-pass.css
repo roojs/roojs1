@@ -1,11 +1,11 @@
 .password_meter_grey {
-    background-image: url("../../../templates/images/password_meter_grey.gif");
+    background-image: url("./password_meter_grey.gif");
     background-position: center center;
     background-repeat: no-repeat;
 }
 
 .password_meter {
-    background-image: url("../../../templates/images/password_meter.gif");
+    background-image: url("./password_meter.gif");
     background-position: center center;
     background-repeat: no-repeat;
     font-size: 20px;     
