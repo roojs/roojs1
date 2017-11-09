@@ -197,10 +197,11 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
             this.markInvalid(this.errors.TooWeak);
             return false;
         }
+        console.log('strength: ' + strength);
         var pm = this.trigger.child('div/div/div').dom;
-        
+                 
         pm.style.width = (this.width / 3) * strength + 'px';
-        //if(this.pwdStrengths != null && strength > 0) {
+        
         pm.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
         
         /*
