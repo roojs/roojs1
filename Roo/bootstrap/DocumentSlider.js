@@ -7,16 +7,14 @@
  * @class Roo.bootstrap.DocumentSlider
  * @extends Roo.bootstrap.Component
  * Bootstrap DocumentSlider class
- * @cfg {Boolean} showDownload (true|false) show download button (default true)
- * @cfg {Boolean} showTrash (true|false) show trash button (default true)
  * 
  * @constructor
  * Create a new DocumentViewer
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.DocumentViewer = function(config){
-    Roo.bootstrap.DocumentViewer.superclass.constructor.call(this, config);
+Roo.bootstrap.DocumentSlider = function(config){
+    Roo.bootstrap.DocumentSlider.superclass.constructor.call(this, config);
     
     this.addEvents({
         /**
@@ -24,34 +22,11 @@ Roo.bootstrap.DocumentViewer = function(config){
          * Fire after initEvent
          * @param {Roo.bootstrap.DocumentViewer} this
          */
-        "initial" : true,
-        /**
-         * @event click
-         * Fire after click
-         * @param {Roo.bootstrap.DocumentViewer} this
-         */
-        "click" : true,
-        /**
-         * @event download
-         * Fire after download button
-         * @param {Roo.bootstrap.DocumentViewer} this
-         */
-        "download" : true,
-        /**
-         * @event trash
-         * Fire after trash button
-         * @param {Roo.bootstrap.DocumentViewer} this
-         */
-        "trash" : true
-        
+        "initial" : true
     });
 };
 
-Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
-    
-    showDownload : true,
-    
-    showTrash : true,
+Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
     
     getAutoCreate : function()
     {
@@ -116,73 +91,10 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
     initEvents : function()
     {
         
-        this.bodyEl = this.el.select('.roo-document-viewer-body', true).first();
-        this.bodyEl.setVisibilityMode(Roo.Element.DISPLAY);
-        
-        this.thumbEl = this.el.select('.roo-document-viewer-thumb', true).first();
-        this.thumbEl.setVisibilityMode(Roo.Element.DISPLAY);
-        
-        this.imageEl = this.el.select('.roo-document-viewer-image', true).first();
-        this.imageEl.setVisibilityMode(Roo.Element.DISPLAY);
-        
-        this.footerEl = this.el.select('.roo-document-viewer-footer', true).first();
-        this.footerEl.setVisibilityMode(Roo.Element.DISPLAY);
-        
-        this.downloadBtn = this.el.select('.roo-document-viewer-download', true).first();
-        this.downloadBtn.setVisibilityMode(Roo.Element.DISPLAY);
-        
-        this.trashBtn = this.el.select('.roo-document-viewer-trash', true).first();
-        this.trashBtn.setVisibilityMode(Roo.Element.DISPLAY);
-        
-        this.bodyEl.on('click', this.onClick, this);
-        this.downloadBtn.on('click', this.onDownload, this);
-        this.trashBtn.on('click', this.onTrash, this);
-        
-        this.downloadBtn.hide();
-        this.trashBtn.hide();
-        
-        if(this.showDownload){
-            this.downloadBtn.show();
-        }
-        
-        if(this.showTrash){
-            this.trashBtn.show();
-        }
-        
-        if(!this.showDownload && !this.showTrash) {
-            this.footerEl.hide();
-        }
-        
     },
     
     initial : function()
     {
-//        this.thumbEl.setStyle('line-height', this.thumbEl.getHeight(true) + 'px');
-        
-        
         this.fireEvent('initial', this);
-        
-    },
-    
-    onClick : function(e)
-    {
-        e.preventDefault();
-        
-        this.fireEvent('click', this);
-    },
-    
-    onDownload : function(e)
-    {
-        e.preventDefault();
-        
-        this.fireEvent('download', this);
-    },
-    
-    onTrash : function(e)
-    {
-        e.preventDefault();
-        
-        this.fireEvent('trash', this);
     }
-    
 });
