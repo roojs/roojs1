@@ -45,3 +45,10 @@
     height: 100%;
 }
 
+.roo-document-slider-prev > i,
+.roo-document-slider-next > i {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
