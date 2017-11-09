@@ -117,6 +117,7 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
         this.nextIndicator.setVisibilityMode(Roo.Element.DISPLAY);
         
         this.prevIndicator.on('click', this.prev, this);
+        
         this.nextIndicator.on('click', this.next, this);
         
     },
@@ -134,7 +135,16 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
     update : function()
     {
         this.imageEl.attr('src', this.files[this.indicator]);
+        
         this.titleEl.dom.innerHTML = String.format('{0} / {1}', this.indicator, this.files.length);
+        
+        if(this.indicator <= 1){
+            this.prevIndicator.hide();
+        }
+        
+        if(this.indicator == 0 || this.indicator == this.files.length){
+            this.nextIndicator.hide();
+        }
     },
     
     prev : function()
