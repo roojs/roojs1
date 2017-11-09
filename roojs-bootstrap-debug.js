@@ -31863,11 +31863,31 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
                     cn : [
                         {
                             tag : 'div',
+                            cls : 'roo-document-slider-prev',
+                            cn : [
+                                {
+                                    tag : 'i',
+                                    cls : 'fa fa-chevron-left'
+                                }
+                            ]
+                        },
+                        {
+                            tag : 'div',
                             cls : 'roo-document-slider-thumb',
                             cn : [
                                 {
                                     tag : 'img',
                                     cls : 'roo-document-slider-image'
+                                }
+                            ]
+                        },
+                        {
+                            tag : 'div',
+                            cls : 'roo-document-slider-next',
+                            cn : [
+                                {
+                                    tag : 'i',
+                                    cls : 'fa fa-chevron-right'
                                 }
                             ]
                         }
@@ -31881,7 +31901,14 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {
+        this.bodyEl = this.el.select('.roo-document-slider-body', true).first();
+        this.bodyEl.setVisibilityMode(Roo.Element.DISPLAY);
         
+        this.thumbEl = this.el.select('.roo-document-slider-thumb', true).first();
+        this.thumbEl.setVisibilityMode(Roo.Element.DISPLAY);
+        
+        this.imageEl = this.el.select('.roo-document-slider-image', true).first();
+        this.imageEl.setVisibilityMode(Roo.Element.DISPLAY);
     },
     
     initial : function()
