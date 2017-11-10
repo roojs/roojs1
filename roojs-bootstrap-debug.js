@@ -2757,9 +2757,9 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         Roo.get(document.body).addClass("x-body-masked");
         
         this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true),   Roo.lib.Dom.getViewHeight(true));
-        this.maskEl.setStyle('zIndex', Roo.bootstrap.Modal.zIndex++);
+        this.maskEl.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
         this.maskEl.show();
-        this.el.setStyle('zIndex', Roo.bootstrap.Modal.zIndex++);
+        this.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
 
         this.fireEvent('show', this);
 
