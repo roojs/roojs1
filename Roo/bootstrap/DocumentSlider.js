@@ -128,6 +128,8 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
         this.nextIndicator = this.el.select('.roo-document-slider-next i', true).first();
         this.nextIndicator.setVisibilityMode(Roo.Element.DISPLAY);
         
+        this.bodyEl.on('click', this.onClick, this);
+        
         this.prevIndicator.on('click', this.prev, this);
         
         this.nextIndicator.on('click', this.next, this);
