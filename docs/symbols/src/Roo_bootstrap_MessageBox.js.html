@@ -149,13 +149,15 @@ Roo.Msg.show({
                 </span><span class="jsdoc-var">textareaEl.enableDisplayMode</span><span class="jsdoc-syntax">();
                 </span><span class="jsdoc-var">progressEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bodyEl.dom.childNodes</span><span class="jsdoc-syntax">[4]);
                 </span><span class="jsdoc-var">progressEl.enableDisplayMode</span><span class="jsdoc-syntax">();
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pf </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">progressEl.dom.firstChild</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pf</span><span class="jsdoc-syntax">) {
-                    </span><span class="jsdoc-var">pp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pf.firstChild</span><span class="jsdoc-syntax">);
-                    </span><span class="jsdoc-var">pp.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pf.offsetHeight</span><span class="jsdoc-syntax">);
-                }
                 
-            }
+                </span><span class="jsdoc-comment">// This is supposed to be the progessElement.. but I think it's controlling the height of everything..
+                //var pf = progressEl.dom.firstChild;
+                //if (pf) {
+                    //pp = Roo.get(pf.firstChild);
+                    //pp.setHeight(pf.offsetHeight);
+                //}
+                
+            </span><span class="jsdoc-syntax">}
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">dlg</span><span class="jsdoc-syntax">;
         },
 
@@ -165,9 +167,11 @@ Roo.Msg.show({
          * the XHTML-compliant non-breaking space character '&amp;amp;#160;')
          * @return {Roo.MessageBox} This message box
          */
-        </span><span class="jsdoc-var">updateText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">updateText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">)
+        {
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">dlg.isVisible</span><span class="jsdoc-syntax">() &amp;&amp; !</span><span class="jsdoc-var">opt.width</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">dlg.resizeTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.maxWidth</span><span class="jsdoc-syntax">, 100); </span><span class="jsdoc-comment">// resize first so content is never clipped from previous shows
+                </span><span class="jsdoc-var">dlg.dialogEl.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.maxWidth</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-comment">// dlg.resizeTo(this.maxWidth, 100); // forcing the height breaks long alerts()
             </span><span class="jsdoc-syntax">}
             </span><span class="jsdoc-var">msgEl.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'&amp;#160;'</span><span class="jsdoc-syntax">;
       
@@ -398,12 +402,14 @@ Roo.Msg.show({
          * @param {Object} scope (optional) The scope of the callback function
          * @return {Roo.MessageBox} This message box
          */
-        </span><span class="jsdoc-var">alert </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">alert </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">)
+        {
             </span><span class="jsdoc-var">this.show</span><span class="jsdoc-syntax">({
                 </span><span class="jsdoc-var">title </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">msg </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">buttons</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.OK</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">closable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">modal </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
             </span><span class="jsdoc-syntax">});

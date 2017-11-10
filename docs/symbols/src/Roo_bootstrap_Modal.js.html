@@ -107,10 +107,9 @@
         </span><span class="jsdoc-var">this.dialogEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-dialog'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.bodyEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-body'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.closeEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-header .close'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-var">this.footerEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-footer'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.headerEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-header'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.titleEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-title'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-
-
+        </span><span class="jsdoc-var">this.footerEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-footer'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
 
         </span><span class="jsdoc-var">this.maskEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">, {</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;x-dlg-mask&quot;</span><span class="jsdoc-syntax">}, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.maskEl.enableDisplayMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;block&quot;</span><span class="jsdoc-syntax">);
@@ -294,9 +293,11 @@
         //}
 
         </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-body-masked&quot;</span><span class="jsdoc-syntax">);
+        
         </span><span class="jsdoc-var">this.maskEl.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.lib.Dom.getViewWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">),   </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">this.maskEl.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'zIndex'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Modal.zIndex</span><span class="jsdoc-syntax">++);
         </span><span class="jsdoc-var">this.maskEl.show</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-var">this.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'zIndex'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'10001'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'zIndex'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Modal.zIndex</span><span class="jsdoc-syntax">++);
 
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'show'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 
@@ -464,6 +465,8 @@
                 </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'cancel'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Cancel'
             </span><span class="jsdoc-syntax">}
-        ]
+        ],
+        
+        </span><span class="jsdoc-var">zIndex </span><span class="jsdoc-syntax">: 10001
 });
 </span></code></body></html>

@@ -61,6 +61,10 @@
      * if a valid character like '.' or '-' is left in the field with no number (defaults to &quot;{value} is not a valid number&quot;)
      */
     </span><span class="jsdoc-var">nanText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;{0} is not a valid number&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} castInt (true|false) cast int if true (defalut true)
+     */
+    </span><span class="jsdoc-var">castInt </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -80,13 +84,22 @@
         </span><span class="jsdoc-var">this.stripCharsRe </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">RegExp</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'[^'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">allowed</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">']'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'gi'</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">keyPress </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+            
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getKey</span><span class="jsdoc-syntax">();
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getCharCode</span><span class="jsdoc-syntax">();
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(
+                    (</span><span class="jsdoc-var">String.fromCharCode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'.' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">String.fromCharCode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'-'</span><span class="jsdoc-syntax">) &amp;&amp;
+                    </span><span class="jsdoc-var">allowed.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String.fromCharCode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">)) === -1
+            ){
+                </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
             
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">Roo.isIE </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">e.isSpecialKey</span><span class="jsdoc-syntax">() || </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.BACKSPACE </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.DELETE</span><span class="jsdoc-syntax">)){
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
-            
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getCharCode</span><span class="jsdoc-syntax">();
             
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">allowed.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String.fromCharCode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">)) === -1){
                 </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
@@ -157,6 +170,10 @@
 
     </span><span class="jsdoc-var">beforeBlur </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.castInt</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getRawValue</span><span class="jsdoc-syntax">());
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
