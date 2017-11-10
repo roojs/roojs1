@@ -169,15 +169,26 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
         this.fireEvent('update', this);
     },
     
-    prev : function()
+    onClick : function(e)
     {
+        e.preventDefault();
+        
+        this.fireEvent('click', this);
+    },
+    
+    prev : function(e)
+    {
+        e.preventDefault();
+        
         this.indicator = Math.max(1, this.indicator - 1);
         
         this.update();
     },
     
-    next : function()
+    next : function(e)
     {
+        e.preventDefault();
+        
         this.indicator = Math.min(this.files.length, this.indicator + 1);
         
         this.update();
