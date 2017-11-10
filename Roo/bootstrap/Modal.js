@@ -297,11 +297,12 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true),   Roo.lib.Dom.getViewHeight(true));
         this.maskEl.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
         this.maskEl.show();
-        this.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
 
         this.fireEvent('show', this);
 
         this.resize();
+
+        this.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
 
         (function () {
             this.items.forEach( function(e) {
