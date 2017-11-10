@@ -111,8 +111,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.titleEl = this.el.select('.modal-title',true).first();
         this.footerEl = this.el.select('.modal-footer',true).first();
 
-
-
         this.maskEl = Roo.DomHelper.append(document.body, {tag: "div", cls:"x-dlg-mask"}, true);
         this.maskEl.enableDisplayMode("block");
         this.maskEl.hide();
