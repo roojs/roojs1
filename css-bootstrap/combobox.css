@@ -211,9 +211,10 @@
 .roo-combobox-tickable .roo-select2-result label {
     width: 100%;
 }
+/* zindex of dialogs is 10000++ so dropdowns have to be higher... */
 
 .dropdown-menu {
-  z-index: 10002 !important;
+  z-index: 20002 !important;
 }
 
 .dropdown-menu .checkbox label {
