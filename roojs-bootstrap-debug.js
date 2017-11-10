@@ -31858,7 +31858,13 @@ Roo.bootstrap.DocumentSlider = function(config){
          * Fire after update
          * @param {Roo.bootstrap.DocumentSlider} this
          */
-        "update" : true
+        "update" : true,
+        /**
+         * @event click
+         * Fire after click
+         * @param {Roo.bootstrap.DocumentSlider} this
+         */
+        "click" : true
     });
 };
 
@@ -31949,6 +31955,8 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
         this.nextIndicator = this.el.select('.roo-document-slider-next i', true).first();
         this.nextIndicator.setVisibilityMode(Roo.Element.DISPLAY);
         
+        this.thumbEl.on('click', this.onClick, this);
+        
         this.prevIndicator.on('click', this.prev, this);
         
         this.nextIndicator.on('click', this.next, this);
@@ -31967,8 +31975,6 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
     
     update : function()
     {
-        Roo.log(this.indicator);
-        
         this.imageEl.attr('src', this.files[this.indicator - 1]);
         
         this.titleEl.dom.innerHTML = String.format('{0} / {1}', this.indicator, this.files.length);
@@ -31990,15 +31996,26 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
         this.fireEvent('update', this);
     },
     
-    prev : function()
+    onClick : function(e)
     {
+        e.preventDefault();
+        
+        this.fireEvent('click', this);
+    },
+    
+    prev : function(e)
+    {
+        e.preventDefault();
+        
         this.indicator = Math.max(1, this.indicator - 1);
         
         this.update();
     },
     
-    next : function()
+    next : function(e)
     {
+        e.preventDefault();
+        
         this.indicator = Math.min(this.files.length, this.indicator + 1);
         
         this.update();
