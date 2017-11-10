@@ -301,7 +301,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.fireEvent('show', this);
 
         this.resize();
-
+        
+        // set zindex here - otherwise it appears to be ignored...
         this.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
 
         (function () {
