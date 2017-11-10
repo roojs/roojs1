@@ -31,7 +31,13 @@ Roo.bootstrap.DocumentSlider = function(config){
          * Fire after update
          * @param {Roo.bootstrap.DocumentSlider} this
          */
-        "update" : true
+        "update" : true,
+        /**
+         * @event click
+         * Fire after click
+         * @param {Roo.bootstrap.DocumentSlider} this
+         */
+        "click" : true
     });
 };
 
