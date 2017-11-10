@@ -7,7 +7,6 @@
  * @class Roo.bootstrap.DocumentSlider
  * @extends Roo.bootstrap.Component
  * Bootstrap DocumentSlider class
- * @cfg {Number} total 
  * 
  * @constructor
  * Create a new DocumentViewer
