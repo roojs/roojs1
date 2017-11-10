@@ -2569,10 +2569,9 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.dialogEl = this.el.select('.modal-dialog',true).first();
         this.bodyEl = this.el.select('.modal-body',true).first();
         this.closeEl = this.el.select('.modal-header .close', true).first();
-        this.footerEl = this.el.select('.modal-footer',true).first();
+        this.headerEl = this.el.select('.modal-header',true).first();
         this.titleEl = this.el.select('.modal-title',true).first();
-
-
+        this.footerEl = this.el.select('.modal-footer',true).first();
 
         this.maskEl = Roo.DomHelper.append(document.body, {tag: "div", cls:"x-dlg-mask"}, true);
         this.maskEl.enableDisplayMode("block");
