@@ -184,6 +184,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         Roo.log(this.el);
         Roo.log(target);
         Roo.log(target.el);
+        Roo.log(target.el.getBox());
         
         Roo.log(target.getBox());
         
