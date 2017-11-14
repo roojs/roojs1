@@ -157,20 +157,25 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
     isValid : function(){
         var items = this.getItems();
         var valid = true;
+        var target = false;
         items.each(function(f){
            if(!f.validate()){
                valid = false;
+               
+               if(!target){
+                   target = f;
+               }
            }
         });
         
         if(this.showErrPopover && !valid){
-            this.onShowErrPopover();
+            this.onShowErrPopover(target);
         }
         
         return valid;
     },
     
-    onShowErrPopover : function()
+    onShowErrPopover : function(target)
     {
         if(!this.showErrPopover){
             return;
