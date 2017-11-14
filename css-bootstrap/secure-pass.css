@@ -1,7 +1,7 @@
 .password-meter-grey {
     background: lightgrey; /* For browsers that do not support gradients */
    /* background-image: url("images/password_meter_grey.gif"); */
-    background-position: center center;
+   /* background-position: center center; */
     background-repeat: no-repeat;
 }
 
