@@ -212,6 +212,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
             this.fireEvent('check', this, state);
         }
         //this.inputEl().dom.value = state ? this.inputValue : this.valueOff;
+        Roo.log('validating');
         this.validate();
         
     },
