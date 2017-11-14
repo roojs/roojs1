@@ -9,7 +9,7 @@
  * @class Roo.bootstrap.SecurePass
  * @extends Roo.bootstrap.Input
  * Bootstrap SecurePass class
- *
+ * @cfg {Number} width 
  * 
  * @constructor
  * Create a new SecurePass
@@ -92,21 +92,21 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
             tag: 'div',
             style: {
                 'margin-bottom': '10px',
-                width: this.width + 'px'
+                width: '100px'
             },
             cn: {
                 tag: 'div',
                 cls: 'password-meter-grey',
                 style: {
-                    width: window.innerWidth - 100 + 'px',
+                    //width: this.width + 'px',
                     height: '10px'                    
                 },
                 cn: {
                     //id: 'PwdMeter',
                     tag: 'div',
-                    cls: 'password-meter col-md-12',
+                    cls: 'password-meter',
                     style: {
-                        width: '100px',
+                        //width: 0,
                         height: '10px'                        
                     }
                 }
