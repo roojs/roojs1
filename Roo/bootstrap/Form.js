@@ -97,6 +97,11 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
     waitMsgTarget : false,
 
     loadMask : true,
+    
+    /**
+     * @cfg {Sting} align (left|right) for navbar forms
+     */
+    align : 'left',
 
     getAutoCreate : function(){
 
@@ -158,6 +163,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
 
            }
         });
+        
         return valid;
     },
     /**
