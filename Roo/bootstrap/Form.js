@@ -99,9 +99,9 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
     loadMask : true,
     
     /**
-     * @cfg {Sting} align (left|right) for navbar forms
+     * @cfg {Boolean} showErrPopover (true|false) default false
      */
-    align : 'left',
+    showErrPopover : false,
 
     getAutoCreate : function(){
 
