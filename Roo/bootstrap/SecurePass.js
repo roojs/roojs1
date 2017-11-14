@@ -47,7 +47,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
      * })
      */
     // private
-    meterWidth: 200,
+    meterWidth: 300,
     errors: {},
     imageRoot: '/',
     /**
@@ -107,7 +107,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
                     tag: 'div',
                     cls: 'password-meter',
                     style: {
-                        width: 0,
+                        //width: 0,
                         height: '10px'                        
                     }
                 }
