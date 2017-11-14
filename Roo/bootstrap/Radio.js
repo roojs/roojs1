@@ -200,8 +200,6 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
 
     setChecked : function(state,suppressEvent)
     {
-        this.validate();
-        
         if(state){
             Roo.each(this.inputEl().up('form').select('input[name='+this.inputEl().dom.name+']', true).elements, function(v){
                 v.dom.checked = false;
@@ -214,7 +212,8 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
             this.fireEvent('check', this, state);
         }
         //this.inputEl().dom.value = state ? this.inputValue : this.valueOff;
-
+        this.validate();
+        
     },
 
     getGroupValue : function()
