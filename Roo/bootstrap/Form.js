@@ -181,10 +181,12 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             return;
         }
         
+        Roo.log(this.el);
         Roo.log(target);
         Roo.log(target.el);
         
         Roo.log(target.el.scrollIntoView(this.el));
+        
         
 //        Roo.get(document.body).mask();
     },
