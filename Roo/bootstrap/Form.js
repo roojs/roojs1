@@ -188,9 +188,11 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
     
         Roo.get(document.body).mask();
         
-        this.el.createChild({
+        var m = this.el.createChild({
             tag : 'div'
         }, false, true);
+        
+        Roo.log(Roo.get(m));
     },
     
     /**
