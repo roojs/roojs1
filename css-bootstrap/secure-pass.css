@@ -2,7 +2,6 @@
     background-image: url("images/password_meter_grey.gif");
     background-position: center center;
     background-repeat: no-repeat;
-    width:200px;
 }
 
 .password-meter {
@@ -10,5 +9,4 @@
     background-position: center center;
     background-repeat: no-repeat;
     font-size: 14px;     
-    width:200px;
 }
