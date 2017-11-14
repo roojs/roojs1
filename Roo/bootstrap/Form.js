@@ -181,7 +181,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             return;
         }
         
-        target.el.focus();
+        target.inputEl().focus();
 //        Roo.get(document.body).mask();
     },
     
