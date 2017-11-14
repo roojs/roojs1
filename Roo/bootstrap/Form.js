@@ -154,8 +154,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
      * Returns true if client-side validation on the form is successful.
      * @return Boolean
      */
-    isValid : function(a,b,c){
-        Roo.log([a,b,c]);
+    isValid : function(){
         var items = this.getItems();
         var valid = true;
         items.each(function(f){
@@ -171,9 +170,8 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         return valid;
     },
     
-    onShowErrPopover : function(a,b,c)
+    onShowErrPopover : function()
     {
-        Roo.log([a,b,c]);
         if(!this.showErrPopover){
             return;
         }
