@@ -1,3 +1,21 @@
+/*
+ * - LGPL
+ *
+ * Input
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.SecurePass
+ * @extends Roo.bootstrap.Input
+ * Bootstrap SecurePass class
+ *
+ * 
+ * @constructor
+ * Create a new SecurePass
+ * @param {Object} config The config object
+ */
+ 
 Roo.bootstrap.SecurePass = function (config) {
     // these go here, so the translation tool can replace them..
     this.errors = {
@@ -42,12 +60,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
      * ['Weak', 'Medium', 'Strong'])
      */
     // private
-    pwdStrengths: [],
-    /**
-     * @cfg {String/Object} fieldsFilter A fieldsFilter spec, as [['field_name', 'error_id'], ...]
-     */
-    // private
-    fieldsFilter: [],
+    pwdStrengths: [],    
     // private
     strength: 0,
     // private
@@ -83,18 +96,18 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
             },
             cn: {
                 tag: 'div',
-                cls: 'password_meter_grey',
+                cls: 'password-meter-grey',
                 style: {
                     width: this.width + 'px',
-                    height: '20px'                    
+                    height: '10px'                    
                 },
                 cn: {
                     //id: 'PwdMeter',
                     tag: 'div',
-                    cls: 'password_meter',
+                    cls: 'password-meter',
                     style: {
                         width: 0,
-                        height: '20px'                        
+                        height: '10px'                        
                     }
                 }
             }
@@ -298,26 +311,6 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
     // private
     ClientSideWeakPassword: function (pwd) {
         return this.IsLongEnough(pwd, 6) || !this.IsLongEnough(pwd, 0);
-    }/*,
-     
-     // private -- see TextFiedl... - not sure why we are duping the code?
-     SafariOnKeyDown : function(event){
-     
-     var isSelectAll = false;
-     if(this.el.dom.selectionEnd > 0){
-     isSelectAll = (this.el.dom.selectionEnd - this.el.dom.selectionStart - this.getValue().length == 0) ? true : false;
-     }
-     if(((event.getKey() == 8 || event.getKey() == 46) && this.getValue().length ==1)){ // backspace and delete key
-     event.preventDefault();
-     this.setValue('');
-     return;
-     };
-     if(isSelectAll){ // backspace and delete key
-     
-     event.preventDefault();
-     this.setValue(String.fromCharCode(
-     this.shiftKey ? event.getKey() : event.getKey().toLowerCase()
-     ));  
-     };
-     } */
+    }
+          
 })
