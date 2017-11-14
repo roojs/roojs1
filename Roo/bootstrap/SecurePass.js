@@ -147,13 +147,14 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         }
         var pm = this.trigger.child('div/div/div').dom;
         console.log('strength1: ' + strength);
+        
         pm.style.width = (this.width / 3) * strength + 'px';
         //if(this.pwdStrengths != null && strength > 0) {
         pm.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
         //} else {
         //	pm.innerHTML = '';
         //}
-
+        console.log('pm: ' + pm);
         this._lastPwd = pwd;
     },
     reset: function () {
@@ -216,7 +217,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         pm.style.width = (this.width / 3) * strength + 'px';
         
         pm.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
-        
+        console.log('pm: ' + pm);
         /*
          for (var index = 0; index < this.fieldsFilter.length; ++index) {
          filter = document.getElementById(this.fieldsFilter[index][0]).value;
