@@ -433,6 +433,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         var label = Roo.bootstrap.FieldLabel.get(this.name + '-group');
         
+        Roo.log('label: '+label);
+        
         if(this.groupId){
             label = Roo.bootstrap.FieldLabel.get(this.groupId + '-group');
         }
