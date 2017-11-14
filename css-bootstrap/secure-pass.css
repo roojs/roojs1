@@ -1,8 +1,5 @@
 .password-meter-grey {
     background: lightgrey; /* For browsers that do not support gradients */
-   /* background-image: url("images/password_meter_grey.gif"); */
-   /* background-position: center center; */
-   /* background-repeat: no-repeat; */
 }
 
 .password-meter {
@@ -12,8 +9,5 @@
     background: -moz-linear-gradient(-90deg, green, yellow); /* For Firefox 3.6 to 15 */
     background: linear-gradient(-90deg, green, yellow); 
 
-    /* background-image: url("images/password_meter.gif"); */
-    /* background-position: center center; */
-    /* background-repeat: no-repeat; */
-    font-size: 14px;     
+    font-size: 12px;     
 }
