@@ -9,7 +9,7 @@
  * @class Roo.bootstrap.SecurePass
  * @extends Roo.bootstrap.Input
  * Bootstrap SecurePass class
- * @cfg {Number} width 
+ *
  * 
  * @constructor
  * Create a new SecurePass
@@ -92,7 +92,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
             tag: 'div',
             style: {
                 'margin-bottom': '10px',
-                width: '100px'
+                width: '200px'
             },
             cn: {
                 tag: 'div',
