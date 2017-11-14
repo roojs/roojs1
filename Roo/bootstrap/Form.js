@@ -170,6 +170,16 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         return valid;
     },
+    
+    onShowErrPopover : function()
+    {
+        if(!this.showErrPopover){
+            return;
+        }
+        
+        
+    },
+    
     /**
      * Returns true if any fields in this form have changed since their original load.
      * @return Boolean
