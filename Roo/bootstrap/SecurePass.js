@@ -47,7 +47,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
      * })
      */
     // private
-    width: 200,
+    meterWidth: 200,
     errors: {},
     imageRoot: '/',
     /**
@@ -93,13 +93,13 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
             tag: 'div',
             style: {
                 'margin-bottom': '10px',
-                width: this.width + 'px'
+                width: this.meterWidth + 'px'
             },
             cn: {
                 tag: 'div',
                 cls: 'password-meter-grey',
                 style: {
-                    width: this.width + 'px',
+                    width: this.meterWidth + 'px',
                     height: '10px'                    
                 },
                 cn: {
@@ -149,7 +149,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         var pm = this.trigger.child('div/div/div').dom;
         console.log('strength1: ' + strength);
         
-        pm.style.width = (this.width / 3) * strength + 'px';
+        pm.style.width = (this.meterWidth / 3) * strength + 'px';
         //if(this.pwdStrengths != null && strength > 0) {
         pm.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
         //} else {
@@ -215,10 +215,8 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         console.log('strength2: ' + strength);
         var pm = this.trigger.child('div/div/div').dom;
                  
-        pm.style.width = (this.width / 3) * strength + 'px';
-        
-        //pm.style.width = (300 / 3) * strength + 'px';        
-        
+        pm.style.width = (this.meterWidth / 3) * strength + 'px';
+                      
         pm.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
         
         /*
