@@ -271,7 +271,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     setChecked : function(state,suppressEvent)
     {
         this.startValue = this.getValue();
-        
+
         if(this.inputType == 'radio'){
             
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
@@ -359,6 +359,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     validate : function()
     {
+        Roo.log('validating radio: '+this.validateRadio());
         if(
                 this.disabled || 
                 (this.inputType == 'radio' && this.validateRadio()) ||
@@ -522,15 +523,15 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     clearInvalid : function()
     {
-        super();
+        Roo.bootstrap.Input.prototype.clearInvalid.call(this);
         
-        if(this.inputType == 'radio'){
-            Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
-                e.findParent('.form-group', false, true).removeClass([_this.invalidClass, _this.validClass]);
-            });
-            return;
+        var label = Roo.bootstrap.FieldLabel.get(this.name + '-group');
+        
+        if (label) {
+            label.iconEl.removeClass(label.validClass);
+            label.iconEl.removeClass(label.invalidClass);
         }
-    }
+    },
     
     disable : function()
     {
