@@ -214,7 +214,6 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         //this.inputEl().dom.value = state ? this.inputValue : this.valueOff;
         Roo.log('validating: '+this.name);
         this.validate();
-        
     },
 
     getGroupValue : function()
