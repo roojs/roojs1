@@ -214,10 +214,12 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         console.log('strength2: ' + strength);
         var pm = this.trigger.child('div/div/div').dom;
                  
-        pm.style.width = (this.width / 3) * strength + 'px';
+        //pm.style.width = (this.width / 3) * strength + 'px';
+        
+        pm.style.width = (200 / 3) * strength + 'px';        
         
         pm.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
-        console.log('pm: ' + pm);
+        
         /*
          for (var index = 0; index < this.fieldsFilter.length; ++index) {
          filter = document.getElementById(this.fieldsFilter[index][0]).value;
