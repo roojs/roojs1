@@ -184,6 +184,10 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         target.inputEl().focus();
     
         target.inputEl().setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
+        
+        target.inputEl().on('click', function(){
+            Roo.log('click');
+        });
 //        Roo.get(document.body).mask();
     },
     
