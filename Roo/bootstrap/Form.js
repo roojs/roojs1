@@ -160,7 +160,6 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         items.each(function(f){
            if(!f.validate()){
                valid = false;
-
            }
         });
         
@@ -171,8 +170,9 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         return valid;
     },
     
-    onShowErrPopover : function()
+    onShowErrPopover : function(a,b,c)
     {
+        Roo.log([a,b,c]);
         if(!this.showErrPopover){
             return;
         }
