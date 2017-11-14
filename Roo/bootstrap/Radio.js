@@ -200,12 +200,13 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
 
     setChecked : function(state,suppressEvent)
     {
+        this.validate();
+        
         if(state){
             Roo.each(this.inputEl().up('form').select('input[name='+this.inputEl().dom.name+']', true).elements, function(v){
                 v.dom.checked = false;
             });
         }
-        this.validate();
         this.checked = state;
         this.inputEl().dom.checked = state;
 
