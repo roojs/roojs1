@@ -423,6 +423,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
      */
     markValid : function()
     {
+        Roo.log(allowBlank);
         if(this.allowBlank){
             return;
         }
