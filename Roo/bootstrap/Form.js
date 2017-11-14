@@ -181,18 +181,18 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             return;
         }
         
-        Roo.log(target.el);
-        Roo.log(target.inputEl());
-        
-        target.inputEl().focus();
-    
+//        Roo.log(target.el);
+//        Roo.log(target.inputEl());
+//        
+//        target.inputEl().focus();
+//    
 //        Roo.get(document.body).mask();
-        
-        var m = this.el.createChild({
-            tag : 'div'
-        }, false, true);
-        
-        Roo.log(Roo.get(m));
+//        
+//        var m = this.el.createChild({
+//            tag : 'div'
+//        }, false, true);
+//        
+//        Roo.log(Roo.get(m));
         
     },
     
