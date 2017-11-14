@@ -164,6 +164,10 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
            }
         });
         
+        if(this.showErrPopover && !valid){
+            this.onShowErrPopover();
+        }
+        
         return valid;
     },
     /**
