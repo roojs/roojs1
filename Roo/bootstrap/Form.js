@@ -186,9 +186,9 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         target.inputEl().focus();
         
-        target.el().setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
+        target.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
         
-        target.el().on('click', function(){
+        target.el.on('click', function(){
             Roo.log('click');
         });
 //        Roo.get(document.body).mask();
