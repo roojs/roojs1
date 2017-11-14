@@ -2419,7 +2419,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.touchViewHeaderEl.show();
         }
 
-        Roo.log(this.touchViewEl);
         this.touchViewEl.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
         this.touchViewEl.show();
 
