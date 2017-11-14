@@ -177,7 +177,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             return;
         }
         
-        
+        Roo.get(document.body).mask();
     },
     
     /**
