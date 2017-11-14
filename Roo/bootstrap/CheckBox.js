@@ -423,7 +423,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
      */
     markValid : function()
     {
-        
         var _this = this;
         
         this.fireEvent('valid', this);
