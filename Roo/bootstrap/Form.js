@@ -182,8 +182,9 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         }
         
         Roo.log(target);
+        Roo.log(target.el);
         
-        Roo.log(target.scrollIntoView(Roo.get(document.body)));
+        Roo.log(target.el.scrollIntoView(Roo.get(document.body)));
         
 //        Roo.get(document.body).mask();
     },
