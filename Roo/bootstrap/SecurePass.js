@@ -216,7 +216,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
                  
         //pm.style.width = (this.width / 3) * strength + 'px';
         
-        pm.style.width = (200 / 3) * strength + 'px';        
+        pm.style.width = (300 / 3) * strength + 'px';        
         
         pm.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
         
