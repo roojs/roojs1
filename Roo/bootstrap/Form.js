@@ -186,7 +186,8 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         target.inputEl().focus();
     
-        Roo.get(document.body).mask();
+//        Roo.get(document.body).mask();
+        this.el.mask();
         
         var m = this.el.createChild({
             tag : 'div'
