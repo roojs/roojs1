@@ -154,7 +154,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         //} else {
         //	pm.innerHTML = '';
         //}
-        console.log('pm: ' + pm);
+        
         this._lastPwd = pwd;
     },
     reset: function () {
