@@ -14365,6 +14365,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.touchViewHeaderEl.show();
         }
 
+        this.touchViewEl.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
         this.touchViewEl.show();
 
         this.touchViewEl.select('.modal-dialog', true).first().setStyle('margin', '0px');
