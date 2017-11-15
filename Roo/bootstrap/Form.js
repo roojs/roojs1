@@ -99,9 +99,9 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
     loadMask : true,
     
     /**
-     * @cfg {Boolean} showErrPopover (true|false) default false
+     * @cfg {Boolean} errPopover (true|false) default false
      */
-    showErrPopover : false,
+    errPopover : false,
 
     getAutoCreate : function(){
 
@@ -169,13 +169,13 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         });
         
         if(this.errPopover && !valid){
-            this.onShowErrPopover(target);
+            this.showErrPopover(target);
         }
         
         return valid;
     },
     
-    onShowErrPopover : function(target)
+    showErrPopover : function(target)
     {
         if(!this.errPopover){
             return;
