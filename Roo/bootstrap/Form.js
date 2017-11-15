@@ -168,7 +168,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
            }
         });
         
-        if(this.showErrPopover && !valid){
+        if(this.errPopover && !valid){
             this.onShowErrPopover(target);
         }
         
@@ -177,7 +177,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
     
     onShowErrPopover : function(target)
     {
-        if(!this.showErrPopover){
+        if(!this.errPopover){
             return;
         }
         
