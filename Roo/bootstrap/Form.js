@@ -146,24 +146,23 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         var mark = {
             tag: "div",
-            cls:"x-dlg-mask",
-            style: "text-align:center",
-            cn: [
-                {
-                    tag: "div",
-                    cn: [
-                        {
-                            tag: "span",
-                            html: "Loading"
-                        }
-                    ]
-                }
-            ]
+            cls:"x-dlg-mask"
         };
         this.popoverMaskEl = Roo.DomHelper.append(Roo.get(document.body), mark, true);
         this.popoverMaskEl.setSize(Roo.lib.Dom.getDocumentWidth(), Roo.lib.Dom.getDocumentHeight());
         this.popoverMaskEl.enableDisplayMode("block");
         this.popoverMaskEl.hide();
+        
+        var indicator = {
+            tag: "div",
+            html: 'test'
+        };
+        this.popoverMaskEl = Roo.DomHelper.append(Roo.get(document.body), mark, true);
+        this.popoverMaskEl.setSize(Roo.lib.Dom.getDocumentWidth(), Roo.lib.Dom.getDocumentHeight());
+        this.popoverMaskEl.enableDisplayMode("block");
+        this.popoverMaskEl.hide();
+        
+        
 
     },
     // private
