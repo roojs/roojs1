@@ -183,13 +183,18 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         target.inputEl().focus();
         
+        var oIndex = target.el.getStyle('z-index');
+        
         target.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
         
         target.el.addClass('roo-invalid-outline');
         
         var fn = function(){
-            Roo.log('blur');
+            
             target.inputEl().un('blur', fn);
+            
+            tareg
+            
         }
         
         target.inputEl().on('blur', fn);
