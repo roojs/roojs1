@@ -189,12 +189,10 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         var fn = function(){
             Roo.log('blur');
+            target.inputEl().un('blur', fn);
         }
         
-        target.inputEl().on('blur', function(){
-            
-            target.inputEl().un('blur', Roo.emptyFn);
-        });
+        target.inputEl().on('blur', fn);
         
         Roo.log(target.el);
         
