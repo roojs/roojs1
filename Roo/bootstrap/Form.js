@@ -144,24 +144,33 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             return false;
         });
         
-        var mark = {
+        this.popoverTopMaskEl = Roo.DomHelper.append(Roo.get(document.body), {
             tag: "div",
             cls:"x-dlg-mask"
-        };
-        this.popoverMaskEl = Roo.DomHelper.append(Roo.get(document.body), mark, true);
-        this.popoverMaskEl.setSize(Roo.lib.Dom.getDocumentWidth(), Roo.lib.Dom.getDocumentHeight());
-        this.popoverMaskEl.enableDisplayMode("block");
-        this.popoverMaskEl.hide();
+        }, true);
+        this.popoverTopMaskEl.enableDisplayMode("block");
+        this.popoverTopMaskEl.hide();
         
-        var indicator = {
+        this.popoverTopMaskEl = Roo.DomHelper.append(Roo.get(document.body), {
             tag: "div",
-            html: 'test',
-            style: 'position: absolute; top: 0'
-        };
-        this.indicatorEl = Roo.DomHelper.append(Roo.get(document.body), indicator, true);
-//        this.indicatorEl.setSize(Roo.lib.Dom.getDocumentWidth(), Roo.lib.Dom.getDocumentHeight());
-        this.indicatorEl.enableDisplayMode("block");
-        this.indicatorEl.hide();
+            cls:"x-dlg-mask"
+        }, true);
+        this.popoverTopMaskEl.enableDisplayMode("block");
+        this.popoverTopMaskEl.hide();
+        
+        this.popoverTopMaskEl = Roo.DomHelper.append(Roo.get(document.body), {
+            tag: "div",
+            cls:"x-dlg-mask"
+        }, true);
+        this.popoverTopMaskEl.enableDisplayMode("block");
+        this.popoverTopMaskEl.hide();
+        
+        this.popoverTopMaskEl = Roo.DomHelper.append(Roo.get(document.body), {
+            tag: "div",
+            cls:"x-dlg-mask"
+        }, true);
+        this.popoverTopMaskEl.enableDisplayMode("block");
+        this.popoverTopMaskEl.hide();
         
         
 
