@@ -161,7 +161,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
                 }
             ]
         };
-        this.popoverMaskEl = Roo.DomHelper.append(this.el, mark, true);
+        this.popoverMaskEl = Roo.DomHelper.append(Roo.get(document.body), mark, true);
         this.popoverMaskEl.setSize(Roo.lib.Dom.getDocumentWidth(), Roo.lib.Dom.getDocumentHeight());
         this.popoverMaskEl.enableDisplayMode("block");
         this.popoverMaskEl.hide();
