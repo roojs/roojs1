@@ -187,8 +187,12 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         target.el.addClass('roo-invalid-outline');
         
-        target.inputEl().on('blur', function(){
+        var fn = function(){
             Roo.log('blur');
+        }
+        
+        target.inputEl().on('blur', function(){
+            
             target.inputEl().un('blur', Roo.emptyFn);
         });
         
