@@ -7602,23 +7602,30 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         target.inputEl().focus();
         
+        var oIndex = target.el.getStyle('z-index');
+        
+        target.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
+        
         target.el.addClass('roo-invalid-outline');
+        
+        var fadeout = function(){
+            
+            target.inputEl().un('blur', fadeout);
+            target.inputEl().un('keyup', fadeout);
+            
+            target.el.setStyle('z-index', oIndex);
+        
+            target.el.removeClass('roo-invalid-outline');
+            
+        }
+        
+        target.inputEl().on('blur', fadeout);
+        target.inputEl().on('keyup', fadeout);
         
         Roo.log(target.el);
         
-//        Roo.log(target.el);
-//        Roo.log(target.inputEl());
-//        
-//        
-//    
-//        Roo.get(document.body).mask();
-//        
-//        var m = this.el.createChild({
-//            tag : 'div'
-//        }, false, true);
-//        
-//        Roo.log(Roo.get(m));
-        
+        Roo.log(target);
+          
     },
     
     /**
@@ -20025,6 +20032,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             
         if(this.inputType == 'radio'){
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
+                Roo.log('marking invalid');
                 e.findParent('.form-group', false, true).removeClass([_this.invalidClass, _this.validClass]);
                 e.findParent('.form-group', false, true).addClass(_this.invalidClass);
             });
@@ -20053,8 +20061,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     clearInvalid : function()
     {
-        Roo.log('is this runngin??');
-        
         Roo.bootstrap.Input.prototype.clearInvalid.call(this);
         
         var label = Roo.bootstrap.FieldLabel.get(this.name + '-group');
