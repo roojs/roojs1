@@ -518,6 +518,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     clearInvalid : function()
     {
+        Roo.log('is this runngin??');
+        
         Roo.bootstrap.Input.prototype.clearInvalid.call(this);
         
         var label = Roo.bootstrap.FieldLabel.get(this.name + '-group');
