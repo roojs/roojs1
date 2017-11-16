@@ -143,6 +143,37 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             e.preventDefault();
             return false;
         });
+        
+        var mark = {
+            tag: "div",
+            cls:"x-dlg-mask",
+            style: "text-align:center",
+            cn: [
+                {
+                    tag: "div",
+                    style: "background-color:white;width:50%;margin:250 auto",
+                    cn: [
+                        {
+                            tag: "img",
+                            src: Roo.rootURL + '/images/ux/lightbox/loading.gif' 
+                        },
+                        {
+                            tag: "span",
+                            html: "Loading"
+                        }
+                        
+                    ]
+                }
+            ]
+        };
+        this.popoverMaskEl = Roo.DomHelper.append(Roo.get(docuemnt.body)), mark, true);
+        
+        var size = this.el.select('.fc-content', true).first().getSize();
+        this.maskEl.setSize(size.width, size.height);
+        this.maskEl.enableDisplayMode("block");
+        if(!this.loadMask){
+            this.maskEl.hide();
+        }
 
     },
     // private
