@@ -7562,7 +7562,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             e.preventDefault();
             return false;
         });
-
+        
     },
     // private
     onSubmit : function(e){
@@ -7600,10 +7600,16 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             return;
         }
         
+        target.inputEl().focus();
+        
+        target.el.addClass('roo-invalid-outline');
+        
+        Roo.log(target.el);
+        
 //        Roo.log(target.el);
 //        Roo.log(target.inputEl());
 //        
-//        target.inputEl().focus();
+//        
 //    
 //        Roo.get(document.body).mask();
 //        
@@ -20047,6 +20053,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     clearInvalid : function()
     {
+        Roo.log('is this runngin??');
+        
         Roo.bootstrap.Input.prototype.clearInvalid.call(this);
         
         var label = Roo.bootstrap.FieldLabel.get(this.name + '-group');
