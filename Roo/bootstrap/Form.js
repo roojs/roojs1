@@ -205,6 +205,9 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         this.popoverMaskEl.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
         this.popoverMaskEl.show();
+        
+        this.indicator.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
+        this.indicator.show();
 //        Roo.log(target.el);
 //        Roo.log(target.inputEl());
 //        
