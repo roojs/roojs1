@@ -159,7 +159,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         };
         this.indicatorEl = Roo.DomHelper.append(Roo.get(document.body), mark, true);
 //        this.indicatorEl.setSize(Roo.lib.Dom.getDocumentWidth(), Roo.lib.Dom.getDocumentHeight());
-//        this.indicatorEl.enableDisplayMode("block");
+        this.indicatorEl.enableDisplayMode("block");
         this.indicatorEl.hide();
         
         
@@ -206,8 +206,8 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         this.popoverMaskEl.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
         this.popoverMaskEl.show();
         
-        this.indicator.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
-        this.indicator.show();
+        this.indicatorEl.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
+        this.indicatorEl.show();
 //        Roo.log(target.el);
 //        Roo.log(target.inputEl());
 //        
