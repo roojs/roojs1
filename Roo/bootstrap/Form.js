@@ -144,36 +144,6 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             return false;
         });
         
-        this.popoverTopMaskEl = Roo.DomHelper.append(Roo.get(document.body), {
-            tag: "div",
-            cls:"x-dlg-mask"
-        }, true);
-        this.popoverTopMaskEl.enableDisplayMode("block");
-        this.popoverTopMaskEl.hide();
-        
-        this.popoverTopMaskEl = Roo.DomHelper.append(Roo.get(document.body), {
-            tag: "div",
-            cls:"x-dlg-mask"
-        }, true);
-        this.popoverTopMaskEl.enableDisplayMode("block");
-        this.popoverTopMaskEl.hide();
-        
-        this.popoverTopMaskEl = Roo.DomHelper.append(Roo.get(document.body), {
-            tag: "div",
-            cls:"x-dlg-mask"
-        }, true);
-        this.popoverTopMaskEl.enableDisplayMode("block");
-        this.popoverTopMaskEl.hide();
-        
-        this.popoverTopMaskEl = Roo.DomHelper.append(Roo.get(document.body), {
-            tag: "div",
-            cls:"x-dlg-mask"
-        }, true);
-        this.popoverTopMaskEl.enableDisplayMode("block");
-        this.popoverTopMaskEl.hide();
-        
-        
-
     },
     // private
     onSubmit : function(e){
