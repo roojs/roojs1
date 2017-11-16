@@ -157,10 +157,10 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             tag: "div",
             html: 'test'
         };
-        this.popoverMaskEl = Roo.DomHelper.append(Roo.get(document.body), mark, true);
-        this.popoverMaskEl.setSize(Roo.lib.Dom.getDocumentWidth(), Roo.lib.Dom.getDocumentHeight());
-        this.popoverMaskEl.enableDisplayMode("block");
-        this.popoverMaskEl.hide();
+        this.indicatorEl = Roo.DomHelper.append(Roo.get(document.body), mark, true);
+//        this.indicatorEl.setSize(Roo.lib.Dom.getDocumentWidth(), Roo.lib.Dom.getDocumentHeight());
+//        this.indicatorEl.enableDisplayMode("block");
+        this.indicatorEl.hide();
         
         
 
