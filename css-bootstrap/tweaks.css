@@ -88,4 +88,5 @@
     outline-width: 5000px;
     outline-style: solid;
     outline-color: #ccc;
+    position: relative;
 }
