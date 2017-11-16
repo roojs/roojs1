@@ -155,7 +155,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
                     cn: [
                         {
                             tag: "img",
-                            src: rootURL + '/images/ux/lightbox/loading.gif' 
+                            src: 'roojs1/images/ux/lightbox/loading.gif' 
                         },
                         {
                             tag: "span",
