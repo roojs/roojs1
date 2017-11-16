@@ -183,6 +183,8 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         target.inputEl().focus();
         
+        target.el.addClass('roo-invalid-outline');
+        
         Roo.log(target.el);
         
 //        Roo.log(target.el);
