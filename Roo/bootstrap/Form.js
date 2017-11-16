@@ -151,17 +151,12 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             cn: [
                 {
                     tag: "div",
-                    style: "background-color:white;width:50%;margin:250 auto",
+                    style: "background-color:white;",
                     cn: [
-                        {
-                            tag: "img",
-                            src: 'roojs1/images/ux/lightbox/loading.gif' 
-                        },
                         {
                             tag: "span",
                             html: "Loading"
                         }
-                        
                     ]
                 }
             ]
