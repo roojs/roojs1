@@ -155,12 +155,8 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         var indicator = {
             tag: "div",
-            cn: [
-                {
-                    tag: 'div',
-                    html: 'test'
-                }
-            ]
+            html: 'test',
+            style: 'position: absolute; top: 0'
         };
         this.indicatorEl = Roo.DomHelper.append(Roo.get(document.body), indicator, true);
 //        this.indicatorEl.setSize(Roo.lib.Dom.getDocumentWidth(), Roo.lib.Dom.getDocumentHeight());
