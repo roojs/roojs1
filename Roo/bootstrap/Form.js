@@ -166,14 +166,13 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
                 }
             ]
         };
-        this.popoverMaskEl = Roo.DomHelper.append(Roo.get(docuemnt.body)), mark, true);
+        this.popoverMaskEl = Roo.DomHelper.append(Roo.get(docuemnt.body), mark, true);
         
-        var size = this.el.select('.fc-content', true).first().getSize();
-        this.maskEl.setSize(size.width, size.height);
-        this.maskEl.enableDisplayMode("block");
-        if(!this.loadMask){
-            this.maskEl.hide();
-        }
+        var size = Roo.get(docuemnt.body).getSize();
+        this.popoverMaskEl.setSize(size.width, size.height);
+        this.popoverMaskEl.enableDisplayMode("block");
+        
+        this.popoverMaskEl.hide();
 
     },
     // private
