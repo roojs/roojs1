@@ -200,6 +200,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         }
         
         target.inputEl().on('blur', fn);
+        target.inputEl().on('keypress', fn);
         
         Roo.log(target.el);
           
