@@ -7516,6 +7516,11 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
     waitMsgTarget : false,
 
     loadMask : true,
+    
+    /**
+     * @cfg {Boolean} errPopover (true|false) default false
+     */
+    errPopover : false,
 
     getAutoCreate : function(){
 
@@ -7571,14 +7576,45 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
     isValid : function(){
         var items = this.getItems();
         var valid = true;
+        var target = false;
         items.each(function(f){
            if(!f.validate()){
                valid = false;
-
+               
+               if(!target){
+                   target = f;
+               }
            }
         });
+        
+        if(this.errPopover && !valid){
+            this.showErrPopover(target);
+        }
+        
         return valid;
     },
+    
+    showErrPopover : function(target)
+    {
+        if(!this.errPopover){
+            return;
+        }
+        
+//        Roo.log(target.el);
+//        Roo.log(target.inputEl());
+//        
+//        target.inputEl().focus();
+//    
+//        Roo.get(document.body).mask();
+//        
+//        var m = this.el.createChild({
+//            tag : 'div'
+//        }, false, true);
+//        
+//        Roo.log(Roo.get(m));
+        
+    },
+    
     /**
      * Returns true if any fields in this form have changed since their original load.
      * @return Boolean
@@ -13614,8 +13650,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.list.hide();
         
+        this.hasFocus = false;
+        
         if(this.tickable){
-            this.hasFocus = false;
             this.okBtn.hide();
             this.cancelBtn.hide();
             this.trigger.show();
@@ -13668,8 +13705,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var lw = this.listWidth || Math.max(this.inputEl().getWidth(), this.minListWidth);
         this.list.setWidth(lw);
         
-        
-         Roo.log('expand');
+        Roo.log('expand');
         
         this.list.show();
         
@@ -19764,7 +19800,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     setChecked : function(state,suppressEvent)
     {
         this.startValue = this.getValue();
-        
+
         if(this.inputType == 'radio'){
             
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
@@ -19916,10 +19952,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
      */
     markValid : function()
     {
-        if(this.allowBlank){
-            return;
-        }
-        
         var _this = this;
         
         this.fireEvent('valid', this);
@@ -20011,6 +20043,18 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             group[i].el.findParent('.form-group', false, true).addClass(this.invalidClass);
         }
         
+    },
+    
+    clearInvalid : function()
+    {
+        Roo.bootstrap.Input.prototype.clearInvalid.call(this);
+        
+        var label = Roo.bootstrap.FieldLabel.get(this.name + '-group');
+        
+        if (label) {
+            label.iconEl.removeClass(label.validClass);
+            label.iconEl.removeClass(label.invalidClass);
+        }
     },
     
     disable : function()
@@ -20300,16 +20344,14 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
                 v.dom.checked = false;
             });
         }
-        Roo.log(this.inputEl().dom);
         this.checked = state;
         this.inputEl().dom.checked = state;
 
         if(suppressEvent !== true){
             this.fireEvent('check', this, state);
         }
-
         //this.inputEl().dom.value = state ? this.inputValue : this.valueOff;
-
+        this.validate()
     },
 
     getGroupValue : function()
