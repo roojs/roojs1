@@ -193,27 +193,16 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             
             target.inputEl().un('blur', fn);
             
-            tareg
+            target.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
+        
+            target.el.addClass('roo-invalid-outline');
             
         }
         
         target.inputEl().on('blur', fn);
         
         Roo.log(target.el);
-        
-//        Roo.log(target.el);
-//        Roo.log(target.inputEl());
-//        
-//        
-//    
-//        Roo.get(document.body).mask();
-//        
-//        var m = this.el.createChild({
-//            tag : 'div'
-//        }, false, true);
-//        
-//        Roo.log(Roo.get(m));
-        
+          
     },
     
     /**
