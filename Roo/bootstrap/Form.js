@@ -193,9 +193,9 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             
             target.inputEl().un('blur', fn);
             
-            target.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
+            target.el.setStyle('z-index', oIndex);
         
-            target.el.addClass('roo-invalid-outline');
+            target.el.removeClass('roo-invalid-outline');
             
         }
         
