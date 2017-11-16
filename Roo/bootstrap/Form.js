@@ -191,8 +191,8 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         var fn = function(){
             
-            target.inputEl().un('blur', fn);
-            target.inputEl().un('keyup', fn);
+//            target.inputEl().un('blur', fn);
+//            target.inputEl().un('keyup', fn);
             
             target.el.setStyle('z-index', oIndex);
         
