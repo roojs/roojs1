@@ -163,7 +163,6 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         this.indicatorEl.enableDisplayMode("block");
         this.indicatorEl.hide();
         
-        
 
     },
     // private
