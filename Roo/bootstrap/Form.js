@@ -151,7 +151,6 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             cn: [
                 {
                     tag: "div",
-                    style: "background-color:white;",
                     cn: [
                         {
                             tag: "span",
