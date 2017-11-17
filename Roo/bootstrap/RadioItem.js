@@ -34,12 +34,6 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component, {
                 cls : 'form-group radio roo-radio-set-item',
                 cn : [
                     {
-                        tag : 'input',
-                        cls : 'roo-radio roo-radio-set-item-input',
-                        type : 'radio',
-                        value : this.value
-                    },
-                    {
                         tag : 'label',
                         cls : 'box-label roo-radio-set-item-box-label',
                         html : this.boxLabel
