@@ -56,6 +56,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
             ]
         };
         
+        return cfg;
         
     },
 
