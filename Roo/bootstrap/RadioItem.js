@@ -27,8 +27,6 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component, {
     
     value : '',
     
-    isFormField : true,
-    
     getAutoCreate : function()
     {
         var cfg = {
