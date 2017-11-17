@@ -25,6 +25,8 @@ Roo.bootstrap.RadioSet = function(config){
 
 Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
 
+    items : false,
+    
     getAutoCreate : function()
     {
         
