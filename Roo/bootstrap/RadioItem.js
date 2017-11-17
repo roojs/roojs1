@@ -48,13 +48,8 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component, {
     {
         this.parent().register(this);
         
-        Roo.log(this.el);
+        this.el.on('click', this.onClick, this);
         
-        this.inputEl().on('click', this.onClick, this);
-        
-        if (this.boxLabel) {
-            this.el.select('.roo-radio-set-item-box-label',true).first().on('click', this.onClick, this);
-        }
     },
     
     onClick : function()
