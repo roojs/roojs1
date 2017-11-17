@@ -86,6 +86,8 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     
     register : function(item)
     {
+        Roo.log('radio set register');
+        
         this.items.push(item);
         item.name = this.name;
         
