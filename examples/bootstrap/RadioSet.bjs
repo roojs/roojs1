@@ -50,7 +50,7 @@
              "$ xns" : "Roo.bootstrap",
              "items" : [
               {
-               "xtype" : "Column",
+               "xtype" : "RadioItem",
                "$ xns" : "Roo.bootstrap"
               },
               {
