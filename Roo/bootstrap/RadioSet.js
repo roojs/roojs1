@@ -200,12 +200,13 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
     setValue : function(v, suppressEvent)
     {
         Roo.log('set value ' + v);
+        Roo.log(typeof(v));
         Roo.each(this.radioes, function(i){
             
             i.checked = false;
             i.el.removeClass('checked');
             
-            Roo.log(i.value);
+            Roo.log(typeof(i.value));
             
             if(i.value === v){
                 Roo.log('run???');
