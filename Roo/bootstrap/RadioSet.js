@@ -127,7 +127,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
         this.indicatorEl.setVisibilityMode(Roo.Element.DISPLAY);
         this.indicatorEl.hide();
         
-        this.inputEl = this.el.select('roo-radio-set-input')
+        this.inputEl = this.el.select('.roo-radio-set-input', true).first();
         
     },
     
