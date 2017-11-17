@@ -44,8 +44,8 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
                     cls : 'roo-radio-set-field-lable',
                     cn : [
                         {
-                            tag : 'div',
-                            cls : 'roo-document-slider-header-title'
+                            tag : 'span',
+                            cls : 'roo-radio-set-field-lable-text'
                         }
                     ]
                 },
@@ -88,7 +88,6 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
             ]
         };
         
-        if(!)
         
     },
 
