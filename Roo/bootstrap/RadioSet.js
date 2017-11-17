@@ -178,11 +178,6 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
         
     },
     
-    getName : function()
-    {
-        return this.name;
-    },
-    
     getValue : function()
     {
         return this.inputEl().getValue();
