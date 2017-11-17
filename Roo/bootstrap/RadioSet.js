@@ -103,11 +103,9 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
         
         this.itemsEl = this.el.select('.roo-radio-set-items', true).first();
         this.itemsEl.setVisibilityMode(Roo.Element.DISPLAY);
-//        
-//        this.indicatorEl = this.el.select('.roo-required-indicator', true).first();
-//        this.indicatorEl.setVisibilityMode(Roo.Element.DISPLAY);
-//        this.indicatorEl.hide();
-//        
+        
+        this.indicatorEl().hide();
+        
         this.originalValue = this.getValue();
         
     },
