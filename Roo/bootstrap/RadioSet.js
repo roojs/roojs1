@@ -88,6 +88,8 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
         
         var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
         
+        Roo.log(align);
+        
         if(this.inline) {
             cfg.cls += ' roo-radio-set-inline';
         }
