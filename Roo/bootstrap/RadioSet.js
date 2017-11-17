@@ -29,7 +29,9 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     
     getAutoCreate : function()
     {
-        
+        var cfg = {
+            
+        };
     },
 
     initEvents : function()
