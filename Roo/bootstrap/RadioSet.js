@@ -20,6 +20,8 @@
  * @cfg {String} indicatorpos (left|right) default left
  * @cfg {Boolean} inline (true|false) inline the element (default true)
  * @cfg {String} weight (primary|warning|info|danger|success) The text that appears beside the radio
+ * @cfg {String} invalidClass The CSS class to use when marking a field invalid
+ * @cfg {String} validClass The CSS class to use when marking a field valid
  * @constructor
  * Create a new RadioSet
  * @param {Object} config The config object
@@ -50,6 +52,16 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     disabled : false,
     
     allowblank : true,
+    
+    /**
+     * 
+     */
+    invalidClass : "has-warning",
+    
+    /**
+     * 
+     */
+    validClass : "has-success",
     
     getAutoCreate : function()
     {
