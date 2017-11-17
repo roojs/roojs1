@@ -52,6 +52,8 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component,  {
     initEvents : function() 
     {
         this.parent().register(this);
+        
+        
     },
     
     inputEl : function()
