@@ -25,6 +25,7 @@ Roo.bootstrap.RadioItem = function(config){
 Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component,  {
     
     inline : false,
+    boxLabel : '',
     
     getAutoCreate : function()
     {
@@ -41,6 +42,8 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component,  {
         if (this.weight) {
             cfg.cls += " radio-" + this.weight;
         }
+        
+        if(!)
         
         return cfg;
     },
