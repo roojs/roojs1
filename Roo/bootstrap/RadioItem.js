@@ -27,7 +27,7 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component,  {
     getAutoCreate : function()
     {
         var cfg = {
-                tag : this.inline ? 'span' : 'div',
+                tag : 'div',
                 cls : 'form-group radio',
                 cn : [
                     {
