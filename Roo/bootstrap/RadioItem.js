@@ -34,10 +34,12 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component,  {
                 cn : []
         };
 
-        var inline = this.inline ? ' radio-inline' : '';
+        if(this.inline){
+            cfg.cls += ' radio-inline';
+        }
         
         if (this.weight) {
-            input.cls += " radio-" + this.weight;
+            cfg.cls += " radio-" + this.weight;
         }
         
         return cfg;
