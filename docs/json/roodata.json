@@ -36708,6 +36708,12 @@
      "desc": "Fires just before the field blurs if the field value has changed."
     },
     {
+     "name": "check",
+     "sig": "function (_self, item)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the element is checked or unchecked."
+    },
+    {
      "name": "childrenrendered",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
