@@ -170,7 +170,12 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
                     return;
                 }
                 
-                target = f.parent();
+                valid = false;
+                
+                if(!target){
+                    target = f.parent();
+                }
+                
                 return;
             }
             
