@@ -63,7 +63,29 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component,  {
     inputEl : function()
     {
         return this.el.select('roo-radio-set-item-input', true).first();
-    }
+    },
+    
+    onClick : function()
+    {
+        this.setChecked(true);
+    },
+    
+    setChecked : function(state, suppressEvent)
+    {
+        Roo.each(this.parent().items, function(i){
+            i.checked = false;
+            i.inputEl().dom.checked = false; 
+        });
+        
+        this.checked = state;
+        this.inputEl().dom.checked = state;
+
+        if(suppressEvent !== true){
+            this.fireEvent('check', this, state);
+        }
+        //this.inputEl().dom.value = state ? this.inputValue : this.valueOff;
+        this.validate()
+    },
 });
  
 
