@@ -66,11 +66,6 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
             cls : 'roo-radio-set-field-label',
             cn : [
                 {
-                    tag : 'i',
-                    cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
-                    tooltip : 'This field is required'
-                },
-                {
                     tag : 'span',
                     cls : 'roo-radio-set-field-label-text',
                     html : this.fieldLabel
@@ -78,7 +73,19 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
             ]
         };
         
-        if()
+        if(this.indicatorpos == 'left'){
+            label.cn.unshift({
+                tag : 'i',
+                cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
+                tooltip : 'This field is required'
+            });
+        } else {
+            label.cn.push({
+                tag : 'i',
+                cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
+                tooltip : 'This field is required'
+            });
+        }
         
         var cfg = {
             tag : 'div',
