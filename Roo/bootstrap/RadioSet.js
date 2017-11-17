@@ -185,7 +185,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
     
     getValue : function()
     {
-        return this.inputEl.getValue();
+        return this.inputEl().getValue();
     },
     
     setValue : function(v)
