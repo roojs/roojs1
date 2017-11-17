@@ -61,6 +61,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     
     isFormField : true,
     
+    value : '',
     
     getAutoCreate : function()
     {
@@ -201,6 +202,17 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     getValue : function()
     {
         
+    },
+    
+    reset : function()
+    {
+        Roo.each(this.radioes, function(i){
+            i.checked = false;
+            i.el.removeClass('checked');
+        }, this);
+        
+        this.value = '';
+        this.inputEl.dom.value = this.value;
     }
 
 });
