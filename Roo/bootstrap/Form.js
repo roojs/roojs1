@@ -162,12 +162,15 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         items.each(function(f){
             
-            if(f.xtype == 'RadioItem'){
+            if(f.xtype == 'RadioItem' && radioSet.indexOf(f.parent().name) === -1){
                 
-                if(radioSet.indexOf(f.parent().name) === -1){
-                    radioSet.push(f.parent().name);
+                radioSet.push(f.parent().name);
+                
+                if(f.parent().validate()){
+                    return;
                 }
                 
+                target = f.parent();
                 return;
             }
             
@@ -180,8 +183,6 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
            }
            
         });
-        
-        Roo.log(radioSet);
         
         if(this.errPopover && !valid){
             this.showErrPopover(target);
