@@ -207,8 +207,8 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     setValue : function(v)
     {
         this.value = v;
-        
         this.inputEl.dom.value = v;
+        this.validate();
         
     },
     
@@ -219,7 +219,8 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
             i.el.removeClass('checked');
         }, this);
         
-        this.setValue('');
+        this.setValue(this.originalValue);
+        this.validate();
     }
 
 });
