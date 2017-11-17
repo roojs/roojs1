@@ -59,6 +59,8 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     
     indicatorpos : 'left',
     
+    isFormField : true,
+    
     getAutoCreate : function()
     {
         var label = {
