@@ -11,7 +11,7 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap RadioSet class
  * @cfg {Boolean} disabled (true|false) default false
- * @cfg {Boolean} allowblank (true|false) default true
+ * @cfg {Boolean} allowBlank (true|false) default true
  * @cfg {String} name name of the radio
  * @cfg {String} fieldLabel - the label associated
  * @cfg {String} value default value of the input
@@ -51,7 +51,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     
     disabled : false,
     
-    allowblank : true,
+    allowBlank : true,
     
     invalidClass : 'has-warning',
     
@@ -179,6 +179,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
             return;
         }
         
+        this.indicatorEl.show();
         this.el.removeClass([this.invalidClass, this.validClass]);
         this.addClass(this.invalidClass);
         
