@@ -164,7 +164,9 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             
             if(f.xtype == 'RadioItem'){
                 
-                radioSet.push(f.parent().name);
+                if(radioSet.indexOf(f.parent().name) === -1){
+                    radioSet.push(f.parent().name);
+                }
                 
                 return;
             }
@@ -176,7 +178,10 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
                    target = f;
                }
            }
+           
         });
+        
+        Roo.log(radioSet);
         
         if(this.errPopover && !valid){
             this.showErrPopover(target);
