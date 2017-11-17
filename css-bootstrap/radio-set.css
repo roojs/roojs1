@@ -141,21 +141,21 @@
     background-color: #5cb85c; 
 }
 
-.radio.radio-inline {
+.roo-radio-set-item.radio-inline {
     margin-top: 0;
 }
 
-.has-warning .roo-radio-set-item label,
-.has-warning .roo-radio-set-field-label {
+.roo-radio-set.has-warning .roo-radio-set-item label,
+roo-radio-set.has-warning .roo-radio-set-field-label {
     color: #8a6d3b;
 }
 
-.has-error .roo-radio-set-item label,
-.has-error .roo-radio-set-field-label {
+roo-radio-set.has-error .roo-radio-set-item label,
+roo-radio-set.has-error .roo-radio-set-field-label {
     color: #a94442;
 }
 
-.has-success .roo-radio-set-item label,
-.has-success .roo-radio-set-field-label {
+roo-radio-set.has-success .roo-radio-set-item label,
+roo-radio-set.has-success .roo-radio-set-field-label {
     color: #3c763d;
 }
