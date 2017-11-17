@@ -2186,7 +2186,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             ]
             
         };
-        
+        /*
         if(this.multiple){
             box = {
                 tag: 'div',
@@ -2212,6 +2212,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     }
                 ]
             }
+            */
         };
         
         var combobox = {
