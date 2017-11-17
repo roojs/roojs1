@@ -214,11 +214,6 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     
     reset : function()
     {
-        Roo.each(this.radioes, function(i){
-            i.checked = false;
-            i.el.removeClass('checked');
-        }, this);
-        
         this.setValue(this.originalValue);
         this.validate();
     }
