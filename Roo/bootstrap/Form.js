@@ -160,6 +160,8 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         var target = false;
         items.each(function(f){
             
+            Roo.log(f);
+            
             if(!f.validate()){
                valid = false;
                
