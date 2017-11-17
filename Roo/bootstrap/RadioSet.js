@@ -103,29 +103,28 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     },
     
     validate : function()
-    {
-        if(this.disabled || this.allowBlank){
-            this.markValid();
+    {   
+        var valid = false;
+        
+        Roo.each(this.items, function(i){
+            if(!i.checked){
+                return;
+            }
+            
+            valid = true;
+            return false;
+        });
+        
+        if(this.disabled || this.allowBlank || valid){
+//            this.markValid();
             Roo.log('mark valid');
             return true;
         }
         
-        
-        
-//        var valid = false;
-//        
-//        Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
-//            if(!e.dom.checked){
-//                return;
-//            }
-//            
-//            valid = true;
-//            
-//            return false;
-//        });
-//        
+        Roo.log('mark invalid');
 //        this.markInvalid();
-//        return false;
+        return false;
+        
     }
 
 });
