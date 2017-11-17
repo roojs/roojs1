@@ -35,7 +35,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
 
     items : false,
     inline : true,
-    name : name,
+    name : '',
     weight : '',
     fieldLabel : '',
     
