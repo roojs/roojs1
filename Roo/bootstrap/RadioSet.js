@@ -51,39 +51,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
                 },
                 {
                     tag : 'div',
-                    cls : 'roo-document-slider-body',
-                    cn : [
-                        {
-                            tag : 'div',
-                            cls : 'roo-document-slider-prev',
-                            cn : [
-                                {
-                                    tag : 'i',
-                                    cls : 'fa fa-chevron-left'
-                                }
-                            ]
-                        },
-                        {
-                            tag : 'div',
-                            cls : 'roo-document-slider-thumb',
-                            cn : [
-                                {
-                                    tag : 'img',
-                                    cls : 'roo-document-slider-image'
-                                }
-                            ]
-                        },
-                        {
-                            tag : 'div',
-                            cls : 'roo-document-slider-next',
-                            cn : [
-                                {
-                                    tag : 'i',
-                                    cls : 'fa fa-chevron-right'
-                                }
-                            ]
-                        }
-                    ]
+                    cls : 'roo-radio-set-items'
                 }
             ]
         };
