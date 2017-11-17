@@ -10,7 +10,7 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap Radio class
  * @cfg {String} boxLabel - the label associated
- * @cfg {String} value - the value of radio
+ * @cfg {String} inputValue - the value of radio
  * 
  * @constructor
  * Create a new Radio
@@ -25,7 +25,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.Component, {
     
     boxLabel : '',
     
-    value : '',
+    inputValue : '',
     
     getAutoCreate : function()
     {
@@ -36,7 +36,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.Component, {
                 {
                     tag : 'label',
                     cls : 'box-label',
-                    html : this.boxLabel
+                    html : this.inputValue
                 }
             ]
         };
@@ -59,7 +59,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.Component, {
     
     setChecked : function(state, suppressEvent)
     {
-        this.parent().setValue(this.value);
+        this.parent().setValue(this.inputValue);
         
         if(suppressEvent !== true){
             this.fireEvent('check', this, state);
