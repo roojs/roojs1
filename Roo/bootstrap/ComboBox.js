@@ -2256,9 +2256,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             })
         }
         
+        /*
         if(this.multiple){
             combobox.cls += ' roo-select2-container-multi';
         }
+        */
         
         var align = this.labelAlign || this.parentLabelAlign();
         
