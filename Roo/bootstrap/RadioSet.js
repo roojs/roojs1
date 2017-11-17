@@ -10,7 +10,8 @@
  * @class Roo.bootstrap.RadioSet
  * @extends Roo.bootstrap.Component
  * Bootstrap RadioSet class
- * @cfg {Boolean} disabled is it disabled
+ * @cfg {Boolean} disabled (true|false)
+ * @cfg {Boolean} allowblank (true|false)
  * @cfg {String} name name of the radio
  * @cfg {String} fieldLabel - the label associated
  * @cfg {String} value default value of the input
