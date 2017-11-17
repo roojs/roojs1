@@ -192,8 +192,13 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
         
     },
     
-    getName: function(){
+    getName : function(){
         return this.name;
+    },
+    
+    getValue : function()
+    {
+        
     }
 
 });
