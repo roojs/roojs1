@@ -213,10 +213,6 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
         
         Roo.bootstrap.RadioSet.superclass.setValue.call(this)
         
-        if(suppressEvent !== true){
-            this.fireEvent('check', this, state);
-        }
-        
     }
     
 });
