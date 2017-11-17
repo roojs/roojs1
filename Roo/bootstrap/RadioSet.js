@@ -65,6 +65,11 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     initEvents : function()
     {
         
-    }
+    },
+    
+    getChildContainer : function()
+    {
+        return this.itemEl;
+    },
 
 });
