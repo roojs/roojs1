@@ -159,7 +159,8 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         var valid = true;
         var target = false;
         items.each(function(f){
-           if(!f.validate()){
+            
+            if(!f.validate()){
                valid = false;
                
                if(!target){
