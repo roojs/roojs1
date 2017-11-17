@@ -38,6 +38,8 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
         var cfg = {
             tag : 'div'
         };
+        
+        
     },
 
     initEvents : function()
