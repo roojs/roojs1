@@ -16,8 +16,8 @@
 
 .roo-radio-set.disabled .roo-radio-set-label,
 .roo-radio-set.disabled .radio label,
-
-.radio input[type="radio"]:disabled + label::before {
+.roo-radio-set.disabled .radio label::after
+{
     cursor: not-allowed; 
 }
 
