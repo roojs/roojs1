@@ -126,8 +126,10 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     
     register : function(item)
     {
+        item.name = this.name;
+        
         this.radioItems.push(item);
-        item.name = name;
+        
         item.inputEl().attr('name', this.name);
         
         if(this.inline){
