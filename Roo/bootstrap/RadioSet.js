@@ -38,8 +38,6 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
     
     fieldLabel : '',
     
-    disabled : false,
-    
     indicatorpos : 'left',
     
     getAutoCreate : function()
