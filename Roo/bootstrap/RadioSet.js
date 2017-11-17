@@ -98,6 +98,12 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
                     }
                 ]
             });
+        } else {
+            cfg.cn.push(label);
+            cfg.cn.push({
+                tag : 'div',
+                    cls : 'roo-radio-set-items'
+            });
         }
         
         if(this.inline) {
