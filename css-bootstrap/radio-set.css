@@ -121,7 +121,7 @@
     cursor: pointer;
 }
 
-.roo-radio-set-label .roo-required-indicator.right-indicator {
+.roo-radio-set-label .roo-required-indicator {
     position: absolute;
 }
 
