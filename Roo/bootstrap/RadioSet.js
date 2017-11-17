@@ -30,8 +30,8 @@ Roo.bootstrap.RadioSet = function(config){
         /**
         * @event check
         * Fires when the element is checked or unchecked.
-        * @param {Roo.bootstrap.Radio} this This radio
-        * @param {Boolean} checked The new checked value
+        * @param {Roo.bootstrap.RadioSet} this This radio
+        * @param {Roo.bootstrap.Radio} item The checked item
         */
        check : true
     });
@@ -207,6 +207,10 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
             if(i.value == v){
                 i.checked = true;
                 i.el.addClass('checked');
+                
+                if(suppressEvent !== true){
+                    this.fireEvent('check', this, i);
+                }
             }
             
         }, this);
