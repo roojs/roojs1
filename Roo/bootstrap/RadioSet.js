@@ -35,6 +35,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
 
     items : false,
     inline : true,
+    name : name,
     weight : '',
     fieldLabel : '',
     
@@ -51,7 +52,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
                         {
                             tag : 'span',
                             cls : 'roo-radio-set-field-label-text',
-                            html : (this.fieldLabel.length) ? this.fieldLabel : ''
+                            html : this.fieldLabel
                         }
                     ]
                 },
