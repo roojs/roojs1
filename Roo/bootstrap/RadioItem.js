@@ -86,7 +86,10 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component, {
         }
         
         this.parent().validate();
-    }
+    },
+    
+        return this.name;
+    },
     
 });
  
