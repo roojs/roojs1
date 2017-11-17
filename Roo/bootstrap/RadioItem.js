@@ -21,7 +21,7 @@ Roo.bootstrap.RadioItem = function(config){
     
 };
 
-Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component, {
     
     boxLabel : '',
     
