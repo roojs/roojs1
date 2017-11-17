@@ -379,6 +379,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             cls : 'form-group roo-combobox-tickable' //input-group
         };
         
+        if (this.btn_text_show) {
+            
+        }
+        
         var buttons = {
             tag : 'div',
             cls : 'tickable-buttons',
