@@ -107,7 +107,9 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
             ]
         };
         
-        
+        if(this.inline) {
+            cfg.cls += ' radio-inline';
+        }
         
         return cfg;
         
