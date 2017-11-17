@@ -1,10 +1,12 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : Nov 17, 2017, 1:17:36 PM
-    Author     : edward
-*/
 
+.has-warning .roo-radio-set-item label {
+  color: #8a6d3b;
+}
+
+.has-error .roo-radio-set-item label {
+  color: #a94442;
+}
+
+.has-success .roo-radio-set-item label {
+  color: #3c763d;
+}
