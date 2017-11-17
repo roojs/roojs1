@@ -214,7 +214,8 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
             i.checked = false;
             i.el.removeClass('checked');
             
-            Roo.log(i.el.dom.value);
+            Roo.log(i.el);
+            Roo.log(i.el.getValue());
             if(i.el.dom.value == v){
                 i.checked = true;
                 i.el.addClass('checked');
