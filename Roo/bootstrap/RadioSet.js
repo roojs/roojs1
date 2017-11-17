@@ -39,7 +39,7 @@ Roo.bootstrap.RadioSet = function(config){
 
 Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
 
-    items : false,
+    radioItems : false,
     
     inline : true,
     
@@ -126,7 +126,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     
     register : function(item)
     {
-        this.items.push(item);
+        this.radioItems.push(item);
         
         item.inputEl().attr('name', this.name);
         
