@@ -59,27 +59,33 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     
     getAutoCreate : function()
     {
+        var label = {
+            {
+                tag : 'label',
+                cls : 'roo-radio-set-field-label',
+                cn : [
+                    {
+                        tag : 'span',
+                        cls : 'roo-radio-set-field-label-text',
+                        html : this.fieldLabel
+                    }
+                ]
+            }
+        };
+        
         var cfg = {
             tag : 'div',
             cls : 'roo-radio-set',
             cn : [
-                {
-                    tag : 'label',
-                    cls : 'roo-radio-set-field-label',
-                    cn : [
-                        {
-                            tag : 'span',
-                            cls : 'roo-radio-set-field-label-text',
-                            html : this.fieldLabel
-                        }
-                    ]
-                },
+                label,
                 {
                     tag : 'div',
                     cls : 'roo-radio-set-items'
                 }
             ]
         };
+        
+        
         
         return cfg;
         
