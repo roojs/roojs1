@@ -53,15 +53,9 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     
     allowblank : true,
     
-    /**
-     * 
-     */
-    invalidClass : "has-warning",
+    invalidClass : 'has-warning',
     
-    /**
-     * 
-     */
-    validClass : "has-success",
+    validClass : 'has-success',
     
     getAutoCreate : function()
     {
