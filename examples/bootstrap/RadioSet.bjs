@@ -65,7 +65,8 @@
               },
               {
                "xtype" : "RadioItem",
-               "$ xns" : "Roo.bootstrap"
+               "$ xns" : "Roo.bootstrap",
+               "string boxLabel" : "No"
               }
              ]
             }
