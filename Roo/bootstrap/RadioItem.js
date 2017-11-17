@@ -24,7 +24,6 @@ Roo.bootstrap.RadioItem = function(config){
 
 Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component,  {
     
-    inline : false,
     boxLabel : '',
     
     getAutoCreate : function()
@@ -40,14 +39,6 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component,  {
                     }
                 ]
         };
-
-        if(this.inline){
-            cfg.cls += ' radio-inline';
-        }
-        
-        if (this.weight) {
-            cfg.cls += " radio-" + this.weight;
-        }
         
         return cfg;
     },
