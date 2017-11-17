@@ -12,11 +12,13 @@
  * Bootstrap RadioSet class
  * @cfg {Boolean} disabled is it disabled
  * @cfg {String} name name of the radio
- * @cfg {string} fieldLabel - the label associated
- * @cfg {string} value default value of the input
+ * @cfg {String} fieldLabel - the label associated
+ * @cfg {String} value default value of the input
  * @cfg {Number} labelWidth set the width of label (0-12)
  * @cfg {String} labelAlign (top|left)
  * @cfg {String} indicatorpos (left|right) default left
+ * @cfg {Boolean} inline (true|false) inline the element (default true)
+ * @cfg {String} weight (primary|warning|info|danger|success) The text that appears beside the radio
  * @constructor
  * Create a new RadioSet
  * @param {Object} config The config object
@@ -32,6 +34,8 @@ Roo.bootstrap.RadioSet = function(config){
 Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
 
     items : false,
+    inline : true,
+    weight : '',
     fieldLabel : '',
     
     getAutoCreate : function()
@@ -41,12 +45,12 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
             cls : 'roo-radio-set',
             cn : [
                 {
-                    tag : 'div',
-                    cls : 'roo-radio-set-field-lable',
+                    tag : 'label',
+                    cls : 'roo-radio-set-field-label',
                     cn : [
                         {
                             tag : 'span',
-                            cls : 'roo-radio-set-field-lable-text',
+                            cls : 'roo-radio-set-field-label-text',
                             html : (this.fieldLabel.length) ? this.fieldLabel : ''
                         }
                     ]
@@ -64,7 +68,17 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
 
     initEvents : function()
     {
+        this.fieldLabelEl = this.el.select('.roo-radio-set-field-label', true).first();
+        this.fieldLabelEl.setVisibilityMode(Roo.Element.DISPLAY);
         
-    }
+        this.itemsEl = this.el.select('.roo-radio-set-items', true).first();
+        this.itemsEl.setVisibilityMode(Roo.Element.DISPLAY);
+        
+    },
+    
+    getChildContainer : function()
+    {
+        return this.itemsEl;
+    },
 
 });
