@@ -67,6 +67,25 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
             });
         }
         
+        var items = {
+            tag : 'div',
+            cls : 'roo-radio-set-items'
+        }
+        
+        var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
+        
+        if (align === 'left' && this.fieldLabel.length) {
+            
+            label.cls += ' col-md-' + this.labelWidth;
+            
+            items = {
+                cls : "col-md-" + (12 - this.labelWidth), 
+                cn: [
+                    items
+                ]
+            };
+        }
+        
         var cfg = {
             tag : 'div',
             cls : 'roo-radio-set',
@@ -80,31 +99,6 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
                 }
             ]
         };
-        
-        var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
-        
-        if (align === 'left' && this.fieldLabel.length) {
-            
-            label.cls += ' col-md-' + this.labelWidth;
-            
-            cfg.cn.push(label);
-            
-            cfg.cn.push({
-                cls : "col-md-" + (12 - this.labelWidth), 
-                cn: [
-                    {
-                        tag : 'div',
-                        cls : 'roo-radio-set-items'
-                    }
-                ]
-            });
-        } else {
-            cfg.cn.push(label);
-            cfg.cn.push({
-                tag : 'div',
-                    cls : 'roo-radio-set-items'
-            });
-        }
         
         if(this.inline) {
             cfg.cls += ' roo-radio-set-inline';
