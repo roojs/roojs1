@@ -56,7 +56,7 @@
              "xtype" : "RadioSet",
              "string fieldLabel" : "Radio Field Lable",
              "$ xns" : "Roo.bootstrap",
-             "string name" : "",
+             "string name" : "post_name",
              "items" : [
               {
                "xtype" : "RadioItem",
