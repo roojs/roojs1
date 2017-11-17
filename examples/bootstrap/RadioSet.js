@@ -80,6 +80,7 @@ RadioSet = new Roo.XComponent({
            items  : [
             {
              xtype : 'RadioSet',
+             allowblank : false,
              fieldLabel : _this._strings['8d80ce38760953b68529d7fc9d8d89b6'] /* Radio Field Lable */,
              name : 'post_name',
              xns : Roo.bootstrap,
