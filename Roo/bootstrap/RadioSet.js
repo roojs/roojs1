@@ -145,6 +145,11 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
         
     },
     
+    inputEl: function ()
+    {
+        return this.el.select('.roo-radio-set-input', true).first();
+    },
+    
     getChildContainer : function()
     {
         return this.itemsEl;
