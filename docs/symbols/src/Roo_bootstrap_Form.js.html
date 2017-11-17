@@ -162,27 +162,6 @@
         
         </span><span class="jsdoc-var">items.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">){
             
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.xtype </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'RadioItem'</span><span class="jsdoc-syntax">){
-                
-                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">radioSet.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.name</span><span class="jsdoc-syntax">) === -1){
-                    
-                    </span><span class="jsdoc-var">radioSet.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.name</span><span class="jsdoc-syntax">);
-                
-                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.validate</span><span class="jsdoc-syntax">()){
-                        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-                    }
-
-                    </span><span class="jsdoc-var">valid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
-
-                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">){
-                        </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">f.parent</span><span class="jsdoc-syntax">();
-                    }
-                    
-                }
-                
-                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-            }
-            
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.validate</span><span class="jsdoc-syntax">()){
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
