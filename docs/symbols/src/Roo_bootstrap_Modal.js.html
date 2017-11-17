@@ -295,13 +295,15 @@
         </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-body-masked&quot;</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-var">this.maskEl.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.lib.Dom.getViewWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">),   </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
-        </span><span class="jsdoc-var">this.maskEl.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'zIndex'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Modal.zIndex</span><span class="jsdoc-syntax">++);
+        </span><span class="jsdoc-var">this.maskEl.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'z-index'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Modal.zIndex</span><span class="jsdoc-syntax">++);
         </span><span class="jsdoc-var">this.maskEl.show</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-var">this.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'zIndex'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Modal.zIndex</span><span class="jsdoc-syntax">++);
-
+        
+        </span><span class="jsdoc-var">this.resize</span><span class="jsdoc-syntax">();
+        
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'show'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 
-        </span><span class="jsdoc-var">this.resize</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-comment">// set zindex here - otherwise it appears to be ignored...
+        </span><span class="jsdoc-var">this.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'z-index'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Modal.zIndex</span><span class="jsdoc-syntax">++);
 
         (</span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
             </span><span class="jsdoc-var">this.items.forEach</span><span class="jsdoc-syntax">( </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {

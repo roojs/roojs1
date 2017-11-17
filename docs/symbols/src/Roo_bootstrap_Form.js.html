@@ -97,6 +97,11 @@
     </span><span class="jsdoc-var">waitMsgTarget </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-var">loadMask </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} errPopover (true|false) default false
+     */
+    </span><span class="jsdoc-var">errPopover </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
 
@@ -138,7 +143,7 @@
             </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         });
-
+        
     },
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">onSubmit </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
@@ -152,14 +157,85 @@
     </span><span class="jsdoc-var">isValid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getItems</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">valid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">radioSet </span><span class="jsdoc-syntax">= [];
+        
         </span><span class="jsdoc-var">items.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">){
-           </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">f.validate</span><span class="jsdoc-syntax">()){
-               </span><span class="jsdoc-var">valid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.xtype </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'RadioItem'</span><span class="jsdoc-syntax">){
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">radioSet.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.name</span><span class="jsdoc-syntax">) === -1){
+                    
+                    </span><span class="jsdoc-var">radioSet.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.name</span><span class="jsdoc-syntax">);
+                
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.validate</span><span class="jsdoc-syntax">()){
+                        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                    }
 
-           }
+                    </span><span class="jsdoc-var">valid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">f.parent</span><span class="jsdoc-syntax">();
+                    }
+                    
+                }
+                
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.validate</span><span class="jsdoc-syntax">()){
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-var">valid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">;
+            }
+           
         });
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.errPopover </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">valid</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.showErrPopover</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">);
+        }
+        
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">valid</span><span class="jsdoc-syntax">;
     },
+    
+    </span><span class="jsdoc-var">showErrPopover </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.errPopover</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">target.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.focus</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">oIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">target.el.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'z-index'</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">target.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'z-index'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Modal.zIndex</span><span class="jsdoc-syntax">++);
+        
+        </span><span class="jsdoc-var">target.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'roo-invalid-outline'</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fadeout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+            
+            </span><span class="jsdoc-var">target.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'blur'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fadeout</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">target.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'keyup'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fadeout</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-var">target.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'z-index'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">oIndex</span><span class="jsdoc-syntax">);
+        
+            </span><span class="jsdoc-var">target.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'roo-invalid-outline'</span><span class="jsdoc-syntax">);
+            
+        }
+        
+        </span><span class="jsdoc-var">target.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'blur'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fadeout</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">target.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'keyup'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fadeout</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target.el</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">);
+          
+    },
+    
     </span><span class="jsdoc-comment">/**
      * Returns true if any fields in this form have changed since their original load.
      * @return Boolean

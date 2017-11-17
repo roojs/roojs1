@@ -379,6 +379,16 @@
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'form-group roo-combobox-tickable' </span><span class="jsdoc-comment">//input-group
         </span><span class="jsdoc-syntax">};
         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">btn_text_select </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">btn_text_done </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">btn_text_cancel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.btn_text_show</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">btn_text_select </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'Select'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">btn_text_done </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'Done'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">btn_text_cancel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'Cancel'</span><span class="jsdoc-syntax">; 
+        }
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">buttons </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tickable-buttons'</span><span class="jsdoc-syntax">,
@@ -387,21 +397,24 @@
                     </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'btn btn-link btn-edit pull-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.btnPosition</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.triggerText
+                    </span><span class="jsdoc-comment">//html : this.triggerText
+                    </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">btn_text_select
                 </span><span class="jsdoc-syntax">},
                 {
                     </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ok'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'btn btn-link btn-ok pull-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.btnPosition</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Done'
+                    </span><span class="jsdoc-comment">//html : 'Done'
+                    </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">btn_text_done
                 </span><span class="jsdoc-syntax">},
                 {
                     </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'cancel'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'btn btn-link btn-cancel pull-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.btnPosition</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Cancel'
+                    </span><span class="jsdoc-comment">//html : 'Cancel'
+                    </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">btn_text_cancel
                 </span><span class="jsdoc-syntax">}
             ]
         };
@@ -1668,8 +1681,9 @@
         
         </span><span class="jsdoc-var">this.list.hide</span><span class="jsdoc-syntax">();
         
+        </span><span class="jsdoc-var">this.hasFocus </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tickable</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.hasFocus </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">this.okBtn.hide</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">this.cancelBtn.hide</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">this.trigger.show</span><span class="jsdoc-syntax">();
@@ -1722,8 +1736,7 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.listWidth </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getWidth</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.minListWidth</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.list.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lw</span><span class="jsdoc-syntax">);
         
-        
-         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'expand'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'expand'</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-var">this.list.show</span><span class="jsdoc-syntax">();
         
@@ -2419,6 +2432,7 @@
             </span><span class="jsdoc-var">this.touchViewHeaderEl.show</span><span class="jsdoc-syntax">();
         }
 
+        </span><span class="jsdoc-var">this.touchViewEl.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'z-index'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Modal.zIndex</span><span class="jsdoc-syntax">++);
         </span><span class="jsdoc-var">this.touchViewEl.show</span><span class="jsdoc-syntax">();
 
         </span><span class="jsdoc-var">this.touchViewEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-dialog'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'margin'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'0px'</span><span class="jsdoc-syntax">);

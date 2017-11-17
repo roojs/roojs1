@@ -205,17 +205,15 @@
                 </span><span class="jsdoc-var">v.dom.checked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
             });
         }
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.checked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.checked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">;
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">suppressEvent </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'check'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">);
         }
-
         </span><span class="jsdoc-comment">//this.inputEl().dom.value = state ? this.inputValue : this.valueOff;
-
-    </span><span class="jsdoc-syntax">},
+        </span><span class="jsdoc-var">this.validate</span><span class="jsdoc-syntax">()
+    },
 
     </span><span class="jsdoc-var">getGroupValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {

@@ -1,0 +1,206 @@
+<html><head><title>../roojs1/Roo/bootstrap/RadioSet.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ * RadioSet
+ *
+ *
+ */
+
+/**
+ * @class Roo.bootstrap.RadioSet
+ * @extends Roo.bootstrap.Component
+ * Bootstrap RadioSet class
+ * @cfg {Boolean} disabled (true|false) default false
+ * @cfg {Boolean} allowBlank (true|false) default true
+ * @cfg {String} name name of the radio
+ * @cfg {String} fieldLabel - the label associated
+ * @cfg {String} value default value of the input
+ * @cfg {Number} labelWidth set the width of label (0-12)
+ * @cfg {String} labelAlign (top|left)
+ * @cfg {String} indicatorpos (left|right) default left
+ * @cfg {Boolean} inline (true|false) inline the element (default true)
+ * @cfg {String} weight (primary|warning|info|danger|success) The text that appears beside the radio
+ * @cfg {String} invalidClass The CSS class to use when marking a field invalid
+ * @cfg {String} validClass The CSS class to use when marking a field valid
+ * @constructor
+ * Create a new RadioSet
+ * @param {Object} config The config object
+ */
+
+</span><span class="jsdoc-var">Roo.bootstrap.RadioSet </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    
+    </span><span class="jsdoc-var">Roo.bootstrap.RadioSet.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-var">this.itmes </span><span class="jsdoc-syntax">= [];
+    
+    </span><span class="jsdoc-var">Roo.bootstrap.RadioSet.register</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.RadioSet</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+
+    </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">inline </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">weight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">fieldLabel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">disabled </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">allowBlank </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">invalidClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'has-warning'</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">validClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'has-success'</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">indicatorpos </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">label </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-radio-set-field-label'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                {
+                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-radio-set-field-label-text'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel
+                </span><span class="jsdoc-syntax">}
+            ]
+        };
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.indicatorpos </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">label.cn.unshift</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-required-indicator left-indicator text-danger fa fa-lg fa-star'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field is required'
+            </span><span class="jsdoc-syntax">});
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">label.cn.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-required-indicator left-indicator text-danger fa fa-lg fa-star'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field is required'
+            </span><span class="jsdoc-syntax">});
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-radio-set'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                </span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">,
+                {
+                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-radio-set-items'
+                </span><span class="jsdoc-syntax">}
+            ]
+        };
+        
+        
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+        
+    },
+
+    </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.fieldLabelEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-radio-set-field-label'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.fieldLabelEl.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.itemsEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-radio-set-items'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.itemsEl.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.indicatorEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-required-indicator'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.indicatorEl.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.indicatorEl.hide</span><span class="jsdoc-syntax">();
+        
+    },
+    
+    </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.itemsEl</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">register </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.items.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">item.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'name'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inline</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">item.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'radio-inline'</span><span class="jsdoc-syntax">);
+        }
+        
+    },
+    
+    </span><span class="jsdoc-var">validate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {   
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">valid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">i.checked</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-var">valid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        });
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.allowBlank </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">valid</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.markValid</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        
+    },
+    
+    </span><span class="jsdoc-var">markValid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.indicatorEl.hide</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">this.invalidClass</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.validClass</span><span class="jsdoc-syntax">]);
+        </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.validClass</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'valid'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">markInvalid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.allowBlank </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.indicatorEl.show</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">this.invalidClass</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.validClass</span><span class="jsdoc-syntax">]);
+        </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.invalidClass</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'invalid'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">);
+        
+    }
+
+});
+
+</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.RadioSet</span><span class="jsdoc-syntax">, {
+    
+    </span><span class="jsdoc-var">groups</span><span class="jsdoc-syntax">: {},
+    
+    </span><span class="jsdoc-var">register </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">set</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">set.name</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">set</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">get</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">) 
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">] ;
+    }
+    
+});
+</span></code></body></html>

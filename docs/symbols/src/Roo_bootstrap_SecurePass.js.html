@@ -1,4 +1,22 @@
-<html><head><title>../roojs1/Roo/bootstrap/SecurePass.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-var">Roo.bootstrap.SecurePass </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">) {
+<html><head><title>../roojs1/Roo/bootstrap/SecurePass.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ * Input
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.SecurePass
+ * @extends Roo.bootstrap.Input
+ * Bootstrap SecurePass class
+ *
+ * 
+ * @constructor
+ * Create a new SecurePass
+ * @param {Object} config The config object
+ */
+ 
+</span><span class="jsdoc-var">Roo.bootstrap.SecurePass </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">) {
     </span><span class="jsdoc-comment">// these go here, so the translation tool can replace them..
     </span><span class="jsdoc-var">this.errors </span><span class="jsdoc-syntax">= {
         </span><span class="jsdoc-var">PwdEmpty</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Please type a password, and then retype it to confirm.&quot;</span><span class="jsdoc-syntax">,
@@ -29,6 +47,7 @@
      * })
      */
     // private
+    </span><span class="jsdoc-var">meterWidth</span><span class="jsdoc-syntax">: 300,
     </span><span class="jsdoc-var">errors</span><span class="jsdoc-syntax">: {},
     </span><span class="jsdoc-var">imageRoot</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'/'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-comment">/**
@@ -42,12 +61,7 @@
      * ['Weak', 'Medium', 'Strong'])
      */
     // private
-    </span><span class="jsdoc-var">pwdStrengths</span><span class="jsdoc-syntax">: [],
-    </span><span class="jsdoc-comment">/**
-     * @cfg {String/Object} fieldsFilter A fieldsFilter spec, as [['field_name', 'error_id'], ...]
-     */
-    // private
-    </span><span class="jsdoc-var">fieldsFilter</span><span class="jsdoc-syntax">: [],
+    </span><span class="jsdoc-var">pwdStrengths</span><span class="jsdoc-syntax">: [],    
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">strength</span><span class="jsdoc-syntax">: 0,
     </span><span class="jsdoc-comment">// private
@@ -79,22 +93,22 @@
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">: {
                 </span><span class="jsdoc-string">'margin-bottom'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'10px'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px'
+                </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.meterWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px'
             </span><span class="jsdoc-syntax">},
             </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: {
                 </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'password_meter_grey'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'password-meter-grey'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">: {
-                    </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'20px'                    
+                    </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.meterWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'10px'                    
                 </span><span class="jsdoc-syntax">},
                 </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: {
                     </span><span class="jsdoc-comment">//id: 'PwdMeter',
                     </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'password_meter'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'password-meter'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">: {
-                        </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 0,
-                        </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'20px'                        
+                        </span><span class="jsdoc-comment">//width: 0,
+                        </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'10px'                        
                     </span><span class="jsdoc-syntax">}
                 }
             }
@@ -133,14 +147,15 @@
             </span><span class="jsdoc-var">strength </span><span class="jsdoc-syntax">= 0;
         }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.trigger.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'div/div/div'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.dom</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">console.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'strength1: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">strength</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-var">pm.style.width </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">/ 3) * </span><span class="jsdoc-var">strength </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">pm.style.width </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.meterWidth </span><span class="jsdoc-syntax">/ 3) * </span><span class="jsdoc-var">strength </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-comment">//if(this.pwdStrengths != null &amp;&amp; strength &gt; 0) {
         </span><span class="jsdoc-var">pm.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.meterLabel </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&amp;nbsp;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.pwdStrengths</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">strength</span><span class="jsdoc-syntax">];
         </span><span class="jsdoc-comment">//} else {
         //	pm.innerHTML = '';
         //}
-
+        
         </span><span class="jsdoc-var">this._lastPwd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pwd</span><span class="jsdoc-syntax">;
     },
     </span><span class="jsdoc-var">reset</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
@@ -197,11 +212,11 @@
             </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.errors.TooWeak</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-var">console.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'strength: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">strength</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">console.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'strength2: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">strength</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.trigger.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'div/div/div'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.dom</span><span class="jsdoc-syntax">;
                  
-        </span><span class="jsdoc-var">pm.style.width </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">/ 3) * </span><span class="jsdoc-var">strength </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">;
-        
+        </span><span class="jsdoc-var">pm.style.width </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.meterWidth </span><span class="jsdoc-syntax">/ 3) * </span><span class="jsdoc-var">strength </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">;
+                      
         </span><span class="jsdoc-var">pm.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.meterLabel </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&amp;nbsp;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.pwdStrengths</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">strength</span><span class="jsdoc-syntax">];
         
         </span><span class="jsdoc-comment">/*
@@ -298,26 +313,6 @@
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">ClientSideWeakPassword</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pwd</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.IsLongEnough</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pwd</span><span class="jsdoc-syntax">, 6) || !</span><span class="jsdoc-var">this.IsLongEnough</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pwd</span><span class="jsdoc-syntax">, 0);
-    }</span><span class="jsdoc-comment">/*,
-     
-     // private -- see TextFiedl... - not sure why we are duping the code?
-     SafariOnKeyDown : function(event){
-     
-     var isSelectAll = false;
-     if(this.el.dom.selectionEnd &gt; 0){
-     isSelectAll = (this.el.dom.selectionEnd - this.el.dom.selectionStart - this.getValue().length == 0) ? true : false;
-     }
-     if(((event.getKey() == 8 || event.getKey() == 46) &amp;&amp; this.getValue().length ==1)){ // backspace and delete key
-     event.preventDefault();
-     this.setValue('');
-     return;
-     };
-     if(isSelectAll){ // backspace and delete key
-     
-     event.preventDefault();
-     this.setValue(String.fromCharCode(
-     this.shiftKey ? event.getKey() : event.getKey().toLowerCase()
-     ));  
-     };
-     } */
-</span><span class="jsdoc-syntax">})</span></code></body></html>
+    }
+          
+})</span></code></body></html>
