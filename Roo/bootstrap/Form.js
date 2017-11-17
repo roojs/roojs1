@@ -162,18 +162,22 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         items.each(function(f){
             
-            if(f.xtype == 'RadioItem' && radioSet.indexOf(f.parent().name) === -1){
+            if(f.xtype == 'RadioItem'){
                 
-                radioSet.push(f.parent().name);
+                if(radioSet.indexOf(f.parent().name) === -1){
+                    
+                    radioSet.push(f.parent().name);
                 
-                if(f.parent().validate()){
-                    return;
-                }
-                
-                valid = false;
-                
-                if(!target){
-                    target = f.parent();
+                    if(f.parent().validate()){
+                        return;
+                    }
+
+                    valid = false;
+
+                    if(!target){
+                        target = f.parent();
+                    }
+                    
                 }
                 
                 return;
