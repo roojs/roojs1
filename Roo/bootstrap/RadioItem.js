@@ -27,6 +27,8 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component, {
     
     value : '',
     
+    isFormField : true,
+    
     getAutoCreate : function()
     {
         var cfg = {
@@ -88,8 +90,9 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component, {
         this.parent().validate();
     },
     
+    getName: function(){
         return this.name;
-    },
+    }
     
 });
  
