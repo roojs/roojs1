@@ -21,6 +21,9 @@
      "$ xns" : "Roo.bootstrap",
      "items" : [
       {
+       "listeners" : {
+        "render" : "function (_self)\n{\n    _this.form = this;\n}"
+       },
        "xtype" : "Form",
        "$ xns" : "Roo.bootstrap",
        "items" : [
