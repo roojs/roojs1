@@ -7581,27 +7581,6 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         items.each(function(f){
             
-            if(f.xtype == 'RadioItem'){
-                
-                if(radioSet.indexOf(f.parent().name) === -1){
-                    
-                    radioSet.push(f.parent().name);
-                
-                    if(f.parent().validate()){
-                        return;
-                    }
-
-                    valid = false;
-
-                    if(!target){
-                        target = f.parent();
-                    }
-                    
-                }
-                
-                return;
-            }
-            
             if(f.validate()){
                 return;
             }
@@ -20193,242 +20172,76 @@ Roo.apply(Roo.bootstrap.CheckBox, {
 /*
  * - LGPL
  *
- * Radio
- *
- *
- * not inline
- *<div class="radio">
-  <label>
-    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-    Option one is this and that&mdash;be sure to include why it's great
-  </label>
-</div>
- *
- *
- *inline
- *<span>
- *<label class="radio-inline">fieldLabel</label>
- *<label class="radio-inline">
-  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
-</label>
-<span>
- *
- *
+ * RadioItem
+ * 
  */
 
 /**
  * @class Roo.bootstrap.Radio
- * @extends Roo.bootstrap.CheckBox
+ * @extends Roo.bootstrap.Component
  * Bootstrap Radio class
-
+ * @cfg {String} boxLabel - the label associated
+ * @cfg {String} value - the value of radio
+ * 
  * @constructor
  * Create a new Radio
  * @param {Object} config The config object
  */
-
 Roo.bootstrap.Radio = function(config){
     Roo.bootstrap.Radio.superclass.constructor.call(this, config);
-
+    
 };
 
-Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
-
-    inputType: 'radio',
-    inputValue: '',
-    valueOff: '',
-
+Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.Component, {
+    
+    boxLabel : '',
+    
+    value : '',
+    
     getAutoCreate : function()
     {
-        var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
-        align = align || 'left'; // default...
-
-
-
-        var id = Roo.id();
-
         var cfg = {
-                tag : this.inline ? 'span' : 'div',
-                cls : 'form-group',
-                cn : []
-        };
-
-        var inline = this.inline ? ' radio-inline' : '';
-
-        var lbl = {
-                tag: 'label' ,
-                // does not need for, as we wrap the input with it..
-                'for' : id,
-                cls : 'control-label box-label' + inline,
-                cn : []
-        };
-        var labelWidth = this.labelWidth ? this.labelWidth *1 : 100;
-
-        var fieldLabel = {
-            tag: 'label' ,
-            //cls : 'control-label' + inline,
-            html : this.fieldLabel,
-            style : 'width:' +  labelWidth  + 'px;line-height:1;vertical-align:bottom;cursor:default;' // should be css really.
-        };
-
-        var input =  {
-            tag: 'input',
-            id : id,
-            type : this.inputType,
-            //value : (!this.checked) ? this.valueOff : this.inputValue,
-            value : this.inputValue,
-            cls : 'roo-radio',
-            placeholder : this.placeholder || '' // ?? needed????
-
-        };
-        if (this.weight) { // Validity check?
-            input.cls += " radio-" + this.weight;
-        }
-        if (this.disabled) {
-            input.disabled=true;
-        }
-
-        if(this.checked){
-            input.checked = this.checked;
-        }
-
-        if (this.name) {
-            input.name = this.name;
-        }
-
-        if (this.size) {
-            input.cls += ' input-' + this.size;
-        }
-
-        //?? can span's inline have a width??
-
-        var settings=this;
-        ['xs','sm','md','lg'].map(function(size){
-            if (settings[size]) {
-                cfg.cls += ' col-' + size + '-' + settings[size];
-            }
-        });
-
-        var inputblock = input;
-
-        if (this.before || this.after) {
-
-            inputblock = {
-                cls : 'input-group',
-                tag : 'span',
-                cn :  []
-            };
-            if (this.before) {
-                inputblock.cn.push({
-                    tag :'span',
-                    cls : 'input-group-addon',
-                    html : this.before
-                });
-            }
-            inputblock.cn.push(input);
-            if (this.after) {
-                inputblock.cn.push({
-                    tag :'span',
-                    cls : 'input-group-addon',
-                    html : this.after
-                });
-            }
-
-        };
-
-
-        if (this.fieldLabel && this.fieldLabel.length) {
-            cfg.cn.push(fieldLabel);
-        }
-
-        // normal bootstrap puts the input inside the label.
-        // however with our styled version - it has to go after the input.
-
-        //lbl.cn.push(inputblock);
-
-        var lblwrap =  {
-            tag: 'span',
-            cls: 'radio' + inline,
-            cn: [
-                inputblock,
-                lbl
+            tag : 'div',
+            cls : 'form-group radio',
+            cn : [
+                {
+                    tag : 'label',
+                    cls : 'box-label',
+                    html : this.boxLabel
+                }
             ]
         };
-
-        cfg.cn.push( lblwrap);
-
-        if(this.boxLabel){
-            lbl.cn.push({
-                tag: 'span',
-                html: this.boxLabel
-            })
-        }
-
-
+        
         return cfg;
-
     },
-
-    initEvents : function()
+    
+    initEvents : function() 
     {
-//        Roo.bootstrap.CheckBox.superclass.initEvents.call(this);
-
-        this.inputEl().on('click', this.onClick,  this);
-        if (this.boxLabel) {
-            //Roo.log('find label');
-            this.el.select('span.radio label span',true).first().on('click', this.onClick,  this);
-        }
-
+        this.parent().register(this);
+        
+        this.el.on('click', this.onClick, this);
+        
     },
-
-    inputEl: function ()
-    {
-        return this.el.select('input.roo-radio',true).first();
-    },
+    
     onClick : function()
     {
-        Roo.log("click");
         this.setChecked(true);
     },
-
-    setChecked : function(state,suppressEvent)
+    
+    setChecked : function(state, suppressEvent)
     {
-        if(state){
-            Roo.each(this.inputEl().up('form').select('input[name='+this.inputEl().dom.name+']', true).elements, function(v){
-                v.dom.checked = false;
-            });
-        }
-        this.checked = state;
-        this.inputEl().dom.checked = state;
-
+        this.parent().setValue(this.value);
+        
         if(suppressEvent !== true){
             this.fireEvent('check', this, state);
         }
-        //this.inputEl().dom.value = state ? this.inputValue : this.valueOff;
-        this.validate()
-    },
-
-    getGroupValue : function()
-    {
-        var value = '';
-        Roo.each(this.inputEl().up('form').select('input[name='+this.inputEl().dom.name+']', true).elements, function(v){
-            if(v.dom.checked == true){
-                value = v.dom.value;
-            }
-        });
-
-        return value;
-    },
-
-    /**
-     * Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}.
-     * @return {Mixed} value The field value
-     */
-    getValue : function(){
-        return this.getGroupValue();
+        
     }
-
+    
 });
-//<script type="text/javascript">
+ 
+
+ //<script type="text/javascript">
 
 /*
  * Based  Ext JS Library 1.1.1
@@ -32127,20 +31940,11 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
 
 /**
  * @class Roo.bootstrap.RadioSet
- * @extends Roo.bootstrap.Component
+ * @extends Roo.bootstrap.Input
  * Bootstrap RadioSet class
- * @cfg {Boolean} disabled (true|false) default false
- * @cfg {Boolean} allowBlank (true|false) default true
- * @cfg {String} name name of the radio
- * @cfg {String} fieldLabel - the label associated
- * @cfg {String} value default value of the input
- * @cfg {Number} labelWidth set the width of label (0-12)
- * @cfg {String} labelAlign (top|left)
  * @cfg {String} indicatorpos (left|right) default left
  * @cfg {Boolean} inline (true|false) inline the element (default true)
  * @cfg {String} weight (primary|warning|info|danger|success) The text that appears beside the radio
- * @cfg {String} invalidClass The CSS class to use when marking a field invalid
- * @cfg {String} validClass The CSS class to use when marking a field valid
  * @constructor
  * Create a new RadioSet
  * @param {Object} config The config object
@@ -32150,31 +31954,21 @@ Roo.bootstrap.RadioSet = function(config){
     
     Roo.bootstrap.RadioSet.superclass.constructor.call(this, config);
 
-    this.itmes = [];
+    this.radioes = [];
     
     Roo.bootstrap.RadioSet.register(this);
     
 };
 
-Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
 
-    items : false,
+    radioes : false,
     
     inline : true,
-    
-    name : '',
     
     weight : '',
     
     fieldLabel : '',
-    
-    disabled : false,
-    
-    allowBlank : true,
-    
-    invalidClass : 'has-warning',
-    
-    validClass : 'has-success',
     
     indicatorpos : 'left',
     
@@ -32182,11 +31976,10 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     {
         var label = {
             tag : 'label',
-            cls : 'roo-radio-set-field-label',
+            cls : 'roo-radio-set-label',
             cn : [
                 {
                     tag : 'span',
-                    cls : 'roo-radio-set-field-label-text',
                     html : this.fieldLabel
                 }
             ]
@@ -32201,24 +31994,49 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
         } else {
             label.cn.push({
                 tag : 'i',
-                cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
+                cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
                 tooltip : 'This field is required'
             });
+        }
+        
+        var items = {
+            tag : 'div',
+            cls : 'roo-radio-set-items'
+        };
+        
+        var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
+        
+        if (align === 'left' && this.fieldLabel.length) {
+            
+            label.cls += ' col-md-' + this.labelWidth;
+            
+            items = {
+                cls : "col-md-" + (12 - this.labelWidth), 
+                cn: [
+                    items
+                ]
+            };
         }
         
         var cfg = {
             tag : 'div',
             cls : 'roo-radio-set',
             cn : [
-                label,
                 {
-                    tag : 'div',
-                    cls : 'roo-radio-set-items'
-                }
+                    tag : 'input',
+                    cls : 'roo-radio-set-input',
+                    type : 'hidden',
+                    name : this.name,
+                    value : this.value ? this.value :  ''
+                },
+                label,
+                items
             ]
         };
         
-        
+        if(this.inline) {
+            cfg.cls += ' roo-radio-set-inline';
+        }
         
         return cfg;
         
@@ -32226,16 +32044,18 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
 
     initEvents : function()
     {
-        this.fieldLabelEl = this.el.select('.roo-radio-set-field-label', true).first();
-        this.fieldLabelEl.setVisibilityMode(Roo.Element.DISPLAY);
-        
         this.itemsEl = this.el.select('.roo-radio-set-items', true).first();
         this.itemsEl.setVisibilityMode(Roo.Element.DISPLAY);
         
-        this.indicatorEl = this.el.select('.roo-required-indicator', true).first();
-        this.indicatorEl.setVisibilityMode(Roo.Element.DISPLAY);
-        this.indicatorEl.hide();
+        this.indicatorEl().hide();
         
+        this.originalValue = this.getValue();
+        
+    },
+    
+    inputEl: function ()
+    {
+        return this.el.select('.roo-radio-set-input', true).first();
     },
     
     getChildContainer : function()
@@ -32245,9 +32065,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     
     register : function(item)
     {
-        this.items.push(item);
-        
-        item.inputEl().attr('name', this.name);
+        this.radioes.push(item);
         
         if(this.inline){
             item.el.addClass('radio-inline');
@@ -32259,7 +32077,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     {   
         var valid = false;
         
-        Roo.each(this.items, function(i){
+        Roo.each(this.radioes, function(i){
             if(!i.checked){
                 return;
             }
@@ -32280,7 +32098,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     
     markValid : function()
     {
-        this.indicatorEl.hide();
+        this.indicatorEl().hide();
         this.el.removeClass([this.invalidClass, this.validClass]);
         this.el.addClass(this.validClass);
         
@@ -32293,14 +32111,32 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
             return;
         }
         
-        this.indicatorEl.show();
+        this.indicatorEl().show();
         this.el.removeClass([this.invalidClass, this.validClass]);
         this.el.addClass(this.invalidClass);
         
         this.fireEvent('invalid', this, msg);
         
+    },
+    
+    setValue : function(v)
+    {
+        Roo.each(this.radioes, function(i){
+            
+            i.checked = false;
+            i.el.removeClass('checked');
+            
+            if(i.value == v){
+                i.checked = true;
+                i.el.addClass('checked');
+            }
+            
+        }, this);
+        
+        Roo.bootstrap.RadioSet.superclass.setValue.call(this)
+        
     }
-
+    
 });
 
 Roo.apply(Roo.bootstrap.RadioSet, {
@@ -32323,98 +32159,6 @@ Roo.apply(Roo.bootstrap.RadioSet, {
     
 });
 /*
- * - LGPL
- *
- * RadioItem
- * 
- */
-
-/**
- * @class Roo.bootstrap.RadioItem
- * @extends Roo.bootstrap.Component
- * Bootstrap RadioItem class
- * @cfg {String} boxLabel - the label associated
- * @cfg {String} value - the value of radio
- * 
- * @constructor
- * Create a new RadioItem
- * @param {Object} config The config object
- */
-Roo.bootstrap.RadioItem = function(config){
-    Roo.bootstrap.RadioItem.superclass.constructor.call(this, config);
-    
-};
-
-Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component,  {
-    
-    boxLabel : '',
-    value : '',
-    
-    getAutoCreate : function()
-    {
-        var cfg = {
-                tag : 'div',
-                cls : 'form-group radio roo-radio-set-item',
-                cn : [
-                    {
-                        tag : 'input',
-                        cls : 'roo-radio roo-radio-set-item-input',
-                        type : 'radio',
-                        value : this.value
-                    },
-                    {
-                        tag : 'label',
-                        cls : 'box-label roo-radio-set-item-box-label',
-                        html : this.boxLabel
-                    }
-                ]
-        };
-        
-        return cfg;
-    },
-    
-    initEvents : function() 
-    {
-        this.parent().register(this);
-        
-        this.inputEl().on('click', this.onClick, this);
-        
-        if (this.boxLabel) {
-            this.el.select('.roo-radio-set-item-box-label',true).first().on('click', this.onClick, this);
-        }
-    },
-    
-    inputEl : function()
-    {
-        return this.el.select('.roo-radio-set-item-input', true).first();
-    },
-    
-    onClick : function()
-    {
-        this.setChecked(true);
-    },
-    
-    setChecked : function(state, suppressEvent)
-    {
-        Roo.each(this.parent().items, function(i){
-            i.checked = false;
-            i.inputEl().dom.checked = false; 
-        });
-        
-        this.checked = state;
-        this.inputEl().dom.checked = state;
-
-        if(suppressEvent !== true){
-            this.fireEvent('check', this, state);
-        }
-        
-        this.parent().validate();
-    }
-    
-});
- 
-
- /*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
