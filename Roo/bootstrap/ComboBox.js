@@ -383,7 +383,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var btn_text_done = '';
         var btn_text_cancel = '';
         
-        if (this.btn_text_show) { 
+        if (this.btn_text_show) {
+            btn_text_select = 'Select';
+            btn_text_done = 'Done';
+            btn_text_canel = 'Cancel'; 
         }
         
         var buttons = {
