@@ -379,6 +379,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             cls : 'form-group roo-combobox-tickable' //input-group
         };
         
+        /*
         var buttons = {
             tag : 'div',
             cls : 'tickable-buttons',
@@ -405,6 +406,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 }
             ]
         };
+        */
         
         if(this.editable){
             buttons.cn.unshift({
@@ -2871,7 +2873,30 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
     footer : {
         tag: 'div',
         cls: 'modal-footer',
-        
+        cn: [
+            {
+                tag: 'div',
+                cls: 'row',
+                cn: [
+                    {
+                        tag: 'div',
+                        cls: 'col-xs-6 text-left',
+                        cn: {
+                            tag: 'button',
+                            cls: 'btn btn-danger roo-touch-view-cancel',
+                            html: 'Cancel'
+                        }
+                    },
+                    {
+                        tag: 'div',
+                        cls: 'col-xs-6 text-right',
+                        cn: {
+                            tag: 'button',
+                            cls: 'btn btn-success roo-touch-view-ok',
+                            html: 'OK'
+                        }
+                    }
+                ]
             }
         ]
         
