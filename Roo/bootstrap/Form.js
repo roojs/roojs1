@@ -174,13 +174,15 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
                 return;
             }
             
-            if(!f.validate()){
-               valid = false;
-               
-               if(!target){
-                   target = f;
-               }
-           }
+            if(f.validate()){
+                return;
+            }
+            
+            valid = false;
+
+            if(!target){
+                target = f;
+            }
            
         });
         
