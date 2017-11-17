@@ -11,6 +11,7 @@
  * Bootstrap RadioItem class
  * @cfg {String} boxLabel - the label associated
  * @cfg {Boolean} inline (true|false) inline the element (default false)
+ * @cfg {String} weight (primary|warning|info|danger|success) The text that appears beside the radio
  * 
  * @constructor
  * Create a new RadioItem
@@ -22,6 +23,8 @@ Roo.bootstrap.RadioItem = function(config){
 };
 
 Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component,  {
+    
+    inline : false,
     
     getAutoCreate : function()
     {
