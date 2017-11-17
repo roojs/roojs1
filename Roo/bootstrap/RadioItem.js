@@ -62,8 +62,7 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component,  {
     
     inputEl : function()
     {
-        Roo.log(this.el);
-        return this.el.select('roo-radio-set-item-input', true).first();
+        return this.el.select('.roo-radio-set-item-input', true).first();
     },
     
     onClick : function()
