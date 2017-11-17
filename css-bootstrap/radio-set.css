@@ -126,17 +126,17 @@
     background-color: #f0ad4e; 
 }
 
-.radio-success input[type="radio"] + label::after 
+.roo-radio-set-item.radio-success .roo-radio-set-item-box-label::after 
 {
     background-color: #fff; 
 }
 
-.radio-success input[type="radio"]:checked + label::before 
+.roo-radio-set-item.radio-success.checked .roo-radio-set-item-box-label::before 
 {
     border-color: #5cb85c; 
 }
 
-.radio-success input[type="radio"]:checked + label::after 
+.roo-radio-set-item.radio-success.checked .roo-radio-set-item-box-label::after 
 {
     background-color: #5cb85c; 
 }
