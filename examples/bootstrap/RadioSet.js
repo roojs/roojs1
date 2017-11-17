@@ -84,7 +84,8 @@ RadioSet = new Roo.XComponent({
              allowBlank : false,
              fieldLabel : _this._strings['8d80ce38760953b68529d7fc9d8d89b6'] /* Radio Field Lable */,
              indicatorpos : 'right',
-             name : 'radio_name',
+             labelAlign : 'top',
+             name : 'top_radio',
              xns : Roo.bootstrap,
              '|xns' : 'Roo.bootstrap',
              items  : [

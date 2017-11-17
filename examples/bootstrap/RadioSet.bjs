@@ -64,7 +64,8 @@
              "string fieldLabel" : "Radio Field Lable",
              "$ xns" : "Roo.bootstrap",
              "string indicatorpos" : "right",
-             "string name" : "radio_name",
+             "string name" : "top_radio",
+             "string labelAlign" : "top",
              "items" : [
               {
                "xtype" : "Radio",
