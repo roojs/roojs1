@@ -8,8 +8,11 @@
     background-color: #555555;
 }
 
-.radio input[type="radio"]:disabled + label {
-    opacity: 0.65; }
+.roo-radio-set.disabled .roo-radio-set-label,
+.roo-radio-set.disabled .radio + label 
+{
+    opacity: 0.65; 
+}
 .radio input[type="radio"]:disabled + label::before {
     cursor: not-allowed; }
 
