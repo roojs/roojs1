@@ -16,7 +16,6 @@
    "String style" : "min-height: 100%;",
    "items" : [
     {
-     "String cls" : "form-box",
      "xtype" : "Container",
      "$ xns" : "Roo.bootstrap",
      "items" : [
@@ -54,11 +53,11 @@
                "$ xns" : "Roo.bootstrap"
               },
               {
-               "xtype" : "Column",
+               "xtype" : "RadioItem",
                "$ xns" : "Roo.bootstrap"
               },
               {
-               "xtype" : "Column",
+               "xtype" : "RadioItem",
                "$ xns" : "Roo.bootstrap"
               }
              ]

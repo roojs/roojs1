@@ -28,7 +28,6 @@ RadioSet = new Roo.XComponent({
    items  : [
     {
      xtype : 'Container',
-     cls : 'form-box',
      xns : Roo.bootstrap,
      '|xns' : 'Roo.bootstrap',
      items  : [
@@ -73,12 +72,12 @@ RadioSet = new Roo.XComponent({
                '|xns' : 'Roo.bootstrap'
               },
               {
-               xtype : 'Column',
+               xtype : 'RadioItem',
                xns : Roo.bootstrap,
                '|xns' : 'Roo.bootstrap'
               },
               {
-               xtype : 'Column',
+               xtype : 'RadioItem',
                xns : Roo.bootstrap,
                '|xns' : 'Roo.bootstrap'
               }
