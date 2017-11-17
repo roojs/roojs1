@@ -150,7 +150,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     {   
         var valid = false;
         
-        Roo.each(this.items, function(i){
+        Roo.each(this.radioes, function(i){
             if(!i.checked){
                 return;
             }
