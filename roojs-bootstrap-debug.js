@@ -20190,15 +20190,6 @@ Roo.apply(Roo.bootstrap.CheckBox, {
 Roo.bootstrap.Radio = function(config){
     Roo.bootstrap.Radio.superclass.constructor.call(this, config);
     
-    this.addEvents({
-        /**
-        * @event check
-        * Fires when the element is checked or unchecked.
-        * @param {Roo.bootstrap.Radio} this This radio
-        * @param {Boolean} checked The new checked value
-        */
-       check : true
-    });
 };
 
 Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.Component, {
@@ -20239,11 +20230,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.Component, {
     
     setChecked : function(state, suppressEvent)
     {
-        this.parent().setValue(this.value);
-        
-        if(suppressEvent !== true){
-            this.fireEvent('check', this, state);
-        }
+        this.parent().setValue(this.value, suppressEvent);
         
     }
     
@@ -31967,6 +31954,16 @@ Roo.bootstrap.RadioSet = function(config){
     
     Roo.bootstrap.RadioSet.register(this);
     
+    this.addEvents({
+        /**
+        * @event check
+        * Fires when the element is checked or unchecked.
+        * @param {Roo.bootstrap.RadioSet} this This radio
+        * @param {Roo.bootstrap.Radio} item The checked item
+        */
+       check : true
+    });
+    
 };
 
 Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
@@ -32128,7 +32125,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
         
     },
     
-    setValue : function(v)
+    setValue : function(v, suppressEvent)
     {
         Roo.each(this.radioes, function(i){
             
@@ -32138,6 +32135,10 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
             if(i.value == v){
                 i.checked = true;
                 i.el.addClass('checked');
+                
+                if(suppressEvent !== true){
+                    this.fireEvent('check', this, i);
+                }
             }
             
         }, this);
