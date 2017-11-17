@@ -1,4 +1,8 @@
 
+.roo-radio-set-input {
+    display: none;
+}
+
 .radio.checked label::after 
 {
     -webkit-transform: scale(1, 1);
