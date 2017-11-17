@@ -145,6 +145,9 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     {
         this.fireEvent('valid', this);
         
+        this.el.removeClass([this.invalidClass, this.validClass]);
+        this.addClass(this.validClass);
+        
         Roo.each(this.items, function(i){
             i.removeClass([this.invalidClass, this.validClass]);
             i.addClass(this.validClass);
