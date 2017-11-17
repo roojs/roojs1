@@ -111,17 +111,17 @@
     background-color: #5bc0de; 
 }
 
-.radio-warning input[type="radio"] + label::after 
+.roo-radio-set-item.radio-warning .roo-radio-set-item-box-label::after 
 {
     background-color: #fff; 
 }
 
-.radio-warning input[type="radio"]:checked + label::before 
+.roo-radio-set-item.radio-warning.checked .roo-radio-set-item-box-label::before 
 {
     border-color: #f0ad4e; 
 }
 
-.radio-warning input[type="radio"]:checked + label::after 
+.roo-radio-set-item.radio-warning.checked .roo-radio-set-item-box-label::after 
 {
     background-color: #f0ad4e; 
 }
