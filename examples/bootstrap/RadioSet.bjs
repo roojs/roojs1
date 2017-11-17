@@ -66,13 +66,13 @@
              "string name" : "radio_name",
              "items" : [
               {
-               "xtype" : "RadioItem",
+               "xtype" : "Radio",
                "$ xns" : "Roo.bootstrap",
                "string boxLabel" : "Yes",
                "string value" : "yes"
               },
               {
-               "xtype" : "RadioItem",
+               "xtype" : "Radio",
                "$ xns" : "Roo.bootstrap",
                "string boxLabel" : "No",
                "string value" : "no"
@@ -91,6 +91,7 @@
            "xtype" : "Column",
            "Number xs" : 12,
            "$ xns" : "Roo.bootstrap",
+           "String style" : "margin-top: 15px;",
            "items" : [
             {
              "String name" : "text_name",
