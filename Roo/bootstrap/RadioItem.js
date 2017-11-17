@@ -49,9 +49,14 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component,  {
         return cfg;
     },
     
-    initEvents: function() 
+    initEvents : function() 
     {
-        Roo.log('init radio item');
+        
+    },
+    
+    inputEl : function()
+    {
+        
     }
 });
  
