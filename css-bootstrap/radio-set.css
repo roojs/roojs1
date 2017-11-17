@@ -150,17 +150,17 @@
     margin-top: 0;
 }*/
 
-.roo-radio-set.has-warning .roo-radio-set-item label,
+.roo-radio-set.has-warning .roo-radio-set-items label,
 .roo-radio-set.has-warning .roo-radio-set-label {
     color: #8a6d3b;
 }
 
-.roo-radio-set.has-error .roo-radio-set-item label,
+.roo-radio-set.has-error .roo-radio-set-items label,
 .roo-radio-set.has-error .roo-radio-set-label {
     color: #a94442;
 }
 
-.roo-radio-set.has-success .roo-radio-set-item label,
+.roo-radio-set.has-success .roo-radio-set-items label,
 .roo-radio-set.has-success .roo-radio-set-label {
     color: #3c763d;
 }
