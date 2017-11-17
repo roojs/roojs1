@@ -60,17 +60,20 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     getAutoCreate : function()
     {
         var label = {
-            {
-                tag : 'label',
-                cls : 'roo-radio-set-field-label',
-                cn : [
-                    {
-                        tag : 'span',
-                        cls : 'roo-radio-set-field-label-text',
-                        html : this.fieldLabel
-                    }
-                ]
-            }
+            tag : 'label',
+            cls : 'roo-radio-set-field-label',
+            cn : [
+                {
+                    tag : 'i',
+                    cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
+                    tooltip : 'This field is required'
+                },
+                {
+                    tag : 'span',
+                    cls : 'roo-radio-set-field-label-text',
+                    html : this.fieldLabel
+                }
+            ]
         };
         
         var cfg = {
