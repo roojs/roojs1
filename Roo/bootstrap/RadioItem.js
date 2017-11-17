@@ -40,7 +40,7 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component,  {
                     },
                     {
                         tag : 'label',
-                        cls : 'roo-radio-set-item-box-label',
+                        cls : 'roo-radio-set-item-box-label box-label',
                         html : this.boxLabel
                     }
                 ]
