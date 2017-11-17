@@ -6,6 +6,8 @@
  "permname" : "",
  "modOrder" : "001",
  "strings" : {
+  "d41d8cd98f00b204e9800998ecf8427e" : "",
+  "8d80ce38760953b68529d7fc9d8d89b6" : "Radio Field Lable",
   "b7dc22f0e17f4dfca2940eb0bd0cdc54" : "Radio Set Example"
  },
  "items" : [
@@ -53,15 +55,12 @@
            "items" : [
             {
              "xtype" : "RadioSet",
+             "string fieldLabel" : "Radio Field Lable",
              "$ xns" : "Roo.bootstrap",
-             "string fieldLable" : "Radio Field Lable",
              "items" : [
               {
                "xtype" : "RadioItem",
-               "$ xns" : "Roo.bootstrap"
-              },
-              {
-               "xtype" : "RadioItem",
+               "string html" : "",
                "$ xns" : "Roo.bootstrap"
               },
               {
