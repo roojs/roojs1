@@ -1,9 +1,11 @@
 
-.has-warning .roo-radio-set-item label {
+.has-warning .roo-radio-set-item label,
+.has-warning .roo-radio-set-field-label {
   color: #8a6d3b;
 }
 
-.has-error .roo-radio-set-item label {
+.has-error .roo-radio-set-item label,
+.has-error .roo-radio-set-field-label {
   color: #a94442;
 }
 
