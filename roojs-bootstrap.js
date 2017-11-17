@@ -830,7 +830,7 @@ return;}var A=this;if(this.rendered){Roo.each(this.el.up('form').select('input[n
 e.dom.disabled=false;});}this.disabled=false;this.fireEvent("enable",this);return this;}});Roo.apply(Roo.bootstrap.CheckBox,{groups:{},register:function(A){if(typeof(this.groups[A.groupId])=='undefined'){this.groups[A.groupId]={};}if(this.groups[A.groupId].hasOwnProperty(A.name)){return;
 }this.groups[A.groupId][A.name]=A;},get:function(A){if(typeof(this.groups[A])=='undefined'){return false;}return this.groups[A];}});
 // Roo/bootstrap/Radio.js
-Roo.bootstrap.Radio=function(A){Roo.bootstrap.Radio.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.Radio,Roo.bootstrap.Component,{boxLabel:'',value:'',getAutoCreate:function(){var A={tag:'div',cls:'form-group radio',cn:[{tag:'label',cls:'box-label',html:this.boxLabel}
+Roo.bootstrap.Radio=function(A){Roo.bootstrap.Radio.superclass.constructor.call(this,A);this.addEvents({check:true});};Roo.extend(Roo.bootstrap.Radio,Roo.bootstrap.Component,{boxLabel:'',value:'',getAutoCreate:function(){var A={tag:'div',cls:'form-group radio',cn:[{tag:'label',cls:'box-label',html:this.boxLabel}
 ]};return A;},initEvents:function(){this.parent().register(this);this.el.on('click',this.onClick,this);},onClick:function(){this.setChecked(true);},setChecked:function(A,B){this.parent().setValue(this.value);if(B!==true){this.fireEvent('check',this,A);}}}
 );
 // Roo/HtmlEditorCore.js

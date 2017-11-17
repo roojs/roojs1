@@ -20190,6 +20190,15 @@ Roo.apply(Roo.bootstrap.CheckBox, {
 Roo.bootstrap.Radio = function(config){
     Roo.bootstrap.Radio.superclass.constructor.call(this, config);
     
+    this.addEvents({
+        /**
+        * @event check
+        * Fires when the element is checked or unchecked.
+        * @param {Roo.bootstrap.Radio} this This radio
+        * @param {Boolean} checked The new checked value
+        */
+       check : true
+    });
 };
 
 Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.Component, {
