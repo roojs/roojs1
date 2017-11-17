@@ -9,6 +9,7 @@
   color: #a94442;
 }
 
-.has-success .roo-radio-set-item label {
+.has-success .roo-radio-set-item label,
+.has-success .roo-radio-set-field-label {
   color: #3c763d;
 }
