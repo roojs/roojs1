@@ -83,7 +83,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
         } else {
             label.cn.push({
                 tag : 'i',
-                cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
+                cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
                 tooltip : 'This field is required'
             });
         }
