@@ -48,16 +48,25 @@
     background-color: #d9534f; 
 }
     
-.radio-info input[type="radio"] + label::after {
+.radio-info label::after 
+{
     background-color: #fff;
 }
-.radio-info input[type="radio"]:checked + label::before {
-    border-color: #5bc0de; }
-.radio-info input[type="radio"]:checked + label::after {
-    background-color: #5bc0de; }
 
-.radio-warning input[type="radio"] + label::after {
-    background-color: #fff; }
+.radio-info.checked label::before 
+{
+    border-color: #5bc0de; 
+}
+
+.radio-info.checked label::after 
+{
+    background-color: #5bc0de; 
+}
+
+.radio-warning label::after 
+{
+    background-color: #fff; 
+}
 .radio-warning input[type="radio"]:checked + label::before {
     border-color: #f0ad4e; }
 .radio-warning input[type="radio"]:checked + label::after {
