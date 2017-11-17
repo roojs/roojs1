@@ -83,8 +83,8 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component,  {
         if(suppressEvent !== true){
             this.fireEvent('check', this, state);
         }
-        //this.inputEl().dom.value = state ? this.inputValue : this.valueOff;
-        this.validate()
+        
+        this.validate();
     },
 });
  
