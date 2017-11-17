@@ -178,11 +178,6 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
         
     },
     
-    getValue : function()
-    {
-        return this.inputEl().getValue();
-    },
-    
     setValue : function(v)
     {
         Roo.each(this.radioes, function(i){
@@ -202,14 +197,8 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
         
         this.validate();
         
-    },
-    
-    reset : function()
-    {
-        this.setValue(this.originalValue);
-        this.validate();
     }
-
+    
 });
 
 Roo.apply(Roo.bootstrap.RadioSet, {
