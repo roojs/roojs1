@@ -192,10 +192,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
             
         }, this);
         
-        this.value = v;
-        this.inputEl().dom.value = v;
-        
-        this.validate();
+        Roo.bootstrap.RadioSet.superclass.setValue.call(this)
         
     }
     
