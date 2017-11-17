@@ -8,7 +8,7 @@
 
 /**
  * @class Roo.bootstrap.RadioSet
- * @extends Roo.bootstrap.Component
+ * @extends Roo.bootstrap.Input
  * Bootstrap RadioSet class
  * @cfg {Boolean} disabled (true|false) default false
  * @cfg {Boolean} allowBlank (true|false) default true
@@ -37,7 +37,7 @@ Roo.bootstrap.RadioSet = function(config){
     
 };
 
-Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
 
     radioes : false,
     
@@ -108,6 +108,39 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
                 }
             ]
         };
+        
+        var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
+        
+        if (align ==='left' && this.fieldLabel.length) {
+            cfg.cn = [
+                {
+                    tag : 'input',
+                    cls : 'roo-radio-set-input',
+                    type : 'hidden',
+                    name : this.name,
+                    value : this.value ? this.value :  ''
+                },
+                label,
+                {
+                    tag : 'div',
+                    cls : 'roo-radio-set-items'
+                },
+                {
+                    tag: 'label',
+                    'for' :  id,
+                    cls : 'control-label col-md-' + this.labelWidth,
+                    html : this.fieldLabel
+
+                },
+                {
+                    cls : "col-md-" + (12 - this.labelWidth), 
+                    cn: [
+                        inputblock
+                    ]
+                }
+
+            ];
+        }
         
         if(this.inline) {
             cfg.cls += ' roo-radio-set-inline';
