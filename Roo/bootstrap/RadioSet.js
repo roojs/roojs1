@@ -197,7 +197,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
         
     },
     
-    setValue : function(v)
+    setValue : function(v, suppressEvent)
     {
         Roo.each(this.radioes, function(i){
             
@@ -212,6 +212,10 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
         }, this);
         
         Roo.bootstrap.RadioSet.superclass.setValue.call(this)
+        
+        if(suppressEvent !== true){
+            this.fireEvent('check', this, state);
+        }
         
     }
     
