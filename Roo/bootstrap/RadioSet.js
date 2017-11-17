@@ -96,6 +96,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
                     tag : 'input',
                     cls : 'roo-radio-set-input',
                     type : 'text',
+                    name : this.name,
                     value : this.value ? this.value :  ''
                 },
                 label,
