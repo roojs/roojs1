@@ -106,6 +106,8 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
             return true;
         }
         
+        
+        
 //        var valid = false;
 //        
 //        Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
