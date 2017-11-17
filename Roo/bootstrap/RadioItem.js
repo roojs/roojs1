@@ -30,15 +30,15 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component, {
     getAutoCreate : function()
     {
         var cfg = {
-                tag : 'div',
-                cls : 'form-group radio',
-                cn : [
-                    {
-                        tag : 'label',
-                        cls : 'box-label',
-                        html : this.boxLabel
-                    }
-                ]
+            tag : 'div',
+            cls : 'form-group radio',
+            cn : [
+                {
+                    tag : 'label',
+                    cls : 'box-label',
+                    html : this.boxLabel
+                }
+            ]
         };
         
         return cfg;
