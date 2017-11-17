@@ -43,7 +43,12 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component,  {
             cfg.cls += " radio-" + this.weight;
         }
         
-        if(!)
+        if(this.boxLabel.length){
+            cfg.cn.push({
+                tag : 'label',
+                cls : 'radio-item-box-label'
+            });
+        }
         
         return cfg;
     },
