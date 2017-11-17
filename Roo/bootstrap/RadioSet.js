@@ -208,6 +208,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
             Roo.log(i.value);
             
             if(i.value === v){
+                Roo.log('run???');
                 i.checked = true;
                 i.el.addClass('checked');
                 
