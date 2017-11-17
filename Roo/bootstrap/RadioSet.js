@@ -95,7 +95,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
                 {
                     tag : 'input',
                     cls : 'roo-radio-set-input',
-                    type : 'text',
+                    type : 'hidden',
                     name : this.name,
                     value : this.value ? this.value :  ''
                 },
@@ -126,6 +126,8 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
         this.indicatorEl = this.el.select('.roo-required-indicator', true).first();
         this.indicatorEl.setVisibilityMode(Roo.Element.DISPLAY);
         this.indicatorEl.hide();
+        
+        this.inputEl = this.el.select('roo-radio-set-input')
         
     },
     
