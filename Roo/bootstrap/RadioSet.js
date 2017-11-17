@@ -42,7 +42,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
             cls : 'roo-radio-set',
             cn : [
                 {
-                    tag : 'div',
+                    tag : 'label',
                     cls : 'roo-radio-set-field-lable',
                     cn : [
                         {
