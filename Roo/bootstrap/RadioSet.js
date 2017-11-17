@@ -89,22 +89,19 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
         var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
         
         if (align === 'left' && this.fieldLabel.length) {
-                cfg.cn = [
-                    
-                    {
-                        tag: 'label',
-                        cls : 'control-label col-md-' + this.labelWidth,
-                        html : this.fieldLabel
-                        
-                    },
-                    {
-                        cls : "col-md-" + (12 - this.labelWidth), 
-                        cn: [
-                            inputblock
-                        ]
-                    }
-                    
-                ];
+            
+            label.cls += ' col-md-' + this.labelWidth;
+            
+            cfg.cn = [
+                label,
+                {
+                    cls : "col-md-" + (12 - this.labelWidth), 
+                    cn: [
+                        inputblock
+                    ]
+                }
+
+            ];
         }
         
         if(this.inline) {
