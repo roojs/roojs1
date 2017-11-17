@@ -147,47 +147,6 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
         
         this.el.removeClass([this.invalidClass, this.validClass]);
         this.addClass(this.validClass);
-        
-        Roo.each(this.items, function(i){
-            i.removeClass([this.invalidClass, this.validClass]);
-            i.addClass(this.validClass);
-        }, this);
-        
-        var label = Roo.bootstrap.FieldLabel.get(this.name + '-group');
-        
-        if(this.groupId){
-            label = Roo.bootstrap.FieldLabel.get(this.groupId + '-group');
-        }
-        
-        if(label){
-            label.markValid();
-        }
-
-        if(this.inputType == 'radio'){
-            Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
-                e.findParent('.form-group', false, true).removeClass([_this.invalidClass, _this.validClass]);
-                e.findParent('.form-group', false, true).addClass(_this.validClass);
-            });
-            
-            return;
-        }
-        
-        if(!this.groupId){
-            this.el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
-            this.el.findParent('.form-group', false, true).addClass(this.validClass);
-            return;
-        }
-        
-        var group = Roo.bootstrap.CheckBox.get(this.groupId);
-            
-        if(!group){
-            return;
-        }
-        
-        for(var i in group){
-            group[i].el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
-            group[i].el.findParent('.form-group', false, true).addClass(this.validClass);
-        }
     }
 
 });
