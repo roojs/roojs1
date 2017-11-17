@@ -12,8 +12,8 @@
  * Bootstrap RadioSet class
  * @cfg {Boolean} disabled is it disabled
  * @cfg {String} name name of the radio
- * @cfg {string} fieldLabel - the label associated
- * @cfg {string} value default value of the input
+ * @cfg {String} fieldLabel - the label associated
+ * @cfg {String} value default value of the input
  * @cfg {Number} labelWidth set the width of label (0-12)
  * @cfg {String} labelAlign (top|left)
  * @cfg {String} indicatorpos (left|right) default left
