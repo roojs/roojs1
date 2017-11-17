@@ -51,12 +51,12 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component,  {
     
     initEvents : function() 
     {
-        Roo.log('init radio item');
+        this.parent().register(this);
     },
     
     inputEl : function()
     {
-        return this.el.select('')
+        return this.el.select('roo-radio-set-item-input', true).first();
     }
 });
  
