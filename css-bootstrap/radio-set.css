@@ -8,13 +8,11 @@
     background-color: #555555;
 }
 
-.roo-radio-set.disabled .roo-radio-set-label,
 .roo-radio-set.disabled .radio label 
 {
     opacity: 0.65; 
 }
 
-.roo-radio-set.disabled .roo-radio-set-label,
 .roo-radio-set.disabled .radio label,
 .roo-radio-set.disabled .radio label::after
 {
