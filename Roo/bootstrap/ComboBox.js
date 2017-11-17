@@ -388,8 +388,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     type : 'button',
                     cls : 'btn btn-link btn-edit pull-' + this.btnPosition,
                     html : this.triggerText
-                }
-                /*
+                },
                 {
                     tag : 'button',
                     type : 'button',
@@ -404,7 +403,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     cls : 'btn btn-link btn-cancel pull-' + this.btnPosition,
                     html : 'Cancel'
                 }
-                */
             ]
         };
         
