@@ -66,12 +66,12 @@
     cursor: not-allowed; 
 }
 
-.radio-primary input[type="radio"] + label::after 
+.radio-primary .roo-radio-set-item-box-label::after 
 {
     background-color: #fff; 
 }
 
-.radio-primary input[type="radio"]:checked + label::before 
+.radio-primary .roo-radio-set-item-box-label::before 
 {
     border-color: #428bca; 
 }
