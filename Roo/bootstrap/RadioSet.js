@@ -138,7 +138,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     
     register : function(item)
     {
-        this.radioItems.push(item);
+        this.radioes.push(item);
         
         if(this.inline){
             item.el.addClass('radio-inline');
