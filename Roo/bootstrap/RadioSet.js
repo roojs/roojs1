@@ -89,12 +89,10 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
         var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
         
         if (align === 'left' && this.fieldLabel.length) {
-//                Roo.log("left and has label");
                 cfg.cn = [
                     
                     {
                         tag: 'label',
-                        'for' :  id,
                         cls : 'control-label col-md-' + this.labelWidth,
                         html : this.fieldLabel
                         
