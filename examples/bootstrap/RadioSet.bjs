@@ -62,7 +62,7 @@
              "xtype" : "RadioSet",
              "string fieldLabel" : "Radio Field Lable",
              "$ xns" : "Roo.bootstrap",
-             "string indicatorpos" : "left",
+             "string indicatorpos" : "right",
              "string name" : "radio_name",
              "items" : [
               {
