@@ -36,9 +36,12 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     getAutoCreate : function()
     {
         var cfg = {
-            tag : 'div'
+            tag : 'div',
+            cls : 'roo-radio-set',
+            cn : []
         };
         
+        if(!)
         
     },
 
