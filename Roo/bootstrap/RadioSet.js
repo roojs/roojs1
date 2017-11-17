@@ -91,13 +91,13 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
             tag : 'div',
             cls : 'roo-radio-set',
             cn : [
-                label,
                 {
                     tag : 'input',
-                    cls : 'roo-radio roo-radio-set-item-input',
+                    cls : 'roo-radio-set-item-input',
                     type : 'radio',
                     value : this.value
                 },
+                label,
                 {
                     tag : 'div',
                     cls : 'roo-radio-set-items'
