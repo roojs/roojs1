@@ -180,7 +180,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
         
         this.fireEvent('invalid', this, msg);
         
-    },
+    }
 
 });
 
