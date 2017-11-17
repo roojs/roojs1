@@ -31,11 +31,12 @@
            "xtype" : "Column",
            "Number xs" : 12,
            "$ xns" : "Roo.bootstrap",
-           "String html" : "Radio Set Example",
            "items" : [
             {
              "xtype" : "Header",
-             "$ xns" : "Roo.bootstrap"
+             "Number level" : 1,
+             "$ xns" : "Roo.bootstrap",
+             "String html" : "Radio Set Example"
             }
            ]
           }
