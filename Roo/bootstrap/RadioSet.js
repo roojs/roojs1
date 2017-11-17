@@ -65,11 +65,10 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     {
         var label = {
             tag : 'label',
-            cls : 'roo-radio-set-field-label',
+            cls : 'roo-radio-set-label',
             cn : [
                 {
                     tag : 'span',
-                    cls : 'roo-radio-set-field-label-text',
                     html : this.fieldLabel
                 }
             ]
