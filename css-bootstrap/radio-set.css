@@ -96,7 +96,7 @@
     background-color: #d9534f; 
 }
 
-.radio-info input[type="radio"] + label::after 
+.roo-radio-set-item.radio-info .roo-radio-set-item-box-label::after 
 {
     background-color: #fff;
 }
