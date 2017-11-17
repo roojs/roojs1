@@ -84,7 +84,14 @@
           {
            "xtype" : "Column",
            "Number xs" : 12,
-           "$ xns" : "Roo.bootstrap"
+           "$ xns" : "Roo.bootstrap",
+           "items" : [
+            {
+             "String name" : "text_name",
+             "xtype" : "Input",
+             "$ xns" : "Roo.bootstrap"
+            }
+           ]
           }
          ]
         }
