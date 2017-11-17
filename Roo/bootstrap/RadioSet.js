@@ -90,7 +90,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
         
         this.items.push(item);
         
-        item.el.attr('name', name);
+        item.el.attr('name', this.name);
         
         if(this.inline){
             item.el.addClass('radio-inline');
