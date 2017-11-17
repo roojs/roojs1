@@ -86,12 +86,12 @@
     background-color: #d9534f; 
 }
 
-.radio-danger input[type="radio"]:checked + label::before 
+.roo-radio-set-item.radio-danger.checked .roo-radio-set-item-box-label::before 
 {
     border-color: #d9534f; 
 }
 
-.radio-danger input[type="radio"]:checked + label::after 
+.roo-radio-set-item.radio-danger.checked .roo-radio-set-item-box-label::after 
 {
     background-color: #d9534f; 
 }
