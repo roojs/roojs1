@@ -67,7 +67,7 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component, {
         
         if(state){
             this.checked = state;
-            i.el.addClass('checked');
+            this.el.addClass('checked');
         }
         
         if(suppressEvent !== true){
