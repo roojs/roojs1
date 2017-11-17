@@ -22,6 +22,7 @@
  * @cfg {String} weight (primary|warning|info|danger|success) The text that appears beside the radio
  * @cfg {String} invalidClass The CSS class to use when marking a field invalid
  * @cfg {String} validClass The CSS class to use when marking a field valid
+ * @cfg {String} valueOff
  * @constructor
  * Create a new RadioSet
  * @param {Object} config The config object
@@ -192,7 +193,8 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
         
     },
     
-    getName : function(){
+    getName : function()
+    {
         return this.name;
     },
     
