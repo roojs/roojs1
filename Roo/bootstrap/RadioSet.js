@@ -150,13 +150,11 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
         });
         
         if(this.disabled || this.allowBlank || valid){
-//            this.markValid();
-            Roo.log('mark valid');
+            this.markValid();
             return true;
         }
         
-        Roo.log('mark invalid');
-//        this.markInvalid();
+        this.markInvalid();
         return false;
         
     },
@@ -164,7 +162,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     markValid : function()
     {
         this.el.removeClass([this.invalidClass, this.validClass]);
-        this.addClass(this.validClass);
+        this.el.addClass(this.validClass);
         
         this.fireEvent('valid', this);
     },
@@ -177,7 +175,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
         
         this.indicatorEl.show();
         this.el.removeClass([this.invalidClass, this.validClass]);
-        this.addClass(this.invalidClass);
+        this.el.addClass(this.invalidClass);
         
         this.fireEvent('invalid', this, msg);
         
