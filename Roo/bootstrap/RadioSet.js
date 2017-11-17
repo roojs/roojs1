@@ -32,6 +32,7 @@ Roo.bootstrap.RadioSet = function(config){
 Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
 
     items : false,
+    fieldLabel : '',
     
     getAutoCreate : function()
     {
@@ -45,7 +46,8 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
                     cn : [
                         {
                             tag : 'span',
-                            cls : 'roo-radio-set-field-lable-text'
+                            cls : 'roo-radio-set-field-lable-text',
+                            html : (this.fieldLabel.length) ? this.fieldLabel : ''
                         }
                     ]
                 },
