@@ -73,19 +73,24 @@
     border-color: #f0ad4e; 
 }
 
-.radio-warning input[type="radio"]:checked + label::after {
-    background-color: #f0ad4e; }
+.radio-warning.checked label::after 
+{
+    background-color: #f0ad4e; 
+}
 
-.radio-success input[type="radio"] + label::after {
-    background-color: #fff; }
-.radio-success input[type="radio"]:checked + label::before {
-    border-color: #5cb85c; }
-.radio-success input[type="radio"]:checked + label::after {
-    background-color: #5cb85c; }
+.radio-success label::after 
+{
+    background-color: #fff; 
+}
 
-.checkbox.checkbox-inline,
-.radio.radio-inline {
-    margin-top: 0;
+.radio-success.checked label::before 
+{
+    border-color: #5cb85c; 
+}
+
+.radio-success.checked label::after 
+{
+    background-color: #5cb85c; 
 }
 
 .roo-radio-set.has-warning .roo-radio-set-items label,
