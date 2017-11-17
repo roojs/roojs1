@@ -386,7 +386,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if (this.btn_text_show) {
             btn_text_select = 'Select';
             btn_text_done = 'Done';
-            btn_text_canel = 'Cancel'; 
+            btn_text_cancel = 'Cancel'; 
         }
         
         var buttons = {
@@ -398,6 +398,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     type : 'button',
                     cls : 'btn btn-link btn-edit pull-' + this.btnPosition,
                     //html : this.triggerText
+                    html: btn_text_select
                 },
                 {
                     tag : 'button',
@@ -405,6 +406,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     name : 'ok',
                     cls : 'btn btn-link btn-ok pull-' + this.btnPosition,
                     //html : 'Done'
+                    html: btn_text_done
                 },
                 {
                     tag : 'button',
@@ -412,6 +414,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     name : 'cancel',
                     cls : 'btn btn-link btn-cancel pull-' + this.btnPosition,
                     //html : 'Cancel'
+                    html: btn_text_cancel
                 }
             ]
         };
