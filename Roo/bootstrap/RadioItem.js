@@ -55,11 +55,6 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component, {
         }
     },
     
-    inputEl : function()
-    {
-        return this.el.select('.roo-radio-set-item-input', true).first();
-    },
-    
     onClick : function()
     {
         this.setChecked(true);
