@@ -24,6 +24,7 @@ Roo.bootstrap.RadioItem = function(config){
 Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component,  {
     
     boxLabel : '',
+    value : '',
     
     getAutoCreate : function()
     {
@@ -34,7 +35,7 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component,  {
                     {
                         tag : 'label',
                         cls : 'radio-item-box-label',
-                        html : (this.boxLabel.length) ? this.boxLabel : ''
+                        html : this.boxLabel
                     }
                 ]
         };
