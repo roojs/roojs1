@@ -17,6 +17,8 @@
  * @cfg {Number} labelWidth set the width of label (0-12)
  * @cfg {String} labelAlign (top|left)
  * @cfg {String} indicatorpos (left|right) default left
+ * @cfg {Boolean} inline (true|false) inline the element (default false)
+ * @cfg {String} weight (primary|warning|info|danger|success) The text that appears beside the radio
  * @constructor
  * Create a new RadioSet
  * @param {Object} config The config object
