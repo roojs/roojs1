@@ -31,7 +31,7 @@ Roo.bootstrap.RadioSet = function(config){
     
     Roo.bootstrap.RadioSet.superclass.constructor.call(this, config);
 
-    this.radioItems = [];
+    this.radioes = [];
     
     Roo.bootstrap.RadioSet.register(this);
     
@@ -39,7 +39,7 @@ Roo.bootstrap.RadioSet = function(config){
 
 Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
 
-    radioItems : false,
+    radioes : false,
     
     inline : true,
     
