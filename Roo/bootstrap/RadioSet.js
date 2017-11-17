@@ -77,8 +77,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
                     type : 'hidden',
                     name : this.name,
                     value : this.value ? this.value :  ''
-                },
-                label
+                }
             ]
         };
         
@@ -88,16 +87,17 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
             
             label.cls += ' col-md-' + this.labelWidth;
             
-            cfg.cn = [
-                label,
-                {
-                    cls : "col-md-" + (12 - this.labelWidth), 
-                    cn: [
-                        inputblock
-                    ]
-                }
-
-            ];
+            cfg.cn.push(label);
+            
+            cfg.cn.push({
+                cls : "col-md-" + (12 - this.labelWidth), 
+                cn: [
+                    {
+                        tag : 'div',
+                        cls : 'roo-radio-set-items'
+                    }
+                ]
+            });
         }
         
         if(this.inline) {
