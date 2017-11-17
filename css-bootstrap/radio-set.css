@@ -23,10 +23,15 @@
     background-color: #fff; 
 }
 
-.radio-primary input[type="radio"]:checked + label::before {
-    border-color: #428bca; }
-.radio-primary input[type="radio"]:checked + label::after {
-    background-color: #428bca; }
+.radio-primary.checked label::before 
+{
+    border-color: #428bca; 
+}
+
+.radio-primary.checked label::after 
+{
+    background-color: #428bca; 
+}
 
 .radio-danger input[type="radio"] + label::after {
     background-color: #d9534f; }
