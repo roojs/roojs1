@@ -7577,14 +7577,41 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         var items = this.getItems();
         var valid = true;
         var target = false;
+        var radioSet = [];
+        
         items.each(function(f){
-           if(!f.validate()){
-               valid = false;
-               
-               if(!target){
-                   target = f;
-               }
-           }
+            
+            if(f.xtype == 'RadioItem'){
+                
+                if(radioSet.indexOf(f.parent().name) === -1){
+                    
+                    radioSet.push(f.parent().name);
+                
+                    if(f.parent().validate()){
+                        return;
+                    }
+
+                    valid = false;
+
+                    if(!target){
+                        target = f.parent();
+                    }
+                    
+                }
+                
+                return;
+            }
+            
+            if(f.validate()){
+                return;
+            }
+            
+            valid = false;
+
+            if(!target){
+                target = f;
+            }
+           
         });
         
         if(this.errPopover && !valid){
@@ -7596,8 +7623,6 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
     
     showErrPopover : function(target)
     {
-        return;
-        
         if(!this.errPopover){
             return;
         }
@@ -12376,6 +12401,16 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             cls : 'form-group roo-combobox-tickable' //input-group
         };
         
+        var btn_text_select = '';
+        var btn_text_done = '';
+        var btn_text_cancel = '';
+        
+        if (this.btn_text_show) {
+            btn_text_select = 'Select';
+            btn_text_done = 'Done';
+            btn_text_cancel = 'Cancel'; 
+        }
+        
         var buttons = {
             tag : 'div',
             cls : 'tickable-buttons',
@@ -12384,21 +12419,24 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     tag : 'button',
                     type : 'button',
                     cls : 'btn btn-link btn-edit pull-' + this.btnPosition,
-                    html : this.triggerText
+                    //html : this.triggerText
+                    html: btn_text_select
                 },
                 {
                     tag : 'button',
                     type : 'button',
                     name : 'ok',
                     cls : 'btn btn-link btn-ok pull-' + this.btnPosition,
-                    html : 'Done'
+                    //html : 'Done'
+                    html: btn_text_done
                 },
                 {
                     tag : 'button',
                     type : 'button',
                     name : 'cancel',
                     cls : 'btn btn-link btn-cancel pull-' + this.btnPosition,
-                    html : 'Cancel'
+                    //html : 'Cancel'
+                    html: btn_text_cancel
                 }
             ]
         };
@@ -32080,6 +32118,303 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
     }
 });
 /*
+ * - LGPL
+ *
+ * RadioSet
+ *
+ *
+ */
+
+/**
+ * @class Roo.bootstrap.RadioSet
+ * @extends Roo.bootstrap.Component
+ * Bootstrap RadioSet class
+ * @cfg {Boolean} disabled (true|false) default false
+ * @cfg {Boolean} allowBlank (true|false) default true
+ * @cfg {String} name name of the radio
+ * @cfg {String} fieldLabel - the label associated
+ * @cfg {String} value default value of the input
+ * @cfg {Number} labelWidth set the width of label (0-12)
+ * @cfg {String} labelAlign (top|left)
+ * @cfg {String} indicatorpos (left|right) default left
+ * @cfg {Boolean} inline (true|false) inline the element (default true)
+ * @cfg {String} weight (primary|warning|info|danger|success) The text that appears beside the radio
+ * @cfg {String} invalidClass The CSS class to use when marking a field invalid
+ * @cfg {String} validClass The CSS class to use when marking a field valid
+ * @constructor
+ * Create a new RadioSet
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.RadioSet = function(config){
+    
+    Roo.bootstrap.RadioSet.superclass.constructor.call(this, config);
+
+    this.itmes = [];
+    
+    Roo.bootstrap.RadioSet.register(this);
+    
+};
+
+Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
+
+    items : false,
+    
+    inline : true,
+    
+    name : '',
+    
+    weight : '',
+    
+    fieldLabel : '',
+    
+    disabled : false,
+    
+    allowBlank : true,
+    
+    invalidClass : 'has-warning',
+    
+    validClass : 'has-success',
+    
+    indicatorpos : 'left',
+    
+    getAutoCreate : function()
+    {
+        var label = {
+            tag : 'label',
+            cls : 'roo-radio-set-field-label',
+            cn : [
+                {
+                    tag : 'span',
+                    cls : 'roo-radio-set-field-label-text',
+                    html : this.fieldLabel
+                }
+            ]
+        };
+        
+        if(this.indicatorpos == 'left'){
+            label.cn.unshift({
+                tag : 'i',
+                cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
+                tooltip : 'This field is required'
+            });
+        } else {
+            label.cn.push({
+                tag : 'i',
+                cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
+                tooltip : 'This field is required'
+            });
+        }
+        
+        var cfg = {
+            tag : 'div',
+            cls : 'roo-radio-set',
+            cn : [
+                label,
+                {
+                    tag : 'div',
+                    cls : 'roo-radio-set-items'
+                }
+            ]
+        };
+        
+        
+        
+        return cfg;
+        
+    },
+
+    initEvents : function()
+    {
+        this.fieldLabelEl = this.el.select('.roo-radio-set-field-label', true).first();
+        this.fieldLabelEl.setVisibilityMode(Roo.Element.DISPLAY);
+        
+        this.itemsEl = this.el.select('.roo-radio-set-items', true).first();
+        this.itemsEl.setVisibilityMode(Roo.Element.DISPLAY);
+        
+        this.indicatorEl = this.el.select('.roo-required-indicator', true).first();
+        this.indicatorEl.setVisibilityMode(Roo.Element.DISPLAY);
+        this.indicatorEl.hide();
+        
+    },
+    
+    getChildContainer : function()
+    {
+        return this.itemsEl;
+    },
+    
+    register : function(item)
+    {
+        this.items.push(item);
+        
+        item.inputEl().attr('name', this.name);
+        
+        if(this.inline){
+            item.el.addClass('radio-inline');
+        }
+        
+    },
+    
+    validate : function()
+    {   
+        var valid = false;
+        
+        Roo.each(this.items, function(i){
+            if(!i.checked){
+                return;
+            }
+            
+            valid = true;
+            return false;
+        });
+        
+        if(this.disabled || this.allowBlank || valid){
+            this.markValid();
+            return true;
+        }
+        
+        this.markInvalid();
+        return false;
+        
+    },
+    
+    markValid : function()
+    {
+        this.indicatorEl.hide();
+        this.el.removeClass([this.invalidClass, this.validClass]);
+        this.el.addClass(this.validClass);
+        
+        this.fireEvent('valid', this);
+    },
+    
+    markInvalid : function(msg)
+    {
+        if(this.allowBlank || this.disabled){
+            return;
+        }
+        
+        this.indicatorEl.show();
+        this.el.removeClass([this.invalidClass, this.validClass]);
+        this.el.addClass(this.invalidClass);
+        
+        this.fireEvent('invalid', this, msg);
+        
+    }
+
+});
+
+Roo.apply(Roo.bootstrap.RadioSet, {
+    
+    groups: {},
+    
+    register : function(set)
+    {
+        this.groups[set.name] = set;
+    },
+    
+    get: function(name) 
+    {
+        if (typeof(this.groups[name]) == 'undefined') {
+            return false;
+        }
+        
+        return this.groups[name] ;
+    }
+    
+});
+/*
+ * - LGPL
+ *
+ * RadioItem
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.RadioItem
+ * @extends Roo.bootstrap.Component
+ * Bootstrap RadioItem class
+ * @cfg {String} boxLabel - the label associated
+ * @cfg {String} value - the value of radio
+ * 
+ * @constructor
+ * Create a new RadioItem
+ * @param {Object} config The config object
+ */
+Roo.bootstrap.RadioItem = function(config){
+    Roo.bootstrap.RadioItem.superclass.constructor.call(this, config);
+    
+};
+
+Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component,  {
+    
+    boxLabel : '',
+    value : '',
+    
+    getAutoCreate : function()
+    {
+        var cfg = {
+                tag : 'div',
+                cls : 'form-group radio roo-radio-set-item',
+                cn : [
+                    {
+                        tag : 'input',
+                        cls : 'roo-radio roo-radio-set-item-input',
+                        type : 'radio',
+                        value : this.value
+                    },
+                    {
+                        tag : 'label',
+                        cls : 'box-label roo-radio-set-item-box-label',
+                        html : this.boxLabel
+                    }
+                ]
+        };
+        
+        return cfg;
+    },
+    
+    initEvents : function() 
+    {
+        this.parent().register(this);
+        
+        this.inputEl().on('click', this.onClick, this);
+        
+        if (this.boxLabel) {
+            this.el.select('.roo-radio-set-item-box-label',true).first().on('click', this.onClick, this);
+        }
+    },
+    
+    inputEl : function()
+    {
+        return this.el.select('.roo-radio-set-item-input', true).first();
+    },
+    
+    onClick : function()
+    {
+        this.setChecked(true);
+    },
+    
+    setChecked : function(state, suppressEvent)
+    {
+        Roo.each(this.parent().items, function(i){
+            i.checked = false;
+            i.inputEl().dom.checked = false; 
+        });
+        
+        this.checked = state;
+        this.inputEl().dom.checked = state;
+
+        if(suppressEvent !== true){
+            this.fireEvent('check', this, state);
+        }
+        
+        this.parent().validate();
+    }
+    
+});
+ 
+
+ /*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
