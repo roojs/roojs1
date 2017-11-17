@@ -451,8 +451,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         };
         
         var combobox = {
-            // cls: 'roo-select2-container input-group roo-select2-container-multi',
-            cls: 'form-control x-combo-noedit',
+            cls: 'roo-select2-container input-group roo-select2-container-multi',
             cn: [
                 box
 //                {
