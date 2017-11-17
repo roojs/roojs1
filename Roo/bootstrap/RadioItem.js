@@ -32,7 +32,13 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component,  {
         var cfg = {
                 tag : this.inline ? 'span' : 'div',
                 cls : 'form-group',
-                cn : []
+                cn : [
+                    {
+                        tag : 'label',
+                        cls : 'radio-item-box-label',
+                        html : (this.boxLabel.length) ? this.boxLabel : ''
+                    }
+                ]
         };
 
         if(this.inline){
@@ -41,13 +47,6 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component,  {
         
         if (this.weight) {
             cfg.cls += " radio-" + this.weight;
-        }
-        
-        if(this.boxLabel.length){
-            cfg.cn.push({
-                tag : 'label',
-                cls : 'radio-item-box-label'
-            });
         }
         
         return cfg;
