@@ -63,7 +63,7 @@ RadioSet = new Roo.XComponent({
            '|xns' : 'Roo.bootstrap',
            items  : [
             {
-             xtype : 'Column',
+             xtype : 'RadioSet',
              xns : Roo.bootstrap,
              '|xns' : 'Roo.bootstrap',
              items  : [

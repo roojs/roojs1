@@ -46,7 +46,7 @@
            "$ xns" : "Roo.bootstrap",
            "items" : [
             {
-             "xtype" : "Column",
+             "xtype" : "RadioSet",
              "$ xns" : "Roo.bootstrap",
              "items" : [
               {
