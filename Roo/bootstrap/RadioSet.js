@@ -208,11 +208,13 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     
     setValue : function(v)
     {
+        Roo.log(v);
         Roo.each(this.radioes, function(i){
             
             i.checked = false;
             i.el.removeClass('checked');
             
+            Roo.log(i.el.dom.value);
             if(i.el.dom.value == v){
                 i.checked = true;
                 i.el.addClass('checked');
