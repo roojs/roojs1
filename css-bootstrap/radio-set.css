@@ -112,7 +112,7 @@
     color: #3c763d;
 }
 
-.roo-radio-set.radio-inline .radio {
+.roo-radio-set-inline .radio {
     display: inline-block;
     padding-left: 20px;
     margin-bottom: 0;
