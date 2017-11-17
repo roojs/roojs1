@@ -18,8 +18,11 @@
     cursor: not-allowed; 
 }
 
-.radio-primary input[type="radio"] + label::after {
-    background-color: #fff; }
+.radio-primary label::after 
+{
+    background-color: #fff; 
+}
+
 .radio-primary input[type="radio"]:checked + label::before {
     border-color: #428bca; }
 .radio-primary input[type="radio"]:checked + label::after {
