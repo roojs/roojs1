@@ -9,7 +9,7 @@
 }
 
 .roo-radio-set.disabled .roo-radio-set-label,
-.roo-radio-set.disabled .radio + label 
+.roo-radio-set.disabled .roo-radio-set-items .radio + label 
 {
     opacity: 0.65; 
 }
