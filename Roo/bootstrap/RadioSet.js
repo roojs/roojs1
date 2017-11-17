@@ -10,8 +10,8 @@
  * @class Roo.bootstrap.RadioSet
  * @extends Roo.bootstrap.Component
  * Bootstrap RadioSet class
- * @cfg {Boolean} disabled (true|false)
- * @cfg {Boolean} allowblank (true|false)
+ * @cfg {Boolean} disabled (true|false) default false
+ * @cfg {Boolean} allowblank (true|false) default true
  * @cfg {String} name name of the radio
  * @cfg {String} fieldLabel - the label associated
  * @cfg {String} value default value of the input
@@ -38,10 +38,18 @@ Roo.bootstrap.RadioSet = function(config){
 Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
 
     items : false,
+    
     inline : true,
+    
     name : '',
+    
     weight : '',
+    
     fieldLabel : '',
+    
+    disabled : false,
+    
+    allowblank : true,
     
     getAutoCreate : function()
     {
