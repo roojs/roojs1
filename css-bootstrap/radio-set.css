@@ -1,4 +1,8 @@
 
+.roo-radio-set-item {
+    padding-left: 15px;
+}
+
 .roo-radio-set-item label 
 {
     display: inline-block;
