@@ -70,7 +70,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
         var items = {
             tag : 'div',
             cls : 'roo-radio-set-items'
-        }
+        };
         
         var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
         
