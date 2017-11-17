@@ -143,10 +143,10 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     
     markValid : function()
     {
-        this.fireEvent('valid', this);
-        
         this.el.removeClass([this.invalidClass, this.validClass]);
         this.addClass(this.validClass);
+        
+        this.fireEvent('valid', this);
     },
     
     markInvalid : function(msg)
@@ -154,8 +154,6 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
         if(this.allowBlank || this.disabled){
             return;
         }
-        
-        var _this = this;
         
         this.fireEvent('invalid', this, msg);
         
