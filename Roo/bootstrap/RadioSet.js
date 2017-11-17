@@ -34,21 +34,13 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
     
     inline : true,
     
-    name : '',
-    
     weight : '',
     
     fieldLabel : '',
     
     disabled : false,
     
-    allowBlank : true,
-    
     indicatorpos : 'left',
-    
-    isFormField : true,
-    
-    value : '',
     
     getAutoCreate : function()
     {
