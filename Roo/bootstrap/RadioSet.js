@@ -36,6 +36,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     
     getAutoCreate : function()
     {
+        Roo.log(this.fieldLabel.length);
         var cfg = {
             tag : 'div',
             cls : 'roo-radio-set',
