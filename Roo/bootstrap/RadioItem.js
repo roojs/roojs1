@@ -9,7 +9,8 @@
  * @class Roo.bootstrap.RadioItem
  * @extends Roo.bootstrap.Component
  * Bootstrap RadioItem class
- * @cfg {string} boxLabel - the label associated
+ * @cfg {String} boxLabel - the label associated
+ * @cfg {Boolean} boxLabel - the label associated
  * 
  * @constructor
  * Create a new RadioItem
@@ -25,26 +26,12 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component,  {
     getAutoCreate : function()
     {
         var cfg = {
-            tag : 'div',
-            cls : 'roo-radio-item',
-            cn : [
-                {
-                    tag : 'label',
-                    cls : 'roo-radio-set-field-label',
-                    cn : [
-                        {
-                            tag : 'span',
-                            cls : 'roo-radio-set-field-label-text',
-                            html : (this.fieldLabel.length) ? this.fieldLabel : ''
-                        }
-                    ]
-                },
-                {
-                    tag : 'div',
-                    cls : 'roo-radio-set-items'
-                }
-            ]
+                tag : this.inline ? 'span' : 'div',
+                cls : 'form-group',
+                cn : []
         };
+
+        var inline = this.inline ? ' radio-inline' : '';
         
         return cfg;
     },
