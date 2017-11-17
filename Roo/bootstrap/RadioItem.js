@@ -51,7 +51,7 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        
+        Roo.log('init radio item');
     }
 });
  
