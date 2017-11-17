@@ -10,7 +10,7 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap RadioItem class
  * @cfg {String} boxLabel - the label associated
- * @cfg {Boolean} boxLabel - the label associated
+ * @cfg {Boolean} inline (true|false) inline the element (default false)
  * 
  * @constructor
  * Create a new RadioItem
