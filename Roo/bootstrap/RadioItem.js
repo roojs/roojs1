@@ -31,11 +31,11 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component, {
     {
         var cfg = {
                 tag : 'div',
-                cls : 'form-group roo-radio-set-item',
+                cls : 'form-group raido',
                 cn : [
                     {
                         tag : 'label',
-                        cls : 'box-label roo-radio-set-item-box-label',
+                        cls : 'box-label',
                         html : this.boxLabel
                     }
                 ]
