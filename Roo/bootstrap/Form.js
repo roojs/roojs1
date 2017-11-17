@@ -385,6 +385,9 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
              items.each(function(f){
                  Roo.log(f);
                  Roo.log(f.isFormField);
+                 Roo.log(f.dataIndex);
+                 Roo.log(f.id);
+                 Roo.log(f.getName());
                 if(f.isFormField && (f.dataIndex == id || f.id == id || f.getName() == id)){
                     field = f;
                     return false;
