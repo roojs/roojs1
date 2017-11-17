@@ -1,5 +1,5 @@
 
-.radio.checked + label::after 
+.radio.checked label::after 
 {
     -webkit-transform: scale(1, 1);
     -ms-transform: scale(1, 1);
