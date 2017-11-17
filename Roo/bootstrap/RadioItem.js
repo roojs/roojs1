@@ -10,8 +10,6 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap RadioItem class
  * @cfg {String} boxLabel - the label associated
- * @cfg {Boolean} inline (true|false) inline the element (default false)
- * @cfg {String} weight (primary|warning|info|danger|success) The text that appears beside the radio
  * 
  * @constructor
  * Create a new RadioItem
@@ -30,7 +28,7 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component,  {
     {
         var cfg = {
                 tag : this.inline ? 'span' : 'div',
-                cls : 'form-group',
+                cls : 'form-group radio',
                 cn : [
                     {
                         tag : 'label',
