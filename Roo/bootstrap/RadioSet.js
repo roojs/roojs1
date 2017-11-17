@@ -204,6 +204,14 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
         
     },
     
+    setValue : function(v)
+    {
+        this.value = v;
+        
+        this.inputEl.dom.value = v;
+        
+    },
+    
     reset : function()
     {
         Roo.each(this.radioes, function(i){
