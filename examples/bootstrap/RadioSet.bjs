@@ -5,6 +5,9 @@
  "path" : "/home/edward/gitlive/roojs1/examples/bootstrap/RadioSet.bjs",
  "permname" : "",
  "modOrder" : "001",
+ "strings" : {
+  "b7dc22f0e17f4dfca2940eb0bd0cdc54" : "Radio Set Example"
+ },
  "items" : [
   {
    "String cls" : "bg-black",
@@ -27,6 +30,19 @@
          "items" : [
           {
            "xtype" : "Column",
+           "Number xs" : 12,
+           "$ xns" : "Roo.bootstrap",
+           "String html" : "Radio Set Example"
+          }
+         ]
+        },
+        {
+         "xtype" : "Row",
+         "$ xns" : "Roo.bootstrap",
+         "items" : [
+          {
+           "xtype" : "Column",
+           "Number xs" : 12,
            "$ xns" : "Roo.bootstrap"
           }
          ]
