@@ -84,30 +84,7 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component,  {
             this.fireEvent('check', this, state);
         }
         
-        this.validate();
-    },
-    
-    validate : function()
-    {
-        if(this.disabled || this.allowBlank)){
-            this.markValid();
-            return true;
-        }
-        
-//        var valid = false;
-//        
-//        Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
-//            if(!e.dom.checked){
-//                return;
-//            }
-//            
-//            valid = true;
-//            
-//            return false;
-//        });
-//        
-//        this.markInvalid();
-//        return false;
+        this.parent().validate();
     }
     
 });
