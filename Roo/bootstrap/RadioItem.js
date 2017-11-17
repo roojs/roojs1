@@ -59,6 +59,9 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component, {
     
     setChecked : function(state, suppressEvent)
     {
+        Roo.log('set checked');
+        return;
+        
         Roo.each(this.parent().items, function(i){
             i.checked = false;
             i.inputEl().dom.checked = false; 
