@@ -67,8 +67,12 @@
 {
     background-color: #fff; 
 }
-.radio-warning input[type="radio"]:checked + label::before {
-    border-color: #f0ad4e; }
+
+.radio-warning.checked label::before 
+{
+    border-color: #f0ad4e; 
+}
+
 .radio-warning input[type="radio"]:checked + label::after {
     background-color: #f0ad4e; }
 
