@@ -101,12 +101,12 @@
     background-color: #fff;
 }
 
-.radio-info input[type="radio"]:checked + label::before 
+.roo-radio-set-item.radio-info.checked .roo-radio-set-item-box-label::before 
 {
     border-color: #5bc0de; 
 }
 
-.radio-info input[type="radio"]:checked + label::after 
+.roo-radio-set-item.radio-info.checked .roo-radio-set-item-box-label::after 
 {
     background-color: #5bc0de; 
 }
