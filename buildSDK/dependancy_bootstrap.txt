@@ -129,6 +129,8 @@ Roo.bootstrap.NumberField
 
 Roo.bootstrap.DocumentSlider
 
+Roo.bootstrap.RadioSet
+Roo.bootstrap.RadioItem
 
 Roo.bootstrap.SplitBar
 
