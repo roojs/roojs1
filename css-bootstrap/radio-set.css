@@ -15,7 +15,11 @@
 }
 
 .roo-radio-set.disabled .roo-radio-set-label,
-.roo-radio-set.disabled .radio + label::before,
+.roo-radio-set.disabled .radio label,
+
+.radio input[type="radio"]:disabled + label::before {
+    cursor: not-allowed; 
+}
 
 .radio-primary input[type="radio"] + label::after {
     background-color: #fff; }
