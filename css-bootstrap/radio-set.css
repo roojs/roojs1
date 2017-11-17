@@ -60,7 +60,8 @@
     opacity: 0.65; 
 }
 
-.radio input[type="radio"]:disabled + label::before 
+.roo-radio-set.disabled .roo-radio-set-field-label
+.roo-radio-set.disabled .roo-radio-set-item .roo-radio-set-item-box-label::before
 {
     cursor: not-allowed; 
 }
