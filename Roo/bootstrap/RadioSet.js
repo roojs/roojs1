@@ -114,7 +114,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
 
     initEvents : function()
     {
-        this.fieldLabelEl = this.el.select('.roo-radio-set-field-label', true).first();
+        this.fieldLabelEl = this.el.select('.roo-radio-set-label', true).first();
         this.fieldLabelEl.setVisibilityMode(Roo.Element.DISPLAY);
         
         this.itemsEl = this.el.select('.roo-radio-set-items', true).first();
