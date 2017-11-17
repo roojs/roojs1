@@ -88,7 +88,26 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
         
         var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
         
-        Roo.log(align);
+        if (align === 'left' && this.fieldLabel.length) {
+//                Roo.log("left and has label");
+                cfg.cn = [
+                    
+                    {
+                        tag: 'label',
+                        'for' :  id,
+                        cls : 'control-label col-md-' + this.labelWidth,
+                        html : this.fieldLabel
+                        
+                    },
+                    {
+                        cls : "col-md-" + (12 - this.labelWidth), 
+                        cn: [
+                            inputblock
+                        ]
+                    }
+                    
+                ];
+        }
         
         if(this.inline) {
             cfg.cls += ' roo-radio-set-inline';
@@ -100,9 +119,6 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
 
     initEvents : function()
     {
-        this.fieldLabelEl = this.el.select('.roo-radio-set-label', true).first();
-        this.fieldLabelEl.setVisibilityMode(Roo.Element.DISPLAY);
-        
         this.itemsEl = this.el.select('.roo-radio-set-items', true).first();
         this.itemsEl.setVisibilityMode(Roo.Element.DISPLAY);
         
