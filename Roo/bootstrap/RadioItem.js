@@ -9,6 +9,7 @@
  * @class Roo.bootstrap.RadioItem
  * @extends Roo.bootstrap.Component
  * Bootstrap RadioItem class
+ * @cfg {string} boxLabel - the label associated
  * 
  * @constructor
  * Create a new RadioItem
