@@ -107,8 +107,6 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
 
     initEvents : function()
     {
-        Roo.log('init radio set');
-        
         this.fieldLabelEl = this.el.select('.roo-radio-set-field-label', true).first();
         this.fieldLabelEl.setVisibilityMode(Roo.Element.DISPLAY);
         
@@ -128,8 +126,6 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     
     register : function(item)
     {
-        Roo.log('radio set register');
-        
         this.items.push(item);
         
         item.inputEl().attr('name', this.name);
