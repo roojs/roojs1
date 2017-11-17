@@ -63,7 +63,7 @@
              "string fieldLabel" : "Radio Field Lable",
              "$ xns" : "Roo.bootstrap",
              "string indicatorpos" : "right",
-             "string name" : "post_name",
+             "string name" : "radio_name",
              "items" : [
               {
                "xtype" : "RadioItem",
@@ -80,7 +80,13 @@
              ]
             }
            ]
-          },
+          }
+         ]
+        },
+        {
+         "xtype" : "Row",
+         "$ xns" : "Roo.bootstrap",
+         "items" : [
           {
            "xtype" : "Column",
            "Number xs" : 12,
