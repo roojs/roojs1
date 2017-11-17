@@ -57,6 +57,8 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     
     validClass : 'has-success',
     
+    indicatorpos : 'left',
+    
     getAutoCreate : function()
     {
         var label = {
@@ -75,6 +77,8 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
                 }
             ]
         };
+        
+        if()
         
         var cfg = {
             tag : 'div',
