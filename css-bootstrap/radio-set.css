@@ -121,11 +121,11 @@
     cursor: pointer;
 }
 
-.roo-radio-set-label .roo-required-indicator {
+.roo-radio-set-label .roo-required-indicator.right-indicator {
     position: absolute;
 }
 
-.roo-radio-set-label .roo-required-indicator.fa-star {
+.roo-radio-set-label .roo-required-indicator.right-indicator.fa-star {
     font-size: 8px;
     margin-left: 3px;
     color: #EC0404;
