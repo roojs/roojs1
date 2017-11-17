@@ -13,8 +13,7 @@
     opacity: 0.65; 
 }
 
-.roo-radio-set.disabled .radio label,
-.roo-radio-set.disabled .radio label::after
+.roo-radio-set.disabled .radio label
 {
     cursor: not-allowed; 
 }
