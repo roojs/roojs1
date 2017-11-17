@@ -211,8 +211,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
             i.el.removeClass('checked');
         }, this);
         
-        this.value = '';
-        this.inputEl.dom.value = this.value;
+        this.setValue('');
     }
 
 });
