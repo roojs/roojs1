@@ -43,7 +43,27 @@
           {
            "xtype" : "Column",
            "Number xs" : 12,
-           "$ xns" : "Roo.bootstrap"
+           "$ xns" : "Roo.bootstrap",
+           "items" : [
+            {
+             "xtype" : "Column",
+             "$ xns" : "Roo.bootstrap",
+             "items" : [
+              {
+               "xtype" : "Column",
+               "$ xns" : "Roo.bootstrap"
+              },
+              {
+               "xtype" : "Column",
+               "$ xns" : "Roo.bootstrap"
+              },
+              {
+               "xtype" : "Column",
+               "$ xns" : "Roo.bootstrap"
+              }
+             ]
+            }
+           ]
           }
          ]
         }
