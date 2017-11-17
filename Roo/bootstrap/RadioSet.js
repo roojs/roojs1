@@ -128,3 +128,23 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     }
 
 });
+
+Roo.apply(Roo.bootstrap.RadioSet, {
+    
+    groups: {},
+    
+    register : function(set)
+    {
+        this.groups[set.name] = set;
+    },
+    
+    get: function(name) 
+    {
+        if (typeof(this.groups[name]) == 'undefined') {
+            return false;
+        }
+        
+        return this.groups[name] ;
+    }
+    
+});
