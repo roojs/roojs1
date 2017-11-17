@@ -101,6 +101,41 @@
            ]
           }
          ]
+        },
+        {
+         "xtype" : "Row",
+         "$ xns" : "Roo.bootstrap",
+         "items" : [
+          {
+           "xtype" : "Column",
+           "Number xs" : 12,
+           "$ xns" : "Roo.bootstrap",
+           "items" : [
+            {
+             "bool allowBlank" : false,
+             "xtype" : "RadioSet",
+             "string fieldLabel" : "Radio Field Lable",
+             "$ xns" : "Roo.bootstrap",
+             "string indicatorpos" : "right",
+             "string name" : "radio_name",
+             "items" : [
+              {
+               "xtype" : "Radio",
+               "$ xns" : "Roo.bootstrap",
+               "string boxLabel" : "Yes",
+               "string value" : "yes"
+              },
+              {
+               "xtype" : "Radio",
+               "$ xns" : "Roo.bootstrap",
+               "string boxLabel" : "No",
+               "string value" : "no"
+              }
+             ]
+            }
+           ]
+          }
+         ]
         }
        ]
       }
