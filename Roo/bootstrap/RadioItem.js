@@ -48,6 +48,8 @@ Roo.extend(Roo.bootstrap.RadioItem, Roo.bootstrap.Component, {
     {
         this.parent().register(this);
         
+        Roo.log(this.el);
+        
         this.inputEl().on('click', this.onClick, this);
         
         if (this.boxLabel) {
