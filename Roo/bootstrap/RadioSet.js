@@ -161,6 +161,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     
     markValid : function()
     {
+        this.indicatorEl.hide();
         this.el.removeClass([this.invalidClass, this.validClass]);
         this.el.addClass(this.validClass);
         
