@@ -83,5 +83,12 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Component,  {
     {
         return this.itemsEl;
     },
+    
+    register : function(item)
+    {
+        this.items.push(item);
+        item.name = this.name;
+        
+    }
 
 });
