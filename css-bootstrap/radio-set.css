@@ -126,6 +126,10 @@
     cursor: pointer;
 }
 
+.roo-radio-set-inline .radio + .radio {
+    margin-left: 10px;
+}
+
 .roo-radio-set-label .roo-required-indicator.right-indicator {
     position: absolute;
 }
