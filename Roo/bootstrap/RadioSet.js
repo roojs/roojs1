@@ -113,7 +113,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
         };
         
         if(this.weight.length){
-            cfg.cls += ' radio-' + this.weight;
+            cfg.cls += ' roo-radio-' + this.weight;
         }
         
         if(this.inline) {
