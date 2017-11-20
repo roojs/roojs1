@@ -221,7 +221,11 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
     
     getValue : function(){
         
+        Roo.log(this.inputEl());
+        
         var v = this.inputEl().getValue();
+        
+        Roo.log(v);
         
         return v;
     }
