@@ -41,32 +41,32 @@
     background-color: #428bca; 
 }
 
-.radio-danger .radio label::after 
+.roo-radio-danger .radio label::after 
 {
     background-color: #d9534f; 
 }
 
-.radio-danger .radio.checked label::before 
+.roo-radio-danger .radio.checked label::before 
 {
     border-color: #d9534f; 
 }
 
-.radio-danger .radio.checked label::after 
+.roo-radio-danger .radio.checked label::after 
 {
     background-color: #d9534f; 
 }
     
-.radio-info label::after 
+.roo-radio-info .radio label::after 
 {
     background-color: #fff;
 }
 
-.radio-info.checked label::before 
+.roo-radio-info .radio.checked label::before 
 {
     border-color: #5bc0de; 
 }
 
-.radio-info.checked label::after 
+.roo-radio-info .radio.checked label::after 
 {
     background-color: #5bc0de; 
 }
