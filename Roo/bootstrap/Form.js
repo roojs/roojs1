@@ -213,7 +213,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             
         }
         
-        target.inputEl().on('blur', fadeout);
+        target.inputEl().on('blur', fadeout, this);
         target.inputEl().on('keyup', fadeout);
         
           
