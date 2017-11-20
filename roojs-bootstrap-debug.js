@@ -32163,7 +32163,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
         }
         
         if(this.labelEl.isVisible(true)){
-            this.indicatorEl().show();
+            this.indicatorEl().hide();
         }
         
         this.el.removeClass([this.invalidClass, this.validClass]);
