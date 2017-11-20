@@ -204,7 +204,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
             i.checked = false;
             i.el.removeClass('checked');
             
-            if(i.value == v){
+            if(i.value === v || i.value === v.toString()){
                 i.checked = true;
                 i.el.addClass('checked');
                 
