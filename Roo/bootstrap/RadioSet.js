@@ -122,6 +122,8 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
 
     initEvents : function()
     {
+        this.labelEl = this.el.select('.roo-radio-set-label', true).first();
+        
         this.itemsEl = this.el.select('.roo-radio-set-items', true).first();
         this.itemsEl.setVisibilityMode(Roo.Element.DISPLAY);
         
