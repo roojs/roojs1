@@ -199,7 +199,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
     
     setValue : function(v, suppressEvent)
     {
-        Roo.bootstrap.RadioSet.superclass.setValue.call(this)
+        Roo.bootstrap.RadioSet.superclass.setValue.call(this, v);
         
         Roo.log(this.value);
         
