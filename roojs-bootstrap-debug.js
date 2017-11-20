@@ -32036,6 +32036,10 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
             ]
         };
         
+        if(this.weight.lenght){
+            cfg.cls += ' radio-' + this.weight;
+        }
+        
         if(this.inline) {
             cfg.cls += ' roo-radio-set-inline';
         }
