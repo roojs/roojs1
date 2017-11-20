@@ -32060,6 +32060,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
         this.itemsEl = this.el.select('.roo-radio-set-items', true).first();
         this.itemsEl.setVisibilityMode(Roo.Element.DISPLAY);
         
+        this.indicatorEl().setVisibilityMode(Roo.Element.DISPLAY);
         this.indicatorEl().hide();
         
         this.originalValue = this.getValue();
