@@ -186,7 +186,29 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             return;
         }
         
-        Roo.log(target.el);
+        target.el.focus();
+        
+        var oIndex = target.el.getStyle('z-index');
+        
+        target.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
+        
+        target.el.addClass('roo-invalid-outline');
+        
+        var fadeout = function(){
+            
+            target.el.un('blur', fadeout);
+            target.el.un('keyup', fadeout);
+            
+            target.el.setStyle('z-index', oIndex);
+        
+            target.el.removeClass('roo-invalid-outline');
+            
+        }
+        
+        target.el.on('blur', fadeout);
+        target.el.on('keyup', fadeout);
+        
+        return;
         
         target.inputEl().focus();
         
