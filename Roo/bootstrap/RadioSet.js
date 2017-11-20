@@ -244,7 +244,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
         
         this.el.removeClass([this.invalidClass, this.validClass]);
         
-        this.fireEvent('invalid', this, msg);
+        this.fireEvent('valid', this);
     }
     
 });
