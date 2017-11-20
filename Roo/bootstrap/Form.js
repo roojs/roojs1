@@ -186,13 +186,15 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             return;
         }
         
-        target.inputEl().focus();
-        
         var oIndex = target.el.getStyle('z-index');
         
         target.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
         
         target.el.addClass('roo-invalid-outline');
+        
+        Roo.log(target);
+        
+        target.inputEl().focus();
         
         var fadeout = function(){
             
