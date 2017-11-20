@@ -158,7 +158,6 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         var items = this.getItems();
         var valid = true;
         var target = false;
-        var radioSet = [];
         
         items.each(function(f){
             
