@@ -156,10 +156,6 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
     {
         this.radioes.push(item);
         
-        if(this.inline){
-            item.el.addClass('radio-inline');
-        }
-        
     },
     
     validate : function()
