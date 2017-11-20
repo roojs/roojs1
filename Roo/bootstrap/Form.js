@@ -186,6 +186,8 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             return;
         }
         
+        Roo.log(target.el);
+        
         target.inputEl().focus();
         
         var oIndex = target.el.getStyle('z-index');
