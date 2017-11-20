@@ -192,11 +192,17 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         target.el.addClass('roo-invalid-outline');
         
-        Roo.log(target);
+        if(target.xtype == 'RadioSet'){
+            
+            
+            return;
+        }
         
         target.inputEl().focus();
         
         var fadeout = function(){
+            
+            Roo.log(this);
             
             target.inputEl().un('blur', fadeout);
             target.inputEl().un('keyup', fadeout);
