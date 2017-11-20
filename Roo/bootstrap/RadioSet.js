@@ -201,6 +201,8 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
     {
         Roo.bootstrap.RadioSet.superclass.setValue.call(this)
         
+        Roo.log(this.value);
+        
         Roo.each(this.radioes, function(i){
             
             i.checked = false;
