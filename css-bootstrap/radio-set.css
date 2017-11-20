@@ -36,22 +36,22 @@
     border-color: #428bca; 
 }
 
-.radio-primary.checked label::after 
+.roo-radio-primary .radio.checked label::after 
 {
     background-color: #428bca; 
 }
 
-.radio-danger label::after 
+.radio-danger .radio label::after 
 {
     background-color: #d9534f; 
 }
 
-.radio-danger.checked label::before 
+.radio-danger .radio.checked label::before 
 {
     border-color: #d9534f; 
 }
 
-.radio-danger.checked label::after 
+.radio-danger .radio.checked label::after 
 {
     background-color: #d9534f; 
 }
