@@ -514,9 +514,7 @@ html[dir="rtl"] .roo-select2-container-multi .roo-select2-choices li
     cursor: default;
     border: 1px solid #ccc;
     border-radius: 3px;
-    -webkit-box-shadow: 0 0 2px #fff inset, 0 1px 0 rgba(0, 0, 0, 0.05);
-    /* box-shadow: 0 0 2px #fff inset, 0 1px 0 rgba(0, 0, 0, 0.05); */
-    /* background-clip: padding-box; */
+  
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -moz-user-select: none;
