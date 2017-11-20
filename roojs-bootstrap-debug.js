@@ -7577,7 +7577,6 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         var items = this.getItems();
         var valid = true;
         var target = false;
-        var radioSet = [];
         
         items.each(function(f){
             
@@ -7606,13 +7605,13 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             return;
         }
         
-        target.inputEl().focus();
-        
         var oIndex = target.el.getStyle('z-index');
         
         target.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
         
         target.el.addClass('roo-invalid-outline');
+        
+        target.inputEl().focus();
         
         var fadeout = function(){
             
@@ -7625,12 +7624,9 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             
         }
         
-        target.inputEl().on('blur', fadeout);
-        target.inputEl().on('keyup', fadeout);
+        target.inputEl().on('blur', fadeout, target);
+        target.inputEl().on('keyup', fadeout, target);
         
-        Roo.log(target.el);
-        
-        Roo.log(target);
           
     },
     
@@ -32031,7 +32027,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
                 {
                     tag : 'input',
                     cls : 'roo-radio-set-input',
-                    type : 'hidden',
+                    type : 'text',
                     name : this.name,
                     value : this.value ? this.value :  ''
                 },
@@ -32050,6 +32046,13 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
 
     initEvents : function()
     {
+        this.labelEl = this.el.select('.roo-radio-set-label', true).first();
+        this.labelEl.setVisibilityMode(Roo.Element.DISPLAY);
+        
+        if(!this.fieldLabel.length){
+            this.labelEl.hide();
+        }
+        
         this.itemsEl = this.el.select('.roo-radio-set-items', true).first();
         this.itemsEl.setVisibilityMode(Roo.Element.DISPLAY);
         
@@ -32104,7 +32107,10 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
     
     markValid : function()
     {
-        this.indicatorEl().hide();
+        if(this.labelEl.isVisible(true)){
+            this.indicatorEl().hide();
+        }
+        
         this.el.removeClass([this.invalidClass, this.validClass]);
         this.el.addClass(this.validClass);
         
@@ -32117,7 +32123,10 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
             return;
         }
         
-        this.indicatorEl().show();
+        if(this.labelEl.isVisible(true)){
+            this.indicatorEl().show();
+        }
+        
         this.el.removeClass([this.invalidClass, this.validClass]);
         this.el.addClass(this.invalidClass);
         
@@ -32126,13 +32135,13 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
     },
     
     setValue : function(v, suppressEvent)
-    {
+    {   
         Roo.each(this.radioes, function(i){
             
             i.checked = false;
             i.el.removeClass('checked');
             
-            if(i.value == v){
+            if(i.value === v || i.value.toString() === v.toString()){
                 i.checked = true;
                 i.el.addClass('checked');
                 
@@ -32143,7 +32152,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
             
         }, this);
         
-        Roo.bootstrap.RadioSet.superclass.setValue.call(this)
+        Roo.bootstrap.RadioSet.superclass.setValue.call(this, v);
         
     }
     
