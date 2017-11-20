@@ -1,6 +1,9 @@
 
 .roo-radio-set-input {
-    display: none;
+    width: 0px;
+    height: 0px;
+    border: none;
+    opacity: 0;
 }
 
 .radio.checked label::after 
