@@ -32036,8 +32036,8 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
             ]
         };
         
-        if(this.weight.lenght){
-            cfg.cls += ' radio-' + this.weight;
+        if(this.weight.length){
+            cfg.cls += ' roo-radio-' + this.weight;
         }
         
         if(this.inline) {
@@ -32079,10 +32079,6 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
     register : function(item)
     {
         this.radioes.push(item);
-        
-        if(this.inline){
-            item.el.addClass('radio-inline');
-        }
         
     },
     
