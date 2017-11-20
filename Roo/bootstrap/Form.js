@@ -194,8 +194,6 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         target.inputEl().focus();
         
-        Roo.log(target.inputEl());
-        
         var fadeout = function(){
             
             Roo.log(this);
