@@ -119,6 +119,7 @@
 .roo-radio-set-inline .radio {
     display: inline-block;
     padding-left: 20px;
+    margin-top: 0px;
     margin-bottom: 0;
     font-weight: 400;
     vertical-align: middle;
