@@ -217,6 +217,13 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
         
         Roo.bootstrap.RadioSet.superclass.setValue.call(this)
         
+    },
+    
+    getValue : function(){
+        
+        var v = this.inputEl().getValue();
+        
+        return v;
     }
     
 });
