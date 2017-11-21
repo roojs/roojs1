@@ -197,6 +197,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         var tooltip = new Roo.bootstrap.Tooltip();
         tooltip.bindEl = target.el;
+        tooltip.show();
         
         var fadeout = function(){
             
