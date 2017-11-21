@@ -137,6 +137,7 @@
            "String style" : "margin-top: 15px;",
            "items" : [
             {
+             "Boolean allowBlank" : false,
              "String name" : "text_name",
              "xtype" : "Input",
              "string placeholder" : "Text",
@@ -154,7 +155,6 @@
            "xtype" : "Column",
            "Number xs" : 12,
            "$ xns" : "Roo.bootstrap",
-           "String style" : "margin-top: 15px;",
            "items" : [
             {
              "String name" : "text_name",

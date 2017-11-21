@@ -169,6 +169,7 @@ RadioSet = new Roo.XComponent({
            items  : [
             {
              xtype : 'Input',
+             allowBlank : false,
              name : 'text_name',
              placeholder : _this._strings['9dffbf69ffba8bc38bc4e01abf4b1675'] /* Text */,
              xns : Roo.bootstrap,
@@ -185,7 +186,6 @@ RadioSet = new Roo.XComponent({
          items  : [
           {
            xtype : 'Column',
-           style : 'margin-top: 15px;',
            xs : 12,
            xns : Roo.bootstrap,
            '|xns' : 'Roo.bootstrap',
