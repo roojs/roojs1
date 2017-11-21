@@ -7599,7 +7599,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             
             valid = false;
 
-            if(!target){
+            if(!target && f.el.isVisible(true)){
                 target = f;
             }
            
