@@ -207,6 +207,8 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         this.errPopoverEl.show();
         
+        this.errPopoverEl.alignTo(target.el, 'tl-bl?');
+        
         var fadeout = function(){
             
             target.inputEl().un('blur', fadeout);
