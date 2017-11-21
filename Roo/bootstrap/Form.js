@@ -624,6 +624,8 @@ Roo.apply(Roo.bootstrap.Form, {
 //            this.intervalID = window.setInterval(function() {
 //                
 //            }, 1000);
+
+            window.onwheel = function(){ return false; }
             
             (function(){ this.isMasked = true; }).defer(500, this);
             
