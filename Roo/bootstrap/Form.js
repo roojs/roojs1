@@ -197,7 +197,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         target.inputEl().focus();
         
-        this.errPopoverEl.el.select('.tooltip-inner',true).first().dom.innerHTML = tip;
+        this.errTooltip.el.select('.tooltip-inner',true).first().dom.innerHTML = 'This field is required';
         
         this.errPopoverEl.show();
         
