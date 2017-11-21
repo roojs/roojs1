@@ -642,17 +642,21 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
 
 Roo.apply(Roo.bootstrap.Form, {
     
-    initErrPopover : false,
+    errPopover : {
+        
+        initErrPopover : false,
     
-    init : function(set)
-    {
-        if(this.initErrPopover){
-            return;
+        init : function(set)
+        {
+            if(this.initErrPopover){
+                return;
+            }
+
+            Roo.get(document.body).on('click', function(){
+                Roo.log('click ???') ;
+            });
         }
         
-        Roo.get(document.body).on('click', function(){
-            Roo.log('click ???') ;
-        });
     }
     
 });
