@@ -623,7 +623,7 @@ Roo.apply(Roo.bootstrap.Form, {
             
             this.intervalID = window.setInterval(function() {
                 Roo.log(this);
-            }, 1000);
+            }, 1000, this);
             
             this.isMasked = true;
             
