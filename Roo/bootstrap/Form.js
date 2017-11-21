@@ -212,17 +212,17 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
                 
         }
         
-        target.inputEl().on('blur', fadeout, target);
-        target.inputEl().on('keyup', fadeout, target);
-        
-        if(intervalFadeOut){
-            window.clearInterval(intervalFadeOut);
-            intervalFadeOut = false;
-        }
-        
-        var intervalFadeOut =  window.setInterval(function() {
-            fadeout();
-        }, 10000);
+//        target.inputEl().on('blur', fadeout, target);
+//        target.inputEl().on('keyup', fadeout, target);
+//        
+//        if(intervalFadeOut){
+//            window.clearInterval(intervalFadeOut);
+//            intervalFadeOut = false;
+//        }
+//        
+//        var intervalFadeOut =  window.setInterval(function() {
+//            fadeout();
+//        }, 10000);
         
           
     },
