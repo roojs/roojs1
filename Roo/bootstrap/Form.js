@@ -644,17 +644,19 @@ Roo.apply(Roo.bootstrap.Form, {
     
     errPopover : {
         
-        initErrPopover : false,
+        isApplied : false,
     
-        init : function(set)
+        init : function()
         {
-            if(this.initErrPopover){
+            if(this.isApplied){
                 return;
             }
 
             Roo.get(document.body).on('click', function(){
                 Roo.log('click ???') ;
             });
+            
+            this.isApplied = true
         }
         
     }
