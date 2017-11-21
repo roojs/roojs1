@@ -21,7 +21,12 @@
 Roo.bootstrap.Tooltip = function(config){
     Roo.bootstrap.Tooltip.superclass.constructor.call(this, config);
     
-    this.alignment = config.alignment || Roo.bootstrap.Tooltip.alignment;
+    this.alignment = Roo.bootstrap.Tooltip.alignment;
+    
+    if(typeof(config) != 'undefined' && typeof(config.alignment) != 'undefined'){
+        this.alignment = config.alignment;
+    }
+    
 };
 
 Roo.apply(Roo.bootstrap.Tooltip, {
