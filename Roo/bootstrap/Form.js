@@ -681,7 +681,7 @@ Roo.apply(Roo.bootstrap.Form, {
 
             Roo.log('mask');
             
-            var oIndex = target.el.getStyle('z-index');
+            this.oIndex = target.el.getStyle('z-index');
             
             this.target.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
         
@@ -713,6 +713,13 @@ Roo.apply(Roo.bootstrap.Form, {
             
             Roo.log('unmask');
             
+            if(this.oIndex){
+                this.target.el.setStyle('z-index', this.oIndex);
+            }
+            
+            this.target.el.removeClass('roo-invalid-outline');
+            
+            this.form.errTooltip.hide();
             
         }
         
