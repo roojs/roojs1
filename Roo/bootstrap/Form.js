@@ -622,7 +622,7 @@ Roo.apply(Roo.bootstrap.Form, {
             this.toolTip.show(tip);
             
             this.intervalID = window.setInterval(function() {
-                Roo.bootstrap.Form.unmask();
+                Roo.bootstrap.Form.popover.unmask();
             }, 10000);
 
             window.onwheel = function(){ return false;};
