@@ -622,8 +622,8 @@ Roo.apply(Roo.bootstrap.Form, {
             this.toolTip.show(tip);
             
             this.intervalID = window.setInterval(function() {
-                Roo.log(this);
-            }, 1000, this);
+                
+            }, 1000);
             
             this.isMasked = true;
             
