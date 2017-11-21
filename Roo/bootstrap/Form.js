@@ -102,6 +102,8 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
      * @cfg {Boolean} errPopover (true|false) default false
      */
     errPopover : false,
+    
+    intervalFadeOut : false,
 
     getAutoCreate : function(){
 
@@ -207,6 +209,10 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         target.inputEl().on('blur', fadeout, target);
         target.inputEl().on('keyup', fadeout, target);
+        
+        this.intervalID =  window.setInterval(function() {
+            _this.check(false);
+        }, 120000); // every 120 secs = 2mins..
         
           
     },
