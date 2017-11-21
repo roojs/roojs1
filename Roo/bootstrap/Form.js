@@ -144,8 +144,8 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             return false;
         });
         
-        this.errPopoverEl = new Roo.bootstrap.Tooltip();
-        this.errPopoverEl.render(document.body);
+        this.errTooltip = new Roo.bootstrap.Tooltip();
+        this.errTooltip.render(this.el);
         
     },
     // private
@@ -196,6 +196,8 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         target.el.addClass('roo-invalid-outline');
         
         target.inputEl().focus();
+        
+        this.errPopoverEl.el.select('.tooltip-inner',true).first().dom.innerHTML = tip;
         
         this.errPopoverEl.show();
         
