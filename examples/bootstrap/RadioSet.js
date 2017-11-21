@@ -172,6 +172,28 @@ RadioSet = new Roo.XComponent({
            ]
           }
          ]
+        },
+        {
+         xtype : 'Row',
+         xns : Roo.bootstrap,
+         '|xns' : 'Roo.bootstrap',
+         items  : [
+          {
+           xtype : 'Column',
+           style : 'margin-top: 15px;',
+           xs : 12,
+           xns : Roo.bootstrap,
+           '|xns' : 'Roo.bootstrap',
+           items  : [
+            {
+             xtype : 'Button',
+             weight : 'primary',
+             xns : Roo.bootstrap,
+             '|xns' : 'Roo.bootstrap'
+            }
+           ]
+          }
+         ]
         }
        ]
       }

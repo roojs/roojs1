@@ -140,6 +140,25 @@
            ]
           }
          ]
+        },
+        {
+         "xtype" : "Row",
+         "$ xns" : "Roo.bootstrap",
+         "items" : [
+          {
+           "xtype" : "Column",
+           "Number xs" : 12,
+           "$ xns" : "Roo.bootstrap",
+           "String style" : "margin-top: 15px;",
+           "items" : [
+            {
+             "String weight" : "primary",
+             "xtype" : "Button",
+             "$ xns" : "Roo.bootstrap"
+            }
+           ]
+          }
+         ]
         }
        ]
       }
