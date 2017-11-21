@@ -23,6 +23,9 @@
 
 </span><span class="jsdoc-var">Roo.bootstrap.Form </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">Roo.bootstrap.Form.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    
+    </span><span class="jsdoc-var">Roo.bootstrap.Form.popover.apply</span><span class="jsdoc-syntax">();
+    
     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
         </span><span class="jsdoc-comment">/**
          * @event clientvalidation
@@ -158,7 +161,6 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getItems</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">valid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">radioSet </span><span class="jsdoc-syntax">= [];
         
         </span><span class="jsdoc-var">items.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">){
             
@@ -168,51 +170,17 @@
             
             </span><span class="jsdoc-var">valid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
 
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">f.el.isVisible</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)){
                 </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">;
             }
            
         });
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.errPopover </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">valid</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.showErrPopover</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">Roo.bootstrap.Form.popover.mask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">);
         }
         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">valid</span><span class="jsdoc-syntax">;
-    },
-    
-    </span><span class="jsdoc-var">showErrPopover </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">)
-    {
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.errPopover</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-        }
-        
-        </span><span class="jsdoc-var">target.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.focus</span><span class="jsdoc-syntax">();
-        
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">oIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">target.el.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'z-index'</span><span class="jsdoc-syntax">);
-        
-        </span><span class="jsdoc-var">target.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'z-index'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Modal.zIndex</span><span class="jsdoc-syntax">++);
-        
-        </span><span class="jsdoc-var">target.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'roo-invalid-outline'</span><span class="jsdoc-syntax">);
-        
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fadeout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-            
-            </span><span class="jsdoc-var">target.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'blur'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fadeout</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">target.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'keyup'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fadeout</span><span class="jsdoc-syntax">);
-            
-            </span><span class="jsdoc-var">target.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'z-index'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">oIndex</span><span class="jsdoc-syntax">);
-        
-            </span><span class="jsdoc-var">target.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'roo-invalid-outline'</span><span class="jsdoc-syntax">);
-            
-        }
-        
-        </span><span class="jsdoc-var">target.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'blur'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fadeout</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">target.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'keyup'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fadeout</span><span class="jsdoc-syntax">);
-        
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target.el</span><span class="jsdoc-syntax">);
-        
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">);
-          
     },
     
     </span><span class="jsdoc-comment">/**
@@ -507,7 +475,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">f.getRawValue</span><span class="jsdoc-syntax">() ; </span><span class="jsdoc-comment">// dates..
             </span><span class="jsdoc-syntax">}
             </span><span class="jsdoc-comment">// combo boxes where name != hiddenName...
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.name </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">f.getName</span><span class="jsdoc-syntax">()) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.name </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">f.name </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">f.name </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">f.getName</span><span class="jsdoc-syntax">()) {
                 </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">f.name</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">f.getRawValue</span><span class="jsdoc-syntax">();
             }
             </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">f.getName</span><span class="jsdoc-syntax">()] = </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
@@ -577,4 +545,117 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     }
 
 });
+
+</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Form</span><span class="jsdoc-syntax">, {
+    
+    </span><span class="jsdoc-var">popover </span><span class="jsdoc-syntax">: {
+        
+        </span><span class="jsdoc-var">isApplied </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        
+        </span><span class="jsdoc-var">isMasked </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        
+        </span><span class="jsdoc-var">form </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        
+        </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        
+        </span><span class="jsdoc-var">oIndex </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        
+        </span><span class="jsdoc-var">toolTip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        
+        </span><span class="jsdoc-var">intervalID </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+        </span><span class="jsdoc-var">apply </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+        {
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isApplied</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-var">this.toolTip </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.Tooltip</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-form-error-popover'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">alignment </span><span class="jsdoc-syntax">: {
+                    </span><span class="jsdoc-string">'left' </span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">'r-l'</span><span class="jsdoc-syntax">, [-2,0], </span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">],
+                    </span><span class="jsdoc-string">'right' </span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">'l-r'</span><span class="jsdoc-syntax">, [2,0], </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">],
+                    </span><span class="jsdoc-string">'bottom' </span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">'tl-bl'</span><span class="jsdoc-syntax">, [0,2], </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">],
+                    </span><span class="jsdoc-string">'top' </span><span class="jsdoc-syntax">: [ </span><span class="jsdoc-string">'bl-tl'</span><span class="jsdoc-syntax">, [0,-2], </span><span class="jsdoc-string">'bottom'</span><span class="jsdoc-syntax">]
+                }
+            });
+            
+            </span><span class="jsdoc-var">this.toolTip.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">));
+
+            </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+                </span><span class="jsdoc-var">this.unmask</span><span class="jsdoc-syntax">();
+            }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-var">this.isApplied </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-syntax">},
+        
+        </span><span class="jsdoc-var">mask </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">form</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">)
+        {
+            </span><span class="jsdoc-var">this.form </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">form</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-var">this.target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.form.errPopover</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-var">this.oIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">target.el.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'z-index'</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-var">this.target.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'z-index'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Modal.zIndex</span><span class="jsdoc-syntax">++);
+        
+            </span><span class="jsdoc-var">this.target.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'roo-invalid-outline'</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-var">this.target.el.dom.scrollIntoView</span><span class="jsdoc-syntax">();
+            
+            </span><span class="jsdoc-var">this.toolTip.bindEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.target.el</span><span class="jsdoc-syntax">;
+        
+            </span><span class="jsdoc-var">this.toolTip.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'z-index'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Modal.zIndex</span><span class="jsdoc-syntax">++);
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tip </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.target.blankText</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.target.getValue</span><span class="jsdoc-syntax">() !== </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.target.regexText.length</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">tip </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.target.regexText</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-var">this.toolTip.show</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tip</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-var">this.intervalID </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">window.setInterval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+                </span><span class="jsdoc-var">Roo.bootstrap.Form.popover.unmask</span><span class="jsdoc-syntax">();
+            }, 10000);
+
+            </span><span class="jsdoc-var">window.onwheel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){ </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;};
+            
+            (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){ </span><span class="jsdoc-var">this.isMasked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">; })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(500, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            
+        },
+        
+        </span><span class="jsdoc-var">unmask </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+        {
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.isApplied </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.isMasked </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.form </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.target </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.form.errPopover</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.oIndex</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.target.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'z-index'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.oIndex</span><span class="jsdoc-syntax">);
+            }
+            
+            </span><span class="jsdoc-var">this.target.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'roo-invalid-outline'</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-var">this.toolTip.hide</span><span class="jsdoc-syntax">();
+            
+            </span><span class="jsdoc-var">window.onwheel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){ </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;};
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.intervalID</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">window.clearInterval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.intervalID</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.intervalID </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-var">this.isMasked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            
+        }
+        
+    }
+    
+});
+
 </span></code></body></html>

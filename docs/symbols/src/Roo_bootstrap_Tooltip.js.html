@@ -20,6 +20,13 @@
 
 </span><span class="jsdoc-var">Roo.bootstrap.Tooltip </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">Roo.bootstrap.Tooltip.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    
+    </span><span class="jsdoc-var">this.alignment </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.Tooltip.alignment</span><span class="jsdoc-syntax">;
+    
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.alignment</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.alignment </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.alignment</span><span class="jsdoc-syntax">;
+    }
+    
 };
 
 </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Tooltip</span><span class="jsdoc-syntax">, {
@@ -145,6 +152,8 @@
     
     </span><span class="jsdoc-var">placement </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'bottom'</span><span class="jsdoc-syntax">, 
     
+    </span><span class="jsdoc-var">alignment </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
     
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
@@ -208,7 +217,7 @@
         }, </span><span class="jsdoc-var">delay</span><span class="jsdoc-syntax">);
     },
     
-    </span><span class="jsdoc-var">show </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
+    </span><span class="jsdoc-var">show </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">);
@@ -216,7 +225,7 @@
         </span><span class="jsdoc-comment">// set content.
         //Roo.log([this.bindEl, this.bindEl.attr('tooltip')]);
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tip </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.bindEl.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tooltip'</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">this.bindEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;[tooltip]&quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tooltip'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tip </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">msg </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.bindEl.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tooltip'</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">this.bindEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;[tooltip]&quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tooltip'</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.tooltip-inner'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tip</span><span class="jsdoc-syntax">;
         
@@ -246,7 +255,7 @@
             </span><span class="jsdoc-comment">// fixme..
         </span><span class="jsdoc-syntax">}
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.Tooltip.alignment</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">placement</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.alignment</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">placement</span><span class="jsdoc-syntax">];
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">xy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getAlignToXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bindEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">[1]);
         
@@ -266,8 +275,6 @@
             }
             
         }
-        
-        </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.Tooltip.alignment</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">placement</span><span class="jsdoc-syntax">];
         
         </span><span class="jsdoc-var">this.el.alignTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bindEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">[0],</span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">[1]);
         </span><span class="jsdoc-comment">//var arrow = this.el.select('.arrow',true).first();
