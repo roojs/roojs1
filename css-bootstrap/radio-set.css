@@ -145,3 +145,7 @@
 .roo-radio-set-right {
     padding: 0px;
 }
+
+.roo-form-error-popover .tooltip-arrow {
+    left: 5%;
+}
