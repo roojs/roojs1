@@ -707,7 +707,7 @@ Roo.apply(Roo.bootstrap.Form, {
         
         unmask : function()
         {
-            if(!this.isMasked || !this.form || !this.target){
+            if(!this.isApplied || !this.isMasked || !this.form || !this.target || !this.form.errPopover){
                 return;
             }
             
