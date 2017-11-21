@@ -595,6 +595,8 @@ Roo.apply(Roo.bootstrap.Form, {
             
             this.target = target;
             
+            Roo.log(this.form);
+            
             if(!this.form.errPopover){
                 return;
             }
