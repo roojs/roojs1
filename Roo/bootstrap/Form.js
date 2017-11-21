@@ -650,15 +650,14 @@ Roo.apply(Roo.bootstrap.Form, {
             }
             
             this.toolTip = new Roo.bootstrap.Tooltip({
-                cls : 'roo-form-error-popover'
+                cls : 'roo-form-error-popover',
+                alignment : {
+                    'left' : ['r-l', [-2,0], 'right'],
+                    'right' : ['l-r', [2,0], 'left'],
+                    'bottom' : ['tl-bl', [0,2], 'top'],
+                    'top' : [ 'bl-tl', [0,-2], 'bottom']
+                }
             });
-
-            this.toolTip.alignment = {
-                'left' : ['r-l', [-2,0], 'right'],
-                'right' : ['l-r', [2,0], 'left'],
-                'bottom' : ['tl-bl', [0,2], 'top'],
-                'top' : [ 'bl-tl', [0,-2], 'bottom']
-            };
 
             Roo.get(document.body).on('click', function(){
                 this.unmask();
