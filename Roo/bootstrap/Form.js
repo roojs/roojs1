@@ -653,8 +653,6 @@ Roo.apply(Roo.bootstrap.Form, {
                 cls : 'roo-form-error-popover'
             });
 
-            this.toolTip.render(Roo.get(document.body));
-
             this.toolTip.alignment = {
                 'left' : ['r-l', [-2,0], 'right'],
                 'right' : ['l-r', [2,0], 'left'],
