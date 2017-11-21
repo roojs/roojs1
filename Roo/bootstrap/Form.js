@@ -207,6 +207,8 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         this.errTooltip.el.removeClass(['fade','top','bottom', 'left', 'right','in']);
         
+        this.errTooltip.el.alignTo(target.el, 'tl-bl?');
+        
         this.el.show();
         
         var fadeout = function(){
