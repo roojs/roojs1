@@ -153,6 +153,9 @@
            "String style" : "margin-top: 15px;",
            "items" : [
             {
+             "listeners" : {
+              "click" : "function (_self, e)\n{\n    _this.form.isValid();\n}"
+             },
              "String weight" : "primary",
              "xtype" : "Button",
              "$ xns" : "Roo.bootstrap",

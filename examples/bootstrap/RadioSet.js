@@ -190,6 +190,12 @@ RadioSet = new Roo.XComponent({
              xtype : 'Button',
              html : _this._strings['ad3d06d03d94223fa652babc913de686'] /* Validate */,
              weight : 'primary',
+             listeners : {
+              click : function (_self, e)
+               {
+                   _this.form.isValid();
+               }
+             },
              xns : Roo.bootstrap,
              '|xns' : 'Roo.bootstrap'
             }
