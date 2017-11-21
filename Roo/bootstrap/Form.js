@@ -649,6 +649,10 @@ Roo.apply(Roo.bootstrap.Form, {
         isApplied : false,
         
         isMasked : false,
+        
+        form : false,
+        
+        element : false,
     
         apply : function()
         {
@@ -702,6 +706,8 @@ Roo.apply(Roo.bootstrap.Form, {
             }
             
             Roo.log('unmask');
+            
+            
         }
         
     }
