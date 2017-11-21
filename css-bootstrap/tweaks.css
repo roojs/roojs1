@@ -83,11 +83,3 @@
 .tooltip.fade.in {
     z-index: 10002;
 }
-
-.roo-invalid-outline {
-    outline-width: 5000px;
-    outline-offset: 5px;
-    outline-style: solid;
-    outline-color: rgba(0, 0, 0, 0.5);
-    position: relative;
-}
