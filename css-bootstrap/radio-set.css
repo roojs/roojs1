@@ -1,5 +1,8 @@
 
-.roo-radio-set:before {
+.roo-radio-set:before,
+.roo-radio-set:after {
+    display: table;
+    content: " ";
     clear: both;
 }
 
