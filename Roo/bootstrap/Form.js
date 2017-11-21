@@ -207,6 +207,8 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             this.errPopoverEl.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
         }
         
+        this.errPopoverEl.show();
+        
         var fadeout = function(){
             
             target.inputEl().un('blur', fadeout);
