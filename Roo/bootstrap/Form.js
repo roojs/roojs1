@@ -219,7 +219,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         var tip = target.blankText;
         
-        if(target.getValue() !== ''){
+        if(target.getValue() !== '' && target.regexText.length){
             tip = target.regexText;
         }
         
