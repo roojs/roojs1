@@ -144,6 +144,8 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             return false;
         });
         
+        this.errPopoverEl = new Roo.bootstrap.Tooltip();
+        this.errPopoverEl.render(this.el);
         
     },
     // private
