@@ -642,6 +642,8 @@ Roo.apply(Roo.bootstrap.Form, {
         oIndex : false,
         
         toolTip : false,
+        
+        intervalID : false,
     
         apply : function()
         {
