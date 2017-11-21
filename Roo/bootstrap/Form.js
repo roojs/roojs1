@@ -690,6 +690,9 @@ Roo.apply(Roo.bootstrap.Form, {
             }
 
             form.errTooltip.show(tip);
+            
+            this.isMasked = true;
+            
         },
         
         unmask : function()
