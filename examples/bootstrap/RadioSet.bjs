@@ -28,6 +28,7 @@
        "listeners" : {
         "render" : "function (_self)\n{\n    _this.form = this;\n}"
        },
+       "Boolean errPopover" : true,
        "xtype" : "Form",
        "$ xns" : "Roo.bootstrap",
        "items" : [

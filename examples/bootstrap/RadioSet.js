@@ -38,6 +38,7 @@ RadioSet = new Roo.XComponent({
      items  : [
       {
        xtype : 'Form',
+       errPopover : true,
        listeners : {
         render : function (_self)
          {
