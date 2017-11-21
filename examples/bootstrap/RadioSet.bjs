@@ -157,11 +157,13 @@
            "$ xns" : "Roo.bootstrap",
            "items" : [
             {
-             "String name" : "text_name",
+             "Boolean allowBlank" : false,
+             "String name" : "email_name",
              "xtype" : "Input",
              "string placeholder" : "Email",
              "$ xns" : "Roo.bootstrap",
-             "String vtype" : "email"
+             "String vtype" : "email",
+             "String regexText" : "This field should be an e-mail address in the format \"user@domain.com\""
             }
            ]
           }

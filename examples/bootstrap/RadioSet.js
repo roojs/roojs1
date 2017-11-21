@@ -192,8 +192,10 @@ RadioSet = new Roo.XComponent({
            items  : [
             {
              xtype : 'Input',
-             name : 'text_name',
+             allowBlank : false,
+             name : 'email_name',
              placeholder : _this._strings['ce8ae9da5b7cd6c3df2929543a9af92d'] /* Email */,
+             regexText : 'This field should be an e-mail address in the format \"user@domain.com\"',
              vtype : 'email',
              xns : Roo.bootstrap,
              '|xns' : 'Roo.bootstrap'
