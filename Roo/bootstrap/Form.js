@@ -195,11 +195,8 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         target.inputEl().focus();
         
-        this.errPopoverEl.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
-        
-        this.errPopoverEl.show();
-        
-        this.errPopoverEl.alignTo(target.el, 'tl-bl?');
+        var tooltip = new Roo.bootstrap.Tooltip();
+        tooltip.bindEl = target.el;
         
         var fadeout = function(){
             
