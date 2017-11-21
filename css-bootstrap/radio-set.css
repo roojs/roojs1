@@ -1,4 +1,8 @@
 
+.roo-radio-set {
+    clear: both;
+}
+
 .roo-radio-set-input {
     width: 0px;
     height: 0px;
