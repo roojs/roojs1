@@ -144,6 +144,15 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             return false;
         });
         
+        this.errPopoverEl = Roo.DomHelper.append(this.el, {
+            tag : 'div',
+            cls : 'roo-error-popover',
+            html : 'This field is required'
+        }, true);
+        
+        this.errPopoverEl.setVisibilityMode(Roo.Element.DISPLAY);
+        this.errPopoverEl.hide();
+        
     },
     // private
     onSubmit : function(e){
@@ -193,15 +202,6 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         target.el.addClass('roo-invalid-outline');
         
         target.inputEl().focus();
-        
-        this.errPopoverEl = Roo.DomHelper.append(target.el, {
-            tag : 'div',
-            cls : 'roo-error-popover',
-            html : 'This field is required'
-        }, true);
-        
-        this.errPopoverEl.setVisibilityMode(Roo.Element.DISPLAY);
-        this.errPopoverEl.hide();
         
         this.errPopoverEl.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
         
