@@ -681,7 +681,7 @@ Roo.apply(Roo.bootstrap.Form, {
             
             form.errTooltip.bindEl = target.el;
         
-            this.errTooltip.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
+            form.errTooltip.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
 
             var tip = target.blankText;
 
@@ -689,7 +689,7 @@ Roo.apply(Roo.bootstrap.Form, {
                 tip = target.regexText;
             }
 
-            this.errTooltip.show(tip);
+            form.errTooltip.show(tip);
         },
         
         unmask : function()
