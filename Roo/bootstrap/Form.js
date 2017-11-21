@@ -668,7 +668,11 @@ Roo.apply(Roo.bootstrap.Form, {
         
         unmask : function()
         {
+            if(!this.isMasked){
+                return;
+            }
             
+            Roo.log('unmask');
         }
         
     }
