@@ -88,6 +88,6 @@
     outline-width: 5000px;
     outline-offset: 5px;
     outline-style: solid;
-    outline-color: rgba(128, 0, 0, 0.7);
+    outline-color: rgba(128, 128, 128, 0.5);
     position: relative;
 }
