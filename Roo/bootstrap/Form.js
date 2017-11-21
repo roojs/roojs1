@@ -147,18 +147,20 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             return false;
         });
         
-        this.errTooltip = new Roo.bootstrap.Tooltip({
-            cls : 'roo-form-error-popover'
-        });
-        
-        this.errTooltip.render(this.el);
-        
-        this.errTooltip.alignment = {
-            'left' : ['r-l', [-2,0], 'right'],
-            'right' : ['l-r', [2,0], 'left'],
-            'bottom' : ['tl-bl', [0,2], 'top'],
-            'top' : [ 'bl-tl', [0,-2], 'bottom']
-        };
+        if(this.errPopover){
+            this.errTooltip = new Roo.bootstrap.Tooltip({
+                cls : 'roo-form-error-popover'
+            });
+
+            this.errTooltip.render(this.el);
+
+            this.errTooltip.alignment = {
+                'left' : ['r-l', [-2,0], 'right'],
+                'right' : ['l-r', [2,0], 'left'],
+                'bottom' : ['tl-bl', [0,2], 'top'],
+                'top' : [ 'bl-tl', [0,-2], 'bottom']
+            };
+        }
         
     },
     // private
@@ -676,7 +678,18 @@ Roo.apply(Roo.bootstrap.Form, {
             target.el.addClass('roo-invalid-outline');
 
             target.el.dom.scrollIntoView();
+            
+            form.errTooltip.bindEl = target.el;
+        
+            this.errTooltip.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
 
+            var tip = target.blankText;
+
+            if(target.getValue() !== '' && target.regexText.length){
+                tip = target.regexText;
+            }
+
+            this.errTooltip.show(tip);
         },
         
         unmask : function()
