@@ -251,6 +251,10 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
                 
         }
         
+        Roo.get(document.body).on('click', function(){
+           Roo.log('click') ;
+        });
+        
         target.inputEl().on('blur', fadeout, target);
         target.inputEl().on('keyup', fadeout, target);
         
