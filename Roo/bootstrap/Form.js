@@ -213,7 +213,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         /*
          * Place the popover
          */
-        this.errTooltip.bindEl = target.inputEl();
+        this.errTooltip.bindEl = target.el;
         
         this.errTooltip.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
         
