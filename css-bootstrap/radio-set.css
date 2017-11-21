@@ -141,6 +141,7 @@
     color: #EC0404;
 }
 
-.roo-radio-set-label {
+.roo-radio-set-label,
+.roo-radio-set-right {
     padding: 0px;
 }
