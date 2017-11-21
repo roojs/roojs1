@@ -144,6 +144,11 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             return false;
         });
         
+        this.errPopoverEl = Roo.DomHelper.append(this.el, {
+            tag : 'div',
+            cls : 'roo-error-popover'
+        }, true);
+        
     },
     // private
     onSubmit : function(e){
