@@ -145,7 +145,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         });
         
         this.errPopoverEl = new Roo.bootstrap.Tooltip();
-        this.errPopoverEl.render(this.el);
+        this.errPopoverEl.render(document.body);
         
     },
     // private
@@ -197,9 +197,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         target.inputEl().focus();
         
-        var tooltip = new Roo.bootstrap.Tooltip();
-        tooltip.bindEl = target.el;
-        tooltip.show();
+        this.errPopoverEl.show();
         
         var fadeout = function(){
             
