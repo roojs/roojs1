@@ -246,11 +246,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
             // fixme..
         }
         
-        placement = 'right';
-        
         var align = this.alignment ? this.alignment[placement] : Roo.bootstrap.Tooltip.alignment[placement];
-        
-        Roo.log(align);
         
         var xy = this.el.getAlignToXY(this.bindEl, align[0], align[1]);
         
