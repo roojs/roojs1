@@ -203,6 +203,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         target.inputEl().focus();
         
+        Roo.log([this.errPopoverEl.getStyle('z-index'), target.el.getStyle('z-index')])
         if(this.errPopoverEl.getStyle('z-index') < target.el.getStyle('z-index')){
             this.errPopoverEl.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
         }
