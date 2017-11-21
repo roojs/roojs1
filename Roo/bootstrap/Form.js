@@ -647,12 +647,14 @@ Roo.apply(Roo.bootstrap.Form, {
             
             this.toolTip.hide();
             
-            window.onwheel = function(){ return true; }
+            window.onwheel = function(){ return true;};
             
             if(this.intervalID){
                 window.clearInterval(this.intervalID);
                 this.intervalID = false;
             }
+            
+            this.isMasked = false;
             
         }
         
