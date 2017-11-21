@@ -217,6 +217,8 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         this.errTooltip.show();
         
+        var _this = this;
+        
         var fadeout = function(){
             
             target.inputEl().un('blur', fadeout);
@@ -226,7 +228,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
             target.el.removeClass('roo-invalid-outline');
             
-            this.errTooltip.hide();
+            _this.errTooltip.hide();
             
             if(!intervalFadeOut){
                 return;
@@ -237,17 +239,17 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
                 
         }
         
-//        target.inputEl().on('blur', fadeout, this);
-//        target.inputEl().on('keyup', fadeout, this);
-//        
-//        if(intervalFadeOut){
-//            window.clearInterval(intervalFadeOut);
-//            intervalFadeOut = false;
-//        }
-//        
-//        var intervalFadeOut =  window.setInterval(function() {
-//            fadeout();
-//        }, 10000);
+        target.inputEl().on('blur', fadeout, target);
+        target.inputEl().on('keyup', fadeout, target);
+        
+        if(intervalFadeOut){
+            window.clearInterval(intervalFadeOut);
+            intervalFadeOut = false;
+        }
+        
+        var intervalFadeOut =  window.setInterval(function() {
+            fadeout();
+        }, 10000);
         
           
     },
