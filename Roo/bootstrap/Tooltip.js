@@ -145,6 +145,8 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
     
     placement : 'bottom', 
     
+    alignment : false,
+    
     getAutoCreate : function(){
     
         var cfg = {
