@@ -698,6 +698,8 @@ Roo.apply(Roo.bootstrap.Form, {
 
             this.toolTip.show(tip);
             
+            
+            
             this.isMasked = true;
             
         },
