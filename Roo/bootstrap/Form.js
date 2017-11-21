@@ -653,8 +653,8 @@ Roo.apply(Roo.bootstrap.Form, {
             }
 
             Roo.get(document.body).on('click', function(){
-                Roo.log('click ???') ;
-            });
+                Roo.log(this);
+            }, this);
             
             Roo.log(this);
             
