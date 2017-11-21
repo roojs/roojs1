@@ -153,7 +153,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         this.errTooltip.alignment = {
             'left' : ['r-l', [-2,0], 'right'],
             'right' : ['l-r', [2,0], 'left'],
-            'bottom' : ['t-b', [0,2], 'top'],
+            'bottom' : ['tl-bl', [0,2], 'top'],
             'top' : [ 'b-t', [0,-2], 'bottom']
         };
         
