@@ -599,8 +599,6 @@ Roo.apply(Roo.bootstrap.Form, {
                 return;
             }
 
-            Roo.log('mask');
-            
             this.oIndex = target.el.getStyle('z-index');
             
             this.target.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
@@ -636,8 +634,6 @@ Roo.apply(Roo.bootstrap.Form, {
             if(!this.isApplied || !this.isMasked || !this.form || !this.target || !this.form.errPopover){
                 return;
             }
-            
-            Roo.log('unmask');
             
             if(this.oIndex){
                 this.target.el.setStyle('z-index', this.oIndex);
