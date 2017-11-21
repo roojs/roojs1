@@ -208,7 +208,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         }, delay);
     },
     
-    show : function ()
+    show : function (msg)
     {
         if (!this.el) {
             this.render(document.body);
@@ -216,7 +216,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         // set content.
         //Roo.log([this.bindEl, this.bindEl.attr('tooltip')]);
         
-        var tip = this.bindEl.attr('tooltip') || this.bindEl.select("[tooltip]").first().attr('tooltip');
+        var tip = msg || this.bindEl.attr('tooltip') || this.bindEl.select("[tooltip]").first().attr('tooltip');
         
         this.el.select('.tooltip-inner',true).first().dom.innerHTML = tip;
         
