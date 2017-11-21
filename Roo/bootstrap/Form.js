@@ -652,7 +652,7 @@ Roo.apply(Roo.bootstrap.Form, {
         
         form : false,
         
-        element : false,
+        target : false,
     
         apply : function()
         {
@@ -669,7 +669,11 @@ Roo.apply(Roo.bootstrap.Form, {
         
         mask : function(form, target)
         {
-            if(!form.errPopover){
+            this.form = form;
+            
+            this.target = target;
+            
+            if(!this.form.errPopover){
                 return;
             }
 
@@ -677,23 +681,23 @@ Roo.apply(Roo.bootstrap.Form, {
             
             var oIndex = target.el.getStyle('z-index');
             
-            target.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
+            this.target.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
         
-            target.el.addClass('roo-invalid-outline');
+            this.target.el.addClass('roo-invalid-outline');
 
-            target.el.dom.scrollIntoView();
+            this.target.el.dom.scrollIntoView();
             
-            form.errTooltip.bindEl = target.el;
+            this.form.errTooltip.bindEl = this.target.el;
         
-            form.errTooltip.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
+            this.form.errTooltip.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
 
-            var tip = target.blankText;
+            var tip = this.target.blankText;
 
-            if(target.getValue() !== '' && target.regexText.length){
-                tip = target.regexText;
+            if(this.target.getValue() !== '' && this.target.regexText.length){
+                tip = this.target.regexText;
             }
 
-            form.errTooltip.show(tip);
+            this.form.errTooltip.show(tip);
             
             this.isMasked = true;
             
