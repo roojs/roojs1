@@ -177,7 +177,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         });
         
         if(this.errPopover && !valid){
-            Roo.bootstrap.Form.errPopover.mask(target);
+            Roo.bootstrap.Form.popover.mask(this, target);
         }
         
         return valid;
@@ -548,7 +548,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
 
 Roo.apply(Roo.bootstrap.Form, {
     
-    errPopover : {
+    popover : {
         
         isApplied : false,
         
