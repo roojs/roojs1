@@ -583,7 +583,13 @@ Roo.apply(Roo.bootstrap.Form, {
             this.toolTip.render(Roo.get(document.body));
 
             Roo.get(document.body).on('click', function(){
+                
+                if(!this.isMasked){
+                    return;
+                }
+                
                 this.unmask();
+                
             }, this);
             
             this.isApplied = true
@@ -621,9 +627,9 @@ Roo.apply(Roo.bootstrap.Form, {
 
             this.toolTip.show(tip);
             
-            this.intervalID = window.setInterval(function() {
-                
-            }, 1000);
+//            this.intervalID = window.setInterval(function() {
+//                
+//            }, 1000);
             
             this.isMasked = true;
             
