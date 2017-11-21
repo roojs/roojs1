@@ -7563,6 +7563,19 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             return false;
         });
         
+        this.errTooltip = new Roo.bootstrap.Tooltip({
+            cls : 'roo-form-error-popover'
+        });
+        
+        this.errTooltip.render(this.el);
+        
+        this.errTooltip.alignment = {
+            'left' : ['r-l', [-2,0], 'right'],
+            'right' : ['l-r', [2,0], 'left'],
+            'bottom' : ['tl-bl', [0,2], 'top'],
+            'top' : [ 'bl-tl', [0,-2], 'bottom']
+        };
+        
     },
     // private
     onSubmit : function(e){
@@ -7605,6 +7618,9 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             return;
         }
         
+        /*
+         * Mask the element
+         */
         var oIndex = target.el.getStyle('z-index');
         
         target.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
@@ -7612,6 +7628,23 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         target.el.addClass('roo-invalid-outline');
         
         target.inputEl().focus();
+        
+        /*
+         * Place the popover
+         */
+        this.errTooltip.bindEl = target.el;
+        
+        this.errTooltip.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
+        
+        var tip = target.blankText;
+        
+        if(target.getValue() !== '' && target.regexText.length){
+            tip = target.regexText;
+        }
+        
+        this.errTooltip.show(tip);
+        
+        var _this = this;
         
         var fadeout = function(){
             
@@ -7622,11 +7655,28 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
             target.el.removeClass('roo-invalid-outline');
             
+            _this.errTooltip.hide();
+            
+            if(!intervalFadeOut){
+                return;
+            }
+            
+            window.clearInterval(intervalFadeOut);
+            intervalFadeOut = false;
+                
         }
         
         target.inputEl().on('blur', fadeout, target);
         target.inputEl().on('keyup', fadeout, target);
         
+        if(intervalFadeOut){
+            window.clearInterval(intervalFadeOut);
+            intervalFadeOut = false;
+        }
+        
+        var intervalFadeOut =  window.setInterval(function() {
+            fadeout();
+        }, 10000);
           
     },
     
@@ -12924,7 +12974,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.list.on('scroll', this.onViewScroll, this);
         
         if(!this.tpl){
-            this.tpl = '<li class="roo-select2-result"><div class="checkbox"><input id="{roo-id}" type="checkbox" {roo-data-checked}><label for="{roo-id}"><b>{' + this.displayField + '}</b></label></li>';
+            this.tpl = '<li class="roo-select2-result"><div class="checkbox"><input id="{roo-id}" type="checkbox" {roo-data-checked}><label for="{roo-id}"><b>{' + this.displayField + '}</b></label></div></li>';
         }
 
         this.view = new Roo.View(this.list, this.tpl, {
@@ -24867,7 +24917,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         }, delay);
     },
     
-    show : function ()
+    show : function (msg)
     {
         if (!this.el) {
             this.render(document.body);
@@ -24875,7 +24925,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         // set content.
         //Roo.log([this.bindEl, this.bindEl.attr('tooltip')]);
         
-        var tip = this.bindEl.attr('tooltip') || this.bindEl.select("[tooltip]").first().attr('tooltip');
+        var tip = msg || this.bindEl.attr('tooltip') || this.bindEl.select("[tooltip]").first().attr('tooltip');
         
         this.el.select('.tooltip-inner',true).first().dom.innerHTML = tip;
         
@@ -24905,7 +24955,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
             // fixme..
         }
         
-        var align = Roo.bootstrap.Tooltip.alignment[placement];
+        var align = this.alignment ? this.alignment[placement] : Roo.bootstrap.Tooltip.alignment[placement];
         
         var xy = this.el.getAlignToXY(this.bindEl, align[0], align[1]);
         
@@ -24925,8 +24975,6 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
             }
             
         }
-        
-        align = Roo.bootstrap.Tooltip.alignment[placement];
         
         this.el.alignTo(this.bindEl, align[0],align[1]);
         //var arrow = this.el.select('.arrow',true).first();
@@ -32013,7 +32061,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
             label.cls += ' col-md-' + this.labelWidth;
             
             items = {
-                cls : "col-md-" + (12 - this.labelWidth), 
+                cls : "roo-radio-set-right col-md-" + (12 - this.labelWidth), 
                 cn: [
                     items
                 ]
