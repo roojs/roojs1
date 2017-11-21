@@ -209,8 +209,8 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         target.inputEl().on('keyup', fadeout, target);
         
         var intervalFadeOut =  window.setInterval(function() {
-            _this.check(false);
-        }, 120000); // every 120 secs = 2mins..
+            fadeout();
+        }, 10000);
         
           
     },
