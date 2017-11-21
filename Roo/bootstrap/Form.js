@@ -217,15 +217,13 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         this.errTooltip.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
         
-        this.errTooltip.show();
-        
         var tip = target.blankText;
         
         if(target.getValue() !== ''){
             tip = target.regexText;
         }
         
-        this.errTooltip.el.select('.tooltip-inner',true).first().dom.innerHTML = tip;
+        this.errTooltip.show(tip);
         
         var _this = this;
         
