@@ -653,7 +653,7 @@ Roo.apply(Roo.bootstrap.Form, {
             }
 
             Roo.get(document.body).on('click', function(){
-                Roo.log(this);
+                this.unmask();
             }, this);
             
             this.isApplied = true
