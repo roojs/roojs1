@@ -579,6 +579,8 @@ Roo.apply(Roo.bootstrap.Form, {
                     'top' : [ 'bl-tl', [0,-2], 'bottom']
                 }
             });
+            
+            this.toolTip.render(Roo.get(document.body));
 
             Roo.get(document.body).on('click', function(){
                 this.unmask();
