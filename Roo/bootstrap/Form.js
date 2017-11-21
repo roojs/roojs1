@@ -656,9 +656,17 @@ Roo.apply(Roo.bootstrap.Form, {
                 Roo.log(this);
             }, this);
             
-            Roo.log(this);
-            
             this.isApplied = true
+        },
+        
+        mask : function()
+        {
+            
+        },
+        
+        unmask : function()
+        {
+            
         }
         
     }
