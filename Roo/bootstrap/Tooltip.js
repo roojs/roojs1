@@ -160,6 +160,10 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
            ]
         };
         
+        if(this.cls){
+            cfg.cls += ' ' + this.cls;
+        }
+        
         return cfg;
     },
     bind : function(el)
