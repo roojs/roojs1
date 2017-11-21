@@ -645,6 +645,8 @@ Roo.apply(Roo.bootstrap.Form, {
     errPopover : {
         
         isApplied : false,
+        
+        isMasked : false,
     
         apply : function()
         {
