@@ -144,7 +144,9 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             return false;
         });
         
-        this.errTooltip = new Roo.bootstrap.Tooltip();
+        this.errTooltip = new Roo.bootstrap.Tooltip({
+            cls : 'roo-form-error-popover'
+        });
         this.errTooltip.render(this.el);
         
     },
@@ -212,7 +214,6 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         this.errTooltip.el.addClass('bottom');
         
         this.errTooltip.el.addClass('in fade');
-        
         
         var fadeout = function(){
             
