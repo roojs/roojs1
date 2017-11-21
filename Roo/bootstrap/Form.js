@@ -661,8 +661,12 @@ Roo.apply(Roo.bootstrap.Form, {
             this.isApplied = true
         },
         
-        mask : function(target)
+        mask : function(form, target)
         {
+            if(!this.errPopover){
+                return;
+            }
+
             Roo.log('mask');
             
             var oIndex = target.el.getStyle('z-index');
