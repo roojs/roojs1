@@ -722,7 +722,7 @@ Roo.apply(Roo.bootstrap.Form, {
             
             this.target.el.removeClass('roo-invalid-outline');
             
-            this.form.errTooltip.hide();
+            this.toolTip.hide();
             
         }
         
