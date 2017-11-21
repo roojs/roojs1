@@ -656,6 +656,8 @@ Roo.apply(Roo.bootstrap.Form, {
                 Roo.log('click ???') ;
             });
             
+            Roo.log(this);
+            
             this.isApplied = true
         }
         
