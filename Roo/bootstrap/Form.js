@@ -199,7 +199,9 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         this.errTooltip.el.select('.tooltip-inner',true).first().dom.innerHTML = 'This field is required';
         
-        this.errPopoverEl.show();
+        this.errTooltip.el.removeClass(['fade','top','bottom', 'left', 'right','in']);
+        
+        this.el.show();
         
         var fadeout = function(){
             
