@@ -251,9 +251,11 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
                 
         }
         
+        Roo.log('call ???');
+        
         Roo.get(document.body).on('click', function(){
            Roo.log('click ???') ;
-           fadeout();
+//           fadeout();
         });
         
 //        target.inputEl().on('blur', fadeout, target);
