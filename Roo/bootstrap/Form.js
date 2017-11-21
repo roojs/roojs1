@@ -24,7 +24,7 @@
 Roo.bootstrap.Form = function(config){
     Roo.bootstrap.Form.superclass.constructor.call(this, config);
     
-    Roo.bootstrap.Form.initErrorPopover();
+    Roo.bootstrap.Form.errPopover.init();
     
     this.addEvents({
         /**
