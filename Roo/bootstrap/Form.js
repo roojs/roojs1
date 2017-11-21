@@ -205,15 +205,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         /*
          * Place the popover
          */
-        this.errTooltip.el.select('.tooltip-inner',true).first().dom.innerHTML = 'This field is required';
-        
-        this.errTooltip.el.removeClass(['fade','top','bottom', 'left', 'right','in']);
-        
-        this.errTooltip.el.alignTo(target.el, 'tl-bl?');
-        
-        this.errTooltip.el.addClass('bottom');
-        
-        this.errTooltip.el.addClass('in fade');
+        this.errTooltip.bindEl = target.el;
         
         var fadeout = function(){
             
