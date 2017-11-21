@@ -203,6 +203,10 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
             target.el.removeClass('roo-invalid-outline');
             
+            if(!intervalFadeOut){
+                return;
+            }
+            
             window.clearInterval(intervalFadeOut);
             intervalFadeOut = false;
                 
