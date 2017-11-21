@@ -93,6 +93,7 @@
            "xtype" : "Column",
            "Number xs" : 12,
            "$ xns" : "Roo.bootstrap",
+           "String style" : "margin-top: 15px;",
            "items" : [
             {
              "bool allowBlank" : false,
