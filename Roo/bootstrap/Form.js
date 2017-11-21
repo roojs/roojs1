@@ -639,9 +639,9 @@ Roo.apply(Roo.bootstrap.Form, {
         
         target : false,
         
-        oIndex : false,
+        index : false,
         
-        errTooltip : false,
+        toolTip : false,
     
         apply : function()
         {
@@ -649,13 +649,13 @@ Roo.apply(Roo.bootstrap.Form, {
                 return;
             }
             
-            this.errTooltip = new Roo.bootstrap.Tooltip({
+            this.toolTip = new Roo.bootstrap.Tooltip({
                 cls : 'roo-form-error-popover'
             });
 
-            this.errTooltip.render(Roo.get(document.body));
+            this.toolTip.render(Roo.get(document.body));
 
-            this.errTooltip.alignment = {
+            this.toolTip.alignment = {
                 'left' : ['r-l', [-2,0], 'right'],
                 'right' : ['l-r', [2,0], 'left'],
                 'bottom' : ['tl-bl', [0,2], 'top'],
