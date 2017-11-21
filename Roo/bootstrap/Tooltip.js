@@ -270,6 +270,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         align = Roo.bootstrap.Tooltip.alignment[placement];
         
         this.el.alignTo(this.bindEl, align[0],align[1]);
+        Roo.log(align);
         //var arrow = this.el.select('.arrow',true).first();
         //arrow.set(align[2], 
         
