@@ -146,10 +146,10 @@
     padding: 0px;
 }
 
-.roo-form-error-popover {
+.roo-form-error-popover.in {
     opacity: 1;
 }
 
 .roo-form-error-popover .tooltip-inner {
-    padding: 15px;
+    padding: 10px;
 }
