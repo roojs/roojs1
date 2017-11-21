@@ -663,7 +663,7 @@ Roo.apply(Roo.bootstrap.Form, {
         
         mask : function()
         {
-            
+            Roo.log('mask');
         },
         
         unmask : function()
