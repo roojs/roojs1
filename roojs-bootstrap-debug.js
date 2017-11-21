@@ -7442,6 +7442,9 @@ Roo.form.Action.ACTION_TYPES = {
 
 Roo.bootstrap.Form = function(config){
     Roo.bootstrap.Form.superclass.constructor.call(this, config);
+    
+    Roo.bootstrap.Form.popover.apply();
+    
     this.addEvents({
         /**
          * @event clientvalidation
@@ -7563,19 +7566,6 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             return false;
         });
         
-        this.errTooltip = new Roo.bootstrap.Tooltip({
-            cls : 'roo-form-error-popover'
-        });
-        
-        this.errTooltip.render(this.el);
-        
-        this.errTooltip.alignment = {
-            'left' : ['r-l', [-2,0], 'right'],
-            'right' : ['l-r', [2,0], 'left'],
-            'bottom' : ['tl-bl', [0,2], 'top'],
-            'top' : [ 'bl-tl', [0,-2], 'bottom']
-        };
-        
     },
     // private
     onSubmit : function(e){
@@ -7606,78 +7596,10 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         });
         
         if(this.errPopover && !valid){
-            this.showErrPopover(target);
+            Roo.bootstrap.Form.popover.mask(this, target);
         }
         
         return valid;
-    },
-    
-    showErrPopover : function(target)
-    {
-        if(!this.errPopover){
-            return;
-        }
-        
-        /*
-         * Mask the element
-         */
-        var oIndex = target.el.getStyle('z-index');
-        
-        target.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
-        
-        target.el.addClass('roo-invalid-outline');
-        
-        target.inputEl().focus();
-        
-        /*
-         * Place the popover
-         */
-        this.errTooltip.bindEl = target.el;
-        
-        this.errTooltip.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
-        
-        var tip = target.blankText;
-        
-        if(target.getValue() !== '' && target.regexText.length){
-            tip = target.regexText;
-        }
-        
-        this.errTooltip.show(tip);
-        
-        var _this = this;
-        
-        var fadeout = function(){
-            
-            target.inputEl().un('blur', fadeout);
-            target.inputEl().un('keyup', fadeout);
-            
-            target.el.setStyle('z-index', oIndex);
-        
-            target.el.removeClass('roo-invalid-outline');
-            
-            _this.errTooltip.hide();
-            
-            if(!intervalFadeOut){
-                return;
-            }
-            
-            window.clearInterval(intervalFadeOut);
-            intervalFadeOut = false;
-                
-        }
-        
-        target.inputEl().on('blur', fadeout, target);
-        target.inputEl().on('keyup', fadeout, target);
-        
-        if(intervalFadeOut){
-            window.clearInterval(intervalFadeOut);
-            intervalFadeOut = false;
-        }
-        
-        var intervalFadeOut =  window.setInterval(function() {
-            fadeout();
-        }, 10000);
-          
     },
     
     /**
@@ -8042,6 +7964,119 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     }
 
 });
+
+Roo.apply(Roo.bootstrap.Form, {
+    
+    popover : {
+        
+        isApplied : false,
+        
+        isMasked : false,
+        
+        form : false,
+        
+        target : false,
+        
+        oIndex : false,
+        
+        toolTip : false,
+        
+        intervalID : false,
+    
+        apply : function()
+        {
+            if(this.isApplied){
+                return;
+            }
+            
+            this.toolTip = new Roo.bootstrap.Tooltip({
+                cls : 'roo-form-error-popover',
+                alignment : {
+                    'left' : ['r-l', [-2,0], 'right'],
+                    'right' : ['l-r', [2,0], 'left'],
+                    'bottom' : ['tl-bl', [0,2], 'top'],
+                    'top' : [ 'bl-tl', [0,-2], 'bottom']
+                }
+            });
+            
+            this.toolTip.render(Roo.get(document.body));
+
+            Roo.get(document.body).on('click', function(){
+                this.unmask();
+            }, this);
+            
+            this.isApplied = true
+        },
+        
+        mask : function(form, target)
+        {
+            this.form = form;
+            
+            this.target = target;
+            
+            if(!this.form.errPopover){
+                return;
+            }
+
+            this.oIndex = target.el.getStyle('z-index');
+            
+            this.target.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
+        
+            this.target.el.addClass('roo-invalid-outline');
+
+            this.target.el.dom.scrollIntoView();
+            
+            this.toolTip.bindEl = this.target.el;
+        
+            this.toolTip.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
+
+            var tip = this.target.blankText;
+
+            if(this.target.getValue() !== '' && this.target.regexText.length){
+                tip = this.target.regexText;
+            }
+
+            this.toolTip.show(tip);
+            
+            this.intervalID = window.setInterval(function() {
+                Roo.bootstrap.Form.popover.unmask();
+            }, 10000);
+
+            window.onwheel = function(){ return false;};
+            
+            (function(){ this.isMasked = true; }).defer(500, this);
+            
+        },
+        
+        unmask : function()
+        {
+            if(!this.isApplied || !this.isMasked || !this.form || !this.target || !this.form.errPopover){
+                return;
+            }
+            
+            if(this.oIndex){
+                this.target.el.setStyle('z-index', this.oIndex);
+            }
+            
+            this.target.el.removeClass('roo-invalid-outline');
+            
+            this.toolTip.hide();
+            
+            window.onwheel = function(){ return true;};
+            
+            if(this.intervalID){
+                window.clearInterval(this.intervalID);
+                this.intervalID = false;
+            }
+            
+            this.isMasked = false;
+            
+        }
+        
+    }
+    
+});
+
 /*
  * Based on:
  * Ext JS Library 1.1.1
@@ -24729,6 +24764,13 @@ Roo.extend(Roo.bootstrap.menu.Separator, Roo.bootstrap.Component,  {
 
 Roo.bootstrap.Tooltip = function(config){
     Roo.bootstrap.Tooltip.superclass.constructor.call(this, config);
+    
+    this.alignment = Roo.bootstrap.Tooltip.alignment;
+    
+    if(typeof(config) != 'undefined' && typeof(config.alignment) != 'undefined'){
+        this.alignment = config.alignment;
+    }
+    
 };
 
 Roo.apply(Roo.bootstrap.Tooltip, {
@@ -24854,6 +24896,8 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
     
     placement : 'bottom', 
     
+    alignment : false,
+    
     getAutoCreate : function(){
     
         var cfg = {
@@ -24955,7 +24999,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
             // fixme..
         }
         
-        var align = this.alignment ? this.alignment[placement] : Roo.bootstrap.Tooltip.alignment[placement];
+        var align = this.alignment[placement];
         
         var xy = this.el.getAlignToXY(this.bindEl, align[0], align[1]);
         
