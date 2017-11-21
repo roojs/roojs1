@@ -653,6 +653,8 @@ Roo.apply(Roo.bootstrap.Form, {
         form : false,
         
         target : false,
+        
+        oIndex : false,
     
         apply : function()
         {
@@ -705,7 +707,7 @@ Roo.apply(Roo.bootstrap.Form, {
         
         unmask : function()
         {
-            if(!this.isMasked){
+            if(!this.isMasked || !this.form || !this.target){
                 return;
             }
             
