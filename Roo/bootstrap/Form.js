@@ -254,7 +254,10 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         Roo.log('call ???');
         
         (function(){
-            
+            Roo.get(document.body).on('click', function(){
+                Roo.log('click ???') ;
+ //           fadeout();
+            });
         }).defer(500);
         
 //        target.inputEl().on('blur', fadeout, target);
@@ -633,3 +636,21 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     }
 
 });
+
+Roo.apply(Roo.bootstrap.Form, {
+    
+    initErrPopover : false,
+    
+    init : function(set)
+    {
+        if(this.initErrPopover){
+            return;
+        }
+        
+        Roo.get(document.body).on('click', function(){
+            Roo.log('click ???') ;
+        });
+    }
+    
+});
+
