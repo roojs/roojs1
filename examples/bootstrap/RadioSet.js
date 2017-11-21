@@ -116,28 +116,6 @@ RadioSet = new Roo.XComponent({
          items  : [
           {
            xtype : 'Column',
-           style : 'margin-top: 15px;',
-           xs : 12,
-           xns : Roo.bootstrap,
-           '|xns' : 'Roo.bootstrap',
-           items  : [
-            {
-             xtype : 'Input',
-             name : 'text_name',
-             xns : Roo.bootstrap,
-             '|xns' : 'Roo.bootstrap'
-            }
-           ]
-          }
-         ]
-        },
-        {
-         xtype : 'Row',
-         xns : Roo.bootstrap,
-         '|xns' : 'Roo.bootstrap',
-         items  : [
-          {
-           xtype : 'Column',
            xs : 12,
            xns : Roo.bootstrap,
            '|xns' : 'Roo.bootstrap',
@@ -147,6 +125,7 @@ RadioSet = new Roo.XComponent({
              allowBlank : false,
              fieldLabel : _this._strings['e3917ff2d3b3a88eab391651215d6445'] /* Radio Field Lable Left */,
              indicatorpos : 'right',
+             labelAlign : 'left',
              name : 'left_radio',
              xns : Roo.bootstrap,
              '|xns' : 'Roo.bootstrap',
@@ -166,6 +145,28 @@ RadioSet = new Roo.XComponent({
                '|xns' : 'Roo.bootstrap'
               }
              ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         xtype : 'Row',
+         xns : Roo.bootstrap,
+         '|xns' : 'Roo.bootstrap',
+         items  : [
+          {
+           xtype : 'Column',
+           style : 'margin-top: 15px;',
+           xs : 12,
+           xns : Roo.bootstrap,
+           '|xns' : 'Roo.bootstrap',
+           items  : [
+            {
+             xtype : 'Input',
+             name : 'text_name',
+             xns : Roo.bootstrap,
+             '|xns' : 'Roo.bootstrap'
             }
            ]
           }

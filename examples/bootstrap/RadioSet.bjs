@@ -41,8 +41,8 @@
            "items" : [
             {
              "xtype" : "Header",
-             "Number level" : 1,
              "$ xns" : "Roo.bootstrap",
+             "Number level" : 1,
              "String html" : "Radio Set Example"
             }
            ]
@@ -93,25 +93,6 @@
            "xtype" : "Column",
            "Number xs" : 12,
            "$ xns" : "Roo.bootstrap",
-           "String style" : "margin-top: 15px;",
-           "items" : [
-            {
-             "String name" : "text_name",
-             "xtype" : "Input",
-             "$ xns" : "Roo.bootstrap"
-            }
-           ]
-          }
-         ]
-        },
-        {
-         "xtype" : "Row",
-         "$ xns" : "Roo.bootstrap",
-         "items" : [
-          {
-           "xtype" : "Column",
-           "Number xs" : 12,
-           "$ xns" : "Roo.bootstrap",
            "items" : [
             {
              "bool allowBlank" : false,
@@ -120,6 +101,7 @@
              "$ xns" : "Roo.bootstrap",
              "string indicatorpos" : "right",
              "string name" : "left_radio",
+             "string labelAlign" : "left",
              "items" : [
               {
                "xtype" : "Radio",
@@ -134,6 +116,25 @@
                "string value" : "no"
               }
              ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "xtype" : "Row",
+         "$ xns" : "Roo.bootstrap",
+         "items" : [
+          {
+           "xtype" : "Column",
+           "Number xs" : 12,
+           "$ xns" : "Roo.bootstrap",
+           "String style" : "margin-top: 15px;",
+           "items" : [
+            {
+             "String name" : "text_name",
+             "xtype" : "Input",
+             "$ xns" : "Roo.bootstrap"
             }
            ]
           }
