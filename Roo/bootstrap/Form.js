@@ -189,6 +189,9 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             return;
         }
         
+        /*
+         * Mask the element
+         */
         var oIndex = target.el.getStyle('z-index');
         
         target.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
@@ -197,6 +200,9 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         target.inputEl().focus();
         
+        /*
+         * Place the popover
+         */
         this.errTooltip.el.select('.tooltip-inner',true).first().dom.innerHTML = 'This field is required';
         
         this.errTooltip.el.removeClass(['fade','top','bottom', 'left', 'right','in']);
