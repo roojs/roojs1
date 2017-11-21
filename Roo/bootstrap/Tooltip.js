@@ -246,7 +246,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
             // fixme..
         }
         
-        var align = this.alignment ? this.alignment['left'] : Roo.bootstrap.Tooltip.alignment[placement];
+        var align = this.alignment ? this.alignment[placement] : Roo.bootstrap.Tooltip.alignment[placement];
         
         Roo.log(align);
         
@@ -268,8 +268,6 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
             }
             
         }
-        
-        align = Roo.bootstrap.Tooltip.alignment[placement];
         
         this.el.alignTo(this.bindEl, align[0],align[1]);
         //var arrow = this.el.select('.arrow',true).first();
