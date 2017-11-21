@@ -621,9 +621,9 @@ Roo.apply(Roo.bootstrap.Form, {
 
             this.toolTip.show(tip);
             
-//            this.intervalID = window.setInterval(function() {
-//                
-//            }, 1000);
+            this.intervalID = window.setInterval(function() {
+                Roo.bootstrap.Form.unmask();
+            }, 10000);
 
             window.onwheel = function(){ return false; }
             
@@ -646,6 +646,8 @@ Roo.apply(Roo.bootstrap.Form, {
             this.target.el.removeClass('roo-invalid-outline');
             
             this.toolTip.hide();
+            
+            window.onwheel = function(){ return true; }
             
         }
         
