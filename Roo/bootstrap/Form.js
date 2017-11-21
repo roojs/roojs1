@@ -221,6 +221,8 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         var tip = target.blankText;
         
+        
+        
         this.errTooltip.el.select('.tooltip-inner',true).first().dom.innerHTML = tip;
         
         var _this = this;
