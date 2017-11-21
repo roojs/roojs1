@@ -209,9 +209,9 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         this.errTooltip.el.alignTo(target.el, 'tl-bl?');
         
-        this.el.addClass('bottom');
+        this.errTooltip.el.addClass('bottom');
         
-        this.el.addClass('in fade');
+        this.errTooltip.el.addClass('in fade');
         
         
         var fadeout = function(){
