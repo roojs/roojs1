@@ -663,7 +663,7 @@ Roo.apply(Roo.bootstrap.Form, {
         
         mask : function(form, target)
         {
-            if(!this.errPopover){
+            if(!form.errPopover){
                 return;
             }
 
@@ -671,6 +671,12 @@ Roo.apply(Roo.bootstrap.Form, {
             
             var oIndex = target.el.getStyle('z-index');
             
+            target.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
+        
+            target.el.addClass('roo-invalid-outline');
+
+            target.el.dom.scrollIntoView();
+
         },
         
         unmask : function()
