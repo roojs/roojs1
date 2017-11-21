@@ -146,8 +146,12 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         this.errPopoverEl = Roo.DomHelper.append(this.el, {
             tag : 'div',
-            cls : 'roo-error-popover'
+            cls : 'roo-error-popover',
+            html : 'This field is required'
         }, true);
+        
+        this.errPopoverEl.setVisibilityMode(Roo.Element.DISPLAY);
+        this.errPopoverEl.hide();
         
     },
     // private
