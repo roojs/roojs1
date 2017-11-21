@@ -147,21 +147,6 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             return false;
         });
         
-        if(this.errPopover){
-            this.errTooltip = new Roo.bootstrap.Tooltip({
-                cls : 'roo-form-error-popover'
-            });
-
-            this.errTooltip.render(this.el);
-
-            this.errTooltip.alignment = {
-                'left' : ['r-l', [-2,0], 'right'],
-                'right' : ['l-r', [2,0], 'left'],
-                'bottom' : ['tl-bl', [0,2], 'top'],
-                'top' : [ 'bl-tl', [0,-2], 'bottom']
-            };
-        }
-        
     },
     // private
     onSubmit : function(e){
@@ -655,6 +640,8 @@ Roo.apply(Roo.bootstrap.Form, {
         target : false,
         
         oIndex : false,
+        
+        
     
         apply : function()
         {
