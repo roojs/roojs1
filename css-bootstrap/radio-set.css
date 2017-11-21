@@ -151,5 +151,6 @@
 }
 
 .roo-form-error-popover .tooltip-inner {
+    max-width: 100%;
     padding: 10px;
 }
