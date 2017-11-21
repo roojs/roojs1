@@ -686,9 +686,9 @@ Roo.apply(Roo.bootstrap.Form, {
 
             this.target.el.dom.scrollIntoView();
             
-            this.form.errTooltip.bindEl = this.target.el;
+            this.toolTip.bindEl = this.target.el;
         
-            this.form.errTooltip.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
+            this.toolTip.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
 
             var tip = this.target.blankText;
 
@@ -696,7 +696,7 @@ Roo.apply(Roo.bootstrap.Form, {
                 tip = this.target.regexText;
             }
 
-            this.form.errTooltip.show(tip);
+            this.toolTip.show(tip);
             
             this.isMasked = true;
             
