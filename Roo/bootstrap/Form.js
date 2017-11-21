@@ -23,6 +23,9 @@
 
 Roo.bootstrap.Form = function(config){
     Roo.bootstrap.Form.superclass.constructor.call(this, config);
+    
+    Roo.bootstrap.Form.init();
+    
     this.addEvents({
         /**
          * @event clientvalidation
