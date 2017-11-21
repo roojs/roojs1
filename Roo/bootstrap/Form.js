@@ -24,7 +24,7 @@
 Roo.bootstrap.Form = function(config){
     Roo.bootstrap.Form.superclass.constructor.call(this, config);
     
-    Roo.bootstrap.Form.errPopover.init();
+    Roo.bootstrap.Form.errPopover.apply();
     
     this.addEvents({
         /**
@@ -646,7 +646,7 @@ Roo.apply(Roo.bootstrap.Form, {
         
         isApplied : false,
     
-        init : function()
+        apply : function()
         {
             if(this.isApplied){
                 return;
