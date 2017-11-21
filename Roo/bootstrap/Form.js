@@ -203,10 +203,18 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
             target.el.removeClass('roo-invalid-outline');
             
+            window.clearInterval(intervalFadeOut);
+            intervalFadeOut = false;
+                
         }
         
         target.inputEl().on('blur', fadeout, target);
         target.inputEl().on('keyup', fadeout, target);
+        
+        if(intervalFadeOut){
+            window.clearInterval(intervalFadeOut);
+            intervalFadeOut = false;
+        }
         
         var intervalFadeOut =  window.setInterval(function() {
             fadeout();
