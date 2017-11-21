@@ -553,7 +553,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 v = f.getRawValue() ; // dates..
             }
             // combo boxes where name != hiddenName...
-            if (f.name != f.getName()) {
+            if (f.name !== false && f.name != f.getName()) {
                 ret[f.name] = f.getRawValue();
             }
             ret[f.getName()] = v;
