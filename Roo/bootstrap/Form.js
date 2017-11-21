@@ -639,7 +639,7 @@ Roo.apply(Roo.bootstrap.Form, {
         
         target : false,
         
-        index : false,
+        oIndex : false,
         
         toolTip : false,
     
