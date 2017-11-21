@@ -535,6 +535,8 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 return;
             }
             var v = f.getValue();
+            
+            Roo.log(f);
             if (f.inputType =='radio') {
                 if (typeof(ret[f.getName()]) == 'undefined') {
                     ret[f.getName()] = ''; // empty..
