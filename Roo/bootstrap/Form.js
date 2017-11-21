@@ -147,7 +147,15 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         this.errTooltip = new Roo.bootstrap.Tooltip({
             cls : 'roo-form-error-popover'
         });
+        
         this.errTooltip.render(this.el);
+        
+        this.errTooltip.alignment = {
+            'left' : ['r-l', [-2,0], 'right'],
+            'right' : ['l-r', [2,0], 'left'],
+            'bottom' : ['t-b', [0,2], 'top'],
+            'top' : [ 'b-t', [0,-2], 'bottom']
+        };
         
     },
     // private
@@ -206,6 +214,8 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
          * Place the popover
          */
         this.errTooltip.bindEl = target.el;
+        
+        this.errTooltip.show();
         
         var fadeout = function(){
             
