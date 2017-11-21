@@ -649,6 +649,11 @@ Roo.apply(Roo.bootstrap.Form, {
             
             window.onwheel = function(){ return true; }
             
+            if(this.intervalID){
+                window.clearInterval(this.intervalID);
+                this.intervalID = false;
+            }
+            
         }
         
     }
