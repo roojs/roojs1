@@ -219,6 +219,10 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         this.errTooltip.show();
         
+        var tip = 'test';
+        
+        this.errTooltip.el.select('.tooltip-inner',true).first().dom.innerHTML = tip;
+        
         var _this = this;
         
         var fadeout = function(){
