@@ -177,91 +177,10 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         });
         
         if(this.errPopover && !valid){
-            Roo.bootstrap.Form.mask(target);
+            Roo.bootstrap.Form.errPopover.mask(target);
         }
         
         return valid;
-    },
-    
-    showErrPopover : function(target)
-    {
-        if(!this.errPopover){
-            return;
-        }
-        
-        /*
-         * Mask the element
-         */
-        var oIndex = target.el.getStyle('z-index');
-        
-        target.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
-        
-        target.el.addClass('roo-invalid-outline');
-        
-        Roo.log(target.inputEl());
-        
-        target.el.dom.scrollIntoView();
-        
-//        target.inputEl().focus();
-        
-        /*
-         * Place the popover
-         */
-        this.errTooltip.bindEl = target.el;
-        
-        this.errTooltip.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
-        
-        var tip = target.blankText;
-        
-        if(target.getValue() !== '' && target.regexText.length){
-            tip = target.regexText;
-        }
-        
-        this.errTooltip.show(tip);
-        
-        var _this = this;
-        
-        var fadeout = function(){
-            
-            target.inputEl().un('blur', fadeout);
-            target.inputEl().un('keyup', fadeout);
-            
-            target.el.setStyle('z-index', oIndex);
-        
-            target.el.removeClass('roo-invalid-outline');
-            
-            _this.errTooltip.hide();
-            
-            if(!intervalFadeOut){
-                return;
-            }
-            
-            window.clearInterval(intervalFadeOut);
-            intervalFadeOut = false;
-                
-        }
-        
-        Roo.log('call ???');
-        
-        (function(){
-            Roo.get(document.body).on('click', function(){
-                Roo.log('click ???') ;
- //           fadeout();
-            });
-        }).defer(500);
-        
-//        target.inputEl().on('blur', fadeout, target);
-//        target.inputEl().on('keyup', fadeout, target);
-//        
-//        if(intervalFadeOut){
-//            window.clearInterval(intervalFadeOut);
-//            intervalFadeOut = false;
-//        }
-//        
-//        var intervalFadeOut =  window.setInterval(function() {
-//            fadeout();
-//        }, 10000);
-          
     },
     
     /**
