@@ -583,13 +583,11 @@ Roo.apply(Roo.bootstrap.Form, {
             this.toolTip.render(Roo.get(document.body));
 
             Roo.get(document.body).on('click', function(){
-                
-                if(!this.isMasked){
-                    return;
-                }
-                
                 this.unmask();
-                
+            }, this);
+            
+            Roo.get(document.body).on('scroll', function(){
+                this.unmask();
             }, this);
             
             this.isApplied = true
