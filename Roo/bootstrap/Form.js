@@ -215,6 +215,8 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
          */
         this.errTooltip.bindEl = target.el;
         
+        this.errTooltip.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
+        
         this.errTooltip.show();
         
         var _this = this;
