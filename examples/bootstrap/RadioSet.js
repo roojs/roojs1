@@ -5,11 +5,12 @@
 RadioSet = new Roo.XComponent({
 
  _strings : {
+  'ce8ae9da5b7cd6c3df2929543a9af92d' :"Email",
   '7fa3b767c460b54a2be4d49030b349c7' :"no",
   'e3917ff2d3b3a88eab391651215d6445' :"Radio Field Lable Left",
+  '9dffbf69ffba8bc38bc4e01abf4b1675' :"Text",
   '8d80ce38760953b68529d7fc9d8d89b6' :"Radio Field Lable",
   'a6105c0a611b41b08f1209506350279e' :"yes",
-  '93e6896c0a7715e3d1e96d2bb333923a' :"Normal Text",
   'ad3d06d03d94223fa652babc913de686' :"Validate",
   'b7dc22f0e17f4dfca2940eb0bd0cdc54' :"Radio Set Example"
  },
@@ -169,7 +170,7 @@ RadioSet = new Roo.XComponent({
             {
              xtype : 'Input',
              name : 'text_name',
-             placeholder : _this._strings['93e6896c0a7715e3d1e96d2bb333923a'] /* Normal Text */,
+             placeholder : _this._strings['9dffbf69ffba8bc38bc4e01abf4b1675'] /* Text */,
              xns : Roo.bootstrap,
              '|xns' : 'Roo.bootstrap'
             }
@@ -192,7 +193,8 @@ RadioSet = new Roo.XComponent({
             {
              xtype : 'Input',
              name : 'text_name',
-             placeholder : _this._strings['93e6896c0a7715e3d1e96d2bb333923a'] /* Normal Text */,
+             placeholder : _this._strings['ce8ae9da5b7cd6c3df2929543a9af92d'] /* Email */,
+             vtype : 'email',
              xns : Roo.bootstrap,
              '|xns' : 'Roo.bootstrap'
             }
