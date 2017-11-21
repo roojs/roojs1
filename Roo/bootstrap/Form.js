@@ -210,9 +210,9 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         Roo.log(target.inputEl());
         
-        target.el.dom.scrollIntoView();
+//        target.el.dom.scrollIntoView();
         
-//        target.inputEl().focus();
+        target.inputEl().focus();
         
         /*
          * Place the popover
