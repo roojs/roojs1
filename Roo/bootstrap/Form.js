@@ -645,6 +645,8 @@ Roo.apply(Roo.bootstrap.Form, {
             
             this.toolTip.hide();
             
+            this.toolTip.el.hide();
+            
             window.onwheel = function(){ return true;};
             
             if(this.intervalID){
