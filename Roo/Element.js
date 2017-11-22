@@ -344,12 +344,15 @@ if(opt.anim.isAnimated()){
 
             Roo.log([o, l, t, b,r]);
             Roo.log([el.offsetHeight, el.offsetWidth]);
+            
             var ch = c.clientHeight;
             var ct = parseInt(c.scrollTop, 10);
             var cl = parseInt(c.scrollLeft, 10);
             var cb = ct + ch;
             var cr = cl + c.clientWidth;
-
+            
+            Roo.log([ch, ct, cl, cb, cr])
+            
             if(t < ct){
                 c.scrollTop = t;
             }else if(b > cb){
