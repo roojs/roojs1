@@ -165,7 +165,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
     },
     reset: function () {
         Roo.bootstrap.SecurePass.superclass.reset.call(this);
-        console.log(this.type);
+        console.log(this.inputEl().type);
         this._lastPwd = '';
         var pm = this.trigger.child('div/div/div').dom;
         pm.style.width = 0;
