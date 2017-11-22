@@ -13,6 +13,7 @@
 }
 
 
-.password-meter-text {     
+.password-meter-text { 
+    padding-bottom:5px;    
     font-size: 12px;     
 }
