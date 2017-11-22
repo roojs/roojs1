@@ -582,8 +582,6 @@ Roo.apply(Roo.bootstrap.Form, {
             
             this.toolTip.render(Roo.get(document.body));
             
-            this.toolTip.el.setVisibilityMode(Roo.Element.DISPLAY);
-
             Roo.get(document.body).on('click', function(){
                 this.unmask();
             }, this);
