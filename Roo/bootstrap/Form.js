@@ -611,6 +611,7 @@ Roo.apply(Roo.bootstrap.Form, {
             
 //            scrollable.scrollTo('top', 121);
             
+            
             this.target.el.dom.scrollIntoView();
             
             this.toolTip.bindEl = this.target.el;
