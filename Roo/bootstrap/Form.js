@@ -609,9 +609,9 @@ Roo.apply(Roo.bootstrap.Form, {
             
             var scrollable = this.target.el.findScrollableParent() || this.target.el.findParent('div.modal', 100, true) || Roo.get(document.body);
             
-            scrollable.scrollTo('top', 121);
+//            scrollable.scrollTo('top', 121);
             
-//            this.target.el.dom.scrollIntoView();
+            this.target.el.dom.scrollIntoView();
             
             this.toolTip.bindEl = this.target.el;
         
