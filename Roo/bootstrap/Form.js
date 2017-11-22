@@ -607,7 +607,7 @@ Roo.apply(Roo.bootstrap.Form, {
         
             this.target.el.addClass('roo-invalid-outline');
             
-            var scrollable = this.target.el.findScrollableParent() || this.target.el.findParent('div.modal', 100, true) || Roo.get(document.body);
+            var scrollable = this.target.el.findScrollableParent() || this.target.el.findParent('div.modal-dialog', 100, true) || Roo.get(document.body);
             
             Roo.log(scrollable);
             
