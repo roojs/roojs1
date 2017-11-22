@@ -643,6 +643,8 @@ Roo.apply(Roo.bootstrap.Form, {
             
             this.target.el.removeClass('roo-invalid-outline');
             
+            this.toolTip.el.setXY([0,0]);
+            
             this.toolTip.hide();
             
             window.onwheel = function(){ return true;};
