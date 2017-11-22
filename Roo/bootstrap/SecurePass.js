@@ -218,20 +218,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         pm.style.width = (this.meterWidth / 3) * strength + 'px';
                       
         pm.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
-        
-        /*
-         for (var index = 0; index < this.fieldsFilter.length; ++index) {
-         filter = document.getElementById(this.fieldsFilter[index][0]).value;
-         if (filter != '')
-         {
-         re = new RegExp(filter);
-         if (re.test(value)) {
-         this.markInvalid(eval('this.errors.'+ this.fieldsFilter[index][1]));
-         return false;
-         }
-         }
-         }
-         */
+                
         return true;
     },
     // private
