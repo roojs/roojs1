@@ -153,13 +153,8 @@
     padding: 0px;
 }
 
-.roo-form-error-popover {
-    opacity: 1;
-    display: none;
-}
-
 .roo-form-error-popover.in {
-    display: block;
+    opacity: 1;
 }
 
 .roo-form-error-popover .tooltip-inner {
