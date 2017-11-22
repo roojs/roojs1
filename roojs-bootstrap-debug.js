@@ -8001,6 +8001,8 @@ Roo.apply(Roo.bootstrap.Form, {
             
             this.toolTip.render(Roo.get(document.body));
 
+            this.toolTip.el.setVisibilityMode(Roo.Element.DISPLAY);
+            
             Roo.get(document.body).on('click', function(){
                 this.unmask();
             }, this);
@@ -8023,8 +8025,22 @@ Roo.apply(Roo.bootstrap.Form, {
             this.target.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
         
             this.target.el.addClass('roo-invalid-outline');
-
-            this.target.el.dom.scrollIntoView();
+            
+            var scrollable = this.target.el.findScrollableParent() || this.target.el.findParent('div.modal', 100, true) || Roo.get(document.body);
+            
+            var scrolled = scrollable.getScroll();
+            
+            var ot = this.target.el.calcOffsetsTo(scrollable);
+            
+            var scrollTo = 0;
+            
+            if(ot[1] <= scrolled.top){
+                scrollTo = ot[1] - 100;
+            } else {
+                scrollTo = ot[1] + Roo.lib.Dom.getViewHeight() - 100;
+            }
+            
+            scrollable.scrollTo('top', scrollTo);
             
             this.toolTip.bindEl = this.target.el;
         
@@ -8061,6 +8077,8 @@ Roo.apply(Roo.bootstrap.Form, {
             this.target.el.removeClass('roo-invalid-outline');
             
             this.toolTip.hide();
+            
+            this.toolTip.el.hide();
             
             window.onwheel = function(){ return true;};
             
