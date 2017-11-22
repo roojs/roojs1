@@ -191,7 +191,6 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         var dirty = false;
         var items = this.getItems();
         items.each(function(f){
-            Roo.log(f);
            if(f.isDirty()){
                dirty = true;
                return false;
