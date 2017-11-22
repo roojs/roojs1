@@ -112,9 +112,8 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
                         height: '10px'                        
                         }
                     },
-                    {
-                    	 id: 'MeterText',
-                    	 cls: 'test'
+                    {                    	 
+                    	 cls: 'MeterText'
                     }
                 ]                
             }
