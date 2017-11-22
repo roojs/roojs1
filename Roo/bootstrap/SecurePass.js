@@ -151,7 +151,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         
         pm.style.width = (this.meterWidth / 3) * strength + 'px';
         //if(this.pwdStrengths != null && strength > 0) {
-        pm.innerHTML = this.meterLabel + this.pwdStrengths[strength];
+        pm.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
         //} else {
         //	pm.innerHTML = '';
         //}
@@ -217,7 +217,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
                  
         pm.style.width = (this.meterWidth / 3) * strength + 'px';
                       
-        pm.innerHTML = this.meterLabel + this.pwdStrengths[strength];
+        pm.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
         
         /*
          for (var index = 0; index < this.fieldsFilter.length; ++index) {
