@@ -102,7 +102,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
                     width: this.meterWidth + 'px',
                     height: '10px'                    
                 },
-                cn: {
+                cn: [{
                     //id: 'PwdMeter',
                     tag: 'div',
                     cls: 'password-meter',
@@ -110,7 +110,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
                         //width: 0,
                         height: '10px'                        
                     }
-                }                
+                }]                
             }
         });
         if (this.hideTrigger) {
