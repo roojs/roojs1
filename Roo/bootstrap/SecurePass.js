@@ -157,12 +157,8 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         pm.style.width = (this.meterWidth / 3) * strength + 'px';
         
         var pt = this.trigger.child('/div/div/').child('>*[class=MeterText]').dom;        
-        
-        //if(this.pwdStrengths != null && strength > 0) {
+                
         pt.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
-        //} else {
-        //	pm.innerHTML = '';
-        //}
         
         this._lastPwd = pwd;
     },
@@ -171,7 +167,12 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         this._lastPwd = '';
         var pm = this.trigger.child('div/div/div').dom;
         pm.style.width = 0;
-        pm.innerHTML = '';
+        
+        var pt = this.trigger.child('/div/div/').child('>*[class=MeterText]').dom;        
+                
+        //pt.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
+        
+        pt.innerHTML = '';
     },
     // private
     validateValue: function (value) {
@@ -225,8 +226,12 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
                  
         pm.style.width = (this.meterWidth / 3) * strength + 'px';
                       
-        pm.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
+        //pm.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
+
+        var pt = this.trigger.child('/div/div/').child('>*[class=MeterText]').dom;        
                 
+        pt.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
+                        
         return true;
     },
     // private
