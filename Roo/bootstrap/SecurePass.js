@@ -131,7 +131,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
     },
     // private
     checkStrength: function () {
-        var pwd = this.el.getValue();
+        var pwd = this.inputEl().getValue();
         if (pwd == this._lastPwd) {
             return;
         }
