@@ -605,6 +605,8 @@ Roo.apply(Roo.bootstrap.Form, {
         
             this.target.el.addClass('roo-invalid-outline');
 
+            Roo.log(this.target.el);
+            
             this.target.el.dom.scrollIntoView();
             
             this.toolTip.bindEl = this.target.el;
