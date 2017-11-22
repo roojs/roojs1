@@ -609,10 +609,19 @@ Roo.apply(Roo.bootstrap.Form, {
             
             var scrollable = this.target.el.findScrollableParent() || this.target.el.findParent('div.modal', 100, true) || Roo.get(document.body);
             
-//            scrollable.scrollTo('top', 121);
+            var scrolled = scrollable.getScroll();
             
+            var ot = this.target.el.calcOffsetsTo(scrollable);
             
-            this.target.el.dom.scrollIntoView();
+            var scrollTo = 0;
+            
+            if(ot[1] <= scrolled.top){
+                scrollTo = ot[1] - 50;
+            } else {
+                scrollTo = ot[1] + Roo.lib.Dom.getViewHeight() - 50;
+            }
+            
+            scrollable.scrollTo('top', scrollTo);
             
             this.toolTip.bindEl = this.target.el;
         
