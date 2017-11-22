@@ -332,9 +332,10 @@ if(opt.anim.isAnimated()){
          * @param {Boolean} hscroll (optional) False to disable horizontal scroll (defaults to true)
          * @return {Roo.Element} this
          */
-        scrollIntoView : function(container, hscroll){
+        scrollIntoView : function(container, hscroll, offset){
             var c = Roo.getDom(container) || document.body;
             var el = this.dom;
+            var offset = offset || 0;
 
             var o = this.calcOffsetsTo(c),
                 l = o[0],
@@ -342,21 +343,16 @@ if(opt.anim.isAnimated()){
                 b = t+el.offsetHeight,
                 r = l+el.offsetWidth;
 
-            Roo.log([o, l, t, b,r]);
-            Roo.log([el.offsetHeight, el.offsetWidth]);
-            
             var ch = c.clientHeight;
             var ct = parseInt(c.scrollTop, 10);
             var cl = parseInt(c.scrollLeft, 10);
             var cb = ct + ch;
             var cr = cl + c.clientWidth;
-            
-            Roo.log([ch, ct, cl, cb, cr])
-            
+
             if(t < ct){
-                c.scrollTop = t;
+                c.scrollTop = t - offset;
             }else if(b > cb){
-                c.scrollTop = b-ch;
+                c.scrollTop = b - ch + offset;
             }
 
             if(hscroll !== false){
