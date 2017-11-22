@@ -194,9 +194,16 @@ if(opt.anim.isAnimated()){
             
             while (
                     el && 
-                    !el.isScrollable() && 
-                    D.getViewHeight() - el.dom.clientHeight <= 15 &&
-                    D.getViewWidth() - el.dom.clientWidth <= 15 &&
+                    (
+                        !el.isScrollable() ||
+                        (
+                            el.isScrollable() &&
+                            (
+                                D.getViewHeight() - el.dom.clientHeight > 15 || 
+                                D.getViewWidth() - el.dom.clientWidth > 15
+                            )
+                        )
+                    ) &&
                     el.dom.nodeName.toLowerCase() != 'body'
             ){
                 el = Roo.get(el.dom.parentNode);
