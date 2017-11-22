@@ -190,7 +190,7 @@ if(opt.anim.isAnimated()){
          */
         findScrollableParent : function(){
             
-            var el = this.el;
+            var el = Roo.get(this.el.dom.parentNode);;
             
             while (el && !el.isScrollable() && el.dom.nodeName.toLowerCase() != 'body'){
                 el = Roo.get(el.dom.parentNode);
