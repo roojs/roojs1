@@ -7162,6 +7162,24 @@ if(opt.anim.isAnimated()){
             var p = Roo.fly(this.dom.parentNode, '_internal');
             return p ? p.findParent(simpleSelector, maxDepth, returnEl) : null;
         },
+        
+        /**
+         * Looks at  the scrollable parent element
+         */
+        findScrollableParent : function(){
+            
+            var el = Roo.get(this.el.dom.parentNode);;
+            
+            while (el && !el.isScrollable() && el.dom.nodeName.toLowerCase() != 'body'){
+                el = Roo.get(el.dom.parentNode);
+            }
+            
+            if(!el.isScrollable()){
+                return null;
+            }
+            
+            return el;
+        },
 
         /**
          * Walks up the dom looking for a parent node that matches the passed simple selector (e.g. div.some-class or span:first-child).
