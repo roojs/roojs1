@@ -1,6 +1,6 @@
 .password-meter-grey {
     background: lightgrey; /* For browsers that do not support gradients */
-    height: '10px';
+    height: 10px;
 }
 
 .password-meter {
@@ -15,27 +15,27 @@
 
 .password-meter-tooweek {
     background: lightgrey;  
-    height: '10px';        
+    height: 10px;        
 }
 
 .password-meter-weak {
     background: red;
-    height: '10px';         
+    height: 10px;         
 }
 
 .password-meter-medium {
     background: yellow;
-    height: '10px';          
+    height: 10px;          
 }
 
 .password-meter-strong {
     background: green;
-    height: '10px';          
+    height: 10px;          
 }
 
 .password-meter-text { 
     padding-bottom:5px;
     margin-bottom:5px;    
     font-size: 12px;
-    height: '10px';     
+    height: 10px;     
 }
