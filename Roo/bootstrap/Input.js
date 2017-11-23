@@ -427,7 +427,33 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             
             }
             
+            if (this.labelWidth < 13) {
+                Roo.log("Error Use labelmd/labelsm etc.. not labelWidth");
+                labelCfg.cls += ' col-md-' + this.labelWidth;
+                contentCfg.cls += ' col-md-' + (12 - this.labelWidth);
+            } else {
+                labelCfg.style = "width: " + this.labelWidth + 'px';
+            } 
             
+            if(this.labellg > 0){
+                cfg.cn[1].cls += ' col-lg-' + this.labellg;
+                cfg.cn[2].cls += ' col-lg-' + (12 - this.labellg);
+            }
+            
+            if(this.labelmd > 0){
+                cfg.cn[1].cls += ' col-md-' + this.labelmd;
+                cfg.cn[2].cls += ' col-md-' + (12 - this.labelmd);
+            }
+            
+            if(this.labelsm > 0){
+                cfg.cn[1].cls += ' col-sm-' + this.labelsm;
+                cfg.cn[2].cls += ' col-sm-' + (12 - this.labelsm);
+            }
+            
+            if(this.labelxs > 0){
+                cfg.cn[1].cls += ' col-xs-' + this.labelxs;
+                cfg.cn[2].cls += ' col-xs-' + (12 - this.labelxs);
+            }
             
             
         } else if ( this.fieldLabel.length) {
