@@ -396,8 +396,9 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             if (this.labelWidth < 13) {
                 Roo.log("Error Use labelmd/labelsm etc.. not labelWidth");
                 cfg.cn[1].cls += ' col-md-' + this.labelWidth;
+                cfg.cn[2].cls += ' col-md-' + (12 - this.labelWidth);
             } else {
-                label.style = "width: " + this.labelWidth + 'px';
+                cfg.cn[1].style = "width: " + this.labelWidth + 'px';
             } 
 
             if(this.labelWidth > 12){
