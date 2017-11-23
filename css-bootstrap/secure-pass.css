@@ -13,6 +13,10 @@
     font-size: 12px;     
 }
 
+.password-meter-container {
+	 margin-bottom: 20px;            
+}
+
 .password-meter-tooweek {
     background: lightgrey;  
     height: 10px;        
