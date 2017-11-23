@@ -111,6 +111,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
                     cls: 'password-meter',
                     style: {
                         //width: 0,
+                        width: this.meterWidth + 'px',
                         height: '10px'                        
                         }
                     },
@@ -170,7 +171,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         
         this._lastPwd = '';
         var pm = this.trigger.child('div/div/div').dom;
-        pm.style.width = 0;
+        //pm.style.width = 0;
         
         var pt = this.trigger.child('/div/div/').child('>*[class=password-meter-text]').dom;        
                 
