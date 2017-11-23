@@ -172,7 +172,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         
         this._lastPwd = '';
         var pm = this.trigger.child('div/div/div').dom;
-        //pm.style.width = 0;
+        pm.style.width = 0;
         
         var pt = this.trigger.child('/div/div/').child('>*[class=password-meter-text]').dom;        
                 
