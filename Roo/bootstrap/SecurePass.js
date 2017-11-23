@@ -93,7 +93,8 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
 
         this.trigger.createChild({
             tag: 'div',
-            style: {                
+            style: {
+                'margin-bottom': '20px',
                 cls: 'password-meter-container',
                 width: this.meterWidth + 'px'
             },
