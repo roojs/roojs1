@@ -321,7 +321,33 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 labelCfg = cfg.cn[0];
             }
             
+            if(this.labelWidth > 12){
+                labelCfg.style = "width: " + this.labelWidth + 'px';
+            }
             
+            if(this.labelWidth < 13 && this.labelmd == 0){
+                this.labelmd = this.labelWidth;
+            }
+            
+            if(this.labellg > 0){
+                labelCfg.cls += ' col-lg-' + this.labellg;
+                contentCfg.cls += ' col-lg-' + (12 - this.labellg);
+            }
+            
+            if(this.labelmd > 0){
+                labelCfg.cls += ' col-md-' + this.labelmd;
+                contentCfg.cls += ' col-md-' + (12 - this.labelmd);
+            }
+            
+            if(this.labelsm > 0){
+                labelCfg.cls += ' col-sm-' + this.labelsm;
+                contentCfg.cls += ' col-sm-' + (12 - this.labelsm);
+            }
+            
+            if(this.labelxs > 0){
+                labelCfg.cls += ' col-xs-' + this.labelxs;
+                contentCfg.cls += ' col-xs-' + (12 - this.labelxs);
+            }
             
         } else if ( this.fieldLabel.length) {
 //                Roo.log(" label");
