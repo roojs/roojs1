@@ -529,7 +529,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         tooltip : 'This field is required'
                     },
                     {
-                        cls : "", 
+                        cls : "",
                         cn: [
                             combobox
                         ]
@@ -2309,6 +2309,133 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var align = this.labelAlign || this.parentLabelAlign();
         
         cfg.cn = combobox;
+        
+        if (align ==='left' && this.fieldLabel.length) {
+            
+            cfg.cn = [
+                {
+                   tag : 'i',
+                   cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
+                   tooltip : 'This field is required'
+                },
+                {
+                    tag: 'label',
+                    cls : 'control-label',
+                    html : this.fieldLabel
+
+                },
+                {
+                    cls : '', 
+                    cn: [
+                        combobox
+                    ]
+                }
+            ];
+            
+            var labelCfg = cfg.cn[1];
+            var contentCfg = cfg.cn[2];
+            
+
+            if(this.indicatorpos == 'right'){
+                
+                cfg.cn = [
+                    {
+                        tag: 'label',
+                        html : this.fieldLabel
+
+                    },
+                    {
+                        tag : 'i',
+                        cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
+                        tooltip : 'This field is required'
+                    },
+
+                    combobox
+
+                ];
+                
+                labelCfg = cfg.cn[0];
+            
+            }
+            
+            if(this.labelWidth > 12){
+                labelCfg.style = "width: " + this.labelWidth + 'px';
+            }
+            
+            if(this.labelWidth < 13 && this.labelmd == 0){
+                this.labelmd = this.labelWidth;
+            }
+            
+            if(this.labellg > 0){
+                labelCfg.cls += ' col-lg-' + this.labellg;
+                contentCfg.cls += ' col-lg-' + (12 - this.labellg);
+            }
+            
+            if(this.labelmd > 0){
+                labelCfg.cls += ' col-md-' + this.labelmd;
+                contentCfg.cls += ' col-md-' + (12 - this.labelmd);
+            }
+            
+            if(this.labelsm > 0){
+                labelCfg.cls += ' col-sm-' + this.labelsm;
+                contentCfg.cls += ' col-sm-' + (12 - this.labelsm);
+            }
+            
+            if(this.labelxs > 0){
+                labelCfg.cls += ' col-xs-' + this.labelxs;
+                contentCfg.cls += ' col-xs-' + (12 - this.labelxs);
+            }
+                
+                
+        } else if ( this.fieldLabel.length) {
+//                Roo.log(" label");
+                 cfg.cn = [
+                    {
+                        tag : 'i',
+                        cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
+                        tooltip : 'This field is required'
+                    },
+                    {
+                        tag: 'label',
+                        //cls : 'input-group-addon',
+                        html : this.fieldLabel
+                        
+                    },
+                    
+                    combobox
+                    
+                ];
+                
+                if(this.indicatorpos == 'right'){
+                    
+                    cfg.cn = [
+                        {
+                            tag: 'label',
+                            //cls : 'input-group-addon',
+                            html : this.fieldLabel
+
+                        },
+                        
+                        {
+                            tag : 'i',
+                            cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
+                            tooltip : 'This field is required'
+                        },
+                        
+                        combobox
+
+                    ];
+                
+                }
+
+        } else {
+            
+//                Roo.log(" no label && no align");
+                cfg = combobox
+                     
+                
+        }
+        
         
         if(this.fieldLabel.length && this.labelWidth){
             
