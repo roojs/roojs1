@@ -86,6 +86,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
         
         if (align === 'left' && this.fieldLabel.length) {
             
+            Roo.log('run???');
             items = {
                 cls : "roo-radio-set-right", 
                 cn: [
