@@ -46,8 +46,6 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
     
     weight : '',
     
-    fieldLabel : '',
-    
     indicatorpos : 'left',
     
     getAutoCreate : function()
