@@ -150,6 +150,8 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
                 }
             }
             
+            label.cls += ' ' + labelCls;
+            
             cfg.cn.push(label);
         }
         
