@@ -432,8 +432,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             }
             
             if(this.labelWidth < 13 && this.labelmd == 0){
-                labelCfg.cls += ' col-md-' + this.labelWidth;
-                contentCfg.cls += ' col-md-' + (12 - this.labelWidth);
+                this.labelmd = this.labelWidth;
             }
             
             if(this.labellg > 0){
