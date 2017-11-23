@@ -396,6 +396,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                      
                 
         }
+        Roo.log('cfg.................................................');
         Roo.log(cfg);
         var settings=this;
         ['xs','sm','md','lg'].map(function(size){
