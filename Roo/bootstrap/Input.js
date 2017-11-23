@@ -380,7 +380,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 {
                     tag: 'label',
                     'for' :  id,
-                    cls : 'control-label ',
+                    cls : 'control-label',
                     html : this.fieldLabel
 
                 },
@@ -392,7 +392,21 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 }
             ];
             
+            
+            if (this.labelWidth < 13) {
+                Roo.log("Error Use labelmd/labelsm etc.. not labelWidth");
+                cfg.cn[1].cls += ' col-md-' + this.labelWidth;
+            } else {
+                label.style = "width: " + this.labelWidth + 'px';
+            } 
+
             if(this.labelWidth > 12){
+                cfg.cn[1].style = "width: " + this.labelWidth + 'px';
+            } else {
+                
+                if(this.labellg > 0){
+                    cfg.cn[1].style = "width: " + this.labelWidth + 'px';
+                }
                 
             }
             
