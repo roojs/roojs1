@@ -122,7 +122,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
             if(this.labelAlign == 'left'){
             
                 if(this.labelWidth > 12){
-                    labelCfg.style = "width: " + this.labelWidth + 'px';
+                    label.style = "width: " + this.labelWidth + 'px';
                 }
 
                 if(this.labelWidth < 13 && this.labelmd == 0){
@@ -130,8 +130,8 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
                 }
 
                 if(this.labellg > 0){
-                    labelCfg.cls += ' col-lg-' + this.labellg;
-                    contentCfg.cls += ' col-lg-' + (12 - this.labellg);
+                    labelCls = ' col-lg-' + this.labellg;
+                    contentCls = ' col-lg-' + ((12 - this.labellg) / 3);
                 }
 
                 if(this.labelmd > 0){
