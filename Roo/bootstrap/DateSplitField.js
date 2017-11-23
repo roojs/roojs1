@@ -83,6 +83,10 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     monthFormat : 'm',
     yearFormat : 'Y',
     isFormField : true,
+    labellg : 0,
+    labelmd : 0,
+    labelsm : 0,
+    labelxs : 0,
     
     getAutoCreate : function()
     {
