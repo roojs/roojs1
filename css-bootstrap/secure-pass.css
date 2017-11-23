@@ -1,5 +1,6 @@
 .password-meter-grey {
     background: lightgrey; /* For browsers that do not support gradients */
+    height: '10px';
 }
 
 .password-meter {
@@ -28,7 +29,8 @@
 }
 
 .password-meter-strong {
-    background: green;          
+    background: green;
+    height: '10px';          
 }
 
 .password-meter-text { 
