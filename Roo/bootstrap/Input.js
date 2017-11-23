@@ -436,23 +436,23 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             } 
             
             if(this.labellg > 0){
-                cfg.cn[1].cls += ' col-lg-' + this.labellg;
-                cfg.cn[2].cls += ' col-lg-' + (12 - this.labellg);
+                labelCfg.cls += ' col-lg-' + this.labellg;
+                contentCfg.cls += ' col-lg-' + (12 - this.labellg);
             }
             
             if(this.labelmd > 0){
-                cfg.cn[1].cls += ' col-md-' + this.labelmd;
-                cfg.cn[2].cls += ' col-md-' + (12 - this.labelmd);
+                labelCfg.cls += ' col-md-' + this.labelmd;
+                contentCfg.cls += ' col-md-' + (12 - this.labelmd);
             }
             
             if(this.labelsm > 0){
-                cfg.cn[1].cls += ' col-sm-' + this.labelsm;
-                cfg.cn[2].cls += ' col-sm-' + (12 - this.labelsm);
+                labelCfg.cls += ' col-sm-' + this.labelsm;
+                contentCfg.cls += ' col-sm-' + (12 - this.labelsm);
             }
             
             if(this.labelxs > 0){
-                cfg.cn[1].cls += ' col-xs-' + this.labelxs;
-                cfg.cn[2].cls += ' col-xs-' + (12 - this.labelxs);
+                labelCfg.cls += ' col-xs-' + this.labelxs;
+                contentCfg.cls += ' col-xs-' + (12 - this.labelxs);
             }
             
             
