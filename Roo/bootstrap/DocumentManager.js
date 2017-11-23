@@ -208,8 +208,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 }
 
                 if(this.labellg > 0){
-                    labelCfg.cls += ' col-lg-' + this.labellg;
-                    contentCfg.cls += ' col-lg-' + (12 - this.labellg);
+                    content[0].cls += ' col-lg-' + this.labellg;
+                    content[1].cls += ' col-lg-' + (12 - this.labellg);
                 }
 
                 if(this.labelmd > 0){
