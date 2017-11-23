@@ -8210,7 +8210,11 @@ Roo.form.VTypes = function(){
  * @cfg {Number} md colspan out of 12 for computer-sized screens
  * @cfg {Number} lg colspan out of 12 for large computer-sized screens
  * @cfg {string} value default value of the input
- * @cfg {Number} labelWidth set the width of label (0-12)
+ * @cfg {Number} labelWidth set the width of label 
+ * @cfg {Number} labellg set the width of label (1-12)
+ * @cfg {Number} labelmd set the width of label (1-12)
+ * @cfg {Number} labelsm set the width of label (1-12)
+ * @cfg {Number} labelxs set the width of label (1-12)
  * @cfg {String} labelAlign (top|left)
  * @cfg {Boolean} readOnly Specifies that the field should be read-only
  * @cfg {String} autocomplete - default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en
@@ -8228,58 +8232,59 @@ Roo.form.VTypes = function(){
  */
 
 Roo.bootstrap.Input = function(config){
+    
     Roo.bootstrap.Input.superclass.constructor.call(this, config);
-   
-        this.addEvents({
-            /**
-             * @event focus
-             * Fires when this field receives input focus.
-             * @param {Roo.form.Field} this
-             */
-            focus : true,
-            /**
-             * @event blur
-             * Fires when this field loses input focus.
-             * @param {Roo.form.Field} this
-             */
-            blur : true,
-            /**
-             * @event specialkey
-             * Fires when any key related to navigation (arrows, tab, enter, esc, etc.) is pressed.  You can check
-             * {@link Roo.EventObject#getKey} to determine which key was pressed.
-             * @param {Roo.form.Field} this
-             * @param {Roo.EventObject} e The event object
-             */
-            specialkey : true,
-            /**
-             * @event change
-             * Fires just before the field blurs if the field value has changed.
-             * @param {Roo.form.Field} this
-             * @param {Mixed} newValue The new value
-             * @param {Mixed} oldValue The original value
-             */
-            change : true,
-            /**
-             * @event invalid
-             * Fires after the field has been marked as invalid.
-             * @param {Roo.form.Field} this
-             * @param {String} msg The validation message
-             */
-            invalid : true,
-            /**
-             * @event valid
-             * Fires after the field has been validated with no errors.
-             * @param {Roo.form.Field} this
-             */
-            valid : true,
-             /**
-             * @event keyup
-             * Fires after the key up
-             * @param {Roo.form.Field} this
-             * @param {Roo.EventObject}  e The event Object
-             */
-            keyup : true
-        });
+    
+    this.addEvents({
+        /**
+         * @event focus
+         * Fires when this field receives input focus.
+         * @param {Roo.form.Field} this
+         */
+        focus : true,
+        /**
+         * @event blur
+         * Fires when this field loses input focus.
+         * @param {Roo.form.Field} this
+         */
+        blur : true,
+        /**
+         * @event specialkey
+         * Fires when any key related to navigation (arrows, tab, enter, esc, etc.) is pressed.  You can check
+         * {@link Roo.EventObject#getKey} to determine which key was pressed.
+         * @param {Roo.form.Field} this
+         * @param {Roo.EventObject} e The event object
+         */
+        specialkey : true,
+        /**
+         * @event change
+         * Fires just before the field blurs if the field value has changed.
+         * @param {Roo.form.Field} this
+         * @param {Mixed} newValue The new value
+         * @param {Mixed} oldValue The original value
+         */
+        change : true,
+        /**
+         * @event invalid
+         * Fires after the field has been marked as invalid.
+         * @param {Roo.form.Field} this
+         * @param {String} msg The validation message
+         */
+        invalid : true,
+        /**
+         * @event valid
+         * Fires after the field has been validated with no errors.
+         * @param {Roo.form.Field} this
+         */
+        valid : true,
+         /**
+         * @event keyup
+         * Fires after the key up
+         * @param {Roo.form.Field} this
+         * @param {Roo.EventObject}  e The event Object
+         */
+        keyup : true
+    });
 };
 
 Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
@@ -8357,7 +8362,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     /**
      * @cfg {String} blankText Error text to display if the allow blank validation fails (defaults to "This field is required")
      */
-    blankText : "This field is required",
+    blankText : "Please complete this mandatory field",
     
      /**
      * @cfg {Number} minLength Minimum input field length required (defaults to 0)
@@ -8417,6 +8422,11 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     forceFeedback : false,
     
     indicatorpos : 'left',
+    
+    labellg : 0,
+    labelmd : 0,
+    labelsm : 0,
+    labelxs : 0,
     
     parentLabelAlign : function()
     {
@@ -8563,25 +8573,27 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 {
                     tag: 'label',
                     'for' :  id,
-                    cls : 'control-label col-sm-' + this.labelWidth,
+                    cls : 'control-label',
                     html : this.fieldLabel
 
                 },
                 {
-                    cls : "col-sm-" + (12 - this.labelWidth), 
+                    cls : "", 
                     cn: [
                         inputblock
                     ]
                 }
-
             ];
+            
+            var labelCfg = cfg.cn[1];
+            var contentCfg = cfg.cn[2];
             
             if(this.indicatorpos == 'right'){
                 cfg.cn = [
                     {
                         tag: 'label',
                         'for' :  id,
-                        cls : 'control-label col-sm-' + this.labelWidth,
+                        cls : 'control-label',
                         html : this.fieldLabel
 
                     },
@@ -8591,14 +8603,46 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                         tooltip : 'This field is required'
                     },
                     {
-                        cls : "col-sm-" + (12 - this.labelWidth), 
+                        cls : "",
                         cn: [
                             inputblock
                         ]
                     }
 
                 ];
+                
+                labelCfg = cfg.cn[0];
+            
             }
+            
+            if(this.labelWidth > 12){
+                labelCfg.style = "width: " + this.labelWidth + 'px';
+            }
+            
+            if(this.labelWidth < 13 && this.labelmd == 0){
+                this.labelmd = this.labelWidth;
+            }
+            
+            if(this.labellg > 0){
+                labelCfg.cls += ' col-lg-' + this.labellg;
+                contentCfg.cls += ' col-lg-' + (12 - this.labellg);
+            }
+            
+            if(this.labelmd > 0){
+                labelCfg.cls += ' col-md-' + this.labelmd;
+                contentCfg.cls += ' col-md-' + (12 - this.labelmd);
+            }
+            
+            if(this.labelsm > 0){
+                labelCfg.cls += ' col-sm-' + this.labelsm;
+                contentCfg.cls += ' col-sm-' + (12 - this.labelsm);
+            }
+            
+            if(this.labelxs > 0){
+                labelCfg.cls += ' col-xs-' + this.labelxs;
+                contentCfg.cls += ' col-xs-' + (12 - this.labelxs);
+            }
+            
             
         } else if ( this.fieldLabel.length) {
                 
@@ -9280,48 +9324,71 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
         }
         
         if (align ==='left' && this.fieldLabel.length) {
-//                Roo.log("left and has label");
-                cfg.cn = [
-                    
-                    {
-                        tag: 'label',
-                        'for' :  id,
-                        cls : 'control-label col-sm-' + this.labelWidth,
-                        html : this.fieldLabel
-                        
-                    },
-                    {
-                        cls : "col-sm-" + (12 - this.labelWidth), 
-                        cn: [
-                            inputblock
-                        ]
-                    }
-                    
-                ];
+            cfg.cn = [
+                {
+                    tag: 'label',
+                    'for' :  id,
+                    cls : 'control-label',
+                    html : this.fieldLabel
+                },
+                {
+                    cls : "",
+                    cn: [
+                        inputblock
+                    ]
+                }
+
+            ];
+            
+            if(this.labelWidth > 12){
+                cfg.cn[0].style = "width: " + this.labelWidth + 'px';
+            }
+
+            if(this.labelWidth < 13 && this.labelmd == 0){
+                this.labelmd = this.labelWidth;
+            }
+
+            if(this.labellg > 0){
+                cfg.cn[0].cls += ' col-lg-' + this.labellg;
+                cfg.cn[1].cls += ' col-lg-' + (12 - this.labellg);
+            }
+
+            if(this.labelmd > 0){
+                cfg.cn[0].cls += ' col-md-' + this.labelmd;
+                cfg.cn[1].cls += ' col-md-' + (12 - this.labelmd);
+            }
+
+            if(this.labelsm > 0){
+                cfg.cn[0].cls += ' col-sm-' + this.labelsm;
+                cfg.cn[1].cls += ' col-sm-' + (12 - this.labelsm);
+            }
+
+            if(this.labelxs > 0){
+                cfg.cn[0].cls += ' col-xs-' + this.labelxs;
+                cfg.cn[1].cls += ' col-xs-' + (12 - this.labelxs);
+            }
+            
         } else if ( this.fieldLabel.length) {
-//                Roo.log(" label");
-                 cfg.cn = [
-                   
-                    {
-                        tag: 'label',
-                        //cls : 'input-group-addon',
-                        html : this.fieldLabel
-                        
-                    },
-                    
-                    inputblock
-                    
-                ];
+            cfg.cn = [
+
+               {
+                   tag: 'label',
+                   //cls : 'input-group-addon',
+                   html : this.fieldLabel
+
+               },
+
+               inputblock
+
+           ];
 
         } else {
-            
-//                   Roo.log(" no label && no align");
-                cfg.cn = [
-                    
-                        inputblock
-                    
-                ];
-                
+
+            cfg.cn = [
+
+                inputblock
+
+            ];
                 
         }
         
@@ -9742,9 +9809,8 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             combobox.cls += ' roo-select2-container-multi';
         }
         
-        if (align ==='left' && this.fieldLabel.length && this.labelWidth) {
+        if (align ==='left' && this.fieldLabel.length) {
             
-//                Roo.log("left and has label");
             cfg.cn = [
                 {
                     tag : 'i',
@@ -9754,12 +9820,12 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 {
                     tag: 'label',
                     'for' :  id,
-                    cls : 'control-label col-sm-' + this.labelWidth,
+                    cls : 'control-label',
                     html : this.fieldLabel
 
                 },
                 {
-                    cls : "col-sm-" + (12 - this.labelWidth), 
+                    cls : "", 
                     cn: [
                         combobox
                     ]
@@ -9767,12 +9833,15 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
 
             ];
             
+            var labelCfg = cfg.cn[1];
+            var contentCfg = cfg.cn[2];
+            
             if(this.indicatorpos == 'right'){
                 cfg.cn = [
                     {
                         tag: 'label',
                         'for' :  id,
-                        cls : 'control-label col-sm-' + this.labelWidth,
+                        cls : 'control-label',
                         html : this.fieldLabel
 
                     },
@@ -9782,13 +9851,43 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                         tooltip : 'This field is required'
                     },
                     {
-                        cls : "col-sm-" + (12 - this.labelWidth), 
+                        cls : "", 
                         cn: [
                             combobox
                         ]
                     }
 
                 ];
+                
+                labelCfg = cfg.cn[0];
+            }
+            
+            if(this.labelWidth > 12){
+                labelCfg.style = "width: " + this.labelWidth + 'px';
+            }
+            
+            if(this.labelWidth < 13 && this.labelmd == 0){
+                this.labelmd = this.labelWidth;
+            }
+            
+            if(this.labellg > 0){
+                labelCfg.cls += ' col-lg-' + this.labellg;
+                contentCfg.cls += ' col-lg-' + (12 - this.labellg);
+            }
+            
+            if(this.labelmd > 0){
+                labelCfg.cls += ' col-md-' + this.labelmd;
+                contentCfg.cls += ' col-md-' + (12 - this.labelmd);
+            }
+            
+            if(this.labelsm > 0){
+                labelCfg.cls += ' col-sm-' + this.labelsm;
+                contentCfg.cls += ' col-sm-' + (12 - this.labelsm);
+            }
+            
+            if(this.labelxs > 0){
+                labelCfg.cls += ' col-xs-' + this.labelxs;
+                contentCfg.cls += ' col-xs-' + (12 - this.labelxs);
             }
             
         } else if ( this.fieldLabel.length) {
@@ -12585,9 +12684,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             combobox.cn.push(feedback);
         }
         
-        if (align ==='left' && this.fieldLabel.length && this.labelWidth) {
+        if (align ==='left' && this.fieldLabel.length) {
             
-//                Roo.log("left and has label");
             cfg.cn = [
                 {
                     tag : 'i',
@@ -12597,18 +12695,22 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 {
                     tag: 'label',
                     'for' :  id,
-                    cls : 'control-label col-sm-' + this.labelWidth,
+                    cls : 'control-label',
                     html : this.fieldLabel
 
                 },
                 {
-                    cls : "col-sm-" + (12 - this.labelWidth), 
+                    cls : "", 
                     cn: [
                         combobox
                     ]
                 }
 
             ];
+            
+            var labelCfg = cfg.cn[1];
+            var contentCfg = cfg.cn[2];
+            
 
             if(this.indicatorpos == 'right'){
                 
@@ -12616,7 +12718,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     {
                         tag: 'label',
                         'for' :  id,
-                        cls : 'control-label col-sm-' + this.labelWidth,
+                        cls : 'control-label',
                         html : this.fieldLabel
 
                     },
@@ -12626,14 +12728,44 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         tooltip : 'This field is required'
                     },
                     {
-                        cls : "col-sm-" + (12 - this.labelWidth), 
+                        cls : "",
                         cn: [
                             combobox
                         ]
                     }
 
                 ];
+                
+                labelCfg = cfg.cn[0];
             
+            }
+            
+            if(this.labelWidth > 12){
+                labelCfg.style = "width: " + this.labelWidth + 'px';
+            }
+            
+            if(this.labelWidth < 13 && this.labelmd == 0){
+                this.labelmd = this.labelWidth;
+            }
+            
+            if(this.labellg > 0){
+                labelCfg.cls += ' col-lg-' + this.labellg;
+                contentCfg.cls += ' col-lg-' + (12 - this.labellg);
+            }
+            
+            if(this.labelmd > 0){
+                labelCfg.cls += ' col-md-' + this.labelmd;
+                contentCfg.cls += ' col-md-' + (12 - this.labelmd);
+            }
+            
+            if(this.labelsm > 0){
+                labelCfg.cls += ' col-sm-' + this.labelsm;
+                contentCfg.cls += ' col-sm-' + (12 - this.labelsm);
+            }
+            
+            if(this.labelxs > 0){
+                labelCfg.cls += ' col-xs-' + this.labelxs;
+                contentCfg.cls += ' col-xs-' + (12 - this.labelxs);
             }
                 
                 
@@ -14375,12 +14507,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var align = this.labelAlign || this.parentLabelAlign();
         
-        cfg.cn = combobox;
-        
-        if(this.fieldLabel.length && this.labelWidth){
-            
-            var lw = align === 'left' ? ('col-sm' + this.labelWidth) : '';
-            var cw = align === 'left' ? ('col-sm' + (12 - this.labelWidth)) : '';
+        if (align ==='left' && this.fieldLabel.length) {
             
             cfg.cn = [
                 {
@@ -14390,12 +14517,90 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 },
                 {
                     tag: 'label',
-                    cls : 'control-label ' + lw,
+                    cls : 'control-label',
                     html : this.fieldLabel
 
                 },
                 {
-                    cls : cw, 
+                    cls : '', 
+                    cn: [
+                        combobox
+                    ]
+                }
+            ];
+            
+            var labelCfg = cfg.cn[1];
+            var contentCfg = cfg.cn[2];
+            
+
+            if(this.indicatorpos == 'right'){
+                cfg.cn = [
+                    {
+                        tag: 'label',
+                        cls : 'control-label',
+                        html : this.fieldLabel
+
+                    },
+                    {
+                       tag : 'i',
+                       cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
+                       tooltip : 'This field is required'
+                    },
+                    {
+                        cls : '', 
+                        cn: [
+                            combobox
+                        ]
+                    }
+                ];
+            }
+            
+            labelCfg = cfg.cn[0];
+            
+            if(this.labelWidth > 12){
+                labelCfg.style = "width: " + this.labelWidth + 'px';
+            }
+            
+            if(this.labelWidth < 13 && this.labelmd == 0){
+                this.labelmd = this.labelWidth;
+            }
+            
+            if(this.labellg > 0){
+                labelCfg.cls += ' col-lg-' + this.labellg;
+                contentCfg.cls += ' col-lg-' + (12 - this.labellg);
+            }
+            
+            if(this.labelmd > 0){
+                labelCfg.cls += ' col-md-' + this.labelmd;
+                contentCfg.cls += ' col-md-' + (12 - this.labelmd);
+            }
+            
+            if(this.labelsm > 0){
+                labelCfg.cls += ' col-sm-' + this.labelsm;
+                contentCfg.cls += ' col-sm-' + (12 - this.labelsm);
+            }
+            
+            if(this.labelxs > 0){
+                labelCfg.cls += ' col-xs-' + this.labelxs;
+                contentCfg.cls += ' col-xs-' + (12 - this.labelxs);
+            }
+                
+                
+        } else if ( this.fieldLabel.length) {
+            cfg.cn = [
+                {
+                   tag : 'i',
+                   cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
+                   tooltip : 'This field is required'
+                },
+                {
+                    tag: 'label',
+                    cls : 'control-label',
+                    html : this.fieldLabel
+
+                },
+                {
+                    cls : '', 
                     cn: [
                         combobox
                     ]
@@ -14406,7 +14611,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 cfg.cn = [
                     {
                         tag: 'label',
-                        cls : 'control-label ' + lw,
+                        cls : 'control-label',
                         html : this.fieldLabel
 
                     },
@@ -14416,14 +14621,17 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                        tooltip : 'This field is required'
                     },
                     {
-                        cls : cw, 
+                        cls : '', 
                         cn: [
                             combobox
                         ]
                     }
                 ];
             }
+        } else {
+            cfg.cn = combobox;    
         }
+        
         
         var settings = this;
         
@@ -19813,23 +20021,50 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         if (align ==='left' && this.fieldLabel.length) {
 //                Roo.log("left and has label");
-                cfg.cn = [
-                    
-                    {
-                        tag: 'label',
-                        'for' :  id,
-                        cls : 'control-label col-md-' + this.labelWidth,
-                        html : this.fieldLabel
-                        
-                    },
-                    {
-                        cls : "col-md-" + (12 - this.labelWidth), 
-                        cn: [
-                            inputblock
-                        ]
-                    }
-                    
-                ];
+            cfg.cn = [
+                {
+                    tag: 'label',
+                    'for' :  id,
+                    cls : 'control-label',
+                    html : this.fieldLabel
+
+                },
+                {
+                    cls : "", 
+                    cn: [
+                        inputblock
+                    ]
+                }
+            ];
+            
+            if(this.labelWidth > 12){
+                cfg.cn[0].style = "width: " + this.labelWidth + 'px';
+            }
+            
+            if(this.labelWidth < 13 && this.labelmd == 0){
+                this.labelmd = this.labelWidth;
+            }
+            
+            if(this.labellg > 0){
+                cfg.cn[0].cls += ' col-lg-' + this.labellg;
+                cfg.cn[1].cls += ' col-lg-' + (12 - this.labellg);
+            }
+            
+            if(this.labelmd > 0){
+                cfg.cn[0].cls += ' col-md-' + this.labelmd;
+                cfg.cn[1].cls += ' col-md-' + (12 - this.labelmd);
+            }
+            
+            if(this.labelsm > 0){
+                cfg.cn[0].cls += ' col-sm-' + this.labelsm;
+                cfg.cn[1].cls += ' col-sm-' + (12 - this.labelsm);
+            }
+            
+            if(this.labelxs > 0){
+                cfg.cn[0].cls += ' col-xs-' + this.labelxs;
+                cfg.cn[1].cls += ' col-xs-' + (12 - this.labelxs);
+            }
+            
         } else if ( this.fieldLabel.length) {
 //                Roo.log(" label");
                 cfg.cn = [
@@ -27440,6 +27675,10 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
  * @cfg {Number} labelWidth default 4
  * @cfg {String} labelAlign (left|top) default left
  * @cfg {Boolean} editable (true|false) allow edit when upload a image default true
+* @cfg {Number} labellg set the width of label (1-12)
+ * @cfg {Number} labelmd set the width of label (1-12)
+ * @cfg {Number} labelsm set the width of label (1-12)
+ * @cfg {Number} labelxs set the width of label (1-12)
  * 
  * @constructor
  * Create a new DocumentManager
@@ -27549,6 +27788,11 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     delegates : false,
     xhr : false, 
     
+    labellg : 0,
+    labelmd : 0,
+    labelsm : 0,
+    labelxs : 0,
+    
     getAutoCreate : function()
     {   
         var managerWidget = {
@@ -27602,15 +27846,43 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 content = [
                     {
                         tag : 'div',
-                        cls : 'column col-md-' + this.labelWidth,
+                        cls : 'column',
                         html : this.fieldLabel
                     },
                     {
                         tag : 'div',
-                        cls : 'column col-md-' + (12 - this.labelWidth),
+                        cls : 'column',
                         cn : managerWidget
                     }
                 ];
+                
+                if(this.labelWidth > 12){
+                    content[0].style = "width: " + this.labelWidth + 'px';
+                }
+
+                if(this.labelWidth < 13 && this.labelmd == 0){
+                    this.labelmd = this.labelWidth;
+                }
+
+                if(this.labellg > 0){
+                    content[0].cls += ' col-lg-' + this.labellg;
+                    content[1].cls += ' col-lg-' + (12 - this.labellg);
+                }
+
+                if(this.labelmd > 0){
+                    content[0].cls += ' col-md-' + this.labelmd;
+                    content[1].cls += ' col-md-' + (12 - this.labelmd);
+                }
+
+                if(this.labelsm > 0){
+                    content[0].cls += ' col-sm-' + this.labelsm;
+                    content[1].cls += ' col-sm-' + (12 - this.labelsm);
+                }
+
+                if(this.labelxs > 0){
+                    content[0].cls += ' col-xs-' + this.labelxs;
+                    content[1].cls += ' col-xs-' + (12 - this.labelxs);
+                }
                 
             }
         }
@@ -28927,6 +29199,10 @@ Roo.apply(Roo.bootstrap.FieldLabel, {
  * @cfg {string} dayFormat default 'd'
  * @cfg {string} monthFormat default 'm'
  * @cfg {string} yearFormat default 'Y'
+ * @cfg {Number} labellg set the width of label (1-12)
+ * @cfg {Number} labelmd set the width of label (1-12)
+ * @cfg {Number} labelsm set the width of label (1-12)
+ * @cfg {Number} labelxs set the width of label (1-12)
 
  *     
  * @constructor
@@ -28984,6 +29260,10 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     monthFormat : 'm',
     yearFormat : 'Y',
     isFormField : true,
+    labellg : 0,
+    labelmd : 0,
+    labelsm : 0,
+    labelxs : 0,
     
     getAutoCreate : function()
     {
@@ -29000,8 +29280,12 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
             ]
         };
         
+        var labelCls = 'col-md-12';
+        var contentCls = 'col-md-4';
+        
         if(this.fieldLabel){
-            cfg.cn.push({
+            
+            var label = {
                 tag : 'div',
                 cls : 'column roo-date-split-field-label col-md-' + ((this.labelAlign == 'top') ? '12' : this.labelWidth),
                 cn : [
@@ -29010,13 +29294,48 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
                         html : this.fieldLabel
                     }
                 ]
-            });
+            };
+            
+            if(this.labelAlign == 'left'){
+            
+                if(this.labelWidth > 12){
+                    label.style = "width: " + this.labelWidth + 'px';
+                }
+
+                if(this.labelWidth < 13 && this.labelmd == 0){
+                    this.labelmd = this.labelWidth;
+                }
+
+                if(this.labellg > 0){
+                    labelCls = ' col-lg-' + this.labellg;
+                    contentCls = ' col-lg-' + ((12 - this.labellg) / 3);
+                }
+
+                if(this.labelmd > 0){
+                    labelCls = ' col-md-' + this.labelmd;
+                    contentCls = ' col-md-' + ((12 - this.labelmd) / 3);
+                }
+
+                if(this.labelsm > 0){
+                    labelCls = ' col-sm-' + this.labelsm;
+                    contentCls = ' col-sm-' + ((12 - this.labelsm) / 3);
+                }
+
+                if(this.labelxs > 0){
+                    labelCls = ' col-xs-' + this.labelxs;
+                    contentCls = ' col-xs-' + ((12 - this.labelxs) / 3);
+                }
+            }
+            
+            label.cls += ' ' + labelCls;
+            
+            cfg.cn.push(label);
         }
         
         Roo.each(['day', 'month', 'year'], function(t){
             cfg.cn.push({
                 tag : 'div',
-                cls : 'column roo-date-split-field-' + t + ' col-md-' + ((this.labelAlign == 'top') ? '4' : ((12 - this.labelWidth) / 3))
+                cls : 'column roo-date-split-field-' + t + ' ' + contentCls
             });
         }, this);
         
@@ -32055,7 +32374,7 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
 Roo.bootstrap.RadioSet = function(config){
     
     Roo.bootstrap.RadioSet.superclass.constructor.call(this, config);
-
+    
     this.radioes = [];
     
     Roo.bootstrap.RadioSet.register(this);
@@ -32079,8 +32398,6 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
     inline : true,
     
     weight : '',
-    
-    fieldLabel : '',
     
     indicatorpos : 'left',
     
@@ -32120,14 +32437,40 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
         
         if (align === 'left' && this.fieldLabel.length) {
             
-            label.cls += ' col-md-' + this.labelWidth;
-            
             items = {
-                cls : "roo-radio-set-right col-md-" + (12 - this.labelWidth), 
+                cls : "roo-radio-set-right", 
                 cn: [
                     items
                 ]
             };
+            
+            if(this.labelWidth > 12){
+                label.style = "width: " + this.labelWidth + 'px';
+            }
+            
+            if(this.labelWidth < 13 && this.labelmd == 0){
+                this.labelmd = this.labelWidth;
+            }
+            
+            if(this.labellg > 0){
+                label.cls += ' col-lg-' + this.labellg;
+                items.cls += ' col-lg-' + (12 - this.labellg);
+            }
+            
+            if(this.labelmd > 0){
+                label.cls += ' col-md-' + this.labelmd;
+                items.cls += ' col-md-' + (12 - this.labelmd);
+            }
+            
+            if(this.labelsm > 0){
+                label.cls += ' col-sm-' + this.labelsm;
+                items.cls += ' col-sm-' + (12 - this.labelsm);
+            }
+            
+            if(this.labelxs > 0){
+                label.cls += ' col-xs-' + this.labelxs;
+                items.cls += ' col-xs-' + (12 - this.labelxs);
+            }
         }
         
         var cfg = {
