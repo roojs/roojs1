@@ -3039,7 +3039,7 @@ Roo.bootstrap.MessageBox = function(){
                     //collapsible : false,
                     //shim:true,
                     //modal: true,
-                   width: 'auto',
+                //    width: 'auto',
                   //  height:100,
                     //buttonAlign:"center",
                     closeClick : function(){
@@ -32480,7 +32480,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
                 {
                     tag : 'input',
                     cls : 'roo-radio-set-input',
-                    type : 'text',
+                    type : 'hidden',
                     name : this.name,
                     value : this.value ? this.value :  ''
                 },
