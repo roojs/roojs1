@@ -165,8 +165,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         console.log('strength1: ' + strength + this.meterClass[strength]) ;
         
         //pm.style.width = (this.meterWidth / 3) * strength + 'px';
-        
-        
+               
         
         var pt = this.trigger.child('/div/div/').child('>*[class=password-meter-text]').dom;        
                 
