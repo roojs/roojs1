@@ -141,12 +141,11 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
                 {
                     tag: 'label',
                     'for' :  id,
-                    cls : 'control-label col-sm-' + this.labelWidth,
+                    cls : 'control-label',
                     html : this.fieldLabel
-
                 },
                 {
-                    cls : "col-sm-" + (12 - this.labelWidth), 
+                    cls : "",
                     cn: [
                         inputblock
                     ]
@@ -155,7 +154,7 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
             ];
             
             if(this.labelWidth > 12){
-                content[0].style = "width: " + this.labelWidth + 'px';
+                cfg.cn[0].style = "width: " + this.labelWidth + 'px';
             }
 
             if(this.labelWidth < 13 && this.labelmd == 0){
