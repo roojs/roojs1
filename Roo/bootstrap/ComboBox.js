@@ -496,18 +496,22 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 {
                     tag: 'label',
                     'for' :  id,
-                    cls : 'control-label col-sm-' + this.labelWidth,
+                    cls : 'control-label',
                     html : this.fieldLabel
 
                 },
                 {
-                    cls : "col-sm-" + (12 - this.labelWidth), 
+                    cls : "", 
                     cn: [
                         combobox
                     ]
                 }
 
             ];
+            
+            var labelCfg = cfg.cn[1];
+            var contentCfg = cfg.cn[2];
+            
 
             if(this.indicatorpos == 'right'){
                 
