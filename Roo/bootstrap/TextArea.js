@@ -177,8 +177,8 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
             }
 
             if(this.labelxs > 0){
-                content[0].cls += ' col-xs-' + this.labelxs;
-                content[1].cls += ' col-xs-' + (12 - this.labelxs);
+                cfg.cn[0].cls += ' col-xs-' + this.labelxs;
+                cfg.cn[1].cls += ' col-xs-' + (12 - this.labelxs);
             }
             
         } else if ( this.fieldLabel.length) {
