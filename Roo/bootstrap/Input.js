@@ -22,7 +22,11 @@
  * @cfg {Number} md colspan out of 12 for computer-sized screens
  * @cfg {Number} lg colspan out of 12 for large computer-sized screens
  * @cfg {string} value default value of the input
- * @cfg {Number} labelWidth set the width of label (0-12)
+ * @cfg {Number} labelWidth set the width of label 
+ * @cfg {Number} labellg set the width of label (1-12)
+ * @cfg {Number} labelmd set the width of label (1-12)
+ * @cfg {Number} labelsm set the width of label (1-12)
+ * @cfg {Number} labelxs set the width of label (1-12)
  * @cfg {String} labelAlign (top|left)
  * @cfg {Boolean} readOnly Specifies that the field should be read-only
  * @cfg {String} autocomplete - default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en
@@ -43,6 +47,8 @@ Roo.bootstrap.Input = function(config){
     
     Roo.bootstrap.Input.superclass.constructor.call(this, config);
    
+    if()
+    
     this.addEvents({
         /**
          * @event focus
