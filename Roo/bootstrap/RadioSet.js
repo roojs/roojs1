@@ -89,7 +89,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
             label.cls += ' col-md-' + this.labelWidth;
             
             items = {
-                cls : "roo-radio-set-right col-md-" + (12 - this.labelWidth), 
+                cls : "roo-radio-set-right", 
                 cn: [
                     items
                 ]
