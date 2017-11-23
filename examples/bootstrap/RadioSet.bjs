@@ -101,12 +101,12 @@
            "String style" : "margin-top: 15px;",
            "items" : [
             {
+             "Number labelmd" : 6,
              "bool allowBlank" : false,
              "xtype" : "RadioSet",
              "string fieldLabel" : "Radio Field Lable Left",
              "$ xns" : "Roo.bootstrap",
              "string indicatorpos" : "right",
-             "Number labelWidth" : 6,
              "string name" : "left_radio",
              "string labelAlign" : "left",
              "items" : [
