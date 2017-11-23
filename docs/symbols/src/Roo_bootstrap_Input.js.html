@@ -22,7 +22,11 @@
  * @cfg {Number} md colspan out of 12 for computer-sized screens
  * @cfg {Number} lg colspan out of 12 for large computer-sized screens
  * @cfg {string} value default value of the input
- * @cfg {Number} labelWidth set the width of label (0-12)
+ * @cfg {Number} labelWidth set the width of label 
+ * @cfg {Number} labellg set the width of label (1-12)
+ * @cfg {Number} labelmd set the width of label (1-12)
+ * @cfg {Number} labelsm set the width of label (1-12)
+ * @cfg {Number} labelxs set the width of label (1-12)
  * @cfg {String} labelAlign (top|left)
  * @cfg {Boolean} readOnly Specifies that the field should be read-only
  * @cfg {String} autocomplete - default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en
@@ -40,58 +44,68 @@
  */
 
 </span><span class="jsdoc-var">Roo.bootstrap.Input </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    
+    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'run input....'</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    
     </span><span class="jsdoc-var">Roo.bootstrap.Input.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
-   
-        </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
-            </span><span class="jsdoc-comment">/**
-             * @event focus
-             * Fires when this field receives input focus.
-             * @param {Roo.form.Field} this
-             */
-            </span><span class="jsdoc-var">focus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-comment">/**
-             * @event blur
-             * Fires when this field loses input focus.
-             * @param {Roo.form.Field} this
-             */
-            </span><span class="jsdoc-var">blur </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-comment">/**
-             * @event specialkey
-             * Fires when any key related to navigation (arrows, tab, enter, esc, etc.) is pressed.  You can check
-             * {@link Roo.EventObject#getKey} to determine which key was pressed.
-             * @param {Roo.form.Field} this
-             * @param {Roo.EventObject} e The event object
-             */
-            </span><span class="jsdoc-var">specialkey </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-comment">/**
-             * @event change
-             * Fires just before the field blurs if the field value has changed.
-             * @param {Roo.form.Field} this
-             * @param {Mixed} newValue The new value
-             * @param {Mixed} oldValue The original value
-             */
-            </span><span class="jsdoc-var">change </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-comment">/**
-             * @event invalid
-             * Fires after the field has been marked as invalid.
-             * @param {Roo.form.Field} this
-             * @param {String} msg The validation message
-             */
-            </span><span class="jsdoc-var">invalid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-comment">/**
-             * @event valid
-             * Fires after the field has been validated with no errors.
-             * @param {Roo.form.Field} this
-             */
-            </span><span class="jsdoc-var">valid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-             </span><span class="jsdoc-comment">/**
-             * @event keyup
-             * Fires after the key up
-             * @param {Roo.form.Field} this
-             * @param {Roo.EventObject}  e The event Object
-             */
-            </span><span class="jsdoc-var">keyup </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
-        </span><span class="jsdoc-syntax">});
+    
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.labelWidth </span><span class="jsdoc-syntax">&lt; 12){
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'run??'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.labelWidth </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-var">this.labelmd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.labelWidth</span><span class="jsdoc-syntax">;
+    }
+    
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+         * @event focus
+         * Fires when this field receives input focus.
+         * @param {Roo.form.Field} this
+         */
+        </span><span class="jsdoc-var">focus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event blur
+         * Fires when this field loses input focus.
+         * @param {Roo.form.Field} this
+         */
+        </span><span class="jsdoc-var">blur </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event specialkey
+         * Fires when any key related to navigation (arrows, tab, enter, esc, etc.) is pressed.  You can check
+         * {@link Roo.EventObject#getKey} to determine which key was pressed.
+         * @param {Roo.form.Field} this
+         * @param {Roo.EventObject} e The event object
+         */
+        </span><span class="jsdoc-var">specialkey </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event change
+         * Fires just before the field blurs if the field value has changed.
+         * @param {Roo.form.Field} this
+         * @param {Mixed} newValue The new value
+         * @param {Mixed} oldValue The original value
+         */
+        </span><span class="jsdoc-var">change </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event invalid
+         * Fires after the field has been marked as invalid.
+         * @param {Roo.form.Field} this
+         * @param {String} msg The validation message
+         */
+        </span><span class="jsdoc-var">invalid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event valid
+         * Fires after the field has been validated with no errors.
+         * @param {Roo.form.Field} this
+         */
+        </span><span class="jsdoc-var">valid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+         </span><span class="jsdoc-comment">/**
+         * @event keyup
+         * Fires after the key up
+         * @param {Roo.form.Field} this
+         * @param {Roo.EventObject}  e The event Object
+         */
+        </span><span class="jsdoc-var">keyup </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Input</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
@@ -169,7 +183,7 @@
     </span><span class="jsdoc-comment">/**
      * @cfg {String} blankText Error text to display if the allow blank validation fails (defaults to &quot;This field is required&quot;)
      */
-    </span><span class="jsdoc-var">blankText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;This field is required&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">blankText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Please complete this mandatory field&quot;</span><span class="jsdoc-syntax">,
     
      </span><span class="jsdoc-comment">/**
      * @cfg {Number} minLength Minimum input field length required (defaults to 0)
@@ -221,7 +235,7 @@
     </span><span class="jsdoc-var">preventMark</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">isFormField </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">labelWidth </span><span class="jsdoc-syntax">: 2,
+    </span><span class="jsdoc-var">labelWidth </span><span class="jsdoc-syntax">: 0,
     </span><span class="jsdoc-var">labelAlign </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">readOnly </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,

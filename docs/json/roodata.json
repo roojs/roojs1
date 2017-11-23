@@ -4558,6 +4558,12 @@
      "desc": "Looks at parent nodes for a match of the passed simple selector (e.g. div.some-class or span:first-child)"
     },
     {
+     "name": "findScrollableParent",
+     "sig": "()",
+     "type": "function",
+     "desc": "Looks at  the scrollable parent element"
+    },
+    {
      "name": "fitToParent",
      "sig": "(Boolean monitorResize, String/HTMLElment/Element targetParent)",
      "type": "function",
@@ -6826,6 +6832,12 @@
      "sig": "(String selector, Number/String/HTMLElement/Element maxDepth, Boolean returnEl)",
      "type": "function",
      "desc": "Looks at parent nodes for a match of the passed simple selector (e.g. div.some-class or span:first-child)"
+    },
+    {
+     "name": "findScrollableParent",
+     "sig": "()",
+     "type": "function",
+     "desc": "Looks at  the scrollable parent element"
     },
     {
      "name": "fitToParent",
@@ -16280,7 +16292,31 @@
     {
      "name": "labelWidth",
      "type": "Number",
-     "desc": "set the width of label (0-12)",
+     "desc": "set the width of label",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labellg",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelmd",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelsm",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelxs",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -17774,7 +17810,31 @@
     {
      "name": "labelWidth",
      "type": "Number",
-     "desc": "set the width of label (0-12)",
+     "desc": "set the width of label",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labellg",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelmd",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelsm",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelxs",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -19434,7 +19494,31 @@
     {
      "name": "labelWidth",
      "type": "Number",
-     "desc": "set the width of label (0-12)",
+     "desc": "set the width of label",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labellg",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelmd",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelsm",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelxs",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -23603,7 +23687,31 @@
     {
      "name": "labelWidth",
      "type": "Number",
-     "desc": "set the width of label (0-12)",
+     "desc": "set the width of label",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labellg",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelmd",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelsm",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelxs",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -24710,7 +24818,31 @@
     {
      "name": "labelWidth",
      "type": "Number",
-     "desc": "set the width of label (0-12)",
+     "desc": "set the width of label",
+     "memberOf": ""
+    },
+    {
+     "name": "labellg",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": ""
+    },
+    {
+     "name": "labelmd",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": ""
+    },
+    {
+     "name": "labelsm",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": ""
+    },
+    {
+     "name": "labelxs",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
      "memberOf": ""
     },
     {
@@ -29199,7 +29331,31 @@
     {
      "name": "labelWidth",
      "type": "Number",
-     "desc": "set the width of label (0-12)",
+     "desc": "set the width of label",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labellg",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelmd",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelsm",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelxs",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -33266,7 +33422,31 @@
     {
      "name": "labelWidth",
      "type": "Number",
-     "desc": "set the width of label (0-12)",
+     "desc": "set the width of label",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labellg",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelmd",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelsm",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelxs",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -36411,7 +36591,31 @@
     {
      "name": "labelWidth",
      "type": "Number",
-     "desc": "set the width of label (0-12)",
+     "desc": "set the width of label",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labellg",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelmd",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelsm",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelxs",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -37418,7 +37622,31 @@
     {
      "name": "labelWidth",
      "type": "Number",
-     "desc": "set the width of label (0-12)",
+     "desc": "set the width of label",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labellg",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelmd",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelsm",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelxs",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -41412,7 +41640,31 @@
     {
      "name": "labelWidth",
      "type": "Number",
-     "desc": "set the width of label (0-12)",
+     "desc": "set the width of label",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labellg",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelmd",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelsm",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelxs",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -42105,7 +42357,31 @@
     {
      "name": "labelWidth",
      "type": "Number",
-     "desc": "set the width of label (0-12)",
+     "desc": "set the width of label",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labellg",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelmd",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelsm",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelxs",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -42842,7 +43118,31 @@
     {
      "name": "labelWidth",
      "type": "Number",
-     "desc": "set the width of label (0-12)",
+     "desc": "set the width of label",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labellg",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelmd",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelsm",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelxs",
+     "type": "Number",
+     "desc": "set the width of label (1-12)",
      "memberOf": "Roo.bootstrap.Input"
     },
     {

@@ -582,6 +582,8 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             
             </span><span class="jsdoc-var">this.toolTip.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">));
 
+            </span><span class="jsdoc-var">this.toolTip.el.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">);
+            
             </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
                 </span><span class="jsdoc-var">this.unmask</span><span class="jsdoc-syntax">();
             }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
@@ -604,8 +606,22 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             </span><span class="jsdoc-var">this.target.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'z-index'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Modal.zIndex</span><span class="jsdoc-syntax">++);
         
             </span><span class="jsdoc-var">this.target.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'roo-invalid-outline'</span><span class="jsdoc-syntax">);
-
-            </span><span class="jsdoc-var">this.target.el.dom.scrollIntoView</span><span class="jsdoc-syntax">();
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">scrollable </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.target.el.findScrollableParent</span><span class="jsdoc-syntax">() || </span><span class="jsdoc-var">this.target.el.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'div.modal'</span><span class="jsdoc-syntax">, 100, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">scrolled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">scrollable.getScroll</span><span class="jsdoc-syntax">();
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ot </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.target.el.calcOffsetsTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scrollable</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">scrollTo </span><span class="jsdoc-syntax">= 0;
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ot</span><span class="jsdoc-syntax">[1] &lt;= </span><span class="jsdoc-var">scrolled.top</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">scrollTo </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ot</span><span class="jsdoc-syntax">[1] - 100;
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">scrollTo </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ot</span><span class="jsdoc-syntax">[1] + </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">() - 100;
+            }
+            
+            </span><span class="jsdoc-var">scrollable.scrollTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scrollTo</span><span class="jsdoc-syntax">);
             
             </span><span class="jsdoc-var">this.toolTip.bindEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.target.el</span><span class="jsdoc-syntax">;
         
@@ -642,6 +658,8 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             </span><span class="jsdoc-var">this.target.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'roo-invalid-outline'</span><span class="jsdoc-syntax">);
             
             </span><span class="jsdoc-var">this.toolTip.hide</span><span class="jsdoc-syntax">();
+            
+            </span><span class="jsdoc-var">this.toolTip.el.hide</span><span class="jsdoc-syntax">();
             
             </span><span class="jsdoc-var">window.onwheel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){ </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;};
             

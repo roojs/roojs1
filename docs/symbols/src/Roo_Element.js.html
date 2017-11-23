@@ -184,6 +184,37 @@ if(opt.anim.isAnimated()){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dom.parentNode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'_internal'</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">p.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">simpleSelector</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">maxDepth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">returnEl</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
         },
+        
+        </span><span class="jsdoc-comment">/**
+         * Looks at  the scrollable parent element
+         */
+        </span><span class="jsdoc-var">findScrollableParent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dom.parentNode</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(
+                    </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">&amp;&amp; 
+                    (
+                        !</span><span class="jsdoc-var">el.isScrollable</span><span class="jsdoc-syntax">() ||
+                        (
+                            </span><span class="jsdoc-var">el.isScrollable</span><span class="jsdoc-syntax">() &amp;&amp;
+                            (
+                                </span><span class="jsdoc-var">D.getViewHeight</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">el.dom.clientHeight </span><span class="jsdoc-syntax">&gt; 15 || 
+                                </span><span class="jsdoc-var">D.getViewWidth</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">el.dom.clientWidth </span><span class="jsdoc-syntax">&gt; 15
+                            )
+                        )
+                    ) &amp;&amp;
+                    </span><span class="jsdoc-var">el.dom.nodeName.toLowerCase</span><span class="jsdoc-syntax">() != </span><span class="jsdoc-string">'body'
+            </span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.dom.parentNode</span><span class="jsdoc-syntax">);
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">el.isScrollable</span><span class="jsdoc-syntax">()){
+                </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">;
+        },
 
         </span><span class="jsdoc-comment">/**
          * Walks up the dom looking for a parent node that matches the passed simple selector (e.g. div.some-class or span:first-child).
