@@ -63,6 +63,7 @@
            "$ xns" : "Roo.bootstrap",
            "items" : [
             {
+             "String blankText" : "test",
              "bool allowBlank" : false,
              "xtype" : "RadioSet",
              "string fieldLabel" : "Radio Field Lable",
@@ -179,6 +180,7 @@
            "$ xns" : "Roo.bootstrap",
            "items" : [
             {
+             "Boolean allowBlank" : false,
              "String name" : "text_area",
              "xtype" : "TextArea",
              "$ xns" : "Roo.bootstrap"
