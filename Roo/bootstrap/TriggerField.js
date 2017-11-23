@@ -301,7 +301,14 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                         tag: 'label',
                         'for' :  id,
                         cls : 'control-label',
-                        html : this.fieldLabel + '<i class="roo-required-indicator right-indicator text-danger fa fa-lg fa-star"></i>'
+                        html : this.fieldLabel,
+                        cn: [
+                            {
+                                tag : 'i',
+                                cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
+                                tooltip : 'This field is required'
+                            }
+                        ]
                     },
                     {
                         cls : "", 
