@@ -244,13 +244,13 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         */
         
         console.log('strength2: ' + strength);
-        var pm = this.trigger.child('div/div/div').dom;
-                 
-        pm.style.width = (this.meterWidth / 3) * strength + 'px';
-        pm.style.class = 'password-meter-' + this.meterClass[strength];
-                      
-        //pm.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
-
+        
+        //var pm = this.trigger.child('div/div/div').dom;
+        var pm = this.trigger.child('div/div/div');
+        pm.removeClass(this.meterClass);
+        pm.addClass(this.meterClass[strength]);
+        console.log('strength1: ' + strength + this.meterClass[strength]) ;
+        
         var pt = this.trigger.child('/div/div/').child('>*[class=password-meter-text]').dom;        
                 
         pt.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
