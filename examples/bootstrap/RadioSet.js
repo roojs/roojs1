@@ -10,6 +10,7 @@ RadioSet = new Roo.XComponent({
   'e3917ff2d3b3a88eab391651215d6445' :"Radio Field Lable Left",
   '9dffbf69ffba8bc38bc4e01abf4b1675' :"Text",
   '8d80ce38760953b68529d7fc9d8d89b6' :"Radio Field Lable",
+  '8ae163527ddcae6f75c7e198918404b1' :"Text INput",
   'a6105c0a611b41b08f1209506350279e' :"yes",
   'ad3d06d03d94223fa652babc913de686' :"Validate",
   'b7dc22f0e17f4dfca2940eb0bd0cdc54' :"Radio Set Example"
@@ -170,6 +171,7 @@ RadioSet = new Roo.XComponent({
             {
              xtype : 'Input',
              allowBlank : false,
+             fieldLabel : _this._strings['8ae163527ddcae6f75c7e198918404b1'] /* Text INput */,
              name : 'text_name',
              placeholder : _this._strings['9dffbf69ffba8bc38bc4e01abf4b1675'] /* Text */,
              xns : Roo.bootstrap,
