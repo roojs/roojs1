@@ -47,7 +47,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
      * })
      */
     // private
-    meterClass : ["tooweak", "weak", "medium", "strong"],
+    meterClass : ["password-meter-tooweak", "password-meter-weak", "password-meter-medium", "password-meter-strong"],
     meterWidth: 300,
     errorMsg :'',    
     errors: {},
@@ -156,12 +156,12 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
             strength = 0;
         }
         var pm = this.trigger.child('div/div/div').dom;
-        
+        this.trigger.child('div/div/div').removeClass(this.meterClass);
+        this.trigger.child('div/div/div').addClass(this.meterClass[strength]);
         console.log('strength1: ' + strength);
-        console.log('strength1 before: ' + pm.style.class);
+        
         pm.style.width = (this.meterWidth / 3) * strength + 'px';
-        pm.style.class = 'password-meter-' + this.meterClass[strength];
-        console.log('strength1 after: ' + pm.style.class);
+        
         
         
         var pt = this.trigger.child('/div/div/').child('>*[class=password-meter-text]').dom;        
