@@ -176,7 +176,14 @@
           {
            "xtype" : "Column",
            "Number xs" : 12,
-           "$ xns" : "Roo.bootstrap"
+           "$ xns" : "Roo.bootstrap",
+           "items" : [
+            {
+             "String name" : "text_area",
+             "xtype" : "TextArea",
+             "$ xns" : "Roo.bootstrap"
+            }
+           ]
           }
          ]
         },
