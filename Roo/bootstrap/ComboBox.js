@@ -2430,11 +2430,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 ];
             }
         } else {
-            
-//                Roo.log(" no label && no align");
-                cfg = combobox
-                     
-                
+            cfg.cn = combobox;    
         }
         
         
