@@ -138,7 +138,6 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
         
         if (align ==='left' && this.fieldLabel.length) {
             cfg.cn = [
-
                 {
                     tag: 'label',
                     'for' :  id,
@@ -154,6 +153,35 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
                 }
 
             ];
+            
+            if(this.labelWidth > 12){
+                content[0].style = "width: " + this.labelWidth + 'px';
+            }
+
+            if(this.labelWidth < 13 && this.labelmd == 0){
+                this.labelmd = this.labelWidth;
+            }
+
+            if(this.labellg > 0){
+                content[0].cls += ' col-lg-' + this.labellg;
+                content[1].cls += ' col-lg-' + (12 - this.labellg);
+            }
+
+            if(this.labelmd > 0){
+                content[0].cls += ' col-md-' + this.labelmd;
+                content[1].cls += ' col-md-' + (12 - this.labelmd);
+            }
+
+            if(this.labelsm > 0){
+                content[0].cls += ' col-sm-' + this.labelsm;
+                content[1].cls += ' col-sm-' + (12 - this.labelsm);
+            }
+
+            if(this.labelxs > 0){
+                content[0].cls += ' col-xs-' + this.labelxs;
+                content[1].cls += ' col-xs-' + (12 - this.labelxs);
+            }
+            
         } else if ( this.fieldLabel.length) {
             cfg.cn = [
 
