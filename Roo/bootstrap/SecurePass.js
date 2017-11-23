@@ -95,6 +95,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
             tag: 'div',
             style: {
                 'margin-bottom': '20px',
+                cls: 'password-meter-container',
                 width: this.meterWidth + 'px'
             },
             cn: {
