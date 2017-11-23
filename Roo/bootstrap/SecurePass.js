@@ -219,11 +219,13 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         } else {
             strength = 0;
         }
+
+        // allow weak password
+        //if (strength < 2) {
+        //    this.markInvalid(this.errors.TooWeak);
+        //    return false;
+        //}
         
-        if (strength < 2) {
-            this.markInvalid(this.errors.TooWeak);
-            return false;
-        }
         console.log('strength2: ' + strength);
         var pm = this.trigger.child('div/div/div').dom;
                  
