@@ -142,6 +142,7 @@
              "Boolean allowBlank" : false,
              "String name" : "text_name",
              "xtype" : "Input",
+             "Number labelxs" : 6,
              "string placeholder" : "Text",
              "string fieldLabel" : "Text Name",
              "$ xns" : "Roo.bootstrap"
