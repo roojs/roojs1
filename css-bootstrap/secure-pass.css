@@ -12,6 +12,18 @@
     font-size: 12px;     
 }
 
+.password-meter-week {
+    background: red; /* For browsers that do not support gradients */         
+}
+
+.password-meter-medium {
+    background: yellow; /* For browsers that do not support gradients */         
+}
+
+.password-meter-strong {
+    background: green; /* For browsers that do not support gradients */         
+}
+
 
 .password-meter-text { 
     padding-bottom:5px;
