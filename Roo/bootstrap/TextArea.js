@@ -137,47 +137,44 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
         }
         
         if (align ==='left' && this.fieldLabel.length) {
-                cfg.cn = [
-                    
-                    {
-                        tag: 'label',
-                        'for' :  id,
-                        cls : 'control-label col-sm-' + this.labelWidth,
-                        html : this.fieldLabel
-                        
-                    },
-                    {
-                        cls : "col-sm-" + (12 - this.labelWidth), 
-                        cn: [
-                            inputblock
-                        ]
-                    }
-                    
-                ];
+            cfg.cn = [
+
+                {
+                    tag: 'label',
+                    'for' :  id,
+                    cls : 'control-label col-sm-' + this.labelWidth,
+                    html : this.fieldLabel
+
+                },
+                {
+                    cls : "col-sm-" + (12 - this.labelWidth), 
+                    cn: [
+                        inputblock
+                    ]
+                }
+
+            ];
         } else if ( this.fieldLabel.length) {
-//                Roo.log(" label");
-                 cfg.cn = [
-                   
-                    {
-                        tag: 'label',
-                        //cls : 'input-group-addon',
-                        html : this.fieldLabel
-                        
-                    },
-                    
-                    inputblock
-                    
-                ];
+            cfg.cn = [
+
+               {
+                   tag: 'label',
+                   //cls : 'input-group-addon',
+                   html : this.fieldLabel
+
+               },
+
+               inputblock
+
+           ];
 
         } else {
-            
-//                   Roo.log(" no label && no align");
-                cfg.cn = [
-                    
-                        inputblock
-                    
-                ];
-                
+
+            cfg.cn = [
+
+                inputblock
+
+            ];
                 
         }
         
