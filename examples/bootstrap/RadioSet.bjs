@@ -101,7 +101,6 @@
            "String style" : "margin-top: 15px;",
            "items" : [
             {
-             "Number labelmd" : 6,
              "bool allowBlank" : false,
              "xtype" : "RadioSet",
              "string fieldLabel" : "Radio Field Lable Left",
@@ -140,11 +139,10 @@
            "items" : [
             {
              "Boolean allowBlank" : false,
-             "Number labelmd" : 6,
              "String name" : "text_name",
              "xtype" : "Input",
-             "string placeholder" : "Text",
              "string fieldLabel" : "Text Name",
+             "string placeholder" : "Text",
              "$ xns" : "Roo.bootstrap"
             }
            ]
