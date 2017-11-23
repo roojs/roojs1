@@ -47,7 +47,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
      * })
      */
     // private
-    meterClass = ["tooweak", "weak", "medium", "strong"];
+    meterClass = ["tooweak", "weak", "medium", "strong"],
     meterWidth: 300,
     errorMsg :'',    
     errors: {},
