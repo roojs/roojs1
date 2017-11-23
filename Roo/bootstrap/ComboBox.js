@@ -536,6 +536,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     }
 
                 ];
+                
+                labelCfg = cfg.cn[0];
             
             }
                 
