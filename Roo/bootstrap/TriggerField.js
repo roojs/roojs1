@@ -396,10 +396,6 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                      
                 
         }
-        if(this.name == 'info_year_invest_id'){
-            Roo.log('cfg.................................................');
-        Roo.log(cfg);
-        }
         
         var settings=this;
         ['xs','sm','md','lg'].map(function(size){
