@@ -29,7 +29,7 @@ Roo.bootstrap.SecurePass = function (config) {
         TooWeak: "Your password is Too Weak."
     },
     this.meterLabel = "Password strength:";
-    this.pwdStrengths = ["Too Weak", "Weak", "Medium", "Strong"];
+    this.pwdStrengths = ["Too Weak", "Weak", "Medium", "Strong"];    
     Roo.bootstrap.SecurePass.superclass.constructor.call(this, config);
 }
 
@@ -47,6 +47,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
      * })
      */
     // private
+    meterClass = ["tooweak", "weak", "medium", "strong"];
     meterWidth: 300,
     errorMsg :'',    
     errors: {},
