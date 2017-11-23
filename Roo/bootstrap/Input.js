@@ -411,6 +411,21 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 cfg.cn[2].cls += ' col-lg-' + (12 - this.labellg);
             }
             
+            if(this.labelmd > 0){
+                cfg.cn[1].cls += ' col-md-' + this.labelmd;
+                cfg.cn[2].cls += ' col-md-' + (12 - this.labelmd);
+            }
+            
+            if(this.labelsm > 0){
+                cfg.cn[1].cls += ' col-sm-' + this.labelsm;
+                cfg.cn[2].cls += ' col-sm-' + (12 - this.labelsm);
+            }
+            
+            if(this.labelxs > 0){
+                cfg.cn[1].cls += ' col-xs-' + this.labelxs;
+                cfg.cn[2].cls += ' col-xs-' + (12 - this.labelxs);
+            }
+            
             if(this.indicatorpos == 'right'){
                 cfg.cn = [
                     {
