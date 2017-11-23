@@ -175,6 +175,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         //pt.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
         
         pt.innerHTML = '';
+        this.inputEl().dom.type='password';
     },
     // private
     validateValue: function (value) {
