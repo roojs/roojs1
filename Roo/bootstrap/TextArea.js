@@ -137,7 +137,6 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
         }
         
         if (align ==='left' && this.fieldLabel.length) {
-//                Roo.log("left and has label");
                 cfg.cn = [
                     
                     {
