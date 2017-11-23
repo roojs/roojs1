@@ -411,6 +411,7 @@ Roo.Msg.show({
                 fn: fn,
                 closable : false,
                 scope : scope,
+                fitwindow: true,
                 modal : true
             });
             return this;
