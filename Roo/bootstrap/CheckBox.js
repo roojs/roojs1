@@ -178,23 +178,23 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             }
             
             if(this.labellg > 0){
-                labelCfg.cls += ' col-lg-' + this.labellg;
-                contentCfg.cls += ' col-lg-' + (12 - this.labellg);
+                cfg.cn[0].cls += ' col-lg-' + this.labellg;
+                cfg.cn[1].cls += ' col-lg-' + (12 - this.labellg);
             }
             
             if(this.labelmd > 0){
-                labelCfg.cls += ' col-md-' + this.labelmd;
-                contentCfg.cls += ' col-md-' + (12 - this.labelmd);
+                cfg.cn[0].cls += ' col-md-' + this.labelmd;
+                cfg.cn[1].cls += ' col-md-' + (12 - this.labelmd);
             }
             
             if(this.labelsm > 0){
-                labelCfg.cls += ' col-sm-' + this.labelsm;
-                contentCfg.cls += ' col-sm-' + (12 - this.labelsm);
+                cfg.cn[0].cls += ' col-sm-' + this.labelsm;
+                cfg.cn[1].cls += ' col-sm-' + (12 - this.labelsm);
             }
             
             if(this.labelxs > 0){
-                labelCfg.cls += ' col-xs-' + this.labelxs;
-                contentCfg.cls += ' col-xs-' + (12 - this.labelxs);
+                cfg.cn[0].cls += ' col-xs-' + this.labelxs;
+                cfg.cn[1].cls += ' col-xs-' + (12 - this.labelxs);
             }
             
         } else if ( this.fieldLabel.length) {
