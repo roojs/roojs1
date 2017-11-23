@@ -487,7 +487,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if (align ==='left' && this.fieldLabel.length && this.labelWidth) {
             
-//                Roo.log("left and has label");
             cfg.cn = [
                 {
                     tag : 'i',
