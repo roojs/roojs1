@@ -405,15 +405,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             } else {
                 cfg.cn[1].style = "width: " + this.labelWidth + 'px';
             } 
-
-            if(this.labelWidth > 12){
-                cfg.cn[1].style = "width: " + this.labelWidth + 'px';
-            } else {
-                
-                if(this.labellg > 0){
-                    cfg.cn[1].style = "width: " + this.labelWidth + 'px';
-                }
-                
+            
+            if(this.labellg > 0){
+                cfg.cn[1].cls += ' col-lg-' + this.labellg;
+                cfg.cn[2].cls += ' col-lg-' + (12 - this.labellg);
             }
             
             if(this.indicatorpos == 'right'){
