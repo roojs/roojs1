@@ -50,11 +50,6 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
     
     indicatorpos : 'left',
     
-    labellg : 0,
-    labelmd : 0,
-    labelsm : 0,
-    labelxs : 0,
-    
     getAutoCreate : function()
     {
         var label = {
@@ -98,7 +93,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
                 ]
             };
             
-            Roo.log(this.labelWidth);
+            Roo.log(this.labelmd);
             
             if(this.labelWidth > 12){
                 label.style = "width: " + this.labelWidth + 'px';
