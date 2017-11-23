@@ -162,18 +162,18 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
             }
 
             if(this.labellg > 0){
-                content[0].cls += ' col-lg-' + this.labellg;
-                content[1].cls += ' col-lg-' + (12 - this.labellg);
+                cfg.cn[0].cls += ' col-lg-' + this.labellg;
+                cfg.cn[1].cls += ' col-lg-' + (12 - this.labellg);
             }
 
             if(this.labelmd > 0){
-                content[0].cls += ' col-md-' + this.labelmd;
-                content[1].cls += ' col-md-' + (12 - this.labelmd);
+                cfg.cn[0].cls += ' col-md-' + this.labelmd;
+                cfg.cn[1].cls += ' col-md-' + (12 - this.labelmd);
             }
 
             if(this.labelsm > 0){
-                content[0].cls += ' col-sm-' + this.labelsm;
-                content[1].cls += ' col-sm-' + (12 - this.labelsm);
+                cfg.cn[0].cls += ' col-sm-' + this.labelsm;
+                cfg.cn[1].cls += ' col-sm-' + (12 - this.labelsm);
             }
 
             if(this.labelxs > 0){
