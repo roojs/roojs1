@@ -213,18 +213,18 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 }
 
                 if(this.labelmd > 0){
-                    labelCfg.cls += ' col-md-' + this.labelmd;
-                    contentCfg.cls += ' col-md-' + (12 - this.labelmd);
+                    content[0].cls += ' col-md-' + this.labelmd;
+                    content[1].cls += ' col-md-' + (12 - this.labelmd);
                 }
 
                 if(this.labelsm > 0){
-                    labelCfg.cls += ' col-sm-' + this.labelsm;
-                    contentCfg.cls += ' col-sm-' + (12 - this.labelsm);
+                    content[0].cls += ' col-sm-' + this.labelsm;
+                    content[1].cls += ' col-sm-' + (12 - this.labelsm);
                 }
 
                 if(this.labelxs > 0){
-                    labelCfg.cls += ' col-xs-' + this.labelxs;
-                    contentCfg.cls += ' col-xs-' + (12 - this.labelxs);
+                    content[0].cls += ' col-xs-' + this.labelxs;
+                    content[1].cls += ' col-xs-' + (12 - this.labelxs);
                 }
                 
             }
