@@ -2308,8 +2308,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var align = this.labelAlign || this.parentLabelAlign();
         
-        cfg.cn = combobox;
-        
         if (align ==='left' && this.fieldLabel.length) {
             
             cfg.cn = [
@@ -2414,7 +2412,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 cfg.cn = [
                     {
                         tag: 'label',
-                        cls : 'control-label ' + lw,
+                        cls : 'control-label',
                         html : this.fieldLabel
 
                     },
@@ -2424,7 +2422,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                        tooltip : 'This field is required'
                     },
                     {
-                        cls : cw, 
+                        cls : '', 
                         cn: [
                             combobox
                         ]
@@ -2439,54 +2437,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 
         }
         
-        
-        if(this.fieldLabel.length && this.labelWidth){
-            
-            var lw = align === 'left' ? ('col-sm' + this.labelWidth) : '';
-            var cw = align === 'left' ? ('col-sm' + (12 - this.labelWidth)) : '';
-            
-            cfg.cn = [
-                {
-                   tag : 'i',
-                   cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
-                   tooltip : 'This field is required'
-                },
-                {
-                    tag: 'label',
-                    cls : 'control-label ' + lw,
-                    html : this.fieldLabel
-
-                },
-                {
-                    cls : cw, 
-                    cn: [
-                        combobox
-                    ]
-                }
-            ];
-            
-            if(this.indicatorpos == 'right'){
-                cfg.cn = [
-                    {
-                        tag: 'label',
-                        cls : 'control-label ' + lw,
-                        html : this.fieldLabel
-
-                    },
-                    {
-                       tag : 'i',
-                       cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
-                       tooltip : 'This field is required'
-                    },
-                    {
-                        cls : cw, 
-                        cn: [
-                            combobox
-                        ]
-                    }
-                ];
-            }
-        }
         
         var settings = this;
         
