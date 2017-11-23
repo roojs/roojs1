@@ -13,17 +13,16 @@
 }
 
 .password-meter-week {
-    background: red; /* For browsers that do not support gradients */         
+    background: red;         
 }
 
 .password-meter-medium {
-    background: yellow; /* For browsers that do not support gradients */         
+    background: yellow;          
 }
 
 .password-meter-strong {
-    background: green; /* For browsers that do not support gradients */         
+    background: green;          
 }
-
 
 .password-meter-text { 
     padding-bottom:5px;
