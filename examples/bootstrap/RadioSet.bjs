@@ -142,7 +142,8 @@
              "String name" : "text_name",
              "xtype" : "Input",
              "string placeholder" : "Text",
-             "$ xns" : "Roo.bootstrap"
+             "$ xns" : "Roo.bootstrap",
+             "Number labelWidth" : 6
             }
            ]
           }
