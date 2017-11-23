@@ -91,8 +91,6 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
                 ]
             };
             
-            Roo.log(this.labelmd);
-            
             if(this.labelWidth > 12){
                 label.style = "width: " + this.labelWidth + 'px';
             }
