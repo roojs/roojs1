@@ -135,18 +135,18 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
                 }
 
                 if(this.labelmd > 0){
-                    labelCfg.cls += ' col-md-' + this.labelmd;
-                    contentCfg.cls += ' col-md-' + (12 - this.labelmd);
+                    labelCls = ' col-md-' + this.labelmd;
+                    contentCls = ' col-md-' + ((12 - this.labelmd) / 3);
                 }
 
                 if(this.labelsm > 0){
-                    labelCfg.cls += ' col-sm-' + this.labelsm;
-                    contentCfg.cls += ' col-sm-' + (12 - this.labelsm);
+                    labelCls = ' col-sm-' + this.labelsm;
+                    contentCls = ' col-sm-' + ((12 - this.labelsm) / 3);
                 }
 
                 if(this.labelxs > 0){
-                    labelCfg.cls += ' col-xs-' + this.labelxs;
-                    contentCfg.cls += ' col-xs-' + (12 - this.labelxs);
+                    labelCls = ' col-xs-' + this.labelxs;
+                    contentCls = ' col-xs-' + ((12 - this.labelxs) / 3);
                 }
             }
             
