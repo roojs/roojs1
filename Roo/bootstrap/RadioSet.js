@@ -20,6 +20,9 @@
 
 Roo.bootstrap.RadioSet = function(config){
     
+    Roo.log('run radio set...');
+    Roo.log(config);
+    
     Roo.bootstrap.RadioSet.superclass.constructor.call(this, config);
     
     this.radioes = [];
