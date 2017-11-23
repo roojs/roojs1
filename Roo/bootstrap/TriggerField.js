@@ -319,6 +319,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 ];
                 
                 labelCfg = cfg.cn[0];
+                contentCfg = cfg.cn[2];
             }
             
             if(this.labelWidth > 12){
