@@ -225,11 +225,13 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
             strength = 0;
         }
 
+        /*
         if (strength < 2) {
             this.markInvalid(this.errors.TooWeak);
             this.errorMsg = this.errors.TooWeak;
             return false;
         }
+        */
         
         console.log('strength2: ' + strength);
         var pm = this.trigger.child('div/div/div').dom;
@@ -241,7 +243,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         var pt = this.trigger.child('/div/div/').child('>*[class=password-meter-text]').dom;        
                 
         pt.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
-                        
+        this.errorMsg = ''; 
         return true;
     },
     // private
