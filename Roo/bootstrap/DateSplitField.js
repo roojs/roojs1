@@ -107,7 +107,8 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
         var contentCls = 'col-md-4';
         
         if(this.fieldLabel){
-            cfg.cn.push({
+            
+            var label = {
                 tag : 'div',
                 cls : 'column roo-date-split-field-label col-md-' + ((this.labelAlign == 'top') ? '12' : this.labelWidth),
                 cn : [
@@ -116,7 +117,40 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
                         html : this.fieldLabel
                     }
                 ]
-            });
+            };
+            
+            if(this.labelAlign == 'left'){
+            
+                if(this.labelWidth > 12){
+                    labelCfg.style = "width: " + this.labelWidth + 'px';
+                }
+
+                if(this.labelWidth < 13 && this.labelmd == 0){
+                    this.labelmd = this.labelWidth;
+                }
+
+                if(this.labellg > 0){
+                    labelCfg.cls += ' col-lg-' + this.labellg;
+                    contentCfg.cls += ' col-lg-' + (12 - this.labellg);
+                }
+
+                if(this.labelmd > 0){
+                    labelCfg.cls += ' col-md-' + this.labelmd;
+                    contentCfg.cls += ' col-md-' + (12 - this.labelmd);
+                }
+
+                if(this.labelsm > 0){
+                    labelCfg.cls += ' col-sm-' + this.labelsm;
+                    contentCfg.cls += ' col-sm-' + (12 - this.labelsm);
+                }
+
+                if(this.labelxs > 0){
+                    labelCfg.cls += ' col-xs-' + this.labelxs;
+                    contentCfg.cls += ' col-xs-' + (12 - this.labelxs);
+                }
+            }
+            
+            cfg.cn.push(label);
         }
         
         Roo.each(['day', 'month', 'year'], function(t){
