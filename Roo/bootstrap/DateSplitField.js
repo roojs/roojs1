@@ -22,6 +22,10 @@
  * @cfg {string} dayFormat default 'd'
  * @cfg {string} monthFormat default 'm'
  * @cfg {string} yearFormat default 'Y'
+ * @cfg {Number} labellg set the width of label (1-12)
+ * @cfg {Number} labelmd set the width of label (1-12)
+ * @cfg {Number} labelsm set the width of label (1-12)
+ * @cfg {Number} labelxs set the width of label (1-12)
 
  *     
  * @constructor
