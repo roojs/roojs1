@@ -50,6 +50,11 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
     
     indicatorpos : 'left',
     
+    labellg : 0,
+    labelmd : 0,
+    labelsm : 0,
+    labelxs : 0,
+    
     getAutoCreate : function()
     {
         var label = {
