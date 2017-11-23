@@ -2390,46 +2390,47 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 
                 
         } else if ( this.fieldLabel.length) {
-//                Roo.log(" label");
-                 cfg.cn = [
-                    {
-                        tag : 'i',
-                        cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
-                        tooltip : 'This field is required'
-                    },
+            cfg.cn = [
+                {
+                   tag : 'i',
+                   cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
+                   tooltip : 'This field is required'
+                },
+                {
+                    tag: 'label',
+                    cls : 'control-label',
+                    html : this.fieldLabel
+
+                },
+                {
+                    cls : '', 
+                    cn: [
+                        combobox
+                    ]
+                }
+            ];
+            
+            if(this.indicatorpos == 'right'){
+                cfg.cn = [
                     {
                         tag: 'label',
-                        //cls : 'input-group-addon',
+                        cls : 'control-label ' + lw,
                         html : this.fieldLabel
-                        
+
                     },
-                    
-                    combobox
-                    
+                    {
+                       tag : 'i',
+                       cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
+                       tooltip : 'This field is required'
+                    },
+                    {
+                        cls : cw, 
+                        cn: [
+                            combobox
+                        ]
+                    }
                 ];
-                
-                if(this.indicatorpos == 'right'){
-                    
-                    cfg.cn = [
-                        {
-                            tag: 'label',
-                            //cls : 'input-group-addon',
-                            html : this.fieldLabel
-
-                        },
-                        
-                        {
-                            tag : 'i',
-                            cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
-                            tooltip : 'This field is required'
-                        },
-                        
-                        combobox
-
-                    ];
-                
-                }
-
+            }
         } else {
             
 //                Roo.log(" no label && no align");
