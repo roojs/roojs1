@@ -385,12 +385,12 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 {
                     tag: 'label',
                     'for' :  id,
-                    cls : 'control-label col-sm-' + this.labelWidth,
+                    cls : 'control-label ',
                     html : this.fieldLabel
 
                 },
                 {
-                    cls : "col-sm-" + (12 - this.labelWidth), 
+                    cls : "", 
                     cn: [
                         inputblock
                     ]
