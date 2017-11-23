@@ -2358,6 +2358,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 ];
             }
             
+            labelCfg = cfg.cn[0];
+            
             if(this.labelWidth > 12){
                 labelCfg.style = "width: " + this.labelWidth + 'px';
             }
