@@ -12,6 +12,10 @@
     font-size: 12px;     
 }
 
+.password-meter-tooweek {
+    background: lightgrey;         
+}
+
 .password-meter-week {
     background: red;         
 }
