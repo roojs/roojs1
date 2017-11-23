@@ -415,7 +415,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                         tooltip : 'This field is required'
                     },
                     {
-                        cls : "col-sm-" + (12 - this.labelWidth), 
+                        cls : "",
                         cn: [
                             inputblock
                         ]
@@ -424,9 +424,9 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 ];
                 
                 labelCfg = cfg.cn[0];
-                contentCfg = cfg.cn[2];
             
             }
+            
             
             
             
