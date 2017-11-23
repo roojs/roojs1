@@ -104,7 +104,7 @@ Roo.bootstrap.MessageBox = function(){
                     //collapsible : false,
                     //shim:true,
                     //modal: true,
-                  //  width:400,
+                   width: 'auto',
                   //  height:100,
                     //buttonAlign:"center",
                     closeClick : function(){

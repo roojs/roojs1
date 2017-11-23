@@ -3033,13 +3033,13 @@ Roo.bootstrap.MessageBox = function(){
            if(!dlg){
                 dlg = new Roo.bootstrap.Modal( {
                     //draggable: true,
-                    resizable:true,
+                    //resizable:false,
                     //constraintoviewport:false,
                     //fixedcenter:true,
                     //collapsible : false,
                     //shim:true,
-                    modal: true,
-                  //  width:400,
+                    //modal: true,
+                   width: 'auto',
                   //  height:100,
                     //buttonAlign:"center",
                     closeClick : function(){
