@@ -435,6 +435,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 labelCfg.style = "width: " + this.labelWidth + 'px';
             } 
             
+            Roo.log(cfg.cn);
             if(this.labellg > 0){
                 cfg.cn[1].cls += ' col-lg-' + this.labellg;
                 cfg.cn[2].cls += ' col-lg-' + (12 - this.labellg);
