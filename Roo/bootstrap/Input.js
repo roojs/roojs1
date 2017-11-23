@@ -405,7 +405,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                     {
                         tag: 'label',
                         'for' :  id,
-                        cls : 'control-label col-sm-' + this.labelWidth,
+                        cls : 'control-label',
                         html : this.fieldLabel
 
                     },
@@ -422,7 +422,13 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                     }
 
                 ];
+                
+                labelCfg = cfg.cn[0];
+                contentCfg = cfg.cn[2];
+            
             }
+            
+            
             
         } else if ( this.fieldLabel.length) {
                 
