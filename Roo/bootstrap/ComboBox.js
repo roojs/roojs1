@@ -366,6 +366,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
          */
         if(!this.tickable){
             cfg = Roo.bootstrap.ComboBox.superclass.getAutoCreate.call(this);
+//            if(this.name == 'info_year_invest_id'){
+                Roo.log('cfg.................................................');
+                Roo.log(cfg);
+//            }
             return cfg;
         }
         
