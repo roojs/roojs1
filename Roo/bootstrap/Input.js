@@ -46,7 +46,7 @@
 Roo.bootstrap.Input = function(config){
     
     Roo.bootstrap.Input.superclass.constructor.call(this, config);
-   
+    
     if(config.labelWidth < 12){
         this.labelWidth = 0;
         this.labelmd = config.labelWidth;
