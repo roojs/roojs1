@@ -162,7 +162,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
 
                 },
                 {
-                    cls : "col-md-" + (12 - this.labelWidth), 
+                    cls : "", 
                     cn: [
                         inputblock
                     ]
@@ -170,7 +170,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             ];
             
             if(this.labelWidth > 12){
-                labelCfg.style = "width: " + this.labelWidth + 'px';
+                cfg.cn[0].style = "width: " + this.labelWidth + 'px';
             }
             
             if(this.labelWidth < 13 && this.labelmd == 0){
