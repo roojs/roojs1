@@ -13,15 +13,18 @@
 }
 
 .password-meter-tooweek {
-    background: lightgrey;         
+    background: lightgrey;  
+    height: '10px';        
 }
 
 .password-meter-weak {
-    background: red;         
+    background: red;
+    height: '10px';         
 }
 
 .password-meter-medium {
-    background: yellow;          
+    background: yellow;
+    height: '10px';          
 }
 
 .password-meter-strong {
@@ -31,5 +34,6 @@
 .password-meter-text { 
     padding-bottom:5px;
     margin-bottom:5px;    
-    font-size: 12px;     
+    font-size: 12px;
+    height: '10px';     
 }
