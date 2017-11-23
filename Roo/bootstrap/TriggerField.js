@@ -268,7 +268,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             combobox.cls += ' roo-select2-container-multi';
         }
         
-        if (align ==='left' && this.fieldLabel.length && this.labelWidth) {
+        if (align ==='left' && this.fieldLabel.length) {
             
             cfg.cn = [
                 {
@@ -279,18 +279,21 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 {
                     tag: 'label',
                     'for' :  id,
-                    cls : 'control-label col-sm-' + this.labelWidth,
+                    cls : 'control-label',
                     html : this.fieldLabel
 
                 },
                 {
-                    cls : "col-sm-" + (12 - this.labelWidth), 
+                    cls : "", 
                     cn: [
                         combobox
                     ]
                 }
 
             ];
+            
+            var labelCfg = cfg.cn[1];
+            var contentCfg = cfg.cn[2];
             
             if(this.indicatorpos == 'right'){
                 cfg.cn = [
