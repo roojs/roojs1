@@ -300,7 +300,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                     {
                         tag: 'label',
                         'for' :  id,
-                        cls : 'control-label col-sm-' + this.labelWidth,
+                        cls : 'control-label',
                         html : this.fieldLabel
 
                     },
@@ -310,14 +310,18 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                         tooltip : 'This field is required'
                     },
                     {
-                        cls : "col-sm-" + (12 - this.labelWidth), 
+                        cls : "", 
                         cn: [
                             combobox
                         ]
                     }
 
                 ];
+                
+                labelCfg = cfg.cn[0];
             }
+            
+            
             
         } else if ( this.fieldLabel.length) {
 //                Roo.log(" label");
