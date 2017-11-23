@@ -178,8 +178,12 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         Roo.bootstrap.SecurePass.superclass.reset.call(this);
         
         this._lastPwd = '';
-        var pm = this.trigger.child('div/div/div').dom;
-        pm.style.width = 0;
+        //var pm = this.trigger.child('div/div/div').dom;
+        //pm.style.width = 0;
+        var pm = this.trigger.child('div/div/div');
+        pm.removeClass(this.meterClass);
+        pm.addClass(this.meterClass[0]);        
+        
         
         var pt = this.trigger.child('/div/div/').child('>*[class=password-meter-text]').dom;        
                 
@@ -249,8 +253,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         var pm = this.trigger.child('div/div/div');
         pm.removeClass(this.meterClass);
         pm.addClass(this.meterClass[strength]);
-        console.log('strength1: ' + strength + this.meterClass[strength]) ;
-        
+                
         var pt = this.trigger.child('/div/div/').child('>*[class=password-meter-text]').dom;        
                 
         pt.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
