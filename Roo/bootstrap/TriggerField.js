@@ -335,6 +335,8 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             }
             
             if(this.labelmd > 0){
+                Roo.log(labelCfg);
+                Roo.log(contentCfg);
                 labelCfg.cls += ' col-md-' + this.labelmd;
                 contentCfg.cls += ' col-md-' + (12 - this.labelmd);
             }
