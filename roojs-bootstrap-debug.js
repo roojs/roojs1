@@ -2715,7 +2715,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
 
     resize : function()
     {
-        Roo.log(this+' resizing');
         this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true),  Roo.lib.Dom.getViewHeight(true));
         if (this.fitwindow) {
             var w = this.width || Roo.lib.Dom.getViewportWidth(true) - 30;
@@ -2726,6 +2725,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
 
     setSize : function(w,h)
     {
+        Roo.log('setting size');
         if (!w && !h) {
             return;
         }
