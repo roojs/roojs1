@@ -101,8 +101,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
                 tag: 'div',
                 cls: 'password-meter-grey',
                 style: {
-                    width: this.meterWidth + 'px',
-                    height: '10px'                    
+                    width: this.meterWidth + 'px'                                        
                 },
                 cn: [
                     {
@@ -111,13 +110,11 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
                     cls: 'password-meter-tooweek',
                     style: {
                         //width: 0,
-                        width: this.meterWidth + 'px',
-                        height: '10px'                        
+                        width: this.meterWidth + 'px'                                                
                         }
                     },
                     {                    	 
-                    	 cls: 'password-meter-text',
-                    	 height: '10px'
+                    	 cls: 'password-meter-text'                    	 
                     }
                 ]                
             }
