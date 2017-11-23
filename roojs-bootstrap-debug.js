@@ -8612,6 +8612,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 ];
                 
                 labelCfg = cfg.cn[0];
+                contentCfg = cfg.cn[2];
             
             }
             
@@ -9860,6 +9861,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 ];
                 
                 labelCfg = cfg.cn[0];
+                contentCfg = cfg.cn[2];
             }
             
             if(this.labelWidth > 12){
@@ -9937,7 +9939,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                      
                 
         }
-         
+        
         var settings=this;
         ['xs','sm','md','lg'].map(function(size){
             if (settings[size]) {
@@ -12565,6 +12567,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
          */
         if(!this.tickable){
             cfg = Roo.bootstrap.ComboBox.superclass.getAutoCreate.call(this);
+            if(this.name == 'info_year_invest_id_display_name'){
+                Roo.log('cfg.................................................');
+                Roo.log(cfg);
+            }
             return cfg;
         }
         
@@ -12737,6 +12743,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 ];
                 
                 labelCfg = cfg.cn[0];
+                contentCfg = cfg.cn[2];
             
             }
             
@@ -14556,6 +14563,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             }
             
             labelCfg = cfg.cn[0];
+            contentCfg = cfg.cn[2];
             
             if(this.labelWidth > 12){
                 labelCfg.style = "width: " + this.labelWidth + 'px';
