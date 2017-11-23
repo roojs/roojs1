@@ -22,11 +22,7 @@
  * @cfg {Number} md colspan out of 12 for computer-sized screens
  * @cfg {Number} lg colspan out of 12 for large computer-sized screens
  * @cfg {string} value default value of the input
- * @cfg {Number} labelWidth set the width of label 
- * @cfg {Number} labellg set the width of label (1-12)
- * @cfg {Number} labelmd set the width of label (1-12)
- * @cfg {Number} labelsm set the width of label (1-12)
- * @cfg {Number} labelxs set the width of label (1-12)
+ * @cfg {Number} labelWidth set the width of label (0-12)
  * @cfg {String} labelAlign (top|left)
  * @cfg {Boolean} readOnly Specifies that the field should be read-only
  * @cfg {String} autocomplete - default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en
@@ -44,59 +40,58 @@
  */
 
 Roo.bootstrap.Input = function(config){
-    
     Roo.bootstrap.Input.superclass.constructor.call(this, config);
-    
-    this.addEvents({
-        /**
-         * @event focus
-         * Fires when this field receives input focus.
-         * @param {Roo.form.Field} this
-         */
-        focus : true,
-        /**
-         * @event blur
-         * Fires when this field loses input focus.
-         * @param {Roo.form.Field} this
-         */
-        blur : true,
-        /**
-         * @event specialkey
-         * Fires when any key related to navigation (arrows, tab, enter, esc, etc.) is pressed.  You can check
-         * {@link Roo.EventObject#getKey} to determine which key was pressed.
-         * @param {Roo.form.Field} this
-         * @param {Roo.EventObject} e The event object
-         */
-        specialkey : true,
-        /**
-         * @event change
-         * Fires just before the field blurs if the field value has changed.
-         * @param {Roo.form.Field} this
-         * @param {Mixed} newValue The new value
-         * @param {Mixed} oldValue The original value
-         */
-        change : true,
-        /**
-         * @event invalid
-         * Fires after the field has been marked as invalid.
-         * @param {Roo.form.Field} this
-         * @param {String} msg The validation message
-         */
-        invalid : true,
-        /**
-         * @event valid
-         * Fires after the field has been validated with no errors.
-         * @param {Roo.form.Field} this
-         */
-        valid : true,
-         /**
-         * @event keyup
-         * Fires after the key up
-         * @param {Roo.form.Field} this
-         * @param {Roo.EventObject}  e The event Object
-         */
-        keyup : true
-    });
+   
+        this.addEvents({
+            /**
+             * @event focus
+             * Fires when this field receives input focus.
+             * @param {Roo.form.Field} this
+             */
+            focus : true,
+            /**
+             * @event blur
+             * Fires when this field loses input focus.
+             * @param {Roo.form.Field} this
+             */
+            blur : true,
+            /**
+             * @event specialkey
+             * Fires when any key related to navigation (arrows, tab, enter, esc, etc.) is pressed.  You can check
+             * {@link Roo.EventObject#getKey} to determine which key was pressed.
+             * @param {Roo.form.Field} this
+             * @param {Roo.EventObject} e The event object
+             */
+            specialkey : true,
+            /**
+             * @event change
+             * Fires just before the field blurs if the field value has changed.
+             * @param {Roo.form.Field} this
+             * @param {Mixed} newValue The new value
+             * @param {Mixed} oldValue The original value
+             */
+            change : true,
+            /**
+             * @event invalid
+             * Fires after the field has been marked as invalid.
+             * @param {Roo.form.Field} this
+             * @param {String} msg The validation message
+             */
+            invalid : true,
+            /**
+             * @event valid
+             * Fires after the field has been validated with no errors.
+             * @param {Roo.form.Field} this
+             */
+            valid : true,
+             /**
+             * @event keyup
+             * Fires after the key up
+             * @param {Roo.form.Field} this
+             * @param {Roo.EventObject}  e The event Object
+             */
+            keyup : true
+        });
 };
 
 Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
@@ -234,11 +229,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     forceFeedback : false,
     
     indicatorpos : 'left',
-    
-    labellg : 0,
-    labelmd : 0,
-    labelsm : 0,
-    labelxs : 0,
     
     parentLabelAlign : function()
     {
@@ -385,27 +375,25 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 {
                     tag: 'label',
                     'for' :  id,
-                    cls : 'control-label',
+                    cls : 'control-label col-sm-' + this.labelWidth,
                     html : this.fieldLabel
 
                 },
                 {
-                    cls : "", 
+                    cls : "col-sm-" + (12 - this.labelWidth), 
                     cn: [
                         inputblock
                     ]
                 }
+
             ];
-            
-            var labelCfg = cfg.cn[1];
-            var contentCfg = cfg.cn[2];
             
             if(this.indicatorpos == 'right'){
                 cfg.cn = [
                     {
                         tag: 'label',
                         'for' :  id,
-                        cls : 'control-label',
+                        cls : 'control-label col-sm-' + this.labelWidth,
                         html : this.fieldLabel
 
                     },
@@ -415,46 +403,14 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                         tooltip : 'This field is required'
                     },
                     {
-                        cls : "",
+                        cls : "col-sm-" + (12 - this.labelWidth), 
                         cn: [
                             inputblock
                         ]
                     }
 
                 ];
-                
-                labelCfg = cfg.cn[0];
-            
             }
-            
-            if(this.labelWidth > 12){
-                labelCfg.style = "width: " + this.labelWidth + 'px';
-            }
-            
-            if(this.labelWidth < 13 && this.labelmd == 0){
-                this.labelmd = this.labelWidth;
-            }
-            
-            if(this.labellg > 0){
-                labelCfg.cls += ' col-lg-' + this.labellg;
-                contentCfg.cls += ' col-lg-' + (12 - this.labellg);
-            }
-            
-            if(this.labelmd > 0){
-                labelCfg.cls += ' col-md-' + this.labelmd;
-                contentCfg.cls += ' col-md-' + (12 - this.labelmd);
-            }
-            
-            if(this.labelsm > 0){
-                labelCfg.cls += ' col-sm-' + this.labelsm;
-                contentCfg.cls += ' col-sm-' + (12 - this.labelsm);
-            }
-            
-            if(this.labelxs > 0){
-                labelCfg.cls += ' col-xs-' + this.labelxs;
-                contentCfg.cls += ' col-xs-' + (12 - this.labelxs);
-            }
-            
             
         } else if ( this.fieldLabel.length) {
                 
