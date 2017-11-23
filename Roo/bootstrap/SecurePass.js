@@ -48,6 +48,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
      */
     // private
     meterWidth: 300,
+    bypassValidate: true,
     errors: {},
     imageRoot: '/',
     /**
