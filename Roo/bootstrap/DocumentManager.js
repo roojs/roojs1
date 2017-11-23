@@ -18,6 +18,10 @@
  * @cfg {Number} labelWidth default 4
  * @cfg {String} labelAlign (left|top) default left
  * @cfg {Boolean} editable (true|false) allow edit when upload a image default true
+* @cfg {Number} labellg set the width of label (1-12)
+ * @cfg {Number} labelmd set the width of label (1-12)
+ * @cfg {Number} labelsm set the width of label (1-12)
+ * @cfg {Number} labelxs set the width of label (1-12)
  * 
  * @constructor
  * Create a new DocumentManager
