@@ -191,6 +191,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
             }
 
             this.markInvalid(this.errors.PwdEmpty);
+            this.errorMsg = this.errors.PwdEmpty;
             return false;
         }
         
@@ -200,14 +201,17 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         
         if ('[\x21-\x7e]*'.match(value)) {
             this.markInvalid(this.errors.PwdBadChar);
+            this.errorMsg = this.errors.PwdBadChar;
             return false;
         }
         if (value.length < 6) {
             this.markInvalid(this.errors.PwdShort);
+            this.errorMsg = this.errors.PwdShort;
             return false;
         }
         if (value.length > 16) {
             this.markInvalid(this.errors.PwdLong);
+            this.errorMsg = this.errors.PwdLong;
             return false;
         }
         var strength;
@@ -223,6 +227,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
 
         if (strength < 2) {
             this.markInvalid(this.errors.TooWeak);
+            this.errorMsg = this.errors.TooWeak;
             return false;
         }
         
