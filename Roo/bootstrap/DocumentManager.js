@@ -131,6 +131,11 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     delegates : false,
     xhr : false, 
     
+    labellg : 0,
+    labelmd : 0,
+    labelsm : 0,
+    labelxs : 0,
+    
     getAutoCreate : function()
     {   
         var managerWidget = {
@@ -184,15 +189,43 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 content = [
                     {
                         tag : 'div',
-                        cls : 'column col-md-' + this.labelWidth,
+                        cls : 'column',
                         html : this.fieldLabel
                     },
                     {
                         tag : 'div',
-                        cls : 'column col-md-' + (12 - this.labelWidth),
+                        cls : 'column',
                         cn : managerWidget
                     }
                 ];
+                
+                if(this.labelWidth > 12){
+                    content[0].style = "width: " + this.labelWidth + 'px';
+                }
+
+                if(this.labelWidth < 13 && this.labelmd == 0){
+                    this.labelmd = this.labelWidth;
+                }
+
+                if(this.labellg > 0){
+                    labelCfg.cls += ' col-lg-' + this.labellg;
+                    contentCfg.cls += ' col-lg-' + (12 - this.labellg);
+                }
+
+                if(this.labelmd > 0){
+                    labelCfg.cls += ' col-md-' + this.labelmd;
+                    contentCfg.cls += ' col-md-' + (12 - this.labelmd);
+                }
+
+                if(this.labelsm > 0){
+                    labelCfg.cls += ' col-sm-' + this.labelsm;
+                    contentCfg.cls += ' col-sm-' + (12 - this.labelsm);
+                }
+
+                if(this.labelxs > 0){
+                    labelCfg.cls += ' col-xs-' + this.labelxs;
+                    contentCfg.cls += ' col-xs-' + (12 - this.labelxs);
+                }
                 
             }
         }
