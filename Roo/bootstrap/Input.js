@@ -46,9 +46,8 @@
 Roo.bootstrap.Input = function(config){
     
     Roo.bootstrap.Input.superclass.constructor.call(this, config);
-    
+   
     if(config.labelWidth < 12){
-        Roo.log('run??');
         this.labelWidth = 0;
         this.labelmd = config.labelWidth;
     }
@@ -232,7 +231,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     preventMark: false,
     isFormField : true,
     value : '',
-    labelWidth : 0,
+    labelWidth : 2,
     labelAlign : false,
     readOnly : false,
     align : false,
