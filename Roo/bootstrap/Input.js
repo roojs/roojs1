@@ -424,6 +424,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 ];
                 
                 labelCfg = cfg.cn[0];
+                contentCfg = cfg.cn[2];
             
             }
             
