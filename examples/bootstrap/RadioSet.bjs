@@ -45,8 +45,8 @@
            "items" : [
             {
              "xtype" : "Header",
-             "$ xns" : "Roo.bootstrap",
              "Number level" : 1,
+             "$ xns" : "Roo.bootstrap",
              "String html" : "Radio Set Example"
             }
            ]
@@ -105,6 +105,7 @@
              "string fieldLabel" : "Radio Field Lable Left",
              "$ xns" : "Roo.bootstrap",
              "string indicatorpos" : "right",
+             "Number labelWidth" : 6,
              "string name" : "left_radio",
              "string labelAlign" : "left",
              "items" : [
