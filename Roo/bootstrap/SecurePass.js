@@ -107,7 +107,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
                     {
                     //id: 'PwdMeter',
                     tag: 'div',
-                    cls: 'password-meter-tooweek col-xs-12',
+                    cls: 'password-meter-grey col-xs-12',
                     style: {
                         //width: 0,
                         //width: this.meterWidth + 'px'                                                
