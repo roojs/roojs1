@@ -31,7 +31,7 @@
        "listeners" : {
         "render" : "function (_self)\n{\n    _this.form = this;\n}"
        },
-       "Boolean errPopover" : true,
+       "Boolean errorMask" : true,
        "xtype" : "Form",
        "$ xns" : "Roo.bootstrap",
        "items" : [
@@ -46,8 +46,8 @@
            "items" : [
             {
              "xtype" : "Header",
-             "Number level" : 1,
              "$ xns" : "Roo.bootstrap",
+             "Number level" : 1,
              "String html" : "Radio Set Example"
             }
            ]
