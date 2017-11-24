@@ -18,12 +18,12 @@
 }
 
 .password-meter-tooweak {
-    background: crimson ;  
+    background: red ;  
     height: 10px;        
 }
 
 .password-meter-weak {
-    background: red;
+    background: pale-red;
     height: 10px;         
 }
 
