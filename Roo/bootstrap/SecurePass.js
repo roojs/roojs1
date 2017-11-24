@@ -29,7 +29,12 @@ Roo.bootstrap.SecurePass = function (config) {
         TooWeak: "Your password is Too Weak."
     },
     this.meterLabel = "Password strength:";
-    this.pwdStrengths = ["Too Weak", "Weak", "Medium", "Strong"];    
+    this.pwdStrengths = ["Too Weak", "Weak", "Medium", "Strong"];
+    this.meterClass : ["roo-password-meter-tooweak", 
+                       "roo-password-meter-weak", 
+                       "roo-password-meter-medium", 
+                       "roo-password-meter-strong", 
+                       "roo-password-meter-grey"],    
     Roo.bootstrap.SecurePass.superclass.constructor.call(this, config);
 }
 
@@ -47,7 +52,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
      * })
      */
     // private
-    meterClass : ["password-meter-tooweak", "password-meter-weak", "password-meter-medium", "password-meter-strong", "password-meter-grey"],
+    
     meterWidth: 300,
     errorMsg :'',    
     errors: {},
@@ -93,13 +98,13 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
 
         this.trigger.createChild({
             tag: 'div',
-            cls: 'password-meter-container col-xs-12',
+            cls: 'roo-password-meter-container col-xs-12',
             style: {               
                 //width: this.meterWidth + 'px'
             },
             cn: {
                 tag: 'div',
-                cls: 'password-meter-grey',
+                cls: 'roo-password-meter-grey',
                 style: {
                     //width: this.meterWidth + 'px'                                        
                 },
@@ -107,14 +112,14 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
                     {
                     //id: 'PwdMeter',
                     tag: 'div',
-                    cls: 'password-meter-grey col-xs-12',
+                    cls: 'roo-password-meter-grey col-xs-12',
                     style: {
                         //width: 0,
                         //width: this.meterWidth + 'px'                                                
                         }
                     },
                     {                    	 
-                    	 cls: 'password-meter-text'                    	 
+                    	 cls: 'roo-password-meter-text'                    	 
                     }
                 ]                
             }
@@ -163,7 +168,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         //pm.style.width = (this.meterWidth / 3) * strength + 'px';
                
         
-        var pt = this.trigger.child('/div/div/').child('>*[class=password-meter-text]').dom;        
+        var pt = this.trigger.child('/div/div/').child('>*[class=roo-password-meter-text]').dom;        
                 
         pt.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
         
@@ -177,10 +182,10 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         //pm.style.width = 0;
         var pm = this.trigger.child('div/div/div');
         pm.removeClass(this.meterClass);
-        pm.addClass('password-meter-grey');        
+        pm.addClass('roo-password-meter-grey');        
         
         
-        var pt = this.trigger.child('/div/div/').child('>*[class=password-meter-text]').dom;        
+        var pt = this.trigger.child('/div/div/').child('>*[class=roo-password-meter-text]').dom;        
                 
         //pt.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
         
@@ -250,7 +255,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         pm.removeClass(this.meterClass);
         pm.addClass(this.meterClass[strength]);
                 
-        var pt = this.trigger.child('/div/div/').child('>*[class=password-meter-text]').dom;        
+        var pt = this.trigger.child('/div/div/').child('>*[class=roo-password-meter-text]').dom;        
                 
         pt.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
         
