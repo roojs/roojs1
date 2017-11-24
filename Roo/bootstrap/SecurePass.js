@@ -89,11 +89,11 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
     onRender: function (ct, position) {
         Roo.bootstrap.SecurePass.superclass.onRender.call(this, ct, position);
         this.wrap = this.el.wrap({cls: 'x-form-field-wrap'});
-        this.trigger = this.wrap.createChild({tag: 'div', cls: 'StrengthMeter ' + this.triggerClass});
+        this.trigger = this.wrap.createChild({tag: 'div', cls: 'StrengthMeter col-xs-12' + this.triggerClass});
 
         this.trigger.createChild({
             tag: 'div',
-            cls: 'password-meter-container col-xs-8',
+            cls: 'password-meter-container col-xs-12',
             style: {               
                 //width: this.meterWidth + 'px'
             },
