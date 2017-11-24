@@ -23,7 +23,7 @@
 }
 
 .password-meter-weak {
-    background: pale-red;
+    background: #ffdddd;
     height: 10px;         
 }
 
