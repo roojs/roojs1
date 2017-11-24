@@ -8016,7 +8016,7 @@ Roo.apply(Roo.bootstrap.Form, {
             
             this.target = target;
             
-            if(!this.form.errPopover){
+            if(!this.form.errPopover || !target.el){
                 return;
             }
 
@@ -9844,7 +9844,6 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                         'for' :  id,
                         cls : 'control-label',
                         html : this.fieldLabel
-
                     },
                     {
                         tag : 'i',
