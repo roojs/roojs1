@@ -67,8 +67,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
      * @cfg {String/Object} pwdStrengths A pwdStrengths spec, or true for a default spec (defaults to
      * ['Weak', 'Medium', 'Strong'])
      */
-    // private
-    meterClass: [],
+    // private    
     pwdStrengths: [],    
     // private
     strength: 0,
