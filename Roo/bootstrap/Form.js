@@ -102,9 +102,9 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
     loadMask : true,
     
     /**
-     * @cfg {Boolean} errPopover (true|false) default false
+     * @cfg {Boolean} errorMask (true|false) default false
      */
-    errPopover : false,
+    errorMask : false,
 
     getAutoCreate : function(){
 
@@ -176,7 +176,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
            
         });
         
-        if(this.errPopover && !valid){
+        if(this.errorMask && !valid){
             Roo.bootstrap.Form.popover.mask(this, target);
         }
         
@@ -597,7 +597,7 @@ Roo.apply(Roo.bootstrap.Form, {
             
             this.target = target;
             
-            if(!this.form.errPopover || !target.el){
+            if(!this.form.errorMask || !target.el){
                 return;
             }
 
@@ -647,7 +647,7 @@ Roo.apply(Roo.bootstrap.Form, {
         
         unmask : function()
         {
-            if(!this.isApplied || !this.isMasked || !this.form || !this.target || !this.form.errPopover){
+            if(!this.isApplied || !this.isMasked || !this.form || !this.target || !this.form.errorMask){
                 return;
             }
             
