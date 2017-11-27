@@ -43,8 +43,8 @@
 }
 
 .roo-password-meter-text { 
-    padding-bottom:5px;
-    margin-bottom:50px;    
+    /* padding-bottom:5px; */
+    margin-bottom:30px;    
     font-size: 12px;
     height: 10px;     
 }
