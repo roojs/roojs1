@@ -481,8 +481,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         var group = Roo.bootstrap.CheckBox.get(this.groupId);
         
-        Roo.log('changing group'+this.name);
-        
         if(!group){
             return;
         }
