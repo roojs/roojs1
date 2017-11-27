@@ -12,7 +12,7 @@
     -ms-transform: scale(1, 1);
     -o-transform: scale(1, 1);
     transform: scale(1, 1);
-    background-color: #555555;
+    background-color: @gray;
 }
 
 .roo-radio-set.disabled .radio label 
@@ -27,17 +27,17 @@
 
 .roo-radio-primary .radio label::after 
 {
-    background-color: #fff; 
+    background-color: @white; 
 }
 
 .roo-radio-primary .radio.checked label::before 
 {
-    border-color: #428bca; 
+    border-color: @brand-primary; //#428bca; 
 }
 
 .roo-radio-primary .radio.checked label::after 
 {
-    background-color: #428bca; 
+    background-color: @brand-primary; //#428bca; 
 }
 
 .roo-radio-danger .radio label::after 
