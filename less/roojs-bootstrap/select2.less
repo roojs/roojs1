@@ -189,11 +189,11 @@ Version: 3.4.8 Timestamp: Thu May  1 09:50:32 EDT 2014
     background-clip: padding-box;
 
     background: #ccc;
-    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccc), color-stop(0.6, @gray-lighter));
-    background-image: -webkit-linear-gradient(center bottom, #ccc 0%, @gray-lighter 60%);
-    background-image: -moz-linear-gradient(center bottom, #ccc 0%, @gray-lighter 60%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '@gray-lighter', endColorstr = '#cccccc', GradientType = 0);
-    background-image: linear-gradient(to top, #ccc 0%, @gray-lighter 60%);
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, @gray-lighter-80), color-stop(0.6, @gray-lighter));
+    background-image: -webkit-linear-gradient(center bottom, @gray-lighter-80 0%, @gray-lighter 60%);
+    background-image: -moz-linear-gradient(center bottom, @gray-lighter-80 0%, @gray-lighter 60%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '@gray-lighter', endColorstr = '@gray-lighter-80', GradientType = 0);
+    background-image: linear-gradient(to top, @gray-lighter-80 0%, @gray-lighter 60%);
 }
 
 .roo-select2-container .roo-select2-choice .roo-select2-arrow b {
