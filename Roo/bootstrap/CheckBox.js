@@ -423,6 +423,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     validateCheckbox : function()
     {
         if(!this.groupId){
+            // return (this.getValue() == this.inputValue || this.allowBlank) ? true : false;
             return (this.getValue() == this.inputValue || this.allowBlank) ? true : false;
         }
         
