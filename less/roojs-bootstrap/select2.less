@@ -390,7 +390,7 @@ Version: 3.4.8 Timestamp: Thu May  1 09:50:32 EDT 2014
 disabled look for disabled choices in the results dropdown
 */
 .roo-select2-results .roo-select2-disabled.roo-select2-highlighted {
-    color: #666;
+    color: @gray-lighter; //#666;
     background: @gray-lighter-96-5; //#f4f4f4;
     display: list-item;
     cursor: default;
@@ -410,21 +410,21 @@ disabled look for disabled choices in the results dropdown
 }
 
 .roo-select2-more-results {
-    background: #f4f4f4;
+    background: @gray-lighter-96-5; //#f4f4f4;
     display: list-item;
 }
 
 /* disabled styles */
 
 .roo-select2-container.roo-select2-container-disabled .roo-select2-choice {
-    background-color: #f4f4f4;
+    background-color: @gray-lighter-96-5; //#f4f4f4;
     background-image: none;
     border: 1px solid #ddd;
     cursor: default;
 }
 
 .roo-select2-container.roo-select2-container-disabled .roo-select2-choice .roo-select2-arrow {
-    background-color: #f4f4f4;
+    background-color: @gray-lighter-96-5; //#f4f4f4;
     background-image: none;
     border-left: 0;
 }
