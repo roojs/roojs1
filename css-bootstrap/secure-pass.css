@@ -4,6 +4,7 @@
 
 .roo-password-meter-grey {
     background: lightgrey; /* For browsers that do not support gradients */
+    margin-bottom: 50px;
     height: 10px;
 }
 
@@ -22,17 +23,17 @@
 }
 
 .roo-password-meter-tooweak {
-    background: red ;  
+    background: red ;      
     height: 10px;        
 }
 
 .roo-password-meter-weak {
-    background: #ffdddd;
+    background: #ffdddd;    
     height: 10px;         
 }
 
 .roo-password-meter-medium {
-    background: yellow;
+    background: yellow;    
     height: 10px;          
 }
 
@@ -43,7 +44,7 @@
 
 .roo-password-meter-text { 
     padding-bottom:5px;
-    margin-bottom:5px;    
+    margin-bottom:50px;    
     font-size: 12px;
     height: 10px;     
 }
