@@ -97,6 +97,24 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         this.trigger = this.wrap.createChild({tag: 'div', cls: 'StrengthMeter ' + this.triggerClass});
 
         this.trigger.createChild({
+        	   cn: [
+                    {
+                    //id: 'PwdMeter',
+                    tag: 'div',
+                    cls: 'roo-password-meter-grey col-xs-12',
+                    style: {
+                        //width: 0,
+                        //width: this.meterWidth + 'px'                                                
+                        }
+                    },
+                    {                    	 
+                    	 cls: 'roo-password-meter-text'                    	 
+                    }
+                ]            
+        });
+
+        /*
+        this.trigger.createChild({
             tag: 'div',
             cls: 'roo-password-meter-container col-xs-12',
             style: {               
@@ -124,6 +142,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
                 ]                
             }
         });
+        */
         if (this.hideTrigger) {
             this.trigger.setDisplayed(false);
         }
