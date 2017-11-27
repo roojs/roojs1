@@ -288,15 +288,15 @@
 .datepicker table tr td.active.disabled,
 .datepicker table tr td.active.disabled:hover {
   background-color: @brand-primary; //#006dcc;
-  background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -moz-linear-gradient(top, #0088cc, @brand-primary);
   background-image: -ms-linear-gradient(top, #0088cc, #0044cc);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
-  background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
-  background-image: -o-linear-gradient(top, #0088cc, #0044cc);
-  background-image: linear-gradient(top, #0088cc, #0044cc);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(@brand-primary));
+  background-image: -webkit-linear-gradient(top, #0088cc, @brand-primary);
+  background-image: -o-linear-gradient(top, #0088cc, @brand-primary);
+  background-image: linear-gradient(top, #0088cc, @brand-primary);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0088cc', endColorstr='#0044cc', GradientType=0);
-  border-color: #0044cc #0044cc #002a80;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0088cc', endColorstr='@brand-primary', GradientType=0);
+  border-color: @brand-primary @brand-primary #002a80;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
   color: #fff;
