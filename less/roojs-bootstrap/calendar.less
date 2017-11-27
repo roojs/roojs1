@@ -126,11 +126,11 @@ html .fc,
 
 .fc-widget-header,    /* <th>, usually */
 .fc-widget-content {  /* <td>, usually */
-    border: 1px solid #ddd;
+    border: 1px solid @gray-lighter-86-5;
 }
 
 .fc-state-highlight { /* <td> today cell */ /* TODO: add .fc-today to <th> */
-    background: #fcf8e3;
+    background: @state-warning-bg;
 }
 
 .fc-cell-overlay { /* semi-transparent rectangle while dragging */
@@ -217,7 +217,7 @@ html .fc,
     border-color: @black-opacity-10 @black-opacity-10 @black-opacity-25;
     color: @gray-dark;
     text-shadow: 0 1px 1px @white-opacity-75;
-    box-shadow: inset 0 1px 0 @white-opacity-20, 0 1px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 1px 0 @white-opacity-20, 0 1px 2px @black-opacity-05;
 }
 
 .fc-state-hover,
