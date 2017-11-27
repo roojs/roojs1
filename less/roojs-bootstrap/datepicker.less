@@ -297,10 +297,10 @@
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='lighten(@brand-primary, 5%)', endColorstr='@brand-primary', GradientType=0);
   border-color: @brand-primary @brand-primary darken(@brand-primary, 10%);
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  border-color: @black-opacity-10 @black-opacity-10 @black-opacity-25;
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
   color: #fff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  text-shadow: 0 -1px 0 @black-opacity-25;
 }
 .datepicker table tr td.active:hover,
 .datepicker table tr td.active:hover:hover,
