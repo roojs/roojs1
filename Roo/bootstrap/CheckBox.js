@@ -473,6 +473,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             return;
         }
         
+        Roo.log('marking valid');
+        
         if(!this.groupId){
             this.el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
             this.el.findParent('.form-group', false, true).addClass(this.validClass);
