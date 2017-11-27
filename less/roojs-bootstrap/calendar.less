@@ -207,11 +207,11 @@ html .fc,
 
 .fc-state-default {
     background-color: @gray-lighter;
-    background-image: -moz-linear-gradient(top, @white-base, @gray-lighter);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@white-base), to(@gray-lighter));
-    background-image: -webkit-linear-gradient(top, @white-base, @gray-lighter);
-    background-image: -o-linear-gradient(top, @white-base, @gray-lighter);
-    background-image: linear-gradient(to bottom, @white-base, @gray-lighter);
+    background-image: -moz-linear-gradient(top, @white, @gray-lighter);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@white), to(@gray-lighter));
+    background-image: -webkit-linear-gradient(top, @white, @gray-lighter);
+    background-image: -o-linear-gradient(top, @white, @gray-lighter);
+    background-image: linear-gradient(to bottom, @white, @gray-lighter);
     background-repeat: repeat-x;
     border-color: @gray-lighter @gray-lighter @gray-light;
     border-color: @black-opacity-10 @black-opacity-10 @black-opacity-25;
@@ -269,7 +269,7 @@ html .fc,
 .fc-event {
     border: 1px solid @brand-primary; /* default BORDER color */
     background-color: @brand-primary; /* default BACKGROUND color */
-    color:@white-base;               /* default TEXT color */
+    color:@white;               /* default TEXT color */
     font-size: .85em;
     cursor: default;
 }
@@ -564,7 +564,7 @@ table.fc-border-separate {
     left: 0;
     width: 100%;
     height: 100%;
-    background: @white-base;
+    background: @white;
     opacity: .25;
     filter: alpha(opacity=25);
 }
