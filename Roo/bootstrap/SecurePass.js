@@ -185,7 +185,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         pm.addClass(this.meterClass[strength]);
                 
         
-        var pt = this.trigger.child('/div/div/').child('>*[class=roo-password-meter-text]').dom;        
+        var pt = this.trigger.child('/div').child('>*[class=roo-password-meter-text]').dom;        
                 
         pt.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
         
@@ -196,12 +196,12 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         
         this._lastPwd = '';
         
-        var pm = this.trigger.child('div/div/div');
+        var pm = this.trigger.child('div/div');
         pm.removeClass(this.meterClass);
         pm.addClass('roo-password-meter-grey');        
         
         
-        var pt = this.trigger.child('/div/div/').child('>*[class=roo-password-meter-text]').dom;        
+        var pt = this.trigger.child('/div').child('>*[class=roo-password-meter-text]').dom;        
         
         pt.innerHTML = '';
         this.inputEl().dom.type='password';
@@ -265,11 +265,11 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         
         //var pm = this.trigger.child('div/div/div').dom;
         
-        var pm = this.trigger.child('div/div/div');
+        var pm = this.trigger.child('div/div');
         pm.removeClass(this.meterClass);
         pm.addClass(this.meterClass[strength]);
                 
-        var pt = this.trigger.child('/div/div/').child('>*[class=roo-password-meter-text]').dom;        
+        var pt = this.trigger.child('/div').child('>*[class=roo-password-meter-text]').dom;        
                 
         pt.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
         
