@@ -126,15 +126,15 @@ html .fc,
 
 .fc-widget-header,    /* <th>, usually */
 .fc-widget-content {  /* <td>, usually */
-    border: 1px solid @gray-lighter;
+    border: 1px solid #ddd;
 }
 
 .fc-state-highlight { /* <td> today cell */ /* TODO: add .fc-today to <th> */
-    background: @state-highlight-background;
+    background: #fcf8e3;
 }
 
 .fc-cell-overlay { /* semi-transparent rectangle while dragging */
-    background: @cell-overlay-background;
+    background: #bce8f1;
     opacity: .3;
     filter: alpha(opacity=30); /* for IE */
 }
@@ -206,30 +206,30 @@ html .fc,
 */
 
 .fc-state-default {
-    background-color: @gray-lighter;
-    background-image: -moz-linear-gradient(top, @white, @gray-lighter);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@white), to(@gray-lighter));
-    background-image: -webkit-linear-gradient(top, @white, @gray-lighter);
-    background-image: -o-linear-gradient(top, @white, @gray-lighter);
-    background-image: linear-gradient(to bottom, @white, @gray-lighter);
+    background-color: #f5f5f5;
+    background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+    background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+    background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+    background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
     background-repeat: repeat-x;
-    border-color: @gray-lighter @gray-lighter @gray-light;
-    border-color: @black-opacity-10 @black-opacity-10 @black-opacity-25;
-    color: @gray-dark;
-    text-shadow: 0 1px 1px @white-opacity-75;
-    box-shadow: inset 0 1px 0 @white-opacity-20, 0 1px 2px @black-opacity-05;
+    border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #333;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .fc-state-hover,
 .fc-state-down,
 .fc-state-active,
 .fc-state-disabled {
-    color: @gray-dark;
-    background-color: @gray-lighter;
+    color: #333333;
+    background-color: #e6e6e6;
 }
 
 .fc-state-hover {
-    color: @gray-dark;
+    color: #333333;
     text-decoration: none;
     background-position: 0 -15px;
     -webkit-transition: background-position 0.1s linear;
@@ -240,10 +240,10 @@ html .fc,
 
 .fc-state-down,
 .fc-state-active {
-    background-color: @gray-lighter;
+    background-color: #cccccc;
     background-image: none;
     outline: 0;
-    box-shadow: inset 0 2px 4px @black-opacity-15, 0 1px 2px @black-opacity-05;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .fc-state-disabled {
@@ -267,9 +267,9 @@ html .fc,
 }
 
 .fc-event {
-    border: 1px solid @brand-primary; /* default BORDER color */
-    background-color: @brand-primary; /* default BACKGROUND color */
-    color:@white;               /* default TEXT color */
+    border: 1px solid #3a87ad; /* default BORDER color */
+    background-color: #3a87ad; /* default BACKGROUND color */
+    color: #fff;               /* default TEXT color */
     font-size: .85em;
     cursor: default;
 }
@@ -494,7 +494,7 @@ table.fc-border-separate {
 }
 
 .fc-widget-header .fc-agenda-divider-inner {
-    background: @gray-lighter;
+    background: #eee;
 }
 
 /* slot rows */
@@ -564,7 +564,7 @@ table.fc-border-separate {
     left: 0;
     width: 100%;
     height: 100%;
-    background: @white;
+    background: #fff;
     opacity: .25;
     filter: alpha(opacity=25);
 }
