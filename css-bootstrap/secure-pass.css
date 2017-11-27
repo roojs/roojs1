@@ -1,3 +1,7 @@
+.x-form-field-wrap .form-group {
+    margin-bottom: 0px;
+}
+
 .roo-password-meter-grey {
     background: lightgrey; /* For browsers that do not support gradients */
     height: 10px;
