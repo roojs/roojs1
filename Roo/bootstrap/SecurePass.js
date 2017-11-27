@@ -180,7 +180,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         console.log('strength1: ' + strength);
         
         //var pm = this.trigger.child('div/div/div').dom;
-        var pm = this.trigger.child('div/div/div');
+        var pm = this.trigger.child('div/div');
         pm.removeClass(this.meterClass);
         pm.addClass(this.meterClass[strength]);
                 
