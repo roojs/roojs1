@@ -547,6 +547,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     {
         Roo.bootstrap.Input.prototype.clearInvalid.call(this);
         
+        this.el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
+        
         var label = Roo.bootstrap.FieldLabel.get(this.name + '-group');
         
         if (label) {
