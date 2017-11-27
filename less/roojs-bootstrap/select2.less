@@ -61,11 +61,11 @@ Version: 3.4.8 Timestamp: Thu May  1 09:50:32 EDT 2014
 
     border-radius: 0 0 4px 4px;
 
-    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #eee), color-stop(0.9, #fff));
-    background-image: -webkit-linear-gradient(center bottom, #eee 0%, #fff 90%);
-    background-image: -moz-linear-gradient(center bottom, #eee 0%, #fff 90%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#eeeeee', GradientType=0);
-    background-image: linear-gradient(to bottom, #eee 0%, #fff 90%);
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, @gray-lighter), color-stop(0.9, @white));
+    background-image: -webkit-linear-gradient(center bottom, @gray-lighter 0%, @white 90%);
+    background-image: -moz-linear-gradient(center bottom, @gray-lighter 0%, @white 90%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@white', endColorstr='@gray-lighter', GradientType=0);
+    background-image: linear-gradient(to bottom, #eee 0%, @white 90%);
 }
 
 .roo-select2-container.roo-select2-allowclear .roo-select2-choice .roo-select2-chosen {
