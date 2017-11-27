@@ -473,7 +473,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             return;
         }
         
-        Roo.log('marking valid');
         
         if(!this.groupId){
             this.el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
@@ -486,6 +485,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         if(!group){
             return;
         }
+        Roo.log('marking valid'+this.name);
         
         for(var i in group){
             group[i].el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
