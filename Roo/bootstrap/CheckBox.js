@@ -426,6 +426,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             return (this.getValue() == this.inputValue || this.allowBlank) ? true : false;
         }
         
+        Roo.log('validating');
+        
         var group = Roo.bootstrap.CheckBox.get(this.groupId);
         
         if(!group){
