@@ -566,6 +566,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         this.indicator = this.indicatorEl();
         
+        Roo.log(this.name+' is initing');
+        
         if(this.indicator){
             this.indicator.setVisibilityMode(Roo.Element.DISPLAY);
             this.indicator.hide();
