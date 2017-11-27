@@ -48,12 +48,12 @@ Version: 3.4.8 Timestamp: Thu May  1 09:50:32 EDT 2014
           -ms-user-select: none;
               user-select: none;
 
-    background-color: #fff;
-    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #eee), color-stop(0.5, #fff));
-    background-image: -webkit-linear-gradient(center bottom, #eee 0%, #fff 50%);
+    background-color: @white;
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, @gray-lighter), color-stop(0.5, @white));
+    background-image: -webkit-linear-gradient(center bottom, @gray-lighter 0%, @white 50%);
     background-image: -moz-linear-gradient(center bottom, #eee 0%, #fff 50%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#ffffff', endColorstr = '#eeeeee', GradientType = 0);
-    background-image: linear-gradient(to top, #eee 0%, #fff 50%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '@white', endColorstr = '@gray-lighter', GradientType = 0);
+    background-image: linear-gradient(to top, @gray-lighter 0%, @white 50%);
 }
 
 .roo-select2-container.roo-select2-drop-above .roo-select2-choice {
