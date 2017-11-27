@@ -196,7 +196,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
             return false;
         });
         
-        if(this.disabled || this.allowBlank || valid){
+        if(this.disabled || valid){
             this.markValid();
             return true;
         }
