@@ -20,7 +20,7 @@
  * @cfg {String/HTMLElement/Element} resizeEl An element to resize if {@link #fitToFrame} is true (instead of this panel's element)
  * @cfg {Toolbar}   toolbar       A toolbar for this panel
  * @cfg {Boolean} autoScroll    True to scroll overflow in this panel (use with {@link #fitToFrame})
- * @cfg {String|Object} title          The title for this panel or object { xs : 'small title' , 'md' : medim title ....}
+ * @cfg {String|Object} title          The title for this panel or object { 'xs-sm-md' : 'small title' , 'lg' : medim title ....}
  
  * 
  * @cfg {Array} adjustments     Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])
@@ -115,6 +115,14 @@ Roo.bootstrap.panel.Content = function( config){
     }else{
         Roo.apply(this, config);
     }
+    
+    // convert 'title' object into a string
+    // eg.
+    // { 'xs-sm' : 'atitle', "md-lg": "xxxx"}
+    // becomes:
+    // <spam class="visible-xs .visible-sm">{0}</span><span class="visible-md .visible-lg">
+    // show a roo.log messages if a size is not found ....
+    
     
     if(this.resizeEl){
         this.resizeEl = Roo.get(this.resizeEl, true);
