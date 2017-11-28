@@ -130,7 +130,7 @@ html .fc,
 }
 
 .fc-state-highlight { /* <td> today cell */ /* TODO: add .fc-today to <th> */
-    background: @warning-lighter-33; //#fcf8e3
+    background: @brand-warning; //#fcf8e3
 }
 
 .fc-cell-overlay { /* semi-transparent rectangle while dragging */
@@ -207,13 +207,13 @@ html .fc,
 
 .fc-state-default {
     background-color: @well-bg;
-    background-image: -moz-linear-gradient(top, @body-bg, @gray-lighter-90);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@body-bg), to(@gray-lighter-90));
-    background-image: -webkit-linear-gradient(top, @body-bg, @gray-lighter-90);
-    background-image: -o-linear-gradient(top, @body-bg, @gray-lighter-90);
-    background-image: linear-gradient(to bottom, @body-bg, @gray-lighter-90);
+    background-image: -moz-linear-gradient(top, @body-bg, @gray-light);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@body-bg), to(@gray-light));
+    background-image: -webkit-linear-gradient(top, @body-bg, @gray-light);
+    background-image: -o-linear-gradient(top, @body-bg, @gray-light);
+    background-image: linear-gradient(to bottom, @body-bg, @gray-light);
     background-repeat: repeat-x;
-    border-color: @gray-lighter-90 @gray-lighter-90 @gray-light;
+    border-color: @gray-light @gray-light @gray-light;
     border-color: @black-opacity-20 @black-opacity-20 @black-opacity-50;
     color: @gray-dark;
 }
@@ -223,7 +223,7 @@ html .fc,
 .fc-state-active,
 .fc-state-disabled {
     color: @gray-dark;
-    background-color: @gray-lighter-90;
+    background-color: @gray-light;
 }
 
 .fc-state-hover {
