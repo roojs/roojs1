@@ -471,7 +471,7 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
     initPanelAsTab : function(panel){
         var ti = this.tabs.addTab(
             panel.getEl().id,
-            panel.getTitle(),
+            panel.getTitle()+'testing',
             null,
             this.config.closeOnTab && panel.isClosable(),
             panel.tpl
