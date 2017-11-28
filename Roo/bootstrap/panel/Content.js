@@ -379,6 +379,8 @@ panel.load({
             return this.title;
         }
         
+        var t;
+        
         for (var k in this.title) {
             if (!this.title.hasOwnProperty(k)) {
                 continue;
