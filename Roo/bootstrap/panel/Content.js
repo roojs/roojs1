@@ -378,6 +378,17 @@ panel.load({
         if (typeof(this.title) != 'object') {
             return this.title;
         }
+        
+        for (var k in this.title) {
+            if (!this.title.hasOwnProperty(k)) {
+                continue;
+            }
+            
+            if (k.match(',')) {
+                var s = this.title[k].split("-");
+                Roo.log('size : '+s);
+            }
+        }
 
     },
     
