@@ -656,7 +656,7 @@ Roo.apply(Roo.bootstrap.Form, {
                 this.target.el.setStyle('z-index', this.oIndex);
             }
             
-            this.target.el.removeClass('roo-invalid-outline');
+            this.target.container.removeClass('roo-invalid-outline');
             
             this.toolTip.hide();
             
