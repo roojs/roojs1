@@ -394,6 +394,7 @@ panel.load({
                 case (k.indexOf('md') >= 0):
                     t += '<span class="visible-md">' + this.title[k] + '</span>';
                 case (k.indexOf('lg') >= 0):
+                    Roo.log('why enter in: '+k.indexOf('lg') >= 0);
                     t += '<span class="visible-lg">' + this.title[k] + '</span>';
             }
             
