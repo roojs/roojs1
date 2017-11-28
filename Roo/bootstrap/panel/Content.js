@@ -388,7 +388,7 @@ panel.load({
             
             switch (true) {
                 case (k.indexOf('xs') >= 0):
-                    Roo.log('index of xs: '+k.indexOf('xs'));
+                    Roo.log('index of xs: '+(k.indexOf('xs')>=0));
                     t += '<span class="visible-xs">' + this.title[k] + '</span>';
                 case (k.indexOf('sm') >= 0):
                     Roo.log('index of sm: '+k.indexOf('sm'));
