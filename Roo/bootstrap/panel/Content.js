@@ -389,7 +389,6 @@ panel.load({
             
             if (k.indexOf('-') >= 0) {
                 var s = k.split('-');
-                Roo.log(s);
             }
         }
         return t;
