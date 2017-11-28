@@ -120,7 +120,7 @@ Roo.bootstrap.panel.Content = function( config){
     // eg.
     // { 'xs-sm' : 'atitle', "md-lg": "xxxx"}
     // becomes:
-    // <spam class="visible-xs .visible-sm">{0}</span><span class="visible-md .visible-lg">
+    // <spam class="visible-xs .visible-sm">+hhhh+</span><span class="visible-md .visible-lg">{1}<span>
     // show a roo.log messages if a size is not found ....
     
     
