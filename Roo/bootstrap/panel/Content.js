@@ -374,10 +374,14 @@ panel.load({
      * @return {String} 
      */
     getTitle : function(){
+        
         if (typeof(this.title) != 'object') {
             return this.title;
         }
         
+        for (var i=0; i<this.title.length; i++) {
+            Roo.log(this.title[i]);
+        }
     },
     
     /**
