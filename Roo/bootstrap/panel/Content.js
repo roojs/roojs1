@@ -382,8 +382,8 @@ panel.load({
      * @param {String} title
      */
     setTitle : function(title){
+        title = 'testing';
         this.title = title;
-        title .= 'testing';
         if(this.region){
             this.region.updatePanelTitle(this, title);
         }
