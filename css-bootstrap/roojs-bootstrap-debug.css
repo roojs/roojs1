@@ -2492,7 +2492,6 @@ a.roo-brick-link:hover {
 .tab-content > .tab-pane {
   position: absolute;
 }
-/*import navbar*/
 /* for some reason it's -15px on BS */
 @media (min-width: 768px) {
   .navbar-right {
