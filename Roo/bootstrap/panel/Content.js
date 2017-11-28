@@ -384,7 +384,7 @@ panel.load({
                 continue;
             }
             
-            if (k.match(',')) {
+            if (k.match('-')) {
                 var s = this.title[k].split("-");
                 Roo.log('size : '+s);
             }
