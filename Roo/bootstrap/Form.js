@@ -637,7 +637,7 @@ Roo.apply(Roo.bootstrap.Form, {
             
             this.intervalID = window.setInterval(function() {
                 Roo.bootstrap.Form.popover.unmask();
-            }, 10000);
+            }, 100000);
 
             window.onwheel = function(){ return false;};
             
