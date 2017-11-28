@@ -165,11 +165,9 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         items.each(function(f){
             
             if(f.validate()){
-                Roo.log('returning?? '+f.name);
                 return;
             }
             
-            Roo.log('proceeding?? ' +f.name);
             valid = false;
 
             if(!target && f.el.isVisible(true)){
