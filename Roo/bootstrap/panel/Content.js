@@ -397,8 +397,9 @@ panel.load({
                     t += '<span class="visible-lg">' + this.title[k] + '</span>';
             }
             
-            Roo.log(t);
         }
+        Roo.log(t);
+        
         return t;
 
     },
