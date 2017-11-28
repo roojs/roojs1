@@ -176,11 +176,9 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
            
         });
         
-        /*
         if(this.errorMask && !valid){
             Roo.bootstrap.Form.popover.mask(this, target);
         }
-        */
         
         return valid;
     },
