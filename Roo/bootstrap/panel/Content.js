@@ -379,7 +379,7 @@ panel.load({
             return this.title;
         }
         
-        var t;
+        var t = '';
         
         for (var k in this.title) {
             if (!this.title.hasOwnProperty(k)) {
