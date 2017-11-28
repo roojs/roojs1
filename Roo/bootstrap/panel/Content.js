@@ -386,10 +386,18 @@ panel.load({
                 continue;
             }
             
-            if (k.match('-')) {
-                var s = k.split("-");
-                Roo.log('size : '+s);
+            switch (true) {
+                case (k.indexOf('xs') >= 0):
+                    t .= '<span class="visible-xs">' + k + '</span>';
+                case (k.indexOf('sm') >= 0):
+                    t .= '<span class="visible-sm">' + k + '</span>';
+                case (k.indexOf('md') >= 0):
+                    t .= '<span class="visible-md">' + k + '</span>';
+                case (k.indexOf('lg') >= 0):
+                    t .= '<span class="visible-lg">' + k + '</span>';
             }
+            
+            Roo.log(t);
         }
 
     },
