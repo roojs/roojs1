@@ -380,7 +380,7 @@ panel.load({
         }
         
         for (var i=0; i<this.title.length; i++) {
-            Roo.log(this.title[i]);
+            Roo.log('title::' +this.title[i]);
         }
     },
     
