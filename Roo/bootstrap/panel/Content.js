@@ -374,6 +374,8 @@ panel.load({
      * @return {String} 
      */
     getTitle : function(){
+        Roo.log('type offfff: '+typeof(this.title));
+        
         return this.title;
     },
     
