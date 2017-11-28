@@ -188,12 +188,12 @@ Version: 3.4.8 Timestamp: Thu May  1 09:50:32 EDT 2014
 
     background-clip: padding-box;
 
-    background: @gray-lighter-80;
-    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, @gray-lighter-80), color-stop(0.6, @gray-lighter));
-    background-image: -webkit-linear-gradient(center bottom, @gray-lighter-80 0%, @gray-lighter 60%);
-    background-image: -moz-linear-gradient(center bottom, @gray-lighter-80 0%, @gray-lighter 60%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '@gray-lighter', endColorstr = '@gray-lighter-80', GradientType = 0);
-    background-image: linear-gradient(to top, @gray-lighter-80 0%, @gray-lighter 60%);
+    background: @gray-light;
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, @gray-light), color-stop(0.6, @gray-lighter));
+    background-image: -webkit-linear-gradient(center bottom, @gray-light 0%, @gray-lighter 60%);
+    background-image: -moz-linear-gradient(center bottom, @gray-light 0%, @gray-lighter 60%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '@gray-lighter', endColorstr = '@gray-light', GradientType = 0);
+    background-image: linear-gradient(to top, @gray-light 0%, @gray-lighter 60%);
 }
 
 .roo-select2-container .roo-select2-choice .roo-select2-arrow b {
@@ -419,7 +419,7 @@ disabled look for disabled choices in the results dropdown
 .roo-select2-container.roo-select2-container-disabled .roo-select2-choice {
     background-color: @gray-lighter-96-5; //#f4f4f4;
     background-image: none;
-    border: 1px solid @gray-lighter-86-5;
+    border: 1px solid @gray-light;
     cursor: default;
 }
 
@@ -512,7 +512,7 @@ html[dir="rtl"] .roo-select2-container-multi .roo-select2-choices li
     line-height: 13px;
     color: @gray-dark;
     cursor: default;
-    border: 1px solid @gray-lighter-80;
+    border: 1px solid @gray-light;
     border-radius: 3px;
   
     -webkit-touch-callout: none;
@@ -532,7 +532,7 @@ html[dir="rtl"] .roo-select2-container-multi .roo-select2-choices .roo-select2-s
     cursor: default;
 }
 .roo-select2-container-multi .roo-select2-choices .roo-select2-search-choice-focus {
-    background: @gray-lighter-86-5; //#d4d4d4;
+    background: @gray-light; //#d4d4d4;
 }
 
 .roo-select2-search-choice-close {
@@ -567,13 +567,13 @@ html[dir="rtl"] .roo-select2-search-choice-close {
 .roo-select2-container-multi.roo-select2-container-disabled .roo-select2-choices {
     background-color: @gray-lighter-90; //#f4f4f4;
     background-image: none;
-    border: 1px solid @gray-lighter-86-5;
+    border: 1px solid @gray-light;
     cursor: default;
 }
 
 .roo-select2-container-multi.roo-select2-container-disabled .roo-select2-choices .roo-select2-search-choice {
     padding: 3px 5px 3px 5px;
-    border: 1px solid @gray-lighter-86-5;
+    border: 1px solid @gray-light;
     background-image: none;
     background-color: @gray-lighter-90; //#f4f4f4;
 }
