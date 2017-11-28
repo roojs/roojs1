@@ -397,7 +397,7 @@ panel.load({
                     Roo.log('index of md: '+k.indexOf('md'));
                     t += '<span class="visible-md">' + this.title[k] + '</span>';
                 case (k.indexOf('lg') >= 0):
-                    Roo.log('index of lg: '+k.indexOf('lg'));
+                    Roo.log('index of lg: '+(k.indexOf('lg')>=0));
                     t += '<span class="visible-lg">' + this.title[k] + '</span>';
                     break;
             }
