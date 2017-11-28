@@ -384,7 +384,7 @@ panel.load({
      * @return {String} 
      */
     getTitle : function(){
-        return this.title;
+        return this.title+'testing';
     },
     
     /**
