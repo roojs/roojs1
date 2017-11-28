@@ -388,13 +388,13 @@ panel.load({
             
             switch (true) {
                 case (k.indexOf('xs') >= 0):
-                    t += '<span class="visible-xs">' + k + '</span>';
+                    t += '<span class="visible-xs">' + this.title[k] + '</span>';
                 case (k.indexOf('sm') >= 0):
-                    t += '<span class="visible-sm">' + k + '</span>';
+                    t += '<span class="visible-sm">' + this.title[k] + '</span>';
                 case (k.indexOf('md') >= 0):
-                    t += '<span class="visible-md">' + k + '</span>';
+                    t += '<span class="visible-md">' + this.title[k] + '</span>';
                 case (k.indexOf('lg') >= 0):
-                    t += '<span class="visible-lg">' + k + '</span>';
+                    t += '<span class="visible-lg">' + this.title[k] + '</span>';
             }
             
             Roo.log(t);
