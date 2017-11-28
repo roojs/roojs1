@@ -603,6 +603,8 @@ Roo.apply(Roo.bootstrap.Form, {
 
             this.oIndex = target.el.getStyle('z-index');
             
+            Roo.log(this.target.el);
+            
             this.target.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
         
             this.target.el.addClass('roo-invalid-outline');
