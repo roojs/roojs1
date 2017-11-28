@@ -1538,9 +1538,9 @@ table.fc-border-separate {
   line-height: 100px;
   max-height: 100px;
   border: 1px solid #eeeeee;
-  -webkit-box-shadow: 1px 0px 5px 0px rgba(238, 238, 238, 0.75);
-  -moz-box-shadow: 1px 0px 5px 0px rgba(238, 238, 238, 0.75);
-  box-shadow: 1px 0px 5px 0px rgba(238, 238, 238, 0.75);
+  -webkit-box-shadow: 1px 0px 5px 0px rgba(119, 119, 119, 0.75);
+  -moz-box-shadow: 1px 0px 5px 0px rgba(119, 119, 119, 0.75);
+  box-shadow: 1px 0px 5px 0px rgba(119, 119, 119, 0.75);
 }
 .roo-document-manager-thumb > i.fa,
 .roo-document-manager-upload-btn > i.fa {
