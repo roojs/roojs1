@@ -374,9 +374,10 @@ panel.load({
      * @return {String} 
      */
     getTitle : function(){
-        Roo.log('type offfff: '+typeof(this.title));
+        if (typeof(this.title) != 'object') {
+            return this.title;
+        }
         
-        return this.title;
     },
     
     /**
