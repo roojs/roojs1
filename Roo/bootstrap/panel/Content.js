@@ -20,11 +20,8 @@
  * @cfg {String/HTMLElement/Element} resizeEl An element to resize if {@link #fitToFrame} is true (instead of this panel's element)
  * @cfg {Toolbar}   toolbar       A toolbar for this panel
  * @cfg {Boolean} autoScroll    True to scroll overflow in this panel (use with {@link #fitToFrame})
- * @cfg {String} title          The title for this panel
- * @cfg {String} title_xs        extra small title
- * @cfg {String} title_sm        small title
- * @cfg {String} title_md        medium title
- * @cfg {String} title_lg        medium title
+ * @cfg {String|Object} title          The title for this panel or object { xs : 'small title' , 'md' : medim title ....}
+ 
  * 
  * @cfg {Array} adjustments     Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])
  * @cfg {String} url            Calls {@link #setUrl} with this value
