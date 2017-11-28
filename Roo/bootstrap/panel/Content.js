@@ -394,9 +394,6 @@ panel.load({
                     t += '<span class="visible-md">' + this.title[k] + '</span>';
                 case (k.indexOf('lg') >= 0):
                     t += '<span class="visible-lg">' + this.title[k] + '</span>';
-                    break;
-                default:
-                    break;
             }
             
         }
