@@ -382,9 +382,11 @@ panel.load({
         var t = '';
     
         for (var k in this.title) {
+            
             if (!this.title.hasOwnProperty(k)) {
                 continue;
             }
+            
             switch (true) {
                 case (k.indexOf('xs') >= 0):
                     t += '<span class="visible-xs">' + this.title[k] + '</span>';
