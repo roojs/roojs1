@@ -378,10 +378,7 @@ panel.load({
         if (typeof(this.title) != 'object') {
             return this.title;
         }
-        
-        for (var i=0; i<this.title.length; i++) {
-            Roo.log('title::' +this.title[i]);
-        }
+
     },
     
     /**
