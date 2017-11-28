@@ -395,8 +395,8 @@ panel.load({
             } else {
                 t += "<span class='visible-"+k+"'>"+this.title[k]+"</span>";
             }
+            
         }
-        Roo.log(t);
         return t;
 
     },
