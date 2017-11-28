@@ -593,6 +593,7 @@ Roo.apply(Roo.bootstrap.Form, {
         
         mask : function(form, target)
         {
+            Roo.log('masking: '+target);
             this.form = form;
             
             this.target = target;
