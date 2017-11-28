@@ -380,9 +380,7 @@ panel.load({
         }
         
         var t = '';
-    
         for (var k in this.title) {
-            
             if (!this.title.hasOwnProperty(k)) {
                 continue;
             }
@@ -395,10 +393,8 @@ panel.load({
             } else {
                 t += "<span class='visible-"+k+"'>"+this.title[k]+"</span>";
             }
-            
         }
         return t;
-
     },
     
     /**
