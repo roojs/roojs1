@@ -21,6 +21,11 @@
  * @cfg {Toolbar}   toolbar       A toolbar for this panel
  * @cfg {Boolean} autoScroll    True to scroll overflow in this panel (use with {@link #fitToFrame})
  * @cfg {String} title          The title for this panel
+ * @cfg {String} title_xs        extra small title
+ * @cfg {String} title_sm        small title
+ * @cfg {String} title_md        medium title
+ * @cfg {String} title_lg        medium title
+ * 
  * @cfg {Array} adjustments     Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])
  * @cfg {String} url            Calls {@link #setUrl} with this value
  * @cfg {String} region         (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)
