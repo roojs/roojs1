@@ -388,17 +388,18 @@ panel.load({
             
             switch (true) {
                 case (k.indexOf('xs') >= 0):
-                    Roo.log('index of xs: '+Roo.log(k.indexOf('xs')));
+                    Roo.log('index of xs: '+k.indexOf('xs'));
                     t += '<span class="visible-xs">' + this.title[k] + '</span>';
                 case (k.indexOf('sm') >= 0):
-                    Roo.log('index of xs: '+Roo.log(k.indexOf('sm')));
+                    Roo.log('index of xs: '+k.indexOf('sm'));
                     t += '<span class="visible-sm">' + this.title[k] + '</span>';
                 case (k.indexOf('md') >= 0):
-                    Roo.log('index of xs: '+Roo.log(k.indexOf('md')));
+                    Roo.log('index of xs: '+k.indexOf('md'));
                     t += '<span class="visible-md">' + this.title[k] + '</span>';
                 case (k.indexOf('lg') >= 0):
-                    Roo.log('index of xs: '+Roo.log(k.indexOf('lg')));
+                    Roo.log('index of xs: '+k.indexOf('lg'));
                     t += '<span class="visible-lg">' + this.title[k] + '</span>';
+                    break;
             }
             
         }
