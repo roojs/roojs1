@@ -165,7 +165,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         items.each(function(f){
             
             if(f.validate()){
-                Roo.log('returning?? '+JSON.stringify(f.el.dom));
+                Roo.log('returning?? '+f.name);
                 return;
             }
             
