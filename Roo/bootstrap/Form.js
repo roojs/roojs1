@@ -605,6 +605,7 @@ Roo.apply(Roo.bootstrap.Form, {
             
             this.target.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
         
+            //get parent el...
             this.target.el.addClass('roo-invalid-outline');
             
             var scrollable = this.target.el.findScrollableParent() || this.target.el.findParent('div.modal', 100, true) || Roo.get(document.body);
