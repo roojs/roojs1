@@ -390,7 +390,7 @@ panel.load({
             if (k.indexOf('-') >= 0) {
                 var s = k.split('-');
                 for (var i = 0; i<s.length; i++) {
-                    t += '<span class="${s[i]}">${this.title[k]}</span>';
+                    t += '<span class="'+s[i]}+'">'+this.title[k]'</span>';
                 }
             }
         }
