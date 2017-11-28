@@ -207,17 +207,17 @@ html .fc,
 
 .fc-state-default {
     background-color: @well-bg;
-    background-image: -moz-linear-gradient(top, @white, @gray-lighter-90);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@white), to(@gray-lighter-90));
-    background-image: -webkit-linear-gradient(top, @white, @gray-lighter-90);
-    background-image: -o-linear-gradient(top, @white, @gray-lighter-90);
-    background-image: linear-gradient(to bottom, @white, @gray-lighter-90);
+    background-image: -moz-linear-gradient(top, @body-bg, @gray-lighter-90);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@body-bg), to(@gray-lighter-90));
+    background-image: -webkit-linear-gradient(top, @body-bg, @gray-lighter-90);
+    background-image: -o-linear-gradient(top, @body-bg, @gray-lighter-90);
+    background-image: linear-gradient(to bottom, @body-bg, @gray-lighter-90);
     background-repeat: repeat-x;
     border-color: @gray-lighter-90 @gray-lighter-90 @gray-lighter-75;
     border-color: @black-opacity-10 @black-opacity-10 @black-opacity-25;
     color: @gray-dark;
-    text-shadow: 0 1px 1px @white-opacity-75;
-    box-shadow: inset 0 1px 0 @white-opacity-20, 0 1px 2px @black-opacity-05;
+    text-shadow: 0 1px 1px @body-bg-opacity-75;
+    box-shadow: inset 0 1px 0 @body-bg-opacity-20, 0 1px 2px @black-opacity-05;
 }
 
 .fc-state-hover,
@@ -269,7 +269,7 @@ html .fc,
 .fc-event {
     border: 1px solid @brand-primary; //#3a87ad; /* default BORDER color */
     background-color: @brand-primary; //#3a87ad; /* default BACKGROUND color */
-    color: @white;               /* default TEXT color */
+    color: @body-bg;               /* default TEXT color */
     font-size: .85em;
     cursor: default;
 }
@@ -564,7 +564,7 @@ table.fc-border-separate {
     left: 0;
     width: 100%;
     height: 100%;
-    background: @white;
+    background: @body-bg;
     opacity: .25;
     filter: alpha(opacity=25);
 }

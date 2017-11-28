@@ -48,12 +48,12 @@ Version: 3.4.8 Timestamp: Thu May  1 09:50:32 EDT 2014
           -ms-user-select: none;
               user-select: none;
 
-    background-color: @white;
-    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, @gray-lighter), color-stop(0.5, @white));
-    background-image: -webkit-linear-gradient(center bottom, @gray-lighter 0%, @white 50%);
-    background-image: -moz-linear-gradient(center bottom, @gray-lighter 0%, @white 50%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '@white', endColorstr = '@gray-lighter', GradientType = 0);
-    background-image: linear-gradient(to top, @gray-lighter 0%, @white 50%);
+    background-color: @body-bg;
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, @gray-lighter), color-stop(0.5, @body-bg));
+    background-image: -webkit-linear-gradient(center bottom, @gray-lighter 0%, @body-bg 50%);
+    background-image: -moz-linear-gradient(center bottom, @gray-lighter 0%, @body-bg 50%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '@body-bg', endColorstr = '@gray-lighter', GradientType = 0);
+    background-image: linear-gradient(to top, @gray-lighter 0%, @body-bg 50%);
 }
 
 .roo-select2-container.roo-select2-drop-above .roo-select2-choice {
@@ -61,11 +61,11 @@ Version: 3.4.8 Timestamp: Thu May  1 09:50:32 EDT 2014
 
     border-radius: 0 0 4px 4px;
 
-    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, @gray-lighter), color-stop(0.9, @white));
-    background-image: -webkit-linear-gradient(center bottom, @gray-lighter 0%, @white 90%);
-    background-image: -moz-linear-gradient(center bottom, @gray-lighter 0%, @white 90%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@white', endColorstr='@gray-lighter', GradientType=0);
-    background-image: linear-gradient(to bottom, @gray-lighter 0%, @white 90%);
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, @gray-lighter), color-stop(0.9, @body-bg));
+    background-image: -webkit-linear-gradient(center bottom, @gray-lighter 0%, @body-bg 90%);
+    background-image: -moz-linear-gradient(center bottom, @gray-lighter 0%, @body-bg 90%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@body-bg', endColorstr='@gray-lighter', GradientType=0);
+    background-image: linear-gradient(to bottom, @gray-lighter 0%, @body-bg 90%);
 }
 
 .roo-select2-container.roo-select2-allowclear .roo-select2-choice .roo-select2-chosen {
@@ -124,7 +124,7 @@ Version: 3.4.8 Timestamp: Thu May  1 09:50:32 EDT 2014
     opacity: 0;
     z-index: 9998;
     /* styles required for IE to work */
-    background-color: @white;
+    background-color: @body-bg;
     filter: alpha(opacity=0);
 }
 
@@ -135,7 +135,7 @@ Version: 3.4.8 Timestamp: Thu May  1 09:50:32 EDT 2014
     z-index: 9999;
     top: 100%;
 
-    background: @white;
+    background: @body-bg;
     color: @gray-base;
     border: 1px solid @gray-lighter-75;
     border-top: 0;
@@ -234,11 +234,11 @@ Version: 3.4.8 Timestamp: Thu May  1 09:50:32 EDT 2014
     -webkit-box-shadow: none;
             box-shadow: none;
 
-    background: @white url('../images/select2/select2.png') no-repeat 100% -22px;
-    background: url('../images/select2/select2.png') no-repeat 100% -22px, -webkit-gradient(linear, left bottom, left top, color-stop(0.85, @white), color-stop(0.99, @gray-lighter));
-    background: url('../images/select2/select2.png') no-repeat 100% -22px, -webkit-linear-gradient(center bottom, @white 85%, @gray-lighter 99%);
-    background: url('../images/select2/select2.png') no-repeat 100% -22px, -moz-linear-gradient(center bottom, @white 85%, @gray-lighter 99%);
-    background: url('../images/select2/select2.png') no-repeat 100% -22px, linear-gradient(to bottom, @white 85%, @gray-lighter 99%) 0 0;
+    background: @body-bg url('../images/select2/select2.png') no-repeat 100% -22px;
+    background: url('../images/select2/select2.png') no-repeat 100% -22px, -webkit-gradient(linear, left bottom, left top, color-stop(0.85, @body-bg), color-stop(0.99, @gray-lighter));
+    background: url('../images/select2/select2.png') no-repeat 100% -22px, -webkit-linear-gradient(center bottom, @body-bg 85%, @gray-lighter 99%);
+    background: url('../images/select2/select2.png') no-repeat 100% -22px, -moz-linear-gradient(center bottom, @body-bg 85%, @gray-lighter 99%);
+    background: url('../images/select2/select2.png') no-repeat 100% -22px, linear-gradient(to bottom, @body-bg 85%, @gray-lighter 99%) 0 0;
 }
 
 .roo-select2-drop.roo-select2-drop-above .roo-select2-search input {
@@ -246,11 +246,11 @@ Version: 3.4.8 Timestamp: Thu May  1 09:50:32 EDT 2014
 }
 
 .roo-select2-search input.roo-select2-active {
-    background: @white url('../images/select2/select2-spinner.gif') no-repeat 100%;
-    background: url('../images/select2/select2-spinner.gif') no-repeat 100%, -webkit-gradient(linear, left bottom, left top, color-stop(0.85, @white), color-stop(0.99, @gray-lighter));
-    background: url('../images/select2/select2-spinner.gif') no-repeat 100%, -webkit-linear-gradient(center bottom, @white 85%, @gray-lighter 99%);
-    background: url('../images/select2/select2-spinner.gif') no-repeat 100%, -moz-linear-gradient(center bottom, @white 85%, @gray-lighter 99%);
-    background: url('../images/select2/select2-spinner.gif') no-repeat 100%, linear-gradient(to bottom, @white 85%, @gray-lighter 99%) 0 0;
+    background: @body-bg url('../images/select2/select2-spinner.gif') no-repeat 100%;
+    background: url('../images/select2/select2-spinner.gif') no-repeat 100%, -webkit-gradient(linear, left bottom, left top, color-stop(0.85, @body-bg), color-stop(0.99, @gray-lighter));
+    background: url('../images/select2/select2-spinner.gif') no-repeat 100%, -webkit-linear-gradient(center bottom, @body-bg 85%, @gray-lighter 99%);
+    background: url('../images/select2/select2-spinner.gif') no-repeat 100%, -moz-linear-gradient(center bottom, @body-bg 85%, @gray-lighter 99%);
+    background: url('../images/select2/select2-spinner.gif') no-repeat 100%, linear-gradient(to bottom, @body-bg 85%, @gray-lighter 99%) 0 0;
 }
 
 .roo-select2-container-active .roo-select2-choice,
@@ -264,18 +264,18 @@ Version: 3.4.8 Timestamp: Thu May  1 09:50:32 EDT 2014
 
 .roo-select2-dropdown-open .roo-select2-choice {
     border-bottom-color: transparent;
-    -webkit-box-shadow: 0 1px 0 @white inset;
-            box-shadow: 0 1px 0 @white inset;
+    -webkit-box-shadow: 0 1px 0 @body-bg inset;
+            box-shadow: 0 1px 0 @body-bg inset;
 
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 
     background-color: @gray-lighter;
-    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, @white), color-stop(0.5, @gray-lighter));
-    background-image: -webkit-linear-gradient(center bottom, @white 0%, @gray-lighter 50%);
-    background-image: -moz-linear-gradient(center bottom, @white 0%, @gray-lighter 50%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@gray-lighter', endColorstr='@white', GradientType=0);
-    background-image: linear-gradient(to top, @white 0%, @gray-lighter 50%);
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, @body-bg), color-stop(0.5, @gray-lighter));
+    background-image: -webkit-linear-gradient(center bottom, @body-bg 0%, @gray-lighter 50%);
+    background-image: -moz-linear-gradient(center bottom, @body-bg 0%, @gray-lighter 50%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@gray-lighter', endColorstr='@body-bg', GradientType=0);
+    background-image: linear-gradient(to top, @body-bg 0%, @gray-lighter 50%);
 }
 
 .roo-select2-dropdown-open.roo-select2-drop-above .roo-select2-choice,
@@ -283,11 +283,11 @@ Version: 3.4.8 Timestamp: Thu May  1 09:50:32 EDT 2014
     border: 1px solid @brand-primary; //#5897fb;
     border-top-color: transparent;
 
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, @white), color-stop(0.5, @gray-lighter));
-    background-image: -webkit-linear-gradient(center top, @white 0%, @gray-lighter 50%);
-    background-image: -moz-linear-gradient(center top, @white 0%, @gray-lighter 50%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@gray-lighter', endColorstr='@white', GradientType=0);
-    background-image: linear-gradient(to bottom, @white 0%, @gray-lighter 50%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, @body-bg), color-stop(0.5, @gray-lighter));
+    background-image: -webkit-linear-gradient(center top, @body-bg 0%, @gray-lighter 50%);
+    background-image: -moz-linear-gradient(center top, @body-bg 0%, @gray-lighter 50%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@gray-lighter', endColorstr='@body-bg', GradientType=0);
+    background-image: linear-gradient(to bottom, @body-bg 0%, @gray-lighter 50%);
 }
 
 .roo-select2-dropdown-open .roo-select2-choice .roo-select2-arrow {
@@ -360,7 +360,7 @@ Version: 3.4.8 Timestamp: Thu May  1 09:50:32 EDT 2014
 
 .roo-select2-results .roo-select2-highlighted {
     background: @brand-primary; //#3875d7;
-    color: @white;
+    color: @body-bg;
 }
 
 .roo-select2-results li em {
@@ -373,7 +373,7 @@ Version: 3.4.8 Timestamp: Thu May  1 09:50:32 EDT 2014
 }
 
 .roo-select2-results .roo-select2-highlighted ul {
-    background: @white;
+    background: @body-bg;
     color: @gray-base;
 }
 
@@ -445,11 +445,11 @@ disabled look for disabled choices in the results dropdown
     border: 1px solid @gray-lighter-75;
     cursor: text;
     overflow: hidden;
-    background-color: @white;
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(1%, @gray-lighter), color-stop(15%, @white));
-    background-image: -webkit-linear-gradient(top, @gray-lighter 1%, @white 15%);
-    background-image: -moz-linear-gradient(top, @gray-lighter 1%, @white 15%);
-    background-image: linear-gradient(to bottom, @gray-lighter 1%, @white 15%);
+    background-color: @body-bg;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(1%, @gray-lighter), color-stop(15%, @body-bg));
+    background-image: -webkit-linear-gradient(top, @gray-lighter 1%, @body-bg 15%);
+    background-image: -moz-linear-gradient(top, @gray-lighter 1%, @body-bg 15%);
+    background-image: linear-gradient(to bottom, @gray-lighter 1%, @body-bg 15%);
 }
 
 .roo-select2-locked {
@@ -496,7 +496,7 @@ html[dir="rtl"] .roo-select2-container-multi .roo-select2-choices li
 }
 
 .roo-select2-container-multi .roo-select2-choices .roo-select2-search-field input.roo-select2-active {
-    background: @white url('../images/select2/select2-spinner.gif') no-repeat 100% !important;
+    background: @body-bg url('../images/select2/select2-spinner.gif') no-repeat 100% !important;
 }
 
 .roo-select2-default {
