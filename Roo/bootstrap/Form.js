@@ -585,8 +585,6 @@ Roo.apply(Roo.bootstrap.Form, {
             this.maskEl.bottom.enableDisplayMode("block").setWidth(size.width);
             this.maskEl.right.enableDisplayMode("block");
             
-            
-            
             this.toolTip = new Roo.bootstrap.Tooltip({
                 cls : 'roo-form-error-popover',
                 alignment : {
