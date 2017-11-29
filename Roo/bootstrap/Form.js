@@ -167,7 +167,6 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             if(f.validate()){
                 return;
             }
-            Roo.log('who fail??' + f.name);
             valid = false;
 
             if(!target && f.el.isVisible(true)){
