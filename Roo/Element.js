@@ -200,6 +200,8 @@ if(opt.anim.isAnimated()){
             
             for (var parent = this; (parent = Roo.get(parent.dom.parentNode));){
                 
+                Roo.log(parent);
+                
                 if (excludeStaticParent && parent.getStyle('position') === "static") {
                     continue;
                 }
