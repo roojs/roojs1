@@ -562,12 +562,14 @@ Roo.apply(Roo.bootstrap.Form, {
         toolTip : false,
         
         intervalID : false,
-    
+        
         apply : function()
         {
             if(this.isApplied){
                 return;
             }
+            
+            this
             
             this.toolTip = new Roo.bootstrap.Tooltip({
                 cls : 'roo-form-error-popover',
