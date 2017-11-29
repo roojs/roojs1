@@ -578,11 +578,11 @@ Roo.apply(Roo.bootstrap.Form, {
                 right : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask roo-form-right-mask" }, true)
             };
             
-            var size = this.el.select('.fc-content', true).first().getSize();
+            var size = Roo.get(document.body).getSize();
             
-            this.maskEl.top.enableDisplayMode("block");
+            this.maskEl.top.enableDisplayMode("block").setWidth(size.width);
             this.maskEl.left.enableDisplayMode("block");
-            this.maskEl.bottom.enableDisplayMode("block");
+            this.maskEl.bottom.enableDisplayMode("block").setWidth(size.width);
             this.maskEl.right.enableDisplayMode("block");
             
             
