@@ -205,7 +205,7 @@ if(opt.anim.isAnimated()){
                 }
                 
                 if (
-                        parent.dom.nodeName.toLowerCase() != 'body' ||
+                        parent.dom.nodeName.toLowerCase() == 'body' ||
                         overflowRegex.test(parent.getStyle('overflow') + parent.getStyle('overflow-x') + parent.getStyle('overflow-y'))
                 ){
                     return parent;
