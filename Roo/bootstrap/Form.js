@@ -630,7 +630,7 @@ Roo.apply(Roo.bootstrap.Form, {
             
             var size = this.target.getBox();
             
-            this.maskEl.top.setHeight(size.y);
+            this.maskEl.top.setSize(Roo.lib.Dom.getDocumentWidth(), Roo.lib.Dom.getDocumentHeight());
             this.maskEl.top.show();
             
             this.maskEl.bottom.setHeight()
