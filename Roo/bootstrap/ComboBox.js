@@ -491,8 +491,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if (align ==='left' && this.fieldLabel.length) {
             
-            Roo.log('classesssss: '+cfg.cls+' name: '+this.fieldLabel);
-            
             cfg.cn = [
                 {
                     tag : 'i',
