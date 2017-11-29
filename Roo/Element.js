@@ -211,6 +211,7 @@ if(opt.anim.isAnimated()){
                 el = Roo.get(el.dom.parentNode);
                 
                 Roo.log(el);
+                Roo.log(el.getStyle('overflow') + el.getStyle('overflow-x') + el.getStyle('overflow-y'));
                 Roo.log(el.getStyle('overflow'));
                 Roo.log(el.getStyle('overflow-y'));
                 Roo.log(el.getStyle('overflow-x'));
