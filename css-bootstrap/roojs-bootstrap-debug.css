@@ -2611,10 +2611,6 @@ a.roo-brick-link:hover {
   margin-left: 3px;
   color: #d9534f;
 }
-.roo-radio-set-label,
-.roo-radio-set-right {
-  padding: 0px;
-}
 .roo-form-error-popover.in {
   opacity: 1;
 }
