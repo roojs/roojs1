@@ -636,11 +636,11 @@ Roo.apply(Roo.bootstrap.Form, {
             
             Roo.log(box);
             
-            this.maskEl.top.setSize(Roo.lib.Dom.getDocumentWidth(), box.y);
+            this.maskEl.top.setSize(Roo.lib.Dom.getDocumentWidth(), box.y - this.padding);
             this.maskEl.top.setXY([0, 0]);
             this.maskEl.top.show();
             
-            this.maskEl.left.setSize(Roo.lib.Dom.getDocumentWidth() - box.right, box.height);
+            this.maskEl.left.setSize(Roo.lib.Dom.getDocumentWidth() - box.right - this.padding, box.height + this.padding * 2);
             this.maskEl.left.setXY([box.right, box.y]);
             this.maskEl.left.show();
             
