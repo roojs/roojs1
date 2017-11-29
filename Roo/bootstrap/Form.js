@@ -614,12 +614,6 @@ Roo.apply(Roo.bootstrap.Form, {
                 return;
             }
             
-            this.oIndex = target.el.getStyle('z-index');
-            
-            this.target.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
-        
-            this.target.el.addClass('roo-invalid-outline');
-            
             var scrollable = this.target.el.findScrollableParent() || this.target.el.findParent('div.modal', 100, true) || Roo.get(document.body);
             
             var scrolled = scrollable.getScroll();
@@ -663,12 +657,6 @@ Roo.apply(Roo.bootstrap.Form, {
             if(!this.isApplied || !this.isMasked || !this.form || !this.target || !this.form.errorMask){
                 return;
             }
-            
-            if(this.oIndex){
-                this.target.el.setStyle('z-index', this.oIndex);
-            }
-            
-            this.target.el.removeClass('roo-invalid-outline');
             
             this.toolTip.hide();
             
