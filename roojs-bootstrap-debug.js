@@ -7968,6 +7968,8 @@ Roo.apply(Roo.bootstrap.Form, {
     
     popover : {
         
+        padding : 5,
+        
         isApplied : false,
         
         isMasked : false,
@@ -7976,17 +7978,29 @@ Roo.apply(Roo.bootstrap.Form, {
         
         target : false,
         
-        oIndex : false,
-        
         toolTip : false,
         
         intervalID : false,
-    
+        
+        maskEl : false,
+        
         apply : function()
         {
             if(this.isApplied){
                 return;
             }
+            
+            this.maskEl = {
+                top : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask roo-form-top-mask" }, true),
+                left : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask roo-form-left-mask" }, true),
+                bottom : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask roo-form-bottom-mask" }, true),
+                right : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask roo-form-right-mask" }, true)
+            };
+            
+            this.maskEl.top.enableDisplayMode("block");
+            this.maskEl.left.enableDisplayMode("block");
+            this.maskEl.bottom.enableDisplayMode("block");
+            this.maskEl.right.enableDisplayMode("block");
             
             this.toolTip = new Roo.bootstrap.Tooltip({
                 cls : 'roo-form-error-popover',
@@ -8000,7 +8014,7 @@ Roo.apply(Roo.bootstrap.Form, {
             
             this.toolTip.render(Roo.get(document.body));
 
-            this.toolTip.el.setVisibilityMode(Roo.Element.DISPLAY);
+            this.toolTip.el.enableDisplayMode("block");
             
             Roo.get(document.body).on('click', function(){
                 this.unmask();
@@ -8019,12 +8033,6 @@ Roo.apply(Roo.bootstrap.Form, {
                 return;
             }
             
-            this.oIndex = target.el.getStyle('z-index');
-            
-            this.target.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
-        
-            this.target.el.addClass('roo-invalid-outline');
-            
             var scrollable = this.target.el.findScrollableParent() || this.target.el.findParent('div.modal', 100, true) || Roo.get(document.body);
             
             var scrolled = scrollable.getScroll();
@@ -8041,6 +8049,25 @@ Roo.apply(Roo.bootstrap.Form, {
             
             scrollable.scrollTo('top', scrollTo);
             
+            var box = this.target.el.getBox();
+            
+            this.maskEl.top.setSize(Roo.lib.Dom.getDocumentWidth(), box.y - this.padding);
+            this.maskEl.top.setXY([0, 0]);
+            this.maskEl.top.show();
+            
+            this.maskEl.left.setSize(Roo.lib.Dom.getDocumentWidth() - box.right - this.padding, box.height + this.padding * 2);
+            this.maskEl.left.setXY([box.right + this.padding, box.y - this.padding]);
+            this.maskEl.left.show();
+            
+            this.maskEl.bottom.setSize(Roo.lib.Dom.getDocumentWidth(), Roo.lib.Dom.getDocumentHeight() - box.bottom - this.padding);
+            this.maskEl.bottom.setXY([0, box.bottom + this.padding]);
+            this.maskEl.bottom.show();
+            
+            this.maskEl.right.setSize(box.x - this.padding, box.height + this.padding * 2);
+            this.maskEl.right.setXY([0, box.y - this.padding]);
+            this.maskEl.right.show();
+            
+            
             this.toolTip.bindEl = this.target.el;
         
             this.toolTip.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
@@ -8055,7 +8082,7 @@ Roo.apply(Roo.bootstrap.Form, {
             
             this.intervalID = window.setInterval(function() {
                 Roo.bootstrap.Form.popover.unmask();
-            }, 100000);
+            }, 10000);
 
             window.onwheel = function(){ return false;};
             
@@ -8069,11 +8096,10 @@ Roo.apply(Roo.bootstrap.Form, {
                 return;
             }
             
-            if(this.oIndex){
-                this.target.el.setStyle('z-index', this.oIndex);
-            }
-            
-            this.target.el.removeClass('roo-invalid-outline');
+            this.maskEl.top.setSize(0, 0).setXY([0, 0]).hide();
+            this.maskEl.left.setSize(0, 0).setXY([0, 0]).hide();
+            this.maskEl.bottom.setSize(0, 0).setXY([0, 0]).hide();
+            this.maskEl.right.setSize(0, 0).setXY([0, 0]).hide();
             
             this.toolTip.hide();
             
