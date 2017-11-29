@@ -572,10 +572,10 @@ Roo.apply(Roo.bootstrap.Form, {
             }
             
             this.maskEl = {
-                top : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask" }, true),
-                left : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask" }, true),
-                bottom : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask" }, true),
-                right : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask" }, true),
+                top : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask roo-form-top-mask" }, true),
+                left : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask roo-form-left-mask" }, true),
+                bottom : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask roo-form-bottom-mask" }, true),
+                right : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask roo-form-right-mask" }, true),
             };
             
             this.toolTip = new Roo.bootstrap.Tooltip({
