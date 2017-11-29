@@ -190,11 +190,22 @@ if(opt.anim.isAnimated()){
          */
         findScrollableParent : function(){
             
-            var el = this;
-//            Roo.log('D: '+JSON.stringify(D, null, 4));
+            var overflowRegex = /(auto|scroll)/;
+            
+            if(this.getStyle('position') === 'fixed'){
+                return Roo.get(document.body);
+            }
+            
+            var excludeStaticParent = this.getStyle('position') === "absolute";
+            
+            for (var parent = this; (parent = Roo.get(parent.dom.parentNode))){
+                
+            }
             
             while (
                     el && 
+                    !el.isScrollable() &&
+                    
                     (
                         !el.isScrollable() ||
                         (
