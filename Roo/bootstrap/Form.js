@@ -563,13 +563,15 @@ Roo.apply(Roo.bootstrap.Form, {
         
         intervalID : false,
         
+        maskEl : false,
+        
         apply : function()
         {
             if(this.isApplied){
                 return;
             }
             
-            this.masks = {
+            this.maskEl = {
                 top : '',
                 left : '',
                 bottom : '',
