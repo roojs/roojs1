@@ -190,7 +190,7 @@ if(opt.anim.isAnimated()){
          */
         findScrollableParent : function(){
             
-            var el = Roo.get(this.dom.parentNode);
+            var el = this;
 //            Roo.log('D: '+JSON.stringify(D, null, 4));
             
             while (
