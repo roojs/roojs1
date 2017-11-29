@@ -571,11 +571,13 @@ Roo.apply(Roo.bootstrap.Form, {
                 return;
             }
             
+            var cfg = { tag: "div", cls:"x-dlg-mask roo-form-top-mask" };
+            
             this.maskEl = {
-                top : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask roo-form-top-mask" }, true),
-                left : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask roo-form-left-mask" }, true),
-                bottom : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask roo-form-bottom-mask" }, true),
-                right : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask roo-form-right-mask" }, true)
+                top : Roo.DomHelper.append(Roo.get(document.body), cfg, true),
+                left : Roo.DomHelper.append(Roo.get(document.body), cfg, true),
+                bottom : Roo.DomHelper.append(Roo.get(document.body), cfg, true),
+                right : Roo.DomHelper.append(Roo.get(document.body), cfg, true)
             };
             
             this.maskEl.top.enableDisplayMode("block").setStyle('position', 'fixed');
