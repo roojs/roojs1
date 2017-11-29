@@ -630,7 +630,9 @@ Roo.apply(Roo.bootstrap.Form, {
             
             scrollable.scrollTo('top', scrollTo);
             
-            Roo.log(this.target.getBox());
+            var size = this.target.getBox();
+            
+            this.maskEl.top.setHeight(size.y);
             
             
             this.toolTip.bindEl = this.target.el;
