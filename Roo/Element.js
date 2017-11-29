@@ -219,6 +219,9 @@ if(opt.anim.isAnimated()){
 //                );
             }
             
+            Roo.log('end : ');
+            Roo.log(el);
+            
             if(!el.isScrollable()){
                 return null;
             }
