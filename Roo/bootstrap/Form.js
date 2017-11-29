@@ -599,7 +599,7 @@ Roo.apply(Roo.bootstrap.Form, {
             if(!this.form.errorMask || !target.el){
                 return;
             }
-
+            
             this.oIndex = target.el.getStyle('z-index');
             
             this.target.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
@@ -613,6 +613,8 @@ Roo.apply(Roo.bootstrap.Form, {
             var ot = this.target.el.calcOffsetsTo(scrollable);
             
             var scrollTo = 0;
+            
+            Roo.log('scroll to position :'+ot);
             
             if(ot[1] <= scrolled.top){
                 scrollTo = ot[1] - 100;
