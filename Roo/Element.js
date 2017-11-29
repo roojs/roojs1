@@ -214,7 +214,6 @@ if(opt.anim.isAnimated()){
                     ' | D width: '+D.getViewWidth() + 
                     ' | el height: '+el.dom.clientHeight+
                     ' | el width: '+el.dom.clientWidth+
-                    ' | xtype'
                 );
             }
             
