@@ -675,7 +675,7 @@ Roo.apply(Roo.bootstrap.Form, {
                 window.onwheel = function(){ return false;};
 
                 (function(){ this.isMasked = true; }).defer(500, this);
-            }).defer(500, this);
+            }).defer(100, this);
             
             
             
