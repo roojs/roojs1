@@ -605,7 +605,7 @@ Roo.apply(Roo.bootstrap.Form, {
             
             this.target.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
         
-            this.target.container.addClass('roo-invalid-outline');
+            this.target.el.addClass('roo-invalid-outline');
             
             var scrollable = this.target.el.findScrollableParent() || this.target.el.findParent('div.modal', 100, true) || Roo.get(document.body);
             
@@ -655,7 +655,7 @@ Roo.apply(Roo.bootstrap.Form, {
                 this.target.el.setStyle('z-index', this.oIndex);
             }
             
-            this.target.container.removeClass('roo-invalid-outline');
+            this.target.el.removeClass('roo-invalid-outline');
             
             this.toolTip.hide();
             
