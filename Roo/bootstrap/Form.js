@@ -633,6 +633,7 @@ Roo.apply(Roo.bootstrap.Form, {
             var size = this.target.getBox();
             
             this.maskEl.top.setHeight(size.y);
+            this.maskEl.top.show();
             
             
             this.toolTip.bindEl = this.target.el;
