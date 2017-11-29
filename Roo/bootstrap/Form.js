@@ -673,8 +673,6 @@ Roo.apply(Roo.bootstrap.Form, {
                     Roo.bootstrap.Form.popover.unmask();
                 }, 10000);
 
-                window.onwheel = function(){ return false;};
-
                 (function(){ this.isMasked = true; }).defer(500, this);
                 
             }).defer(100, this);
