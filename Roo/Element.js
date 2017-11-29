@@ -192,7 +192,6 @@ if(opt.anim.isAnimated()){
             
             var el = Roo.get(this.dom.parentNode);
             Roo.log('findparent');
-            Roo.log(JSON.stringify(el, null, 4);
             
             while (
                     el && 
