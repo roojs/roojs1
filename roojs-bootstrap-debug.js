@@ -8039,43 +8039,41 @@ Roo.apply(Roo.bootstrap.Form, {
             
             var ot = this.target.el.calcOffsetsTo(scrollable);
             
-            var scrollTo = 0;
-            
-            if(ot[1] <= scrolled.top){
-                scrollTo = ot[1] - 100;
-            } else {
-                scrollTo = ot[1] + Roo.lib.Dom.getViewHeight() - 100;
-            }
+            scrollTo = ot[1] - 100;
             
             scrollable.scrollTo('top', scrollTo);
             
             var box = this.target.el.getBox();
-            
+
             var zIndex = Roo.bootstrap.Modal.zIndex++;
-            
+
+            this.maskEl.top.setStyle('position', 'fixed');
+            this.maskEl.top.setStyle('z-index', zIndex);
             this.maskEl.top.setSize(Roo.lib.Dom.getDocumentWidth(), box.y - this.padding);
             this.maskEl.top.setXY([0, 0]);
-            this.maskEl.top.setStyle('z-index', zIndex);
             this.maskEl.top.show();
-            
+
+            this.maskEl.left.setStyle('position', 'fixed');
+            this.maskEl.left.setStyle('z-index', zIndex);
             this.maskEl.left.setSize(Roo.lib.Dom.getDocumentWidth() - box.right - this.padding, box.height + this.padding * 2);
             this.maskEl.left.setXY([box.right + this.padding, box.y - this.padding]);
-            this.maskEl.left.setStyle('z-index', zIndex);
             this.maskEl.left.show();
-            
+
+            this.maskEl.bottom.setStyle('position', 'fixed');
+            this.maskEl.bottom.setStyle('z-index', zIndex);
             this.maskEl.bottom.setSize(Roo.lib.Dom.getDocumentWidth(), Roo.lib.Dom.getDocumentHeight() - box.bottom - this.padding);
             this.maskEl.bottom.setXY([0, box.bottom + this.padding]);
-            this.maskEl.bottom.setStyle('z-index', zIndex);
             this.maskEl.bottom.show();
-            
+
+            this.maskEl.right.setStyle('position', 'fixed');
+            this.maskEl.right.setStyle('z-index', zIndex);
             this.maskEl.right.setSize(box.x - this.padding, box.height + this.padding * 2);
             this.maskEl.right.setXY([0, box.y - this.padding]);
-            this.maskEl.right.setStyle('z-index', zIndex);
             this.maskEl.right.show();
-            
-            
+
+
             this.toolTip.bindEl = this.target.el;
-        
+
             this.toolTip.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
 
             var tip = this.target.blankText;
@@ -8085,7 +8083,7 @@ Roo.apply(Roo.bootstrap.Form, {
             }
 
             this.toolTip.show(tip);
-            
+
             this.intervalID = window.setInterval(function() {
                 Roo.bootstrap.Form.popover.unmask();
             }, 10000);
@@ -8093,6 +8091,8 @@ Roo.apply(Roo.bootstrap.Form, {
             window.onwheel = function(){ return false;};
             
             (function(){ this.isMasked = true; }).defer(500, this);
+                
+            
             
         },
         
@@ -8102,10 +8102,21 @@ Roo.apply(Roo.bootstrap.Form, {
                 return;
             }
             
-            this.maskEl.top.setSize(0, 0).setXY([0, 0]).hide();
-            this.maskEl.left.setSize(0, 0).setXY([0, 0]).hide();
-            this.maskEl.bottom.setSize(0, 0).setXY([0, 0]).hide();
-            this.maskEl.right.setSize(0, 0).setXY([0, 0]).hide();
+            this.maskEl.top.setStyle('position', 'absolute');
+            this.maskEl.top.setSize(0, 0).setXY([0, 0]);
+            this.maskEl.top.hide();
+
+            this.maskEl.left.setStyle('position', 'absolute');
+            this.maskEl.left.setSize(0, 0).setXY([0, 0]);
+            this.maskEl.left.hide();
+
+            this.maskEl.bottom.setStyle('position', 'absolute');
+            this.maskEl.bottom.setSize(0, 0).setXY([0, 0]);
+            this.maskEl.bottom.hide();
+
+            this.maskEl.right.setStyle('position', 'absolute');
+            this.maskEl.right.setSize(0, 0).setXY([0, 0]);
+            this.maskEl.right.hide();
             
             this.toolTip.hide();
             
