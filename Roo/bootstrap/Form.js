@@ -549,6 +549,8 @@ Roo.apply(Roo.bootstrap.Form, {
     
     popover : {
         
+        padding : 5,
+        
         isApplied : false,
         
         isMasked : false,
@@ -643,7 +645,7 @@ Roo.apply(Roo.bootstrap.Form, {
             this.maskEl.left.show();
             
             this.maskEl.bottom.setSize(Roo.lib.Dom.getDocumentWidth(), Roo.lib.Dom.getDocumentHeight() - box.bottom);
-            this.maskEl.bottom.setXY([0, box.y + box.height]);
+            this.maskEl.bottom.setXY([0, box.bottom]);
             this.maskEl.bottom.show();
             
             this.maskEl.right.setSize(box.x, box.height);
