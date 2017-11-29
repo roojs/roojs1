@@ -569,7 +569,12 @@ Roo.apply(Roo.bootstrap.Form, {
                 return;
             }
             
-            this
+            this.masks = {
+                top : '',
+                left : '',
+                bottom : '',
+                right : ''
+            };
             
             this.toolTip = new Roo.bootstrap.Tooltip({
                 cls : 'roo-form-error-popover',
