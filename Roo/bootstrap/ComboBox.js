@@ -2315,7 +2315,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if (align ==='left' && this.fieldLabel.length) {
 
-            cfg.cls = ' roo-form-group-input ';
+            cfg.cls += ' roo-form-group-input ';
 
             cfg.cn = [
                 {
