@@ -571,7 +571,7 @@ Roo.apply(Roo.bootstrap.Form, {
                 return;
             }
             
-            var cfg = { tag: "div", cls:"x-dlg-mask roo-form-top-mask" };
+            var cfg = { tag: "div", cls:"x-dlg-mask roo-form-mask" };
             
             this.maskEl = {
                 top : Roo.DomHelper.append(Roo.get(document.body), cfg, true),
