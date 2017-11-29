@@ -198,42 +198,18 @@ if(opt.anim.isAnimated()){
             
             var excludeStaticParent = this.getStyle('position') === "absolute";
             
-            for (var parent = this; (parent = Roo.get(parent.dom.parentNode))){
+            for (var parent = this; (parent = Roo.get(parent.dom.parentNode));){
                 
+                if (excludeStaticParent && parent.getStyle('position') === "static") {
+                    continue;
+                }
+                
+                if (overflowRegex.test(style.overflow + style.overflowY + style.overflowX)){
+                    return parent;
+                }
             }
             
-            while (
-                    el && 
-                    !el.isScrollable() &&
-                    
-                    (
-                        !el.isScrollable() ||
-                        (
-                            el.isScrollable() &&
-                            (
-                                D.getViewHeight() - el.dom.clientHeight > 15 || 
-                                D.getViewWidth() - el.dom.clientWidth > 15
-                            )
-                        )
-                    ) &&
-                    el.dom.nodeName.toLowerCase() != 'body'
-            ){
-                
-                el = Roo.get(el.dom.parentNode);
-                
-                Roo.log(el);
-                Roo.log(el.getStyle('overflow') + el.getStyle('overflow-x') + el.getStyle('overflow-y'));
-                Roo.log(el.getStyle('overflow'));
-                Roo.log(el.getStyle('overflow-y'));
-                Roo.log(el.getStyle('overflow-x'));
-                
-            }
-            
-            if(!el.isScrollable()){
-                return null;
-            }
-            
-            return el;
+            return Roo.get(document.body);
         },
 
         /**
