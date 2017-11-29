@@ -207,7 +207,7 @@ if(opt.anim.isAnimated()){
                     el.dom.nodeName.toLowerCase() != 'body'
             ){
                 el = Roo.get(el.dom.parentNode);
-                Roo.log('findparent:'+ JSON.stringify(el, null, 4)+' | scrollable: '+el.isScrollable()+' | D-el height: '+${D.getViewHeight() - el.dom.clientHeight});
+                Roo.log('findparent:'+ JSON.stringify(el, null, 4)+' | scrollable: '+el.isScrollable()+' | D-el height: '+${D.getViewHeight() - el.dom.clientHeight} + ' | D-el width'+${D.getViewWidth() - el.dom.clientWidth});
                 
             }
             
