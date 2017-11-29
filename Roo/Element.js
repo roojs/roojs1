@@ -207,17 +207,15 @@ if(opt.anim.isAnimated()){
                     ) &&
                     el.dom.nodeName.toLowerCase() != 'body'
             ){
-                Roo.log('focus');
-                Roo.log(el);
                 
                 el = Roo.get(el.dom.parentNode);
                 
-                Roo.log('parentNode');
                 Roo.log(el);
+                Roo.log(el.getStyle('overflow'));
+                Roo.log(el.getStyle('overflow-y'));
+                Roo.log(el.getStyle('overflow-x'));
+                
             }
-            
-            Roo.log('end : ');
-            Roo.log(el);
             
             if(!el.isScrollable()){
                 return null;
