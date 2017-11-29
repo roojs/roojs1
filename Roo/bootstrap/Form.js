@@ -635,7 +635,7 @@ Roo.apply(Roo.bootstrap.Form, {
             this.maskEl.top.setSize(Roo.lib.Dom.getDocumentWidth(), box.y);
             this.maskEl.top.show();
             
-            this.maskEl.left.setSize(Roo.lib.Dom.getDocumentWidth(), Roo.lib.Dom.getDocumentHeight());
+            this.maskEl.left.setSize(Roo.lib.Dom.getDocumentWidth() - box.x - box.width, box.height);
             this.maskEl.left.setXY([Roo.lib.Dom.getDocumentWidth() - box.x - box.width, 0]);
             this.maskEl.left.show();
             
