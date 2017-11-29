@@ -204,7 +204,7 @@ if(opt.anim.isAnimated()){
                     continue;
                 }
                 
-                if (overflowRegex.test(style.overflow + style.overflowY + style.overflowX)){
+                if (overflowRegex.test(parent.getStyle('overflow') + parent.getStyle('overflow-x') + parent.getStyle('overflow-y'))){
                     return parent;
                 }
             }
