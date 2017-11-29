@@ -630,11 +630,12 @@ Roo.apply(Roo.bootstrap.Form, {
             
             var box = this.target.getBox();
             
-            this.maskEl.top.setSize(Roo.lib.Dom.getDocumentWidth(), Roo.lib.Dom.getDocumentHeight());
+            this.maskEl.top.setSize(Roo.lib.Dom.getDocumentWidth(), box.y);
             this.maskEl.top.show();
             
-            this.maskEl.bottom.setSize(Roo.lib.Dom.getDocumentWidth(), Roo.lib.Dom.getDocumentHeight() - box.y - box.height);
-            this.maskEl.bottom.show()
+            this.maskEl.bottom.setSize(Roo.lib.Dom.getDocumentWidth(), Roo.lib.Dom.getDocumentHeight());
+            this.maskEl.bottom.setXY(box.y + box.height, 0);
+            this.maskEl.bottom.show();
             
             
             this.toolTip.bindEl = this.target.el;
