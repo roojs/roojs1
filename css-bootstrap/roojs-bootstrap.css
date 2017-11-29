@@ -2086,6 +2086,12 @@ div.input-group.has-feedback > .form-control-feedback {
 .roo-layout-panel-body .navbar {
   margin-bottom: 0px;
 }
+.roo-form-group-label-left::before,
+.roo-form-group-label-left::after {
+  display: table;
+  content: " ";
+  clear: both;
+}
 a.list-group-item,
 button.list-group-item {
   width: 100%;

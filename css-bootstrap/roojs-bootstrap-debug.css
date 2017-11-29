@@ -2086,6 +2086,12 @@ div.input-group.has-feedback > .form-control-feedback {
 .roo-layout-panel-body .navbar {
   margin-bottom: 0px;
 }
+.roo-form-group-label-left::before,
+.roo-form-group-label-left::after {
+  display: table;
+  content: " ";
+  clear: both;
+}
 a.list-group-item,
 button.list-group-item {
   width: 100%;
@@ -2607,7 +2613,7 @@ a.roo-brick-link:hover {
 }
 .roo-radio-set-label,
 .roo-radio-set-right {
-  padding: 15px;
+  padding: 0px;
 }
 .roo-form-error-popover.in {
   opacity: 1;
