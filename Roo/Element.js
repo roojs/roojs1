@@ -202,9 +202,12 @@ if(opt.anim.isAnimated()){
                 
                 Roo.log(parent);
                 
+                Roo.log(parent.getStyle('overflow') + parent.getStyle('overflow-x') + parent.getStyle('overflow-y'));
+                
                 if (excludeStaticParent && parent.getStyle('position') === "static") {
                     continue;
                 }
+                
                 
                 if (overflowRegex.test(parent.getStyle('overflow') + parent.getStyle('overflow-x') + parent.getStyle('overflow-y'))){
                     return parent;
