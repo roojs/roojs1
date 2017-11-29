@@ -614,7 +614,7 @@ Roo.apply(Roo.bootstrap.Form, {
             
             var scrollTo = 0;
             
-            Roo.log('element: '+scrollable+'scroll to position :'+ot);
+            Roo.log('element: '+scrollable.dom+'scroll to position :'+ot);
             
             if(ot[1] <= scrolled.top){
                 scrollTo = ot[1] - 100;
