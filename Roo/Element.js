@@ -192,6 +192,8 @@ if(opt.anim.isAnimated()){
             
             var el = Roo.get(this.dom.parentNode);
             
+            Roo.log('find scrollalbe');
+            
             while (
                     el && 
                     (
