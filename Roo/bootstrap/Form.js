@@ -572,11 +572,16 @@ Roo.apply(Roo.bootstrap.Form, {
             }
             
             this.maskEl = {
-                top : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask roo-form-top-mask" }, true).setVisibilityMode(Roo.Element.DISPLAY),
-                left : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask roo-form-left-mask" }, true).setVisibilityMode(Roo.Element.DISPLAY),
-                bottom : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask roo-form-bottom-mask" }, true).setVisibilityMode(Roo.Element.DISPLAY),
-                right : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask roo-form-right-mask" }, true).setVisibilityMode(Roo.Element.DISPLAY)
+                top : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask roo-form-top-mask" }, true),
+                left : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask roo-form-left-mask" }, true),
+                bottom : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask roo-form-bottom-mask" }, true),
+                right : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask roo-form-right-mask" }, true)
             };
+            
+            this.maskEl.top.setVisibilityMode(Roo.Element.DISPLAY);
+            this.maskEl.left.setVisibilityMode(Roo.Element.DISPLAY);
+            this.maskEl.bottom.setVisibilityMode(Roo.Element.DISPLAY);
+            this.maskEl.right.setVisibilityMode(Roo.Element.DISPLAY);
             
             this.toolTip = new Roo.bootstrap.Tooltip({
                 cls : 'roo-form-error-popover',
