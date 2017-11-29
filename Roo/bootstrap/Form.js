@@ -595,7 +595,7 @@ Roo.apply(Roo.bootstrap.Form, {
             
             this.toolTip.render(Roo.get(document.body));
 
-            this.toolTip.el.setVisibilityMode(Roo.Element.DISPLAY);
+            this.toolTip.el.enableDisplayMode("block");
             
             Roo.get(document.body).on('click', function(){
                 this.unmask();
