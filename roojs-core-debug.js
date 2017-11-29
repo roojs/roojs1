@@ -7182,7 +7182,10 @@ if(opt.anim.isAnimated()){
                     continue;
                 }
                 
-                if (overflowRegex.test(parent.getStyle('overflow') + parent.getStyle('overflow-x') + parent.getStyle('overflow-y'))){
+                if (
+                        parent.dom.nodeName.toLowerCase() != 'body' ||
+                        overflowRegex.test(parent.getStyle('overflow') + parent.getStyle('overflow-x') + parent.getStyle('overflow-y'))
+                ){
                     return parent;
                 }
             }
