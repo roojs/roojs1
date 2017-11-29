@@ -2607,7 +2607,7 @@ a.roo-brick-link:hover {
 }
 .roo-radio-set-label,
 .roo-radio-set-right {
-  padding: 0px;
+  padding: 15px;
 }
 .roo-form-error-popover.in {
   opacity: 1;
