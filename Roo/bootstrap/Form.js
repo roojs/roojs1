@@ -692,10 +692,21 @@ Roo.apply(Roo.bootstrap.Form, {
                 return;
             }
             
-            this.maskEl.top.setSize(0, 0).setXY([0, 0]).hide();
-            this.maskEl.left.setSize(0, 0).setXY([0, 0]).hide();
-            this.maskEl.bottom.setSize(0, 0).setXY([0, 0]).hide();
-            this.maskEl.right.setSize(0, 0).setXY([0, 0]).hide();
+            this.maskEl.top.setStyle('position', 'absolute');
+            this.maskEl.top.setSize(0, 0).setXY([0, 0]);
+            this.maskEl.top.hide();
+
+            this.maskEl.left.setStyle('position', 'absolute');
+            this.maskEl.left.setSize(0, 0).setXY([0, 0]);
+            this.maskEl.left.hide();
+
+            this.maskEl.bottom.setStyle('position', 'absolute');
+            this.maskEl.bottom.setSize(0, 0).setXY([0, 0]);
+            this.maskEl.bottom.hide();
+
+            this.maskEl.right.setStyle('position', 'absolute');
+            this.maskEl.right.setSize(0, 0).setXY([0, 0]);
+            this.maskEl.right.hide();
             
             this.toolTip.hide();
             
