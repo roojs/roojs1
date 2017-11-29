@@ -491,7 +491,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if (align ==='left' && this.fieldLabel.length) {
             
-            cfg.cls += ' roo-form-group-layout';
+            cfg.cls += ' roo-form-group-label-left';
             
             cfg.cn = [
                 {
