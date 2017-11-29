@@ -376,8 +376,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         if (align ==='left' && this.fieldLabel.length) {
             
-            cfg.cls += ' roo-form-group-left';
-            
             cfg.cn = [
                 {
                     tag : 'i',
