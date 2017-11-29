@@ -675,9 +675,9 @@ Roo.apply(Roo.bootstrap.Form, {
 
                 this.toolTip.show(tip);
 
-                this.intervalID = window.setInterval(function() {
-                    Roo.bootstrap.Form.popover.unmask();
-                }, 10000);
+//                this.intervalID = window.setInterval(function() {
+//                    Roo.bootstrap.Form.popover.unmask();
+//                }, 10000);
 
                 (function(){ this.isMasked = true; }).defer(500, this);
                 
