@@ -458,7 +458,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                             tag: 'li',
                             cls: 'roo-select2-search-field',
                             cn: [
-
                                 buttons
                             ]
                         }
@@ -492,7 +491,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if (align ==='left' && this.fieldLabel.length) {
             
-            cfg.cls += ' roo-form-group-input';
+            cfg.cls += ' roo-form-group-layout';
             
             cfg.cn = [
                 {
