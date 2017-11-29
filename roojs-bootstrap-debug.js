@@ -7586,7 +7586,6 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             if(f.validate()){
                 return;
             }
-            
             valid = false;
 
             if(!target && f.el.isVisible(true)){
@@ -8019,7 +8018,7 @@ Roo.apply(Roo.bootstrap.Form, {
             if(!this.form.errorMask || !target.el){
                 return;
             }
-
+            
             this.oIndex = target.el.getStyle('z-index');
             
             this.target.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
@@ -8056,7 +8055,7 @@ Roo.apply(Roo.bootstrap.Form, {
             
             this.intervalID = window.setInterval(function() {
                 Roo.bootstrap.Form.popover.unmask();
-            }, 10000);
+            }, 100000);
 
             window.onwheel = function(){ return false;};
             
@@ -8563,6 +8562,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         };
         
         if (align ==='left' && this.fieldLabel.length) {
+            
+            cfg.cls += ' roo-form-group-label-left';
             
             cfg.cn = [
                 {
@@ -9812,6 +9813,8 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         
         if (align ==='left' && this.fieldLabel.length) {
             
+            cfg.cls += ' roo-form-group-label-left';
+
             cfg.cn = [
                 {
                     tag : 'i',
@@ -12658,7 +12661,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                             tag: 'li',
                             cls: 'roo-select2-search-field',
                             cn: [
-
                                 buttons
                             ]
                         }
@@ -12689,7 +12691,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             combobox.cn.push(feedback);
         }
         
+        
         if (align ==='left' && this.fieldLabel.length) {
+            
+            cfg.cls += ' roo-form-group-label-left';
             
             cfg.cn = [
                 {
@@ -14514,7 +14519,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var align = this.labelAlign || this.parentLabelAlign();
         
         if (align ==='left' && this.fieldLabel.length) {
-            
+
             cfg.cn = [
                 {
                    tag : 'i',
@@ -20299,6 +20304,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     {
         if(!this.groupId){
             return (this.getValue() == this.inputValue || this.allowBlank) ? true : false;
+            //return (this.getValue() == this.inputValue) ? true : false;
         }
         
         var group = Roo.bootstrap.CheckBox.get(this.groupId);
@@ -20347,7 +20353,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             
             return;
         }
-        
+
         if(!this.groupId){
             this.el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
             this.el.findParent('.form-group', false, true).addClass(this.validClass);
@@ -20355,7 +20361,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         }
         
         var group = Roo.bootstrap.CheckBox.get(this.groupId);
-            
+        
         if(!group){
             return;
         }
@@ -20421,6 +20427,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     clearInvalid : function()
     {
         Roo.bootstrap.Input.prototype.clearInvalid.call(this);
+        
+        // this.el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
         
         var label = Roo.bootstrap.FieldLabel.get(this.name + '-group');
         
@@ -32556,7 +32564,11 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
             return false;
         });
         
-        if(this.disabled || this.allowBlank || valid){
+        if(this.allowBlank) {
+            return true;
+        }
+        
+        if(this.disabled || valid){
             this.markValid();
             return true;
         }
@@ -35802,7 +35814,27 @@ panel.load({
      * @return {String} 
      */
     getTitle : function(){
-        return this.title;
+        
+        if (typeof(this.title) != 'object') {
+            return this.title;
+        }
+        
+        var t = '';
+        for (var k in this.title) {
+            if (!this.title.hasOwnProperty(k)) {
+                continue;
+            }
+            
+            if (k.indexOf('-') >= 0) {
+                var s = k.split('-');
+                for (var i = 0; i<s.length; i++) {
+                    t += "<span class='visible-"+s[i]+"'>"+this.title[k]+"</span>";
+                }
+            } else {
+                t += "<span class='visible-"+k+"'>"+this.title[k]+"</span>";
+            }
+        }
+        return t;
     },
     
     /**
