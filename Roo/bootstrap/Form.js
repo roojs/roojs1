@@ -616,6 +616,8 @@ Roo.apply(Roo.bootstrap.Form, {
             
             var scrollable = this.target.el.findScrollableParent() || this.target.el.findParent('div.modal', 100, true) || Roo.get(document.body);
             
+            Roo.log([this.target.el, scrollable]);
+            
             var scrolled = scrollable.getScroll();
             
             var ot = this.target.el.calcOffsetsTo(scrollable);
@@ -629,8 +631,6 @@ Roo.apply(Roo.bootstrap.Form, {
             }
             
             scrollable.scrollTo('top', scrollTo);
-            
-            window.onwheel = function(){ return false;};
             
             var box = this.target.el.getBox();
 
@@ -677,6 +677,8 @@ Roo.apply(Roo.bootstrap.Form, {
 //                    Roo.bootstrap.Form.popover.unmask();
 //                }, 10000);
 
+            window.onwheel = function(){ return false;};
+            
             (function(){ this.isMasked = true; }).defer(500, this);
                 
             
