@@ -628,7 +628,7 @@ Roo.apply(Roo.bootstrap.Form, {
             
             scrollable.scrollTo('top', scrollTo);
             
-            var box = this.target.getBox();
+            var box = this.target.getBox(true);
             
             Roo.log(box);
             
