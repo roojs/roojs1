@@ -572,7 +572,7 @@ Roo.apply(Roo.bootstrap.Form, {
             }
             
             this.maskEl = {
-                top : '',
+                top : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask" }, true),
                 left : '',
                 bottom : '',
                 right : ''
