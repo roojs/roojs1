@@ -214,15 +214,6 @@ if(opt.anim.isAnimated()){
                 
                 Roo.log('parentNode');
                 Roo.log(el);
-//                Roo.log(
-//                    'findparent:'+ JSON.stringify(el, null, 4)+
-//                    ' | scrollable: '+el.isScrollable()+
-//                    ' | D height: '+D.getViewHeight() + 
-//                    ' | D width: '+D.getViewWidth() + 
-//                    ' | el height: '+el.dom.clientHeight+
-//                    ' | el width: '+el.dom.clientWidth+
-//                    ' | id: '+el.id
-//                );
             }
             
             Roo.log('end : ');
