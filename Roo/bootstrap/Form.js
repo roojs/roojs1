@@ -677,10 +677,10 @@ Roo.apply(Roo.bootstrap.Form, {
                 return;
             }
             
-            this.maskEl.top.hide();
-            this.maskEl.left.hide();
-            this.maskEl.bottom.hide();
-            this.maskEl.right.hide();
+            this.maskEl.top.setSize(0, 0).setXY([0, 0]).hide();
+            this.maskEl.left.setSize(0, 0).setXY([0, 0]).hide();
+            this.maskEl.bottom.setSize(0, 0).setXY([0, 0]).hide();
+            this.maskEl.right.setSize(0, 0).setXY([0, 0]).hide();
             
             this.toolTip.hide();
             
