@@ -213,7 +213,8 @@ if(opt.anim.isAnimated()){
                     ' | D height: '+D.getViewHeight() + 
                     ' | D width: '+D.getViewWidth() + 
                     ' | el height: '+el.dom.clientHeight+
-                    ' | el width: '+el.dom.clientWidth
+                    ' | el width: '+el.dom.clientWidth+
+                    ' | xtype'+el.xtype
                 );
             }
             
