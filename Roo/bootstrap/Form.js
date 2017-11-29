@@ -634,6 +634,8 @@ Roo.apply(Roo.bootstrap.Form, {
             
             window.onwheel = function(){ return false;};
             
+            (function(){
+                
                 Roo.log(this.target);
                 
                 var box = this.target.el.getBox();
@@ -682,6 +684,9 @@ Roo.apply(Roo.bootstrap.Form, {
 
                 (function(){ this.isMasked = true; }).defer(500, this);
                 
+            }).defer(100, this);
+            
+            
         },
         
         unmask : function()
