@@ -198,11 +198,9 @@ if(opt.anim.isAnimated()){
                     (
                         !el.isScrollable() ||
                         (
-                            el.isScrollable() &&
-                            (
-                                D.getViewHeight() - el.dom.clientHeight > 15 || 
-                                D.getViewWidth() - el.dom.clientWidth > 15
-                            )
+                            el.isScrollable() 
+                            &&
+                            el.dom.nodeName.toLowerCase() == 'form'
                         )
                     ) &&
                     el.dom.nodeName.toLowerCase() != 'body'
