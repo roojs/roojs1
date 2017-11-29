@@ -654,6 +654,7 @@ Roo.apply(Roo.bootstrap.Form, {
 
                 this.maskEl.bottom.setSize(Roo.lib.Dom.getDocumentWidth(), Roo.lib.Dom.getDocumentHeight() - box.bottom - this.padding);
                 this.maskEl.bottom.setXY([0, box.bottom + this.padding]);
+                Roo.log(['bottom', 0, box.bottom + this.padding])
                 this.maskEl.bottom.setStyle('z-index', zIndex);
                 this.maskEl.bottom.show();
 
