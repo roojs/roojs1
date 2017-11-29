@@ -578,10 +578,14 @@ Roo.apply(Roo.bootstrap.Form, {
                 right : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask roo-form-right-mask" }, true)
             };
             
+            var size = this.el.select('.fc-content', true).first().getSize();
+            
             this.maskEl.top.enableDisplayMode("block");
             this.maskEl.left.enableDisplayMode("block");
             this.maskEl.bottom.enableDisplayMode("block");
             this.maskEl.right.enableDisplayMode("block");
+            
+            
             
             this.toolTip = new Roo.bootstrap.Tooltip({
                 cls : 'roo-form-error-popover',
