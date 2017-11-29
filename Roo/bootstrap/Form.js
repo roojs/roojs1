@@ -576,11 +576,9 @@ Roo.apply(Roo.bootstrap.Form, {
                 right : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask roo-form-right-mask" }, true)
             };
             
-            var size = Roo.get(document.body).getSize();
-            
-            this.maskEl.top.enableDisplayMode("block").setWidth(size.width);
+            this.maskEl.top.enableDisplayMode("block");
             this.maskEl.left.enableDisplayMode("block");
-            this.maskEl.bottom.enableDisplayMode("block").setWidth(size.width);
+            this.maskEl.bottom.enableDisplayMode("block");
             this.maskEl.right.enableDisplayMode("block");
             
             this.toolTip = new Roo.bootstrap.Tooltip({
@@ -634,6 +632,8 @@ Roo.apply(Roo.bootstrap.Form, {
             
             this.maskEl.top.setHeight(size.y);
             this.maskEl.top.show();
+            
+            this.maskEl.bottom.setHeight()
             
             
             this.toolTip.bindEl = this.target.el;
