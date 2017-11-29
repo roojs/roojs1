@@ -677,6 +677,11 @@ Roo.apply(Roo.bootstrap.Form, {
                 return;
             }
             
+            this.maskEl.top.hide();
+            this.maskEl.left.hide();
+            this.maskEl.bottom.hide();
+            this.maskEl.right.hide();
+            
             this.toolTip.hide();
             
             this.toolTip.el.hide();
