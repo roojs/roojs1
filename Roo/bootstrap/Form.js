@@ -630,6 +630,9 @@ Roo.apply(Roo.bootstrap.Form, {
             
             scrollable.scrollTo('top', scrollTo);
             
+            Roo.log(this.target.getBox());
+            
+            
             this.toolTip.bindEl = this.target.el;
         
             this.toolTip.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
