@@ -207,8 +207,13 @@ if(opt.anim.isAnimated()){
                     ) &&
                     el.dom.nodeName.toLowerCase() != 'body'
             ){
+                Roo.log('focus');
+                Roo.log(el);
+                
                 el = Roo.get(el.dom.parentNode);
                 
+                Roo.log('parentNode');
+                Roo.log(el);
 //                Roo.log(
 //                    'findparent:'+ JSON.stringify(el, null, 4)+
 //                    ' | scrollable: '+el.isScrollable()+
