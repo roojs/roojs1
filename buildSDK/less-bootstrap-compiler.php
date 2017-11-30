@@ -30,6 +30,10 @@ require_once 'HTML/Less.php';
         
 $less = new HTML_Less();
 
+require_once 'HTML/CSS/Minify.php';
+
+$minify = HTML_CSS_Minify();
+
 foreach ($files as $less => $file){
 
     if(!file_exists($less)){
