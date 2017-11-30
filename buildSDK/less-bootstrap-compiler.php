@@ -38,9 +38,9 @@ $less = new HTML_Less();
 
 $minify = array();
 
-foreach ($files as $less => $file){
+foreach ($files as $src => $file){
 
-    if(!file_exists($less)){
+    if(!file_exists($src)){
         echo "{$less} does not exist...\n";
         continue;
     }
@@ -49,9 +49,9 @@ foreach ($files as $less => $file){
         
         $css = "{$file['baseDir']}/{$file['name']}";
         
-        echo "Compiling - {$less} To {$css}\n";
+        echo "Compiling - {$src} To {$css}\n";
         
-        $less->compileFile($less, $css);
+        $less->compileFile($src, $css);
         
         if(!file_exists($css)){
             echo "Compile failed?!\n";
