@@ -17,18 +17,16 @@ $rootDir = dirname(__FILE__) . '/../..';
 
 $files = array(
     "{$rootDir}/roojs1/less/bootstrap/bootstrap.less" => array(
-        'baseDir' => "{$rootDir}/roojs1/css-bootstrap/",
+        'baseDir' => "{$rootDir}/roojs1/css-bootstrap",
         'name' => 'bootstrap.css',
         'minify' => 'bootstrap.min.css'
     ),
     "{$rootDir}/roojs1/less/roojs-bootstrap/roojs-bootstrap.less" => array(
-        'baseDir' => "{$rootDir}/roojs1/css-bootstrap/",
+        'baseDir' => "{$rootDir}/roojs1/css-bootstrap",
         'name' => 'roojs-bootstrap-debug.css',
         'minify' => 'roojs-bootstrap.css'
     )
 );
-        
-print_R($files);exit;
 
 require_once 'HTML/Less.php';
         
@@ -38,6 +36,8 @@ $less = new HTML_Less();
 //
 //$minify = new HTML_CSS_Minify();
 
+$minify = array();
+
 foreach ($files as $less => $file){
 
     if(!file_exists($less)){
@@ -45,11 +45,9 @@ foreach ($files as $less => $file){
         continue;
     }
 
-    print_R($file);
-    exit;
     try {
         
-        $css = "{$file['directory']}{$file['name']}.css";
+        $css = "{$file['baseDir']}/{$file['name']}";
         
         echo "Compiling - {$less} To {$css}\n";
         
@@ -60,12 +58,12 @@ foreach ($files as $less => $file){
             continue;
         }
         
-        
-        
+        $minify[$file['mimify']] = $css;
 
     } catch (Exception $ex) {
         echo "lessphp fatal error: {$ex->getMessage()}\n";
     }
     
-
 }
+
+print_R($minify);
