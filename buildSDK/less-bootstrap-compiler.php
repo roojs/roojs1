@@ -36,19 +36,17 @@ foreach ($files as $src => $file){
         echo "{$src} does not exist...\n";
         continue;
     }
-    
-    echo "{$src} exist \n";
 
-//    try {
-//
-//        foreach ($file as $f){
-//            echo "Compiling - {$src} To {$f}\n";
-//
-//            $less->compileFile($src, $f);
-//        }
-//
-//    } catch (Exception $ex) {
-//        echo "lessphp fatal error: {$ex->getMessage()}\n";
-//    }
+    try {
+
+        foreach ($file as $f){
+            echo "Compiling - {$src} To {$f}\n";
+
+            $less->compileFile($src, $f);
+        }
+
+    } catch (Exception $ex) {
+        echo "lessphp fatal error: {$ex->getMessage()}\n";
+    }
 
 }
