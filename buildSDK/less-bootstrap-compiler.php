@@ -7,4 +7,3 @@ if(array_pop(explode('/', $cwd)) !== 'roojs1'){
     exit;
 }
 
-echo __DIR__;
