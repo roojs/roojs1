@@ -27,14 +27,16 @@ $files = array(
         'minify' => 'roojs-bootstrap.css'
     )
 );
+        
+print_R($files);exit;
 
 require_once 'HTML/Less.php';
         
 $less = new HTML_Less();
 
-require_once 'HTML/CSS/Minify.php';
-
-$minify = new HTML_CSS_Minify();
+//require_once 'HTML/CSS/Minify.php';
+//
+//$minify = new HTML_CSS_Minify();
 
 foreach ($files as $less => $file){
 
