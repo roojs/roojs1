@@ -58,7 +58,7 @@ foreach ($files as $src => $file){
             continue;
         }
         
-        $minify[$file['mimify']] = $css;
+        $minify[$file['minify']] = $css;
 
     } catch (Exception $ex) {
         echo "lessphp fatal error: {$ex->getMessage()}\n";
