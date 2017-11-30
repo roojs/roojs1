@@ -66,11 +66,15 @@ foreach ($files as $src => $file){
     
     try {
         
+        $min = "{$file['baseDir']}/{$file['minify']}";
+        
+        echo "Compiling - {$css} To {$min}\n";
+        
         $minify = new HTML_CSS_Minify($file['baseDir'], $file['baseDir'], array($file['name']));
     
         $content = $minify->minify();
 
-        file_put_contents("{$file['baseDir']}/{$file['minify']}", $content);
+        file_put_contents($min, $content);
         
     } catch (Exception $ex) {
         echo "Minify fatal error: {$ex->getMessage()}\n";
