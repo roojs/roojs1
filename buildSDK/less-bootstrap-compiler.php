@@ -68,6 +68,6 @@ foreach ($files as $src => $file){
     
     $content = $minify->minify();
     
-    print_R($content);exit;
+    file_put_contents("{$file['baseDir']}/{$file['minify']}", $content);
     
 }
