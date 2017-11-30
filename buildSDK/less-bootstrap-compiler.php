@@ -7,3 +7,6 @@ if(array_pop(explode('/', $cwd)) !== 'roojs1'){
     exit;
 }
 
+require_once 'HTML/Less.php';
+
+$less = new HTML_Less();
