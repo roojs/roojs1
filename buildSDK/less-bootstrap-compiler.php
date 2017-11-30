@@ -18,11 +18,13 @@ $rootDir = dirname(__FILE__) . '/../..';
 $files = array(
     "{$rootDir}/roojs1/less/bootstrap/bootstrap.less" => array(
         'directory' => "{$rootDir}/roojs1/css-bootstrap/",
-        'name' => 'bootstrap'
+        'name' => 'bootstrap.css',
+        'minify' => 'bootstrap.min.css'
     ),
     "{$rootDir}/roojs1/less/roojs-bootstrap/roojs-bootstrap.less" => array(
         'directory' => "{$rootDir}/roojs1/css-bootstrap/",
-        'name' => 'roojs-bootstrap'
+        'name' => 'roojs-bootstrap-debug.css',
+        'minify' => 'roojs-bootstrap.css'
     )
 );
 
