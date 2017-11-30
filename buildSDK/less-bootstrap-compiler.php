@@ -55,13 +55,15 @@ foreach ($files as $src => $file){
 
 require_once 'HTML/CSS/Minify.php';
 
-foreach ($minify as $name => $file){
+foreach ($files as $src => $file){
     
-    $dir
+    $css = "{$file['baseDir']}/{$file['name']}";
+    
+    if(!file_exists($css)){
+        echo "{$css} does not exist...\n";
+        continue;
+    }
+    
+    
     
 }
-
-
-
-
-print_R($minify);
