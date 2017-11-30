@@ -66,6 +66,8 @@ foreach ($files as $src => $file){
     
     $minify = new HTML_CSS_Minify($file['baseDir'], $file['baseDir'], array($file['name']));
     
+    $content = $minify->minify();
     
+    print_R($content);exit;
     
 }
