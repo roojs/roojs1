@@ -41,6 +41,8 @@ foreach ($files as $less => $file){
         continue;
     }
 
+    print_R($file);
+    exit;
     try {
         
         $css = "{$file['directory']}{$file['name']}.css";
