@@ -32,8 +32,6 @@ require_once 'HTML/Less.php';
         
 $less = new HTML_Less();
 
-$minify = array();
-
 foreach ($files as $src => $file){
 
     if(!file_exists($src)){
@@ -49,17 +47,21 @@ foreach ($files as $src => $file){
         
         $less->compileFile($src, $css);
         
-        if(!file_exists($css)){
-            echo "Compile failed?!\n";
-            continue;
-        }
-        
-        $minify[$file['minify']] = $css;
-
     } catch (Exception $ex) {
         echo "lessphp fatal error: {$ex->getMessage()}\n";
     }
     
 }
+
+require_once 'HTML/CSS/Minify.php';
+
+foreach ($minify as $name => $file){
+    
+    $dir
+    
+}
+
+
+
 
 print_R($minify);
