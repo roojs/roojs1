@@ -3662,13 +3662,6 @@ html.bootstrap-sticky body {
 .tooltip.fade.in {
   z-index: 10002;
 }
-.roo-invalid-outline {
-  outline-width: 5000px;
-  outline-offset: 5px;
-  outline-style: solid;
-  outline-color: rgba(119, 119, 119, 0.5);
-  position: relative;
-}
 .roo-upload-cropbox-selector {
   visibility: hidden;
   height: 0px;
