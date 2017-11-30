@@ -7,6 +7,12 @@ if(array_pop(explode('/', $cwd)) !== 'roojs1'){
     exit;
 }
 
+ ini_set('include_path', 
+            dirname(__FILE__). ':' . 
+        
+            dirname(__FILE__).'/pear:' . 
+            ini_get('include_path'));
+
 require_once 'HTML/Less.php';
 
 $less = new HTML_Less();
