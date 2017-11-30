@@ -17,12 +17,12 @@ $rootDir = dirname(__FILE__) . '/../..';
 
 $files = array(
     "{$rootDir}/roojs1/less/bootstrap/bootstrap.less" => array(
-        'baseDir' => "/home/edward/Downloads/css-compiled", //"{$rootDir}/roojs1/css-bootstrap",
+        'baseDir' => "{$rootDir}/roojs1/css-bootstrap",
         'name' => 'bootstrap.css',
         'minify' => 'bootstrap.min.css'
     ),
     "{$rootDir}/roojs1/less/roojs-bootstrap/roojs-bootstrap.less" => array(
-        'baseDir' => "/home/edward/Downloads/css-compiled", //"{$rootDir}/roojs1/css-bootstrap",
+        'baseDir' => "{$rootDir}/roojs1/css-bootstrap",
         'name' => 'roojs-bootstrap-debug.css',
         'minify' => 'roojs-bootstrap.css'
     )
