@@ -30,20 +30,28 @@ require_once 'HTML/Less.php';
         
 $less = new HTML_Less();
 
-foreach ($files as $src => $file){
+foreach ($files as $less => $file){
 
-    if(!file_exists($src)){
-        echo "{$src} does not exist...\n";
+    if(!file_exists($less)){
+        echo "{$less} does not exist...\n";
         continue;
     }
 
     try {
-
-        foreach ($file as $f){
-            echo "Compiling - {$src} To {$f}\n";
-
-            $less->compileFile($src, $f);
+        
+        $css = "{$file['directory']}{$file['name']}.css";
+        
+        echo "Compiling - {$less} To {$css}\n";
+        
+        $less->compileFile($less, $css);
+        
+        if(!file_exists($css)){
+            echo "Compile failed?!\n";
+            continue;
         }
+        
+        
+        
 
     } catch (Exception $ex) {
         echo "lessphp fatal error: {$ex->getMessage()}\n";
