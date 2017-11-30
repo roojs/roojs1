@@ -13,6 +13,8 @@ ini_set('include_path',
     ini_get('include_path')
 );
 
+$rootDir = dirname(__FILE__) . '/../../';
+
 $files = array(
     "roojs1/less/bootstrap/bootstrap.less" => array(
         "roojs1/css-bootstrap/bootstrap.css",
