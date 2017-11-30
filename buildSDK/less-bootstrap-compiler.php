@@ -16,15 +16,29 @@ ini_set('include_path',
 $rootDir = dirname(__FILE__) . '/../..';
 
 $files = array(
-    "{$rootDir}/roojs1/less/bootstrap/bootstrap.less" => array(
-        'directory' => "{$rootDir}/roojs1/css-bootstrap/",
-        'name' => 'bootstrap'
+    array(
+        'less' => array(
+            'directory' => "{$rootDir}/roojs1/less/bootstrap",
+            'name' => 'bootstrap'
+        ),
+        'css' => array(
+            'directory' => "{$rootDir}/roojs1/css-bootstrap/",
+            'name' => 'bootstrap'
+        )
     ),
-    "{$rootDir}/roojs1/less/roojs-bootstrap/roojs-bootstrap.less" => array(
-        'directory' => "{$rootDir}/roojs1/css-bootstrap/",
-        'name' => 'roojs-bootstrap'
+    array(
+        'less' => array(
+            'directory' => "{$rootDir}/roojs1/less/roojs-bootstrap",
+            'name' => 'roojs-bootstrap'
+        ),
+        'css' => array(
+            'directory' => "{$rootDir}/roojs1/css-bootstrap/",
+            'name' => 'roojs-bootstrap'
+        )
     )
 );
+
+print_R($files);exit;
 
 require_once 'HTML/Less.php';
         
@@ -32,7 +46,7 @@ $less = new HTML_Less();
 
 require_once 'HTML/CSS/Minify.php';
 
-$minify = HTML_CSS_Minify();
+$minify = new HTML_CSS_Minify();
 
 foreach ($files as $less => $file){
 
