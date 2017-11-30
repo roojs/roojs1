@@ -32,10 +32,6 @@ require_once 'HTML/Less.php';
         
 $less = new HTML_Less();
 
-//require_once 'HTML/CSS/Minify.php';
-//
-//$minify = new HTML_CSS_Minify();
-
 $minify = array();
 
 foreach ($files as $src => $file){
