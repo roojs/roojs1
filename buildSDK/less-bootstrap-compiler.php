@@ -68,7 +68,7 @@ foreach ($files as $src => $file){
         
         $min = "{$file['baseDir']}/{$file['minify']}";
         
-        echo "Compiling - {$css} To {$min}\n";
+        echo "Minifing - {$css} To {$min}\n";
         
         $minify = new HTML_CSS_Minify($file['baseDir'], $file['baseDir'], array($file['name']));
     
