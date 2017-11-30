@@ -64,10 +64,16 @@ foreach ($files as $src => $file){
         continue;
     }
     
-    $minify = new HTML_CSS_Minify($file['baseDir'], $file['baseDir'], array($file['name']));
+    try {
+        
+        $minify = new HTML_CSS_Minify($file['baseDir'], $file['baseDir'], array($file['name']));
     
-    $content = $minify->minify();
-    
-    file_put_contents("{$file['baseDir']}/{$file['minify']}", $content);
+        $content = $minify->minify();
+
+        file_put_contents("{$file['baseDir']}/{$file['minify']}", $content);
+        
+    } catch (Exception $ex) {
+        echo "Minify fatal error: {$ex->getMessage()}\n";
+    }
     
 }
