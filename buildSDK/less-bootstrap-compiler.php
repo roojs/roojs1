@@ -19,7 +19,8 @@ $files = array(
     "{$rootDir}/roojs1/less/bootstrap/bootstrap.less" => array(
         'baseDir' => "{$rootDir}/roojs1/css-bootstrap",
         'name' => 'bootstrap.css',
-        'minify' => 'bootstrap.min.css'
+        'minify' => 'bootstrap.min.css',
+        'variables' => "@import 'variables.less';"
     ),
     "{$rootDir}/roojs1/less/roojs-bootstrap/roojs-bootstrap.less" => array(
         'baseDir' => "{$rootDir}/roojs1/css-bootstrap",
