@@ -20,19 +20,17 @@ $files = array(
         'baseDir' => "{$rootDir}/roojs1/css-bootstrap",
         'name' => 'bootstrap.css',
         'minify' => 'bootstrap.min.css',
-        'variables' => "@import 'variables.less';"
+        'variables' => array("@import 'variables.less';")
     ),
     "{$rootDir}/roojs1/less/roojs-bootstrap/roojs-bootstrap.less" => array(
         'baseDir' => "{$rootDir}/roojs1/css-bootstrap",
         'name' => 'roojs-bootstrap-debug.css',
         'minify' => 'roojs-bootstrap.css',
-        'variables' => "@import '../bootstrap/variables.less';"
+        'variables' => array("@import '../bootstrap/variables.less';")
     )
 );
 
 require_once 'HTML/Less.php';
-        
-$less = new HTML_Less();
 
 foreach ($files as $src => $file){
 
@@ -42,6 +40,10 @@ foreach ($files as $src => $file){
     }
 
     try {
+        
+        $less = new HTML_Less();
+        
+        $less->setOption('variables', $this->variables);
         
         $css = "{$file['baseDir']}/{$file['name']}";
         
