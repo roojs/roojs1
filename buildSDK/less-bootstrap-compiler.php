@@ -43,7 +43,7 @@ foreach ($files as $src => $file){
         
         $less = new HTML_Less();
         
-        $less->setOption('variables', $this->variables);
+        $less->setOption('variables', $file['variables']);
         
         $css = "{$file['baseDir']}/{$file['name']}";
         
