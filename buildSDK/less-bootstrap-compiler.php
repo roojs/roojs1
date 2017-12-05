@@ -52,6 +52,14 @@ foreach ($files as $src => $file){
         
         $less->compileFile($src, $css);
         
+        $min = "{$file['baseDir']}/{$file['minify']}";
+        
+        $less->setOption('compress', true);
+        
+        echo "Minifing - {$src} To {$min}\n";
+        
+        $less->compileFile($src, $min);
+        
     } catch (Exception $ex) {
         echo "lessphp fatal error: {$ex->getMessage()}\n";
     }
