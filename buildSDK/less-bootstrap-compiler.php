@@ -64,7 +64,6 @@ foreach ($files as $src => $file){
             'compress' => true,
             'variables' => $file['variables'],
             'sourceMap' => true,
-            'sourceMapEncode' => false,
             'sourceMapWriteTo' => "{$file['baseDir']}/{$file['minify']}.map",
             'sourceMapURL' => "{$file['minify']}.map"
         ));
