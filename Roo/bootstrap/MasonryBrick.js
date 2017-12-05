@@ -382,7 +382,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     {
         e.preventDefault();
         
-        if(!this.isFitContainer){
+        if(!this.isFitContainer || this.maskInverse){
             return;
         }
         
@@ -395,7 +395,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     {
         e.preventDefault();
         
-        if(!this.isFitContainer){
+        if(!this.isFitContainer || this.maskInverse){
             return;
         }
         
