@@ -2243,11 +2243,13 @@ a.roo-brick-link:hover {
   background-color: #000000;
   opacity: 0.2;
 }
-.mask-inverse .masonry-brick-paragraph {
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0));
-}
-.mask-inverse:hover .masonry-brick-paragraph {
-  background: none;
+@media (min-width: 768px) {
+  .mask-inverse .masonry-brick-paragraph {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  .mask-inverse:hover .masonry-brick-paragraph {
+    background: none;
+  }
 }
 /* 
     Document   : modal
