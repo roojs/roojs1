@@ -65,32 +65,3 @@ foreach ($files as $src => $file){
     }
     
 }
-
-require_once 'HTML/CSS/Minify.php';
-
-foreach ($files as $src => $file){
-    
-    $css = "{$file['baseDir']}/{$file['name']}";
-    
-    if(!file_exists($css)){
-        echo "{$css} does not exist...\n";
-        continue;
-    }
-    
-    try {
-        
-        $min = "{$file['baseDir']}/{$file['minify']}";
-        
-        echo "Minifing - {$css} To {$min}\n";
-        
-        $minify = new HTML_CSS_Minify($file['baseDir'], $file['baseDir'], array($file['name']));
-    
-        $content = $minify->minify($file['baseDir']);
-
-        file_put_contents($min, $content);
-        
-    } catch (Exception $ex) {
-        echo "Minify fatal error: {$ex->getMessage()}\n";
-    }
-    
-}
