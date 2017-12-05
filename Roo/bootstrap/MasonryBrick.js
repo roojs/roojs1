@@ -98,12 +98,10 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         }
         
         if(!Roo.isTouch && this.maskInverse){
-            Roo.log('mask inverse');
             cls += ' mask-inverse';
         }
         
         if(!this.html.length && !this.maskInverse){
-            Roo.log('enable mask');
             cls += ' enable-mask';
         }
         
