@@ -43,8 +43,12 @@ foreach ($files as $src => $file){
         
         $less = new HTML_Less();
         
-        $less->setOption('variables', $file['variables']);
-        $less->setOption('sourceMap', true);
+        $less->setOptions(array(
+            'variables' => $file['variables'],
+            'sourceMap' => true,
+            'sourceMapWriteTo' => "{$file['baseDir']}/{$file['name']}.map",
+            'sourceMapURL' => "{$file['name']}.map"
+        ));
         
         $css = "{$file['baseDir']}/{$file['name']}";
         
