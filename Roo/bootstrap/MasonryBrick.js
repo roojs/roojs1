@@ -97,7 +97,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             cls += ' masonry-brick-image';
         }
         
-        if(!this.html.length){
+        if(!this.html.length && !this.maskInverse){
             cls += ' enable-mask';
         }
         
