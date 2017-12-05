@@ -76,6 +76,11 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
      */   
     preventDefault : false, 
     
+    /**
+     * @cfg {Boolean} inverse defalut false
+     */   
+    maskInverse : false, 
+    
     getAutoCreate : function()
     {
         if(!this.isFitContainer){
