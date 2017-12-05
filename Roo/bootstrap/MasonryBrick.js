@@ -103,6 +103,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         }
         
         if(!this.html.length && !this.maskInverse){
+            Roo.log('enable mask');
             cls += ' enable-mask';
         }
         
