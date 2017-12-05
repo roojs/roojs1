@@ -109,12 +109,12 @@ a.roo-brick-link:hover {
     opacity:0.2;
 }
 
-.mask-inverse .masonry-brick-paragraph {
-    background: linear-gradient(to top, @black-opacity-50, fade(@body-bg, 0%));
+@media (min-width: 768px) {
+    .mask-inverse .masonry-brick-paragraph {
+        background: @black-opacity-50;
+    }
+
+    .mask-inverse:hover .masonry-brick-paragraph {
+        background: none;
+    }
 }
-
-.mask-inverse:hover .masonry-brick-paragraph {
-    background: none;
-}
-
-
