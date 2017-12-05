@@ -101,6 +101,10 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             cls += ' enable-mask';
         }
         
+        if(this.maskInverse){
+            cls += ' mask-inverse';
+        }
+        
         if(this.size){
             cls += ' masonry-' + this.size + '-brick';
         }
