@@ -20,14 +20,14 @@ $files = array(
         'baseDir' => "{$rootDir}/roojs1/css-bootstrap",
         'name' => 'bootstrap.css',
         'minify' => 'bootstrap.min.css',
-        'sourceMapRootpath' => '../less/bootstrap/',
+        'sourceMapRootpath' => 'roojs1/less/bootstrap/',
         'variables' => array("@import 'variables.less';")
     ),
     "{$rootDir}/roojs1/less/roojs-bootstrap/roojs-bootstrap.less" => array(
         'baseDir' => "{$rootDir}/roojs1/css-bootstrap",
         'name' => 'roojs-bootstrap-debug.css',
         'minify' => 'roojs-bootstrap.css',
-        'sourceMapRootpath' => '../less/roojs-bootstrap/',
+        'sourceMapRootpath' => 'roojs1/less/roojs-bootstrap/',
         'variables' => array("@import '../bootstrap/variables.less';")
     )
 );
