@@ -60,7 +60,10 @@ Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
     },
 
     // private (kinda)
-    bindRegion : function(r){
+    bindRegion : function(r)
+    {
+        Roo.log('bind region!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        
         this.regions[r.config.region] = r;
         
         r.on("visibilitychange",    this.layout, this);
