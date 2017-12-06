@@ -20,12 +20,14 @@ $files = array(
         'baseDir' => "{$rootDir}/roojs1/css-bootstrap",
         'name' => 'bootstrap.css',
         'minify' => 'bootstrap.min.css',
+        'sourceMapRootpath' => '../less/bootstrap/',
         'variables' => array("@import 'variables.less';")
     ),
     "{$rootDir}/roojs1/less/roojs-bootstrap/roojs-bootstrap.less" => array(
         'baseDir' => "{$rootDir}/roojs1/css-bootstrap",
         'name' => 'roojs-bootstrap-debug.css',
         'minify' => 'roojs-bootstrap.css',
+        'sourceMapRootpath' => '../less/roojs-bootstrap/',
         'variables' => array("@import '../bootstrap/variables.less';")
     )
 );
@@ -47,7 +49,9 @@ foreach ($files as $src => $file){
             'variables' => $file['variables'],
             'sourceMap' => true,
             'sourceMapWriteTo' => "{$file['baseDir']}/{$file['name']}.map",
-            'sourceMapURL' => "{$file['name']}.map"
+            'sourceMapURL' => "{$file['name']}.map",
+            'sourceMapRootpath' => $file['sourceMapRootpath'],
+            'sourceMapBasepath' => dirname(realpath($src))
         ));
         
         $css = "{$file['baseDir']}/{$file['name']}";
