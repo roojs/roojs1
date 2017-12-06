@@ -525,6 +525,8 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         }
         this.activePanel = panel;
         panel.setActiveState(true);
+        Roo.log('panel size!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        Roo.log(this.panelSize);
         if(this.panelSize){
             panel.setSize(this.panelSize.width, this.panelSize.height);
         }
