@@ -25,7 +25,7 @@ Roo.bootstrap.panel.Nest = function(config)
     */
     
     config.el =  config.layout.getEl();
-    Roo.log('Nest : ');
+    Roo.log('Nest Construct!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
     Roo.log(config);
     Roo.bootstrap.panel.Nest.superclass.constructor.call(this, config);
     
