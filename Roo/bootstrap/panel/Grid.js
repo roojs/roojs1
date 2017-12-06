@@ -81,7 +81,8 @@ Roo.bootstrap.panel.Grid = function(config)
   
     // xtype created footer. - not sure if will work as we normally have to render first..
     if (this.footer && !this.footer.el && this.footer.xtype) {
-        
+        Roo.log('get footer!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
+        Roo.log(this.footer);
         var ctr = this.grid.getView().getFooterPanel(true);
         this.footer.dataSource = this.grid.dataSource;
         this.footer = Roo.factory(this.footer, Roo);
