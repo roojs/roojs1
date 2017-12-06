@@ -83,6 +83,7 @@ Roo.extend(Roo.bootstrap.panel.Nest, Roo.bootstrap.panel.Content, {
             reg = this.layout.getRegion(r);
             Roo.log(reg);
             if (reg.getActivePanel()) {
+                Roo.log('Active Panel????????????????????????????');
                 //reg.showPanel(reg.getActivePanel()); // force it to activate.. 
                 reg.setActivePanel(reg.getActivePanel());
                 continue;
