@@ -333,22 +333,12 @@ panel.load({
     adjustForComponents : function(width, height)
     {
         //Roo.log('adjustForComponents ');
-        if(this.title == 'Log Grid'){
-            Roo.log('adjustForComponents ');
-            Roo.log(this.resizeEl);
-            Roo.log(this.el);
-            Roo.log(this.adjustments);
-            Roo.log([width, height]);
-        }
         if(this.resizeEl != this.el){
             width -= this.el.getFrameWidth('lr');
             height -= this.el.getFrameWidth('tb');
         }
         if(this.toolbar){
             var te = this.toolbar.getEl();
-            Roo.log(te);
-            Roo.log('tool bar height!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
-            Roo.log(te.getHeight(true));
             height -= te.getHeight();
             te.setWidth(width);
         }
@@ -359,6 +349,7 @@ panel.load({
             height -= te.getHeight();
             te.setWidth(width);
         }
+        
         
         if(this.adjustments){
             width += this.adjustments[0];
