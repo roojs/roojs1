@@ -340,7 +340,7 @@ panel.load({
         if(this.toolbar){
             var te = this.toolbar.getEl();
             Roo.log(this.toolbar);
-            Roo.log(te.isVisible());
+            Roo.log(te.isVisible(true));
             height -= te.getHeight();
             te.setWidth(width);
         }
