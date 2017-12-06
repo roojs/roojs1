@@ -109,20 +109,10 @@ Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content, {
     },
     
     setSize : function(width, height){
-        if(this.title == 'Log Grid'){
-            Roo.log(this);
-            Roo.log(this.lastSize);
-            Roo.log(this.el.isVisible());
-        }
-        
         if(!this.ignoreResize(width, height)){
-            Roo.log('Run grid resize!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-            Roo.log([width, height]);
             var grid = this.grid;
             var size = this.adjustForComponents(width, height);
-            Roo.log(size);
             var gridel = grid.getGridEl();
-            Roo.log(gridel);
             gridel.setSize(size.width, size.height);
             /*
             var thd = grid.getGridEl().select('thead',true).first();
