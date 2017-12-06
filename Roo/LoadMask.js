@@ -105,7 +105,6 @@ Roo.LoadMask.prototype = {
     // private
     onBeforeLoad : function(){
         if(!this.disabled){
-            Roo.log(this.el);
             this.el.mask(this.msg, this.msgCls);
         }
     },
