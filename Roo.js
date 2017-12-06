@@ -314,7 +314,6 @@ Roo.factory(conf, Roo.data);
         {
             // no xtype, no ns or c.xns - or forced off by c.xns
             if (!c.xtype   || (!ns && !c.xns) ||  (c.xns === false)) { // not enough info...
-                Roo.log('in???');
                 return c;
             }
             ns = c.xns ? c.xns : ns; // if c.xns is set, then use that..
