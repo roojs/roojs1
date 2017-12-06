@@ -120,6 +120,7 @@ Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content, {
             Roo.log([width, height]);
             var grid = this.grid;
             var size = this.adjustForComponents(width, height);
+            Roo.log(size);
             var gridel = grid.getGridEl();
             gridel.setSize(size.width, size.height);
             /*
