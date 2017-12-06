@@ -62,9 +62,6 @@ Roo.extend(Roo.bootstrap.panel.Nest, Roo.bootstrap.panel.Content, {
     
     setActiveState : function(active){
         this.active = active;
-        Roo.log('setActiveState !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(active);
-        Roo.log(this);
         this.setActiveClass(active);
         
         if(!active){
