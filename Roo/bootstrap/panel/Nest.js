@@ -53,6 +53,7 @@ Roo.extend(Roo.bootstrap.panel.Nest, Roo.bootstrap.panel.Content, {
             // ie requires a double layout on the first pass
             if(Roo.isIE && !this.initialized){
                 this.initialized = true;
+                Roo.log('initialize!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
                 this.layout.layout();
             }
         }
