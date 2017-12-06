@@ -53,7 +53,7 @@ Roo.bootstrap.Table = function(config){
     this.footerShow = (typeof(config.tfoot) != 'undefined') ? config.tfoot : this.footerShow;
     
     this.sm = config.sm || {xtype: 'RowSelectionModel', xns: Roo.bootstrap.Table};
-    
+    Roo.debug = true;
     if (this.sm) {
         this.sm.grid = this;
         Roo.log('render bootstrap table sm!!!!!!!!!!!!!!!!!!!!!!!!!');
