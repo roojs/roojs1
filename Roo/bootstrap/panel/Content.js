@@ -337,7 +337,7 @@ panel.load({
             Roo.log('adjustForComponents ');
             Roo.log(this.resizeEl);
             Roo.log(this.el);
-            
+            Roo.log(this.adjustments);
         }
         if(this.resizeEl != this.el){
             width -= this.el.getFrameWidth('lr');
@@ -355,7 +355,6 @@ panel.load({
             height -= te.getHeight();
             te.setWidth(width);
         }
-        
         
         if(this.adjustments){
             width += this.adjustments[0];
