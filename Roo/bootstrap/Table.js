@@ -54,7 +54,6 @@ Roo.bootstrap.Table = function(config){
     Roo.log(config);
     this.sm = config.sm || {xtype: 'RowSelectionModel'};
     if (this.sm) {
-        Roo.log(this.sm);
         this.sm.grid = this;
         this.selModel = Roo.factory(this.sm, Roo.bootstrap.Table);
         this.sm = this.selModel;
