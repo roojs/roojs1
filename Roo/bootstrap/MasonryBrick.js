@@ -62,7 +62,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     size : 'xs',
     
     /**
-     * @cfg {String} (center|bottom) placetitle
+     * @cfg {String} placetitle (center|bottom)
      */   
     placetitle : '',
     
