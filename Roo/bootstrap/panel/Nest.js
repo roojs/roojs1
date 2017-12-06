@@ -88,9 +88,9 @@ Roo.extend(Roo.bootstrap.panel.Nest, Roo.bootstrap.panel.Content, {
                 reg.setActivePanel(reg.getActivePanel());
                 continue;
             }
-            Roo.log(reg.panels.length);
+            
             if (!reg.panels.length) {
-//                continue;
+                continue;
             }
             reg.showPanel(reg.getPanel(0));
         }
