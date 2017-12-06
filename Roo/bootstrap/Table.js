@@ -313,6 +313,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             return;
         }
         if (this.selModel) {
+            Roo.log(this.selModel);
             this.selModel.initEvents();
         }
         
