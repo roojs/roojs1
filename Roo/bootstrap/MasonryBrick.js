@@ -97,7 +97,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             cls += ' masonry-brick-image';
         }
         
-        if(!Roo.isTouch && this.maskInverse){
+        if(this.maskInverse){
             cls += ' mask-inverse';
         }
         
