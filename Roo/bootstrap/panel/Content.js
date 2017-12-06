@@ -338,14 +338,9 @@ panel.load({
             height -= this.el.getFrameWidth('tb');
         }
         if(this.toolbar){
-            
             var te = this.toolbar.getEl();
             te.setWidth(width);
-            Roo.log('toolbar!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
-            Roo.log(this.toolbar);
-            Roo.log(te.getHeight());
             height -= te.getHeight();
-            
         }
         if(this.footer){
             var te = this.footer.getEl();
