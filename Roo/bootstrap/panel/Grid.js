@@ -121,7 +121,7 @@ Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content, {
                 tbd.setSize(width, height - thd.getHeight());
             }
             */
-//            grid.autoSize();
+            grid.autoSize();
         }
     },
      
