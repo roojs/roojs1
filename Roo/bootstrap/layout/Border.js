@@ -60,7 +60,7 @@ Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
     {
         this.regions[r.config.region] = r;
         
-        r.on("visibilitychange",    this.onVisibilitychange, this);
+        r.on("visibilitychange",    this.layout, this);
         r.on("paneladded",          this.layout, this);
         r.on("panelremoved",        this.layout, this);
         r.on("invalidated",         this.layout, this);
@@ -68,20 +68,13 @@ Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
         r.on("collapsed",           this.onRegionCollapsed, this);
         r.on("expanded",            this.onRegionExpanded, this);
     },
-    
-    onVisibilitychange : function()
-    {
-        Roo.log('calling visibilitychange!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        this.layout();
-    },
-    
+
     /**
      * Performs a layout update.
      */
     layout : function()
     {
         Roo.log('calling layout!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        
         if(this.updating) {
             return;
         }
