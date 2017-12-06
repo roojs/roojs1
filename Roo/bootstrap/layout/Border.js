@@ -446,7 +446,6 @@ layout.addxtype({
         
     },
     
-    
 // private
     factory : function(cfg)
     {
