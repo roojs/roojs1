@@ -41,7 +41,7 @@ foreach ($files as $src => $file){
 
     try {
         
-        print_R($file['baseDir']);exit;
+        print_R($src);exit;
         
         $less = new HTML_Less();
         
