@@ -776,6 +776,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             formData.append('mimetype', file.mimetype);
         }
         
+        Roo.log(formData);
+        
         if(this.fireEvent('prepare', this, formData) != false){
             this.xhr.send(formData);
         };
