@@ -338,6 +338,7 @@ panel.load({
             Roo.log(this.resizeEl);
             Roo.log(this.el);
             Roo.log(this.adjustments);
+            Roo.log([width, height]);
         }
         if(this.resizeEl != this.el){
             width -= this.el.getFrameWidth('lr');
@@ -345,6 +346,7 @@ panel.load({
         }
         if(this.toolbar){
             var te = this.toolbar.getEl();
+            Roo.log(te);
             height -= te.getHeight();
             te.setWidth(width);
         }
