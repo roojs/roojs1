@@ -51,6 +51,7 @@ Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
      */
     addRegion : function(config)
     {
+        Roo.log('add region!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         if(!this.regions[config.region]){
             var r = this.factory(config);
     	    this.bindRegion(r);
