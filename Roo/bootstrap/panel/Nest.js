@@ -84,11 +84,11 @@ Roo.extend(Roo.bootstrap.panel.Nest, Roo.bootstrap.panel.Content, {
             Roo.log(reg);
             if (reg.getActivePanel()) {
                 Roo.log('Active Panel????????????????????????????');
+                Roo.log(reg.getActivePanel());
                 //reg.showPanel(reg.getActivePanel()); // force it to activate.. 
                 reg.setActivePanel(reg.getActivePanel());
                 continue;
             }
-            
             if (!reg.panels.length) {
                 continue;
             }
