@@ -116,6 +116,7 @@ Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content, {
         }
         
         if(!this.ignoreResize(width, height)){
+            Roo.log('run???');
             var grid = this.grid;
             var size = this.adjustForComponents(width, height);
             var gridel = grid.getGridEl();
