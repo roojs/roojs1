@@ -5681,7 +5681,7 @@ Roo.LoadMask.prototype = {
     // private
     onBeforeLoad : function(){
         if(!this.disabled){
-            this.el.mask(this.msg, this.msgCls);
+            (function() { this.el.mask(this.msg, this.msgCls) }).defer(50, this);
         }
     },
 
