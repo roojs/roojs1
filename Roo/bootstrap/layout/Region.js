@@ -286,8 +286,11 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
 
     updateBody : function(w, h)
     {
-        Roo.log('update Body!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(this);
+        if(this.activePanel.title == 'Log Grid'){
+            Roo.log('update Body!!!!!!!!!!!!!!!!!!!!!!!!!!');
+            Roo.log(this);
+        }
+        
         if(w !== null){
             this.el.setWidth(w);
             w -= this.el.getBorderWidth("rl");
