@@ -72,6 +72,7 @@ Roo.bootstrap.Table = function(config){
          
     }
     if (this.footer && this.store) {
+        Roo.log('table footer?????????!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         this.footer.dataSource = this.ds;
         this.footer = Roo.factory(this.footer);
     }
