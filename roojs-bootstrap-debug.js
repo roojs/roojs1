@@ -31440,12 +31440,12 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
      */   
     href : '',
     /**
-     * @cfg {String} (xs|sm|md|md-left|md-right|tall|wide) size
+     * @cfg {String} size (xs|sm|md|md-left|md-right|tall|wide)
      */   
     size : 'xs',
     
     /**
-     * @cfg {String} (center|bottom) placetitle
+     * @cfg {String} placetitle (center|bottom)
      */   
     placetitle : '',
     
@@ -31480,7 +31480,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             cls += ' masonry-brick-image';
         }
         
-        if(!Roo.isTouch && this.maskInverse){
+        if(this.maskInverse){
             cls += ' mask-inverse';
         }
         
