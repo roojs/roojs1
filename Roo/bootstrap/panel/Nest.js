@@ -40,7 +40,6 @@ Roo.bootstrap.panel.Nest = function(config)
 Roo.extend(Roo.bootstrap.panel.Nest, Roo.bootstrap.panel.Content, {
 
     setSize : function(width, height){
-        Roo.log('Nest set Size!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
         if(!this.ignoreResize(width, height)){
             var size = this.adjustForComponents(width, height);
             var el = this.layout.getEl();
