@@ -265,6 +265,9 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
 */
     updateBox : function(box)
     {
+        Roo.log('update Box!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        Roo.log(this);
+        
         if (!this.bodyEl) {
             return; // not rendered yet..
         }
