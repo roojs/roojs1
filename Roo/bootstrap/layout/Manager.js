@@ -134,7 +134,6 @@ Roo.extend(Roo.bootstrap.layout.Manager, Roo.bootstrap.Component, {
     },
 
     onRegionResized : function(region, newSize){
-        Roo.log('calling onRegionResized!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
         this.fireEvent("regionresized", region, newSize);
         this.layout();
     },
@@ -183,7 +182,6 @@ Roo.extend(Roo.bootstrap.layout.Manager, Roo.bootstrap.Component, {
     },
 
     onWindowResize : function(){
-        Roo.log('calling onWindowResize!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         if(this.monitorWindowResize){
             this.layout();
         }
