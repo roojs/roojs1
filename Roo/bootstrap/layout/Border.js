@@ -71,9 +71,10 @@ Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
     
     onVisibilitychange : function()
     {
+        Roo.log('calling visibilitychange!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         this.layout();
-    }
-
+    },
+    
     /**
      * Performs a layout update.
      */
