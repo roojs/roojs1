@@ -289,10 +289,12 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         if(!this.activePanel){
             Roo.log('activePanel not exist update Body!!!!!!!!!!!!!!!!!!!!!!!!!!');
             Roo.log(this);
+            Roo.log([w, h]);
         } else {
             if(this.activePanel.title == 'Log Grid'){
             Roo.log('update Body!!!!!!!!!!!!!!!!!!!!!!!!!!');
             Roo.log(this);
+            Roo.log([w,h]);
         }
         }
         
