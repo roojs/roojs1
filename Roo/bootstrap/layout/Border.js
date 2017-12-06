@@ -25,8 +25,9 @@ the container size if it is not the body element.</b>
  */
 Roo.bootstrap.layout.Border = function(config){
     config = config || {};
-    
     Roo.bootstrap.layout.Border.superclass.constructor.call(this, config);
+    
+    
     
     Roo.each(Roo.bootstrap.layout.Border.regions, function(region) {
         if(config[region]){
@@ -56,8 +57,7 @@ Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
     },
 
     // private (kinda)
-    bindRegion : function(r)
-    {
+    bindRegion : function(r){
         this.regions[r.config.region] = r;
         
         r.on("visibilitychange",    this.layout, this);
@@ -74,7 +74,7 @@ Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
      */
     layout : function()
     {
-        Roo.log('calling layout!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        Roo.log('calling layout!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         
         if(this.updating) {
             return;
@@ -442,6 +442,7 @@ layout.addxtype({
         
     },
     
+    
 // private
     factory : function(cfg)
     {
@@ -452,7 +453,7 @@ layout.addxtype({
         cfg.mgr = this;
         
         var r = Roo.bootstrap.layout;
-        
+        Roo.log(target);
         switch(target){
             case "north":
                 return new r.North(cfg);
