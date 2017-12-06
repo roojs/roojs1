@@ -68,6 +68,11 @@ Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
         r.on("collapsed",           this.onRegionCollapsed, this);
         r.on("expanded",            this.onRegionExpanded, this);
     },
+    
+    onVisibilitychange : function()
+    {
+        this.layout();
+    }
 
     /**
      * Performs a layout update.
