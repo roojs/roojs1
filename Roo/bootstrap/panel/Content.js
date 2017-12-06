@@ -340,6 +340,7 @@ panel.load({
             Roo.log(this.adjustments);
         }
         if(this.resizeEl != this.el){
+            Roo.log('run???');
             width -= this.el.getFrameWidth('lr');
             height -= this.el.getFrameWidth('tb');
         }
