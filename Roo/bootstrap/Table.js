@@ -51,8 +51,8 @@ Roo.bootstrap.Table = function(config){
     this.cellSelection = (typeof(config.cellSelection) != 'undefined') ? config.cellSelection : this.cellSelection;
     this.headerShow = (typeof(config.thead) != 'undefined') ? config.thead : this.headerShow;
     this.footerShow = (typeof(config.tfoot) != 'undefined') ? config.tfoot : this.footerShow;
-    
-    this.sm = this.sm || {xtype: 'RowSelectionModel'};
+    Roo.log(config);
+    this.sm = config.sm || {xtype: 'RowSelectionModel'};
     if (this.sm) {
         Roo.log(this.sm);
         this.sm.grid = this;
