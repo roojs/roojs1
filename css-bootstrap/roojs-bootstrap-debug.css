@@ -2630,24 +2630,15 @@ a.roo-brick-link:hover {
   padding: 10px;
 }
 .x-form-field-wrap .form-group {
+  /* what is this doing here?? */
   margin-bottom: 0px;
 }
 .roo-password-meter-grey {
   background: #777777;
-  /* For browsers that do not support gradients */
   margin-bottom: 30px;
   height: 10px;
 }
 .roo-password-meter {
-  background: red;
-  /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(-90deg, #008000, #ff0000);
-  /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(-90deg, #008000, #ff0000);
-  /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(-90deg, #008000, #ff0000);
-  /* For Firefox 3.6 to 15 */
-  background: linear-gradient(-90deg, #008000, #ff0000);
   font-size: 12px;
 }
 .roo-password-meter-container {
@@ -2662,7 +2653,7 @@ a.roo-brick-link:hover {
   height: 10px;
 }
 .roo-password-meter-medium {
-  background: #f0ad4e;
+  background: #5bc0de;
   height: 10px;
 }
 .roo-password-meter-strong {
