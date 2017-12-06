@@ -52,7 +52,7 @@ Roo.bootstrap.Table = function(config){
     this.headerShow = (typeof(config.thead) != 'undefined') ? config.thead : this.headerShow;
     this.footerShow = (typeof(config.tfoot) != 'undefined') ? config.tfoot : this.footerShow;
     
-    this.sm = this.sm || {xtype: 'RowSelectionModel'};
+    this.sm = config.sm || {xtype: 'RowSelectionModel'};
     if (this.sm) {
         this.sm.grid = this;
         this.selModel = Roo.factory(this.sm, Roo.bootstrap.Table);
@@ -72,6 +72,7 @@ Roo.bootstrap.Table = function(config){
          
     }
     if (this.footer && this.store) {
+        Roo.log('table footer?????????!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         this.footer.dataSource = this.ds;
         this.footer = Roo.factory(this.footer);
     }
@@ -312,6 +313,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             return;
         }
         if (this.selModel) {
+            Roo.log(this.selModel);
             this.selModel.initEvents();
         }
         
