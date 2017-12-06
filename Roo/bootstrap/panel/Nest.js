@@ -62,9 +62,6 @@ Roo.extend(Roo.bootstrap.panel.Nest, Roo.bootstrap.panel.Content, {
     
     setActiveState : function(active){
         this.active = active;
-        Roo.log('setActiveState !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(active);
-        Roo.log(this);
         this.setActiveClass(active);
         
         if(!active){
@@ -77,14 +74,10 @@ Roo.extend(Roo.bootstrap.panel.Nest, Roo.bootstrap.panel.Content, {
         if (!this.layout) {
             return; // should not happen..
         }
-        Roo.log(this.layout);
         var reg = false;
         for (var r in this.layout.regions) {
             reg = this.layout.getRegion(r);
-            Roo.log(reg);
             if (reg.getActivePanel()) {
-                Roo.log('Active Panel????????????????????????????');
-                Roo.log(reg.getActivePanel());
                 //reg.showPanel(reg.getActivePanel()); // force it to activate.. 
                 reg.setActivePanel(reg.getActivePanel());
                 continue;
