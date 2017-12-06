@@ -333,6 +333,12 @@ panel.load({
     adjustForComponents : function(width, height)
     {
         //Roo.log('adjustForComponents ');
+        if(this.title == 'Log Grid'){
+            Roo.log('adjustForComponents ');
+            Roo.log(this.resizeEl);
+            Roo.log(this.el);
+            
+        }
         if(this.resizeEl != this.el){
             width -= this.el.getFrameWidth('lr');
             height -= this.el.getFrameWidth('tb');
