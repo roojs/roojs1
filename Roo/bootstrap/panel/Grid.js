@@ -112,6 +112,7 @@ Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content, {
         if(this.title == 'Log Grid'){
             Roo.log(this);
             Roo.log(this.lastSize);
+            Roo.log([width, height]);
         }
         
         if(!this.ignoreResize(width, height)){
