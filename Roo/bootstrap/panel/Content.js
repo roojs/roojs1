@@ -347,6 +347,8 @@ panel.load({
         if(this.toolbar){
             var te = this.toolbar.getEl();
             Roo.log(te);
+            Roo.log('tool bar height!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
+            Roo.log(te.getHeight());
             height -= te.getHeight();
             te.setWidth(width);
         }
