@@ -34,7 +34,6 @@ Roo.bootstrap.panel.Grid = function(config)
     if(config.toolbar){
         var tool_el = this.wrapper.createChild();    
         this.toolbar = Roo.factory(config.toolbar);
-        Roo.log(this.toolbar);
         var ti = [];
         if (config.toolbar.items) {
             ti = config.toolbar.items ;
