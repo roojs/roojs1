@@ -3481,6 +3481,9 @@ html.bootstrap-sticky body {
 .table-hover > tbody > tr.info:hover {
   background-color: #c4e3f3;
 }
+.table tfoot .navbar {
+  min-height: inherit;
+}
 .header .top-bar {
   min-height: 30px;
   background: #777777;
