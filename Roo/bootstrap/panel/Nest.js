@@ -49,12 +49,10 @@ Roo.extend(Roo.bootstrap.panel.Nest, Roo.bootstrap.panel.Content, {
                 el.setSize(size.width, size.height);
             }
             var touch = el.dom.offsetWidth;
-            Roo.log('setSize!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
             this.layout.layout();
             // ie requires a double layout on the first pass
             if(Roo.isIE && !this.initialized){
                 this.initialized = true;
-                Roo.log('initialize!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
                 this.layout.layout();
             }
         }
