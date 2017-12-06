@@ -56,6 +56,7 @@ Roo.bootstrap.Table = function(config){
     
     if (this.sm) {
         this.sm.grid = this;
+        Roo.log('render bootstrap table sm!!!!!!!!!!!!!!!!!!!!!!!!!');
         this.selModel = Roo.factory(this.sm, Roo.bootstrap.Table);
         this.sm = this.selModel;
         this.sm.xmodule = this.xmodule || false;
