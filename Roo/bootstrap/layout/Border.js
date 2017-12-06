@@ -48,7 +48,6 @@ Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
      */
     addRegion : function(config)
     {
-        Roo.log('add region!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         if(!this.regions[config.region]){
             var r = this.factory(config);
     	    this.bindRegion(r);
@@ -59,8 +58,6 @@ Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
     // private (kinda)
     bindRegion : function(r)
     {
-        Roo.log('bind region!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        
         this.regions[r.config.region] = r;
         
         r.on("visibilitychange",    this.layout, this);
