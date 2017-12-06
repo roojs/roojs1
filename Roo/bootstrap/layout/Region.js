@@ -518,6 +518,8 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
     setActivePanel : function(panel)
     {
         panel = this.getPanel(panel);
+        Roo.log('panel!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        Roo.log(panel);
         if(this.activePanel && this.activePanel != panel){
             this.activePanel.setActiveState(false);
         }
