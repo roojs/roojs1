@@ -28491,6 +28491,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             formData.append('mimetype', file.mimetype);
         }
         
+        Roo.log(formData);
+        
         if(this.fireEvent('prepare', this, formData) != false){
             this.xhr.send(formData);
         };
@@ -31457,6 +31459,11 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
      */   
     preventDefault : false, 
     
+    /**
+     * @cfg {Boolean} inverse defalut false
+     */   
+    maskInverse : false, 
+    
     getAutoCreate : function()
     {
         if(!this.isFitContainer){
@@ -31473,7 +31480,11 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             cls += ' masonry-brick-image';
         }
         
-        if(!this.html.length){
+        if(!Roo.isTouch && this.maskInverse){
+            cls += ' mask-inverse';
+        }
+        
+        if(!this.html.length && !this.maskInverse){
             cls += ' enable-mask';
         }
         
@@ -31754,7 +31765,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     {
         e.preventDefault();
         
-        if(!this.isFitContainer){
+        if(!this.isFitContainer || this.maskInverse){
             return;
         }
         
@@ -31767,7 +31778,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     {
         e.preventDefault();
         
-        if(!this.isFitContainer){
+        if(!this.isFitContainer || this.maskInverse){
             return;
         }
         
@@ -35822,15 +35833,13 @@ panel.load({
         }
         if(this.toolbar){
             var te = this.toolbar.getEl();
-            height -= te.getHeight();
             te.setWidth(width);
+            height -= te.getHeight();
         }
         if(this.footer){
             var te = this.footer.getEl();
-            Roo.log("footer:" + te.getHeight());
-            
-            height -= te.getHeight();
             te.setWidth(width);
+            height -= te.getHeight();
         }
         
         
