@@ -12586,9 +12586,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     // element that contains real text value.. (when hidden is used..)
     
     getAutoCreate : function()
-    {
+    {   
         var cfg = false;
-        
+        //render
         /*
          * Render classic select for iso
          */
@@ -12772,14 +12772,16 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         tag: 'label',
                         'for' :  id,
                         cls : 'control-label',
-                        html : this.fieldLabel
-
+                        html : this.fieldLabel,
+                        cn : [
+                            {
+                                tag : 'i',
+                                cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
+                                tooltip : 'This field is required'
+                            }
+                        ]
                     },
-                    {
-                        tag : 'i',
-                        cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
-                        tooltip : 'This field is required'
-                    },
+                    
                     {
                         cls : "",
                         cn: [
@@ -12848,15 +12850,17 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         {
                             tag: 'label',
                             //cls : 'input-group-addon',
-                            html : this.fieldLabel
-
+                            html : this.fieldLabel,
+                            cn : [
+                                {
+                                    tag : 'i',
+                                    cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
+                                    tooltip : 'This field is required'
+                                }
+                            ]
                         },
                         
-                        {
-                            tag : 'i',
-                            cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
-                            tooltip : 'This field is required'
-                        },
+                        
                         
                         combobox
 
@@ -14599,13 +14603,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     {
                         tag: 'label',
                         cls : 'control-label',
-                        html : this.fieldLabel
-
-                    },
-                    {
-                       tag : 'i',
-                       cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
-                       tooltip : 'This field is required'
+                        html : this.fieldLabel,
+                        cn : [
+                            {
+                               tag : 'i',
+                               cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
+                               tooltip : 'This field is required'
+                            }
+                        ]
                     },
                     {
                         cls : '', 
@@ -14674,13 +14679,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     {
                         tag: 'label',
                         cls : 'control-label',
-                        html : this.fieldLabel
-
-                    },
-                    {
-                       tag : 'i',
-                       cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
-                       tooltip : 'This field is required'
+                        html : this.fieldLabel,
+                        cn : [
+                            {
+                               tag : 'i',
+                               cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
+                               tooltip : 'This field is required'
+                            }
+                        ]
                     },
                     {
                         cls : '', 
