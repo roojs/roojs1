@@ -2125,13 +2125,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         var v = this.getRawValue();
         
-        Roo.log('v value: '+ v);
-        
         if(this.multiple){
             v = this.getValue();
         }
-        
-        Roo.log('v value after: '+ v);
         
         if(this.disabled || this.allowBlank || v.length){
             this.markValid();
