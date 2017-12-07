@@ -340,7 +340,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     // element that contains real text value.. (when hidden is used..)
     
     getAutoCreate : function()
-    {
+    {   
+        //rendering
         var cfg = false;
         
         /*
