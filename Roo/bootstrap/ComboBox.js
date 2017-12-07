@@ -341,7 +341,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     getAutoCreate : function()
     {   
-        //rendering
         var cfg = false;
         
         /*
