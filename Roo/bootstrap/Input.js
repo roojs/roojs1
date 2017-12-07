@@ -906,7 +906,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         if(!this.el  || this.preventMark){ // not rendered...
             return;
         }
-        
+        //herererere
         this.el.removeClass([this.invalidClass, this.validClass]);
         
         var feedback = this.el.select('.form-control-feedback', true).first();
