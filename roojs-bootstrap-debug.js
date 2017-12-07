@@ -1293,6 +1293,15 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         return this.el.select('.panel-heading',true).first()
     },
     
+    bodyEl : function()
+    {
+        if(!this.el || !this.panel.length){
+            return;
+        }
+        
+        return this.el.select('.panel-body',true).first()
+    },
+    
     titleEl : function()
     {
         if(!this.el || !this.panel.length || !this.header.length){
@@ -2495,7 +2504,14 @@ Roo.bootstrap.Modal = function(config){
          * The raw btnclick event for the button
          * @param {Roo.EventObject} e
          */
-        "btnclick" : true
+        "btnclick" : true,
+        /**
+         * @event resize
+         * Fire when dialog resize
+         * @param {Roo.bootstrap.Modal} this
+         * @param {Roo.EventObject} e
+         */
+        "resize" : true
     });
     this.buttons = this.buttons || [];
 
@@ -2829,6 +2845,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
 
         this.bodyEl.setHeight(h-this.diff);
 
+        this.fireEvent('resize', this);
 
     },
     setContentSize  : function(w, h)
@@ -29721,6 +29738,17 @@ Roo.bootstrap.LayoutMasonry = function(config){
     
     this.bricks = [];
     
+    this.addEvents({
+        // raw events
+        /**
+         * @event layout
+         * Fire after layout the items
+         * @param {Roo.bootstrap.LayoutMasonry} this
+         * @param {Roo.EventObject} e
+         */
+        "layout" : true
+    });
+    
 };
 
 Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
@@ -29845,12 +29873,15 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     resize : function()
     {
-        Roo.log('resize');
-        
         var cs = this.el.getBox(true);
         
-        if (this.currentSize.width == cs.width && this.currentSize.x == cs.x ) {
-            Roo.log("no change in with or X");
+        if (
+                this.currentSize.width == cs.width && 
+                this.currentSize.x == cs.x && 
+                this.currentSize.height == cs.height && 
+                this.currentSize.y == cs.y 
+        ) {
+            Roo.log("no change in with or X or Y");
             return;
         }
         
@@ -29869,6 +29900,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         this.layoutItems( isInstant );
       
         this._isLayoutInited = true;
+        
+        this.fireEvent('layout', this);
         
     },
     
