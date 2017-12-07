@@ -342,7 +342,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     getAutoCreate : function()
     {   
         var cfg = false;
-        
+        //render
         /*
          * Render classic select for iso
          */
