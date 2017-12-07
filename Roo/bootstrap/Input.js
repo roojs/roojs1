@@ -924,7 +924,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         }
         
         if(this.indicator){
-            Roo.log(this.hiddenName);
             this.indicator.show();
         }
         
