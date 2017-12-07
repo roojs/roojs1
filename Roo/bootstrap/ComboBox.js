@@ -538,7 +538,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                             }
                         ]
                     },
-                    
                     {
                         cls : "",
                         cn: [
@@ -551,7 +550,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 
                 
                 labelCfg = cfg.cn[0];
-                contentCfg = cfg.cn[2];
+                contentCfg = cfg.cn[1];
             
             }
             
