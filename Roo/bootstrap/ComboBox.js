@@ -606,8 +606,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         {
                             tag: 'label',
                             //cls : 'input-group-addon',
-                            html : this.fieldLabel,
                             cn : [
+                                {
+                                    tag : 'span',
+                                    html : this.fieldLabel
+                                },
                                 {
                                     tag : 'i',
                                     cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
