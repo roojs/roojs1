@@ -857,7 +857,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      */
     markValid : function()
     {
-        if(!this.el  || this.preventMark){ // not rendered ...
+        if(!this.el  || this.preventMark){ // not rendered...
             return;
         }
         
@@ -903,7 +903,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      */
     markInvalid : function(msg)
     {
-        if(!this.el  || this.preventMark){ // not rendered
+        if(!this.el  || this.preventMark){ // not rendered...
             return;
         }
         
