@@ -185,7 +185,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
       
         this._isLayoutInited = true;
         
-        
+        this.fireEvent('layout', this);
         
     },
     
