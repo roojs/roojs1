@@ -164,7 +164,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var cs = this.el.getBox(true);
         
-        if (this.currentSize.width == cs.width && this.currentSize.x == cs.x ) {
+        if (this.currentSize.width == cs.width && (this.currentSize.x == cs.x || this.currentSize.y == cs.y) ) {
             Roo.log("no change in with or X");
             return;
         }
