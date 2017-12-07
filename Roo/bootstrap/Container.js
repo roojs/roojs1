@@ -312,6 +312,15 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         return this.el.select('.panel-heading',true).first()
     },
     
+    bodyEl : function()
+    {
+        if(!this.el || !this.panel.length){
+            return;
+        }
+        
+        return this.el.select('.panel-body',true).first()
+    },
+    
     titleEl : function()
     {
         if(!this.el || !this.panel.length || !this.header.length){
