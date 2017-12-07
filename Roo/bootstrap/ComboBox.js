@@ -2130,11 +2130,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         if(this.disabled || this.allowBlank || v.length){
-            //this.markValid();
+            this.markValid();
             return true;
         }
         
-        //this.markInvalid();
+        this.markInvalid();
         return false;
     },
     
