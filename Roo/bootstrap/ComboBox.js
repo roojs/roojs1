@@ -2134,7 +2134,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return true;
         }
         
-        //this.markInvalid();
+        this.markInvalid();
         return false;
     },
     
