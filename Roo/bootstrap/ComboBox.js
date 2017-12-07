@@ -1042,6 +1042,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.tickableInputEl().on("keyup", this.onKeyUp, this);
         }
         
+        this.indicator = this.indicatorEl();
+        
+        if(this.indicator){
+            this.indicator.setVisibilityMode(Roo.Element.DISPLAY);
+            this.indicator.hide();
+        }
+        
     },
 
     onDestroy : function(){
