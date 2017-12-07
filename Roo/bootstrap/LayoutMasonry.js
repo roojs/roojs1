@@ -25,6 +25,17 @@ Roo.bootstrap.LayoutMasonry = function(config){
     
     this.bricks = [];
     
+    this.addEvents({
+        // raw events
+        /**
+         * @event click
+         * When a MasonryBrick is clcik
+         * @param {Roo.bootstrap.MasonryBrick} this
+         * @param {Roo.EventObject} e
+         */
+        "layout" : true
+    });
+    
 };
 
 Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
@@ -173,6 +184,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         this.layoutItems( isInstant );
       
         this._isLayoutInited = true;
+        
+        
         
     },
     
