@@ -33,7 +33,14 @@ Roo.bootstrap.Modal = function(config){
          * The raw btnclick event for the button
          * @param {Roo.EventObject} e
          */
-        "btnclick" : true
+        "btnclick" : true,
+        /**
+         * @event resize
+         * Fire when dialog resize
+         * @param {Roo.bootstrap.Modal} this
+         * @param {Roo.EventObject} e
+         */
+        "resize" : true
     });
     this.buttons = this.buttons || [];
 
