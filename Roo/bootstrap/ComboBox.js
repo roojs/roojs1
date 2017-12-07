@@ -528,12 +528,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         'for' :  id,
                         cls : 'control-label',
                         html : this.fieldLabel
-
-                    },
-                    {
-                        tag : 'i',
-                        cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
-                        tooltip : 'This field is required'
+                        cn: [
+                            {
+                                tag : 'i',
+                                cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
+                                tooltip : 'This field is required'
+                            }
+                        ]
                     },
                     {
                         cls : "",
