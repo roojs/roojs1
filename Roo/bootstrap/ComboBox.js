@@ -526,7 +526,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         tag: 'label',
                         'for' :  id,
                         cls : 'control-label',
-                        html : this.fieldLabel
+                        html : this.fieldLabel,
                         cn : [
                             {
                                 tag : 'i',
@@ -604,7 +604,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         {
                             tag: 'label',
                             //cls : 'input-group-addon',
-                            html : this.fieldLabel
+                            html : this.fieldLabel,
                             cn : [
                                 {
                                     tag : 'i',
@@ -2357,7 +2357,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     {
                         tag: 'label',
                         cls : 'control-label',
-                        html : this.fieldLabel
+                        html : this.fieldLabel,
                         cn : [
                             {
                                tag : 'i',
@@ -2433,7 +2433,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     {
                         tag: 'label',
                         cls : 'control-label',
-                        html : this.fieldLabel
+                        html : this.fieldLabel,
                         cn : [
                             {
                                tag : 'i',
