@@ -359,7 +359,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     resizeTo: function(w,h)
     {
         // skip.. ?? why??
-        Roo.log('test????????????????');
+
         this.dialogEl.setWidth(w);
         if (this.diff === false) {
             this.diff = this.dialogEl.getHeight() - this.bodyEl.getHeight();
