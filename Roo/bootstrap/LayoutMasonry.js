@@ -112,6 +112,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             }
         };
         
+        cfg.style += " max-width: 500px";
+        
         return cfg;
     },
     
