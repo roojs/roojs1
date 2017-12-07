@@ -374,6 +374,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
 
         this.bodyEl.setHeight(h-this.diff);
 
+        this.fireEvent('resize', this);
 
     },
     setContentSize  : function(w, h)
