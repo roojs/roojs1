@@ -607,14 +607,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                             tag: 'label',
                             //cls : 'input-group-addon',
                             html : this.fieldLabel
-
-                        },
-                        
-                        {
-                            tag : 'i',
-                            cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
-                            tooltip : 'This field is required'
-                        },
+                            cn: [
+                                {
+                                    tag : 'i',
+                                    cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
+                                    tooltip : 'This field is required'
+                                }
+                            ]
+                        }
                         
                         combobox
 
@@ -2329,16 +2329,18 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if (align ==='left' && this.fieldLabel.length) {
 
             cfg.cn = [
-                {
-                   tag : 'i',
-                   cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
-                   tooltip : 'This field is required'
-                },
+                
                 {
                     tag: 'label',
                     cls : 'control-label',
                     html : this.fieldLabel
-
+                    cn : [
+                        {
+                           tag : 'i',
+                           cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
+                           tooltip : 'This field is required'
+                        }
+                    ]
                 },
                 {
                     cls : '', 
