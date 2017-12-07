@@ -9087,7 +9087,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      */
     markValid : function()
     {
-        if(!this.el  || this.preventMark){ // not rendered
+        if(!this.el  || this.preventMark){ // not rendered...
             return;
         }
         
@@ -13286,6 +13286,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if(this.editable !== false){
             this.tickableInputEl().on("keyup", this.onKeyUp, this);
+        }
+        
+        this.indicator = this.indicatorEl();
+        
+        if(this.indicator){
+            this.indicator.setVisibilityMode(Roo.Element.DISPLAY);
+            this.indicator.hide();
         }
         
     },
