@@ -28,9 +28,9 @@ Roo.bootstrap.LayoutMasonry = function(config){
     this.addEvents({
         // raw events
         /**
-         * @event click
-         * When a MasonryBrick is clcik
-         * @param {Roo.bootstrap.MasonryBrick} this
+         * @event layout
+         * Fire after layout the items
+         * @param {Roo.bootstrap.LayoutMasonry} this
          * @param {Roo.EventObject} e
          */
         "layout" : true
