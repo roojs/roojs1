@@ -191,6 +191,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var isInstant = this.isLayoutInstant !== undefined ? this.isLayoutInstant : !this._isLayoutInited;
         
+        Roo.log('layoutinggggg');
+        
         this.layoutItems( isInstant );
       
         this._isLayoutInited = true;
