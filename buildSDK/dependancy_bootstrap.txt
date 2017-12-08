@@ -83,6 +83,7 @@ Roo.bootstrap.MonthField
 
 Roo.bootstrap.CheckBox
 Roo.bootstrap.Radio
+Roo.bootstrap.SecurePass
 
 Roo.HtmlEditorCore
 Roo.bootstrap.HtmlEditor
