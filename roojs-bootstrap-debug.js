@@ -5685,20 +5685,18 @@ Roo.LoadMask.prototype = {
         }
         */
     
-        
-        
-        this.el.unmask(this.removeMask);
+        (function() { this.el.unmask(this.removeMask); }).defer(50, this);
     },
     // private
     onLoad : function()
     {
-        this.el.unmask(this.removeMask);
+        (function() { this.el.unmask(this.removeMask); }).defer(50, this);
     },
 
     // private
     onBeforeLoad : function(){
         if(!this.disabled){
-            (function() { this.el.mask(this.msg, this.msgCls) }).defer(50, this);
+            (function() { this.el.mask(this.msg, this.msgCls); }).defer(50, this);
         }
     },
 
@@ -29871,6 +29869,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
     },
     
+    addItem : function(cfg)
+    {
+        Roo.log('adding item!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        var brick = Roo.factory(cfg);
+        brick.render(this.getChildContainer());
+    },
+    
     resize : function()
     {
         var cs = this.el.getBox(true);
@@ -29972,6 +29977,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     layoutItems : function( isInstant )
     {
+        Roo.log(this.bricks);
+        
         var items = Roo.apply([], this.bricks);
         
         if(this.isHorizontal){
