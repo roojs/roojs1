@@ -31304,11 +31304,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     addItem : function(cfg)
     {
         var cn = new Roo.bootstrap.MasonryBrick(cfg);
-        this.register(cn);
+        //this.register(cn);
         cn.parentId = this.id;
         cn.onRender(this.el, null);
         return cn;
     },
+    
     /**
     * register a Masonry Brick
     * @param {Roo.bootstrap.MasonryBrick} the masonry brick to add
@@ -31316,7 +31317,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     register : function(brick)
     {
         this.bricks.push(brick);
-        Roo.log('brick pushing');
         brick.masonryId = this.id;
     },
     
@@ -32198,7 +32198,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     onClick: function(e, el)
     {
         var time = this.endTimer - this.startTimer;
-        // Roo.log(e.preventDefault());
+        
         if(Roo.isTouch){
             if(time > 1000){
                 e.preventDefault();
