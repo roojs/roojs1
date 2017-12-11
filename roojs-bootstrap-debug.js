@@ -31330,6 +31330,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         this.el.dom.innerHTML = '';
     }
     
+    getSelected : function()
+    {
+        for (var i=0; i<this.bricks.length; i++) {
+            Roo.log(this.bricks)[i];
+        }
+    }
+    
 });
 
  
@@ -32198,7 +32205,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     onClick: function(e, el)
     {
         var time = this.endTimer - this.startTimer;
-        
+        // Roo.log(e.preventDefault());
         if(Roo.isTouch){
             if(time > 1000){
                 e.preventDefault();
