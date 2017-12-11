@@ -375,11 +375,6 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         }
         
         e.preventDefault();
-        
-        if (this.activeClass != '') {
-            this.selectItem(e,el);
-        }
-        
         this.fireEvent('click', this);
     },
     
@@ -469,6 +464,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         
         window.location.href = this.href;
     }
+    
 });
 
  
