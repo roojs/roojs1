@@ -1252,11 +1252,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     /**
     * clear all the Masonry Brick
     */
-   
     clearAll : function()
     {
         this.navItems = [];
-        this.el.dom.innerHTML = '';
+        this.getChildContainer().dom.innerHTML = "";
+        //this.el.dom.innerHTML = '';
     },
     
 });
