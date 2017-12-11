@@ -31316,6 +31316,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     register : function(brick)
     {
         this.bricks.push(brick);
+        Roo.log('brick pushing');
         brick.masonryId = this.id;
     },
     
