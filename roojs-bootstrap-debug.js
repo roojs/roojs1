@@ -32332,8 +32332,8 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         if (!this.parentId) {
             return;
         }
-        
-        var m = Roo.select('#'+this.parentId);
+        Roo.log(this.parentId);
+        var m = Roo.select('#' + this.parentId);
         var index = m.selectedBrick.indexOf(this.id);
         
         if ( index > -1) {
