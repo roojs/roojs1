@@ -31295,7 +31295,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
 
         return pos;
         
-    }
+    },
     
     /**
     * adds a Masonry Brick
