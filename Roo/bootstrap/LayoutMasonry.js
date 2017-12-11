@@ -1257,7 +1257,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     },
     
     /**
-    * clear all the Navigation item
+    * clear all the Masonry Brick
     */
    
     clearAll : function()
