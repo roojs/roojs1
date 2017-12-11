@@ -30183,7 +30183,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     /**
      * @cfg {Number} alternativePadWidth padding below box..
      */   
-    alternativePadWidth : 50, 
+    alternativePadWidth : 50,
+    
+    selectedBrick : [],
     
     getAutoCreate : function(){
         
