@@ -1234,7 +1234,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     addItem : function(cfg)
     {
         var cn = new Roo.bootstrap.MasonryBrick(cfg);
-        this.register(cn);
+        //this.register(cn);
         cn.parentId = this.id;
         cn.onRender(this.el, null);
         return cn;
