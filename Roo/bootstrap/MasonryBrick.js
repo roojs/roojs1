@@ -377,7 +377,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         e.preventDefault();
         
         if (this.activcClass != '') {
-            this.selectBrick(e,el);
+            this.selectBrick();
         }
         
         this.fireEvent('click', this);
@@ -471,8 +471,20 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     },
     
     selectBrick : function() {
-        Roo.log('select brick');
-        Roo.log(this);
+        
+        if (!this.parentId) {
+            return;
+        }
+        
+        var m = Roo.select('#'+this.parentId);
+        var index = m.selectedBrick.indexOf(this.id);
+        
+        if ( index > -1) {
+            this.removeClass(this.activeClass);
+            m.selectedBrick.splice(index,1);
+            Roo.log(m.selectedBrick);
+            return;
+        }
     }
     
 });
