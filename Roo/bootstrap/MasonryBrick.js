@@ -362,7 +362,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     onClick: function(e, el)
     {
         var time = this.endTimer - this.startTimer;
-        
+        // Roo.log(e.preventDefault());
         if(Roo.isTouch){
             if(time > 1000){
                 e.preventDefault();
@@ -375,6 +375,9 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         }
         
         e.preventDefault();
+        
+        this.selectItem(e,el);
+        
         this.fireEvent('click', this);
     },
     
