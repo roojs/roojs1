@@ -1255,8 +1255,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     clearAll : function()
     {
         this.bricks = [];
-        this.getChildContainer().dom.innerHTML = "";
-        //this.el.dom.innerHTML = '';
+        //this.getChildContainer().dom.innerHTML = "";
+        this.el.dom.innerHTML = '';
     }
     
 });
