@@ -1243,10 +1243,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     * register a Masonry Brick
     * @param {Roo.bootstrap.MasonryBrick} the masonry brick to add
     */
-    register : function(item)
+    register : function(brick)
     {
-        this.navItems.push( item);
-        item.navId = this.navId;
+        this.bricks.push(brick);
+        brick.masonryId = this.id;
     },
     
     /**
@@ -1254,7 +1254,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     */
     clearAll : function()
     {
-        this.navItems = [];
+        this.bricks = [];
         this.getChildContainer().dom.innerHTML = "";
         //this.el.dom.innerHTML = '';
     },
