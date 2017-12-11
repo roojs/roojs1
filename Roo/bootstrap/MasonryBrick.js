@@ -470,6 +470,10 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         window.location.href = this.href;
     }
     
+    selectItem : function(e,el) {
+        Roo.log(e);
+        Roo.log(el);
+    }
 });
 
  
