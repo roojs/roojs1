@@ -475,7 +475,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         if (!this.parentId) {
             return;
         }
-        
+        Roo.log(this.parentId);
         var m = Roo.select('#'+this.parentId);
         var index = m.selectedBrick.indexOf(this.id);
         
@@ -488,6 +488,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         
         this.addClass(this.activeClass);
         m.selectedBrick.push(this.id);
+        Roo.log(m.selectedBrick);
         return;
     }
     
