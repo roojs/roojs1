@@ -1234,6 +1234,38 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
     }
     
+    /**
+    * adds a Masonry Brick
+    * @param {Roo.bootstrap.MasonryBrick} the masonry brick to add
+    */
+    addItem : function(cfg)
+    {
+        var cn = new Roo.bootstrap.MasonryBrick(cfg);
+        this.register(cn);
+        cn.parentId = this.id;
+        cn.onRender(this.el, null);
+        return cn;
+    },
+    /**
+    * register a Masonry Brick
+    * @param {Roo.bootstrap.MasonryBrick} the masonry brick to add
+    */
+    register : function(item)
+    {
+        this.navItems.push( item);
+        item.navId = this.navId;
+    },
+    
+    /**
+    * clear all the Navigation item
+    */
+   
+    clearAll : function()
+    {
+        this.navItems = [];
+        this.el.dom.innerHTML = '';
+    },
+    
 });
 
  
