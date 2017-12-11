@@ -32232,7 +32232,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         e.preventDefault();
         
         if (this.activcClass != '') {
-            this.selectBrick(e,el);
+            this.selectBrick();
         }
         
         this.fireEvent('click', this);
@@ -32325,10 +32325,9 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         window.location.href = this.href;
     },
     
-    selectBrick : function(e,el) {
+    selectBrick : function() {
         Roo.log('select brick');
-        Roo.log(e);
-        Roo.log(el);
+        Roo.log(this);
     }
     
 });
