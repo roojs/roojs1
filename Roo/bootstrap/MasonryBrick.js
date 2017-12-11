@@ -485,6 +485,10 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             Roo.log(m.selectedBrick);
             return;
         }
+        
+        this.addClass(this.activeClass);
+        m.selectedBrick.push(this.id);
+        return;
     }
     
 });
