@@ -32332,12 +32332,9 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         if (!this.parentId) {
             return;
         }
-        /*
+        
         Roo.log(this.parentId);
         var m = Roo.get(this.parentId);
-        var index = m.selectedBrick.indexOf(this.id);
-        */
-        var m = this.parent;
         var index = m.selectedBrick.indexOf(this.id);
         
         if ( index > -1) {
