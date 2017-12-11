@@ -1231,7 +1231,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     * adds a Masonry Brick
     * @param {Roo.bootstrap.MasonryBrick} the masonry brick to add
     */
-    addItem : function(cfg)
+    addBrick : function(cfg)
     {
         var cn = new Roo.bootstrap.MasonryBrick(cfg);
         //this.register(cn);
