@@ -32230,6 +32230,11 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         }
         
         e.preventDefault();
+        
+        if (this.activcClass != '') {
+            this.selectBrick(e,el);
+        }
+        
         this.fireEvent('click', this);
     },
     
@@ -32318,6 +32323,12 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         this.el.select('.masonry-brick-paragraph', true).first().setOpacity(0, true);
         
         window.location.href = this.href;
+    },
+    
+    selectBrick : function(e,el) {
+        Roo.log('select brick');
+        Roo.log(e);
+        Roo.log(el);
     }
     
 });
