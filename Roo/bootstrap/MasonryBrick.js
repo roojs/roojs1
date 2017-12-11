@@ -375,6 +375,9 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         }
         
         e.preventDefault();
+        
+        this.selectBrick(e,el);
+        
         this.fireEvent('click', this);
     },
     
