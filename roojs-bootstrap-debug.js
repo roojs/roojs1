@@ -534,6 +534,14 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
 
 Roo.bootstrap.Button = function(config){
     Roo.bootstrap.Button.superclass.constructor.call(this, config);
+    this.weightClass = ["btn-default", 
+                       "btn-primary", 
+                       "btn-success", 
+                       "btn-info", 
+                       "btn-warning",
+                       "btn-danger",
+                       "btn-link"
+                      ],  
     this.addEvents({
         // raw events
         /**
@@ -857,6 +865,11 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     show: function() {
        
         this.el.show();   
+    },
+    setWeight : function(str)
+    {
+    	  this.el.removeClass(this.weightClass);
+        this.el.addClass('btn-' + str);        
     }
     
     
@@ -32205,7 +32218,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     onClick: function(e, el)
     {
         var time = this.endTimer - this.startTimer;
-        // Roo.log(e.preventDefault());
+        
         if(Roo.isTouch){
             if(time > 1000){
                 e.preventDefault();
