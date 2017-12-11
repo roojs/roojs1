@@ -1263,7 +1263,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     getSelected : function()
     {
         for (var i=0; i<this.bricks.length; i++) {
-            Roo.log(this.bricks)[i];
+            Roo.log(this.bricks[i]);
         }
     }
     
