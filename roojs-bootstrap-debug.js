@@ -30228,13 +30228,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
     },
     
-    addItem : function(cfg)
-    {
-        Roo.log('adding item!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        var brick = Roo.factory(cfg);
-        brick.render(this.getChildContainer());
-    },
-    
     resize : function()
     {
         var cs = this.el.getBox(true);
@@ -31304,6 +31297,38 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
     }
     
+    /**
+    * adds a Masonry Brick
+    * @param {Roo.bootstrap.MasonryBrick} the masonry brick to add
+    */
+    addItem : function(cfg)
+    {
+        var cn = new Roo.bootstrap.MasonryBrick(cfg);
+        this.register(cn);
+        cn.parentId = this.id;
+        cn.onRender(this.el, null);
+        return cn;
+    },
+    /**
+    * register a Masonry Brick
+    * @param {Roo.bootstrap.MasonryBrick} the masonry brick to add
+    */
+    register : function(brick)
+    {
+        this.bricks.push(brick);
+        brick.masonryId = this.id;
+    },
+    
+    /**
+    * clear all the Masonry Brick
+    */
+    clearAll : function()
+    {
+        this.bricks = [];
+        this.getChildContainer().dom.innerHTML = "";
+        //this.el.dom.innerHTML = '';
+    }
+    
 });
 
  
@@ -32172,7 +32197,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     onClick: function(e, el)
     {
         var time = this.endTimer - this.startTimer;
-        
+        // Roo.log(e.preventDefault());
         if(Roo.isTouch){
             if(time > 1000){
                 e.preventDefault();
