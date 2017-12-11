@@ -1239,6 +1239,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         cn.onRender(this.el, null);
         return cn;
     },
+    
     /**
     * register a Masonry Brick
     * @param {Roo.bootstrap.MasonryBrick} the masonry brick to add
