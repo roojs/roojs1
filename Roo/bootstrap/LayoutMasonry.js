@@ -1260,6 +1260,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         this.el.dom.innerHTML = '';
     }
     
+    getSelected : function()
+    {
+        for (var i=0; i<this.bricks.length; i++) {
+            Roo.log(this.bricks)[i];
+        }
+    }
+    
 });
 
  
