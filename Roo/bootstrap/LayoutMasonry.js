@@ -158,13 +158,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
     },
     
-    addItem : function(cfg)
-    {
-        Roo.log('adding item!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        var brick = Roo.factory(cfg);
-        brick.render(this.getChildContainer());
-    },
-    
     resize : function()
     {
         var cs = this.el.getBox(true);
