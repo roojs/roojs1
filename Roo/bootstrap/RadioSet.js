@@ -267,9 +267,11 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
             return;
         }
         
+        /*
         if(this.labelEl.isVisible(true)){
             this.indicatorEl().hide();
         }
+        */
         
         this.el.removeClass([this.invalidClass]);
         
