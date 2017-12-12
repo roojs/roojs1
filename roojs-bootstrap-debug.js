@@ -9101,11 +9101,13 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
             
+            /*
             var feedback = this.el.select('.form-control-feedback', true).first();
             
             if(feedback){
                 this.el.select('.form-control-feedback', true).first().removeClass(this.invalidFeedbackClass);
             }
+            */
             
         }
         
@@ -33193,9 +33195,11 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
             return;
         }
         
+        /*
         if(this.labelEl.isVisible(true)){
             this.indicatorEl().hide();
         }
+        */
         
         this.el.removeClass([this.invalidClass]);
         
