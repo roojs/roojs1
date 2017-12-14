@@ -1247,7 +1247,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         for (var i = 0; i<this.bricks.length; i++) {
             if (this.bricks[i].id == brick_id) {
                 this.bricks.splice(i,1);
-                this.getChildContainer.removeChild(Roo.get(brick_id).dom);
+                this.getChildContainer().removeChild(Roo.get(brick_id).dom);
                 this.initial();
             }
         }
@@ -1290,9 +1290,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     getSelected : function()
     {
         if (!this.selectedBrick) {
-            Roo.log(this.selectedBrick)
             return false;
         }
+        
         return this.selectedBrick;
     }
 });
