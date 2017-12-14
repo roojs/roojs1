@@ -618,8 +618,6 @@ Roo.apply(Roo.bootstrap.Form, {
             
             var ot = this.target.el.calcOffsetsTo(scrollable);
             
-            Roo.log(ot);
-            
             var scrollTo = ot[1];
             
             scrollable.scrollTo('top', scrollTo);
