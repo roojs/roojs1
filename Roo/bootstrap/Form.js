@@ -616,21 +616,16 @@ Roo.apply(Roo.bootstrap.Form, {
             
             var scrollable = this.target.el.findScrollableParent() || this.target.el.findParent('div.modal', 100, true) || Roo.get(document.body);
             
+            var scrolled = scrollable.getScroll();
+            
             var ot = this.target.el.calcOffsetsTo(scrollable);
             
-            var scrollTo = ot[1] - 150;
-            
-            Roo.log(ot);
-            Roo.log(scrollTo);
+            scrollTo = ot[1] - 100;
             
             scrollable.scrollTo('top', scrollTo);
             
             var box = this.target.el.getBox();
-            
-            Roo.log(box);
-            
-            Roo.log(this.target);
-            
+
             var zIndex = Roo.bootstrap.Modal.zIndex++;
 
             this.maskEl.top.setStyle('position', 'fixed');
