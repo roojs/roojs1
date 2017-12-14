@@ -482,13 +482,11 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         if ( index > -1) {
             m.selectedBrick.splice(index,1);
             this.el.removeClass(this.activeClass);
-            Roo.log(m.selectedBrick);
             return;
         }
         
         m.selectedBrick.push(this.id);
         this.el.addClass(this.activeClass);
-        Roo.log(m.selectedBrick);
         return;
     }
     
