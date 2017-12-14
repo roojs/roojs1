@@ -476,8 +476,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             return;
         }
         
-        Roo.log(this.parentId);
-        var m = Roo.get(this.parentId);
+        var m = Roo.bootstrap.LayoutMasonry.get(this.parentId);
         var index = m.selectedBrick.indexOf(this.id);
         
         if ( index > -1) {
