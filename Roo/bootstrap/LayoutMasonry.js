@@ -21,9 +21,12 @@
  */
 
 Roo.bootstrap.LayoutMasonry = function(config){
+    
     Roo.bootstrap.LayoutMasonry.superclass.constructor.call(this, config);
     
     this.bricks = [];
+    
+    Roo.bootstrap.LayoutMasonry.register(this);
     
     this.addEvents({
         // raw events

@@ -30106,9 +30106,12 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
  */
 
 Roo.bootstrap.LayoutMasonry = function(config){
+    
     Roo.bootstrap.LayoutMasonry.superclass.constructor.call(this, config);
     
     this.bricks = [];
+    
+    Roo.bootstrap.LayoutMasonry.register(this);
     
     this.addEvents({
         // raw events
@@ -30190,6 +30193,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     selectedBrick : [],
     
     getAutoCreate : function(){
+        
+        var cfg = Roo.apply({}, Roo.bootstrap.LayoutMasonry.superclass.getAutoCreate.call(this));
         
         var cfg = {
             tag: this.tag,
