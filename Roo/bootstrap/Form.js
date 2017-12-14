@@ -620,7 +620,7 @@ Roo.apply(Roo.bootstrap.Form, {
             
             Roo.log(ot);
             
-            var scrollTo = ot[1] - 100;
+            var scrollTo = ot[1];
             
             scrollable.scrollTo('top', scrollTo);
             
