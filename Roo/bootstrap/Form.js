@@ -619,8 +619,6 @@ Roo.apply(Roo.bootstrap.Form, {
             
             var scrollable = this.target.el.findScrollableParent() || this.target.el.findParent('div.modal', 100, true) || Roo.get(document.body);
             
-            Roo.log(scrollable);
-            
             var scrolled = scrollable.getScroll();
             
             var ot = this.target.el.calcOffsetsTo(scrollable);
