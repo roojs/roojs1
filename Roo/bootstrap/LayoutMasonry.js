@@ -1290,6 +1290,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     getSelected : function()
     {
         if (!this.selectedBrick) {
+            Roo.log(this.selectedBrick)
             return false;
         }
         return this.selectedBrick;
