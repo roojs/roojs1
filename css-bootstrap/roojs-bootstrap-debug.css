@@ -2332,6 +2332,14 @@ a.roo-brick-link:hover {
 .modal-body.roo-layout-container {
   padding: 0;
 }
+.modal-dialog {
+  max-width: 100%;
+}
+@media (max-width: 768px) {
+  .modal-dialog {
+    margin: 0;
+  }
+}
 .roo-navigation-bar-group,
 .roo-navigation-top-bar,
 .roo-navigation-bullets-bar,
