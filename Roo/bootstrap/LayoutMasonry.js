@@ -1238,9 +1238,19 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     * remove a Masonry Brick
     * @param {Roo.bootstrap.MasonryBrick} the masonry brick to remove
     */
-    removeBrick : function(cfg)
+    removeBrick : function(brick_id)
     {
+        if (!brick_id) {
+            return;
+        }
         
+        for (var i = 0; i<this.bricks.length; i++) {
+            if (this.bricks[i].id == brick_id) {
+                this.bricks.splice(i,1);
+                this.getChildContainer.removeChild(Roo.get(brick_id).dom);
+                this.initial();
+            }
+        }
     },
     
     /**
