@@ -618,7 +618,11 @@ Roo.apply(Roo.bootstrap.Form, {
             
             var ot = this.target.el.calcOffsetsTo(scrollable);
             
-            scrollTo = ot[1] - 100;
+            var scrollTo = ot[1] - 100;
+            
+            var maxScroll = Roo.lib.Dom.getDocumentHeight() - Roo.lib.Dom.getViewportHeight();
+            
+            scrollTo = Math.min(scrollTo, maxScroll);
             
             scrollable.scrollTo('top', scrollTo);
             
