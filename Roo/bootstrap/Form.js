@@ -176,7 +176,9 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         });
         
         if(this.errorMask && !valid){
-            Roo.bootstrap.Form.popover.mask(this, target);
+            (function() {
+                Roo.bootstrap.Form.popover.mask(this, target);
+            }).defer(1000);
         }
         
         return valid;
