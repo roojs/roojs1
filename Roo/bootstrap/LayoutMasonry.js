@@ -1275,8 +1275,8 @@ Roo.apply(Roo.bootstrap.LayoutMasonry, {
     
     groups: {},
      /**
-    * register a Layout of Masonry
-    * @param {Roo.bootstrap.LayoutMasonry} the layout to add
+    * register a Masonry Layout
+    * @param {Roo.bootstrap.LayoutMasonry} the masonry layout to add
     */
     
     register : function(layout)
