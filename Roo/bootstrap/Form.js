@@ -620,10 +620,14 @@ Roo.apply(Roo.bootstrap.Form, {
             
             var scrollTo = ot[1];
             
+            Roo.log(ot);
+            
             scrollable.scrollTo('top', scrollTo);
             
             var box = this.target.el.getBox();
-
+            
+            Roo.log(box);
+            
             var zIndex = Roo.bootstrap.Modal.zIndex++;
 
             this.maskEl.top.setStyle('position', 'fixed');
