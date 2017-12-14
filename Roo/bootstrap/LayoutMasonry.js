@@ -1284,15 +1284,14 @@ Roo.apply(Roo.bootstrap.LayoutMasonry, {
         this.groups[layout.id] = layout;
     },
     /**
-    * fetch a Navigation Group based on the navigation ID
-    * @param {string} the navgroup to add
-    * @returns {Roo.bootstrap.NavGroup} the navgroup 
+    * fetch a  Masonry Layout based on the masonry layout ID
+    * @param {string} the masonry layout to add
+    * @returns {Roo.bootstrap.LayoutMasonry} the masonry layout
     */
     
     get: function(layout_id) {
         if (typeof(this.groups[layout_id]) == 'undefined') {
             return false;
-            //this.register(new Roo.bootstrap.NavGroup({ navId : navId }));
         }
         return this.groups[layout_id] ;
     }
