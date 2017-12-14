@@ -32376,13 +32376,13 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         var index = m.selectedBrick.indexOf(this.id);
         
         if ( index > -1) {
-            this.removeClass(this.activeClass);
+            this.el.removeClass(this.activeClass);
             m.selectedBrick.splice(index,1);
             Roo.log(m.selectedBrick);
             return;
         }
         
-        this.addClass(this.activeClass);
+        this.el.addClass(this.activeClass);
         m.selectedBrick.push(this.id);
         Roo.log(m.selectedBrick);
         return;
