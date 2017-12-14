@@ -1235,6 +1235,15 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     },
     
     /**
+    * remove a Masonry Brick
+    * @param {Roo.bootstrap.MasonryBrick} the masonry brick to remove
+    */
+    removeBrick : function(cfg)
+    {
+        
+    },
+    
+    /**
     * adds a Masonry Brick
     * @param {Roo.bootstrap.MasonryBrick} the masonry brick to add
     */
