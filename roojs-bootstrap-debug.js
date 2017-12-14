@@ -31331,6 +31331,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     * register a Masonry Brick
     * @param {Roo.bootstrap.MasonryBrick} the masonry brick to add
     */
+    
     register : function(brick)
     {
         this.bricks.push(brick);
@@ -31353,6 +31354,35 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             Roo.log(this.bricks[i]);
         }
     }
+});
+
+Roo.apply(Roo.bootstrap.LayoutMasonry, {
+    
+    groups: {},
+     /**
+    * register a Masonry Layout
+    * @param {Roo.bootstrap.LayoutMasonry} the masonry layout to add
+    */
+    
+    register : function(layout)
+    {
+        this.groups[layout.id] = layout;
+    },
+    /**
+    * fetch a  Masonry Layout based on the masonry layout ID
+    * @param {string} the masonry layout to add
+    * @returns {Roo.bootstrap.LayoutMasonry} the masonry layout
+    */
+    
+    get: function(layout_id) {
+        if (typeof(this.groups[layout_id]) == 'undefined') {
+            return false;
+        }
+        return this.groups[layout_id] ;
+    }
+    
+    
+    
 });
 
  
