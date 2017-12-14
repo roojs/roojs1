@@ -179,7 +179,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             (function() {
                 Roo.log('run???');
                 Roo.bootstrap.Form.popover.mask(this, target);
-            }).defer(100);
+            }).defer(10);
         }
         
         return valid;
