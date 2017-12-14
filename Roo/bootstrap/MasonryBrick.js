@@ -480,14 +480,14 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         var index = m.selectedBrick.indexOf(this.id);
         
         if ( index > -1) {
-            this.el.removeClass(this.activeClass);
             m.selectedBrick.splice(index,1);
+            this.el.removeClass(this.activeClass);
             Roo.log(m.selectedBrick);
             return;
         }
         
-        this.el.addClass(this.activeClass);
         m.selectedBrick.push(this.id);
+        this.el.addClass(this.activeClass);
         Roo.log(m.selectedBrick);
         return;
     }
