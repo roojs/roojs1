@@ -8063,11 +8063,13 @@ Roo.apply(Roo.bootstrap.Form, {
             
             var scrollable = this.target.el.findScrollableParent() || this.target.el.findParent('div.modal', 100, true) || Roo.get(document.body);
             
-            var scrolled = scrollable.getScroll();
-            
             var ot = this.target.el.calcOffsetsTo(scrollable);
             
-            scrollTo = ot[1] - 100;
+            var scrollTo = ot[1] - 100;
+            
+            var maxScroll = Roo.lib.Dom.getDocumentHeight() - Roo.lib.Dom.getViewportHeight();
+            
+            scrollTo = Math.min(scrollTo, maxScroll);
             
             scrollable.scrollTo('top', scrollTo);
             
@@ -32370,8 +32372,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             return;
         }
         
-        Roo.log(this.parentId);
-        var m = Roo.get(this.parentId);
+        var m = Roo.bootstrap.LayoutMasonry.get(this.parentId);
         var index = m.selectedBrick.indexOf(this.id);
         
         if ( index > -1) {
