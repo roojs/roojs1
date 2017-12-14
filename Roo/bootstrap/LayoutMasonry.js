@@ -106,6 +106,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     getAutoCreate : function(){
         
+        var cfg = Roo.apply({}, Roo.bootstrap.LayoutMasonry.superclass.getAutoCreate.call(this));
+        
         var cfg = {
             tag: this.tag,
             cls: 'blog-masonary-wrapper ' + this.cls,
