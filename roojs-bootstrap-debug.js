@@ -31334,8 +31334,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         for (var i = 0; i<this.bricks.length; i++) {
             if (this.bricks[i].id == brick_id) {
                 this.bricks.splice(i,1);
-                Roo.log('splicing:');
-                Roo.log(this.brick);
+                this.selectedBrick.splice(i,1);
                 this.el.dom.removeChild(Roo.get(brick_id).dom);
                 this.initial();
             }
