@@ -31322,6 +31322,15 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     },
     
     /**
+    * remove a Masonry Brick
+    * @param {Roo.bootstrap.MasonryBrick} the masonry brick to remove
+    */
+    removeBrick : function(cfg)
+    {
+        
+    },
+    
+    /**
     * adds a Masonry Brick
     * @param {Roo.bootstrap.MasonryBrick} the masonry brick to add
     */
@@ -32376,15 +32385,13 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         var index = m.selectedBrick.indexOf(this.id);
         
         if ( index > -1) {
-            this.el.removeClass(this.activeClass);
             m.selectedBrick.splice(index,1);
-            Roo.log(m.selectedBrick);
+            this.el.removeClass(this.activeClass);
             return;
         }
         
-        this.el.addClass(this.activeClass);
         m.selectedBrick.push(this.id);
-        Roo.log(m.selectedBrick);
+        this.el.addClass(this.activeClass);
         return;
     }
     
