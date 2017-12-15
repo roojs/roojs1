@@ -16,6 +16,7 @@
  */
 
 Roo.bootstrap.MasonryBrick = function(config){
+    
     Roo.bootstrap.MasonryBrick.superclass.constructor.call(this, config);
     
     this.addEvents({
