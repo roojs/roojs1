@@ -19,6 +19,8 @@ Roo.bootstrap.MasonryBrick = function(config){
     
     Roo.bootstrap.MasonryBrick.superclass.constructor.call(this, config);
     
+    Roo.bootstrap.MasonryBrick.register(this);
+    
     this.addEvents({
         // raw events
         /**
@@ -493,6 +495,32 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     
 });
 
- 
+Roo.apply(Roo.bootstrap.MasonryBrick, {
+    
+     /**
+    * register a Masonry Brick
+    * @param {Roo.bootstrap.MasonryBrick} the masonry brick to add
+    */
+    
+    register : function(brick)
+    {
+        this.groups[brick.id] = brick;
+    },
+    /**
+    * fetch a  masonry brick based on the masonry brick ID
+    * @param {string} the masonry brick to add
+    * @returns {Roo.bootstrap.MasonryBrick} the masonry brick
+    */
+    
+    get: function(brick_id) {
+        if (typeof(this.groups[brick_id]) == 'undefined') {
+            return false;
+        }
+        return this.groups[brick_id] ;
+    }
+    
+    
+    
+});
 
  
