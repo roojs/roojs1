@@ -497,6 +497,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
 
 Roo.apply(Roo.bootstrap.MasonryBrick, {
     
+    groups: {},
      /**
     * register a Masonry Brick
     * @param {Roo.bootstrap.MasonryBrick} the masonry brick to add
