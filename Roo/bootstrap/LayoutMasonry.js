@@ -201,7 +201,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     _resetLayout : function()
     {
-        Roo.log('run?????????');
         if(this.isHorizontal){
             this.horizontalMeasureColumns();
             return;
