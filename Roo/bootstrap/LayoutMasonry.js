@@ -201,6 +201,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     _resetLayout : function()
     {
+        Roo.log('run?????????');
         if(this.isHorizontal){
             this.horizontalMeasureColumns();
             return;
@@ -212,8 +213,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     verticalMeasureColumns : function()
     {
-        Roo.log('run??');
-        
         this.getContainerWidth();
         
 //        if(Roo.lib.Dom.getViewWidth() < 768 && this.isAlternative){
