@@ -234,7 +234,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         this.cols = this.maxCols > 0 ? Math.min( this.cols, this.maxCols ) : this.cols;
         
         var totalBoxWidth = this.cols * boxWidth - this.padWidth;
-        
+        Roo.log(totalBoxWidth);
         var avail = Math.floor((containerWidth - totalBoxWidth) / this.cols);
         
         this.colWidth = boxWidth + avail - this.padWidth;
