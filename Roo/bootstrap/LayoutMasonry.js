@@ -226,7 +226,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         }
         
         var containerWidth = this.containerWidth;
-        
+        Roo.log(containerWidth);
         var cols = Math.floor(containerWidth / boxWidth);
         Roo.log(cols);
         this.cols = Math.max( cols, 1 );
