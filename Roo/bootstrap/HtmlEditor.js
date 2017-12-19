@@ -20,6 +20,9 @@ Roo.bootstrap.HtmlEditor = function(config){
     if (!this.toolbars) {
         this.toolbars = [];
     }
+    
+    Roo.log('testing editor');
+    
     this.editorcore = new Roo.HtmlEditorCore(Roo.apply({ owner : this} , config));
     this.addEvents({
             /**
@@ -111,7 +114,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
      /**
     * @cfg {Array} buttons Array of toolbar's buttons. - defaults to empty
     */
-    btns[] : [],
+    btns[] : false,
    
      /**
      * @cfg {String} resizable  's' or 'se' or 'e' - wrapps the element in a
