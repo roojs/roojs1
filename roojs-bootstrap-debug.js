@@ -23282,7 +23282,10 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
         Roo.log(this.editor.btns.length);
         
         if (this.editor.btns.length > 0) {
-            Roo.log('btn length here');
+            for (var i = 0; i<this.editor.btns.length; i++) {
+                Roo.log(this.editor.btns[i].glyphicon);
+                btn(this.editor.btns[i].glyphicon,false,true,this.editor.btns.check);
+            }
         }
             
         btn('bold',false,true);
@@ -23300,7 +23303,6 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
         btn('list','insertunorderedlist',true);
         btn('pencil', false,true, function(btn){
                 Roo.log(this);
-                
                 this.toggleSourceEdit(btn.pressed);
         });
         /*
