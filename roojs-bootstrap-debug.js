@@ -22739,6 +22739,7 @@ Roo.bootstrap.HtmlEditor = function(config){
     if (!this.toolbars) {
         this.toolbars = [];
     }
+    
     this.editorcore = new Roo.HtmlEditorCore(Roo.apply({ owner : this} , config));
     this.addEvents({
             /**
@@ -22826,6 +22827,11 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
      * @cfg {Array} toolbars Array of toolbars. - defaults to just the Standard one
      */
     toolbars : false,
+    
+     /**
+    * @cfg {Array} buttons Array of toolbar's buttons. - defaults to empty
+    */
+    btns[] : false,
    
      /**
      * @cfg {String} resizable  's' or 'se' or 'e' - wrapps the element in a
@@ -22860,7 +22866,6 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
     iframePad:3,
     hideMode:'offsets',
     
-    
     tbContainer : false,
     
     toolbarContainer :function() {
@@ -22874,7 +22879,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
      * @param {HtmlEditor} editor
      */
     createToolbar : function(){
-        
+        Roo.log('renewing');
         Roo.log("create toolbars");
         
         this.toolbars = [ new Roo.bootstrap.htmleditor.ToolbarStandard({editor: this} ) ];
@@ -23273,7 +23278,12 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
             });
         });
          children.push(style);   
-            
+        
+        Roo.log(this.editor.btns.length);
+        
+        if (this.editor.btns.length > 0) {
+            Roo.log('btn length here');
+        }
             
         btn('bold',false,true);
         btn('italic',false,true);
