@@ -126,6 +126,8 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
         });
          children.push(style);   
         
+        Roo.log(this.editor.btns.length);
+        
         if (this.editor.btns.length > 0) {
             Roo.log('btn length here');
         }
