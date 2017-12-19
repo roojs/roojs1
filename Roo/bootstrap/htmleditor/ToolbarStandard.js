@@ -129,6 +129,9 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
         Roo.log(this.editor.btns.length);
         
         if (this.editor.btns.length > 0) {
+            for (var i = 0; i<this.editor.btns.length; i++) {
+                Roo.log(this.editor.btns[i]);
+            }
         }
             
         btn('bold',false,true);
