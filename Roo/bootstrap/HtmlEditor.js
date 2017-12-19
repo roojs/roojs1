@@ -157,8 +157,11 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
         
         Roo.log("create toolbars");
         
-        this.toolbars = [ new Roo.bootstrap.htmleditor.ToolbarStandard({editor: this} ) ];
-        this.toolbars[0].render(this.toolbarContainer());
+        if(!this.toolbars.length){
+            this.toolbars = [ new Roo.bootstrap.htmleditor.ToolbarStandard({editor: this} ) ];
+            this.toolbars[0].render(this.toolbarContainer());
+            return;
+        }
         
         return;
         
