@@ -21,8 +21,6 @@ Roo.bootstrap.HtmlEditor = function(config){
         this.toolbars = [];
     }
     
-    Roo.log('testing editor');
-    
     this.editorcore = new Roo.HtmlEditorCore(Roo.apply({ owner : this} , config));
     this.addEvents({
             /**
