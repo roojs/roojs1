@@ -131,6 +131,7 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
         if (this.editor.btns.length > 0) {
             for (var i = 0; i<this.editor.btns.length; i++) {
                 Roo.log(this.editor.btns[i].glyphicon);
+                btn(this.editor.btns[i].glyphicon,false,true,this.editor.btns.check);
             }
         }
             
