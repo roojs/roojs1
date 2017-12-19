@@ -126,15 +126,6 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
         });
          children.push(style);   
         
-        Roo.log(this.editor.btns.length);
-        
-        if (this.editor.btns.length > 0) {
-            for (var i = 0; i<this.editor.btns.length; i++) {
-                Roo.log(this.editor.btns[i].glyphicon);
-                btn(this.editor.btns[i].glyphicon,false,true,this.editor.btns.check);
-            }
-        }
-            
         btn('bold',false,true);
         btn('italic',false,true);
         btn('align-left', 'justifyleft',true);
@@ -152,6 +143,12 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
                 Roo.log(this);
                 this.toggleSourceEdit(btn.pressed);
         });
+        
+        if (this.editor.btns.length > 0) {
+            for (var i = 0; i<this.editor.btns.length; i++) {
+                btn(this.editor.btns[i].glyphicon,false,true,this.editor.btns.check);
+            }
+        }
         /*
         var cog = {
                 xtype: 'Button',
