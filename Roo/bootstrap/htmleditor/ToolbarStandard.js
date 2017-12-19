@@ -129,7 +129,6 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
         Roo.log(this.editor.btns.length);
         
         if (this.editor.btns.length > 0) {
-            Roo.log('btn length here');
         }
             
         btn('bold',false,true);
