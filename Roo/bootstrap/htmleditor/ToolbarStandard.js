@@ -151,6 +151,7 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
                 btn(this.editor.btns[i].glyphicon,false,true,this.editor.btns[i].listeners.click);
             }
         }
+        
         /*
         var cog = {
                 xtype: 'Button',
