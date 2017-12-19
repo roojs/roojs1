@@ -159,7 +159,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
      * @param {HtmlEditor} editor
      */
     createToolbar : function(){
-        
+        Roo.log('renewing');
         Roo.log("create toolbars");
         
         this.toolbars = [ new Roo.bootstrap.htmleditor.ToolbarStandard({editor: this} ) ];
