@@ -95,6 +95,8 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
             children.push(a);
             return a;
        }
+       
+    //    var cb_box = function...
         
         var style = {
                 xtype: 'Button',
