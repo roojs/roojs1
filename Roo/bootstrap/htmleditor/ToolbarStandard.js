@@ -146,7 +146,6 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
         btn('list','insertunorderedlist',true);
         btn('pencil', false,true, function(btn){
                 Roo.log(this);
-                
                 this.toggleSourceEdit(btn.pressed);
         });
         /*
