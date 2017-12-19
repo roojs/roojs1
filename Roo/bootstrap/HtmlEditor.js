@@ -141,7 +141,6 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
     iframePad:3,
     hideMode:'offsets',
     
-    
     tbContainer : false,
     
     toolbarContainer :function() {
