@@ -112,7 +112,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
      /**
     * @cfg {Array} buttons Array of toolbar's buttons. - defaults to empty
     */
-    btns[] : false,
+    btns[] : [],
    
      /**
      * @cfg {String} resizable  's' or 'se' or 'e' - wrapps the element in a
