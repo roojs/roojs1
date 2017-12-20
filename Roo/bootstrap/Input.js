@@ -833,12 +833,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         
-        /*
-        if(this.indicator){
-            this.indicator.hide();
-        }
-        */
-        
+     
         this.el.removeClass(this.invalidClass);
         
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
