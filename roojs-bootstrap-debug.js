@@ -9093,12 +9093,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         
-        /*
-        if(this.indicator){
-            this.indicator.hide();
-        }
-        */
-        
+     
         this.el.removeClass(this.invalidClass);
         
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
@@ -20721,11 +20716,16 @@ Roo.bootstrap.SecurePass = function (config) {
     },
     this.meterLabel = "Password strength:";
     this.pwdStrengths = ["Too Weak", "Weak", "Medium", "Strong"];
-    this.meterClass = ["roo-password-meter-tooweak", 
-                       "roo-password-meter-weak", 
-                       "roo-password-meter-medium", 
-                       "roo-password-meter-strong", 
-                       "roo-password-meter-grey"],    
+    this.meterClass = [
+        "roo-password-meter-tooweak", 
+        "roo-password-meter-weak", 
+        "roo-password-meter-medium", 
+        "roo-password-meter-strong", 
+        "roo-password-meter-grey"
+    ];
+    
+    this.errors = {};
+    
     Roo.bootstrap.SecurePass.superclass.constructor.call(this, config);
 }
 
@@ -20746,7 +20746,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
     
     meterWidth: 300,
     errorMsg :'',    
-    errors: {},
+    errors: false,
     imageRoot: '/',
     /**
      * @cfg {String/Object} Label for the strength meter (defaults to
@@ -20759,7 +20759,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
      * ['Weak', 'Medium', 'Strong'])
      */
     // private    
-    pwdStrengths: [],    
+    pwdStrengths: false,    
     // private
     strength: 0,
     // private
@@ -20772,7 +20772,8 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
     
     insecure: false,
     // private
-    initEvents: function () {
+    initEvents: function ()
+    {
         Roo.bootstrap.SecurePass.superclass.initEvents.call(this);
 
         if (this.el.is('input[type=password]') && Roo.isSafari) {
@@ -20782,7 +20783,8 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         this.el.on('keyup', this.checkStrength, this, {buffer: 50});
     },
     // private
-    onRender: function (ct, position) {
+    onRender: function (ct, position)
+    {
         Roo.bootstrap.SecurePass.superclass.onRender.call(this, ct, position);
         this.wrap = this.el.wrap({cls: 'x-form-field-wrap'});
         this.trigger = this.wrap.createChild({tag: 'div', cls: 'StrengthMeter ' + this.triggerClass});
@@ -20804,43 +20806,15 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
                 ]            
         });
 
-        /*
-        this.trigger.createChild({
-            tag: 'div',
-            cls: 'roo-password-meter-container col-xs-12',
-            style: {               
-                //width: this.meterWidth + 'px'
-            },
-            cn: {
-                tag: 'div',
-                cls: 'roo-password-meter-grey',
-                style: {
-                    //width: this.meterWidth + 'px'                                        
-                },
-                cn: [
-                    {
-                    //id: 'PwdMeter',
-                    tag: 'div',
-                    cls: 'roo-password-meter-grey col-xs-12',
-                    style: {
-                        //width: 0,
-                        //width: this.meterWidth + 'px'                                                
-                        }
-                    },
-                    {                    	 
-                    	 cls: 'roo-password-meter-text'                    	 
-                    }
-                ]                
-            }
-        });
-        */
+         
         if (this.hideTrigger) {
             this.trigger.setDisplayed(false);
         }
         this.setSize(this.width || '', this.height || '');
     },
     // private
-    onDestroy: function () {
+    onDestroy: function ()
+    {
         if (this.trigger) {
             this.trigger.removeAllListeners();
             this.trigger.remove();
@@ -20851,7 +20825,8 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         Roo.bootstrap.TriggerField.superclass.onDestroy.call(this);
     },
     // private
-    checkStrength: function () {
+    checkStrength: function ()
+    {
         var pwd = this.inputEl().getValue();
         if (pwd == this._lastPwd) {
             return;
@@ -20868,7 +20843,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
             strength = 0;
         }
         
-        console.log('strength1: ' + strength);
+        Roo.log('strength1: ' + strength);
         
         //var pm = this.trigger.child('div/div/div').dom;
         var pm = this.trigger.child('div/div');
@@ -20882,7 +20857,8 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         
         this._lastPwd = pwd;
     },
-    reset: function () {
+    reset: function ()
+    {
         Roo.bootstrap.SecurePass.superclass.reset.call(this);
         
         this._lastPwd = '';
@@ -20898,7 +20874,8 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         this.inputEl().dom.type='password';
     },
     // private
-    validateValue: function (value) {
+    validateValue: function (value)
+    {
         
         if (!Roo.bootstrap.SecurePass.superclass.validateValue.call(this, value)) {
             return false;
@@ -20968,52 +20945,62 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         return true;
     },
     // private
-    CharacterSetChecks: function (type) {
+    CharacterSetChecks: function (type)
+    {
         this.type = type;
         this.fResult = false;
     },
     // private
-    isctype: function (character, type) {
-        switch (type) { //why needed break after return in js ? very odd bug
+    isctype: function (character, type)
+    {
+        switch (type) {  
             case this.kCapitalLetter:
                 if (character >= 'A' && character <= 'Z') {
                     return true;
                 }
                 break;
+            
             case this.kSmallLetter:
                 if (character >= 'a' && character <= 'z') {
                     return true;
                 }
                 break;
+            
             case this.kDigit:
                 if (character >= '0' && character <= '9') {
                     return true;
                 }
                 break;
+            
             case this.kPunctuation:
                 if ('!@#$%^&*()_+-=\'";:[{]}|.>,</?`~'.indexOf(character) >= 0) {
                     return true;
                 }
                 break;
+            
             default:
                 return false;
         }
 
     },
     // private
-    IsLongEnough: function (pwd, size) {
+    IsLongEnough: function (pwd, size)
+    {
         return !(pwd == null || isNaN(size) || pwd.length < size);
     },
     // private
-    SpansEnoughCharacterSets: function (word, nb) {
+    SpansEnoughCharacterSets: function (word, nb)
+    {
         if (!this.IsLongEnough(word, nb))
         {
             return false;
         }
 
         var characterSetChecks = new Array(
-                new this.CharacterSetChecks(this.kCapitalLetter), new this.CharacterSetChecks(this.kSmallLetter),
-                new this.CharacterSetChecks(this.kDigit), new this.CharacterSetChecks(this.kPunctuation));
+            new this.CharacterSetChecks(this.kCapitalLetter), new this.CharacterSetChecks(this.kSmallLetter),
+            new this.CharacterSetChecks(this.kDigit), new this.CharacterSetChecks(this.kPunctuation)
+        );
+        
         for (var index = 0; index < word.length; ++index) {
             for (var nCharSet = 0; nCharSet < characterSetChecks.length; ++nCharSet) {
                 if (!characterSetChecks[nCharSet].fResult && this.isctype(word.charAt(index), characterSetChecks[nCharSet].type)) {
@@ -21036,15 +21023,18 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         return true;
     },
     // private
-    ClientSideStrongPassword: function (pwd) {
+    ClientSideStrongPassword: function (pwd)
+    {
         return this.IsLongEnough(pwd, 8) && this.SpansEnoughCharacterSets(pwd, 3);
     },
     // private
-    ClientSideMediumPassword: function (pwd) {
+    ClientSideMediumPassword: function (pwd)
+    {
         return this.IsLongEnough(pwd, 7) && this.SpansEnoughCharacterSets(pwd, 2);
     },
     // private
-    ClientSideWeakPassword: function (pwd) {
+    ClientSideWeakPassword: function (pwd)
+    {
         return this.IsLongEnough(pwd, 6) || !this.IsLongEnough(pwd, 0);
     }
           
@@ -21636,10 +21626,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     insertAtCursor : function(text)
     {
-        
+        Roo.log('insert at cursorrrrrrrrrr');
         
         
         if(!this.activated){
+            Roo.log('not activate');
             return;
         }
         /*
@@ -23227,7 +23218,7 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
        var editor= this.editor;
        
        var children = [];
-       var btn = function(id,cmd , toggle, handler){
+       var btn = function(id,cmd , toggle, handler, html){
        
             var  event = toggle ? 'toggle' : 'click';
        
@@ -23238,7 +23229,7 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
                 glyphicon : id,
                 cmd : id || cmd,
                 enableToggle:toggle !== false,
-                //html : 'submit'
+                html : html || '',
                 pressed : toggle ? false : null,
                 listeners : {}
             };
@@ -23279,7 +23270,7 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
                 
             });
         });
-         children.push(style);   
+        children.push(style);   
         
         btn('bold',false,true);
         btn('italic',false,true);
@@ -23301,9 +23292,10 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
         
         if (this.editor.btns.length > 0) {
             for (var i = 0; i<this.editor.btns.length; i++) {
-                btn(this.editor.btns[i].glyphicon,false,true,this.editor.btns[i].listeners.click);
+                children.push(this.editor.btns[i]);
             }
         }
+        
         /*
         var cog = {
                 xtype: 'Button',
@@ -33289,12 +33281,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
         if(!this.el || this.preventMark){
             return;
         }
-        
-        /*
-        if(this.labelEl.isVisible(true)){
-            this.indicatorEl().hide();
-        }
-        */
+         
         
         this.el.removeClass([this.invalidClass]);
         
