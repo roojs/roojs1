@@ -586,7 +586,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     insertAtCursor : function(text)
     {
-        
+        Roo.log('insert at cursorrrrrrrrrr');
         
         
         if(!this.activated){
