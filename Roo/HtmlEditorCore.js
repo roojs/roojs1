@@ -590,6 +590,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         
         if(!this.activated){
+            Roo.log('not activate');
             return;
         }
         /*
