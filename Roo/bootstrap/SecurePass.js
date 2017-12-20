@@ -171,7 +171,8 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         
         this._lastPwd = pwd;
     },
-    reset: function () {
+    reset: function ()
+    {
         Roo.bootstrap.SecurePass.superclass.reset.call(this);
         
         this._lastPwd = '';
@@ -187,7 +188,8 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         this.inputEl().dom.type='password';
     },
     // private
-    validateValue: function (value) {
+    validateValue: function (value)
+    {
         
         if (!Roo.bootstrap.SecurePass.superclass.validateValue.call(this, value)) {
             return false;
@@ -257,52 +259,62 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         return true;
     },
     // private
-    CharacterSetChecks: function (type) {
+    CharacterSetChecks: function (type)
+    {
         this.type = type;
         this.fResult = false;
     },
     // private
-    isctype: function (character, type) {
-        switch (type) { //why needed break after return in js ? very odd bug
+    isctype: function (character, type)
+    {
+        switch (type) {  
             case this.kCapitalLetter:
                 if (character >= 'A' && character <= 'Z') {
                     return true;
                 }
                 break;
+            
             case this.kSmallLetter:
                 if (character >= 'a' && character <= 'z') {
                     return true;
                 }
                 break;
+            
             case this.kDigit:
                 if (character >= '0' && character <= '9') {
                     return true;
                 }
                 break;
+            
             case this.kPunctuation:
                 if ('!@#$%^&*()_+-=\'";:[{]}|.>,</?`~'.indexOf(character) >= 0) {
                     return true;
                 }
                 break;
+            
             default:
                 return false;
         }
 
     },
     // private
-    IsLongEnough: function (pwd, size) {
+    IsLongEnough: function (pwd, size)
+    {
         return !(pwd == null || isNaN(size) || pwd.length < size);
     },
     // private
-    SpansEnoughCharacterSets: function (word, nb) {
+    SpansEnoughCharacterSets: function (word, nb)
+    {
         if (!this.IsLongEnough(word, nb))
         {
             return false;
         }
 
         var characterSetChecks = new Array(
-                new this.CharacterSetChecks(this.kCapitalLetter), new this.CharacterSetChecks(this.kSmallLetter),
-                new this.CharacterSetChecks(this.kDigit), new this.CharacterSetChecks(this.kPunctuation));
+            new this.CharacterSetChecks(this.kCapitalLetter), new this.CharacterSetChecks(this.kSmallLetter),
+            new this.CharacterSetChecks(this.kDigit), new this.CharacterSetChecks(this.kPunctuation)
+        );
+        
         for (var index = 0; index < word.length; ++index) {
             for (var nCharSet = 0; nCharSet < characterSetChecks.length; ++nCharSet) {
                 if (!characterSetChecks[nCharSet].fResult && this.isctype(word.charAt(index), characterSetChecks[nCharSet].type)) {
@@ -325,15 +337,18 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         return true;
     },
     // private
-    ClientSideStrongPassword: function (pwd) {
+    ClientSideStrongPassword: function (pwd)
+    {
         return this.IsLongEnough(pwd, 8) && this.SpansEnoughCharacterSets(pwd, 3);
     },
     // private
-    ClientSideMediumPassword: function (pwd) {
+    ClientSideMediumPassword: function (pwd)
+    {
         return this.IsLongEnough(pwd, 7) && this.SpansEnoughCharacterSets(pwd, 2);
     },
     // private
-    ClientSideWeakPassword: function (pwd) {
+    ClientSideWeakPassword: function (pwd)
+    {
         return this.IsLongEnough(pwd, 6) || !this.IsLongEnough(pwd, 0);
     }
           
