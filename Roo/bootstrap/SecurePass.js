@@ -30,11 +30,16 @@ Roo.bootstrap.SecurePass = function (config) {
     },
     this.meterLabel = "Password strength:";
     this.pwdStrengths = ["Too Weak", "Weak", "Medium", "Strong"];
-    this.meterClass = ["roo-password-meter-tooweak", 
-                       "roo-password-meter-weak", 
-                       "roo-password-meter-medium", 
-                       "roo-password-meter-strong", 
-                       "roo-password-meter-grey"],    
+    this.meterClass = [
+        "roo-password-meter-tooweak", 
+        "roo-password-meter-weak", 
+        "roo-password-meter-medium", 
+        "roo-password-meter-strong", 
+        "roo-password-meter-grey"
+    ];
+    
+    this.errors = {};
+    
     Roo.bootstrap.SecurePass.superclass.constructor.call(this, config);
 }
 
@@ -55,7 +60,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
     
     meterWidth: 300,
     errorMsg :'',    
-    errors: {},
+    errors: false,
     imageRoot: '/',
     /**
      * @cfg {String/Object} Label for the strength meter (defaults to
@@ -68,7 +73,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
      * ['Weak', 'Medium', 'Strong'])
      */
     // private    
-    pwdStrengths: [],    
+    pwdStrengths: false,    
     // private
     strength: 0,
     // private
@@ -81,7 +86,8 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
     
     insecure: false,
     // private
-    initEvents: function () {
+    initEvents: function ()
+    {
         Roo.bootstrap.SecurePass.superclass.initEvents.call(this);
 
         if (this.el.is('input[type=password]') && Roo.isSafari) {
@@ -91,7 +97,8 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         this.el.on('keyup', this.checkStrength, this, {buffer: 50});
     },
     // private
-    onRender: function (ct, position) {
+    onRender: function (ct, position)
+    {
         Roo.bootstrap.SecurePass.superclass.onRender.call(this, ct, position);
         this.wrap = this.el.wrap({cls: 'x-form-field-wrap'});
         this.trigger = this.wrap.createChild({tag: 'div', cls: 'StrengthMeter ' + this.triggerClass});
@@ -113,43 +120,15 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
                 ]            
         });
 
-        /*
-        this.trigger.createChild({
-            tag: 'div',
-            cls: 'roo-password-meter-container col-xs-12',
-            style: {               
-                //width: this.meterWidth + 'px'
-            },
-            cn: {
-                tag: 'div',
-                cls: 'roo-password-meter-grey',
-                style: {
-                    //width: this.meterWidth + 'px'                                        
-                },
-                cn: [
-                    {
-                    //id: 'PwdMeter',
-                    tag: 'div',
-                    cls: 'roo-password-meter-grey col-xs-12',
-                    style: {
-                        //width: 0,
-                        //width: this.meterWidth + 'px'                                                
-                        }
-                    },
-                    {                    	 
-                    	 cls: 'roo-password-meter-text'                    	 
-                    }
-                ]                
-            }
-        });
-        */
+         
         if (this.hideTrigger) {
             this.trigger.setDisplayed(false);
         }
         this.setSize(this.width || '', this.height || '');
     },
     // private
-    onDestroy: function () {
+    onDestroy: function ()
+    {
         if (this.trigger) {
             this.trigger.removeAllListeners();
             this.trigger.remove();
@@ -160,7 +139,8 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         Roo.bootstrap.TriggerField.superclass.onDestroy.call(this);
     },
     // private
-    checkStrength: function () {
+    checkStrength: function ()
+    {
         var pwd = this.inputEl().getValue();
         if (pwd == this._lastPwd) {
             return;
@@ -177,7 +157,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
             strength = 0;
         }
         
-        console.log('strength1: ' + strength);
+        Roo.log('strength1: ' + strength);
         
         //var pm = this.trigger.child('div/div/div').dom;
         var pm = this.trigger.child('div/div');
