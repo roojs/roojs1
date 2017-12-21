@@ -21626,11 +21626,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     insertAtCursor : function(text)
     {
-        Roo.log('insert at cursorrrrrrrrrr');
-        
         
         if(!this.activated){
-            Roo.log('not activate');
             return;
         }
         /*
@@ -32418,7 +32415,8 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
 
 Roo.apply(Roo.bootstrap.MasonryBrick, {
     
-    groups: {},
+    //groups: {},
+    groups = new Roo.util.MixedCollection(false, function(o) { return o.el.id; }),
      /**
     * register a Masonry Brick
     * @param {Roo.bootstrap.MasonryBrick} the masonry brick to add
@@ -32426,7 +32424,8 @@ Roo.apply(Roo.bootstrap.MasonryBrick, {
     
     register : function(brick)
     {
-        this.groups[brick.id] = brick;
+        //this.groups[brick.id] = brick;
+        this.groups.add(brick.id, brick);
     },
     /**
     * fetch a  masonry brick based on the masonry brick ID
@@ -32434,11 +32433,18 @@ Roo.apply(Roo.bootstrap.MasonryBrick, {
     * @returns {Roo.bootstrap.MasonryBrick} the masonry brick
     */
     
-    get: function(brick_id) {
-        if (typeof(this.groups[brick_id]) == 'undefined') {
-            return false;
+    get: function(brick_id) 
+    {
+        // if (typeof(this.groups[brick_id]) == 'undefined') {
+        //     return false;
+        // }
+        // return this.groups[brick_id] ;
+        
+        if(this.groups.key(brick_id)) {
+            return this.groups.key(brick_id);
         }
-        return this.groups[brick_id] ;
+        
+        return false;
     }
     
     
