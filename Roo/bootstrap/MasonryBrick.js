@@ -473,6 +473,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         window.location.href = this.href;
     },
     
+    //selection on single brick only
     selectBrick : function() {
         
         if (!this.parentId) {
