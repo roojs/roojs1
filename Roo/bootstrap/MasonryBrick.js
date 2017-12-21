@@ -488,6 +488,11 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             return;
         }
         
+        for(var i = 0; i < m.selectedBrick.length; i++) {
+            var b = Roo.bootstrap.MasonryBrick.get(m.selectedBrick[i]);
+            b.removeClass(b.activeClass);
+        }
+        
         m.selectedBrick.push(this.id);
         this.el.addClass(this.activeClass);
         return;
