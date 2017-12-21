@@ -353,7 +353,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     pushValue : function(){
         if(this.initialized){
             var v = this.el.dom.value.trim();
-            
+            Roo.log(v);
 //            if(v.length < 1){
 //                v = '&#160;';
 //            }
