@@ -491,7 +491,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         
         for(var i = 0; i < m.selectedBrick.length; i++) {
             var b = Roo.bootstrap.MasonryBrick.get(m.selectedBrick[i]);
-            b.removeClass(b.activeClass);
+            b.el.removeClass(b.activeClass);
         }
         
         m.selectedBrick = [];
