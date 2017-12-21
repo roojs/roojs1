@@ -506,7 +506,8 @@ Roo.apply(Roo.bootstrap.MasonryBrick, {
     
     register : function(brick)
     {
-        this.groups[brick.id] = brick;
+        //this.groups[brick.id] = brick;
+        this.groups.add(brick.id, brick);
     },
     /**
     * fetch a  masonry brick based on the masonry brick ID
