@@ -1137,7 +1137,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     node.className = '';
                 }
                 
-                if (a.value.match(/body/)) {
+                if (a.value.match(/^body$/)) {
                     node.className = '';
                 }
                 continue;
