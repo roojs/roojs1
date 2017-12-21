@@ -515,11 +515,18 @@ Roo.apply(Roo.bootstrap.MasonryBrick, {
     * @returns {Roo.bootstrap.MasonryBrick} the masonry brick
     */
     
-    get: function(brick_id) {
-        if (typeof(this.groups[brick_id]) == 'undefined') {
-            return false;
+    get: function(brick_id) 
+    {
+        // if (typeof(this.groups[brick_id]) == 'undefined') {
+        //     return false;
+        // }
+        // return this.groups[brick_id] ;
+        
+        if(this.groups.key(brick_id)) {
+            return this.groups.key(brick_id);
         }
-        return this.groups[brick_id] ;
+        
+        return false;
     }
     
     
