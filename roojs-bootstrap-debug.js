@@ -32416,7 +32416,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
 Roo.apply(Roo.bootstrap.MasonryBrick, {
     
     //groups: {},
-    groups = new Roo.util.MixedCollection(false, function(o) { return o.el.id; }),
+    groups : new Roo.util.MixedCollection(false, function(o) { return o.el.id; }),
      /**
     * register a Masonry Brick
     * @param {Roo.bootstrap.MasonryBrick} the masonry brick to add
