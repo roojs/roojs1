@@ -43250,8 +43250,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     insertAtCursor : function(text)
     {
         
-        
-        
         if(!this.activated){
             return;
         }
@@ -43802,7 +43800,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     node.className = '';
                 }
                 
-                if (a.value.match(/body/)) {
+                if (a.value.match(/^body$/)) {
                     node.className = '';
                 }
                 continue;
@@ -60181,20 +60179,18 @@ Roo.LoadMask.prototype = {
         }
         */
     
-        
-        
-        this.el.unmask(this.removeMask);
+        (function() { this.el.unmask(this.removeMask); }).defer(50, this);
     },
     // private
     onLoad : function()
     {
-        this.el.unmask(this.removeMask);
+        (function() { this.el.unmask(this.removeMask); }).defer(50, this);
     },
 
     // private
     onBeforeLoad : function(){
         if(!this.disabled){
-            this.el.mask(this.msg, this.msgCls);
+            (function() { this.el.mask(this.msg, this.msgCls); }).defer(50, this);
         }
     },
 
