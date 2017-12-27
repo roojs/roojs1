@@ -22177,7 +22177,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     node.className = '';
                 }
                 
-                if (a.value.match(/body/)) {
+                if (a.value.match(/^body$/)) {
                     node.className = '';
                 }
                 continue;
@@ -23215,7 +23215,7 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
        var editor= this.editor;
        
        var children = [];
-       var btn = function(id,cmd , toggle, handler, html){
+       var btn = function(id,cmd , toggle, handler){
        
             var  event = toggle ? 'toggle' : 'click';
        
@@ -23226,7 +23226,7 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
                 glyphicon : id,
                 cmd : id || cmd,
                 enableToggle:toggle !== false,
-                html : html || '',
+                //html : 'submit'
                 pressed : toggle ? false : null,
                 listeners : {}
             };
@@ -23267,7 +23267,7 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
                 
             });
         });
-        children.push(style);   
+         children.push(style);   
         
         btn('bold',false,true);
         btn('italic',false,true);
@@ -23289,7 +23289,7 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
         
         if (this.editor.btns.length > 0) {
             for (var i = 0; i<this.editor.btns.length; i++) {
-                children.push(this.editor.btns[i]);
+                btn(this.editor.btns[i].glyphicon,false,true,this.editor.btns[i].listeners.click);
             }
         }
         
@@ -30236,6 +30236,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     initial : function()
     {
+        this.selectedBrick = [];
+        
         this.currentSize = this.el.getBox(true);
         
         Roo.EventManager.onWindowResize(this.resize, this); 
@@ -31334,7 +31336,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         for (var i = 0; i<this.bricks.length; i++) {
             if (this.bricks[i].id == brick_id) {
                 this.bricks.splice(i,1);
-                this.selectedBrick=[];
+                this.selectedBrick = [];
                 this.el.dom.removeChild(Roo.get(brick_id).dom);
                 this.initial();
             }
@@ -32063,6 +32065,10 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             cn: [
                 {
                     tag: 'div',
+                    cls: 'masonry-brick-mask'
+                },
+                {
+                    tag: 'div',
                     cls: 'masonry-brick-paragraph',
                     cn: []
                 }
@@ -32073,7 +32079,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             cfg.href = this.href;
         }
         
-        var cn = cfg.cn[0].cn;
+        var cn = cfg.cn[1].cn;
         
         if(this.title.length){
             cn.push({
@@ -32091,7 +32097,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             });
         }  
         if (!this.title.length && !this.html.length) {
-            cfg.cn[0].cls += ' hide';
+            cfg.cn[1].cls += ' hide';
         }
         
         if(this.bgimage.length){
@@ -32113,13 +32119,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 allowfullscreen : true
             });
             
-            
         }
-        
-        cfg.cn.push({
-            tag: 'div',
-            cls: 'masonry-brick-mask'
-        });
         
         return cfg;
         
@@ -32391,6 +32391,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         window.location.href = this.href;
     },
     
+    //selection on single brick only
     selectBrick : function() {
         
         if (!this.parentId) {
@@ -32405,6 +32406,13 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             this.el.removeClass(this.activeClass);
             return;
         }
+        
+        for(var i = 0; i < m.selectedBrick.length; i++) {
+            var b = Roo.bootstrap.MasonryBrick.get(m.selectedBrick[i]);
+            b.el.removeClass(b.activeClass);
+        }
+        
+        m.selectedBrick = [];
         
         m.selectedBrick.push(this.id);
         this.el.addClass(this.activeClass);
