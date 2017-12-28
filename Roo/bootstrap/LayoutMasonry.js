@@ -433,6 +433,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     _horizontalLayoutItems : function ( items , isInstant)
     {
+        reutrn;
+        
         if ( !items || !items.length || items.length < 3) {
             return;
         }
