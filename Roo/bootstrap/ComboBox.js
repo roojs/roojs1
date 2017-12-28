@@ -1163,7 +1163,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(typeof(this.loading) !== 'undefined' && this.loading !== null){
             this.loading.hide();
         }
-             
+            
+        Roo.log('run????????????');
+        
         if(this.store.getCount() > 0){
             
             Roo.log(this.store.getCount());
