@@ -157,7 +157,7 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
             image.setWidth(paragraph.getWidth());
 //            image.setHeight(paragraph.getWidth());
             
-//            this.el.setHeight(image.getHeight());
+            this.el.setHeight(image.getHeight());
             paragraph.setHeight(image.getHeight());
             
         }
