@@ -421,7 +421,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             this.add(r);
         }
         
-        if(this.parent && this.parent.emptyTitle.length) {
+        if(this.parent && !Roo.isIOS && !this.useNativeIOS && this.parent.emptyTitle.length) {
                 
             var e = new Roo.data.Record({});
 
