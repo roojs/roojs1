@@ -149,6 +149,11 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
         this.resize();
     },
     
+    onBgLoad : function()
+    {
+        Roo.log('on bg load');
+    },
+    
     resize : function()
     {
         var paragraph = this.el.select('.roo-brick-paragraph', true).first();
