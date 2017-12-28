@@ -142,7 +142,9 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
         
         Roo.EventManager.onWindowResize(this.resize, this); 
         
-        this.resize();
+        (function() {
+            this.resize();
+        }).defer(100);
     },
     
     resize : function()
