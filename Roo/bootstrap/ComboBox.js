@@ -1335,7 +1335,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var text = v;
         if(this.valueField){
-            Roo.log('run????');
             var r = this.findRecord(this.valueField, v);
             if(r){
                 text = r.data[this.displayField];
