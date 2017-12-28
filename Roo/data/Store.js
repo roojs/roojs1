@@ -396,8 +396,6 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             this.fireEvent("loadexception", this, o, options, o.raw.errorMsg);
             return;
         }
-        Roo.log('load records..................');
-        Roo.log(o);
         var r = o.records, t = o.totalRecords || r.length;
         
         this.fireEvent("beforeloadadd", this, r, options, o);
