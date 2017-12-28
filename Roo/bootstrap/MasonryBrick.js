@@ -387,6 +387,8 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     
     enter: function(e, el)
     {
+        Roo.log('enter?????????????????');
+        
         e.preventDefault();
         
         if(!this.isFitContainer || this.maskInverse || this.videourl.length){
