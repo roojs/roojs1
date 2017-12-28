@@ -10994,6 +10994,17 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             this.totalLength = Math.max(t, this.data.length+r.length);
             this.add(r);
         }
+        
+        if(this.parent && !Roo.isIOS && !this.useNativeIOS && this.parent.emptyTitle.length) {
+                
+            var e = new Roo.data.Record({});
+
+            e.set(this.parent.displayField, this.parent.emptyTitle);
+            e.set(this.parent.valueField, '');
+
+            this.insert(0, e);
+        }
+            
         this.fireEvent("load", this, r, options, o);
         if(options.callback){
             options.callback.call(options.scope || this, r, options, true);
@@ -12297,6 +12308,7 @@ Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
  * @cfg {Boolean} animate default true
  * @cfg {Boolean} emptyResultText only for touch device
  * @cfg {String} triggerText multiple combobox trigger button text default 'Select'
+ * @cfg {String} emptyTitle default ''
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
@@ -12617,6 +12629,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     animate : true,
     emptyResultText: 'Empty',
     triggerText : 'Select',
+    emptyTitle : '',
     
     // element that contains real text value.. (when hidden is used..)
     
@@ -12944,6 +12957,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         this.store = Roo.factory(this.store, Roo.data);
+        this.store.parent = this;
         
         // if we are building from html. then this element is so complex, that we can not really
         // use the rendered HTML.
@@ -13075,7 +13089,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         });
         //this.view.wrapEl.setDisplayed(false);
         this.view.on('click', this.onViewClick, this);
-        
         
         
         this.store.on('beforeload', this.onBeforeLoad, this);
@@ -13442,8 +13455,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(typeof(this.loading) !== 'undefined' && this.loading !== null){
             this.loading.hide();
         }
-             
+        
         if(this.store.getCount() > 0){
+            
             this.expand();
             this.restrictHeight();
             if(this.lastQuery == this.allQuery){
