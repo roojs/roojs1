@@ -32614,9 +32614,19 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
             this.el.on('mouseleave', this.leave, this);
         }
         
-        
         Roo.EventManager.onWindowResize(this.resize, this); 
         
+        if(this.bgimage.length){
+            this.imageEl = this.el.select('.roo-brick-image-view', true).first();
+            this.imageEl.on('load', this.onImageLoad, this);
+            return;
+        }
+        
+        this.resize();
+    },
+    
+    onImageLoad : function()
+    {
         this.resize();
     },
     
@@ -32624,13 +32634,16 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
     {
         var paragraph = this.el.select('.roo-brick-paragraph', true).first();
         
-        paragraph.setWidth(paragraph.getWidth() + paragraph.getPadding('lr'));
         paragraph.setHeight(paragraph.getWidth() + paragraph.getPadding('tb'));
         
         if(this.bgimage.length){
             var image = this.el.select('.roo-brick-image-view', true).first();
+            
             image.setWidth(paragraph.getWidth());
-//            image.setHeight(paragraph.getWidth());
+            
+            if(this.square){
+                image.setHeight(paragraph.getWidth());
+            }
             
             this.el.setHeight(image.getHeight());
             paragraph.setHeight(image.getHeight());
