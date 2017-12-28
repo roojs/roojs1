@@ -1171,7 +1171,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 var r = new Roo.data.Record({});
                 
                 r.set(this.displayField, this.emptyTitle);
-                r.set(this.valueField, '');
+                r.set(this.valueField, 0);
 
                 this.store.insert(0, r);
                 
