@@ -32024,7 +32024,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             cls += ' mask-inverse';
         }
         
-        if(!this.html.length && !this.maskInverse){
+        if(!this.html.length && !this.maskInverse && !this.videourl.length){
             cls += ' enable-mask';
         }
         
