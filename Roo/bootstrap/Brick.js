@@ -143,16 +143,16 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
         
         if(this.bgimage.length){
             this.imageEl = this.el.select('.roo-brick-image-view', true).first();
-            this.imageEl.on('load', this.onBgLoad, this);
+            this.imageEl.on('load', this.onImageLoad, this);
             return;
         }
         
         this.resize();
     },
     
-    onBgLoad : function()
+    onImageLoad : function()
     {
-        Roo.log('on bg load');
+        this.resize();
     },
     
     resize : function()
