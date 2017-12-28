@@ -16,7 +16,7 @@
  * @cfg {Boolean} animate default true
  * @cfg {Boolean} emptyResultText only for touch device
  * @cfg {String} triggerText multiple combobox trigger button text default 'Select'
- * @cfg {String} emptyTitle default false
+ * @cfg {String} emptyTitle default ''
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
@@ -1154,7 +1154,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     // private
     onLoad : function(){
         
-        Roo.log('run????????????????');
         this.hasQuery = false;
         
         if(!this.hasFocus){
@@ -1164,12 +1163,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(typeof(this.loading) !== 'undefined' && this.loading !== null){
             this.loading.hide();
         }
-            
-        Roo.log('run????????????');
         
         if(this.store.getCount() > 0){
             
-            Roo.log(this.store.getCount());
+            if(this.)
             
             this.expand();
             this.restrictHeight();
