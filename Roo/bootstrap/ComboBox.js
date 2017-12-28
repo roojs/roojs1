@@ -337,6 +337,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     animate : true,
     emptyResultText: 'Empty',
     triggerText : 'Select',
+    emptyTitle : false,
     
     // element that contains real text value.. (when hidden is used..)
     
