@@ -144,7 +144,6 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
         if(this.bgimage.length){
             this.imageEl = this.el.select('.roo-brick-image-view', true).first();
             this.imageEl.on('load', this.onImageLoad, this);
-            return;
         }
         
         this.resize();
