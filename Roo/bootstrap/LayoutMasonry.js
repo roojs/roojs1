@@ -249,21 +249,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         this.getContainerWidth();
         
-        Roo.log('this.containerWidth : ' + this.containerWidth);
-        
         var boxWidth = this.boxWidth;
-        
-        Roo.log('this.boxWidth : ' + this.boxWidth);
         
         if(this.containerWidth < boxWidth){
             boxWidth = this.containerWidth;
         }
         
-        Roo.log('boxWidth : ' + boxWidth);
-        
         this.unitWidth = Math.floor((boxWidth - (this.gutter * 2)) / 3);
-        
-        Roo.log('this.unitWidth : ' + this.unitWidth);
         
         this.el.setHeight(boxWidth);
         
@@ -271,8 +263,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     getContainerWidth : function()
     {
-        Roo.log(this.el);
-        Roo.log(this.el.getBox(true));
         this.containerWidth = this.el.getBox(true).width;  //maybe use getComputedWidth
     },
     
