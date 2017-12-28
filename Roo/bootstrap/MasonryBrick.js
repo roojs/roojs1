@@ -199,7 +199,6 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 frameborder : 0,
                 allowfullscreen : true
             });
-            
         }
         
         return cfg;
