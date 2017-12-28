@@ -388,7 +388,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
     {
         e.preventDefault();
         
-        if(!this.isFitContainer || this.maskInverse){
+        if(!this.isFitContainer || this.maskInverse || this.videourl.length){
             return;
         }
         
