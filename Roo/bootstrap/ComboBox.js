@@ -1166,17 +1166,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if(this.store.getCount() > 0){
             
-            if(this.emptyTitle.length) {
-                
-                var r = new Roo.data.Record({});
-                
-                r.set(this.displayField, this.emptyTitle);
-                r.set(this.valueField, '');
-
-                this.store.insert(0, r);
-                
-            }
-            
             this.expand();
             this.restrictHeight();
             if(this.lastQuery == this.allQuery){
