@@ -665,6 +665,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         this.store = Roo.factory(this.store, Roo.data);
+        this.store.parent = this;
         
         // if we are building from html. then this element is so complex, that we can not really
         // use the rendered HTML.
@@ -796,7 +797,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         });
         //this.view.wrapEl.setDisplayed(false);
         this.view.on('click', this.onViewClick, this);
-        
         
         
         this.store.on('beforeload', this.onBeforeLoad, this);
