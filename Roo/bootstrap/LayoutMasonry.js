@@ -1249,7 +1249,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         for (var i = 0; i<this.bricks.length; i++) {
             if (this.bricks[i].id == brick_id) {
                 this.bricks.splice(i,1);
-                this.selectedBrick = [];
                 this.el.dom.removeChild(Roo.get(brick_id).dom);
                 this.initial();
             }
