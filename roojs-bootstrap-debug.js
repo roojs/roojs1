@@ -23229,7 +23229,7 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
        var editor= this.editor;
        
        var children = [];
-       var btn = function(id,cmd , toggle, handler){
+       var btn = function(id,cmd , toggle, handler, html){
        
             var  event = toggle ? 'toggle' : 'click';
        
@@ -23240,7 +23240,7 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
                 glyphicon : id,
                 cmd : id || cmd,
                 enableToggle:toggle !== false,
-                //html : 'submit'
+                html : html || '',
                 pressed : toggle ? false : null,
                 listeners : {}
             };
@@ -23281,7 +23281,7 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
                 
             });
         });
-         children.push(style);   
+        children.push(style);   
         
         btn('bold',false,true);
         btn('italic',false,true);
@@ -23303,7 +23303,7 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
         
         if (this.editor.btns.length > 0) {
             for (var i = 0; i<this.editor.btns.length; i++) {
-                btn(this.editor.btns[i].glyphicon,false,true,this.editor.btns[i].listeners.click);
+                children.push(this.editor.btns[i]);
             }
         }
         
@@ -31350,7 +31350,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         for (var i = 0; i<this.bricks.length; i++) {
             if (this.bricks[i].id == brick_id) {
                 this.bricks.splice(i,1);
-                this.selectedBrick = [];
                 this.el.dom.removeChild(Roo.get(brick_id).dom);
                 this.initial();
             }
