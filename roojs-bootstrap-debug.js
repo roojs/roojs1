@@ -2123,7 +2123,10 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         var _this = this;
         
-        (function() { _this.hide(); }).defer(100);
+        if(!t.href.length || t.href == '#'){
+            (function() { _this.hide(); }).defer(100);
+        }
+        
     },
     
     onMouseOver : function(e){
@@ -2418,6 +2421,7 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
         if (this.parent().type == 'treeview') {
             this.el.select('a').on('click', this.onClick, this);
         }
+        
         if (this.menu) {
             this.menu.parentType = this.xtype;
             this.menu.triggerEl = this.el;
