@@ -211,6 +211,8 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         var _this = this;
         
+        Roo.log(t);
+        
         (function() { _this.hide(); }).defer(100);
     },
     
