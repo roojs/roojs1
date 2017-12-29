@@ -326,7 +326,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     
     onTriggerClick : function(e)
     {
-        Roo.log('trigger click???????????????');
+        Roo.log('trigger click');
         
         var target = e.getTarget();
         
