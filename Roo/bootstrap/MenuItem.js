@@ -101,6 +101,7 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
         if (this.parent().type == 'treeview') {
             this.el.select('a').on('click', this.onClick, this);
         }
+        
         if (this.menu) {
             this.menu.parentType = this.xtype;
             this.menu.triggerEl = this.el;
