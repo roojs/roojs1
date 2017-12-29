@@ -111,13 +111,14 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
     },
     onClick : function(e)
     {
+        e.stopEvent();
         Roo.log('item on click ');
         
         if(this.preventDefault){
             e.preventDefault();
         }
         
-        e.stopEvent();
+        
         //this.parent().hideMenuItems();
         
         this.fireEvent('click', this, e);
