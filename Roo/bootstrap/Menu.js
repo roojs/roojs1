@@ -256,10 +256,13 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         if(!this.el){
             this.render();
         }
-        Roo.log(this.parentMenu);
-        Roo.log(this.el);
+        
         this.fireEvent("beforeshow", this);
+        
         this.showAt(this.el.getAlignToXY(el, pos || this.defaultAlign), parentMenu, false);
+        
+        
+        
     },
      /**
      * Displays this menu at a specific xy position
