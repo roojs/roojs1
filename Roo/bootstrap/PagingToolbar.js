@@ -230,7 +230,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         if(this.afterTextEl){
             
         }
-        
+        Roo.log('run????????????????????????????????');
         this.afterTextEl.dom.innerHTML = String.format(this.afterPageText, d.pages);
         
         this.field.dom.value = ap;
