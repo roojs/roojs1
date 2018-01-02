@@ -340,9 +340,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         //this.parent().el.setStyle('position', 'relative');
         
         
-        if (this.footer && !this.lazyLoad) {
+        if (this.footer) {
             this.footer.parentId = this.id;
-            this.footer.onRender(this.el.select('tfoot tr td').first(), null);        
+            this.footer.onRender(this.el.select('tfoot tr td').first(), null);
         } 
         
         this.maskEl = new Roo.LoadMask(this.el, { store : this.ds, msgCls: 'roo-el-mask-msg' });
