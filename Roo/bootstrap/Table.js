@@ -1102,6 +1102,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             var scrollTop = Math.ceil(this.mainBody.getScroll().top);
             
+            var height = this.mainBody.getHeight();
+            
             Roo.log(['scrollHeight : ' + scrollHeight, 'scrollTop : ' + scrollTop]);
             
         }
