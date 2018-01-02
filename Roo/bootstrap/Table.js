@@ -1110,17 +1110,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 
                 var total = this.ds.getTotalCount();
                 
-                t.each(function(tt){
-                    Roo.log(tt);
-                    
-                    this.store.data.add('a' + tt.id, tt.data);
-                    
-                }, this);
-                
-                Roo.log(this.store);
-                
                 if(this.footer.cursor + this.footer.pageSize < total){
-//                    this.footer.onClick('next');
+                    
+                    this.previousStore = this.ds.clone();
+                    
+                    this.footer.onClick('next');
                 }
                 
             }
