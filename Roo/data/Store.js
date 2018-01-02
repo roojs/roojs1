@@ -400,6 +400,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         
         this.fireEvent("beforeloadadd", this, r, options, o);
         Roo.log('data options');
+        
         Roo.log(options);
         if(!options || options.add !== true){
             if(this.pruneModifiedRecords){
