@@ -223,8 +223,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     lazyLoad : false,
     
-    previousStore : false,
-    
     getAutoCreate : function()
     {
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
@@ -716,7 +714,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     onLoad : function()
     {
 //        Roo.log('ds onload');
-        this.clear();
+        if(!this.lazyLoad){
+            this.clear();
+        }
         
         var _this = this;
         var cm = this.cm;
