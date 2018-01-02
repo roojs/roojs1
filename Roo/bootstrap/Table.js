@@ -1104,11 +1104,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             if(scrollHeight - height == scrollTop) {
                 
-                Roo.log(this.ds.getCount());
-                Roo.log(this.ds.getTotalCount());
+                var total = this.ds.getTotalCount();
                 
-                Roo.log(this.footer.cursor);
-                Roo.log(this.footer.pageSize);
+                if(this.footer.cursor + this.footer.pageSize < total){
+                    
+                }
+                
                 
             }
             
