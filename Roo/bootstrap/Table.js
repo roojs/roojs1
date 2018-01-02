@@ -1112,10 +1112,13 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 
                 t.each(function(tt){
                     Roo.log(tt);
+                    
+                    this.store.data.add(tt.id, tt.data);
+                    
                 }, this);
                 
                 if(this.footer.cursor + this.footer.pageSize < total){
-                    this.footer.onClick('next');
+//                    this.footer.onClick('next');
                 }
                 
             }
