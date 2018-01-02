@@ -5766,6 +5766,7 @@ Roo.LoadMask.prototype = {
  * @cfg {Boolean} cellSelection (true|false) default false
  * @cfg {Boolean} scrollBody (true|false) default false - body scrolled / fixed header
  * @cfg {Roo.bootstrap.PagingToolbar} footer  a paging toolbar
+ * @cfg {Boolean} lazyLoad  auto load data while scrolling to the end (default false)
  
  * 
  * @constructor
@@ -5952,6 +5953,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     container: false, // used by gridpanel...
     
+    lazyLoad : false,
+    
     getAutoCreate : function()
     {
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
@@ -6071,7 +6074,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         if (this.footer) {
             this.footer.parentId = this.id;
-            this.footer.onRender(this.el.select('tfoot tr td').first(), null);        
+            this.footer.onRender(this.el.select('tfoot tr td').first(), null);
+            
+            if(this.lazyLoad){
+                this.el.select('tfoot tr td').first().addClass('hide');
+            }
         } 
         
         this.maskEl = new Roo.LoadMask(this.el, { store : this.ds, msgCls: 'roo-el-mask-msg' });
@@ -6445,6 +6452,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var cm = this.cm;
         var ds = this.store;
         
+        Roo.log(this.store);
+        
         Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
             e.select('i', true).removeClass(['glyphicon-arrow-up', 'glyphicon-arrow-down']);
             if (_this.store.sortInfo) {
@@ -6813,14 +6822,37 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     },
     onBodyScroll: function()
     {
-        
         //Roo.log("body scrolled');" + this.mainBody.dom.scrollLeft);
         this.mainHead.setStyle({
-                    'position' : 'relative',
-                    'left': (-1* this.mainBody.dom.scrollLeft) + 'px'
+            'position' : 'relative',
+            'left': (-1* this.mainBody.dom.scrollLeft) + 'px'
         });
         
-        
+        if(this.lazyLoad){
+            
+            var scrollHeight = this.mainBody.dom.scrollHeight;
+            
+            var scrollTop = Math.ceil(this.mainBody.getScroll().top);
+            
+            var height = this.mainBody.getHeight();
+            
+            if(scrollHeight - height == scrollTop) {
+                
+                var total = this.ds.getTotalCount();
+                
+                if(this.footer.cursor + this.footer.pageSize < total){
+                    
+                    this.footer.ds.load({
+                        params : {
+                            start : this.footer.cursor + this.footer.pageSize,
+                            limit : this.footer.pageSize
+                        },
+                        add : true
+                    });
+                }
+            }
+            
+        }
     }
 });
 
@@ -24202,20 +24234,22 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
     },
 
     // private
-    onLoad : function(ds, r, o){
-       this.cursor = o.params ? o.params.start : 0;
-       var d = this.getPageData(),
+    onLoad : function(ds, r, o)
+    {
+        this.cursor = o.params ? o.params.start : 0;
+        var d = this.getPageData(),
             ap = d.activePage,
             ps = d.pages;
         
-       this.afterTextEl.dom.innerHTML = String.format(this.afterPageText, d.pages);
-       this.field.dom.value = ap;
-       this.first.setDisabled(ap == 1);
-       this.prev.setDisabled(ap == 1);
-       this.next.setDisabled(ap == ps);
-       this.last.setDisabled(ap == ps);
-       this.loading.enable();
-       this.updateInfo();
+        
+        this.afterTextEl.dom.innerHTML = String.format(this.afterPageText, d.pages);
+        this.field.dom.value = ap;
+        this.first.setDisabled(ap == 1);
+        this.prev.setDisabled(ap == 1);
+        this.next.setDisabled(ap == ps);
+        this.last.setDisabled(ap == ps);
+        this.loading.enable();
+        this.updateInfo();
     },
 
     // private
