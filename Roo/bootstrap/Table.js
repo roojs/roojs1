@@ -343,6 +343,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         if (this.footer) {
             this.footer.parentId = this.id;
             this.footer.onRender(this.el.select('tfoot tr td').first(), null);
+            
+            if(this.lazyLoad){
+                this.el.select('tfoot tr td').first().setVisibilityMode(Roo.Element.DISPLAY).hide();
+            }
         } 
         
         this.maskEl = new Roo.LoadMask(this.el, { store : this.ds, msgCls: 'roo-el-mask-msg' });
