@@ -226,6 +226,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             ap = d.activePage,
             ps = d.pages;
         
+        Roo.log(this.parent());
         if(this.afterTextEl){
             
         }
