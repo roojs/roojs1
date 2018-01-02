@@ -1094,8 +1094,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             'left': (-1* this.mainBody.dom.scrollLeft) + 'px'
         });
         
-        Roo.log('on body scroll!!!!!!!!!!!!!!!!!!!!!!!');
-        
         if(this.lazyLoad){
             
             var scrollHeight = this.mainBody.dom.scrollHeight;
