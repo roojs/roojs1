@@ -1108,12 +1108,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 
                 var total = this.ds.getTotalCount();
                 
-                Roo.log(this.footer.cursor);
-                
                 if(this.footer.cursor + this.footer.pageSize < total){
                     this.footer.onClick('next');
                 }
-                
                 
             }
             
