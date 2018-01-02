@@ -1118,7 +1118,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                         add : true
                     });
                     
-//                    this.footer.onClick('next');
                 }
                 
             }
