@@ -1108,7 +1108,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 
                 if(this.footer.cursor + this.footer.pageSize < total){
                     
-                    this.footer.onClick('next');
+                    this.footer.ds.load({
+                        params : {
+                            start : this.cursor + this.pageSize,
+                            limit : this.pageSize,
+                            add : true
+                        }
+                    });
+                    
+//                    this.footer.onClick('next');
                 }
                 
             }
