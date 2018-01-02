@@ -222,6 +222,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     container: false, // used by gridpanel...
     
     lazyLoad : false,
+    previousStore : false,
     
     getAutoCreate : function()
     {
