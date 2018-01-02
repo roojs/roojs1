@@ -1108,8 +1108,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 
                 var total = this.ds.getTotalCount();
                 
-                Roo.log(this.store);
-                
                 var t = this.store.data.clone();
                 
                 Roo.log(t);
