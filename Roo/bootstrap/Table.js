@@ -1109,9 +1109,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 Roo.log(this.footer.cursor);
                 
                 if(this.footer.cursor + this.footer.pageSize < total){
-                    
-                    Roo.log(this.ds.data);
-                    
+                    this.footer.onClick('next');
                 }
                 
                 
