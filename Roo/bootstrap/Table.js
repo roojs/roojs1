@@ -715,9 +715,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     onLoad : function()
     {
 //        Roo.log('ds onload');
-        if(!this.lazyLoad){
-            this.clear();
-        }
+        this.clear();
         
         var _this = this;
         var cm = this.cm;
