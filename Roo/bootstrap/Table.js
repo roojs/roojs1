@@ -1096,6 +1096,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             'left': (-1* this.mainBody.dom.scrollLeft) + 'px'
         });
         
+        this.previousStore = false;
+        
         if(this.lazyLoad){
             
             var scrollHeight = this.mainBody.dom.scrollHeight;
@@ -1107,8 +1109,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             if(scrollHeight - height == scrollTop) {
                 
                 var total = this.ds.getTotalCount();
-                
-                var t = this.store.data.clone();
                 
                 t.each(function(tt){
                     Roo.log(tt);
