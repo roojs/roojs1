@@ -223,8 +223,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     lazyLoad : false,
     
-    previousStore : false,
-    
     getAutoCreate : function()
     {
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
@@ -716,14 +714,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     onLoad : function()
     {
 //        Roo.log('ds onload');
-        this.clear();
-        
-        if(this.previousStore){
-            this.previousStore.each(function(t){
-
-                this.store.data.add(t.id, t.data);
-
-            }, this);
+        if(!this.lazyLoad){
+            this.clear();
         }
         
         var _this = this;
@@ -1104,8 +1096,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             'left': (-1* this.mainBody.dom.scrollLeft) + 'px'
         });
         
-        this.previousStore = false;
-        
         if(this.lazyLoad){
             
             var scrollHeight = this.mainBody.dom.scrollHeight;
@@ -1119,9 +1109,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 var total = this.ds.getTotalCount();
                 
                 if(this.footer.cursor + this.footer.pageSize < total){
-                    
-                    this.previousStore = this.ds.data.clone();
-                    
                     this.footer.onClick('next');
                 }
                 
