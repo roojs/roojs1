@@ -34,6 +34,7 @@
  * @cfg {Boolean} cellSelection (true|false) default false
  * @cfg {Boolean} scrollBody (true|false) default false - body scrolled / fixed header
  * @cfg {Roo.bootstrap.PagingToolbar} footer  a paging toolbar
+ * @cfg {Boolean} autoload  auto load data while scrolling to the end (default false)
  
  * 
  * @constructor
