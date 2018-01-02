@@ -1112,8 +1112,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     
                     this.footer.ds.load({
                         params : {
-                            start : this.cursor + this.pageSize,
-                            limit : this.pageSize,
+                            start : this.footer.cursor + this.footer.pageSize,
+                            limit : this.footer.pageSize,
                             add : true
                         }
                     });
