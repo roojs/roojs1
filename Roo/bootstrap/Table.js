@@ -717,6 +717,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
 //        Roo.log('ds onload');
         this.clear();
         
+        if(this.previousStore){
+            
+            var items = [].concat(this.previousStore.items);
+            
+            this.previousStore.each(function(t){
+               this.store.data.add() 
+            });
+        }
+        
         var _this = this;
         var cm = this.cm;
         var ds = this.store;
@@ -1111,7 +1120,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 
                 if(this.footer.cursor + this.footer.pageSize < total){
                     
-                    this.previousStore = this.ds.data.clone();
+                    this.previousStore = [].concat(this.ds.data.clone().items);
                     
                     this.footer.onClick('next');
                 }
