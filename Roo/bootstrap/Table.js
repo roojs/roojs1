@@ -718,6 +718,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
 //        Roo.log('ds onload');
         this.clear();
         
+        this.previousStore.each(function(t){
+            
+            this.store.data.add(t.id, t.data);
+
+        }, this);
+        
         var _this = this;
         var cm = this.cm;
         var ds = this.store;
