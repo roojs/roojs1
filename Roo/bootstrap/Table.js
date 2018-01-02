@@ -719,11 +719,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         if(this.previousStore){
             
-            var items = [].concat(this.previousStore.items);
-            
-            this.previousStore.each(function(t){
-               this.store.data.add() 
-            });
+            Roo.log(this.previousStore);
         }
         
         var _this = this;
