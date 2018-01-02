@@ -345,7 +345,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             this.footer.onRender(this.el.select('tfoot tr td').first(), null);
             
             if(this.lazyLoad){
-                this.el.select('tfoot tr td').first().setVisibilityMode(Roo.Element.DISPLAY).hide();
+                this.el.select('tfoot tr td').first().addClass('hide');
             }
         } 
         
