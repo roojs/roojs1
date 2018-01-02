@@ -1108,6 +1108,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 Roo.log(this.ds.getTotalCount());
                 
                 Roo.log(this.footer.cursor);
+                Roo.log(this.footer.pageSize);
                 
             }
             
