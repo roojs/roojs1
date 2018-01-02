@@ -1120,7 +1120,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 
                 if(this.footer.cursor + this.footer.pageSize < total){
                     
-                    this.previousStore = this.ds.clone();
+                    this.previousStore = this.ds.data.clone();
                     
                     this.footer.onClick('next');
                 }
