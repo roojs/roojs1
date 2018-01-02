@@ -1113,7 +1113,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 t.each(function(tt){
                     Roo.log(tt);
                     
-                    this.store.data.add(tt.id, tt.data);
+                    this.store.data.add('a' + tt.id, tt.data);
                     
                 }, this);
                 
