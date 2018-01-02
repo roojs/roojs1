@@ -222,7 +222,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     container: false, // used by gridpanel...
     
     lazyLoad : false,
-    previousStore : false,
     
     getAutoCreate : function()
     {
@@ -716,11 +715,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
 //        Roo.log('ds onload');
         this.clear();
-        
-        if(this.previousStore){
-            
-            Roo.log(this.previousStore);
-        }
         
         var _this = this;
         var cm = this.cm;
