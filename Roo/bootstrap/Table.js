@@ -221,6 +221,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     container: false, // used by gridpanel...
     
+    lazyLoad : false,
+    
     getAutoCreate : function()
     {
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
@@ -338,7 +340,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         //this.parent().el.setStyle('position', 'relative');
         
         
-        if (this.footer) {
+        if (this.footer && !this.lazyLoad) {
             this.footer.parentId = this.id;
             this.footer.onRender(this.el.select('tfoot tr td').first(), null);        
         } 
