@@ -1104,7 +1104,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             Roo.log([scrollHeight - height - 5, scrollTop]);
             
-            if(scrollHeight - height - 5 >= scrollTop) { // 5 is leeway
+            if(scrollHeight - height - 5 < scrollTop) { // 5 is leeway
                 Roo.log('load next????????????');
             }
             
