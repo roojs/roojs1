@@ -1105,6 +1105,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             if(scrollHeight - height == scrollTop) {
                 
                 Roo.log(this.ds.getCount());
+                Roo.log(this.ds.getTotalCount());
                 
             }
             
