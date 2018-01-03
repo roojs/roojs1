@@ -3133,9 +3133,10 @@ html[dir="rtl"] .roo-select2-container-multi .roo-select2-choices .roo-select2-s
   position: absolute;
   right: 3px;
   top: 4px;
-  font-size: 1px;
+  font-size: 12px;
   outline: none;
-  background: url('../images/select2/select2.png') right top no-repeat;
+  color: #999;
+  /*background: url('@{bootstrap-image-path}/select2/select2.png') right top no-repeat;*/
 }
 html[dir="rtl"] .roo-select2-search-choice-close {
   right: auto;
