@@ -12849,6 +12849,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
             if(this.indicatorpos == 'right'){
                 
+                cfg.cls += ' roo-form-group-label-right';
+                
                 cfg.cn = [
                     {
                         tag: 'label',
@@ -33362,10 +33364,6 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
         
         if(!this.el || this.preventMark){
             return;
-        }
-        
-        if(this.labelEl.isVisible(true)){
-            this.indicatorEl().hide();
         }
         
         this.el.removeClass([this.invalidClass]);
