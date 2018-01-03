@@ -1406,8 +1406,8 @@ this.itemsEl.setVisibilityMode(Roo.Element.DISPLAY);this.indicatorEl().setVisibi
 return false;},markValid:function(){if(this.labelEl.isVisible(true)){this.indicatorEl().hide();}this.el.removeClass([this.invalidClass,this.validClass]);this.el.addClass(this.validClass);this.fireEvent('valid',this);},markInvalid:function(A){if(this.allowBlank||this.disabled){return;
 }if(this.labelEl.isVisible(true)){this.indicatorEl().show();}this.el.removeClass([this.invalidClass,this.validClass]);this.el.addClass(this.invalidClass);this.fireEvent('invalid',this,A);},setValue:function(v,A){Roo.bootstrap.RadioSet.superclass.setValue.call(this,v);
 Roo.each(this.radioes,function(i){i.checked=false;i.el.removeClass('checked');if(i.value===v||i.value.toString()===v.toString()){i.checked=true;i.el.addClass('checked');if(A!==true){this.fireEvent('check',this,i);}}},this);},clearInvalid:function(){if(!this.el||this.preventMark){return;
-}this.el.removeClass([this.invalidClass]);this.fireEvent('valid',this);}});Roo.apply(Roo.bootstrap.RadioSet,{groups:{},register:function(A){this.groups[A.name]=A;},get:function(A){if(typeof(this.groups[A])=='undefined'){return false;}return this.groups[A];
-}});
+}if(this.labelEl.isVisible(true)){this.indicatorEl().hide();}this.el.removeClass([this.invalidClass]);this.fireEvent('valid',this);}});Roo.apply(Roo.bootstrap.RadioSet,{groups:{},register:function(A){this.groups[A.name]=A;},get:function(A){if(typeof(this.groups[A])=='undefined'){return false;
+}return this.groups[A];}});
 // Roo/bootstrap/SplitBar.js
 Roo.bootstrap.SplitBar=function(A){this.el=Roo.get(A.dragElement,true);this.el.dom.unselectable="on";this.resizingEl=Roo.get(A.resizingElement,true);this.orientation=A.orientation||Roo.bootstrap.SplitBar.HORIZONTAL;this.minSize=0;this.maxSize=2000;this.animate=false;
 this.useShim=false;this.shim=null;if(!A.existingProxy){this.proxy=Roo.bootstrap.SplitBar.createProxy(this.orientation);}else{this.proxy=Roo.get(A.existingProxy).dom;}this.dd=new Roo.dd.DDProxy(this.el.dom.id,"XSplitBars",{dragElId:this.proxy.id});this.dd.b4StartDrag=this.onStartProxyDrag.createDelegate(this);
