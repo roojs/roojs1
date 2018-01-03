@@ -241,6 +241,8 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
     
     setValue : function(v, suppressEvent)
     {   
+        Roo.bootstrap.RadioSet.superclass.setValue.call(this, v);
+        
         Roo.each(this.radioes, function(i){
             
             i.checked = false;
@@ -256,9 +258,6 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
             }
             
         }, this);
-        
-        Roo.bootstrap.RadioSet.superclass.setValue.call(this, v);
-        
     },
     
     clearInvalid : function(){
