@@ -523,8 +523,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
             if(this.indicatorpos == 'right'){
                 
-                cfg.cls += ' roo-form-group-label-right';
-                
                 cfg.cn = [
                     {
                         tag: 'label',
