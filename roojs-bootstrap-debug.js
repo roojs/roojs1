@@ -6452,8 +6452,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var cm = this.cm;
         var ds = this.store;
         
-        Roo.log(this.store);
-        
         Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
             e.select('i', true).removeClass(['glyphicon-arrow-up', 'glyphicon-arrow-down']);
             if (_this.store.sortInfo) {
