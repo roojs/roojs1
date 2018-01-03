@@ -620,12 +620,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                                   tooltip : 'This field is required'
                                }
                            ]
-
                         },
                         combobox
-
                     ];
-                
                 }
 
         } else {
