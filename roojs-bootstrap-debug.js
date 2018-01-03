@@ -12819,12 +12819,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if (align ==='left' && this.fieldLabel.length) {
             
-            cfg.cls += ' roo-form-group-label-left';
+            cfg.cls += ' roo-form-group-label-right';
             
             cfg.cn = [
                 {
                     tag : 'i',
-                    cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
+                    cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
                     tooltip : 'This field is required'
                 },
                 {
@@ -12848,8 +12848,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
 
             if(this.indicatorpos == 'right'){
-                
-                cfg.cls += ' roo-form-group-label-right';
                 
                 cfg.cn = [
                     {
@@ -12877,11 +12875,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
                 ];
                 
-                
-                
                 labelCfg = cfg.cn[0];
                 contentCfg = cfg.cn[1];
-            
             }
             
             if(this.labelWidth > 12){
