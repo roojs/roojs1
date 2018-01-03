@@ -498,7 +498,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             cfg.cn = [
                 {
                     tag : 'i',
-                    cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
+                    cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
                     tooltip : 'This field is required'
                 },
                 {
@@ -549,8 +549,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
                 ];
                 
+                
+                
                 labelCfg = cfg.cn[0];
                 contentCfg = cfg.cn[1];
+            
             }
             
             if(this.labelWidth > 12){
