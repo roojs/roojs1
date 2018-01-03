@@ -608,7 +608,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     
                     cfg.cn = [
                         {
-                            tag: 'label',
+                            tag: 'label??',
                             //cls : 'input-group-addon',
                             cn : [
                                 {
