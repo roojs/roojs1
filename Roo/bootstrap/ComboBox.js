@@ -2005,7 +2005,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 {
                     tag: 'a',
                     href: '#',
-                    cls: 'roo-select2-search-choice-close',
+                    cls: 'roo-select2-search-choice-close fa fa-times',
                     tabindex: '-1'
                 }
             ]
