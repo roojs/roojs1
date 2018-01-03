@@ -12923,11 +12923,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         tag: 'label',
                         //cls : 'input-group-addon',
                         html : this.fieldLabel
-                        
                     },
-                    
                     combobox
-                    
                 ];
                 
                 if(this.indicatorpos == 'right'){
