@@ -265,7 +265,10 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
         if(!this.el || this.preventMark){
             return;
         }
-         
+        
+        if(this.labelEl.isVisible(true)){
+            this.indicatorEl().hide();
+        }
         
         this.el.removeClass([this.invalidClass]);
         
