@@ -605,7 +605,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 ];
                 
                 if(this.indicatorpos == 'right'){
-                    Roo.log(this.hiddenName);
+                    Roo.log('hidden name:'+this.hiddenName);
                     cfg.cn = [
                         {
                            tag: 'label',

@@ -12913,28 +12913,25 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 
         } else if ( this.fieldLabel.length) {
 //                Roo.log(" label");
-cfg.cn = [
-    {
-       tag: 'label',
-       cn : [
-           {
-               tag : 'span',
-               html : this.fieldLabel
-           },
-           {
-              tag : 'i',
-              cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
-              tooltip : 'This field is required'
-           }
-       ]
-
-    },
-    combobox
-
-];
+                 cfg.cn = [
+                    {
+                        tag : 'i',
+                        cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
+                        tooltip : 'This field is required'
+                    },
+                    {
+                        tag: 'label',
+                        //cls : 'input-group-addon',
+                        html : this.fieldLabel
+                        
+                    },
+                    
+                    combobox
+                    
+                ];
                 
                 if(this.indicatorpos == 'right'){
-                    
+                    Roo.log('hidden name:'+this.hiddenName);
                     cfg.cn = [
                         {
                            tag: 'label',
@@ -12949,12 +12946,10 @@ cfg.cn = [
                                   tooltip : 'This field is required'
                                }
                            ]
-
                         },
                         combobox
-
                     ];
-                
+                    
                 }
 
         } else {
