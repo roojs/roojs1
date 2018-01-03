@@ -33334,7 +33334,10 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
     
     setValue : function(v, suppressEvent)
     {   
-        Roo.bootstrap.RadioSet.superclass.setValue.call(this, v);
+        this.value = v;
+        if(this.rendered){
+            this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+        }
         
         Roo.each(this.radioes, function(i){
             
@@ -33351,6 +33354,8 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
             }
             
         }, this);
+        
+        this.validate();
     },
     
     clearInvalid : function(){
