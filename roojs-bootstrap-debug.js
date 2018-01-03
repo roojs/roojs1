@@ -12931,18 +12931,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     Roo.log('hidden name:'+this.hiddenName);
                     cfg.cn = [
                         {
-                           tag: 'label',
-                           cn : [
-                               {
-                                   tag : 'span',
-                                   html : this.fieldLabel
-                               },
-                               {
-                                  tag : 'i',
-                                  cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
-                                  tooltip : 'This field is required'
-                               }
-                           ]
+                            tag: 'label',
+                            //cls : 'input-group-addon',
+                            html : this.fieldLabel
+                        },
+                        {
+                            tag : 'i',
+                            cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
+                            tooltip : 'This field is required'
                         },
                         combobox
                     ];
