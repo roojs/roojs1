@@ -58,8 +58,7 @@ foreach ($files as $src => $file){
             continue;
         }
         
-        
-        
+        echo "{$css} already up-to-date \n";
         unset($files[$src]);
 
     }
