@@ -67,7 +67,7 @@ foreach ($files as $src => $file){
     }
     
 }
-exit;   
+
 require_once 'HTML/Less.php';
 
 foreach ($files as $src => $file){
