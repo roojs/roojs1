@@ -52,7 +52,7 @@ foreach ($files as $src => $file){
         
         echo "\n";
         
-        exit;
+        continue;
     }
     
     echo "not exist??";
