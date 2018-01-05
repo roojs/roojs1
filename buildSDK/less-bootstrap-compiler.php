@@ -117,5 +117,4 @@ foreach ($files as $src => $file){
     } catch (Exception $ex) {
         echo "lessphp fatal error: {$ex->getMessage()}\n";
     }
-    
 }
