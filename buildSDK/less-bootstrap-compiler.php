@@ -42,6 +42,10 @@ foreach ($files as $src => $file){
     
     $variable = "{$rootDir}/roojs1/less/bootstrap/variables.less";
     
+    if(filemtime($variable) > filemtime($css)){
+        continue;
+    }
+    
 }
         
 require_once 'HTML/Less.php';
