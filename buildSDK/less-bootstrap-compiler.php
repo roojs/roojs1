@@ -54,14 +54,15 @@ foreach ($files as $src => $file){
 
         $less = "{$d}/{$f}";
 
-        if(file_exists($less) && filemtime($less) > filemtime($css)){
-            $isLatest = false;
-            break;
+        if(filemtime($less) < filemtime($css)){
+            continue;
         }
+        
+        
+        
+        unset($files[$src]);
 
     }
-    
-    
     
 }
         
