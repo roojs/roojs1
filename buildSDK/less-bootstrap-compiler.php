@@ -46,6 +46,12 @@ foreach ($files as $src => $file){
     
     if(file_exists($variable)){
         echo "exist??";
+        echo "\n";
+        
+        echo filemtime($variable);
+        
+        echo "\n";
+        
         exit;
     }
     
