@@ -44,21 +44,7 @@ foreach ($files as $src => $file){
     
     $variable = "{$dir}variables.less";
     
-    if(file_exists($variable)){
-        echo "exist??";
-        echo "\n";
-        
-        echo filemtime($variable);
-        
-        echo "\n";
-        
-        continue;
-    }
-    
-    echo "not exist??";
-    exit;
-    
-    if(filemtime("{$dir}variables.less") > filemtime($css)){
+    if(file_exists($variable) && filemtime("{$dir}variables.less") > filemtime($css)){
         continue;
     }
     
