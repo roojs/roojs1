@@ -40,6 +40,10 @@ foreach ($files as $src => $file){
         echo "{$less} does not exist...\n";
         continue;
     }
+    
+    $css = "{$file['baseDir']}/{$file['name']}";
+    
+    
 
     try {
         
