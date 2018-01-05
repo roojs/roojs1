@@ -55,9 +55,10 @@ foreach ($files as $src => $file){
         }
 
         $less = "{$dir}/{$f}";
-        echo ""
+        echo filemtime($less) . " : " . filemtime($css);
+        echo "\n";
         if(filemtime($less) < filemtime($css)){
-            echo "'in???\n";
+            echo "in???\n";
             continue;
         }
         
