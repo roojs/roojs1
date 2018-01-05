@@ -32,6 +32,18 @@ $files = array(
     )
 );
 
+foreach ($files as $src => $file){
+    
+    $css = "{$file['baseDir']}/{$file['name']}";
+    
+    if(!file_exists($css)){
+        continue;
+    }
+    
+    
+    
+}
+        
 require_once 'HTML/Less.php';
 
 foreach ($files as $src => $file){
