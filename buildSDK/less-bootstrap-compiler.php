@@ -52,7 +52,7 @@ foreach ($files as $src => $file){
             continue;
         }
 
-        $less = "{$d}/{$f}";
+        $less = "{$dir}/{$f}";
 
         if(filemtime($less) < filemtime($css)){
             continue;
