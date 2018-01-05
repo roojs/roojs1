@@ -41,10 +41,6 @@ foreach ($files as $src => $file){
         continue;
     }
     
-    $css = "{$file['baseDir']}/{$file['name']}";
-    
-    
-
     try {
         
         $less = new HTML_Less();
