@@ -40,13 +40,26 @@ foreach ($files as $src => $file){
         continue;
     }
     
-    $variable = "{$file['baseDir']}/{$file['sourceMapRootpath']}variables.less";
+    $dir = "{$file['baseDir']}/{$file['sourceMapRootpath']}";
     
-    if(filemtime($variable) > filemtime($css)){
+    if(filemtime("{$dir}variables.less") > filemtime($css)){
         continue;
     }
     
-    
+    foreach(scandir($dir) as $f) {
+                
+        if (!strlen($f) || $f[0] == '.') {
+            continue;
+        }
+
+        $less = "{$d}/{$f}";
+
+        if(file_exists($less) && filemtime($less) > filemtime($css)){
+            $isLatest = false;
+            break;
+        }
+
+    }
     
     
     
