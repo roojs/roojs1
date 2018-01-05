@@ -63,7 +63,6 @@ foreach ($files as $src => $file){
         echo "{$css} already up-to-date \n";
         unset($files[$src]);
         break;
-
     }
     
 }
