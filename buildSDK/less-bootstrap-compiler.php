@@ -40,11 +40,13 @@ foreach ($files as $src => $file){
         continue;
     }
     
-    $variable = "{$rootDir}/roojs1/less/bootstrap/variables.less";
+    $variable = "{$file['baseDir']}/{$file['sourceMapRootpath']}variables.less";
     
     if(filemtime($variable) > filemtime($css)){
         continue;
     }
+    
+    
     
 }
         
