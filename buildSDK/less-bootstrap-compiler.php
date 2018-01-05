@@ -42,6 +42,16 @@ foreach ($files as $src => $file){
     
     $dir = "{$file['baseDir']}/{$file['sourceMapRootpath']}";
     
+    $variable = "{$dir}variables.less";
+    
+    if(file_exists($variable)){
+        echo "exist??";
+        exit;
+    }
+    
+    echo "not exist??";
+    exit;
+    
     if(filemtime("{$dir}variables.less") > filemtime($css)){
         continue;
     }
