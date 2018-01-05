@@ -55,7 +55,7 @@ foreach ($files as $src => $file){
         }
 
         $less = "{$dir}/{$f}";
-
+        echo ""
         if(filemtime($less) < filemtime($css)){
             echo "'in???\n";
             continue;
@@ -67,7 +67,7 @@ foreach ($files as $src => $file){
     }
     
 }
-        
+exit;   
 require_once 'HTML/Less.php';
 
 foreach ($files as $src => $file){
