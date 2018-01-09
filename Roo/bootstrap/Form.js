@@ -613,7 +613,7 @@ Roo.apply(Roo.bootstrap.Form, {
         {
             alert(navigator.userAgent.toLowerCase());
             
-            alert(navigator.userAgent.toLowerCase().indexOf('adnroid'));
+            alert(navigator.userAgent.toLowerCase().indexOf('android'));
             
             this.form = form;
             
