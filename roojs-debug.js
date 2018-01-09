@@ -7194,6 +7194,17 @@ if(opt.anim.isAnimated()){
                 }
             }
             
+            alert(Roo.isAndroid);
+            
+            if(Roo.isAndroid){
+                alert('Is Android');
+                return Roo.get(document.documentElement);
+            }
+            
+            if(!Roo.isAndroid){
+                alert('not android');
+            }
+            
             return Roo.isAndroid ? Roo.get(document.documentElement) : Roo.get(document.body);
         },
 
