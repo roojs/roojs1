@@ -64,6 +64,7 @@ Roo.apply = function(o, c, defaults){
         isLinux = (ua.indexOf("linux") != -1),
         isSecure = window.location.href.toLowerCase().indexOf("https") === 0,
         isIOS = /iphone|ipad/.test(ua),
+        isAndroid = /android/.test(ua),
         isTouch =  (function() {
             try {
                 if (ua.indexOf('chrome') != -1 && ua.indexOf('android') == -1) {
@@ -639,6 +640,8 @@ Roo.factory(conf, Roo.data);
         isMac : isMac,
         /** @type Boolean */
         isIOS : isIOS,
+        /** @type Boolean */
+        isAndroid : isAndroid,
         /** @type Boolean */
         isTouch : isTouch,
 
@@ -7171,7 +7174,7 @@ if(opt.anim.isAnimated()){
             var overflowRegex = /(auto|scroll)/;
             
             if(this.getStyle('position') === 'fixed'){
-                return Roo.isIOS ? Roo.get(document.body) : Roo.get(document.documentElement);
+                return Roo.isAndroid ? Roo.get(document.documentElement) : Roo.get(document.body);
             }
             
             var excludeStaticParent = this.getStyle('position') === "absolute";
@@ -7187,11 +7190,11 @@ if(opt.anim.isAnimated()){
                 }
                 
                 if(parent.dom.nodeName.toLowerCase() == 'body'){
-                    return Roo.isIOS ? Roo.get(document.body) : Roo.get(document.documentElement);
+                    return Roo.isAndroid ? Roo.get(document.documentElement) : Roo.get(document.body);
                 }
             }
             
-            return Roo.isIOS ? Roo.get(document.body) : Roo.get(document.documentElement);
+            return Roo.isAndroid ? Roo.get(document.documentElement) : Roo.get(document.body);
         },
 
         /**
