@@ -624,8 +624,6 @@ Roo.apply(Roo.bootstrap.Form, {
             
             scrollTo = Math.min(scrollTo, maxScroll);
             
-            window.scrollBy(0, scrollTo);
-            
             var overflow = scrollable.getStyle('overflow');
             
             alert(overflow);
