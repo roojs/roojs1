@@ -208,6 +208,7 @@ if(opt.anim.isAnimated()){
                         parent.dom.nodeName.toLowerCase() == 'body' ||
                         overflowRegex.test(parent.getStyle('overflow') + parent.getStyle('overflow-x') + parent.getStyle('overflow-y'))
                 ){
+                    Roo.log('test');
                     return parent;
                 }
             }
