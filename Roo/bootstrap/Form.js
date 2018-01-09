@@ -105,6 +105,10 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
      * @cfg {Boolean} errorMask (true|false) default false
      */
     errorMask : false,
+    
+    /**
+     * @cfg {Number} maskOffset Default 100
+     */
 
     getAutoCreate : function(){
 
@@ -618,7 +622,7 @@ Roo.apply(Roo.bootstrap.Form, {
             
             var test = document.documentElement || document.body.parentNode || document.body;
             
-            scrollable = Roo.get(test);
+            scrollable = Roo.get(test)
             
             var ot = this.target.el.calcOffsetsTo(scrollable);
             
