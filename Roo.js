@@ -64,6 +64,7 @@ Roo.apply = function(o, c, defaults){
         isLinux = (ua.indexOf("linux") != -1),
         isSecure = window.location.href.toLowerCase().indexOf("https") === 0,
         isIOS = /iphone|ipad/.test(ua),
+        isAndroid = /android/.test(ua),
         isTouch =  (function() {
             try {
                 if (ua.indexOf('chrome') != -1 && ua.indexOf('android') == -1) {
