@@ -213,8 +213,8 @@ if(opt.anim.isAnimated()){
                 }
             }
             
-            alert(Roo.isAndroid);
-            alert(Roo.isIOS);
+            alert('is android : ' + Roo.isAndroid);
+            alert('is ios : ' + Roo.isIOS);
             
             if(Roo.isAndroid){
                 alert('Is Android');
