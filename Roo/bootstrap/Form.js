@@ -625,8 +625,9 @@ Roo.apply(Roo.bootstrap.Form, {
             scrollTo = Math.min(scrollTo, maxScroll);
             
 //            scrollable.scrollTo('top', scrollTo);
+            alert(scrollable.dom.scrollTop);
             scrollable.dom.scrollTop = scrollTo;
-            
+            alert(scrollable.dom.scrollTop);
             var box = this.target.el.getBox();
 
             var zIndex = Roo.bootstrap.Modal.zIndex++;
