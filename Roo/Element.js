@@ -193,7 +193,7 @@ if(opt.anim.isAnimated()){
             var overflowRegex = /(auto|scroll)/;
             
             if(this.getStyle('position') === 'fixed'){
-                return Roo.get(document.body);
+                return Roo.isIOS ? Roo.get(document.body) : Roo.get(document.documentElement);
             }
             
             var excludeStaticParent = this.getStyle('position') === "absolute";
