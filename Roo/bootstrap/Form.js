@@ -606,8 +606,6 @@ Roo.apply(Roo.bootstrap.Form, {
         
         mask : function(form, target)
         {
-            return;
-            
             this.form = form;
             
             this.target = target;
