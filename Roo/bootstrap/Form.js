@@ -616,7 +616,7 @@ Roo.apply(Roo.bootstrap.Form, {
             
             var scrollable = this.target.el.findScrollableParent() || this.target.el.findParent('div.modal', 100, true) || Roo.get(document.body);
             
-            var test = document.documentElement || document.body.parentNode || document.body;
+            var test = Roo.get(document.documentElement) || Roo.get(document.body.parentNode) || Roo.get(document.body);
             
             scrollable = Roo.get(test);
             
@@ -628,8 +628,8 @@ Roo.apply(Roo.bootstrap.Form, {
             
             scrollTo = Math.min(scrollTo, maxScroll);
             
-            Roo.log(Roo.get(document.body).dom);
-            alert(Roo.get(document.body).dom.innerHTML);
+//            Roo.log(Roo.get(document.body).dom);
+//            alert(Roo.get(document.body).dom.innerHTML);
             
 //            var overflow = scrollable.getStyle('overflow');
 //            
