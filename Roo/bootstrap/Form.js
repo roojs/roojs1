@@ -639,7 +639,7 @@ Roo.apply(Roo.bootstrap.Form, {
             scrollable.dom.scrollTop = scrollTo;
             alert(scrollable.dom.scrollTop);
             
-            scrollable.setStyle('overflow', overflow);
+//            scrollable.setStyle('overflow', overflow);
             
             var box = this.target.el.getBox();
 
