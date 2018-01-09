@@ -611,6 +611,8 @@ Roo.apply(Roo.bootstrap.Form, {
         
         mask : function(form, target)
         {
+            alert(Roo.isAndroid);
+            
             this.form = form;
             
             this.target = target;
