@@ -209,20 +209,21 @@ if(opt.anim.isAnimated()){
                 }
                 
                 if(parent.dom.nodeName.toLowerCase() == 'body'){
+                    
+                    alert('is android : ' + Roo.isAndroid);
+                    alert('is ios : ' + Roo.isIOS);
+
+                    if(Roo.isAndroid){
+                        alert('Is Android');
+                        return Roo.get(document.documentElement);
+                    }
+
+                    if(!Roo.isAndroid){
+                        alert('not android');
+                    }
+
                     return Roo.isAndroid ? Roo.get(document.documentElement) : Roo.get(document.body);
                 }
-            }
-            
-            alert('is android : ' + Roo.isAndroid);
-            alert('is ios : ' + Roo.isIOS);
-            
-            if(Roo.isAndroid){
-                alert('Is Android');
-                return Roo.get(document.documentElement);
-            }
-            
-            if(!Roo.isAndroid){
-                alert('not android');
             }
             
             return Roo.isAndroid ? Roo.get(document.documentElement) : Roo.get(document.body);
