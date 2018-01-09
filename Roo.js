@@ -641,6 +641,8 @@ Roo.factory(conf, Roo.data);
         /** @type Boolean */
         isIOS : isIOS,
         /** @type Boolean */
+        isAndroid : isAndroid,
+        /** @type Boolean */
         isTouch : isTouch,
 
         /**
