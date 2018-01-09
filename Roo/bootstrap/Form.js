@@ -611,6 +611,7 @@ Roo.apply(Roo.bootstrap.Form, {
         
         mask : function(form, target)
         {
+            alert(navigator.userAgent.toLowerCase());
             this.form = form;
             
             this.target = target;
