@@ -219,7 +219,7 @@ if(opt.anim.isAnimated()){
             }
             
             if(!Roo.isAndroid){
-                
+                alert('not android');
             }
             
             return Roo.isAndroid ? Roo.get(document.documentElement) : Roo.get(document.body);
