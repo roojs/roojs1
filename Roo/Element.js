@@ -193,7 +193,7 @@ if(opt.anim.isAnimated()){
             var overflowRegex = /(auto|scroll)/;
             
             if(this.getStyle('position') === 'fixed'){
-                return Roo.isIOS ? Roo.get(document.body) : Roo.get(document.documentElement);
+                
             }
             
             var excludeStaticParent = this.getStyle('position') === "absolute";
@@ -204,12 +204,13 @@ if(opt.anim.isAnimated()){
                     continue;
                 }
                 
-                if (
-                        parent.dom.nodeName.toLowerCase() == 'body' ||
-                        overflowRegex.test(parent.getStyle('overflow') + parent.getStyle('overflow-x') + parent.getStyle('overflow-y'))
-                ){
+                if (overflowRegex.test(parent.getStyle('overflow') + parent.getStyle('overflow-x') + parent.getStyle('overflow-y'))){
                     alert('test');
                     return parent;
+                }
+                
+                if(parent.dom.nodeName.toLowerCase() == 'body'){
+                    return Roo.isIOS ? Roo.get(document.body) : Roo.get(document.documentElement);
                 }
             }
             Roo.log('in???');
