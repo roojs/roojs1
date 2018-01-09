@@ -624,11 +624,17 @@ Roo.apply(Roo.bootstrap.Form, {
             
             scrollTo = Math.min(scrollTo, maxScroll);
             
-//            scrollable.scrollTo('top', scrollTo);
-            alert(scrollable.getStyle('overflow'));
+            var overflow = scrollable.getStyle('overflow');
+            
+            scrollable.setStyle('overflow', 'hidden');
+            
             alert(scrollable.dom.scrollTop);
+//            scrollable.scrollTo('top', scrollTo);
             scrollable.dom.scrollTop = scrollTo;
             alert(scrollable.dom.scrollTop);
+            
+            scrollable.setStyle('overflow', overflow);
+            
             var box = this.target.el.getBox();
 
             var zIndex = Roo.bootstrap.Modal.zIndex++;
