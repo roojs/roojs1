@@ -209,11 +209,11 @@ if(opt.anim.isAnimated()){
                 }
                 
                 if(parent.dom.nodeName.toLowerCase() == 'body'){
-                    return Roo.isIOS ? Roo.get(document.body) : Roo.get(document.documentElement);
+                    return Roo.isAndroid ? Roo.get(document.documentElement) : Roo.get(document.body);
                 }
             }
             
-            return Roo.isIOS ? Roo.get(document.body) : Roo.get(document.documentElement);
+            return Roo.isAndroid ? Roo.get(document.documentElement) : Roo.get(document.body);
         },
 
         /**
