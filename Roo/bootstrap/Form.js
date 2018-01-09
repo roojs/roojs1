@@ -624,7 +624,8 @@ Roo.apply(Roo.bootstrap.Form, {
             
             scrollTo = Math.min(scrollTo, maxScroll);
             
-            scrollable.scrollTo('top', scrollTo);
+//            scrollable.scrollTo('top', scrollTo);
+            scrollable.dom.scrollTop = scrollTo;
             
             var box = this.target.el.getBox();
 
