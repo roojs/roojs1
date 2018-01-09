@@ -7194,7 +7194,8 @@ if(opt.anim.isAnimated()){
                 }
             }
             
-            alert(Roo.isAndroid);
+            alert('is android : ' + Roo.isAndroid);
+            alert('is ios : ' + Roo.isIOS);
             
             if(Roo.isAndroid){
                 alert('Is Android');
