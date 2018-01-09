@@ -7586,6 +7586,11 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
      * @cfg {Boolean} errorMask (true|false) default false
      */
     errorMask : false,
+    
+    /**
+     * @cfg {Number} maskOffset Default 100
+     */
+    maskOffset : 100,
 
     getAutoCreate : function(){
 
@@ -8099,13 +8104,13 @@ Roo.apply(Roo.bootstrap.Form, {
             
             var ot = this.target.el.calcOffsetsTo(scrollable);
             
-            var scrollTo = ot[1] - 100;
+            var scrollTo = ot[1] - this.form.maskOffset;
             
             var maxScroll = Roo.lib.Dom.getDocumentHeight() - Roo.lib.Dom.getViewportHeight();
             
             scrollTo = Math.min(scrollTo, maxScroll);
             
-            scrollable.scrollTo('top', scrollTo);
+            scrollable.dom.scrollTop = scrollTo;
             
             var box = this.target.el.getBox();
 
