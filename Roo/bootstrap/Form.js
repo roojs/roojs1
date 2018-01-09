@@ -624,16 +624,18 @@ Roo.apply(Roo.bootstrap.Form, {
             var test = document.documentElement || document.body.parentNode || document.body;
             
             if(document.documentElement){
+                Roo.log('document.documentElement');
                 Roo.log(document.documentElement);
-                alert('document.documentElement');
             }
             
             if(document.body.parentNode){
-                alert('document.body.parentNode');
+                Roo.log('document.body.parentNode');
+                Roo.log(document.body.parentNode);
             }
             
             if(document.body){
-                alert('document.body');
+                Roo.log('document.body');
+                Roo.log(document.body);
             }
             
             scrollable = Roo.get(test)
