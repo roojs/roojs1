@@ -623,6 +623,18 @@ Roo.apply(Roo.bootstrap.Form, {
             
             var test = document.documentElement || document.body.parentNode || document.body;
             
+            if(document.documentElement){
+                alert('document.documentElement');
+            }
+            
+            if(document.body.parentNode){
+                alert('document.body.parentNode');
+            }
+            
+            if(document.body){
+                alert('document.body');
+            }
+            
             scrollable = Roo.get(test)
             
             var ot = this.target.el.calcOffsetsTo(scrollable);
