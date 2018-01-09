@@ -212,7 +212,7 @@ if(opt.anim.isAnimated()){
                 }
             }
             
-            return Roo.get(document.body);
+            return Roo.isIOS ? Roo.get(document.body) : Roo.get(document.documentElement);
         },
 
         /**
