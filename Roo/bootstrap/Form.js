@@ -606,6 +606,10 @@ Roo.apply(Roo.bootstrap.Form, {
                 this.unmask();
             }, this);
             
+            Roo.get(document.body).on('touchstart', function(){
+                this.unmask();
+            }, this);
+            
             this.isApplied = true
         },
         
