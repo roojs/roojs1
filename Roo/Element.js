@@ -213,6 +213,8 @@ if(opt.anim.isAnimated()){
                 }
             }
             
+            alert(Roo.isAndroid);
+            
             if(Roo.isAndroid){
                 alert('Is Android');
                 return Roo.get(document.documentElement);
