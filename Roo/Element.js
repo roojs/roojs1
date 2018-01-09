@@ -193,6 +193,7 @@ if(opt.anim.isAnimated()){
             var overflowRegex = /(auto|scroll)/;
             
             if(this.getStyle('position') === 'fixed'){
+                alert('first');
                 return Roo.isAndroid ? Roo.get(document.documentElement) : Roo.get(document.body);
             }
             
