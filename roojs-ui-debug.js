@@ -754,6 +754,17 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             this.totalLength = Math.max(t, this.data.length+r.length);
             this.add(r);
         }
+        
+        if(this.parent && !Roo.isIOS && !this.useNativeIOS && this.parent.emptyTitle.length) {
+                
+            var e = new Roo.data.Record({});
+
+            e.set(this.parent.displayField, this.parent.emptyTitle);
+            e.set(this.parent.valueField, '');
+
+            this.insert(0, e);
+        }
+            
         this.fireEvent("load", this, r, options, o);
         if(options.callback){
             options.callback.call(options.scope || this, r, options, true);
