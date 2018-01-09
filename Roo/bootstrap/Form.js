@@ -629,6 +629,10 @@ Roo.apply(Roo.bootstrap.Form, {
             alert(overflow);
             
             scrollable.setStyle('overflow', 'hidden');
+            scrollable.setStyle('overflow-y', 'hidden');
+            scrollable.setStyle('overflow-x', 'hidden');
+            
+            alert(scrollable.getStyle('overflow'));
             
             alert(scrollable.dom.scrollTop);
 //            scrollable.scrollTo('top', scrollTo);
