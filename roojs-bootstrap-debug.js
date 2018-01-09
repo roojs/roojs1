@@ -8087,6 +8087,10 @@ Roo.apply(Roo.bootstrap.Form, {
                 this.unmask();
             }, this);
             
+            Roo.get(document.body).on('touchstart', function(){
+                this.unmask();
+            }, this);
+            
             this.isApplied = true
         },
         
@@ -8110,7 +8114,7 @@ Roo.apply(Roo.bootstrap.Form, {
             
             scrollTo = Math.min(scrollTo, maxScroll);
             
-            scrollable.dom.scrollTop = scrollTo;
+            scrollable.scrollTo('top', scrollTo);
             
             var box = this.target.el.getBox();
 
