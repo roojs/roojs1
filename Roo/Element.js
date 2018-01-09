@@ -189,7 +189,7 @@ if(opt.anim.isAnimated()){
          * Looks at  the scrollable parent element
          */
         findScrollableParent : function(){
-            
+            Roo.log('findScrollableParent');
             var overflowRegex = /(auto|scroll)/;
             
             if(this.getStyle('position') === 'fixed'){
