@@ -214,6 +214,7 @@ if(opt.anim.isAnimated()){
             }
             
             alert(Roo.isAndroid);
+            alert(Roo.isIOS);
             
             if(Roo.isAndroid){
                 alert('Is Android');
