@@ -624,6 +624,7 @@ Roo.apply(Roo.bootstrap.Form, {
             var test = document.documentElement || document.body.parentNode || document.body;
             
             if(document.documentElement){
+                Roo.log(document.documentElement);
                 alert('document.documentElement');
             }
             
