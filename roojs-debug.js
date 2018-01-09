@@ -7166,12 +7166,12 @@ if(opt.anim.isAnimated()){
         /**
          * Looks at  the scrollable parent element
          */
-        findScrollableParent : function(){
-            
+        findScrollableParent : function()
+        {
             var overflowRegex = /(auto|scroll)/;
             
             if(this.getStyle('position') === 'fixed'){
-                return Roo.get(document.body);
+                return Roo.isIOS ? Roo.get(document.body) : Roo.get(document.documentElement);
             }
             
             var excludeStaticParent = this.getStyle('position') === "absolute";
@@ -7182,15 +7182,16 @@ if(opt.anim.isAnimated()){
                     continue;
                 }
                 
-                if (
-                        parent.dom.nodeName.toLowerCase() == 'body' ||
-                        overflowRegex.test(parent.getStyle('overflow') + parent.getStyle('overflow-x') + parent.getStyle('overflow-y'))
-                ){
+                if (overflowRegex.test(parent.getStyle('overflow') + parent.getStyle('overflow-x') + parent.getStyle('overflow-y'))){
                     return parent;
+                }
+                
+                if(parent.dom.nodeName.toLowerCase() == 'body'){
+                    return Roo.isIOS ? Roo.get(document.body) : Roo.get(document.documentElement);
                 }
             }
             
-            return Roo.get(document.body);
+            return Roo.isIOS ? Roo.get(document.body) : Roo.get(document.documentElement);
         },
 
         /**
@@ -23075,6 +23076,17 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             this.totalLength = Math.max(t, this.data.length+r.length);
             this.add(r);
         }
+        
+        if(this.parent && !Roo.isIOS && !this.useNativeIOS && this.parent.emptyTitle.length) {
+                
+            var e = new Roo.data.Record({});
+
+            e.set(this.parent.displayField, this.parent.emptyTitle);
+            e.set(this.parent.valueField, '');
+
+            this.insert(0, e);
+        }
+            
         this.fireEvent("load", this, r, options, o);
         if(options.callback){
             options.callback.call(options.scope || this, r, options, true);
