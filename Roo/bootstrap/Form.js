@@ -621,25 +621,6 @@ Roo.apply(Roo.bootstrap.Form, {
             
             var scrollable = this.target.el.findScrollableParent() || this.target.el.findParent('div.modal', 100, true) || Roo.get(document.body);
             
-            var test = document.documentElement || document.body.parentNode || document.body;
-            
-            if(document.documentElement){
-                Roo.log('document.documentElement');
-                Roo.log(document.documentElement);
-            }
-            
-            if(document.body.parentNode){
-                Roo.log('document.body.parentNode');
-                Roo.log(document.body.parentNode);
-            }
-            
-            if(document.body){
-                Roo.log('document.body');
-                Roo.log(document.body);
-            }
-            
-            scrollable = Roo.get(test)
-            
             var ot = this.target.el.calcOffsetsTo(scrollable);
             
             var scrollTo = ot[1] - this.form.maskOffset;
@@ -648,25 +629,7 @@ Roo.apply(Roo.bootstrap.Form, {
             
             scrollTo = Math.min(scrollTo, maxScroll);
             
-//            Roo.log(Roo.get(document.body).dom);
-//            alert(Roo.get(document.body).dom.innerHTML);
-            
-//            var overflow = scrollable.getStyle('overflow');
-//            
-//            alert(overflow);
-//            
-//            scrollable.setStyle('overflow', 'hidden');
-//            scrollable.setStyle('overflow-y', 'hidden');
-//            scrollable.setStyle('overflow-x', 'hidden');
-//            
-//            alert(scrollable.getStyle('overflow'));
-            
-//            alert(scrollable.dom.scrollTop);
-//            scrollable.scrollTo('top', scrollTo);
             scrollable.dom.scrollTop = scrollTo;
-//            alert(scrollable.dom.scrollTop);
-            
-//            scrollable.setStyle('overflow', overflow);
             
             var box = this.target.el.getBox();
 
