@@ -7174,6 +7174,7 @@ if(opt.anim.isAnimated()){
             var overflowRegex = /(auto|scroll)/;
             
             if(this.getStyle('position') === 'fixed'){
+                alert('first');
                 return Roo.isAndroid ? Roo.get(document.documentElement) : Roo.get(document.body);
             }
             
@@ -7186,6 +7187,7 @@ if(opt.anim.isAnimated()){
                 }
                 
                 if (overflowRegex.test(parent.getStyle('overflow') + parent.getStyle('overflow-x') + parent.getStyle('overflow-y'))){
+                    alert('middle');
                     return parent;
                 }
                 
@@ -7206,7 +7208,7 @@ if(opt.anim.isAnimated()){
                     return Roo.isAndroid ? Roo.get(document.documentElement) : Roo.get(document.body);
                 }
             }
-            
+            alert('last');
             return Roo.isAndroid ? Roo.get(document.documentElement) : Roo.get(document.body);
         },
 
