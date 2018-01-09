@@ -626,20 +626,20 @@ Roo.apply(Roo.bootstrap.Form, {
             
             alert(JSON.stringify(scrollable.dom));
             
-            var overflow = scrollable.getStyle('overflow');
+//            var overflow = scrollable.getStyle('overflow');
+//            
+//            alert(overflow);
+//            
+//            scrollable.setStyle('overflow', 'hidden');
+//            scrollable.setStyle('overflow-y', 'hidden');
+//            scrollable.setStyle('overflow-x', 'hidden');
+//            
+//            alert(scrollable.getStyle('overflow'));
             
-            alert(overflow);
-            
-            scrollable.setStyle('overflow', 'hidden');
-            scrollable.setStyle('overflow-y', 'hidden');
-            scrollable.setStyle('overflow-x', 'hidden');
-            
-            alert(scrollable.getStyle('overflow'));
-            
-            alert(scrollable.dom.scrollTop);
+//            alert(scrollable.dom.scrollTop);
 //            scrollable.scrollTo('top', scrollTo);
             scrollable.dom.scrollTop = scrollTo;
-            alert(scrollable.dom.scrollTop);
+//            alert(scrollable.dom.scrollTop);
             
 //            scrollable.setStyle('overflow', overflow);
             
