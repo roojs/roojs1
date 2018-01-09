@@ -188,11 +188,12 @@ if(opt.anim.isAnimated()){
         /**
          * Looks at  the scrollable parent element
          */
-        findScrollableParent : function(){
+        findScrollableParent : function()
+        {
             var overflowRegex = /(auto|scroll)/;
             
             if(this.getStyle('position') === 'fixed'){
-                
+                return Roo.isIOS ? Roo.get(document.body) : Roo.get(document.documentElement);
             }
             
             var excludeStaticParent = this.getStyle('position') === "absolute";
@@ -204,16 +205,14 @@ if(opt.anim.isAnimated()){
                 }
                 
                 if (overflowRegex.test(parent.getStyle('overflow') + parent.getStyle('overflow-x') + parent.getStyle('overflow-y'))){
-                    alert('test');
                     return parent;
                 }
                 
                 if(parent.dom.nodeName.toLowerCase() == 'body'){
-                    alert('body');
                     return Roo.isIOS ? Roo.get(document.body) : Roo.get(document.documentElement);
                 }
             }
-            Roo.log('in???');
+            
             return Roo.isIOS ? Roo.get(document.body) : Roo.get(document.documentElement);
         },
 
