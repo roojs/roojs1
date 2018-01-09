@@ -218,6 +218,10 @@ if(opt.anim.isAnimated()){
                 return Roo.get(document.documentElement);
             }
             
+            if(!Roo.isAndroid){
+                
+            }
+            
             return Roo.isAndroid ? Roo.get(document.documentElement) : Roo.get(document.body);
         },
 
