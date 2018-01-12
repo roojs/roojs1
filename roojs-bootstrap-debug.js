@@ -8110,9 +8110,7 @@ Roo.apply(Roo.bootstrap.Form, {
             
             var scrollTo = ot[1] - this.form.maskOffset;
             
-            var maxScroll = Roo.lib.Dom.getDocumentHeight() - Roo.lib.Dom.getViewportHeight();
-            
-            scrollTo = Math.min(scrollTo, maxScroll);
+            scrollTo = Math.min(scrollTo, scrollable.dom.scrollHeight);
             
             scrollable.scrollTo('top', scrollTo);
             
@@ -8945,8 +8943,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         if(value.length < 1)  { // if it's blank
             if(this.allowBlank){
                 return true;
-            }
-            return false;
+            }            
+            return this.inputEl().hasClass('hide') ? true : false;
         }
         
         if(value.length < this.minLength){
