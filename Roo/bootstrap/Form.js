@@ -625,18 +625,13 @@ Roo.apply(Roo.bootstrap.Form, {
             
             var scrollable = this.target.el.findScrollableParent() || this.target.el.findParent('div.modal', 100, true) || Roo.get(document.body);
             
-            Roo.log(this.target.el);
-            
             var ot = this.target.el.calcOffsetsTo(scrollable);
-            
-            Roo.log(this.form.maskOffset);
             
             var scrollTo = ot[1] - this.form.maskOffset;
             
-            Roo.log(scrollTo);
-            
-            Roo.log(scrollable.dom.scrollHeight);
             var maxScroll = Roo.lib.Dom.getDocumentHeight() - Roo.lib.Dom.getViewportHeight();
+            
+            Roo.log(scrollable.getScroll());
             
             scrollTo = Math.min(scrollTo, maxScroll);
             
