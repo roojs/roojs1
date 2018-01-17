@@ -35,10 +35,12 @@
           * field's data value (defaults to the underlying DOM element's name)
           */
          hiddenName: undefined,
+         
          /**
           * @cfg {String} listClass CSS class to apply to the dropdown list element (defaults to '')
           */
          listClass: '',
+         
          /**
           * @cfg {String} selectedClass CSS class to apply to the selected item in the dropdown list (defaults to 'x-combo-selected')
           */
