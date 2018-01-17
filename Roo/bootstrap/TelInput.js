@@ -1,219 +1,628 @@
-/**
- * @class Roo.bootstrap.TelInput
- * @extends Roo.bootstrap.TriggerField
- * A TelInput provides an input control with a list of iso2 telephone format choices.
- 
- * @constructor
- * Create a new TelInput.
- * @param {Object} config Configuration options
+/*
+ * - LGPL
+ *
+ * trigger field - base class for combo..
+ * 
  */
  
- Roo.extend(Roo.bootstrap.TelInput, Roo.bootstrap.TriggerField, {
-      
-     Roo.extend(Roo.bootstrap.TelInput, Roo.bootstrap.TriggerField, {
-          
-          /**
-          * @cfg {Number} listWidth The width in pixels of the dropdown list (defaults to the width of the ComboBox field)
-          */
-         listWidth: undefined,
-         
-         
-         /**
-          * @cfg {String} valueField The underlying data value name to bind to this CombBox (defaults to undefined if
-          * mode = 'remote' or 'value' if mode = 'local'). 
-          * Note: use of a valueField requires the user make a selection
-          * in order for a value to be mapped.
-          */
-         valueField: undefined,
-         /**
-          * @cfg {String} modalTitle The title of the dialog that pops up on mobile views.
-          */
-         modalTitle : '',
-         
-         /**
-          * @cfg {String} hiddenName If specified, a hidden form field with this name is dynamically generated to store the
-          * field's data value (defaults to the underlying DOM element's name)
-          */
-         hiddenName: undefined,
-         
-         /**
-          * @cfg {String} listClass CSS class to apply to the dropdown list element (defaults to '')
-          */
-         listClass: '',
-         
-         /**
-          * @cfg {String} selectedClass CSS class to apply to the selected item in the dropdown list (defaults to 'x-combo-selected')
-          */
-         selectedClass: 'active',
-         
-         /**
-          * @cfg {Boolean/String} shadow True or "sides" for the default effect, "frame" for 4-way shadow, and "drop" for bottom-right
-          */
-         shadow:'sides',
-         
-         /**
-          * @cfg {String} listAlign A valid anchor position value. See {@link Roo.Element#alignTo} for details on supported
-          * anchor positions (defaults to 'tl-bl')
-          */
-         listAlign: 'tl-bl?',
-         
-         /**
-          * @cfg {Number} maxHeight The maximum height in pixels of the dropdown list before scrollbars are shown (defaults to 300)
-          */
-         maxHeight: 300,
-         
-         /**
-          * @cfg {String} triggerAction The action to execute when the trigger field is activated.  Use 'all' to run the
-          * query specified by the allQuery config option (defaults to 'query')
-          */
-         triggerAction: 'query',
-         
-         /**
-          * @cfg {Number} minChars The minimum number of characters the user must type before autocomplete and typeahead activate
-          * (defaults to 4, does not apply if editable = false)
-          */
-         minChars : 4,
-         
-         /**
-          * @cfg {Boolean} typeAhead True to populate and autoselect the remainder of the text being typed after a configurable
-          * delay (typeAheadDelay) if it matches a known value (defaults to false)
-          */
-         typeAhead: false,
-         
-         /**
-          * @cfg {Number} queryDelay The length of time in milliseconds to delay between the start of typing and sending the
-          * query to filter the dropdown list (defaults to 500 if mode = 'remote' or 10 if mode = 'local')
-          */
-         queryDelay: 500,
-         
-         /**
-          * @cfg {Number} pageSize If greater than 0, a paging toolbar is displayed in the footer of the dropdown list and the
-          * filter queries will execute with page start and limit parameters.  Only applies when mode = 'remote' (defaults to 0)
-          */
-         pageSize: 0,
-         /**
-          * @cfg {Boolean} selectOnFocus True to select any existing text in the field immediately on focus.  Only applies
-          * when editable = true (defaults to false)
-          */
-         selectOnFocus:false,
-         /**
-          * @cfg {String} queryParam Name of the query as it will be passed on the querystring (defaults to 'query')
-          */
-         queryParam: 'query',
-         /**
-          * @cfg {String} loadingText The text to display in the dropdown list while data is loading.  Only applies
-          * when mode = 'remote' (defaults to 'Loading...')
-          */
-         loadingText: 'Loading...',
-         /**
-          * @cfg {Boolean} resizable True to add a resize handle to the bottom of the dropdown list (defaults to false)
-          */
-         resizable: false,
-         /**
-          * @cfg {Number} handleHeight The height in pixels of the dropdown list resize handle if resizable = true (defaults to 8)
-          */
-         handleHeight : 8,
-         /**
-          * @cfg {Boolean} editable False to prevent the user from typing text directly into the field, just like a
-          * traditional select (defaults to true)
-          */
-         editable: true,
-         /**
-          * @cfg {String} allQuery The text query to send to the server to return all records for the list with no filtering (defaults to '')
-          */
-         allQuery: '',
-         /**
-          * @cfg {String} mode Set to 'local' if the ComboBox loads local data (defaults to 'remote' which loads from the server)
-          */
-         mode: 'local',
-         /**
-          * @cfg {Number} minListWidth The minimum width of the dropdown list in pixels (defaults to 70, will be ignored if
-          * listWidth has a higher value)
-          */
-         minListWidth : 70,
-         /**
-          * @cfg {Boolean} forceSelection True to restrict the selected value to one of the values in the list, false to
-          * allow the user to set arbitrary text into the field (defaults to false)
-          */
-         forceSelection:false,
-         /**
-          * @cfg {Number} typeAheadDelay The length of time in milliseconds to wait until the typeahead text is displayed
-          * if typeAhead = true (defaults to 250)
-          */
-         typeAheadDelay : 250,
-         /**
-          * @cfg {String} valueNotFoundText When using a name/value combo, if the value passed to setValue is not found in
-          * the store, valueNotFoundText will be displayed as the field text if defined (defaults to undefined)
-          */
-         valueNotFoundText : undefined,
-         /**
-          * @cfg {Boolean} blockFocus Prevents all focus calls, so it can work with things like HTML edtor bar
-          */
-         blockFocus : false,
-         
-         /**
-          * @cfg {Boolean} disableClear Disable showing of clear button.
-          */
-         disableClear : false,
-         /**
-          * @cfg {Boolean} alwaysQuery  Disable caching of results, and always send query
-          */
-         alwaysQuery : false,
-         
-         /**
-          * @cfg {Boolean} multiple  (true|false) ComboBobArray, default false
-          */
-         multiple : false,
-         
-         /**
-          * @cfg {String} invalidClass The CSS class to use when marking a field invalid (defaults to "x-form-invalid")
-          */
-         invalidClass : "has-warning",
-         
-         /**
-          * @cfg {String} validClass The CSS class to use when marking a field valid (defaults to "x-form-invalid")
-          */
-         validClass : "has-success",
-         
-         /**
-          * @cfg {Boolean} specialFilter (true|false) special filter default false
-          */
-         specialFilter : false,
-         
-         /**
-          * @cfg {Boolean} mobileTouchView (true|false) show mobile touch view when using a mobile default true
-          */
-         mobileTouchView : true,
-         
-         /**
-          * @cfg {Boolean} useNativeIOS (true|false) render it as classic select for ios, not support dynamic load data (default false)
-          */
-         useNativeIOS : false,
-         
-         ios_options : false,
-         
-         //private
-         addicon : false,
-         editicon: false,
-         
-         page: 0,
-         hasQuery: false,
-         append: false,
-         loadNext: false,
-         autoFocus : true,
-         tickable : false,
-         btnPosition : 'right',
-         triggerList : true,
-         showToggleBtn : true,
-         animate : true,
-         emptyResultText: 'Empty',
-         triggerText : 'Select',
-         emptyTitle : '',
-         
-         // element that contains real text value.. (when hidden is used..)
-         
-     
-     
-     
- 
+/**
+ * @class Roo.bootstrap.TelInput
+ * @extends Roo.bootstrap.Input
+ * Provides a convenient wrapper for TextFields that adds a clickable trigger button (looks like a combobox by default).
+ * The trigger has no default action, so you must assign a function to implement the trigger click handler by
+ * overriding {@link #onTriggerClick}. You can create a TelInput directly, as it renders exactly like a combobox
+ * for which you can provide a custom implementation.  For example:
+ * <pre><code>
+var trigger = new Roo.bootstrap.TelInput();
+trigger.onTriggerClick = myTriggerFn;
+trigger.applyTo('my-field');
+</code></pre>
+ *
+ * However, in general you will most likely want to use TelInput as the base class for a reusable component.
+ * {@link Roo.bootstrap.DateField} and {@link Roo.bootstrap.ComboBox} are perfect examples of this.
+ * @cfg {String} triggerClass An additional CSS class used to style the trigger button.  The trigger will always get the
+ * class 'x-form-trigger' by default and triggerClass will be <b>appended</b> if specified.
+ * @cfg {String} caret (search|calendar) a fontawesome for the trigger icon see http://fortawesome.github.io/Font-Awesome/icons/
+
+ * @constructor
+ * Create a new TelInput.
+ * @param {Object} config Configuration options (valid {@Roo.bootstrap.Input} config options will also be applied
+ * to the base TextField)
+ */
+Roo.bootstrap.TelInput = function(config){
+    this.mimicing = false;
+    Roo.bootstrap.TelInput.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.TelInput, Roo.bootstrap.Input,  {
+    /**
+     * @cfg {String} triggerClass A CSS class to apply to the trigger
+     */
+     /**
+     * @cfg {Boolean} hideTrigger True to hide the trigger element and display only the base text field (defaults to false)
+     */
+    hideTrigger:false,
+
+    /**
+     * @cfg {Boolean} removable (true|false) special filter default false
+     */
+    removable : false,
+    
+    /** @cfg {Boolean} grow @hide */
+    /** @cfg {Number} growMin @hide */
+    /** @cfg {Number} growMax @hide */
+
+    /**
+     * @hide 
+     * @method
+     */
+    autoSize: Roo.emptyFn,
+    // private
+    monitorTab : true,
+    // private
+    deferHeight : true,
+
+    
+    actionMode : 'wrap',
+    
+    caret : false,
+    
+    
+    getAutoCreate : function(){
+       
+        var align = this.labelAlign || this.parentLabelAlign();
+        
+        var id = Roo.id();
+        
+        var cfg = {
+            cls: 'form-group' //input-group
+        };
+        
+        
+        var input =  {
+            tag: 'input',
+            id : id,
+            type : this.inputType,
+            cls : 'form-control',
+            autocomplete: 'new-password',
+            placeholder : this.placeholder || '' 
+            
+        };
+        if (this.name) {
+            input.name = this.name;
+        }
+        if (this.size) {
+            input.cls += ' input-' + this.size;
+        }
+        
+        if (this.disabled) {
+            input.disabled=true;
+        }
+        
+        var inputblock = input;
+        
+        if(this.hasFeedback && !this.allowBlank){
+            
+            var feedback = {
+                tag: 'span',
+                cls: 'glyphicon form-control-feedback'
+            };
+            
+            if(this.removable && !this.editable && !this.tickable){
+                inputblock = {
+                    cls : 'has-feedback',
+                    cn :  [
+                        inputblock,
+                        {
+                            tag: 'button',
+                            html : 'x',
+                            cls : 'roo-combo-removable-btn close'
+                        },
+                        feedback
+                    ] 
+                };
+            } else {
+                inputblock = {
+                    cls : 'has-feedback',
+                    cn :  [
+                        inputblock,
+                        feedback
+                    ] 
+                };
+            }
+
+        } else {
+            if(this.removable && !this.editable && !this.tickable){
+                inputblock = {
+                    cls : 'roo-removable',
+                    cn :  [
+                        inputblock,
+                        {
+                            tag: 'button',
+                            html : 'x',
+                            cls : 'roo-combo-removable-btn close'
+                        }
+                    ] 
+                };
+            }
+        }
+        
+        if (this.before || this.after) {
+            
+            inputblock = {
+                cls : 'input-group',
+                cn :  [] 
+            };
+            if (this.before) {
+                inputblock.cn.push({
+                    tag :'span',
+                    cls : 'input-group-addon',
+                    html : this.before
+                });
+            }
+            
+            inputblock.cn.push(input);
+            
+            if(this.hasFeedback && !this.allowBlank){
+                inputblock.cls += ' has-feedback';
+                inputblock.cn.push(feedback);
+            }
+            
+            if (this.after) {
+                inputblock.cn.push({
+                    tag :'span',
+                    cls : 'input-group-addon',
+                    html : this.after
+                });
+            }
+            
+        };
+        
+        var box = {
+            tag: 'div',
+            cn: [
+                {
+                    tag: 'input',
+                    type : 'hidden',
+                    cls: 'form-hidden-field'
+                },
+                inputblock
+            ]
+            
+        };
+        
+        if(this.multiple){
+            box = {
+                tag: 'div',
+                cn: [
+                    {
+                        tag: 'input',
+                        type : 'hidden',
+                        cls: 'form-hidden-field'
+                    },
+                    {
+                        tag: 'ul',
+                        cls: 'roo-select2-choices',
+                        cn:[
+                            {
+                                tag: 'li',
+                                cls: 'roo-select2-search-field',
+                                cn: [
+
+                                    inputblock
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        };
+        
+        var combobox = {
+            cls: 'roo-select2-container input-group',
+            cn: [
+                box
+//                {
+//                    tag: 'ul',
+//                    cls: 'typeahead typeahead-long dropdown-menu',
+//                    style: 'display:none'
+//                }
+            ]
+        };
+        
+        if(!this.multiple && this.showToggleBtn){
+            
+            var caret = {
+                        tag: 'span',
+                        cls: 'caret'
+             };
+            if (this.caret != false) {
+                caret = {
+                     tag: 'i',
+                     cls: 'fa fa-' + this.caret
+                };
+                
+            }
+            
+            combobox.cn.push({
+                tag :'span',
+                cls : 'input-group-addon btn dropdown-toggle',
+                cn : [
+                    caret,
+                    {
+                        tag: 'span',
+                        cls: 'combobox-clear',
+                        cn  : [
+                            {
+                                tag : 'i',
+                                cls: 'icon-remove'
+                            }
+                        ]
+                    }
+                ]
+
+            })
+        }
+        
+        if(this.multiple){
+            combobox.cls += ' roo-select2-container-multi';
+        }
+        
+        if (align ==='left' && this.fieldLabel.length) {
+            
+            cfg.cls += ' roo-form-group-label-left';
+
+            cfg.cn = [
+                {
+                    tag : 'i',
+                    cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
+                    tooltip : 'This field is required'
+                },
+                {
+                    tag: 'label',
+                    'for' :  id,
+                    cls : 'control-label',
+                    html : this.fieldLabel
+
+                },
+                {
+                    cls : "", 
+                    cn: [
+                        combobox
+                    ]
+                }
+
+            ];
+            
+            var labelCfg = cfg.cn[1];
+            var contentCfg = cfg.cn[2];
+            
+            if(this.indicatorpos == 'right'){
+                cfg.cn = [
+                    {
+                        tag: 'label',
+                        'for' :  id,
+                        cls : 'control-label',
+                        cn : [
+                            {
+                                tag : 'span',
+                                html : this.fieldLabel
+                            },
+                            {
+                                tag : 'i',
+                                cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
+                                tooltip : 'This field is required'
+                            }
+                        ]
+                    },
+                    {
+                        cls : "", 
+                        cn: [
+                            combobox
+                        ]
+                    }
+
+                ];
+                
+                labelCfg = cfg.cn[0];
+                contentCfg = cfg.cn[1];
+            }
+            
+            if(this.labelWidth > 12){
+                labelCfg.style = "width: " + this.labelWidth + 'px';
+            }
+            
+            if(this.labelWidth < 13 && this.labelmd == 0){
+                this.labelmd = this.labelWidth;
+            }
+            
+            if(this.labellg > 0){
+                labelCfg.cls += ' col-lg-' + this.labellg;
+                contentCfg.cls += ' col-lg-' + (12 - this.labellg);
+            }
+            
+            if(this.labelmd > 0){
+                labelCfg.cls += ' col-md-' + this.labelmd;
+                contentCfg.cls += ' col-md-' + (12 - this.labelmd);
+            }
+            
+            if(this.labelsm > 0){
+                labelCfg.cls += ' col-sm-' + this.labelsm;
+                contentCfg.cls += ' col-sm-' + (12 - this.labelsm);
+            }
+            
+            if(this.labelxs > 0){
+                labelCfg.cls += ' col-xs-' + this.labelxs;
+                contentCfg.cls += ' col-xs-' + (12 - this.labelxs);
+            }
+            
+        } else if ( this.fieldLabel.length) {
+//                Roo.log(" label");
+            cfg.cn = [
+                {
+                   tag : 'i',
+                   cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
+                   tooltip : 'This field is required'
+               },
+               {
+                   tag: 'label',
+                   //cls : 'input-group-addon',
+                   html : this.fieldLabel
+
+               },
+
+               combobox
+
+            ];
+            
+            if(this.indicatorpos == 'right'){
+                
+                cfg.cn = [
+                    {
+                       tag: 'label',
+                       cn : [
+                           {
+                               tag : 'span',
+                               html : this.fieldLabel
+                           },
+                           {
+                              tag : 'i',
+                              cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
+                              tooltip : 'This field is required'
+                           }
+                       ]
+
+                    },
+                    combobox
+
+                ];
+
+            }
+
+        } else {
+            
+//                Roo.log(" no label && no align");
+                cfg = combobox
+                     
+                
+        }
+        
+        var settings=this;
+        ['xs','sm','md','lg'].map(function(size){
+            if (settings[size]) {
+                cfg.cls += ' col-' + size + '-' + settings[size];
+            }
+        });
+        
+        return cfg;
+        
+    },
+    
+    
+    
+    // private
+    onResize : function(w, h){
+//        Roo.bootstrap.TelInput.superclass.onResize.apply(this, arguments);
+//        if(typeof w == 'number'){
+//            var x = w - this.trigger.getWidth();
+//            this.inputEl().setWidth(this.adjustWidth('input', x));
+//            this.trigger.setStyle('left', x+'px');
+//        }
+    },
+
+    // private
+    adjustSize : Roo.BoxComponent.prototype.adjustSize,
+
+    // private
+    getResizeEl : function(){
+        return this.inputEl();
+    },
+
+    // private
+    getPositionEl : function(){
+        return this.inputEl();
+    },
+
+    // private
+    alignErrorIcon : function(){
+        this.errorIcon.alignTo(this.inputEl(), 'tl-tr', [2, 0]);
+    },
+
+    // private
+    initEvents : function(){
+        
+        this.createList();
+        
+        Roo.bootstrap.TelInput.superclass.initEvents.call(this);
+        //this.wrap = this.el.wrap({cls: "x-form-field-wrap"});
+        if(!this.multiple && this.showToggleBtn){
+            this.trigger = this.el.select('span.dropdown-toggle',true).first();
+            if(this.hideTrigger){
+                this.trigger.setDisplayed(false);
+            }
+            this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
+        }
+        
+        if(this.multiple){
+            this.inputEl().on("click", this.onTriggerClick, this, {preventDefault:true});
+        }
+        
+        if(this.removable && !this.editable && !this.tickable){
+            var close = this.closeTriggerEl();
+            
+            if(close){
+                close.setVisibilityMode(Roo.Element.DISPLAY).hide();
+                close.on('click', this.removeBtnClick, this, close);
+            }
+        }
+        
+        //this.trigger.addClassOnOver('x-form-trigger-over');
+        //this.trigger.addClassOnClick('x-form-trigger-click');
+        
+        //if(!this.width){
+        //    this.wrap.setWidth(this.el.getWidth()+this.trigger.getWidth());
+        //}
+    },
+    
+    closeTriggerEl : function()
+    {
+        var close = this.el.select('.roo-combo-removable-btn', true).first();
+        return close ? close : false;
+    },
+    
+    removeBtnClick : function(e, h, el)
+    {
+        e.preventDefault();
+        
+        if(this.fireEvent("remove", this) !== false){
+            this.reset();
+            this.fireEvent("afterremove", this)
+        }
+    },
+    
+    createList : function()
+    {
+        this.list = Roo.get(document.body).createChild({
+            tag: 'ul',
+            cls: 'typeahead typeahead-long dropdown-menu',
+            style: 'display:none'
+        });
+        
+        this.list.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';;
+        
+    },
+
+    // private
+    initTrigger : function(){
+       
+    },
+
+    // private
+    onDestroy : function(){
+        if(this.trigger){
+            this.trigger.removeAllListeners();
+          //  this.trigger.remove();
+        }
+        //if(this.wrap){
+        //    this.wrap.remove();
+        //}
+        Roo.bootstrap.TelInput.superclass.onDestroy.call(this);
+    },
+
+    // private
+    onFocus : function(){
+        Roo.bootstrap.TelInput.superclass.onFocus.call(this);
+        /*
+        if(!this.mimicing){
+            this.wrap.addClass('x-trigger-wrap-focus');
+            this.mimicing = true;
+            Roo.get(Roo.isIE ? document.body : document).on("mousedown", this.mimicBlur, this);
+            if(this.monitorTab){
+                this.el.on("keydown", this.checkTab, this);
+            }
+        }
+        */
+    },
+
+    // private
+    checkTab : function(e){
+        if(e.getKey() == e.TAB){
+            this.triggerBlur();
+        }
+    },
+
+    // private
+    onBlur : function(){
+        // do nothing
+    },
+
+    // private
+    mimicBlur : function(e, t){
+        /*
+        if(!this.wrap.contains(t) && this.validateBlur()){
+            this.triggerBlur();
+        }
+        */
+    },
+
+    // private
+    triggerBlur : function(){
+        this.mimicing = false;
+        Roo.get(Roo.isIE ? document.body : document).un("mousedown", this.mimicBlur);
+        if(this.monitorTab){
+            this.el.un("keydown", this.checkTab, this);
+        }
+        //this.wrap.removeClass('x-trigger-wrap-focus');
+        Roo.bootstrap.TelInput.superclass.onBlur.call(this);
+    },
+
+    // private
+    // This should be overriden by any subclass that needs to check whether or not the field can be blurred.
+    validateBlur : function(e, t){
+        return true;
+    },
+
+    // private
+    onDisable : function(){
+        this.inputEl().dom.disabled = true;
+        //Roo.bootstrap.TelInput.superclass.onDisable.call(this);
+        //if(this.wrap){
+        //    this.wrap.addClass('x-item-disabled');
+        //}
+    },
+
+    // private
+    onEnable : function(){
+        this.inputEl().dom.disabled = false;
+        //Roo.bootstrap.TelInput.superclass.onEnable.call(this);
+        //if(this.wrap){
+        //    this.el.removeClass('x-item-disabled');
+        //}
+    },
+
+    // private
+    onShow : function(){
+        var ae = this.getActionEl();
+        
+        if(ae){
+            ae.dom.style.display = '';
+            ae.dom.style.visibility = 'visible';
+        }
+    },
+
+    // private
+    
+    onHide : function(){
+        var ae = this.getActionEl();
+        ae.dom.style.display = 'none';
+    },
+
+    /**
+     * The function that should handle the trigger's click event.  This method does nothing by default until overridden
+     * by an implementing function.
+     * @method
+     * @param {EventObject} e
+     */
+    onTriggerClick : Roo.emptyFn
+});
  
