@@ -2,6 +2,8 @@
  * @class Roo.bootstrap.TelInput
  * @extends Roo.bootstrap.ComboBox
  * A TelInput provides an input control with a list of iso2 telephone format choices.
+ 
+ 
  * @cfg {Boolean} append (true|false) default false
  * @cfg {Boolean} autoFocus (true|false) auto focus the first item, default true
  * @cfg {Boolean} tickable ComboBox with tickable selections (true|false), default false
@@ -12,8 +14,10 @@
  * @cfg {Boolean} emptyResultText only for touch device
  * @cfg {String} triggerText multiple combobox trigger button text default 'Select'
  * @cfg {String} emptyTitle default ''
+ 
+ 
  * @constructor
- * Create a new ComboBox.
+ * Create a new TelInput.
  * @param {Object} config Configuration options
  */
  
