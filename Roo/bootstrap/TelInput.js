@@ -8,28 +8,15 @@
  * @param {Object} config Configuration options
  */
  
- Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
+ Roo.extend(Roo.bootstrap.TelInput, Roo.bootstrap.TriggerField, {
       
-     Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
+     Roo.extend(Roo.bootstrap.TelInput, Roo.bootstrap.TriggerField, {
           
           /**
           * @cfg {Number} listWidth The width in pixels of the dropdown list (defaults to the width of the ComboBox field)
           */
          listWidth: undefined,
          
-         /**
-          * @cfg {String} displayField The underlying data field name to bind to this CombBox (defaults to undefined if
-          * mode = 'remote' or 'text' if mode = 'local')
-          */
-         displayField: undefined,
-         
-         /**
-          * @cfg {String} valueField The underlying data value name to bind to this CombBox (defaults to undefined if
-          * mode = 'remote' or 'value' if mode = 'local'). 
-          * Note: use of a valueField requires the user make a selection
-          * in order for a value to be mapped.
-          */
-         valueField: undefined,
          /**
           * @cfg {String} modalTitle The title of the dialog that pops up on mobile views.
           */
