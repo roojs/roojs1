@@ -17,6 +17,14 @@
           */
          listWidth: undefined,
          
+         
+         /**
+          * @cfg {String} valueField The underlying data value name to bind to this CombBox (defaults to undefined if
+          * mode = 'remote' or 'value' if mode = 'local'). 
+          * Note: use of a valueField requires the user make a selection
+          * in order for a value to be mapped.
+          */
+         valueField: undefined,
          /**
           * @cfg {String} modalTitle The title of the dialog that pops up on mobile views.
           */
