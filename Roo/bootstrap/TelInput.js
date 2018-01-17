@@ -61,16 +61,19 @@
           * @cfg {Number} maxHeight The maximum height in pixels of the dropdown list before scrollbars are shown (defaults to 300)
           */
          maxHeight: 300,
+         
          /**
           * @cfg {String} triggerAction The action to execute when the trigger field is activated.  Use 'all' to run the
           * query specified by the allQuery config option (defaults to 'query')
           */
          triggerAction: 'query',
+         
          /**
           * @cfg {Number} minChars The minimum number of characters the user must type before autocomplete and typeahead activate
           * (defaults to 4, does not apply if editable = false)
           */
          minChars : 4,
+         
          /**
           * @cfg {Boolean} typeAhead True to populate and autoselect the remainder of the text being typed after a configurable
           * delay (typeAheadDelay) if it matches a known value (defaults to false)
