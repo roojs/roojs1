@@ -79,6 +79,7 @@
           * delay (typeAheadDelay) if it matches a known value (defaults to false)
           */
          typeAhead: false,
+         
          /**
           * @cfg {Number} queryDelay The length of time in milliseconds to delay between the start of typing and sending the
           * query to filter the dropdown list (defaults to 500 if mode = 'remote' or 10 if mode = 'local')
