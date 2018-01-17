@@ -1,6 +1,6 @@
 /**
  * @class Roo.bootstrap.TelInput
- * @extends Roo.bootstrap.ComboBox
+ * @extends Roo.bootstrap.TriggerField
  * A TelInput provides an input control with a list of iso2 telephone format choices.
  
  * @constructor
