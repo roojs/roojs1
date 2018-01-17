@@ -50,11 +50,13 @@
           * @cfg {Boolean/String} shadow True or "sides" for the default effect, "frame" for 4-way shadow, and "drop" for bottom-right
           */
          shadow:'sides',
+         
          /**
           * @cfg {String} listAlign A valid anchor position value. See {@link Roo.Element#alignTo} for details on supported
           * anchor positions (defaults to 'tl-bl')
           */
          listAlign: 'tl-bl?',
+         
          /**
           * @cfg {Number} maxHeight The maximum height in pixels of the dropdown list before scrollbars are shown (defaults to 300)
           */
