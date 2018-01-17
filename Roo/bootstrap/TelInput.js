@@ -85,6 +85,7 @@
           * query to filter the dropdown list (defaults to 500 if mode = 'remote' or 10 if mode = 'local')
           */
          queryDelay: 500,
+         
          /**
           * @cfg {Number} pageSize If greater than 0, a paging toolbar is displayed in the footer of the dropdown list and the
           * filter queries will execute with page start and limit parameters.  Only applies when mode = 'remote' (defaults to 0)
