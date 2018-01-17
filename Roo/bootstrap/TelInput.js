@@ -125,7 +125,7 @@
          /**
           * @cfg {String} mode Set to 'local' if the ComboBox loads local data (defaults to 'remote' which loads from the server)
           */
-         mode: 'remote',
+         mode: 'local',
          /**
           * @cfg {Number} minListWidth The minimum width of the dropdown list in pixels (defaults to 70, will be ignored if
           * listWidth has a higher value)
