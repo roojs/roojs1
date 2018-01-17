@@ -1,7 +1,6 @@
 /**
- * @class Roo.bootstrap.ComboBox
- * @extends Roo.bootstrap.TriggerField
- * A combobox control with support for autocomplete, remote-loading, paging and many other features.
+ * @class Roo.bootstrap.TelInput
+ * @extends Roo.bootstrap.ComboBox
  * @cfg {Boolean} append (true|false) default false
  * @cfg {Boolean} autoFocus (true|false) auto focus the first item, default true
  * @cfg {Boolean} tickable ComboBox with tickable selections (true|false), default false
