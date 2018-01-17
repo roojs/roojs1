@@ -7,7 +7,7 @@
  
 /**
  * @class Roo.bootstrap.TelInput
- * @extends Roo.bootstrap.Input
+ * @extends Roo.bootstrap.TriggerField
  * Provides a convenient wrapper for TextFields that adds a clickable trigger button (looks like a combobox by default).
  * The trigger has no default action, so you must assign a function to implement the trigger click handler by
  * overriding {@link #onTriggerClick}. You can create a TelInput directly, as it renders exactly like a combobox
@@ -26,7 +26,7 @@ trigger.applyTo('my-field');
 
  * @constructor
  * Create a new TelInput.
- * @param {Object} config Configuration options (valid {@Roo.bootstrap.Input} config options will also be applied
+ * @param {Object} config Configuration options (valid {@Roo.bootstrap.TriggerField} config options will also be applied
  * to the base TextField)
  */
 Roo.bootstrap.TelInput = function(config){
