@@ -34,7 +34,7 @@ Roo.bootstrap.TelInput = function(config){
     Roo.bootstrap.TelInput.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.TelInput, Roo.bootstrap.Input,  {
+Roo.extend(Roo.bootstrap.TelInput, Roo.bootstrap.TriggerField,  {
     /**
      * @cfg {String} triggerClass A CSS class to apply to the trigger
      */
