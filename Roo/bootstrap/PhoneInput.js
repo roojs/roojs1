@@ -84,16 +84,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         var _this = this;
         
-        Roo.each(buttons.cn, function(c){
-            if (_this.size) {
-                c.cls += ' btn-' + _this.size;
-            }
-
-            if (_this.disabled) {
-                c.disabled = true;
-            }
-        });
-        
         var box = {
             tag: 'div',
             cn: [
