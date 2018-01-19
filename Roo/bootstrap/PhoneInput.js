@@ -79,7 +79,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         var align = this.labelAlign || this.parentLabelAlign();
         
         cfg = {
-            cls : 'form-group roo-PhoneInput-tickable' //input-group
+            cls : 'form-group'
         };
         
         var btn_text_select = '';
