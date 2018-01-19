@@ -20,12 +20,9 @@ Roo.bootstrap.PhoneInput = function(config){
     Roo.bootstrap.PhoneInput.superclass.constructor.call(this, config);
     
     this.addEvents({
-        
         'touchviewdisplay' : true
-        
     });
     
-    //setting global...
     this.item = []; //fetch country JSON
 };
 
@@ -33,7 +30,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      
      //setting properties..
      
-    
     getAutoCreate : function()
     {  
         var cfg = false;
