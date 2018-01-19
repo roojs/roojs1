@@ -26,8 +26,7 @@ Roo.bootstrap.PhoneInput = function(config){
     });
     
     //setting global...
-    this.item = [];
-    this.tickItems = [];
+    this.item = []; //fetch JSON
     
     this.selectedIndex = -1;
     if(this.mode == 'local'){
