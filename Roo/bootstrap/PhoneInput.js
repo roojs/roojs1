@@ -46,7 +46,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
     {  
         var cfg = false;
         
-        Roo.log('herreeeeeeeeeeeeeeeee');
+        Roo.log('hellooooo');
         
         //render
         /*
