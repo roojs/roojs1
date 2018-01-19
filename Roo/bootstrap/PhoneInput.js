@@ -26,17 +26,7 @@ Roo.bootstrap.PhoneInput = function(config){
     });
     
     //setting global...
-    this.item = []; //fetch JSON
-    
-    this.selectedIndex = -1;
-    if(this.mode == 'local'){
-        if(config.queryDelay === undefined){
-            this.queryDelay = 10;
-        }
-        if(config.minChars === undefined){
-            this.minChars = 0;
-        }
-    }
+    this.item = []; //fetch country JSON
 };
 
 Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
