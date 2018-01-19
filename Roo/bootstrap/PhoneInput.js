@@ -21,6 +21,8 @@ Roo.bootstrap.PhoneInput = function(config){
     
     this.addEvents({
         
+        'touchviewdisplay' : true
+        
     });
     
     //setting global...
@@ -41,7 +43,6 @@ Roo.bootstrap.PhoneInput = function(config){
 Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      
      //setting properties..
-     'touchviewdisplay' : true
      
     
     getAutoCreate : function()
