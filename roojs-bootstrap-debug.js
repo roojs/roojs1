@@ -12701,10 +12701,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
          */
         if(!this.tickable){
             cfg = Roo.bootstrap.ComboBox.superclass.getAutoCreate.call(this);
-            if(this.name == 'info_year_invest_id_display_name'){
-                Roo.log('cfg.................................................');
-                Roo.log(cfg);
-            }
             return cfg;
         }
         
@@ -12935,7 +12931,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 ];
                 
                 if(this.indicatorpos == 'right'){
-                    Roo.log('hidden name:'+this.hiddenName);
                     cfg.cn = [
                         {
                             tag: 'label',
@@ -37892,10 +37887,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          */
         if(!this.tickable){
             cfg = Roo.bootstrap.PhoneInput.superclass.getAutoCreate.call(this);
-            if(this.name == 'info_year_invest_id_display_name'){
-                Roo.log('cfg.................................................');
-                Roo.log(cfg);
-            }
             return cfg;
         }
         
@@ -38110,7 +38101,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                 
                 
         } else if ( this.fieldLabel.length) {
-//                Roo.log(" label");
                  cfg.cn = [
                     {
                         tag : 'i',
@@ -38126,7 +38116,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                 ];
                 
                 if(this.indicatorpos == 'right'){
-                    Roo.log('hidden name:'+this.hiddenName);
                     cfg.cn = [
                         {
                             tag: 'label',
@@ -38145,7 +38134,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
 
         } else {
             
-//                Roo.log(" no label && no align");
                 cfg = PhoneInput
                      
                 
@@ -38988,7 +38976,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             Roo.each(this.tickItems, function(v,k){
                 
                 if(typeof(v) != 'undefined' && v[_this.valueField] == r.data[_this.valueField]){
-                    Roo.log(v);
                     _this.tickItems.splice(k, 1);
                     
                     if(typeof(e) == 'undefined' && view == false){
