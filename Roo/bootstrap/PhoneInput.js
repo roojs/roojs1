@@ -45,6 +45,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
     getAutoCreate : function()
     {  
         var cfg = false;
+        
         //render
         /*
          * Render classic select for iso
@@ -64,18 +65,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             return cfg;;
         }
         
-        /*
-         *  Normal PhoneInput
-         */
-        if(!this.tickable){
-            cfg = Roo.bootstrap.PhoneInput.superclass.getAutoCreate.call(this);
-            return cfg;
-        }
-        
-        /*
-         *  PhoneInput with tickable selections
-         */
-             
         var align = this.labelAlign || this.parentLabelAlign();
         
         cfg = {
@@ -111,12 +100,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         var PhoneInput = {
             cls: 'roo-select2-container input-group roo-select2-container-multi',
             cn: [
-                box
-//                {
-//                    tag: 'ul',
-//                    cls: 'typeahead typeahead-long dropdown-menu',
-//                    style: 'display:none; max-height:' + this.maxHeight + 'px;'
-//                }
+                
             ]
         };
         
