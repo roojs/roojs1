@@ -46,8 +46,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
     {  
         var cfg = false;
         
-        Roo.log('hellooooo');
-        
         //render
         /*
          * Render classic select for iso
