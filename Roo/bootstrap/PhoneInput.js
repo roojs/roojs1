@@ -31,7 +31,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      //setting properties..
      preferedCountries: undefined, //array
      
-     withoutCountries: undefined, //array
+     filterCountries: undefined, //array
      
      displayMode: undefined, //string
      
