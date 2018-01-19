@@ -33,7 +33,11 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      
      withoutCountries: undefined, //array
      
+     displayMode: undefined, //string
      
+     listWidth: undefined, //number
+     
+     invalidClass: "has-warning",
      
      
     getAutoCreate : function()
