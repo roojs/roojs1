@@ -50,7 +50,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         /*
          * Render classic select for iso
          */
-        
         if(Roo.isIOS && this.useNativeIOS){
             cfg = this.getAutoCreateNativeIOS();
             return cfg;
@@ -59,7 +58,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         /*
          * Touch Devices
          */
-        
         if(Roo.isTouch && this.mobileTouchView){
             cfg = this.getAutoCreateTouchView();
             return cfg;;
