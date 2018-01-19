@@ -37,6 +37,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      
      listWidth: undefined, //number
      
+     validClass : "has-success",
+     
      invalidClass: "has-warning",
      
      
