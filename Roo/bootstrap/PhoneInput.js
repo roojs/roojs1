@@ -41,7 +41,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      //setting properties..
     
     getAutoCreate : function()
-    {   
+    {  
+        Roo.log('auto creating');
+        
         var cfg = false;
         //render
         /*
