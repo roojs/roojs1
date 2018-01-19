@@ -1,115 +1,27 @@
 /*
  * - LGPL
- * * 
+ *
+ * element
+ * 
  */
 
 /**
- * @class Roo.bootstrap.ComboBox
+ * @class Roo.bootstrap.PhoneInput
  * @extends Roo.bootstrap.TriggerField
- * A combobox control with support for autocomplete, remote-loading, paging and many other features.
- * @cfg {Boolean} append (true|false) default false
- * @cfg {Boolean} autoFocus (true|false) auto focus the first item, default true
- * @cfg {Boolean} tickable ComboBox with tickable selections (true|false), default false
- * @cfg {Boolean} triggerList trigger show the list or not (true|false) default true
- * @cfg {Boolean} showToggleBtn show toggle button or not (true|false) default true
- * @cfg {String} btnPosition set the position of the trigger button (left | right) default right
- * @cfg {Boolean} animate default true
- * @cfg {Boolean} emptyResultText only for touch device
- * @cfg {String} triggerText multiple combobox trigger button text default 'Select'
- * @cfg {String} emptyTitle default ''
+ * Bootstrap PhoneInput class
+ * 
  * @constructor
- * Create a new ComboBox.
- * @param {Object} config Configuration options
- */
-Roo.bootstrap.ComboBox = function(config){
-    Roo.bootstrap.ComboBox.superclass.constructor.call(this, config);
+ * Create a new PhoneInput
+ * @param {Object} config The config object
+*/
+
+Roo.bootstrap.PhoneInput = function(config){
+    Roo.bootstrap.PhoneInput.superclass.constructor.call(this, config);
     this.addEvents({
-        /**
-         * @event expand
-         * Fires when the dropdown list is expanded
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
-	     */
-        'expand' : true,
-        /**
-         * @event collapse
-         * Fires when the dropdown list is collapsed
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
-	     */
-        'collapse' : true,
-        /**
-         * @event beforeselect
-         * Fires before a list item is selected. Return false to cancel the selection.
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
-	     * @param {Roo.data.Record} record The data record returned from the underlying store
-	     * @param {Number} index The index of the selected item in the dropdown list
-	     */
-        'beforeselect' : true,
-        /**
-         * @event select
-         * Fires when a list item is selected
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
-	     * @param {Roo.data.Record} record The data record returned from the underlying store (or false on clear)
-	     * @param {Number} index The index of the selected item in the dropdown list
-	     */
-        'select' : true,
-        /**
-         * @event beforequery
-         * Fires before all queries are processed. Return false to cancel the query or set cancel to true.
-         * The event object passed has these properties:
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
-	     * @param {String} query The query
-	     * @param {Boolean} forceAll true to force "all" query
-	     * @param {Boolean} cancel true to cancel the query
-	     * @param {Object} e The query event object
-	     */
-        'beforequery': true,
-         /**
-         * @event add
-         * Fires when the 'add' icon is pressed (add a listener to enable add button)
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
-	     */
-        'add' : true,
-        /**
-         * @event edit
-         * Fires when the 'edit' icon is pressed (add a listener to enable add button)
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
-	     * @param {Roo.data.Record|false} record The data record returned from the underlying store (or false on nothing selected)
-	     */
-        'edit' : true,
-        /**
-         * @event remove
-         * Fires when the remove value from the combobox array
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
-	     */
-        'remove' : true,
-        /**
-         * @event afterremove
-         * Fires when the remove value from the combobox array
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
-	     */
-        'afterremove' : true,
-        /**
-         * @event specialfilter
-         * Fires when specialfilter
-            * @param {Roo.bootstrap.ComboBox} combo This combo box
-            */
-        'specialfilter' : true,
-        /**
-         * @event tick
-         * Fires when tick the element
-            * @param {Roo.bootstrap.ComboBox} combo This combo box
-            */
-        'tick' : true,
-        /**
-         * @event touchviewdisplay
-         * Fires when touch view require special display (default is using displayField)
-            * @param {Roo.bootstrap.ComboBox} combo This combo box
-            * @param {Object} cfg set html .
-            */
-        'touchviewdisplay' : true
         
     });
     
+    //setting global...
     this.item = [];
     this.tickItems = [];
     
@@ -124,222 +36,9 @@ Roo.bootstrap.ComboBox = function(config){
     }
 };
 
-Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
+Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      
-    /**
-     * @cfg {Boolean} lazyRender True to prevent the ComboBox from rendering until requested (should always be used when
-     * rendering into an Roo.Editor, defaults to false)
-     */
-    /**
-     * @cfg {Boolean/Object} autoCreate A DomHelper element spec, or true for a default element spec (defaults to:
-     * {tag: "input", type: "text", size: "24", autocomplete: "off"})
-     */
-    /**
-     * @cfg {Roo.data.Store} store The data store to which this combo is bound (defaults to undefined)
-     */
-    /**
-     * @cfg {String} title If supplied, a header element is created containing this text and added into the top of
-     * the dropdown list (defaults to undefined, with no header element)
-     */
-
-     /**
-     * @cfg {String/Roo.Template} tpl The template to use to render the output
-     */
-     
-     /**
-     * @cfg {Number} listWidth The width in pixels of the dropdown list (defaults to the width of the ComboBox field)
-     */
-    listWidth: undefined,
-    /**
-     * @cfg {String} displayField The underlying data field name to bind to this CombBox (defaults to undefined if
-     * mode = 'remote' or 'text' if mode = 'local')
-     */
-    displayField: undefined,
-    
-    /**
-     * @cfg {String} valueField The underlying data value name to bind to this CombBox (defaults to undefined if
-     * mode = 'remote' or 'value' if mode = 'local'). 
-     * Note: use of a valueField requires the user make a selection
-     * in order for a value to be mapped.
-     */
-    valueField: undefined,
-    /**
-     * @cfg {String} modalTitle The title of the dialog that pops up on mobile views.
-     */
-    modalTitle : '',
-    
-    /**
-     * @cfg {String} hiddenName If specified, a hidden form field with this name is dynamically generated to store the
-     * field's data value (defaults to the underlying DOM element's name)
-     */
-    hiddenName: undefined,
-    /**
-     * @cfg {String} listClass CSS class to apply to the dropdown list element (defaults to '')
-     */
-    listClass: '',
-    /**
-     * @cfg {String} selectedClass CSS class to apply to the selected item in the dropdown list (defaults to 'x-combo-selected')
-     */
-    selectedClass: 'active',
-    
-    /**
-     * @cfg {Boolean/String} shadow True or "sides" for the default effect, "frame" for 4-way shadow, and "drop" for bottom-right
-     */
-    shadow:'sides',
-    /**
-     * @cfg {String} listAlign A valid anchor position value. See {@link Roo.Element#alignTo} for details on supported
-     * anchor positions (defaults to 'tl-bl')
-     */
-    listAlign: 'tl-bl?',
-    /**
-     * @cfg {Number} maxHeight The maximum height in pixels of the dropdown list before scrollbars are shown (defaults to 300)
-     */
-    maxHeight: 300,
-    /**
-     * @cfg {String} triggerAction The action to execute when the trigger field is activated.  Use 'all' to run the
-     * query specified by the allQuery config option (defaults to 'query')
-     */
-    triggerAction: 'query',
-    /**
-     * @cfg {Number} minChars The minimum number of characters the user must type before autocomplete and typeahead activate
-     * (defaults to 4, does not apply if editable = false)
-     */
-    minChars : 4,
-    /**
-     * @cfg {Boolean} typeAhead True to populate and autoselect the remainder of the text being typed after a configurable
-     * delay (typeAheadDelay) if it matches a known value (defaults to false)
-     */
-    typeAhead: false,
-    /**
-     * @cfg {Number} queryDelay The length of time in milliseconds to delay between the start of typing and sending the
-     * query to filter the dropdown list (defaults to 500 if mode = 'remote' or 10 if mode = 'local')
-     */
-    queryDelay: 500,
-    /**
-     * @cfg {Number} pageSize If greater than 0, a paging toolbar is displayed in the footer of the dropdown list and the
-     * filter queries will execute with page start and limit parameters.  Only applies when mode = 'remote' (defaults to 0)
-     */
-    pageSize: 0,
-    /**
-     * @cfg {Boolean} selectOnFocus True to select any existing text in the field immediately on focus.  Only applies
-     * when editable = true (defaults to false)
-     */
-    selectOnFocus:false,
-    /**
-     * @cfg {String} queryParam Name of the query as it will be passed on the querystring (defaults to 'query')
-     */
-    queryParam: 'query',
-    /**
-     * @cfg {String} loadingText The text to display in the dropdown list while data is loading.  Only applies
-     * when mode = 'remote' (defaults to 'Loading...')
-     */
-    loadingText: 'Loading...',
-    /**
-     * @cfg {Boolean} resizable True to add a resize handle to the bottom of the dropdown list (defaults to false)
-     */
-    resizable: false,
-    /**
-     * @cfg {Number} handleHeight The height in pixels of the dropdown list resize handle if resizable = true (defaults to 8)
-     */
-    handleHeight : 8,
-    /**
-     * @cfg {Boolean} editable False to prevent the user from typing text directly into the field, just like a
-     * traditional select (defaults to true)
-     */
-    editable: true,
-    /**
-     * @cfg {String} allQuery The text query to send to the server to return all records for the list with no filtering (defaults to '')
-     */
-    allQuery: '',
-    /**
-     * @cfg {String} mode Set to 'local' if the ComboBox loads local data (defaults to 'remote' which loads from the server)
-     */
-    mode: 'remote',
-    /**
-     * @cfg {Number} minListWidth The minimum width of the dropdown list in pixels (defaults to 70, will be ignored if
-     * listWidth has a higher value)
-     */
-    minListWidth : 70,
-    /**
-     * @cfg {Boolean} forceSelection True to restrict the selected value to one of the values in the list, false to
-     * allow the user to set arbitrary text into the field (defaults to false)
-     */
-    forceSelection:false,
-    /**
-     * @cfg {Number} typeAheadDelay The length of time in milliseconds to wait until the typeahead text is displayed
-     * if typeAhead = true (defaults to 250)
-     */
-    typeAheadDelay : 250,
-    /**
-     * @cfg {String} valueNotFoundText When using a name/value combo, if the value passed to setValue is not found in
-     * the store, valueNotFoundText will be displayed as the field text if defined (defaults to undefined)
-     */
-    valueNotFoundText : undefined,
-    /**
-     * @cfg {Boolean} blockFocus Prevents all focus calls, so it can work with things like HTML edtor bar
-     */
-    blockFocus : false,
-    
-    /**
-     * @cfg {Boolean} disableClear Disable showing of clear button.
-     */
-    disableClear : false,
-    /**
-     * @cfg {Boolean} alwaysQuery  Disable caching of results, and always send query
-     */
-    alwaysQuery : false,
-    
-    /**
-     * @cfg {Boolean} multiple  (true|false) ComboBobArray, default false
-     */
-    multiple : false,
-    
-    /**
-     * @cfg {String} invalidClass The CSS class to use when marking a field invalid (defaults to "x-form-invalid")
-     */
-    invalidClass : "has-warning",
-    
-    /**
-     * @cfg {String} validClass The CSS class to use when marking a field valid (defaults to "x-form-invalid")
-     */
-    validClass : "has-success",
-    
-    /**
-     * @cfg {Boolean} specialFilter (true|false) special filter default false
-     */
-    specialFilter : false,
-    
-    /**
-     * @cfg {Boolean} mobileTouchView (true|false) show mobile touch view when using a mobile default true
-     */
-    mobileTouchView : true,
-    
-    /**
-     * @cfg {Boolean} useNativeIOS (true|false) render it as classic select for ios, not support dynamic load data (default false)
-     */
-    useNativeIOS : false,
-    
-    ios_options : false,
-    
-    //private
-    addicon : false,
-    editicon: false,
-    
-    page: 0,
-    hasQuery: false,
-    append: false,
-    loadNext: false,
-    autoFocus : true,
-    tickable : false,
-    btnPosition : 'right',
-    triggerList : true,
-    showToggleBtn : true,
-    animate : true,
-    emptyResultText: 'Empty',
-    triggerText : 'Select',
-    emptyTitle : '',
-    
-    // element that contains real text value.. (when hidden is used..)
+     //setting properties..
     
     getAutoCreate : function()
     {   
@@ -364,21 +63,21 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         /*
-         *  Normal ComboBox
+         *  Normal PhoneInput
          */
         if(!this.tickable){
-            cfg = Roo.bootstrap.ComboBox.superclass.getAutoCreate.call(this);
+            cfg = Roo.bootstrap.PhoneInput.superclass.getAutoCreate.call(this);
             return cfg;
         }
         
         /*
-         *  ComboBox with tickable selections
+         *  PhoneInput with tickable selections
          */
              
         var align = this.labelAlign || this.parentLabelAlign();
         
         cfg = {
-            cls : 'form-group roo-combobox-tickable' //input-group
+            cls : 'form-group roo-PhoneInput-tickable' //input-group
         };
         
         var btn_text_select = '';
@@ -464,7 +163,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             ]
         };
         
-        var combobox = {
+        var PhoneInput = {
             cls: 'roo-select2-container input-group roo-select2-container-multi',
             cn: [
                 box
@@ -483,7 +182,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 cls: 'glyphicon form-control-feedback'
             };
 
-            combobox.cn.push(feedback);
+            PhoneInput.cn.push(feedback);
         }
         
         
@@ -507,7 +206,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 {
                     cls : "", 
                     cn: [
-                        combobox
+                        PhoneInput
                     ]
                 }
 
@@ -539,7 +238,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     {
                         cls : "",
                         cn: [
-                            combobox
+                            PhoneInput
                         ]
                     }
 
@@ -582,7 +281,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 
                 
         } else if ( this.fieldLabel.length) {
-//                Roo.log(" label");
                  cfg.cn = [
                     {
                         tag : 'i',
@@ -594,7 +292,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         //cls : 'input-group-addon',
                         html : this.fieldLabel
                     },
-                    combobox
+                    PhoneInput
                 ];
                 
                 if(this.indicatorpos == 'right'){
@@ -609,15 +307,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                             cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
                             tooltip : 'This field is required'
                         },
-                        combobox
+                        PhoneInput
                     ];
                     
                 }
 
         } else {
             
-//                Roo.log(" no label && no align");
-                cfg = combobox
+                cfg = PhoneInput
                      
                 
         }
@@ -689,7 +386,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         
-        Roo.bootstrap.ComboBox.superclass.initEvents.call(this);
+        Roo.bootstrap.PhoneInput.superclass.initEvents.call(this);
         
         if(this.hiddenName){
             
@@ -1063,7 +760,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.store.un('load', this.onLoad, this);
             this.store.un('loadexception', this.onLoadException, this);
         }
-        Roo.bootstrap.ComboBox.superclass.onDestroy.call(this);
+        Roo.bootstrap.PhoneInput.superclass.onDestroy.call(this);
     },
 
     // private
@@ -1075,7 +772,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     onResize: function(w, h){
-//        Roo.bootstrap.ComboBox.superclass.onResize.apply(this, arguments);
+//        Roo.bootstrap.PhoneInput.superclass.onResize.apply(this, arguments);
 //        
 //        if(typeof w != 'number'){
 //            // we do not handle it!?!?
@@ -1248,7 +945,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.valueField){
             return typeof this.value != 'undefined' ? this.value : '';
         }else{
-            return Roo.bootstrap.ComboBox.superclass.getValue.call(this);
+            return Roo.bootstrap.PhoneInput.superclass.getValue.call(this);
         }
     },
     
@@ -1318,7 +1015,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.hiddenField){
             this.hiddenField.dom.value = v;
         }
-        Roo.bootstrap.ComboBox.superclass.setValue.call(this, text);
+        Roo.bootstrap.PhoneInput.superclass.setValue.call(this, text);
         this.value = v;
         
         var close = this.closeTriggerEl();
@@ -1369,14 +1066,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.hiddenField.dom.value = vv;
             
             this.lastSelectionText = dv;
-            Roo.bootstrap.ComboBox.superclass.setValue.call(this, dv);
+            Roo.bootstrap.PhoneInput.superclass.setValue.call(this, dv);
             this.value = vv;
             return;
         }
         // no hidden field.. - we store the value in 'value', but still display
         // display field!!!!
         this.lastSelectionText = dv;
-        Roo.bootstrap.ComboBox.superclass.setValue.call(this, dv);
+        Roo.bootstrap.PhoneInput.superclass.setValue.call(this, dv);
         this.value = vv;
         
         
@@ -1459,7 +1156,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             Roo.each(this.tickItems, function(v,k){
                 
                 if(typeof(v) != 'undefined' && v[_this.valueField] == r.data[_this.valueField]){
-                    Roo.log(v);
                     _this.tickItems.splice(k, 1);
                     
                     if(typeof(e) == 'undefined' && view == false){
@@ -2271,8 +1967,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             }
         };
         
-        var combobox = {
-            cls: 'roo-select2-container input-group roo-touchview-combobox ',
+        var PhoneInput = {
+            cls: 'roo-select2-container input-group roo-touchview-PhoneInput ',
             cn: [
                 box
             ]
@@ -2293,14 +1989,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 
             }
             
-            combobox.cn.push({
+            PhoneInput.cn.push({
                 tag :'span',
                 cls : 'input-group-addon btn dropdown-toggle',
                 cn : [
                     caret,
                     {
                         tag: 'span',
-                        cls: 'combobox-clear',
+                        cls: 'PhoneInput-clear',
                         cn  : [
                             {
                                 tag : 'i',
@@ -2314,7 +2010,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         if(this.multiple){
-            combobox.cls += ' roo-select2-container-multi';
+            PhoneInput.cls += ' roo-select2-container-multi';
         }
         
         var align = this.labelAlign || this.parentLabelAlign();
@@ -2336,7 +2032,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 {
                     cls : '', 
                     cn: [
-                        combobox
+                        PhoneInput
                     ]
                 }
             ];
@@ -2362,7 +2058,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     {
                         cls : '', 
                         cn: [
-                            combobox
+                            PhoneInput
                         ]
                     }
                 ];
@@ -2416,7 +2112,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 {
                     cls : '', 
                     cn: [
-                        combobox
+                        PhoneInput
                     ]
                 }
             ];
@@ -2438,13 +2134,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     {
                         cls : '', 
                         cn: [
-                            combobox
+                            PhoneInput
                         ]
                     }
                 ];
             }
         } else {
-            cfg.cn = combobox;    
+            cfg.cn = PhoneInput;    
         }
         
         
@@ -2524,7 +2220,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     renderTouchView : function()
     {
-        this.touchViewEl = Roo.get(document.body).createChild(Roo.bootstrap.ComboBox.touchViewTemplate);
+        this.touchViewEl = Roo.get(document.body).createChild(Roo.bootstrap.PhoneInput.touchViewTemplate);
         this.touchViewEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
         this.touchViewHeaderEl = this.touchViewEl.select('.modal-header', true).first();
@@ -2647,7 +2343,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var rawValue = this.getRawValue();
         
-        var template = (this.multiple) ? Roo.bootstrap.ComboBox.listItemCheckbox : Roo.bootstrap.ComboBox.listItemRadio;
+        var template = (this.multiple) ? Roo.bootstrap.PhoneInput.listItemCheckbox : Roo.bootstrap.PhoneInput.listItemRadio;
         
         this.tickItems = [];
         
@@ -2665,7 +2361,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 };
                 
                 if(this.fireEvent('touchviewdisplay', this, cfg) !== false){
-                    row.select('.roo-combobox-list-group-item-value', true).first().dom.innerHTML = cfg.html;
+                    row.select('.roo-PhoneInput-list-group-item-value', true).first().dom.innerHTML = cfg.html;
                 }
             }
             row.removeClass('selected');
@@ -2673,7 +2369,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     typeof(d.data[this.valueField]) != 'undefined' && d.data[this.valueField] == this.getValue())
             {
                 // radio buttons..
-                row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
+                row.select('.roo-PhoneInput-list-group-item-box > input', true).first().attr('checked', true);
                 row.addClass('selected');
             }
             
@@ -2682,7 +2378,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             {
                 
                 // checkboxes...
-                row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
+                row.select('.roo-PhoneInput-list-group-item-box > input', true).first().attr('checked', true);
                 this.tickItems.push(d.data);
             }
             
@@ -2690,7 +2386,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
         }, this);
         
-        var firstChecked = this.touchViewListGroup.select('.list-group-item > .roo-combobox-list-group-item-box > input:checked', true).first();
+        var firstChecked = this.touchViewListGroup.select('.list-group-item > .roo-PhoneInput-list-group-item-box > input:checked', true).first();
         
         var bodyHeight = Roo.lib.Dom.getViewHeight() - this.touchViewFooterEl.getHeight() + this.touchViewBodyEl.getPadding('tb');
 
@@ -2717,9 +2413,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         this.clearTouchView();
         
-        this.touchViewListGroup.createChild(Roo.bootstrap.ComboBox.emptyResult);
+        this.touchViewListGroup.createChild(Roo.bootstrap.PhoneInput.emptyResult);
         
-        this.touchViewListGroup.select('.roo-combobox-touch-view-empty-result', true).first().dom.innerHTML = this.emptyResultText;
+        this.touchViewListGroup.select('.roo-PhoneInput-touch-view-empty-result', true).first().dom.innerHTML = this.emptyResultText;
         
     },
     
@@ -2740,11 +2436,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.fireEvent('beforeselect', this, r, rowIndex) !== false){
             
             if(!this.multiple){
-                Roo.each(this.touchViewListGroup.select('.list-group-item > .roo-combobox-list-group-item-box > input:checked', true).elements, function(c){
+                Roo.each(this.touchViewListGroup.select('.list-group-item > .roo-PhoneInput-list-group-item-box > input:checked', true).elements, function(c){
                     c.dom.removeAttribute('checked');
                 }, this);
 
-                row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
+                row.select('.roo-PhoneInput-list-group-item-box > input', true).first().attr('checked', true);
 
                 this.setFromData(r.data);
 
@@ -2762,12 +2458,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             }
 
             if(this.valueField && typeof(r.data[this.valueField]) != 'undefined' && this.getValue().indexOf(r.data[this.valueField]) != -1){
-                row.select('.roo-combobox-list-group-item-box > input', true).first().dom.removeAttribute('checked');
+                row.select('.roo-PhoneInput-list-group-item-box > input', true).first().dom.removeAttribute('checked');
                 this.tickItems.splice(this.tickItems.indexOf(r.data), 1);
                 return;
             }
 
-            row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
+            row.select('.roo-PhoneInput-list-group-item-box > input', true).first().attr('checked', true);
             this.addItem(r.data);
             this.tickItems.push(r.data);
         }
@@ -2779,17 +2475,17 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             cls: 'form-group' //input-group,
         };
         
-        var combobox =  {
+        var PhoneInput =  {
             tag: 'select',
             cls : 'roo-ios-select'
         };
         
         if (this.name) {
-            combobox.name = this.name;
+            PhoneInput.name = this.name;
         }
         
         if (this.disabled) {
-            combobox.disabled = true;
+            PhoneInput.disabled = true;
         }
         
         var settings = this;
@@ -2800,7 +2496,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             }
         });
         
-        cfg.cn = combobox;
+        cfg.cn = PhoneInput;
         
         return cfg;
         
@@ -2927,7 +2623,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
 });
 
-Roo.apply(Roo.bootstrap.ComboBox,  {
+Roo.apply(Roo.bootstrap.PhoneInput,  {
     
     header : {
         tag: 'div',
@@ -2957,11 +2653,11 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
         cn: [
             {
                 tag: 'span',
-                cls: 'roo-combobox-list-group-item-value'
+                cls: 'roo-PhoneInput-list-group-item-value'
             },
             {
                 tag: 'div',
-                cls: 'roo-combobox-list-group-item-box pull-xs-right radio-inline radio radio-info',
+                cls: 'roo-PhoneInput-list-group-item-box pull-xs-right radio-inline radio radio-info',
                 cn: [
                     {
                         tag: 'input',
@@ -2981,11 +2677,11 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
         cn: [
             {
                 tag: 'span',
-                cls: 'roo-combobox-list-group-item-value'
+                cls: 'roo-PhoneInput-list-group-item-value'
             },
             {
                 tag: 'div',
-                cls: 'roo-combobox-list-group-item-box pull-xs-right checkbox-inline checkbox checkbox-info',
+                cls: 'roo-PhoneInput-list-group-item-box pull-xs-right checkbox-inline checkbox checkbox-info',
                 cn: [
                     {
                         tag: 'input',
@@ -3001,7 +2697,7 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
     
     emptyResult : {
         tag: 'div',
-        cls: 'alert alert-danger roo-combobox-touch-view-empty-result'
+        cls: 'alert alert-danger roo-PhoneInput-touch-view-empty-result'
     },
     
     footer : {
@@ -3034,31 +2730,5 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
             }
         ]
         
-    }
-});
-
-Roo.apply(Roo.bootstrap.ComboBox,  {
-    
-    touchViewTemplate : {
-        tag: 'div',
-        cls: 'modal fade roo-combobox-touch-view',
-        cn: [
-            {
-                tag: 'div',
-                cls: 'modal-dialog',
-                style : 'position:fixed', // we have to fix position....
-                cn: [
-                    {
-                        tag: 'div',
-                        cls: 'modal-content',
-                        cn: [
-                            Roo.bootstrap.ComboBox.header,
-                            Roo.bootstrap.ComboBox.body,
-                            Roo.bootstrap.ComboBox.footer
-                        ]
-                    }
-                ]
-            }
-        ]
     }
 });
