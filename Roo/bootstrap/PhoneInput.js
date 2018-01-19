@@ -82,43 +82,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             cls : 'form-group'
         };
         
-        var buttons = {
-            tag : 'div',
-            cls : 'tickable-buttons',
-            cn : [
-                {
-                    tag : 'button',
-                    type : 'button',
-                    cls : 'btn btn-link btn-edit pull-' + this.btnPosition,
-                    //html : this.triggerText
-                    html: btn_text_select
-                },
-                {
-                    tag : 'button',
-                    type : 'button',
-                    name : 'ok',
-                    cls : 'btn btn-link btn-ok pull-' + this.btnPosition,
-                    //html : 'Done'
-                    html: btn_text_done
-                },
-                {
-                    tag : 'button',
-                    type : 'button',
-                    name : 'cancel',
-                    cls : 'btn btn-link btn-cancel pull-' + this.btnPosition,
-                    //html : 'Cancel'
-                    html: btn_text_cancel
-                }
-            ]
-        };
-        
-        if(this.editable){
-            buttons.cn.unshift({
-                tag: 'input',
-                cls: 'roo-select2-search-field-input'
-            });
-        }
-        
         var _this = this;
         
         Roo.each(buttons.cn, function(c){
