@@ -37836,38 +37836,40 @@ Roo.extend(Roo.bootstrap.panel.TabItem, Roo.util.Observable,
 */
 
 Roo.bootstrap.PhoneInput = function(config){
+    
     Roo.bootstrap.PhoneInput.superclass.constructor.call(this, config);
+    
     this.addEvents({
-        
+        'touchviewdisplay' : true
     });
     
-    //setting global...
-    this.item = [];
-    this.tickItems = [];
-    
-    this.selectedIndex = -1;
-    if(this.mode == 'local'){
-        if(config.queryDelay === undefined){
-            this.queryDelay = 10;
-        }
-        if(config.minChars === undefined){
-            this.minChars = 0;
-        }
-    }
+    this.item = []; //fetch country JSON
 };
 
 Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      
      //setting properties..
-    
+     preferedCountries: undefined, //array
+     
+     filterCountries: undefined, //array
+     
+     displayMode: undefined, //string
+     
+     listWidth: undefined, //number
+     
+     validClass : "has-success",
+     
+     invalidClass: "has-warning",
+     
+     
     getAutoCreate : function()
-    {   
+    {  
         var cfg = false;
+        
         //render
         /*
          * Render classic select for iso
          */
-        
         if(Roo.isIOS && this.useNativeIOS){
             cfg = this.getAutoCreateNativeIOS();
             return cfg;
@@ -37876,278 +37878,29 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         /*
          * Touch Devices
          */
-        
         if(Roo.isTouch && this.mobileTouchView){
             cfg = this.getAutoCreateTouchView();
             return cfg;;
         }
         
-        /*
-         *  Normal PhoneInput
-         */
-        if(!this.tickable){
-            cfg = Roo.bootstrap.PhoneInput.superclass.getAutoCreate.call(this);
-            return cfg;
-        }
-        
-        /*
-         *  PhoneInput with tickable selections
-         */
-             
         var align = this.labelAlign || this.parentLabelAlign();
         
         cfg = {
-            cls : 'form-group roo-PhoneInput-tickable' //input-group
+            cls : 'form-group'
         };
-        
-        var btn_text_select = '';
-        var btn_text_done = '';
-        var btn_text_cancel = '';
-        
-        if (this.btn_text_show) {
-            btn_text_select = 'Select';
-            btn_text_done = 'Done';
-            btn_text_cancel = 'Cancel'; 
-        }
-        
-        var buttons = {
-            tag : 'div',
-            cls : 'tickable-buttons',
-            cn : [
-                {
-                    tag : 'button',
-                    type : 'button',
-                    cls : 'btn btn-link btn-edit pull-' + this.btnPosition,
-                    //html : this.triggerText
-                    html: btn_text_select
-                },
-                {
-                    tag : 'button',
-                    type : 'button',
-                    name : 'ok',
-                    cls : 'btn btn-link btn-ok pull-' + this.btnPosition,
-                    //html : 'Done'
-                    html: btn_text_done
-                },
-                {
-                    tag : 'button',
-                    type : 'button',
-                    name : 'cancel',
-                    cls : 'btn btn-link btn-cancel pull-' + this.btnPosition,
-                    //html : 'Cancel'
-                    html: btn_text_cancel
-                }
-            ]
-        };
-        
-        if(this.editable){
-            buttons.cn.unshift({
-                tag: 'input',
-                cls: 'roo-select2-search-field-input'
-            });
-        }
         
         var _this = this;
         
-        Roo.each(buttons.cn, function(c){
-            if (_this.size) {
-                c.cls += ' btn-' + _this.size;
-            }
-
-            if (_this.disabled) {
-                c.disabled = true;
-            }
-        });
-        
-        var box = {
-            tag: 'div',
-            cn: [
-                {
-                    tag: 'input',
-                    type : 'hidden',
-                    cls: 'form-hidden-field'
-                },
-                {
-                    tag: 'ul',
-                    cls: 'roo-select2-choices',
-                    cn:[
-                        {
-                            tag: 'li',
-                            cls: 'roo-select2-search-field',
-                            cn: [
-                                buttons
-                            ]
-                        }
-                    ]
-                }
-            ]
+        var input =  {
+            tag: 'input',
+            id : id,
+            type : this.inputType,
+            cls : 'form-control',
+            autocomplete: 'new-password',
+            placeholder : this.placeholder || '' 
         };
-        
-        var PhoneInput = {
-            cls: 'roo-select2-container input-group roo-select2-container-multi',
-            cn: [
-                box
-//                {
-//                    tag: 'ul',
-//                    cls: 'typeahead typeahead-long dropdown-menu',
-//                    style: 'display:none; max-height:' + this.maxHeight + 'px;'
-//                }
-            ]
-        };
-        
-        if(this.hasFeedback && !this.allowBlank){
-            
-            var feedback = {
-                tag: 'span',
-                cls: 'glyphicon form-control-feedback'
-            };
-
-            PhoneInput.cn.push(feedback);
-        }
-        
-        
-        if (align ==='left' && this.fieldLabel.length) {
-            
-            cfg.cls += ' roo-form-group-label-left';
-            
-            cfg.cn = [
-                {
-                    tag : 'i',
-                    cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
-                    tooltip : 'This field is required'
-                },
-                {
-                    tag: 'label',
-                    'for' :  id,
-                    cls : 'control-label',
-                    html : this.fieldLabel
-
-                },
-                {
-                    cls : "", 
-                    cn: [
-                        PhoneInput
-                    ]
-                }
-
-            ];
-            
-            var labelCfg = cfg.cn[1];
-            var contentCfg = cfg.cn[2];
-            
-
-            if(this.indicatorpos == 'right'){
-                
-                cfg.cn = [
-                    {
-                        tag: 'label',
-                        'for' :  id,
-                        cls : 'control-label',
-                        cn : [
-                            {
-                                tag : 'span',
-                                html : this.fieldLabel
-                            },
-                            {
-                                tag : 'i',
-                                cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
-                                tooltip : 'This field is required'
-                            }
-                        ]
-                    },
-                    {
-                        cls : "",
-                        cn: [
-                            PhoneInput
-                        ]
-                    }
-
-                ];
-                
-                
-                
-                labelCfg = cfg.cn[0];
-                contentCfg = cfg.cn[1];
-            
-            }
-            
-            if(this.labelWidth > 12){
-                labelCfg.style = "width: " + this.labelWidth + 'px';
-            }
-            
-            if(this.labelWidth < 13 && this.labelmd == 0){
-                this.labelmd = this.labelWidth;
-            }
-            
-            if(this.labellg > 0){
-                labelCfg.cls += ' col-lg-' + this.labellg;
-                contentCfg.cls += ' col-lg-' + (12 - this.labellg);
-            }
-            
-            if(this.labelmd > 0){
-                labelCfg.cls += ' col-md-' + this.labelmd;
-                contentCfg.cls += ' col-md-' + (12 - this.labelmd);
-            }
-            
-            if(this.labelsm > 0){
-                labelCfg.cls += ' col-sm-' + this.labelsm;
-                contentCfg.cls += ' col-sm-' + (12 - this.labelsm);
-            }
-            
-            if(this.labelxs > 0){
-                labelCfg.cls += ' col-xs-' + this.labelxs;
-                contentCfg.cls += ' col-xs-' + (12 - this.labelxs);
-            }
-                
-                
-        } else if ( this.fieldLabel.length) {
-                 cfg.cn = [
-                    {
-                        tag : 'i',
-                        cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
-                        tooltip : 'This field is required'
-                    },
-                    {
-                        tag: 'label',
-                        //cls : 'input-group-addon',
-                        html : this.fieldLabel
-                    },
-                    PhoneInput
-                ];
-                
-                if(this.indicatorpos == 'right'){
-                    cfg.cn = [
-                        {
-                            tag: 'label',
-                            //cls : 'input-group-addon',
-                            html : this.fieldLabel
-                        },
-                        {
-                            tag : 'i',
-                            cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
-                            tooltip : 'This field is required'
-                        },
-                        PhoneInput
-                    ];
-                    
-                }
-
-        } else {
-            
-                cfg = PhoneInput
-                     
-                
-        }
-         
-        var settings=this;
-        ['xs','sm','md','lg'].map(function(size){
-            if (settings[size]) {
-                cfg.cls += ' col-' + size + '-' + settings[size];
-            }
-        });
         
         return cfg;
-        
     },
     
     _initEventsCalled : false,
