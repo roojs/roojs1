@@ -55,8 +55,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         var test = Roo.bootstrap.PhoneInput.List;
         
-        test.slice(index, 1)
-        test.unshift(us)
+        // test.slice(index, 1)
+        // test.unshift(us)
         
          var align = this.labelAlign || this.parentLabelAlign();
          
