@@ -78,7 +78,10 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             cls : 'form-control',
             autocomplete: 'new-password',
             placeholder : this.placeholder || '' 
+            
         };
+        Roo.log('testinggg');
+        Roo.log(cfg);
         
         return cfg;
     },
