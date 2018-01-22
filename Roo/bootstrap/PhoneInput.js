@@ -113,6 +113,13 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              ]
          };
          
+         var combobox = {
+             cls: 'roo-select2-container input-group',
+             cn: [
+                 box
+             ]
+         };
+         
          var flag = {
              tag: 'div',
              cls: 'roo-selected-region',
@@ -131,16 +138,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              };
          }
          
-         var combobox = {
-             cls: 'roo-select2-container input-group',
-             cn: [
-                 box
-             ]
-         };
-         
-         
-         
-         combobox.cn.unshift({
+         combobox.cn.push({
              tag :'span',
              cls : 'input-group-addon btn dropdown-toggle',
              cn : [
