@@ -114,8 +114,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          };
          
          var flag = {
-             tag: 'div',
-             html: 'testing',
+             tag: 'span',
+             html: 'flag',
              cls: 'roo-selected-region',
              cn: [] //flag position ... (iti-flag-us)
          };
