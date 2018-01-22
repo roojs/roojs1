@@ -312,9 +312,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      adjustSize : Roo.BoxComponent.prototype.adjustSize,
 
      // private
-     getResizeEl : function(){
-         return this.inputEl();
-     },
 
      // private
      getPositionEl : function(){
