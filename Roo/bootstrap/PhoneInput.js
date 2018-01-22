@@ -96,7 +96,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                      feedback
                  ] 
              };
-
          } else {
              if(this.removable && !this.editable && !this.tickable){
                  inputblock = {
