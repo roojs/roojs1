@@ -34,6 +34,13 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      
      modalTitle : '', //string
      
+     selectedClass: 'active',
+     
+     maxHeight: 300,
+     
+     minListWidth : 70,
+     
+     
      preferedCountries: undefined, //array
      
      filterCountries: undefined, //array
