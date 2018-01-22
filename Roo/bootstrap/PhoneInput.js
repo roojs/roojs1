@@ -147,7 +147,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                       tag: 'i',
                       cls: 'fa fa-' + this.caret
                  };
-                 
              }
              
              combobox.cn.push({
