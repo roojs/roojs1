@@ -38116,7 +38116,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          });
          
          return cfg;
-     }
+     },
  });
  
  Roo.apply(Roo.bootstrap.PhoneInput, {
