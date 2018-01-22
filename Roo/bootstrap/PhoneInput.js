@@ -89,28 +89,13 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                  cls: 'glyphicon form-control-feedback'
              };
              
-             if(this.removable && !this.editable && !this.tickable){
-                 inputblock = {
-                     cls : 'has-feedback',
-                     cn :  [
-                         inputblock,
-                         {
-                             tag: 'button',
-                             html : 'x',
-                             cls : 'roo-combo-removable-btn close'
-                         },
-                         feedback
-                     ] 
-                 };
-             } else {
-                 inputblock = {
-                     cls : 'has-feedback',
-                     cn :  [
-                         inputblock,
-                         feedback
-                     ] 
-                 };
-             }
+             inputblock = {
+                 cls : 'has-feedback',
+                 cn :  [
+                     inputblock,
+                     feedback
+                 ] 
+             };
 
          } else {
              if(this.removable && !this.editable && !this.tickable){
