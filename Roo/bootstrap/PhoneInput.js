@@ -102,7 +102,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              inputblock.cn.push(feedback);
          }
          
-         
          //?????reason
          var box = {
              tag: 'div',
@@ -156,10 +155,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                  }
              ]
          })
-         
-         if(this.multiple){
-             combobox.cls += ' roo-select2-container-multi';
-         }
          
          if (align ==='left' && this.fieldLabel.length) {
              
