@@ -66,7 +66,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              id : id,
              type : this.inputType,
              cls : 'form-control',
-             placeholder : this.placeholder || '' //temp change
+             placeholder : this.placeholder || '' //marker
          };
          
          if (this.name) {
@@ -86,7 +86,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              var feedback = {
                  tag: 'span',
                  cls: 'glyphicon form-control-feedback',
-                 style: 'right: 0px'  //temp change
+                 style: 'right: 0px'  //marker
              };
          }
          
