@@ -83,8 +83,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          
          var inputblock = input;
          
+         Roo.log('hasFeedback');
+         
          if(this.hasFeedback && !this.allowBlank){
-             Roo.log('need feedback');
              var feedback = {
                  tag: 'span',
                  cls: 'glyphicon form-control-feedback'
