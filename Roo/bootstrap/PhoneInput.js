@@ -181,7 +181,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                          combobox
                      ]
                  }
-
              ];
              
              var labelCfg = cfg.cn[1];
