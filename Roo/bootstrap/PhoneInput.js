@@ -80,8 +80,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              input.disabled=true;
          }
          
-         var inputblock = input;
-         
          if(this.hasFeedback && !this.allowBlank){
              var feedback = {
                  tag: 'span',
