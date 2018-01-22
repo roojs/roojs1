@@ -61,7 +61,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              cls: 'form-group' //input-group
          };
          
-         
          var input =  {
              tag: 'input',
              id : id,
