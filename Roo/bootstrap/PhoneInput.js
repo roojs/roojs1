@@ -96,20 +96,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                      feedback
                  ] 
              };
-         } else {
-             if(this.removable && !this.editable && !this.tickable){
-                 inputblock = {
-                     cls : 'roo-removable',
-                     cn :  [
-                         inputblock,
-                         {
-                             tag: 'button',
-                             html : 'x',
-                             cls : 'roo-combo-removable-btn close'
-                         }
-                     ] 
-                 };
-             }
          }
          
          if (this.before || this.after) {
