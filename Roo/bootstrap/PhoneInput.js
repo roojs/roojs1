@@ -125,33 +125,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              ]
          };
          
-         if(this.multiple){
-             box = {
-                 tag: 'div',
-                 cn: [
-                     {
-                         tag: 'input',
-                         type : 'hidden',
-                         cls: 'form-hidden-field'
-                     },
-                     {
-                         tag: 'ul',
-                         cls: 'roo-select2-choices',
-                         cn:[
-                             {
-                                 tag: 'li',
-                                 cls: 'roo-select2-search-field',
-                                 cn: [
-
-                                     inputblock
-                                 ]
-                             }
-                         ]
-                     }
-                 ]
-             }
-         };
-         
          var combobox = {
              cls: 'roo-select2-container input-group',
              cn: [
