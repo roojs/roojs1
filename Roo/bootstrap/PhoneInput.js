@@ -91,7 +91,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          }
          
          inputblock = {
-             cls : 'input-group',
              cn :  [] 
          };
          
@@ -279,14 +278,10 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                                tooltip : 'This field is required'
                             }
                         ]
-
                      },
                      combobox
-
                  ];
-
              }
-
          } else {
                  cfg = combobox
          }
