@@ -99,12 +99,18 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              };
          }
          
+         Roo.log('hereeeeeeeee');
+         Roo.log(inputblock);
+         
          this.before = 'flag';
          
          inputblock = {
              cls : 'input-group',
              cn :  [] 
          };
+         
+         Roo.log(inputblock);
+         
          
          inputblock.cn.push({
              tag :'span',
@@ -129,7 +135,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                  },
                  inputblock
              ]
-             
          };
          
          if(this.multiple){
