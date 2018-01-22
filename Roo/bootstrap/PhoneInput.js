@@ -90,7 +90,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              };
          }
          
-         this.before = 'flag';
+         this.before = 'flag'; //marker
          
          inputblock = {
              cls : 'input-group',
