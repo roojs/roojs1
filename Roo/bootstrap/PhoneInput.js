@@ -30,9 +30,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      
      //setting properties...
      //from combobox...
-     listWidth: undefined, //number
+     listWidth: undefined,
      
-     modalTitle : '', //string
+     modalTitle : '', 
      
      selectedClass: 'active',
      
@@ -40,18 +40,16 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      
      minListWidth : 70,
      
+     validClass : "has-success",
+     
+     invalidClass: "has-warning",
+     
      //new settings
      preferedCountries: undefined, //array
      
      filterCountries: undefined, //array
      
      displayMode: undefined, //string
-     
-     
-     validClass : "has-success",
-     
-     invalidClass: "has-warning",
-     
      
     getAutoCreate : function()
     {  
