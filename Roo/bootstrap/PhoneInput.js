@@ -298,8 +298,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          return cfg;
      },
      
-     
-     
      // private
      onResize : function(w, h){
  //        Roo.bootstrap.TriggerField.superclass.onResize.apply(this, arguments);
