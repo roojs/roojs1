@@ -97,7 +97,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          inputblock.cn.push(input);
          
          if(this.hasFeedback && !this.allowBlank){
-             inputblock.cls += ' has-feedback';
+             inputblock.cls += 'has-feedback';
              inputblock.cn.push(feedback);
          }
          
