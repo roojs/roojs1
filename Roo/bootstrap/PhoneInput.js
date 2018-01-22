@@ -83,7 +83,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          
          var inputblock = input;
          
-         Roo.log('hasFeedback');
+         Roo.log('hasFeedback: '+this.hasFeedback);
          
          if(this.hasFeedback && !this.allowBlank){
              var feedback = {
