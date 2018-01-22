@@ -506,7 +506,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
  Roo.apply(Roo.bootstrap.PhoneInput, {
      
      /**
-      * Button config that displays OK and Cancel buttons
+      * iso2 and abbr for all countries
       * @type Array
       */
      allCountries : [
