@@ -125,13 +125,18 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
  //                }
              ]
          };
+         
          var flag = {
-             
+             tag: 'div',
+             cls: 'roo-selected-flag'
+             cn:[] //flag position ... (iti-flag-us)
          }
+         
          var caret = {
              tag: 'span',
              cls: 'caret'
           };
+          
          if (this.caret != false) {
              caret = {
                   tag: 'i',
