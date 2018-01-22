@@ -748,5 +748,5 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          ["Zambia", "zm", "260"],
          ["Zimbabwe", "zw", "263"],
          ["Åland Islands", "ax", "358", 1]
-     ];
+     ]
  })
