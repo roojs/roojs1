@@ -56,8 +56,10 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         var list = Roo.bootstrap.PhoneInput.List;
         // test.slice(index, 1)
         // test.unshift(us)
-        Roo.log('hereeeee');
-        Roo.log(this.preferedCountries);
+        
+        if (this.preferedCountries) {
+            
+        }
 
 
         
