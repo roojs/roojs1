@@ -102,6 +102,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          Roo.log(this.before);
          Roo.log(this.after);
          
+         this.before = true;
+         
          if (this.before || this.after) {
              
              inputblock = {
