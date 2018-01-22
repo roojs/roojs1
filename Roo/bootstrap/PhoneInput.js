@@ -125,10 +125,12 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
  //                }
              ]
          };
-         
+         var flag = {
+             
+         }
          var caret = {
-                     tag: 'span',
-                     cls: 'caret'
+             tag: 'span',
+             cls: 'caret'
           };
          if (this.caret != false) {
              caret = {
