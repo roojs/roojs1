@@ -106,9 +106,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              cn :  [] 
          };
          
-         Roo.log(inputblock);
-         
-         
          inputblock.cn.push({
              tag :'span',
              cls : 'input-group-addon',
