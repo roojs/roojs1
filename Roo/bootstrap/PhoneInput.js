@@ -81,8 +81,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             
         };
         
-        Roo.log(cfg);
-        
         return cfg;
     },
     
