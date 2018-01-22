@@ -89,7 +89,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             placeholder : this.placeholder || '' 
         };
         
-    _initEventsCalled : false,
+        _initEventsCalled : false,
+    }
     
     // private
     initEvents: function()
