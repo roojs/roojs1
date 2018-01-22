@@ -147,7 +147,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              };
          }
          
-         combobox.cn.push({
+         combobox.cn.unshift({
              tag :'span',
              cls : 'input-group-addon btn dropdown-toggle',
              cn : [
