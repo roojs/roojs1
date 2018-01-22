@@ -80,6 +80,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              input.disabled=true;
          }
          
+         var inputblock = input;
+         
          if(this.hasFeedback && !this.allowBlank){
              var feedback = {
                  tag: 'span',
@@ -88,10 +90,18 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              };
          }
          
+         this.before = 'flag'; //marker
+         
          inputblock = {
              cls : 'input-group',
              cn :  [] 
          };
+         
+         inputblock.cn.push({
+             tag :'span',
+             cls : 'input-group-addon',
+             html : this.before
+         });
          
          inputblock.cn.push(input);
          
@@ -100,12 +110,14 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              inputblock.cn.push(feedback);
          }
          
+         
+         //?????reason
          var box = {
              tag: 'div',
              cn: [
                  {
                      tag: 'input',
-                     type : 'hidden', //y
+                     type : 'hidden',
                      cls: 'form-hidden-field'
                  },
                  inputblock
@@ -128,7 +140,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                      tag: 'span',
                      cls: 'caret'
           };
-          
          if (this.caret != false) {
              caret = {
                   tag: 'i',
