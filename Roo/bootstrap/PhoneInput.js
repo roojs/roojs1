@@ -53,13 +53,12 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      
      getAutoCreate : function(){
         
-        var list[];
+        var list;
         
         for (var i = 0; i < Roo.bootstrap.PhoneInput.List.length; i++) {
             
         }
         
-        var list = ;
         // test.slice(index, 1)
         // test.unshift(us)
         
