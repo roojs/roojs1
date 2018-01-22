@@ -66,7 +66,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              id : id,
              type : this.inputType,
              cls : 'form-control',
-             placeholder : this.placeholder || '' 
+             placeholder : this.placeholder || '' //temp change
          };
          
          if (this.name) {
