@@ -23,7 +23,7 @@ Roo.bootstrap.PhoneInput = function(config){
         'touchviewdisplay' : true
     });
     
-    this.item = []; //fetch country JSON
+    this.country = []; //fetch country JSON
 };
 
 Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
