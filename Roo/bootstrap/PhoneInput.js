@@ -99,10 +99,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              };
          }
          
-         Roo.log('hereeeeeeeeeee');
-         Roo.log(this.before);
-         Roo.log(this.after);
-         
          this.before = 'flag';
          
          if (this.before || this.after) {
