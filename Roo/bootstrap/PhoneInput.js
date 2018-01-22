@@ -156,6 +156,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              ]
          });
          
+         combobox.cn.push(box);
+         
          if (align ==='left' && this.fieldLabel.length) {
              
              cfg.cls += ' roo-form-group-label-left';
