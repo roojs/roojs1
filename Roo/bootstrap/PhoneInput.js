@@ -122,7 +122,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          
          var flag = {
              tag: 'div',
-             cls: 'flag'
              cn:[] //flag position ... (iti-flag-us)
          }
          
@@ -154,7 +153,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                      ]
                  }
              ]
-         })
+         });
          
          if (align ==='left' && this.fieldLabel.length) {
              
