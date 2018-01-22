@@ -136,38 +136,34 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              ]
          };
          
-         if(!this.multiple && this.showToggleBtn){
-             
-             var caret = {
-                         tag: 'span',
-                         cls: 'caret'
-              };
-             if (this.caret != false) {
-                 caret = {
-                      tag: 'i',
-                      cls: 'fa fa-' + this.caret
-                 };
-             }
-             
-             combobox.cn.push({
-                 tag :'span',
-                 cls : 'input-group-addon btn dropdown-toggle',
-                 cn : [
-                     caret,
-                     {
-                         tag: 'span',
-                         cls: 'combobox-clear',
-                         cn  : [
-                             {
-                                 tag : 'i',
-                                 cls: 'icon-remove'
-                             }
-                         ]
-                     }
-                 ]
-
-             })
+         var caret = {
+                     tag: 'span',
+                     cls: 'caret'
+          };
+         if (this.caret != false) {
+             caret = {
+                  tag: 'i',
+                  cls: 'fa fa-' + this.caret
+             };
          }
+         
+         combobox.cn.push({
+             tag :'span',
+             cls : 'input-group-addon btn dropdown-toggle',
+             cn : [
+                 caret,
+                 {
+                     tag: 'span',
+                     cls: 'combobox-clear',
+                     cn  : [
+                         {
+                             tag : 'i',
+                             cls: 'icon-remove'
+                         }
+                     ]
+                 }
+             ]
+         })
          
          if(this.multiple){
              combobox.cls += ' roo-select2-container-multi';
