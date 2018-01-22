@@ -30,6 +30,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      
      //setting properties...
      //from combobox...
+     listWidth: undefined, //number
+     
+     modalTitle : '', //string
      
      preferedCountries: undefined, //array
      
@@ -37,7 +40,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      
      displayMode: undefined, //string
      
-     listWidth: undefined, //number
      
      validClass : "has-success",
      
