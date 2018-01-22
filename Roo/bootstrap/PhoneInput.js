@@ -288,11 +288,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              }
 
          } else {
-             
- //                Roo.log(" no label && no align");
                  cfg = combobox
-                      
-                 
          }
          
          var settings=this;
@@ -303,7 +299,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          });
          
          return cfg;
-         
      },
      
      
