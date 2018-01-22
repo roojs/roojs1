@@ -40,7 +40,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      
      minListWidth : 70,
      
-     
+     //new settings
      preferedCountries: undefined, //array
      
      filterCountries: undefined, //array
