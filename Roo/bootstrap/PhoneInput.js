@@ -105,7 +105,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              cn: [
                  {
                      tag: 'input',
-                     type : 'hidden',
+                     type : 'hidden', //y
                      cls: 'form-hidden-field'
                  },
                  inputblock
@@ -128,6 +128,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                      tag: 'span',
                      cls: 'caret'
           };
+          
          if (this.caret != false) {
              caret = {
                   tag: 'i',
