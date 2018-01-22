@@ -101,7 +101,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              inputblock.cn.push(feedback);
          }
          
-         //?????reason
          var box = {
              tag: 'div',
              cn: [
@@ -118,11 +117,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              cls: 'roo-select2-container input-group',
              cn: [
                  box
- //                {
- //                    tag: 'ul',
- //                    cls: 'typeahead typeahead-long dropdown-menu',
- //                    style: 'display:none'
- //                }
              ]
          };
          
