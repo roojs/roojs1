@@ -504,6 +504,11 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
  });
  
  Roo.apply(Roo.bootstrap.PhoneInput, {
+     
+     /**
+      * Button config that displays OK and Cancel buttons
+      * @type Array
+      */
      allCountries : [
          ["Afghanistan (‫افغانستان‬‎)", "af", "93"],
          ["Albania (Shqipëri)", "al", "355"],
