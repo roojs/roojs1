@@ -123,7 +123,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          var flag = {
              tag: 'div',
              cls: 'flag',
-             cn:[] //flag position ... (iti-flag-us)
+             cn: [] //flag position ... (iti-flag-us)
          };
          
          var caret = {
