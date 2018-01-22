@@ -140,6 +140,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              tag :'span',
              cls : 'input-group-addon btn dropdown-toggle',
              cn : [
+                 flag,
                  caret,
                  {
                      tag: 'span',
