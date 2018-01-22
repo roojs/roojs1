@@ -55,6 +55,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         var test = Roo.bootstrap.PhoneInput.List;
         
+        Roo.log('testinggggggggg:');
+        Roo.log(test)
+        
         // test.slice(index, 1)
         // test.unshift(us)
         
