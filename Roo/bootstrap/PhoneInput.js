@@ -489,7 +489,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      },
 
      // private
-     
      onHide : function(){
          var ae = this.getActionEl();
          ae.dom.style.display = 'none';
