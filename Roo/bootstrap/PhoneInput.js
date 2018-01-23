@@ -67,7 +67,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             };
             
             if (countries[i][3]) {
-                Roo.log(countries[i][0]+' has order '+countries[i][3]+' | dial code: '+countries[i][2]);
+                Roo.log(countries[i][0]+' |  order: '+countries[i][3]+' | dial code: '+countries[i][2]);
             }
         }
         
