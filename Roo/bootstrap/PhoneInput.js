@@ -69,7 +69,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             //     Roo.log(countries[i][0]+' |  order: '+countries[i][3]+' | dial code: '+countries[i][2] + ' | area_code: '+countries[i][4]);
             // }
         }
-        
+        Roo.log('testgingggggggggggggg';)
         Roo.log(list[0]);
         
         
