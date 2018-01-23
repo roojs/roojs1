@@ -69,9 +69,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                 }
             };
             
-            list.push(
-                 content
-            );
+            list.push(content);
         }
         
         Roo.log('testinggggggggg');
