@@ -61,7 +61,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             list[countries[i][1]] = {
                 name : countries[i][0],
                 iso : countries[i][1],
-                dial : countries[i][2],
+                dial_code : countries[i][2],
                 order: countries[i][3] ? countries[i][3] : '',
                 area_code: countries[i][4] ? countries[i][4] : ''
             };
