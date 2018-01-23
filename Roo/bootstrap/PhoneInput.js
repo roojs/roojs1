@@ -111,7 +111,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              var feedback = {
                  tag: 'span',
                  cls: 'glyphicon form-control-feedback',
-                 style: 'right: 0px'
              };
          }
          
