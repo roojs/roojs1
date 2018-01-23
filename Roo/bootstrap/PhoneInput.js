@@ -165,15 +165,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          combobox.cn.push({
              tag :'span',
              cls : 'input-group-addon btn dropdown-toggle',
-             style :'
-                 position: absolute;
-                 z-index: 4;
-                 background: none;
-                 border: none;
-                 margin-top: 4px;
-                 margin-left: 3px;
-                 margin-right: 3px;
-             ',
+             style : 'position: absolute; z-index: 4;background: none;border: none; margin-top: 4px; margin-left: 3px; margin-right: 3px;',
              cn : [
                  flag,
                  caret,
