@@ -55,7 +55,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         var countries = Roo.bootstrap.PhoneInput.List;
         
-        var list;
+        var list = [];
         
         for (var i = 0; i < countries.length; i++) {
             
