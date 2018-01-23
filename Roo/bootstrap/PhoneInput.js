@@ -80,7 +80,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
          var align = this.labelAlign || this.parentLabelAlign();
          
-         var id = Roo.id();
+         var id = Roo.id(); //all el??
          
          var cfg = {
              cls: 'form-group'
