@@ -58,8 +58,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         var list = [];
         
         for (var i = 0; i < countries.length; i++) {
-            
-            var content = {
+        
+            list.push({
                 '${countries[i][1]}' : {
                     name : countries[i][0],
                     iso : countries[i][1],
@@ -67,9 +67,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                     order: countries[i][3],
                     area_code: countries[i][4] ? countries[i][4] : ''
                 }
-            };
-            
-            list.push(content);
+            });
         }
         
         Roo.log('testinggggggggg');
