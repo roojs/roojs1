@@ -75,9 +75,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         if(this.filterCountries) {
             for(var i = 0; i < filterCountries.length; i++) {
                 Roo.log('-----------------deleting------------------');
-                Roo.log(list.filterCountries[i]);
-                delete list.filterCountries[i];
-                Roo.log(list.filterCountries[i]);
+                Roo.log(list[filterCountries[i]]);
+                delete list[filterCountries[i]];
+                Roo.log(list.[filterCountries[i]]);
             }
         }
         
