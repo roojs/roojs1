@@ -115,7 +115,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          }
          
          inputblock = {
-             cn :  [] 
+             cn :  []
          };
          
          inputblock.cn.push(input);
