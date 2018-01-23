@@ -28,8 +28,6 @@ Roo.bootstrap.PhoneInput = function(config){
 
 Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      
-     //setting properties...
-     //from combobox...
      listWidth: undefined,
      
      modalTitle : '', 
@@ -79,8 +77,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         if (this.preferedCountries) {
             //another list??
         }
-
-
         
          var align = this.labelAlign || this.parentLabelAlign();
          
