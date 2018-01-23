@@ -61,11 +61,11 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             
             var content = {
                 '${countries[i][1]}' : {
-                    country_name : countries[i][0],
-                    country_iso : countries[i][1],
-                    country_dial : countries[i][2],
-                    country_order: countries[i][3],
-                    country_area_code: countries[i][4] ? countries[i][4] : ''
+                    name : countries[i][0],
+                    iso : countries[i][1],
+                    dial : countries[i][2],
+                    order: countries[i][3],
+                    area_code: countries[i][4] ? countries[i][4] : ''
                 }
             };
             
