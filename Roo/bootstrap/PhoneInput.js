@@ -58,7 +58,18 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         var list;
         
         for (var i = 0; i < countries.length; i++) {
-            Roo.log(countries[i]);
+            
+            var content = {
+                countries[i][1] : {
+                    country_name : countries[i][0],
+                    country_iso : countries[i][1],
+                    country_dial : countries[i][2],
+                    country_order: countries[i][3],
+                    country_area_code: countries[i][4] ? countries[i][4] : ''
+                }
+            };
+            
+            list.push(content);
         }
         
         Roo.log('testinggggggggg');
