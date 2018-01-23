@@ -66,7 +66,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                 area_code: countries[i][4] ? countries[i][4] : ''
             }
             
-            if (countries[i][3] != "") {
+            if (!countries[i][3]) {
                 Roo.log(countries[i][0]+' has order '+countries[i][3]);
             }
         }
