@@ -60,7 +60,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         for (var i = 0; i < countries.length; i++) {
             
             var content = {
-                countries[i][1] : {
+                "{countries[i][1]}" : {
                     country_name : countries[i][0],
                     country_iso : countries[i][1],
                     country_dial : countries[i][2],
