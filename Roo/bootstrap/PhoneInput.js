@@ -92,6 +92,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              id : id,
              type : this.inputType,
              cls : 'form-control',
+             style: 'padding: 50px;'
              placeholder : this.placeholder || ''
          };
          
