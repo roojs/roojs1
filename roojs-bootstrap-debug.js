@@ -8115,33 +8115,37 @@ Roo.apply(Roo.bootstrap.Form, {
             scrollable.scrollTo('top', scrollTo);
             
             var box = this.target.el.getBox();
-
+            Roo.log(box);
             var zIndex = Roo.bootstrap.Modal.zIndex++;
 
-            this.maskEl.top.setStyle('position', 'fixed');
+            
+            this.maskEl.top.setStyle('position', 'absolute');
             this.maskEl.top.setStyle('z-index', zIndex);
             this.maskEl.top.setSize(Roo.lib.Dom.getDocumentWidth(), box.y - this.padding);
-            this.maskEl.top.setXY([0, 0]);
+            this.maskEl.top.setLeft(0);
+            this.maskEl.top.setTop(0);
             this.maskEl.top.show();
-
-            this.maskEl.left.setStyle('position', 'fixed');
+            
+            this.maskEl.left.setStyle('position', 'absolute');
             this.maskEl.left.setStyle('z-index', zIndex);
-            this.maskEl.left.setSize(Roo.lib.Dom.getDocumentWidth() - box.right - this.padding, box.height + this.padding * 2);
-            this.maskEl.left.setXY([box.right + this.padding, box.y - this.padding]);
+            this.maskEl.left.setSize(box.x - this.padding, box.height + this.padding * 2);
+            this.maskEl.left.setLeft(0);
+            this.maskEl.left.setTop(box.y - this.padding);
             this.maskEl.left.show();
 
-            this.maskEl.bottom.setStyle('position', 'fixed');
+            this.maskEl.bottom.setStyle('position', 'absolute');
             this.maskEl.bottom.setStyle('z-index', zIndex);
             this.maskEl.bottom.setSize(Roo.lib.Dom.getDocumentWidth(), Roo.lib.Dom.getDocumentHeight() - box.bottom - this.padding);
-            this.maskEl.bottom.setXY([0, box.bottom + this.padding]);
+            this.maskEl.bottom.setLeft(0);
+            this.maskEl.bottom.setTop(box.bottom + this.padding);
             this.maskEl.bottom.show();
 
-            this.maskEl.right.setStyle('position', 'fixed');
+            this.maskEl.right.setStyle('position', 'absolute');
             this.maskEl.right.setStyle('z-index', zIndex);
-            this.maskEl.right.setSize(box.x - this.padding, box.height + this.padding * 2);
-            this.maskEl.right.setXY([0, box.y - this.padding]);
+            this.maskEl.right.setSize(Roo.lib.Dom.getDocumentWidth() - box.right - this.padding, box.height + this.padding * 2);
+            this.maskEl.right.setLeft(box.right + this.padding);
+            this.maskEl.right.setTop(box.y - this.padding);
             this.maskEl.right.show();
-
 
             this.toolTip.bindEl = this.target.el;
 
@@ -8162,8 +8166,6 @@ Roo.apply(Roo.bootstrap.Form, {
             window.onwheel = function(){ return false;};
             
             (function(){ this.isMasked = true; }).defer(500, this);
-                
-            
             
         },
         
@@ -37848,8 +37850,6 @@ Roo.bootstrap.PhoneInput = function(config){
 
 Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      
-     //setting properties...
-     //from combobox...
      listWidth: undefined,
      
      modalTitle : '', 
@@ -37873,12 +37873,40 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      
      getAutoCreate : function(){
         
+        var countries = Roo.bootstrap.PhoneInput.List;
+        
+        var list = {};
+        
+        for (var i = 0; i < countries.length; i++) {
+            list[countries[i][1]] = {
+                name : countries[i][0],
+                iso : countries[i][1],
+                dial_code : countries[i][2],
+                order: countries[i][3] ? countries[i][3] : '',
+                area_code: countries[i][4] ? countries[i][4] : ''
+            };
+            // if (countries[i][3]) {
+            //     Roo.log(countries[i][0]+' |  order: '+countries[i][3]+' | dial code: '+countries[i][2] + ' | area_code: '+countries[i][4]);
+            // }
+        }
+        
+        if(this.filterCountries) {
+            for(var i = 0; i < this.filterCountries.length; i++) {
+                delete list[this.filterCountries[i]];
+            }
+        }
+        
+        if (this.preferedCountries) {
+            //another list??
+        }
+        //gen li item at the end || catch click event >> change flag class && change iso value && change placeholder
+        
          var align = this.labelAlign || this.parentLabelAlign();
          
-         var id = Roo.id();
+         var id = Roo.id(); //all el??
          
          var cfg = {
-             cls: 'form-group' //input-group
+             cls: 'form-group'
          };
          
          var input =  {
@@ -37886,7 +37914,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              id : id,
              type : this.inputType,
              cls : 'form-control',
-             placeholder : this.placeholder || '' //marker
+             style: 'padding-left: 55px;',
+             placeholder : this.placeholder || ''
          };
          
          if (this.name) {
@@ -37905,13 +37934,12 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          if(this.hasFeedback && !this.allowBlank){
              var feedback = {
                  tag: 'span',
-                 cls: 'glyphicon form-control-feedback',
-                 style: 'right: 0px'  //marker
+                 cls: 'glyphicon form-control-feedback'
              };
          }
          
          inputblock = {
-             cn :  [] 
+             cn :  []
          };
          
          inputblock.cn.push(input);
@@ -37936,6 +37964,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          var flag = {
              tag: 'span',
              html: 'flag',
+             style: 'margin-right:5px',
              cls: 'roo-selected-region',
              cn: [] //flag position ... (iti-flag-us)
          };
@@ -37960,6 +37989,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          combobox.cn.push({
              tag :'span',
              cls : 'input-group-addon btn dropdown-toggle',
+             style : 'position: absolute; z-index: 4;background: none;border: none; margin-top: 4px; margin-left: 3px; margin-right: 3px;',
              cn : [
                  flag,
                  caret,
@@ -38123,9 +38153,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      
      /**
       * iso2 and abbr for all countries
-      * @type Array
+      * @type Object
       */
-     allCountries : [
+     List : [
          ["Afghanistan (‫افغانستان‬‎)", "af", "93"],
          ["Albania (Shqipëri)", "al", "355"],
          ["Algeria (‫الجزائر‬‎)", "dz", "213"],
