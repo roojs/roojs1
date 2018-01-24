@@ -633,58 +633,63 @@ Roo.apply(Roo.bootstrap.Form, {
             
             scrollable.scrollTo('top', scrollTo);
             
-            var box = this.target.el.getBox();
+            (function(){
+                
+                var box = this.target.el.getBox();
 
-            var zIndex = Roo.bootstrap.Modal.zIndex++;
+                var zIndex = Roo.bootstrap.Modal.zIndex++;
 
-            this.maskEl.top.setStyle('position', 'fixed');
-            this.maskEl.top.setStyle('z-index', zIndex);
-            this.maskEl.top.setSize(Roo.lib.Dom.getDocumentWidth(), box.y - this.padding);
-            this.maskEl.top.setXY([0, 0]);
-            this.maskEl.top.show();
+                this.maskEl.top.setStyle('position', 'fixed');
+                this.maskEl.top.setStyle('z-index', zIndex);
+                this.maskEl.top.setSize(Roo.lib.Dom.getDocumentWidth(), box.y - this.padding);
+                this.maskEl.top.setXY([0, 0]);
+                this.maskEl.top.show();
 
-//            this.maskEl.left.setStyle('position', 'fixed');
-//            this.maskEl.left.setStyle('z-index', zIndex);
-//            this.maskEl.left.setSize(Roo.lib.Dom.getDocumentWidth() - box.right - this.padding, box.height + this.padding * 2);
-//            this.maskEl.left.setXY([box.right + this.padding, box.y - this.padding]);
-//            this.maskEl.left.show();
-//
-//            this.maskEl.bottom.setStyle('position', 'fixed');
-//            this.maskEl.bottom.setStyle('z-index', zIndex);
-//            this.maskEl.bottom.setSize(Roo.lib.Dom.getDocumentWidth(), Roo.lib.Dom.getDocumentHeight() - box.bottom - this.padding);
-//            this.maskEl.bottom.setXY([0, box.bottom + this.padding]);
-//            this.maskEl.bottom.show();
-//
-//            this.maskEl.right.setStyle('position', 'fixed');
-//            this.maskEl.right.setStyle('z-index', zIndex);
-//            this.maskEl.right.setSize(box.x - this.padding, box.height + this.padding * 2);
-//            this.maskEl.right.setXY([0, box.y - this.padding]);
-//            this.maskEl.right.show();
+    //            this.maskEl.left.setStyle('position', 'fixed');
+    //            this.maskEl.left.setStyle('z-index', zIndex);
+    //            this.maskEl.left.setSize(Roo.lib.Dom.getDocumentWidth() - box.right - this.padding, box.height + this.padding * 2);
+    //            this.maskEl.left.setXY([box.right + this.padding, box.y - this.padding]);
+    //            this.maskEl.left.show();
+    //
+    //            this.maskEl.bottom.setStyle('position', 'fixed');
+    //            this.maskEl.bottom.setStyle('z-index', zIndex);
+    //            this.maskEl.bottom.setSize(Roo.lib.Dom.getDocumentWidth(), Roo.lib.Dom.getDocumentHeight() - box.bottom - this.padding);
+    //            this.maskEl.bottom.setXY([0, box.bottom + this.padding]);
+    //            this.maskEl.bottom.show();
+    //
+    //            this.maskEl.right.setStyle('position', 'fixed');
+    //            this.maskEl.right.setStyle('z-index', zIndex);
+    //            this.maskEl.right.setSize(box.x - this.padding, box.height + this.padding * 2);
+    //            this.maskEl.right.setXY([0, box.y - this.padding]);
+    //            this.maskEl.right.show();
 
-            Roo.log([Roo.lib.Dom.getDocumentWidth(), box.y - this.padding, 0, 0]);
-            Roo.log([Roo.lib.Dom.getDocumentWidth() - box.right - this.padding, box.height + this.padding * 2, box.right + this.padding, box.y - this.padding]);
-            Roo.log([Roo.lib.Dom.getDocumentWidth(), Roo.lib.Dom.getDocumentHeight() - box.bottom - this.padding, 0, box.bottom + this.padding]);
-            Roo.log([box.x - this.padding, box.height + this.padding * 2, 0, box.y - this.padding]);
+                Roo.log([Roo.lib.Dom.getDocumentWidth(), box.y - this.padding, 0, 0]);
+                Roo.log([Roo.lib.Dom.getDocumentWidth() - box.right - this.padding, box.height + this.padding * 2, box.right + this.padding, box.y - this.padding]);
+                Roo.log([Roo.lib.Dom.getDocumentWidth(), Roo.lib.Dom.getDocumentHeight() - box.bottom - this.padding, 0, box.bottom + this.padding]);
+                Roo.log([box.x - this.padding, box.height + this.padding * 2, 0, box.y - this.padding]);
+
+                this.toolTip.bindEl = this.target.el;
+
+                this.toolTip.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
+
+                var tip = this.target.blankText;
+
+                if(this.target.getValue() !== '' && this.target.regexText.length){
+                    tip = this.target.regexText;
+                }
+
+                this.toolTip.show(tip);
+
+                this.intervalID = window.setInterval(function() {
+                    Roo.bootstrap.Form.popover.unmask();
+                }, 10000);
+
+                window.onwheel = function(){ return false;};
+
+                (function(){ this.isMasked = true; }).defer(500, this);
+                
+            }).defer(1000, this);
             
-            this.toolTip.bindEl = this.target.el;
-
-            this.toolTip.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
-
-            var tip = this.target.blankText;
-
-            if(this.target.getValue() !== '' && this.target.regexText.length){
-                tip = this.target.regexText;
-            }
-
-            this.toolTip.show(tip);
-
-            this.intervalID = window.setInterval(function() {
-                Roo.bootstrap.Form.popover.unmask();
-            }, 10000);
-
-            window.onwheel = function(){ return false;};
-            
-            (function(){ this.isMasked = true; }).defer(500, this);
                 
             
             
