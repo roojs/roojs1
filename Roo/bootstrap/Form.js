@@ -643,7 +643,6 @@ Roo.apply(Roo.bootstrap.Form, {
             this.maskEl.top.setSize(Roo.lib.Dom.getDocumentWidth(), box.y - this.padding);
             this.maskEl.top.setXY([0, 0]);
             this.maskEl.top.show();
-            this.maskEl.top.setXY([0, 0]);
             var test = Roo.fly(this.maskEl.top, '_setXY');
             
 //            Roo.log(test.position());
