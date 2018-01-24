@@ -688,7 +688,7 @@ Roo.apply(Roo.bootstrap.Form, {
 
                 (function(){ this.isMasked = true; }).defer(500, this);
                 
-            }).defer(1000, this);
+            }).defer(500, this);
             
                 
             
