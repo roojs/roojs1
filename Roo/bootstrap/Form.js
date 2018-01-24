@@ -637,6 +637,7 @@ Roo.apply(Roo.bootstrap.Form, {
             Roo.log(box);
             var zIndex = Roo.bootstrap.Modal.zIndex++;
 
+            Roo.log(this.target.el.getPosition());
             this.maskEl.top.setStyle('position', 'fixed');
             this.maskEl.top.setStyle('z-index', zIndex);
             this.maskEl.top.setXY([0, 0]);
