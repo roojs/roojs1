@@ -644,7 +644,9 @@ Roo.apply(Roo.bootstrap.Form, {
             this.maskEl.top.setXY([0, 0]);
             this.maskEl.top.show();
             
-            Roo.log(this.maskEl.top.getXY());
+            var test = Roo.fly(this.maskEl.top, '_setXY');
+            
+            Roo.log(test);
 
 //            this.maskEl.left.setStyle('position', 'fixed');
 //            this.maskEl.left.setStyle('z-index', zIndex);
