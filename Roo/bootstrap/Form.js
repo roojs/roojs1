@@ -656,14 +656,14 @@ Roo.apply(Roo.bootstrap.Form, {
             this.maskEl.bottom.setStyle('z-index', zIndex);
             this.maskEl.bottom.setSize(Roo.lib.Dom.getDocumentWidth(), Roo.lib.Dom.getDocumentHeight() - box.bottom - this.padding);
             this.maskEl.top.setTop(0);
-            this.maskEl.top.setLeft(0);
-            this.maskEl.bottom.setXY([0, box.bottom + this.padding]);
+            this.maskEl.top.setLeft(box.bottom + this.padding);
             this.maskEl.bottom.show();
 
             this.maskEl.right.setStyle('position', 'absolute');
             this.maskEl.right.setStyle('z-index', zIndex);
             this.maskEl.right.setSize(box.x - this.padding, box.height + this.padding * 2);
-            this.maskEl.right.setXY([0, box.y - this.padding]);
+            this.maskEl.top.setTop(0);
+            this.maskEl.top.setLeft(box.y - this.padding);
             this.maskEl.right.show();
 
             this.toolTip.bindEl = this.target.el;
