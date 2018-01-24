@@ -638,7 +638,7 @@ Roo.apply(Roo.bootstrap.Form, {
             var zIndex = Roo.bootstrap.Modal.zIndex++;
 
             
-            this.maskEl.top.setStyle('position', 'absolute');
+            this.maskEl.top.setStyle('position', 'relative');
             this.maskEl.top.setStyle('z-index', zIndex);
             this.maskEl.top.setSize(Roo.lib.Dom.getDocumentWidth(), box.y - this.padding);
             
