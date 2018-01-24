@@ -641,8 +641,8 @@ Roo.apply(Roo.bootstrap.Form, {
             this.maskEl.top.setStyle('position', 'absolute');
             this.maskEl.top.setStyle('z-index', zIndex);
             this.maskEl.top.setSize(Roo.lib.Dom.getDocumentWidth(), box.y - this.padding);
-            this.maskEl.top.setTop(0);
             this.maskEl.top.setLeft(0);
+            this.maskEl.top.setTop(0);
             this.maskEl.top.show();
             
             this.maskEl.left.setStyle('position', 'absolute');
@@ -654,6 +654,8 @@ Roo.apply(Roo.bootstrap.Form, {
             this.maskEl.bottom.setStyle('position', 'absolute');
             this.maskEl.bottom.setStyle('z-index', zIndex);
             this.maskEl.bottom.setSize(Roo.lib.Dom.getDocumentWidth(), Roo.lib.Dom.getDocumentHeight() - box.bottom - this.padding);
+            this.maskEl.top.setTop(0);
+            this.maskEl.top.setLeft(0);
             this.maskEl.bottom.setXY([0, box.bottom + this.padding]);
             this.maskEl.bottom.show();
 
