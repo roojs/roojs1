@@ -643,23 +643,23 @@ Roo.apply(Roo.bootstrap.Form, {
             this.maskEl.top.setXY([0, 0]);
             this.maskEl.top.show();
 
-            this.maskEl.left.setStyle('position', 'fixed');
-            this.maskEl.left.setStyle('z-index', zIndex);
-            this.maskEl.left.setSize(Roo.lib.Dom.getDocumentWidth() - box.right - this.padding, box.height + this.padding * 2);
-            this.maskEl.left.setXY([box.right + this.padding, box.y - this.padding]);
-            this.maskEl.left.show();
-
-            this.maskEl.bottom.setStyle('position', 'fixed');
-            this.maskEl.bottom.setStyle('z-index', zIndex);
-            this.maskEl.bottom.setSize(Roo.lib.Dom.getDocumentWidth(), Roo.lib.Dom.getDocumentHeight() - box.bottom - this.padding);
-            this.maskEl.bottom.setXY([0, box.bottom + this.padding]);
-            this.maskEl.bottom.show();
-
-            this.maskEl.right.setStyle('position', 'fixed');
-            this.maskEl.right.setStyle('z-index', zIndex);
-            this.maskEl.right.setSize(box.x - this.padding, box.height + this.padding * 2);
-            this.maskEl.right.setXY([0, box.y - this.padding]);
-            this.maskEl.right.show();
+//            this.maskEl.left.setStyle('position', 'fixed');
+//            this.maskEl.left.setStyle('z-index', zIndex);
+//            this.maskEl.left.setSize(Roo.lib.Dom.getDocumentWidth() - box.right - this.padding, box.height + this.padding * 2);
+//            this.maskEl.left.setXY([box.right + this.padding, box.y - this.padding]);
+//            this.maskEl.left.show();
+//
+//            this.maskEl.bottom.setStyle('position', 'fixed');
+//            this.maskEl.bottom.setStyle('z-index', zIndex);
+//            this.maskEl.bottom.setSize(Roo.lib.Dom.getDocumentWidth(), Roo.lib.Dom.getDocumentHeight() - box.bottom - this.padding);
+//            this.maskEl.bottom.setXY([0, box.bottom + this.padding]);
+//            this.maskEl.bottom.show();
+//
+//            this.maskEl.right.setStyle('position', 'fixed');
+//            this.maskEl.right.setStyle('z-index', zIndex);
+//            this.maskEl.right.setSize(box.x - this.padding, box.height + this.padding * 2);
+//            this.maskEl.right.setXY([0, box.y - this.padding]);
+//            this.maskEl.right.show();
 
             Roo.log([Roo.lib.Dom.getDocumentWidth(), box.y - this.padding, 0, 0]);
             Roo.log([Roo.lib.Dom.getDocumentWidth() - box.right - this.padding, box.height + this.padding * 2, box.right + this.padding, box.y - this.padding]);
