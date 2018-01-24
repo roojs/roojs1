@@ -648,7 +648,8 @@ Roo.apply(Roo.bootstrap.Form, {
             this.maskEl.left.setStyle('position', 'absolute');
             this.maskEl.left.setStyle('z-index', zIndex);
             this.maskEl.left.setSize(Roo.lib.Dom.getDocumentWidth() - box.right - this.padding, box.height + this.padding * 2);
-            this.maskEl.left.setXY([box.right + this.padding, box.y - this.padding]);
+            this.maskEl.left.setTop(box.right);
+            this.maskEl.left.setLeft(this.padding, box.y - this.padding);
             this.maskEl.left.show();
 
             this.maskEl.bottom.setStyle('position', 'absolute');
