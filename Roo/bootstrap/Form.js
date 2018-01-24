@@ -645,29 +645,26 @@ Roo.apply(Roo.bootstrap.Form, {
             this.maskEl.top.setTop(0);
             this.maskEl.top.show();
             
-//            this.maskEl.left.setStyle('position', 'absolute');
-//            this.maskEl.left.setStyle('z-index', zIndex);
-//            this.maskEl.left.setSize(box.x - this.padding, box.height + this.padding * 2);
-////            this.maskEl.left.setXY([box.right + this.padding, box.y - this.padding]);
-//            this.maskEl.left.setLeft(0);
-//            this.maskEl.left.setTop(box.y - this.padding);
-//            this.maskEl.left.show();
+            this.maskEl.left.setStyle('position', 'absolute');
+            this.maskEl.left.setStyle('z-index', zIndex);
+            this.maskEl.left.setSize(box.x - this.padding, box.height + this.padding * 2);
+            this.maskEl.left.setLeft(0);
+            this.maskEl.left.setTop(box.y - this.padding);
+            this.maskEl.left.show();
 
             this.maskEl.bottom.setStyle('position', 'absolute');
             this.maskEl.bottom.setStyle('z-index', zIndex);
             this.maskEl.bottom.setSize(Roo.lib.Dom.getDocumentWidth(), Roo.lib.Dom.getDocumentHeight() - box.bottom - this.padding);
-//            this.maskEl.bottom.setXY([0, box.bottom + this.padding]);
             this.maskEl.bottom.setLeft(0);
             this.maskEl.bottom.setTop(box.bottom + this.padding);
             this.maskEl.bottom.show();
 
-//            this.maskEl.right.setStyle('position', 'absolute');
-//            this.maskEl.right.setStyle('z-index', zIndex);
-//            this.maskEl.right.setSize(Roo.lib.Dom.getDocumentWidth() - box.right - this.padding, box.height + this.padding * 2);
-////            this.maskEl.right.setXY([0, box.y - this.padding]);
-//            this.maskEl.right.setLeft(0);
-//            this.maskEl.right.setTop(box.y - this.padding);
-//            this.maskEl.right.show();
+            this.maskEl.right.setStyle('position', 'absolute');
+            this.maskEl.right.setStyle('z-index', zIndex);
+            this.maskEl.right.setSize(Roo.lib.Dom.getDocumentWidth() - box.right - this.padding, box.height + this.padding * 2);
+            this.maskEl.right.setLeft(0);
+            this.maskEl.right.setTop(box.y - this.padding);
+            this.maskEl.right.show();
 
             this.toolTip.bindEl = this.target.el;
 
