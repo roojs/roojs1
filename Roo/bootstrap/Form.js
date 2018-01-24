@@ -645,13 +645,13 @@ Roo.apply(Roo.bootstrap.Form, {
             this.maskEl.top.setTop(0);
             this.maskEl.top.show();
             
-            this.maskEl.left.setStyle('position', 'absolute');
-            this.maskEl.left.setStyle('z-index', zIndex);
-            this.maskEl.left.setSize(box.x - this.padding, box.height + this.padding * 2);
-//            this.maskEl.left.setXY([box.right + this.padding, box.y - this.padding]);
-            this.maskEl.left.setLeft(0);
-            this.maskEl.left.setTop(box.y - this.padding);
-            this.maskEl.left.show();
+//            this.maskEl.left.setStyle('position', 'absolute');
+//            this.maskEl.left.setStyle('z-index', zIndex);
+//            this.maskEl.left.setSize(box.x - this.padding, box.height + this.padding * 2);
+////            this.maskEl.left.setXY([box.right + this.padding, box.y - this.padding]);
+//            this.maskEl.left.setLeft(0);
+//            this.maskEl.left.setTop(box.y - this.padding);
+//            this.maskEl.left.show();
 
             this.maskEl.bottom.setStyle('position', 'absolute');
             this.maskEl.bottom.setStyle('z-index', zIndex);
@@ -682,14 +682,12 @@ Roo.apply(Roo.bootstrap.Form, {
             this.toolTip.show(tip);
 
             this.intervalID = window.setInterval(function() {
-//                Roo.bootstrap.Form.popover.unmask();
+                Roo.bootstrap.Form.popover.unmask();
             }, 10000);
 
             window.onwheel = function(){ return false;};
             
             (function(){ this.isMasked = true; }).defer(500, this);
-                
-            
             
         },
         
