@@ -631,19 +631,17 @@ Roo.apply(Roo.bootstrap.Form, {
             
             scrollTo = Math.min(scrollTo, scrollable.dom.scrollHeight);
             
-            scrollable.scrollTo('top', scrollTo);
+//            scrollable.scrollTo('top', scrollTo);
             
             var box = this.target.el.getBox();
             Roo.log(box);
             var zIndex = Roo.bootstrap.Modal.zIndex++;
 
             
-            this.maskEl.top.setStyle('position', 'relative');
+            this.maskEl.top.setStyle('position', 'absolute');
             this.maskEl.top.setStyle('z-index', zIndex);
             this.maskEl.top.setSize(Roo.lib.Dom.getDocumentWidth(), box.y - this.padding);
-            
             this.maskEl.top.setXY([0, 0]);
-            
             this.maskEl.top.show();
             
             
