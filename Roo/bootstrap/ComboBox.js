@@ -1966,8 +1966,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {   
         var dv = ''; // display value
         
-        Roo.log('testing :: addItem');
-        
         if (this.displayField) {
             dv = !o || typeof(o[this.displayField]) == 'undefined' ? '' : o[this.displayField];
         } else {
