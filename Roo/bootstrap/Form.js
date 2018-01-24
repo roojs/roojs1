@@ -643,7 +643,7 @@ Roo.apply(Roo.bootstrap.Form, {
             this.maskEl.top.setSize(Roo.lib.Dom.getDocumentWidth(), box.y - this.padding);
             this.maskEl.top.setXY([0, 0]);
             this.maskEl.top.show();
-            
+            scrollable.scrollTo('top', scrollTo);
             
 //            Roo.log(test.position());
 
