@@ -43,6 +43,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      invalidClass: "has-warning",
      
      //new settings
+     defaultCountry: 'hk',
+     
      preferedCountries: undefined, //array
      
      filterCountries: undefined, //array
@@ -92,7 +94,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              id : id,
              type : this.inputType,
              cls : 'form-control',
-             style: 'padding-left: 55px;',
+             style: 'padding-left: 60px;',
              placeholder : this.placeholder || ''
          };
          
