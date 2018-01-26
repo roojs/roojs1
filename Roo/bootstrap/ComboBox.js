@@ -1107,9 +1107,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.editable = value;
         if(!value){
             this.inputEl().dom.setAttribute('readOnly', true);
+            Roo.log('trigger click????');
+            
             this.inputEl().on('mousedown', this.onTriggerClick,  this);
             this.inputEl().addClass('x-combo-noedit');
         }else{
+            Roo.log('trigger click????');
+            
             this.inputEl().dom.setAttribute('readOnly', false);
             this.inputEl().un('mousedown', this.onTriggerClick,  this);
             this.inputEl().removeClass('x-combo-noedit');
