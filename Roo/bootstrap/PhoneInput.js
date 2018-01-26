@@ -338,9 +338,10 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      }
      this._initEventsCalled = true;
      
-     if (!this.store) {
-         throw "can not find store for combo";
-     }
+     this.store =  new Roo.data.Store(
+         data : this.list,
+         fields : ['name','iso','dial_code','order','area_code'],
+     );
 }
  
  
