@@ -323,7 +323,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          this._initEventsCalled = true;
          
          this.store =  new Roo.data.SimpleStore({
-             data : Roo.bootstrap.PhoneInput.List,
+             data : this.list,
              fields : ['name','iso','dial_code','order','area_code'],
          });
          
@@ -409,8 +409,19 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              forceKeyDown: true
          });
          
-         
     }
+    
+    onViewOver : function(e, t){
+        if(this.inKeyMode){ // prevent key nav and mouse over conflicts
+            return;
+        }
+        var item = this.view.findItemFromChild(t);
+        
+        if(item){
+            var index = this.view.indexOf(item);
+            this.select(index, false);
+        }
+    },
      
      
  });
