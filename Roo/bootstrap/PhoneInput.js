@@ -53,6 +53,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      
      getAutoCreate : function(){
     
+         this.list = Roo.bootstrap.PhoneInput.List;
+    
         if(this.filterCountries) {
             for(var i = 0; i < this.filterCountries.length; i++) {
                 delete this.list[this.filterCountries[i]];
