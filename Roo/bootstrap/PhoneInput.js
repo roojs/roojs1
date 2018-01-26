@@ -316,6 +316,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      
      initEvents: function()
      {   
+         Roo.log('init event');
+         
          if (this._initEventsCalled) {
              return;
          }
