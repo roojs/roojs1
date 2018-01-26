@@ -323,7 +323,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          this._initEventsCalled = true;
          
          Roo.log('--------------brefore store--------------');
-         Roo.log(this.store);
          
          this.store =  new Roo.data.SimpleStore({
              data : this.list,
@@ -415,7 +414,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              forceKeyDown: true
          });
          
-    }
+    },
     
     onViewOver : function(e, t){
         if(this.inKeyMode){ // prevent key nav and mouse over conflicts
@@ -427,7 +426,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             var index = this.view.indexOf(item);
             this.select(index, false);
         }
-    },
+    }
      
      
  });
