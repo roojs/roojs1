@@ -446,6 +446,9 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
      * @param {Boolean} append (Optional) True to append the new Records rather than replace the existing cache.
      */
     loadData : function(o, append){
+        
+        Roo.log(this.reader);
+        
         var r = this.reader.readRecords(o);
         this.loadRecords(r, {add: append}, true);
     },
