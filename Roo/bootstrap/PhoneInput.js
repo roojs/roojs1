@@ -421,9 +421,12 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             var index = this.view.indexOf(item);
             this.select(index, false);
         }
+    },
+    
+    onViewMove : function(e, t){
+        this.inKeyMode = false;
     }
-     
-     
+    
  });
 
  Roo.apply(Roo.bootstrap.PhoneInput, {
