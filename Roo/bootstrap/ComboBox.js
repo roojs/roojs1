@@ -647,8 +647,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             throw "can not find store for combo";
         }
         
-        this.store = Roo.factory(this.store, Roo.data);
-        
+        this.store = Roo.factory(this.store, Roo.data);z
         this.store.parent = this;
         
         // if we are building from html. then this element is so complex, that we can not really
