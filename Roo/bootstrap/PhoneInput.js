@@ -338,7 +338,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          this._initEventsCalled = true;
          
          this.store =  new Roo.data.Store(
-             data : this.list,
+             data : list,
              fields : ['name','iso','dial_code','order','area_code']
          );
          

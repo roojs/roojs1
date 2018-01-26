@@ -37899,7 +37899,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         if (this.preferedCountries) {
             //another list??
         }
-        //gen li item at the end || catch click event >> change flag class && change iso value && change placeholder
         
          var align = this.labelAlign || this.parentLabelAlign();
          
@@ -38155,10 +38154,11 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          if (this._initEventsCalled) {
              return;
          }
+         
          this._initEventsCalled = true;
          
          this.store =  new Roo.data.Store(
-             data : this.list,
+             data : list,
              fields : ['name','iso','dial_code','order','area_code']
          );
          
