@@ -350,6 +350,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          this.view = new Roo.View(this.list, this.tpl, {
              singleSelect:true, store: this.store, selectedClass: this.selectedClass
          });
+         
          this.view.on('click', this.onViewClick, this);
          
          this.store.on('beforeload', this.onBeforeLoad, this);
@@ -461,6 +462,36 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         (function() { _combo.doQuery(_combo.allQuery, true); }).defer(500);
         
         return;
+    },
+    
+    onTriggerClick : function(e)
+    {
+        Roo.log('trigger click');
+        
+        if(this.disabled || !this.triggerList){
+            return;
+        }
+        
+        this.page = 0;
+        this.loadNext = false;
+        
+        if(this.isExpanded()){
+            this.collapse();
+            if (!this.blockFocus) {
+                this.inputEl().focus();
+            }
+            
+        }else {
+            this.hasFocus = true;
+            if(this.triggerAction == 'all') {
+                this.doQuery(this.allQuery, true);
+            } else {
+                this.doQuery(this.getRawValue());
+            }
+            if (!this.blockFocus) {
+                this.inputEl().focus();
+            }
+        }
     }
     
  });
