@@ -833,9 +833,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             },
 
             "down" : function(e){
+                Roo.log('trigger dowm');
                 if(!this.isExpanded()){
-                    Roo.log('trigger dowm');
-                    
                     this.onTriggerClick();
                 }else{
                     this.inKeyMode = true;
