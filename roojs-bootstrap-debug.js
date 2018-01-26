@@ -12982,6 +12982,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             throw "can not find store for combo";
         }
         
+        Roo.log('------------store--------------');
+        Roo.log(this.store);
+        
         this.store = Roo.factory(this.store, Roo.data);
         this.store.parent = this;
         
@@ -28838,6 +28841,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             return file;
         }
         
+        var img_src = encodeURI(baseURL +'/Images/Thumb/' + this.thumbSize + '/' + file.id + '/' + file.filename);
+        
         var previewEl = this.managerEl.createChild({
             tag : 'div',
             cls : 'roo-document-manager-preview',
@@ -28846,7 +28851,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                     tag : 'div',
                     tooltip : file[this.toolTipName],
                     cls : 'roo-document-manager-thumb',
-                    html : '<img tooltip="' + file[this.toolTipName] + '" src="' + baseURL +'/Images/Thumb/' + this.thumbSize + '/' + file.id + '/' + encodeURI(file.filename) + '">'
+                    html : '<img tooltip="' + file[this.toolTipName] + '" src="' + img_src + '">'
                 },
                 {
                     tag : 'button',

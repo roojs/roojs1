@@ -650,7 +650,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         Roo.log('------------store--------------');
         Roo.log(this.store);
         
-        this.store = Roo.factory(this.store, Roo.data);z
+        this.store = Roo.factory(this.store, Roo.data);
         this.store.parent = this;
         
         // if we are building from html. then this element is so complex, that we can not really
