@@ -13055,7 +13055,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.list.on('mouseover', this.onViewOver, this);
         this.list.on('mousemove', this.onViewMove, this);
-        
         this.list.on('scroll', this.onViewScroll, this);
         
         /*
@@ -37840,6 +37839,75 @@ Roo.bootstrap.PhoneInput = function(config){
     Roo.bootstrap.PhoneInput.superclass.constructor.call(this, config);
     
     this.addEvents({
+        /**
+         * @event expand
+         * Fires when the dropdown list is expanded
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     */
+        'expand' : true,
+        /**
+         * @event collapse
+         * Fires when the dropdown list is collapsed
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     */
+        'collapse' : true,
+        /**
+         * @event beforeselect
+         * Fires before a list item is selected. Return false to cancel the selection.
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     * @param {Roo.data.Record} record The data record returned from the underlying store
+	     * @param {Number} index The index of the selected item in the dropdown list
+	     */
+        'beforeselect' : true,
+        /**
+         * @event select
+         * Fires when a list item is selected
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     * @param {Roo.data.Record} record The data record returned from the underlying store (or false on clear)
+	     * @param {Number} index The index of the selected item in the dropdown list
+	     */
+        'select' : true,
+        /**
+         * @event beforequery
+         * Fires before all queries are processed. Return false to cancel the query or set cancel to true.
+         * The event object passed has these properties:
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     * @param {String} query The query
+	     * @param {Boolean} forceAll true to force "all" query
+	     * @param {Boolean} cancel true to cancel the query
+	     * @param {Object} e The query event object
+	     */
+        'beforequery': true,
+         /**
+         * @event add
+         * Fires when the 'add' icon is pressed (add a listener to enable add button)
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     */
+        'add' : true,
+        /**
+         * @event edit
+         * Fires when the 'edit' icon is pressed (add a listener to enable add button)
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     * @param {Roo.data.Record|false} record The data record returned from the underlying store (or false on nothing selected)
+	     */
+        'edit' : true,
+        /**
+         * @event remove
+         * Fires when the remove value from the combobox array
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     */
+        'remove' : true,
+        /**
+         * @event afterremove
+         * Fires when the remove value from the combobox array
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     */
+        'afterremove' : true,
+        /**
+         * @event specialfilter
+         * Fires when specialfilter
+            * @param {Roo.bootstrap.ComboBox} combo This combo box
+            */
         'touchviewdisplay' : true
     });
     
@@ -38170,6 +38238,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          this.view = new Roo.View(this.list, this.tpl, {
              singleSelect:true, store: this.store, selectedClass: this.selectedClass
          });
+         
          this.view.on('click', this.onViewClick, this);
          
          this.store.on('beforeload', this.onBeforeLoad, this);
@@ -38281,6 +38350,36 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         (function() { _combo.doQuery(_combo.allQuery, true); }).defer(500);
         
         return;
+    },
+    
+    onTriggerClick : function(e)
+    {
+        Roo.log('trigger click');
+        
+        if(this.disabled || !this.triggerList){
+            return;
+        }
+        
+        this.page = 0;
+        this.loadNext = false;
+        
+        if(this.isExpanded()){
+            this.collapse();
+            if (!this.blockFocus) {
+                this.inputEl().focus();
+            }
+            
+        }else {
+            this.hasFocus = true;
+            if(this.triggerAction == 'all') {
+                this.doQuery(this.allQuery, true);
+            } else {
+                this.doQuery(this.getRawValue());
+            }
+            if (!this.blockFocus) {
+                this.inputEl().focus();
+            }
+        }
     }
     
  });
