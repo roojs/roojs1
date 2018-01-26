@@ -322,11 +322,15 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          
          this._initEventsCalled = true;
          
+         Roo.log('--------------brefore store--------------');
+         Roo.log(this.store);
+         
          this.store =  new Roo.data.SimpleStore({
              data : this.list,
              fields : ['name','iso','dial_code','order','area_code'],
          });
          
+         Roo.log('--------------store--------------');
          Roo.log(this.store);
          
          this.store = Roo.factory(this.store, Roo.data);
