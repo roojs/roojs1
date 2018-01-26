@@ -647,6 +647,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             throw "can not find store for combo";
         }
         
+        Roo.log('------------store--------------');
+        Roo.log(this.store);
+        
         this.store = Roo.factory(this.store, Roo.data);z
         this.store.parent = this;
         
