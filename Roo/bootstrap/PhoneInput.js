@@ -327,6 +327,19 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          
          this.store = Roo.factory(this.store, Roo.data);
          this.store.parent = this;
+         
+         if (Roo.XComponent.build_from_html) {
+             // remove this element....
+             var e = this.el.dom, k=0;
+             while (e ) { e = e.previousSibling;  ++k;}
+
+             this.el.remove();
+             
+             this.el=false;
+             this.rendered = false;
+             
+             this.render(this.parent().getChildContainer(true), k);
+         }
     }
      
      
