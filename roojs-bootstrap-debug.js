@@ -28846,7 +28846,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                     tag : 'div',
                     tooltip : file[this.toolTipName],
                     cls : 'roo-document-manager-thumb',
-                    html : '<img tooltip="' + file[this.toolTipName] + '" src="' + baseURL +'/Images/Thumb/' + this.thumbSize + '/' + file.id + '/' + file.filename + '">'
+                    html : '<img tooltip="' + file[this.toolTipName] + '" src="' + baseURL +'/Images/Thumb/' + this.thumbSize + '/' + file.id + '/' + encodeURI(file.filename) + '">'
                 },
                 {
                     tag : 'button',
@@ -37865,6 +37865,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      invalidClass: "has-warning",
      
      //new settings
+     defaultCountry: 'hk',
+     
      preferedCountries: undefined, //array
      
      filterCountries: undefined, //array
@@ -37914,7 +37916,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              id : id,
              type : this.inputType,
              cls : 'form-control',
-             style: 'padding-left: 55px;',
+             style: 'padding-left: 60px;',
              placeholder : this.placeholder || ''
          };
          
