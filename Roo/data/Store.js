@@ -447,6 +447,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
      */
     loadData : function(o, append){
         
+        Roo.log('-------reader--------');
         Roo.log(this.reader);
         
         var r = this.reader.readRecords(o);
