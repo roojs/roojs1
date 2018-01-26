@@ -12982,9 +12982,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             throw "can not find store for combo";
         }
         
-        Roo.log('------------store--------------');
-        Roo.log(this.store);
-        
         this.store = Roo.factory(this.store, Roo.data);
         this.store.parent = this;
         
@@ -12992,7 +12989,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         // use the rendered HTML.
         // so we have to trash and replace the previous code.
         if (Roo.XComponent.build_from_html) {
-            
             // remove this element....
             var e = this.el.dom, k=0;
             while (e ) { e = e.previousSibling;  ++k;}
@@ -13003,9 +12999,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.rendered = false;
             
             this.render(this.parent().getChildContainer(true), k);
-            
-            
-            
         }
         
         if(Roo.isIOS && this.useNativeIOS){
@@ -38155,6 +38148,25 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          return cfg;
      }
  });
+ 
+ _initEventsCalled : false,
+ 
+ initEvents: function()
+ {   
+     if (this._initEventsCalled) {
+         return;
+     }
+     this._initEventsCalled = true;
+     
+     this.store =  new Roo.data.Store(
+         data : this.list,
+         fields : ['name','iso','dial_code','order','area_code'],
+     );
+     
+     Roo.log(this.store);
+     
+}
+ 
  
  Roo.apply(Roo.bootstrap.PhoneInput, {
      
