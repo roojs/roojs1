@@ -339,7 +339,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          
          this.list.on('mouseover', this.onViewOver, this);
          this.list.on('mousemove', this.onViewMove, this);
-         
          this.list.on('scroll', this.onViewScroll, this);
          
          
