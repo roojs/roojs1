@@ -79,7 +79,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         if (this.preferedCountries) {
             //another list??
         }
-        //gen li item at the end || catch click event >> change flag class && change iso value && change placeholder
         
          var align = this.labelAlign || this.parentLabelAlign();
          
