@@ -37848,6 +37848,8 @@ Roo.bootstrap.PhoneInput = function(config){
 
 Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      
+     list: {},
+     
      listWidth: undefined,
      
      modalTitle : '', 
@@ -37872,27 +37874,24 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      displayMode: undefined, //string
      
      getAutoCreate : function(){
-        
+         
+         /*
         var countries = Roo.bootstrap.PhoneInput.List;
         
-        var list = {};
-        
         for (var i = 0; i < countries.length; i++) {
-            list[countries[i][1]] = {
+            this.list[countries[i][1]] = {
                 name : countries[i][0],
                 iso : countries[i][1],
                 dial_code : countries[i][2],
                 order: countries[i][3] ? countries[i][3] : '',
                 area_code: countries[i][4] ? countries[i][4] : ''
             };
-            // if (countries[i][3]) {
-            //     Roo.log(countries[i][0]+' |  order: '+countries[i][3]+' | dial code: '+countries[i][2] + ' | area_code: '+countries[i][4]);
-            // }
         }
+        */
         
         if(this.filterCountries) {
             for(var i = 0; i < this.filterCountries.length; i++) {
-                delete list[this.filterCountries[i]];
+                delete this.list[this.filterCountries[i]];
             }
         }
         
@@ -38157,11 +38156,11 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          
          this._initEventsCalled = true;
          
-         this.store =  new Roo.data.Store(
-             data : list,
+         this.store =  new Roo.data.Store({
+             data : Roo.bootstrap.PhoneInput.List,
              fields : ['name','iso','dial_code','order','area_code']
-         );
-         
+         });
+         Roo.log('----------------store----------------');
          Roo.log(this.store);
          
     }
