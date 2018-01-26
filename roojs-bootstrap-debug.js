@@ -38245,7 +38245,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
     
     onViewMove : function(e, t){
         this.inKeyMode = false;
-    }
+    },
     
     onViewScroll : function(e, t){
         
