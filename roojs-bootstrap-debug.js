@@ -38146,28 +38146,29 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          });
          
          return cfg;
-     }
+     },
+     
+     _initEventsCalled : false,
+     
+     initEvents: function()
+     {   
+         if (this._initEventsCalled) {
+             return;
+         }
+         this._initEventsCalled = true;
+         
+         this.store =  new Roo.data.Store(
+             data : this.list,
+             fields : ['name','iso','dial_code','order','area_code']
+         );
+         
+         Roo.log(this.store);
+         
+    }
+     
+     
  });
- 
- _initEventsCalled : false,
- 
- initEvents: function()
- {   
-     if (this._initEventsCalled) {
-         return;
-     }
-     this._initEventsCalled = true;
-     
-     this.store =  new Roo.data.Store(
-         data : this.list,
-         fields : ['name','iso','dial_code','order','area_code'],
-     );
-     
-     Roo.log(this.store);
-     
-}
- 
- 
+
  Roo.apply(Roo.bootstrap.PhoneInput, {
      
      /**
