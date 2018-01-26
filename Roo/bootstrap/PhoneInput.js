@@ -329,6 +329,25 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      }
  });
  
+ _initEventsCalled : false,
+ 
+ // private
+ initEvents: function()
+ {   
+     if (this._initEventsCalled) { // as we call render... prevent looping...
+         return;
+     }
+     this._initEventsCalled = true;
+     
+     if (!this.store) {
+         throw "can not find store for combo";
+     }
+     
+     
+     
+}
+ 
+ 
  Roo.apply(Roo.bootstrap.PhoneInput, {
      
      /**
