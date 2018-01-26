@@ -327,6 +327,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
              fields : ['name','iso','dial_code','order','area_code'],
          });
          
+         Roo.log(this.store);
+         
          this.store = Roo.factory(this.store, Roo.data);
          this.store.parent = this;
          
