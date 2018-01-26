@@ -461,7 +461,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         (function() { _combo.doQuery(_combo.allQuery, true); }).defer(500);
         
         return;
-    },
+    }
     
  });
 
