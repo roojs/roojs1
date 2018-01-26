@@ -37848,8 +37848,6 @@ Roo.bootstrap.PhoneInput = function(config){
 
 Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      
-     list: {},
-     
      listWidth: undefined,
      
      modalTitle : '', 
@@ -37874,21 +37872,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      displayMode: undefined, //string
      
      getAutoCreate : function(){
-         
-         /*
-        var countries = Roo.bootstrap.PhoneInput.List;
-        
-        for (var i = 0; i < countries.length; i++) {
-            this.list[countries[i][1]] = {
-                name : countries[i][0],
-                iso : countries[i][1],
-                dial_code : countries[i][2],
-                order: countries[i][3] ? countries[i][3] : '',
-                area_code: countries[i][4] ? countries[i][4] : ''
-            };
-        }
-        */
-        
+    
+         this.list = Roo.bootstrap.PhoneInput.List;
+    
         if(this.filterCountries) {
             for(var i = 0; i < this.filterCountries.length; i++) {
                 delete this.list[this.filterCountries[i]];
@@ -38156,16 +38142,147 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
          
          this._initEventsCalled = true;
          
-         this.store =  new Roo.data.Store({
-             data : Roo.bootstrap.PhoneInput.List,
+         this.store =  new Roo.data.SimpleStore({
+             data : this.list,
              fields : ['name','iso','dial_code','order','area_code']
          });
-         Roo.log('----------------store----------------');
-         Roo.log(this.store);
          
+         this.store = Roo.factory(this.store, Roo.data);
+         this.store.parent = this;
+         
+         Roo.bootstrap.PhoneInput.superclass.initEvents.call(this);
+         
+         var _this = this;
+         
+         (function(){
+             var lw = _this.listWidth || Math.max(_this.inputEl().getWidth(), _this.minListWidth);
+             _this.list.setWidth(lw);
+         }).defer(100);
+         
+         this.list.on('mouseover', this.onViewOver, this);
+         this.list.on('mousemove', this.onViewMove, this);
+         this.list.on('scroll', this.onViewScroll, this);
+         
+         if(!this.tpl){
+             this.tpl = '<li><a href="#">{' + this.displayField + '}</a></li>';
+         }
+
+         this.view = new Roo.View(this.list, this.tpl, {
+             singleSelect:true, store: this.store, selectedClass: this.selectedClass
+         });
+         this.view.on('click', this.onViewClick, this);
+         
+         this.store.on('beforeload', this.onBeforeLoad, this);
+         this.store.on('load', this.onLoad, this);
+         this.store.on('loadexception', this.onLoadException, this);
+         
+         this.keyNav = new Roo.KeyNav(this.inputEl(), {
+             "up" : function(e){
+                 this.inKeyMode = true;
+                 this.selectPrev();
+             },
+
+             "down" : function(e){
+                 if(!this.isExpanded()){
+                     this.onTriggerClick();
+                 }else{
+                     this.inKeyMode = true;
+                     this.selectNext();
+                 }
+             },
+
+             "enter" : function(e){
+ //                this.onViewClick();
+                 //return true;
+                 this.collapse();
+                 
+                 if(this.fireEvent("specialkey", this, e)){
+                     this.onViewClick(false);
+                 }
+                 
+                 return true;
+             },
+
+             "esc" : function(e){
+                 this.collapse();
+             },
+
+             "tab" : function(e){
+                 this.collapse();
+                 
+                 if(this.fireEvent("specialkey", this, e)){
+                     this.onViewClick(false);
+                 }
+                 
+                 return true;
+             },
+
+             scope : this,
+
+             doRelay : function(foo, bar, hname){
+                 if(hname == 'down' || this.scope.isExpanded()){
+                    return Roo.KeyNav.prototype.doRelay.apply(this, arguments);
+                 }
+                 return true;
+             },
+
+             forceKeyDown: true
+         });
+         
+    },
+    
+    onViewOver : function(e, t){
+        if(this.inKeyMode){ // prevent key nav and mouse over conflicts
+            return;
+        }
+        var item = this.view.findItemFromChild(t);
+        
+        if(item){
+            var index = this.view.indexOf(item);
+            this.select(index, false);
+        }
+    },
+    
+    onViewMove : function(e, t){
+        this.inKeyMode = false;
     }
-     
-     
+    
+    onViewScroll : function(e, t){
+        
+        if(this.view.el.getScroll().top == 0 ||this.view.el.getScroll().top < this.view.el.dom.scrollHeight - this.view.el.dom.clientHeight || !this.hasFocus || !this.append || this.hasQuery){
+            return;
+        }
+        
+        this.hasQuery = true;
+        
+        this.loading = this.list.select('.loading', true).first();
+        
+        if(this.loading === null){
+            this.list.createChild({
+                tag: 'div',
+                cls: 'loading roo-select2-more-results roo-select2-active',
+                html: 'Loading more results...'
+            });
+            
+            this.loading = this.list.select('.loading', true).first();
+            
+            this.loading.setVisibilityMode(Roo.Element.DISPLAY);
+            
+            this.loading.hide();
+        }
+        
+        this.loading.show();
+        
+        var _combo = this;
+        
+        this.page++;
+        this.loadNext = true;
+        
+        (function() { _combo.doQuery(_combo.allQuery, true); }).defer(500);
+        
+        return;
+    }
+    
  });
 
  Roo.apply(Roo.bootstrap.PhoneInput, {
