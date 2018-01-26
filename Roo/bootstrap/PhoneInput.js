@@ -427,6 +427,42 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         this.inKeyMode = false;
     }
     
+    onViewScroll : function(e, t){
+        
+        if(this.view.el.getScroll().top == 0 ||this.view.el.getScroll().top < this.view.el.dom.scrollHeight - this.view.el.dom.clientHeight || !this.hasFocus || !this.append || this.hasQuery){
+            return;
+        }
+        
+        this.hasQuery = true;
+        
+        this.loading = this.list.select('.loading', true).first();
+        
+        if(this.loading === null){
+            this.list.createChild({
+                tag: 'div',
+                cls: 'loading roo-select2-more-results roo-select2-active',
+                html: 'Loading more results...'
+            });
+            
+            this.loading = this.list.select('.loading', true).first();
+            
+            this.loading.setVisibilityMode(Roo.Element.DISPLAY);
+            
+            this.loading.hide();
+        }
+        
+        this.loading.show();
+        
+        var _combo = this;
+        
+        this.page++;
+        this.loadNext = true;
+        
+        (function() { _combo.doQuery(_combo.allQuery, true); }).defer(500);
+        
+        return;
+    },
+    
  });
 
  Roo.apply(Roo.bootstrap.PhoneInput, {
