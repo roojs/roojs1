@@ -2202,7 +2202,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 html : 'x',
                 cls : 'roo-combo-removable-btn close'
             });
-            console.log('removable');
         }
 
         if(this.hasFeedback && !this.allowBlank){
