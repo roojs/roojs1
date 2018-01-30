@@ -100,19 +100,15 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         }
         
         var inputblock = input;
-        Roo.log(this);
+        
         if(this.hasFeedback && !this.allowBlank){
             
-            Roo.log('in 1');
             var feedback = {
                 tag: 'span',
                 cls: 'glyphicon form-control-feedback'
             };
             
             if(this.removable && !this.editable && !this.tickable){
-                
-                Roo.log('in 2');
-                
                 inputblock = {
                     cls : 'has-feedback',
                     cn :  [
@@ -126,9 +122,6 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                     ] 
                 };
             } else {
-                
-                Roo.log('in 3');
-                
                 inputblock = {
                     cls : 'has-feedback',
                     cn :  [
