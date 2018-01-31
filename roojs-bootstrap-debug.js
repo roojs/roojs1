@@ -3138,7 +3138,7 @@ Roo.bootstrap.MessageBox = function(){
         updateText : function(text)
         {
             if(!dlg.isVisible() && !opt.width){
-                dlg.dialogEl.setWidth(this.maxWidth);
+                dlg.dialogEl.setStyle({ 'max-width' : this.maxWidth});
                 // dlg.resizeTo(this.maxWidth, 100); // forcing the height breaks long alerts()
             }
             msgEl.innerHTML = text || '&#160;';
