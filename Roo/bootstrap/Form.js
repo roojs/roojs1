@@ -673,10 +673,10 @@ Roo.apply(Roo.bootstrap.Form, {
             var tip = this.target.blankText;
 
             if(this.target.getValue() !== '' ) {
-                if (this.target.regexText.length){
-                    tip = this.target.regexText;
-                } else if (this.target.errorText.length) {
+                if (this.target.errorText.length) {
                     tip = this.target.errorText;
+                } else if (this.target.regexText.length){
+                    tip = this.target.regexText;
                 }
             }
 
