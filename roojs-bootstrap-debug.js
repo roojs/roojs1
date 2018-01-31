@@ -369,7 +369,6 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if (this.el && !this.el.hasClass('hidden')) {
             this.el.addClass('hidden');
         }
-        
     }
 });
 
@@ -8153,8 +8152,12 @@ Roo.apply(Roo.bootstrap.Form, {
 
             var tip = this.target.blankText;
 
-            if(this.target.getValue() !== '' && this.target.regexText.length){
-                tip = this.target.regexText;
+            if(this.target.getValue() !== '' ) {
+                if (this.target.invalidText.length) {
+                    tip = this.target.invalidText;
+                } else if (this.target.regexText.length){
+                    tip = this.target.regexText;
+                }
             }
 
             this.toolTip.show(tip);
@@ -8510,9 +8513,15 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      */
     regex : null,
     /**
-     * @cfg {String} regexText The error text to display if {@link #regex} is used and the test fails during validation (defaults to "")
+     * @cfg {String} regexText -- Depricated - use Invalid Text
      */
     regexText : "",
+    /**
+     * @cfg {String} invalidText The error text to display if {@link #validator} test fails during validation (defaults to "")
+     */
+    invalidText : "",
+    
+    
     
     autocomplete: false,
     
@@ -8965,6 +8974,9 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             var msg = this.validator(value);
             if(msg !== true){
                 return false;
+            }
+            if (typeof(msg) == 'string') {
+                this.invalidText = msg;
             }
         }
         
