@@ -37926,6 +37926,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
      
      minListWidth : 70,
      
+     triggerAction: 'query',
+     
      validClass : "has-success",
      
      invalidClass: "has-warning",
