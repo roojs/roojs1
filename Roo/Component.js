@@ -321,6 +321,7 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
         if(this.rendered){
             this.onEnable();
         }
+        
         this.disabled = false;
         this.fireEvent("enable", this);
         return this;
