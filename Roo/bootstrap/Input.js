@@ -210,6 +210,12 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * @cfg {String} regexText The error text to display if {@link #regex} is used and the test fails during validation (defaults to "")
      */
     regexText : "",
+    /**
+     * @cfg {String} regexText The error text to display if {@link #regex} is used and the test fails during validation (defaults to "")
+     */
+    invalidText : "",
+    
+    
     
     autocomplete: false,
     
