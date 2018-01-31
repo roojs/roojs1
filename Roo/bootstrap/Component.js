@@ -369,7 +369,6 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if (this.el && !this.el.hasClass('hidden')) {
             this.el.addClass('hidden');
         }
-        
     }
 });
 
