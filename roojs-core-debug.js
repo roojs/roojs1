@@ -15517,9 +15517,13 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
      * @return {Roo.Component} this
      */
     enable : function(){
+        
+        Roo.log('------------firing enable------------');
+        
         if(this.rendered){
             this.onEnable();
         }
+        
         this.disabled = false;
         this.fireEvent("enable", this);
         return this;
