@@ -7649,10 +7649,6 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         
         items.each(function(f){
             
-            if(!f.validate()) {
-                Roo.log(f.name);
-            }
-            
             if(f.validate()){
                 return;
             }
