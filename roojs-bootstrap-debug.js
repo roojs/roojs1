@@ -8153,8 +8153,8 @@ Roo.apply(Roo.bootstrap.Form, {
             var tip = this.target.blankText;
 
             if(this.target.getValue() !== '' ) {
-                if (this.target.invalidText.length) {
-                    tip = this.target.invalidText;
+                if (this.target.errorText.length) {
+                    tip = this.target.errorText;
                 } else if (this.target.regexText.length){
                     tip = this.target.regexText;
                 }
@@ -8513,7 +8513,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      */
     regex : null,
     /**
-     * @cfg {String} regexText -- Depricated - use Invalid Text
+     * @cfg {String} regexText The error text to display if {@link #regex} is used and the test fails during validation (defaults to "")
      */
     regexText : "",
     /**
@@ -8975,9 +8975,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             if(msg !== true){
                 return false;
             }
-            if (typeof(msg) == 'string') {
-                this.invalidText = msg;
-            }
         }
         
         if(this.regex && !this.regex.test(value)){
@@ -9248,7 +9245,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             if(feedback){
                 this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
                 
-                if(this.getValue().length || this.forceFeedback){
+                if(this.getValue() != null || this.getValue().length || this.forceFeedback){
                     this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
                 }
                 
