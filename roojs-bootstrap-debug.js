@@ -9240,12 +9240,14 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
             
+            Roo.log(this.name);
+            
             var feedback = this.el.select('.form-control-feedback', true).first();
             
             if(feedback){
                 this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
                 
-                if(this.getValue() != null || this.getValue().length || this.forceFeedback){
+                if(this.getValue().length || this.forceFeedback){
                     this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
                 }
                 
