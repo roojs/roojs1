@@ -207,9 +207,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      */
     regex : null,
     /**
-     * @cfg {String} regexText The error text to display if {@link #regex} is used and the test fails during validation (defaults to "")
+     * @cfg {String} regexText -- Depricated - use Invalid Text
      */
     regexText : "",
+    
     /**
      * @cfg {String} invalidText The error text to display if {@link #validator} test fails during validation (defaults to "")
      */
@@ -668,6 +669,9 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             var msg = this.validator(value);
             if(msg !== true){
                 return false;
+            }
+            if (typeof(msg) == 'string') {
+                this.invalidText = msg;
             }
         }
         

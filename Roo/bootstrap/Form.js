@@ -673,8 +673,9 @@ Roo.apply(Roo.bootstrap.Form, {
             var tip = this.target.blankText;
 
             if(this.target.getValue() !== '' ) {
-                if (this.target.errorText.length) {
-                    tip = this.target.errorText;
+                
+                if (this.target.invalidText.length) {
+                    tip = this.target.invalidText;
                 } else if (this.target.regexText.length){
                     tip = this.target.regexText;
                 }
