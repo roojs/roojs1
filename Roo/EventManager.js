@@ -522,8 +522,6 @@ Roo.onReady(function(){
     var bd = Roo.get(document.body);
     if(!bd){ return; }
 
-    Roo.log('--------doc ready------');
-
     var cls = [
             Roo.isIE ? "roo-ie"
             : Roo.isIE11 ? "roo-ie11"
