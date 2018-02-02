@@ -630,6 +630,8 @@ Roo.factory(conf, Roo.data);
         /** @type Boolean */
         isIE11 : isIE11,
         /** @type Boolean */
+        isEdge : isEdge,
+        /** @type Boolean */
         isGecko : isGecko,
         /** @type Boolean */
         isBorderBox : isBorderBox,
@@ -6626,8 +6628,6 @@ Roo.onReady = Roo.EventManager.onDocumentReady;
 Roo.onReady(function(){
     var bd = Roo.get(document.body);
     if(!bd){ return; }
-
-    Roo.log('--------doc ready------');
 
     var cls = [
             Roo.isIE ? "roo-ie"
