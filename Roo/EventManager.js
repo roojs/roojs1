@@ -527,7 +527,7 @@ Roo.onReady(function(){
             : Roo.isIE11 ? "roo-ie11"
             : Roo.isGecko ? "roo-gecko"
             : Roo.isOpera ? "roo-opera"
-            // : Roo.isSafari ? "roo-safari"
+            : Roo.isSafari ? "roo-safari"
             : Roo.isEdge ? "roo-edge" : ""];
 
     if(Roo.isMac){
