@@ -50,8 +50,8 @@ Roo.apply = function(o, c, defaults){
     var idSeed = 0;
     var ua = navigator.userAgent.toLowerCase();
 
-    Roo.log('-------ua---------');
-    Roo.log(ua);
+    console.log('-------ua---------');
+    console.log(ua);
 
     var isStrict = document.compatMode == "CSS1Compat",
         isOpera = ua.indexOf("opera") > -1,
