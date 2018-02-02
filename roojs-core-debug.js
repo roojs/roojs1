@@ -50,9 +50,6 @@ Roo.apply = function(o, c, defaults){
     var idSeed = 0;
     var ua = navigator.userAgent.toLowerCase();
 
-    console.log('-------ua---------');
-    console.log(ua);
-
     var isStrict = document.compatMode == "CSS1Compat",
         isOpera = ua.indexOf("opera") > -1,
         isSafari = (/webkit|khtml/).test(ua),
@@ -6629,6 +6626,8 @@ Roo.onReady = Roo.EventManager.onDocumentReady;
 Roo.onReady(function(){
     var bd = Roo.get(document.body);
     if(!bd){ return; }
+
+    Roo.log('--------doc ready------');
 
     var cls = [
             Roo.isIE ? "roo-ie"
