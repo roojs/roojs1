@@ -525,10 +525,10 @@ Roo.onReady(function(){
     var cls = [
             Roo.isIE ? "roo-ie"
             : Roo.isIE11 ? "roo-ie11"
-            : Roo.isEdge ? "roo-edge"
             : Roo.isGecko ? "roo-gecko"
             : Roo.isOpera ? "roo-opera"
-            : Roo.isSafari ? "roo-safari" : ""];
+            : Roo.isSafari ? "roo-safari"
+            : Roo.isEdge ? "roo-edge" : ""];
 
     if(Roo.isMac){
         cls.push("roo-mac");
