@@ -60,6 +60,7 @@ Roo.apply = function(o, c, defaults){
         isIE = ua.indexOf("msie") > -1,
         isIE7 = ua.indexOf("msie 7") > -1,
         isIE11 = /trident.*rv\:11\./.test(ua),
+        isEdge = ua.indexOf("edge/") > -1,
         isGecko = !isSafari && ua.indexOf("gecko") > -1,
         isBorderBox = isIE && !isStrict,
         isWindows = (ua.indexOf("windows") != -1 || ua.indexOf("win32") != -1),
@@ -6632,6 +6633,7 @@ Roo.onReady(function(){
     var cls = [
             Roo.isIE ? "roo-ie"
             : Roo.isIE11 ? "roo-ie11"
+            : Roo.isEdge ? "roo-edge"
             : Roo.isGecko ? "roo-gecko"
             : Roo.isOpera ? "roo-opera"
             : Roo.isSafari ? "roo-safari" : ""];
