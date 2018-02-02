@@ -60,7 +60,7 @@ Roo.apply = function(o, c, defaults){
         isIE = ua.indexOf("msie") > -1,
         isIE7 = ua.indexOf("msie 7") > -1,
         isIE11 = /trident.*rv\:11\./.test(ua),
-        isEdge = ua.indexOf("edge/") > -1,
+        isEdge = ua.indexOf("edge") > -1,
         isGecko = !isSafari && ua.indexOf("gecko") > -1,
         isBorderBox = isIE && !isStrict,
         isWindows = (ua.indexOf("windows") != -1 || ua.indexOf("win32") != -1),
