@@ -57,7 +57,7 @@ foreach ($files as $src => $file){
             continue;
         }
 
-        $less = "{$dir}/{$f}";
+        $less = "{$dir}{$f}";
         
         echo "{$less} : " . filemtime($less);
         echo "\n";
@@ -72,7 +72,7 @@ foreach ($files as $src => $file){
     }
     
 }
-
+exit;
 require_once 'HTML/Less.php';
 
 foreach ($files as $src => $file){
