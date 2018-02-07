@@ -2519,7 +2519,7 @@ a.roo-brick-link:hover {
   margin-bottom: 0px;
 }
 .tab-content > .tab-pane .navbar > .navbar-nav > .nav-item .input-group,
-.tab-content > .tab-pane .navbar > .navbar-nav > .nav-item button {
+.tab-content > .tab-pane .navbar > .navbar-nav > .nav-item button.roo-button {
   margin: 10px 5px;
 }
 /* for some reason it's -15px on BS */
