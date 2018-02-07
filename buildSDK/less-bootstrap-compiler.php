@@ -48,6 +48,9 @@ foreach ($files as $src => $file){
         continue;
     }
     
+    echo filemtime($css);
+    echo "\n";
+        
     foreach(scandir($dir) as $f) {
                 
         if (!strlen($f) || $f[0] == '.') {
@@ -55,6 +58,9 @@ foreach ($files as $src => $file){
         }
 
         $less = "{$dir}/{$f}";
+        
+        echo filemtime($less);
+        echo "\n";
         
         if(filemtime($less) > filemtime($css)){
             continue;
