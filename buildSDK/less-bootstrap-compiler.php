@@ -48,7 +48,7 @@ foreach ($files as $src => $file){
         continue;
     }
     
-    $is_up_to_date = true;
+    $isLatest = true;
     
     foreach(scandir($dir) as $f) {
                 
@@ -59,12 +59,12 @@ foreach ($files as $src => $file){
         $less = "{$dir}{$f}";
         
         if(filemtime($less) > filemtime($css)){
-            $is_up_to_date = false;
+            $isLatest = false;
             break;
         }
     }
     
-    if($is_up_to_date){
+    if($isLatest){
         echo "{$css} already up-to-date \n";
         unset($files[$src]);
     }
