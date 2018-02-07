@@ -2515,6 +2515,12 @@ a.roo-brick-link:hover {
 .tab-content > .tab-pane .navbar > .navbar-nav {
   margin: 0 5px;
 }
+.tab-content > .tab-pane .navbar > .navbar-nav > .nav-item .roo-toolbar {
+  margin: 0px;
+}
+.tab-content > .tab-pane .navbar > .navbar-nav > .nav-item .roo-toolbar > .column {
+  padding: 0px;
+}
 .tab-content > .tab-pane .navbar > .navbar-nav > .nav-item .form-group {
   margin-bottom: 0px;
 }
