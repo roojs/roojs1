@@ -48,9 +48,8 @@ foreach ($files as $src => $file){
         continue;
     }
     
-    echo filemtime($css);
-    echo "\n";
-        
+    $is_up_to_date = true;
+    
     foreach(scandir($dir) as $f) {
                 
         if (!strlen($f) || $f[0] == '.') {
@@ -59,20 +58,19 @@ foreach ($files as $src => $file){
 
         $less = "{$dir}{$f}";
         
-        echo "{$less} : " . filemtime($less);
-        echo "\n";
-        
         if(filemtime($less) > filemtime($css)){
-            continue;
+            $is_up_to_date = false;
+            break;
         }
-        
+    }
+    
+    if($is_up_to_date){
         echo "{$css} already up-to-date \n";
         unset($files[$src]);
-        break;
     }
     
 }
-exit;
+
 require_once 'HTML/Less.php';
 
 foreach ($files as $src => $file){
