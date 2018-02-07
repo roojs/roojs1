@@ -2512,6 +2512,16 @@ a.roo-brick-link:hover {
 .tab-content > .tab-pane {
   position: absolute;
 }
+.tab-content > .tab-pane .navbar > .navbar-nav {
+  margin: 0 5px;
+}
+.tab-content > .tab-pane .navbar > .navbar-nav > .nav-item .form-group {
+  margin-bottom: 0px;
+}
+.tab-content > .tab-pane .navbar > .navbar-nav > .nav-item .input-group,
+.tab-content > .tab-pane .navbar > .navbar-nav > .nav-item button {
+  margin: 10px 5px;
+}
 /* for some reason it's -15px on BS */
 @media (min-width: 768px) {
   .navbar-right {
@@ -3481,6 +3491,11 @@ html.bootstrap-sticky body {
 }
 .table tfoot .navbar {
   min-height: inherit;
+}
+/* for ie11 && edge: fixing height inheriting from tbody to tr */
+.roo-ie11 table tbody tr,
+.roo-edge table tbody tr {
+  height: auto;
 }
 .header .top-bar {
   min-height: 30px;
