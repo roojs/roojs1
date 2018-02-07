@@ -59,7 +59,7 @@ foreach ($files as $src => $file){
 
         $less = "{$dir}/{$f}";
         
-        echo filemtime($less);
+        echo "{$less} : " . filemtime($less);
         echo "\n";
         
         if(filemtime($less) > filemtime($css)){
