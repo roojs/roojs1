@@ -2512,9 +2512,6 @@ a.roo-brick-link:hover {
 .tab-content > .tab-pane {
   position: absolute;
 }
-.tab-content > .tab-pane .navbar > .navbar-nav {
-  margin: 0 5px;
-}
 .tab-content > .tab-pane .navbar > .navbar-nav > .nav-item .roo-toolbar {
   margin: 0px;
 }
@@ -2527,6 +2524,9 @@ a.roo-brick-link:hover {
 .tab-content > .tab-pane .navbar > .navbar-nav > .nav-item .input-group,
 .tab-content > .tab-pane .navbar > .navbar-nav > .nav-item button.roo-toolbar-button {
   margin: 10px 5px;
+}
+.tab-content > .tab-pane .navbar > .navbar-nav a.dropdown-toggle {
+  padding: 10px 5px;
 }
 /* for some reason it's -15px on BS */
 @media (min-width: 768px) {
