@@ -2516,12 +2516,11 @@ a.roo-brick-link:hover {
   margin: 0 5px;
 }
 .tab-content > .tab-pane .navbar > .navbar-nav > .nav-item .roo-toolbar > .column {
-  padding: 0 5px;
+  padding: 10px 5px;
 }
 .tab-content > .tab-pane .navbar > .navbar-nav > .nav-item .form-group {
   margin-bottom: 0px;
 }
-.tab-content > .tab-pane .navbar > .navbar-nav > .nav-item .input-group,
 .tab-content > .tab-pane .navbar > .navbar-nav > .nav-item .roo-toolbar-label {
   margin: 10px 0;
 }
