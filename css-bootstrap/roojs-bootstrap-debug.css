@@ -2329,14 +2329,12 @@ a.roo-brick-link:hover {
     }
 }
 */
-.modal-body.roo-layout-container {
+.modal-body.roo-layout-container,
+.modal-body > .container {
   padding: 0;
 }
 .modal-dialog {
   max-width: 100%;
-}
-.modal-body .col-xs-12 {
-  padding-left: 0px;
 }
 .roo-navigation-bar-group,
 .roo-navigation-top-bar,
