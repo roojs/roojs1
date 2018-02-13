@@ -12376,66 +12376,66 @@ Roo.bootstrap.ComboBox = function(config){
         /**
          * @event expand
          * Fires when the dropdown list is expanded
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
-	     */
+        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        */
         'expand' : true,
         /**
          * @event collapse
          * Fires when the dropdown list is collapsed
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
-	     */
+        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        */
         'collapse' : true,
         /**
          * @event beforeselect
          * Fires before a list item is selected. Return false to cancel the selection.
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
-	     * @param {Roo.data.Record} record The data record returned from the underlying store
-	     * @param {Number} index The index of the selected item in the dropdown list
-	     */
+        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        * @param {Roo.data.Record} record The data record returned from the underlying store
+        * @param {Number} index The index of the selected item in the dropdown list
+        */
         'beforeselect' : true,
         /**
          * @event select
          * Fires when a list item is selected
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
-	     * @param {Roo.data.Record} record The data record returned from the underlying store (or false on clear)
-	     * @param {Number} index The index of the selected item in the dropdown list
-	     */
+        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        * @param {Roo.data.Record} record The data record returned from the underlying store (or false on clear)
+        * @param {Number} index The index of the selected item in the dropdown list
+        */
         'select' : true,
         /**
          * @event beforequery
          * Fires before all queries are processed. Return false to cancel the query or set cancel to true.
          * The event object passed has these properties:
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
-	     * @param {String} query The query
-	     * @param {Boolean} forceAll true to force "all" query
-	     * @param {Boolean} cancel true to cancel the query
-	     * @param {Object} e The query event object
-	     */
+        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        * @param {String} query The query
+        * @param {Boolean} forceAll true to force "all" query
+        * @param {Boolean} cancel true to cancel the query
+        * @param {Object} e The query event object
+        */
         'beforequery': true,
          /**
          * @event add
          * Fires when the 'add' icon is pressed (add a listener to enable add button)
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
-	     */
+        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        */
         'add' : true,
         /**
          * @event edit
          * Fires when the 'edit' icon is pressed (add a listener to enable add button)
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
-	     * @param {Roo.data.Record|false} record The data record returned from the underlying store (or false on nothing selected)
-	     */
+        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        * @param {Roo.data.Record|false} record The data record returned from the underlying store (or false on nothing selected)
+        */
         'edit' : true,
         /**
          * @event remove
          * Fires when the remove value from the combobox array
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
-	     */
+        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        */
         'remove' : true,
         /**
          * @event afterremove
          * Fires when the remove value from the combobox array
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
-	     */
+        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        */
         'afterremove' : true,
         /**
          * @event specialfilter
@@ -13706,7 +13706,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var close = this.closeTriggerEl();
         
         if(close){
-            (vv.length || vv * 1 > 0) ? close.show() : close.hide();
+            if(dv.length || vv * 1 > 0){
+                close.show() ;
+                this.blockFocus=true;
+            } else {
+                close.hide();
+            }             
         }
         
         if(this.hiddenField){
