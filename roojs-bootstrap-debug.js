@@ -14908,9 +14908,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.touchViewEl.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
         this.touchViewEl.show();
 
-        this.touchViewEl.select('.modal-dialog', true).first().setStyle('margin', '0px');
-        this.touchViewEl.select('.modal-dialog > .modal-content', true).first().setSize(
-                Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
+        this.touchViewEl.select('.modal-dialog', true).first().setStyle({ margin : '0px', width : '100%'});
+        
+        //this.touchViewEl.select('.modal-dialog > .modal-content', true).first().setSize(
+        //        Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
 
         var bodyHeight = Roo.lib.Dom.getViewHeight() - this.touchViewFooterEl.getHeight() + this.touchViewBodyEl.getPadding('tb');
 
