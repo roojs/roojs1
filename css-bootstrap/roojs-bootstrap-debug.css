@@ -2336,6 +2336,14 @@ a.roo-brick-link:hover {
 .modal-dialog {
   max-width: 100%;
 }
+@media (max-width: 768px) {
+  .modal-body {
+    padding: 5px;
+  }
+  .modal-body > .container .col-xs-12 {
+    padding-left: 0px;
+  }
+}
 .roo-navigation-bar-group,
 .roo-navigation-top-bar,
 .roo-navigation-bullets-bar,
