@@ -1836,11 +1836,16 @@ li.dropdown-menu-item i.fa + span {
 div.input-group.has-feedback > .form-control-feedback {
   right: 30px;
 }
+.roo-required-indicator {
+  font-size: 8px;
+  color: #d9534f;
+  vertical-align: top;
+}
 .roo-required-indicator.left-indicator {
-  margin-right: 5px;
+  margin-right: 3px;
 }
 .roo-required-indicator.right-indicator {
-  margin-left: 5px;
+  margin-left: 3px;
 }
 .label-pill {
   padding-right: .6em;
@@ -2336,12 +2341,19 @@ a.roo-brick-link:hover {
 .modal-dialog {
   max-width: 100%;
 }
+.modal-body > .container .col-xs-12 {
+  padding: 0;
+}
 @media (max-width: 768px) {
+  .modal-body .col-md-12 {
+    padding: 0;
+  }
   .modal-body {
     padding: 5px;
   }
-  .modal-body > .container .col-xs-12 {
-    padding-left: 0px;
+  .modal-body .row {
+    margin-left: -5px;
+    margin-right: -5px;
   }
 }
 .roo-navigation-bar-group,
@@ -3516,8 +3528,8 @@ html.bootstrap-sticky body {
   min-height: inherit;
 }
 /* for ie11 && edge: fixing height inheriting from tbody to tr */
-.roo-ie11 table tbody tr,
-.roo-edge table tbody tr {
+.roo-ie11 table.table tbody tr,
+.roo-edge table.table tbody tr {
   height: auto;
 }
 .header .top-bar {
@@ -3635,6 +3647,10 @@ html.bootstrap-sticky body {
   font-size: 14px;
   line-height: 24px;
 }
+/* WTF is this! !!
+ *
+ * DO NOT EVER PUT ANYTHIGN IN THIS FILE... tweaks - bad name... *
+ */
 .navbar-left .input-group[class*="col-"] {
   float: left;
 }
@@ -3666,6 +3682,11 @@ html.bootstrap-sticky body {
 .checkbox,
 .radio {
   padding-left: 15px !important;
+}
+/* inside a column it needs even more padding...*/
+.column .checkbox,
+.column .radio {
+  padding-left: 25px !important;
 }
 /* paging toolbar */
 .pagination .x-paging-position span {
