@@ -14692,21 +14692,20 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
             var labelCfg = cfg.cn[1];
             var contentCfg = cfg.cn[2];
-            
 
             if(this.indicatorpos == 'right'){
+    
                 cfg.cn = [
                     {
                         tag: 'label',
                         cls : 'control-label',
-                        html : this.fieldLabel,
-                        cn : [
-                            {
-                               tag : 'i',
-                               cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
-                               tooltip : 'This field is required'
-                            }
-                        ]
+                        html : this.fieldLabel
+
+                    },
+                    {
+                       tag : 'i',
+                       cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
+                       tooltip : 'This field is required'
                     },
                     {
                         cls : '', 
@@ -14716,7 +14715,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     }
                 ];
                 labelCfg = cfg.cn[0];
-                contentCfg = cfg.cn[1];
+                contentCfg = cfg.cn[2];
             }
             
            
