@@ -2345,9 +2345,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             var contentCfg = cfg.cn[2];
 
             if(this.indicatorpos == 'right'){
-                
-                Roo.log('-------------------right-------------------');
-                
+    
                 cfg.cn = [
                     {
                         tag: 'label',
