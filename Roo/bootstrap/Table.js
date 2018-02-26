@@ -1026,9 +1026,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var t = r.cfg.render(r.container);
         
-        Roo.log('render cell object');
-        Roo.log(r);
-        
         if(r.cfg.cn){
             Roo.each(r.cfg.cn, function(c){
                 var child = {
