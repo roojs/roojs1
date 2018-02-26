@@ -4658,6 +4658,8 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
         
         Roo.log(typeof(this.menu));
         
+        Roo.log(this.menu);
+        
         if (typeof (this.menu) != 'undefined') {
             this.menu.parentType = this.xtype;
             this.menu.triggerEl = this.el;
@@ -4665,8 +4667,7 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
         }
         
         this.el.on('click', this.onClick, this);
-       
-    
+        
         if(this.badge !== ''){
  
             this.badgeEl = this.el.select('.badge', true).first().setVisibilityMode(Roo.Element.DISPLAY);
