@@ -4654,6 +4654,10 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
     
     initEvents : function()
     { 
+        Roo.log('NavSidebarItem initEvents??');
+        
+        Roo.log(typeof(this.menu));
+        
         if (typeof (this.menu) != 'undefined') {
             this.menu.parentType = this.xtype;
             this.menu.triggerEl = this.el;
@@ -6756,6 +6760,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         r.cfg.parentId = (typeof(r.container) == 'string') ? r.container : r.container.id;
         
         var t = r.cfg.render(r.container);
+        
+        Roo.log('render cell object');
+        Roo.log(r);
         
         if(r.cfg.cn){
             Roo.each(r.cfg.cn, function(c){
