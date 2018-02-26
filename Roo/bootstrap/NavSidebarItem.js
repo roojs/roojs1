@@ -103,6 +103,8 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
     
     initEvents : function()
     { 
+        Roo.log('NavSidebarItem initEvents??');
+        
         if (typeof (this.menu) != 'undefined') {
             this.menu.parentType = this.xtype;
             this.menu.triggerEl = this.el;
