@@ -4024,7 +4024,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
             cfg.cls += ' navbar-nav'
         }
         
-        if (this.parent().sidebar) {
+        if (this.parent() && this.parent().sidebar) {
             cfg = {
                 tag: 'ul',
                 cls: 'dashboard-menu sidebar-menu'
@@ -6756,9 +6756,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         r.cfg.parentId = (typeof(r.container) == 'string') ? r.container : r.container.id;
         
         var t = r.cfg.render(r.container);
-        
-        Roo.log('render cell object');
-        Roo.log(r);
         
         if(r.cfg.cn){
             Roo.each(r.cfg.cn, function(c){
