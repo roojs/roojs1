@@ -4569,6 +4569,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
  * {Boolean} buttonView use button as the tigger el rather that a (default false)
  * {String} buttonWeight (default|primary|success|info|warning|danger)the extra classes for the button
  * {String} buttonSize (sm|md|lg)the extra classes for the button
+ * {Boolean} showArrow show arrow next to the text (default true)
  * @constructor
  * Create a new Navbar Button
  * @param {Object} config The config object
@@ -4607,6 +4608,8 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
     
     buttonSize : 'md',
     
+    showArrow : true,
+    
     getAutoCreate : function(){
         
         
@@ -4622,7 +4625,7 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
             a = {
                 tag: 'button',
                 href : this.href || '#',
-                cls: 'btn btn-' + this.buttonWeight + ' btn-' + this.buttonSize,
+                cls: 'btn btn-' + this.buttonWeight + ' btn-' + this.buttonSize + 'roo-button-dropdown-toggle',
                 html : this.html,
                 cn : []
             };
@@ -4658,22 +4661,22 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
 
             a.cn.push(span);
             
-            if (this.badge !== '') {
-                a.cn.push({ tag: 'span',  cls : 'badge pull-right badge-' + this.badgeWeight, html: this.badge }); 
-            }
         }
         
-        // then badge..
+        if (this.badge !== '') {
+            a.cn.push({ tag: 'span',  cls : 'badge pull-right badge-' + this.badgeWeight, html: this.badge }); 
+        }
         
-        // fi
         if (this.menu) {
-            a.cn.push({ tag : 'i', cls : 'glyphicon glyphicon-chevron-down pull-right'});
-            a.cls += 'dropdown-toggle treeview' ;
+            
+            if(this.showArrow){
+                a.cn.push({ tag : 'i', cls : 'glyphicon glyphicon-chevron-down pull-right'});
+            }
+            
+            a.cls += ' dropdown-toggle treeview' ;
         }
         
         return cfg;
-         
-	   
     },
     
     initEvents : function()
@@ -4687,7 +4690,6 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
         this.el.on('click', this.onClick, this);
         
         if(this.badge !== ''){
- 
             this.badgeEl = this.el.select('.badge', true).first().setVisibilityMode(Roo.Element.DISPLAY);
         }
         
