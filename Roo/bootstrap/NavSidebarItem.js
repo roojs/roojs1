@@ -106,13 +106,14 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
             };
 
             a.cn.push(span);
+            
+            if (this.badge !== '') {
+                a.cn.push({ tag: 'span',  cls : 'badge pull-right badge-' + this.badgeWeight, html: this.badge }); 
+            }
         }
         
         // then badge..
-        if (this.badge !== '') {
-            
-            a.cn.push({ tag: 'span',  cls : 'badge pull-right badge-' + this.badgeWeight, html: this.badge }); 
-        }
+        
         // fi
         if (this.menu) {
             a.cn.push({ tag : 'i', cls : 'glyphicon glyphicon-chevron-down pull-right'});
