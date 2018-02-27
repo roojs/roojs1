@@ -54,6 +54,8 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
     
     buttonWeight : 'default',
     
+    buttonSize : 'md',
+    
     getAutoCreate : function(){
         
         
@@ -69,7 +71,7 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
             a = {
                 tag: 'button',
                 href : this.href || '#',
-                cls: 'btn btn',
+                cls: 'btn btn-' + this.buttonWeight,
                 html : '',
                 cn : []
         };
