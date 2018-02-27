@@ -107,11 +107,12 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
 
             a.cn.push(span);
             
-            if (this.badge !== '') {
-                a.cn.push({ tag: 'span',  cls : 'badge pull-right badge-' + this.badgeWeight, html: this.badge }); 
-            }
         }
         
+        if (this.badge !== '') {
+            a.cn.push({ tag: 'span',  cls : 'badge pull-right badge-' + this.badgeWeight, html: this.badge }); 
+        }
+            
         // then badge..
         
         // fi
@@ -136,7 +137,6 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
         this.el.on('click', this.onClick, this);
         
         if(this.badge !== ''){
- 
             this.badgeEl = this.el.select('.badge', true).first().setVisibilityMode(Roo.Element.DISPLAY);
         }
         
