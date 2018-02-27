@@ -51,6 +51,8 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
     
     buttonView : false,
     
+    buttonWeight : 'default',
+    
     getAutoCreate : function(){
         
         
