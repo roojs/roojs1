@@ -15,6 +15,7 @@
  * Bootstrap Navbar.NavSidebarItem class
  * {String} badgeWeight (default|primary|success|info|warning|danger)the extra classes for the badge
  * {bool} open is the menu open
+ * {bool} buttonView use button as the tigger el rather that a (default false)
  * @constructor
  * Create a new Navbar Button
  * @param {Object} config The config object
