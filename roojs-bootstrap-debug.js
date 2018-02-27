@@ -4565,7 +4565,10 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
  * @extends Roo.bootstrap.NavItem
  * Bootstrap Navbar.NavSidebarItem class
  * {String} badgeWeight (default|primary|success|info|warning|danger)the extra classes for the badge
- * {bool} open is the menu open
+ * {Boolean} open is the menu open
+ * {Boolean} buttonView use button as the tigger el rather that a (default false)
+ * {String} buttonWeight (default|primary|success|info|warning|danger)the extra classes for the button
+ * {String} buttonSize (sm|md|lg)the extra classes for the button
  * @constructor
  * Create a new Navbar Button
  * @param {Object} config The config object
@@ -4598,6 +4601,12 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
     
     open: false,
     
+    buttonView : false,
+    
+    buttonWeight : 'default',
+    
+    buttonSize : 'md',
+    
     getAutoCreate : function(){
         
         
@@ -4608,16 +4617,22 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
                 html : '',
                 cn : []
         };
+        
+        if(this.buttonView){
+            a = {
+                tag: 'button',
+                href : this.href || '#',
+                cls: 'btn btn-' + this.buttonWeight + ' btn-' + this.buttonSize,
+                html : this.html,
+                cn : []
+            };
+        }
+        
         var cfg = {
             tag: 'li',
             cls: '',
             cn: [ a ]
         };
-        var span = {
-            tag: 'span',
-            html : this.html || ''
-        };
-        
         
         if (this.active) {
             cfg.cls += ' active';
@@ -4634,13 +4649,22 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
             var c = this.glyphicon  ? ('glyphicon glyphicon-'+this.glyphicon)  : this.icon;
             a.cn.push({ tag : 'i', cls : c }) ;
         }
-        // html..
-        a.cn.push(span);
-        // then badge..
-        if (this.badge !== '') {
+        
+        if(!this.buttonView){
+            var span = {
+                tag: 'span',
+                html : this.html || ''
+            };
+
+            a.cn.push(span);
             
-            a.cn.push({ tag: 'span',  cls : 'badge pull-right badge-' + this.badgeWeight, html: this.badge }); 
+            if (this.badge !== '') {
+                a.cn.push({ tag: 'span',  cls : 'badge pull-right badge-' + this.badgeWeight, html: this.badge }); 
+            }
         }
+        
+        // then badge..
+        
         // fi
         if (this.menu) {
             a.cn.push({ tag : 'i', cls : 'glyphicon glyphicon-chevron-down pull-right'});
