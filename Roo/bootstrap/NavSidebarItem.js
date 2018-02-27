@@ -18,6 +18,7 @@
  * {Boolean} buttonView use button as the tigger el rather that a (default false)
  * {String} buttonWeight (default|primary|success|info|warning|danger)the extra classes for the button
  * {String} buttonSize (sm|md|lg)the extra classes for the button
+ * {Boolean} showArrow show arrow next to the text
  * @constructor
  * Create a new Navbar Button
  * @param {Object} config The config object
