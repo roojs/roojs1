@@ -71,7 +71,7 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
             a = {
                 tag: 'button',
                 href : this.href || '#',
-                cls: 'btn btn-' + this.buttonWeight + ' btn-' + this.buttonSize + ' ',
+                cls: 'btn btn-' + this.buttonWeight + ' btn-' + this.buttonSize,
                 html : this.html,
                 cn : []
             };
@@ -118,7 +118,7 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
         // fi
         if (this.menu) {
             a.cn.push({ tag : 'i', cls : 'glyphicon glyphicon-chevron-down pull-right'});
-            a.cls += 'dropdown-toggle treeview' ;
+            a.cls += ' dropdown-toggle treeview' ;
         }
         
         return cfg;
