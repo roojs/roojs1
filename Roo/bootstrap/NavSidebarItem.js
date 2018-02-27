@@ -17,6 +17,7 @@
  * {Boolean} open is the menu open
  * {Boolean} buttonView use button as the tigger el rather that a (default false)
  * {String} buttonWeight (default|primary|success|info|warning|danger)the extra classes for the button
+ * {String} buttonSize (sm|md|lg)the extra classes for the button
  * @constructor
  * Create a new Navbar Button
  * @param {Object} config The config object
@@ -63,6 +64,17 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
                 html : '',
                 cn : []
         };
+        
+        if(this.buttonView){
+            a = {
+                tag: 'button',
+                href : this.href || '#',
+                cls: 'btn btn',
+                html : '',
+                cn : []
+        };
+        }
+        
         var cfg = {
             tag: 'li',
             cls: '',
