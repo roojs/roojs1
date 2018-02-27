@@ -1833,6 +1833,9 @@ li.dropdown-toggle span + i.glyphicon {
 li.dropdown-menu-item i.fa + span {
   margin-left: 5px;
 }
+li.dropdown-toggle button > i.glyphicon {
+  margin: 3px 0 0 5px;
+}
 div.input-group.has-feedback > .form-control-feedback {
   right: 30px;
 }
