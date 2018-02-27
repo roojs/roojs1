@@ -47,6 +47,8 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
     
     open: false,
     
+    buttonView : false,
+    
     getAutoCreate : function(){
         
         
