@@ -115,18 +115,17 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
         if (this.badge !== '') {
             a.cn.push({ tag: 'span',  cls : 'badge pull-right badge-' + this.badgeWeight, html: this.badge }); 
         }
-            
-        // then badge..
         
-        // fi
-        if (this.menu && this.showArrow) {
-            a.cn.push({ tag : 'i', cls : 'glyphicon glyphicon-chevron-down pull-right'});
+        if (this.menu) {
+            
+            if(this.showArrow){
+                a.cn.push({ tag : 'i', cls : 'glyphicon glyphicon-chevron-down pull-right'});
+            }
+            
             a.cls += ' dropdown-toggle treeview' ;
         }
         
         return cfg;
-         
-	   
     },
     
     initEvents : function()
