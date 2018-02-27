@@ -74,7 +74,7 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
                 cls: 'btn btn-' + this.buttonWeight + ' btn-' + this.buttonSize,
                 html : this.html,
                 cn : []
-        };
+            };
         }
         
         var cfg = {
