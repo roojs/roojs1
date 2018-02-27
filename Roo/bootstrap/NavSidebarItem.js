@@ -71,7 +71,7 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
             a = {
                 tag: 'button',
                 href : this.href || '#',
-                cls: 'btn btn-' + this.buttonWeight + ' btn-' + this.buttonSize,
+                cls: 'btn btn-' + this.buttonWeight + ' btn-' + this.buttonSize + ' ',
                 html : this.html,
                 cn : []
             };
