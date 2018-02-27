@@ -71,8 +71,8 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
             a = {
                 tag: 'button',
                 href : this.href || '#',
-                cls: 'btn btn-' + this.buttonWeight,
-                html : '',
+                cls: 'btn btn-' + this.buttonWeight + ' btn-' + this.buttonSize,
+                html : this.html,
                 cn : []
         };
         }
@@ -82,11 +82,6 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
             cls: '',
             cn: [ a ]
         };
-        var span = {
-            tag: 'span',
-            html : this.html || ''
-        };
-        
         
         if (this.active) {
             cfg.cls += ' active';
@@ -103,8 +98,16 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
             var c = this.glyphicon  ? ('glyphicon glyphicon-'+this.glyphicon)  : this.icon;
             a.cn.push({ tag : 'i', cls : c }) ;
         }
-        // html..
-        a.cn.push(span);
+        
+        if(!this.buttonView){
+            var span = {
+                tag: 'span',
+                html : this.html || ''
+            };
+
+            a.cn.push(span);
+        }
+        
         // then badge..
         if (this.badge !== '') {
             
