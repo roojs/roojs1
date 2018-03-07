@@ -20770,7 +20770,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.Component, {
     {
         this.parent().setValue(this.value, suppressEvent);
         
-    }
+    },
     
     setBoxLabel : function(v)
     {
