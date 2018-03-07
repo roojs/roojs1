@@ -287,6 +287,8 @@ Roo.extend(Roo.View, Roo.util.Observable, {
                 var _this = this;
             
                 Roo.each(this.parent.item, function(item){
+                    Roo.log('item : ' + item[_this.parent.valueField]);
+                    Roo.log('data : ' + data[_this.parent.valueField]);
                     if(item[_this.parent.valueField] != data[_this.parent.valueField]){
                         return;
                     }
