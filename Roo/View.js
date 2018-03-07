@@ -292,7 +292,8 @@ Roo.extend(Roo.View, Roo.util.Observable, {
                     if(item[_this.parent.valueField] != data[_this.parent.valueField]){
                         return;
                     }
-                    Roo.log("hit checked" + item);
+                    Roo.log("hit checked");
+                    Roo.log(item);
                     Roo.apply(d, {'roo-data-checked' : 'checked'});
                 });
             }
