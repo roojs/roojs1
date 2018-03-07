@@ -20777,7 +20777,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.Component, {
         this.boxLabel = v;
         
         if(this.rendered){
-            this.el.select('label.box-label',true).dom.innerHTML = (v === null || v === undefined ? '' : v);
+            this.el.select('label.box-label',true).first().dom.innerHTML = (v === null || v === undefined ? '' : v);
         }
     }
     
