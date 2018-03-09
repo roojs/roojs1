@@ -406,7 +406,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 }
             ];
             
-            var labelCfg = cfg.cn[1];
+            var labelCfg = cfg.cn[0];
             var contentCfg = cfg.cn[2];
             
             if(this.indicatorpos == 'right'){
