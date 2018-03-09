@@ -43,6 +43,10 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
         
         var cfg = {};
         
+        if(this.inputType != 'hidden'){
+            cfg.cls = 'form-group' //input-group
+        }
+        
         var input =  {
             tag: 'textarea',
             id : id,
