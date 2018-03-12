@@ -33301,6 +33301,13 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
             cfg.cls += ' roo-radio-set-inline';
         }
         
+        var settings=this;
+        ['xs','sm','md','lg'].map(function(size){
+            if (settings[size]) {
+                cfg.cls += ' col-' + size + '-' + settings[size];
+            }
+        });
+        
         return cfg;
         
     },
