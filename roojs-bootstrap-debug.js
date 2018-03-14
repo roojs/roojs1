@@ -36388,7 +36388,14 @@ Roo.bootstrap.panel.Content = function( config){
          * Fires when this tab is created
          * @param {Roo.ContentPanel} this
          */
-        "render" : true
+        "render" : true,
+        
+        /**
+        * @event beforerender
+        * Fires before this tab is created
+        * @param {Roo.ContentPanel} this
+        */
+       "beforerender" : true
         
         
         
@@ -38474,7 +38481,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
       * iso2 and abbr for all countries
       * @type Object
       */
-     List : [
+     list : [
          ["Afghanistan (‫افغانستان‬‎)", "af", "93"],
          ["Albania (Shqipëri)", "al", "355"],
          ["Algeria (‫الجزائر‬‎)", "dz", "213"],

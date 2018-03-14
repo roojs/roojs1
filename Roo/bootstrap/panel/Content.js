@@ -152,7 +152,7 @@ Roo.bootstrap.panel.Content = function( config){
          * Fires when this tab is created
          * @param {Roo.ContentPanel} this
          */
-        "render" : true
+        "render" : true,
         
         /**
         * @event beforerender
