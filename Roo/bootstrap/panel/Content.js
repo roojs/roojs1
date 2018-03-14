@@ -154,6 +154,13 @@ Roo.bootstrap.panel.Content = function( config){
          */
         "render" : true
         
+        /**
+        * @event beforerender
+        * Fires before this tab is created
+        * @param {Roo.ContentPanel} this
+        */
+       "beforerender" : true
+        
         
         
     });
