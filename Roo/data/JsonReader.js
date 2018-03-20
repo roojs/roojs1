@@ -170,8 +170,6 @@ Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
             }
         }
 
-        Roo.log(o);
-
     	var root = this.getRoot(o), c = root.length, totalRecords = c, success = true;
     	if(s.totalProperty){
             var vt = parseInt(this.getTotal(o), 10);
