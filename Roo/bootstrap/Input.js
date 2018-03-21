@@ -1008,6 +1008,15 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         return w;
     }
     
+    setFieldLabel : function(v)
+    {
+        this.fieldLabel = v;
+        
+        if(this.rendered){
+            this.el.select('label',true).first().dom.innerHTML = (v === null || v === undefined ? '' : v);
+        }
+    }
+    
 });
 
  
