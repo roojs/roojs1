@@ -1016,7 +1016,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             this.el.select('label',true).first().dom.innerHTML = (v === null || v === undefined ? '' : v);
         }
     }
-    
 });
 
  
