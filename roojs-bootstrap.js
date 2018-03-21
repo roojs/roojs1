@@ -374,7 +374,7 @@ if(this.hasFeedback&&this.inputType!='hidden'&&!this.allowBlank){var B=this.el.s
 }}}this.fireEvent('invalid',this,A);},SafariOnKeyDown:function(A){if(this.inputEl().dom.type!='password'){return;}var B=false;if(this.inputEl().dom.selectionEnd>0){B=(this.inputEl().dom.selectionEnd-this.inputEl().dom.selectionStart-this.getValue().length==0)?true:false;
 }if(((A.getKey()==8||A.getKey()==46)&&this.getValue().length==1)){A.preventDefault();this.setValue('');return;}if(B&&A.getCharCode()>31&&!A.ctrlKey){A.preventDefault();var cc=String.fromCharCode(A.getCharCode());this.setValue(A.shiftKey?cc:cc.toLowerCase());
 }},adjustWidth:function(A,w){A=A.toLowerCase();if(typeof w=='number'&&Roo.isStrict&&!Roo.isSafari){if(Roo.isIE&&(A=='input'||A=='textarea')){if(A=='input'){return w+2;}if(A=='textarea'){return w-2;}}else if(Roo.isOpera){if(A=='input'){return w+2;}if(A=='textarea'){return w-2;
-}}}return w;}});
+}}}return w;}setFieldLabel:function(v){this.fieldLabel=v;if(this.rendered){this.el.select('label',true).first().dom.innerHTML=(v===null||v===undefined?'':v);}}});
 // Roo/bootstrap/TextArea.js
 Roo.bootstrap.TextArea=function(A){Roo.bootstrap.TextArea.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.TextArea,Roo.bootstrap.Input,{cols:false,rows:5,readOnly:false,warp:'soft',resize:false,value:false,html:false,getAutoCreate:function(){var A=(!this.labelAlign)?this.parentLabelAlign():this.labelAlign;
 var id=Roo.id();var B={};if(this.inputType!='hidden'){B.cls='form-group'}var C={tag:'textarea',id:id,warp:this.warp,rows:this.rows,value:this.value||'',html:this.html||'',cls:'form-control',placeholder:this.placeholder||''};if(this.maxLength&&this.maxLength!=Number.MAX_VALUE){C.maxLength=this.maxLength;
