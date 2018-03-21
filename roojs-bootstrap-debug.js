@@ -9342,7 +9342,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             }
         }
         return w;
-    }
+    },
     
     setFieldLabel : function(v)
     {
