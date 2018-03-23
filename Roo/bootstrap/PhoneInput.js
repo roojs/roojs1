@@ -75,7 +75,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                     cn: []
                 };
                 
-                var label_text {
+                var label_text = {
                     tag: 'span',
                     html: this.fieldLabel
                 };
@@ -100,7 +100,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                         cn: [
                             container
                         ]
-                    }
+                    };
                     
                     if(this.labelWidth > 12){
                         label.style = "width: " + this.labelWidth + 'px';
