@@ -62,11 +62,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                 ]
             };
             
-            var contentCfg = {
-                tag: 'div',
-                cn: container
-            };
-            
             if (this.fieldLabel.length) {
                 var indicator = {
                     tag: 'i',
@@ -122,6 +117,10 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                     contentCfg.cls += ' col-xs-' + (12 - this.labelxs);
                 }
             }
+            
+            cfg.cn = [
+                
+            ];
             
             
             var settings=this;
