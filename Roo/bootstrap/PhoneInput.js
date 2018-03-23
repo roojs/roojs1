@@ -103,7 +103,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                     ];
                 }
                 
-                if(align == 'left' && fieldLabel) {
+                if(align == 'left') {
                     
                 }
             }
