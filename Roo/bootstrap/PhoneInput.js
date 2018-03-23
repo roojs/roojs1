@@ -89,17 +89,17 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                     html: this.fieldLabel
                 };
                 
+                indicator.cls = 'roo-required-indicator text-danger fa fa-lg fa-star left-indicator';
+                label.cn = [
+                    indicator,
+                    label_text
+                ];
+                
                 if(this.indicatorpos == 'right') {
                     indicator.cls = 'roo-required-indicator text-danger fa fa-lg fa-star right-indicator';
                     label.cn = [
                         label_text,
                         indicator
-                    ];
-                } else {
-                    indicator.cls = 'roo-required-indicator text-danger fa fa-lg fa-star left-indicator';
-                    label.cn = [
-                        indicator,
-                        label_text
                     ];
                 }
                 
