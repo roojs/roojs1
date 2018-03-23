@@ -91,6 +91,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
             };
             
             if(this.indicatorpos == 'right') {
+                indicator.cls += 'right-indicator';
                 label.cn = [
                     label_text,
                     indicator
