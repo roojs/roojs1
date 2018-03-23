@@ -20,7 +20,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                 cls : 'form-control',
                 //style: 'padding-left: 50px',
                 //autocomplete: 'new-password',
-                //placeholder : this.placeholder || '' 
+                //placeholder : this.placeholder || ''  (altering by choice)
             };
             
         }
