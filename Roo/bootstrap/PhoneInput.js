@@ -33,14 +33,14 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
             }
             
             var flag = {
-                tag: 'div'.
+                tag: 'div',
                 cls: 'flag'
             };
             
             //btn
             var flag_container = {
                 tag: 'div',
-                cls: 'flag-container'
+                cls: 'flag-container',
                 cn: [
                     flag,
                     {
@@ -52,7 +52,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
             
             var box = {
                 tag: 'div',
-                cls: this.hasFeedback ? 'has-feedback' : ''
+                cls: this.hasFeedback ? 'has-feedback' : '',
                 cn: [
                     input
                 ]
