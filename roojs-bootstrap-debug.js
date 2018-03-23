@@ -38023,15 +38023,15 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                     }
                     if(this.labelmd > 0){
                         label.cls += ' col-md-' + this.labelmd;
-                        contentCfg.cls += ' col-md-' + (12 - this.labelmd);
+                        container.cls += ' col-md-' + (12 - this.labelmd);
                     }
                     if(this.labelsm > 0){
                         label.cls += ' col-sm-' + this.labelsm;
-                        contentCfg.cls += ' col-sm-' + (12 - this.labelsm);
+                        container.cls += ' col-sm-' + (12 - this.labelsm);
                     }
                     if(this.labelxs > 0){
                         label.cls += ' col-xs-' + this.labelxs;
-                        contentCfg.cls += ' col-xs-' + (12 - this.labelxs);
+                        container.cls += ' col-xs-' + (12 - this.labelxs);
                     }
                 }
             }
