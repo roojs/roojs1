@@ -18,7 +18,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                 tag: 'input',
                 id : id,
                 type : 'tel',
-                cls : 'form-control'
+                cls : 'form-control tel-input'
                 //style: 'padding-left: 50px',
                 //autocomplete: 'new-password',
                 //placeholder : this.placeholder || ''  (altering by choice)
