@@ -95,6 +95,13 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                 }
                 
                 if(align == 'left') {
+                    container = {
+                        tag: 'div',
+                        cn: [
+                            container
+                        ]
+                    }
+                    
                     if(this.labelWidth > 12){
                         label.style = "width: " + this.labelWidth + 'px';
                     }
