@@ -17,7 +17,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                 tag: 'input',
                 id : id,
                 type : 'tel',
-                cls : 'form-control',
+                cls : 'form-control'
                 //style: 'padding-left: 50px',
                 //autocomplete: 'new-password',
                 //placeholder : this.placeholder || ''  (altering by choice)
@@ -31,10 +31,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                 input.disabled=true;
             }
             
-            //input group addon
-            inputblock = {
-                cls : 'input-group',
-                cn :  [] 
+            var box = {
+                tag: 'div',
+                cls: this.hasFeedback ? 'has-feedback' : ''
             };
             
             var container = {
