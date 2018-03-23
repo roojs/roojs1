@@ -37,6 +37,18 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                 cn :  [] 
             };
             
+            var box = {
+                tag: 'div',
+                cn: [
+                    {
+                        tag: 'input',
+                        type : 'hidden',
+                        cls: 'form-hidden-field'
+                    },
+                    inputblock
+                ]
+            };
+            
             var container = {
                 cls: 'roo-select2-container input-group',
                 cn: [
