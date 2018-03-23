@@ -80,9 +80,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
             
             var label = {
                 tag: 'label',
-                'for' :  id,
-                cls : 'control-label',
-                html : this.fieldLabel
+                'for':  id,
+                cls: 'control-label',
+                cn: []
             };
             
             if (align ==='left' && this.fieldLabel.length) {
