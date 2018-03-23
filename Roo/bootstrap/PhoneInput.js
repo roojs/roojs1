@@ -69,6 +69,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                 container
             ];
             
+            return cfg;
         }
 
 });
