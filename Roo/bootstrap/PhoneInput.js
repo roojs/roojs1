@@ -36,6 +36,18 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                 cls: this.hasFeedback ? 'has-feedback' : ''
             };
             
+            //btn
+            var flag_container = {
+                tag: 'div',
+                cls: 'flag-container'
+                cn: [
+                    flag,
+                    {
+                        tag: 'div',
+                    }
+                ]
+            }
+            
             var container = {
                 cls: 'roo-select2-container input-group',
                 cn: [
