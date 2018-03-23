@@ -144,6 +144,11 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
             return cfg;
         },
         
+        initEvents : function()
+        {
+            //
+        },
+        
         createList : function()
         {
             this.list = Roo.get(document.body).createChild({
