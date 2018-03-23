@@ -86,7 +86,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
             };
             
             if (align ==='left' && this.fieldLabel.length) {
-                
                 cfg.cls += ' roo-form-group-label-left';
                 cfg.cn = [
                     {
