@@ -23,6 +23,10 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                 //placeholder : this.placeholder || ''  (altering by choice)
             };
             
+            if (this.name) {
+                input.name = this.name;
+            }
+            
         }
 
 });
