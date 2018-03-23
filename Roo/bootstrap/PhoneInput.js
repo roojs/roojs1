@@ -16,7 +16,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
             var input =  {
                 tag: 'input',
                 id : id,
-                type : this.inputType,
+                type : 'tel',
                 cls : 'form-control',
                 //style: 'padding-left: 50px',
                 //autocomplete: 'new-password',
@@ -25,6 +25,10 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
             
             if (this.name) {
                 input.name = this.name;
+            }
+            
+            if (this.disabled) {
+                input.disabled=true;
             }
             
         }
