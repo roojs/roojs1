@@ -86,7 +86,6 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             cls : 'form-control',
             autocomplete: 'new-password',
             placeholder : this.placeholder || '' 
-            
         };
         if (this.name) {
             input.name = this.name;
