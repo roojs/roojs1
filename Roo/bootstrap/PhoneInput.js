@@ -103,9 +103,12 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                     ];
                 }
                 
-                if(align == 'left') {
-                    
-                }
+                
+                //labellllll width...
+                // cfg.cls += ' roo-form-group-label-left';
+                // cfg.cn = [
+                //     label
+                // ]
             }
             
             
