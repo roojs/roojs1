@@ -96,6 +96,12 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                     label_text,
                     indicator
                 ];
+            } else {
+                indicator.cls += 'left-indicator';
+                label.cn = [
+                    indicator,
+                    label_text
+                ];
             }
             
             if (align ==='left' && this.fieldLabel.length) {
