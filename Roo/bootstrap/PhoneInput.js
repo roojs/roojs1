@@ -91,13 +91,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                 cfg.cn = [
                     indicator,
                     label,
-                    {
-                        cls : "", 
-                        cn: [
-                            combobox
-                        ]
-                    }
-
+                    container
                 ];
                 
                 var labelCfg = cfg.cn[1];
