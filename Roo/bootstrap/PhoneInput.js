@@ -89,17 +89,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                 cfg.cls += ' roo-form-group-label-left';
                 indicator.cls += ' left-indicator'
                 cfg.cn = [
-                    {
-                        tag : 'i',
-                        cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
-                        tooltip : 'This field is required'
-                    },
-                    {
-                        tag: 'label',
-                        'for' :  id,
-                        cls : 'control-label',
-                        html : this.fieldLabel
-                    },
+                    indicator,
+                    label,
                     {
                         cls : "", 
                         cn: [
