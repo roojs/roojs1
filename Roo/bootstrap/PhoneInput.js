@@ -154,6 +154,5 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
             
             this.list.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';;
             
-        },
-
+        }
 });
