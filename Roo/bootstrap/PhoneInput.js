@@ -60,6 +60,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
             var container = {
                 cls: 'roo-select2-container input-group',
                 cn: [
+                    flag_container,
                     box
                 ]
             };
