@@ -6,6 +6,21 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
         
         getAutoCreate : function()
         {
+            var align = this.labelAlign || this.parentLabelAlign();
+            var id = Roo.id();
+            
+            var cfg = {
+                cls: 'form-group' //input-group
+            };
+            
+            var input =  {
+                tag: 'input',
+                id : id,
+                type : this.inputType,
+                cls : 'form-control',
+                autocomplete: 'new-password',
+                placeholder : this.placeholder || '' 
+            };
             
         }
 
