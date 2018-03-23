@@ -85,6 +85,18 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                 cn: []
             };
             
+            var label_text {
+                tag: 'span',
+                html: this.fieldLabel
+            };
+            
+            if(this.indicatorpos == 'right') {
+                label.cn = [
+                    label_text,
+                    indicator
+                ];
+            }
+            
             if (align ==='left' && this.fieldLabel.length) {
                 cfg.cls += ' roo-form-group-label-left';
                 indicator.cls += ' left-indicator'
