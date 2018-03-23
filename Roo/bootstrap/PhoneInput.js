@@ -45,7 +45,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                     flag,
                     {
                         tag: 'div',
-                        cls: 'caret' //adjusting z-index??
+                        cls: 'caret'
                     }
                 ]
             };
