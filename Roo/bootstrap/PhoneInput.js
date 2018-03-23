@@ -32,6 +32,17 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
             }
             
             //input group addon
+            inputblock = {
+                cls : 'input-group',
+                cn :  [] 
+            };
+            
+            var container = {
+                cls: 'roo-select2-container input-group',
+                cn: [
+                    box
+                ]
+            };
             
         }
 
