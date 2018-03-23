@@ -10,7 +10,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
             var id = Roo.id();
             
             var cfg = {
-                cls: 'form-group' //input-group
+                cls: 'form-group', //input-group
+                cn: []
             };
             
             var input =  {
