@@ -31,6 +31,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                 input.disabled=true;
             }
             
+            //input group addon
+            
         }
 
 });
