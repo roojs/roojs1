@@ -128,7 +128,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
             }
             
             cfg.cn = [
-                
+                label,
+                container
             ];
             
             
