@@ -48,6 +48,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                     }
                 ]
             };
+            
             var box = {
                 tag: 'div',
                 cls: this.hasFeedback ? 'has-feedback' : ''
