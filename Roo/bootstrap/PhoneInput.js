@@ -90,13 +90,13 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                 };
                 
                 if(this.indicatorpos == 'right') {
-                    indicator.cls += 'right-indicator';
+                    indicator.cls = 'roo-required-indicator text-danger fa fa-lg fa-star right-indicator';
                     label.cn = [
                         label_text,
                         indicator
                     ];
                 } else {
-                    indicator.cls += 'left-indicator';
+                    indicator.cls = 'roo-required-indicator text-danger fa fa-lg fa-star left-indicator';
                     label.cn = [
                         indicator,
                         label_text
