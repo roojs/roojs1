@@ -71,42 +71,43 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                 container
             ];
             */
-            
-            var indicator = {
-                tag: 'i',
-                cls: 'roo-required-indicator text-danger fa fa-lg fa-star',
-                tooltip: 'This field is required'
-            };
-            
-            var label = {
-                tag: 'label',
-                'for':  id,
-                cls: 'control-label',
-                cn: []
-            };
-            
-            var label_text {
-                tag: 'span',
-                html: this.fieldLabel
-            };
-            
-            if(this.indicatorpos == 'right') {
-                indicator.cls += 'right-indicator';
-                label.cn = [
-                    label_text,
-                    indicator
-                ];
-            } else {
-                indicator.cls += 'left-indicator';
-                label.cn = [
-                    indicator,
-                    label_text
-                ];
-            }
-            
-            if(align == 'left' && fieldLabel) {
+            if (this.fieldLabel.length) {
+                var indicator = {
+                    tag: 'i',
+                    tooltip: 'This field is required'
+                };
                 
+                var label = {
+                    tag: 'label',
+                    'for':  id,
+                    cls: 'control-label',
+                    cn: []
+                };
+                
+                var label_text {
+                    tag: 'span',
+                    html: this.fieldLabel
+                };
+                
+                if(this.indicatorpos == 'right') {
+                    indicator.cls += 'right-indicator';
+                    label.cn = [
+                        label_text,
+                        indicator
+                    ];
+                } else {
+                    indicator.cls += 'left-indicator';
+                    label.cn = [
+                        indicator,
+                        label_text
+                    ];
+                }
+                
+                if(align == 'left' && fieldLabel) {
+                    
+                }
             }
+            
             
             var settings=this;
             
