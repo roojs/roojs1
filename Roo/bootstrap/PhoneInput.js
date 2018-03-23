@@ -35,6 +35,11 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                 tag: 'div',
                 cls: this.hasFeedback ? 'has-feedback' : ''
             };
+
+            var flag = {
+                tag: 'div'.
+                cls: 'flag'
+            };
             
             //btn
             var flag_container = {
@@ -47,7 +52,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                         cls: 'caret'
                     }
                 ]
-            }
+            };
             
             var container = {
                 cls: 'roo-select2-container input-group',
