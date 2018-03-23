@@ -18,9 +18,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                 tag: 'input',
                 id : id,
                 type : 'tel',
-                cls : 'form-control tel-input'
-                //style: 'padding-left: 50px',
-                //autocomplete: 'new-password',
+                cls : 'form-control tel-input',
+                autocomplete: 'new-password',
                 //placeholder : this.placeholder || '' 
             };
             
@@ -32,17 +31,14 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                 input.disabled=true;
             }
             
-            var flag = {
-                tag: 'div',
-                cls: 'flag'
-            };
-            
-            //btn
             var flag_container = {
                 tag: 'div',
                 cls: 'flag-container',
                 cn: [
-                    flag,
+                    {
+                        tag: 'div',
+                        cls: 'flag'
+                    },
                     {
                         tag: 'div',
                         cls: 'caret'
@@ -66,11 +62,11 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                 ]
             };
             
-            /*
-            cfg.cn = [
-                container
-            ];
-            */
+            var contentCfg = {
+                tag: 'div',
+                cn: container
+            };
+            
             if (this.fieldLabel.length) {
                 var indicator = {
                     tag: 'i',
@@ -103,12 +99,28 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                     ];
                 }
                 
-                
-                //labellllll width...
-                // cfg.cls += ' roo-form-group-label-left';
-                // cfg.cn = [
-                //     label
-                // ]
+                if(this.labelWidth > 12){
+                    label.style = "width: " + this.labelWidth + 'px';
+                }
+                if(this.labelWidth < 13 && this.labelmd == 0){
+                    this.labelmd = this.labelWidth;
+                }
+                if(this.labellg > 0){
+                    label.cls += ' col-lg-' + this.labellg;
+                    input.cls += ' col-lg-' + (12 - this.labellg);
+                }
+                if(this.labelmd > 0){
+                    label.cls += ' col-md-' + this.labelmd;
+                    contentCfg.cls += ' col-md-' + (12 - this.labelmd);
+                }
+                if(this.labelsm > 0){
+                    label.cls += ' col-sm-' + this.labelsm;
+                    contentCfg.cls += ' col-sm-' + (12 - this.labelsm);
+                }
+                if(this.labelxs > 0){
+                    label.cls += ' col-xs-' + this.labelxs;
+                    contentCfg.cls += ' col-xs-' + (12 - this.labelxs);
+                }
             }
             
             
