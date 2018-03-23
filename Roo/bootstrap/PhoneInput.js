@@ -19,7 +19,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                 id : id,
                 type : 'tel',
                 cls : 'form-control tel-input',
-                autocomplete: 'new-password',
+                autocomplete: 'new-password'
                 //placeholder : this.placeholder || '' 
             };
             
@@ -133,7 +133,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
             ];
             
             
-            var settings=this;
+            var settings = this;
             
             ['xs','sm','md','lg'].map(function(size){
                 if (settings[size]) {
