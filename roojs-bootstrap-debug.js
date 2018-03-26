@@ -10936,6 +10936,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             this.data.insert(index, records[i]);
             records[i].join(this);
         }
+        Roo.log(records);
         this.fireEvent("add", this, records, index);
     },
 
@@ -11105,9 +11106,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
 
             this.insert(0, e);
         }
-        
-        Roo.log(options.callback);
-        
+            
         this.fireEvent("load", this, r, options, o);
         if(options.callback){
             options.callback.call(options.scope || this, r, options, true);
