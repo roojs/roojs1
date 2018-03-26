@@ -274,7 +274,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.fireEvent('expand', this);
         },
         
-        restrictHeight : function(){
+        restrictHeight : function()
+        {
             //this.innerList.dom.style.height = '';
             //var inner = this.innerList.dom;
             //var h = Math.max(inner.clientHeight, inner.offsetHeight, inner.scrollHeight);
@@ -284,5 +285,71 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.list.alignTo(this.inputEl(), this.listAlign);
             this.list.alignTo(this.inputEl(), this.listAlign);
             //this.list.endUpdate();
+        },
+        
+        onViewOver : function(e, t){
+            if(this.inKeyMode){ // prevent key nav and mouse over conflicts
+                return;
+            }
+            var item = this.view.findItemFromChild(t);
+            
+            if(item){
+                var index = this.view.indexOf(item);
+                this.select(index, false);
+            }
+        },
+
+        // private
+        onViewClick : function(view, doFocus, el, e)
+        {
+            var index = this.view.getSelectedIndexes()[0];
+            
+            var r = this.store.getAt(index);
+            
+            if(this.tickable){
+                
+                if(typeof(e) != 'undefined' && e.getTarget().nodeName.toLowerCase() != 'input'){
+                    return;
+                }
+                
+                var rm = false;
+                var _this = this;
+                
+                Roo.each(this.tickItems, function(v,k){
+                    
+                    if(typeof(v) != 'undefined' && v[_this.valueField] == r.data[_this.valueField]){
+                        Roo.log(v);
+                        _this.tickItems.splice(k, 1);
+                        
+                        if(typeof(e) == 'undefined' && view == false){
+                            Roo.get(_this.view.getNodes(index, index)[0]).select('input', true).first().dom.checked = false;
+                        }
+                        
+                        rm = true;
+                        return;
+                    }
+                });
+                
+                if(rm){
+                    return;
+                }
+                
+                if(this.fireEvent('tick', this, r, index, Roo.get(_this.view.getNodes(index, index)[0]).select('input', true).first().dom.checked) !== false){
+                    this.tickItems.push(r.data);
+                }
+                
+                if(typeof(e) == 'undefined' && view == false){
+                    Roo.get(_this.view.getNodes(index, index)[0]).select('input', true).first().dom.checked = true;
+                }
+                        
+                return;
+            }
+            
+            if(r){
+                this.onSelect(r, index);
+            }
+            if(doFocus !== false && !this.blockFocus){
+                this.inputEl().focus();
+            }
         }
 });
