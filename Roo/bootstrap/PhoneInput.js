@@ -147,6 +147,22 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 }
             });
             
+            this.store = new Roo.data.Store({
+                listener : {
+                    beforeload : function(_self, o)
+                    {
+                        o.params = o.params || {};
+                        
+                        var d = {
+                            success :true,
+                            data: _this.data
+                        };
+                        
+                        this.proxy.data = d;
+                    }
+                }
+            });
+            
             return cfg;
         },
         
