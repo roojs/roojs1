@@ -38116,6 +38116,17 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.trigger = this.el.select('div.flag-container',true).first();
             this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
             
+            var _this = this;
+            
+            (function(){
+                var lw = _this.listWidth || Math.max(_this.inputEl().getWidth(), _this.minListWidth);
+                _this.list.setWidth(lw);
+            }).defer(100);
+            
+            this.list.on('mouseover', this.onViewOver, this);
+            this.list.on('mousemove', this.onViewMove, this);
+            this.list.on('scroll', this.onViewScroll, this);
+            
             this.tpl = '<li><a href="#">{' + this.displayField + '}</a></li>';
 
             this.view = new Roo.View(this.list, this.tpl, {
