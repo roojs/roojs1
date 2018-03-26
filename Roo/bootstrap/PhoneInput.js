@@ -147,6 +147,29 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
         initEvents : function()
         {
             this.createList();
+            
+            Roo.bootstrap.TriggerField.superclass.initEvents.call(this);
+            //this.wrap = this.el.wrap({cls: "x-form-field-wrap"});
+            if(!this.multiple && this.showToggleBtn){
+                this.trigger = this.el.select('span.dropdown-toggle',true).first();
+                if(this.hideTrigger){
+                    this.trigger.setDisplayed(false);
+                }
+                this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
+            }
+            
+            if(this.multiple){
+                this.inputEl().on("click", this.onTriggerClick, this, {preventDefault:true});
+            }
+            
+            if(this.removable && !this.editable && !this.tickable){
+                var close = this.closeTriggerEl();
+                
+                if(close){
+                    close.setVisibilityMode(Roo.Element.DISPLAY).hide();
+                    close.on('click', this.removeBtnClick, this, close);
+                }
+            }
         },
         
         createList : function()
