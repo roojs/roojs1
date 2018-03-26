@@ -159,7 +159,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                         }
                     ]
                 },
-                data: _this.data,
                 listeners : {
                     beforeload : function(_self, o)
                     {
