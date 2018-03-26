@@ -1939,6 +1939,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.loading = this.list.select('.loading', true).first();
         
         if(this.loading === null){
+            Roo.log('here????');
             this.list.createChild({
                 tag: 'div',
                 cls: 'loading roo-select2-more-results roo-select2-active',
