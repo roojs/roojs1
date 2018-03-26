@@ -9801,7 +9801,6 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             cls : 'form-control',
             autocomplete: 'new-password',
             placeholder : this.placeholder || '' 
-            
         };
         if (this.name) {
             input.name = this.name;
@@ -11017,7 +11016,6 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
      * </ul>
      */
     load : function(options){
-        Roo.log(options);
         options = options || {};
         if(this.fireEvent("beforeload", this, options) !== false){
             this.storeOptions(options);
@@ -21320,7 +21318,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' +
                    '</style>';
         } else { 
-            
+            st = '<style type="text/css">' +
+                    this.stylesheets +
+                '</style>';
         }
         
         st +=  '<style type="text/css">' +
@@ -22707,6 +22707,17 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         Roo.each(Roo.get(_this.iframe.contentDocument.head).select('link[rel=stylesheet]', true).elements, function(s){
             s.remove();
         });
+    },
+    
+    setStyle : function(style)
+    {
+        Roo.get(this.iframe.contentDocument.head).createChild({
+            tag : 'style',
+            type : 'text/css',
+            html : style
+        });
+
+        return;
     }
     
     // hide stuff that is not compatible
@@ -38082,10 +38093,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             }else {
                 this.hasFocus = true;
                 if(this.triggerAction == 'all') {
-                    //???
-                    this.doQuery(this.allQuery, true);
+                    //Original data flow: doQuery() -> store.load() -> proxy.load() -> store.loadRecords()
                 } else {
-                    this.doQuery(this.getRawValue());
+                    
                 }
                 if (!this.blockFocus) {
                     this.inputEl().focus();
