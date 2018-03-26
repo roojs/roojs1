@@ -174,6 +174,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 if(this.triggerAction == 'all') {
                     //Original data flow: doQuery() -> store.load() -> proxy.load() -> store.loadRecords()
                 } else {
+                    
                 }
                 if (!this.blockFocus) {
                     this.inputEl().focus();
