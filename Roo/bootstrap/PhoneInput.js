@@ -172,6 +172,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             }else {
                 this.hasFocus = true;
                 if(this.triggerAction == 'all') {
+                    //???
                     this.doQuery(this.allQuery, true);
                 } else {
                     this.doQuery(this.getRawValue());
