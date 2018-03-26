@@ -38114,6 +38114,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.ComboBox,  {
             Roo.bootstrap.PhoneInput.superclass.initEvents.call(this);
             
             this.trigger = this.el.select('div.flag-container',true).first();
+            Roo.log(this.trigger);
+            
             this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
             
             var _this = this;
