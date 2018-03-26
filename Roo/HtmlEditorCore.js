@@ -1550,6 +1550,17 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         Roo.each(Roo.get(_this.iframe.contentDocument.head).select('link[rel=stylesheet]', true).elements, function(s){
             s.remove();
         });
+    },
+    
+    setStyle : function(style)
+    {
+        Roo.get(this.iframe.contentDocument.head).createChild({
+            tag : 'style',
+            type : 'text/css',
+            html : style
+        });
+
+        return;
     }
     
     // hide stuff that is not compatible
