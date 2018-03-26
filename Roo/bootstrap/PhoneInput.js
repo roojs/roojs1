@@ -152,8 +152,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             
             this.trigger = this.el.select('div.flag-container',true).first();
             this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
-        },
-        
+        }
+        /*
         createList : function()
         {
             this.list = Roo.get(document.body).createChild({
@@ -165,4 +165,5 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         },
         
         onTriggerClick : Roo.emptyFn
+        */
 });
