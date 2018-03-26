@@ -151,9 +151,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
             this.createList();
             
             Roo.bootstrap.TriggerField.superclass.initEvents.call(this);
-            //this.wrap = this.el.wrap({cls: "x-form-field-wrap"});
-            //this.trigger = this.el.select('div.flag-container',true).first();
             
+            //this.trigger = this.el.select('div.flag-container',true).first();
             //this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
         },
         
