@@ -1337,6 +1337,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
     setFromData : function(o){
         
+        Roo.log(o);
+        
         if(this.multiple){
             this.addItem(o);
             return;

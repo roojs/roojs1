@@ -10936,7 +10936,6 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             this.data.insert(index, records[i]);
             records[i].join(this);
         }
-        Roo.log(records);
         this.fireEvent("add", this, records, index);
     },
 
@@ -13730,6 +13729,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * @param {Object} value the value to set as. or false on reset?
      */
     setFromData : function(o){
+        
+        Roo.log(o);
         
         if(this.multiple){
             this.addItem(o);
