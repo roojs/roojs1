@@ -11105,7 +11105,9 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
 
             this.insert(0, e);
         }
-            
+        
+        Roo.log(options);
+        
         this.fireEvent("load", this, r, options, o);
         if(options.callback){
             options.callback.call(options.scope || this, r, options, true);
@@ -37934,6 +37936,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         triggerList : true,
         
+        listWidth: undefined,
+        
         getAutoCreate : function()
         {
             var align = this.labelAlign || this.parentLabelAlign();
@@ -38125,5 +38129,38 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.fireEvent('collapse', this);
             
             this.validate();
+        },
+        
+        expand : function(){
+           
+            if(this.isExpanded() || !this.hasFocus){
+                return;
+            }
+            
+            var lw = this.listWidth || Math.max(this.inputEl().getWidth(), this.minListWidth);
+            this.list.setWidth(lw);
+            
+            Roo.log('expand');
+            
+            this.list.show();
+            
+            this.restrictHeight();
+            
+            Roo.get(document).on('mousedown', this.collapseIf, this);
+            Roo.get(document).on('mousewheel', this.collapseIf, this);
+            
+            this.fireEvent('expand', this);
+        },
+        
+        restrictHeight : function(){
+            //this.innerList.dom.style.height = '';
+            //var inner = this.innerList.dom;
+            //var h = Math.max(inner.clientHeight, inner.offsetHeight, inner.scrollHeight);
+            //this.innerList.setHeight(h < this.maxHeight ? 'auto' : this.maxHeight);
+            //this.list.beginUpdate();
+            //this.list.setHeight(this.innerList.getHeight()+this.list.getFrameWidth('tb')+(this.resizable?this.handleHeight:0)+this.assetHeight);
+            this.list.alignTo(this.inputEl(), this.listAlign);
+            this.list.alignTo(this.inputEl(), this.listAlign);
+            //this.list.endUpdate();
         }
 });
