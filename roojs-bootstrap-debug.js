@@ -37938,7 +37938,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         selectedClass: 'active',
         
-        data: [{'testing': 'testing'}];
+        data: [{'testing': 'testing'}],
         
         getAutoCreate : function()
         {
