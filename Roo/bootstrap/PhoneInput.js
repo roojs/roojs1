@@ -151,7 +151,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
             Roo.bootstrap.TriggerField.superclass.initEvents.call(this);
             //this.wrap = this.el.wrap({cls: "x-form-field-wrap"});
             if(!this.multiple && this.showToggleBtn){
-                this.trigger = this.el.select('span.dropdown-toggle',true).first();
+                this.trigger = this.el.select('span.flag-container',true).first();
                 if(this.hideTrigger){
                     this.trigger.setDisplayed(false);
                 }
