@@ -21327,12 +21327,17 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             'IMG { cursor: pointer } ' +
         '</style>';
 
+        var cls = 'roo-htmleditor-body';
+        
+        if(this.bodyCls.length){
+            cls += ' ' + this.bodyCls;
+        }
         
         return '<html><head>' + st  +
             //<style type="text/css">' +
             //'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' +
             //'</style>' +
-            ' </head><body class="roo-htmleditor-body"></body></html>';
+            ' </head><body class="' +  cls + '"></body></html>';
     },
 
     // private
