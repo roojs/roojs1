@@ -162,10 +162,10 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                     {
                         o.params = o.params || {};
                         
-                        // var d = {
-                        //     success :true,
-                        //     data: _this.data
-                        // };
+                        var d = {
+                            success :true,
+                            data: _this.data
+                        };
                         
                         Roo.log(_this);
                         
