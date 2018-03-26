@@ -194,5 +194,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                     this.inputEl().focus();
                 }
             }
+        },
+        
+        isExpanded : function(){
+            return this.list.isVisible();
         }
 });
