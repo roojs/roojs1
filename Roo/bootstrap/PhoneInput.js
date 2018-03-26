@@ -169,10 +169,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             
             if(this.isExpanded()){
                 this.collapse();
-                if (!this.blockFocus) {
-                    this.inputEl().focus();
-                }
-                
             }else {
                 this.hasFocus = true;
                 if(this.triggerAction == 'all') {
@@ -194,11 +190,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             if(!this.isExpanded()){
                 return;
             }
-            
             this.list.hide();
-            
             this.hasFocus = false;
-            
             Roo.get(document).un('mousedown', this.collapseIf, this);
             Roo.get(document).un('mousewheel', this.collapseIf, this);
             this.fireEvent('collapse', this);
