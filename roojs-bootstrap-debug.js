@@ -37913,7 +37913,10 @@ Roo.bootstrap.PhoneInput = function(config) {
 
 Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
         
-        onTriggerClick : Roo.emptyFn,
+        onTriggerClick : function()
+        {
+            Roo.log('handler testing');
+        }
         
         getAutoCreate : function()
         {
@@ -38072,6 +38075,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                 cls: 'typeahead typeahead-long dropdown-menu',
                 style: 'display:none'
             });
-            this.list.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';;
+            this.list.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         }
 });

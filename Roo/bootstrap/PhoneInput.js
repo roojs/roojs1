@@ -4,7 +4,10 @@ Roo.bootstrap.PhoneInput = function(config) {
 
 Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
         
-        onTriggerClick : Roo.emptyFn,
+        onTriggerClick : function()
+        {
+            Roo.log('handler testing');
+        }
         
         getAutoCreate : function()
         {
