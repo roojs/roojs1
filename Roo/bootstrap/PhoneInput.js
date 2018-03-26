@@ -163,6 +163,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                 cls: 'typeahead typeahead-long dropdown-menu',
                 style: 'display:none'
             });
-            this.list.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';;
+            this.list.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         }
 });
