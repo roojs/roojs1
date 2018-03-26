@@ -57,6 +57,7 @@ Roo.apply = function(o, c, defaults){
         isIE = ua.indexOf("msie") > -1,
         isIE7 = ua.indexOf("msie 7") > -1,
         isIE11 = /trident.*rv\:11\./.test(ua),
+        isEdge = ua.indexOf("edge") > -1,
         isGecko = !isSafari && ua.indexOf("gecko") > -1,
         isBorderBox = isIE && !isStrict,
         isWindows = (ua.indexOf("windows") != -1 || ua.indexOf("win32") != -1),
@@ -628,6 +629,8 @@ Roo.factory(conf, Roo.data);
         isIE7 : isIE7,
         /** @type Boolean */
         isIE11 : isIE11,
+        /** @type Boolean */
+        isEdge : isEdge,
         /** @type Boolean */
         isGecko : isGecko,
         /** @type Boolean */
@@ -6628,6 +6631,8 @@ Roo.onReady(function(){
 
     var cls = [
             Roo.isIE ? "roo-ie"
+            : Roo.isIE11 ? "roo-ie11"
+            : Roo.isEdge ? "roo-edge"
             : Roo.isGecko ? "roo-gecko"
             : Roo.isOpera ? "roo-opera"
             : Roo.isSafari ? "roo-safari" : ""];
@@ -42839,7 +42844,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' +
                    '</style>';
         } else { 
-            
+            st = '<style type="text/css">' +
+                    this.stylesheets +
+                '</style>';
         }
         
         st +=  '<style type="text/css">' +
@@ -44226,6 +44233,17 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         Roo.each(Roo.get(_this.iframe.contentDocument.head).select('link[rel=stylesheet]', true).elements, function(s){
             s.remove();
         });
+    },
+    
+    setStyle : function(style)
+    {
+        Roo.get(this.iframe.contentDocument.head).createChild({
+            tag : 'style',
+            type : 'text/css',
+            html : style
+        });
+
+        return;
     }
     
     // hide stuff that is not compatible
