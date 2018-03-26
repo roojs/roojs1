@@ -10,6 +10,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         selectedClass: 'active',
         
+        data: [{'testing': 'testing'}];
+        
         getAutoCreate : function()
         {
             var align = this.labelAlign || this.parentLabelAlign();
@@ -161,15 +163,11 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                     beforeload : function(_self, o)
                     {
                         o.params = o.params || {};
-                        
                         var d = {
                             success :true,
-                            data: _this.data
+                            data: this.data
                         };
-                        
-                        Roo.log(_this);
-                        
-                        // this.proxy.data = d;
+                        this.proxy.data = d;
                     }
                 }
             });

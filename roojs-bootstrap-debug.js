@@ -13730,8 +13730,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
     setFromData : function(o){
         
-        Roo.log(o);
-        
         if(this.multiple){
             this.addItem(o);
             return;
@@ -37938,6 +37936,10 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         listWidth: undefined,
         
+        selectedClass: 'active',
+        
+        data: [{'testing': 'testing'}];
+        
         getAutoCreate : function()
         {
             var align = this.labelAlign || this.parentLabelAlign();
@@ -38075,6 +38077,29 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 }
             });
             
+            this.store = new Roo.data.Store({
+                proxy : new Roo.data.MemoryProxy({}),
+                reader : {
+                    fields : [
+                        {
+                            'name' : 'testing',
+                            'type' : 'string'
+                        }
+                    ]
+                },
+                listeners : {
+                    beforeload : function(_self, o)
+                    {
+                        o.params = o.params || {};
+                        var d = {
+                            success :true,
+                            data: this.data
+                        };
+                        this.proxy.data = d;
+                    }
+                }
+            });
+            
             return cfg;
         },
         
@@ -38086,6 +38111,14 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             
             this.trigger = this.el.select('div.flag-container',true).first();
             this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
+            
+            this.tpl = '<li><a href="#">{' + this.displayField + '}</a></li>';
+
+            this.view = new Roo.View(this.list, this.tpl, {
+                singleSelect:true, store: this.store, selectedClass: this.selectedClass
+            });
+            //this.view.wrapEl.setDisplayed(false);
+            this.view.on('click', this.onViewClick, this);
         },
         
         onTriggerClick : function(e)
