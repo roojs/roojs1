@@ -20514,7 +20514,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' +
                    '</style>';
         } else { 
-            
+            st = '<style type="text/css">' +
+                    this.stylesheets +
+                '</style>';
         }
         
         st +=  '<style type="text/css">' +
@@ -21901,6 +21903,17 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         Roo.each(Roo.get(_this.iframe.contentDocument.head).select('link[rel=stylesheet]', true).elements, function(s){
             s.remove();
         });
+    },
+    
+    setStyle : function(style)
+    {
+        Roo.get(this.iframe.contentDocument.head).createChild({
+            tag : 'style',
+            type : 'text/css',
+            html : style
+        });
+
+        return;
     }
     
     // hide stuff that is not compatible
