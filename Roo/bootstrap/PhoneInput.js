@@ -173,9 +173,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 this.hasFocus = true;
                 if(this.triggerAction == 'all') {
                     //???
-                    this.doQuery(this.allQuery, true);
+                    //this.doQuery(this.allQuery, true);
                 } else {
-                    this.doQuery(this.getRawValue());
+                    //this.doQuery(this.getRawValue());
                 }
                 if (!this.blockFocus) {
                     this.inputEl().focus();
@@ -198,6 +198,5 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.fireEvent('collapse', this);
             
             this.validate();
-        },
-        
+        }
 });
