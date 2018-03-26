@@ -21290,7 +21290,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     black: false,
     white: false,
      
-    
+    bodyCls : '',
 
     /**
      * Protected method that will not generally be called directly. It
@@ -22990,6 +22990,8 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
     hideMode:'offsets',
     
     tbContainer : false,
+    
+    bodyCls : '',
     
     toolbarContainer :function() {
         return this.wrap.select('.x-html-editor-tb',true).first();

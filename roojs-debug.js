@@ -42816,7 +42816,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     black: false,
     white: false,
      
-    
+    bodyCls : '',
 
     /**
      * Protected method that will not generally be called directly. It
