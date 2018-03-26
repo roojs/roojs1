@@ -172,11 +172,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             }else {
                 this.hasFocus = true;
                 if(this.triggerAction == 'all') {
-                    //doQuery() -> store.load() -> proxy.load() -> store.loadRecords()
-                    //???
-                    //this.doQuery(this.allQuery, true);
+                    //Original data flow: doQuery() -> store.load() -> proxy.load() -> store.loadRecords()
                 } else {
-                    //this.doQuery(this.getRawValue());
                 }
                 if (!this.blockFocus) {
                     this.inputEl().focus();
