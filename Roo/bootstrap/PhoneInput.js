@@ -4,7 +4,7 @@ Roo.bootstrap.PhoneInput = function(config) {
 
 Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
         
-        onTriggerClick : Roo.emptyFn
+        onTriggerClick : Roo.emptyFn,
         
         getAutoCreate : function()
         {

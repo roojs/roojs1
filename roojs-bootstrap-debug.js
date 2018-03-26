@@ -37913,6 +37913,8 @@ Roo.bootstrap.PhoneInput = function(config) {
 
 Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
         
+        onTriggerClick : Roo.emptyFn,
+        
         getAutoCreate : function()
         {
             var align = this.labelAlign || this.parentLabelAlign();
