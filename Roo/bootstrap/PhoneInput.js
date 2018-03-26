@@ -216,26 +216,21 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             
             this.restrictHeight();
             
-            if(this.tickable){
-                
-                this.tickItems = Roo.apply([], this.item);
-                
-                this.okBtn.show();
-                this.cancelBtn.show();
-                this.trigger.hide();
-                
-                if(this.editable){
-                    this.tickableInputEl().focus();
-                }
-                
-            }
-            
             Roo.get(document).on('mousedown', this.collapseIf, this);
             Roo.get(document).on('mousewheel', this.collapseIf, this);
-            if (!this.editable) {
-                Roo.get(document).on('keydown', this.listKeyPress, this);
-            }
             
             this.fireEvent('expand', this);
+        },
+        
+        restrictHeight : function(){
+            //this.innerList.dom.style.height = '';
+            //var inner = this.innerList.dom;
+            //var h = Math.max(inner.clientHeight, inner.offsetHeight, inner.scrollHeight);
+            //this.innerList.setHeight(h < this.maxHeight ? 'auto' : this.maxHeight);
+            //this.list.beginUpdate();
+            //this.list.setHeight(this.innerList.getHeight()+this.list.getFrameWidth('tb')+(this.resizable?this.handleHeight:0)+this.assetHeight);
+            this.list.alignTo(this.inputEl(), this.listAlign);
+            this.list.alignTo(this.inputEl(), this.listAlign);
+            //this.list.endUpdate();
         }
 });
