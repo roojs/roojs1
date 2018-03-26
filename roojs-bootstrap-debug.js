@@ -11017,6 +11017,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
      * </ul>
      */
     load : function(options){
+        Roo.log(options);
         options = options || {};
         if(this.fireEvent("beforeload", this, options) !== false){
             this.storeOptions(options);
@@ -37913,6 +37914,8 @@ Roo.bootstrap.PhoneInput = function(config) {
 
 Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
+        triggerList : true,
+        
         getAutoCreate : function()
         {
             var align = this.labelAlign || this.parentLabelAlign();
@@ -38061,18 +38064,49 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             
             this.trigger = this.el.select('div.flag-container',true).first();
             this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
-        }
-        /*
-        createList : function()
-        {
-            this.list = Roo.get(document.body).createChild({
-                tag: 'ul',
-                cls: 'typeahead typeahead-long dropdown-menu',
-                style: 'display:none'
-            });
-            this.list.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         },
         
-        onTriggerClick : Roo.emptyFn
-        */
+        onTriggerClick : function(e)
+        {
+            Roo.log('trigger click');
+            
+            if(this.disabled || !this.triggerList){
+                return;
+            }
+            
+            this.page = 0;
+            this.loadNext = false;
+            
+            if(this.isExpanded()){
+                this.collapse();
+            }else {
+                this.hasFocus = true;
+                if(this.triggerAction == 'all') {
+                    //???
+                    this.doQuery(this.allQuery, true);
+                } else {
+                    this.doQuery(this.getRawValue());
+                }
+                if (!this.blockFocus) {
+                    this.inputEl().focus();
+                }
+            }
+        },
+        
+        isExpanded : function(){
+            return this.list.isVisible();
+        },
+        
+        collapse : function(){
+            if(!this.isExpanded()){
+                return;
+            }
+            this.list.hide();
+            this.hasFocus = false;
+            Roo.get(document).un('mousedown', this.collapseIf, this);
+            Roo.get(document).un('mousewheel', this.collapseIf, this);
+            this.fireEvent('collapse', this);
+            
+            this.validate();
+        }
 });
