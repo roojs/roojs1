@@ -2,7 +2,7 @@ Roo.bootstrap.PhoneInput = function(config) {
     Roo.bootstrap.PhoneInput.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
+Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         getAutoCreate : function()
         {
@@ -162,5 +162,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
                 style: 'display:none'
             });
             this.list.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-        }
+        },
+        
+        onTriggerClick : Roo.emptyFn
 });
