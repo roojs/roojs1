@@ -12,6 +12,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         data: [{testing: 'testing'}],
         
+        displayField: 'testing',
+        
         getAutoCreate : function()
         {
             var align = this.labelAlign || this.parentLabelAlign();
