@@ -351,5 +351,10 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             if(doFocus !== false && !this.blockFocus){
                 this.inputEl().focus();
             }
-        }
+        },
+        
+        onViewMove : function(e, t)
+        {
+            this.inKeyMode = false;
+        },
 });
