@@ -150,10 +150,10 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.Input,  {
         {
             this.createList();
             
-            Roo.bootstrap.TriggerField.superclass.initEvents.call(this);
+            Roo.bootstrap.PhoneInput.superclass.initEvents.call(this);
             
-            //this.trigger = this.el.select('div.flag-container',true).first();
-            //this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
+            this.trigger = this.el.select('div.flag-container',true).first();
+            this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
         },
         
         createList : function()
