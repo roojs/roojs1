@@ -197,5 +197,43 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.fireEvent('collapse', this);
             
             this.validate();
+        },
+        
+        expand : function(){
+           
+            if(this.isExpanded() || !this.hasFocus){
+                return;
+            }
+            
+            var lw = this.listWidth || Math.max(this.inputEl().getWidth(), this.minListWidth);
+            this.list.setWidth(lw);
+            
+            Roo.log('expand');
+            
+            this.list.show();
+            
+            this.restrictHeight();
+            
+            if(this.tickable){
+                
+                this.tickItems = Roo.apply([], this.item);
+                
+                this.okBtn.show();
+                this.cancelBtn.show();
+                this.trigger.hide();
+                
+                if(this.editable){
+                    this.tickableInputEl().focus();
+                }
+                
+            }
+            
+            Roo.get(document).on('mousedown', this.collapseIf, this);
+            Roo.get(document).on('mousewheel', this.collapseIf, this);
+            if (!this.editable) {
+                Roo.get(document).on('keydown', this.listKeyPress, this);
+            }
+            
+            this.fireEvent('expand', this);
         }
 });
