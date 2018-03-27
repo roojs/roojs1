@@ -460,7 +460,10 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.flag.dom.className = 'flag '+n;
         },
         
-        
+        dialPlaceholderEl : function(n)
+        {
+            this.flag.dom.className = 'flag '+n;
+        },
         
         allCountries : [
           [
