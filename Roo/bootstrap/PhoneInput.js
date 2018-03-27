@@ -494,13 +494,15 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         {
             var d = this.getDialCode(v);
             this.value = v;
+            
             if(!d || d.length == 0) {
                 if(this.rendered){
                     this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
-                    this.validate();
                 }
                 return;
             }
+            
+            
         },
         
         getDialCode : function(v = '')
@@ -532,7 +534,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 }
               }
             }
-            return dialCode;
+            return numericChars;
         },
         
         allCountries : [
