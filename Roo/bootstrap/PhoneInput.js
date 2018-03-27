@@ -223,6 +223,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             if(this.isExpanded()){
                 this.collapse();
             }else {
+                this.store.load({});
                 this.expand();
             }
         },
