@@ -52,7 +52,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             
             var flag_container = {
                 tag: 'div',
-                cls: 'flag-container',
+                cls: 'flag-box',
                 cn: [
                     {
                         tag: 'div',
@@ -210,7 +210,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.createList();
             Roo.bootstrap.PhoneInput.superclass.initEvents.call(this);
             
-            this.trigger = this.el.select('div.flag-container',true).first();
+            this.trigger = this.el.select('div.flag-box',true).first();
             this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
             
             var _this = this;

@@ -37981,7 +37981,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             
             var flag_container = {
                 tag: 'div',
-                cls: 'flag-container',
+                cls: 'flag-box',
                 cn: [
                     {
                         tag: 'div',
@@ -38139,7 +38139,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.createList();
             Roo.bootstrap.PhoneInput.superclass.initEvents.call(this);
             
-            this.trigger = this.el.select('div.flag-container',true).first();
+            this.trigger = this.el.select('div.flag-box',true).first();
             this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
             
             var _this = this;
@@ -38169,7 +38169,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         onTriggerClick : function(e)
         {
             Roo.log('trigger click');
-            
             if(this.disabled || !this.triggerList){
                 return;
             }
@@ -38187,11 +38186,13 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             }
         },
         
-        isExpanded : function(){
+        isExpanded : function()
+        {
             return this.list.isVisible();
         },
         
-        collapse : function(){
+        collapse : function()
+        {
             if(!this.isExpanded()){
                 return;
             }
@@ -38203,8 +38204,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.validate();
         },
         
-        expand : function(){
-           
+        expand : function()
+        {
             if(this.isExpanded() || !this.hasFocus){
                 return;
             }
@@ -38237,7 +38238,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             //this.list.endUpdate();
         },
         
-        onViewOver : function(e, t){
+        onViewOver : function(e, t)
+        {
             if(this.inKeyMode){ // prevent key nav and mouse over conflicts
                 return;
             }
@@ -38305,7 +38307,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             return;
         },
         
-        select : function(index, scrollIntoView){
+        select : function(index, scrollIntoView)
+        {
             this.selectedIndex = index;
             this.view.select(index);
             if(scrollIntoView !== false){
@@ -38331,7 +38334,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             
         },
         
-        collapseIf : function(e){
+        collapseIf : function(e)
+        {
             var in_combo  = e.within(this.el);
             var in_list =  e.within(this.list);
             var is_list = (Roo.get(e.getTarget()).id == this.list.id) ? true : false;
@@ -38343,7 +38347,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.collapse();
         },
         
-        onSelect : function(record, index){
+        onSelect : function(record, index)
+        {
             if(this.fireEvent('beforeselect', this, record, index) !== false){
                 
                 this.setValue('+'+record.data.dialCode);
@@ -38352,6 +38357,11 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 this.collapse();
                 this.fireEvent('select', this, record, index);
             }
+        },
+        
+        setPlaceholder : function(v)
+        {
+            
         },
         
         allCountries : [
