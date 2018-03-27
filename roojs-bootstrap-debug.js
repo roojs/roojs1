@@ -38001,7 +38001,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                     input,
                     {
                         tag: 'input',
-                        cls: 'dial-placeholder',
+                        cls: 'dialholder',
                         disabled: true
                     }
                 ]
@@ -38147,7 +38147,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             //setting up object
             this.indicator = this.indicatorEl();
             this.flag = this.flagEl();
-            this.dialPlaceholder = this.dialPlaceholderEl();
+            
+            // this.dialHolder = 
             
             this.trigger = this.el.select('div.flag-box',true).first();
             this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
@@ -38387,15 +38388,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         setFlagClass : function(n)
         {
             this.flag.dom.className = 'flag '+n;
-        },
-        
-        dialPlaceholderEl : function(n)
-        {
-            var p = this.el.select('input.dial-placeholder',true).first();
-            if(!p){
-                return false;
-            }
-            return p;
         },
         
         allCountries : [
