@@ -495,8 +495,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             var d = this.getDialCode(v);
             this.value = v;
             
-            Roo.log(d);
-            
             if(!d || d.length == 0) {
                 if(this.rendered){
                     this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
@@ -528,7 +526,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 // if current numericChars make a valid dial code
                 if (this.dialCodeMapping[numericChars]) {
                   // store the actual raw string (useful for matching later)
-                  dialCode = v.substr(1, i + 1);
+                  dialCode = v.substr(1, i);
                 }
                 // longest dial code is 4 chars
                 if (numericChars.length == 4) {
