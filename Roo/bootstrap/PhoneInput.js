@@ -222,6 +222,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             
             if(this.isExpanded()){
                 this.collapse();
+                this.hasFocus = false;
             }else {
                 this.store.load({});
                 this.hasFocus = true;
@@ -238,7 +239,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 return;
             }
             this.list.hide();
-            this.hasFocus = false;
             Roo.get(document).un('mousedown', this.collapseIf, this);
             Roo.get(document).un('mousewheel', this.collapseIf, this);
             this.fireEvent('collapse', this);
