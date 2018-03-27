@@ -38139,6 +38139,10 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.createList();
             Roo.bootstrap.PhoneInput.superclass.initEvents.call(this);
             
+            //setting up object
+            this.indicator = this.indicatorEl();
+            this.flag = this.flagEl();
+            
             this.trigger = this.el.select('div.flag-box',true).first();
             this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
             
@@ -38351,6 +38355,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         {
             if(this.fireEvent('beforeselect', this, record, index) !== false){
                 
+                
+                Roo.log(this.flag);
                 this.setValue('+'+record.data.dialCode);
                 
                 this.hasFocus = false;
@@ -38362,6 +38368,15 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         setPlaceholder : function(v)
         {
             
+        },
+        
+        flagEl : function()
+        {
+            var flag = this.el.select('div.flag',true).first();
+            if(!flag){
+                return false;
+            }
+            return flag;
         },
         
         allCountries : [
