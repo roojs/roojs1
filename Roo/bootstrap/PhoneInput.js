@@ -17,6 +17,19 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             var align = this.labelAlign || this.parentLabelAlign();
             var id = Roo.id();
             
+            for (var i = 0; i < allCountries.length; i++) {
+              var c = allCountries[i];
+              allCountries[i] = {
+                name: c[0],
+                iso2: c[1],
+                dialCode: c[2],
+                priority: c[3] || 0,
+                areaCodes: c[4] || null
+              };
+            }
+            
+            this.data = allCountries;
+            
             var cfg = {
                 cls: 'form-group', //input-group
                 cn: []
