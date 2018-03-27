@@ -218,6 +218,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             //setting up object
             this.indicator = this.indicatorEl();
             this.flag = this.flagEl();
+            this.dialCodeHolder = this.dialCodeHolderEl();
             
             this.trigger = this.el.select('div.flag-box',true).first();
             this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
