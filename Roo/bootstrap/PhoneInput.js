@@ -520,7 +520,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             }
             var numericChars = "";
             // iterate over chars
-            for (var i = 0; i < v.length; i++) {
+            for (var i = 1; i < v.length; i++) {
               var c = v.charAt(i);
               // if char is number
               if (!isNaN(c)) {
