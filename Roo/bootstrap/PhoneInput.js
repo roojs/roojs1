@@ -494,6 +494,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         {
             var d = this.getDialCode(v);
             
+            Roo.log(d);
+            
             if(!d) {
                 return;
             }
