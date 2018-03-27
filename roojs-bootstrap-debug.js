@@ -38343,7 +38343,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         },
         
         select : function(index, scrollIntoView){
-            Roo.log('fire select??');
             this.selectedIndex = index;
             this.view.select(index);
             if(scrollIntoView !== false){
@@ -38379,6 +38378,17 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 return;
             }
             this.collapse();
+        },
+        
+        onSelect : function(record, index){
+            Roo.log('onselecting...');
+            if(this.fireEvent('beforeselect', this, record, index) !== false){
+                
+                this.setFromData(index > -1 ? record.data : false);
+                
+                this.collapse();
+                this.fireEvent('select', this, record, index);
+            }
         },
         
         allCountries : [

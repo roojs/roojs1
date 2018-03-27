@@ -452,8 +452,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         },
         
         onSelect : function(record, index){
+            Roo.log('onselecting...');
             if(this.fireEvent('beforeselect', this, record, index) !== false){
-            
+                
                 this.setFromData(index > -1 ? record.data : false);
                 
                 this.collapse();
