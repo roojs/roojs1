@@ -15619,6 +15619,9 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
     this.selections = [];
     this.nodes = [];
     this.cmp = new Roo.CompositeElementLite([]);
+    
+    Roo.log(this.store);
+    
     if(this.store){
         this.store = Roo.factory(this.store, Roo.data);
         this.setStore(this.store, true);
@@ -38129,9 +38132,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.list.on('scroll', this.onViewScroll, this);
             
             this.tpl = '<li><a href="#">{' + this.displayField + '}</a></li>';
-
-            Roo.log('missing??');
-            Roo.log(this.store);
 
             this.view = new Roo.View(this.list, this.tpl, {
                 singleSelect:true, store: this.store, selectedClass: this.selectedClass
