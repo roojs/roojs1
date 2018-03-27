@@ -528,7 +528,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 // if current numericChars make a valid dial code
                 if (this.dialCodeMapping[numericChars]) {
                   // store the actual raw string (useful for matching later)
-                  dialCode = v.substr(1, i + 2);
+                  dialCode = v.substr(1, i + 1);
                 }
                 // longest dial code is 4 chars
                 if (numericChars.length == 4) {
