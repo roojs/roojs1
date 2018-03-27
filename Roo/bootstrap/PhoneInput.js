@@ -224,7 +224,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.list.on('mousemove', this.onViewMove, this);
             this.list.on('scroll', this.onViewScroll, this);
             
-            this.tpl = '<li><a href="#"><div class="flag {iso2}"></div>+{dialCode} {name}</a></li>';
+            this.tpl = '<li><a href="#"><div class="flag {iso2}"></div>{name} <span class="dial-code">+{dialCode}</span></a></li>';
 
             this.view = new Roo.View(this.list, this.tpl, {
                 singleSelect:true, store: this.store, selectedClass: this.selectedClass
