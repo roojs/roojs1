@@ -501,7 +501,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         getDialCode : function(v = '')
         {
-            Roo.log(v);
             if (v.length == 0) {
                 return this.dialCodeHolder.dom.value;
             }
@@ -516,6 +515,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             for (var i = 0; i < v.length; i++) {
               var c = v.charAt(i);
               // if char is number
+              Roo.log(isNaN(c));
+              
               if (isNaN(c)) {
                 numericChars += c;
                 // if current numericChars make a valid dial code
