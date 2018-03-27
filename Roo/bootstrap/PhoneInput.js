@@ -493,8 +493,12 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         setValue : function(v)
         {
             var d = this.getDialCode(v);
-            
-            if(!d) {
+            this.value = v;
+            if(!d || d.length == 0) {
+                if(this.rendered){
+                    this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+                    this.validate();
+                }
                 return;
             }
         },
