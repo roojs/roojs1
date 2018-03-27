@@ -258,11 +258,13 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             }
         },
         
-        isExpanded : function(){
+        isExpanded : function()
+        {
             return this.list.isVisible();
         },
         
-        collapse : function(){
+        collapse : function()
+        {
             if(!this.isExpanded()){
                 return;
             }
@@ -274,8 +276,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.validate();
         },
         
-        expand : function(){
-           
+        expand : function()
+        {
             if(this.isExpanded() || !this.hasFocus){
                 return;
             }
@@ -308,7 +310,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             //this.list.endUpdate();
         },
         
-        onViewOver : function(e, t){
+        onViewOver : function(e, t)
+        {
             if(this.inKeyMode){ // prevent key nav and mouse over conflicts
                 return;
             }
