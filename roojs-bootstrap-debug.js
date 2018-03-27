@@ -38001,7 +38001,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                     input,
                     {
                         tag: 'input',
-                        cls: 'dialholder',
+                        cls: 'dial-code-holder',
                         disabled: true
                     }
                 ]
@@ -38147,8 +38147,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             //setting up object
             this.indicator = this.indicatorEl();
             this.flag = this.flagEl();
-            
-            // this.dialHolder = 
+            this.dialCodeHolder = this.dialCodeHolderEl();
             
             this.trigger = this.el.select('div.flag-box',true).first();
             this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
@@ -38363,8 +38362,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             if(this.fireEvent('beforeselect', this, record, index) !== false){
                 
                 this.setFlagClass(record.data.iso2);
-                this.setValue('+'+record.data.dialCode);
-                
+                this.setDialCode(record.data.dialCode);
                 this.hasFocus = false;
                 this.collapse();
                 this.fireEvent('select', this, record, index);
@@ -38383,6 +38381,20 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 return false;
             }
             return flag;
+        },
+        
+        dialCodeHolderEl : function()
+        {
+            var d = this.el.select('input.dial-code-holder',true).first();
+            if(!d){
+                return false;
+            }
+            return d;
+        },
+        
+        setDialCode : function(v)
+        {
+            this.dialCodeHolder.dom.value = '+'+v;
         },
         
         setFlagClass : function(n)

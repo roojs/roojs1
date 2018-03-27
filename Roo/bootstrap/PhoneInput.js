@@ -465,7 +465,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         setDialCode : function(v)
         {
-            this.dialCodeHolder.value = '+'+v;
+            this.dialCodeHolder.dom.value = '+'+v;
         },
         
         setFlagClass : function(n)
