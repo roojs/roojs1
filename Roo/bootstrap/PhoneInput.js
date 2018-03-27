@@ -325,6 +325,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             
             var r = this.store.getAt(index);
             
+            Roo.log(r);
+            
             if(r){
                 this.onSelect(r, index);
             }
