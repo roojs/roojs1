@@ -201,9 +201,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             
             this.tpl = '<li><a href="#">{' + this.displayField + '}</a></li>';
 
-            Roo.log('missing??');
-            Roo.log(this.store);
-
             this.view = new Roo.View(this.list, this.tpl, {
                 singleSelect:true, store: this.store, selectedClass: this.selectedClass
             });
