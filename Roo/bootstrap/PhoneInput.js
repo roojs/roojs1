@@ -460,15 +460,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.flag.dom.className = 'flag '+n;
         },
         
-        dialPlaceholderEl : function(n)
-        {
-            var p = this.el.select('input.dial-placeholder',true).first();
-            if(!p){
-                return false;
-            }
-            return p;
-        },
-        
         allCountries : [
           [
             "Afghanistan (‫افغانستان‬‎)",
