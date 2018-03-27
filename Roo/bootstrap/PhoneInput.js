@@ -503,7 +503,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             }
             
             this.setDialCode(d);
-            this.inputEl().dom.value = v
+            this.inputEl().dom.value = v.replace(/+${d}/g,'');
         },
         
         getDialCode : function(v = '')
