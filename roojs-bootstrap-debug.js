@@ -15619,9 +15619,6 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
     this.selections = [];
     this.nodes = [];
     this.cmp = new Roo.CompositeElementLite([]);
-    
-    Roo.log(this.store);
-    
     if(this.store){
         this.store = Roo.factory(this.store, Roo.data);
         this.setStore(this.store, true);
@@ -38099,14 +38096,14 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                         o.params = o.params || {};
                         var d = {
                             success :true,
-                            data: this.data_cache
+                            data: this.data
                         };
                         this.proxy.data = d;
                     }
                 }
             });
             
-            this.store.data_cache = this.data;
+            this.store.data = this.data;
             
             return cfg;
         },
@@ -38114,6 +38111,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         initEvents : function()
         {
             this.createList();
+            
+            this.store = Roo.factory(this.store, Roo.data);
+            this.store.parent = this;
             
             Roo.bootstrap.PhoneInput.superclass.initEvents.call(this);
             
@@ -38138,6 +38138,10 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             });
             //this.view.wrapEl.setDisplayed(false);
             this.view.on('click', this.onViewClick, this);
+            
+            this.store.on('beforeload', this.onBeforeLoad, this);
+            this.store.on('load', this.onLoad, this);
+            this.store.on('loadexception', this.onLoadException, this);
         },
         
         onTriggerClick : function(e)
