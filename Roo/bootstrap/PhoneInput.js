@@ -72,7 +72,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                     input,
                     {
                         tag: 'input',
-                        cls: 'dial-code'
+                        cls: 'dial-placeholder'
                     }
                 ]
             };

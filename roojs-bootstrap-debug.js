@@ -37998,7 +37998,11 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 tag: 'div',
                 cls: this.hasFeedback ? 'has-feedback' : '',
                 cn: [
-                    input
+                    input,
+                    {
+                        tag: 'input',
+                        cls: 'dial-placeholder'
+                    }
                 ]
             };
             
