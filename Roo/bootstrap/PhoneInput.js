@@ -433,8 +433,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             if(this.fireEvent('beforeselect', this, record, index) !== false){
                 
                 this.setFlagClass(record.data.iso2);
-                this.setValue('+'+record.data.dialCode);
-                
+                this.setDialCode(record.data.dialCode);
                 this.hasFocus = false;
                 this.collapse();
                 this.fireEvent('select', this, record, index);
