@@ -439,6 +439,18 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             
         },
         
+        flagBox : function()
+        {
+            var indicator = this.el.select('i.roo-required-indicator',true).first();
+            
+            if(!indicator){
+                return false;
+            }
+            
+            return indicator;
+            
+        },
+        
         allCountries : [
           [
             "Afghanistan (‫افغانستان‬‎)",
