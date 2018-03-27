@@ -38250,6 +38250,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         // private
         onViewClick : function(view, doFocus, el, e)
         {
+            Roo.log('onviewclick...');
+            
             var index = this.view.getSelectedIndexes()[0];
             
             var r = this.store.getAt(index);
@@ -38354,6 +38356,30 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                     this.list.scrollChildIntoView(el, false);
                 }
             }
+        },
+        
+        createList : function()
+        {
+            this.list = Roo.get(document.body).createChild({
+                tag: 'ul',
+                cls: 'typeahead typeahead-long dropdown-menu tel-list',
+                style: 'display:none'
+            });
+            
+            this.list.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';;
+            
+        },
+        
+        collapseIf : function(e){
+            var in_combo  = e.within(this.el);
+            var in_list =  e.within(this.list);
+            var is_list = (Roo.get(e.getTarget()).id == this.list.id) ? true : false;
+            
+            if (in_combo || in_list || is_list) {
+                //e.stopPropagation();
+                return;
+            }
+            this.collapse();
         },
         
         allCountries : [
