@@ -72,7 +72,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                     input,
                     {
                         tag: 'input',
-                        cls: 'dial-placeholder'
+                        cls: 'dial-placeholder',
+                        disabled: true
                     }
                 ]
             };
