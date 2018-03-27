@@ -502,7 +502,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 return;
             }
             
-            
+            this.setDialCode(d);
+            this.inputEl().dom.value = v
         },
         
         getDialCode : function(v = '')
