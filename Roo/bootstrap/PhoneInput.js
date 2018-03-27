@@ -1646,17 +1646,5 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             "358",
             1
           ]
-        ];
-
-        // loop over all of the countries above
-        for (var i = 0; i < allCountries.length; i++) {
-          var c = allCountries[i];
-          allCountries[i] = {
-            name: c[0],
-            iso2: c[1],
-            dialCode: c[2],
-            priority: c[3] || 0,
-            areaCodes: c[4] || null
-          };
-        }
+      ]
 });
