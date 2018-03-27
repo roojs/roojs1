@@ -38424,6 +38424,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             var d = this.getDialCode(v);
             this.value = v;
             
+            Roo.log(d);
+            
             if(!d || d.length == 0) {
                 if(this.rendered){
                     this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
