@@ -502,6 +502,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 return;
             }
             
+            this.setFlagClass(dialCodeMapping[d].iso2);
             this.setDialCode(d);
             this.inputEl().dom.value = v.replace('+'+d,'');
         },
