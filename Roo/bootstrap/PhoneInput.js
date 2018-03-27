@@ -376,7 +376,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             return;
         },
         
-        select : function(index, scrollIntoView){
+        select : function(index, scrollIntoView)
+        {
             this.selectedIndex = index;
             this.view.select(index);
             if(scrollIntoView !== false){
@@ -402,7 +403,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             
         },
         
-        collapseIf : function(e){
+        collapseIf : function(e)
+        {
             var in_combo  = e.within(this.el);
             var in_list =  e.within(this.list);
             var is_list = (Roo.get(e.getTarget()).id == this.list.id) ? true : false;
@@ -414,7 +416,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.collapse();
         },
         
-        onSelect : function(record, index){
+        onSelect : function(record, index)
+        {
             if(this.fireEvent('beforeselect', this, record, index) !== false){
                 
                 this.setValue('+'+record.data.dialCode);
@@ -423,6 +426,11 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 this.collapse();
                 this.fireEvent('select', this, record, index);
             }
+        },
+        
+        setPlaceholder : function(v)
+        {
+            
         },
         
         allCountries : [
