@@ -455,6 +455,15 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             return flag;
         },
         
+        dialCodeHolderEl : function()
+        {
+            var flag = this.el.select('div.flag',true).first();
+            if(!flag){
+                return false;
+            }
+            return flag;
+        },
+        
         setFlagClass : function(n)
         {
             this.flag.dom.className = 'flag '+n;
