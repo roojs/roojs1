@@ -10,6 +10,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         selectedClass: 'active',
         
+        dialCodeMapping: [],
+        
         getAutoCreate : function()
         {
             var align = this.labelAlign || this.parentLabelAlign();
