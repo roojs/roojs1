@@ -514,7 +514,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
               if ($.isNumeric(c)) {
                 numericChars += c;
                 // if current numericChars make a valid dial code
-                if (this.countryCodes[numericChars]) {
+                if (this.dialCodeMapping[numericChars]) {
                   // store the actual raw string (useful for matching later)
                   dialCode = v.substr(0, i + 1);
                 }
