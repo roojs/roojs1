@@ -38432,7 +38432,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             }
             
             this.setDialCode(d);
-            this.inputEl().dom.value = v.replace(/+${d}/g,'');
+            this.inputEl().dom.value = v.replace('+'+d,'');
         },
         
         getDialCode : function(v = '')
