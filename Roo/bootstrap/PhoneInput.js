@@ -493,7 +493,30 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 return this.dialCodeHolder.dom.value;
             }
             
-            
+            var dialCode = "";
+            // only interested in international numbers (starting with a plus)
+            if (v.charAt(0) != "+") {
+                return false;
+            }
+            var numericChars = "";
+            // iterate over chars
+            for (var i = 0; i < v.length; i++) {
+              var c = v.charAt(i);
+              // if char is number
+              if ($.isNumeric(c)) {
+                numericChars += c;
+                // if current numericChars make a valid dial code
+                if (this.countryCodes[numericChars]) {
+                  // store the actual raw string (useful for matching later)
+                  dialCode = v.substr(0, i + 1);
+                }
+                // longest dial code is 4 chars
+                if (numericChars.length == 4) {
+                  break;
+                }
+              }
+            }
+            return dialCode;
         }
         
         allCountries : [
