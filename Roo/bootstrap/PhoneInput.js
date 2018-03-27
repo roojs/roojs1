@@ -52,7 +52,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             
             var flag_container = {
                 tag: 'div',
-                cls: 'flag-box',
+                cls: 'flag-crazy?',
                 cn: [
                     {
                         tag: 'div',
