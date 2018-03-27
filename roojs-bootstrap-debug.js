@@ -38153,6 +38153,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 this.collapse();
             }else {
                 this.store.load({});
+                this.hasFocus = true;
                 this.expand();
             }
         },
