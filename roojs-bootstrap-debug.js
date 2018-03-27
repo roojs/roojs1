@@ -38092,9 +38092,26 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.store = new Roo.data.Store({
                 proxy : new Roo.data.MemoryProxy({}),
                 reader : new Roo.data.JsonReader({
+                    
                     fields : [
                         {
-                            'name' : 'testing',
+                            'name' : 'name',
+                            'type' : 'string'
+                        },
+                        {
+                            'name' : 'iso2',
+                            'type' : 'string'
+                        },
+                        {
+                            'name' : 'dialCode',
+                            'type' : 'string'
+                        },
+                        {
+                            'name' : 'priority',
+                            'type' : 'string'
+                        },
+                        {
+                            'name' : 'areaCodes',
                             'type' : 'string'
                         }
                     ]
