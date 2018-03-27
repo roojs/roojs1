@@ -473,6 +473,11 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.flag.dom.className = 'flag '+n;
         },
         
+        getValue : function()
+        {
+            
+        },
+        
         allCountries : [
           [
             "Afghanistan (‫افغانستان‬‎)",
