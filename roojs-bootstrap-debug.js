@@ -9801,6 +9801,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             cls : 'form-control',
             autocomplete: 'new-password',
             placeholder : this.placeholder || '' 
+            
         };
         if (this.name) {
             input.name = this.name;
@@ -38123,13 +38124,14 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 _this.list.setWidth(lw);
             }).defer(100);
             
-            Roo.log(this.list);
-            
             this.list.on('mouseover', this.onViewOver, this);
             this.list.on('mousemove', this.onViewMove, this);
             this.list.on('scroll', this.onViewScroll, this);
             
             this.tpl = '<li><a href="#">{' + this.displayField + '}</a></li>';
+
+            Roo.log('missing??');
+            Roo.log(this.store);
 
             this.view = new Roo.View(this.list, this.tpl, {
                 singleSelect:true, store: this.store, selectedClass: this.selectedClass
@@ -38202,7 +38204,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.fireEvent('expand', this);
         },
         
-        restrictHeight : function(){
+        restrictHeight : function()
+        {
             //this.innerList.dom.style.height = '';
             //var inner = this.innerList.dom;
             //var h = Math.max(inner.clientHeight, inner.offsetHeight, inner.scrollHeight);
@@ -38212,5 +38215,112 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.list.alignTo(this.inputEl(), this.listAlign);
             this.list.alignTo(this.inputEl(), this.listAlign);
             //this.list.endUpdate();
+        },
+        
+        onViewOver : function(e, t){
+            if(this.inKeyMode){ // prevent key nav and mouse over conflicts
+                return;
+            }
+            var item = this.view.findItemFromChild(t);
+            
+            if(item){
+                var index = this.view.indexOf(item);
+                this.select(index, false);
+            }
+        },
+
+        // private
+        onViewClick : function(view, doFocus, el, e)
+        {
+            var index = this.view.getSelectedIndexes()[0];
+            
+            var r = this.store.getAt(index);
+            
+            if(this.tickable){
+                
+                if(typeof(e) != 'undefined' && e.getTarget().nodeName.toLowerCase() != 'input'){
+                    return;
+                }
+                
+                var rm = false;
+                var _this = this;
+                
+                Roo.each(this.tickItems, function(v,k){
+                    
+                    if(typeof(v) != 'undefined' && v[_this.valueField] == r.data[_this.valueField]){
+                        Roo.log(v);
+                        _this.tickItems.splice(k, 1);
+                        
+                        if(typeof(e) == 'undefined' && view == false){
+                            Roo.get(_this.view.getNodes(index, index)[0]).select('input', true).first().dom.checked = false;
+                        }
+                        
+                        rm = true;
+                        return;
+                    }
+                });
+                
+                if(rm){
+                    return;
+                }
+                
+                if(this.fireEvent('tick', this, r, index, Roo.get(_this.view.getNodes(index, index)[0]).select('input', true).first().dom.checked) !== false){
+                    this.tickItems.push(r.data);
+                }
+                
+                if(typeof(e) == 'undefined' && view == false){
+                    Roo.get(_this.view.getNodes(index, index)[0]).select('input', true).first().dom.checked = true;
+                }
+                        
+                return;
+            }
+            
+            if(r){
+                this.onSelect(r, index);
+            }
+            if(doFocus !== false && !this.blockFocus){
+                this.inputEl().focus();
+            }
+        },
+        
+        onViewMove : function(e, t)
+        {
+            this.inKeyMode = false;
+        },
+        
+        onViewScroll : function(e, t)
+        {
+            if(this.view.el.getScroll().top == 0 ||this.view.el.getScroll().top < this.view.el.dom.scrollHeight - this.view.el.dom.clientHeight || !this.hasFocus || !this.append || this.hasQuery){
+                return;
+            }
+            
+            this.hasQuery = true;
+            
+            this.loading = this.list.select('.loading', true).first();
+            
+            if(this.loading === null){
+                this.list.createChild({
+                    tag: 'div',
+                    cls: 'loading roo-select2-more-results roo-select2-active',
+                    html: 'Loading more results...'
+                });
+                
+                this.loading = this.list.select('.loading', true).first();
+                
+                this.loading.setVisibilityMode(Roo.Element.DISPLAY);
+                
+                this.loading.hide();
+            }
+            
+            this.loading.show();
+            
+            var _combo = this;
+            
+            this.page++;
+            this.loadNext = true;
+            
+            (function() { _combo.doQuery(_combo.allQuery, true); }).defer(500);
+            
+            return;
         }
 });
