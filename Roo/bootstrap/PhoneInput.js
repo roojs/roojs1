@@ -393,5 +393,19 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             (function() { _combo.doQuery(_combo.allQuery, true); }).defer(500);
             
             return;
+        },
+        
+        select : function(index, scrollIntoView){
+            this.selectedIndex = index;
+            this.view.select(index);
+            if(scrollIntoView !== false){
+                var el = this.view.getNode(index);
+                /*
+                 * el && !this.multiple && !this.tickable // not sure why we disable multiple before..
+                 */
+                if(el){
+                    this.list.scrollChildIntoView(el, false);
+                }
+            }
         }
 });
