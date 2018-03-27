@@ -38402,6 +38402,12 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.flag.dom.className = 'flag '+n;
         },
         
+        getValue : function()
+        {
+            var v = this.dialCodeHolder.dom.value + this.inputEl().getValue();
+            return v;
+        },
+        
         allCountries : [
           [
             "Afghanistan (‫افغانستان‬‎)",
