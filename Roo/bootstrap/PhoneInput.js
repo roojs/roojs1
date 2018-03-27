@@ -417,7 +417,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         onSelect : function(record, index){
             if(this.fireEvent('beforeselect', this, record, index) !== false){
                 
-                Roo.log(record.data.dialCode);
+                this.setValue(record.data.dialCode);
                 
                 this.hasFocus = false;
                 this.collapse();
