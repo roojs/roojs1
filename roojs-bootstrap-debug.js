@@ -38152,15 +38152,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             if(this.isExpanded()){
                 this.collapse();
             }else {
-                this.hasFocus = true;
-                if(this.triggerAction == 'all') {
-                    //Original data flow: doQuery() -> store.load() -> proxy.load() -> store.loadRecords()
-                } else {
-                    
-                }
-                if (!this.blockFocus) {
-                    this.inputEl().focus();
-                }
+                this.store.load({});
+                this.expand();
             }
         },
         
