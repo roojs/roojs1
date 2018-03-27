@@ -37955,7 +37955,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 priority: c[3] || 0,
                 areaCodes: c[4] || null
               };
-              this.dialCodeMapping[c2] = {
+              this.dialCodeMapping[c[2]] = {
                   name: c[0],
                   dialCode: c[2],
                   priority: c[3] || 0,
