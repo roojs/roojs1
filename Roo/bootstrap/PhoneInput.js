@@ -419,6 +419,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             if(this.fireEvent('beforeselect', this, record, index) !== false){
                 
                 
+                this.hasFocus = false;
                 this.collapse();
                 this.fireEvent('select', this, record, index);
             }
