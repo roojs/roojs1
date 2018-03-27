@@ -462,7 +462,11 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         dialPlaceholderEl : function(n)
         {
-            this.flag.dom.className = 'flag '+n;
+            var p = this.el.select('input.dial-placeholder',true).first();
+            if(!p){
+                return false;
+            }
+            return p;
         },
         
         allCountries : [
