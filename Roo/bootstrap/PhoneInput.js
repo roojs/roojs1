@@ -182,10 +182,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         initEvents : function()
         {
             this.createList();
-            
-            this.store = Roo.factory(this.store, Roo.data);
-            this.store.parent = this;
-            
             Roo.bootstrap.PhoneInput.superclass.initEvents.call(this);
             
             this.trigger = this.el.select('div.flag-container',true).first();
