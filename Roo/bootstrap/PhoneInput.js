@@ -72,7 +72,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                     input,
                     {
                         tag: 'input',
-                        cls: 'dial-placeholder',
+                        cls: 'dial-code-holder',
                         disabled: true
                     }
                 ]
@@ -218,8 +218,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             //setting up object
             this.indicator = this.indicatorEl();
             this.flag = this.flagEl();
-            
-            // this.dialHolder = 
             
             this.trigger = this.el.select('div.flag-box',true).first();
             this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
