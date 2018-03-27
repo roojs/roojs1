@@ -10,8 +10,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         selectedClass: 'active',
         
-        data: [{testing: 'testing'}],
-        
         displayField: 'testing',
         
         getAutoCreate : function()
@@ -399,5 +397,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                     this.list.scrollChildIntoView(el, false);
                 }
             }
-        }
+        },
+        
+        data: [{testing: 'testing'}]
 });
