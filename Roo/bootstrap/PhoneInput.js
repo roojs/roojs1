@@ -441,14 +441,11 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         flagEl : function()
         {
-            var flag = this.el.select('i.roo-required-indicator',true).first();
-            
-            if(!indicator){
+            var flag = this.el.select('div.flag',true).first();
+            if(!flag){
                 return false;
             }
-            
-            return indicator;
-            
+            return flag;
         },
         
         allCountries : [
