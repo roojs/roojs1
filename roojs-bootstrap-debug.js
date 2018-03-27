@@ -38253,7 +38253,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             var index = this.view.getSelectedIndexes()[0];
             
             var r = this.store.getAt(index);
-            
+            Roo.log('view lcikc');
             Roo.log(r);
             
             if(r){
