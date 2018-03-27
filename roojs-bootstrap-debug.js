@@ -37939,8 +37939,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         selectedClass: 'active',
         
-        displayField: 'testing',
-        
         getAutoCreate : function()
         {
             var align = this.labelAlign || this.parentLabelAlign();
@@ -38138,7 +38136,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.list.on('mousemove', this.onViewMove, this);
             this.list.on('scroll', this.onViewScroll, this);
             
-            this.tpl = '<li><a href="#">{' + this.displayField + '}</a></li>';
+            this.tpl = '<li><a href="#">{name}</a></li>';
 
             this.view = new Roo.View(this.list, this.tpl, {
                 singleSelect:true, store: this.store, selectedClass: this.selectedClass
