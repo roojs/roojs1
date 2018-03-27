@@ -534,7 +534,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 }
               }
             }
-            return numericChars;
+            return dialCode;
         },
         
         allCountries : [
