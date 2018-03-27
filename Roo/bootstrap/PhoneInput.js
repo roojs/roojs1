@@ -518,6 +518,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
               var c = v.charAt(i);
               // if char is number
               if (!isNaN(c)) {
+                Roo.log(c);
                 numericChars += c;
                 // if current numericChars make a valid dial code
                 if (this.dialCodeMapping[numericChars]) {
