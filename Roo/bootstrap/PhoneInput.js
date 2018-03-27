@@ -167,14 +167,14 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                         o.params = o.params || {};
                         var d = {
                             success :true,
-                            data: this.data_cache
+                            data: this.data
                         };
                         this.proxy.data = d;
                     }
                 }
             });
             
-            this.store.data_cache = this.data;
+            this.store.data = this.data;
             
             return cfg;
         },
