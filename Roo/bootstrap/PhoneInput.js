@@ -427,6 +427,18 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             }
         },
         
+        createList : function()
+        {
+            this.list = Roo.get(document.body).createChild({
+                tag: 'ul',
+                cls: 'typeahead typeahead-long dropdown-menu tel-list',
+                style: 'display:none'
+            });
+            
+            this.list.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';;
+            
+        },
+        
         allCountries : [
           [
             "Afghanistan (‫افغانستان‬‎)",
