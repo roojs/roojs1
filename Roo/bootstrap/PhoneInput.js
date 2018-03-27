@@ -482,6 +482,20 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             return v;
         },
         
+        setValue : function(v)
+        {
+            var d = getDialCode(v);
+        },
+        
+        getDialCode : function(v = '')
+        {
+            if (v.length == 0) {
+                return this.dialCodeHolder.dom.value;
+            }
+            
+            
+        }
+        
         allCountries : [
           [
             "Afghanistan (‫افغانستان‬‎)",
