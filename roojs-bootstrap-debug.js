@@ -38250,8 +38250,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         // private
         onViewClick : function(view, doFocus, el, e)
         {
-            Roo.log('onviewclick...');
-            
             var index = this.view.getSelectedIndexes()[0];
             
             var r = this.store.getAt(index);
@@ -38345,6 +38343,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         },
         
         select : function(index, scrollIntoView){
+            Roo.log('fire select??');
             this.selectedIndex = index;
             this.view.select(index);
             if(scrollIntoView !== false){
