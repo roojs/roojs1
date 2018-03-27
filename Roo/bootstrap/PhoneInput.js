@@ -439,9 +439,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             
         },
         
-        flagBox : function()
+        flagEl : function()
         {
-            var indicator = this.el.select('i.roo-required-indicator',true).first();
+            var flag = this.el.select('i.roo-required-indicator',true).first();
             
             if(!indicator){
                 return false;
