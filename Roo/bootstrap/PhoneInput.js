@@ -457,11 +457,11 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         dialCodeHolderEl : function()
         {
-            var flag = this.el.select('div.flag',true).first();
-            if(!flag){
+            var d = this.el.select('input.dial-code-holder',true).first();
+            if(!d){
                 return false;
             }
-            return flag;
+            return d;
         },
         
         setFlagClass : function(n)
