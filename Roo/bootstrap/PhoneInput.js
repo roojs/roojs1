@@ -451,6 +451,16 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.collapse();
         },
         
+        onSelect : function(record, index){
+            if(this.fireEvent('beforeselect', this, record, index) !== false){
+            
+                this.setFromData(index > -1 ? record.data : false);
+                
+                this.collapse();
+                this.fireEvent('select', this, record, index);
+            }
+        },
+        
         allCountries : [
           [
             "Afghanistan (‫افغانستان‬‎)",
