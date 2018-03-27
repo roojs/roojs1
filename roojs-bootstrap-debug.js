@@ -38111,10 +38111,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         initEvents : function()
         {
             this.createList();
-            
-            this.store = Roo.factory(this.store, Roo.data);
-            this.store.parent = this;
-            
             Roo.bootstrap.PhoneInput.superclass.initEvents.call(this);
             
             this.trigger = this.el.select('div.flag-container',true).first();
@@ -38136,12 +38132,10 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.view = new Roo.View(this.list, this.tpl, {
                 singleSelect:true, store: this.store, selectedClass: this.selectedClass
             });
-            //this.view.wrapEl.setDisplayed(false);
-            this.view.on('click', this.onViewClick, this);
-            
-            this.store.on('beforeload', this.onBeforeLoad, this);
-            this.store.on('load', this.onLoad, this);
-            this.store.on('loadexception', this.onLoadException, this);
+            // this.view.on('click', this.onViewClick, this);
+            // this.store.on('beforeload', this.onBeforeLoad, this);
+            // this.store.on('load', this.onLoad, this);
+            // this.store.on('loadexception', this.onLoadException, this);
         },
         
         onTriggerClick : function(e)
