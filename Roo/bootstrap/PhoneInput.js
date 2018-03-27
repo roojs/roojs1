@@ -499,7 +499,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             }
             
             Roo.log(d);
-            
         },
         
         getDialCode : function(v = '')
