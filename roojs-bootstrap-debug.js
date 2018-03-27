@@ -38158,6 +38158,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.view = new Roo.View(this.list, this.tpl, {
                 singleSelect:true, store: this.store, selectedClass: this.selectedClass
             });
+            
+            this.view.on('click', this.onViewClick, this);
             // this.view.on('click', this.onViewClick, this);
             // this.store.on('beforeload', this.onBeforeLoad, this);
             // this.store.on('load', this.onLoad, this);
@@ -38253,8 +38255,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             var index = this.view.getSelectedIndexes()[0];
             
             var r = this.store.getAt(index);
-            Roo.log('view lcikc');
-            Roo.log(r);
             
             if(r){
                 this.onSelect(r, index);
