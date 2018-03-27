@@ -321,8 +321,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         // private
         onViewClick : function(view, doFocus, el, e)
         {
-            Roo.log('onviewclick...');
-            
             var index = this.view.getSelectedIndexes()[0];
             
             var r = this.store.getAt(index);
