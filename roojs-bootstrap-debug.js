@@ -38447,7 +38447,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             for (var i = 0; i < v.length; i++) {
               var c = v.charAt(i);
               // if char is number
-              if ($.isNumeric(c)) {
+              if (isNaN(c)) {
                 numericChars += c;
                 // if current numericChars make a valid dial code
                 if (this.dialCodeMapping[numericChars]) {
