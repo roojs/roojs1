@@ -451,7 +451,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         setFlagClass : function(n)
         {
-            this.flag.dom.className = "flag "+n;
+            this.flag.dom.className = 'flag ''+n;
         }
         
         allCountries : [
