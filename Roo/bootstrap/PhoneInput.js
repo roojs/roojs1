@@ -418,58 +418,10 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             Roo.log('onselecting...');
             if(this.fireEvent('beforeselect', this, record, index) !== false){
                 
-                this.setFromData(index > -1 ? record.data : false);
                 
                 this.collapse();
                 this.fireEvent('select', this, record, index);
             }
-        },
-        
-        setFromData : function(o){
-            
-            if(this.multiple){
-                this.addItem(o);
-                return;
-            }
-                
-            var dv = ''; // display value
-            var vv = ''; // value value..
-            this.lastData = o;
-            if (this.displayField) {
-                dv = !o || typeof(o[this.displayField]) == 'undefined' ? '' : o[this.displayField];
-            } else {
-                // this is an error condition!!!
-                Roo.log('no  displayField value set for '+ (this.name ? this.name : this.id));
-            }
-            
-            if(this.valueField){
-                vv = !o || typeof(o[this.valueField]) == 'undefined' ? dv : o[this.valueField];
-            }
-            
-            var close = this.closeTriggerEl();
-            
-            if(close){
-                if(dv.length || vv * 1 > 0){
-                    close.show() ;
-                    this.blockFocus=true;
-                } else {
-                    close.hide();
-                }             
-            }
-            
-            if(this.hiddenField){
-                this.hiddenField.dom.value = vv;
-                
-                this.lastSelectionText = dv;
-                Roo.bootstrap.ComboBox.superclass.setValue.call(this, dv);
-                this.value = vv;
-                return;
-            }
-            // no hidden field.. - we store the value in 'value', but still display
-            // display field!!!!
-            this.lastSelectionText = dv;
-            Roo.bootstrap.ComboBox.superclass.setValue.call(this, dv);
-            this.value = vv;
         },
         
         allCountries : [
