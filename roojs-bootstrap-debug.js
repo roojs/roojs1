@@ -37957,7 +37957,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         getAutoCreate : function()
         {
-            var data = Roo.bootstrap.PhoneInput.AllCountries;
+            var data = Roo.bootstrap.PhoneInput.AllCountries();
             var align = this.labelAlign || this.parentLabelAlign();
             var id = Roo.id();
             
