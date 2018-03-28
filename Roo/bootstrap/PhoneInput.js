@@ -216,10 +216,10 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                 })
             });
             
-            if(this.preferedDialCode) {
-                for (var i = 0; i < this.preferedDialCode.length; i++) {
+            if(this.preferedCountries) {
+                for (var i = 0; i < this.preferedCountries.length; i++) {
                     for (var j = 0; j < this.allCountries.length; j++) {
-                        if(this.allCountries[j].dialCode == this.preferedDialCode[i]) {
+                        if(this.allCountries[j].iso2 == this.preferedCountries[i]) {
                             var t = this.allCountries[j];
                             this.allCountries.splice(j,1);
                             this.allCountries.unshift(t);
