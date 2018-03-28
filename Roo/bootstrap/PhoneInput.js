@@ -504,7 +504,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             }
             
             var dialCode = "";
-            // only interested in international numbers (starting with a plus)
             if (v.charAt(0) != "+") {
                 return false;
             }
