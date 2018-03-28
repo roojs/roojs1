@@ -173,6 +173,11 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 }
             });
             
+            return cfg;
+        },
+        
+        initEvents : function()
+        {
             this.store = new Roo.data.Store({
                 proxy : new Roo.data.MemoryProxy({}),
                 reader : new Roo.data.JsonReader({
@@ -206,11 +211,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 data: this.allCountries
             };
             
-            return cfg;
-        },
-        
-        initEvents : function()
-        {
             this.createList();
             Roo.bootstrap.PhoneInput.superclass.initEvents.call(this);
             
