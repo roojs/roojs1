@@ -21,7 +21,7 @@
  * @cfg {String} triggerText multiple combobox trigger button text default 'Select'
  * @cfg {String} emptyTitle default ''
  
- * @cfg {String} emptyTitle default ''
+ * @cfg {String} defaultDialCode default '+852'
  * @cfg {String} emptyTitle default ''
  * @cfg {String} emptyTitle default ''
  * @cfg {String} emptyTitle default ''
@@ -45,13 +45,14 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         invalidClass : "has-warning",
         
-        validClass: 'has-success',
-        
-        defaultDialCode: '+852',
-        
         allCountries: [],
         
         dialCodeMapping: [],
+        
+        
+        validClass: 'has-success',
+        
+        defaultDialCode: '+852',
         
         preferedCountries: [
             'hk',
