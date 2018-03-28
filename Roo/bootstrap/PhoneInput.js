@@ -207,7 +207,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 }
             });
             
-            this.store.proxy.data = this.data;
+            this.store.proxy.data = this.allCountries;
             
             return cfg;
         },
