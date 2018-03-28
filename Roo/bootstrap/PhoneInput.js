@@ -14,6 +14,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         defaultCountry: 'hk',
         
+        preferedCountries: [],
+        
         getAutoCreate : function()
         {
             var align = this.labelAlign || this.parentLabelAlign();
