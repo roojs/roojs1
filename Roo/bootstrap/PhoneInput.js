@@ -26,10 +26,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         allCountries: false,
         
-        CountryData: Roo.bootstrap.PhoneInput.AllCountries,
-        
         getAutoCreate : function()
         {
+            var data = Roo.bootstrap.PhoneInput.AllCountries;
             var align = this.labelAlign || this.parentLabelAlign();
             var id = Roo.id();
             
