@@ -342,9 +342,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.view.select(index);
             if(scrollIntoView !== false){
                 var el = this.view.getNode(index);
-                /*
-                 * el && !this.multiple && !this.tickable // not sure why we disable multiple before..
-                 */
                 if(el){
                     this.list.scrollChildIntoView(el, false);
                 }
@@ -360,7 +357,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             });
             
             this.list.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';;
-            
         },
         
         collapseIf : function(e)
