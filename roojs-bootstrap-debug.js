@@ -37964,8 +37964,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
               };
             }
             
-            this.data = this.allCountries;
-            
             var cfg = {
                 cls: 'form-group', //input-group
                 cn: []
@@ -38129,21 +38127,13 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                             'type' : 'string'
                         }
                     ]
-                }),
-                listeners : {
-                    beforeload : function(_self, o)
-                    {
-                        o.params = o.params || {};
-                        var d = {
-                            success :true,
-                            data: this.data_cache
-                        };
-                        this.proxy.data = d;
-                    }
-                }
+                })
             });
             
-            this.store.data_cache = this.data;
+            this.store.proxy.data = {
+                success: true,
+                data: this.allCountries
+            };
             
             return cfg;
         },
