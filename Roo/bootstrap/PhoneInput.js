@@ -300,15 +300,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         restrictHeight : function()
         {
-            //this.innerList.dom.style.height = '';
-            //var inner = this.innerList.dom;
-            //var h = Math.max(inner.clientHeight, inner.offsetHeight, inner.scrollHeight);
-            //this.innerList.setHeight(h < this.maxHeight ? 'auto' : this.maxHeight);
-            //this.list.beginUpdate();
-            //this.list.setHeight(this.innerList.getHeight()+this.list.getFrameWidth('tb')+(this.resizable?this.handleHeight:0)+this.assetHeight);
             this.list.alignTo(this.inputEl(), this.listAlign);
             this.list.alignTo(this.inputEl(), this.listAlign);
-            //this.list.endUpdate();
         },
         
         onViewOver : function(e, t)
@@ -526,6 +519,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         validate : function()
         {
             //
+            return false;
         },
         
         allCountries : [
