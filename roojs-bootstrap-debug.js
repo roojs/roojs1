@@ -37955,15 +37955,14 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         allCountries: false,
         
-        CountryData: Roo.bootstrap.PhoneInput.AllCountries,
-        
         getAutoCreate : function()
         {
+            var data = Roo.bootstrap.PhoneInput.AllCountries;
             var align = this.labelAlign || this.parentLabelAlign();
             var id = Roo.id();
             
-            for (var i = 0; i < this.CountryData.length; i++) {
-              var c = this.CountryData[i];
+            for (var i = 0; i < data.length; i++) {
+              var c = data[i];
               this.allCountries[i] = {
                 name: c[0],
                 iso2: c[1],
