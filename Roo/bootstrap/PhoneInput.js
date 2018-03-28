@@ -26,6 +26,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         allCountries: false,
         
+        data: Roo.bootstrap.PhoneInput.AllCountries,
+        
         getAutoCreate : function()
         {
             var align = this.labelAlign || this.parentLabelAlign();
