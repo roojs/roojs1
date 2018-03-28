@@ -12,6 +12,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         dialCodeMapping: [],
         
+        defaultCountry: 'hk',
+        
         getAutoCreate : function()
         {
             var align = this.labelAlign || this.parentLabelAlign();
