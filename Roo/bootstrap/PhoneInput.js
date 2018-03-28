@@ -18,6 +18,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         selectedClass: 'active',
         
+        validClass: 'has-success',
+        
         allCountries: [],
         
         dialCodeMapping: [],
