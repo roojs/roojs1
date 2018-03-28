@@ -37941,7 +37941,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         dialCodeMapping: [],
         
-        defaultCountry: 'hk',//
+        defaultDialCode: '+852',//
         
         preferedCountries: [],//
         
@@ -38168,8 +38168,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             });
             
             this.view.on('click', this.onViewClick, this);
-            //this.select(default country)
-            
+            this.setValue(this.defaultDialCode);
         },
         
         onTriggerClick : function(e)
