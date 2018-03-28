@@ -92,7 +92,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             };
             
             if (this.name) {
-                input.name = this.name;
+                hiddenInput.name = this.name;
             }
             
             if (this.disabled) {
@@ -118,6 +118,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                 tag: 'div',
                 cls: this.hasFeedback ? 'has-feedback' : '',
                 cn: [
+                    hiddenInput,
                     input,
                     {
                         tag: 'input',
