@@ -1,3 +1,12 @@
+/**
+This script refer to Jack O. (2018) International Telephone Input v12.1.12
+*    Title: <title of program/source code>
+*    Author: <author(s) names>
+*    Date: <date>
+*    Code version: <code version>
+*    Availability: <where it's located>
+**/
+
 Roo.bootstrap.PhoneInput = function(config) {
     Roo.bootstrap.PhoneInput.superclass.constructor.call(this, config);
 };
@@ -12,9 +21,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         dialCodeMapping: false,
         
-        defaultDialCode: '+852',//
+        defaultDialCode: '+852',
         
-        preferedCountries: false,//
+        preferedCountries: false,
         
         getAutoCreate : function()
         {
