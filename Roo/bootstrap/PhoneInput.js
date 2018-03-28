@@ -29,7 +29,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
               this.dialCodeMapping[c[2]] = {
                   name: c[0],
                   iso2: c[1],
-                  dialCode: c[2],
                   priority: c[3] || 0,
                   areaCodes: c[4] || null
               };
@@ -162,7 +161,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 label,
                 container
             ];
-            
             
             var settings = this;
             
