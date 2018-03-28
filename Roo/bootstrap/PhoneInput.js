@@ -1,10 +1,10 @@
 /**
-This script refer to Jack O. (2018) International Telephone Input v12.1.12
-*    Title: <title of program/source code>
-*    Author: <author(s) names>
-*    Date: <date>
-*    Code version: <code version>
-*    Availability: <where it's located>
+*    This script refer to:
+*    Title: International Telephone Input
+*    Author: Jack O'Connor
+*    Date: 28/3/2018
+*    Code version:  v12.1.12
+*    Availability: https://github.com/jackocnr/intl-tel-input.git
 **/
 
 Roo.bootstrap.PhoneInput = function(config) {
