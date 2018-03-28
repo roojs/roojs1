@@ -382,11 +382,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             }
         },
         
-        setPlaceholder : function(v)
-        {
-            
-        },
-        
         flagEl : function()
         {
             var flag = this.el.select('div.flag',true).first();
@@ -453,18 +448,13 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 return false;
             }
             var numericChars = "";
-            // iterate over chars
             for (var i = 1; i < v.length; i++) {
               var c = v.charAt(i);
-              // if char is number
               if (!isNaN(c)) {
                 numericChars += c;
-                // if current numericChars make a valid dial code
                 if (this.dialCodeMapping[numericChars]) {
-                  // store the actual raw string (useful for matching later)
                   dialCode = v.substr(1, i);
                 }
-                // longest dial code is 4 chars
                 if (numericChars.length == 4) {
                   break;
                 }
