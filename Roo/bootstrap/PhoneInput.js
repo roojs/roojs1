@@ -221,7 +221,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                     for (var j = 0; j < this.allCountries.length; j++) {
                         if(this.allCountries[j].dialCode == this.preferedDialCode[i]) {
                             var t = this.allCountries[j];
-                            Roo.log(t);
                             this.allCountries.splice(j,1);
                             this.allCountries.unshift(t);
                         }
