@@ -534,8 +534,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             return this.el.select('input.hidden-tel-input',true).first();
         },
         
-        onKeyUp : function()
+        onKeyUp : function(e)
         {
-            
+            this.setValue('')
         }
+        
 });
