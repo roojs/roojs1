@@ -39216,7 +39216,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             'us'
         ],
         
-        defaultDialCode: '+852', //hk
+        //white list / black list for countries?
+        
+        defaultDialCode: '+852',
         
         getAutoCreate : function()
         {
@@ -39249,7 +39251,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             var input =  {
                 tag: 'input',
                 id : id,
-                type : 'number',
                 cls : 'form-control tel-input',
                 autocomplete: 'new-password'
             };
@@ -39681,7 +39682,11 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         validate : function()
         {
-            //
             return false;
+        },
+        
+        reset : function()
+        {
+            this.setValue(this.defaultDialCode);
         }
 });
