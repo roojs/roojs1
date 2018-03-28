@@ -523,5 +523,10 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         reset : function()
         {
             this.setValue(this.defaultDialCode);
+        },
+        
+        hiddenEl : function()
+        {
+            return this.el.select('input.hidden-tel-input',true).first();
         }
 });
