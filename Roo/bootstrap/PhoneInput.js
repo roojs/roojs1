@@ -12,9 +12,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         dialCodeMapping: [],
         
-        defaultCountry: 'hk',
+        defaultCountry: 'hk',//
         
-        preferedCountries: [],
+        preferedCountries: [],//
         
         getAutoCreate : function()
         {
@@ -56,7 +56,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             }
             
             if (this.disabled) {
-                input.disabled=true;
+                input.disabled = true;
             }
             
             var flag_container = {
