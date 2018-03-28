@@ -211,12 +211,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         initEvents : function()
         {
-            //this.select(default country)
-            
             this.createList();
             Roo.bootstrap.PhoneInput.superclass.initEvents.call(this);
             
-            //setting up object
             this.indicator = this.indicatorEl();
             this.flag = this.flagEl();
             this.dialCodeHolder = this.dialCodeHolderEl();
@@ -242,6 +239,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             });
             
             this.view.on('click', this.onViewClick, this);
+            //this.select(default country)
+            
         },
         
         onTriggerClick : function(e)
