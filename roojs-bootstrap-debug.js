@@ -37941,6 +37941,10 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         dialCodeMapping: [],
         
+        defaultCountry: 'hk',//
+        
+        preferedCountries: [],//
+        
         getAutoCreate : function()
         {
             var align = this.labelAlign || this.parentLabelAlign();
@@ -37958,14 +37962,13 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
               this.dialCodeMapping[c[2]] = {
                   name: c[0],
                   iso2: c[1],
-                  dialCode: c[2],
                   priority: c[3] || 0,
                   areaCodes: c[4] || null
               };
             }
             
             var cfg = {
-                cls: 'form-group', //input-group
+                cls: 'form-group',
                 cn: []
             };
             
@@ -37975,7 +37978,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 type : 'tel',
                 cls : 'form-control tel-input',
                 autocomplete: 'new-password'
-                //placeholder : this.placeholder || '' 
             };
             
             if (this.name) {
@@ -37983,7 +37985,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             }
             
             if (this.disabled) {
-                input.disabled=true;
+                input.disabled = true;
             }
             
             var flag_container = {
@@ -38092,7 +38094,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 container
             ];
             
-            
             var settings = this;
             
             ['xs','sm','md','lg'].map(function(size){
@@ -38104,7 +38105,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.store = new Roo.data.Store({
                 proxy : new Roo.data.MemoryProxy({}),
                 reader : new Roo.data.JsonReader({
-                    
                     fields : [
                         {
                             'name' : 'name',
@@ -38143,7 +38143,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.createList();
             Roo.bootstrap.PhoneInput.superclass.initEvents.call(this);
             
-            //setting up object
             this.indicator = this.indicatorEl();
             this.flag = this.flagEl();
             this.dialCodeHolder = this.dialCodeHolderEl();
@@ -38169,10 +38168,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             });
             
             this.view.on('click', this.onViewClick, this);
-            // this.view.on('click', this.onViewClick, this);
-            // this.store.on('beforeload', this.onBeforeLoad, this);
-            // this.store.on('load', this.onLoad, this);
-            // this.store.on('loadexception', this.onLoadException, this);
+            //this.select(default country)
+            
         },
         
         onTriggerClick : function(e)
@@ -38181,9 +38178,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             if(this.disabled || !this.triggerList){
                 return;
             }
-            
-            this.page = 0;
-            this.loadNext = false;
             
             if(this.isExpanded()){
                 this.collapse();
@@ -38209,12 +38203,13 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             Roo.get(document).un('mousedown', this.collapseIf, this);
             Roo.get(document).un('mousewheel', this.collapseIf, this);
             this.fireEvent('collapse', this);
-            
             this.validate();
         },
         
         expand : function()
         {
+            Roo.log('expand');
+
             if(this.isExpanded() || !this.hasFocus){
                 return;
             }
@@ -38222,10 +38217,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             var lw = this.listWidth || Math.max(this.inputEl().getWidth(), this.minListWidth);
             this.list.setWidth(lw);
             
-            Roo.log('expand');
-            
             this.list.show();
-            
             this.restrictHeight();
             
             Roo.get(document).on('mousedown', this.collapseIf, this);
@@ -38236,15 +38228,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         restrictHeight : function()
         {
-            //this.innerList.dom.style.height = '';
-            //var inner = this.innerList.dom;
-            //var h = Math.max(inner.clientHeight, inner.offsetHeight, inner.scrollHeight);
-            //this.innerList.setHeight(h < this.maxHeight ? 'auto' : this.maxHeight);
-            //this.list.beginUpdate();
-            //this.list.setHeight(this.innerList.getHeight()+this.list.getFrameWidth('tb')+(this.resizable?this.handleHeight:0)+this.assetHeight);
             this.list.alignTo(this.inputEl(), this.listAlign);
             this.list.alignTo(this.inputEl(), this.listAlign);
-            //this.list.endUpdate();
         },
         
         onViewOver : function(e, t)
@@ -38305,14 +38290,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             }
             
             this.loading.show();
-            
-            var _combo = this;
-            
-            this.page++;
-            this.loadNext = true;
-            
-            (function() { _combo.doQuery(_combo.allQuery, true); }).defer(500);
-            
             return;
         },
         
@@ -38457,6 +38434,12 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
               }
             }
             return dialCode;
+        },
+        
+        validate : function()
+        {
+            //
+            return false;
         },
         
         allCountries : [

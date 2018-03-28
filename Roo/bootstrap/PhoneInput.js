@@ -361,14 +361,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             }
             
             this.loading.show();
-            
-            var _combo = this;
-            
-            this.page++;
-            this.loadNext = true;
-            
-            (function() { _combo.doQuery(_combo.allQuery, true); }).defer(500);
-            
             return;
         },
         
