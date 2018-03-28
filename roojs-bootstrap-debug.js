@@ -39715,6 +39715,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         reset : function()
         {
             this.setValue(this.defaultDialCode);
+            
+            this.validate();
         },
         
         hiddenEl : function()

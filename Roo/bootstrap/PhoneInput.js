@@ -527,6 +527,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         reset : function()
         {
             this.setValue(this.defaultDialCode);
+            
+            this.validate();
         },
         
         hiddenEl : function()
@@ -536,7 +538,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         onKeyUp : function(e)
         {
-            this.setValue('')
+            this.setValue(this.getValue());
         }
         
 });
