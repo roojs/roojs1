@@ -273,12 +273,13 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             Roo.get(document).un('mousedown', this.collapseIf, this);
             Roo.get(document).un('mousewheel', this.collapseIf, this);
             this.fireEvent('collapse', this);
-            
             this.validate();
         },
         
         expand : function()
         {
+            Roo.log('expand');
+
             if(this.isExpanded() || !this.hasFocus){
                 return;
             }
@@ -286,10 +287,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             var lw = this.listWidth || Math.max(this.inputEl().getWidth(), this.minListWidth);
             this.list.setWidth(lw);
             
-            Roo.log('expand');
-            
             this.list.show();
-            
             this.restrictHeight();
             
             Roo.get(document).on('mousedown', this.collapseIf, this);
