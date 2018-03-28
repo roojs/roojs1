@@ -22,7 +22,11 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         dialCodeMapping: [],
         
-        preferedDialCode: false,
+        preferedDialCode: [
+            '+852',
+            '+44',
+            '+1',
+        ],
         
         defaultDialCode: '+852', //hk
         
