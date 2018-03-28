@@ -1,3 +1,10 @@
+/**
+*    This script refer to:
+*    Title: International Telephone Input
+*    Author: Jack O'Connor
+*    Code version:  v12.1.12
+*    Availability: https://github.com/jackocnr/intl-tel-input.git
+**/
 
 Roo.bootstrap.PhoneInputData = function() {
     var d = [
