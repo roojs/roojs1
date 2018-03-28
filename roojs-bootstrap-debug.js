@@ -39199,9 +39199,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         selectedClass: 'active',
         
-        allCountries: false,
+        allCountries: [],
         
-        dialCodeMapping: false,
+        dialCodeMapping: [],
         
         preferedCountries: false,
         
@@ -39209,7 +39209,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         getAutoCreate : function()
         {
-            var data = Roo.bootstrap.PhoneInputData;
+            var data = Roo.bootstrap.PhoneInputData();
             var align = this.labelAlign || this.parentLabelAlign();
             var id = Roo.id();
             

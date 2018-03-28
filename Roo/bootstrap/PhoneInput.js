@@ -18,9 +18,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         selectedClass: 'active',
         
-        allCountries: false,
+        allCountries: [],
         
-        dialCodeMapping: false,
+        dialCodeMapping: [],
         
         preferedCountries: false,
         
