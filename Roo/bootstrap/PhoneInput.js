@@ -10,24 +10,12 @@
  * @class Roo.bootstrap.PhoneInput
  * @extends Roo.bootstrap.TriggerField
  * An input combines with  dial-code selection
- * @cfg {Boolean} append (true|false) default false
- * @cfg {Boolean} autoFocus (true|false) auto focus the first item, default true
- * @cfg {Boolean} tickable ComboBox with tickable selections (true|false), default false
- * @cfg {Boolean} triggerList trigger show the list or not (true|false) default true
- * @cfg {Boolean} showToggleBtn show toggle button or not (true|false) default true
- * @cfg {String} btnPosition set the position of the trigger button (left | right) default right
- * @cfg {Boolean} animate default true
- * @cfg {Boolean} emptyResultText only for touch device
- * @cfg {String} triggerText multiple combobox trigger button text default 'Select'
- * @cfg {String} emptyTitle default ''
  
  * @cfg {String} defaultDialCode default '+852'
- * @cfg {String} emptyTitle default ''
- * @cfg {String} emptyTitle default ''
- * @cfg {String} emptyTitle default ''
+ * @cfg {Array} preferedCountries default []
   
  * @constructor
- * Create a new ComboBox.
+ * Create a new PhoneInput.
  * @param {Object} config Configuration options
  */
 
