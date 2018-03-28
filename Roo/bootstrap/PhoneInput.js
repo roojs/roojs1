@@ -355,7 +355,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 cls: 'typeahead typeahead-long dropdown-menu tel-list',
                 style: 'display:none'
             });
-            
             this.list.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';;
         },
         
@@ -366,7 +365,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             var is_list = (Roo.get(e.getTarget()).id == this.list.id) ? true : false;
             
             if (in_combo || in_list || is_list) {
-                //e.stopPropagation();
                 return;
             }
             this.collapse();
