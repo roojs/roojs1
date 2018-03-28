@@ -39404,16 +39404,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                 })
             });
             
-            this.store.proxy.data = {
-                success: true,
-                data: this.allCountries
-            };
-            
-            return cfg;
-        },
-        
-        initEvents : function()
-        {
             if(this.preferedDialCode) {
                 for (var i = 0; i < this.preferedDialCode.length; i++) {
                     for (var j = 0; j < this.allCountries.length; j++) {
@@ -39426,6 +39416,16 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                 }
             }
             
+            this.store.proxy.data = {
+                success: true,
+                data: this.allCountries
+            };
+            
+            return cfg;
+        },
+        
+        initEvents : function()
+        {
             this.createList();
             Roo.bootstrap.PhoneInput.superclass.initEvents.call(this);
             
