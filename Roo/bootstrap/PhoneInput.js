@@ -31,7 +31,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             var align = this.labelAlign || this.parentLabelAlign();
             var id = Roo.id();
             
-            for (var i = 0; i < this.allCountries.length; i++) {
+            for (var i = 0; i < this.Roo.bootstrap.PhoneInput.AllCountries.length; i++) {
               var c = this.allCountries[i];
               this.allCountries[i] = {
                 name: c[0],
