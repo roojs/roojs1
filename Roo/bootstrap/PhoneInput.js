@@ -32,7 +32,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             var id = Roo.id();
             
             for (var i = 0; i < this.Roo.bootstrap.PhoneInput.AllCountries.length; i++) {
-              var c = this.allCountries[i];
+              var c = this.Roo.bootstrap.PhoneInput.AllCountries[i];
               this.allCountries[i] = {
                 name: c[0],
                 iso2: c[1],
@@ -58,8 +58,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 id : id,
                 type : 'number',
                 cls : 'form-control tel-input',
-                autocomplete: 'new-password',
-                
+                autocomplete: 'new-password'
             };
             
             if (this.name) {
