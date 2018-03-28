@@ -305,7 +305,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         onViewOver : function(e, t)
         {
-            if(this.inKeyMode){ // prevent key nav and mouse over conflicts
+            if(this.inKeyMode){
                 return;
             }
             var item = this.view.findItemFromChild(t);
