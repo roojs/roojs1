@@ -24,7 +24,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         preferedCountries: false,
         
-        allCountries: Roo.bootstrap.PhoneInputAllCountries, 
+        allCountries: false,
         
         getAutoCreate : function()
         {
