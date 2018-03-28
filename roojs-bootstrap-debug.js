@@ -37927,6 +37927,13 @@ Roo.extend(Roo.bootstrap.panel.TabItem, Roo.util.Observable,
      */
     closeText : "Close this tab"
 });
+/**
+*    This script refer to:
+*    Title: International Telephone Input
+*    Author: Jack O'Connor
+*    Code version:  v12.1.12
+*    Availability: https://github.com/jackocnr/intl-tel-input.git
+**/
 
 Roo.bootstrap.PhoneInputData = function() {
     var d = [
@@ -39203,9 +39210,13 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         dialCodeMapping: [],
         
-        preferedCountries: false,
+        preferedDialCode: [
+            '+852',
+            '+44',
+            '+1'
+        ],
         
-        defaultDialCode: '+852',
+        defaultDialCode: '+852', //hk
         
         getAutoCreate : function()
         {
@@ -39403,6 +39414,18 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         initEvents : function()
         {
+            if(this.preferedDialCode) {
+                for (var i = 0; i < this.preferedDialCode.length; i++) {
+                    for (var j = 0; j < this.allCountries.length; j++) {
+                        if(this.allCountries[j].dialCode == this.preferedDialCode[i]) {
+                            var t = this.allCountries[j];
+                            this.allCountries.splice(j,1);
+                            this.allCountries.unshift(t);
+                        }
+                    } 
+                }
+            }
+            
             this.createList();
             Roo.bootstrap.PhoneInput.superclass.initEvents.call(this);
             
