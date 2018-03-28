@@ -149,4 +149,6 @@ Roo.bootstrap.panel.Nest
 Roo.bootstrap.panel.Tabs
 Roo.bootstrap.panel.TabItem
 
+Roo.bootstrap.PhoneInputData
 Roo.bootstrap.PhoneInput
+
