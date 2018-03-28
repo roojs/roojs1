@@ -6,6 +6,31 @@
 *    Availability: https://github.com/jackocnr/intl-tel-input.git
 **/
 
+/**
+ * @class Roo.bootstrap.PhoneInput
+ * @extends Roo.bootstrap.TriggerField
+ * An input combines with  dial-code selection
+ * @cfg {Boolean} append (true|false) default false
+ * @cfg {Boolean} autoFocus (true|false) auto focus the first item, default true
+ * @cfg {Boolean} tickable ComboBox with tickable selections (true|false), default false
+ * @cfg {Boolean} triggerList trigger show the list or not (true|false) default true
+ * @cfg {Boolean} showToggleBtn show toggle button or not (true|false) default true
+ * @cfg {String} btnPosition set the position of the trigger button (left | right) default right
+ * @cfg {Boolean} animate default true
+ * @cfg {Boolean} emptyResultText only for touch device
+ * @cfg {String} triggerText multiple combobox trigger button text default 'Select'
+ * @cfg {String} emptyTitle default ''
+ 
+ * @cfg {String} emptyTitle default ''
+ * @cfg {String} emptyTitle default ''
+ * @cfg {String} emptyTitle default ''
+ * @cfg {String} emptyTitle default ''
+  
+ * @constructor
+ * Create a new ComboBox.
+ * @param {Object} config Configuration options
+ */
+
 Roo.bootstrap.PhoneInput = function(config) {
     Roo.bootstrap.PhoneInput.superclass.constructor.call(this, config);
 };
@@ -22,6 +47,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         validClass: 'has-success',
         
+        defaultDialCode: '+852',
+        
         allCountries: [],
         
         dialCodeMapping: [],
@@ -33,8 +60,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         ],
         
         //white list / black list for countries?
-        
-        defaultDialCode: '+852',
         
         getAutoCreate : function()
         {
