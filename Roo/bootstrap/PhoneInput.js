@@ -477,7 +477,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                 }
                 return;
             }
-            
+            Roo.log(d);
             this.setFlagClass(this.dialCodeMapping[d].iso2);
             this.setDialCode(d);
             this.inputEl().dom.value = v.replace('+'+d,'');

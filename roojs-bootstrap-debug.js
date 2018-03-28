@@ -39194,6 +39194,19 @@ Roo.bootstrap.PhoneInputData = function() {
 *    Availability: https://github.com/jackocnr/intl-tel-input.git
 **/
 
+/**
+ * @class Roo.bootstrap.PhoneInput
+ * @extends Roo.bootstrap.TriggerField
+ * An input combines with  dial-code selection
+ 
+ * @cfg {String} defaultDialCode default '+852'
+ * @cfg {Array} preferedCountries default []
+  
+ * @constructor
+ * Create a new PhoneInput.
+ * @param {Object} config Configuration options
+ */
+
 Roo.bootstrap.PhoneInput = function(config) {
     Roo.bootstrap.PhoneInput.superclass.constructor.call(this, config);
 };
@@ -39208,11 +39221,14 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         invalidClass : "has-warning",
         
-        validClass: 'has-success',
-        
         allCountries: [],
         
         dialCodeMapping: [],
+        
+        
+        validClass: 'has-success',
+        
+        defaultDialCode: '+852',
         
         preferedCountries: [
             'hk',
@@ -39221,8 +39237,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         ],
         
         //white list / black list for countries?
-        
-        defaultDialCode: '+852',
         
         getAutoCreate : function()
         {
@@ -39651,10 +39665,12 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                 }
                 return;
             }
-            
+            Roo.log(d);
             this.setFlagClass(this.dialCodeMapping[d].iso2);
             this.setDialCode(d);
             this.inputEl().dom.value = v.replace('+'+d,'');
+            
+            this.validate();
         },
         
         getDialCode : function(v = '')
