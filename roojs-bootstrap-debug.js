@@ -39407,6 +39407,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             if(this.preferedDialCode) {
                 for (var i = 0; i < this.preferedDialCode.length; i++) {
                     Roo.log('-----------------------------------------');
+                    Roo.log(this.preferedDialCode[i]);
                     Roo.log(this.dialCodeMapping.indexOf(this.preferedDialCode[i]));
                 }
             }
