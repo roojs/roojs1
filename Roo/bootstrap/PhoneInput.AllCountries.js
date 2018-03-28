@@ -1,4 +1,4 @@
-Roo.bootstrap.PhoneInput.AllCountries = function() {
+Roo.bootstrap.PhoneInputData = function() {
     var d = [
       [
         "Afghanistan (‫افغانستان‬‎)",
