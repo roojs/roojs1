@@ -249,9 +249,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 return;
             }
             
-            this.page = 0;
-            this.loadNext = false;
-            
             if(this.isExpanded()){
                 this.collapse();
                 this.hasFocus = false;
