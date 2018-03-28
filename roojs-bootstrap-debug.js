@@ -39230,13 +39230,13 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                 name: c[0],
                 iso2: c[1],
                 dialCode: c[2],
-                // priority: c[3] || 0,
+                priority: c[3] || 0,
                 areaCodes: c[4] || null
               };
               this.dialCodeMapping[c[2]] = {
                   name: c[0],
                   iso2: c[1],
-                //   priority: c[3] || 0,
+                  priority: c[3] || 0,
                   areaCodes: c[4] || null
               };
             }
@@ -39406,9 +39406,13 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             
             if(this.preferedDialCode) {
                 for (var i = 0; i < this.preferedDialCode.length; i++) {
-                    Roo.log('-----------------------------------------');
-                    Roo.log(this.preferedDialCode[i]);
-                    Roo.log(this.dialCodeMapping.indexOf(this.preferedDialCode[i]));
+                    for (var j = 0; j < this.allCountries.length; j++) {
+                        if(this.allCountries[j].dialCode == this.preferedDialCode[i]) {
+                            var t = this.allCountries[j];
+                            this.allCountries.splice(j,1);
+                            this.allCountries.unshift(t);
+                        }
+                    } 
                 }
             }
             
