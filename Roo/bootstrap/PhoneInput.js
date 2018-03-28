@@ -228,6 +228,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                 }
             }
             
+            Roo.log(this.allCountries);
+            
             this.store.proxy.data = {
                 success: true,
                 data: this.allCountries
