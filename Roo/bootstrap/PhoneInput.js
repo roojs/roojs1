@@ -485,7 +485,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                     this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
                     this.hiddenEl().dom.value = (v === null || v === undefined ? '' : v);
                 }
-                this.validate();
                 return;
             }
             
