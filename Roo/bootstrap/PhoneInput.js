@@ -28,7 +28,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             'us'
         ],
         
-        defaultDialCode: '+852', //hk
+        //white list / black list for countries?
+        
+        defaultDialCode: '+852',
         
         getAutoCreate : function()
         {
