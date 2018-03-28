@@ -39663,6 +39663,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                 if(this.rendered){
                     this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
                 }
+                this.validate();
                 return;
             }
             
