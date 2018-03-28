@@ -85,6 +85,12 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                 autocomplete: 'new-password'
             };
             
+            var hiddenInput = {
+                tag: 'input',
+                inputType: 'hidden',
+                cls: 'hidden-tel-input'
+            };
+            
             if (this.name) {
                 input.name = this.name;
             }
