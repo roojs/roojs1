@@ -230,6 +230,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             
             this.list.on('mouseover', this.onViewOver, this);
             this.list.on('mousemove', this.onViewMove, this);
+            //this.list.on('scroll', this.onViewScroll, this);
             
             this.tpl = '<li><a href="#"><div class="flag {iso2}"></div>{name} <span class="dial-code">+{dialCode}</span></a></li>';
 
@@ -239,6 +240,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             
             this.view.on('click', this.onViewClick, this);
             //this.select(default country)
+            
         },
         
         onTriggerClick : function(e)
@@ -336,7 +338,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         onViewScroll : function(e, t)
         {
-            Roo.log('onViewScroll');
             return;
         },
         
