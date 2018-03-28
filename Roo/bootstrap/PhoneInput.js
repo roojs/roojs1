@@ -336,11 +336,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.inKeyMode = false;
         },
         
-        onViewScroll : function(e, t)
-        {
-            return;
-        },
-        
         select : function(index, scrollIntoView)
         {
             this.selectedIndex = index;
