@@ -35,7 +35,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             }
             
             var cfg = {
-                cls: 'form-group', //input-group
+                cls: 'form-group',
                 cn: []
             };
             
@@ -45,7 +45,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 type : 'tel',
                 cls : 'form-control tel-input',
                 autocomplete: 'new-password'
-                //placeholder : this.placeholder || '' 
             };
             
             if (this.name) {
