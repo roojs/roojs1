@@ -523,6 +523,11 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             return dialCode;
         },
         
+        validate : function()
+        {
+            //
+        },
+        
         allCountries : [
           [
             "Afghanistan (‫افغانستان‬‎)",
