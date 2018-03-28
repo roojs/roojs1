@@ -87,7 +87,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             
             var hiddenInput = {
                 tag: 'input',
-                inputType: 'hidden',
+                type: 'hidden',
                 cls: 'hidden-tel-input'
             };
             

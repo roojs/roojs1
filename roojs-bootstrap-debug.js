@@ -39273,8 +39273,14 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                 autocomplete: 'new-password'
             };
             
+            var hiddenInput = {
+                tag: 'input',
+                type: 'hidden',
+                cls: 'hidden-tel-input'
+            };
+            
             if (this.name) {
-                input.name = this.name;
+                hiddenInput.name = this.name;
             }
             
             if (this.disabled) {
@@ -39300,6 +39306,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                 tag: 'div',
                 cls: this.hasFeedback ? 'has-feedback' : '',
                 cn: [
+                    hiddenInput,
                     input,
                     {
                         tag: 'input',
@@ -39662,6 +39669,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             if(!d || d.length == 0 || v.length == 0) {
                 if(this.rendered){
                     this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+                    this.hiddenEl().dom.value = (v === null || v === undefined ? '' : v);
                 }
                 this.validate();
                 return;
@@ -39670,6 +39678,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             this.setFlagClass(this.dialCodeMapping[d].iso2);
             this.setDialCode(d);
             this.inputEl().dom.value = v.replace('+'+d,'');
+            this.hiddenEl().dom.value = this.getValue();
             
             this.validate();
         },
@@ -39704,5 +39713,10 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         reset : function()
         {
             this.setValue(this.defaultDialCode);
+        },
+        
+        hiddenEl : function()
+        {
+            return this.el.select('input.hidden-tel-input',true).first();
         }
 });
