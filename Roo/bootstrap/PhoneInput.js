@@ -214,7 +214,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 }
             });
             
-            this.store.data_cache = this.data;
+            this.store.proxy.data = this.data;
             
             return cfg;
         },
