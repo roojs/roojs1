@@ -37947,17 +37947,19 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         selectedClass: 'active',
         
-        dialCodeMapping: false,
+        allCountries: false,
         
-        defaultDialCode: '+852',
+        dialCodeMapping: false,
         
         preferedCountries: false,
         
-        allCountries: false,
+        defaultDialCode: '+852',
         
         getAutoCreate : function()
         {
             var data = Roo.bootstrap.PhoneInput.AllCountries;
+            Roo.log(data);
+            
             var align = this.labelAlign || this.parentLabelAlign();
             var id = Roo.id();
             

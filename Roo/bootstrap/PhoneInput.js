@@ -26,10 +26,11 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         defaultDialCode: '+852',
         
-        
         getAutoCreate : function()
         {
             var data = Roo.bootstrap.PhoneInput.AllCountries;
+            Roo.log(data);
+            
             var align = this.labelAlign || this.parentLabelAlign();
             var id = Roo.id();
             
