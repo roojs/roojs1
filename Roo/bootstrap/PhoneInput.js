@@ -10,11 +10,11 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         selectedClass: 'active',
         
-        dialCodeMapping: [],
+        dialCodeMapping: false,
         
         defaultDialCode: '+852',//
         
-        preferedCountries: [],//
+        preferedCountries: false,//
         
         getAutoCreate : function()
         {
@@ -48,7 +48,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 id : id,
                 type : 'number',
                 cls : 'form-control tel-input',
-                autocomplete: 'new-password'
+                autocomplete: 'new-password',
+                
             };
             
             if (this.name) {
