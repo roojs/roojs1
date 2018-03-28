@@ -18,13 +18,14 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         selectedClass: 'active',
         
-        dialCodeMapping: false,
+        allCountries: false,
         
-        defaultDialCode: '+852',
+        dialCodeMapping: false,
         
         preferedCountries: false,
         
-        allCountries: false,
+        defaultDialCode: '+852',
+        
         
         getAutoCreate : function()
         {
@@ -32,8 +33,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             var align = this.labelAlign || this.parentLabelAlign();
             var id = Roo.id();
             
-            for (var i = 0; i < this.CountryData.length; i++) {
-              var c = this.CountryData[i];
+            for (var i = 0; i < data.length; i++) {
+              var c = data[i];
               this.allCountries[i] = {
                 name: c[0],
                 iso2: c[1],
