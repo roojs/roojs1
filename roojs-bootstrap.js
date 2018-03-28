@@ -1626,4 +1626,4 @@ this.setDialCode(A.data.dialCode);this.hasFocus=false;this.collapse();this.fireE
 if(!d){return false;}return d;},setDialCode:function(v){this.dialCodeHolder.dom.value='+'+v;},setFlagClass:function(n){this.flag.dom.className='flag '+n;},getValue:function(){var v=this.inputEl().getValue();if(this.dialCodeHolder){v=this.dialCodeHolder.dom.value+this.inputEl().getValue();
 }return v;},setValue:function(v){var d=this.getDialCode(v);this.value=v;if(!d||d.length==0){if(this.rendered){this.inputEl().dom.value=(v===null||v===undefined?'':v);}return;}this.setFlagClass(this.dialCodeMapping[d].iso2);this.setDialCode(d);this.inputEl().dom.value=v.replace('+'+d,'');
 },getDialCode:function(v=''){if(v.length==0){return this.dialCodeHolder.dom.value;}var A="";if(v.charAt(0)!="+"){return false;}var B="";for(var i=1;i<v.length;i++){var c=v.charAt(i);if(!isNaN(c)){B+=c;if(this.dialCodeMapping[B]){A=v.substr(1,i);}if(B.length==4){break;
-}}}return A;},validate:function(){return false;},reset:function(){this.setValue(this.defaultDialCode);}});
+}}}return A;},reset:function(){this.setValue(this.defaultDialCode);}});

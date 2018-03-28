@@ -496,11 +496,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             return dialCode;
         },
         
-        validate : function()
-        {
-            return false;
-        },
-        
         reset : function()
         {
             this.setValue(this.defaultDialCode);
