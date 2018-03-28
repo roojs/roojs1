@@ -175,7 +175,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.store = new Roo.data.Store({
                 proxy : new Roo.data.MemoryProxy({}),
                 reader : new Roo.data.JsonReader({
-                    
                     fields : [
                         {
                             'name' : 'name',
@@ -198,13 +197,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                             'type' : 'string'
                         }
                     ]
-                }),
-                listeners : {
-                    beforeload : function(_self, o)
-                    {
-                        o.params = o.params || {};
-                    }
-                }
+                })
             });
             
             this.store.proxy.data = {
