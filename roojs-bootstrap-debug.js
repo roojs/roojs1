@@ -38159,7 +38159,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             
             this.list.on('mouseover', this.onViewOver, this);
             this.list.on('mousemove', this.onViewMove, this);
-            this.list.on('scroll', this.onViewScroll, this);
+            //this.list.on('scroll', this.onViewScroll, this);
             
             this.tpl = '<li><a href="#"><div class="flag {iso2}"></div>{name} <span class="dial-code">+{dialCode}</span></a></li>';
 
@@ -38234,7 +38234,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         onViewOver : function(e, t)
         {
-            if(this.inKeyMode){ // prevent key nav and mouse over conflicts
+            if(this.inKeyMode){
                 return;
             }
             var item = this.view.findItemFromChild(t);
@@ -38265,45 +38265,12 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             this.inKeyMode = false;
         },
         
-        onViewScroll : function(e, t)
-        {
-            Roo.log('cataching scroll???');
-            
-            if(this.view.el.getScroll().top == 0 ||this.view.el.getScroll().top < this.view.el.dom.scrollHeight - this.view.el.dom.clientHeight || !this.hasFocus || !this.append){
-                return;
-            }
-            
-            Roo.log('load ever??');
-            
-            this.loading = this.list.select('.loading', true).first();
-            
-            if(this.loading === null){
-                this.list.createChild({
-                    tag: 'div',
-                    cls: 'loading roo-select2-more-results roo-select2-active',
-                    html: 'Loading more results...'
-                });
-                
-                this.loading = this.list.select('.loading', true).first();
-                
-                this.loading.setVisibilityMode(Roo.Element.DISPLAY);
-                
-                this.loading.hide();
-            }
-            
-            this.loading.show();
-            return;
-        },
-        
         select : function(index, scrollIntoView)
         {
             this.selectedIndex = index;
             this.view.select(index);
             if(scrollIntoView !== false){
                 var el = this.view.getNode(index);
-                /*
-                 * el && !this.multiple && !this.tickable // not sure why we disable multiple before..
-                 */
                 if(el){
                     this.list.scrollChildIntoView(el, false);
                 }
@@ -38317,9 +38284,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 cls: 'typeahead typeahead-long dropdown-menu tel-list',
                 style: 'display:none'
             });
-            
             this.list.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';;
-            
         },
         
         collapseIf : function(e)
@@ -38329,7 +38294,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             var is_list = (Roo.get(e.getTarget()).id == this.list.id) ? true : false;
             
             if (in_combo || in_list || is_list) {
-                //e.stopPropagation();
                 return;
             }
             this.collapse();
@@ -38345,11 +38309,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 this.collapse();
                 this.fireEvent('select', this, record, index);
             }
-        },
-        
-        setPlaceholder : function(v)
-        {
-            
         },
         
         flagEl : function()
@@ -38418,18 +38377,13 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                 return false;
             }
             var numericChars = "";
-            // iterate over chars
             for (var i = 1; i < v.length; i++) {
               var c = v.charAt(i);
-              // if char is number
               if (!isNaN(c)) {
                 numericChars += c;
-                // if current numericChars make a valid dial code
                 if (this.dialCodeMapping[numericChars]) {
-                  // store the actual raw string (useful for matching later)
                   dialCode = v.substr(1, i);
                 }
-                // longest dial code is 4 chars
                 if (numericChars.length == 4) {
                   break;
                 }
