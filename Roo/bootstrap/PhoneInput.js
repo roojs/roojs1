@@ -24,7 +24,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         preferedCountries: false,
         
-        defaultDialCode: '+852',
+        defaultDialCode: '+852', //hk
         
         getAutoCreate : function()
         {
