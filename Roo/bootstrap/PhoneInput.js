@@ -338,7 +338,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         onViewScroll : function(e, t)
         {
-            //
+            Roo.log('onViewScroll');
+            return;
         },
         
         select : function(index, scrollIntoView)
