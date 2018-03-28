@@ -338,11 +338,11 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         onViewScroll : function(e, t)
         {
-            if(this.view.el.getScroll().top == 0 ||this.view.el.getScroll().top < this.view.el.dom.scrollHeight - this.view.el.dom.clientHeight || !this.hasFocus || !this.append || this.hasQuery){
+            if(this.view.el.getScroll().top == 0 ||this.view.el.getScroll().top < this.view.el.dom.scrollHeight - this.view.el.dom.clientHeight || !this.hasFocus || !this.append){
                 return;
             }
             
-            this.hasQuery = true;
+            Roo.log('load ever??');
             
             this.loading = this.list.select('.loading', true).first();
             
