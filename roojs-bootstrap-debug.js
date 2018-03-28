@@ -38267,6 +38267,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
         
         onViewScroll : function(e, t)
         {
+            Roo.log('cataching scroll???');
+            
             if(this.view.el.getScroll().top == 0 ||this.view.el.getScroll().top < this.view.el.dom.scrollHeight - this.view.el.dom.clientHeight || !this.hasFocus || !this.append){
                 return;
             }
