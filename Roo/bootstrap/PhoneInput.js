@@ -35,8 +35,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
               };
             }
             
-            this.data = this.allCountries;
-            
             var cfg = {
                 cls: 'form-group', //input-group
                 cn: []
@@ -205,11 +203,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
                     beforeload : function(_self, o)
                     {
                         o.params = o.params || {};
-                        var d = {
-                            success :true,
-                            data: this.data_cache
-                        };
-                        this.proxy.data = d;
                     }
                 }
             });
