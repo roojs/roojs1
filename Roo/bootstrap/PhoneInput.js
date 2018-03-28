@@ -240,10 +240,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField,  {
             });
             
             this.view.on('click', this.onViewClick, this);
-            // this.view.on('click', this.onViewClick, this);
-            // this.store.on('beforeload', this.onBeforeLoad, this);
-            // this.store.on('load', this.onLoad, this);
-            // this.store.on('loadexception', this.onLoadException, this);
         },
         
         onTriggerClick : function(e)
