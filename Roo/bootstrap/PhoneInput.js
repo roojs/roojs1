@@ -540,6 +540,29 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         {
             Roo.log(e.getKey());
             this.setValue(this.getValue());
+        },
+        
+        onKeyPress : function(e){
+            
+            var k = e.getKey();
+            
+            var c = e.getCharCode();
+            
+            if(
+                    (String.fromCharCode(c) == '.' || String.fromCharCode(c) == '-') &&
+                    allowed.indexOf(String.fromCharCode(c)) === -1
+            ){
+                e.stopEvent();
+                return;
+            }
+            
+            if(!Roo.isIE && (e.isSpecialKey() || k == e.BACKSPACE || k == e.DELETE)){
+                return;
+            }
+            
+            if(allowed.indexOf(String.fromCharCode(c)) === -1){
+                e.stopEvent();
+            }
         }
         
 });
