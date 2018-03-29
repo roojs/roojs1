@@ -480,7 +480,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             var d = this.getDialCode(v);
             
             //invalid dial code
-            if(!d || d.length == 0 || v.length == 0) {
+            if(v.length == 0 || !d || d.length == 0) {
                 if(this.rendered){
                     this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
                     this.hiddenEl().dom.value = (v === null || v === undefined ? '' : v);
