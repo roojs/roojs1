@@ -547,7 +547,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         onKeyPress : function(e){
             
             var k = e.getKey();
-            
             var c = e.getCharCode();
             
             if(
@@ -561,7 +560,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             if(!Roo.isIE && (e.isSpecialKey() || k == e.BACKSPACE || k == e.DELETE)){
                 return;
             }
-            
             if(this.allowed.indexOf(String.fromCharCode(c)) === -1){
                 e.stopEvent();
             }
