@@ -39221,9 +39221,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         invalidClass : "has-warning",
         
-        allCountries: [],
+        allCountries: false,
         
-        dialCodeMapping: [],
+        dialCodeMapping: false,
         
         keyUpDelay: 500,
         
@@ -39231,11 +39231,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         defaultDialCode: '+852',
         
-        preferedCountries: [
-            'hk',
-            'gb',
-            'us'
-        ],
+        preferedCountries: false,
         
         //white list / black list for countries?
         
@@ -39430,6 +39426,14 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                     ]
                 })
             });
+            
+            if(!this.preferedCountries) {
+                this.preferedCountries = [
+                    'hk',
+                    'gb',
+                    'us'
+                ];
+            }
             
             var p = this.preferedCountries.reverse();
             
