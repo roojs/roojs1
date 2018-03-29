@@ -39197,7 +39197,7 @@ Roo.bootstrap.PhoneInputData = function() {
 /**
  * @class Roo.bootstrap.PhoneInput
  * @extends Roo.bootstrap.TriggerField
- * An input combines with  dial-code selection
+ * An input with International dial-code selection
  
  * @cfg {String} defaultDialCode default '+852'
  * @cfg {Array} preferedCountries default []
@@ -39666,9 +39666,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         setValue : function(v)
         {
             var d = this.getDialCode(v);
-            this.value = v;
             
-            if(!d || d.length == 0 || v.length == 0) {
+            //invalid dial code
+            if(v.length == 0 || !d || d.length == 0) {
                 if(this.rendered){
                     this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
                     this.hiddenEl().dom.value = (v === null || v === undefined ? '' : v);
@@ -39676,6 +39676,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                 return;
             }
             
+            //valid dial code
             this.setFlagClass(this.dialCodeMapping[d].iso2);
             this.setDialCode(d);
             this.inputEl().dom.value = v.replace('+'+d,'');
@@ -39713,7 +39714,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         reset : function()
         {
             this.setValue(this.defaultDialCode);
-            
             this.validate();
         },
         
@@ -39724,6 +39724,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         onKeyUp : function(e)
         {
+            Roo.log(e.getKey());
             this.setValue(this.getValue());
         }
         
