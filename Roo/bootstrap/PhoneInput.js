@@ -302,7 +302,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         onTriggerClick : function(e)
         {
             Roo.log('trigger click');
-            if(this.disabled || !this.triggerList){
+            if(this.disabled){
                 return;
             }
             
