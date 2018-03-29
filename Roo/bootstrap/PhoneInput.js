@@ -33,9 +33,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         invalidClass : "has-warning",
         
-        allCountries: [],
+        allCountries: false,
         
-        dialCodeMapping: [],
+        dialCodeMapping: false,
         
         keyUpDelay: 500,
         
