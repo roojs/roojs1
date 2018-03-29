@@ -9,7 +9,7 @@
 /**
  * @class Roo.bootstrap.PhoneInput
  * @extends Roo.bootstrap.TriggerField
- * An input combines with  dial-code selection
+ * An input with International dial-code selection
  
  * @cfg {String} defaultDialCode default '+852'
  * @cfg {Array} preferedCountries default []
