@@ -39241,6 +39241,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             var align = this.labelAlign || this.parentLabelAlign();
             var id = Roo.id();
             
+            this.allCountries = [];
+            this.dialCodeMapping = [];
+            
             for (var i = 0; i < data.length; i++) {
               var c = data[i];
               this.allCountries[i] = {
