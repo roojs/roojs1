@@ -479,6 +479,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         {
             var d = this.getDialCode(v);
             
+            //invalid dial code
             if(!d || d.length == 0 || v.length == 0) {
                 if(this.rendered){
                     this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
@@ -487,6 +488,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                 return;
             }
             
+            //valid dial code
             this.setFlagClass(this.dialCodeMapping[d].iso2);
             this.setDialCode(d);
             this.inputEl().dom.value = v.replace('+'+d,'');
