@@ -536,6 +536,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         onKeyUp : function(e)
         {
+            Roo.log(e.getKey());
             this.setValue(this.getValue());
         }
         
