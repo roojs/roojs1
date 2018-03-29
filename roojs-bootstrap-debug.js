@@ -39221,9 +39221,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         invalidClass : "has-warning",
         
-        keyUpDelay: 500,
-        
         validClass: 'has-success',
+        
+        allowed: '0123456789+',
         
         defaultDialCode: '+852',
         
@@ -39236,6 +39236,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             var data = Roo.bootstrap.PhoneInputData();
             var align = this.labelAlign || this.parentLabelAlign();
             var id = Roo.id();
+            
+            this.allCountries = [];
+            this.dialCodeMapping = [];
             
             for (var i = 0; i < data.length; i++) {
               var c = data[i];
@@ -39475,7 +39478,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             this.list.on('mouseover', this.onViewOver, this);
             this.list.on('mousemove', this.onViewMove, this);
             //this.list.on('scroll', this.onViewScroll, this);
-            this.inputEl().on("keyup", this.onKeyUp, this);
+            // this.inputEl().on("keyup", this.onKeyUp, this);
+            this.inputEl().on("keypress", this.onKeyPress, this);
             
             this.tpl = '<li><a href="#"><div class="flag {iso2}"></div>{name} <span class="dial-code">+{dialCode}</span></a></li>';
 
@@ -39722,9 +39726,34 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             return this.el.select('input.hidden-tel-input',true).first();
         },
         
-        onKeyUp : function(e)
-        {
-            Roo.log(e.getKey());
+        // onKeyUp : function(e)
+        // {
+        //     Roo.log(e.getKey());
+        //     this.setValue(this.getValue());
+        // },
+        
+        onKeyPress : function(e){
+            
+            var k = e.getKey();
+            
+            var c = e.getCharCode();
+            
+            if(
+                    (String.fromCharCode(c) == '.' || String.fromCharCode(c) == '-') &&
+                    this.allowed.indexOf(String.fromCharCode(c)) === -1
+            ){
+                e.stopEvent();
+                return;
+            }
+            
+            if(!Roo.isIE && (e.isSpecialKey() || k == e.BACKSPACE || k == e.DELETE)){
+                return;
+            }
+            
+            if(this.allowed.indexOf(String.fromCharCode(c)) === -1){
+                e.stopEvent();
+            }
+            
             this.setValue(this.getValue());
         }
         

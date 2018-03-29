@@ -538,11 +538,11 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             return this.el.select('input.hidden-tel-input',true).first();
         },
         
-        onKeyUp : function(e)
-        {
-            Roo.log(e.getKey());
-            this.setValue(this.getValue());
-        },
+        // onKeyUp : function(e)
+        // {
+        //     Roo.log(e.getKey());
+        //     this.setValue(this.getValue());
+        // },
         
         onKeyPress : function(e){
             
@@ -552,7 +552,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             
             if(
                     (String.fromCharCode(c) == '.' || String.fromCharCode(c) == '-') &&
-                    allowed.indexOf(String.fromCharCode(c)) === -1
+                    this.allowed.indexOf(String.fromCharCode(c)) === -1
             ){
                 e.stopEvent();
                 return;
@@ -562,9 +562,11 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                 return;
             }
             
-            if(allowed.indexOf(String.fromCharCode(c)) === -1){
+            if(this.allowed.indexOf(String.fromCharCode(c)) === -1){
                 e.stopEvent();
             }
+            
+            this.setValue(this.getValue());
         }
         
 });
