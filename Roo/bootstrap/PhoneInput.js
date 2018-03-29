@@ -36,12 +36,12 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         allowed: '0123456789',
         
         /**
-         * @cfg {Array} preferedCountries contains a list of iso2 in array (e.g. ['hk','us']). Those related countries will show at the top of the input's choices
+         * @cfg {String} defaultDialCode The default dial code when initializing the input
          */
         defaultDialCode: '+852',
         
         /**
-         * @cfg {Array} preferedCountries contains a list of iso2 in array (e.g. ['hk','us']). Those related countries will show at the top of the input's choices
+         * @cfg {Array} preferedCountries A list of iso2 in array (e.g. ['hk','us']). Those related countries will show at the top of the input's choices
          */
         preferedCountries: false,
         
