@@ -39,8 +39,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         preferedCountries: false,
         
-        //white list / black list for countries?
-        
         getAutoCreate : function()
         {
             var data = Roo.bootstrap.PhoneInputData();
