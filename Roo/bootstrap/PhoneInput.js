@@ -43,11 +43,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         defaultDialCode: '+852',
         
-        preferedCountries: [
-            'hk',
-            'gb',
-            'us'
-        ],
+        preferedCountries: false,
         
         //white list / black list for countries?
         
