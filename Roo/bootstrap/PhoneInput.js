@@ -35,6 +35,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         validClass: 'has-success',
         
+        allowed: '0123456789+',
+        
         defaultDialCode: '+852',
         
         preferedCountries: false,
