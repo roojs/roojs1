@@ -412,7 +412,7 @@ panel.load({
             return false;
         }
         
-        this.region.
+        return this.region.tabs.getTab(this.getEl().id);
     },
     
     /**
