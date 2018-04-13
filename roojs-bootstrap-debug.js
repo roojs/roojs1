@@ -36670,6 +36670,15 @@ panel.load({
         }
     },
     
+    getTitleItem : function()
+    {
+        if(!this.region || !this.region.tabs){
+            return false;
+        }
+        
+        return this.region.tabs.getTab(this.getEl().id);
+    },
+    
     /**
      * Returns true is this panel was configured to be closable
      * @return {Boolean} 
@@ -39223,11 +39232,15 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         allowed: '0123456789',
         
+        /**
+         * @cfg {String} defaultDialCode The default dial code when initializing the input
+         */
         defaultDialCode: '+852',
         
+        /**
+         * @cfg {Array} preferedCountries A list of iso2 in array (e.g. ['hk','us']). Those related countries will show at the top of the input's choices
+         */
         preferedCountries: false,
-        
-        //white list / black list for countries?
         
         getAutoCreate : function()
         {
