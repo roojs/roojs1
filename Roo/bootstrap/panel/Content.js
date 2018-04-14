@@ -406,15 +406,6 @@ panel.load({
         }
     },
     
-    getTitleItem : function()
-    {
-        if(!this.region || !this.region.tabs){
-            return false;
-        }
-        
-        return this.region.tabs.getTab(this.getEl().id);
-    },
-    
     /**
      * Returns true is this panel was configured to be closable
      * @return {Boolean} 
