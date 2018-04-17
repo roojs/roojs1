@@ -2836,11 +2836,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             var default_text = '-- SELECT --';
             
             if(this.placeholder.length){
-                default_text = this.placeholder + ' -';
+                default_text = this.placeholder;
             }
             
             if(this.emptyTitle.length){
-                default_text = this.emptyTitle + ' -';
+                default_text = ' - ' + this.emptyTitle + ' -';
             }
             
             var opt = this.inputEl().createChild({
