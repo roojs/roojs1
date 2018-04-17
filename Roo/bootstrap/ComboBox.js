@@ -2833,7 +2833,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if(this.allowBlank) {
             
-            var default_text = '-- SELECT --';
+            var default_text = this.placeholder;
             
             var opt = this.inputEl().createChild({
                 tag: 'option',
