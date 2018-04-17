@@ -2840,7 +2840,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             }
             
             if(this.emptyTitle.length){
-                default_text = ' - ' + this.emptyTitle + ' -';
+                default_text += ' - ' + this.emptyTitle + ' -';
             }
             
             var opt = this.inputEl().createChild({
