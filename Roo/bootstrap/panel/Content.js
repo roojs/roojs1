@@ -227,7 +227,7 @@ Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
         this.setActiveClass(active);
         if(!active){
             
-            if(!this.fireEvent("deactivate", this)){
+            if(this.fireEvent("deactivate", this) === false){
                 return false;
             }
             
