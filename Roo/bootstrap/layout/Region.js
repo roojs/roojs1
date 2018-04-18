@@ -521,8 +521,8 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         if(this.activePanel && this.activePanel != panel){
             if(this.activePanel.setActiveState(false) === false){
                 
-                if(this.tabItem){
-                    
+                if(this.activePanel.tabItem){
+                    this.activePanel.tabItem.tabPanel.active = this.activePanel.tabItem;
                 }
                 
                 return;
