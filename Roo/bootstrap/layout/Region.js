@@ -520,21 +520,6 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         panel = this.getPanel(panel);
         if(this.activePanel && this.activePanel != panel){
             if(this.activePanel.setActiveState(false) === false){
-                
-                Roo.log(this.activePanel.tabItem);
-                
-                if(this.activePanel.tabItem){
-                    
-                    if(this.activePanel.tabItem.tabPanel.active){
-                        this.activePanel.tabItem.tabPanel.active.pnode.removeClass("active");
-                        this.activePanel.tabItem.tabPanel.active.hideAction();
-                    }
-                    
-                    this.activePanel.tabItem.tabPanel.active = this.activePanel.tabItem;
-                    this.activePanel.tabItem.tabPanel.active.pnode.addClass("active");
-                    this.activePanel.tabItem.tabPanel.active.showAction();
-                }
-                
                 return;
             }
         }
