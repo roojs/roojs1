@@ -35454,7 +35454,9 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
     {
         panel = this.getPanel(panel);
         if(this.activePanel && this.activePanel != panel){
-            this.activePanel.setActiveState(false);
+            if(this.activePanel.setActiveState(false) === false){
+                return;
+            }
         }
         this.activePanel = panel;
         panel.setActiveState(true);
@@ -36497,7 +36499,12 @@ Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
         this.active = active;
         this.setActiveClass(active);
         if(!active){
-            this.fireEvent("deactivate", this);
+            
+            if(this.fireEvent("deactivate", this) === false){
+                return false;
+            }
+            
+            return true;
         }else{
             this.fireEvent("activate", this);
         }
