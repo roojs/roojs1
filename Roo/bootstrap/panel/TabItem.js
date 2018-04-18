@@ -43,7 +43,7 @@ Roo.bootstrap.panel.TabItem = function(config){
     this.inner = Roo.get(els.inner, true);
     this.textEl = Roo.get(this.el.dom.firstChild, true);
     this.pnode = Roo.get(els.el.parentNode, true);
-    this.el.on("mousedown", this.onTabMouseDown, this);
+//    this.el.on("mousedown", this.onTabMouseDown, this);
     this.el.on("click", this.onTabClick, this);
     /** @private */
     if(config.closable){
