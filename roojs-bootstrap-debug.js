@@ -7675,7 +7675,6 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         var target = false;
         
         items.each(function(f){
-            Roo.log(f.name);
             if(f.validate()){
                 return;
             }
