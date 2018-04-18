@@ -35456,11 +35456,13 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         if(this.activePanel && this.activePanel != panel){
             if(this.activePanel.setActiveState(false) === false){
                 
+                Roo.log(this.activePanel.tabItem);
+                
                 if(this.activePanel.tabItem){
                     
                     if(this.activePanel.tabItem.tabPanel.active){
                         this.activePanel.tabItem.tabPanel.active.pnode.removeClass("active");
-                        this.activePanel.tabItem.tabPanel.active.showAction();
+                        this.activePanel.tabItem.tabPanel.active.hideAction();
                     }
                     
                     this.activePanel.tabItem.tabPanel.active = this.activePanel.tabItem;
