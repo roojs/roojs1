@@ -36499,15 +36499,13 @@ Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
         this.active = active;
         this.setActiveClass(active);
         if(!active){
-            
             if(this.fireEvent("deactivate", this) === false){
                 return false;
             }
-            
             return true;
-        }else{
-            this.fireEvent("activate", this);
         }
+        this.fireEvent("activate", this);
+        return true;
     },
     /**
      * Updates this panel's element
@@ -37668,7 +37666,7 @@ Roo.bootstrap.panel.TabItem = function(config){
     this.inner = Roo.get(els.inner, true);
     this.textEl = Roo.get(this.el.dom.firstChild, true);
     this.pnode = Roo.get(els.el.parentNode, true);
-    this.el.on("mousedown", this.onTabMouseDown, this);
+//    this.el.on("mousedown", this.onTabMouseDown, this);
     this.el.on("click", this.onTabClick, this);
     /** @private */
     if(config.closable){
@@ -39753,12 +39751,14 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                 return;
             }
             
+            /*
             if(!Roo.isIE && (e.isSpecialKey() || k == e.BACKSPACE || k == e.DELETE)){
                 return;
             }
             if(this.allowed.indexOf(String.fromCharCode(c)) === -1){
                 e.stopEvent();
             }
+            */
             
             this.setValue(this.getValue());
         }
