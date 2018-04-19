@@ -553,6 +553,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                 return;
             }
             
+            Roo.log('event handling');
+            Roo.log(c);
             /*
             if(!Roo.isIE && (e.isSpecialKey() || k == e.BACKSPACE || k == e.DELETE)){
                 return;
