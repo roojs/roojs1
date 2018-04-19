@@ -6279,6 +6279,7 @@ Roo.EventManager = function(){
         if(o.buffer){
             h = createBuffered(h, o);
         }
+        
         fn._handlers = fn._handlers || [];
         
         
