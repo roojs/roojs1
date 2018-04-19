@@ -550,9 +550,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                 e.stopEvent();
             }
             
-            if(!Roo.isIE && (e.isSpecialKey() || k == e.BACKSPACE || k == e.DELETE)){
-                return;
-            }
+            // if(!Roo.isIE && (e.isSpecialKey() || k == e.BACKSPACE || k == e.DELETE)){
+            //     return;
+            // }
             if(this.allowed.indexOf(String.fromCharCode(c)) === -1){
                 e.stopEvent();
             }
