@@ -543,8 +543,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             var k = e.getKey();
             var c = e.getCharCode();
             
-            Roo.log(c);
-            
             if(
                     (String.fromCharCode(c) == '.' || String.fromCharCode(c) == '-') &&
                     this.allowed.indexOf(String.fromCharCode(c)) === -1
