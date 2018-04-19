@@ -39747,22 +39747,16 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                     (String.fromCharCode(c) == '.' || String.fromCharCode(c) == '-') &&
                     this.allowed.indexOf(String.fromCharCode(c)) === -1
             ){
-                
-                Roo.log('stoping event???');
+                Roo.log(c);
                 e.stopEvent();
-                return;
             }
             
-            Roo.log('event handling');
-            Roo.log(c);
-            /*
             if(!Roo.isIE && (e.isSpecialKey() || k == e.BACKSPACE || k == e.DELETE)){
                 return;
             }
             if(this.allowed.indexOf(String.fromCharCode(c)) === -1){
                 e.stopEvent();
             }
-            */
             
             this.setValue(this.getValue());
         }
