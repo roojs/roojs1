@@ -538,10 +538,12 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             return this.el.select('input.hidden-tel-input',true).first();
         },
         
-        onKeyPress : function(e){
+        onKeyUp : function(e){
             
             var k = e.getKey();
             var c = e.getCharCode();
+            
+            Roo.log(c);
             
             if(
                     (String.fromCharCode(c) == '.' || String.fromCharCode(c) == '-') &&
