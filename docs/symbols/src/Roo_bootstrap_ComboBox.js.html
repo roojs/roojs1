@@ -16,6 +16,7 @@
  * @cfg {Boolean} animate default true
  * @cfg {Boolean} emptyResultText only for touch device
  * @cfg {String} triggerText multiple combobox trigger button text default 'Select'
+ * @cfg {String} emptyTitle default ''
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
@@ -26,66 +27,66 @@
         </span><span class="jsdoc-comment">/**
          * @event expand
          * Fires when the dropdown list is expanded
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
-	     */
+        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        */
         </span><span class="jsdoc-string">'expand' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
          * @event collapse
          * Fires when the dropdown list is collapsed
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
-	     */
+        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        */
         </span><span class="jsdoc-string">'collapse' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
          * @event beforeselect
          * Fires before a list item is selected. Return false to cancel the selection.
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
-	     * @param {Roo.data.Record} record The data record returned from the underlying store
-	     * @param {Number} index The index of the selected item in the dropdown list
-	     */
+        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        * @param {Roo.data.Record} record The data record returned from the underlying store
+        * @param {Number} index The index of the selected item in the dropdown list
+        */
         </span><span class="jsdoc-string">'beforeselect' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
          * @event select
          * Fires when a list item is selected
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
-	     * @param {Roo.data.Record} record The data record returned from the underlying store (or false on clear)
-	     * @param {Number} index The index of the selected item in the dropdown list
-	     */
+        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        * @param {Roo.data.Record} record The data record returned from the underlying store (or false on clear)
+        * @param {Number} index The index of the selected item in the dropdown list
+        */
         </span><span class="jsdoc-string">'select' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
          * @event beforequery
          * Fires before all queries are processed. Return false to cancel the query or set cancel to true.
          * The event object passed has these properties:
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
-	     * @param {String} query The query
-	     * @param {Boolean} forceAll true to force &quot;all&quot; query
-	     * @param {Boolean} cancel true to cancel the query
-	     * @param {Object} e The query event object
-	     */
+        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        * @param {String} query The query
+        * @param {Boolean} forceAll true to force &quot;all&quot; query
+        * @param {Boolean} cancel true to cancel the query
+        * @param {Object} e The query event object
+        */
         </span><span class="jsdoc-string">'beforequery'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
          </span><span class="jsdoc-comment">/**
          * @event add
          * Fires when the 'add' icon is pressed (add a listener to enable add button)
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
-	     */
+        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        */
         </span><span class="jsdoc-string">'add' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
          * @event edit
          * Fires when the 'edit' icon is pressed (add a listener to enable add button)
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
-	     * @param {Roo.data.Record|false} record The data record returned from the underlying store (or false on nothing selected)
-	     */
+        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        * @param {Roo.data.Record|false} record The data record returned from the underlying store (or false on nothing selected)
+        */
         </span><span class="jsdoc-string">'edit' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
          * @event remove
          * Fires when the remove value from the combobox array
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
-	     */
+        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        */
         </span><span class="jsdoc-string">'remove' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
          * @event afterremove
          * Fires when the remove value from the combobox array
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
-	     */
+        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        */
         </span><span class="jsdoc-string">'afterremove' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
          * @event specialfilter
@@ -336,14 +337,15 @@
     </span><span class="jsdoc-var">animate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">emptyResultText</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Empty'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">triggerText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Select'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">emptyTitle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-comment">// element that contains real text value.. (when hidden is used..)
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
-    {
+    {   
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
-        
-        </span><span class="jsdoc-comment">/*
+        </span><span class="jsdoc-comment">//render
+        /*
          * Render classic select for iso
          */
         
@@ -454,7 +456,6 @@
                             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">,
                             </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-select2-search-field'</span><span class="jsdoc-syntax">,
                             </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
-
                                 </span><span class="jsdoc-var">buttons
                             </span><span class="jsdoc-syntax">]
                         }
@@ -485,9 +486,11 @@
             </span><span class="jsdoc-var">combobox.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">feedback</span><span class="jsdoc-syntax">);
         }
         
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">===</span><span class="jsdoc-string">'left' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.fieldLabel.length </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">) {
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">===</span><span class="jsdoc-string">'left' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.fieldLabel.length</span><span class="jsdoc-syntax">) {
             
-</span><span class="jsdoc-comment">//                Roo.log(&quot;left and has label&quot;);
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' roo-form-group-label-left'</span><span class="jsdoc-syntax">;
+            
             </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
                 {
                     </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
@@ -497,18 +500,22 @@
                 {
                     </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-string">'for' </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'control-label col-sm-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'control-label'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel
 
                 </span><span class="jsdoc-syntax">},
                 {
-                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;col-sm-&quot; </span><span class="jsdoc-syntax">+ (12 - </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">), 
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">, 
                     </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
                         </span><span class="jsdoc-var">combobox
                     </span><span class="jsdoc-syntax">]
                 }
 
             ];
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">labelCfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[1];
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">contentCfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[2];
+            
 
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.indicatorpos </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">){
                 
@@ -516,24 +523,61 @@
                     {
                         </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-string">'for' </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'control-label col-sm-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel
-
-                    </span><span class="jsdoc-syntax">},
+                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'control-label'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                            {
+                                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel
+                            </span><span class="jsdoc-syntax">},
+                            {
+                                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-required-indicator right-indicator text-danger fa fa-lg fa-star'</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field is required'
+                            </span><span class="jsdoc-syntax">}
+                        ]
+                    },
                     {
-                        </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-required-indicator right-indicator text-danger fa fa-lg fa-star'</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field is required'
-                    </span><span class="jsdoc-syntax">},
-                    {
-                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;col-sm-&quot; </span><span class="jsdoc-syntax">+ (12 - </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">), 
+                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
                             </span><span class="jsdoc-var">combobox
                         </span><span class="jsdoc-syntax">]
                     }
 
                 ];
+                
+                
+                
+                </span><span class="jsdoc-var">labelCfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0];
+                </span><span class="jsdoc-var">contentCfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[1];
             
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelWidth </span><span class="jsdoc-syntax">&gt; 12){
+                </span><span class="jsdoc-var">labelCfg.style </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;width: &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelWidth </span><span class="jsdoc-syntax">&lt; 13 &amp;&amp; </span><span class="jsdoc-var">this.labelmd </span><span class="jsdoc-syntax">== 0){
+                </span><span class="jsdoc-var">this.labelmd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labellg </span><span class="jsdoc-syntax">&gt; 0){
+                </span><span class="jsdoc-var">labelCfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-lg-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labellg</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">contentCfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-lg-' </span><span class="jsdoc-syntax">+ (12 - </span><span class="jsdoc-var">this.labellg</span><span class="jsdoc-syntax">);
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelmd </span><span class="jsdoc-syntax">&gt; 0){
+                </span><span class="jsdoc-var">labelCfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-md-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelmd</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">contentCfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-md-' </span><span class="jsdoc-syntax">+ (12 - </span><span class="jsdoc-var">this.labelmd</span><span class="jsdoc-syntax">);
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelsm </span><span class="jsdoc-syntax">&gt; 0){
+                </span><span class="jsdoc-var">labelCfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-sm-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelsm</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">contentCfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-sm-' </span><span class="jsdoc-syntax">+ (12 - </span><span class="jsdoc-var">this.labelsm</span><span class="jsdoc-syntax">);
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelxs </span><span class="jsdoc-syntax">&gt; 0){
+                </span><span class="jsdoc-var">labelCfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-xs-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelxs</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">contentCfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-xs-' </span><span class="jsdoc-syntax">+ (12 - </span><span class="jsdoc-var">this.labelxs</span><span class="jsdoc-syntax">);
             }
                 
                 
@@ -549,33 +593,25 @@
                         </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-comment">//cls : 'input-group-addon',
                         </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel
-                        
                     </span><span class="jsdoc-syntax">},
-                    
                     </span><span class="jsdoc-var">combobox
-                    
                 </span><span class="jsdoc-syntax">];
                 
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.indicatorpos </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">){
-                    
                     </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
                         {
                             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
                             </span><span class="jsdoc-comment">//cls : 'input-group-addon',
                             </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel
-
                         </span><span class="jsdoc-syntax">},
-                        
                         {
                             </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
                             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-required-indicator right-indicator text-danger fa fa-lg fa-star'</span><span class="jsdoc-syntax">,
                             </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field is required'
                         </span><span class="jsdoc-syntax">},
-                        
                         </span><span class="jsdoc-var">combobox
-
                     </span><span class="jsdoc-syntax">];
-                
+                    
                 }
 
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
@@ -611,13 +647,15 @@
             </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-string">&quot;can not find store for combo&quot;</span><span class="jsdoc-syntax">;
         }
         
+        </span><span class="jsdoc-var">this.indicator </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.indicatorEl</span><span class="jsdoc-syntax">();
+        
         </span><span class="jsdoc-var">this.store </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.data</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.store.parent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-comment">// if we are building from html. then this element is so complex, that we can not really
         // use the rendered HTML.
         // so we have to trash and replace the previous code.
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.XComponent.build_from_html</span><span class="jsdoc-syntax">) {
-            
             </span><span class="jsdoc-comment">// remove this element....
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">=0;
             </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">) { </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.previousSibling</span><span class="jsdoc-syntax">;  ++</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">;}
@@ -628,9 +666,6 @@
             </span><span class="jsdoc-var">this.rendered </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
             
             </span><span class="jsdoc-var">this.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getChildContainer</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">);
-            
-            
-            
         }
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isIOS </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.useNativeIOS</span><span class="jsdoc-syntax">){
@@ -687,7 +722,6 @@
         
         </span><span class="jsdoc-var">this.list.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseover'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onViewOver</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.list.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mousemove'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onViewMove</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-        
         </span><span class="jsdoc-var">this.list.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'scroll'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onViewScroll</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-comment">/*
@@ -743,7 +777,6 @@
         </span><span class="jsdoc-syntax">});
         </span><span class="jsdoc-comment">//this.view.wrapEl.setDisplayed(false);
         </span><span class="jsdoc-var">this.view.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onViewClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-        
         
         
         </span><span class="jsdoc-var">this.store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeload'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onBeforeLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
@@ -1002,6 +1035,13 @@
             </span><span class="jsdoc-var">this.tickableInputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;keyup&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onKeyUp</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
         
+        </span><span class="jsdoc-var">this.indicator </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.indicatorEl</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.indicator</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.indicator.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.indicator.hide</span><span class="jsdoc-syntax">();
+        }
+        
     },
 
     </span><span class="jsdoc-var">onDestroy </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
@@ -1103,8 +1143,9 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loading</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.loading </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.loading.hide</span><span class="jsdoc-syntax">();
         }
-             
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store.getCount</span><span class="jsdoc-syntax">() &gt; 0){
+            
             </span><span class="jsdoc-var">this.expand</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">this.restrictHeight</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lastQuery </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">this.allQuery</span><span class="jsdoc-syntax">){
@@ -1318,7 +1359,12 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">close </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.closeTriggerEl</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">close</span><span class="jsdoc-syntax">){
-            (</span><span class="jsdoc-var">vv.length </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">vv </span><span class="jsdoc-syntax">* 1 &gt; 0) ? </span><span class="jsdoc-var">close.show</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-var">close.hide</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dv.length </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">vv </span><span class="jsdoc-syntax">* 1 &gt; 0){
+                </span><span class="jsdoc-var">close.show</span><span class="jsdoc-syntax">() ;
+                </span><span class="jsdoc-var">this.blockFocus</span><span class="jsdoc-syntax">=</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">close.hide</span><span class="jsdoc-syntax">();
+            }             
         }
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hiddenField</span><span class="jsdoc-syntax">){
@@ -1944,7 +1990,7 @@
                 {
                     </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">href</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-select2-search-choice-close'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-select2-search-choice-close fa fa-times'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">tabindex</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'-1'
                 </span><span class="jsdoc-syntax">}
             ]
@@ -2275,13 +2321,8 @@
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.labelAlign </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.parentLabelAlign</span><span class="jsdoc-syntax">();
         
-        </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">combobox</span><span class="jsdoc-syntax">;
-        
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fieldLabel.length </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">){
-            
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'left' </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-string">'col-sm' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'left' </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-string">'col-sm' </span><span class="jsdoc-syntax">+ (12 - </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">)) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
-            
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">===</span><span class="jsdoc-string">'left' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.fieldLabel.length</span><span class="jsdoc-syntax">) {
+
             </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
                 {
                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
@@ -2290,12 +2331,99 @@
                 </span><span class="jsdoc-syntax">},
                 {
                     </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'control-label ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">lw</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'control-label'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel
 
                 </span><span class="jsdoc-syntax">},
                 {
-                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cw</span><span class="jsdoc-syntax">, 
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">, 
+                    </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                        </span><span class="jsdoc-var">combobox
+                    </span><span class="jsdoc-syntax">]
+                }
+            ];
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">labelCfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[1];
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">contentCfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[2];
+            
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.indicatorpos </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
+                    {
+                        </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-string">'for' </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'control-label'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                            {
+                                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel
+                            </span><span class="jsdoc-syntax">},
+                            {
+                                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-required-indicator right-indicator text-danger fa fa-lg fa-star'</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field is required'
+                            </span><span class="jsdoc-syntax">}
+                        ]
+                    },
+                    {
+                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                            </span><span class="jsdoc-var">combobox
+                        </span><span class="jsdoc-syntax">]
+                    }
+
+                ];
+                
+                </span><span class="jsdoc-var">labelCfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0];
+                </span><span class="jsdoc-var">contentCfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[1];
+            }
+            
+           
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelWidth </span><span class="jsdoc-syntax">&gt; 12){
+                </span><span class="jsdoc-var">labelCfg.style </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;width: &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelWidth </span><span class="jsdoc-syntax">&lt; 13 &amp;&amp; </span><span class="jsdoc-var">this.labelmd </span><span class="jsdoc-syntax">== 0){
+                </span><span class="jsdoc-var">this.labelmd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labellg </span><span class="jsdoc-syntax">&gt; 0){
+                </span><span class="jsdoc-var">labelCfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-lg-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labellg</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">contentCfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-lg-' </span><span class="jsdoc-syntax">+ (12 - </span><span class="jsdoc-var">this.labellg</span><span class="jsdoc-syntax">);
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelmd </span><span class="jsdoc-syntax">&gt; 0){
+                </span><span class="jsdoc-var">labelCfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-md-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelmd</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">contentCfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-md-' </span><span class="jsdoc-syntax">+ (12 - </span><span class="jsdoc-var">this.labelmd</span><span class="jsdoc-syntax">);
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelsm </span><span class="jsdoc-syntax">&gt; 0){
+                </span><span class="jsdoc-var">labelCfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-sm-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelsm</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">contentCfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-sm-' </span><span class="jsdoc-syntax">+ (12 - </span><span class="jsdoc-var">this.labelsm</span><span class="jsdoc-syntax">);
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelxs </span><span class="jsdoc-syntax">&gt; 0){
+                </span><span class="jsdoc-var">labelCfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-xs-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelxs</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">contentCfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-xs-' </span><span class="jsdoc-syntax">+ (12 - </span><span class="jsdoc-var">this.labelxs</span><span class="jsdoc-syntax">);
+            }
+                
+                
+        } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.fieldLabel.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
+                {
+                   </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
+                   </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-required-indicator left-indicator text-danger fa fa-lg fa-star'</span><span class="jsdoc-syntax">,
+                   </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field is required'
+                </span><span class="jsdoc-syntax">},
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'control-label'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel
+
+                </span><span class="jsdoc-syntax">},
+                {
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">, 
                     </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
                         </span><span class="jsdoc-var">combobox
                     </span><span class="jsdoc-syntax">]
@@ -2306,24 +2434,28 @@
                 </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
                     {
                         </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'control-label ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">lw</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel
-
-                    </span><span class="jsdoc-syntax">},
+                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'control-label'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                            {
+                               </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
+                               </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-required-indicator right-indicator text-danger fa fa-lg fa-star'</span><span class="jsdoc-syntax">,
+                               </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field is required'
+                            </span><span class="jsdoc-syntax">}
+                        ]
+                    },
                     {
-                       </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
-                       </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-required-indicator right-indicator text-danger fa fa-lg fa-star'</span><span class="jsdoc-syntax">,
-                       </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field is required'
-                    </span><span class="jsdoc-syntax">},
-                    {
-                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cw</span><span class="jsdoc-syntax">, 
+                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">, 
                         </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
                             </span><span class="jsdoc-var">combobox
                         </span><span class="jsdoc-syntax">]
                     }
                 ];
             }
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">combobox</span><span class="jsdoc-syntax">;    
         }
+        
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">settings </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         
@@ -2435,9 +2567,10 @@
         </span><span class="jsdoc-var">this.touchViewEl.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'z-index'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Modal.zIndex</span><span class="jsdoc-syntax">++);
         </span><span class="jsdoc-var">this.touchViewEl.show</span><span class="jsdoc-syntax">();
 
-        </span><span class="jsdoc-var">this.touchViewEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-dialog'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'margin'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'0px'</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.touchViewEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-dialog &gt; .modal-content'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setSize</span><span class="jsdoc-syntax">(
-                </span><span class="jsdoc-var">Roo.lib.Dom.getViewWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">this.touchViewEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-dialog'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setStyle</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">margin </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'0px'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'100%'</span><span class="jsdoc-syntax">});
+        
+        </span><span class="jsdoc-comment">//this.touchViewEl.select('.modal-dialog &gt; .modal-content', true).first().setSize(
+        //        Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bodyHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.touchViewFooterEl.getHeight</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">this.touchViewBodyEl.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tb'</span><span class="jsdoc-syntax">);
 
@@ -2701,6 +2834,14 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.allowBlank</span><span class="jsdoc-syntax">) {
             
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">default_text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'-- SELECT --'</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.placeholder.length</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">default_text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.placeholder</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.emptyTitle.length</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">default_text </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' - ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.emptyTitle </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' -'</span><span class="jsdoc-syntax">;
+            }
             
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">opt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.createChild</span><span class="jsdoc-syntax">({
                 </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'option'</span><span class="jsdoc-syntax">,

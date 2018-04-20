@@ -139,9 +139,19 @@
             </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseleave'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.leave</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
         
-        
         </span><span class="jsdoc-var">Roo.EventManager.onWindowResize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resize</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">); 
         
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bgimage.length</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.imageEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-brick-image-view'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.imageEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onImageLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.resize</span><span class="jsdoc-syntax">();
+    },
+    
+    </span><span class="jsdoc-var">onImageLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
         </span><span class="jsdoc-var">this.resize</span><span class="jsdoc-syntax">();
     },
     
@@ -153,10 +163,15 @@
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bgimage.length</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">image </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-brick-image-view'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-var">image.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">paragraph.getWidth</span><span class="jsdoc-syntax">());
-            </span><span class="jsdoc-var">image.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">paragraph.getWidth</span><span class="jsdoc-syntax">());
             
-            </span><span class="jsdoc-var">this.el.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">paragraph.getWidth</span><span class="jsdoc-syntax">());
+            </span><span class="jsdoc-var">image.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">paragraph.getWidth</span><span class="jsdoc-syntax">());
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.square</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">image.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">paragraph.getWidth</span><span class="jsdoc-syntax">());
+            }
+            
+            </span><span class="jsdoc-var">this.el.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">image.getHeight</span><span class="jsdoc-syntax">());
+            </span><span class="jsdoc-var">paragraph.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">image.getHeight</span><span class="jsdoc-syntax">());
             
         }
         

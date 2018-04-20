@@ -74,7 +74,7 @@
        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editor</span><span class="jsdoc-syntax">;
        
        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">children </span><span class="jsdoc-syntax">= [];
-       </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">btn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">cmd </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">toggle</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">){
+       </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">btn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">cmd </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">toggle</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">){
        
             </span><span class="jsdoc-keyword">var  </span><span class="jsdoc-var">event </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">toggle </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'toggle' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">;
        
@@ -85,7 +85,7 @@
                 </span><span class="jsdoc-var">glyphicon </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cmd </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">enableToggle</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">toggle </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-comment">//html : 'submit'
+                </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">pressed </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">toggle </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {}
             };
@@ -95,6 +95,8 @@
             </span><span class="jsdoc-var">children.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">;
        }
+       
+    </span><span class="jsdoc-comment">//    var cb_box = function...
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">= {
                 </span><span class="jsdoc-var">xtype</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Button'</span><span class="jsdoc-syntax">,
@@ -124,9 +126,8 @@
                 
             });
         });
-         </span><span class="jsdoc-var">children.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">);   
-            
-            
+        </span><span class="jsdoc-var">children.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">);   
+        
         </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'bold'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'italic'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'align-left'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'justifyleft'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
@@ -142,9 +143,15 @@
         </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'list'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'insertunorderedlist'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'pencil'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-                
                 </span><span class="jsdoc-var">this.toggleSourceEdit</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn.pressed</span><span class="jsdoc-syntax">);
         });
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editor.btns.length </span><span class="jsdoc-syntax">&gt; 0) {
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">&lt;</span><span class="jsdoc-var">this.editor.btns.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-var">children.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editor.btns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+            }
+        }
+        
         </span><span class="jsdoc-comment">/*
         var cog = {
                 xtype: 'Button',

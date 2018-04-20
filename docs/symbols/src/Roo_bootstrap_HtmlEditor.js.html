@@ -20,6 +20,7 @@
     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-var">this.toolbars </span><span class="jsdoc-syntax">= [];
     }
+    
     </span><span class="jsdoc-var">this.editorcore </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.HtmlEditorCore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">owner </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">} , </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">));
     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
             </span><span class="jsdoc-comment">/**
@@ -107,6 +108,11 @@
      * @cfg {Array} toolbars Array of toolbars. - defaults to just the Standard one
      */
     </span><span class="jsdoc-var">toolbars </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+     </span><span class="jsdoc-comment">/**
+    * @cfg {Array} buttons Array of toolbar's buttons. - defaults to empty
+    */
+    </span><span class="jsdoc-var">btns </span><span class="jsdoc-syntax">: [],
    
      </span><span class="jsdoc-comment">/**
      * @cfg {String} resizable  's' or 'se' or 'e' - wrapps the element in a
@@ -141,8 +147,9 @@
     </span><span class="jsdoc-var">iframePad</span><span class="jsdoc-syntax">:3,
     </span><span class="jsdoc-var">hideMode</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'offsets'</span><span class="jsdoc-syntax">,
     
-    
     </span><span class="jsdoc-var">tbContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">bodyCls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">toolbarContainer </span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.wrap.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.x-html-editor-tb'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
@@ -155,7 +162,7 @@
      * @param {HtmlEditor} editor
      */
     </span><span class="jsdoc-var">createToolbar </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-        
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'renewing'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;create toolbars&quot;</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-var">this.toolbars </span><span class="jsdoc-syntax">= [ </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.htmleditor.ToolbarStandard</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">} ) ];

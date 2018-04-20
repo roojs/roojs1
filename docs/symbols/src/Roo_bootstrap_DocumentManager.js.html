@@ -18,6 +18,10 @@
  * @cfg {Number} labelWidth default 4
  * @cfg {String} labelAlign (left|top) default left
  * @cfg {Boolean} editable (true|false) allow edit when upload a image default true
+* @cfg {Number} labellg set the width of label (1-12)
+ * @cfg {Number} labelmd set the width of label (1-12)
+ * @cfg {Number} labelsm set the width of label (1-12)
+ * @cfg {Number} labelxs set the width of label (1-12)
  * 
  * @constructor
  * Create a new DocumentManager
@@ -127,6 +131,11 @@
     </span><span class="jsdoc-var">delegates </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">xhr </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, 
     
+    </span><span class="jsdoc-var">labellg </span><span class="jsdoc-syntax">: 0,
+    </span><span class="jsdoc-var">labelmd </span><span class="jsdoc-syntax">: 0,
+    </span><span class="jsdoc-var">labelsm </span><span class="jsdoc-syntax">: 0,
+    </span><span class="jsdoc-var">labelxs </span><span class="jsdoc-syntax">: 0,
+    
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {   
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">managerWidget </span><span class="jsdoc-syntax">= {
@@ -180,15 +189,43 @@
                 </span><span class="jsdoc-var">content </span><span class="jsdoc-syntax">= [
                     {
                         </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'column col-md-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'column'</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel
                     </span><span class="jsdoc-syntax">},
                     {
                         </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'column col-md-' </span><span class="jsdoc-syntax">+ (12 - </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">),
+                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'column'</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">managerWidget
                     </span><span class="jsdoc-syntax">}
                 ];
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelWidth </span><span class="jsdoc-syntax">&gt; 12){
+                    </span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.style </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;width: &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">;
+                }
+
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelWidth </span><span class="jsdoc-syntax">&lt; 13 &amp;&amp; </span><span class="jsdoc-var">this.labelmd </span><span class="jsdoc-syntax">== 0){
+                    </span><span class="jsdoc-var">this.labelmd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">;
+                }
+
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labellg </span><span class="jsdoc-syntax">&gt; 0){
+                    </span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-lg-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labellg</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-lg-' </span><span class="jsdoc-syntax">+ (12 - </span><span class="jsdoc-var">this.labellg</span><span class="jsdoc-syntax">);
+                }
+
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelmd </span><span class="jsdoc-syntax">&gt; 0){
+                    </span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-md-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelmd</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-md-' </span><span class="jsdoc-syntax">+ (12 - </span><span class="jsdoc-var">this.labelmd</span><span class="jsdoc-syntax">);
+                }
+
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelsm </span><span class="jsdoc-syntax">&gt; 0){
+                    </span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-sm-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelsm</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-sm-' </span><span class="jsdoc-syntax">+ (12 - </span><span class="jsdoc-var">this.labelsm</span><span class="jsdoc-syntax">);
+                }
+
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelxs </span><span class="jsdoc-syntax">&gt; 0){
+                    </span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-xs-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelxs</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-xs-' </span><span class="jsdoc-syntax">+ (12 - </span><span class="jsdoc-var">this.labelxs</span><span class="jsdoc-syntax">);
+                }
                 
             }
         }
@@ -625,6 +662,8 @@
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">;
         }
         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">img_src </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">encodeURI</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">baseURL </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'/Images/Thumb/' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.thumbSize </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'/' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">file.id </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'/' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">file.filename</span><span class="jsdoc-syntax">);
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">previewEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.managerEl.createChild</span><span class="jsdoc-syntax">({
             </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-document-manager-preview'</span><span class="jsdoc-syntax">,
@@ -633,7 +672,7 @@
                     </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.toolTipName</span><span class="jsdoc-syntax">],
                     </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-document-manager-thumb'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&lt;img tooltip=&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.toolTipName</span><span class="jsdoc-syntax">] + </span><span class="jsdoc-string">'&quot; src=&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">baseURL </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'/Images/Thumb/' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.thumbSize </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'/' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">file.id </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'/' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">file.filename </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot;&gt;'
+                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&lt;img tooltip=&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.toolTipName</span><span class="jsdoc-syntax">] + </span><span class="jsdoc-string">'&quot; src=&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">img_src </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot;&gt;'
                 </span><span class="jsdoc-syntax">},
                 {
                     </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
@@ -738,6 +777,8 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file.mimetype</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">formData.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mimetype'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">file.mimetype</span><span class="jsdoc-syntax">);
         }
+        
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">formData</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'prepare'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">formData</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.xhr.send</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">formData</span><span class="jsdoc-syntax">);

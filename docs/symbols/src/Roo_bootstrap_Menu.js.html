@@ -211,7 +211,10 @@
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         
-        (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { </span><span class="jsdoc-var">_this.hide</span><span class="jsdoc-syntax">(); })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(100);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">t.href.length </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">t.href </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">){
+            (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { </span><span class="jsdoc-var">_this.hide</span><span class="jsdoc-syntax">(); })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(100);
+        }
+        
     },
     
     </span><span class="jsdoc-var">onMouseOver </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){

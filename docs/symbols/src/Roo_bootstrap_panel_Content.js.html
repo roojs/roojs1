@@ -226,10 +226,13 @@
         </span><span class="jsdoc-var">this.active </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">active</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.setActiveClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">active</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">active</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;deactivate&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;activate&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;deactivate&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">) === </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
         }
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;activate&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
     },
     </span><span class="jsdoc-comment">/**
      * Updates this panel's element
@@ -339,15 +342,13 @@ panel.load({
         }
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbar</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">te </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.toolbar.getEl</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">te.getHeight</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">te.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">te.getHeight</span><span class="jsdoc-syntax">();
         }
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.footer</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">te </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.footer.getEl</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;footer:&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">te.getHeight</span><span class="jsdoc-syntax">());
-            
-            </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">te.getHeight</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">te.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">te.getHeight</span><span class="jsdoc-syntax">();
         }
         
         
@@ -374,7 +375,27 @@ panel.load({
      * @return {String} 
      */
     </span><span class="jsdoc-var">getTitle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.title</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.title</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'object'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.title</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">this.title</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.title.hasOwnProperty</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">)) {
+                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'-'</span><span class="jsdoc-syntax">) &gt;= 0) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">k.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'-'</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">&lt;</span><span class="jsdoc-var">s.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                    </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">&quot;&lt;span class='visible-&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]+</span><span class="jsdoc-string">&quot;'&gt;&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.title</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">]+</span><span class="jsdoc-string">&quot;&lt;/span&gt;&quot;</span><span class="jsdoc-syntax">;
+                }
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">&quot;&lt;span class='visible-&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">&quot;'&gt;&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.title</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">]+</span><span class="jsdoc-string">&quot;&lt;/span&gt;&quot;</span><span class="jsdoc-syntax">;
+            }
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">;
     },
     
     </span><span class="jsdoc-comment">/**

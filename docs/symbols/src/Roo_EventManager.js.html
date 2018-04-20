@@ -172,6 +172,7 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.buffer</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">createBuffered</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
         }
+        
         </span><span class="jsdoc-var">fn._handlers </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fn._handlers </span><span class="jsdoc-syntax">|| [];
         
         
@@ -524,6 +525,8 @@ el.on({
 
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">= [
             </span><span class="jsdoc-var">Roo.isIE </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">&quot;roo-ie&quot;
+            </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.isIE11 </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">&quot;roo-ie11&quot;
+            </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.isEdge </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">&quot;roo-edge&quot;
             </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.isGecko </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">&quot;roo-gecko&quot;
             </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.isOpera </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">&quot;roo-opera&quot;
             </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.isSafari </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">&quot;roo-safari&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">];

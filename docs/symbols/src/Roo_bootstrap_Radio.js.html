@@ -61,6 +61,15 @@
     {
         </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">suppressEvent</span><span class="jsdoc-syntax">);
         
+    },
+    
+    </span><span class="jsdoc-var">setBoxLabel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.boxLabel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rendered</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'label.box-label'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.innerHTML </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">null </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+        }
     }
     
 });

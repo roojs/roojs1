@@ -36,6 +36,14 @@
 
 </span><span class="jsdoc-var">Roo.bootstrap.Button </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">Roo.bootstrap.Button.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.weightClass </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-string">&quot;btn-default&quot;</span><span class="jsdoc-syntax">, 
+                       </span><span class="jsdoc-string">&quot;btn-primary&quot;</span><span class="jsdoc-syntax">, 
+                       </span><span class="jsdoc-string">&quot;btn-success&quot;</span><span class="jsdoc-syntax">, 
+                       </span><span class="jsdoc-string">&quot;btn-info&quot;</span><span class="jsdoc-syntax">, 
+                       </span><span class="jsdoc-string">&quot;btn-warning&quot;</span><span class="jsdoc-syntax">,
+                       </span><span class="jsdoc-string">&quot;btn-danger&quot;</span><span class="jsdoc-syntax">,
+                       </span><span class="jsdoc-string">&quot;btn-link&quot;
+                      </span><span class="jsdoc-syntax">],  
     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
         </span><span class="jsdoc-comment">// raw events
         /**
@@ -359,6 +367,11 @@
     </span><span class="jsdoc-var">show</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
        
         </span><span class="jsdoc-var">this.el.show</span><span class="jsdoc-syntax">();   
+    },
+    </span><span class="jsdoc-var">setWeight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">)
+    {
+    	  </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.weightClass</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'btn-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">);        
     }
     
     

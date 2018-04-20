@@ -102,9 +102,14 @@
     </span><span class="jsdoc-var">loadMask </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-comment">/**
-     * @cfg {Boolean} errPopover (true|false) default false
+     * @cfg {Boolean} errorMask (true|false) default false
      */
-    </span><span class="jsdoc-var">errPopover </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">errorMask </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Number} maskOffset Default 100
+     */
+    </span><span class="jsdoc-var">maskOffset </span><span class="jsdoc-syntax">: 100,
 
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
 
@@ -163,11 +168,9 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-var">items.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">){
-            
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.validate</span><span class="jsdoc-syntax">()){
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
-            
             </span><span class="jsdoc-var">valid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
 
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">f.el.isVisible</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)){
@@ -176,7 +179,7 @@
            
         });
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.errPopover </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">valid</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.errorMask </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">valid</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">Roo.bootstrap.Form.popover.mask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">);
         }
         
@@ -550,6 +553,8 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     
     </span><span class="jsdoc-var">popover </span><span class="jsdoc-syntax">: {
         
+        </span><span class="jsdoc-var">padding </span><span class="jsdoc-syntax">: 5,
+        
         </span><span class="jsdoc-var">isApplied </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
         
         </span><span class="jsdoc-var">isMasked </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
@@ -558,17 +563,29 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         
         </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
         
-        </span><span class="jsdoc-var">oIndex </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-        
         </span><span class="jsdoc-var">toolTip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
         
         </span><span class="jsdoc-var">intervalID </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    
+        
+        </span><span class="jsdoc-var">maskEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        
         </span><span class="jsdoc-var">apply </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
         {
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isApplied</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
+            
+            </span><span class="jsdoc-var">this.maskEl </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">top </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.DomHelper.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">), { </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;x-dlg-mask roo-form-top-mask&quot; </span><span class="jsdoc-syntax">}, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">),
+                </span><span class="jsdoc-var">left </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.DomHelper.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">), { </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;x-dlg-mask roo-form-left-mask&quot; </span><span class="jsdoc-syntax">}, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">),
+                </span><span class="jsdoc-var">bottom </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.DomHelper.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">), { </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;x-dlg-mask roo-form-bottom-mask&quot; </span><span class="jsdoc-syntax">}, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">),
+                </span><span class="jsdoc-var">right </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.DomHelper.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">), { </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;x-dlg-mask roo-form-right-mask&quot; </span><span class="jsdoc-syntax">}, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)
+            };
+            
+            </span><span class="jsdoc-var">this.maskEl.top.enableDisplayMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;block&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.maskEl.left.enableDisplayMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;block&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.maskEl.bottom.enableDisplayMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;block&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.maskEl.right.enableDisplayMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;block&quot;</span><span class="jsdoc-syntax">);
             
             </span><span class="jsdoc-var">this.toolTip </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.Tooltip</span><span class="jsdoc-syntax">({
                 </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-form-error-popover'</span><span class="jsdoc-syntax">,
@@ -582,9 +599,13 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             
             </span><span class="jsdoc-var">this.toolTip.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">));
 
-            </span><span class="jsdoc-var">this.toolTip.el.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.toolTip.el.enableDisplayMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;block&quot;</span><span class="jsdoc-syntax">);
             
             </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+                </span><span class="jsdoc-var">this.unmask</span><span class="jsdoc-syntax">();
+            }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'touchstart'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
                 </span><span class="jsdoc-var">this.unmask</span><span class="jsdoc-syntax">();
             }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
             
@@ -597,44 +618,72 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             
             </span><span class="jsdoc-var">this.target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">;
             
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.form.errPopover</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.form.errorMask </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">target.el</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
-
-            </span><span class="jsdoc-var">this.oIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">target.el.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'z-index'</span><span class="jsdoc-syntax">);
-            
-            </span><span class="jsdoc-var">this.target.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'z-index'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Modal.zIndex</span><span class="jsdoc-syntax">++);
-        
-            </span><span class="jsdoc-var">this.target.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'roo-invalid-outline'</span><span class="jsdoc-syntax">);
             
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">scrollable </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.target.el.findScrollableParent</span><span class="jsdoc-syntax">() || </span><span class="jsdoc-var">this.target.el.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'div.modal'</span><span class="jsdoc-syntax">, 100, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">);
             
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">scrolled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">scrollable.getScroll</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scrollable</span><span class="jsdoc-syntax">);
             
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ot </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.target.el.calcOffsetsTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scrollable</span><span class="jsdoc-syntax">);
             
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">scrollTo </span><span class="jsdoc-syntax">= 0;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">scrollTo </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ot</span><span class="jsdoc-syntax">[1] - </span><span class="jsdoc-var">this.form.maskOffset</span><span class="jsdoc-syntax">;
             
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ot</span><span class="jsdoc-syntax">[1] &lt;= </span><span class="jsdoc-var">scrolled.top</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">scrollTo </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ot</span><span class="jsdoc-syntax">[1] - 100;
-            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
-                </span><span class="jsdoc-var">scrollTo </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ot</span><span class="jsdoc-syntax">[1] + </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">() - 100;
-            }
+            </span><span class="jsdoc-var">scrollTo </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scrollTo</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scrollable.dom.scrollHeight</span><span class="jsdoc-syntax">);
             
             </span><span class="jsdoc-var">scrollable.scrollTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scrollTo</span><span class="jsdoc-syntax">);
             
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">box </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.target.el.getBox</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">zIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.Modal.zIndex</span><span class="jsdoc-syntax">++;
+
+            
+            </span><span class="jsdoc-var">this.maskEl.top.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'position'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'absolute'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.maskEl.top.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'z-index'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">zIndex</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.maskEl.top.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.lib.Dom.getDocumentWidth</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">box.y </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.padding</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.maskEl.top.setLeft</span><span class="jsdoc-syntax">(0);
+            </span><span class="jsdoc-var">this.maskEl.top.setTop</span><span class="jsdoc-syntax">(0);
+            </span><span class="jsdoc-var">this.maskEl.top.show</span><span class="jsdoc-syntax">();
+            
+            </span><span class="jsdoc-var">this.maskEl.left.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'position'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'absolute'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.maskEl.left.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'z-index'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">zIndex</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.maskEl.left.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.padding</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">box.height </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.padding </span><span class="jsdoc-syntax">* 2);
+            </span><span class="jsdoc-var">this.maskEl.left.setLeft</span><span class="jsdoc-syntax">(0);
+            </span><span class="jsdoc-var">this.maskEl.left.setTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box.y </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.padding</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.maskEl.left.show</span><span class="jsdoc-syntax">();
+
+            </span><span class="jsdoc-var">this.maskEl.bottom.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'position'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'absolute'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.maskEl.bottom.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'z-index'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">zIndex</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.maskEl.bottom.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.lib.Dom.getDocumentWidth</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">Roo.lib.Dom.getDocumentHeight</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">box.bottom </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.padding</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.maskEl.bottom.setLeft</span><span class="jsdoc-syntax">(0);
+            </span><span class="jsdoc-var">this.maskEl.bottom.setTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box.bottom </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.padding</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.maskEl.bottom.show</span><span class="jsdoc-syntax">();
+
+            </span><span class="jsdoc-var">this.maskEl.right.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'position'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'absolute'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.maskEl.right.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'z-index'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">zIndex</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.maskEl.right.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.lib.Dom.getDocumentWidth</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">box.right </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.padding</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">box.height </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.padding </span><span class="jsdoc-syntax">* 2);
+            </span><span class="jsdoc-var">this.maskEl.right.setLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box.right </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.padding</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.maskEl.right.setTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box.y </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.padding</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.maskEl.right.show</span><span class="jsdoc-syntax">();
+
             </span><span class="jsdoc-var">this.toolTip.bindEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.target.el</span><span class="jsdoc-syntax">;
-        
+
             </span><span class="jsdoc-var">this.toolTip.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'z-index'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Modal.zIndex</span><span class="jsdoc-syntax">++);
 
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tip </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.target.blankText</span><span class="jsdoc-syntax">;
 
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.target.getValue</span><span class="jsdoc-syntax">() !== </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.target.regexText.length</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">tip </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.target.regexText</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.target.getValue</span><span class="jsdoc-syntax">() !== </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">) {
+                
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.target.invalidText.length</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">tip </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.target.invalidText</span><span class="jsdoc-syntax">;
+                } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.target.regexText.length</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">tip </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.target.regexText</span><span class="jsdoc-syntax">;
+                }
             }
 
             </span><span class="jsdoc-var">this.toolTip.show</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tip</span><span class="jsdoc-syntax">);
-            
+
             </span><span class="jsdoc-var">this.intervalID </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">window.setInterval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
                 </span><span class="jsdoc-var">Roo.bootstrap.Form.popover.unmask</span><span class="jsdoc-syntax">();
             }, 10000);
@@ -647,15 +696,25 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         
         </span><span class="jsdoc-var">unmask </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
         {
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.isApplied </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.isMasked </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.form </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.target </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.form.errPopover</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.isApplied </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.isMasked </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.form </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.target </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.form.errorMask</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
             
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.oIndex</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">this.target.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'z-index'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.oIndex</span><span class="jsdoc-syntax">);
-            }
-            
-            </span><span class="jsdoc-var">this.target.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'roo-invalid-outline'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.maskEl.top.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'position'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'absolute'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.maskEl.top.setSize</span><span class="jsdoc-syntax">(0, 0)</span><span class="jsdoc-var">.setXY</span><span class="jsdoc-syntax">([0, 0]);
+            </span><span class="jsdoc-var">this.maskEl.top.hide</span><span class="jsdoc-syntax">();
+
+            </span><span class="jsdoc-var">this.maskEl.left.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'position'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'absolute'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.maskEl.left.setSize</span><span class="jsdoc-syntax">(0, 0)</span><span class="jsdoc-var">.setXY</span><span class="jsdoc-syntax">([0, 0]);
+            </span><span class="jsdoc-var">this.maskEl.left.hide</span><span class="jsdoc-syntax">();
+
+            </span><span class="jsdoc-var">this.maskEl.bottom.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'position'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'absolute'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.maskEl.bottom.setSize</span><span class="jsdoc-syntax">(0, 0)</span><span class="jsdoc-var">.setXY</span><span class="jsdoc-syntax">([0, 0]);
+            </span><span class="jsdoc-var">this.maskEl.bottom.hide</span><span class="jsdoc-syntax">();
+
+            </span><span class="jsdoc-var">this.maskEl.right.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'position'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'absolute'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.maskEl.right.setSize</span><span class="jsdoc-syntax">(0, 0)</span><span class="jsdoc-var">.setXY</span><span class="jsdoc-syntax">([0, 0]);
+            </span><span class="jsdoc-var">this.maskEl.right.hide</span><span class="jsdoc-syntax">();
             
             </span><span class="jsdoc-var">this.toolTip.hide</span><span class="jsdoc-syntax">();
             

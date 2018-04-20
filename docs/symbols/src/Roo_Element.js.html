@@ -188,32 +188,32 @@ if(opt.anim.isAnimated()){
         </span><span class="jsdoc-comment">/**
          * Looks at  the scrollable parent element
          */
-        </span><span class="jsdoc-var">findScrollableParent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">findScrollableParent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+        {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">overflowRegex </span><span class="jsdoc-syntax">= /(auto|scroll)/;
             
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dom.parentNode</span><span class="jsdoc-syntax">);
-            
-            </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(
-                    </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">&amp;&amp; 
-                    (
-                        !</span><span class="jsdoc-var">el.isScrollable</span><span class="jsdoc-syntax">() ||
-                        (
-                            </span><span class="jsdoc-var">el.isScrollable</span><span class="jsdoc-syntax">() &amp;&amp;
-                            (
-                                </span><span class="jsdoc-var">D.getViewHeight</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">el.dom.clientHeight </span><span class="jsdoc-syntax">&gt; 15 || 
-                                </span><span class="jsdoc-var">D.getViewWidth</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">el.dom.clientWidth </span><span class="jsdoc-syntax">&gt; 15
-                            )
-                        )
-                    ) &amp;&amp;
-                    </span><span class="jsdoc-var">el.dom.nodeName.toLowerCase</span><span class="jsdoc-syntax">() != </span><span class="jsdoc-string">'body'
-            </span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.dom.parentNode</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'position'</span><span class="jsdoc-syntax">) === </span><span class="jsdoc-string">'fixed'</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.isAndroid </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.documentElement</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">);
             }
             
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">el.isScrollable</span><span class="jsdoc-syntax">()){
-                </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">excludeStaticParent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'position'</span><span class="jsdoc-syntax">) === </span><span class="jsdoc-string">&quot;absolute&quot;</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">parent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">; (</span><span class="jsdoc-var">parent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">parent.dom.parentNode</span><span class="jsdoc-syntax">));){
+                
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">excludeStaticParent </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">parent.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'position'</span><span class="jsdoc-syntax">) === </span><span class="jsdoc-string">&quot;static&quot;</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+                }
+                
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">overflowRegex.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">parent.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'overflow'</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-var">parent.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'overflow-x'</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-var">parent.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'overflow-y'</span><span class="jsdoc-syntax">))){
+                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">parent</span><span class="jsdoc-syntax">;
+                }
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">parent.dom.nodeName.toLowerCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'body'</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.isAndroid </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.documentElement</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">);
+                }
             }
             
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.isAndroid </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.documentElement</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">);
         },
 
         </span><span class="jsdoc-comment">/**

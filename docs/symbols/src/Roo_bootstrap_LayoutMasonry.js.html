@@ -21,9 +21,23 @@
  */
 
 </span><span class="jsdoc-var">Roo.bootstrap.LayoutMasonry </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    
     </span><span class="jsdoc-var">Roo.bootstrap.LayoutMasonry.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
     
     </span><span class="jsdoc-var">this.bricks </span><span class="jsdoc-syntax">= [];
+    
+    </span><span class="jsdoc-var">Roo.bootstrap.LayoutMasonry.register</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">// raw events
+        /**
+         * @event layout
+         * Fire after layout the items
+         * @param {Roo.bootstrap.LayoutMasonry} this
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;layout&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
     
 };
 
@@ -89,9 +103,13 @@
     /**
      * @cfg {Number} alternativePadWidth padding below box..
      */   
-    </span><span class="jsdoc-var">alternativePadWidth </span><span class="jsdoc-syntax">: 50, 
+    </span><span class="jsdoc-var">alternativePadWidth </span><span class="jsdoc-syntax">: 50,
+    
+    </span><span class="jsdoc-var">selectedBrick </span><span class="jsdoc-syntax">: [],
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">Roo.bootstrap.LayoutMasonry.superclass.getAutoCreate.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">));
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.tag</span><span class="jsdoc-syntax">,
@@ -131,6 +149,8 @@
     
     </span><span class="jsdoc-var">initial </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
+        </span><span class="jsdoc-var">this.selectedBrick </span><span class="jsdoc-syntax">= [];
+        
         </span><span class="jsdoc-var">this.currentSize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getBox</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-var">Roo.EventManager.onWindowResize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resize</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">); 
@@ -149,12 +169,15 @@
     
     </span><span class="jsdoc-var">resize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'resize'</span><span class="jsdoc-syntax">);
-        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getBox</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.currentSize.width </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">cs.width </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.currentSize.x </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">cs.x </span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;no change in with or X&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(
+                </span><span class="jsdoc-var">this.currentSize.width </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">cs.width </span><span class="jsdoc-syntax">&amp;&amp; 
+                </span><span class="jsdoc-var">this.currentSize.x </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">cs.x </span><span class="jsdoc-syntax">&amp;&amp; 
+                </span><span class="jsdoc-var">this.currentSize.height </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">cs.height </span><span class="jsdoc-syntax">&amp;&amp; 
+                </span><span class="jsdoc-var">this.currentSize.y </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">cs.y 
+        </span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;no change in with or X or Y&quot;</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
@@ -173,6 +196,8 @@
         </span><span class="jsdoc-var">this.layoutItems</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">isInstant </span><span class="jsdoc-syntax">);
       
         </span><span class="jsdoc-var">this._isLayoutInited </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'layout'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
     },
     
@@ -216,7 +241,7 @@
         
         </span><span class="jsdoc-var">this.colWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">boxWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">avail </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.padWidth</span><span class="jsdoc-syntax">;
         
-        </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">this.colWidth </span><span class="jsdoc-syntax">- (</span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* 2)) / 3);
+        </span><span class="jsdoc-var">this.unitWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.round</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">this.colWidth </span><span class="jsdoc-syntax">- (</span><span class="jsdoc-var">this.gutter </span><span class="jsdoc-syntax">* 2)) / 3);
         </span><span class="jsdoc-var">this.unitHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.boxHeight </span><span class="jsdoc-syntax">&gt; 0 ? </span><span class="jsdoc-var">this.boxHeight  </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.unitWidth</span><span class="jsdoc-syntax">;
     },
     
@@ -243,6 +268,8 @@
     
     </span><span class="jsdoc-var">layoutItems </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">isInstant </span><span class="jsdoc-syntax">)
     {
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bricks</span><span class="jsdoc-syntax">);
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">([], </span><span class="jsdoc-var">this.bricks</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isHorizontal</span><span class="jsdoc-syntax">){
@@ -1207,7 +1234,97 @@
 
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">;
         
+    },
+    
+    </span><span class="jsdoc-comment">/**
+    * remove a Masonry Brick
+    * @param {Roo.bootstrap.MasonryBrick} the masonry brick to remove
+    */
+    </span><span class="jsdoc-var">removeBrick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">brick_id</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">brick_id</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">&lt;</span><span class="jsdoc-var">this.bricks.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bricks</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.id </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">brick_id</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.bricks.splice</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">,1);
+                </span><span class="jsdoc-var">this.el.dom.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">brick_id</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.dom</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.initial</span><span class="jsdoc-syntax">();
+            }
+        }
+    },
+    
+    </span><span class="jsdoc-comment">/**
+    * adds a Masonry Brick
+    * @param {Roo.bootstrap.MasonryBrick} the masonry brick to add
+    */
+    </span><span class="jsdoc-var">addBrick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.MasonryBrick</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">//this.register(cn);
+        </span><span class="jsdoc-var">cn.parentId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">cn.onRender</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-comment">/**
+    * register a Masonry Brick
+    * @param {Roo.bootstrap.MasonryBrick} the masonry brick to add
+    */
+    
+    </span><span class="jsdoc-var">register </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">brick</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.bricks.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">brick</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">brick.masonryId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-comment">/**
+    * clear all the Masonry Brick
+    */
+    </span><span class="jsdoc-var">clearAll </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.bricks </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-comment">//this.getChildContainer().dom.innerHTML = &quot;&quot;;
+        </span><span class="jsdoc-var">this.el.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">getSelected </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.selectedBrick</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.selectedBrick</span><span class="jsdoc-syntax">;
     }
+});
+
+</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.LayoutMasonry</span><span class="jsdoc-syntax">, {
+    
+    </span><span class="jsdoc-var">groups</span><span class="jsdoc-syntax">: {},
+     </span><span class="jsdoc-comment">/**
+    * register a Masonry Layout
+    * @param {Roo.bootstrap.LayoutMasonry} the masonry layout to add
+    */
+    
+    </span><span class="jsdoc-var">register </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">layout</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">layout.id</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">layout</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-comment">/**
+    * fetch a  Masonry Layout based on the masonry layout ID
+    * @param {string} the masonry layout to add
+    * @returns {Roo.bootstrap.LayoutMasonry} the masonry layout
+    */
+    
+    </span><span class="jsdoc-var">get</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">layout_id</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">layout_id</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">layout_id</span><span class="jsdoc-syntax">] ;
+    }
+    
+    
     
 });
 

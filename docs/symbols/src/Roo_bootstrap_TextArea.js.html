@@ -43,6 +43,10 @@
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {};
         
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputType </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'form-group' </span><span class="jsdoc-comment">//input-group
+        </span><span class="jsdoc-syntax">}
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">input </span><span class="jsdoc-syntax">=  {
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'textarea'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
@@ -137,48 +141,71 @@
         }
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">===</span><span class="jsdoc-string">'left' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.fieldLabel.length</span><span class="jsdoc-syntax">) {
-</span><span class="jsdoc-comment">//                Roo.log(&quot;left and has label&quot;);
-                </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
-                    
-                    {
-                        </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-string">'for' </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'control-label col-sm-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel
-                        
-                    </span><span class="jsdoc-syntax">},
-                    {
-                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;col-sm-&quot; </span><span class="jsdoc-syntax">+ (12 - </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">), 
-                        </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
-                            </span><span class="jsdoc-var">inputblock
-                        </span><span class="jsdoc-syntax">]
-                    }
-                    
-                ];
+            </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'for' </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'control-label'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel
+                </span><span class="jsdoc-syntax">},
+                {
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                        </span><span class="jsdoc-var">inputblock
+                    </span><span class="jsdoc-syntax">]
+                }
+
+            ];
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelWidth </span><span class="jsdoc-syntax">&gt; 12){
+                </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.style </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;width: &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelWidth </span><span class="jsdoc-syntax">&lt; 13 &amp;&amp; </span><span class="jsdoc-var">this.labelmd </span><span class="jsdoc-syntax">== 0){
+                </span><span class="jsdoc-var">this.labelmd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labellg </span><span class="jsdoc-syntax">&gt; 0){
+                </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-lg-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labellg</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-lg-' </span><span class="jsdoc-syntax">+ (12 - </span><span class="jsdoc-var">this.labellg</span><span class="jsdoc-syntax">);
+            }
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelmd </span><span class="jsdoc-syntax">&gt; 0){
+                </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-md-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelmd</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-md-' </span><span class="jsdoc-syntax">+ (12 - </span><span class="jsdoc-var">this.labelmd</span><span class="jsdoc-syntax">);
+            }
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelsm </span><span class="jsdoc-syntax">&gt; 0){
+                </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-sm-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelsm</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-sm-' </span><span class="jsdoc-syntax">+ (12 - </span><span class="jsdoc-var">this.labelsm</span><span class="jsdoc-syntax">);
+            }
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelxs </span><span class="jsdoc-syntax">&gt; 0){
+                </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-xs-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelxs</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-xs-' </span><span class="jsdoc-syntax">+ (12 - </span><span class="jsdoc-var">this.labelxs</span><span class="jsdoc-syntax">);
+            }
+            
         } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.fieldLabel.length</span><span class="jsdoc-syntax">) {
-</span><span class="jsdoc-comment">//                Roo.log(&quot; label&quot;);
-                 </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
-                   
-                    {
-                        </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-comment">//cls : 'input-group-addon',
-                        </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel
-                        
-                    </span><span class="jsdoc-syntax">},
-                    
-                    </span><span class="jsdoc-var">inputblock
-                    
-                </span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
+
+               {
+                   </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
+                   </span><span class="jsdoc-comment">//cls : 'input-group-addon',
+                   </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel
+
+               </span><span class="jsdoc-syntax">},
+
+               </span><span class="jsdoc-var">inputblock
+
+           </span><span class="jsdoc-syntax">];
 
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
-            
-</span><span class="jsdoc-comment">//                   Roo.log(&quot; no label &amp;&amp; no align&quot;);
-                </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
-                    
-                        </span><span class="jsdoc-var">inputblock
-                    
-                </span><span class="jsdoc-syntax">];
-                
+
+            </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
+
+                </span><span class="jsdoc-var">inputblock
+
+            </span><span class="jsdoc-syntax">];
                 
         }
         

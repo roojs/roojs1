@@ -33,7 +33,14 @@
          * The raw btnclick event for the button
          * @param {Roo.EventObject} e
          */
-        </span><span class="jsdoc-string">&quot;btnclick&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-string">&quot;btnclick&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event resize
+         * Fire when dialog resize
+         * @param {Roo.bootstrap.Modal} this
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;resize&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
     </span><span class="jsdoc-syntax">});
     </span><span class="jsdoc-var">this.buttons </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.buttons </span><span class="jsdoc-syntax">|| [];
 
@@ -367,6 +374,7 @@
 
         </span><span class="jsdoc-var">this.bodyEl.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">this.diff</span><span class="jsdoc-syntax">);
 
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'resize'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 
     },
     </span><span class="jsdoc-var">setContentSize  </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">)

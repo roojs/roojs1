@@ -14,7 +14,11 @@
  * @extends Roo.bootstrap.NavItem
  * Bootstrap Navbar.NavSidebarItem class
  * {String} badgeWeight (default|primary|success|info|warning|danger)the extra classes for the badge
- * {bool} open is the menu open
+ * {Boolean} open is the menu open
+ * {Boolean} buttonView use button as the tigger el rather that a (default false)
+ * {String} buttonWeight (default|primary|success|info|warning|danger)the extra classes for the button
+ * {String} buttonSize (sm|md|lg)the extra classes for the button
+ * {Boolean} showArrow show arrow next to the text (default true)
  * @constructor
  * Create a new Navbar Button
  * @param {Object} config The config object
@@ -47,6 +51,14 @@
     
     </span><span class="jsdoc-var">open</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
+    </span><span class="jsdoc-var">buttonView </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">buttonWeight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'default'</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">buttonSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'md'</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">showArrow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
         
@@ -57,16 +69,22 @@
                 </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: []
         };
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.buttonView</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">href </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.href </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'btn btn-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.buttonWeight </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' btn-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.buttonSize </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'roo-button-dropdown-toggle'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: []
+            };
+        }
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [ </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">]
         };
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">span </span><span class="jsdoc-syntax">= {
-            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''
-        </span><span class="jsdoc-syntax">};
-        
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.active</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' active'</span><span class="jsdoc-syntax">;
@@ -83,22 +101,31 @@
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.glyphicon  </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-string">'glyphicon glyphicon-'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.glyphicon</span><span class="jsdoc-syntax">)  : </span><span class="jsdoc-var">this.icon</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">a.cn.push</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">}) ;
         }
-        </span><span class="jsdoc-comment">// html..
-        </span><span class="jsdoc-var">a.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">span</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-comment">// then badge..
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.badge </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.buttonView</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">span </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''
+            </span><span class="jsdoc-syntax">};
+
+            </span><span class="jsdoc-var">a.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">span</span><span class="jsdoc-syntax">);
             
+        }
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.badge </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">a.cn.push</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'badge pull-right badge-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.badgeWeight</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.badge </span><span class="jsdoc-syntax">}); 
         }
-        </span><span class="jsdoc-comment">// fi
+        
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.menu</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">a.cn.push</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'glyphicon glyphicon-chevron-down pull-right'</span><span class="jsdoc-syntax">});
-            </span><span class="jsdoc-var">a.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">'dropdown-toggle treeview' </span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.showArrow</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">a.cn.push</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'glyphicon glyphicon-chevron-down pull-right'</span><span class="jsdoc-syntax">});
+            }
+            
+            </span><span class="jsdoc-var">a.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' dropdown-toggle treeview' </span><span class="jsdoc-syntax">;
         }
         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
-         
-	   
     },
     
     </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -110,10 +137,8 @@
         }
         
         </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-       
-    
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.badge </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">){
- 
             </span><span class="jsdoc-var">this.badgeEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.badge'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">);
         }
         

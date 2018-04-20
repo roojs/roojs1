@@ -92,20 +92,18 @@
         }
         */
     
-        
-        
-        </span><span class="jsdoc-var">this.el.unmask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.removeMask</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { </span><span class="jsdoc-var">this.el.unmask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.removeMask</span><span class="jsdoc-syntax">); })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(50, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     },
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">onLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-var">this.el.unmask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.removeMask</span><span class="jsdoc-syntax">);
+        (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { </span><span class="jsdoc-var">this.el.unmask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.removeMask</span><span class="jsdoc-syntax">); })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(50, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     },
 
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">onBeforeLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.el.mask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.msg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.msgCls</span><span class="jsdoc-syntax">);
+            (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { </span><span class="jsdoc-var">this.el.mask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.msg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.msgCls</span><span class="jsdoc-syntax">); })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(50, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
     },
 

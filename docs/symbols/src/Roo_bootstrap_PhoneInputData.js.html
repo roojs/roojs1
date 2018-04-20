@@ -1,0 +1,1260 @@
+<html><head><title>../roojs1/Roo/bootstrap/PhoneInputData.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/**
+*    This script refer to:
+*    Title: International Telephone Input
+*    Author: Jack O'Connor
+*    Code version:  v12.1.12
+*    Availability: https://github.com/jackocnr/intl-tel-input.git
+**/
+
+</span><span class="jsdoc-var">Roo.bootstrap.PhoneInputData </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= [
+      [
+        </span><span class="jsdoc-string">&quot;Afghanistan (￢ﾀﾫ￘ﾧ￙ﾁ￘ﾺ￘ﾧ￙ﾆ￘ﾳ￘ﾪ￘ﾧ￙ﾆ￢ﾀﾬ￢ﾀﾎ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;af&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;93&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Albania (Shqipￃﾫri)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;al&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;355&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Algeria (￢ﾀﾫ￘ﾧ￙ﾄ￘ﾬ￘ﾲ￘ﾧ￘ﾦ￘ﾱ￢ﾀﾬ￢ﾀﾎ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;dz&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;213&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;American Samoa&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;as&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;1684&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Andorra&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ad&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;376&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Angola&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ao&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;244&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Anguilla&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ai&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;1264&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Antigua and Barbuda&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ag&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;1268&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Argentina&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ar&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;54&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Armenia (ￕﾀￕﾡￕﾵￕﾡￕﾽￕ﾿ￕﾡￕﾶ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;am&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;374&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Aruba&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;aw&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;297&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Australia&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;au&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;61&quot;</span><span class="jsdoc-syntax">,
+        0
+      ],
+      [
+        </span><span class="jsdoc-string">&quot;Austria (ￃﾖsterreich)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;at&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;43&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Azerbaijan (Az￉ﾙrbaycan)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;az&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;994&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Bahamas&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;bs&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;1242&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Bahrain (￢ﾀﾫ￘ﾧ￙ﾄ￘ﾨ￘ﾭ￘ﾱ￙ﾊ￙ﾆ￢ﾀﾬ￢ﾀﾎ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;bh&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;973&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Bangladesh (￠ﾦﾬ￠ﾦﾾ￠ﾦﾂ￠ﾦﾲ￠ﾦﾾ￠ﾦﾦ￠ﾧﾇ￠ﾦﾶ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;bd&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;880&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Barbados&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;bb&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;1246&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Belarus (￐ﾑ￐ﾵ￐ﾻ￐ﾰ￑ﾀ￑ﾃ￑ﾁ￑ﾌ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;by&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;375&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Belgium (Belgiￃﾫ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;be&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;32&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Belize&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;bz&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;501&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Benin (Bￃﾩnin)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;bj&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;229&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Bermuda&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;bm&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;1441&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Bhutan (￠ﾽﾠ￠ﾽﾖ￠ﾾﾲ￠ﾽﾴ￠ﾽﾂ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;bt&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;975&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Bolivia&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;bo&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;591&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Bosnia and Herzegovina (￐ﾑ￐ﾾ￑ﾁ￐ﾽ￐ﾰ ￐ﾸ ￐ﾥ￐ﾵ￑ﾀ￑ﾆ￐ﾵ￐ﾳ￐ﾾ￐ﾲ￐ﾸ￐ﾽ￐ﾰ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ba&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;387&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Botswana&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;bw&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;267&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Brazil (Brasil)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;br&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;55&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;British Indian Ocean Territory&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;io&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;246&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;British Virgin Islands&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;vg&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;1284&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Brunei&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;bn&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;673&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Bulgaria (￐ﾑ￑ﾊ￐ﾻ￐ﾳ￐ﾰ￑ﾀ￐ﾸ￑ﾏ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;bg&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;359&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Burkina Faso&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;bf&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;226&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Burundi (Uburundi)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;bi&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;257&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Cambodia (￡ﾞﾀ￡ﾞﾘ￡ﾟﾒ￡ﾞﾖ￡ﾞﾻ￡ﾞﾇ￡ﾞﾶ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;kh&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;855&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Cameroon (Cameroun)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;cm&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;237&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Canada&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ca&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;1&quot;</span><span class="jsdoc-syntax">,
+        1,
+        [</span><span class="jsdoc-string">&quot;204&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;226&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;236&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;249&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;250&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;289&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;306&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;343&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;365&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;387&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;403&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;416&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;418&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;431&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;437&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;438&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;450&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;506&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;514&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;519&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;548&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;579&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;581&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;587&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;604&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;613&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;639&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;647&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;672&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;705&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;709&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;742&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;778&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;780&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;782&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;807&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;819&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;825&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;867&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;873&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;902&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;905&quot;</span><span class="jsdoc-syntax">]
+      ],
+      [
+        </span><span class="jsdoc-string">&quot;Cape Verde (Kabu Verdi)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;cv&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;238&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Caribbean Netherlands&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;bq&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;599&quot;</span><span class="jsdoc-syntax">,
+        1
+      ],
+      [
+        </span><span class="jsdoc-string">&quot;Cayman Islands&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ky&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;1345&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Central African Republic (Rￃﾩpublique centrafricaine)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;cf&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;236&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Chad (Tchad)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;td&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;235&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Chile&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;cl&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;56&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;China (￤ﾸﾭ￥ﾛﾽ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;cn&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;86&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Christmas Island&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;cx&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;61&quot;</span><span class="jsdoc-syntax">,
+        2
+      ],
+      [
+        </span><span class="jsdoc-string">&quot;Cocos (Keeling) Islands&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;cc&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;61&quot;</span><span class="jsdoc-syntax">,
+        1
+      ],
+      [
+        </span><span class="jsdoc-string">&quot;Colombia&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;co&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;57&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Comoros (￢ﾀﾫ￘ﾬ￘ﾲ￘ﾱ ￘ﾧ￙ﾄ￙ﾂ￙ﾅ￘ﾱ￢ﾀﾬ￢ﾀﾎ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;km&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;269&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;cd&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;243&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Congo (Republic) (Congo-Brazzaville)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;cg&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;242&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Cook Islands&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ck&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;682&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Costa Rica&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;cr&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;506&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Cￃﾴte d￢ﾀﾙIvoire&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ci&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;225&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Croatia (Hrvatska)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;hr&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;385&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Cuba&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;cu&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;53&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Curaￃﾧao&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;cw&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;599&quot;</span><span class="jsdoc-syntax">,
+        0
+      ],
+      [
+        </span><span class="jsdoc-string">&quot;Cyprus (ￎﾚￏﾍￏﾀￏﾁￎ﾿ￏﾂ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;cy&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;357&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Czech Republic (ￄﾌeskￃﾡ republika)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;cz&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;420&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Denmark (Danmark)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;dk&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;45&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Djibouti&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;dj&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;253&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Dominica&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;dm&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;1767&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Dominican Republic (Repￃﾺblica Dominicana)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;do&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;1&quot;</span><span class="jsdoc-syntax">,
+        2,
+        [</span><span class="jsdoc-string">&quot;809&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;829&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;849&quot;</span><span class="jsdoc-syntax">]
+      ],
+      [
+        </span><span class="jsdoc-string">&quot;Ecuador&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ec&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;593&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Egypt (￢ﾀﾫ￙ﾅ￘ﾵ￘ﾱ￢ﾀﾬ￢ﾀﾎ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;eg&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;20&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;El Salvador&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;sv&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;503&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Equatorial Guinea (Guinea Ecuatorial)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;gq&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;240&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Eritrea&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;er&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;291&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Estonia (Eesti)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ee&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;372&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Ethiopia&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;et&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;251&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Falkland Islands (Islas Malvinas)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;fk&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;500&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Faroe Islands (Fￃﾸroyar)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;fo&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;298&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Fiji&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;fj&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;679&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Finland (Suomi)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;fi&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;358&quot;</span><span class="jsdoc-syntax">,
+        0
+      ],
+      [
+        </span><span class="jsdoc-string">&quot;France&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;fr&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;33&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;French Guiana (Guyane franￃﾧaise)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;gf&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;594&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;French Polynesia (Polynￃﾩsie franￃﾧaise)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;pf&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;689&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Gabon&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ga&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;241&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Gambia&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;gm&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;220&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Georgia (￡ﾃﾡ￡ﾃﾐ￡ﾃﾥ￡ﾃﾐ￡ﾃﾠ￡ﾃﾗ￡ﾃﾕ￡ﾃﾔ￡ﾃﾚ￡ﾃﾝ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ge&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;995&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Germany (Deutschland)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;de&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;49&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Ghana (Gaana)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;gh&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;233&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Gibraltar&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;gi&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;350&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Greece (ￎﾕￎﾻￎﾻￎﾬￎﾴￎﾱ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;gr&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;30&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Greenland (Kalaallit Nunaat)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;gl&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;299&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Grenada&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;gd&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;1473&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Guadeloupe&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;gp&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;590&quot;</span><span class="jsdoc-syntax">,
+        0
+      ],
+      [
+        </span><span class="jsdoc-string">&quot;Guam&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;gu&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;1671&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Guatemala&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;gt&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;502&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Guernsey&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;gg&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;44&quot;</span><span class="jsdoc-syntax">,
+        1
+      ],
+      [
+        </span><span class="jsdoc-string">&quot;Guinea (Guinￃﾩe)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;gn&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;224&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Guinea-Bissau (Guinￃﾩ Bissau)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;gw&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;245&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Guyana&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;gy&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;592&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Haiti&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ht&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;509&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Honduras&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;hn&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;504&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Hong Kong (￩ﾦﾙ￦ﾸﾯ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;hk&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;852&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Hungary (Magyarorszￃﾡg)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;hu&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;36&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Iceland (ￃﾍsland)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;is&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;354&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;India (￠ﾤﾭ￠ﾤﾾ￠ﾤﾰ￠ﾤﾤ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;in&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;91&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Indonesia&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;id&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;62&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Iran (￢ﾀﾫ￘ﾧￛﾌ￘ﾱ￘ﾧ￙ﾆ￢ﾀﾬ￢ﾀﾎ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ir&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;98&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Iraq (￢ﾀﾫ￘ﾧ￙ﾄ￘ﾹ￘ﾱ￘ﾧ￙ﾂ￢ﾀﾬ￢ﾀﾎ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;iq&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;964&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Ireland&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ie&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;353&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Isle of Man&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;im&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;44&quot;</span><span class="jsdoc-syntax">,
+        2
+      ],
+      [
+        </span><span class="jsdoc-string">&quot;Israel (￢ﾀﾫￗﾙￗﾩￗﾨￗﾐￗﾜ￢ﾀﾬ￢ﾀﾎ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;il&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;972&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Italy (Italia)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;it&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;39&quot;</span><span class="jsdoc-syntax">,
+        0
+      ],
+      [
+        </span><span class="jsdoc-string">&quot;Jamaica&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;jm&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;1876&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Japan (￦ﾗﾥ￦ﾜﾬ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;jp&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;81&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Jersey&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;je&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;44&quot;</span><span class="jsdoc-syntax">,
+        3
+      ],
+      [
+        </span><span class="jsdoc-string">&quot;Jordan (￢ﾀﾫ￘ﾧ￙ﾄ￘ﾣ￘ﾱ￘ﾯ￙ﾆ￢ﾀﾬ￢ﾀﾎ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;jo&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;962&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Kazakhstan (￐ﾚ￐ﾰ￐ﾷ￐ﾰ￑ﾅ￑ﾁ￑ﾂ￐ﾰ￐ﾽ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;kz&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;7&quot;</span><span class="jsdoc-syntax">,
+        1
+      ],
+      [
+        </span><span class="jsdoc-string">&quot;Kenya&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ke&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;254&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Kiribati&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ki&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;686&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Kosovo&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;xk&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;383&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Kuwait (￢ﾀﾫ￘ﾧ￙ﾄ￙ﾃ￙ﾈ￙ﾊ￘ﾪ￢ﾀﾬ￢ﾀﾎ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;kw&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;965&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Kyrgyzstan (￐ﾚ￑ﾋ￑ﾀ￐ﾳ￑ﾋ￐ﾷ￑ﾁ￑ﾂ￐ﾰ￐ﾽ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;kg&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;996&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Laos (￠ﾺﾥ￠ﾺﾲ￠ﾺﾧ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;la&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;856&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Latvia (Latvija)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;lv&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;371&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Lebanon (￢ﾀﾫ￙ﾄ￘ﾨ￙ﾆ￘ﾧ￙ﾆ￢ﾀﾬ￢ﾀﾎ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;lb&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;961&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Lesotho&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ls&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;266&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Liberia&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;lr&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;231&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Libya (￢ﾀﾫ￙ﾄ￙ﾊ￘ﾨ￙ﾊ￘ﾧ￢ﾀﾬ￢ﾀﾎ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ly&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;218&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Liechtenstein&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;li&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;423&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Lithuania (Lietuva)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;lt&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;370&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Luxembourg&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;lu&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;352&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Macau (￦ﾾﾳ￩ﾖﾀ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;mo&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;853&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Macedonia (FYROM) (￐ﾜ￐ﾰ￐ﾺ￐ﾵ￐ﾴ￐ﾾ￐ﾽ￐ﾸ￑ﾘ￐ﾰ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;mk&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;389&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Madagascar (Madagasikara)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;mg&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;261&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Malawi&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;mw&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;265&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Malaysia&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;my&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;60&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Maldives&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;mv&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;960&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Mali&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ml&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;223&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Malta&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;mt&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;356&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Marshall Islands&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;mh&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;692&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Martinique&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;mq&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;596&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Mauritania (￢ﾀﾫ￙ﾅ￙ﾈ￘ﾱ￙ﾊ￘ﾪ￘ﾧ￙ﾆ￙ﾊ￘ﾧ￢ﾀﾬ￢ﾀﾎ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;mr&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;222&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Mauritius (Moris)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;mu&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;230&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Mayotte&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;yt&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;262&quot;</span><span class="jsdoc-syntax">,
+        1
+      ],
+      [
+        </span><span class="jsdoc-string">&quot;Mexico (Mￃﾩxico)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;mx&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;52&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Micronesia&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;fm&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;691&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Moldova (Republica Moldova)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;md&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;373&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Monaco&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;mc&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;377&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Mongolia (￐ﾜ￐ﾾ￐ﾽ￐ﾳ￐ﾾ￐ﾻ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;mn&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;976&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Montenegro (Crna Gora)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;me&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;382&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Montserrat&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ms&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;1664&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Morocco (￢ﾀﾫ￘ﾧ￙ﾄ￙ﾅ￘ﾺ￘ﾱ￘ﾨ￢ﾀﾬ￢ﾀﾎ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ma&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;212&quot;</span><span class="jsdoc-syntax">,
+        0
+      ],
+      [
+        </span><span class="jsdoc-string">&quot;Mozambique (Moￃﾧambique)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;mz&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;258&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Myanmar (Burma) (￡ﾀﾙ￡ﾀﾼ￡ﾀﾔ￡ﾀﾺ￡ﾀﾙ￡ﾀﾬ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;mm&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;95&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Namibia (Namibiￃﾫ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;na&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;264&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Nauru&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;nr&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;674&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Nepal (￠ﾤﾨ￠ﾥﾇ￠ﾤﾪ￠ﾤﾾ￠ﾤﾲ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;np&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;977&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Netherlands (Nederland)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;nl&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;31&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;New Caledonia (Nouvelle-Calￃﾩdonie)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;nc&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;687&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;New Zealand&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;nz&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;64&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Nicaragua&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ni&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;505&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Niger (Nijar)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ne&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;227&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Nigeria&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ng&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;234&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Niue&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;nu&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;683&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Norfolk Island&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;nf&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;672&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;North Korea (￬ﾡﾰ￬ﾄﾠ ￫ﾯﾼ￬ﾣﾼ￬ﾣﾼ￬ﾝﾘ ￬ﾝﾸ￫ﾯﾼ ￪ﾳﾵ￭ﾙﾔ￪ﾵﾭ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;kp&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;850&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Northern Mariana Islands&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;mp&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;1670&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Norway (Norge)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;no&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;47&quot;</span><span class="jsdoc-syntax">,
+        0
+      ],
+      [
+        </span><span class="jsdoc-string">&quot;Oman (￢ﾀﾫ￘ﾹ￙ﾏ￙ﾅ￘ﾧ￙ﾆ￢ﾀﾬ￢ﾀﾎ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;om&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;968&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Pakistan (￢ﾀﾫ￙ﾾ￘ﾧￚﾩ￘ﾳ￘ﾪ￘ﾧ￙ﾆ￢ﾀﾬ￢ﾀﾎ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;pk&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;92&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Palau&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;pw&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;680&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Palestine (￢ﾀﾫ￙ﾁ￙ﾄ￘ﾳ￘ﾷ￙ﾊ￙ﾆ￢ﾀﾬ￢ﾀﾎ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ps&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;970&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Panama (Panamￃﾡ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;pa&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;507&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Papua New Guinea&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;pg&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;675&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Paraguay&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;py&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;595&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Peru (Perￃﾺ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;pe&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;51&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Philippines&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ph&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;63&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Poland (Polska)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;pl&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;48&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Portugal&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;pt&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;351&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Puerto Rico&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;pr&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;1&quot;</span><span class="jsdoc-syntax">,
+        3,
+        [</span><span class="jsdoc-string">&quot;787&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;939&quot;</span><span class="jsdoc-syntax">]
+      ],
+      [
+        </span><span class="jsdoc-string">&quot;Qatar (￢ﾀﾫ￙ﾂ￘ﾷ￘ﾱ￢ﾀﾬ￢ﾀﾎ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;qa&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;974&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Rￃﾩunion (La Rￃﾩunion)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;re&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;262&quot;</span><span class="jsdoc-syntax">,
+        0
+      ],
+      [
+        </span><span class="jsdoc-string">&quot;Romania (Romￃﾢnia)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ro&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;40&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Russia (￐ﾠ￐ﾾ￑ﾁ￑ﾁ￐ﾸ￑ﾏ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ru&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;7&quot;</span><span class="jsdoc-syntax">,
+        0
+      ],
+      [
+        </span><span class="jsdoc-string">&quot;Rwanda&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;rw&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;250&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Saint Barthￃﾩlemy&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;bl&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;590&quot;</span><span class="jsdoc-syntax">,
+        1
+      ],
+      [
+        </span><span class="jsdoc-string">&quot;Saint Helena&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;sh&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;290&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Saint Kitts and Nevis&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;kn&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;1869&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Saint Lucia&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;lc&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;1758&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Saint Martin (Saint-Martin (partie franￃﾧaise))&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;mf&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;590&quot;</span><span class="jsdoc-syntax">,
+        2
+      ],
+      [
+        </span><span class="jsdoc-string">&quot;Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;pm&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;508&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Saint Vincent and the Grenadines&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;vc&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;1784&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Samoa&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ws&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;685&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;San Marino&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;sm&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;378&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Sￃﾣo Tomￃﾩ and Prￃﾭncipe (Sￃﾣo Tomￃﾩ e Prￃﾭncipe)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;st&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;239&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Saudi Arabia (￢ﾀﾫ￘ﾧ￙ﾄ￙ﾅ￙ﾅ￙ﾄ￙ﾃ￘ﾩ ￘ﾧ￙ﾄ￘ﾹ￘ﾱ￘ﾨ￙ﾊ￘ﾩ ￘ﾧ￙ﾄ￘ﾳ￘ﾹ￙ﾈ￘ﾯ￙ﾊ￘ﾩ￢ﾀﾬ￢ﾀﾎ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;sa&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;966&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Senegal (Sￃﾩnￃﾩgal)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;sn&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;221&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Serbia (￐ﾡ￑ﾀ￐ﾱ￐ﾸ￑ﾘ￐ﾰ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;rs&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;381&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Seychelles&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;sc&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;248&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Sierra Leone&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;sl&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;232&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Singapore&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;sg&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;65&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Sint Maarten&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;sx&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;1721&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Slovakia (Slovensko)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;sk&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;421&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Slovenia (Slovenija)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;si&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;386&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Solomon Islands&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;sb&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;677&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Somalia (Soomaaliya)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;so&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;252&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;South Africa&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;za&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;27&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;South Korea (￫ﾌﾀ￭ﾕﾜ￫ﾯﾼ￪ﾵﾭ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;kr&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;82&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;South Sudan (￢ﾀﾫ￘ﾬ￙ﾆ￙ﾈ￘ﾨ ￘ﾧ￙ﾄ￘ﾳ￙ﾈ￘ﾯ￘ﾧ￙ﾆ￢ﾀﾬ￢ﾀﾎ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ss&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;211&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Spain (Espaￃﾱa)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;es&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;34&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Sri Lanka (￠ﾷﾁ￠ﾷﾊ￢ﾀﾍ￠ﾶﾻ￠ﾷﾓ ￠ﾶﾽ￠ﾶﾂ￠ﾶﾚ￠ﾷﾏ￠ﾷﾀ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;lk&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;94&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Sudan (￢ﾀﾫ￘ﾧ￙ﾄ￘ﾳ￙ﾈ￘ﾯ￘ﾧ￙ﾆ￢ﾀﾬ￢ﾀﾎ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;sd&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;249&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Suriname&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;sr&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;597&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Svalbard and Jan Mayen&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;sj&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;47&quot;</span><span class="jsdoc-syntax">,
+        1
+      ],
+      [
+        </span><span class="jsdoc-string">&quot;Swaziland&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;sz&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;268&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Sweden (Sverige)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;se&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;46&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Switzerland (Schweiz)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ch&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;41&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Syria (￢ﾀﾫ￘ﾳ￙ﾈ￘ﾱ￙ﾊ￘ﾧ￢ﾀﾬ￢ﾀﾎ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;sy&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;963&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Taiwan (￥ﾏﾰ￧ﾁﾣ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;tw&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;886&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Tajikistan&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;tj&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;992&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Tanzania&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;tz&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;255&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Thailand (￠ﾹﾄ￠ﾸﾗ￠ﾸﾢ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;th&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;66&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Timor-Leste&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;tl&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;670&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Togo&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;tg&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;228&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Tokelau&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;tk&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;690&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Tonga&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;to&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;676&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Trinidad and Tobago&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;tt&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;1868&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Tunisia (￢ﾀﾫ￘ﾪ￙ﾈ￙ﾆ￘ﾳ￢ﾀﾬ￢ﾀﾎ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;tn&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;216&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Turkey (Tￃﾼrkiye)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;tr&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;90&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Turkmenistan&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;tm&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;993&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Turks and Caicos Islands&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;tc&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;1649&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Tuvalu&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;tv&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;688&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;U.S. Virgin Islands&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;vi&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;1340&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Uganda&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ug&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;256&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Ukraine (￐ﾣ￐ﾺ￑ﾀ￐ﾰ￑ﾗ￐ﾽ￐ﾰ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ua&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;380&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;United Arab Emirates (￢ﾀﾫ￘ﾧ￙ﾄ￘ﾥ￙ﾅ￘ﾧ￘ﾱ￘ﾧ￘ﾪ ￘ﾧ￙ﾄ￘ﾹ￘ﾱ￘ﾨ￙ﾊ￘ﾩ ￘ﾧ￙ﾄ￙ﾅ￘ﾪ￘ﾭ￘ﾯ￘ﾩ￢ﾀﾬ￢ﾀﾎ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ae&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;971&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;United Kingdom&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;gb&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;44&quot;</span><span class="jsdoc-syntax">,
+        0
+      ],
+      [
+        </span><span class="jsdoc-string">&quot;United States&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;us&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;1&quot;</span><span class="jsdoc-syntax">,
+        0
+      ],
+      [
+        </span><span class="jsdoc-string">&quot;Uruguay&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;uy&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;598&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Uzbekistan (Oￊﾻzbekiston)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;uz&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;998&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Vanuatu&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;vu&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;678&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Vatican City (Cittￃﾠ del Vaticano)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;va&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;39&quot;</span><span class="jsdoc-syntax">,
+        1
+      ],
+      [
+        </span><span class="jsdoc-string">&quot;Venezuela&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ve&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;58&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Vietnam (Vi￡ﾻﾇt Nam)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;vn&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;84&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Wallis and Futuna (Wallis-et-Futuna)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;wf&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;681&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Western Sahara (￢ﾀﾫ￘ﾧ￙ﾄ￘ﾵ￘ﾭ￘ﾱ￘ﾧ￘ﾡ ￘ﾧ￙ﾄ￘ﾺ￘ﾱ￘ﾨ￙ﾊ￘ﾩ￢ﾀﾬ￢ﾀﾎ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;eh&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;212&quot;</span><span class="jsdoc-syntax">,
+        1
+      ],
+      [
+        </span><span class="jsdoc-string">&quot;Yemen (￢ﾀﾫ￘ﾧ￙ﾄ￙ﾊ￙ﾅ￙ﾆ￢ﾀﾬ￢ﾀﾎ)&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ye&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;967&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Zambia&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;zm&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;260&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;Zimbabwe&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;zw&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;263&quot;
+      </span><span class="jsdoc-syntax">],
+      [
+        </span><span class="jsdoc-string">&quot;ￃﾅland Islands&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;ax&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;358&quot;</span><span class="jsdoc-syntax">,
+        1
+      ]
+  ];
+  
+  </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">;
+}</span></code></body></html>

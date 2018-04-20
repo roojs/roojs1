@@ -34,6 +34,7 @@
  * @cfg {Boolean} cellSelection (true|false) default false
  * @cfg {Boolean} scrollBody (true|false) default false - body scrolled / fixed header
  * @cfg {Roo.bootstrap.PagingToolbar} footer  a paging toolbar
+ * @cfg {Boolean} lazyLoad  auto load data while scrolling to the end (default false)
  
  * 
  * @constructor
@@ -220,6 +221,8 @@
     
     </span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// used by gridpanel...
     
+    </span><span class="jsdoc-var">lazyLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">Roo.bootstrap.Table.superclass.getAutoCreate.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">));
@@ -339,7 +342,11 @@
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.footer</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.footer.parentId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-var">this.footer.onRender</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tfoot tr td'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);        
+            </span><span class="jsdoc-var">this.footer.onRender</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tfoot tr td'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lazyLoad</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tfoot tr td'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'hide'</span><span class="jsdoc-syntax">);
+            }
         } 
         
         </span><span class="jsdoc-var">this.maskEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.LoadMask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">, { </span><span class="jsdoc-var">store </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.ds</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">msgCls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-el-mask-msg' </span><span class="jsdoc-syntax">});
@@ -1015,6 +1022,8 @@
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         
+        </span><span class="jsdoc-var">r.cfg.parentId </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.container</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">r.container </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">r.container.id</span><span class="jsdoc-syntax">;
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">r.cfg.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.container</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.cfg.cn</span><span class="jsdoc-syntax">){
@@ -1081,14 +1090,37 @@
     </span><span class="jsdoc-syntax">},
     </span><span class="jsdoc-var">onBodyScroll</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        
         </span><span class="jsdoc-comment">//Roo.log(&quot;body scrolled');&quot; + this.mainBody.dom.scrollLeft);
         </span><span class="jsdoc-var">this.mainHead.setStyle</span><span class="jsdoc-syntax">({
-                    </span><span class="jsdoc-string">'position' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'relative'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">: (-1* </span><span class="jsdoc-var">this.mainBody.dom.scrollLeft</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">'px'
+            </span><span class="jsdoc-string">'position' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'relative'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">: (-1* </span><span class="jsdoc-var">this.mainBody.dom.scrollLeft</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">'px'
         </span><span class="jsdoc-syntax">});
         
-        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lazyLoad</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">scrollHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.mainBody.dom.scrollHeight</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">scrollTop </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.ceil</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.mainBody.getScroll</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.top</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.mainBody.getHeight</span><span class="jsdoc-syntax">();
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scrollHeight </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">scrollTop</span><span class="jsdoc-syntax">) {
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">total </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.ds.getTotalCount</span><span class="jsdoc-syntax">();
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.footer.cursor </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.footer.pageSize </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">total</span><span class="jsdoc-syntax">){
+                    
+                    </span><span class="jsdoc-var">this.footer.ds.load</span><span class="jsdoc-syntax">({
+                        </span><span class="jsdoc-var">params </span><span class="jsdoc-syntax">: {
+                            </span><span class="jsdoc-var">start </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.footer.cursor </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.footer.pageSize</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">limit </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.footer.pageSize
+                        </span><span class="jsdoc-syntax">},
+                        </span><span class="jsdoc-var">add </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+                    </span><span class="jsdoc-syntax">});
+                }
+            }
+            
+        }
     }
 });
 

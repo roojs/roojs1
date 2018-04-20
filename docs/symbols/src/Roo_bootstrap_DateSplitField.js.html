@@ -22,6 +22,10 @@
  * @cfg {string} dayFormat default 'd'
  * @cfg {string} monthFormat default 'm'
  * @cfg {string} yearFormat default 'Y'
+ * @cfg {Number} labellg set the width of label (1-12)
+ * @cfg {Number} labelmd set the width of label (1-12)
+ * @cfg {Number} labelsm set the width of label (1-12)
+ * @cfg {Number} labelxs set the width of label (1-12)
 
  *     
  * @constructor
@@ -79,6 +83,10 @@
     </span><span class="jsdoc-var">monthFormat </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'m'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">yearFormat </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Y'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">isFormField </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">labellg </span><span class="jsdoc-syntax">: 0,
+    </span><span class="jsdoc-var">labelmd </span><span class="jsdoc-syntax">: 0,
+    </span><span class="jsdoc-var">labelsm </span><span class="jsdoc-syntax">: 0,
+    </span><span class="jsdoc-var">labelxs </span><span class="jsdoc-syntax">: 0,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -95,8 +103,12 @@
             ]
         };
         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">labelCls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'col-md-12'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">contentCls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'col-md-4'</span><span class="jsdoc-syntax">;
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fieldLabel</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">({
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">label </span><span class="jsdoc-syntax">= {
                 </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'column roo-date-split-field-label col-md-' </span><span class="jsdoc-syntax">+ ((</span><span class="jsdoc-var">this.labelAlign </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'12' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">),
                 </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
@@ -105,14 +117,49 @@
                         </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel
                     </span><span class="jsdoc-syntax">}
                 ]
-            });
+            };
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelAlign </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">){
+            
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelWidth </span><span class="jsdoc-syntax">&gt; 12){
+                    </span><span class="jsdoc-var">label.style </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;width: &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">;
+                }
+
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelWidth </span><span class="jsdoc-syntax">&lt; 13 &amp;&amp; </span><span class="jsdoc-var">this.labelmd </span><span class="jsdoc-syntax">== 0){
+                    </span><span class="jsdoc-var">this.labelmd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">;
+                }
+
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labellg </span><span class="jsdoc-syntax">&gt; 0){
+                    </span><span class="jsdoc-var">labelCls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">' col-lg-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labellg</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">contentCls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">' col-lg-' </span><span class="jsdoc-syntax">+ ((12 - </span><span class="jsdoc-var">this.labellg</span><span class="jsdoc-syntax">) / 3);
+                }
+
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelmd </span><span class="jsdoc-syntax">&gt; 0){
+                    </span><span class="jsdoc-var">labelCls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">' col-md-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelmd</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">contentCls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">' col-md-' </span><span class="jsdoc-syntax">+ ((12 - </span><span class="jsdoc-var">this.labelmd</span><span class="jsdoc-syntax">) / 3);
+                }
+
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelsm </span><span class="jsdoc-syntax">&gt; 0){
+                    </span><span class="jsdoc-var">labelCls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">' col-sm-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelsm</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">contentCls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">' col-sm-' </span><span class="jsdoc-syntax">+ ((12 - </span><span class="jsdoc-var">this.labelsm</span><span class="jsdoc-syntax">) / 3);
+                }
+
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelxs </span><span class="jsdoc-syntax">&gt; 0){
+                    </span><span class="jsdoc-var">labelCls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">' col-xs-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelxs</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">contentCls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">' col-xs-' </span><span class="jsdoc-syntax">+ ((12 - </span><span class="jsdoc-var">this.labelxs</span><span class="jsdoc-syntax">) / 3);
+                }
+            }
+            
+            </span><span class="jsdoc-var">label.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">labelCls</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">);
         }
         
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'day'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'month'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'year'</span><span class="jsdoc-syntax">], </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">({
                 </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'column roo-date-split-field-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' col-md-' </span><span class="jsdoc-syntax">+ ((</span><span class="jsdoc-var">this.labelAlign </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'4' </span><span class="jsdoc-syntax">: ((12 - </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">) / 3))
-            });
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'column roo-date-split-field-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">contentCls
+            </span><span class="jsdoc-syntax">});
         }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;

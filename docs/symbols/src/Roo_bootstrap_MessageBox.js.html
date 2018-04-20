@@ -104,7 +104,7 @@ Roo.Msg.show({
                     //collapsible : false,
                     //shim:true,
                     //modal: true,
-                  //  width:400,
+                //    width: 'auto',
                   //  height:100,
                     //buttonAlign:&quot;center&quot;,
                     </span><span class="jsdoc-var">closeClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
@@ -170,7 +170,7 @@ Roo.Msg.show({
         </span><span class="jsdoc-var">updateText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">)
         {
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">dlg.isVisible</span><span class="jsdoc-syntax">() &amp;&amp; !</span><span class="jsdoc-var">opt.width</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">dlg.dialogEl.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.maxWidth</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">dlg.dialogEl.setStyle</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-string">'max-width' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.maxWidth</span><span class="jsdoc-syntax">});
                 </span><span class="jsdoc-comment">// dlg.resizeTo(this.maxWidth, 100); // forcing the height breaks long alerts()
             </span><span class="jsdoc-syntax">}
             </span><span class="jsdoc-var">msgEl.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'&amp;#160;'</span><span class="jsdoc-syntax">;
