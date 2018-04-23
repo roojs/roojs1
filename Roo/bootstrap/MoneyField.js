@@ -32,15 +32,9 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
             cls : 'form-control roo-money-input',
             autocomplete: 'new-password'
         };
-
-        var hiddenInput = {
-            tag: 'input',
-            type: 'hidden',
-            cls: 'hidden-tel-input'
-        };
-
+        
         if (this.name) {
-            hiddenInput.name = this.name;
+            input.name = this.name;
         }
 
         if (this.disabled) {
