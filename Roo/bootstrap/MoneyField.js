@@ -20,9 +20,10 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
     {
         var align = this.labelAlign || this.parentLabelAlign();
         
+        var id = Roo.id();
+        
         var cfg = {
-            cls: 'form-group',
-            cn: []
+            cls: 'form-group'
         };
 
         var input =  {
