@@ -17,6 +17,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
     
     getAutoCreate : function()
     {
+        var id = Roo.id();
+        
         var cfg = {
             cls: 'form-group',
             cn : []
@@ -32,6 +34,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
                },
                {
                    tag: 'label',
+                   'for' :  id,
                    html : this.fieldLabel
 
                }
@@ -45,6 +48,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
                        cn : [
                            {
                                tag : 'span',
+                               'for' :  id,
                                html : this.fieldLabel
                            },
                            {
