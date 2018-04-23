@@ -40,12 +40,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
                     cls : 'control-label',
                     html : this.fieldLabel
 
-                },
-                {
-                    cls : "", 
-                    cn: [
-                        combobox
-                    ]
                 }
 
             ];
@@ -57,7 +51,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
                 cfg.cn = [
                     {
                         tag: 'label',
-                        'for' :  id,
                         cls : 'control-label',
                         cn : [
                             {
