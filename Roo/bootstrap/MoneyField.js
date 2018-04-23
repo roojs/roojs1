@@ -27,6 +27,5 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
         };
         
         return cfg;
-            
     }
 });
