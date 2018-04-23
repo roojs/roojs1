@@ -46,8 +46,9 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
             cls: 'currency-box',
             cn: [
                 {
-                    tag: 'div',
-                    cls: 'roo-money-currency-input'
+                    tag: 'input',
+                    cls: 'form-control roo-money-currency-input',
+                    autocomplete: 'new-password'
                 },
                 {
                     tag: 'div',
@@ -149,62 +150,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
                 cfg.cls += ' col-' + size + '-' + settings[size];
             }
         });
-
-        this.store = new Roo.data.Store({
-            proxy : new Roo.data.MemoryProxy({}),
-            reader : new Roo.data.JsonReader({
-                fields : [
-                    {
-                        'name' : 'name',
-                        'type' : 'string'
-                    },
-                    {
-                        'name' : 'iso2',
-                        'type' : 'string'
-                    },
-                    {
-                        'name' : 'dialCode',
-                        'type' : 'string'
-                    },
-                    {
-                        'name' : 'priority',
-                        'type' : 'string'
-                    },
-                    {
-                        'name' : 'areaCodes',
-                        'type' : 'string'
-                    }
-                ]
-            })
-        });
-
-        if(!this.preferedCountries) {
-            this.preferedCountries = [
-                'hk',
-                'gb',
-                'us'
-            ];
-        }
-
-        var p = this.preferedCountries.reverse();
-
-        if(p) {
-            for (var i = 0; i < p.length; i++) {
-                for (var j = 0; j < this.allCountries.length; j++) {
-                    if(this.allCountries[j].iso2 == p[i]) {
-                        var t = this.allCountries[j];
-                        this.allCountries.splice(j,1);
-                        this.allCountries.unshift(t);
-                    }
-                } 
-            }
-        }
-
-        this.store.proxy.data = {
-            success: true,
-            data: this.allCountries
-        };
-
+        
         return cfg;
     },
     
