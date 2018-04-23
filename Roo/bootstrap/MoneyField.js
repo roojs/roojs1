@@ -1,7 +1,7 @@
 
 /**
  * @class Roo.bootstrap.MoneyField
- * @extends Roo.bootstrap.ComboBox
+ * @extends Roo.bootstrap.TriggerField
  * Bootstrap MoneyField class
  * 
  * @constructor
@@ -15,7 +15,7 @@ Roo.bootstrap.MoneyField = function(config) {
     
 };
 
-Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
+Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
     
     inputlg : 9,
     inputmd : 9,
