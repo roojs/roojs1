@@ -44,18 +44,18 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
                 
                 cfg.cn = [
                     {
-                       tag: 'label',
-                       cn : [
-                           {
-                               tag : 'span',
-                               'for' :  id,
-                               html : this.fieldLabel
-                           },
-                           {
-                              tag : 'i',
-                              cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
-                              tooltip : 'This field is required'
-                           }
+                        tag: 'label',
+                        cn : [
+                            {
+                                tag : 'span',
+                                'for' :  id,
+                                html : this.fieldLabel
+                            },
+                            {
+                                tag : 'i',
+                                cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
+                                tooltip : 'This field is required'
+                            }
                        ]
 
                     }
