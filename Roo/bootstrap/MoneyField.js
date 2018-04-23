@@ -51,8 +51,14 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
                     autocomplete: 'new-password'
                 },
                 {
-                    tag: 'div',
-                    cls: 'caret'
+                    tag: 'span',
+                    cls: 'input-group-addon btn dropdown-toggle',
+                    cn : [
+                        {
+                            tag : 'span',
+                            cls : 'caret'
+                        }
+                    ]
                 }
             ]
         };
