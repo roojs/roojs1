@@ -1631,3 +1631,5 @@ this.setDialCode(d);this.inputEl().dom.value=v.replace('+'+d,'');this.hiddenEl()
 for(var i=1;i<v.length;i++){var c=v.charAt(i);if(!isNaN(c)){B+=c;if(this.dialCodeMapping[B]){A=v.substr(1,i);}if(B.length==4){break;}}}return A;},reset:function(){this.setValue(this.defaultDialCode);this.validate();},hiddenEl:function(){return this.el.select('input.hidden-tel-input',true).first();
 },onKeyUp:function(e){var k=e.getKey();var c=e.getCharCode();if((String.fromCharCode(c)=='.'||String.fromCharCode(c)=='-')&&this.allowed.indexOf(String.fromCharCode(c))===-1){e.stopEvent();}if(this.allowed.indexOf(String.fromCharCode(c))===-1){e.stopEvent();
 }this.setValue(this.getValue());}});
+// Roo/bootstrap/MoneyField.js
+Roo.bootstrap.MoneyField=function(A){Roo.bootstrap.MoneyField.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.MoneyField,Roo.bootstrap.TriggerField,{getAutoCreate:function(){var A={cls:'form-group'};return A;}});
