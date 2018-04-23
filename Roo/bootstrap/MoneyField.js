@@ -328,12 +328,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     setFromData : function(o)
     {
-        
-        if(this.multiple){
-            this.addItem(o);
-            return;
-        }
-            
         var dv = ''; // display value
         var vv = ''; // value value..
         this.lastData = o;
