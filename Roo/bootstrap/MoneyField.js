@@ -53,7 +53,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
         
         var container = {
             tag : 'div',
-            cls : 'row',
+            cls : 'row roo-money-field',
             cn : [
                 {
                     tag : 'div',
