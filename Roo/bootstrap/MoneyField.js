@@ -37,6 +37,15 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
             cls: 'hidden-amount-input'
         };
         
+        if (this.name) {
+            hiddenInput.name = this.name;
+        }
         
+        if (this.disabled) {
+            input.disabled = true;
+        }
+        
+        
+            
     }
 });
