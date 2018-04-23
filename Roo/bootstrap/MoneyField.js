@@ -43,7 +43,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
 
         var flag_container = {
             tag: 'div',
-            cls: 'flag-box',
+            cls: 'currency-box',
             cn: [
                 {
                     tag: 'div',
