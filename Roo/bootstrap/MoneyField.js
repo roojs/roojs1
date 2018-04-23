@@ -347,10 +347,28 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         this.currencyValue = v;
         
         if(this.rendered){
-            this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+            this.currencyEl.dom.value = (v === null || v === undefined ? '' : v);
             this.validate();
         }
     },
     
+    validate : function()
+    {
+        return;
+        
+        var v = this.getRawValue();
+        
+        if(this.multiple){
+            v = this.getValue();
+        }
+        
+        if(this.disabled || this.allowBlank || v.length){
+            this.markValid();
+            return true;
+        }
+        
+        this.markInvalid();
+        return false;
+    }
     
 });
