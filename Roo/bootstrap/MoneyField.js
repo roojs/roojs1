@@ -199,9 +199,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
         
         this.triggerEl = this.el.select('.input-group-addon', true).first();
         
-        
-        
-        
+        this.triggerEl.on("click", this.onTriggerClick, this, { preventDefault : true });
         
     }
     
