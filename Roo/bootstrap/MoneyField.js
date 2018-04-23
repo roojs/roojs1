@@ -217,15 +217,12 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
             return;
         }
         
-        this.hasFocus = true;
         if(this.triggerAction == 'all') {
             this.doQuery(this.allQuery, true);
-        } else {
-            this.doQuery(this.getRawValue());
+            return;
         }
-        if (!this.blockFocus) {
-            this.inputEl().focus();
-        }
+        
+        this.doQuery(this.getRawValue());
     }
     
 });
