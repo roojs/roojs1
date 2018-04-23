@@ -289,18 +289,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         this.loadNext = false;
     },
     
-    getParams : function(q)
-    {
-        var p = {};
-        
-        if(this.pageSize){
-            p.start = 0;
-            p.limit = this.pageSize;
-        }
-        
-        return p;
-    },
-    
     collapse : function()
     {
         if(!this.isExpanded()){
@@ -363,7 +351,5 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         this.list.alignTo(this.currencyEl, this.listAlign);
         this.list.alignTo(this.currencyEl, this.listAlign);
     }
-    
-    
     
 });
