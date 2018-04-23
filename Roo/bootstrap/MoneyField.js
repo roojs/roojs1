@@ -26,7 +26,18 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
             cn: []
         };
         
+        var input =  {
+            tag: 'input',
+            id : id,
+            cls : 'form-control money-input',
+            autocomplete: 'new-password'
+        };
         
+        var hiddenInput = {
+            tag: 'input',
+            type: 'hidden',
+            cls: 'hidden-money-input'
+        };
         
         var currency_input =  {
             tag: 'input',
