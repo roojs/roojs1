@@ -57,13 +57,22 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
             ]
         };
         
-        var box = {
+        var input_box = {
             tag: 'div',
             cls: this.hasFeedback ? 'has-feedback' : '',
             cn: [
                 input
             ]
         };
+        
+        var container = {
+            cls: 'roo-select2-container input-group',
+            cn: [
+                currency_box,
+                input_box
+            ]
+        };
+        
         
         
             
