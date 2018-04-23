@@ -39766,7 +39766,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
 });
 /**
  * @class Roo.bootstrap.MoneyField
- * @extends Roo.bootstrap.TriggerField
+ * @extends Roo.bootstrap.ComboBox
  * Bootstrap MoneyField class
  * 
  * @constructor
@@ -39775,15 +39775,19 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
  */
 
 Roo.bootstrap.MoneyField = function(config) {
+    
     Roo.bootstrap.MoneyField.superclass.constructor.call(this, config);
+    
 };
 
-Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
+Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     inputlg : 9,
     inputmd : 9,
     inputsm : 9,
     inputxs : 6,
+    
+    store : false,
     
     getAutoCreate : function()
     {
@@ -39835,7 +39839,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
                                 },
                                 {
                                     tag :'span',
-                                    cls : 'input-group-addon',
+                                    cls : 'input-group-addon dropdown-toggle',
                                     cn : [
                                         {
                                             tag: 'span',
@@ -39943,11 +39947,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
         });
         
         return cfg;
-    },
-    
-    initEvents : function()
-    {
-        
     }
     
 });

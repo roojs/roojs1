@@ -74,7 +74,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
                                 },
                                 {
                                     tag :'span',
-                                    cls : 'input-group-addon',
+                                    cls : 'input-group-addon dropdown-toggle',
                                     cn : [
                                         {
                                             tag: 'span',
