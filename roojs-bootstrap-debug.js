@@ -39780,6 +39780,11 @@ Roo.bootstrap.MoneyField = function(config) {
 
 Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
     
+    inputlg : 9,
+    inputmd : 9,
+    inputsm : 9,
+    inputxs : 6,
+    
     getAutoCreate : function()
     {
         var align = this.labelAlign || this.parentLabelAlign();
@@ -39806,34 +39811,58 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
             input.disabled = true;
         }
 
+        var clg = 12 - this.inputlg;
+        var cmd = 12 - this.inputmd;
+        var csm = 12 - this.inputsm;
+        var cxs = 12 - this.inputxs;
+        
         var container = {
-            cls: 'roo-select2-container input-group',
-            cn: [
+            tag : 'div',
+            cls : 'row',
+            cn : [
                 {
-                    tag : 'input',
-                    cls : 'form-control roo-money-amount-input',
-                    autocomplete: 'new-password'
-                },
-                {
-                    tag :'span',
-                    cls : 'input-group-addon btn dropdown-toggle',
+                    tag : 'div',
+                    cls : 'column col-lg-' + clg + ' col-md-' + cmd + ' col-sm-' + csm + ' col-xs-' + cxs,
                     cn : [
                         {
-                            tag: 'span',
-                            cls: 'caret'
+                            tag : 'div',
+                            cls: 'roo-select2-container input-group',
+                            cn: [
+                                {
+                                    tag : 'input',
+                                    cls : 'form-control roo-money-amount-input',
+                                    autocomplete: 'new-password'
+                                },
+                                {
+                                    tag :'span',
+                                    cls : 'input-group-addon btn dropdown-toggle',
+                                    cn : [
+                                        {
+                                            tag: 'span',
+                                            cls: 'caret'
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    tag : 'div',
+                    cls : 'column col-lg-' + clg + ' col-md-' + cmd + ' col-sm-' + csm + ' col-xs-' + cxs,
+                    cn : [
+                        {
+                            tag: 'div',
+                            cls: this.hasFeedback ? 'has-feedback' : '',
+                            cn: [
+                                input
+                            ]
                         }
                     ]
                 }
             ]
+            
         };
-        
-//        {
-//                    tag: 'div',
-//                    cls: this.hasFeedback ? 'has-feedback' : '',
-//                    cn: [
-//                        input
-//                    ]
-//                }
         
         if (this.fieldLabel.length) {
             var indicator = {

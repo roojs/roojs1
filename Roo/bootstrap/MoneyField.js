@@ -87,22 +87,17 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
                     cls : 'column col-lg-' + clg + ' col-md-' + cmd + ' col-sm-' + csm + ' col-xs-' + cxs,
                     cn : [
                         {
-                            tag : 'input',
-                            cls: 'roo-money-amount-input'
+                            tag: 'div',
+                            cls: this.hasFeedback ? 'has-feedback' : '',
+                            cn: [
+                                input
+                            ]
                         }
                     ]
                 }
             ]
             
         };
-        
-//        {
-//                    tag: 'div',
-//                    cls: this.hasFeedback ? 'has-feedback' : '',
-//                    cn: [
-//                        input
-//                    ]
-//                }
         
         if (this.fieldLabel.length) {
             var indicator = {
