@@ -428,6 +428,13 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         
         this.markInvalid();
         return false;
-    }
+    },
+    
+    parseValue : function(value)
+    {
+        value = parseFloat(String(value).replace(this.decimalSeparator, "."));
+        return isNaN(value) ? '' : value;
+    },
+    
     
 });
