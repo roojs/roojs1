@@ -39985,7 +39985,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             this.collapse();
             return;
         }
-        Roo.log('run on trigger click');
+        
         if(this.triggerAction == 'all') {
             this.doQuery(this.allQuery, true);
             return;
