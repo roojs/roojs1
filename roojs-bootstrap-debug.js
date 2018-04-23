@@ -39849,7 +39849,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
                 },
                 {
                     tag : 'div',
-                    cls : 'column col-lg-' + clg + ' col-md-' + cmd + ' col-sm-' + csm + ' col-xs-' + cxs,
+                    cls : 'column col-lg-' + this.inputlg + ' col-md-' + this.inputmd + ' col-sm-' + this.inputsm + ' col-xs-' + this.inputxs,
                     cn : [
                         {
                             tag: 'div',
