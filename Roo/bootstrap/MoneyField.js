@@ -75,7 +75,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
             ]
         };
         
-
         if (this.fieldLabel.length) {
             var indicator = {
                 tag: 'i',
