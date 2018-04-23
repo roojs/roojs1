@@ -338,27 +338,20 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             Roo.log('no  displayField value set for '+ (this.name ? this.name : this.id));
         }
         
-        if(this.valueField){
-            vv = !o || typeof(o[this.valueField]) == 'undefined' ? dv : o[this.valueField];
-        }
-        
-        if(this.hiddenField){
-            this.hiddenField.dom.value = vv;
-            
-            this.lastSelectionText = dv;
-            Roo.bootstrap.ComboBox.superclass.setValue.call(this, dv);
-            this.value = vv;
-            return;
-        }
-        // no hidden field.. - we store the value in 'value', but still display
-        // display field!!!!
         this.lastSelectionText = currency;
-        
         this.currencyValue = currency;
         
         
-        
-    }
+    },
+    
+    setCurrency : function(v)
+    {   
+        this.currencyValue = v;
+        if(this.rendered){
+            this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+            this.validate();
+        }
+    },
     
     
 });
