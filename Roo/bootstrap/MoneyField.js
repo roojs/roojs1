@@ -285,15 +285,90 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
         this.loadNext = false;
     },
     
-    getParams : function(q){
+    getParams : function(q)
+    {
         var p = {};
-        //p[this.queryParam] = q;
         
         if(this.pageSize){
             p.start = 0;
             p.limit = this.pageSize;
         }
+        
         return p;
+    },
+    
+    collapse : function()
+    {
+        if(!this.isExpanded()){
+            return;
+        }
+        
+        this.list.hide();
+        
+        Roo.get(document).un('mousedown', this.collapseIf, this);
+        Roo.get(document).un('mousewheel', this.collapseIf, this);
+        
+        if (!this.editable) {
+            Roo.get(document).un('keydown', this.listKeyPress, this);
+        }
+        
+        this.fireEvent('collapse', this);
+        
+        this.validate();
+    },
+
+    collapseIf : function(e)
+    {
+        var in_combo  = e.within(this.el);
+        var in_list =  e.within(this.list);
+        var is_list = (Roo.get(e.getTarget()).id == this.list.id) ? true : false;
+        
+        if (in_combo || in_list || is_list) {
+            return;
+        }
+        
+        this.collapse();
+    },
+
+    /**
+     * Expands the dropdown list if it is currently hidden. Fires the 'expand' event on completion.
+     */
+    expand : function(){
+       
+        if(this.isExpanded() || !this.hasFocus){
+            return;
+        }
+        
+        var lw = this.listWidth || Math.max(this.inputEl().getWidth(), this.minListWidth);
+        this.list.setWidth(lw);
+        
+        Roo.log('expand');
+        
+        this.list.show();
+        
+        this.restrictHeight();
+        
+        if(this.tickable){
+            
+            this.tickItems = Roo.apply([], this.item);
+            
+            this.okBtn.show();
+            this.cancelBtn.show();
+            this.trigger.hide();
+            
+            if(this.editable){
+                this.tickableInputEl().focus();
+            }
+            
+        }
+        
+        Roo.get(document).on('mousedown', this.collapseIf, this);
+        Roo.get(document).on('mousewheel', this.collapseIf, this);
+        if (!this.editable) {
+            Roo.get(document).on('keydown', this.listKeyPress, this);
+        }
+        
+        this.fireEvent('expand', this);
     },
     
 });
