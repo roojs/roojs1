@@ -182,51 +182,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         });
         
         return cfg;
-    },
-    
-    initEvents : function()
-    {
-        if (!this.store) {
-            throw "can not find store for combo";
-        }
-        
-        this.store = Roo.factory(this.store, Roo.data);
-        this.store.parent = this;
-        
-        this.createList();
-        
-        this.indicator = this.indicatorEl();
-        
-        this.triggerEl = this.el.select('.input-group-addon', true).first();
-        
-        this.triggerEl.on("click", this.onTriggerClick, this, { preventDefault : true });
-        
-    },
-    
-    onTriggerClick : function(e)
-    {   
-        if(this.disabled){
-            return;
-        }
-        
-        this.page = 0;
-        this.loadNext = false;
-        
-        if(this.isExpanded()){
-            this.collapse();
-            return;
-        }
-        
-        this.hasFocus = true;
-        
-        if(this.triggerAction == 'all') {
-            this.doQuery(this.allQuery, true);
-        } else {
-            this.doQuery(this.getRawValue());
-        }
-        if (!this.blockFocus) {
-            this.inputEl().focus();
-        }
     }
     
 });
