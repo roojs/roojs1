@@ -246,8 +246,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             },
 
             "enter" : function(e){
-//                this.onViewClick();
-                //return true;
                 this.collapse();
                 
                 if(this.fireEvent("specialkey", this, e)){
@@ -282,12 +280,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
 
             forceKeyDown: true
         });
-        
-        this.queryDelay = Math.max(this.queryDelay || 10,
-                this.mode == 'local' ? 10 : 250);
-        
-        this.dqTask = new Roo.util.DelayedTask(this.initQuery, this);
-        
         
     },
     
