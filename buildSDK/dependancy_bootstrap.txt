@@ -152,3 +152,4 @@ Roo.bootstrap.panel.TabItem
 Roo.bootstrap.PhoneInputData
 Roo.bootstrap.PhoneInput
 
+Roo.bootstrap.MoneyField
