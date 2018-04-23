@@ -26,7 +26,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
             cls: 'form-group'
         };
         
-        var input =  {
+        var currency_input =  {
             tag: 'input',
             id : id,
             cls : 'form-control',
@@ -34,14 +34,14 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
         };
         
         if (this.name) {
-            input.name = this.name;
+            currency_input.name = this.name;
         }
         
         if (this.disabled) {
-            input.disabled=true;
+            currency_input.disabled=true;
         }
         
-        var inputblock = input;
+        var inputblock = currency_input;
         
         if(this.hasFeedback && !this.allowBlank){
             
