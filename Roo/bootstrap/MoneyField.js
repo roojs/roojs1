@@ -57,7 +57,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
             cn : [
                 {
                     tag : 'div',
-                    cls : 'column col-lg-' + clg + ' col-md-' + cmd + ' col-sm-' + csm + ' col-xs-' + cxs,
+                    cls : 'roo-money-currency column col-lg-' + clg + ' col-md-' + cmd + ' col-sm-' + csm + ' col-xs-' + cxs,
                     cn : [
                         {
                             tag : 'div',
@@ -65,7 +65,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
                             cn: [
                                 {
                                     tag : 'input',
-                                    cls : 'form-control roo-money-amount-input',
+                                    cls : 'form-control roo-money-currency-input',
                                     autocomplete: 'new-password'
                                 },
                                 {
