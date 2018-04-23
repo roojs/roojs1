@@ -311,7 +311,30 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         
         this.stripCharsRe = new RegExp('[^'+allowed+']', 'gi');
         
+        var keyPress = function(e){
+            
+            var k = e.getKey();
+            
+            var c = e.getCharCode();
+            
+            if(
+                    (String.fromCharCode(c) == '.' || String.fromCharCode(c) == '-') &&
+                    allowed.indexOf(String.fromCharCode(c)) === -1
+            ){
+                e.stopEvent();
+                return;
+            }
+            
+            if(!Roo.isIE && (e.isSpecialKey() || k == e.BACKSPACE || k == e.DELETE)){
+                return;
+            }
+            
+            if(allowed.indexOf(String.fromCharCode(c)) === -1){
+                e.stopEvent();
+            }
+        };
         
+        this.el.on("keypress", keyPress, this);
         
         
     },
