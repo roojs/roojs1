@@ -330,12 +330,9 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
         this.collapse();
     },
 
-    /**
-     * Expands the dropdown list if it is currently hidden. Fires the 'expand' event on completion.
-     */
-    expand : function(){
-       
-        if(this.isExpanded() || !this.hasFocus){
+    expand : function()
+    {
+        if(this.isExpanded()){
             return;
         }
         
