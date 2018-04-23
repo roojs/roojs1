@@ -63,16 +63,14 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
             }
         }
         
-        var settings=this;
-        ['xs','sm','md','lg'].map(function(size){
-            if (settings[size]) {
-                cfg.cls += ' col-' + size + '-' + settings[size];
-            }
-        });
-        
         cfg.cn.push({
             tag : 'div',
-            cls : 'money-currency'
+            cls : 'money-currency',
+            cn : [
+                {
+                    
+                }
+            ]
         });
         
         cfg.cn.push({
