@@ -189,6 +189,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     {
         this.initCurrencyEvent();
         
+        this.initInputEvent();
+        
     },
     
     initCurrencyEvent : function()
@@ -287,6 +289,11 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
 
             forceKeyDown: true
         });
+        
+    },
+    
+    initInputEvent : function(e)
+    {
         
     },
     
