@@ -51,7 +51,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
             amount_input.disabled = true;
         }
         
-        var inputblock = currency_input;
+        var inputblock = amount_input;
         
         if(this.hasFeedback && !this.allowBlank){
             
