@@ -219,7 +219,8 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
     markValid : function()
     {
         if(this.labelEl.isVisible(true)){
-            this.indicatorEl().hide();
+            this.indicatorEl().removeClass('visible');
+            this.indicatorEl().addClass('invisible');
         }
         
         this.el.removeClass([this.invalidClass, this.validClass]);
