@@ -39806,41 +39806,31 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
             input.disabled = true;
         }
 
-        var currency_box = {
-            tag: 'div',
-            cls: 'currency-box',
-            cn: [
-                {
-                    tag: 'input',
-                    cls: 'form-control roo-money-currency-input',
-                    autocomplete: 'new-password'
-                },
-                {
-                    tag: 'span',
-                    cls: 'input-group-addon btn dropdown-toggle',
-                    cn : [
-                        {
-                            tag : 'span',
-                            cls : 'caret'
-                        }
-                    ]
-                }
-            ]
-        };
-
-        var input_box = {
-            tag: 'div',
-            cls: this.hasFeedback ? 'has-feedback' : '',
-            cn: [
-                input
-            ]
-        };
-
         var container = {
             cls: 'roo-select2-container input-group',
             cn: [
-                currency_box,
-                input_box
+                {
+                    tag : 'input',
+                    cls : 'form-control roo-money-amount-input',
+                    autocomplete: 'new-password'
+                },
+                {
+                    tag :'span',
+                    cls : 'input-group-addon btn dropdown-toggle',
+                    cn : [
+                        {
+                            tag: 'span',
+                            cls: 'caret'
+                        }
+                    ]
+                },
+                {
+                    tag: 'div',
+                    cls: this.hasFeedback ? 'has-feedback' : '',
+                    cn: [
+                        input
+                    ]
+                }
             ]
         };
 

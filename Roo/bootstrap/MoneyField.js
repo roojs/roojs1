@@ -53,16 +53,9 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
                     tag :'span',
                     cls : 'input-group-addon btn dropdown-toggle',
                     cn : [
-                        caret,
                         {
                             tag: 'span',
-                            cls: 'combobox-clear',
-                            cn  : [
-                                {
-                                    tag : 'i',
-                                    cls: 'icon-remove'
-                                }
-                            ]
+                            cls: 'caret'
                         }
                     ]
                 },
