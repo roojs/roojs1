@@ -220,6 +220,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             this.tpl = '<li><a href="#">{' + this.currencyField + '}</a></li>';
         }
         
+        
+        
     },
     
     onTriggerClick : function(e)
