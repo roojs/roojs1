@@ -20,6 +20,17 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
     {
         var align = this.labelAlign || this.parentLabelAlign();
         
+        var cfg = {
+            cls: 'form-group',
+            cn: []
+        };
+
+        var input =  {
+            tag: 'input',
+            cls : 'form-control tel-input',
+            autocomplete: 'new-password'
+        };
+        
         
     }
 });
