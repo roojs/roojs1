@@ -69,7 +69,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
                 },
                 inputblock
             ]
-            
         };
         
         var combobox = {
