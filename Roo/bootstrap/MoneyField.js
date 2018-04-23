@@ -231,7 +231,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         this.store.on('load', this.onLoad, this);
         this.store.on('loadexception', this.onLoadException, this);
         
-        this.keyNav = new Roo.KeyNav(this.inputEl(), {
+        this.keyNav = new Roo.KeyNav(this.currencyEl, {
             "up" : function(e){
                 this.inKeyMode = true;
                 this.selectPrev();
@@ -347,6 +347,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     setCurrency : function(v)
     {   
         this.currencyValue = v;
+        
         if(this.rendered){
             this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
             this.validate();
