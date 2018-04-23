@@ -201,6 +201,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
         
         this.triggerEl.on("click", this.onTriggerClick, this, { preventDefault : true });
         
+        this.currencyInputEl = this.el.select('.roo-money-currency-input', true).first();
+        
     },
     
     onTriggerClick : function(e)
