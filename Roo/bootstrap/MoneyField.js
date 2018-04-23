@@ -14,7 +14,9 @@ Roo.bootstrap.MoneyField = function(config) {
 };
 
 Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
-        
+    
+    
+    
     getAutoCreate : function()
     {
         
