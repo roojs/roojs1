@@ -352,7 +352,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         
         if(this.rendered){
             
-            Roo.log('set Currency');
+            Roo.log('set Currency??');
             
             this.currencyEl.dom.value = (v === null || v === undefined ? '' : v);
             this.validate();
