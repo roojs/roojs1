@@ -2,7 +2,8 @@
 /**
  * @class Roo.bootstrap.MoneyField
  * @extends Roo.bootstrap.TriggerField
- 
+ * Bootstrap MoneyField class
+ * 
  * @constructor
  * Create a new MoneyField.
  * @param {Object} config Configuration options
