@@ -39816,7 +39816,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
                         {
                             tag : 'input',
                             cls : 'form-control roo-money-amount-input',
-                            autocomplete: 'new-password'
+                            autocomplete: 'new-password',
+                            style : 'width: 100px'
                         }
                     ]
                 },
