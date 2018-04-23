@@ -232,11 +232,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
             }
 
         } else {
-            
-//                Roo.log(" no label && no align");
-                cfg = combobox
-                     
-                
+            cfg = combobox
         }
         
         var settings=this;
@@ -245,6 +241,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
                 cfg.cls += ' col-' + size + '-' + settings[size];
             }
         });
+        
+        return cfg;
             
     }
 });
