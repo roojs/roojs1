@@ -22,7 +22,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
         var id = Roo.id();
         
         var cfg = {
-            cls: 'form-group'
+            cls: 'form-group',
+            cn: []
         };
         
         
