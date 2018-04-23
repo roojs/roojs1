@@ -71,6 +71,13 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
             ]
             
         };
+        
+        var combobox = {
+            cls: 'roo-select2-container input-group',
+            cn: [
+                box
+            ]
+        };
             
     }
 });
