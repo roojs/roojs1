@@ -220,70 +220,13 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             this.collapse();
             return;
         }
-        
+        Roo.log('run on trigger click');
         if(this.triggerAction == 'all') {
             this.doQuery(this.allQuery, true);
             return;
         }
         
         this.doQuery(this.getRawValue());
-    },
-    
-    collapse : function()
-    {
-        if(!this.isExpanded()){
-            return;
-        }
-        
-        this.list.hide();
-        
-        Roo.get(document).un('mousedown', this.collapseIf, this);
-        Roo.get(document).un('mousewheel', this.collapseIf, this);
-        
-        if (!this.editable) {
-            Roo.get(document).un('keydown', this.listKeyPress, this);
-        }
-        
-        this.fireEvent('collapse', this);
-        
-        this.validate();
-    },
-
-    collapseIf : function(e)
-    {
-        var in_combo  = e.within(this.el);
-        var in_list =  e.within(this.list);
-        var is_list = (Roo.get(e.getTarget()).id == this.list.id) ? true : false;
-        
-        if (in_combo || in_list || is_list) {
-            return;
-        }
-        
-        this.collapse();
-    },
-
-    expand : function()
-    {
-        if(this.isExpanded()){
-            return;
-        }
-        
-        var lw = this.listWidth || Math.max(this.inputEl().getWidth(), this.minListWidth);
-        
-        this.list.setWidth(lw);
-        
-        this.list.show();
-        
-        this.restrictHeight();
-        
-        Roo.get(document).on('mousedown', this.collapseIf, this);
-        Roo.get(document).on('mousewheel', this.collapseIf, this);
-        
-        if (!this.editable) {
-            Roo.get(document).on('keydown', this.listKeyPress, this);
-        }
-        
-        this.fireEvent('expand', this);
     },
     
     restrictHeight : function()
