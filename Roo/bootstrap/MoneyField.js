@@ -67,12 +67,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
         
         cfg.cn.push({
             tag : 'div',
-            cls : 'money-currency',
-            cn : [
-                {
-                    
-                }
-            ]
+            cls : 'money-currency'
         });
         
         cfg.cn.push({
