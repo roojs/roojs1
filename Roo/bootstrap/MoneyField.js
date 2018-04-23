@@ -309,6 +309,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             allowed += "-";
         }
         
+        this.stripCharsRe = new RegExp('[^'+allowed+']', 'gi');
+        
         
         
     },
