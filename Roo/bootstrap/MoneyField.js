@@ -63,14 +63,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
                                 tooltip : 'This field is required'
                             }
                         ]
-                    },
-                    {
-                        cls : "", 
-                        cn: [
-                            combobox
-                        ]
                     }
-
                 ];
                 
                 labelCfg = cfg.cn[0];
@@ -116,10 +109,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
                    tag: 'label',
                    html : this.fieldLabel
 
-               },
-
-               combobox
-
+               }
             ];
             
             if(this.indicatorpos == 'right'){
@@ -139,9 +129,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
                            }
                        ]
 
-                    },
-                    combobox
-
+                    }
                 ];
 
             }
