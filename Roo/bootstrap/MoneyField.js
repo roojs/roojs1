@@ -37,7 +37,26 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
             input.name = this.name;
         }
         
+        if (this.disabled) {
+            input.disabled = true;
+        }
         
+        var currency_container = {
+            tag: 'div',
+            cls: 'currency-box',
+            cn: [
+                {
+                    tag: 'input',
+                    cls : 'form-control roo-money-input',
+                    autocomplete: 'new-password'
+                },
+                {
+                    tag: 'div',
+                    cls: 'caret'
+                }
+            ]
+        };
+            
         
             
     },
