@@ -19,99 +19,11 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
     {
         var align = this.labelAlign || this.parentLabelAlign();
         
-        var id = Roo.id();
-        
         var cfg = {
-            cls: 'form-group'
+            cls: 'form-group',
+            cn : []
         };
         
-        
-        var currency_input =  {
-            tag: 'input',
-            cls : 'form-control',
-            autocomplete: 'new-password'
-        };
-        
-        var amount_input =  {
-            tag: 'input',
-            id : id,
-            cls : 'form-control',
-            autocomplete: 'new-password'
-        };
-        
-        if (this.name) {
-            currency_input.name = this.name;
-        }
-        
-        if (this.currency_name) {
-            currency_input.name = this.currency_name;
-        }
-        
-        if (this.disabled) {
-            currency_input.disabled = true;
-            amount_input.disabled = true;
-        }
-        
-        var inputblock = amount_input;
-        
-        if(this.hasFeedback && !this.allowBlank){
-            
-            var feedback = {
-                tag: 'span',
-                cls: 'glyphicon form-control-feedback'
-            };
-            
-            inputblock = {
-                cls : 'has-feedback',
-                cn :  [
-                    currency_input,
-                    inputblock,
-                    feedback
-                ] 
-            };
-        }
-        
-        var box = {
-            tag: 'div',
-            cn: [
-                {
-                    tag: 'input',
-                    type : 'hidden',
-                    cls: 'form-hidden-field'
-                },
-                inputblock
-            ]
-        };
-        
-        var combobox = {
-            cls: 'roo-select2-container input-group',
-            cn: [
-                box
-            ]
-        };
-        
-        var caret = {
-            tag: 'span',
-            cls: 'caret'
-        };
-        
-        combobox.cn.push({
-            tag :'span',
-            cls : 'input-group-addon btn dropdown-toggle',
-            cn : [
-                caret,
-                {
-                    tag: 'span',
-                    cls: 'combobox-clear',
-                    cn  : [
-                        {
-                            tag : 'i',
-                            cls: 'icon-remove'
-                        }
-                    ]
-                }
-            ]
-        });
         
         if (align ==='left' && this.fieldLabel.length) {
             
@@ -125,7 +37,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
                 },
                 {
                     tag: 'label',
-                    'for' :  id,
                     cls : 'control-label',
                     html : this.fieldLabel
 
