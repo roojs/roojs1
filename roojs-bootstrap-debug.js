@@ -39810,18 +39810,23 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
             cls: 'roo-select2-container input-group',
             cn: [
                 {
-                    tag : 'input',
-                    cls : 'form-control roo-money-amount-input',
-                    autocomplete: 'new-password',
-                    style : 'width: 100px;'
-                },
-                {
-                    tag :'span',
-                    cls : 'input-group-addon btn dropdown-toggle',
+                    tag : 'div',
+                    cls : 'roo-money-currency-box',
                     cn : [
                         {
-                            tag: 'span',
-                            cls: 'caret'
+                            tag : 'input',
+                            cls : 'form-control roo-money-amount-input',
+                            autocomplete: 'new-password'
+                        },
+                        {
+                            tag :'span',
+                            cls : 'input-group-addon btn dropdown-toggle',
+                            cn : [
+                                {
+                                    tag: 'span',
+                                    cls: 'caret'
+                                }
+                            ]
                         }
                     ]
                 },
