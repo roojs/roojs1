@@ -27,14 +27,14 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
 
         var input =  {
             tag: 'input',
-            cls : 'form-control tel-input',
+            cls : 'form-control amount-input',
             autocomplete: 'new-password'
         };
         
         var hiddenInput = {
             tag: 'input',
             type: 'hidden',
-            cls: 'hidden-tel-input'
+            cls: 'hidden-amount-input'
         };
     }
 });
