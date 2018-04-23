@@ -4889,4 +4889,23 @@ html.bootstrap-sticky body {
 .flag.ot {
   height: 0px;
 }
+.roo-money-field .roo-money-currency {
+  padding-right: 0px;
+}
+.roo-money-field .roo-money-amount {
+  padding-left: 0px;
+}
+.roo-money-field .roo-money-amount-input {
+  border-right: 0px;
+}
+.roo-money-field .input-group-addon {
+  background-color: transparent;
+  border-left: 0px;
+  border-right: 0px;
+  border-radius: 0px;
+}
+.roo-money-field .roo-money-amount-input {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
 /*# sourceMappingURL=roojs-bootstrap-debug.css.map */
