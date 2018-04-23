@@ -23,64 +23,11 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
         
         var cfg = {
             cls: 'form-group',
-            cn : []
+            cn: []
         };
         
-        if (this.fieldLabel.length) {
-            
-            cfg.cn = [
-                {
-                   tag : 'i',
-                   cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
-                   tooltip : 'This field is required'
-               },
-               {
-                   tag: 'label',
-                   'for' :  id,
-                   html : this.fieldLabel
-
-               }
-            ];
-            
-            if(this.indicatorpos == 'right'){
-                
-                cfg.cn = [
-                    {
-                        tag: 'label',
-                        cn : [
-                            {
-                                tag : 'span',
-                                'for' :  id,
-                                html : this.fieldLabel
-                            },
-                            {
-                                tag : 'i',
-                                cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
-                                tooltip : 'This field is required'
-                            }
-                       ]
-
-                    }
-                ];
-            }
-        }
         
-        cfg.cn.push({
-            tag : 'div',
-            cls : 'money-currency',
-            cn : [
-                {
-                    
-                }
-            ]
-        });
         
-        cfg.cn.push({
-            tag : 'div',
-            cls : 'money-amount'
-        });
-        
-        return cfg;
             
     },
     
