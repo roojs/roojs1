@@ -275,13 +275,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
                     }
                     
                     this.store.load(options);
-                    
-                    /*
-                     *  this code will make the page width larger, at the beginning, the list not align correctly, 
-                     *  we should expand the list on onLoad
-                     *  so command out it
-                     */
-//                    this.expand();
                 }
             }else{
                 this.selectedIndex = -1;
@@ -290,6 +283,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
         }
         
         this.loadNext = false;
-    },
+    }
     
 });
