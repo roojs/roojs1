@@ -25,6 +25,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
             cls: 'form-group'
         };
         
+        
+        
         var currency_input =  {
             tag: 'input',
             cls : 'form-control',
@@ -63,6 +65,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
             inputblock = {
                 cls : 'has-feedback',
                 cn :  [
+                    currency_input,
                     inputblock,
                     feedback
                 ] 
