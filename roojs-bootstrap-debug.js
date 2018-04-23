@@ -8915,8 +8915,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         this.indicator = this.indicatorEl();
         
         if(this.indicator){
-            this.indicator.setVisibilityMode(Roo.Element.DISPLAY);
-            this.indicator.hide();
+            this.indicator.addClass('invisible');
+            
         }
  
         // reference to original value for reset
@@ -9224,7 +9224,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         }
         
         if(this.indicator){
-            this.indicator.hide();
+            this.indicator.removeClass('visible');
+            this.indicator.addClass('invisible');
         }
         
         this.el.addClass(this.validClass);
@@ -9270,7 +9271,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         }
         
         if(this.indicator){
-            this.indicator.show();
+            this.indicator.removeClass('invisible');
+            this.indicator.addClass('visible');
         }
         
         this.el.addClass(this.invalidClass);
@@ -33359,8 +33361,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
         this.itemsEl = this.el.select('.roo-radio-set-items', true).first();
         this.itemsEl.setVisibilityMode(Roo.Element.DISPLAY);
         
-        this.indicatorEl().setVisibilityMode(Roo.Element.DISPLAY);
-        this.indicatorEl().hide();
+        this.indicatorEl().addClass('invisible');
         
         this.originalValue = this.getValue();
         
@@ -33412,7 +33413,8 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
     markValid : function()
     {
         if(this.labelEl.isVisible(true)){
-            this.indicatorEl().hide();
+            this.indicatorEl().removeClass('visible');
+            this.indicatorEl().addClass('invisible');
         }
         
         this.el.removeClass([this.invalidClass, this.validClass]);
@@ -33428,7 +33430,8 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
         }
         
         if(this.labelEl.isVisible(true)){
-            this.indicatorEl().show();
+            this.indicatorEl().removeClass('invisible');
+            this.indicatorEl().addClass('visible');
         }
         
         this.el.removeClass([this.invalidClass, this.validClass]);
@@ -39491,7 +39494,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             
             this.list.on('mouseover', this.onViewOver, this);
             this.list.on('mousemove', this.onViewMove, this);
-            this.inputEl().on("keypress", this.onKeyUp, this);
+            this.inputEl().on("keyup", this.onKeyUp, this);
             
             this.tpl = '<li><a href="#"><div class="flag {iso2}"></div>{name} <span class="dial-code">+{dialCode}</span></a></li>';
 
@@ -39750,9 +39753,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                 e.stopEvent();
             }
             
-            if(!Roo.isIE && (e.isSpecialKey() || k == e.BACKSPACE || k == e.DELETE)){
-                return;
-            }
+            // if(!Roo.isIE && (e.isSpecialKey() || k == e.BACKSPACE || k == e.DELETE)){
+            //     return;
+            // }
             if(this.allowed.indexOf(String.fromCharCode(c)) === -1){
                 e.stopEvent();
             }
