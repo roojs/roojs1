@@ -446,4 +446,9 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         
         return parseFloat(value).toFixed(this.decimalPrecision);
     },
+    
+    decimalPrecisionFcn : function(v)
+    {
+        return Math.floor(v);
+    },
 });
