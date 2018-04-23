@@ -41,8 +41,23 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
             input.disabled=true;
         }
         
+        var inputblock = input;
         
-        
+        if(this.hasFeedback && !this.allowBlank){
+            
+            var feedback = {
+                tag: 'span',
+                cls: 'glyphicon form-control-feedback'
+            };
+            
+            inputblock = {
+                cls : 'has-feedback',
+                cn :  [
+                    inputblock,
+                    feedback
+                ] 
+            };
+        }
             
     }
 });
