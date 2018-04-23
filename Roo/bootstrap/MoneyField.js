@@ -13,12 +13,6 @@ Roo.bootstrap.MoneyField = function(config) {
     
     Roo.bootstrap.MoneyField.superclass.constructor.call(this, config);
     
-    if (this.store) {
-        this.store= Roo.factory(this.store, Roo.data);
-        this.ds = this.store;
-        this.ds.xmodule = this.xmodule || false;
-         
-    }
 };
 
 Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
