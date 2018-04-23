@@ -288,21 +288,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         
         this.dqTask = new Roo.util.DelayedTask(this.initQuery, this);
         
-        if(this.typeAhead){
-            this.taTask = new Roo.util.DelayedTask(this.onTypeAhead, this);
-        }
-        if(this.editable !== false){
-            this.inputEl().on("keyup", this.onKeyUp, this);
-        }
-        
-        if(this.forceSelection){
-            this.inputEl().on('blur', this.doForce, this);
-        }
-        
-        if(this.multiple){
-            this.choices = this.el.select('ul.roo-select2-choices', true).first();
-            this.searchField = this.el.select('ul li.roo-select2-search-field', true).first();
-        }
         
     },
     
