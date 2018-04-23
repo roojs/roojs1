@@ -58,6 +58,19 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
                 ] 
             };
         }
+        
+        var box = {
+            tag: 'div',
+            cn: [
+                {
+                    tag: 'input',
+                    type : 'hidden',
+                    cls: 'form-hidden-field'
+                },
+                inputblock
+            ]
+            
+        };
             
     }
 });
