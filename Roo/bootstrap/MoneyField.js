@@ -134,8 +134,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
 
             }
 
-        } else {
-            cfg = combobox
         }
         
         var settings=this;
@@ -144,6 +142,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
                 cfg.cls += ' col-' + size + '-' + settings[size];
             }
         });
+        
+        
         
         return cfg;
             
