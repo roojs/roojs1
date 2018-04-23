@@ -186,6 +186,15 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
     
     initEvents : function()
     {
+        if (!this.store) {
+            throw "can not find store for combo";
+        }
+        
+        this.store = Roo.factory(this.store, Roo.data);
+        this.store.parent = this;
+        
+        this.indicator = this.indicatorEl();
+        
         this.triggerEl = this.el.select('.input-group-addon', true).first();
         
         
