@@ -299,6 +299,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             return;
         }
         
+        this.hasFocus = true;
+        
         if(this.triggerAction == 'all') {
             this.doQuery(this.allQuery, true);
             return;
