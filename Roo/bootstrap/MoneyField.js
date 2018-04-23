@@ -315,4 +315,5 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         this.list.alignTo(this.currencyEl, this.listAlign);
     }
     
+    
 });
