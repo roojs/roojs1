@@ -191,6 +191,105 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         
     },
     
+    initCurrencyEvent : function()
+    {
+        if (!this.store) {
+            throw "can not find store for combo";
+        }
+        
+        this.store = Roo.factory(this.store, Roo.data);
+        this.store.parent = this;
+        
+        this.createList();
+        
+        this.indicator = this.indicatorEl();
+        
+        this.triggerEl = this.el.select('.input-group-addon', true).first();
+        
+        this.triggerEl.on("click", this.onTriggerClick, this, { preventDefault : true });
+        
+        this.currencyEl = this.el.select('.roo-money-currency-input', true).first();
+        
+        this.amountEl = this.el.select('.roo-money-amount-input', true).first();
+        
+        var _this = this;
+        
+        (function(){
+            var lw = _this.listWidth || Math.max(_this.inputEl().getWidth(), _this.minListWidth);
+            _this.list.setWidth(lw);
+        }).defer(100);
+        
+        this.list.on('mouseover', this.onViewOver, this);
+        this.list.on('mousemove', this.onViewMove, this);
+        this.list.on('scroll', this.onViewScroll, this);
+        
+        if(!this.tpl){
+            this.tpl = '<li><a href="#">{' + this.currencyField + '}</a></li>';
+        }
+        
+        this.view = new Roo.View(this.list, this.tpl, {
+            singleSelect:true, store: this.store, selectedClass: this.selectedClass
+        });
+        
+        this.view.on('click', this.onViewClick, this);
+        
+        this.store.on('beforeload', this.onBeforeLoad, this);
+        this.store.on('load', this.onLoad, this);
+        this.store.on('loadexception', this.onLoadException, this);
+        
+        this.keyNav = new Roo.KeyNav(this.currencyEl, {
+            "up" : function(e){
+                this.inKeyMode = true;
+                this.selectPrev();
+            },
+
+            "down" : function(e){
+                if(!this.isExpanded()){
+                    this.onTriggerClick();
+                }else{
+                    this.inKeyMode = true;
+                    this.selectNext();
+                }
+            },
+
+            "enter" : function(e){
+                this.collapse();
+                
+                if(this.fireEvent("specialkey", this, e)){
+                    this.onViewClick(false);
+                }
+                
+                return true;
+            },
+
+            "esc" : function(e){
+                this.collapse();
+            },
+
+            "tab" : function(e){
+                this.collapse();
+                
+                if(this.fireEvent("specialkey", this, e)){
+                    this.onViewClick(false);
+                }
+                
+                return true;
+            },
+
+            scope : this,
+
+            doRelay : function(foo, bar, hname){
+                if(hname == 'down' || this.scope.isExpanded()){
+                   return Roo.KeyNav.prototype.doRelay.apply(this, arguments);
+                }
+                return true;
+            },
+
+            forceKeyDown: true
+        });
+        
+    },
+    
     onTriggerClick : function(e)
     {   
         if(this.disabled){
