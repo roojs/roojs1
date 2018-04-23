@@ -281,6 +281,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             forceKeyDown: true
         });
         
+        
     },
     
     onTriggerClick : function(e)
