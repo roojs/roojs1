@@ -57,7 +57,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
             cn : [
                 {
                     tag : 'div',
-                    cls : 'column',
+                    cls : 'column col-lg-' + clg + ' col-md-' + cmd + ' col-sm-' + csm + ' col-xs-' + cxs,
                 }
             ]
             cls: 'roo-select2-container input-group',
