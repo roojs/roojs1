@@ -250,26 +250,18 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
             this.hasQuery = true;
             
             if(this.lastQuery != q || this.alwaysQuery){
+                
                 this.lastQuery = q;
+                
                 if(this.mode == 'local'){
+                    
                     this.selectedIndex = -1;
-                    if(forceAll){
-                        this.store.clearFilter();
-                    }else{
-                        
-                        if(this.specialFilter){
-                            this.fireEvent('specialfilter', this);
-                            this.onLoad();
-                            return;
-                        }
-                        
-                        this.store.filter(this.displayField, q);
-                    }
+                    
+                    this.store.clearFilter();
                     
                     this.store.fireEvent("datachanged", this.store);
                     
                     this.onLoad();
-                    
                     
                 }else{
                     
