@@ -193,9 +193,12 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
         this.store = Roo.factory(this.store, Roo.data);
         this.store.parent = this;
         
+        this.createList();
+        
         this.indicator = this.indicatorEl();
         
         this.triggerEl = this.el.select('.input-group-addon', true).first();
+        
         
         
         
