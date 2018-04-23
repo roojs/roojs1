@@ -216,6 +216,10 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         this.list.on('mousemove', this.onViewMove, this);
         this.list.on('scroll', this.onViewScroll, this);
         
+        if(!this.tpl){
+            this.tpl = '<li><a href="#">{' + this.currencyField + '}</a></li>';
+        }
+        
     },
     
     onTriggerClick : function(e)
