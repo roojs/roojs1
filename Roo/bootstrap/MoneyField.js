@@ -17,6 +17,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
     
     getAutoCreate : function()
     {
+        var align = this.labelAlign || this.parentLabelAlign();
+        
         var id = Roo.id();
         
         var cfg = {
