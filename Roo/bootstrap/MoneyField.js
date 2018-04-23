@@ -15,6 +15,11 @@ Roo.bootstrap.MoneyField = function(config) {
 
 Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
     
+    inputlg : 9,
+    inputmd : 9,
+    inputsm : 9,
+    inputxs : 6,
+    
     getAutoCreate : function()
     {
         var align = this.labelAlign || this.parentLabelAlign();
@@ -41,6 +46,11 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
             input.disabled = true;
         }
 
+        var clg = 12 - this.inputlg;
+        var cmd = 12 - this.inputmd;
+        var csm = 12 - this.inputsm;
+        var cxs = 12 - this.inputxs;
+        
         var container = {
             tag : 'div',
             cls : 'row',
