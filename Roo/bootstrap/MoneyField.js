@@ -295,6 +295,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     initInputEvent : function(e)
     {
         var allowed = "0123456789";
+        
+        
     },
     
     onTriggerClick : function(e)
