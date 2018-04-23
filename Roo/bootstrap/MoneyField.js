@@ -305,6 +305,10 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             allowed += this.decimalSeparator;
         }
         
+        if(this.allowNegative){
+            allowed += "-";
+        }
+        
         
         
     },
