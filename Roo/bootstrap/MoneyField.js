@@ -205,6 +205,17 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         
         this.amountEl = this.el.select('.roo-money-amount-input', true).first();
         
+        var _this = this;
+        
+        (function(){
+            var lw = _this.listWidth || Math.max(_this.inputEl().getWidth(), _this.minListWidth);
+            _this.list.setWidth(lw);
+        }).defer(100);
+        
+        this.list.on('mouseover', this.onViewOver, this);
+        this.list.on('mousemove', this.onViewMove, this);
+        this.list.on('scroll', this.onViewScroll, this);
+        
     },
     
     onTriggerClick : function(e)
