@@ -41,19 +41,14 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
             input.disabled = true;
         }
 
-        var currency_box = {
-            tag: 'div',
-            cls: 'currency-box',
-            cn: [
-                
-            ]
-        };
-
-
         var container = {
             cls: 'roo-select2-container input-group',
             cn: [
-                currency_box,
+                {
+                    tag : 'input',
+                    cls : 'form-control roo-money-amount-input',
+                    
+                },
                 {
                     tag: 'div',
                     cls: this.hasFeedback ? 'has-feedback' : '',
