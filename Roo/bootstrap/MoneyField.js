@@ -20,6 +20,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
     inputsm : 9,
     inputxs : 6,
     
+    store : false,
+    
     getAutoCreate : function()
     {
         var align = this.labelAlign || this.parentLabelAlign();
@@ -182,8 +184,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
     
     initEvents : function()
     {
-        
         this.triggerEl = this.el.select('.input-group-addon', true).first();
+        
         
         
         
