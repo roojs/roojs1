@@ -31,6 +31,10 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
             autocomplete: 'new-password'
         };
         
-        
+        var hiddenInput = {
+            tag: 'input',
+            type: 'hidden',
+            cls: 'hidden-tel-input'
+        };
     }
 });
