@@ -283,6 +283,17 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
         }
         
         this.loadNext = false;
-    }
+    },
+    
+    getParams : function(q){
+        var p = {};
+        //p[this.queryParam] = q;
+        
+        if(this.pageSize){
+            p.start = 0;
+            p.limit = this.pageSize;
+        }
+        return p;
+    },
     
 });
