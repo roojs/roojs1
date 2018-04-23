@@ -25,7 +25,16 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
         var cfg = {
             cls: 'form-group'
         };
-
+        
+        var input =  {
+            tag: 'input',
+            id : id,
+            cls : 'form-control',
+            autocomplete: 'new-password'
+        };
+        
+        
+        
         var input =  {
             tag: 'input',
             cls : 'form-control amount-input',
