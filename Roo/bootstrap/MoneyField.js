@@ -59,15 +59,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
                     tag : 'div',
                     cls : 'column col-lg-' + clg + ' col-md-' + cmd + ' col-sm-' + csm + ' col-xs-' + cxs,
                     cn : [
-                        
-                    ]
-                },
-                {
-                    tag : 'div',
-                    cls : 'column col-lg-' + clg + ' col-md-' + cmd + ' col-sm-' + csm + ' col-xs-' + cxs,
-                    cn : [
                         {
-                            tag : 'div'
+                            tag : 'div',
                             cls: 'roo-select2-container input-group',
                             cn: [
                                 {
@@ -86,6 +79,16 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
                                     ]
                                 }
                             ]
+                        }
+                    ]
+                },
+                {
+                    tag : 'div',
+                    cls : 'column col-lg-' + clg + ' col-md-' + cmd + ' col-sm-' + csm + ' col-xs-' + cxs,
+                    cn : [
+                        {
+                            tag : 'input',
+                            cls: 'roo-money-amount-input'
                         }
                     ]
                 }
