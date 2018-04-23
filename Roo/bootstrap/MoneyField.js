@@ -41,7 +41,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
             input.disabled = true;
         }
         
-        var currency_container = {
+        var currency_box = {
             tag: 'div',
             cls: 'currency-box',
             cn: [
