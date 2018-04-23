@@ -182,6 +182,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         });
         
         return cfg;
+        
     },
     
     initEvents : function()
