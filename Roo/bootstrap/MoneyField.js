@@ -450,5 +450,11 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     decimalPrecisionFcn : function(v)
     {
         return Math.floor(v);
+    },
+    
+    setValue : function(v)
+    {
+        v = this.fixPrecision(v);
+        Roo.bootstrap.NumberField.superclass.setValue.call(this, String(v).replace(".", this.decimalSeparator));
     }
 });
