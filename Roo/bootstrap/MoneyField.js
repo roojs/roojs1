@@ -17,6 +17,11 @@ Roo.bootstrap.MoneyField = function(config) {
 
 Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
+    /**
+     * @cfg {String} decimalSeparator Character(s) to allow as the decimal separator (defaults to '.')
+     */
+    decimalSeparator : ".",
+    
     inputlg : 9,
     inputmd : 9,
     inputsm : 9,
@@ -295,6 +300,11 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     initInputEvent : function(e)
     {
         var allowed = "0123456789";
+        
+        if(this.allowDecimals){
+            allowed += this.decimalSeparator;
+        }
+        
         
         
     },
