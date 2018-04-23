@@ -39811,8 +39811,9 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
             cls: 'currency-box',
             cn: [
                 {
-                    tag: 'div',
-                    cls: 'roo-money-currency-input'
+                    tag: 'input',
+                    cls: 'form-control roo-money-currency-input',
+                    autocomplete: 'new-password'
                 },
                 {
                     tag: 'div',
