@@ -39839,7 +39839,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
                                 },
                                 {
                                     tag :'span',
-                                    cls : 'input-group-addon dropdown-toggle',
+                                    cls : 'input-group-addon',
                                     cn : [
                                         {
                                             tag: 'span',
@@ -39947,6 +39947,57 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         });
         
         return cfg;
+    },
+    
+    initEvents : function()
+    {
+        if (!this.store) {
+            throw "can not find store for combo";
+        }
+        
+        this.store = Roo.factory(this.store, Roo.data);
+        this.store.parent = this;
+        
+        this.createList();
+        
+        this.indicator = this.indicatorEl();
+        
+        this.triggerEl = this.el.select('.input-group-addon', true).first();
+        
+        this.triggerEl.on("click", this.onTriggerClick, this, { preventDefault : true });
+        
+        this.currencyEl = this.el.select('.roo-money-currency-input', true).first();
+        
+        this.amountEl = this.el.select('.roo-money-amount-input', true).first();
+        
+    },
+    
+    onTriggerClick : function(e)
+    {   
+        if(this.disabled){
+            return;
+        }
+        
+        this.page = 0;
+        this.loadNext = false;
+        
+        if(this.isExpanded()){
+            this.collapse();
+            return;
+        }
+        
+        if(this.triggerAction == 'all') {
+            this.doQuery(this.allQuery, true);
+            return;
+        }
+        
+        this.doQuery(this.getRawValue());
+    },
+    
+    restrictHeight : function()
+    {
+        this.list.alignTo(this.currencyEl, this.listAlign);
+        this.list.alignTo(this.currencyEl, this.listAlign);
     }
     
 });
