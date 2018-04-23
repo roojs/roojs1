@@ -1,7 +1,7 @@
 
 /**
  * @class Roo.bootstrap.MoneyField
- * @extends Roo.bootstrap.TriggerField
+ * @extends Roo.bootstrap.ComboBox
  * Bootstrap MoneyField class
  * 
  * @constructor
@@ -15,7 +15,7 @@ Roo.bootstrap.MoneyField = function(config) {
     
 };
 
-Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
+Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     inputlg : 9,
     inputmd : 9,
@@ -214,21 +214,19 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
         
         if(this.isExpanded()){
             this.collapse();
-            if (!this.blockFocus) {
-                this.inputEl().focus();
-            }
-            
-        }else {
-            this.hasFocus = true;
-            if(this.triggerAction == 'all') {
-                this.doQuery(this.allQuery, true);
-            } else {
-                this.doQuery(this.getRawValue());
-            }
-            if (!this.blockFocus) {
-                this.inputEl().focus();
-            }
+            return;
         }
-    },
+        
+        this.hasFocus = true;
+        
+        if(this.triggerAction == 'all') {
+            this.doQuery(this.allQuery, true);
+        } else {
+            this.doQuery(this.getRawValue());
+        }
+        if (!this.blockFocus) {
+            this.inputEl().focus();
+        }
+    }
     
 });
