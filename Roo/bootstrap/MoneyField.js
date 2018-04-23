@@ -360,8 +360,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
     
     restrictHeight : function()
     {
-        this.list.alignTo(this.inputEl(), this.listAlign);
-        this.list.alignTo(this.inputEl(), this.listAlign);
+        this.list.alignTo(this.currencyEl, this.listAlign);
+        this.list.alignTo(this.currencyEl, this.listAlign);
     },
     
     
