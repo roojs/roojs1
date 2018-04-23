@@ -36,5 +36,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
             type: 'hidden',
             cls: 'hidden-amount-input'
         };
+        
+        
     }
 });
