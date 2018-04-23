@@ -70,7 +70,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
                                 },
                                 {
                                     tag :'span',
-                                    cls : 'input-group-addon dropdown-toggle',
+                                    cls : 'input-group-addon',
                                     cn : [
                                         {
                                             tag: 'span',
