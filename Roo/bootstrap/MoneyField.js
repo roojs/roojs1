@@ -335,23 +335,11 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         if (this.currencyField) {
             currency = !o || typeof(o[this.currencyField]) == 'undefined' ? '' : o[this.currencyField];
         } else {
-            // this is an error condition!!!
             Roo.log('no  displayField value set for '+ (this.name ? this.name : this.id));
         }
         
         if(this.valueField){
             vv = !o || typeof(o[this.valueField]) == 'undefined' ? dv : o[this.valueField];
-        }
-        
-        var close = this.closeTriggerEl();
-        
-        if(close){
-            if(dv.length || vv * 1 > 0){
-                close.show() ;
-                this.blockFocus=true;
-            } else {
-                close.hide();
-            }             
         }
         
         if(this.hiddenField){
@@ -364,9 +352,9 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         }
         // no hidden field.. - we store the value in 'value', but still display
         // display field!!!!
-        this.lastSelectionText = dv;
-        Roo.bootstrap.ComboBox.superclass.setValue.call(this, dv);
-        this.value = vv;
+        this.lastSelectionText = currency;
+        
+        this.currencyValue = currency;
         
         
         
