@@ -24,7 +24,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
             cn : []
         };
         
-        
         if (align ==='left' && this.fieldLabel.length) {
             
             cfg.cls += ' roo-form-group-label-left';
@@ -133,8 +132,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
 
             }
 
-        } else {
-            cfg = combobox
         }
         
         var settings=this;
@@ -142,6 +139,16 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
             if (settings[size]) {
                 cfg.cls += ' col-' + size + '-' + settings[size];
             }
+        });
+        
+        cfg.cn.push({
+            tag : 'div',
+            cls : 'money-currency'
+        });
+        
+        cfg.cn.push({
+            tag : 'div',
+            cls : 'money-amount'
         });
         
         return cfg;
