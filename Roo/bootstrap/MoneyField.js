@@ -229,66 +229,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         this.doQuery(this.getRawValue());
     },
     
-    doQuery : function(q, forceAll){
-        
-        if(q === undefined || q === null){
-            q = '';
-        }
-        
-        var qe = {
-            query: q,
-            forceAll: forceAll,
-            combo: this,
-            cancel:false
-        };
-        
-        if(this.fireEvent('beforequery', qe) === false || qe.cancel){
-            return false;
-        }
-        
-        q = qe.query;
-        
-        forceAll = qe.forceAll;
-        if(forceAll === true || (q.length >= this.minChars)){
-            
-            this.hasQuery = true;
-            
-            if(this.lastQuery != q || this.alwaysQuery){
-                
-                this.lastQuery = q;
-                
-                if(this.mode == 'local'){
-                    
-                    this.selectedIndex = -1;
-                    
-                    this.store.clearFilter();
-                    
-                    this.store.fireEvent("datachanged", this.store);
-                    
-                    this.onLoad();
-                    
-                }else{
-                    
-                    this.store.baseParams[this.queryParam] = q;
-                    
-                    var options = {params : this.getParams(q)};
-                    
-                    if(this.loadNext){
-                        options.add = true;
-                        options.params.start = this.page * this.pageSize;
-                    }
-                    
-                    this.store.load(options);
-                }
-            }else{
-                this.selectedIndex = -1;
-                this.onLoad();   
-            }
-        }
-        
-        this.loadNext = false;
-    },
-    
     collapse : function()
     {
         if(!this.isExpanded()){
