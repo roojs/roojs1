@@ -352,6 +352,14 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
         }
         
         this.fireEvent('expand', this);
-    }
+    },
+    
+    restrictHeight : function()
+    {
+        this.list.alignTo(this.inputEl(), this.listAlign);
+        this.list.alignTo(this.inputEl(), this.listAlign);
+    },
+    
+    
     
 });
