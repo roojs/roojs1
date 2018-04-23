@@ -332,8 +332,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         
         this.lastData = o;
         
-        if (this.displayField) {
-            dv = !o || typeof(o[this.displayField]) == 'undefined' ? '' : o[this.displayField];
+        if (this.currencyField) {
+            currency = !o || typeof(o[this.currencyField]) == 'undefined' ? '' : o[this.currencyField];
         } else {
             // this is an error condition!!!
             Roo.log('no  displayField value set for '+ (this.name ? this.name : this.id));
