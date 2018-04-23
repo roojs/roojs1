@@ -1,7 +1,21 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+
+/**
+ * @class Roo.bootstrap.MoneyField
+ * @extends Roo.bootstrap.TriggerField
+ 
+ * @constructor
+ * Create a new MoneyField.
+ * @param {Object} config Configuration options
  */
 
+Roo.bootstrap.MoneyField = function(config) {
+    Roo.bootstrap.MoneyField.superclass.constructor.call(this, config);
+};
 
+Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
+        
+    getAutoCreate : function()
+    {
+        
+    }
+});
