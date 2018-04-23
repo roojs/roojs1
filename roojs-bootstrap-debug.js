@@ -40104,6 +40104,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         this.lastSelectionText = currency;
         this.currencyValue = currency;
         
+        this.setCurrency(currency);
+        
         
     },
     
@@ -40111,7 +40113,12 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     {   
         this.currencyValue = v;
         
+        Roo.log('set Currency');
+        
         if(this.rendered){
+            
+            Roo.log('set Currency??');
+            
             this.currencyEl.dom.value = (v === null || v === undefined ? '' : v);
             this.validate();
         }
