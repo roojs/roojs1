@@ -580,8 +580,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         this.indicator = this.indicatorEl();
         
         if(this.indicator){
-            this.indicator.setVisibilityMode(Roo.Element.DISPLAY);
-            this.indicator.hide();
+            this.indicator.addClass('invisible');
+            
         }
  
         // reference to original value for reset
