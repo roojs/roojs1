@@ -42,6 +42,14 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
         }
 
         var container = {
+            tag : 'div',
+            cls : 'row',
+            cn : [
+                {
+                    tag : 'div',
+                    cls : 'column',
+                }
+            ]
             cls: 'roo-select2-container input-group',
             cn: [
                 {
