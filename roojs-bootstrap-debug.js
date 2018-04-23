@@ -39996,7 +39996,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         this.store.on('load', this.onLoad, this);
         this.store.on('loadexception', this.onLoadException, this);
         
-        this.keyNav = new Roo.KeyNav(this.inputEl(), {
+        this.keyNav = new Roo.KeyNav(this.currencyEl, {
             "up" : function(e){
                 this.inKeyMode = true;
                 this.selectPrev();
@@ -40046,8 +40046,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
 
             forceKeyDown: true
         });
-        
-        
     },
     
     onTriggerClick : function(e)
@@ -40078,6 +40076,64 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     {
         this.list.alignTo(this.currencyEl, this.listAlign);
         this.list.alignTo(this.currencyEl, this.listAlign);
+    },
+    
+    onViewClick : function(view, doFocus, el, e)
+    {
+        var index = this.view.getSelectedIndexes()[0];
+        
+        var r = this.store.getAt(index);
+        
+        if(r){
+            this.onSelect(r, index);
+        }
+    },
+    
+    setFromData : function(o)
+    {
+        var currency = '';
+        
+        this.lastData = o;
+        
+        if (this.currencyField) {
+            currency = !o || typeof(o[this.currencyField]) == 'undefined' ? '' : o[this.currencyField];
+        } else {
+            Roo.log('no  displayField value set for '+ (this.name ? this.name : this.id));
+        }
+        
+        this.lastSelectionText = currency;
+        this.currencyValue = currency;
+        
+        
+    },
+    
+    setCurrency : function(v)
+    {   
+        this.currencyValue = v;
+        
+        if(this.rendered){
+            this.currencyEl.dom.value = (v === null || v === undefined ? '' : v);
+            this.validate();
+        }
+    },
+    
+    validate : function()
+    {
+        return;
+        
+        var v = this.getRawValue();
+        
+        if(this.multiple){
+            v = this.getValue();
+        }
+        
+        if(this.disabled || this.allowBlank || v.length){
+            this.markValid();
+            return true;
+        }
+        
+        this.markInvalid();
+        return false;
     }
     
 });
