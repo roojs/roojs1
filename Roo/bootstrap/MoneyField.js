@@ -201,6 +201,34 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.TriggerField, {
         
         this.triggerEl.on("click", this.onTriggerClick, this, { preventDefault : true });
         
-    }
+    },
+    
+    onTriggerClick : function(e)
+    {   
+        if(this.disabled){
+            return;
+        }
+        
+        this.page = 0;
+        this.loadNext = false;
+        
+        if(this.isExpanded()){
+            this.collapse();
+            if (!this.blockFocus) {
+                this.inputEl().focus();
+            }
+            
+        }else {
+            this.hasFocus = true;
+            if(this.triggerAction == 'all') {
+                this.doQuery(this.allQuery, true);
+            } else {
+                this.doQuery(this.getRawValue());
+            }
+            if (!this.blockFocus) {
+                this.inputEl().focus();
+            }
+        }
+    },
     
 });
