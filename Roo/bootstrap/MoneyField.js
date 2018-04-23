@@ -313,6 +313,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         
         
         
+        
     },
     
     onTriggerClick : function(e)
