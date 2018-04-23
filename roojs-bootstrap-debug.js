@@ -39947,6 +39947,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         });
         
         return cfg;
+        
     },
     
     initEvents : function()
@@ -39970,6 +39971,83 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         
         this.amountEl = this.el.select('.roo-money-amount-input', true).first();
         
+        var _this = this;
+        
+        (function(){
+            var lw = _this.listWidth || Math.max(_this.inputEl().getWidth(), _this.minListWidth);
+            _this.list.setWidth(lw);
+        }).defer(100);
+        
+        this.list.on('mouseover', this.onViewOver, this);
+        this.list.on('mousemove', this.onViewMove, this);
+        this.list.on('scroll', this.onViewScroll, this);
+        
+        if(!this.tpl){
+            this.tpl = '<li><a href="#">{' + this.currencyField + '}</a></li>';
+        }
+        
+        this.view = new Roo.View(this.list, this.tpl, {
+            singleSelect:true, store: this.store, selectedClass: this.selectedClass
+        });
+        
+        this.view.on('click', this.onViewClick, this);
+        
+        this.store.on('beforeload', this.onBeforeLoad, this);
+        this.store.on('load', this.onLoad, this);
+        this.store.on('loadexception', this.onLoadException, this);
+        
+        this.keyNav = new Roo.KeyNav(this.inputEl(), {
+            "up" : function(e){
+                this.inKeyMode = true;
+                this.selectPrev();
+            },
+
+            "down" : function(e){
+                if(!this.isExpanded()){
+                    this.onTriggerClick();
+                }else{
+                    this.inKeyMode = true;
+                    this.selectNext();
+                }
+            },
+
+            "enter" : function(e){
+                this.collapse();
+                
+                if(this.fireEvent("specialkey", this, e)){
+                    this.onViewClick(false);
+                }
+                
+                return true;
+            },
+
+            "esc" : function(e){
+                this.collapse();
+            },
+
+            "tab" : function(e){
+                this.collapse();
+                
+                if(this.fireEvent("specialkey", this, e)){
+                    this.onViewClick(false);
+                }
+                
+                return true;
+            },
+
+            scope : this,
+
+            doRelay : function(foo, bar, hname){
+                if(hname == 'down' || this.scope.isExpanded()){
+                   return Roo.KeyNav.prototype.doRelay.apply(this, arguments);
+                }
+                return true;
+            },
+
+            forceKeyDown: true
+        });
+        
+        
     },
     
     onTriggerClick : function(e)
@@ -39985,6 +40063,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             this.collapse();
             return;
         }
+        
+        this.hasFocus = true;
         
         if(this.triggerAction == 'all') {
             this.doQuery(this.allQuery, true);
