@@ -481,9 +481,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             }
             
             if(f.xtype == 'MoneyField'){
-                
-                
-                
+                ret[f.currencyName] = f.getCurrency();
             }
 
             // not sure if this supported any more..
