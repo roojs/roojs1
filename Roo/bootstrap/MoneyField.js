@@ -366,17 +366,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             this.inputEl().relayEvent('keypress', this);
         }
         
-        if(this.inputEl().is('input[type=password]') && Roo.isSafari){
-            this.inputEl().on('keydown', this.SafariOnKeyDown, this);
-        }
-        
-        if (typeof(this.before) == 'object') {
-            this.before.render(this.el.select('.roo-input-before',true).first());
-        }
-        if (typeof(this.after) == 'object') {
-            this.after.render(this.el.select('.roo-input-after',true).first());
-        }
-        
         var allowed = "0123456789";
         
         if(this.allowDecimals){
