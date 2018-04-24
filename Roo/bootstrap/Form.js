@@ -404,7 +404,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                         sd[field.displayField] = typeof(values[field.name]) == 'undefined' ? '' : values[field.name];
                         field.setFromData(sd);
 
-                    } else if(field.setFromData) {
+                    } else if(field.setFromData && (field.store && !field.store.isLocal)) {
                         
                         
                         
