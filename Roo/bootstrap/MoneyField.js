@@ -336,9 +336,9 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     initNumberEvent : function(e)
     {
-        this.inputEl().on("keydown" , this.fireKey,  this);
-        this.inputEl().on("focus", this.onFocus,  this);
-        this.inputEl().on("blur", this.onBlur,  this);
+        this.amountEl.on("keydown" , this.fireKey,  this);
+        this.amountEl.on("focus", this.onFocus,  this);
+        this.amountEl.on("blur", this.onBlur,  this);
         
         this.inputEl().relayEvent('keyup', this);
         
