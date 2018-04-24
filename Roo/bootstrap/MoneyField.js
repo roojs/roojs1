@@ -399,6 +399,13 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         this.doQuery(this.getRawValue());
     },
     
+    getCurrency : function()
+    {   
+        var v = this.currencyEl.getValue();
+        
+        return v;
+    },
+    
     restrictHeight : function()
     {
         this.list.alignTo(this.currencyEl, this.listAlign);
@@ -544,6 +551,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             this.markValid();
             return true;
         }
+        
+        if(this.validateValue(this.getRawValue() && this.)
         
         this.markInvalid();
         return false;
