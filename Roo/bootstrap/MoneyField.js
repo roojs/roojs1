@@ -438,7 +438,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     {
         v = this.fixPrecision(v);
         
-        v = String(v).replace(".", this.decimalSeparator));
+        v = String(v).replace(".", this.decimalSeparator);
         
         this.value = v;
         
@@ -450,8 +450,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     validate : function()
     {
-        return;
-        
         var v = this.getRawValue();
         
         if(this.multiple){
