@@ -420,6 +420,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             Roo.log('no value set for '+ (this.name ? this.name : this.id));
         }
         
+        this.setValue(value);
         
     },
     
@@ -433,15 +434,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         }
     },
     
-    setValue : function(v)
-    {
-        this.value = v;
-        
-        if(this.rendered){
-            this.amountEl.dom.value = (v === null || v === undefined ? '' : v);
-            this.validate();
-        }
-    },
+    
     
     validate : function()
     {
