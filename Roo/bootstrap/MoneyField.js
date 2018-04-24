@@ -411,6 +411,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     setValue : function(v)
     {
+        this.value = v;
+        
         
     },
     
