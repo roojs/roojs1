@@ -572,9 +572,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     getName: function()
     {
-        if (!this.rendered) {return ''};
-        return !this.name && this.amountEl.dom.name  ? this.inputEl().dom.name : (this.hiddenName || '');
-        
+        return this.name;
     },
     
 });
