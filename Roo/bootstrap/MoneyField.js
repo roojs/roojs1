@@ -573,6 +573,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     getName: function()
     {
         return this.name;
-    },
+    }
     
 });

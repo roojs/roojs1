@@ -40337,6 +40337,11 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         
         this.markInvalid();
         return false;
+    },
+    
+    getName: function()
+    {
+        return this.name;
     }
     
 });
