@@ -409,6 +409,11 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         }
     },
     
+    setValue : function(v)
+    {
+        
+    },
+    
     validate : function()
     {
         return;
