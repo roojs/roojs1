@@ -413,7 +413,10 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     {
         this.value = v;
         
-        
+        if(this.rendered){
+            this.amountEl.dom.value = (v === null || v === undefined ? '' : v);
+            this.validate();
+        }
     },
     
     validate : function()
