@@ -336,17 +336,16 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     initNumberEvent : function(e)
     {
-        this.amountEl.on("keydown" , this.fireKey,  this);
-        this.amountEl.on("focus", this.onFocus,  this);
-        this.amountEl.on("blur", this.onBlur,  this);
+        this.inputEl().on("keydown" , this.fireKey,  this);
+        this.inputEl().on("focus", this.onFocus,  this);
+        this.inputEl().on("blur", this.onBlur,  this);
         
-        this.amountEl.relayEvent('keyup', this);
+        this.inputEl().relayEvent('keyup', this);
         
         if(this.indicator){
             this.indicator.addClass('invisible');
         }
  
-        // reference to original value for reset
         this.originalValue = this.getValue();
         
         if(this.validationEvent == 'keyup'){
@@ -366,11 +365,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         } else {
             this.inputEl().relayEvent('keypress', this);
         }
-       /* if(this.grow){
-            this.el.on("keyup", this.onKeyUp,  this, {buffer:50});
-            this.el.on("click", this.autoSize,  this);
-        }
-        */
+        
         if(this.inputEl().is('input[type=password]') && Roo.isSafari){
             this.inputEl().on('keydown', this.SafariOnKeyDown, this);
         }
