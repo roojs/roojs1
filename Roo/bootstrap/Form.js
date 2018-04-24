@@ -406,7 +406,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
 
                     } else if(field.setFromData && (field.store && !field.store.isLocal)) {
                         
-                        
+                        field.setFromData(values);
                         
                     } else {
                         field.setValue(values[id]);
