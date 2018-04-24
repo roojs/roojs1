@@ -492,11 +492,16 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         }
     },
     
-    getValue : function()
+    getRawValue : function()
     {
         var v = this.amountEl.getValue();
         
         return v;
+    },
+    
+    getValue : function()
+    {
+        return this.fixPrecision(this.parseValue(Roo.bootstrap.NumberField.superclass.getValue.call(this)));
     },
     
     parseValue : function(value)
@@ -554,7 +559,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             return true;
         }
         
-        if(this.validateValue(this.getValue() && this.)
+        if(this.validateValue(this.getRawValue() && this.)
         
         this.markInvalid();
         return false;
