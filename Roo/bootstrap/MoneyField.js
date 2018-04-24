@@ -198,7 +198,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         
     },
     
-    initNumberEvent : function()
+    initCurrencyEvent : function()
     {
         if (!this.store) {
             throw "can not find store for combo";
@@ -297,7 +297,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         
     },
     
-    initInputEvent : function(e)
+    initNumberEvent : function(e)
     {
         var allowed = "0123456789";
         
