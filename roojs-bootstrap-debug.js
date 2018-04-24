@@ -39998,6 +39998,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     initEvents : function()
     {
+        this.indicator = this.indicatorEl();
+        
         this.initCurrencyEvent();
         
         this.initNumberEvent();
@@ -40014,8 +40016,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         this.store.parent = this;
         
         this.createList();
-        
-        this.indicator = this.indicatorEl();
         
         this.triggerEl = this.el.select('.input-group-addon', true).first();
         
@@ -40105,6 +40105,36 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     initNumberEvent : function(e)
     {
+        this.inputEl().on("keydown" , this.fireKey,  this);
+        this.inputEl().on("focus", this.onFocus,  this);
+        this.inputEl().on("blur", this.onBlur,  this);
+        
+        this.inputEl().relayEvent('keyup', this);
+        
+        if(this.indicator){
+            this.indicator.addClass('invisible');
+        }
+ 
+        this.originalValue = this.getValue();
+        
+        if(this.validationEvent == 'keyup'){
+            this.validationTask = new Roo.util.DelayedTask(this.validate, this);
+            this.inputEl().on('keyup', this.filterValidation, this);
+        }
+        else if(this.validationEvent !== false){
+            this.inputEl().on(this.validationEvent, this.validate, this, {buffer: this.validationDelay});
+        }
+        
+        if(this.selectOnFocus){
+            this.on("focus", this.preFocus, this);
+            
+        }
+        if(this.maskRe || (this.vtype && this.disableKeyFilter !== true && (this.maskRe = Roo.form.VTypes[this.vtype+'Mask']))){
+            this.inputEl().on("keypress", this.filterKeys, this);
+        } else {
+            this.inputEl().relayEvent('keypress', this);
+        }
+        
         var allowed = "0123456789";
         
         if(this.allowDecimals){
@@ -40140,7 +40170,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             }
         };
         
-        this.amountEl.on("keypress", keyPress, this);
+        this.inputEl().on("keypress", keyPress, this);
         
     },
     
@@ -40256,14 +40286,14 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         this.value = v;
         
         if(this.rendered){
-            this.amountEl.dom.value = (v === null || v === undefined ? '' : v);
+            this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
             this.validate();
         }
     },
     
     getRawValue : function()
     {
-        var v = this.amountEl.getValue();
+        var v = this.inputEl().getValue();
         
         return v;
     },
@@ -40342,6 +40372,47 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     getName: function()
     {
         return this.name;
+    },
+    
+    beforeBlur : function()
+    {
+        if(!this.castInt){
+            return;
+        }
+        
+        var v = this.parseValue(this.getRawValue());
+        
+        if(v){
+            this.setValue(v);
+        }
+    },
+    
+    onBlur : function()
+    {
+        this.beforeBlur();
+        
+        if(!Roo.isOpera && this.focusClass){ // don't touch in Opera
+            //this.el.removeClass(this.focusClass);
+        }
+        
+        this.hasFocus = false;
+        
+        if(this.validationEvent !== false && this.validateOnBlur && this.validationEvent != "blur"){
+            this.validate();
+        }
+        
+        var v = this.getValue();
+        
+        if(String(v) !== String(this.startValue)){
+            this.fireEvent('change', this, v, this.startValue);
+        }
+        
+        this.fireEvent("blur", this);
+    },
+    
+    inputEl : function()
+    {
+        return this.amountEl ? this.amountEl : this.el.select('.roo-money-amount-input', true).first();
     }
     
 });
