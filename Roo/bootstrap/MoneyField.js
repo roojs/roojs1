@@ -401,7 +401,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             }
         };
         
-        this.amountEl.on("keypress", keyPress, this);
+        this.inputEl().on("keypress", keyPress, this);
         
     },
     
@@ -517,14 +517,14 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         this.value = v;
         
         if(this.rendered){
-            this.amountEl.dom.value = (v === null || v === undefined ? '' : v);
+            this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
             this.validate();
         }
     },
     
     getRawValue : function()
     {
-        var v = this.amountEl.getValue();
+        var v = this.inputEl().getValue();
         
         return v;
     },
