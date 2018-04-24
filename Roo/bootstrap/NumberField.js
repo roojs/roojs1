@@ -138,7 +138,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
 
     getValue : function()
     {
-        return this.fixPrecision(this.parseValue(Roo.bootstrap.NumberField.superclass.getValue.call(this)));
+        return this.fixPrecision(this.parseValue(this.getRawValue()));
     },
 
     parseValue : function(value)
