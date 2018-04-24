@@ -559,7 +559,12 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             return true;
         }
         
-        if(this.validateValue(this.getRawValue() && this.)
+        var currency = this.getCurrency();
+        
+        if(this.validateValue(this.getRawValue()) && currency.length){
+            this.markValid();
+            return true;
+        }
         
         this.markInvalid();
         return false;
