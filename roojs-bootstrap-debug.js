@@ -39782,6 +39782,11 @@ Roo.bootstrap.MoneyField = function(config) {
 
 Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
+    /**
+     * @cfg {String} decimalSeparator Character(s) to allow as the decimal separator (defaults to '.')
+     */
+    decimalSeparator : ".",
+    
     inputlg : 9,
     inputmd : 9,
     inputsm : 9,
@@ -39952,6 +39957,14 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     initEvents : function()
     {
+        this.initCurrencyEvent();
+        
+        this.initNumberEvent();
+        
+    },
+    
+    initCurrencyEvent : function()
+    {
         if (!this.store) {
             throw "can not find store for combo";
         }
@@ -40046,6 +40059,50 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
 
             forceKeyDown: true
         });
+        
+    },
+    
+    initNumberEvent : function(e)
+    {
+        var allowed = "0123456789";
+        
+        if(this.allowDecimals){
+            allowed += this.decimalSeparator;
+        }
+        
+        if(this.allowNegative){
+            allowed += "-";
+        }
+        
+        this.stripCharsRe = new RegExp('[^'+allowed+']', 'gi');
+        
+        var keyPress = function(e){
+            
+            var k = e.getKey();
+            
+            var c = e.getCharCode();
+            
+            if(
+                    (String.fromCharCode(c) == '.' || String.fromCharCode(c) == '-') &&
+                    allowed.indexOf(String.fromCharCode(c)) === -1
+            ){
+                e.stopEvent();
+                return;
+            }
+            
+            if(!Roo.isIE && (e.isSpecialKey() || k == e.BACKSPACE || k == e.DELETE)){
+                return;
+            }
+            
+            if(allowed.indexOf(String.fromCharCode(c)) === -1){
+                e.stopEvent();
+            }
+        };
+        
+        this.amountEl.on("keypress", keyPress, this);
+        
+        
+        
     },
     
     onTriggerClick : function(e)
@@ -40113,12 +40170,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     {   
         this.currencyValue = v;
         
-        Roo.log('set Currency');
-        
         if(this.rendered){
-            
-            Roo.log('set Currency??');
-            
             this.currencyEl.dom.value = (v === null || v === undefined ? '' : v);
             this.validate();
         }
@@ -40141,6 +40193,33 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         
         this.markInvalid();
         return false;
-    }
+    },
     
+    parseValue : function(value)
+    {
+        value = parseFloat(String(value).replace(this.decimalSeparator, "."));
+        return isNaN(value) ? '' : value;
+    },
+    
+    fixPrecision : function(value)
+    {
+        var nan = isNaN(value);
+        
+        if(!this.allowDecimals || this.decimalPrecision == -1 || nan || !value){
+            return nan ? '' : value;
+        }
+        
+        return parseFloat(value).toFixed(this.decimalPrecision);
+    },
+    
+    decimalPrecisionFcn : function(v)
+    {
+        return Math.floor(v);
+    },
+    
+    setValue : function(v)
+    {
+        v = this.fixPrecision(v);
+        Roo.bootstrap.NumberField.superclass.setValue.call(this, String(v).replace(".", this.decimalSeparator));
+    }
 });
