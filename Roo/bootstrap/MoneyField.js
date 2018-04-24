@@ -391,6 +391,24 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         }
     },
     
+    setFromCurrencyData : function(o)
+    {
+        var currency = '';
+        
+        this.lastCurrency = o;
+        
+        if (this.currencyField) {
+            currency = !o || typeof(o[this.currencyField]) == 'undefined' ? '' : o[this.currencyField];
+        } else {
+            Roo.log('no  displayField value set for '+ (this.name ? this.name : this.id));
+        }
+        
+        this.lastSelectionText = currency;
+        this.currencyValue = currency;
+        
+        this.setCurrency(currency);
+    },
+    
     setFromData : function(o)
     {
         var currency = '';
