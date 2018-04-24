@@ -7911,6 +7911,10 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                         sd[field.displayField] = typeof(values[field.name]) == 'undefined' ? '' : values[field.name];
                         field.setFromData(sd);
 
+                    } else if(field.setFromData && (field.store && !field.store.isLocal)) {
+                        
+                        field.setFromData(values);
+                        
                     } else {
                         field.setValue(values[id]);
                     }
@@ -39783,9 +39787,46 @@ Roo.bootstrap.MoneyField = function(config) {
 Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     /**
+     * @cfg {Boolean} allowDecimals False to disallow decimal values (defaults to true)
+     */
+    allowDecimals : true,
+    /**
      * @cfg {String} decimalSeparator Character(s) to allow as the decimal separator (defaults to '.')
      */
     decimalSeparator : ".",
+    /**
+     * @cfg {Number} decimalPrecision The maximum precision to display after the decimal separator (defaults to 2)
+     */
+    decimalPrecision : 2,
+    /**
+     * @cfg {Boolean} allowNegative False to prevent entering a negative sign (defaults to true)
+     */
+    allowNegative : true,
+    /**
+     * @cfg {Number} minValue The minimum allowed value (defaults to Number.NEGATIVE_INFINITY)
+     */
+    minValue : Number.NEGATIVE_INFINITY,
+    /**
+     * @cfg {Number} maxValue The maximum allowed value (defaults to Number.MAX_VALUE)
+     */
+    maxValue : Number.MAX_VALUE,
+    /**
+     * @cfg {String} minText Error text to display if the minimum value validation fails (defaults to "The minimum value for this field is {minValue}")
+     */
+    minText : "The minimum value for this field is {0}",
+    /**
+     * @cfg {String} maxText Error text to display if the maximum value validation fails (defaults to "The maximum value for this field is {maxValue}")
+     */
+    maxText : "The maximum value for this field is {0}",
+    /**
+     * @cfg {String} nanText Error text to display if the value is not a valid number.  For example, this can happen
+     * if a valid character like '.' or '-' is left in the field with no number (defaults to "{value} is not a valid number")
+     */
+    nanText : "{0} is not a valid number",
+    /**
+     * @cfg {Boolean} castInt (true|false) cast int if true (defalut true)
+     */
+    castInt : true,
     
     inputlg : 9,
     inputmd : 9,
@@ -40127,6 +40168,13 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         this.doQuery(this.getRawValue());
     },
     
+    getCurrency : function()
+    {   
+        var v = this.currencyEl.getValue();
+        
+        return v;
+    },
+    
     restrictHeight : function()
     {
         this.list.alignTo(this.currencyEl, this.listAlign);
@@ -40144,23 +40192,48 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         }
     },
     
-    setFromData : function(o)
+    onSelect : function(record, index){
+        
+        if(this.fireEvent('beforeselect', this, record, index) !== false){
+        
+            this.setFromCurrencyData(index > -1 ? record.data : false);
+            
+            this.collapse();
+            
+            this.fireEvent('select', this, record, index);
+        }
+    },
+    
+    setFromCurrencyData : function(o)
     {
         var currency = '';
         
-        this.lastData = o;
+        this.lastCurrency = o;
         
         if (this.currencyField) {
             currency = !o || typeof(o[this.currencyField]) == 'undefined' ? '' : o[this.currencyField];
         } else {
-            Roo.log('no  displayField value set for '+ (this.name ? this.name : this.id));
+            Roo.log('no  currencyField value set for '+ (this.name ? this.name : this.id));
         }
         
         this.lastSelectionText = currency;
-        this.currencyValue = currency;
         
         this.setCurrency(currency);
+    },
+    
+    setFromData : function(o)
+    {
+        this.setFromCurrencyData(o);
         
+        var value = '';
+        
+        if (this.name) {
+            value = !o || typeof(o[this.name]) == 'undefined' ? '' : o[this.name];
+        } else {
+            Roo.log('no value set for '+ (this.name ? this.name : this.id));
+        }
+        
+        this.setValue(value);
         
     },
     
@@ -40174,23 +40247,30 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         }
     },
     
-    validate : function()
+    setValue : function(v)
     {
-        return;
+        v = this.fixPrecision(v);
         
-        var v = this.getRawValue();
+        v = String(v).replace(".", this.decimalSeparator);
         
-        if(this.multiple){
-            v = this.getValue();
+        this.value = v;
+        
+        if(this.rendered){
+            this.amountEl.dom.value = (v === null || v === undefined ? '' : v);
+            this.validate();
         }
+    },
+    
+    getRawValue : function()
+    {
+        var v = this.amountEl.getValue();
         
-        if(this.disabled || this.allowBlank || v.length){
-            this.markValid();
-            return true;
-        }
-        
-        this.markInvalid();
-        return false;
+        return v;
+    },
+    
+    getValue : function()
+    {
+        return this.fixPrecision(this.parseValue(this.getRawValue()));
     },
     
     parseValue : function(value)
@@ -40215,9 +40295,48 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         return Math.floor(v);
     },
     
-    setValue : function(v)
+    validateValue : function(value)
     {
-        v = this.fixPrecision(v);
-        Roo.bootstrap.NumberField.superclass.setValue.call(this, String(v).replace(".", this.decimalSeparator));
+        if(!Roo.bootstrap.MoneyField.superclass.validateValue.call(this, value)){
+            return false;
+        }
+        
+        var num = this.parseValue(value);
+        
+        if(isNaN(num)){
+            this.markInvalid(String.format(this.nanText, value));
+            return false;
+        }
+        
+        if(num < this.minValue){
+            this.markInvalid(String.format(this.minText, this.minValue));
+            return false;
+        }
+        
+        if(num > this.maxValue){
+            this.markInvalid(String.format(this.maxText, this.maxValue));
+            return false;
+        }
+        
+        return true;
+    },
+    
+    validate : function()
+    {
+        if(this.disabled){
+            this.markValid();
+            return true;
+        }
+        
+        var currency = this.getCurrency();
+        
+        if(this.validateValue(this.getRawValue()) && currency.length){
+            this.markValid();
+            return true;
+        }
+        
+        this.markInvalid();
+        return false;
     }
+    
 });
