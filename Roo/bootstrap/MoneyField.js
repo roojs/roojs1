@@ -18,9 +18,46 @@ Roo.bootstrap.MoneyField = function(config) {
 Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     /**
+     * @cfg {Boolean} allowDecimals False to disallow decimal values (defaults to true)
+     */
+    allowDecimals : true,
+    /**
      * @cfg {String} decimalSeparator Character(s) to allow as the decimal separator (defaults to '.')
      */
     decimalSeparator : ".",
+    /**
+     * @cfg {Number} decimalPrecision The maximum precision to display after the decimal separator (defaults to 2)
+     */
+    decimalPrecision : 2,
+    /**
+     * @cfg {Boolean} allowNegative False to prevent entering a negative sign (defaults to true)
+     */
+    allowNegative : true,
+    /**
+     * @cfg {Number} minValue The minimum allowed value (defaults to Number.NEGATIVE_INFINITY)
+     */
+    minValue : Number.NEGATIVE_INFINITY,
+    /**
+     * @cfg {Number} maxValue The maximum allowed value (defaults to Number.MAX_VALUE)
+     */
+    maxValue : Number.MAX_VALUE,
+    /**
+     * @cfg {String} minText Error text to display if the minimum value validation fails (defaults to "The minimum value for this field is {minValue}")
+     */
+    minText : "The minimum value for this field is {0}",
+    /**
+     * @cfg {String} maxText Error text to display if the maximum value validation fails (defaults to "The maximum value for this field is {maxValue}")
+     */
+    maxText : "The maximum value for this field is {0}",
+    /**
+     * @cfg {String} nanText Error text to display if the value is not a valid number.  For example, this can happen
+     * if a valid character like '.' or '-' is left in the field with no number (defaults to "{value} is not a valid number")
+     */
+    nanText : "{0} is not a valid number",
+    /**
+     * @cfg {Boolean} castInt (true|false) cast int if true (defalut true)
+     */
+    castInt : true,
     
     inputlg : 9,
     inputmd : 9,
@@ -475,7 +512,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         return Math.floor(v);
     },
     
-    validateValue : function()
+    validateValue : function(value)
     {
         if(!Roo.bootstrap.MoneyField.superclass.validateValue.call(this, value)){
             return false;
