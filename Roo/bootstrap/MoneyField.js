@@ -229,6 +229,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     initEvents : function()
     {
+        this.indicator = this.indicatorEl();
+        
         this.initCurrencyEvent();
         
         this.initNumberEvent();
@@ -245,8 +247,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         this.store.parent = this;
         
         this.createList();
-        
-        this.indicator = this.indicatorEl();
         
         this.triggerEl = this.el.select('.input-group-addon', true).first();
         
@@ -336,6 +336,55 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     initNumberEvent : function(e)
     {
+        this.inputEl().on("keydown" , this.fireKey,  this);
+        this.inputEl().on("focus", this.onFocus,  this);
+        this.inputEl().on("blur", this.onBlur,  this);
+        
+        this.inputEl().relayEvent('keyup', this);
+        
+        this.indicator = this.indicatorEl();
+        
+        if(this.indicator){
+            this.indicator.addClass('invisible');
+            
+        }
+ 
+        // reference to original value for reset
+        this.originalValue = this.getValue();
+        //Roo.form.TextField.superclass.initEvents.call(this);
+        if(this.validationEvent == 'keyup'){
+            this.validationTask = new Roo.util.DelayedTask(this.validate, this);
+            this.inputEl().on('keyup', this.filterValidation, this);
+        }
+        else if(this.validationEvent !== false){
+            this.inputEl().on(this.validationEvent, this.validate, this, {buffer: this.validationDelay});
+        }
+        
+        if(this.selectOnFocus){
+            this.on("focus", this.preFocus, this);
+            
+        }
+        if(this.maskRe || (this.vtype && this.disableKeyFilter !== true && (this.maskRe = Roo.form.VTypes[this.vtype+'Mask']))){
+            this.inputEl().on("keypress", this.filterKeys, this);
+        } else {
+            this.inputEl().relayEvent('keypress', this);
+        }
+       /* if(this.grow){
+            this.el.on("keyup", this.onKeyUp,  this, {buffer:50});
+            this.el.on("click", this.autoSize,  this);
+        }
+        */
+        if(this.inputEl().is('input[type=password]') && Roo.isSafari){
+            this.inputEl().on('keydown', this.SafariOnKeyDown, this);
+        }
+        
+        if (typeof(this.before) == 'object') {
+            this.before.render(this.el.select('.roo-input-before',true).first());
+        }
+        if (typeof(this.after) == 'object') {
+            this.after.render(this.el.select('.roo-input-after',true).first());
+        }
+        
         var allowed = "0123456789";
         
         if(this.allowDecimals){
