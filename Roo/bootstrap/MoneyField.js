@@ -494,7 +494,9 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     getValue : function()
     {
+        var v = this.amountEl.getValue();
         
+        return v;
     },
     
     parseValue : function(value)
