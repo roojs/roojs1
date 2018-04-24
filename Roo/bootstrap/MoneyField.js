@@ -437,7 +437,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     setValue : function(v)
     {
         v = this.fixPrecision(v);
-        Roo.bootstrap.NumberField.superclass.setValue.call(this, String(v).replace(".", this.decimalSeparator));
+        
+        v = String(v).replace(".", this.decimalSeparator));
         
         this.value = v;
         
