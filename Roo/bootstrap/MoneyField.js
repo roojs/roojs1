@@ -501,7 +501,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     getValue : function()
     {
-        return this.fixPrecision(this.parseValue(Roo.bootstrap.NumberField.superclass.getValue.call(this)));
+        return this.fixPrecision(this.parseValue(this.getRawValue()));
     },
     
     parseValue : function(value)
