@@ -194,11 +194,11 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     {
         this.initCurrencyEvent();
         
-        this.initInputEvent();
+        this.initNumberEvent();
         
     },
     
-    initCurrencyEvent : function()
+    initNumberEvent : function()
     {
         if (!this.store) {
             throw "can not find store for combo";
