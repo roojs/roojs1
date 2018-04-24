@@ -448,23 +448,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         }
     },
     
-    validate : function()
-    {
-        var v = this.getRawValue();
-        
-        if(this.multiple){
-            v = this.getValue();
-        }
-        
-        if(this.disabled || this.allowBlank || v.length){
-            this.markValid();
-            return true;
-        }
-        
-        this.markInvalid();
-        return false;
-    },
-    
     getValue : function()
     {
         
@@ -490,5 +473,37 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     decimalPrecisionFcn : function(v)
     {
         return Math.floor(v);
+    },
+    
+    validateValue : function()
+    {
+        if(!Roo.bootstrap.NumberField.superclass.validateValue.call(this, value)){
+            return false;
+        }
+        
+        var num = this.parseValue(value);
+        
+        if(isNaN(num)){
+            this.markInvalid(String.format(this.nanText, value));
+            return false;
+        }
+        
+        if(num < this.minValue){
+            this.markInvalid(String.format(this.minText, this.minValue));
+            return false;
+        }
+        
+        if(num > this.maxValue){
+            this.markInvalid(String.format(this.maxText, this.maxValue));
+            return false;
+        }
+        
+        return true;
+    },
+    
+    validate : function()
+    {
+        
     }
+    
 });
