@@ -624,6 +624,19 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         return this.name;
     },
     
+    beforeBlur : function()
+    {
+        if(!this.castInt){
+            return;
+        }
+        
+        var v = this.parseValue(this.getRawValue());
+        
+        if(v){
+            this.setValue(v);
+        }
+    },
+    
     onBlur : function()
     {
         this.beforeBlur();
