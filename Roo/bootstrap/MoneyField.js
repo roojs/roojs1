@@ -346,14 +346,15 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             this.indicator.addClass('invisible');
         }
  
+        // reference to original value for reset
         this.originalValue = this.getValue();
         
         if(this.validationEvent == 'keyup'){
             this.validationTask = new Roo.util.DelayedTask(this.validate, this);
-            this.amountEl.on('keyup', this.filterValidation, this);
+            this.inputEl().on('keyup', this.filterValidation, this);
         }
         else if(this.validationEvent !== false){
-            this.amountEl.on(this.validationEvent, this.validate, this, {buffer: this.validationDelay});
+            this.inputEl().on(this.validationEvent, this.validate, this, {buffer: this.validationDelay});
         }
         
         if(this.selectOnFocus){
