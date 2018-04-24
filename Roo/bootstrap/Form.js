@@ -460,10 +460,13 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         var items = this.getItems();
         var ret = {};
         items.each(function(f){
+            
             if (!f.getName()) {
                 return;
             }
+            
             var v = f.getValue();
+            
             if (f.inputType =='radio') {
                 if (typeof(ret[f.getName()]) == 'undefined') {
                     ret[f.getName()] = ''; // empty..
@@ -475,6 +478,12 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 }
                 v = f.el.dom.value;
 
+            }
+            
+            if(f.xtype == 'MoneyField'){
+                
+                
+                
             }
 
             // not sure if this supported any more..
