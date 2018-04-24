@@ -417,8 +417,10 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         if (this.name) {
             value = !o || typeof(o[this.name]) == 'undefined' ? '' : o[this.name];
         } else {
-            Roo.log('no  displayField value set for '+ (this.name ? this.name : this.id));
+            Roo.log('no value set for '+ (this.name ? this.name : this.id));
         }
+        
+        
     },
     
     setCurrency : function(v)
