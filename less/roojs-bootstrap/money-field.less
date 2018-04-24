@@ -26,4 +26,14 @@
         text-align: right;
     }
     
+    .has-success .roo-money-currency .input-group-addon {
+        border-color: @border-color;
+        .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+        &:focus {
+          border-color: darken(@border-color, 10%);
+          @shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 6px lighten(@border-color, 20%);
+          .box-shadow(@shadow);
+        }
+    }
+    
 }
