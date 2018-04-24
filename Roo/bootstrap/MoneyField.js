@@ -568,6 +568,13 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         
         this.markInvalid();
         return false;
-    }
+    },
+    
+    getName: function()
+    {
+        if (!this.rendered) {return ''};
+        return !this.name && this.amountEl.dom.name  ? this.inputEl().dom.name : (this.hiddenName || '');
+        
+    },
     
 });
