@@ -477,7 +477,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     validateValue : function()
     {
-        if(!Roo.bootstrap.NumberField.superclass.validateValue.call(this, value)){
+        if(!Roo.bootstrap.MoneyField.superclass.validateValue.call(this, value)){
             return false;
         }
         
