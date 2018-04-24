@@ -554,7 +554,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             return true;
         }
         
-        if(this.validateValue(this.getRawValue() && this.)
+        if(this.validateValue(this.getValue() && this.)
         
         this.markInvalid();
         return false;
