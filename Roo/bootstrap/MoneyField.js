@@ -641,4 +641,9 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         this.fireEvent("blur", this);
     },
     
+    inputEl : function()
+    {
+        return this.amountEl;
+    }
+    
 });
