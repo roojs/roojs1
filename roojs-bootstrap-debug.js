@@ -40101,8 +40101,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         
         this.amountEl.on("keypress", keyPress, this);
         
-        
-        
     },
     
     onTriggerClick : function(e)
