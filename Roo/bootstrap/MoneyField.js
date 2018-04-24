@@ -428,6 +428,11 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         return false;
     },
     
+    getValue : function()
+    {
+        
+    },
+    
     parseValue : function(value)
     {
         value = parseFloat(String(value).replace(this.decimalSeparator, "."));
