@@ -434,7 +434,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             return;
         }
         
-        this.doQuery(this.getRawValue());
+        this.doQuery(this.getCurrency());
     },
     
     getCurrency : function()
