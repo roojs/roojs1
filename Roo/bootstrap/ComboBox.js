@@ -1143,7 +1143,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(typeof(this.loading) !== 'undefined' && this.loading !== null){
             this.loading.hide();
         }
-        Roo.log(this.store.getCount());
+        
         if(this.store.getCount() > 0){
             
             this.expand();
@@ -1657,7 +1657,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             if(this.lastQuery != q || this.alwaysQuery){
                 this.lastQuery = q;
                 if(this.mode == 'local'){
-                    
                     this.selectedIndex = -1;
                     if(forceAll){
                         this.store.clearFilter();
@@ -1675,6 +1674,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     this.store.fireEvent("datachanged", this.store);
                     
                     this.onLoad();
+                    
                     
                 }else{
                     
