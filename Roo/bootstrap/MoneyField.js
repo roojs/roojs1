@@ -647,7 +647,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     inputEl : function()
     {
-        return this.amountEl ? this.amountEl : this.el.select('.roo-money-amount-input', true).first();
+        return this.el.select('.roo-money-amount-input', true).first();
     }
     
 });
