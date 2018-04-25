@@ -471,8 +471,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         
         this.lastCurrency = o;
         
-        if (this.currencyField) {
-            currency = !o || typeof(o[this.currencyField]) == 'undefined' ? '' : o[this.currencyField];
+        if (this.currencyName) {
+            currency = !o || typeof(o[this.currencyName]) == 'undefined' ? '' : o[this.currencyName];
         } else {
             Roo.log('no  currencyName value set for '+ (this.name ? this.name : this.id));
         }
