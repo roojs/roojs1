@@ -252,8 +252,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         
         this.triggerEl.on("click", this.onTriggerClick, this, { preventDefault : true });
         
-        this.currencyEl = this.el.select('.roo-money-currency-input', true).first();
-        
         var _this = this;
         
         (function(){
@@ -652,7 +650,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     currencyEl : function()
     {
-        
+        return this.el.select('.roo-money-currency-input', true).first();
     }
     
 });
