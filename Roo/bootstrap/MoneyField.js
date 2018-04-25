@@ -684,10 +684,10 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             var r = this.store.getAt(0);
             var newValue = r.data[this.currencyField];
             var len = newValue.length;
-            var selStart = this.getRawValue().length;
+            var selStart = this.getCurrency().length;
             
             if(selStart != len){
-                this.setRawValue(newValue);
+                this.setCurrency(newValue);
                 this.selectText(selStart, newValue.length);
             }
         }
