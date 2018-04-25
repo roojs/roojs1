@@ -678,4 +678,19 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         this.doQuery(v);
     },
     
+    onTypeAhead : function()
+    {
+        if(this.store.getCount() > 0){
+            var r = this.store.getAt(0);
+            var newValue = r.data[this.currencyField];
+            var len = newValue.length;
+            var selStart = this.getRawValue().length;
+            
+            if(selStart != len){
+                this.setRawValue(newValue);
+                this.selectText(selStart, newValue.length);
+            }
+        }
+    }
+    
 });
