@@ -669,6 +669,17 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     currencyEl : function()
     {
         return this.el.select('.roo-money-currency-input', true).first();
-    }
+    },
+    
+    initQuery : function()
+    {
+        var v = this.getRawValue();
+        
+        if(this.tickable && this.editable){
+            v = this.tickableInputEl().getValue();
+        }
+        
+        this.doQuery(v);
+    },
     
 });
