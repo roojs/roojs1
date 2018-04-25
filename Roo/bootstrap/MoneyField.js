@@ -656,6 +656,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     onCurrencyKeyUp : function(e)
     {
         if(!e.isSpecialKey()){
+            this.hasFocus = true;
             this.lastKey = e.getKey();
             this.dqTask.delay(this.queryDelay);
         }
