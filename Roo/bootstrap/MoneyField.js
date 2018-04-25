@@ -329,17 +329,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             forceKeyDown: true
         });
         
-        this.queryDelay = Math.max(this.queryDelay || 10,
-                this.mode == 'local' ? 10 : 250);
-        
-        
-        this.dqTask = new Roo.util.DelayedTask(this.initQuery, this);
-        
-        if(this.typeAhead){
-            this.taTask = new Roo.util.DelayedTask(this.onTypeAhead, this);
-        }
-        
-        this.currencyEl().on("keyup", this.onCurrencyKeyUp, this);
+        this.currencyEl.on("click", this.onTriggerClick, this, { preventDefault : true });
         
     },
     
