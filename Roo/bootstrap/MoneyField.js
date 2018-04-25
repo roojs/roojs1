@@ -675,7 +675,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     initQuery : function()
     {
         var v = this.getCurrency();
-        
+        Roo.log('initQuery???');
         this.doQuery(v);
     },
     
