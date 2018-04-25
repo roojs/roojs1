@@ -13549,8 +13549,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(typeof(this.loading) !== 'undefined' && this.loading !== null){
             this.loading.hide();
         }
-        Roo.log('onLoad...');
-        Roo.log(this.store.getCount());
+        
         if(this.store.getCount() > 0){
             
             this.expand();
@@ -39889,7 +39888,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
                                 {
                                     tag : 'input',
                                     cls : 'form-control roo-money-currency-input',
-                                    autocomplete: 'new-password'
+                                    autocomplete: 'new-password',
+                                    readOnly : 1
                                 },
                                 {
                                     tag :'span',

@@ -112,7 +112,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
                                 {
                                     tag : 'input',
                                     cls : 'form-control roo-money-currency-input',
-                                    autocomplete: 'new-password'
+                                    autocomplete: 'new-password',
+                                    readOnly : 1
                                 },
                                 {
                                     tag :'span',
