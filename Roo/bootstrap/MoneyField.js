@@ -471,10 +471,10 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         
         this.lastCurrency = o;
         
-        if (this.currencyName) {
-            currency = !o || typeof(o[this.currencyName]) == 'undefined' ? '' : o[this.currencyName];
+        if (this.currencyField) {
+            currency = !o || typeof(o[this.currencyField]) == 'undefined' ? '' : o[this.currencyField];
         } else {
-            Roo.log('no  currencyName value set for '+ (this.name ? this.name : this.id));
+            Roo.log('no  currencyField value set for '+ (this.name ? this.name : this.id));
         }
         
         this.lastSelectionText = currency;
@@ -484,6 +484,10 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     setFromData : function(o)
     {
+        var c = {};
+        
+        c[this.currencyName] = !o || typeof(o[this.currencyName]) == 'undefined' ? '' : o[this.currencyName];
+        
         this.setFromCurrencyData(o);
         
         var value = '';
