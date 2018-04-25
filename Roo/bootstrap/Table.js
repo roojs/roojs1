@@ -1076,7 +1076,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         if (tbd) {
             
             tbd.setSize(ctr.getWidth(),
-                        ctr.getHeight() - (thd.getHeight() + (tfd ? tfd.getHeight() : 0))
+                        ctr.getHeight() - ((thd ? thd.getHeight() : 0) + (tfd ? tfd.getHeight() : 0))
             );
             var barsize = (tbd.dom.offsetWidth - tbd.dom.clientWidth);
             cw -= barsize;
