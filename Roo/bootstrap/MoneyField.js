@@ -434,7 +434,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             return;
         }
         
-        this.doQuery(this.getCurrency());
+        this.doQuery(this.getRawValue());
     },
     
     getCurrency : function()
@@ -655,7 +655,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     onCurrencyKeyUp : function(e)
     {
-        Roo.log('on currency keyup');
         if(!e.isSpecialKey()){
             this.lastKey = e.getKey();
             this.dqTask.delay(this.queryDelay);
@@ -675,7 +674,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     initQuery : function()
     {
         var v = this.getCurrency();
-        Roo.log('initQuery???');
+        
         this.doQuery(v);
     },
     
