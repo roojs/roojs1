@@ -40105,7 +40105,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             forceKeyDown: true
         });
         
-        this.currencyEl.on("click", this.onTriggerClick, this, { preventDefault : true });
+        this.currencyEl().on("click", this.onTriggerClick, this, { preventDefault : true });
         
     },
     
