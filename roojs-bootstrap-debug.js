@@ -40243,29 +40243,28 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     setFromCurrencyData : function(o)
     {
-        Roo.log('set From currency data?!');
-        Roo.log(o);
-        
         var currency = '';
         
         this.lastCurrency = o;
         
-        if (this.currencyName) {
-            currency = !o || typeof(o[this.currencyName]) == 'undefined' ? '' : o[this.currencyName];
+        if (this.currencyField) {
+            currency = !o || typeof(o[this.currencyField]) == 'undefined' ? '' : o[this.currencyField];
         } else {
-            Roo.log('no  currencyName value set for '+ (this.name ? this.name : this.id));
+            Roo.log('no  currencyField value set for '+ (this.name ? this.name : this.id));
         }
         
         this.lastSelectionText = currency;
-        
-        Roo.log(currency);
         
         this.setCurrency(currency);
     },
     
     setFromData : function(o)
     {
-        this.setFromCurrencyData(o);
+        var c = {};
+        
+        c[this.currencyField] = !o || typeof(o[this.currencyName]) == 'undefined' ? '' : o[this.currencyName];
+        
+        this.setFromCurrencyData(c);
         
         var value = '';
         
@@ -40281,8 +40280,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     setCurrency : function(v)
     {   
-        Roo.log('set currency : ' + v);
-        
         this.currencyValue = v;
         
         if(this.rendered){
