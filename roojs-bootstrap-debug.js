@@ -1006,7 +1006,7 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
  * @cfg {Boolean} jumbotron is it a jumbotron element
  * @cfg {String} html content of element
  * @cfg {String} well (lg|sm|md) a well, large, small or medium.
- * @cfg {String} panel (primary|success|info|warning|danger) render as panel  - type - primary/success.....
+ * @cfg {String} panel (default|primary|success|info|warning|danger) render as panel  - type - primary/success.....
  * @cfg {String} header content of header (for panel)
  * @cfg {String} footer content of footer (for panel)
  * @cfg {String} sticky (footer|wrap|push) block to use as footer or body- needs css-bootstrap/sticky-footer.css
@@ -6832,7 +6832,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         if (tbd) {
             
             tbd.setSize(ctr.getWidth(),
-                        ctr.getHeight() - (thd.getHeight() + (tfd ? tfd.getHeight() : 0))
+                        ctr.getHeight() - ((thd ? thd.getHeight() : 0) + (tfd ? tfd.getHeight() : 0))
             );
             var barsize = (tbd.dom.offsetWidth - tbd.dom.clientWidth);
             cw -= barsize;
