@@ -254,8 +254,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         
         this.currencyEl = this.el.select('.roo-money-currency-input', true).first();
         
-        this.amountEl = this.el.select('.roo-money-amount-input', true).first();
-        
         var _this = this;
         
         (function(){
@@ -331,6 +329,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
 
             forceKeyDown: true
         });
+        
+        this.inputEl().on("keyup", this.onKeyUp, this);
         
     },
     
