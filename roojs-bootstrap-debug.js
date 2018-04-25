@@ -40258,6 +40258,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         
         this.lastSelectionText = currency;
         
+        Roo.log(currency);
+        
         this.setCurrency(currency);
     },
     
