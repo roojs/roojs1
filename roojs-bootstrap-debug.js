@@ -40243,6 +40243,9 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     setFromCurrencyData : function(o)
     {
+        Roo.log('set From currency data?!');
+        Roo.log(o);
+        
         var currency = '';
         
         this.lastCurrency = o;
@@ -40276,6 +40279,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     setCurrency : function(v)
     {   
+        Roo.log('set currency : ' + v);
+        
         this.currencyValue = v;
         
         if(this.rendered){
