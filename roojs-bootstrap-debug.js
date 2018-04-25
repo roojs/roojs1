@@ -14062,7 +14062,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(forceAll === true || (q.length >= this.minChars)){
             
             this.hasQuery = true;
-            
+            Roo.log('in??');
             if(this.lastQuery != q || this.alwaysQuery){
                 this.lastQuery = q;
                 if(this.mode == 'local'){
@@ -14107,6 +14107,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 //                    this.expand();
                 }
             }else{
+                Roo.log('in!!??');
                 this.selectedIndex = -1;
                 this.onLoad();   
             }

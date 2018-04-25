@@ -1701,6 +1701,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 //                    this.expand();
                 }
             }else{
+                Roo.log('in!!??');
                 this.selectedIndex = -1;
                 this.onLoad();   
             }
