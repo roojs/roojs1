@@ -14053,6 +14053,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.fireEvent('beforequery', qe)===false || qe.cancel){
             return false;
         }
+        
+        Roo.log(qe);
+        
         q = qe.query;
         
         forceAll = qe.forceAll;
@@ -40211,7 +40214,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             return;
         }
         
-        this.doQuery(this.getRawValue());
+        this.doQuery(this.getCurrency());
     },
     
     getCurrency : function()

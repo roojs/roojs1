@@ -1647,6 +1647,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.fireEvent('beforequery', qe)===false || qe.cancel){
             return false;
         }
+        
+        Roo.log(qe);
+        
         q = qe.query;
         
         forceAll = qe.forceAll;
