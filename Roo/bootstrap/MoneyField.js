@@ -643,6 +643,11 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         this.fireEvent("blur", this);
     },
     
+    onCurrencyKeyUp : function()
+    {
+        
+    },
+    
     inputEl : function()
     {
         return this.el.select('.roo-money-amount-input', true).first();
