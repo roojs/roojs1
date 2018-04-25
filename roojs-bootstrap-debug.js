@@ -40028,10 +40028,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         
         this.triggerEl.on("click", this.onTriggerClick, this, { preventDefault : true });
         
-        this.currencyEl = this.el.select('.roo-money-currency-input', true).first();
-        
-        this.amountEl = this.el.select('.roo-money-amount-input', true).first();
-        
         var _this = this;
         
         (function(){
@@ -40057,7 +40053,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         this.store.on('load', this.onLoad, this);
         this.store.on('loadexception', this.onLoadException, this);
         
-        this.keyNav = new Roo.KeyNav(this.currencyEl, {
+        this.keyNav = new Roo.KeyNav(this.currencyEl(), {
             "up" : function(e){
                 this.inKeyMode = true;
                 this.selectPrev();
@@ -40107,6 +40103,18 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
 
             forceKeyDown: true
         });
+        
+        this.queryDelay = Math.max(this.queryDelay || 10,
+                this.mode == 'local' ? 10 : 250);
+        
+        
+        this.dqTask = new Roo.util.DelayedTask(this.initQuery, this);
+        
+        if(this.typeAhead){
+            this.taTask = new Roo.util.DelayedTask(this.onTypeAhead, this);
+        }
+        
+        this.currencyEl().on("keyup", this.onCurrencyKeyUp, this);
         
     },
     
@@ -40207,15 +40215,15 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     getCurrency : function()
     {   
-        var v = this.currencyEl.getValue();
+        var v = this.currencyEl().getValue();
         
         return v;
     },
     
     restrictHeight : function()
     {
-        this.list.alignTo(this.currencyEl, this.listAlign);
-        this.list.alignTo(this.currencyEl, this.listAlign);
+        this.list.alignTo(this.currencyEl(), this.listAlign);
+        this.list.alignTo(this.currencyEl(), this.listAlign);
     },
     
     onViewClick : function(view, doFocus, el, e)
@@ -40283,7 +40291,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         this.currencyValue = v;
         
         if(this.rendered){
-            this.currencyEl.dom.value = (v === null || v === undefined ? '' : v);
+            this.currencyEl().dom.value = (v === null || v === undefined ? '' : v);
             this.validate();
         }
     },
@@ -40421,9 +40429,63 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         this.fireEvent("blur", this);
     },
     
+    onCurrencyKeyUp : function(e)
+    {
+        if(!e.isSpecialKey()){
+            this.lastKey = e.getKey();
+            this.dqTask.delay(this.queryDelay);
+        }
+    },
+    
     inputEl : function()
     {
-        return this.amountEl ? this.amountEl : this.el.select('.roo-money-amount-input', true).first();
+        return this.el.select('.roo-money-amount-input', true).first();
+    },
+    
+    currencyEl : function()
+    {
+        return this.el.select('.roo-money-currency-input', true).first();
+    },
+    
+    initQuery : function()
+    {
+        var v = this.getCurrency();
+        
+        this.doQuery(v);
+    },
+    
+    onTypeAhead : function()
+    {
+        if(this.store.getCount() > 0){
+            var r = this.store.getAt(0);
+            var newValue = r.data[this.currencyField];
+            var len = newValue.length;
+            var selStart = this.getCurrency().length;
+            
+            if(selStart != len){
+                this.setCurrency(newValue);
+                this.selectText(selStart, newValue.length);
+            }
+        }
+    },
+    
+    selectText : function(start, end)
+    {
+        var v = this.getCurrency();
+        
+        if(v.length > 0){
+            start = start === undefined ? 0 : start;
+            end = end === undefined ? v.length : end;
+            var d = this.el.dom;
+            if(d.setSelectionRange){
+                d.setSelectionRange(start, end);
+            }else if(d.createTextRange){
+                var range = d.createTextRange();
+                range.moveStart("character", start);
+                range.moveEnd("character", v.length-end);
+                range.select();
+            }
+        }
     }
     
 });
