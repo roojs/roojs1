@@ -644,15 +644,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         this.fireEvent("blur", this);
     },
     
-    onCurrencyKeyUp : function(e)
-    {
-        if(!e.isSpecialKey()){
-            this.hasFocus = true;
-            this.lastKey = e.getKey();
-            this.dqTask.delay(this.queryDelay);
-        }
-    },
-    
     inputEl : function()
     {
         return this.el.select('.roo-money-amount-input', true).first();
@@ -661,47 +652,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     currencyEl : function()
     {
         return this.el.select('.roo-money-currency-input', true).first();
-    },
-    
-    initQuery : function()
-    {
-        var v = this.getCurrency();
-        
-        this.doQuery(v);
-    },
-    
-    onTypeAhead : function()
-    {
-        if(this.store.getCount() > 0){
-            var r = this.store.getAt(0);
-            var newValue = r.data[this.currencyField];
-            var len = newValue.length;
-            var selStart = this.getCurrency().length;
-            
-            if(selStart != len){
-                this.setCurrency(newValue);
-                this.selectText(selStart, newValue.length);
-            }
-        }
-    },
-    
-    selectText : function(start, end)
-    {
-        var v = this.getCurrency();
-        
-        if(v.length > 0){
-            start = start === undefined ? 0 : start;
-            end = end === undefined ? v.length : end;
-            var d = this.el.dom;
-            if(d.setSelectionRange){
-                d.setSelectionRange(start, end);
-            }else if(d.createTextRange){
-                var range = d.createTextRange();
-                range.moveStart("character", start);
-                range.moveEnd("character", v.length-end);
-                range.select();
-            }
-        }
     }
     
 });
