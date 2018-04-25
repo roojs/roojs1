@@ -277,7 +277,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         this.store.on('load', this.onLoad, this);
         this.store.on('loadexception', this.onLoadException, this);
         
-        this.keyNav = new Roo.KeyNav(this.currencyEl, {
+        this.keyNav = new Roo.KeyNav(this.currencyEl(), {
             "up" : function(e){
                 this.inKeyMode = true;
                 this.selectPrev();
@@ -429,15 +429,15 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     getCurrency : function()
     {   
-        var v = this.currencyEl.getValue();
+        var v = this.currencyEl().getValue();
         
         return v;
     },
     
     restrictHeight : function()
     {
-        this.list.alignTo(this.currencyEl, this.listAlign);
-        this.list.alignTo(this.currencyEl, this.listAlign);
+        this.list.alignTo(this.currencyEl(), this.listAlign);
+        this.list.alignTo(this.currencyEl(), this.listAlign);
     },
     
     onViewClick : function(view, doFocus, el, e)
