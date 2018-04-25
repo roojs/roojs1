@@ -1657,6 +1657,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             if(this.lastQuery != q || this.alwaysQuery){
                 this.lastQuery = q;
                 if(this.mode == 'local'){
+                    Roo.log('it is local');
                     this.selectedIndex = -1;
                     if(forceAll){
                         this.store.clearFilter();
