@@ -1409,7 +1409,7 @@ if(!this.fieldLabel.length){this.labelEl.hide();}this.itemsEl=this.el.select('.r
 return true;}this.markInvalid();return false;},markValid:function(){if(this.labelEl.isVisible(true)){this.indicatorEl().removeClass('visible');this.indicatorEl().addClass('invisible');}this.el.removeClass([this.invalidClass,this.validClass]);this.el.addClass(this.validClass);
 this.fireEvent('valid',this);},markInvalid:function(A){if(this.allowBlank||this.disabled){return;}if(this.labelEl.isVisible(true)){this.indicatorEl().removeClass('invisible');this.indicatorEl().addClass('visible');}this.el.removeClass([this.invalidClass,this.validClass]);
 this.el.addClass(this.invalidClass);this.fireEvent('invalid',this,A);},setValue:function(v,A){Roo.log(v);Roo.log(this.value);this.value=v;if(this.rendered){this.inputEl().dom.value=(v===null||v===undefined?'':v);}Roo.each(this.radioes,function(i){i.checked=false;
-i.el.removeClass('checked');if(i.value===v||i.value.toString()===v.toString()){i.checked=true;i.el.addClass('checked');Roo.log('run here??');if(A!==true){this.fireEvent('check',this,i);}}},this);this.validate();},clearInvalid:function(){if(!this.el||this.preventMark){return;
+i.el.removeClass('checked');if(i.value===v||i.value.toString()===v.toString()){i.checked=true;i.el.addClass('checked');Roo.log('run here??');Roo.log(i);if(A!==true){this.fireEvent('check',this,i);}}},this);this.validate();},clearInvalid:function(){if(!this.el||this.preventMark){return;
 }this.el.removeClass([this.invalidClass]);this.fireEvent('valid',this);}});Roo.apply(Roo.bootstrap.RadioSet,{groups:{},register:function(A){this.groups[A.name]=A;},get:function(A){if(typeof(this.groups[A])=='undefined'){return false;}return this.groups[A];
 }});
 // Roo/bootstrap/SplitBar.js
