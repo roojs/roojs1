@@ -249,7 +249,12 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
     
     setValue : function(v, suppressEvent)
     {   
+        if(this.value == v){
+            return;
+        }
+        
         this.value = v;
+        
         if(this.rendered){
             this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
         }
