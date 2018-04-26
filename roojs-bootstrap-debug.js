@@ -17324,6 +17324,8 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             // fixme..
         }
         var align = Roo.bootstrap.Popover.alignment[placement];
+        
+//        Roo.log(align);
         this.el.alignTo(on_el, align[0],align[1]);
         //var arrow = this.el.select('.arrow',true).first();
         //arrow.set(align[2], 
