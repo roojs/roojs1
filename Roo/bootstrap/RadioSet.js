@@ -249,6 +249,9 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
     
     setValue : function(v, suppressEvent)
     {   
+        Roo.log(v);
+        Roo.log(this.value);
+        
         this.value = v;
         
         if(this.rendered){
