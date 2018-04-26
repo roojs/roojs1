@@ -158,7 +158,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                     tag: 'label',
                     'for' :  id,
                     cls : 'control-label',
-                    html : this.fieldLabel
+                    html : this.fieldLabel,
+                    tooltip : this.tooltip ? this.tooltip : ''
                 },
                 {
                     cls : "", 
