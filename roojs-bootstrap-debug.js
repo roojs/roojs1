@@ -33472,7 +33472,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
             if(i.value === v || i.value.toString() === v.toString()){
                 i.checked = true;
                 i.el.addClass('checked');
-                
+                Roo.log(i);
                 if(suppressEvent !== true){
                     this.fireEvent('check', this, i);
                 }
