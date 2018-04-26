@@ -269,8 +269,7 @@ Roo.bootstrap.Popover.alignment = {
     'left' : ['r-l', [-10,0], 'right'],
     'right' : ['l-r', [10,0], 'left'],
     'bottom' : ['t-b', [0,10], 'top'],
-    'top' : [ 'b-t', [0,-10], 'bottom'],
-    'left-bottom' : ['tl-bl', [0,10], 'top']
+    'top' : [ 'b-t', [0,-10], 'bottom']
 };
 
  
