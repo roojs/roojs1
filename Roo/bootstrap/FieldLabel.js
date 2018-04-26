@@ -17,6 +17,7 @@
  * @cfg {String} invalidClass default "text-danger fa fa-lg fa-exclamation-triangle"
  * @cfg {String} validClass default "text-success fa fa-lg fa-check"
  * @cfg {String} iconTooltip default "This field is required"
+ * @cfg {String} indicatorpos (left|right) default left
  * 
  * @constructor
  * Create a new FieldLabel
@@ -50,9 +51,10 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
     html: '',
     target: '',
     allowBlank : true,
-    invalidClass : 'text-danger fa fa-lg fa-exclamation-triangle',
-    validClass : 'text-success fa fa-lg fa-check',
+    invalidClass : 'has-warning',
+    validClass : 'has-success',
     iconTooltip : 'This field is required',
+    indicatorpos : 'left',
     
     getAutoCreate : function(){
         
@@ -63,7 +65,7 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
             cn : [
                 {
                     tag : 'i',
-                    cls : '',
+                    cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
                     tooltip : this.iconTooltip
                 },
                 {
@@ -73,6 +75,25 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
             ] 
         };
         
+        if(indicatorpos == 'right'){
+            var cfg = {
+                tag : this.tag,
+                cls : 'roo-bootstrap-field-label ' + this.cls,
+                for : this.target,
+                cn : [
+                    {
+                        tag : 'span',
+                        html : this.html
+                    },
+                    {
+                        tag : 'i',
+                        cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
+                        tooltip : this.iconTooltip
+                    }
+                ] 
+            };
+        }
+        
         return cfg;
     },
     
@@ -80,11 +101,21 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
     {
         Roo.bootstrap.Element.superclass.initEvents.call(this);
         
-        this.iconEl = this.el.select('i', true).first();
-        
-        this.iconEl.setVisibilityMode(Roo.Element.DISPLAY).hide();
+        this.indicator = this.indicatorEl();
         
         Roo.bootstrap.FieldLabel.register(this);
+    },
+    
+    indicatorEl : function()
+    {
+        var indicator = this.el.select('i.roo-required-indicator',true).first();
+        
+        if(!indicator){
+            return false;
+        }
+        
+        return indicator;
+        
     },
     
     /**
@@ -92,11 +123,14 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
      */
     markValid : function()
     {
-        this.iconEl.show();
+        if(this.indicator){
+            this.indicator.removeClass('visible');
+            this.indicator.addClass('invisible');
+        }
         
-        this.iconEl.removeClass(this.invalidClass);
+        this.el.removeClass(this.invalidClass);
         
-        this.iconEl.addClass(this.validClass);
+        this.el.addClass(this.validClass);
         
         this.fireEvent('valid', this);
     },
@@ -107,11 +141,14 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
      */
     markInvalid : function(msg)
     {
-        this.iconEl.show();
+        if(this.indicator){
+            this.indicator.removeClass('invisible');
+            this.indicator.addClass('visible');
+        }
         
-        this.iconEl.removeClass(this.validClass);
+        this.el.removeClass(this.validClass);
         
-        this.iconEl.addClass(this.invalidClass);
+        this.el.addClass(this.invalidClass);
         
         this.fireEvent('invalid', this, msg);
     }
