@@ -249,8 +249,9 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
     
     setValue : function(v, suppressEvent)
     {   
-        Roo.log(v);
-        Roo.log(this.value);
+        if(this.value == v){
+            return;
+        }
         
         this.value = v;
         
@@ -266,8 +267,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
             if(i.value === v || i.value.toString() === v.toString()){
                 i.checked = true;
                 i.el.addClass('checked');
-                Roo.log('run here??');
-                Roo.log(i);
+                
                 if(suppressEvent !== true){
                     this.fireEvent('check', this, i);
                 }
