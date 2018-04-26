@@ -236,7 +236,8 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         }
         var align = Roo.bootstrap.Popover.alignment[placement];
         
-        align[0] = 't-b';
+        align[0] = 't-bl';
+        align[1] = [-10, 10];
         
         Roo.log(align);
         this.el.alignTo(on_el, align[0],align[1]);
