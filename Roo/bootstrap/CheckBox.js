@@ -158,8 +158,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                     tag: 'label',
                     'for' :  id,
                     cls : 'control-label',
-                    html : this.fieldLabel,
-                    tooltip : this.tooltip ? this.tooltip : ''
+                    html : this.fieldLabel
                 },
                 {
                     cls : "", 
@@ -207,7 +206,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                         cls: 'control-label box-input-label',
                         //cls : 'input-group-addon',
                         html : this.fieldLabel
-                        
                     },
                     
                     inputblock
@@ -227,7 +225,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                 tag: 'label',
                 //'for': id, // box label is handled by onclick - so no for...
                 cls: 'box-label',
-                html: this.boxLabel
+                html: this.boxLabel,
+                tooltip : this.tooltip ? this.tooltip : ''
             };
             
             if(this.tooltip){
