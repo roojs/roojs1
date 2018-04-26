@@ -94,9 +94,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         if(this.checked){
             input.checked = this.checked;
-            
         }
-        
         
         if (this.name) {
             
@@ -161,7 +159,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                     'for' :  id,
                     cls : 'control-label',
                     html : this.fieldLabel
-
                 },
                 {
                     cls : "", 
