@@ -14,8 +14,8 @@
  * @cfg {String} cls class of the element
  * @cfg {String} target label target 
  * @cfg {Boolean} allowBlank (true|false) target allowBlank default true
- * @cfg {String} invalidClass default "text-danger fa fa-lg fa-exclamation-triangle"
- * @cfg {String} validClass default "text-success fa fa-lg fa-check"
+ * @cfg {String} invalidClass default "text-warning"
+ * @cfg {String} validClass default "text-success"
  * @cfg {String} iconTooltip default "This field is required"
  * @cfg {String} indicatorpos (left|right) default left
  * 
@@ -75,7 +75,7 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
             ] 
         };
         
-        if(indicatorpos == 'right'){
+        if(this.indicatorpos == 'right'){
             var cfg = {
                 tag : this.tag,
                 cls : 'roo-bootstrap-field-label ' + this.cls,
