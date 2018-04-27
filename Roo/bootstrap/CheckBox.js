@@ -74,7 +74,9 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             
         };
         
+        Roo.log(this.name);
         Roo.log(this.checked);
+        
         if(this.inputType != 'radio'){
             var hidden =  {
                 tag: 'input',
