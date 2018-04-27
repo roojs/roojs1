@@ -103,6 +103,11 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
         
         this.indicator = this.indicatorEl();
         
+        if(this.indicator){
+            this.indicator.removeClass('visible');
+            this.indicator.addClass('invisible');
+        }
+        
         Roo.bootstrap.FieldLabel.register(this);
     },
     
