@@ -79,7 +79,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                 tag: 'input',
                 type : 'hidden',
                 cls : 'roo-hidden-value',
-                value : this.checked ? this.valueOff : this.inputValue
+                value : this.valueOff
             };
         }
         
