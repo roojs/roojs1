@@ -588,7 +588,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     validate : function()
     {
-        if(this.disabled || this.allowBlank){
+        if(this.disabled || (this.allowBlank && !this.getRawValue().length)){
             this.markValid();
             return true;
         }
