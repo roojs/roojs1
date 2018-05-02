@@ -294,9 +294,11 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         }
     },
     
-    onClick : function()
+    onClick : function(e)
     {   
         this.setChecked(!this.checked);
+        
+        this.fireEvent('click', this, e);
     },
     
     setChecked : function(state,suppressEvent)
