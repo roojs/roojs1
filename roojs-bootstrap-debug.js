@@ -20270,7 +20270,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
 //                Roo.log("left and has label");
             cfg.cn = [
                 {
-                    tag: 'span',
+                    tag: 'label',
                     'for' :  id,
                     cls : 'control-label',
                     html : this.fieldLabel

@@ -207,7 +207,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                 cfg.cn = [
                    
                     {
-                        tag: this.fieldLabel ? 'span' : 'label',
+                        tag: this.boxLabel ? 'span' : 'label',
                         'for': id,
                         cls: 'control-label box-input-label',
                         //cls : 'input-group-addon',
