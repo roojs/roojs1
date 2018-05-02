@@ -20143,7 +20143,13 @@ Roo.bootstrap.CheckBox = function(config){
         * @param {Roo.bootstrap.CheckBox} this This input
         * @param {Boolean} checked The new checked value
         */
-       check : true
+       check : true,
+       /**
+        * @event click
+        * Fires when the element is click.
+        * @param {Roo.bootstrap.CheckBox} this This input
+        */
+       click : true
     });
     
 };
