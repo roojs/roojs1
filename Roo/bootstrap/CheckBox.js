@@ -443,6 +443,12 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         var r = false;
         
         for(var i in group){
+            if(group[i].el.isVisible()){
+                
+            }
+        }
+        
+        for(var i in group){
             if(r){
                 break;
             }
