@@ -9358,11 +9358,18 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     
     setFieldLabel : function(v)
     {
+        if(!this.rendered){
+            return;
+        }
+        
         this.fieldLabel = v;
         
-        if(this.rendered){
-            this.el.select('label',true).first().dom.innerHTML = (v === null || v === undefined ? '' : v);
+        if(this.indicator){
+            this.el.select('label > span',true).first().dom.innerHTML = (v === null || v === undefined ? '' : v);
+            return;
         }
+        
+        this.el.select('label',true).first().dom.innerHTML = (v === null || v === undefined ? '' : v);
     }
 });
 
