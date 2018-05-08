@@ -580,8 +580,8 @@
         </span><span class="jsdoc-var">this.indicator </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.indicatorEl</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.indicator</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.indicator.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">this.indicator.hide</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.indicator.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'invisible'</span><span class="jsdoc-syntax">);
+            
         }
  
         </span><span class="jsdoc-comment">// reference to original value for reset
@@ -889,7 +889,8 @@
         }
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.indicator</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.indicator.hide</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.indicator.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'visible'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.indicator.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'invisible'</span><span class="jsdoc-syntax">);
         }
         
         </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.validClass</span><span class="jsdoc-syntax">);
@@ -935,7 +936,8 @@
         }
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.indicator</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.indicator.show</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.indicator.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'invisible'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.indicator.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'visible'</span><span class="jsdoc-syntax">);
         }
         
         </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.invalidClass</span><span class="jsdoc-syntax">);

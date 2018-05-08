@@ -167,8 +167,7 @@
         </span><span class="jsdoc-var">this.itemsEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-radio-set-items'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.itemsEl.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-var">this.indicatorEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.indicatorEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.hide</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.indicatorEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'invisible'</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-var">this.originalValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">();
         
@@ -220,7 +219,8 @@
     </span><span class="jsdoc-var">markValid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelEl.isVisible</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)){
-            </span><span class="jsdoc-var">this.indicatorEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.hide</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.indicatorEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'visible'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.indicatorEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'invisible'</span><span class="jsdoc-syntax">);
         }
         
         </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">this.invalidClass</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.validClass</span><span class="jsdoc-syntax">]);
@@ -236,7 +236,8 @@
         }
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelEl.isVisible</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)){
-            </span><span class="jsdoc-var">this.indicatorEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.show</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.indicatorEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'invisible'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.indicatorEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'visible'</span><span class="jsdoc-syntax">);
         }
         
         </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">this.invalidClass</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.validClass</span><span class="jsdoc-syntax">]);
