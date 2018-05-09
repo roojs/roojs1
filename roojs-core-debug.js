@@ -15974,6 +15974,12 @@ Roo.extend(Roo.BoxComponent, Roo.Component, {
  * Our builder application needs the ability to preview these sub compoennts. They will normally have parent=false set,
  * hence confusing the component builder as it thinks there are multiple top level elements. 
  *
+ * String Over-ride & Translations
+ *
+ * Our builder application writes all the strings as _strings and _named_strings. This is to enable the translation of elements,
+ * and also the 'overlaying of string values - needed when different versions of the same application with different text content
+ * are needed. @see Roo.XComponent.overlayString  
+ * 
  * 
  * 
  * @extends Roo.util.Observable
@@ -16583,7 +16589,29 @@ Roo.apply(Roo.XComponent, {
         
         
     },
-	
+    /**
+     * Overlay a set of modified strings onto a component
+     * This is dependant on our builder exporting the strings and 'named strings' elements.
+     * 
+     * @param {Object} element to overlay on - eg. Pman.Dialog.Login
+     * @param {Object} associative array of 'named' string and it's new value.
+     * 
+     */
+	overlayStrings : function( component, strings )
+    {
+        if (typeof(component['_named_strings']) == undefined) {
+            throw "ERROR: component does not have _named_strings";
+        }
+        Roo.each(strings, function(k,v) {
+            var md = typeof(component['_named_strings'][k]) == 'undefined' ? false : component['_named_strings'][k];
+            if (md !== false) {
+                component['strings'][md] = v;
+            }
+            
+        });
+        
+    },
+    
 	
 	/**
 	 * Event Object.
