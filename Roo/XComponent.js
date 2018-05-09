@@ -691,11 +691,15 @@ Roo.apply(Roo.XComponent, {
         if (typeof(component['_named_strings']) == undefined) {
             throw "ERROR: component does not have _named_strings";
         }
+        Roo.each(strings, function(k,v) {
+            var md = typeof(component['_named_strings'][k]) == 'undefined' ? false : component['_named_strings'][k];
+            if (md !== false) {
+                component['strings'][md] = v;
+            }
+            
+        });
         
-        
-        
-        
-    }
+    },
     
 	
 	/**
