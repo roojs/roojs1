@@ -678,7 +678,25 @@ Roo.apply(Roo.XComponent, {
         
         
     },
-	
+    /**
+     * Overlay a set of modified strings onto a component
+     * This is dependant on our builder exporting the strings and 'named strings' elements.
+     * 
+     * @param {Object} element to overlay on - eg. Pman.Dialog.Login
+     * @param {Object} associative array of 'named' string and it's new value.
+     * 
+     */
+	overlayStrings : function( component, strings )
+    {
+        if (typeof(component['_named_strings']) == undefined) {
+            throw "ERROR: component does not have _named_strings";
+        }
+        
+        
+        
+        
+    }
+    
 	
 	/**
 	 * Event Object.
