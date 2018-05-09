@@ -696,7 +696,8 @@ Roo.apply(Roo.XComponent, {
             if (md !== false) {
                 component['strings'][md] = v;
             } else {
-                Roo.log('could not find named string: ' + k)
+                Roo.log('could not find named string: ' + k + ' in');
+                Roo.log(component);
             }
             
         });
