@@ -695,6 +695,8 @@ Roo.apply(Roo.XComponent, {
             var md = typeof(component['_named_strings'][k]) == 'undefined' ? false : component['_named_strings'][k];
             if (md !== false) {
                 component['strings'][md] = v;
+            } else {
+                Roo.log('could not find named string: ' + k)
             }
             
         });
