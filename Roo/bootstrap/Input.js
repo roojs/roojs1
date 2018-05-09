@@ -1020,7 +1020,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         if(this.indicator){
             var ar = this.el.select('label > span',true);
-            if (!ar) {
+            if (!ar.length) {
                 Roo.log("could not find label > span on element");
                 Roo.log(this);
                 return;
