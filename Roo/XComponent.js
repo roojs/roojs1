@@ -63,6 +63,12 @@
  * Our builder application needs the ability to preview these sub compoennts. They will normally have parent=false set,
  * hence confusing the component builder as it thinks there are multiple top level elements. 
  *
+ * String Over-ride & Translations
+ *
+ * Our builder application writes all the strings as _strings and _named_strings. This is to enable the translation of elements,
+ * and also the 'overlaying of string values - needed when different versions of the same application with different text content
+ * are needed. @see Roo.XComponent.overlayString  
+ * 
  * 
  * 
  * @extends Roo.util.Observable
