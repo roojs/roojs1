@@ -20684,7 +20684,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         var label = Roo.bootstrap.FieldLabel.get(this.name + '-group');
         
-        if (label) {
+        if (label && label.iconEl) {
             label.iconEl.removeClass(label.validClass);
             label.iconEl.removeClass(label.invalidClass);
         }
