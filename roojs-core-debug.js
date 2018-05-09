@@ -16602,16 +16602,16 @@ Roo.apply(Roo.XComponent, {
         if (typeof(component['_named_strings']) == undefined) {
             throw "ERROR: component does not have _named_strings";
         }
-        Roo.each(strings, function(k,v) {
+        for ( var k in strings ) {
             var md = typeof(component['_named_strings'][k]) == 'undefined' ? false : component['_named_strings'][k];
             if (md !== false) {
-                component['strings'][md] = v;
+                component['strings'][md] = strings[k];
             } else {
                 Roo.log('could not find named string: ' + k + ' in');
                 Roo.log(component);
             }
             
-        });
+        }
         
     },
     
