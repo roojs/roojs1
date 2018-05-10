@@ -884,7 +884,7 @@ var s = String.format('<div class="{0}">{1}</div>', cls, text);
         return format.replace(/\{(\d+)\}/g, function(m, i){
             return Roo.util.Format.htmlEncode(args[i]);
         });
-    }.
+    }
   
     
 });

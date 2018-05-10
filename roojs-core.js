@@ -27,7 +27,7 @@ E=E.concat(B);}else if(typeof C=="number"){E=Array.prototype.slice.call(argument
 }var C=this;return function(){A.target=this;A.method=C;if(A.apply(B||this||window,arguments)===false){return;}return C.apply(this||window,arguments);};}});
 // String.js
 Roo.applyIf(String,{escape:function(A){return A.replace(/('|\\)/g,"\\$1");},leftPad:function(A,B,ch){var C=new String(A);if(ch===null||ch===undefined||ch===''){ch=" ";}while(C.length<B){C=ch+C;}return C;},format:function(A){var B=Array.prototype.slice.call(arguments,1);
-return A.replace(/\{(\d+)\}/g,function(m,i){return Roo.util.Format.htmlEncode(B[i]);});}.});String.prototype.toggle=function(A,B){return this==A?B:A;};String.prototype.unicodeClean=function(){return this.replace(/[\s\S]/g,function(A){if(A.charCodeAt()<256){return A;
+return A.replace(/\{(\d+)\}/g,function(m,i){return Roo.util.Format.htmlEncode(B[i]);});}});String.prototype.toggle=function(A,B){return this==A?B:A;};String.prototype.unicodeClean=function(){return this.replace(/[\s\S]/g,function(A){if(A.charCodeAt()<256){return A;
 }try{encodeURIComponent(A);}catch(e){return '';}return A;});};
 // Number.js
 Roo.applyIf(Number.prototype,{constrain:function(A,B){return Math.min(Math.max(this,A),B);}});
