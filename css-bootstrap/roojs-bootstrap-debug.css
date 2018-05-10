@@ -652,7 +652,8 @@ table.fc-border-separate {
   display: none;
 }
 .checkbox input[type="checkbox"]:checked + label::after {
-  font-family: 'FontAwesome';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
   content: "\f00c";
 }
 .checkbox input[type="checkbox"]:disabled + label {
@@ -1572,6 +1573,13 @@ table.fc-border-separate {
 }
 .roo-document-manager-preview > .close:hover {
   color: #333333;
+}
+.roo-document-manager-preview.disabled > .roo-document-manager-thumb > img {
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  filter: grayscale(100%);
 }
 /*
 * sm
