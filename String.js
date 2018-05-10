@@ -67,22 +67,6 @@ var s = String.format('<div class="{0}">{1}</div>', cls, text);
             return Roo.util.Format.htmlEncode(args[i]);
         });
     }.
-    
-    function unicodeClean() {
-        return this.replace(/[\s\S]/g,
-            function(character) {
-                if (character.charCodeAt()< 256) {
-                  return character;
-               }
-               try {
-                    encodeURIComponent(character);
-               } catch(e) { 
-                  return '';
-               }
-               return character;
-            }
-        );
-    }
   
     
 });
@@ -107,3 +91,26 @@ sort = (sort == 'ASC' ? 'DESC' : 'ASC');
 String.prototype.toggle = function(value, other){
     return this == value ? other : value;
 };
+
+
+/**
+  * Remove invalid unicode characters from a string 
+  *
+  * @return {String} The clean string
+  */
+String.prototype.unicodeClean: function () {
+        return this.replace(/[\s\S]/g,
+            function(character) {
+                if (character.charCodeAt()< 256) {
+                  return character;
+               }
+               try {
+                    encodeURIComponent(character);
+               } catch(e) { 
+                  return '';
+               }
+               return character;
+            }
+        );
+    }
+  
