@@ -1581,6 +1581,9 @@ table.fc-border-separate {
   -ms-filter: grayscale(100%);
   filter: grayscale(100%);
 }
+.roo-document-manager-preview.disabled > .close {
+  display: none;
+}
 /*
 * sm
 */
