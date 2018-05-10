@@ -98,19 +98,19 @@ String.prototype.toggle = function(value, other){
   *
   * @return {String} The clean string
   */
-String.prototype.unicodeClean: function () {
-        return this.replace(/[\s\S]/g,
-            function(character) {
-                if (character.charCodeAt()< 256) {
-                  return character;
-               }
-               try {
-                    encodeURIComponent(character);
-               } catch(e) { 
-                  return '';
-               }
-               return character;
-            }
-        );
-    }
+String.prototype.unicodeClean = function () {
+    return this.replace(/[\s\S]/g,
+        function(character) {
+            if (character.charCodeAt()< 256) {
+              return character;
+           }
+           try {
+                encodeURIComponent(character);
+           } catch(e) { 
+              return '';
+           }
+           return character;
+        }
+    );
+};
   
