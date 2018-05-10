@@ -8038,6 +8038,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
 
         return this;
     },
+    
     getItems : function()
     {
         var r=new Roo.util.MixedCollection(false, function(o){
@@ -8059,10 +8060,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
 
         iter(this);
         return r;
-
-
-
-
+        
     }
 
 });
@@ -28669,7 +28667,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     {
         this.selectorEl.dom.value = '';
         
-        if(!this.files.length){
+        if(!this.files || !this.files.length){
             return;
         }
         
