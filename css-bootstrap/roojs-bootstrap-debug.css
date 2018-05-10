@@ -1582,7 +1582,7 @@ table.fc-border-separate {
   filter: grayscale(100%);
 }
 .roo-document-manager-preview.disabled > .close {
-  display: none;
+  display: none !important;
 }
 /*
 * sm
