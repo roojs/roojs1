@@ -344,7 +344,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     {
         this.selectorEl.dom.value = '';
         
-        if(!this.files.length){
+        if(!this.files || !this.files.length){
             return;
         }
         
