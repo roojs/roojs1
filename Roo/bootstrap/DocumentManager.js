@@ -108,7 +108,14 @@ Roo.bootstrap.DocumentManager = function(config){
          * @param {Roo.bootstrap.DocumentManager} this
          * @param {Object} file
          */
-        "process" : true
+        "process" : true,
+        /**
+         * @event previewrendered
+         * Fire when preview rendered
+         * @param {Roo.bootstrap.DocumentManager} this
+         * @param {Object} file
+         */
+        "previewrendered" : true,
         
     });
 };
