@@ -696,6 +696,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         image.on('click', this.onClick, this, file);
         
+        this.fireEvent('previewrendered', this, file);
+        
         return file;
         
     },
