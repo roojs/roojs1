@@ -404,6 +404,10 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                         </span><span class="jsdoc-var">sd</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">field.displayField</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">field.name</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">field.name</span><span class="jsdoc-syntax">];
                         </span><span class="jsdoc-var">field.setFromData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sd</span><span class="jsdoc-syntax">);
 
+                    } </span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">field.setFromData </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">field.store </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">field.store.isLocal</span><span class="jsdoc-syntax">)) {
+                        
+                        </span><span class="jsdoc-var">field.setFromData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">);
+                        
                     } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
                         </span><span class="jsdoc-var">field.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">]);
                     }
@@ -456,10 +460,13 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getItems</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= {};
         </span><span class="jsdoc-var">items.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">){
+            
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">f.getName</span><span class="jsdoc-syntax">()) {
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
+            
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">f.getValue</span><span class="jsdoc-syntax">();
+            
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.inputType </span><span class="jsdoc-syntax">==</span><span class="jsdoc-string">'radio'</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">f.getName</span><span class="jsdoc-syntax">()]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
                     </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">f.getName</span><span class="jsdoc-syntax">()] = </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// empty..
@@ -471,6 +478,10 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 }
                 </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">f.el.dom.value</span><span class="jsdoc-syntax">;
 
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.xtype </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'MoneyField'</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">f.currencyName</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">f.getCurrency</span><span class="jsdoc-syntax">();
             }
 
             </span><span class="jsdoc-comment">// not sure if this supported any more..
@@ -520,6 +531,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
 
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
     },
+    
     </span><span class="jsdoc-var">getItems </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">=</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.util.MixedCollection</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">){
@@ -541,10 +553,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
 
         </span><span class="jsdoc-var">iter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
-
-
-
-
+        
     }
 
 });

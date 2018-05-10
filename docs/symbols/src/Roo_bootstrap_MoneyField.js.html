@@ -1,0 +1,658 @@
+<html><head><title>../roojs1/Roo/bootstrap/MoneyField.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty">
+<span class="jsdoc-comment">/**
+ * @class Roo.bootstrap.MoneyField
+ * @extends Roo.bootstrap.ComboBox
+ * Bootstrap MoneyField class
+ * 
+ * @constructor
+ * Create a new MoneyField.
+ * @param {Object} config Configuration options
+ */
+
+</span><span class="jsdoc-var">Roo.bootstrap.MoneyField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">) {
+    
+    </span><span class="jsdoc-var">Roo.bootstrap.MoneyField.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.MoneyField</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.ComboBox</span><span class="jsdoc-syntax">, {
+    
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} allowDecimals False to disallow decimal values (defaults to true)
+     */
+    </span><span class="jsdoc-var">allowDecimals </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} decimalSeparator Character(s) to allow as the decimal separator (defaults to '.')
+     */
+    </span><span class="jsdoc-var">decimalSeparator </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;.&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Number} decimalPrecision The maximum precision to display after the decimal separator (defaults to 2)
+     */
+    </span><span class="jsdoc-var">decimalPrecision </span><span class="jsdoc-syntax">: 2,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} allowNegative False to prevent entering a negative sign (defaults to true)
+     */
+    </span><span class="jsdoc-var">allowNegative </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Number} minValue The minimum allowed value (defaults to Number.NEGATIVE_INFINITY)
+     */
+    </span><span class="jsdoc-var">minValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Number.NEGATIVE_INFINITY</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Number} maxValue The maximum allowed value (defaults to Number.MAX_VALUE)
+     */
+    </span><span class="jsdoc-var">maxValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Number.MAX_VALUE</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} minText Error text to display if the minimum value validation fails (defaults to &quot;The minimum value for this field is {minValue}&quot;)
+     */
+    </span><span class="jsdoc-var">minText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;The minimum value for this field is {0}&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} maxText Error text to display if the maximum value validation fails (defaults to &quot;The maximum value for this field is {maxValue}&quot;)
+     */
+    </span><span class="jsdoc-var">maxText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;The maximum value for this field is {0}&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} nanText Error text to display if the value is not a valid number.  For example, this can happen
+     * if a valid character like '.' or '-' is left in the field with no number (defaults to &quot;{value} is not a valid number&quot;)
+     */
+    </span><span class="jsdoc-var">nanText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;{0} is not a valid number&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} castInt (true|false) cast int if true (defalut true)
+     */
+    </span><span class="jsdoc-var">castInt </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">inputlg </span><span class="jsdoc-syntax">: 9,
+    </span><span class="jsdoc-var">inputmd </span><span class="jsdoc-syntax">: 9,
+    </span><span class="jsdoc-var">inputsm </span><span class="jsdoc-syntax">: 9,
+    </span><span class="jsdoc-var">inputxs </span><span class="jsdoc-syntax">: 6,
+    
+    </span><span class="jsdoc-var">store </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.labelAlign </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.parentLabelAlign</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'form-group'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: []
+        };
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">input </span><span class="jsdoc-syntax">=  {
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'form-control roo-money-amount-input'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">autocomplete</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'new-password'
+        </span><span class="jsdoc-syntax">};
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">input.name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">input.disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">clg </span><span class="jsdoc-syntax">= 12 - </span><span class="jsdoc-var">this.inputlg</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cmd </span><span class="jsdoc-syntax">= 12 - </span><span class="jsdoc-var">this.inputmd</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">csm </span><span class="jsdoc-syntax">= 12 - </span><span class="jsdoc-var">this.inputsm</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cxs </span><span class="jsdoc-syntax">= 12 - </span><span class="jsdoc-var">this.inputxs</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">container </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'row roo-money-field'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                {
+                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-money-currency column col-lg-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">clg </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' col-md-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cmd </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' col-sm-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">csm </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' col-xs-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cxs</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                        {
+                            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-select2-container input-group'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                                {
+                                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">,
+                                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'form-control roo-money-currency-input'</span><span class="jsdoc-syntax">,
+                                    </span><span class="jsdoc-var">autocomplete</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'new-password'</span><span class="jsdoc-syntax">,
+                                    </span><span class="jsdoc-var">readOnly </span><span class="jsdoc-syntax">: 1,
+                                    </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.currencyName
+                                </span><span class="jsdoc-syntax">},
+                                {
+                                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input-group-addon'</span><span class="jsdoc-syntax">,
+                                    </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                                        {
+                                            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                                            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'caret'
+                                        </span><span class="jsdoc-syntax">}
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-money-amount column col-lg-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.inputlg </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' col-md-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.inputmd </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' col-sm-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.inputsm </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' col-xs-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.inputxs</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                        {
+                            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.hasFeedback </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'has-feedback' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                                </span><span class="jsdoc-var">input
+                            </span><span class="jsdoc-syntax">]
+                        }
+                    ]
+                }
+            ]
+            
+        };
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fieldLabel.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">indicator </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">tooltip</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field is required'
+            </span><span class="jsdoc-syntax">};
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">label </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-string">'for'</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'control-label'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: []
+            };
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">label_text </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel
+            </span><span class="jsdoc-syntax">};
+
+            </span><span class="jsdoc-var">indicator.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'roo-required-indicator text-danger fa fa-lg fa-star left-indicator'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">label.cn </span><span class="jsdoc-syntax">= [
+                </span><span class="jsdoc-var">indicator</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">label_text
+            </span><span class="jsdoc-syntax">];
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.indicatorpos </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">indicator.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'roo-required-indicator text-danger fa fa-lg fa-star right-indicator'</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">label.cn </span><span class="jsdoc-syntax">= [
+                    </span><span class="jsdoc-var">label_text</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">indicator
+                </span><span class="jsdoc-syntax">];
+            }
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">container </span><span class="jsdoc-syntax">= {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                        </span><span class="jsdoc-var">container
+                    </span><span class="jsdoc-syntax">]
+                };
+
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelWidth </span><span class="jsdoc-syntax">&gt; 12){
+                    </span><span class="jsdoc-var">label.style </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;width: &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelWidth </span><span class="jsdoc-syntax">&lt; 13 &amp;&amp; </span><span class="jsdoc-var">this.labelmd </span><span class="jsdoc-syntax">== 0){
+                    </span><span class="jsdoc-var">this.labelmd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labellg </span><span class="jsdoc-syntax">&gt; 0){
+                    </span><span class="jsdoc-var">label.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-lg-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labellg</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">input.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-lg-' </span><span class="jsdoc-syntax">+ (12 - </span><span class="jsdoc-var">this.labellg</span><span class="jsdoc-syntax">);
+                }
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelmd </span><span class="jsdoc-syntax">&gt; 0){
+                    </span><span class="jsdoc-var">label.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-md-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelmd</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">container.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-md-' </span><span class="jsdoc-syntax">+ (12 - </span><span class="jsdoc-var">this.labelmd</span><span class="jsdoc-syntax">);
+                }
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelsm </span><span class="jsdoc-syntax">&gt; 0){
+                    </span><span class="jsdoc-var">label.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-sm-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelsm</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">container.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-sm-' </span><span class="jsdoc-syntax">+ (12 - </span><span class="jsdoc-var">this.labelsm</span><span class="jsdoc-syntax">);
+                }
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelxs </span><span class="jsdoc-syntax">&gt; 0){
+                    </span><span class="jsdoc-var">label.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-xs-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelxs</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">container.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-xs-' </span><span class="jsdoc-syntax">+ (12 - </span><span class="jsdoc-var">this.labelxs</span><span class="jsdoc-syntax">);
+                }
+            }
+        }
+
+        </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
+            </span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">container
+        </span><span class="jsdoc-syntax">];
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">settings </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+
+        [</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'md'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'lg'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.map</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">settings</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">]) {
+                </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">settings</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">];
+            }
+        });
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+        
+    },
+    
+    </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.indicator </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.indicatorEl</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">this.initCurrencyEvent</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">this.initNumberEvent</span><span class="jsdoc-syntax">();
+        
+    },
+    
+    </span><span class="jsdoc-var">initCurrencyEvent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-string">&quot;can not find store for combo&quot;</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.store </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.data</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.store.parent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.createList</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">this.triggerEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.input-group-addon'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">this.triggerEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTriggerClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, { </span><span class="jsdoc-var">preventDefault </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">});
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
+        (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">_this.listWidth </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getWidth</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">_this.minListWidth</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">_this.list.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lw</span><span class="jsdoc-syntax">);
+        })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(100);
+        
+        </span><span class="jsdoc-var">this.list.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseover'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onViewOver</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.list.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mousemove'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onViewMove</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.list.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'scroll'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onViewScroll</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.tpl</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.tpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;li&gt;&lt;a href=&quot;#&quot;&gt;{' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.currencyField </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'}&lt;/a&gt;&lt;/li&gt;'</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.View</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.list</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.tpl</span><span class="jsdoc-syntax">, {
+            </span><span class="jsdoc-var">singleSelect</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">store</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">selectedClass</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.selectedClass
+        </span><span class="jsdoc-syntax">});
+        
+        </span><span class="jsdoc-var">this.view.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onViewClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeload'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onBeforeLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'loadexception'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoadException</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.keyNav </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.KeyNav</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.currencyEl</span><span class="jsdoc-syntax">(), {
+            </span><span class="jsdoc-string">&quot;up&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.inKeyMode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.selectPrev</span><span class="jsdoc-syntax">();
+            },
+
+            </span><span class="jsdoc-string">&quot;down&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.isExpanded</span><span class="jsdoc-syntax">()){
+                    </span><span class="jsdoc-var">this.onTriggerClick</span><span class="jsdoc-syntax">();
+                }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                    </span><span class="jsdoc-var">this.inKeyMode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">this.selectNext</span><span class="jsdoc-syntax">();
+                }
+            },
+
+            </span><span class="jsdoc-string">&quot;enter&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.collapse</span><span class="jsdoc-syntax">();
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;specialkey&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)){
+                    </span><span class="jsdoc-var">this.onViewClick</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+                }
+                
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            },
+
+            </span><span class="jsdoc-string">&quot;esc&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.collapse</span><span class="jsdoc-syntax">();
+            },
+
+            </span><span class="jsdoc-string">&quot;tab&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.collapse</span><span class="jsdoc-syntax">();
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;specialkey&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)){
+                    </span><span class="jsdoc-var">this.onViewClick</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+                }
+                
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            },
+
+            </span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,
+
+            </span><span class="jsdoc-var">doRelay </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">foo</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">bar</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hname</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hname </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'down' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.scope.isExpanded</span><span class="jsdoc-syntax">()){
+                   </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.KeyNav.prototype.doRelay.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
+                }
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            },
+
+            </span><span class="jsdoc-var">forceKeyDown</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-syntax">});
+        
+        </span><span class="jsdoc-var">this.currencyEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTriggerClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, { </span><span class="jsdoc-var">preventDefault </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">});
+        
+    },
+    
+    </span><span class="jsdoc-var">initNumberEvent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;keydown&quot; </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.fireKey</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;focus&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onFocus</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;blur&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onBlur</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.relayEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'keyup'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.indicator</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.indicator.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'invisible'</span><span class="jsdoc-syntax">);
+        }
+ 
+        </span><span class="jsdoc-var">this.originalValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.validationEvent </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'keyup'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.validationTask </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.util.DelayedTask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.validate</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'keyup'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.filterValidation</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.validationEvent </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.validationEvent</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.validate</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, {</span><span class="jsdoc-var">buffer</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.validationDelay</span><span class="jsdoc-syntax">});
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.selectOnFocus</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;focus&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.preFocus</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.maskRe </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">this.vtype </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.disableKeyFilter </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">this.maskRe </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.form.VTypes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.vtype</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'Mask'</span><span class="jsdoc-syntax">]))){
+            </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;keypress&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.filterKeys</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.relayEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'keypress'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">allowed </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;0123456789&quot;</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.allowDecimals</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">allowed </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.decimalSeparator</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.allowNegative</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">allowed </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">&quot;-&quot;</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.stripCharsRe </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">RegExp</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'[^'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">allowed</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">']'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'gi'</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">keyPress </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getKey</span><span class="jsdoc-syntax">();
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getCharCode</span><span class="jsdoc-syntax">();
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(
+                    (</span><span class="jsdoc-var">String.fromCharCode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'.' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">String.fromCharCode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'-'</span><span class="jsdoc-syntax">) &amp;&amp;
+                    </span><span class="jsdoc-var">allowed.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String.fromCharCode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">)) === -1
+            ){
+                </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">Roo.isIE </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">e.isSpecialKey</span><span class="jsdoc-syntax">() || </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.BACKSPACE </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.DELETE</span><span class="jsdoc-syntax">)){
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">allowed.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String.fromCharCode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">)) === -1){
+                </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
+            }
+        };
+        
+        </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;keypress&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">keyPress</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+    },
+    
+    </span><span class="jsdoc-var">onTriggerClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {   
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.page </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-var">this.loadNext </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isExpanded</span><span class="jsdoc-syntax">()){
+            </span><span class="jsdoc-var">this.collapse</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.hasFocus </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.triggerAction </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'all'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.doQuery</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.allQuery</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.doQuery</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getRawValue</span><span class="jsdoc-syntax">());
+    },
+    
+    </span><span class="jsdoc-var">getCurrency </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {   
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.currencyEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getValue</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">restrictHeight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.list.alignTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.currencyEl</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.listAlign</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.list.alignTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.currencyEl</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.listAlign</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">onViewClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">view</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">doFocus</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.view.getSelectedIndexes</span><span class="jsdoc-syntax">()[0];
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.store.getAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.onSelect</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
+        }
+    },
+    
+    </span><span class="jsdoc-var">onSelect </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeselect'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+        
+            </span><span class="jsdoc-var">this.setFromCurrencyData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">&gt; -1 ? </span><span class="jsdoc-var">record.data </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-var">this.collapse</span><span class="jsdoc-syntax">();
+            
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'select'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
+        }
+    },
+    
+    </span><span class="jsdoc-var">setFromCurrencyData </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">currency </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.lastCurrency </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.currencyField</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">currency </span><span class="jsdoc-syntax">= !</span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.currencyField</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.currencyField</span><span class="jsdoc-syntax">];
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'no  currencyField value set for '</span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.name </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">));
+        }
+        
+        </span><span class="jsdoc-var">this.lastSelectionText </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">currency</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.setCurrency</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">currency</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">setFromData </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= {};
+        
+        </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.currencyField</span><span class="jsdoc-syntax">] = !</span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.currencyName</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.currencyName</span><span class="jsdoc-syntax">];
+        
+        </span><span class="jsdoc-var">this.setFromCurrencyData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">= !</span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">];
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'no value set for '</span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.name </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">));
+        }
+        
+        </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+        
+    },
+    
+    </span><span class="jsdoc-var">setCurrency </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)
+    {   
+        </span><span class="jsdoc-var">this.currencyValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rendered</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.currencyEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.value </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">null </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.validate</span><span class="jsdoc-syntax">();
+        }
+    },
+    
+    </span><span class="jsdoc-var">setValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.fixPrecision</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;.&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.decimalSeparator</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rendered</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.value </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">null </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.validate</span><span class="jsdoc-syntax">();
+        }
+    },
+    
+    </span><span class="jsdoc-var">getRawValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getValue</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">getValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.fixPrecision</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parseValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getRawValue</span><span class="jsdoc-syntax">()));
+    },
+    
+    </span><span class="jsdoc-var">parseValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parseFloat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.decimalSeparator</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;.&quot;</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">isNaN</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">fixPrecision </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nan </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">isNaN</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.allowDecimals </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.decimalPrecision </span><span class="jsdoc-syntax">== -1 || </span><span class="jsdoc-var">nan </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">nan </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">parseFloat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.toFixed</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.decimalPrecision</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">decimalPrecisionFcn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">validateValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">Roo.bootstrap.MoneyField.superclass.validateValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">num </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isNaN</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">num</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.nanText</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">));
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">num </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.minValue</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.minText</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.minValue</span><span class="jsdoc-syntax">));
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">num </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.maxValue</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.maxText</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.maxValue</span><span class="jsdoc-syntax">));
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">validate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.allowBlank</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.markValid</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">currency </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getCurrency</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.validateValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getRawValue</span><span class="jsdoc-syntax">()) &amp;&amp; </span><span class="jsdoc-var">currency.length</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.markValid</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">getName</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">beforeBlur </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.castInt</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getRawValue</span><span class="jsdoc-syntax">());
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+        }
+    },
+    
+    </span><span class="jsdoc-var">onBlur </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.beforeBlur</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">Roo.isOpera </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.focusClass</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// don't touch in Opera
+            //this.el.removeClass(this.focusClass);
+        </span><span class="jsdoc-syntax">}
+        
+        </span><span class="jsdoc-var">this.hasFocus </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.validationEvent </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.validateOnBlur </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.validationEvent </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;blur&quot;</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.validate</span><span class="jsdoc-syntax">();
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.startValue</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'change'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.startValue</span><span class="jsdoc-syntax">);
+        }
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;blur&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">inputEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-money-amount-input'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+    },
+    
+    </span><span class="jsdoc-var">currencyEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-money-currency-input'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+    }
+    
+});</span></code></body></html>

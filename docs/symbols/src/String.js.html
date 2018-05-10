@@ -67,6 +67,8 @@ var s = String.format('&lt;div class=&quot;{0}&quot;&gt;{1}&lt;/div&gt;', cls, t
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.util.Format.htmlEncode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
         });
     }
+  
+    
 });
 
 </span><span class="jsdoc-comment">/**
@@ -88,4 +90,28 @@ sort = (sort == 'ASC' ? 'DESC' : 'ASC');
  
 </span><span class="jsdoc-var">String.prototype.toggle </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">other</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">other </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
-};</span></code></body></html>
+};
+
+
+</span><span class="jsdoc-comment">/**
+  * Remove invalid unicode characters from a string 
+  *
+  * @return {String} The clean string
+  */
+</span><span class="jsdoc-var">String.prototype.unicodeClean </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.replace</span><span class="jsdoc-syntax">(/[\s\S]/g,
+        </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">character</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">character.charCodeAt</span><span class="jsdoc-syntax">()&lt; 256) {
+              </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">character</span><span class="jsdoc-syntax">;
+           }
+           </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">encodeURIComponent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">character</span><span class="jsdoc-syntax">);
+           } </span><span class="jsdoc-keyword">catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) { 
+              </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+           }
+           </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">character</span><span class="jsdoc-syntax">;
+        }
+    );
+};
+  
+</span></code></body></html>

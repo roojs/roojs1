@@ -82,7 +82,7 @@
     
 <!-- ============================== class summary ========================== -->			
     <div class="description">
-	A delayed Element creator...<br/>Or a way to group chunks of interface together.<br/>technically this is a wrapper around a tree of Roo elements (which defines a 'module'),<br/> used in conjunction with XComponent.build() it will create an instance of each element,<br/> then call addxtype() to build the User interface.<br/><br/>Mypart.xyx = new Roo.XComponent({<br/><br/>    parent : 'Mypart.xyz', // empty == document.element.!!<br/>    order : '001',<br/>    name : 'xxxx'<br/>    region : 'xxxx'<br/>    disabled : function() {} <br/>     <br/>    tree : function() { // return an tree of xtype declared components<br/>        var MODULE = this;<br/>        return <br/>        {<br/>            xtype : 'NestedLayoutPanel',<br/>            // technicall<br/>        }<br/>     ]<br/>})<br/><br/><br/>It can be used to build a big heiracy, with parent etc.<br/>or you can just use this to render a single compoent to a dom element<br/>MYPART.render(Roo.Element | String(id) | dom_element )<br/><br/><br/>Usage patterns.<br/><br/>Classic Roo<br/><br/>Roo is designed primarily as a single page application, so the UI build for a standard interface will<br/>expect a single 'TOP' level module normally indicated by the 'parent' of the XComponent definition being defined as false.<br/><br/>Each sub module is expected to have a parent pointing to the class name of it's parent module.<br/><br/>When the top level is false, a 'Roo.BorderLayout' is created and the element is flagged as 'topModule'<br/>- if mulitple topModules exist, the last one is defined as the top module.<br/><br/>Embeded Roo<br/><br/>When the top level or multiple modules are to embedded into a existing HTML page,<br/>the parent element can container '<b>id</b>' of the element where the module will be drawn.<br/><br/>Bootstrap Roo<br/><br/>Unlike classic Roo, the bootstrap tends not to be used as a single page.<br/>it relies more on a include mechanism, where sub modules are included into an outer page.<br/>This is normally managed by the builder tools using Roo.apply( options, Included.Sub.Module )<br/><br/>Bootstrap Roo Included elements<br/><br/>Our builder application needs the ability to preview these sub compoennts. They will normally have parent=false set,<br/>hence confusing the component builder as it thinks there are multiple top level elements.
+	A delayed Element creator...<br/>Or a way to group chunks of interface together.<br/>technically this is a wrapper around a tree of Roo elements (which defines a 'module'),<br/> used in conjunction with XComponent.build() it will create an instance of each element,<br/> then call addxtype() to build the User interface.<br/><br/>Mypart.xyx = new Roo.XComponent({<br/><br/>    parent : 'Mypart.xyz', // empty == document.element.!!<br/>    order : '001',<br/>    name : 'xxxx'<br/>    region : 'xxxx'<br/>    disabled : function() {} <br/>     <br/>    tree : function() { // return an tree of xtype declared components<br/>        var MODULE = this;<br/>        return <br/>        {<br/>            xtype : 'NestedLayoutPanel',<br/>            // technicall<br/>        }<br/>     ]<br/>})<br/><br/><br/>It can be used to build a big heiracy, with parent etc.<br/>or you can just use this to render a single compoent to a dom element<br/>MYPART.render(Roo.Element | String(id) | dom_element )<br/><br/><br/>Usage patterns.<br/><br/>Classic Roo<br/><br/>Roo is designed primarily as a single page application, so the UI build for a standard interface will<br/>expect a single 'TOP' level module normally indicated by the 'parent' of the XComponent definition being defined as false.<br/><br/>Each sub module is expected to have a parent pointing to the class name of it's parent module.<br/><br/>When the top level is false, a 'Roo.BorderLayout' is created and the element is flagged as 'topModule'<br/>- if mulitple topModules exist, the last one is defined as the top module.<br/><br/>Embeded Roo<br/><br/>When the top level or multiple modules are to embedded into a existing HTML page,<br/>the parent element can container '<b>id</b>' of the element where the module will be drawn.<br/><br/>Bootstrap Roo<br/><br/>Unlike classic Roo, the bootstrap tends not to be used as a single page.<br/>it relies more on a include mechanism, where sub modules are included into an outer page.<br/>This is normally managed by the builder tools using Roo.apply( options, Included.Sub.Module )<br/><br/>Bootstrap Roo Included elements<br/><br/>Our builder application needs the ability to preview these sub compoennts. They will normally have parent=false set,<br/>hence confusing the component builder as it thinks there are multiple top level elements. <br/><br/>String Over-ride & Translations<br/><br/>Our builder application writes all the strings as _strings and _named_strings. This is to enable the translation of elements,<br/>and also the 'overlaying of string values - needed when different versions of the same application with different text content<br/>are needed. <b>see</b> Roo.XComponent.overlayString
     </div>
 
 	
@@ -981,6 +981,74 @@
 	   
 	   
             <td class="sig">
+                <a id="Roo.XComponent-method-overlayStrings"   name=".overlayStrings"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.XComponent.</span><b class="itemname">overlayStrings</b>
+				
+				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>element</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>associative</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Overlay a set of modified strings onto a component<br/>This is dependant on our builder exporting the strings and 'named strings' elements.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Overlay a set of modified strings onto a component<br/>This is dependant on our builder exporting the strings and 'named strings' elements.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>element</b>
+						
+					</dt>
+					<dd>to overlay on - eg. Pman.Dialog.Login</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>associative</b>
+						
+					</dt>
+					<dd>array of 'named' string and it's new value.</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.XComponent
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
                 <a id="Roo.XComponent-method-preBuild"   name=".preBuild"></a>
 		<div class="fixedFont">
 			<span class="attributes">Roo.XComponent.</span><b class="itemname">preBuild</b>
@@ -1027,7 +1095,7 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt0 expandable notInherited">
+          <tr class="method-row config-row-alt1 expandable notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -1078,7 +1146,7 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt1 expandable notInherited">
+          <tr class="method-row config-row-alt0 expandable notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -1129,7 +1197,7 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt0 expandable">
+          <tr class="method-row config-row-alt1 expandable">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -1191,7 +1259,7 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt1 expandable">
+          <tr class="method-row config-row-alt0 expandable">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -1271,7 +1339,7 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt0 expandable">
+          <tr class="method-row config-row-alt1 expandable">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -1354,7 +1422,7 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt1 expandable">
+          <tr class="method-row config-row-alt0 expandable">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -1431,7 +1499,7 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt0 expandable">
+          <tr class="method-row config-row-alt1 expandable">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -1482,7 +1550,7 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt1 expandable">
+          <tr class="method-row config-row-alt0 expandable">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -1556,7 +1624,7 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt0 expandable notInherited">
+          <tr class="method-row config-row-alt1 expandable notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -1618,7 +1686,7 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt1 expandable">
+          <tr class="method-row config-row-alt0 expandable">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -1786,7 +1854,7 @@
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Mon Apr 23 2018 17:33:44 GMT+0800 (HKT)
+			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Thu May 10 2018 15:50:15 GMT+0800 (HKT)
 			Based on 
 			<a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a>  
 		</div>

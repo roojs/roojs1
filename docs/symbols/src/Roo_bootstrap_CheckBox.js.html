@@ -17,6 +17,7 @@
  * @cfg {Boolean} checked initnal the element
  * @cfg {Boolean} inline inline the element (default false)
  * @cfg {String} groupId the checkbox group id // normal just use for checkbox
+ * @cfg {String} tooltip label tooltip
  * 
  * @constructor
  * Create a new CheckBox
@@ -33,7 +34,13 @@
         * @param {Roo.bootstrap.CheckBox} this This input
         * @param {Boolean} checked The new checked value
         */
-       </span><span class="jsdoc-var">check </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+       </span><span class="jsdoc-var">check </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+       </span><span class="jsdoc-comment">/**
+        * @event click
+        * Fires when the element is click.
+        * @param {Roo.bootstrap.CheckBox} this This input
+        */
+       </span><span class="jsdoc-var">click </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
     </span><span class="jsdoc-syntax">});
     
 };
@@ -47,6 +54,7 @@
     </span><span class="jsdoc-var">checked</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">weight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">inline</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -77,7 +85,7 @@
                 </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-hidden-value'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.checked </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.valueOff </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.inputValue
+                </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.checked </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.inputValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.valueOff
             </span><span class="jsdoc-syntax">};
         }
         
@@ -92,9 +100,7 @@
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.checked</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">input.checked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.checked</span><span class="jsdoc-syntax">;
-            
         }
-        
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">) {
             
@@ -159,7 +165,6 @@
                     </span><span class="jsdoc-string">'for' </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'control-label'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel
-
                 </span><span class="jsdoc-syntax">},
                 {
                     </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">, 
@@ -207,7 +212,6 @@
                         </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'control-label box-input-label'</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-comment">//cls : 'input-group-addon',
                         </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel
-                        
                     </span><span class="jsdoc-syntax">},
                     
                     </span><span class="jsdoc-var">inputblock
@@ -290,9 +294,12 @@
         }
     },
     
-    </span><span class="jsdoc-var">onClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    </span><span class="jsdoc-var">onClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
     {   
-        </span><span class="jsdoc-var">this.setChecked</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.checked</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.setChecked</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.checked</span><span class="jsdoc-syntax">);
+        }
+        
     },
     
     </span><span class="jsdoc-var">setChecked </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">suppressEvent</span><span class="jsdoc-syntax">)
@@ -436,6 +443,15 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">group</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">group</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.el.isVisible</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)){
+                </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">group</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             }
@@ -552,7 +568,7 @@
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">label </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.FieldLabel.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.name </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-group'</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">label </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">label.iconEl</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">label.iconEl.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">label.validClass</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">label.iconEl.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">label.invalidClass</span><span class="jsdoc-syntax">);
         }

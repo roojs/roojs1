@@ -63,6 +63,12 @@
  * Our builder application needs the ability to preview these sub compoennts. They will normally have parent=false set,
  * hence confusing the component builder as it thinks there are multiple top level elements. 
  *
+ * String Over-ride &amp; Translations
+ *
+ * Our builder application writes all the strings as _strings and _named_strings. This is to enable the translation of elements,
+ * and also the 'overlaying of string values - needed when different versions of the same application with different text content
+ * are needed. @see Roo.XComponent.overlayString  
+ * 
  * 
  * 
  * @extends Roo.util.Observable
@@ -672,7 +678,32 @@
         
         
     },
-	
+    </span><span class="jsdoc-comment">/**
+     * Overlay a set of modified strings onto a component
+     * This is dependant on our builder exporting the strings and 'named strings' elements.
+     * 
+     * @param {Object} element to overlay on - eg. Pman.Dialog.Login
+     * @param {Object} associative array of 'named' string and it's new value.
+     * 
+     */
+	</span><span class="jsdoc-var">overlayStrings </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">component</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">strings </span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">component</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'_named_strings'</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-string">&quot;ERROR: component does not have _named_strings&quot;</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">( </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">strings </span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">md </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">component</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'_named_strings'</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">component</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'_named_strings'</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">md </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">component</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'_strings'</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">md</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">strings</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">];
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'could not find named string: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' in'</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">component</span><span class="jsdoc-syntax">);
+            }
+            
+        }
+        
+    },
+    
 	
 	</span><span class="jsdoc-comment">/**
 	 * Event Object.
