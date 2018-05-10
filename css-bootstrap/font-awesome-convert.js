@@ -13,7 +13,7 @@ function unicodeEscape(str) {
    }
 		var escape = character.charCodeAt().toString(16),
 		    longhand = escape.length > 2;
-		return '\\' + (longhand ? 'u' : 'x') + ('0000' + escape).slice(longhand ? -4 : -2);
+		return '\\' + ('0000' + escape).slice(longhand ? -4 : -2);
 	});
 }
 unicodeEscape("\x63\x6f\x6e\x74\x65\x6e\x74\x3a\x20\x22\uf15c\x22\x3b");
