@@ -28431,7 +28431,14 @@ Roo.bootstrap.DocumentManager = function(config){
          * @param {Roo.bootstrap.DocumentManager} this
          * @param {Object} file
          */
-        "process" : true
+        "process" : true,
+        /**
+         * @event previewrendered
+         * Fire when preview rendered
+         * @param {Roo.bootstrap.DocumentManager} this
+         * @param {Object} file
+         */
+        "previewrendered" : true
         
     });
 };
@@ -29018,6 +29025,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         image.dom.addEventListener("load", function(){ _this.onPreviewLoad(file, image); });
         
         image.on('click', this.onClick, this, file);
+        
+        this.fireEvent('previewrendered', this, file);
         
         return file;
         
