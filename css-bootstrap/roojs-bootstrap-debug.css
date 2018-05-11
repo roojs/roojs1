@@ -1531,6 +1531,7 @@ table.fc-border-separate {
   height: 100px;
   max-height: 100px;
   margin-top: 10px;
+  margin-left: 10px;
 }
 .roo-document-manager-preview.wide {
   width: 50%;
@@ -1586,8 +1587,8 @@ table.fc-border-separate {
 }
 .roo-document-manager-preview > .roo-document-manager-thumb > .fa {
   position: absolute;
-  left: 10px;
-  top: 5px;
+  left: -5px;
+  top: -5px;
   width: 25px;
   height: 25px;
   -webkit-border-radius: 50%;
@@ -1595,13 +1596,19 @@ table.fc-border-separate {
   border-radius: 50%;
   line-height: 25px;
   text-align: center;
-  background: inherit;
-  border: inherit;
+  background-color: #ffffff;
+  /*border: inherit;*/
   font-size: 1.8em;
 }
 .roo-document-manager-preview > .roo-document-manager-thumb.bottom > .fa {
   top: inherit;
-  bottom: 5px;
+  bottom: -5px;
+}
+.roo-document-manager-preview > .roo-document-manager-thumb.primary > .fa {
+  color: #337ab7;
+}
+.roo-document-manager-preview > .roo-document-manager-thumb.border-primary {
+  border: 3px solid #337ab7;
 }
 /*
 * sm
