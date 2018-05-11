@@ -141,10 +141,6 @@ Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
          * @type Object
          */
         this.o = o;
-        
-        Roo.log('------------------');
-        Roo.log(o);
-        
         var s = this.meta, Record = this.recordType,
             f = Record ? Record.prototype.fields : null, fi = f ? f.items : [], fl = f ? f.length : 0;
 
