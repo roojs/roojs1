@@ -1616,7 +1616,7 @@ table.fc-border-separate {
   color: #555555;
 }
 .roo-document-manager-preview.disabled > .roo-document-manager-thumb.border-primary {
-  border: 3px solid #555555;
+  border: none;
 }
 /*
 * sm
