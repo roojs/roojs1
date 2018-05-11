@@ -1564,6 +1564,7 @@ table.fc-border-separate {
   max-height: 100%;
   text-align: center;
   vertical-align: middle;
+  padding-bottom: 5px;
 }
 .roo-document-manager-preview > .close {
   position: absolute;
@@ -1609,6 +1610,12 @@ table.fc-border-separate {
 }
 .roo-document-manager-preview > .roo-document-manager-thumb.border-primary {
   border: 3px solid #337ab7;
+}
+.roo-document-manager-preview.disabled > .roo-document-manager-thumb.primary > .fa {
+  color: #555555;
+}
+.roo-document-manager-preview.disabled > .roo-document-manager-thumb.border-primary {
+  border: 3px solid #555555;
 }
 /*
 * sm
