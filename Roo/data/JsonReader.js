@@ -169,6 +169,8 @@ Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
                 this.ef[jj] = this.getJsonAccessor(map);
             }
         }
+        
+        Roo.log(this.getTotal);
 
     	var root = this.getRoot(o), c = root.length, totalRecords = c, success = true;
     	if(s.totalProperty){
