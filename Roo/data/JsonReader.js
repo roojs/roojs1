@@ -183,9 +183,6 @@ Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
                 success = false;
             }
         }
-        
-        Roo.log(root);
-        
         var records = [];
         for(var i = 0; i < c; i++){
                 var n = root[i];
