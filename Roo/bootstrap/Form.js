@@ -240,7 +240,12 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         var o = action.options;
 
         if(this.loadMask){
-            this.el.mask(o.waitMsg || "Sending", 'x-mask-loading');
+            
+            if(this.maskBody){
+                Roo.get(document.body).mask(o.waitMsg || "Sending", 'x-mask-loading')
+            } else {
+                this.el.mask(o.waitMsg || "Sending", 'x-mask-loading');
+            }
         }
         // not really supported yet.. ??
 
