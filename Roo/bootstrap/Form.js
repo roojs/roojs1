@@ -110,6 +110,11 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
      * @cfg {Number} maskOffset Default 100
      */
     maskOffset : 100,
+    
+    /**
+     * @cfg {Boolean} maskBody
+     */
+    maskBody : false,
 
     getAutoCreate : function(){
 
