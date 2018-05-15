@@ -238,7 +238,9 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     // private
     beforeAction : function(action){
         var o = action.options;
-
+        
+        Roo.log(action);
+        
         if(this.loadMask){
             
             if(this.maskBody){
