@@ -266,6 +266,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         var o = action.options;
 
         //if(this.waitMsgTarget === true){
+            Roo.get(document.body).unmask();
             this.el.unmask();
         //}else if(this.waitMsgTarget){
         //    this.waitMsgTarget.unmask();
