@@ -2413,7 +2413,7 @@ a.roo-brick-link:hover {
 }
 .modal .roo-mb-progress-wrap .roo-mb-progress {
   height: 18px;
-  background: transparent url(../images/default/basic-dialog/progress2.gif) repeat-x 1px 1px;
+  background: transparent url('../images/default/basic-dialog/progress2.gif') repeat-x 1px 1px;
 }
 .modal .roo-mb-progress-wrap .roo-mb-progress .roo-mb-progress-bar {
   height: 18px;
