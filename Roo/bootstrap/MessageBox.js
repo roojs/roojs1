@@ -224,6 +224,7 @@ Roo.bootstrap.MessageBox = function(){
             
             if (pp) { // weird bug on my firefox - for some reason this is not defined
                 pp.setWidth(Math.floor(value*progressEl.dom.firstChild.offsetWidth));
+                pp.setHeight(Math.floor(progressEl.dom.firstChild.offsetHeight));
             }
             return this;
         },        
