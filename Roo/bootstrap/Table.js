@@ -35,6 +35,7 @@
  * @cfg {Boolean} scrollBody (true|false) default false - body scrolled / fixed header
  * @cfg {Roo.bootstrap.PagingToolbar} footer  a paging toolbar
  * @cfg {Boolean} lazyLoad  auto load data while scrolling to the end (default false)
+ * @cfg {Boolean} maskBody  (true|false) mask the document body rather than el (default false)
  
  * 
  * @constructor
