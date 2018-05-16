@@ -5793,6 +5793,7 @@ Roo.LoadMask.prototype = {
  * @cfg {Boolean} scrollBody (true|false) default false - body scrolled / fixed header
  * @cfg {Roo.bootstrap.PagingToolbar} footer  a paging toolbar
  * @cfg {Boolean} lazyLoad  auto load data while scrolling to the end (default false)
+ * @cfg {Boolean} maskBody  (true|false) mask the document body rather than el (default false)
  
  * 
  * @constructor
@@ -5981,6 +5982,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     lazyLoad : false,
     
+    maskBody : false,
+    
     getAutoCreate : function()
     {
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
@@ -6107,7 +6110,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
         } 
         
-        this.maskEl = new Roo.LoadMask(this.el, { store : this.ds, msgCls: 'roo-el-mask-msg' });
+        if(this.maskBody){
+            this.maskEl = new Roo.LoadMask(Roo.get(document.body), { store : this.ds, msgCls: 'roo-el-mask-msg' });
+        } else {
+            this.maskEl = new Roo.LoadMask(this.el, { store : this.ds, msgCls: 'roo-el-mask-msg' });
+        }
         
         this.store.on('load', this.onLoad, this);
         this.store.on('beforeload', this.onBeforeLoad, this);
