@@ -7774,9 +7774,17 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         this.activeAction = null;
         var o = action.options;
 
+        if(this.loadMask){
+            
+            if(this.maskBody){
+                Roo.get(document.body).unmask();
+            } else {
+                this.el.unmask();
+            }
+        }
+        
         //if(this.waitMsgTarget === true){
-            Roo.get(document.body).unmask();
-            this.el.unmask();
+//            this.el.unmask();
         //}else if(this.waitMsgTarget){
         //    this.waitMsgTarget.unmask();
         //}else{
