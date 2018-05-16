@@ -3119,11 +3119,11 @@ Roo.bootstrap.MessageBox = function(){
                 progressEl.enableDisplayMode();
                 
                 // This is supposed to be the progessElement.. but I think it's controlling the height of everything..
-                //var pf = progressEl.dom.firstChild;
-                //if (pf) {
-                    //pp = Roo.get(pf.firstChild);
-                    //pp.setHeight(pf.offsetHeight);
-                //}
+                var pf = progressEl.dom.firstChild;
+                if (pf) {
+                    pp = Roo.get(pf.firstChild);
+                    pp.setHeight(pf.offsetHeight);
+                }
                 
             }
             return dlg;
