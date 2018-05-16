@@ -222,8 +222,6 @@ Roo.bootstrap.MessageBox = function(){
                 this.updateText(text);
             }
             
-            Roo.log('update progress : ');
-            Roo.log(pp);
             if (pp) { // weird bug on my firefox - for some reason this is not defined
                 pp.setWidth(Math.floor(value*progressEl.dom.firstChild.offsetWidth));
             }
