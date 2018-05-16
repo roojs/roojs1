@@ -224,6 +224,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     lazyLoad : false,
     
+    maskBody : false,
+    
     getAutoCreate : function()
     {
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
@@ -350,7 +352,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
         } 
         
-        this.maskEl = new Roo.LoadMask(this.el, { store : this.ds, msgCls: 'roo-el-mask-msg' });
+        if(this.maskBody){
+            this.maskEl = new Roo.LoadMask(Roo.get(document.body), { store : this.ds, msgCls: 'roo-el-mask-msg' });
+        } else {
+            this.maskEl = new Roo.LoadMask(this.el, { store : this.ds, msgCls: 'roo-el-mask-msg' });
+        }
         
         this.store.on('load', this.onLoad, this);
         this.store.on('beforeload', this.onBeforeLoad, this);
