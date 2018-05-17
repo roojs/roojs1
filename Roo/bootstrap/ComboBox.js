@@ -1173,6 +1173,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 }
             }
         }else{
+            Roo.log('empty??');
             this.onEmptyResults();
         }
         
