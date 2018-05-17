@@ -407,25 +407,20 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     onTriggerClick : function(e)
     {   
-        Roo.log('money filed on trigger click');
-        
         if(this.disabled){
             return;
         }
-        
-        Roo.log('in??');
         
         this.page = 0;
         this.loadNext = false;
         
         if(this.isExpanded()){
-            Roo.log('isExpanded??');
             this.collapse();
             return;
         }
         
         this.hasFocus = true;
-        Roo.log('doquery??');
+        
         if(this.triggerAction == 'all') {
             this.doQuery(this.allQuery, true);
             return;
