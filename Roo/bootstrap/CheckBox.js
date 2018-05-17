@@ -614,7 +614,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         this.disabled = false;
         this.fireEvent("enable", this);
         return this;
-    }
+    },
     
     setBoxLabel : function(v)
     {
