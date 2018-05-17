@@ -1139,7 +1139,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(!this.hasFocus){
             return;
         }
-        
+        Roo.log('onload???');
         if(typeof(this.loading) !== 'undefined' && this.loading !== null){
             this.loading.hide();
         }
@@ -1672,7 +1672,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     }
                     
                     this.store.fireEvent("datachanged", this.store);
-                    Roo.log('onload??');
+                    
                     this.onLoad();
                     
                     
