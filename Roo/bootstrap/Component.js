@@ -311,9 +311,12 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 Roo.log('start render...');
                 Roo.log(cn);
                 Roo.log(this[cntr](true));
-                if(cn.render && cn.render(this[cntr](true)) === false){
+                
+                if(this[cntr](true) === false){
                     return;
                 }
+                
+                cn.render && cn.render(this[cntr](true));
                 
              }
             // then add the element..
