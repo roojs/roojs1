@@ -193,8 +193,11 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
             if(this.disabled){
                 this.disable();
             }
+            
+            return this;
         }
-        return this;
+        
+        return false;
     },
 
     /** @private */
