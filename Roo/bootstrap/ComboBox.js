@@ -1672,7 +1672,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     }
                     
                     this.store.fireEvent("datachanged", this.store);
-                    
+                    Roo.log('onload??');
                     this.onLoad();
                     
                     
