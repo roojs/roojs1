@@ -314,7 +314,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 
                 if(this[cntr](true) === false){
                     Roo.log(['skip', cn]);
-                    return;
+                    cn.items = [];
+                    return cn;
                 }
                 
                 cn.render && cn.render(this[cntr](true));
