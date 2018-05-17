@@ -342,7 +342,10 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
      */
     load : function(options){
         Roo.log(this.parent);
-        Roo.log(this.parent.fieldLabel);
+        if(typeof(this.parent) != 'undefined'){
+            Roo.log(this.parent.fieldLabel);
+        }
+        
         Roo.log(options);
         options = options || {};
         if(this.fireEvent("beforeload", this, options) !== false){
