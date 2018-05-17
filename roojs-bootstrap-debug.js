@@ -313,6 +313,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 Roo.log(this[cntr](true));
                 
                 if(this[cntr](true) === false){
+                    Roo.log(['skip', cn]);
                     return;
                 }
                 
