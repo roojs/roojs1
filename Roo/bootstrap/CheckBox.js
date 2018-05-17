@@ -615,6 +615,15 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         this.fireEvent("enable", this);
         return this;
     }
+    
+    setBoxLabel : function(v)
+    {
+        this.boxLabel = v;
+        
+        if(this.rendered){
+            this.el.select('label.box-label',true).first().dom.innerHTML = (v === null || v === undefined ? '' : v);
+        }
+    }
 
 });
 
