@@ -9388,20 +9388,31 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         
-        this.fieldLabel = v;
-        
         if(this.indicator){
             var ar = this.el.select('label > span',true);
-            if (!ar.elements.length) {
-                Roo.log("could not find label > span on element");
-                Roo.log(this);
+            
+            if (ar.elements.length) {
+                this.el.select('label > span',true).first().dom.innerHTML = (v === null || v === undefined ? '' : v);
+                this.fieldLabel = v;
                 return;
             }
-            this.el.select('label > span',true).first().dom.innerHTML = (v === null || v === undefined ? '' : v);
+            
+            var br = this.el.select('label',true);
+            
+            if(br.elements.length) {
+                this.el.select('label',true).first().dom.innerHTML = (v === null || v === undefined ? '' : v);
+                this.fieldLabel = v;
+                return;
+            }
+            
+            Roo.log('Cannot Found any of label > span || label in input');
             return;
         }
         
         this.el.select('label',true).first().dom.innerHTML = (v === null || v === undefined ? '' : v);
+        this.fieldLabel = v;
+        
+        
     }
 });
 
