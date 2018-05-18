@@ -494,8 +494,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         
         c[this.currencyField] = !o || typeof(o[this.currencyName]) == 'undefined' ? '' : o[this.currencyName];
         
-        Roo.log(c);
-        
         this.setFromCurrencyData(c);
         
         var value = '';
