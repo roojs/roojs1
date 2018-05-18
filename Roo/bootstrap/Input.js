@@ -1016,13 +1016,14 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         
-        this.fieldLabel = v;
+        
         
         if(this.indicator){
             var ar = this.el.select('label > span',true);
             
             if (ar.elements.length) {
                 this.el.select('label > span',true).first().dom.innerHTML = (v === null || v === undefined ? '' : v);
+                this.fieldLabel = v;
                 return;
             }
             
@@ -1030,6 +1031,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             
             if(br.elements.length) {
                 this.el.select('label',true).first().dom.innerHTML = (v === null || v === undefined ? '' : v);
+                this.fieldLabel = v;
                 return;
             }
             
