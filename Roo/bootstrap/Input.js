@@ -1016,8 +1016,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         
-        
-        
         if(this.indicator){
             var ar = this.el.select('label > span',true);
             
@@ -1036,7 +1034,11 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             }
             
             Roo.log('Cannot Found any of label > span || label in input');
+            return;
         }
+        
+        this.el.select('label',true).first().dom.innerHTML = (v === null || v === undefined ? '' : v);
+        this.fieldLabel = v;
         
         
     }
