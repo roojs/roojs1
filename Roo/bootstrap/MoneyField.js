@@ -488,6 +488,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         Roo.log(o);
         
         if(o.length * 1 == 0 && this.defaultCurrency) {
+            Roo.log('setting currency');
             this.setCurrency(this.defaultCurrency);
         }
         
