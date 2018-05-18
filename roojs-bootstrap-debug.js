@@ -40394,6 +40394,10 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         
         this.lastSelectionText = currency;
         
+        if(o.length * 1 == 0 && this.defaultCurrency) {
+            this.setCurrency(this.defaultCurrency);
+        }
+        
         this.setCurrency(currency);
     },
     
@@ -40402,8 +40406,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         var c = {};
         
         c[this.currencyField] = !o || typeof(o[this.currencyName]) == 'undefined' ? '' : o[this.currencyName];
-        
-        Roo.log(c);
         
         this.setFromCurrencyData(c);
         
