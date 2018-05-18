@@ -20491,10 +20491,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         this.hiddenEl().dom.value = state ? this.inputValue : this.valueOff;
         
-        Roo.log('fire');
-        
         if(suppressEvent !== true){
-            Roo.log('supreeeed???');
             this.fireEvent('check', this, state);
         }
         
