@@ -1020,22 +1020,23 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         if(this.indicator){
             var ar = this.el.select('label > span',true);
-            if (!ar.elements.length) {
-                $br = this.el.select('label');
-                if(!br.elements.length) {
-                    Roo.log("could not find label element");
-                    Roo.log(this);
-                    return;
-                }
-                Roo.log("could not find label > span on element");
-                Roo.log(this);
+            
+            if (ar.elements.length) {
+                this.el.select('label > span',true).first().dom.innerHTML = (v === null || v === undefined ? '' : v);
                 return;
             }
-            this.el.select('label > span',true).first().dom.innerHTML = (v === null || v === undefined ? '' : v);
-            return;
+            
+            var br = this.el.select('label',true);
+            
+            if(br.elements.length) {
+                this.el.select('label',true).first().dom.innerHTML = (v === null || v === undefined ? '' : v);
+                return;
+            }
+            
+            Roo.log('Cannot Found any of label > span || label in input');
         }
         
-        this.el.select('label',true).first().dom.innerHTML = (v === null || v === undefined ? '' : v);
+        
     }
 });
 
