@@ -516,8 +516,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     setCurrency : function(v)
     {   
-        Roo.log(v);
-        
         this.currencyValue = v;
         
         if(this.rendered){
