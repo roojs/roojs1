@@ -58,6 +58,12 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
      * @cfg {Boolean} castInt (true|false) cast int if true (defalut true)
      */
     castInt : true,
+    /**
+     * @cfg {String} defaults currency of the MoneyField
+     * value should be in lkey
+     */
+    defaultCurrency : false,
+    
     
     inputlg : 9,
     inputmd : 9,
