@@ -241,11 +241,17 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         var has_flexy = (typeof(tree['flexy:if']) != 'undefined') ||
                     (typeof(tree['flexy:foreach']) != 'undefined');
           
+    
         
-        
-         skip_children = false;
+        skip_children = false;
         // render the element if it's not BODY.
         if (!is_body) {
+            
+            // if parent was disabled, then do not try and create the children..
+            if(this[cntr](true) === false){
+                tree.items = [];
+                return cn;
+            }
            
             cn = Roo.factory(tree);
            
@@ -308,19 +314,18 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 //Roo.log('render');
                 //Roo.log(this[cntr]());
                 // some elements do not have render methods.. like the layouts...
-                
+                /*
                 if(this[cntr](true) === false){
                     cn.items = [];
                     return cn;
                 }
-                
+                */
                 cn.render && cn.render(this[cntr](true));
                 
              }
             // then add the element..
         }
-        
-        
+         
         // handle the kids..
         
         var nitems = [];
