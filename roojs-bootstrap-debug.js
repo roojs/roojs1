@@ -250,7 +250,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             // if parent was disabled, then do not try and create the children..
             if(this[cntr](true) === false){
                 tree.items = [];
-                return cn;
+                return tree;
             }
            
             cn = Roo.factory(tree);
