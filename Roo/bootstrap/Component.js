@@ -241,7 +241,10 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         var has_flexy = (typeof(tree['flexy:if']) != 'undefined') ||
                     (typeof(tree['flexy:foreach']) != 'undefined');
           
-        
+        if(this[cntr](true) === false){
+            tree.items = [];
+            return cn;
+        }
         
          skip_children = false;
         // render the element if it's not BODY.
@@ -319,8 +322,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
              }
             // then add the element..
         }
-        
-        
+         
         // handle the kids..
         
         var nitems = [];
