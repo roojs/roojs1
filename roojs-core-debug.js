@@ -15395,40 +15395,49 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
      * @param {String/HTMLElement/Element} container (optional) The element this component should be rendered into. If it is being applied to existing markup, this should be left off.
      */
     render : function(container, position){
-        if(!this.rendered && this.fireEvent("beforerender", this) !== false){
-            if(!container && this.el){
-                this.el = Roo.get(this.el);
-                container = this.el.dom.parentNode;
-                this.allowDomMove = false;
-            }
-            this.container = Roo.get(container);
-            this.rendered = true;
-            if(position !== undefined){
-                if(typeof position == 'number'){
-                    position = this.container.dom.childNodes[position];
-                }else{
-                    position = Roo.getDom(position);
-                }
-            }
-            this.onRender(this.container, position || null);
-            if(this.cls){
-                this.el.addClass(this.cls);
-                delete this.cls;
-            }
-            if(this.style){
-                this.el.applyStyles(this.style);
-                delete this.style;
-            }
-            this.fireEvent("render", this);
-            this.afterRender(this.container);
-            if(this.hidden){
-                this.hide();
-            }
-            if(this.disabled){
-                this.disable();
+        
+        if(this.rendered){
+            return this;
+        }
+        
+        if(this.fireEvent("beforerender", this) === false){
+            return false;
+        }
+        
+        if(!container && this.el){
+            this.el = Roo.get(this.el);
+            container = this.el.dom.parentNode;
+            this.allowDomMove = false;
+        }
+        this.container = Roo.get(container);
+        this.rendered = true;
+        if(position !== undefined){
+            if(typeof position == 'number'){
+                position = this.container.dom.childNodes[position];
+            }else{
+                position = Roo.getDom(position);
             }
         }
+        this.onRender(this.container, position || null);
+        if(this.cls){
+            this.el.addClass(this.cls);
+            delete this.cls;
+        }
+        if(this.style){
+            this.el.applyStyles(this.style);
+            delete this.style;
+        }
+        this.fireEvent("render", this);
+        this.afterRender(this.container);
+        if(this.hidden){
+            this.hide();
+        }
+        if(this.disabled){
+            this.disable();
+        }
+
         return this;
+        
     },
 
     /** @private */
@@ -16625,7 +16634,7 @@ Roo.apply(Roo.XComponent, {
      */
 	overlayStrings : function( component, strings )
     {
-        if (typeof(component['_named_strings']) == undefined) {
+        if (typeof(component['_named_strings']) == 'undefined') {
             throw "ERROR: component does not have _named_strings";
         }
         for ( var k in strings ) {
