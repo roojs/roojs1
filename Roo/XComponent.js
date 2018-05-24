@@ -688,7 +688,7 @@ Roo.apply(Roo.XComponent, {
      */
 	overlayStrings : function( component, strings )
     {
-        if (typeof(component['_named_strings']) == 'undefined') {
+        if (typeof(component['_named_strings']) == undefined) {
             throw "ERROR: component does not have _named_strings";
         }
         for ( var k in strings ) {
