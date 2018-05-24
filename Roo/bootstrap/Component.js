@@ -248,7 +248,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if (!is_body) {
             
             // if parent was disabled, then do not try and create the children..
-            if(this[cntr](true) === false){
+            if(this[cntr](true) === false || this[cntr](true) === null){
                 tree.items = [];
                 return tree;
             }
