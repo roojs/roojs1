@@ -9256,18 +9256,18 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         if(feedback){
             this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
         }
-
+        
+        if(this.indicator){
+            this.indicator.removeClass('visible');
+            this.indicator.addClass('invisible');
+        }
+        
         if(this.disabled){
             return;
         }
         
         if(this.allowBlank && !this.getRawValue().length){
             return;
-        }
-        
-        if(this.indicator){
-            this.indicator.removeClass('visible');
-            this.indicator.addClass('invisible');
         }
         
         this.el.addClass(this.validClass);
