@@ -6902,7 +6902,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     updateHeaders : function()
     {
         var html = this.renderHeader();
-        this.mainHead.update(html);
+//        this.mainHead.update(html);
     }
 });
 
@@ -14203,6 +14203,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.hasFocus = false;
         
         if(this.tickable){
+            
+            this.tickItems = [];
+            
             this.okBtn.hide();
             this.cancelBtn.hide();
             this.trigger.show();
