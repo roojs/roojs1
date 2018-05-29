@@ -1731,8 +1731,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if(this.tickable){
             
-            this.tickItems = [];
-            
             this.okBtn.hide();
             this.cancelBtn.hide();
             this.trigger.show();
@@ -2075,6 +2073,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         this.item = [];
+        this.tickItems = [];
         
         Roo.each(this.choices.select('>li.roo-select2-search-choice', true).elements, function(c){
            c.remove();
