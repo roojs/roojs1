@@ -6862,10 +6862,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     onBodyScroll: function()
     {
         //Roo.log("body scrolled');" + this.mainBody.dom.scrollLeft);
-        this.mainHead.setStyle({
-            'position' : 'relative',
-            'left': (-1* this.mainBody.dom.scrollLeft) + 'px'
-        });
+        if(this.mainHead){
+            this.mainHead.setStyle({
+                'position' : 'relative',
+                'left': (-1* this.mainBody.dom.scrollLeft) + 'px'
+            });
+        }
         
         if(this.lazyLoad){
             
