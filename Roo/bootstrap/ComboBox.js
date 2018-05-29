@@ -1512,6 +1512,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     // private
     onEmptyResults : function(){
         
+        Roo.log('empty result call');
         if(this.tickable && this.editable){
             this.restrictHeight();
             return;
