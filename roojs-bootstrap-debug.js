@@ -6901,8 +6901,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     updateHeaders : function()
     {
-        var html = this.renderHeader();
-//        this.mainHead.update(html);
+        var header = this.renderHeader();
+        var table = this.el.select('table', true).first();
+        
+        this.mainHead.remove();
+        this.mainHead = table.createChild(header, this.mainBody, true);
+        
     }
 });
 
