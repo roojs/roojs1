@@ -1721,14 +1721,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * Hides the dropdown list if it is currently expanded. Fires the 'collapse' event on completion.
      */
     collapse : function(){
-        
-        this.hasFocus = false;
-        
         if(!this.isExpanded()){
             return;
         }
         
         this.list.hide();
+        
+        this.hasFocus = false;
         
         if(this.tickable){
             
@@ -1864,7 +1863,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     onSearchFieldClick : function(e)
     {
+        Roo.log('in???');
+        Roo.log([this.hasFocus, e.getTarget().nodeName.toLowerCase() ]);
+        
         if(this.hasFocus && !this.disabled && e.getTarget().nodeName.toLowerCase() != 'button'){
+            Roo.log('onSearchFieldClick');
             this.onTickableFooterButtonClick(e, false, false);
             return;
         }
