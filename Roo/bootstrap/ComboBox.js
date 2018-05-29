@@ -1730,6 +1730,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.hasFocus = false;
         
         if(this.tickable){
+            
+            this.tickItems = [];
+            
             this.okBtn.hide();
             this.cancelBtn.hide();
             this.trigger.show();
