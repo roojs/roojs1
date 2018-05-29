@@ -361,12 +361,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         this.mainBody.on('scroll', this.onBodyScroll, this);
         
-        this.cm.on("widthchange", this.onColWidthChange, this);
         this.cm.on("headerchange", this.onHeaderChange, this);
-        this.cm.on("hiddenchange", this.onHiddenChange, this);
-        this.cm.on("columnmoved", this.onColumnMove, this);
-        this.cm.on("columnlockchange", this.onColumnLock, this);
-        
         
     },
     
