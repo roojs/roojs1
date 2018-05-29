@@ -1516,7 +1516,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.restrictHeight();
             // return;
         }
-        
+        Roo.log(this.isExpanded());
         this.collapse();
     },
 
