@@ -6131,6 +6131,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         this.mainBody.on('scroll', this.onBodyScroll, this);
         
+        this.cm.on("headerchange", this.onHeaderChange, this);
         
     },
     
@@ -6891,6 +6892,17 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
             
         }
+    },
+    
+    onHeaderChange : function()
+    {
+        this.updateHeaders.apply(this, arguments);
+    }, 
+    
+    updateHeaders : function()
+    {
+        var html = this.renderHeader();
+        this.mainHead.update(html);
     }
 });
 
