@@ -1132,7 +1132,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     updateHeaders : function()
     {
         var html = this.renderHeader();
-        this.mainHead.update(html);
+//        this.mainHead.update(html);
     }
 });
 
