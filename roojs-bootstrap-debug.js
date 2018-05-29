@@ -6905,7 +6905,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var table = this.el.select('table', true).first();
         
         this.mainHead.remove();
-        this.mainHead = table.createChild(header, this.mainBody, true);
+        this.mainHead = table.createChild(header, this.mainBody, false);
         
     }
 });
