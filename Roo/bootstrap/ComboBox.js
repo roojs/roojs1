@@ -1721,13 +1721,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * Hides the dropdown list if it is currently expanded. Fires the 'collapse' event on completion.
      */
     collapse : function(){
+        
+        this.hasFocus = false;
+        
         if(!this.isExpanded()){
             return;
         }
         
         this.list.hide();
-        
-        this.hasFocus = false;
         
         if(this.tickable){
             
