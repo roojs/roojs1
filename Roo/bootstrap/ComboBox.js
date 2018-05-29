@@ -1514,7 +1514,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if(this.tickable && this.editable){
             this.restrictHeight();
-            return;
+            // return;
         }
         
         this.collapse();
