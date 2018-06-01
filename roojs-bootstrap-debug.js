@@ -33613,9 +33613,11 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
         }
         
         Roo.each(this.radioes, function(i){
-            
             i.checked = false;
             i.el.removeClass('checked');
+        });
+        
+        Roo.each(this.radioes, function(i){
             
             if(i.value === v || i.value.toString() === v.toString()){
                 i.checked = true;
