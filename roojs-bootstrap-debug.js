@@ -33626,6 +33626,8 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
                 if(suppressEvent !== true){
                     this.fireEvent('check', this, i);
                 }
+                
+                return false;
             }
             
         }, this);
