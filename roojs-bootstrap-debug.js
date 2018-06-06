@@ -7712,7 +7712,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
                 return;
             }
             valid = false;
-
+            Roo.log(f);
             if(!target && f.el.isVisible(true)){
                 target = f;
             }
@@ -33622,8 +33622,6 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
             if(i.value === v || i.value.toString() === v.toString()){
                 i.checked = true;
                 i.el.addClass('checked');
-                
-                Roo.log(suppressEvent);
                 
                 if(suppressEvent !== true){
                     this.fireEvent('check', this, i);
