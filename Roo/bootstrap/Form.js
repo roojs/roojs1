@@ -177,7 +177,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
                 return;
             }
             valid = false;
-            Roo.log(f);
+
             if(!target && f.el.isVisible(true)){
                 target = f;
             }
