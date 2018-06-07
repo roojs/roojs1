@@ -79,6 +79,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         var hiddenInput = {
             tag: 'input',
             type: 'hidden',
+            id: Roo.id(),
             cls: 'hidden-number-input'
         };
         
