@@ -33047,30 +33047,30 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
      */
     thousandsDelimiter : ",",
 
-    getAutoCreate : function()
-    {
-        var hiddenInput = {
-            tag: 'input',
-            type: 'hidden',
-            cls: 'hidden-number-input'
-        };
-        
-        if (this.name) {
-            hiddenInput.name = this.name;
-        }
-        
-        this.name = '';
-        
-        var cfg = Roo.bootstrap.NumberField.superclass.getAutoCreate.call(this);
-        
-        if(cfg.cn.length > 0) {
-            cfg.cn.push(hiddenInput);
-        }
-        
-        Roo.log(cfg);
-        
-        return cfg;
-    },
+    // getAutoCreate : function()
+    // {
+    //     var hiddenInput = {
+    //         tag: 'input',
+    //         type: 'hidden',
+    //         cls: 'hidden-number-input'
+    //     };
+    //     
+    //     if (this.name) {
+    //         hiddenInput.name = this.name;
+    //     }
+    //     
+    //     this.name = '';
+    //     
+    //     var cfg = Roo.bootstrap.NumberField.superclass.getAutoCreate.call(this);
+    //     
+    //     if(cfg.cn.length > 0) {
+    //         cfg.cn.push(hiddenInput);
+    //     }
+    //     
+    //     Roo.log(cfg);
+    //     
+    //     return cfg;
+    // },
 
     // private
     initEvents : function()
@@ -33144,7 +33144,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
 
     getValue : function()
     {
-        return this.fixPrecision(this.parseValue(this.inputEl().getValue()));
+        return this.fixPrecision(this.parseValue(Roo.bootstrap.NumberField.superclass.getValue.call(this)));
     },
 
     parseValue : function(value)
@@ -33209,7 +33209,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         return x1 + x2;
     },
     
-    inputEl: function ()
+    hiddenEl : function()
     {
         return this.el.select('input.hidden-number-input',true).first();
     }
