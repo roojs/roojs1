@@ -33038,6 +33038,19 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
      * @cfg {Boolean} castInt (true|false) cast int if true (defalut true)
      */
     castInt : true,
+    /**
+     * @cfg {Boolean} allowThousandsDelimiter (true|false) display thousands delimiter if true (e.g. "100,000") (defalut false)
+     */
+    allowThousandsDelimiter : false,
+    /**
+     * @cfg {String} symbol of thousandsDelimiter
+     */
+    thousandsDelimiter : ",",
+
+    getAutoCreate : function()
+    {
+        super();
+    }
 
     // private
     initEvents : function()
@@ -33151,6 +33164,29 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         if(v){
             this.setValue(v);
         }
+    },
+    
+    addThousandsDelimiter : function(v)
+    {
+        if(!this.allowThousandsDelimiter) {
+            return v;
+        }
+        
+        v += "";
+        
+        var x = v.split(".");
+        
+        var x1 = x[0];
+        
+        var x2 = x.length > 1 ? "." + x[1] : "";
+        
+        var rgx = /(\d+)(\d{3})/;
+        
+        while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, "$1" + this.thousandsDelimiter + "$2");
+        }
+        
+        return x1 + x2;
     }
     
 });
