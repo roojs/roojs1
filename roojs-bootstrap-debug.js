@@ -33051,7 +33051,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
     {
         var hidden_input_name = this.name;
         
-        Roo.log(this.name);
+        var id = Roo.id();
         
         this.name = '';
         
@@ -33060,7 +33060,9 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         if(cfg.cn.length > 0) {
             cfg.cn.push({
                 tag : 'input',
+                id : id,
                 name : hidden_input_name,
+                value : this.value,
                 type : 'hidden',
                 cls: 'form-hidden-field'
             })

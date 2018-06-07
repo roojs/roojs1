@@ -78,7 +78,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
     {
         var hidden_input_name = this.name;
         
-        Roo.log(this.name);
+        var id = Roo.id();
         
         this.name = '';
         
