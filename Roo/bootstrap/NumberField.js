@@ -90,8 +90,6 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
             })
         }
         
-        Roo.log(cfg);
-        
         return cfg;
     },
 
