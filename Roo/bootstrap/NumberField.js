@@ -191,7 +191,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
     addThousandsDelimiter : function(v)
     {
         v += "";
-        var v_array = v.split(".");
+        var x = v.split(".");
         var x1 = x[0];
         var x2 = x.length > 1 ? "." + x[1] : "";
         var rgx = /(\d+)(\d{3})/;
