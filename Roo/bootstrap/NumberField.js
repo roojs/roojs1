@@ -190,6 +190,10 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
     
     addThousandsDelimiter : function(v)
     {
+        if(!this.allowThousandsDelimiter) {
+            return v;
+        }
+        
         v += "";
         
         var x = v.split(".");
