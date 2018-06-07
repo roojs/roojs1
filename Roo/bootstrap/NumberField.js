@@ -210,7 +210,9 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
     		n = n.substr(0,n.length-3);
     	}
         
-    	if(n.length > 0) { a.unshift(n); }
+    	if(n.length > 0) {
+            a.unshift(n);
+        }
         
     	n = a.join(this.thousandsDelimiter);
         
