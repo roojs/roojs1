@@ -188,7 +188,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         }
     },
     
-    separateThousands : function()
+    addThousandsDelimiter : function()
     {
     	var a = amount.split('.',2)
         
