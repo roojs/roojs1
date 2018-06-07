@@ -228,7 +228,12 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         }
         
         return x1 + x2;
-    }
+    },
+    
+    inputEl: function ()
+    {
+        return this.el.select('input.form-control',true).first();
+    },
     
 });
 
