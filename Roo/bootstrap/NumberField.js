@@ -236,7 +236,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         return x1 + x2;
     },
     
-    inputEl: function ()
+    hiddenEl : function()
     {
         return this.el.select('input.hidden-number-input',true).first();
     }
