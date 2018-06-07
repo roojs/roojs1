@@ -33060,7 +33060,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
                 tag : 'input',
                 name : hidden_input_name,
                 type : 'hidden',
-                cls: 'form-hidden-field'
+                cls: 'form-hidden-field-number'
             })
         }
         
@@ -33208,7 +33208,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
     {
         Roo.log('die in here???');
         
-        return this.el.select('input.form-hidden-field',true).first();
+        return this.el.select('input.form-hidden-field-number',true).first();
     }
     
 });
