@@ -87,6 +87,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         if(cfg.cn.length > 0) {
             cfg.cn.push({
                 tag : 'input',
+                id : id,
                 name : hidden_input_name,
                 value : this.value,
                 type : 'hidden',
