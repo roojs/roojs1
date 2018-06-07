@@ -74,30 +74,30 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
      */
     thousandsDelimiter : ",",
 
-    // getAutoCreate : function()
-    // {
-    //     var hiddenInput = {
-    //         tag: 'input',
-    //         type: 'hidden',
-    //         cls: 'hidden-number-input'
-    //     };
-    //     
-    //     if (this.name) {
-    //         hiddenInput.name = this.name;
-    //     }
-    //     
-    //     this.name = '';
-    //     
-    //     var cfg = Roo.bootstrap.NumberField.superclass.getAutoCreate.call(this);
-    //     
-    //     if(cfg.cn.length > 0) {
-    //         cfg.cn.push(hiddenInput);
-    //     }
-    //     
-    //     Roo.log(cfg);
-    //     
-    //     return cfg;
-    // },
+    getAutoCreate : function()
+    {
+        var hiddenInput = {
+            tag: 'input',
+            type: 'hidden',
+            cls: 'hidden-number-input'
+        };
+        
+        if (this.name) {
+            hiddenInput.name = this.name;
+        }
+        
+        this.name = '';
+        
+        var cfg = Roo.bootstrap.NumberField.superclass.getAutoCreate.call(this);
+        
+        if(cfg.cn.length > 0) {
+            cfg.cn.push(hiddenInput);
+        }
+        
+        Roo.log(cfg);
+        
+        return cfg;
+    },
 
     // private
     initEvents : function()
