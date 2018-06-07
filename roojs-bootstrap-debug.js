@@ -33047,25 +33047,25 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
      */
     thousandsDelimiter : ",",
 
-    getAutoCreate : function()
-    {
-        var hidden_input_name = this.name;
-        
-        this.name = '';
-        
-        var cfg = Roo.bootstrap.NumberField.superclass.getAutoCreate.call(this);
-        
-        if(cfg.cn.length > 0) {
-            cfg.cn.push({
-                tag : 'input',
-                name : hidden_input_name,
-                type : 'hidden',
-                cls: 'form-hidden-field'
-            })
-        }
-        
-        return cfg;
-    },
+    // getAutoCreate : function()
+    // {
+    //     var hidden_input_name = this.name;
+    //     
+    //     this.name = '';
+    //     
+    //     var cfg = Roo.bootstrap.NumberField.superclass.getAutoCreate.call(this);
+    //     
+    //     if(cfg.cn.length > 0) {
+    //         cfg.cn.push({
+    //             tag : 'input',
+    //             name : hidden_input_name,
+    //             type : 'hidden',
+    //             cls: 'form-hidden-field'
+    //         })
+    //     }
+    //     
+    //     return cfg;
+    // },
 
     // private
     initEvents : function()
@@ -33202,12 +33202,12 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         }
         
         return x1 + x2;
-    },
-    
-    inputEl: function ()
-    {
-        return this.el.select('input.form-hidden-field',true).first();
     }
+    // 
+    // inputEl: function ()
+    // {
+    //     return this.el.select('input.form-hidden-field',true).first();
+    // }
     
 });
 
