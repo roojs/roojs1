@@ -33064,6 +33064,8 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         
         var cfg = Roo.bootstrap.NumberField.superclass.getAutoCreate.call(this);
         
+        this.name = hiddenInput.name;
+        
         if(cfg.cn.length > 0) {
             cfg.cn.push(hiddenInput);
         }
@@ -33145,7 +33147,9 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
 
     getValue : function()
     {
-        return this.fixPrecision(this.parseValue(Roo.bootstrap.NumberField.superclass.getValue.call(this)));
+        var v = this.hiddenEl().getValue();
+        
+        return this.fixPrecision(this.parseValue(v));
     },
 
     parseValue : function(value)
@@ -33166,8 +33170,18 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
 
     setValue : function(v)
     {
-        v = this.fixPrecision(v);
-        Roo.bootstrap.NumberField.superclass.setValue.call(this, String(v).replace(".", this.decimalSeparator));
+        v = String(this.fixPrecision(v)).replace(".", this.decimalSeparator);
+        
+        this.value = v;
+        
+        if(this.rendered){
+            
+            this.hiddenEl().dom.value = (v === null || v === undefined ? '' : v);
+            
+            this.inputEl().dom.value = (this.allowThousandsDelimiter ? this.addThousandsDelimiter(v) : v);
+            
+            this.validate();
+        }
     },
 
     decimalPrecisionFcn : function(v)
