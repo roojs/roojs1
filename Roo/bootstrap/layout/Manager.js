@@ -143,7 +143,6 @@ Roo.extend(Roo.bootstrap.layout.Manager, Roo.bootstrap.Component, {
     },
 
     onRegionExpanded : function(region){
-        Roo.log('expand');
         this.fireEvent("regionexpanded", region);
     },
 
