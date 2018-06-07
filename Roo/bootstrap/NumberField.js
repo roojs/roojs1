@@ -70,9 +70,13 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
      */
     allowThousandsDelimiter : false,
     /**
-     * @cfg {String} symbol of thousandsDelimiter
+     * @cfg {String} thousandsDelimiter Symbol of thousandsDelimiter
      */
     thousandsDelimiter : ",",
+    /**
+     * @cfg {String} valueAlign alignment of value
+     */
+    valueAlign : "left",
 
     getAutoCreate : function()
     {
@@ -97,8 +101,6 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
             cfg.cn.push(hiddenInput);
         }
         
-        Roo.log(cfg);
-        
         return cfg;
     },
 
@@ -115,6 +117,10 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         
         if(this.allowNegative){
             allowed += "-";
+        }
+        
+        if(this.allowThousandsDelimiter) {
+            allowed += this.thousandsDelimiter;
         }
         
         this.stripCharsRe = new RegExp('[^'+allowed+']', 'gi');
@@ -181,12 +187,24 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
 
     parseValue : function(value)
     {
+        if(this.allowThousandsDelimiter) {
+            value += "";
+            r = new RegExp(this.thousandsDelimiter, "g");
+            value = value.replace(r, "");
+        }
+        
         value = parseFloat(String(value).replace(this.decimalSeparator, "."));
         return isNaN(value) ? '' : value;
     },
 
     fixPrecision : function(value)
     {
+        if(this.allowThousandsDelimiter) {
+            value += "";
+            r = new RegExp(this.thousandsDelimiter, "g");
+            value = value.replace(r, "");
+        }
+        
         var nan = isNaN(value);
         
         if(!this.allowDecimals || this.decimalPrecision == -1 || nan || !value){
