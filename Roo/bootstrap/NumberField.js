@@ -171,7 +171,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
 
     getValue : function()
     {
-        return this.fixPrecision(this.parseValue(Roo.bootstrap.NumberField.superclass.getValue.call(this)));
+        return this.fixPrecision(this.parseValue(this.inputEl().getValue()));
     },
 
     parseValue : function(value)
@@ -238,8 +238,6 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
     
     inputEl: function ()
     {
-        Roo.log('heree???');
-        
         return this.el.select('input.hidden-number-input',true).first();
     }
     
