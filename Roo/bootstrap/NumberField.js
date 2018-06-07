@@ -88,6 +88,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
             cfg.cn.push({
                 tag : 'input',
                 name : hidden_input_name,
+                value : this.value,
                 type : 'hidden',
                 cls: 'form-hidden-field'
             })
