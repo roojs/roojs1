@@ -76,7 +76,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
 
     getAutoCreate : function()
     {
-        // super.getAutoCreate();
+        this.superclass.getAutoCreate.call();
     },
 
     // private
