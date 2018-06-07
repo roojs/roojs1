@@ -94,8 +94,6 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
             cfg.cn.push(hiddenInput)
         }
         
-        Roo.log(cfg);
-        
         return cfg;
     },
 
