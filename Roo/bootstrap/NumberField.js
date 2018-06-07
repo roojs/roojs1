@@ -82,7 +82,9 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         
         var cfg = Roo.bootstrap.NumberField.superclass.getAutoCreate.call(this);
         
-        if(cfg.cn)
+        if(cfg.cn.length > 0) {
+            
+        }
         
         return cfg;
     },
