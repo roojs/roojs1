@@ -198,7 +198,12 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
     setValue : function(v)
     {
         v = this.fixPrecision(v);
-        Roo.bootstrap.NumberField.superclass.setValue.call(this, String(v).replace(".", this.decimalSeparator));
+        
+        this.value = v;
+        if(this.rendered){
+            this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+            this.validate();
+        }
     },
 
     decimalPrecisionFcn : function(v)
