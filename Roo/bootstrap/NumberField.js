@@ -234,7 +234,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
     inputEl: function ()
     {
         return this.el.select('input.form-hidden-field',true).first();
-    },
+    }
     
 });
 
