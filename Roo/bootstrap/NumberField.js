@@ -66,7 +66,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
      */
     castInt : true,
     /**
-     * @cfg {Boolean} thousandsSeparator (true|false) display thousands separator if true (e.g. "100,000") (defalut false)
+     * @cfg {Boolean} allowThousandsDelimiter (true|false) display thousands delimiter if true (e.g. "100,000") (defalut false)
      */
     allowThousandsDelimiter : false,
     
