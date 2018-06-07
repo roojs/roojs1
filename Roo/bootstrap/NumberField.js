@@ -218,10 +218,10 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         
     	n = a.join(this.thousandsDelimiter);
         
-        amount = (d.length < 1) ? n : amount
+        amount = (d.length < 1) ? n :  n + '.' + d;
         
-    	else { amount = n + '.' + d; }
     	amount = minus + amount;
+        
     	return amount;
     }
     
