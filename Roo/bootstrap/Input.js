@@ -538,6 +538,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      */
     inputEl: function ()
     {
+        Roo.log('comming back to this??');
+        
         return this.el.select('input.form-control',true).first();
     },
     
