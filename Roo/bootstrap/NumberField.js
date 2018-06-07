@@ -91,8 +91,10 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         var cfg = Roo.bootstrap.NumberField.superclass.getAutoCreate.call(this);
         
         if(cfg.cn.length > 0) {
-            cfg.cn.push(hiddenInput)
+            cfg.cn.push(hiddenInput);
         }
+        
+        Roo.log(cfg);
         
         return cfg;
     },
@@ -236,6 +238,8 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
     
     inputEl: function ()
     {
+        Roo.log('heree???');
+        
         return this.el.select('input.hidden-number-input',true).first();
     }
     
