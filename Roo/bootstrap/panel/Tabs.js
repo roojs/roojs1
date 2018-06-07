@@ -315,25 +315,20 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
         if(!tab){
             return null;
         }
-        
-        if(this.fireEvent("beforetabchange", this, e, tab) !== false){
-            if(tab == this.active || tab.disabled){
-                return tab;
-            }
-//            var e = {};
-//            this.fireEvent("beforetabchange", this, e, tab);
-//            if(e.cancel !== true && !tab.disabled){
-                if(this.active){
-                    this.active.hide();
-                }
-                this.active = this.items[id];
-                this.active.show();
-                this.fireEvent("tabchange", this, this.active);
-//            }
+        if(tab == this.active || tab.disabled){
             return tab;
         }
-        
-        
+        var e = {};
+        this.fireEvent("beforetabchange", this, e, tab);
+        if(e.cancel !== true && !tab.disabled){
+            if(this.active){
+                this.active.hide();
+            }
+            this.active = this.items[id];
+            this.active.show();
+            this.fireEvent("tabchange", this, this.active);
+        }
+        return tab;
     },
 
     /**
