@@ -112,7 +112,14 @@ Roo.bootstrap.layout.Basic = function(config){
          * @param {Roo.LayoutRegion} this
          * @param {Number} newSize The new size (width for east/west, height for north/south)
          */
-        "resized" : true
+        "resized" : true,
+        /**
+         * @event beforetabclick
+         * Fires when a tab item is clicked. 
+         * @param {Roo.LayoutRegion} this
+         * @param {Roo.ContentPanel} panel The activated panel
+         */
+        "beforetabclick" : true
     };
     /** A collection of panels in this region. @type Roo.util.MixedCollection */
     this.panels = new Roo.util.MixedCollection();
