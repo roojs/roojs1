@@ -33047,11 +33047,6 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
      */
     thousandsDelimiter : ",",
 
-    getAutoCreate : function()
-    {
-        this.superclass.getAutoCreate.call();
-    },
-
     // private
     initEvents : function()
     {   

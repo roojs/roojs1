@@ -74,11 +74,6 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
      */
     thousandsDelimiter : ",",
 
-    getAutoCreate : function()
-    {
-        Roo.bootstrap.NumberField.superclass.getAutoCreate.call(this);
-    },
-
     // private
     initEvents : function()
     {   
