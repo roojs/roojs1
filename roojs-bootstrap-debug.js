@@ -33049,7 +33049,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
 
     getAutoCreate : function()
     {
-        Roo.bootstrap.NumberField.superclass.getAutoCreate.call(this);
+        return Roo.bootstrap.NumberField.superclass.getAutoCreate.call(this);
     },
 
     // private
