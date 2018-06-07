@@ -79,7 +79,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         var hiddenInput = {
             tag: 'input',
             type: 'hidden',
-            cls: 'hidden-tel-input'
+            cls: 'hidden-number-input'
         };
         
         if (this.name) {
@@ -236,7 +236,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
     
     inputEl: function ()
     {
-        return this.el.select('input.form-hidden-field',true).first();
+        return this.el.select('input.hidden-number-input',true).first();
     }
     
 });
