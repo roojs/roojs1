@@ -188,37 +188,17 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         }
     },
     
-    addThousandsDelimiter : function()
+    addThousandsDelimiter : function(v)
     {
-    	var a = amount.split('.',2)
-        
-    	var d = a[1];
-        
-    	var i = parseInt(a[0]);
-        
-    	if(isNaN(i)) { return ''; }
-        
-    	i = Math.abs(i);
-        
-    	var n = new String(i);
-        
-    	var a = [];
-        
-    	while(n.length > 3) {
-    		var nn = n.substr(n.length-3);
-    		a.unshift(nn);
-    		n = n.substr(0,n.length-3);
-    	}
-        
-    	if(n.length > 0) {
-            a.unshift(n);
+        v += "";
+        var v_array = v.split(".");
+        var x1 = x[0];
+        var x2 = x.length > 1 ? "." + x[1] : "";
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, "$1" + "," + "$2");
         }
-        
-    	n = a.join(this.thousandsDelimiter);
-        
-        amount = (d.length < 1) ? n :  n + '.' + d;
-        
-    	return amount;
+        return x1 + x2;
     }
     
 });
