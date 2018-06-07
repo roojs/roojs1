@@ -33051,6 +33051,8 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
     {
         var hidden_input_name = this.name;
         
+        Roo.log(this.name);
+        
         this.name = '';
         
         var cfg = Roo.bootstrap.NumberField.superclass.getAutoCreate.call(this);
@@ -33062,9 +33064,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
                 type : 'hidden',
                 cls: 'form-hidden-field'
             })
-        } else {
-            Roo.log('die in here');
-        }
+        } 
         
         return cfg;
     },
@@ -33208,8 +33208,6 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
     
     inputEl: function ()
     {
-        Roo.log('die in here???');
-        
         return this.el.select('input.form-hidden-field',true).first();
     }
     
