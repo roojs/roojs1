@@ -198,10 +198,6 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         
     	if(isNaN(i)) { return ''; }
         
-    	var minus = '';
-        
-    	if(i < 0) { minus = '-'; }
-        
     	i = Math.abs(i);
         
     	var n = new String(i);
@@ -219,8 +215,6 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
     	n = a.join(this.thousandsDelimiter);
         
         amount = (d.length < 1) ? n :  n + '.' + d;
-        
-    	amount = minus + amount;
         
     	return amount;
     }
