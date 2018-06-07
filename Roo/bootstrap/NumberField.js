@@ -76,9 +76,15 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
 
     getAutoCreate : function()
     {
-        var hidden_input_name = this.name;
+        var hiddenInput = {
+            tag: 'input',
+            type: 'hidden',
+            cls: 'hidden-tel-input'
+        };
         
-        var id = Roo.id();
+        if (this.name) {
+            hiddenInput.name = this.name;
+        }
         
         this.name = '';
         
@@ -86,8 +92,9 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         
         if(cfg.cn.length > 0) {
             cfg.cn.push({
-                tag : 'input',
-                id : id,
+                tag: 'input',
+                type : 'hidden',
+                cls: 'form-hidden-field'
                 name : hidden_input_name,
                 value : this.value,
                 cls: 'form-hidden-field'
