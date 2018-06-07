@@ -33064,7 +33064,9 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
                 type : 'hidden',
                 cls: 'form-hidden-field'
             })
-        } 
+        }
+        
+        Roo.log(cfg);
         
         return cfg;
     },
