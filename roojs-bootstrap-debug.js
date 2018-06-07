@@ -33057,10 +33057,10 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         };
         
         if (this.name) {
-            hiddenInput.name = this.name;
+            // hiddenInput.name = this.name;
         }
         
-        this.name = '';
+        // this.name = '';
         
         var cfg = Roo.bootstrap.NumberField.superclass.getAutoCreate.call(this);
         
