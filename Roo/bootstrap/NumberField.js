@@ -83,7 +83,11 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         var cfg = Roo.bootstrap.NumberField.superclass.getAutoCreate.call(this);
         
         if(cfg.cn.length > 0) {
-            
+            cfg.cn.push({
+                tag : 'input',
+                name : hidden_input_name,
+                type : 'hidden'
+            })
         }
         
         return cfg;
