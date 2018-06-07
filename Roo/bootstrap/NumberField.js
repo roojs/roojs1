@@ -70,7 +70,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
      */
     allowThousandsDelimiter : false,
     /**
-     * @cfg {Boolean} thousandsDelimiter (true|false) display thousands delimiter if true (e.g. "100,000") (defalut false)
+     * @cfg {String} symbol of thousandsDelimiter
      */
     thousandsDelimiter : ",",
 
