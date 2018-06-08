@@ -91,6 +91,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
             hiddenInput.name = this.name;
         }
         
+        //display field
         var inputConfig = this;
         
         inputConfig.name = '';
