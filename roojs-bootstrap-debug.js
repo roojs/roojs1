@@ -33064,12 +33064,11 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
             hiddenInput.name = this.name;
         }
         
-        //display field
-        var inputConfig = this;
+        this.name = '';
         
-        inputConfig.name = '';
+        var cfg = Roo.bootstrap.NumberField.superclass.getAutoCreate.call(this);
         
-        var cfg = Roo.bootstrap.NumberField.superclass.getAutoCreate.call(inputConfig);
+        this.name = hiddenInput.name;
         
         if(cfg.cn.length > 0) {
             cfg.cn.push(hiddenInput);
