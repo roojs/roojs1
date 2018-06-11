@@ -68,7 +68,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
     /**
      * @cfg {String} thousandsDelimiter Symbol of thousandsDelimiter
      */
-    thousandsDelimiter : ",",
+    thousandsDelimiter : false,
     /**
      * @cfg {String} valueAlign alignment of value
      */
@@ -116,7 +116,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         }
         
         if(this.thousandsDelimiter) {
-            allowed += this.thousandsDelimiter;
+            allowed += ",";
         }
         
         this.stripCharsRe = new RegExp('[^'+allowed+']', 'gi');
