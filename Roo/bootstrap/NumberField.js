@@ -119,7 +119,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
             allowed += "-";
         }
         
-        if(this.allowThousandsDelimiter) {
+        if(this.thousandsDelimiter) {
             allowed += this.thousandsDelimiter;
         }
         
