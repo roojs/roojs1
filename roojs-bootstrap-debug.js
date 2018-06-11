@@ -33039,13 +33039,9 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
      */
     castInt : true,
     /**
-     * @cfg {Boolean} allowThousandsDelimiter (true|false) display thousands delimiter if true (e.g. "100,000") (defalut false)
-     */
-    allowThousandsDelimiter : false,
-    /**
      * @cfg {String} thousandsDelimiter Symbol of thousandsDelimiter
      */
-    thousandsDelimiter : ",",
+    thousandsDelimiter : false,
     /**
      * @cfg {String} valueAlign alignment of value
      */
@@ -33092,8 +33088,8 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
             allowed += "-";
         }
         
-        if(this.allowThousandsDelimiter) {
-            allowed += this.thousandsDelimiter;
+        if(this.thousandsDelimiter) {
+            allowed += ",";
         }
         
         this.stripCharsRe = new RegExp('[^'+allowed+']', 'gi');
@@ -33160,9 +33156,9 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
 
     parseValue : function(value)
     {
-        if(this.allowThousandsDelimiter) {
+        if(this.thousandsDelimiter) {
             value += "";
-            r = new RegExp(this.thousandsDelimiter, "g");
+            r = new RegExp(",", "g");
             value = value.replace(r, "");
         }
         
@@ -33172,9 +33168,9 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
 
     fixPrecision : function(value)
     {
-        if(this.allowThousandsDelimiter) {
+        if(this.thousandsDelimiter) {
             value += "";
-            r = new RegExp(this.thousandsDelimiter, "g");
+            r = new RegExp(",", "g");
             value = value.replace(r, "");
         }
         
@@ -33196,7 +33192,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
             
             this.hiddenEl().dom.value = (v === null || v === undefined ? '' : v);
             
-            this.inputEl().dom.value = (this.allowThousandsDelimiter ? this.addThousandsDelimiter(v) : v);
+            this.inputEl().dom.value = (this.thousandsDelimiter ? Roo.util.Format.number(v) : v);
             
             this.validate();
         }
@@ -33217,29 +33213,6 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         if(v){
             this.setValue(v);
         }
-    },
-    
-    addThousandsDelimiter : function(v)
-    {
-        if(!this.allowThousandsDelimiter) {
-            return v;
-        }
-        
-        v += "";
-        
-        var x = v.split(".");
-        
-        var x1 = x[0];
-        
-        var x2 = x.length > 1 ? "." + x[1] : "";
-        
-        var rgx = /(\d+)(\d{3})/;
-        
-        while (rgx.test(x1)) {
-            x1 = x1.replace(rgx, "$1" + this.thousandsDelimiter + "$2");
-        }
-        
-        return x1 + x2;
     },
     
     hiddenEl : function()
