@@ -185,7 +185,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
     {
         if(this.thousandsDelimiter) {
             value += "";
-            r = new RegExp(this.thousandsDelimiter, "g");
+            r = new RegExp(",", "g");
             value = value.replace(r, "");
         }
         
