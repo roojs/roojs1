@@ -242,29 +242,6 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         }
     },
     
-    addThousandsDelimiter : function(v)
-    {
-        if(!this.thousandsDelimiter) {
-            return v;
-        }
-        
-        v += "";
-        
-        var x = v.split(".");
-        
-        var x1 = x[0];
-        
-        var x2 = x.length > 1 ? "." + x[1] : "";
-        
-        var rgx = /(\d+)(\d{3})/;
-        
-        while (rgx.test(x1)) {
-            x1 = x1.replace(rgx, "$1" + this.thousandsDelimiter + "$2");
-        }
-        
-        return x1 + x2;
-    },
-    
     hiddenEl : function()
     {
         return this.el.select('input.hidden-number-input',true).first();
