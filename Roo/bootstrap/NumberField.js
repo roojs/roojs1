@@ -197,7 +197,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
     {
         if(this.thousandsDelimiter) {
             value += "";
-            r = new RegExp(this.thousandsDelimiter, "g");
+            r = new RegExp(",", "g");
             value = value.replace(r, "");
         }
         
@@ -219,7 +219,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
             
             this.hiddenEl().dom.value = (v === null || v === undefined ? '' : v);
             
-            this.inputEl().dom.value = (this.thousandsDelimiter ? this.addThousandsDelimiter(v) : v);
+            this.inputEl().dom.value = (this.thousandsDelimiter ? Roo.util.Format.number(v) : v);
             
             this.validate();
         }
