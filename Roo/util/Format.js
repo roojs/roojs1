@@ -176,12 +176,10 @@ Roo.util.Format = function(){
         number : function(v,decimals)
         {
             // multiply and round.
-            if(decimals !== false) {
-                decimals = typeof(decimals) == 'undefined' ? 2 : decimals;
-                var mul = Math.pow(10, decimals);
-                var zero = String(mul).substring(1);
-                v = (Math.round((v-0)*mul))/mul;
-            }
+            decimals = typeof(decimals) == 'undefined' ? 2 : decimals;
+            var mul = Math.pow(10, decimals);
+            var zero = String(mul).substring(1);
+            v = (Math.round((v-0)*mul))/mul;
             
             // if it's '0' number.. then
             
