@@ -8063,8 +8063,6 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
            f.clearInvalid();
         });
 
-
-
         return this;
     },
 
@@ -33192,7 +33190,9 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
             
             this.hiddenEl().dom.value = (v === null || v === undefined ? '' : v);
             
-            this.inputEl().dom.value = (this.thousandsDelimiter ? Roo.util.Format.number(v, this.decimalPrecision) : v);
+            var delimiter = (this.thousandsDelimiter) ? this.thousandsDelimiter : ',';
+            
+            this.inputEl().dom.value = (this.thousandsDelimiter ? Roo.util.Format.number(v, this.decimalPrecision, delimiter) : v);
             
             this.validate();
         }
