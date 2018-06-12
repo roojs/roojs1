@@ -173,7 +173,7 @@ Roo.util.Format = function(){
          * @param {Number} decimals number of decimal places
          * @return {String} The formatted currency string
          */
-        number : function(v, decimals, thousandsDelimiter = ',')
+        number : function(v, decimals, thousandsDelimiter = false)
         {
             // multiply and round.
             decimals = typeof(decimals) == 'undefined' ? 2 : decimals;
@@ -192,7 +192,7 @@ Roo.util.Format = function(){
             var r = /(\d+)(\d{3})/;
             // add comma's
             while (r.test(whole)) {
-                whole = whole.replace(r, '$1' + ',' + '$2');
+                whole = whole.replace(r, '$1' + thousandsDelimiter + '$2');
             }
             
             
