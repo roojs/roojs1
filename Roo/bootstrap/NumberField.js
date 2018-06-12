@@ -219,6 +219,10 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
             
             this.hiddenEl().dom.value = (v === null || v === undefined ? '' : v);
             
+            if(!this.thousandsDelimiter) {
+                delimiter = ',';
+            }
+            
             this.inputEl().dom.value = (this.thousandsDelimiter ? Roo.util.Format.number(v, this.decimalPrecision, delimiter) : v);
             
             this.validate();
