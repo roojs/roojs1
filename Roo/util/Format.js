@@ -173,7 +173,7 @@ Roo.util.Format = function(){
          * @param {Number} decimals number of decimal places
          * @return {String} The formatted currency string
          */
-        number : function(v, decimals, thousandsDelimiter = ',')
+        number : function(v, decimals, decimalsSeparator = '.',thousandsDelimiter = ',')
         {
             // multiply and round.
             decimals = typeof(decimals) == 'undefined' ? 2 : decimals;
