@@ -186,7 +186,7 @@ Roo.util.Format = function(){
             
             //v = (v == Math.floor(v)) ? v + "." + zero : ((v*10 == Math.floor(v*10)) ? v + "0" : v);
             v = String(v);
-            var ps = v.split('.');
+            var ps = v.split(decimalsSeparator);
             var whole = ps[0];
             
             var r = /(\d+)(\d{3})/;
