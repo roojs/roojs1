@@ -173,11 +173,10 @@ Roo.util.Format = function(){
          * @param {Number} decimals number of decimal places
          * @return {String} The formatted currency string
          */
-        number : function(v, decimals, decimalsSeparator = ".", thousandsDelimiter = ",")
+        number : function(v, decimals, thousandsDelimiter = ',')
         {
             // multiply and round.
             decimals = typeof(decimals) == 'undefined' ? 2 : decimals;
-            
             var mul = Math.pow(10, decimals);
             var zero = String(mul).substring(1);
             v = (Math.round((v-0)*mul))/mul;
@@ -186,7 +185,7 @@ Roo.util.Format = function(){
             
             //v = (v == Math.floor(v)) ? v + "." + zero : ((v*10 == Math.floor(v*10)) ? v + "0" : v);
             v = String(v);
-            var ps = v.split(decimalsSeparator);
+            var ps = v.split('.');
             var whole = ps[0];
             
             var r = /(\d+)(\d{3})/;
