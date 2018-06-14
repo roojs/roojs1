@@ -177,6 +177,8 @@ Roo.util.Format = function(){
         {
             // multiply and round.
             decimals = typeof(decimals) == 'undefined' ? 2 : decimals;
+            thousandsDelimiter = typeof(thousandsDelimiter) == 'undefined' ? ',' : thousandsDelimiter;
+            
             var mul = Math.pow(10, decimals);
             var zero = String(mul).substring(1);
             v = (Math.round((v-0)*mul))/mul;
