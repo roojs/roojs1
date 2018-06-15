@@ -13768,12 +13768,15 @@ Roo.util.Format = function(){
          * eventually this should probably emulate php's number_format
          * @param {Number/String} value The numeric value to format
          * @param {Number} decimals number of decimal places
+         * @param {String} delimiter for thousands (default comma)
          * @return {String} The formatted currency string
          */
-        number : function(v, decimals, thousandsDelimiter = ',')
+        number : function(v, decimals, thousandsDelimiter)
         {
             // multiply and round.
             decimals = typeof(decimals) == 'undefined' ? 2 : decimals;
+            thousandsDelimiter = typeof(thousandsDelimiter) == 'undefined' ? ',' : thousandsDelimiter;
+            
             var mul = Math.pow(10, decimals);
             var zero = String(mul).substring(1);
             v = (Math.round((v-0)*mul))/mul;
