@@ -13768,12 +13768,15 @@ Roo.util.Format = function(){
          * eventually this should probably emulate php's number_format
          * @param {Number/String} value The numeric value to format
          * @param {Number} decimals number of decimal places
+         * @param {String} delimiter for thousands (default comma)
          * @return {String} The formatted currency string
          */
-        number : function(v,decimals)
+        number : function(v, decimals, thousandsDelimiter)
         {
             // multiply and round.
             decimals = typeof(decimals) == 'undefined' ? 2 : decimals;
+            thousandsDelimiter = typeof(thousandsDelimiter) == 'undefined' ? ',' : thousandsDelimiter;
+            
             var mul = Math.pow(10, decimals);
             var zero = String(mul).substring(1);
             v = (Math.round((v-0)*mul))/mul;
@@ -13785,11 +13788,10 @@ Roo.util.Format = function(){
             var ps = v.split('.');
             var whole = ps[0];
             
-            
             var r = /(\d+)(\d{3})/;
             // add comma's
             while (r.test(whole)) {
-                whole = whole.replace(r, '$1' + ',' + '$2');
+                whole = whole.replace(r, '$1' + thousandsDelimiter + '$2');
             }
             
             
@@ -15395,40 +15397,49 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
      * @param {String/HTMLElement/Element} container (optional) The element this component should be rendered into. If it is being applied to existing markup, this should be left off.
      */
     render : function(container, position){
-        if(!this.rendered && this.fireEvent("beforerender", this) !== false){
-            if(!container && this.el){
-                this.el = Roo.get(this.el);
-                container = this.el.dom.parentNode;
-                this.allowDomMove = false;
-            }
-            this.container = Roo.get(container);
-            this.rendered = true;
-            if(position !== undefined){
-                if(typeof position == 'number'){
-                    position = this.container.dom.childNodes[position];
-                }else{
-                    position = Roo.getDom(position);
-                }
-            }
-            this.onRender(this.container, position || null);
-            if(this.cls){
-                this.el.addClass(this.cls);
-                delete this.cls;
-            }
-            if(this.style){
-                this.el.applyStyles(this.style);
-                delete this.style;
-            }
-            this.fireEvent("render", this);
-            this.afterRender(this.container);
-            if(this.hidden){
-                this.hide();
-            }
-            if(this.disabled){
-                this.disable();
+        
+        if(this.rendered){
+            return this;
+        }
+        
+        if(this.fireEvent("beforerender", this) === false){
+            return false;
+        }
+        
+        if(!container && this.el){
+            this.el = Roo.get(this.el);
+            container = this.el.dom.parentNode;
+            this.allowDomMove = false;
+        }
+        this.container = Roo.get(container);
+        this.rendered = true;
+        if(position !== undefined){
+            if(typeof position == 'number'){
+                position = this.container.dom.childNodes[position];
+            }else{
+                position = Roo.getDom(position);
             }
         }
+        this.onRender(this.container, position || null);
+        if(this.cls){
+            this.el.addClass(this.cls);
+            delete this.cls;
+        }
+        if(this.style){
+            this.el.applyStyles(this.style);
+            delete this.style;
+        }
+        this.fireEvent("render", this);
+        this.afterRender(this.container);
+        if(this.hidden){
+            this.hide();
+        }
+        if(this.disabled){
+            this.disable();
+        }
+
         return this;
+        
     },
 
     /** @private */
@@ -16625,7 +16636,7 @@ Roo.apply(Roo.XComponent, {
      */
 	overlayStrings : function( component, strings )
     {
-        if (typeof(component['_named_strings']) == undefined) {
+        if (typeof(component['_named_strings']) == 'undefined') {
             throw "ERROR: component does not have _named_strings";
         }
         for ( var k in strings ) {
