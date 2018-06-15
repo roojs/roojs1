@@ -171,9 +171,10 @@ Roo.util.Format = function(){
          * eventually this should probably emulate php's number_format
          * @param {Number/String} value The numeric value to format
          * @param {Number} decimals number of decimal places
+         * @param {String} delimiter for thousands (default comma)
          * @return {String} The formatted currency string
          */
-        number : function(v, decimals, thousandsDelimiter = ',')
+        number : function(v, decimals, thousandsDelimiter)
         {
             // multiply and round.
             decimals = typeof(decimals) == 'undefined' ? 2 : decimals;
