@@ -223,10 +223,6 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
     {
         this.cursor = o.params.start ? o.params.start : 0;
         
-        Roo.log('loading for paging');
-        
-        Roo.log(o.params);
-        
         var d = this.getPageData(),
             ap = d.activePage,
             ps = d.pages;
