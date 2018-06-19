@@ -223,6 +223,12 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
                 this.thousandsDelimiter || ''
             );
             
+            Roo.log(v);
+            
+            if(this.allowBlank && !v) {
+                this.inputEl().dom.value = '';
+            }
+            
             this.validate();
         }
     },
