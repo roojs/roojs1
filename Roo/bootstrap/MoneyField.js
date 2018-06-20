@@ -28,7 +28,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     /**
      * @cfg {Number} decimalPrecision The maximum precision to display after the decimal separator (defaults to 2)
      */
-    decimalPrecision : 2,
+    decimalPrecision : 0,
     /**
      * @cfg {Boolean} allowNegative False to prevent entering a negative sign (defaults to true)
      */
