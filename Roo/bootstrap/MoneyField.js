@@ -102,7 +102,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         };
         
         if (this.name) {
-            input.name = this.name;
+            hiddenInput.name = this.name;
         }
 
         if (this.disabled) {
