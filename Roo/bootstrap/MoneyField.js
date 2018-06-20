@@ -63,6 +63,10 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
      * value should be in lkey
      */
     defaultCurrency : false,
+    /**
+     * @cfg {String} thousandsDelimiter Symbol of thousandsDelimiter
+     */
+    thousandsDelimiter : false,
     
     
     inputlg : 9,
