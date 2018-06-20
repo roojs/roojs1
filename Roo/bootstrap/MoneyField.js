@@ -543,7 +543,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         this.value = v;
         
         if(this.rendered){
-            this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
             
             this.hiddenEl().dom.value = (v === null || v === undefined ? '' : v);
             
