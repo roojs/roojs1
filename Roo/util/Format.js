@@ -194,7 +194,6 @@ Roo.util.Format = function(){
             var r = /(\d+)(\d{3})/;
             // add comma's
             while (r.test(whole)) {
-                Roo.log('cannot be empty....');
                 whole = whole.replace(r, '$1' + thousandsDelimiter + '$2');
             }
             
