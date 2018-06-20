@@ -560,7 +560,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     getRawValue : function()
     {
-        var v = this.inputEl().getValue();
+        var v = this.hiddenEl().getValue();
         
         return v;
     },
