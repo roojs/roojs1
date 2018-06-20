@@ -94,6 +94,13 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             autocomplete: 'new-password'
         };
         
+        var hiddenInput = {
+            tag: 'input',
+            type: 'hidden',
+            id: Roo.id(),
+            cls: 'hidden-number-input'
+        };
+        
         if (this.name) {
             input.name = this.name;
         }
