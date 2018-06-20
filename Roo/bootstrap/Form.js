@@ -568,7 +568,6 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
 
         iter(this);
         return r;
-        
     }
 
 });
