@@ -233,7 +233,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
 
         cfg.cn = [
             label,
-            container
+            container,
+            hiddenInput
         ];
 
         var settings = this;
