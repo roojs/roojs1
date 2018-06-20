@@ -235,8 +235,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             hiddenInput
         ];
         
-        Roo.log(cfg);
-
         var settings = this;
 
         ['xs','sm','md','lg'].map(function(size){
