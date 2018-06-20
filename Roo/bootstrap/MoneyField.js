@@ -253,7 +253,6 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         this.initCurrencyEvent();
         
         this.initNumberEvent();
-        
     },
     
     initCurrencyEvent : function()
@@ -676,6 +675,11 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     currencyEl : function()
     {
         return this.el.select('.roo-money-currency-input', true).first();
+    },
+    
+    hiddenEl : function()
+    {
+        return this.el.select('input.hidden-number-input',true).first();
     }
     
 });
