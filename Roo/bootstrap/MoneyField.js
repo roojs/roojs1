@@ -164,6 +164,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             
         };
         
+        container.cn.push(hiddenInput)
+        
         if (this.fieldLabel.length) {
             var indicator = {
                 tag: 'i',
