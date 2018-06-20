@@ -544,6 +544,17 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         
         if(this.rendered){
             this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+            
+            this.hiddenEl().dom.value = (v === null || v === undefined ? '' : v);
+            
+            this.inputEl().dom.value = Roo.util.Format.number(v, this.decimalPrecision, 
+                this.thousandsDelimiter || ''
+            );
+            
+            if(this.allowBlank && !v) {
+                this.inputEl().dom.value = '';
+            }
+            
             this.validate();
         }
     },
