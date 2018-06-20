@@ -39981,6 +39981,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             container,
             hiddenInput
         ];
+        
+        Roo.log(cfg);
 
         var settings = this;
 
@@ -40294,7 +40296,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             this.hiddenEl().dom.value = (v === null || v === undefined ? '' : v);
             
             this.inputEl().dom.value = Roo.util.Format.number(v, this.decimalPrecision, 
-                this.thousandsDelimiter || ''
+                this.thousandsDelimiter || ','
             );
             
             if(this.allowBlank && !v) {
