@@ -560,9 +560,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     getRawValue : function()
     {
-        Roo.log('get before set???');
-        
-        var v = this.hiddenEl().getValue();
+        var v = this.inputEl().getValue();
         
         return v;
     },
