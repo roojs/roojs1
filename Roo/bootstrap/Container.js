@@ -401,7 +401,9 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             if(f.isVisible()) {
                 isEmpty = false;
             }
-        })
+        });
+        
+        return isEmpty;
     }
    
 });
