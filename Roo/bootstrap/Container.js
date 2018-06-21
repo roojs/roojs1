@@ -392,12 +392,15 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         return r;
     },
     
-    isEmpty : function()
+    checkEmpty : function()
     {
         var items = this.getItems();
+        var isEmpty = true;
         
         items.each(function(f){
-            Roo.log(f.isVisible());
+            if(f.isVisible()) {
+                return;
+            }
         })
     }
    
