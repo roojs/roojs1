@@ -369,6 +369,32 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         e.preventDefault();
         
         this.fireEvent('click', this, e);
+    },
+    
+    getItems : function()
+    {
+        var r=new Roo.util.MixedCollection(false, function(o){
+            return o.id || (o.id = Roo.id());
+        });
+        var iter = function(el) {
+            if (el.inputEl) {
+                r.add(el);
+            }
+            if (!el.items) {
+                return;
+            }
+            Roo.each(el.items,function(e) {
+                iter(e);
+            });
+        };
+
+        iter(this);
+        return r;
+    },
+    
+    isEmpty : function()
+    {
+        var items = getItems();
     }
    
 });
