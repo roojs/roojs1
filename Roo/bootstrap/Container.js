@@ -399,7 +399,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         
         items.each(function(f){
             if(f.isVisible()) {
-                return;
+                isEmpty = false;
             }
         })
     }
