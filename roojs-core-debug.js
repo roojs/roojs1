@@ -8795,7 +8795,6 @@ if(opt.anim.isAnimated()){
          * @return {Roo.Element} this
          */
         hide : function(animate){
-            Roo.log('hiding...');
             this.setVisible(false, this.preanim(arguments, 0));
             return this;
         },
