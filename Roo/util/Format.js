@@ -195,9 +195,7 @@ Roo.util.Format = function(){
             // add comma's
             
             if(thousandsDelimiter.length != 0) {
-                while (r.test(whole)) {
-                    whole = whole.replace(r, '$1' + thousandsDelimiter + '$2');
-                }
+                whole = whole.replace(/\B(?=(\d{3})+(?!\d))/g, thousandsDelimiter );
             } 
             
             var sub = ps[1] ?
