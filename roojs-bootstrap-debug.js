@@ -7557,6 +7557,7 @@ Roo.form.Action.ACTION_TYPES = {
 
 
 Roo.bootstrap.Form = function(config){
+    
     Roo.bootstrap.Form.superclass.constructor.call(this, config);
     
     Roo.bootstrap.Form.popover.apply();
@@ -7591,7 +7592,6 @@ Roo.bootstrap.Form = function(config){
          */
         actioncomplete : true
     });
-
 };
 
 Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
@@ -8099,13 +8099,10 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             Roo.each(el.items,function(e) {
                 iter(e);
             });
-
-
         };
 
         iter(this);
         return r;
-        
     }
 
 });

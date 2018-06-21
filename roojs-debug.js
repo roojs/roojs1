@@ -13790,10 +13790,10 @@ Roo.util.Format = function(){
             
             var r = /(\d+)(\d{3})/;
             // add comma's
-            while (r.test(whole)) {
-                whole = whole.replace(r, '$1' + thousandsDelimiter + '$2');
-            }
             
+            if(thousandsDelimiter.length != 0) {
+                whole = whole.replace(/\B(?=(\d{3})+(?!\d))/g, thousandsDelimiter );
+            } 
             
             var sub = ps[1] ?
                     // has decimals..
