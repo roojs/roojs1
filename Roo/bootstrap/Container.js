@@ -395,6 +395,8 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     isEmpty : function()
     {
         var items = getItems();
+        
+        Roo.log(items);
     }
    
 });
