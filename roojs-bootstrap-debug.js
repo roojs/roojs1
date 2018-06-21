@@ -1401,7 +1401,9 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     {
         var items = this.getItems();
         
-        Roo.log(items);
+        items.each(function(f){
+            Roo.log(f);
+        })
     }
    
 });
