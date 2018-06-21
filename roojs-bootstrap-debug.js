@@ -1403,8 +1403,8 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         var isEmpty = true;
         
         items.each(function(f){
-            
-            
+            Roo.log(f.name);
+            Roo.log(f.el.isVisible());
             if(f.el.isVisible()) {
                 isEmpty = false;
             }
