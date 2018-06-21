@@ -397,7 +397,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         var items = this.getItems();
         
         items.each(function(f){
-            Roo.log(f);
+            Roo.log(f.isVisible());
         })
     }
    
