@@ -1,0 +1,104 @@
+<!--
+
+porting tst for layout classes from original roo library into bootstrap one.
+
+
+-->
+<html>
+<head>
+  <title>Nested Layout</title>
+  
+   <!-- Bootstrap -->
+    <link rel="stylesheet" href="../../css-bootstrap/bootstrap.min.css">
+       
+    <link href="../../css-bootstrap/font-awesome.css" rel="stylesheet" type="text/css" />
+   
+    <link href="../../css-bootstrap/roojs-bootstrap-debug.css" rel="stylesheet" type="text/css" />
+    
+  <!--  <link href="../../../bootswatch/material-kit/css/material-kit.css" rel="stylesheet"> -->
+
+    
+        
+    <script type="text/javascript" src="../../roojs-core-debug.js"></script>
+    <!-- bootstrap js.. needs to compile it later.. -->
+    <script type="text/javascript" src="../../roojs-bootstrap-debug.js"></script>
+        <script type="text/javascript" src="../../Roo/bootstrap/Modal.js"></script>
+    <script type="text/javascript" src="../../Roo/bootstrap/panel/Tabs.js"></script>
+
+    <script type="text/javascript" src="../../Roo/bootstrap/layout/Border.js"></script>
+    <script type="text/javascript" src="../../Roo/bootstrap/layout/Region.js"></script>
+    <script type="text/javascript" src="../../Roo/bootstrap/layout/Center.js"></script>
+
+    <script type="text/javascript" src="../../Roo/bootstrap/panel/Content.js"></script>
+    
+    <script type="text/javascript" src="../../Roo/bootstrap//Table.js"></script>
+    <script type="text/javascript" src="../../Roo/bootstrap//Table/AbstractSelectionModel.js"></script>
+    <script type="text/javascript" src="../../Roo/bootstrap//Table/RowSelectionModel.js"></script>
+    
+    <script type="text/javascript" src="../../Roo/bootstrap/panel/Grid.js"></script>
+    
+    
+    <script type="text/javascript" src="../../Roo/bootstrap/Input.js"></script>
+    
+    
+    
+    <script type="text/javascript">
+
+Roo.namespace("Dashboard");
+    </script>
+     
+         <script type="text/javascript" src="Dashboard.Header1.js"></script>
+<script type="text/javascript" src="./nested-dialog.js"></script>
+     
+     
+     
+    <style type="text/css">
+.navbar {
+    padding: 0;
+}
+/*
+ 
+.table-body-fixed tbody {
+   overflow-y: scroll;
+  width: 100%;
+}
+.table-body-fixed  thead,
+.table-body-fixed  tbody,
+ 
+.table-body-fixed th   {
+  display: block;
+}
+.table-body-fixed thead {
+    overflow:  hidden;
+}
+
+
+.table-body-fixed tbody td, 
+.table-body-fixed thead > tr> th {
+  float: left;
+  border-bottom-width: 0;
+}
+ .table-body-fixed thead > tr,
+.table-body-fixed tbody > tr
+{
+    display: block;
+    overflow: hidden;
+}
+*/
+        </style>
+	<script type="text/javascript">
+
+Roo.namespace("Example");
+ 
+   Roo.onReady(function() {
+        Roo.XComponent.is_alt = true;
+        Example.NestedDialog.show();
+          //dRoo.bootstrap.Tooltip.init();
+      });
+  
+	</script>
+</head>
+<body class="xtheme-gray">
+
+ </body>
+</html>
