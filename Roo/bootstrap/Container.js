@@ -371,7 +371,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         this.fireEvent('click', this, e);
     },
     
-    getItems : function()
+    allChildren : function()
     {
         var r=new Roo.util.MixedCollection(false, function(o){
             return o.id || (o.id = Roo.id());
@@ -394,7 +394,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     
     checkEmpty : function()
     {
-        var items = this.getItems();
+        var items = this.allChildren();
         var isEmpty = true;
         
         items.each(function(f){
