@@ -33211,14 +33211,14 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
             return nan ? '' : value;
         }
         
-        Roo.log('erntring');
-        
         return parseFloat(value).toFixed(this.decimalPrecision);
     },
 
     setValue : function(v)
     {
         v = String(this.fixPrecision(v)).replace(".", this.decimalSeparator);
+        
+        Roo.log(v);
         
         this.value = v;
         
