@@ -33208,6 +33208,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         var nan = isNaN(value);
         
         if(!this.allowDecimals || this.decimalPrecision == -1 || nan || !value){
+            Roo.log('even zero??');
             return nan ? '' : value;
         }
         return parseFloat(value).toFixed(this.decimalPrecision);
@@ -33220,8 +33221,6 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         this.value = v;
         
         if(this.rendered){
-            
-            Roo.log(v);
             
             this.hiddenEl().dom.value = (v === null || v === undefined ? '' : v);
             

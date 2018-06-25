@@ -204,6 +204,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         var nan = isNaN(value);
         
         if(!this.allowDecimals || this.decimalPrecision == -1 || nan || !value){
+            Roo.log('even zero??');
             return nan ? '' : value;
         }
         return parseFloat(value).toFixed(this.decimalPrecision);
