@@ -33210,15 +33210,12 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         if(!this.allowDecimals || this.decimalPrecision == -1 || nan || !value){
             return nan ? '' : value;
         }
-        
         return parseFloat(value).toFixed(this.decimalPrecision);
     },
 
     setValue : function(v)
     {
         v = String(this.fixPrecision(v)).replace(".", this.decimalSeparator);
-        
-        Roo.log(v);
         
         this.value = v;
         
@@ -33245,6 +33242,8 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
 
     beforeBlur : function()
     {
+        Roo.log('here....');
+        
         if(!this.castInt){
             return;
         }
