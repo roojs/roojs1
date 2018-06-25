@@ -215,6 +215,8 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         
         this.value = v;
         
+        Roo.log(v);
+        
         if(this.rendered){
             
             this.hiddenEl().dom.value = (v === null || v === undefined ? '' : v);
