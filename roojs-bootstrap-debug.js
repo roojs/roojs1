@@ -33207,6 +33207,8 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         
         var nan = isNaN(value);
         
+        Roo.log('not entering in');
+        
         if(!this.allowDecimals || this.decimalPrecision == -1 || nan || !value){
             return nan ? '' : value;
         }
@@ -33216,8 +33218,6 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
     setValue : function(v)
     {
         v = String(this.fixPrecision(v)).replace(".", this.decimalSeparator);
-        
-        Roo.log('not entering in???');
         
         this.value = v;
         
