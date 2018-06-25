@@ -33219,8 +33219,6 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         
         this.value = v;
         
-        Roo.log(v);
-        
         if(this.rendered){
             
             this.hiddenEl().dom.value = (v === null || v === undefined ? '' : v);
@@ -33229,7 +33227,8 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
                 this.thousandsDelimiter || ''
             );
             
-            if(this.allowBlank && !v) {
+            if(!v) {
+                this.hiddenEl().dom.value = '';
                 this.inputEl().dom.value = '';
             }
             

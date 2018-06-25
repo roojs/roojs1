@@ -224,6 +224,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
             );
             
             if(!v) {
+                this.hiddenEl().dom.value = '';
                 this.inputEl().dom.value = '';
             }
             
