@@ -33221,7 +33221,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         
         if(this.rendered){
             
-            this.hiddenEl().dom.value = (v === null || v === undefined ? '' : v);
+            this.hiddenEl().dom.value = (v === null || v === undefined || v == 0 ? '' : v);
             
             this.inputEl().dom.value = Roo.util.Format.number(v, this.decimalPrecision, 
                 this.thousandsDelimiter || ''
