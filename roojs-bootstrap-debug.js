@@ -33135,6 +33135,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
                     (String.fromCharCode(c) == '.' || String.fromCharCode(c) == '-') &&
                     allowed.indexOf(String.fromCharCode(c)) === -1
             ){
+                Roo.log('stoping??');
                 e.stopEvent();
                 return;
             }
@@ -33144,6 +33145,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
             }
             
             if(allowed.indexOf(String.fromCharCode(c)) === -1){
+                Roo.log('stoping2??');
                 e.stopEvent();
             }
         };
@@ -33216,8 +33218,6 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
     setValue : function(v)
     {
         v = String(this.fixPrecision(v)).replace(".", this.decimalSeparator);
-        
-        Roo.log('value:'+v);
         
         this.value = v;
         
