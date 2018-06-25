@@ -213,11 +213,11 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
     {
         v = String(this.fixPrecision(v)).replace(".", this.decimalSeparator);
         
-        this.value = (v == 0) ? '' : v;
+        this.value = v;
         
         if(this.rendered){
             
-            this.hiddenEl().dom.value = (v === null || v === undefined || v == 0 ? '' : v);
+            this.hiddenEl().dom.value = (v === null || v === undefined ? '' : v);
             
             this.inputEl().dom.value = Roo.util.Format.number(v, this.decimalPrecision, 
                 this.thousandsDelimiter || ''
