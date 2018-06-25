@@ -33217,7 +33217,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
     {
         v = String(this.fixPrecision(v)).replace(".", this.decimalSeparator);
         
-        this.value = v;
+        this.value = (v == 0) ? '' : v;
         
         if(this.rendered){
             
