@@ -183,6 +183,8 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
 
     parseValue : function(value)
     {
+        Roo.log('phasign...');
+        
         if(this.thousandsDelimiter) {
             value += "";
             r = new RegExp(",", "g");
