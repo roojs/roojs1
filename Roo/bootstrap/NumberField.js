@@ -213,8 +213,6 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
     {
         v = String(this.fixPrecision(v)).replace(".", this.decimalSeparator);
         
-        Roo.log('not entering in???');
-        
         this.value = v;
         
         if(this.rendered){
