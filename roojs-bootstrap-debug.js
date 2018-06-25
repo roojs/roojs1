@@ -33250,7 +33250,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         
         Roo.log(v);
         
-        if(v){
+        if(v || v == 0){
             this.setValue(v);
         }
     },
