@@ -217,8 +217,6 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         
         if(this.rendered){
             
-            Roo.log(v);
-            
             this.hiddenEl().dom.value = (v === null || v === undefined ? '' : v);
             
             this.inputEl().dom.value = Roo.util.Format.number(v, this.decimalPrecision, 
