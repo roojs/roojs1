@@ -33248,8 +33248,6 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         
         var v = this.parseValue(this.getRawValue());
         
-        Roo.log(v);
-        
         if(v || v == 0){
             this.setValue(v);
         }
@@ -40689,7 +40687,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         
         var v = this.parseValue(this.getRawValue());
         
-        if(v){
+        if(v || v == 0){
             this.setValue(v);
         }
     },
