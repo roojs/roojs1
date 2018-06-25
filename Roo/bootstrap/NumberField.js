@@ -206,6 +206,9 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         if(!this.allowDecimals || this.decimalPrecision == -1 || nan || !value){
             return nan ? '' : value;
         }
+        
+        Roo.log('erntring');
+        
         return parseFloat(value).toFixed(this.decimalPrecision);
     },
 
