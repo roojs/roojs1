@@ -223,7 +223,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
                 this.thousandsDelimiter || ''
             );
             
-            if(this.allowBlank && !v) {
+            if(!v) {
                 this.inputEl().dom.value = '';
             }
             
