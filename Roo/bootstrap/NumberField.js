@@ -243,6 +243,9 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         }
         
         var v = this.parseValue(this.getRawValue());
+        
+        Roo.log(v);
+        
         if(v){
             this.setValue(v);
         }
