@@ -57,7 +57,6 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.Component, {
         if(this.parent().fireEvent('click', this.parent(), e) !== false){
             this.setChecked(true);
         }
-        
     },
     
     setChecked : function(state, suppressEvent)
