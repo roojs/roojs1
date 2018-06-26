@@ -20926,7 +20926,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.Component, {
         
     },
     
-    onClick : function()
+    onClick : function(e)
     {
         if(this.parent().fireEvent('click', this.parent(), e) !== false){
             this.setChecked(true);
