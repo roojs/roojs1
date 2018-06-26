@@ -19,6 +19,14 @@
 Roo.bootstrap.Radio = function(config){
     Roo.bootstrap.Radio.superclass.constructor.call(this, config);
     
+    this.addEvents({
+       /**
+        * @event click
+        * Fires when the element is click.
+        * @param {Roo.bootstrap.CheckBox} this This input
+        */
+       click : true
+    });
 };
 
 Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.Component, {
