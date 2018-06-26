@@ -33,7 +33,14 @@ Roo.bootstrap.RadioSet = function(config){
         * @param {Roo.bootstrap.RadioSet} this This radio
         * @param {Roo.bootstrap.Radio} item The checked item
         */
-       check : true
+       check : true,
+       /**
+        * @event click
+        * Fires when the element is click.
+        * @param {Roo.bootstrap.RadioSet} this This input
+        * @param {Roo.bootstrap.Radio} this This input
+        */
+       click : true
     });
     
 };
