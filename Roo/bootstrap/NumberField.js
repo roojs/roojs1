@@ -228,6 +228,11 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
                 this.thousandsDelimiter || ''
             );
             
+            
+            if(!this.allowZero && !v) {
+                this.hiddenEl().dom.value = '';
+                this.inputEl().dom.value = '';
+            }
              
             
             this.validate();
