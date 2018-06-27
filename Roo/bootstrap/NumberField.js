@@ -224,9 +224,8 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
             
             this.hiddenEl().dom.value = (v === null || v === undefined ? '' : v);
             
-            this.inputEl().dom.value = v == '' ? '' : Roo.util.Format.number(v, this.decimalPrecision, 
-                this.thousandsDelimiter || ''
-            );
+            this.inputEl().dom.value = v == '' ? '' :
+                Roo.util.Format.number(v, this.decimalPrecision, this.thousandsDelimiter || '');
             
             
             if(!this.allowZero && !v) {
