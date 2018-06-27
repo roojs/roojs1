@@ -33233,9 +33233,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
             this.inputEl().dom.value = v == '' ? '' :
                 Roo.util.Format.number(v, this.decimalPrecision, this.thousandsDelimiter || '');
             
-            Roo.log(!v);
-            
-            if(!this.allowZero && !v) {
+            if(!this.allowZero && !v.length) {
                 this.hiddenEl().dom.value = '';
                 this.inputEl().dom.value = '';
             }
