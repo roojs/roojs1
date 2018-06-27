@@ -40,6 +40,11 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
      * @cfg {Boolean} allowNegative False to prevent entering a negative sign (defaults to true)
      */
     allowNegative : true,
+    
+    /**
+     * @cfg {Boolean} allowNegative False to prevent entering a negative sign (defaults to true)
+     */
+    allowZero: true,
     /**
      * @cfg {Number} minValue The minimum allowed value (defaults to Number.NEGATIVE_INFINITY)
      */
@@ -223,8 +228,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
                 this.thousandsDelimiter || ''
             );
             
-            
-           
+             
             
             this.validate();
         }
