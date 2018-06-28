@@ -33007,8 +33007,7 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
  /*
  * - LGPL
  *
- * Input
- * 
+ * Number field 
  */
 
 /**
@@ -33048,7 +33047,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
     allowNegative : true,
     
     /**
-     * @cfg {Boolean} allowNegative False to prevent entering a negative sign (defaults to true)
+     * @cfg {Boolean} allowZero False to blank out if the user enters '0' (defaults to true)
      */
     allowZero: true,
     /**
@@ -33230,8 +33229,10 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
             
             this.hiddenEl().dom.value = (v === null || v === undefined ? '' : v);
             
-            this.inputEl().dom.value = v == '' ? '' :
+            this.inputEl().dom.value = (v == '') ? '' :
                 Roo.util.Format.number(v, this.decimalPrecision, this.thousandsDelimiter || '');
+            
+            Roo.log(v);
             
             if(!this.allowZero && !v) {
                 this.hiddenEl().dom.value = '';
