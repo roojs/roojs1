@@ -228,7 +228,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
             
             Roo.log(typeof(v));
             
-            if(!this.allowZero && !v) {
+            if(!this.allowZero && v === '0') {
                 this.hiddenEl().dom.value = '';
                 this.inputEl().dom.value = '';
             }
