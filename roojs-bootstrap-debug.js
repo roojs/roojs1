@@ -2365,7 +2365,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     clear : function()
     {
         this.getEl().dom.innerHTML = '';
-        this.menuItems.clear();
+        this.menuitems.clear();
     }
 });
 
