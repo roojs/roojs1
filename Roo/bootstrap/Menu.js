@@ -402,6 +402,12 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     {
         Roo.log(this.el);
         return this.el;
+    },
+    
+    clear : function()
+    {
+        this.getEl().dom.innerHTML = '';
+        this.menuItems.clear();
     }
 });
 
