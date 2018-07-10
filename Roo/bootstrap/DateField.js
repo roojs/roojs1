@@ -930,6 +930,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     validateValue : function(value)
     {
+        if(this.getEl().hasClass('hidden')){
+            return true;
+        }
+        
         if(value.length < 1)  {
             if(this.allowBlank){
                 return true;
