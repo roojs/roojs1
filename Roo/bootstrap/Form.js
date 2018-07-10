@@ -583,6 +583,21 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             f.hide();
             
         }, this);
+    },
+    
+    showFields : function(items)
+    {
+        Roo.each(items, function(i){
+            
+            var f = this.findField(i);
+            
+            if(!f){
+                return;
+            }
+            
+            f.show();
+            
+        }, this);
     }
 
 });
