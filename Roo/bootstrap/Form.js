@@ -580,7 +580,12 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 return;
             }
             
-            f.hide(true);
+            if(f.xtype == 'DateField'){
+                f.hideElement();
+                return;
+            }
+            
+            f.hide();
             
         }, this);
     },
@@ -595,7 +600,12 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 return;
             }
             
-            f.show(true);
+            if(f.xtype == 'DateField'){
+                f.showElement();
+                return;
+            }
+            
+            f.show();
             
         }, this);
     }
