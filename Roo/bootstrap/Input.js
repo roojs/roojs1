@@ -654,7 +654,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             if(this.allowBlank){
                 return true;
             }            
-            return this.inputEl().hasClass('hide') ? true : false;
+            return this.inputEl().hasClass('hidden') ? true : false;
         }
         
         if(value.length < this.minLength){
