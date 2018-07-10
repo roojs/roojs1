@@ -34,7 +34,7 @@
 
  * @cfg {String} align (left|center|right) Default left
  * @cfg {Boolean} forceFeedback (true|false) Default false
- * 
+ * @cfg {Boolean} hideParent (true|false) Default false also hide the parent
  * 
  * 
  * 
