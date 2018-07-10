@@ -581,7 +581,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             }
             
             if(f.xtype == 'DateField'){
-                f.hideElement();
+                f.visible(false);
                 return;
             }
             
@@ -601,7 +601,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             }
             
             if(f.xtype == 'DateField'){
-                f.showElement();
+                f.visible(true);
                 return;
             }
             
