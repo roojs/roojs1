@@ -393,6 +393,10 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     validate : function()
     {
+        if(this.getEl().hasClass('hidden')){
+            return true;
+        }
+        
         if(
                 this.disabled || 
                 (this.inputType == 'radio' && this.validateRadio()) ||
