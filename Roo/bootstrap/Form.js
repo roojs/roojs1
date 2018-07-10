@@ -570,7 +570,10 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         return r;
     },
     
-    
+    hideFields : function(items)
+    {
+        
+    }
 
 });
 
