@@ -412,6 +412,10 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     validateRadio : function()
     {
+        if(this.getEl().hasClass('hidden')){
+            return true;
+        }
+        
         if(this.allowBlank){
             return true;
         }
