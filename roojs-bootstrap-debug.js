@@ -369,18 +369,24 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
      */
     show : function()
     {
-        if (this.el) {
-            this.el.removeClass('hidden');
+        if(!this.getEl()){
+            return;
         }
+        
+        this.getEl().removeClass('hidden');
+        
     },
     /**
      * Hide a component - adds 'hidden' class
      */
     hide: function()
     {
-        if (this.el && !this.el.hasClass('hidden')) {
-            this.el.addClass('hidden');
+        if(!this.getEl() || this.getEl().hasClass('hidden')){
+            return;
         }
+        
+        this.getEl().addClass('hidden');
+        
     }
 });
 
@@ -9106,12 +9112,17 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * @param {Mixed} value The value to validate
      * @return {Boolean} True if the value is valid, else false
      */
-    validateValue : function(value){
+    validateValue : function(value)
+    {
+        if(this.getEl().hasClass('hidden')){
+            return true;
+        }
+        
         if(value.length < 1)  { // if it's blank
             if(this.allowBlank){
                 return true;
-            }            
-            return this.inputEl().hasClass('hidden') ? true : false;
+            }
+            return false;
         }
         
         if(value.length < this.minLength){
