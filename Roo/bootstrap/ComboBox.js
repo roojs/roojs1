@@ -2130,6 +2130,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     validate : function()
     {
+        if(this.getEl().hasClass('hidden')){
+            return true;
+        }
+        
         var v = this.getRawValue();
         
         if(this.multiple){

@@ -14690,6 +14690,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     validate : function()
     {
+        if(this.getEl().hasClass('hidden')){
+            return true;
+        }
+        
         var v = this.getRawValue();
         
         if(this.multiple){
@@ -19165,6 +19169,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     validateValue : function(value)
     {
+        if(this.getEl().hasClass('hidden')){
+            return true;
+        }
+        
         if(value.length < 1)  {
             if(this.allowBlank){
                 return true;
@@ -33733,6 +33741,10 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
     
     validate : function()
     {   
+        if(this.getEl().hasClass('hidden')){
+            return true;
+        }
+        
         var valid = false;
         
         Roo.each(this.radioes, function(i){
