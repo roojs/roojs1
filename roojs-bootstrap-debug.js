@@ -8162,6 +8162,11 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 return;
             }
             
+            if(f.xtype == 'DateField'){
+                f.setVisible(false);
+                return;
+            }
+            
             f.hide();
             
         }, this);
@@ -8174,6 +8179,11 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             var f = this.findField(i);
             
             if(!f){
+                return;
+            }
+            
+            if(f.xtype == 'DateField'){
+                f.setVisible(true);
                 return;
             }
             
@@ -9153,8 +9163,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         return true;
     },
-
-    
     
      // private
     fireKey : function(e){
@@ -19201,6 +19209,21 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         
         return true;
+    },
+    
+    setVisible : function(visible)
+    {
+        if(!this.getEl()){
+            return;
+        }
+        
+        this.getEl().removeClass('hidden');
+        
+        if(visible){
+            return;
+        }
+        
+        this.getEl().addClass('hidden');
     }
    
 });
