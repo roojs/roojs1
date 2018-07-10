@@ -580,7 +580,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 return;
             }
             
-            f.hide();
+            f.hide(true);
             
         }, this);
     },
@@ -595,7 +595,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 return;
             }
             
-            f.show();
+            f.show(true);
             
         }, this);
     }
