@@ -978,7 +978,17 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     setVisible : function(visible)
     {
+        if(!this.getEl()){
+            return;
+        }
         
+        this.getEl().removeClass('hidden');
+        
+        if(visible){
+            return;
+        }
+        
+        this.getEl().addClass('hidden');
     }
    
 });
