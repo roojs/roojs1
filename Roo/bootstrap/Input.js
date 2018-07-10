@@ -649,12 +649,14 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * @param {Mixed} value The value to validate
      * @return {Boolean} True if the value is valid, else false
      */
-    validateValue : function(value){
-        if(value.length < 1)  { // if it's blank
-            if(this.allowBlank){
-                return true;
-            }            
-            return this.inputEl().hasClass('hidden') ? true : false;
+    validateValue : function(value)
+    {
+        if(this.getEl().hasClass('hidden')){
+            return true;
+        }
+        
+        if(value.length < 1 && this.allowBlank)  { // if it's blank
+            return true;
         }
         
         if(value.length < this.minLength){
