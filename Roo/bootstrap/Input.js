@@ -690,8 +690,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         return true;
     },
-
-    
     
      // private
     fireKey : function(e){
