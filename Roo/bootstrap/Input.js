@@ -655,8 +655,11 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return true;
         }
         
-        if(value.length < 1 && this.allowBlank)  { // if it's blank
-            return true;
+        if(value.length < 1)  { // if it's blank
+            if(this.allowBlank){
+                return true;
+            }
+            return false;
         }
         
         if(value.length < this.minLength){
