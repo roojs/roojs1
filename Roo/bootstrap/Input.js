@@ -247,6 +247,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     labelsm : 0,
     labelxs : 0,
     
+    hideParent : false,
+    
     parentLabelAlign : function()
     {
         var parent = this;
