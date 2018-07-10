@@ -8159,6 +8159,21 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             f.hide();
             
         }, this);
+    },
+    
+    showFields : function(items)
+    {
+        Roo.each(items, function(i){
+            
+            var f = this.findField(i);
+            
+            if(!f){
+                return;
+            }
+            
+            f.show();
+            
+        }, this);
     }
 
 });
@@ -9096,7 +9111,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             if(this.allowBlank){
                 return true;
             }            
-            return this.inputEl().hasClass('hide') ? true : false;
+            return this.inputEl().hasClass('hidden') ? true : false;
         }
         
         if(value.length < this.minLength){
