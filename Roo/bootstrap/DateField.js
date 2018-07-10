@@ -974,6 +974,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         
         return true;
+    },
+    
+    setVisible : function(visible)
+    {
+        
     }
    
 });
