@@ -524,13 +524,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.hide();
     },
     
-    show : function(isElement)
+    show : function()
     {
-        if(isElement){
-            this.getEl().removeClass('hidden');
-            return;
-        }
-        
         this.picker().show();
         this.update();
         this.place();
@@ -538,13 +533,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.fireEvent('show', this, this.date);
     },
     
-    hide : function(isElement)
+    hide : function()
     {
-        if(isElement){
-            this.getEl().addClass('hidden');
-            return;
-        }
-        
         if(this.isInline) {
             return;
         }
