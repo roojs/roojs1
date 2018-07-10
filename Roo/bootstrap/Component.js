@@ -373,8 +373,9 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             return;
         }
         
+        this.getEl().removeClass('hidden');
+        
         if(!this.hideParent){
-            this.getEl().removeClass('hidden');
             return;
         }
         
@@ -390,8 +391,9 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             return;
         }
         
+        this.getEl().addClass('hidden');
+        
         if(!this.hideParent){
-            this.getEl().addClass('hidden');
             return;
         }
         
