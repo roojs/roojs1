@@ -9124,7 +9124,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      */
     validateValue : function(value)
     {
-        if(this.getEl().hasClass('hidden')){
+        if(this.getEl().hasClass('hidden') || this.inputEl().hasClass('hidden')){
             return true;
         }
         
