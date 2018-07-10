@@ -199,6 +199,10 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
     
     validate : function()
     {   
+        if(this.getEl().hasClass('hidden')){
+            return true;
+        }
+        
         var valid = false;
         
         Roo.each(this.radioes, function(i){
