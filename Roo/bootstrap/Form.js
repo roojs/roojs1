@@ -573,6 +573,8 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     hideFields : function(items)
     {
         
+        
+        
     }
 
 });
