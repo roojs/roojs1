@@ -365,7 +365,9 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         
         return cn;
     },
-    
+     /**
+     * Get the element that will be used to show or hide
+     */
     getVisibilityEl : function()
     {
 	
