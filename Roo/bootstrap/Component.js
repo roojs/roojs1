@@ -18,7 +18,8 @@ Roo.bootstrap = Roo.bootstrap || {};
  * @cfg {string} name Specifies name attribute
  * @cfg {string} tooltip  Text for the tooltip
  * @cfg {string} container_method method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)
- * 
+ * @cfg {string|object} visibilityEl (el|parent) What element to use for visibility (@see getVisibilityEl())
+ 
  * @constructor
  * Do not use directly - it does not do anything..
  * @param {Object} config The config object
@@ -364,6 +365,22 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         
         return cn;
     },
+    
+    getVisibilityEl : function()
+    {
+	
+	if (typeof(this.visibilityEl) == 'object') {
+	    return this.visibilityEl;
+	}
+	if (typeof(this.visibilityEl) == 'string') {
+	    return this.visibilityEl == 'parent' ? this.parent() ? this.el;
+	}
+	
+	
+	return this.el;
+	
+    }
+    
     /**
      * Show a component - removes 'hidden' class
      */
