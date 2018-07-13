@@ -386,7 +386,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
      */
     show : function()
     {
-        if(!this.getEl()){
+        if(!this.getVisibilityEl()){
             return;
         }
          
@@ -399,7 +399,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
      */
     hide: function()
     {
-        if(!this.getEl() || this.getEl().hasClass('hidden')){
+        if(!this.getVisibilityEl()){
             return;
         }
         
