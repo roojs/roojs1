@@ -343,6 +343,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
     load : function(options){
         options = options || {};
         if(this.fireEvent("beforeload", this, options) !== false){
+            Roo.log(options);
             this.storeOptions(options);
             var p = Roo.apply(options.params || {}, this.baseParams);
             // if meta was not loaded from remote source.. try requesting it.
