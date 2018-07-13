@@ -373,11 +373,11 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
 	    return this.visibilityEl;
 	}
 	if (typeof(this.visibilityEl) == 'string') {
-	    return this.visibilityEl == 'parent' ? this.parent() ? this.el;
+	    return this.visibilityEl == 'parent' ? this.parent() ? this.getEl();
 	}
 	
 	
-	return this.el;
+	return this.getEl();
 	
     }
     
