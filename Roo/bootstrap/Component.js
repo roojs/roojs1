@@ -403,7 +403,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             return;
         }
         
-        this.getVisibilityEl().removeClass('hidden');
+        this.getVisibilityEl().addClass('hidden');
         
     }
 });
