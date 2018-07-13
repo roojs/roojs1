@@ -192,7 +192,7 @@ return;}this.el.removeClass('disabled');return;},setActive:function(A){if(this.a
 // Roo/bootstrap/Row.js
 Roo.bootstrap.Row=function(A){Roo.bootstrap.Row.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.Row,Roo.bootstrap.Component,{getAutoCreate:function(){return {cls:'row clearfix'};}});
 // Roo/bootstrap/Element.js
-Roo.bootstrap.Element=function(A){Roo.bootstrap.Element.superclass.constructor.call(this,A);this.addEvents({"click":true});};Roo.extend(Roo.bootstrap.Element,Roo.bootstrap.Component,{tag:'div',cls:'',html:'',preventDefault:false,clickable:false,getAutoCreate:function(){var A={tag:this.tag,cls:this.cls,html:this.html}
+Roo.bootstrap.Element=function(A){Roo.bootstrap.Element.superclass.constructor.call(this,A);this.addEvents({"click":true});};Roo.extend(Roo.bootstrap.Element,Roo.bootstrap.Component,{tag:'div',cls:'',html:'',preventDefault:false,clickable:false,getAutoCreate:function(){var A={tag:this.tag,html:this.html}
 ;return A;},initEvents:function(){Roo.bootstrap.Element.superclass.initEvents.call(this);if(this.clickable){this.el.on('click',this.onClick,this);}},onClick:function(e){if(this.preventDefault){e.preventDefault();}this.fireEvent('click',this,e);},getValue:function(){return this.el.dom.innerHTML;
 },setValue:function(A){this.el.dom.innerHTML=A;}});
 // Roo/bootstrap/Pagination.js
