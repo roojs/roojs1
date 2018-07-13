@@ -18,7 +18,8 @@ Roo.bootstrap = Roo.bootstrap || {};
  * @cfg {string} name Specifies name attribute
  * @cfg {string} tooltip  Text for the tooltip
  * @cfg {string} container_method method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)
- * 
+ * @cfg {string|object} visibilityEl (el|parent) What element to use for visibility (@see getVisibilityEl())
+ 
  * @constructor
  * Do not use directly - it does not do anything..
  * @param {Object} config The config object
@@ -364,22 +365,36 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         
         return cn;
     },
+     /**
+     * Get the element that will be used to show or hide
+     */
+    getVisibilityEl : function()
+    {
+	
+	if (typeof(this.visibilityEl) == 'object') {
+	    return this.visibilityEl;
+	}
+	
+	if (typeof(this.visibilityEl) == 'string') {
+	    return this.visibilityEl == 'parent' ? this.parent().getEl() : this.getEl();
+	}
+	
+	
+	return this.getEl();
+	
+    },
+    
     /**
      * Show a component - removes 'hidden' class
      */
     show : function()
     {
-        if(!this.getEl()){
+        if(!this.getVisibilityEl()){
             return;
         }
+         
+        this.getVisibilityEl().removeClass('hidden');
         
-        this.getEl().removeClass('hidden');
-        
-        if(!this.hideParent){
-            return;
-        }
-        
-        this.parent().getEl().removeClass('hidden');
         
     },
     /**
@@ -387,17 +402,11 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
      */
     hide: function()
     {
-        if(!this.getEl() || this.getEl().hasClass('hidden')){
+        if(!this.getVisibilityEl()){
             return;
         }
         
-        this.getEl().addClass('hidden');
-        
-        if(!this.hideParent){
-            return;
-        }
-        
-        this.parent().getEl().addClass('hidden');
+        this.getVisibilityEl().addClass('hidden');
         
     }
 });
@@ -4931,7 +4940,7 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
         
         var cfg = {
             tag: this.tag,
-            // cls: this.cls,
+            // cls: this.cls, double assign in parent class Component.js :: onRender
             html: this.html
         };
         
@@ -8519,9 +8528,6 @@ Roo.form.VTypes = function(){
 
  * @cfg {String} align (left|center|right) Default left
  * @cfg {Boolean} forceFeedback (true|false) Default false
- * @cfg {Boolean} hideParent (true|false) Default false also hide the parent
- * 
- * 
  * 
  * @constructor
  * Create a new Input
@@ -8731,8 +8737,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     labelmd : 0,
     labelsm : 0,
     labelxs : 0,
-    
-    hideParent : false,
     
     parentLabelAlign : function()
     {
