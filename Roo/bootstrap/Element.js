@@ -47,7 +47,7 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
         
         var cfg = {
             tag: this.tag,
-            cls: this.cls,
+            // cls: this.cls,
             html: this.html
         };
         
