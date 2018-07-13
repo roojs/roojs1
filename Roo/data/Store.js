@@ -377,7 +377,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
     // private
     // Called as a callback by the Reader during a load operation.
     loadRecords : function(o, options, success){
-        Roo.log([o, options.callback, success]);
+        Roo.log(options.callback);
         if(!o || success === false){
             if(success !== false){
                 this.fireEvent("load", this, [], options, o);
