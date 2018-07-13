@@ -370,16 +370,16 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     {
 	
 	if (typeof(this.visibilityEl) == 'object') {
-	    return this.visibilityEl;
+	    return this.visibilityEl.getEl();
 	}
 	if (typeof(this.visibilityEl) == 'string') {
-	    return this.visibilityEl == 'parent' ? this.parent() ? this.getEl();
+	    return this.visibilityEl == 'parent' ? this.parent().getEl() : this.getEl();
 	}
 	
 	
 	return this.getEl();
 	
-    }
+    },
     
     /**
      * Show a component - removes 'hidden' class
@@ -391,12 +391,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         }
         
         this.getEl().removeClass('hidden');
+        this.getVisibilityEl().removeClass('hidden');
         
-        if(!this.hideParent){
-            return;
-        }
-        
-        this.parent().getEl().removeClass('hidden');
         
     },
     /**
