@@ -33,7 +33,15 @@
         * @param {Roo.bootstrap.RadioSet} this This radio
         * @param {Roo.bootstrap.Radio} item The checked item
         */
-       </span><span class="jsdoc-var">check </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+       </span><span class="jsdoc-var">check </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+       </span><span class="jsdoc-comment">/**
+        * @event click
+        * Fires when the element is click.
+        * @param {Roo.bootstrap.RadioSet} this This radio set
+        * @param {Roo.bootstrap.Radio} item The checked item
+        * @param {Roo.EventObject} e The event object
+        */
+       </span><span class="jsdoc-var">click </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
     </span><span class="jsdoc-syntax">});
     
 };
@@ -191,6 +199,10 @@
     
     </span><span class="jsdoc-var">validate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {   
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">valid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.radioes</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">){
@@ -260,9 +272,11 @@
         }
         
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.radioes</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">){
-            
             </span><span class="jsdoc-var">i.checked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">i.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'checked'</span><span class="jsdoc-syntax">);
+        });
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.radioes</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">){
             
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i.value </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">i.value.toString</span><span class="jsdoc-syntax">() === </span><span class="jsdoc-var">v.toString</span><span class="jsdoc-syntax">()){
                 </span><span class="jsdoc-var">i.checked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
@@ -271,6 +285,8 @@
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">suppressEvent </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
                     </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'check'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">);
                 }
+                
+                </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
             }
             
         }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);

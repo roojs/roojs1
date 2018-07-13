@@ -28,7 +28,7 @@
     </span><span class="jsdoc-comment">/**
      * @cfg {Number} decimalPrecision The maximum precision to display after the decimal separator (defaults to 2)
      */
-    </span><span class="jsdoc-var">decimalPrecision </span><span class="jsdoc-syntax">: 2,
+    </span><span class="jsdoc-var">decimalPrecision </span><span class="jsdoc-syntax">: 0,
     </span><span class="jsdoc-comment">/**
      * @cfg {Boolean} allowNegative False to prevent entering a negative sign (defaults to true)
      */
@@ -58,6 +58,16 @@
      * @cfg {Boolean} castInt (true|false) cast int if true (defalut true)
      */
     </span><span class="jsdoc-var">castInt </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} defaults currency of the MoneyField
+     * value should be in lkey
+     */
+    </span><span class="jsdoc-var">defaultCurrency </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} thousandsDelimiter Symbol of thousandsDelimiter
+     */
+    </span><span class="jsdoc-var">thousandsDelimiter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
     
     </span><span class="jsdoc-var">inputlg </span><span class="jsdoc-syntax">: 9,
     </span><span class="jsdoc-var">inputmd </span><span class="jsdoc-syntax">: 9,
@@ -84,8 +94,15 @@
             </span><span class="jsdoc-var">autocomplete</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'new-password'
         </span><span class="jsdoc-syntax">};
         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hiddenInput </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">(),
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'hidden-number-input'
+        </span><span class="jsdoc-syntax">};
+        
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">input.name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">hiddenInput.name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">;
         }
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">) {
@@ -214,9 +231,10 @@
 
         </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
             </span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">container
+            </span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">hiddenInput
         </span><span class="jsdoc-syntax">];
-
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">settings </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
 
         [</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'md'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'lg'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.map</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">){
@@ -226,7 +244,6 @@
         });
         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
-        
     },
     
     </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -236,7 +253,6 @@
         </span><span class="jsdoc-var">this.initCurrencyEvent</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-var">this.initNumberEvent</span><span class="jsdoc-syntax">();
-        
     },
     
     </span><span class="jsdoc-var">initCurrencyEvent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -479,6 +495,12 @@
         
         </span><span class="jsdoc-var">this.lastSelectionText </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">currency</span><span class="jsdoc-syntax">;
         
+        </span><span class="jsdoc-comment">//setting default currency
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.currencyField</span><span class="jsdoc-syntax">] * 1 == 0 &amp;&amp; </span><span class="jsdoc-var">this.defaultCurrency</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.setCurrency</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.defaultCurrency</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
         </span><span class="jsdoc-var">this.setCurrency</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">currency</span><span class="jsdoc-syntax">);
     },
     
@@ -521,7 +543,17 @@
         </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rendered</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.value </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">null </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-var">this.hiddenEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.value </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">null </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.util.Format.number</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.decimalPrecision</span><span class="jsdoc-syntax">, 
+                </span><span class="jsdoc-var">this.thousandsDelimiter </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">','
+            </span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.allowBlank </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+            }
+            
             </span><span class="jsdoc-var">this.validate</span><span class="jsdoc-syntax">();
         }
     },
@@ -617,7 +649,7 @@
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getRawValue</span><span class="jsdoc-syntax">());
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">== 0){
             </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
         }
     },
@@ -653,6 +685,11 @@
     </span><span class="jsdoc-var">currencyEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-money-currency-input'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+    },
+    
+    </span><span class="jsdoc-var">hiddenEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'input.hidden-number-input'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
     }
     
 });</span></code></body></html>

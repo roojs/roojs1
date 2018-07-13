@@ -171,12 +171,15 @@
          * eventually this should probably emulate php's number_format
          * @param {Number/String} value The numeric value to format
          * @param {Number} decimals number of decimal places
+         * @param {String} delimiter for thousands (default comma)
          * @return {String} The formatted currency string
          */
-        </span><span class="jsdoc-var">number </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">decimals</span><span class="jsdoc-syntax">)
+        </span><span class="jsdoc-var">number </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">decimals</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">thousandsDelimiter</span><span class="jsdoc-syntax">)
         {
             </span><span class="jsdoc-comment">// multiply and round.
             </span><span class="jsdoc-var">decimals </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">decimals</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? 2 : </span><span class="jsdoc-var">decimals</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">thousandsDelimiter </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">thousandsDelimiter</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">',' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">thousandsDelimiter</span><span class="jsdoc-syntax">;
+            
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">mul </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.pow</span><span class="jsdoc-syntax">(10, </span><span class="jsdoc-var">decimals</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">zero </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mul</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.substring</span><span class="jsdoc-syntax">(1);
             </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">Math.round</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">-0)*</span><span class="jsdoc-var">mul</span><span class="jsdoc-syntax">))/</span><span class="jsdoc-var">mul</span><span class="jsdoc-syntax">;
@@ -188,13 +191,12 @@
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ps </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.'</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">whole </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ps</span><span class="jsdoc-syntax">[0];
             
-            
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= /(\d+)(\d{3})/;
             </span><span class="jsdoc-comment">// add comma's
-            </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">whole</span><span class="jsdoc-syntax">)) {
-                </span><span class="jsdoc-var">whole </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">whole.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'$1' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">',' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'$2'</span><span class="jsdoc-syntax">);
-            }
             
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">thousandsDelimiter.length </span><span class="jsdoc-syntax">!= 0) {
+                </span><span class="jsdoc-var">whole </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">whole.replace</span><span class="jsdoc-syntax">(/\B(?=(\d{3})+(?!\d))/g, </span><span class="jsdoc-var">thousandsDelimiter </span><span class="jsdoc-syntax">);
+            } 
             
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sub </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ps</span><span class="jsdoc-syntax">[1] ?
                     </span><span class="jsdoc-comment">// has decimals..

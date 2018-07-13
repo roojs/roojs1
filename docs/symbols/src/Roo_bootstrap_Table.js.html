@@ -361,6 +361,7 @@
         
         </span><span class="jsdoc-var">this.mainBody.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'scroll'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onBodyScroll</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
+        </span><span class="jsdoc-var">this.cm.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;headerchange&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onHeaderChange</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
     },
     
@@ -1091,10 +1092,12 @@
     </span><span class="jsdoc-var">onBodyScroll</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-comment">//Roo.log(&quot;body scrolled');&quot; + this.mainBody.dom.scrollLeft);
-        </span><span class="jsdoc-var">this.mainHead.setStyle</span><span class="jsdoc-syntax">({
-            </span><span class="jsdoc-string">'position' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'relative'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">: (-1* </span><span class="jsdoc-var">this.mainBody.dom.scrollLeft</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">'px'
-        </span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.mainHead</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.mainHead.setStyle</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-string">'position' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'relative'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">: (-1* </span><span class="jsdoc-var">this.mainBody.dom.scrollLeft</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">'px'
+            </span><span class="jsdoc-syntax">});
+        }
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lazyLoad</span><span class="jsdoc-syntax">){
             
@@ -1121,7 +1124,18 @@
             }
             
         }
+    },
+    
+    </span><span class="jsdoc-var">onHeaderChange </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">header </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.renderHeader</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">table </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'table'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">this.mainHead.remove</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.mainHead </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">table.createChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">header</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.mainBody</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
     }
+    
 });
 
  

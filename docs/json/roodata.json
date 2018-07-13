@@ -13903,6 +13903,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -14071,6 +14081,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -14209,6 +14225,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -14377,6 +14403,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -14549,6 +14581,16 @@
      "type": "string",
      "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
     },
     {
      "name": "disableClass",
@@ -14725,6 +14767,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -15193,6 +15241,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -15375,6 +15433,12 @@
      "desc": "Returns the id of this component."
     },
     {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
+    },
+    {
      "name": "hasListener",
      "sig": "(String eventName)",
      "type": "function",
@@ -15553,6 +15617,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -15723,6 +15797,12 @@
      "desc": "Returns the id of this component."
     },
     {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
+    },
+    {
      "name": "hasListener",
      "sig": "(String eventName)",
      "type": "function",
@@ -15879,6 +15959,16 @@
      "type": "string",
      "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
     },
     {
      "name": "disableClass",
@@ -16079,6 +16169,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -16563,6 +16659,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -16815,6 +16921,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -17116,6 +17228,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -17284,6 +17406,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -18081,6 +18209,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -18413,6 +18551,12 @@
      "desc": "Returns the currently selected field value or empty string if no value is set."
     },
     {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
+    },
+    {
      "name": "hasListener",
      "sig": "(String eventName)",
      "type": "function",
@@ -18633,6 +18777,16 @@
      "memberOf": ""
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -18801,6 +18955,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -19085,6 +19245,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -19271,6 +19441,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -19790,6 +19966,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -20036,6 +20222,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -20334,6 +20526,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -20526,6 +20728,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -20768,6 +20976,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -20906,6 +21124,12 @@
      "desc": "prepare the form data"
     },
     {
+     "name": "previewrendered",
+     "sig": "function (_self, file)\n{\n\n}",
+     "type": "function",
+     "desc": "Fire when preview rendered"
+    },
+    {
      "name": "process",
      "sig": "function (_self, file)\n{\n\n}",
      "type": "function",
@@ -21002,6 +21226,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -21138,6 +21368,16 @@
      "type": "string",
      "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
     },
     {
      "name": "disableClass",
@@ -21328,6 +21568,12 @@
      "desc": "Returns the id of this component."
     },
     {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
+    },
+    {
      "name": "hasListener",
      "sig": "(String eventName)",
      "type": "function",
@@ -21482,6 +21728,16 @@
      "type": "string",
      "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
     },
     {
      "name": "disableClass",
@@ -21678,6 +21934,12 @@
      "desc": "Returns the id of this component."
     },
     {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
+    },
+    {
      "name": "hasListener",
      "sig": "(String eventName)",
      "type": "function",
@@ -21844,6 +22106,16 @@
      "type": "string",
      "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
     },
     {
      "name": "disableClass",
@@ -22020,6 +22292,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -22214,6 +22492,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -22402,6 +22690,12 @@
      "desc": "Returns the id of this component."
     },
     {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
+    },
+    {
      "name": "hasListener",
      "sig": "(String eventName)",
      "type": "function",
@@ -22572,6 +22866,12 @@
      "memberOf": ""
     },
     {
+     "name": "maskBody",
+     "type": "Boolean",
+     "desc": "",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
@@ -22618,6 +22918,16 @@
      "type": "string",
      "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
     },
     {
      "name": "disableClass",
@@ -22844,6 +23154,12 @@
      "desc": "Returns the fields in this form as an object with key/value pairs. If multiple fields exist with the same name\nthey are returned as an array."
     },
     {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
+    },
+    {
      "name": "hasListener",
      "sig": "(String eventName)",
      "type": "function",
@@ -23052,6 +23368,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -23228,6 +23554,12 @@
      "desc": "Returns the id of this component."
     },
     {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
+    },
+    {
      "name": "hasListener",
      "sig": "(String eventName)",
      "type": "function",
@@ -23382,6 +23714,16 @@
      "type": "string",
      "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
     },
     {
      "name": "disableClass",
@@ -23552,6 +23894,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -24035,6 +24383,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -24319,6 +24677,12 @@
      "desc": "Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}."
     },
     {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
+    },
+    {
      "name": "hasListener",
      "sig": "(String eventName)",
      "type": "function",
@@ -24575,6 +24939,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -24749,6 +25123,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -25190,6 +25570,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -25424,6 +25814,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -25664,6 +26060,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -25856,6 +26262,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -26066,6 +26478,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -26234,6 +26656,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -26424,6 +26852,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -26598,6 +27036,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -26818,6 +27262,16 @@
      "type": "string",
      "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
     },
     {
      "name": "disableClass",
@@ -27068,6 +27522,12 @@
      "desc": "Returns the id of this component."
     },
     {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
+    },
+    {
      "name": "hasListener",
      "sig": "(String eventName)",
      "type": "function",
@@ -27277,6 +27737,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -27457,6 +27927,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -27642,6 +28118,16 @@
      "type": "string",
      "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
     },
     {
      "name": "disableClass",
@@ -27838,6 +28324,12 @@
      "desc": "Returns the id of this component."
     },
     {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
+    },
+    {
      "name": "hasListener",
      "sig": "(String eventName)",
      "type": "function",
@@ -28022,6 +28514,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -28198,6 +28700,12 @@
      "desc": "Returns the id of this component."
     },
     {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
+    },
+    {
      "name": "hasListener",
      "sig": "(String eventName)",
      "type": "function",
@@ -28350,6 +28858,16 @@
      "type": "string",
      "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
     },
     {
      "name": "disableClass",
@@ -28520,6 +29038,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -28702,6 +29226,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -28870,6 +29404,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -29149,6 +29689,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -29337,6 +29887,12 @@
      "desc": "Returns the id of this component."
     },
     {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
+    },
+    {
      "name": "hasListener",
      "sig": "(String eventName)",
      "type": "function",
@@ -29499,6 +30055,18 @@
       "true",
       "false"
      ]
+    },
+    {
+     "name": "defaults",
+     "type": "String",
+     "desc": "currency of the MoneyField\nvalue should be in lkey",
+     "memberOf": ""
+    },
+    {
+     "name": "thousandsDelimiter",
+     "type": "String",
+     "desc": "Symbol of thousandsDelimiter",
+     "memberOf": ""
     },
     {
      "name": "append",
@@ -30208,6 +30776,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -30538,6 +31116,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the currently selected field value or empty string if no value is set."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -31063,6 +31647,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -31305,6 +31899,12 @@
      "desc": "Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}."
     },
     {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
+    },
+    {
      "name": "hasListener",
      "sig": "(String eventName)",
      "type": "function",
@@ -31522,6 +32122,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -31720,6 +32330,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -31988,6 +32604,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -32162,6 +32788,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -32389,6 +33021,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -32577,6 +33219,12 @@
      "desc": "Returns the id of this component."
     },
     {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
+    },
+    {
      "name": "hasListener",
      "sig": "(String eventName)",
      "type": "function",
@@ -32711,6 +33359,16 @@
      "type": "string",
      "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
     },
     {
      "name": "disableClass",
@@ -32887,6 +33545,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -33073,6 +33737,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -33249,6 +33923,12 @@
      "desc": "Returns the id of this component."
     },
     {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
+    },
+    {
      "name": "hasListener",
      "sig": "(String eventName)",
      "type": "function",
@@ -33383,6 +34063,16 @@
      "type": "string",
      "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
     },
     {
      "name": "disableClass",
@@ -33559,6 +34249,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -33786,6 +34482,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -33972,6 +34678,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -34175,6 +34887,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -34349,6 +35071,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -34487,6 +35215,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -34663,6 +35401,12 @@
      "desc": "Returns the id of this component."
     },
     {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
+    },
+    {
      "name": "hasListener",
      "sig": "(String eventName)",
      "type": "function",
@@ -34775,6 +35519,12 @@
      "memberOf": ""
     },
     {
+     "name": "allowZero",
+     "type": "Boolean",
+     "desc": "False to blank out if the user enters '0' (defaults to true)",
+     "memberOf": ""
+    },
+    {
      "name": "minValue",
      "type": "Number",
      "desc": "The minimum allowed value (defaults to Number.NEGATIVE_INFINITY)",
@@ -34813,6 +35563,18 @@
       "true",
       "false"
      ]
+    },
+    {
+     "name": "thousandsDelimiter",
+     "type": "String",
+     "desc": "Symbol of thousandsDelimiter",
+     "memberOf": ""
+    },
+    {
+     "name": "valueAlign",
+     "type": "String",
+     "desc": "alignment of value",
+     "memberOf": ""
     },
     {
      "name": "disabled",
@@ -35160,6 +35922,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -35396,6 +36168,12 @@
      "desc": "Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}."
     },
     {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
+    },
+    {
      "name": "hasListener",
      "sig": "(String eventName)",
      "type": "function",
@@ -35592,6 +36370,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -35760,6 +36548,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -35936,6 +36730,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -36110,6 +36914,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -36349,6 +37159,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -36529,6 +37349,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -37014,6 +37840,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -37250,6 +38086,12 @@
      "desc": "Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}."
     },
     {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
+    },
+    {
      "name": "hasListener",
      "sig": "(String eventName)",
      "type": "function",
@@ -37476,6 +38318,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -37646,6 +38498,12 @@
      "desc": "Returns the id of this component."
     },
     {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
+    },
+    {
      "name": "hasListener",
      "sig": "(String eventName)",
      "type": "function",
@@ -37792,6 +38650,16 @@
      "type": "string",
      "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
     },
     {
      "name": "disableClass",
@@ -37962,6 +38830,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -38148,6 +39022,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -38316,6 +39200,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -38466,6 +39356,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -38634,6 +39534,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -39092,6 +39998,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -39174,6 +40090,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires when the children have been rendered.."
+    },
+    {
+     "name": "click",
+     "sig": "function (_self, item, e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the element is click."
     },
     {
      "name": "destroy",
@@ -39332,6 +40254,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -39518,6 +40446,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -39686,6 +40624,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -40139,6 +41083,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -40375,6 +41329,12 @@
      "desc": "Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}."
     },
     {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
+    },
+    {
      "name": "hasListener",
      "sig": "(String eventName)",
      "type": "function",
@@ -40559,6 +41519,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -40727,6 +41697,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -41194,6 +42170,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -41368,6 +42354,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -41554,6 +42546,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -41734,6 +42736,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -42045,6 +43053,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -42303,6 +43321,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -42798,6 +43822,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -42966,6 +44000,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -43194,6 +44234,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -43362,6 +44412,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -43524,6 +44580,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -43692,6 +44758,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -44169,6 +45241,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -44403,6 +45485,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -44892,6 +45980,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -45132,6 +46230,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -45659,6 +46763,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -45893,6 +47007,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -46165,6 +47285,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -46419,6 +47549,12 @@
      "desc": "Returns the id of this component."
     },
     {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
+    },
+    {
      "name": "hasListener",
      "sig": "(String eventName)",
      "type": "function",
@@ -46588,6 +47724,16 @@
      "type": "string",
      "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
     },
     {
      "name": "disableClass",
@@ -46760,6 +47906,12 @@
      "desc": "Returns the id of this component."
     },
     {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
+    },
+    {
      "name": "hasListener",
      "sig": "(String eventName)",
      "type": "function",
@@ -46926,6 +48078,16 @@
      "type": "string",
      "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
     },
     {
      "name": "disableClass",
@@ -47110,6 +48272,12 @@
      "desc": "Returns the id of this component."
     },
     {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
+    },
+    {
      "name": "hasListener",
      "sig": "(String eventName)",
      "type": "function",
@@ -47266,6 +48434,16 @@
      "type": "string",
      "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
     },
     {
      "name": "disableClass",
@@ -47442,6 +48620,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -47772,6 +48956,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -48014,6 +49208,12 @@
      "desc": "Returns the size of the current view. This method normalizes document.body and element embedded layouts and\nperforms box-model adjustments."
     },
     {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
+    },
+    {
      "name": "hasListener",
      "sig": "(String eventName)",
      "type": "function",
@@ -48172,6 +49372,16 @@
      "type": "string",
      "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
     },
     {
      "name": "disableClass",
@@ -48390,6 +49600,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the size of the current view. This method normalizes document.body and element embedded layouts and\nperforms box-model adjustments."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -49370,6 +50586,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -49558,6 +50784,12 @@
      "desc": "Returns the id of this component."
     },
     {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
+    },
+    {
      "name": "hasListener",
      "sig": "(String eventName)",
      "type": "function",
@@ -49725,6 +50957,16 @@
      "type": "string",
      "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
     },
     {
      "name": "disableClass",
@@ -49903,6 +51145,12 @@
      "desc": "Returns the id of this component."
     },
     {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
+    },
+    {
      "name": "hasListener",
      "sig": "(String eventName)",
      "type": "function",
@@ -50037,6 +51285,16 @@
      "type": "string",
      "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
     },
     {
      "name": "disableClass",
@@ -50207,6 +51465,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -57073,6 +58337,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -57241,6 +58515,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -57385,6 +58665,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -57553,6 +58843,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -57726,6 +59022,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -57894,6 +59200,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -58038,6 +59350,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -58206,6 +59528,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -58350,6 +59678,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -58518,6 +59856,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -58680,6 +60024,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -58848,6 +60202,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -58999,6 +60359,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -59167,6 +60537,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -59345,6 +60721,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -59513,6 +60899,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -78967,6 +80359,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -79135,6 +80537,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -79273,6 +80681,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -79441,6 +80859,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -79579,6 +81003,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -79747,6 +81181,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -79913,6 +81353,16 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "visibilityEl",
+     "type": "string|object",
+     "desc": "What element to use for visibility (@see getVisibilityEl())",
+     "memberOf": "Roo.bootstrap.Component",
+     "optvals": [
+      "el",
+      "parent"
+     ]
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -80081,6 +81531,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns the id of this component."
+    },
+    {
+     "name": "getVisibilityEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Get the element that will be used to show or hide"
     },
     {
      "name": "hasListener",
@@ -86126,7 +87582,7 @@
     },
     {
      "name": "number",
-     "sig": "(Number/String value, Number decimals)",
+     "sig": "(Number/String value, Number decimals, String delimiter)",
      "type": "function",
      "desc": "Format a number\neventually this should probably emulate php's number_format"
     },

@@ -221,7 +221,8 @@
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">onLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-var">this.cursor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o.params </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">o.params.start </span><span class="jsdoc-syntax">: 0;
+        </span><span class="jsdoc-var">this.cursor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o.params.start </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">o.params.start </span><span class="jsdoc-syntax">: 0;
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getPageData</span><span class="jsdoc-syntax">(),
             </span><span class="jsdoc-var">ap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d.activePage</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">ps </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d.pages</span><span class="jsdoc-syntax">;

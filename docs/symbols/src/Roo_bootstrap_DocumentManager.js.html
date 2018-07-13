@@ -108,7 +108,14 @@
          * @param {Roo.bootstrap.DocumentManager} this
          * @param {Object} file
          */
-        </span><span class="jsdoc-string">&quot;process&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-string">&quot;process&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event previewrendered
+         * Fire when preview rendered
+         * @param {Roo.bootstrap.DocumentManager} this
+         * @param {Object} file
+         */
+        </span><span class="jsdoc-string">&quot;previewrendered&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
         
     </span><span class="jsdoc-syntax">});
 };
@@ -695,6 +702,8 @@
         </span><span class="jsdoc-var">image.dom.addEventListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;load&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){ </span><span class="jsdoc-var">_this.onPreviewLoad</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">image</span><span class="jsdoc-syntax">); });
         
         </span><span class="jsdoc-var">image.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'previewrendered'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">;
         

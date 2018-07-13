@@ -151,13 +151,13 @@ Roo.Msg.show({
                 </span><span class="jsdoc-var">progressEl.enableDisplayMode</span><span class="jsdoc-syntax">();
                 
                 </span><span class="jsdoc-comment">// This is supposed to be the progessElement.. but I think it's controlling the height of everything..
-                //var pf = progressEl.dom.firstChild;
-                //if (pf) {
-                    //pp = Roo.get(pf.firstChild);
-                    //pp.setHeight(pf.offsetHeight);
-                //}
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pf </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">progressEl.dom.firstChild</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pf</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">pp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pf.firstChild</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">pp.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pf.offsetHeight</span><span class="jsdoc-syntax">);
+                }
                 
-            </span><span class="jsdoc-syntax">}
+            }
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">dlg</span><span class="jsdoc-syntax">;
         },
 
@@ -221,8 +221,10 @@ Roo.Msg.show({
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">this.updateText</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">);
             }
+            
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pp</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// weird bug on my firefox - for some reason this is not defined
                 </span><span class="jsdoc-var">pp.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">*</span><span class="jsdoc-var">progressEl.dom.firstChild.offsetWidth</span><span class="jsdoc-syntax">));
+                </span><span class="jsdoc-var">pp.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">progressEl.dom.firstChild.offsetHeight</span><span class="jsdoc-syntax">));
             }
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         },        
