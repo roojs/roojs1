@@ -433,6 +433,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             
         this.fireEvent("load", this, r, options, o);
         
+        Roo.log(options);
         Roo.log(options.callback);
         
         if(options.callback){
