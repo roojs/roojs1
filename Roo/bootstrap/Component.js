@@ -370,8 +370,9 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     {
 	
 	if (typeof(this.visibilityEl) == 'object') {
-	    return this.visibilityEl.getEl();
+	    return this.visibilityEl;
 	}
+	
 	if (typeof(this.visibilityEl) == 'string') {
 	    return this.visibilityEl == 'parent' ? this.parent().getEl() : this.getEl();
 	}
