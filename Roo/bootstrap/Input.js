@@ -34,9 +34,6 @@
 
  * @cfg {String} align (left|center|right) Default left
  * @cfg {Boolean} forceFeedback (true|false) Default false
- * @cfg {Boolean} hideParent (true|false) Default false also hide the parent
- * 
- * 
  * 
  * @constructor
  * Create a new Input
@@ -246,8 +243,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     labelmd : 0,
     labelsm : 0,
     labelxs : 0,
-    
-    hideParent : false,
     
     parentLabelAlign : function()
     {
