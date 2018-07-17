@@ -199,7 +199,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
     
     validate : function()
     {   
-        if(this.getVisibilityEl().hasClass('hidden') || !this.getVisibilityEl().isVisible()){
+        if(this.getVisibilityEl().hasClass('hidden')){
             return true;
         }
         
