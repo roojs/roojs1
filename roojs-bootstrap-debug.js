@@ -9148,7 +9148,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      */
     validateValue : function(value)
     {
-        if(this.getVisibilityEl().hasClass('hidden') || !this.getVisibilityEl().isVisible(true)){
+        if(this.getVisibilityEl().hasClass('hidden')){
             return true;
         }
         
@@ -14714,7 +14714,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     validate : function()
     {
-        if(this.getVisibilityEl().hasClass('hidden') || !this.getVisibilityEl().isVisible(true)){
+        if(this.getVisibilityEl().hasClass('hidden')){
             return true;
         }
         
@@ -19193,7 +19193,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     validateValue : function(value)
     {
-        if(this.getVisibilityEl().hasClass('hidden') || !this.getVisibilityEl().isVisible(true)){
+        if(this.getVisibilityEl().hasClass('hidden')){
             return true;
         }
         
@@ -20704,7 +20704,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     validate : function()
     {
-        if(this.getVisibilityEl().hasClass('hidden') || !this.getVisibilityEl().isVisible(true)){
+        if(this.getVisibilityEl().hasClass('hidden')){
             return true;
         }
         
@@ -20723,7 +20723,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     validateRadio : function()
     {
-        if(this.getVisibilityEl().hasClass('hidden') || !this.getVisibilityEl().isVisible(true)){
+        if(this.getVisibilityEl().hasClass('hidden')){
             return true;
         }
         
@@ -33773,7 +33773,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
     
     validate : function()
     {   
-        if(this.getVisibilityEl().hasClass('hidden') || !this.getVisibilityEl().isVisible(true)){
+        if(this.getVisibilityEl().hasClass('hidden')){
             return true;
         }
         
