@@ -930,7 +930,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     validateValue : function(value)
     {
-        if(this.getVisibilityEl().hasClass('hidden') || !this.getVisibilityEl().isVisible(true)){
+        if(this.getVisibilityEl().hasClass('hidden')){
             return true;
         }
         
