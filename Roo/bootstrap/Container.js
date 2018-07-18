@@ -369,45 +369,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         e.preventDefault();
         
         this.fireEvent('click', this, e);
-    },
-    
-    allChildren : function()
-    {
-        var r=new Roo.util.MixedCollection(false, function(o){
-            return o.id || (o.id = Roo.id());
-        });
-        var iter = function(el) {
-            if (el.inputEl) {
-                r.add(el);
-            }
-            if (!el.items) {
-                return;
-            }
-            Roo.each(el.items,function(e) {
-                iter(e);
-            });
-        };
-
-        iter(this);
-        return r;
-    },
-    
-    checkEmpty : function()
-    {
-	// fixme - REMOVE this function - it's not likely to ever work reliably..
-	
-        var items = this.allChildren();
-        var isEmpty = true;
-        
-        items.each(function(f){
-            if(f.el.isVisible()) {
-                isEmpty = false;
-            }
-        });
-        
-        return isEmpty;
     }
-   
 });
 
  
