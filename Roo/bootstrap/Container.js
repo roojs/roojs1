@@ -394,6 +394,8 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     
     checkEmpty : function()
     {
+	// fixme - REMOVE this function - it's not likely to ever work reliably..
+	
         var items = this.allChildren();
         var isEmpty = true;
         
