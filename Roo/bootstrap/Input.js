@@ -578,7 +578,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         if(this.indicator){
             this.indicator.addClass('invisible');
-            
         }
  
         // reference to original value for reset
