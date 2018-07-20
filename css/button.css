@@ -167,13 +167,7 @@
 
 }
 
-.x-btn-text-icon .x-btn-center .x-btn-text-no-padding
-{
-   background-position:0 2px; 
-   background:none no-repeat scroll 0 0 transparent;
-    /* padding : 3px 0 2px 18px; */
 
-}
 /* -------------------------- BUTTON WITH MENUS  -------------------------- */ 
 button.x-btn-menu-arrow-el
 {
