@@ -893,6 +893,14 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
        
         
     },
+     /**
+     * get the current active state
+     * @return {boolean} true if it's active
+     */
+    isActive : function()
+    {
+        return this.el.hasClass('active');
+    },
     setText : function(str)
     {
         this.el.select('.roo-button-text',true).first().dom.innerHTML = str;
