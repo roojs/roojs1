@@ -968,6 +968,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 td.cls += ' col-' + size + '-' + config[size];
 
             });
+            
+            if(config.hidden){
+                td.cls += ' hidden';
+            }
              
             row.cn.push(td);
            
