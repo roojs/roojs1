@@ -308,6 +308,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         if(this.preventDefault){
             e.preventDefault();
         }
+        
         if (this.pressed === true || this.pressed === false) {
             this.pressed = !this.pressed;
             this.el[this.pressed ? 'addClass' : 'removeClass']('active');
