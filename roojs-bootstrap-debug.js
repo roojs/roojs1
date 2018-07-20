@@ -562,7 +562,8 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
  * @cfg {String} badge text for badge
  * @cfg {String} theme default 
  * @cfg {Boolean} inverse 
- * @cfg {Boolean} toggle 
+ * @cfg {Boolean} toggle is it a slidy toggle button
+ * @cfg {Boolean} pressed　(true|false) default null - if the button ahs active state
  * @cfg {String} ontext text for on toggle state
  * @cfg {String} offtext text for off toggle state
  * @cfg {Boolean} defaulton 
@@ -708,7 +709,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         }
         
         
-        if (this.active) {
+        if (this.active || this.pressed === true) {
             cfg.cls += ' active';
         }
         
@@ -901,10 +902,16 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     {
         return this.el.hasClass('active');
     },
+    /**
+     * set the text of the first selected button
+     */
     setText : function(str)
     {
         this.el.select('.roo-button-text',true).first().dom.innerHTML = str;
     },
+    /**
+     * get the text of the first selected button
+     */
     getText : function()
     {
         return this.el.select('.roo-button-text',true).first().dom.innerHTML;
@@ -920,7 +927,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     },
     setWeight : function(str)
     {
-    	  this.el.removeClass(this.weightClass);
+    	this.el.removeClass(this.weightClass);
         this.el.addClass('btn-' + str);        
     }
     
