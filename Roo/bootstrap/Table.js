@@ -1145,6 +1145,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     onHiddenChange : function()
     {
         this.onHeaderChange();
+        this.onLoad();
     }
     
 });
