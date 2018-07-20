@@ -363,6 +363,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         this.cm.on("headerchange", this.onHeaderChange, this);
         
+        this.cm.on("hiddenchange", this.onHiddenChange, this);
+        
     },
     
     onContextMenu : function(e, t)
