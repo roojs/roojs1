@@ -175,7 +175,11 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
         this.itemsEl = this.el.select('.roo-radio-set-items', true).first();
         this.itemsEl.setVisibilityMode(Roo.Element.DISPLAY);
         
-        this.indicatorEl().addClass('invisible');
+        this.indicator = this.indicatorEl();
+        
+        if(this.indicator){
+            this.indicator.addClass('invisible');
+        }
         
         this.originalValue = this.getValue();
         
