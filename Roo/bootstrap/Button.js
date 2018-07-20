@@ -359,10 +359,16 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     {
         return this.el.hasClass('active');
     },
+    /**
+     * set the text of the first selected button
+     */
     setText : function(str)
     {
         this.el.select('.roo-button-text',true).first().dom.innerHTML = str;
     },
+    /**
+     * get the text of the first selected button
+     */
     getText : function()
     {
         return this.el.select('.roo-button-text',true).first().dom.innerHTML;
