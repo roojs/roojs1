@@ -6171,6 +6171,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         this.cm.on("headerchange", this.onHeaderChange, this);
         
+        this.cm.on("hiddenchange", this.onHiddenChange, this);
+        
     },
     
     onContextMenu : function(e, t)
@@ -6471,6 +6473,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 c.cls += ' col-' + size + '-' + config[size];
 
             });
+            
+            if(config.hidden){
+                c.cls += ' hidden';
+            }
             
             header.cn.push(c)
         }
@@ -6942,6 +6948,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         this.mainHead.remove();
         this.mainHead = table.createChild(header, this.mainBody, false);
+    },
+    
+    hiddenchange : function()
+    {
+        this.onHeaderChange();
     }
     
 });
