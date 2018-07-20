@@ -167,7 +167,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         }
         
         
-        if (this.active) {
+        if (this.active || this.pressed === true) {
             cfg.cls += ' active';
         }
         
