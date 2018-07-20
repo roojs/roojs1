@@ -20,7 +20,7 @@
  * @cfg {String} badge text for badge
  * @cfg {String} theme default 
  * @cfg {Boolean} inverse 
- * @cfg {Boolean} toggle 
+ * @cfg {Boolean} toggle is it a slidy toggle button
  * @cfg {String} ontext text for on toggle state
  * @cfg {String} offtext text for off toggle state
  * @cfg {Boolean} defaulton 
