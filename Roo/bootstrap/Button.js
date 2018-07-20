@@ -21,6 +21,7 @@
  * @cfg {String} theme default 
  * @cfg {Boolean} inverse 
  * @cfg {Boolean} toggle is it a slidy toggle button
+ * @cfg {Boolean} pressed　(true|false) default null - if the button ahs active state
  * @cfg {String} ontext text for on toggle state
  * @cfg {String} offtext text for off toggle state
  * @cfg {Boolean} defaulton 
@@ -384,7 +385,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     },
     setWeight : function(str)
     {
-    	  this.el.removeClass(this.weightClass);
+    	this.el.removeClass(this.weightClass);
         this.el.addClass('btn-' + str);        
     }
     
