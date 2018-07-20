@@ -666,6 +666,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
 
             });
             
+            if(config.hidden){
+                c.cls += ' hidden';
+            }
+            
             header.cn.push(c)
         }
         
