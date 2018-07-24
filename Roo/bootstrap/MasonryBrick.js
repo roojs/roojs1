@@ -377,7 +377,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         
         e.preventDefault();
         
-        if (this.activcClass != '') {
+        if (this.activeClass != '') {
             this.selectBrick();
         }
         
