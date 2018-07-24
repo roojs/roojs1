@@ -592,13 +592,14 @@ Roo.bootstrap.Button = function(config){
         /**
          * @event click
          * When a butotn is pressed
-         * @param {Roo.bootstrap.Button} this
+         * @param {Roo.bootstrap.Button} btn
          * @param {Roo.EventObject} e
          */
         "click" : true,
          /**
          * @event toggle
          * After the button has been toggles
+         * @param {Roo.bootstrap.Button} btn
          * @param {Roo.EventObject} e
          * @param {boolean} pressed (also available as button.pressed)
          */
@@ -883,6 +884,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     setActive : function(v) {
         
         this.el[v ? 'addClass' : 'removeClass']('active');
+        this.pressed = v;
     },
      /**
      * toggles the current active state 
