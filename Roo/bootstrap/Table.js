@@ -1156,6 +1156,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             this.CSS.updateRule(tdSelector, "display", "none");
         }
         
+        this.onHeaderChange();
+        
     }
     
 });
