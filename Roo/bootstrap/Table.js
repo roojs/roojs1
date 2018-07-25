@@ -881,12 +881,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     renderRow : function(cm, ds, rowIndex) 
     {
-        
         var d = ds.getAt(rowIndex);
         
         var row = {
             tag : 'tr',
-            cls : '',
+            cls : 'x-row-' + rowIndex,
             cn : []
         };
             
