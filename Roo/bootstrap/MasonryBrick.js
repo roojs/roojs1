@@ -381,7 +381,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             this.selectBrick();
         }
         
-        this.fireEvent('click', this);
+        this.fireEvent('click', this, e);
     },
     
     enter: function(e, el)
