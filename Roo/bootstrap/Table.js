@@ -885,7 +885,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var row = {
             tag : 'tr',
-            cls : 'roo-bootstrap-table-row-' + rowIndex,
+            cls : 'roo-bootstrap-tbody-row-' + rowIndex,
             cn : []
         };
             
@@ -923,7 +923,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             var td = {
                 tag: 'td',
-                cls : rowcfg.rowClass + ' roo-bootstrap-table-col-' + i,
+                cls : rowcfg.rowClass + ' roo-bootstrap-tbody-col-' + i,
                 style: '',
                 html: (typeof(value) === 'object') ? '' : value
             };
