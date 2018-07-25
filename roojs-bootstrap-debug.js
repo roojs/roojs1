@@ -6415,6 +6415,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             var c = {
                 tag: 'th',
+                cls : 'roo-bootstrap-thead-col-' + i,
                 style : '',
                 html: cm.getColumnHeader(i)
             };
@@ -6711,7 +6712,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var row = {
             tag : 'tr',
-            cls : 'x-row-' + rowIndex,
+            cls : 'roo-bootstrap-tbody-row-' + rowIndex,
             cn : []
         };
             
@@ -6749,7 +6750,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             var td = {
                 tag: 'td',
-                cls : rowcfg.rowClass,
+                cls : rowcfg.rowClass + ' roo-bootstrap-tbody-col-' + i,
                 style: '',
                 html: (typeof(value) === 'object') ? '' : value
             };
@@ -6976,9 +6977,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     onHiddenChange : function()
     {
-        
+        /*
         this.onHeaderChange();
         this.onLoad();
+        */
     }
     
 });
