@@ -1141,9 +1141,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         this.mainHead = table.createChild(header, this.mainBody, false);
     },
     
-    onHiddenChange : function(a,b,c,d)
+    onHiddenChange : function(colModel, colIndex, hidden)
     {
-        Roo.log([a,b,c,d]);
         /*
         this.onHeaderChange();
         this.onLoad();
