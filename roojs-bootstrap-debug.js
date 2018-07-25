@@ -6959,8 +6959,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     onHeaderChange : function()
     {
-        Roo.log('running onHeaderChange');
-        
         var header = this.renderHeader();
         var table = this.el.select('table', true).first();
         
@@ -6983,6 +6981,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             this.CSS.updateRule(thSelector, "display", "none");
             this.CSS.updateRule(tdSelector, "display", "none");
         }
+        
+        this.onHeaderChange();
         
     }
     
