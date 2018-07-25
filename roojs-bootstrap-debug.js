@@ -6967,13 +6967,19 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         this.mainHead = table.createChild(header, this.mainBody, false);
     },
     
-    onHiddenChange : function(a,b,c,d)
+    onHiddenChange : function(colModel, colIndex, hidden)
     {
-        Roo.log([a,b,c,d]);
-        /*
-        this.onHeaderChange();
-        this.onLoad();
-        */
+        var thSelector = 'roo-bootstrap-thead-col-' + colIndex;
+        var tdSelector = 'roo-bootstrap-tbody-col-' + colIndex;
+        
+        this.css.updateRule(thSelector, "display", "");
+        this.css.updateRule(tdSelector, "display", "");
+        
+        if(hidden){
+            this.css.updateRule(thSelector, "display", "none");
+            this.css.updateRule(tdSelector, "display", "none");
+        }
+        
     }
     
 });
