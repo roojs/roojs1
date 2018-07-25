@@ -850,6 +850,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         if(this.preventDefault){
             e.preventDefault();
         }
+        
         if (this.pressed === true || this.pressed === false) {
             this.pressed = !this.pressed;
             this.el[this.pressed ? 'addClass' : 'removeClass']('active');
@@ -6047,6 +6048,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     container: false, // used by gridpanel...
     
     lazyLoad : false,
+    
+    CSS : Roo.util.CSS,
     
     getAutoCreate : function()
     {
@@ -32745,7 +32748,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         
         e.preventDefault();
         
-        if (this.activcClass != '') {
+        if (this.activeClass != '') {
             this.selectBrick();
         }
         
@@ -32865,8 +32868,12 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         m.selectedBrick.push(this.id);
         this.el.addClass(this.activeClass);
         return;
-    }
+    },
     
+    isSelected : function(){
+        return this.el.hasClass(this.activeClass);
+        
+    }
 });
 
 Roo.apply(Roo.bootstrap.MasonryBrick, {
