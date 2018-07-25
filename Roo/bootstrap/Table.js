@@ -365,7 +365,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         this.cm.on("headerchange", this.onHeaderChange, this);
         
-        this.cm.on("hiddenchange", this.onHiddenChange, this);
+        this.cm.on("hiddenchange", this.onHiddenChange, this, arguments);
         
     },
     
@@ -968,10 +968,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
 
             });
             
-            if(config.hidden){
-                td.cls += ' hidden';
-            }
-             
             row.cn.push(td);
            
         }
