@@ -497,7 +497,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
         m.selectedBrick.push(this.id);
         this.el.addClass(this.activeClass);
         return;
-    }，
+    },
     
     isSelected : function(){
         return this.el.hasClass(this.activeClass);
