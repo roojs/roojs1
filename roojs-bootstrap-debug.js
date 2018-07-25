@@ -6983,6 +6983,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
         
         this.onHeaderChange();
+        this.onLoad();
         
     }
     
