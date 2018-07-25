@@ -1147,7 +1147,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var tdSelector = 'roo-bootstrap-tbody-col-' + colIndex;
         
         Roo.log(thSelector);
-        Roo.log(tdSelector)
+        Roo.log(tdSelector);
         
         this.CSS.updateRule(thSelector, "display", "");
         this.CSS.updateRule(tdSelector, "display", "");
