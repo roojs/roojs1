@@ -6707,11 +6707,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     renderRow : function(cm, ds, rowIndex) 
     {
-        
         var d = ds.getAt(rowIndex);
         
         var row = {
             tag : 'tr',
+            cls : 'x-row-' + rowIndex,
             cn : []
         };
             
@@ -6976,6 +6976,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     onHiddenChange : function()
     {
+        
         this.onHeaderChange();
         this.onLoad();
     }
