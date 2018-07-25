@@ -1143,6 +1143,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     onHiddenChange : function(colModel, colIndex, hidden)
     {
+        var thSelector = 'roo-bootstrap-col-' + colIndex;
+        var tdSelector = 'roo-bootstrap-col-' + colIndex;
+        this.css.updateRule(this.tdSelector+this.idToCssName(cid), "display", "");
+        this.css.updateRule(this.splitSelector+this.idToCssName(cid), "display", "");
+        
         /*
         this.onHeaderChange();
         this.onLoad();
