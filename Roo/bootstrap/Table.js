@@ -1143,7 +1143,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     onHiddenChange : function(a,b,c,d)
     {
-        Roo.log(a,b,c,d);
+        Roo.log([a,b,c,d]);
         /*
         this.onHeaderChange();
         this.onLoad();
