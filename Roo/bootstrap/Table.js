@@ -1146,13 +1146,14 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var thSelector = 'roo-bootstrap-thead-col-' + colIndex;
         var tdSelector = 'roo-bootstrap-tbody-col-' + colIndex;
         
-        this.css.updateRule(this.tdSelector+this.idToCssName(cid), "display", "");
-        this.css.updateRule(this.splitSelector+this.idToCssName(cid), "display", "");
+        this.css.updateRule(thSelector, "display", "");
+        this.css.updateRule(tdSelector, "display", "");
         
-        /*
-        this.onHeaderChange();
-        this.onLoad();
-        */
+        if(hidden){
+            this.css.updateRule(thSelector, "display", "none");
+            this.css.updateRule(tdSelector, "display", "none");
+        }
+        
     }
     
 });
