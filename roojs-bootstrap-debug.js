@@ -6959,6 +6959,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     onHeaderChange : function()
     {
+        Roo.log('running onHeaderChange');
         
         var header = this.renderHeader();
         var table = this.el.select('table', true).first();
