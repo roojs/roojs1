@@ -589,7 +589,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             var c = {
                 tag: 'th',
-                cls : 'roo-bootstrap-thead-row-' + rowIndex,
+                cls : 'roo-bootstrap-thead-col-' + i,
                 style : '',
                 html: cm.getColumnHeader(i)
             };
@@ -668,10 +668,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 c.cls += ' col-' + size + '-' + config[size];
 
             });
-            
-            if(config.hidden){
-                c.cls += ' hidden';
-            }
             
             header.cn.push(c)
         }
