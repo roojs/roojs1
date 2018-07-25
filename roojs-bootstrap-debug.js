@@ -6972,12 +6972,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var thSelector = 'roo-bootstrap-thead-col-' + colIndex;
         var tdSelector = 'roo-bootstrap-tbody-col-' + colIndex;
         
-        this.css.updateRule(thSelector, "display", "");
-        this.css.updateRule(tdSelector, "display", "");
+        this.CSS.updateRule(thSelector, "display", "");
+        this.CSS.updateRule(tdSelector, "display", "");
         
         if(hidden){
-            this.css.updateRule(thSelector, "display", "none");
-            this.css.updateRule(tdSelector, "display", "none");
+            this.CSS.updateRule(thSelector, "display", "none");
+            this.CSS.updateRule(tdSelector, "display", "none");
         }
         
     }
