@@ -886,6 +886,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var row = {
             tag : 'tr',
+            cls : '',
             cn : []
         };
             
