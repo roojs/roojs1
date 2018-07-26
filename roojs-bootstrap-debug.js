@@ -6415,7 +6415,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             var c = {
                 tag: 'th',
-                cls : 'roo-bootstrap-thead-col-' + i,
+                cls : 'x-hcol-' + i,
                 style : '',
                 html: cm.getColumnHeader(i)
             };
@@ -6708,7 +6708,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var row = {
             tag : 'tr',
-            cls : 'roo-bootstrap-tbody-row-' + rowIndex,
+            cls : 'x-row-' + rowIndex,
             cn : []
         };
             
@@ -6746,7 +6746,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             var td = {
                 tag: 'td',
-                cls : rowcfg.rowClass + ' roo-bootstrap-tbody-col-' + i,
+                cls : rowcfg.rowClass + ' x-col-' + i,
                 style: '',
                 html: (typeof(value) === 'object') ? '' : value
             };
@@ -6968,6 +6968,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     onHiddenChange : function(colModel, colIndex, hidden)
     {
+        Roo.log(this.id);
+        
         var thSelector = 'roo-bootstrap-thead-col-' + colIndex;
         var tdSelector = 'roo-bootstrap-tbody-col-' + colIndex;
         
