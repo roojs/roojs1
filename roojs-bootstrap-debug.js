@@ -6968,10 +6968,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     onHiddenChange : function(colModel, colIndex, hidden)
     {
-        Roo.log(this.id);
-        
-        var thSelector = 'roo-bootstrap-thead-col-' + colIndex;
-        var tdSelector = 'roo-bootstrap-tbody-col-' + colIndex;
+        var thSelector = '#' + this.id + ' .x-hcol-' + colIndex;
+        var tdSelector = '#' + this.id + ' .x-col-' + colIndex;
         
         this.CSS.updateRule(thSelector, "display", "");
         this.CSS.updateRule(tdSelector, "display", "");
