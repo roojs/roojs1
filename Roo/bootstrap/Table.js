@@ -589,7 +589,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             var c = {
                 tag: 'th',
-                cls : 'roo-bootstrap-thead-col-' + i,
+                cls : 'x-hcol-' + i,
                 style : '',
                 html: cm.getColumnHeader(i)
             };
