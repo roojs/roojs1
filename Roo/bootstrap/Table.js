@@ -1142,8 +1142,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     onHiddenChange : function(colModel, colIndex, hidden)
     {
-        Roo.log(this.id);
-        
         var thSelector = '#' + this.id + ' .x-hcol-' + colIndex;
         var tdSelector = '#' + this.id + ' .x-col-' + colIndex;
         
