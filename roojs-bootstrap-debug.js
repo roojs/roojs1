@@ -2837,6 +2837,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         }
 
         //this.el.setStyle('display', 'block');
+        this.el.removeClass('hideing');        
         this.el.addClass('show');
  
         if(this.animate){  // element has 'fade'  - so stuff happens after .3s ?- not sure why the delay?
@@ -2886,8 +2887,11 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             if(this.animate){ // why
                 this.el.addClass('hideing');
                 (function(){
-                     this.el.removeClass('show');
-                     this.el.removeClass('hideing');
+                    if (!this.el.hasClass('hideing')) {
+                        return; // it's been shown again...
+                    }
+                    this.el.removeClass('show');
+                    this.el.removeClass('hideing');
                 }).defer(150,this);
                 
             }else{
