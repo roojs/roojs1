@@ -329,9 +329,12 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.el.select('.modal-dialog', true).first().setStyle('transform','');
 
             if(this.animate){ // why
+                this.el.addClass('hideing');
                 (function(){
+                    this.hideing = false;
                      this.el.removeClass('show');
                 }).defer(150,this);
+                
             }else{
                  this.el.removeClass('show');
             }
