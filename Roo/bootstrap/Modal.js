@@ -283,7 +283,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         }
 
         //this.el.setStyle('display', 'block');
-        this.removeClass('hidden');
+        this.el.removeClass('hidden');
 
         if(this.animate){  // element has 'fade'  - so stuff happens after .3s ?- not sure why the delay?
             var _this = this;
@@ -330,10 +330,9 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.el.select('.modal-dialog', true).first().setStyle('transform','');
 
             if(this.animate){ // why
-                var _this = this;
-                (function(){ this.addClass('hidden');}).defer(150,this);
+                (function(){ this.el.addClass('hidden');}).defer(150,this);
             }else{
-                this.el.setStyle('display', 'none');
+                this.el.addClass('hidden');
             }
             this.fireEvent('hide', this);
         }
@@ -341,9 +340,9 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     isVisible : function()
     {
         
-        return this.hasClass('hidden');
+        return this.el.hasClass('hidden');
         
-    }
+    },
 
     addButton : function(str, cb)
     {
