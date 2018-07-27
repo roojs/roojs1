@@ -282,7 +282,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.render();
         }
 
-        this.el.setStyle('display', 'block');
+        //this.el.setStyle('display', 'block');
+        this.removeClass('hidden');
 
         if(this.animate){  // element has 'fade'  - so stuff happens after .3s ?- not sure why the delay?
             var _this = this;
@@ -330,7 +331,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
 
             if(this.animate){ // why
                 var _this = this;
-                (function(){ _this.el.setStyle('display', 'none'); }).defer(150);
+                (function(){ this.addClass('hidden');}).defer(150,this);
             }else{
                 this.el.setStyle('display', 'none');
             }
