@@ -2884,9 +2884,12 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.el.select('.modal-dialog', true).first().setStyle('transform','');
 
             if(this.animate){ // why
+                this.el.addClass('hideing');
                 (function(){
-                     this.el.removeClass('show');
+                    this.hideing = false;
+                     this.el.removeClass('show hideing');
                 }).defer(150,this);
+                
             }else{
                  this.el.removeClass('show');
             }
@@ -2896,7 +2899,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     isVisible : function()
     {
         
-        return this.el.hasClass('show');
+        return this.el.hasClass('show') && !this.el.hasClass('hideing');
         
     },
 
