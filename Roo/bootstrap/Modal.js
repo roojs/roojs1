@@ -332,7 +332,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                 this.el.addClass('hideing');
                 (function(){
                     this.hideing = false;
-                     this.el.removeClass('show');
+                     this.el.removeClass('show hideing');
                 }).defer(150,this);
                 
             }else{
@@ -344,7 +344,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     isVisible : function()
     {
         
-        return this.el.hasClass('show');
+        return this.el.hasClass('show') && !this.el.hasClass('hideing');
         
     },
 
