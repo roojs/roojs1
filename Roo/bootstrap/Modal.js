@@ -345,7 +345,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     isVisible : function()
     {
         
-        return this.el.hasClass('hidden');
+        return this.el.hasClass('show');
         
     },
 
