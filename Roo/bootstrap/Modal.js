@@ -337,6 +337,12 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.fireEvent('hide', this);
         }
     },
+    isVisible : function()
+    {
+        
+        return this.hasClass('hidden');
+        
+    }
 
     addButton : function(str, cb)
     {
