@@ -331,8 +331,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             if(this.animate){ // why
                 this.el.addClass('hideing');
                 (function(){
-                    this.hideing = false;
-                     this.el.removeClass('show hideing');
+                     this.el.removeClass('show');
+                     this.el.removeClass('hideing');
                 }).defer(150,this);
                 
             }else{
