@@ -415,7 +415,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                 cls: 'typeahead typeahead-long dropdown-menu tel-list',
                 style: 'display:none'
             });
-            this.list.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';;
+            
+            this.list.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         },
         
         collapseIf : function(e)
@@ -501,8 +502,10 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             this.validate();
         },
         
-        getDialCode : function(v = '')
+        getDialCode : function(v)
         {
+            v = v ||  '';
+            
             if (v.length == 0) {
                 return this.dialCodeHolder.dom.value;
             }
