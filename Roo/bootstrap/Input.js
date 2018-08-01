@@ -623,6 +623,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             this.after.render(this.el.select('.roo-input-after',true).first());
         }
         
+        this.inputEl().on('change', this.onChange, this);
         
     },
     filterValidation : function(e){
