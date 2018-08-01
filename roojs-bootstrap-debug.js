@@ -9141,6 +9141,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             this.after.render(this.el.select('.roo-input-after',true).first());
         }
         
+        this.inputEl().on('change', this.onChange, this);
         
     },
     filterValidation : function(e){
@@ -9258,6 +9259,17 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             this.fireEvent('change', this, v, this.startValue);
         }
         this.fireEvent("blur", this);
+    },
+    
+    onChange : function(e)
+    {
+        var v = this.getValue();
+        if(String(v) !== String(this.startValue)){
+            this.fireEvent('change', this, v, this.startValue);
+        }
+        
+        this.startValue = v;
+        
     },
     
     /**
