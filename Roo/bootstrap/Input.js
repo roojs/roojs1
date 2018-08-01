@@ -759,7 +759,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     reset : function(){
         Roo.log('reset');
         this.setValue(this.originalValue);
-        this.startValue = this.getValue();
         Roo.log(this.startValue);
         this.validate();
     },
