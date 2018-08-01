@@ -245,7 +245,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     labelsm : 0,
     labelxs : 0,
     
-    capture : false,
+    capture : '',
     
     parentLabelAlign : function()
     {
@@ -282,8 +282,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             autocomplete : this.autocomplete || 'new-password'
         };
         
-        if(this.capture){
-            input.capture = 
+        if(this.capture.length){
+            input.capture = this.capture;
         }
         
         if(this.align){
