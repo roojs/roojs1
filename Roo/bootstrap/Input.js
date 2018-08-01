@@ -817,7 +817,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      */
     setValue : function(v){
         this.value = v;
-        this.startValue = v;
         if(this.rendered){
             this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
             this.validate();
