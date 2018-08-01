@@ -31,7 +31,7 @@
  * @cfg {Boolean} readOnly Specifies that the field should be read-only
  * @cfg {String} autocomplete - default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en
  * @cfg {String} indicatorpos (left|right) default left
- * @cfg {Boolean} capture (true|false) use for file input only. (default false)
+ * @cfg {String} capture use for file input only, such as camera. (default empty)
 
  * @cfg {String} align (left|center|right) Default left
  * @cfg {Boolean} forceFeedback (true|false) Default false
@@ -281,6 +281,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             placeholder : this.placeholder || '',
             autocomplete : this.autocomplete || 'new-password'
         };
+        
+        if(this.capture){
+            input.capture = 
+        }
         
         if(this.align){
             input.style = (typeof(input.style) == 'undefined') ? ('text-align:' + this.align) : (input.style + 'text-align:' + this.align);
