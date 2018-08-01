@@ -31,6 +31,7 @@
  * @cfg {Boolean} readOnly Specifies that the field should be read-only
  * @cfg {String} autocomplete - default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en
  * @cfg {String} indicatorpos (left|right) default left
+ * @cfg {Boolean} capture (true|false) use for file input only. (default false)
 
  * @cfg {String} align (left|center|right) Default left
  * @cfg {Boolean} forceFeedback (true|false) Default false
