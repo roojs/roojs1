@@ -743,24 +743,15 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         this.fireEvent("blur", this);
     },
     
-    onChange : function(a,b,c,d)
+    onChange : function(e)
     {
-        Roo.log([a,b,c,d]);
-        /*
-        this.beforeBlur();
-        if(!Roo.isOpera && this.focusClass){ // don't touch in Opera
-            //this.el.removeClass(this.focusClass);
-        }
-        this.hasFocus = false;
-        if(this.validationEvent !== false && this.validateOnBlur && this.validationEvent != "blur"){
-            this.validate();
-        }
         var v = this.getValue();
         if(String(v) !== String(this.startValue)){
             this.fireEvent('change', this, v, this.startValue);
         }
-        this.fireEvent("blur", this);
-        */
+        
+        this.startValue = v;
+        
     },
     
     /**
