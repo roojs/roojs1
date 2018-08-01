@@ -745,7 +745,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     
     onChange : function(e)
     {
-        Roo.log('onChange');
         var v = this.getValue();
         if(String(v) !== String(this.startValue)){
             this.fireEvent('change', this, v, this.startValue);
@@ -757,9 +756,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * Resets the current field value to the originally loaded value and clears any validation messages
      */
     reset : function(){
-        Roo.log('reset');
         this.setValue(this.originalValue);
-        Roo.log(this.startValue);
         this.validate();
     },
      /**
@@ -819,8 +816,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * @param {Mixed} value The value to set
      */
     setValue : function(v){
-        Roo.log('setValue');
         this.value = v;
+        this.startValue = v;
         if(this.rendered){
             this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
             this.validate();
