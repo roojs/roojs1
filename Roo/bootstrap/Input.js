@@ -745,6 +745,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     
     onChange : function(e)
     {
+        Roo.log('onChange');
         var v = this.getValue();
         if(String(v) !== String(this.startValue)){
             this.fireEvent('change', this, v, this.startValue);
@@ -761,6 +762,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         Roo.log('reset');
         this.setValue(this.originalValue);
         this.startValue = this.getValue();
+        Roo.log(this.startValue);
         this.validate();
     },
      /**
