@@ -8800,7 +8800,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             autocomplete : this.autocomplete || 'new-password'
         };
         
-        if(this.capture){
+        if(this.capture.length){
             input.capture = this.capture;
         }
         
