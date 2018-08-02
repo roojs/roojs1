@@ -546,9 +546,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             
             this.inputEl().dom.value = this.hiddenEl().dom.value = this.value;
             
-            var nan = isNaN(this.value);
-            
-            if(this.allowDecimals && this.decimalPrecision != -1 && !nan){
+            if(this.allowDecimals && this.decimalPrecision != -1 && !isNaN(this.value)){
                 this.inputEl().dom.value = Roo.util.Format.number(v, this.decimalPrecision, 
                     this.thousandsDelimiter || ','
                 );
