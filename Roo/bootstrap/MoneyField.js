@@ -540,11 +540,11 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         
         v = String(v).replace(".", this.decimalSeparator);
         
-        this.value = v;
+        this.value = (v === null || v === undefined) ? '' : v;
         
         if(this.rendered){
             
-            this.hiddenEl().dom.value = (v === null || v === undefined ? '' : v);
+            this.hiddenEl().dom.value = this.value;
             
             this.inputEl().dom.value = Roo.util.Format.number(v, this.decimalPrecision, 
                 this.thousandsDelimiter || ','
