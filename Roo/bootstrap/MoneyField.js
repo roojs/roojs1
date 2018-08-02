@@ -544,11 +544,15 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         
         if(this.rendered){
             
-            this.hiddenEl().dom.value = this.value;
+            this.inputEl().dom.value = this.hiddenEl().dom.value = this.value;
             
-            this.inputEl().dom.value = Roo.util.Format.number(v, this.decimalPrecision, 
-                this.thousandsDelimiter || ','
-            );
+            var nan = isNaN(value);
+        
+            if(this.allowDecimals && this.decimalPrecision != -1 && !nan){
+                this.inputEl().dom.value = Roo.util.Format.number(v, this.decimalPrecision, 
+                    this.thousandsDelimiter || ','
+                );
+            }
             
             if(this.allowBlank && !v) {
                 this.inputEl().dom.value = '';
