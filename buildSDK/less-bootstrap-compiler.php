@@ -2,7 +2,8 @@
 
 $cwd = getcwd();
 
-if (array_pop(explode('/', $cwd)) !== 'roojs1') {
+$cc = explode('/', $cwd);
+if (array_pop($cc) !== 'roojs1') {
     echo "this should be run in roojs1 directory...\n";
     exit;
 }
