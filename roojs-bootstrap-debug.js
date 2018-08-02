@@ -9263,13 +9263,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     
     onChange : function(e)
     {
-        Roo.log('onChange');
         var v = this.getValue();
         if(String(v) !== String(this.startValue)){
             this.fireEvent('change', this, v, this.startValue);
         }
-        
-        this.startValue = v;
         
     },
     
@@ -9277,9 +9274,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * Resets the current field value to the originally loaded value and clears any validation messages
      */
     reset : function(){
-        Roo.log('reset');
         this.setValue(this.originalValue);
-        this.startValue = this.getValue();
         this.validate();
     },
      /**
@@ -9339,7 +9334,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * @param {Mixed} value The value to set
      */
     setValue : function(v){
-        Roo.log('setValue');
         this.value = v;
         if(this.rendered){
             this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
@@ -40757,15 +40751,19 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         
         v = String(v).replace(".", this.decimalSeparator);
         
-        this.value = v;
+        this.value = (v === null || v === undefined) ? '' : v;
         
         if(this.rendered){
             
-            this.hiddenEl().dom.value = (v === null || v === undefined ? '' : v);
+            this.inputEl().dom.value = this.hiddenEl().dom.value = this.value;
             
-            this.inputEl().dom.value = Roo.util.Format.number(v, this.decimalPrecision, 
-                this.thousandsDelimiter || ','
-            );
+            var nan = isNaN(value);
+        
+            if(this.allowDecimals && this.decimalPrecision != -1 && !nan){
+                this.inputEl().dom.value = Roo.util.Format.number(v, this.decimalPrecision, 
+                    this.thousandsDelimiter || ','
+                );
+            }
             
             if(this.allowBlank && !v) {
                 this.inputEl().dom.value = '';
