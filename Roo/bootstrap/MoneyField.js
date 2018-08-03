@@ -578,8 +578,15 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     parseValue : function(value)
     {
+        if(this.thousandsDelimiter) {
+            value += "";
+            r = new RegExp(",", "g");
+            value = value.replace(r, "");
+        }
+        
         value = parseFloat(String(value).replace(this.decimalSeparator, "."));
         return isNaN(value) ? '' : value;
+        
     },
     
     fixPrecision : function(value)
