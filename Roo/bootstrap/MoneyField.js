@@ -540,23 +540,19 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     setValue : function(v)
     {
-        v = this.fixPrecision(v);
+        v = String(this.fixPrecision(v)).replace(".", this.decimalSeparator);
         
-        v = String(v).replace(".", this.decimalSeparator);
-        
-        this.value = (v === null || v === undefined) ? '' : v;
+        this.value = v;
         
         if(this.rendered){
             
-            this.inputEl().dom.value = this.hiddenEl().dom.value = this.value;
+            this.hiddenEl().dom.value = (v === null || v === undefined ? '' : v);
             
-            if(this.allowDecimals && this.decimalPrecision != -1 && !isNaN(this.value)){
-                this.inputEl().dom.value = Roo.util.Format.number(v, this.decimalPrecision, 
-                    this.thousandsDelimiter || ','
-                );
-            }
+            this.inputEl().dom.value = (v == '') ? '' :
+                Roo.util.Format.number(v, this.decimalPrecision, this.thousandsDelimiter || '');
             
-            if(this.allowBlank && !v) {
+            if(!this.allowZero && v === '0') {
+                this.hiddenEl().dom.value = '';
                 this.inputEl().dom.value = '';
             }
             
