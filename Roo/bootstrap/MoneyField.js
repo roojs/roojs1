@@ -396,6 +396,10 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             allowed += "-";
         }
         
+        if(this.thousandsDelimiter) {
+            allowed += ",";
+        }
+        
         this.stripCharsRe = new RegExp('[^'+allowed+']', 'gi');
         
         var keyPress = function(e){
