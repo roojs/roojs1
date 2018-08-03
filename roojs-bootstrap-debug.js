@@ -40245,6 +40245,10 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
      */
     allowNegative : true,
     /**
+     * @cfg {Boolean} allowZero False to blank out if the user enters '0' (defaults to true)
+     */
+    allowZero: true,
+    /**
      * @cfg {Number} minValue The minimum allowed value (defaults to Number.NEGATIVE_INFINITY)
      */
     minValue : Number.NEGATIVE_INFINITY,
@@ -40603,6 +40607,10 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             allowed += "-";
         }
         
+        if(this.thousandsDelimiter) {
+            allowed += ",";
+        }
+        
         this.stripCharsRe = new RegExp('[^'+allowed+']', 'gi');
         
         var keyPress = function(e){
@@ -40747,23 +40755,19 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     setValue : function(v)
     {
-        v = this.fixPrecision(v);
+        v = String(this.fixPrecision(v)).replace(".", this.decimalSeparator);
         
-        v = String(v).replace(".", this.decimalSeparator);
-        
-        this.value = (v === null || v === undefined) ? '' : v;
+        this.value = v;
         
         if(this.rendered){
             
-            this.inputEl().dom.value = this.hiddenEl().dom.value = this.value;
+            this.hiddenEl().dom.value = (v === null || v === undefined ? '' : v);
             
-            if(this.allowDecimals && this.decimalPrecision != -1 && !isNaN(this.value)){
-                this.inputEl().dom.value = Roo.util.Format.number(v, this.decimalPrecision, 
-                    this.thousandsDelimiter || ','
-                );
-            }
+            this.inputEl().dom.value = (v == '') ? '' :
+                Roo.util.Format.number(v, this.decimalPrecision, this.thousandsDelimiter || '');
             
-            if(this.allowBlank && !v) {
+            if(!this.allowZero && v === '0') {
+                this.hiddenEl().dom.value = '';
                 this.inputEl().dom.value = '';
             }
             
@@ -40785,18 +40789,30 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     parseValue : function(value)
     {
+        if(this.thousandsDelimiter) {
+            value += "";
+            r = new RegExp(",", "g");
+            value = value.replace(r, "");
+        }
+        
         value = parseFloat(String(value).replace(this.decimalSeparator, "."));
         return isNaN(value) ? '' : value;
+        
     },
     
     fixPrecision : function(value)
     {
+        if(this.thousandsDelimiter) {
+            value += "";
+            r = new RegExp(",", "g");
+            value = value.replace(r, "");
+        }
+        
         var nan = isNaN(value);
         
         if(!this.allowDecimals || this.decimalPrecision == -1 || nan || !value){
             return nan ? '' : value;
         }
-        
         return parseFloat(value).toFixed(this.decimalPrecision);
     },
     
