@@ -591,12 +591,17 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     fixPrecision : function(value)
     {
+        if(this.thousandsDelimiter) {
+            value += "";
+            r = new RegExp(",", "g");
+            value = value.replace(r, "");
+        }
+        
         var nan = isNaN(value);
         
         if(!this.allowDecimals || this.decimalPrecision == -1 || nan || !value){
             return nan ? '' : value;
         }
-        
         return parseFloat(value).toFixed(this.decimalPrecision);
     },
     
