@@ -34,6 +34,10 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
      */
     allowNegative : true,
     /**
+     * @cfg {Boolean} allowZero False to blank out if the user enters '0' (defaults to true)
+     */
+    allowZero: true,
+    /**
      * @cfg {Number} minValue The minimum allowed value (defaults to Number.NEGATIVE_INFINITY)
      */
     minValue : Number.NEGATIVE_INFINITY,
