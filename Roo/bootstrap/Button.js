@@ -22,10 +22,9 @@
  * @cfg {Boolean} inverse 
  * @cfg {Boolean} toggle is it a slidy toggle button
  * @cfg {Boolean} pressed　(true|false) default null - if the button ahs active state
- * @cfg {String} ontext text for on toggle state
- * @cfg {String} offtext text for off toggle state
- * @cfg {Boolean} defaulton 
- * @cfg {Boolean} preventDefault  default true
+ * @cfg {String} ontext text for on slidy toggle state
+ * @cfg {String} offtext text for off slidy toggle state
+ * @cfg {Boolean} preventDefault  default true (stop click event triggering the URL if it's a link.)
  * @cfg {Boolean} removeClass remove the standard class..
  * @cfg {String} target  target for a href. (_self|_blank|_parent|_top| other)
  * 
