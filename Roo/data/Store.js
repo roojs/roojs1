@@ -233,6 +233,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
     remove : function(record){
         var index = this.data.indexOf(record);
         this.data.removeAt(index);
+        console.log(this.pruneModifiedRecords);
         if(this.pruneModifiedRecords){
             this.modified.remove(record);
         }
