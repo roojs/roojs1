@@ -252,7 +252,8 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         
         if (this.menu) {
             cfg.cls += ' dropdown';
-            cfg.html = typeof(cfg.html) != 'undefined' ? cfg.html + ' <span class="caret"></span>' : '<span class="caret"></span>';
+            cfg.html = typeof(cfg.html) != 'undefined' ?
+                    cfg.html + ' <span class="caret"></span>' : '<span class="caret"></span>';
         }
         
         if (cfg.tag !== 'a' && this.href !== '') {
