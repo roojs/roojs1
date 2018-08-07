@@ -86,9 +86,8 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     removeClass: false,
     name: false,
     target: false,
-    
-    
-    pressed : null,
+     
+    pressed : false,
      
     
     getAutoCreate : function(){
