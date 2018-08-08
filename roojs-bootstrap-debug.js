@@ -24528,7 +24528,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         
         if(this.buttons){
             Roo.each(_this.buttons, function(e){ // this might need to use render????
-               Roo.factory(e).onRender(_this.el, null);
+               Roo.factory(e).render(_this.el);
             });
         }
             
