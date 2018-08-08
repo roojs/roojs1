@@ -6555,7 +6555,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     
     
-    onLoad : function()
+    onLoad : function(event)
     {
 //        Roo.log('ds onload');
         this.clear();
@@ -6604,7 +6604,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         Roo.each(this.el.select('tbody td', true).elements, function(e){
             e.on('mouseout', _this.onMouseout, _this);
         });
-        this.fireEvent('rowsrendered', this);
+        this.fireEvent('rowsrendered', this, event);
         //if(this.loadMask){
         //    this.maskEl.hide();
         //}
