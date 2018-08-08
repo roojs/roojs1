@@ -560,14 +560,13 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
  * @cfg {Boolean} isClose default false;
  * @cfg {String} glyphicon (| adjust | align-center | align-justify | align-left | align-right | arrow-down | arrow-left | arrow-right | arrow-up | asterisk | backward | ban-circle | barcode | bell | bold | book | bookmark | briefcase | bullhorn | calendar | camera | certificate | check | chevron-down | chevron-left | chevron-right | chevron-up | circle-arrow-down | circle-arrow-left | circle-arrow-right | circle-arrow-up | cloud | cloud-download | cloud-upload | cog | collapse-down | collapse-up | comment | compressed | copyright-mark | credit-card | cutlery | dashboard | download | download-alt | earphone | edit | eject | envelope | euro | exclamation-sign | expand | export | eye-close | eye-open | facetime-video | fast-backward | fast-forward | file | film | filter | fire | flag | flash | floppy-disk | floppy-open | floppy-remove | floppy-save | floppy-saved | folder-close | folder-open | font | forward | fullscreen | gbp | gift | glass | globe | hand-down | hand-left | hand-right | hand-up | hd-video | hdd | header | headphones | heart | heart-empty | home | import | inbox | indent-left | indent-right | info-sign | italic | leaf | link | list | list-alt | lock | log-in | log-out | magnet | map-marker | minus | minus-sign | move | music | new-window | off | ok | ok-circle | ok-sign | open | paperclip | pause | pencil | phone | phone-alt | picture | plane | play | play-circle | plus | plus-sign | print | pushpin | qrcode | question-sign | random | record | refresh | registration-mark | remove | remove-circle | remove-sign | repeat | resize-full | resize-horizontal | resize-small | resize-vertical | retweet | road | save | saved | screenshot | sd-video | search | send | share | share-alt | shopping-cart | signal | sort | sort-by-alphabet | sort-by-alphabet-alt | sort-by-attributes | sort-by-attributes-alt | sort-by-order | sort-by-order-alt | sound-5-1 | sound-6-1 | sound-7-1 | sound-dolby | sound-stereo | star | star-empty | stats | step-backward | step-forward | stop | subtitles | tag | tags | tasks | text-height | text-width | th | th-large | th-list | thumbs-down | thumbs-up | time | tint | tower | transfer | trash | tree-conifer | tree-deciduous | unchecked | upload | usd | user | volume-down | volume-off | volume-up | warning-sign | wrench | zoom-in | zoom-out)
  * @cfg {String} badge text for badge
- * @cfg {String} theme default 
- * @cfg {Boolean} inverse 
+ * @cfg {String} theme (default|glow)  
+ * @cfg {Boolean} inverse dark themed version
  * @cfg {Boolean} toggle is it a slidy toggle button
  * @cfg {Boolean} pressed　(true|false) default null - if the button ahs active state
- * @cfg {String} ontext text for on toggle state
- * @cfg {String} offtext text for off toggle state
- * @cfg {Boolean} defaulton 
- * @cfg {Boolean} preventDefault  default true
+ * @cfg {String} ontext text for on slidy toggle state
+ * @cfg {String} offtext text for off slidy toggle state
+ * @cfg {Boolean} preventDefault  default true (stop click event triggering the URL if it's a link.)
  * @cfg {Boolean} removeClass remove the standard class..
  * @cfg {String} target  target for a href. (_self|_blank|_parent|_top| other)
  * 
@@ -629,9 +628,8 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     removeClass: false,
     name: false,
     target: false,
-    
-    
-    pressed : null,
+     
+    pressed : false,
      
     
     getAutoCreate : function(){
@@ -795,7 +793,8 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         
         if (this.menu) {
             cfg.cls += ' dropdown';
-            cfg.html = typeof(cfg.html) != 'undefined' ? cfg.html + ' <span class="caret"></span>' : '<span class="caret"></span>';
+            cfg.html = typeof(cfg.html) != 'undefined' ?
+                    cfg.html + ' <span class="caret"></span>' : '<span class="caret"></span>';
         }
         
         if (cfg.tag !== 'a' && this.href !== '') {
@@ -2674,8 +2673,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.footerEl = this.el.select('.modal-footer',true).first();
 
         this.maskEl = Roo.DomHelper.append(document.body, {tag: "div", cls:"x-dlg-mask"}, true);
-        this.maskEl.enableDisplayMode("block");
-        this.maskEl.hide();
+        
         //this.el.addClass("x-dlg-modal");
 
         if (this.buttons.length) {
@@ -2837,6 +2835,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         }
 
         //this.el.setStyle('display', 'block');
+        this.el.removeClass('hideing');        
         this.el.addClass('show');
  
         if(this.animate){  // element has 'fade'  - so stuff happens after .3s ?- not sure why the delay?
@@ -2858,7 +2857,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true),   Roo.lib.Dom.getViewHeight(true));
         this.maskEl.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
-        this.maskEl.show();
+        this.maskEl.addClass('show');
         
         this.resize();
         
@@ -2878,7 +2877,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     hide : function()
     {
         if(this.fireEvent("beforehide", this) !== false){
-            this.maskEl.hide();
+            this.maskEl.removeClass('show');
             Roo.get(document.body).removeClass("x-body-masked");
             this.el.removeClass('in');
             this.el.select('.modal-dialog', true).first().setStyle('transform','');
@@ -11133,6 +11132,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
     remove : function(record){
         var index = this.data.indexOf(record);
         this.data.removeAt(index);
+ 
         if(this.pruneModifiedRecords){
             this.modified.remove(record);
         }

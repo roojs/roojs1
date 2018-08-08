@@ -119,8 +119,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.footerEl = this.el.select('.modal-footer',true).first();
 
         this.maskEl = Roo.DomHelper.append(document.body, {tag: "div", cls:"x-dlg-mask"}, true);
-        this.maskEl.enableDisplayMode("block");
-        this.maskEl.hide();
+        
         //this.el.addClass("x-dlg-modal");
 
         if (this.buttons.length) {
@@ -282,6 +281,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         }
 
         //this.el.setStyle('display', 'block');
+        this.el.removeClass('hideing');        
         this.el.addClass('show');
  
         if(this.animate){  // element has 'fade'  - so stuff happens after .3s ?- not sure why the delay?
@@ -303,7 +303,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true),   Roo.lib.Dom.getViewHeight(true));
         this.maskEl.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
-        this.maskEl.show();
+        this.maskEl.addClass('show');
         
         this.resize();
         
@@ -323,7 +323,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     hide : function()
     {
         if(this.fireEvent("beforehide", this) !== false){
-            this.maskEl.hide();
+            this.maskEl.removeClass('show');
             Roo.get(document.body).removeClass("x-body-masked");
             this.el.removeClass('in');
             this.el.select('.modal-dialog', true).first().setStyle('transform','');
