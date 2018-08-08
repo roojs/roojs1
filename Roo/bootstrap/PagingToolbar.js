@@ -130,12 +130,8 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         
         var _this = this;
         
-        Roo.log('PagingToolbar onRender!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(this.buttons);
-        
         if(this.buttons){
             Roo.each(_this.buttons, function(e){ // this might need to use render????
-//               Roo.factory(e).onRender(_this.el, null);
                Roo.factory(e).render(_this.el);
             });
         }
