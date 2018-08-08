@@ -851,9 +851,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         }
         
         if (this.pressed === true || this.pressed === false) {
-            this.pressed = !this.pressed;
-            this.el[this.pressed ? 'addClass' : 'removeClass']('active');
-            this.fireEvent('toggle', this, e, this.pressed);
+            this.toggleActive(e);
         }
         
         
@@ -889,12 +887,10 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
      /**
      * toggles the current active state 
      */
-    toggleActive : function()
+    toggleActive : function(e)
     {
-       var active = this.el.hasClass('active');
-       this.setActive(!active);
-       
-        
+        this.setActive(!this.pressed);
+        this.fireEvent('toggle', this, e, !this.pressed);
     },
      /**
      * get the current active state
@@ -6555,7 +6551,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     
     
-    onLoad : function(event)
+    onLoad : function()
     {
 //        Roo.log('ds onload');
         this.clear();
@@ -6604,7 +6600,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         Roo.each(this.el.select('tbody td', true).elements, function(e){
             e.on('mouseout', _this.onMouseout, _this);
         });
-        this.fireEvent('rowsrendered', this, event);
+        this.fireEvent('rowsrendered', this);
         //if(this.loadMask){
         //    this.maskEl.hide();
         //}
