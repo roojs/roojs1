@@ -309,7 +309,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         }
         
         if (this.pressed === true || this.pressed === false) {
-            this.toggleActive(!this.pressed);
+            this.toggleActive();
         }
         
         
