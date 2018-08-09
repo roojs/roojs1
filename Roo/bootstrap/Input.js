@@ -32,6 +32,7 @@
  * @cfg {String} autocomplete - default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en
  * @cfg {String} indicatorpos (left|right) default left
  * @cfg {String} capture (user|camera) use for file input only. (default empty)
+ * @cfg {String} accept (image|video|audio) use for file input only. (default empty)
 
  * @cfg {String} align (left|center|right) Default left
  * @cfg {Boolean} forceFeedback (true|false) Default false
@@ -246,6 +247,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     labelxs : 0,
     
     capture : '',
+    accept : '',
     
     parentLabelAlign : function()
     {
@@ -284,6 +286,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         if(this.capture.length){
             input.capture = this.capture;
+        }
+        
+        if(this.accept.length){
+            input.accept = this.accept + "/*";
         }
         
         if(this.align){
