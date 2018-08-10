@@ -280,11 +280,11 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         this.hidden = false;
         this.triggerEl.addClass('open');
         
-        Roo.log(this.el.getAlignToXY(this.triggerEl, '?'));
+        xy = this.el.getAlignToXY(this.triggerEl, '?');
         
-        if(this.el.getWidth() + xy[0] > Roo.lib.Dom.getViewWidth()){
-            xy[0] = xy[0] - this.el.getWidth() + this.triggerEl.getWidth();
-        }
+        // if(this.el.getWidth() + xy[0] > Roo.lib.Dom.getViewWidth()){
+        //     xy[0] = xy[0] - this.el.getWidth() + this.triggerEl.getWidth();
+        // }
         
         if(this.el.getStyle('top') != 'auto' && this.el.getStyle('top').slice(-1) != "%"){
             this.el.setXY(xy);
