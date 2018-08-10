@@ -286,7 +286,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         // reassign y when hitting bottom
         if(this.el.getHeight() + xy[1] >= Roo.lib.Dom.getViewHeight()){
-            xy[1] = this.el.getAlignToXY(this.triggerEl, '?')[1];
+            xy[1] = xy[1] - this.el.getHeight() - this.triggerEl.getHeight();
         }
         
         if(this.el.getStyle('top') != 'auto' && this.el.getStyle('top').slice(-1) != "%"){
