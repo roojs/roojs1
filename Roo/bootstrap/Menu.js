@@ -282,7 +282,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         xy = this.el.getAlignToXY(this.triggerEl, '?');
         
-        if(this.el.getWidth() + xy[0] == Roo.lib.Dom.getViewWidth()){
+        if(this.el.getWidth() + xy[0] >= Roo.lib.Dom.getViewWidth()){
             xy[0] = xy[0] - (Roo.lib.Dom.getViewWidth() -  this.triggerEl.getBox().right); 
         }
         
