@@ -279,10 +279,12 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         this.hidden = false;
         this.triggerEl.addClass('open');
         
+        // reassign x when hitting right
         if(this.el.getWidth() + xy[0] >= Roo.lib.Dom.getViewWidth()){
             xy[0] = xy[0] - this.el.getWidth() + this.triggerEl.getWidth();
         }
         
+        // reassign y when hitting bottom
         if(this.el.getHeight() + xy[1] >= Roo.lib.Dom.getViewHeight()){
             xy[1] = this.el.getAlignToXY(this.triggerEl, '?')[1];
         }
