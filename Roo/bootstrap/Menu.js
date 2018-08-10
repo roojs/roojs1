@@ -258,6 +258,8 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         }
         this.fireEvent("beforeshow", this);
         
+        this.triggerEl.addClass('open');
+        
         this.showAt(this.el.getAlignToXY(el, pos || this.defaultAlign), parentMenu, false);
     },
      /**
@@ -280,7 +282,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         this.hidden = false;
         this.triggerEl.addClass('open');
         
-        xy = this.el.getAlignToXY(this.triggerEl, '?');
+        // xy = this.el.getAlignToXY(this.triggerEl, '?');
         
         if(this.el.getWidth() + xy[0] >= Roo.lib.Dom.getViewWidth()){
             xy[0] = xy[0] - (Roo.lib.Dom.getViewWidth() -  this.triggerEl.getBox().right); 
