@@ -260,7 +260,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         this.triggerEl.addClass('open');
         
-        this.showAt(this.el.getAlignToXY(el, pos || this.defaultAlign), parentMenu, false);
+        this.showAt(this.el.getAlignToXY(el, '?'), parentMenu, false);
     },
      /**
      * Displays this menu at a specific xy position
