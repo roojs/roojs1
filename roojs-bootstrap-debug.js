@@ -2227,6 +2227,8 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         Roo.log('EL----------------');
         Roo.log(el);
+        Roo.log(pos);
+        Roo.log(this.defaultAlign);
         
         
         this.showAt(this.el.getAlignToXY(el, pos || this.defaultAlign), parentMenu, false);
