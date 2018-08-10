@@ -2250,8 +2250,8 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             xy[0] = xy[0] - this.el.getWidth() + this.triggerEl.getWidth();
         }
         
-        if(this.el.getWidth() + xy[0] >= Roo.lib.Dom.getViewWidth()){
-            xy[0] = xy[0] - this.el.getWidth() + this.triggerEl.getWidth();
+        if(this.el.getHeight() + xy[1] >= Roo.lib.Dom.getViewHeight()){
+            xy[1] = this.el.getAlignToXY(this.triggerEl, '?')[1];
         }
         
         if(this.el.getStyle('top') != 'auto' && this.el.getStyle('top').slice(-1) != "%"){
