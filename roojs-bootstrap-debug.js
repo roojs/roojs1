@@ -2224,10 +2224,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             this.render();
         }
         this.fireEvent("beforeshow", this);
-        
-        this.triggerEl.addClass('open');
-        
-        this.showAt(this.el.getAlignToXY(el, '?'), parentMenu, false);
+        this.showAt(this.el.getAlignToXY(el, pos || this.defaultAlign), parentMenu, false);
     },
      /**
      * Displays this menu at a specific xy position
@@ -2241,7 +2238,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         }
         if(_e !== false){
             this.fireEvent("beforeshow", this);
-            // xy = this.el.adjustForConstraints(xy);
+            //xy = this.el.adjustForConstraints(xy);
         }
         
         //this.el.show();
@@ -2249,17 +2246,14 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         this.hidden = false;
         this.triggerEl.addClass('open');
         
-        // xy = this.el.getAlignToXY(this.triggerEl, '?');
-        
         if(this.el.getWidth() + xy[0] >= Roo.lib.Dom.getViewWidth()){
-            xy[0] = xy[0] - (Roo.lib.Dom.getViewWidth() -  this.triggerEl.getBox().right); 
-        }
-        
-        /*
-        if(this.el.getWidth() + xy[0] > Roo.lib.Dom.getViewWidth()){
             xy[0] = xy[0] - this.el.getWidth() + this.triggerEl.getWidth();
         }
-        */
+        
+        if(this.el.getWidth() + xy[0] >= Roo.lib.Dom.getViewWidth()){
+            xy[0] = xy[0] - this.el.getWidth() + this.triggerEl.getWidth();
+        }
+        
         if(this.el.getStyle('top') != 'auto' && this.el.getStyle('top').slice(-1) != "%"){
             this.el.setXY(xy);
         }
