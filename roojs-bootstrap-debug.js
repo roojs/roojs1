@@ -2249,16 +2249,15 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         xy = this.el.getAlignToXY(this.triggerEl, '?');
         
-        Roo.log(this.el.getWidth());
-        Roo.log(xy[0]);
-        Roo.log(Roo.lib.Dom.getViewWidth());
+        if(this.el.getWidth() + xy[0] == Roo.lib.Dom.getViewWidth()){
+            xy[0] = xy[0] - (Roo.lib.Dom.getViewWidth() -  this.triggerEl.getBox().right); 
+        }
         
+        /*
         if(this.el.getWidth() + xy[0] > Roo.lib.Dom.getViewWidth()){
             xy[0] = xy[0] - this.el.getWidth() + this.triggerEl.getWidth();
         }
-        
-        // xy[0] = xy[0] - this.el.getWidth() + this.triggerEl.getWidth();
-        
+        */
         if(this.el.getStyle('top') != 'auto' && this.el.getStyle('top').slice(-1) != "%"){
             this.el.setXY(xy);
         }
