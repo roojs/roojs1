@@ -258,8 +258,6 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         }
         this.fireEvent("beforeshow", this);
         
-        Roo.log(this.el.getAlignToXY(el, pos || this.defaultAlign));
-        
         this.showAt(this.el.getAlignToXY(el, pos || this.defaultAlign), parentMenu, false);
     },
      /**
@@ -276,8 +274,6 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             this.fireEvent("beforeshow", this);
             // xy = this.el.adjustForConstraints(xy);
         }
-        
-        Roo.log(this.el.getAlignToXY(this.triggerEl, '?'));
         
         //this.el.show();
         this.hideMenuItems();
