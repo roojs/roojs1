@@ -59,8 +59,8 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         
 	var cls = "";
-	if (this.allowBlank) {
-	    cls  = "hidden";
+	if (!this.allowBlank) {
+	    cls  = "visible";
 	}
 	
         var cfg = {
