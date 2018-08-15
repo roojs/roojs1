@@ -58,7 +58,10 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
     
     getAutoCreate : function(){
         
-	 
+	var cls = "";
+	if (this.allowBlank) {
+	    cls  = "hidden";
+	}
 	
         var cfg = {
             tag : this.tag,
@@ -67,7 +70,7 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
             cn : [
                 {
                     tag : 'i',
-                    cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star hidden',
+                    cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star ' + hidden,
                     tooltip : this.iconTooltip
                 },
                 {
@@ -89,7 +92,7 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
                     },
                     {
                         tag : 'i',
-                        cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star hidden',
+                        cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star '+ hidden,
                         tooltip : this.iconTooltip
                     }
                 ] 
