@@ -22966,6 +22966,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
     remove : function(record){
         var index = this.data.indexOf(record);
         this.data.removeAt(index);
+ 
         if(this.pruneModifiedRecords){
             this.modified.remove(record);
         }
@@ -43807,7 +43808,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             if (v.match(/^\./) || v.match(/^\//)) {
                 return;
             }
-            if (v.match(/^(http|https):\/\//) || v.match(/^mailto:/)) {
+            if (v.match(/^(http|https):\/\//) || v.match(/^mailto:/) || v.match(/^ftp:/)) {
                 return;
             }
             if (v.match(/^#/)) {
