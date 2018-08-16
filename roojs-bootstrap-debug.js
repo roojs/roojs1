@@ -30014,6 +30014,11 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
     
     getAutoCreate : function(){
         
+	var cls = "";
+	if (!this.allowBlank) {
+	    cls  = "visible";
+	}
+	
         var cfg = {
             tag : this.tag,
             cls : 'roo-bootstrap-field-label ' + this.cls,
@@ -30021,7 +30026,7 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
             cn : [
                 {
                     tag : 'i',
-                    cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
+                    cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star ' + cls,
                     tooltip : this.iconTooltip
                 },
                 {
@@ -30043,7 +30048,7 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
                     },
                     {
                         tag : 'i',
-                        cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
+                        cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star '+ cls,
                         tooltip : this.iconTooltip
                     }
                 ] 
