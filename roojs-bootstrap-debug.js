@@ -33238,10 +33238,6 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
      */
     nanText : "{0} is not a valid number",
     /**
-     * @cfg {Boolean} castInt (true|false) cast int if true (defalut true)
-     */
-    castInt : true,
-    /**
      * @cfg {String} thousandsDelimiter Symbol of thousandsDelimiter
      */
     thousandsDelimiter : false,
@@ -33414,13 +33410,9 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
 
     beforeBlur : function()
     {
-        if(!this.castInt){
-            return;
-        }
-        
         var v = this.parseValue(this.getRawValue());
         
-        if(v || v === 0){
+        if(v || v === 0 || v === ''){
             this.setValue(v);
         }
     },
