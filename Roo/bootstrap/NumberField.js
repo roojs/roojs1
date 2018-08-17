@@ -240,7 +240,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
     {
         var v = this.parseValue(this.getRawValue());
         
-        if(v || v === 0){
+        if(v || v === 0 || v === ''){
             this.setValue(v);
         }
     },
