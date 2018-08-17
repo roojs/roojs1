@@ -2268,6 +2268,8 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         this.focus();
         this.fireEvent("show", this);
+        
+        Roo.log(this.el.getWidth());
     },
     
     focus : function(){
