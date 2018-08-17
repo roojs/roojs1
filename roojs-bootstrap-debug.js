@@ -2247,10 +2247,6 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         this.triggerEl.addClass('open');
         
         // reassign x when hitting right
-        Roo.log(this.el.getWidth());
-        Roo.log(xy[0]);
-        Roo.log(Roo.lib.Dom.getViewWidth());
-        
         if(this.el.getWidth() + xy[0] >= Roo.lib.Dom.getViewWidth()){
             xy[0] = xy[0] - this.el.getWidth() + this.triggerEl.getWidth();
         }
@@ -2262,11 +2258,11 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         // but the list may align on trigger left or trigger top... should it be a properity?
         
+        Roo.log(this.el.getWidth());
+        
         if(this.el.getStyle('top') != 'auto' && this.el.getStyle('top').slice(-1) != "%"){
             this.el.setXY(xy);
         }
-        
-        
         
         Roo.log(this.el.getWidth());
         
