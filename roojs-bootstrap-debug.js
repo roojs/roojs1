@@ -34808,9 +34808,6 @@ Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
       var rs = this.regions;
       for(var target in rs){
          var r = rs[target];
-         
-         Roo.log(r);
-         
          if(typeof r != "function"){
             if(r.hasPanel(panelId)){
                return r.showPanel(panelId);
