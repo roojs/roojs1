@@ -351,7 +351,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
         } 
         
-        this.maskEl = new Roo.LoadMask(this.el, { store : this.ds, msgCls: 'roo-el-mask-msg' });
+        if(this.loadMask) {
+            this.maskEl = new Roo.LoadMask(this.el, { store : this.ds, msgCls: 'roo-el-mask-msg' });
+        }
         
         this.store.on('load', this.onLoad, this);
         this.store.on('beforeload', this.onBeforeLoad, this);
@@ -767,9 +769,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             e.on('mouseout', _this.onMouseout, _this);
         });
         this.fireEvent('rowsrendered', this);
-        //if(this.loadMask){
-        //    this.maskEl.hide();
-        //}
         
         this.autoSize();
     },
@@ -982,13 +981,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     onBeforeLoad : function()
     {
-        //Roo.log('ds onBeforeLoad');
         
-        //this.clear();
-        
-        //if(this.loadMask){
-        //    this.maskEl.show();
-        //}
     },
      /**
      * Remove all rows
