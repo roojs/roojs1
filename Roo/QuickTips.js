@@ -49,7 +49,7 @@ Roo.QuickTips = function(){
         if(ttp){
             showProc = show.defer(tm.showDelay, tm, [{
                 el: t, 
-                text: ttp, 
+                text: ttp.replace("/\\n/g", "<BR/>"),
                 width: et.getAttributeNS(ns, cfg.width),
                 autoHide: et.getAttributeNS(ns, cfg.hide) != "user",
                 title: et.getAttributeNS(ns, cfg.title),
