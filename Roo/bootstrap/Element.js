@@ -59,7 +59,13 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
         Roo.bootstrap.Element.superclass.initEvents.call(this);
         
         if(this.clickable){
-            this.el.on('click', this.onClick, this);
+            
+            if(!Roo.isTouch){
+                this.el.on('click', this.onClick, this);
+            } else {
+                this.el.on('touchstart', this.onClick, this);
+            }
+            
         }
         
     },
