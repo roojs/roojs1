@@ -38931,6 +38931,7 @@ side          Add an error icon to the right of the field with a popup on hover
      */
     reset : function(){
         this.setValue(this.resetValue);
+        this.originalValue = this.getValue();
         this.clearInvalid();
     },
 
