@@ -293,8 +293,8 @@ side          Add an error icon to the right of the field with a popup on hover
      * Resets the current field value to the originally loaded value and clears any validation messages
      */
     reset : function(){
-        this.originalValue = this.resetValue;
         this.setValue(this.resetValue);
+        this.originalValue = this.getValue();
         this.clearInvalid();
     },
 
