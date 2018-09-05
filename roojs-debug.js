@@ -41628,6 +41628,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
     reset : function(){
         // overridden so that last data is reset..
         this.setValue(this.resetValue);
+        this.originalValue = this.getValue();
         this.clearInvalid();
         this.lastData = false;
         if (this.view) {
