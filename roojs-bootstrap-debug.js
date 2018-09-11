@@ -20402,7 +20402,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     weight : false,
     inline: false,
     tooltip : '',
-    useFontAwesomeCheckBox : false,
     
     getAutoCreate : function()
     {
