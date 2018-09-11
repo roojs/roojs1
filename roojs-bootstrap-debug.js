@@ -9103,7 +9103,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         this.indicator = this.indicatorEl();
         
         if(this.indicator){
-            this.indicator.addClass('invisible');
+            this.indicator.addClass(this.indicatorpos == 'right' ? 'hidden' : 'invisible'); // changed from invisible??? - 
         }
  
         // reference to original value for reset
@@ -9417,7 +9417,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         if(this.indicator){
             this.indicator.removeClass('visible');
-            this.indicator.addClass('invisible');
+            this.indicator.addClass(this.indicatorpos == 'right' ? 'hidden' : 'invisible');
         }
         
         if(this.disabled){
@@ -9471,7 +9471,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         }
         
         if(this.indicator){
-            this.indicator.removeClass('invisible');
+            this.indicator.removeClass(this.indicatorpos == 'right' ? 'hidden' : 'invisible');
             this.indicator.addClass('visible');
         }
         
