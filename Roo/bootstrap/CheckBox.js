@@ -55,6 +55,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     weight : false,
     inline: false,
     tooltip : '',
+    useFontAwesome : false,
     
     getAutoCreate : function()
     {
