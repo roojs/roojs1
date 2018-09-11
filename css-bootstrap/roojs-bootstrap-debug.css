@@ -1290,12 +1290,12 @@ table.fc-border-separate {
 }
 .datepicker table tr td.old,
 .datepicker table tr td.new {
-  color: #777777;
+  color: #eeeeee;
 }
 .datepicker table tr td.disabled,
 .datepicker table tr td.disabled:hover {
   background: none;
-  color: #777777;
+  color: #eeeeee;
   cursor: default;
 }
 .datepicker table tr td.today,
