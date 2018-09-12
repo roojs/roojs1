@@ -7798,6 +7798,9 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             if(f.validate()){
                 return;
             }
+            
+            Roo.log(f.name);
+            
             valid = false;
 
             if(!target && f.el.isVisible(true)){
@@ -20580,10 +20583,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                 cls: 'box-label',
                 html: this.boxLabel
             };
-            
-            if(this.useFontAwesomeCheckBox) {
-                boxLabelCfg.cls = 'box-label fa-checkbox'
-            }
             
             if(this.tooltip){
                 boxLabelCfg.tooltip = this.tooltip;
