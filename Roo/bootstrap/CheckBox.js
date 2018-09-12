@@ -234,10 +234,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                 html: this.boxLabel
             };
             
-            if(this.useFontAwesomeCheckBox) {
-                boxLabelCfg.cls = 'box-label fa-checkbox'
-            }
-            
             if(this.tooltip){
                 boxLabelCfg.tooltip = this.tooltip;
             }
