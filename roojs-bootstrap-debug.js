@@ -19280,6 +19280,13 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         return true;
     },
     
+    reset : function()
+    {
+        this.date = this.viewDate = '';
+        
+        Roo.bootstrap.DateField.superclass.setValue.call(this, '');
+    },
+    
     setVisible : function(visible)
     {
         if(!this.getEl()){
