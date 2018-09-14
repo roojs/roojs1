@@ -118,7 +118,7 @@ Roo.bootstrap.DocumentManager = function(config){
         "previewrendered" : true,
         /**
          */
-        "previewResize" : true,
+        "previewResize" : true
         
     });
 };

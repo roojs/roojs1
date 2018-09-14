@@ -28687,7 +28687,10 @@ Roo.bootstrap.DocumentManager = function(config){
          * @param {Roo.bootstrap.DocumentManager} this
          * @param {Object} file
          */
-        "previewrendered" : true
+        "previewrendered" : true,
+        /**
+         */
+        "previewResize" : true
         
     });
 };
@@ -29289,6 +29292,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         var width = image.dom.naturalWidth || image.dom.width;
         var height = image.dom.naturalHeight || image.dom.height;
+        
+        if(!this.previewResize) {
+            return;
+        }
         
         if(width > height){
             file.target.addClass('wide');
