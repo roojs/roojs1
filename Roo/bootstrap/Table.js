@@ -272,8 +272,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             'summary',
             'width'
         ].forEach(function(k) {
-            if (t[k]) {
-                cfg[k] = t[k];
+            if (_t[k]) {
+                cfg[k] = _t[k];
             }
         });
         
