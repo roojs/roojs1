@@ -163,6 +163,9 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
      * @cfg {String} align (Optional) Set the CSS text-align property of the column.  Defaults to undefined.
      */
     /**
+     * @cfg {String} valign (Optional) Set the CSS vertical-align property of the column (eg. middle, top, bottom etc).  Defaults to undefined.
+     */
+    /**
      * @cfg {String} cursor (Optional)
      */
     /**
