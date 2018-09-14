@@ -5337,6 +5337,9 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
      * @cfg {String} align (Optional) Set the CSS text-align property of the column.  Defaults to undefined.
      */
     /**
+     * @cfg {String} valign (Optional) Set the CSS vertical-align property of the column (eg. middle, top, bottom etc).  Defaults to undefined.
+     */
+    /**
      * @cfg {String} cursor (Optional)
      */
     /**
@@ -6100,37 +6103,25 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
         
         // this lot should be simplifed...
+        var _t = this;
+        var cp = [
+            'align',
+            'bgcolor',
+            'border',
+            'cellpadding',
+            'cellspacing',
+            'frame',
+            'rules',
+            'sortable',
+            'summary',
+            'width'
+        ].forEach(function(k) {
+            if (t[k]) {
+                cfg[k] = t[k];
+            }
+        });
         
-        if (this.align) {
-            cfg.align=this.align;
-        }
-        if (this.bgcolor) {
-            cfg.bgcolor=this.bgcolor;
-        }
-        if (this.border) {
-            cfg.border=this.border;
-        }
-        if (this.cellpadding) {
-            cfg.cellpadding=this.cellpadding;
-        }
-        if (this.cellspacing) {
-            cfg.cellspacing=this.cellspacing;
-        }
-        if (this.frame) {
-            cfg.frame=this.frame;
-        }
-        if (this.rules) {
-            cfg.rules=this.rules;
-        }
-        if (this.sortable) {
-            cfg.sortable=this.sortable;
-        }
-        if (this.summary) {
-            cfg.summary=this.summary;
-        }
-        if (this.width) {
-            cfg.width=this.width;
-        }
+        
         if (this.layout) {
             cfg.style = (typeof(cfg.style) == 'undefined') ? ('table-layout:' + this.layout + ';') : (cfg.style + ('table-layout:' + this.layout + ';'));
         }
@@ -6779,6 +6770,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             if(typeof(config.align) != 'undefined' && config.align.length){
                 td.style += ' text-align:' + config.align + ';';
+            }
+            if(typeof(config.valign) != 'undefined' && config.valign.length){
+                td.style += ' vertical-align:' + config.valign + ';';
             }
             
             if(typeof(config.width) != 'undefined'){
