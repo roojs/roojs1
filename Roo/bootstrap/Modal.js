@@ -17,6 +17,7 @@
  * @cfg {Boolean} allow_close default true
  * @cfg {Boolean} fitwindow default false
  * @cfg {String} size (sm|lg) default empty
+ * @cfg {Number} maxWidth set the maxWidth of modal
  *
  *
  * @constructor
