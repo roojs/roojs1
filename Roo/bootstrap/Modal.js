@@ -290,7 +290,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             }).defer(50, this);
         }else{
             this.el.addClass('in');
-
         }
 
         // not sure how we can show data in here..
