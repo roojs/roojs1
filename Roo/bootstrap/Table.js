@@ -754,14 +754,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var tfoot = this.el.select('tfoot', true).first();
         
-        if(this.footerShow && this.autoHideFooter){
+        if(this.footerShow && this.autoHideFooter && this.mainFoot){
             
-            
-            
-            this.footer.hide();
+            this.mainFoot.hide();
             
             if(this.footer.pageSize < ds.getCount()){
-                this.footer.show();
+                this.mainFoot.show();
             }
         }
         
