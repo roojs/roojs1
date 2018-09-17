@@ -314,9 +314,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         //Roo.log('initEvents with ds!!!!');
         
-        this.mainBody = this.el.select('tbody', true).first().setVisibilityMode(Roo.Element.DISPLAY);
-        this.mainHead = this.el.select('thead', true).first().setVisibilityMode(Roo.Element.DISPLAY);
-        this.mainFoot = this.el.select('tfoot', true).first().setVisibilityMode(Roo.Element.DISPLAY);
+        this.mainBody = this.el.select('tbody', true).first();
+        this.mainHead = this.el.select('thead', true).first();
+        this.mainFoot = this.el.select('tfoot', true).first();
         
         
         
@@ -756,7 +756,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         if(this.footerShow && this.autoHideFooter && this.mainFoot){
             
-            this.mainFoot.hide();
+            this.mainFoot.setVisibilityMode(Roo.Element.DISPLAY).hide();
             
             if(this.footer.pageSize < ds.getCount()){
                 this.mainFoot.show();
