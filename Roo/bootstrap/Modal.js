@@ -271,17 +271,14 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         if(!this.fitwindow && this.maxWidth !== 0){
             
             var w = Math.min(this.maxWidth, Roo.lib.Dom.getViewportWidth(true) - 30);
-//            var h = this.height || Roo.lib.Dom.getViewportHeight(true) - 60;
-//            this.setSize(w,h);
-            this.dialogEl.setWidth(w);
+            var h = this.height || Roo.lib.Dom.getViewportHeight(true) - 60;
+            this.setSize(w,h);
         }
         
     },
 
     setSize : function(w,h)
     {
-        Roo.log('set size!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log([w, h]);
         if (!w && !h) {
             return;
         }
@@ -392,8 +389,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     resizeTo: function(w,h)
     {
         // skip.. ?? why??
-        Roo.log('resize to !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
-        Roo.log([w, h]);
+
         this.dialogEl.setWidth(w);
         if (this.diff === false) {
             this.diff = this.dialogEl.getHeight() - this.bodyEl.getHeight();
