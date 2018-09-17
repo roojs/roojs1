@@ -316,7 +316,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         this.mainBody = this.el.select('tbody', true).first();
         this.mainHead = this.el.select('thead', true).first();
-        
+        this.mainFoot = this.el.select('tfoot', true).first();
         
         
         
@@ -752,7 +752,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }, this);
         }
         
+        var tfoot = this.el.select('tfoot', true).first();
+        
         if(this.footerShow && this.autoHideFooter){
+            
+            
             
             this.footer.hide();
             
