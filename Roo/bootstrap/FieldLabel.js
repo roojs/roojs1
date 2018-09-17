@@ -56,13 +56,23 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
     iconTooltip : 'This field is required',
     indicatorpos : 'left',
     
-    getAutoCreate : function()
-    {   
+    getAutoCreate : function(){
+        
+	var cls = "";
+	if (!this.allowBlank) {
+	    cls  = "visible";
+	}
+	
         var cfg = {
             tag : this.tag,
             cls : 'roo-bootstrap-field-label ' + this.cls,
             for : this.target,
             cn : [
+                {
+                    tag : 'i',
+                    cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star ' + cls,
+                    tooltip : this.iconTooltip
+                },
                 {
                     tag : 'span',
                     html : this.html
@@ -70,45 +80,25 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
             ] 
         };
         
-        if(!this.allowBlank){
-            
+        if(this.indicatorpos == 'right'){
             var cfg = {
                 tag : this.tag,
                 cls : 'roo-bootstrap-field-label ' + this.cls,
                 for : this.target,
                 cn : [
                     {
-                        tag : 'i',
-                        cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star ' + cls,
-                        tooltip : this.iconTooltip
-                    },
-                    {
                         tag : 'span',
                         html : this.html
+                    },
+                    {
+                        tag : 'i',
+                        cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star '+ cls,
+                        tooltip : this.iconTooltip
                     }
                 ] 
             };
-
-            if(this.indicatorpos == 'right'){
-                var cfg = {
-                    tag : this.tag,
-                    cls : 'roo-bootstrap-field-label ' + this.cls,
-                    for : this.target,
-                    cn : [
-                        {
-                            tag : 'span',
-                            html : this.html
-                        },
-                        {
-                            tag : 'i',
-                            cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star '+ cls,
-                            tooltip : this.iconTooltip
-                        }
-                    ] 
-                };
-            }
         }
-	
+        
         return cfg;
     },
     
