@@ -752,7 +752,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }, this);
         }
         
-        
+        if(this.footerShow && this.autoHideFooter){
+            
+            
+            
+        }
         
         Roo.each(this.el.select('tbody td', true).elements, function(e){
             e.on('mouseover', _this.onMouseover, _this);
