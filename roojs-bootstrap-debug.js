@@ -2574,6 +2574,7 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
  * @cfg {Boolean} allow_close default true
  * @cfg {Boolean} fitwindow default false
  * @cfg {String} size (sm|lg) default empty
+ * @cfg {Number} maxWidth set the maxWidth of modal
  *
  *
  * @constructor
@@ -2638,6 +2639,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     closeEl:  false,
 
     size: '',
+    
+    maxWidth: 0,
 
 
     onRender : function(ct, position)
@@ -2716,9 +2719,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
 
     },
 
-    getAutoCreate : function(){
-
-
+    getAutoCreate : function()
+    {
         var bdy = {
                 cls : 'modal-body',
                 html : this.html || ''
@@ -2816,11 +2818,20 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     resize : function()
     {
         this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true),  Roo.lib.Dom.getViewHeight(true));
+        
         if (this.fitwindow) {
             var w = this.width || Roo.lib.Dom.getViewportWidth(true) - 30;
             var h = this.height || Roo.lib.Dom.getViewportHeight(true) - 60;
             this.setSize(w,h);
         }
+        
+        if(!this.fitwindow && this.maxWidth !== 0){
+            
+            var w = Math.min(this.maxWidth, Roo.lib.Dom.getViewportWidth(true) - 30);
+            var h = this.height || Roo.lib.Dom.getViewportHeight(true) - 60;
+            this.setSize(w,h);
+        }
+        
     },
 
     setSize : function(w,h)
@@ -2848,7 +2859,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             }).defer(50, this);
         }else{
             this.el.addClass('in');
-
         }
 
         // not sure how we can show data in here..
