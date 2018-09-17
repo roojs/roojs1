@@ -56,14 +56,8 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
     iconTooltip : 'This field is required',
     indicatorpos : 'left',
     
-    getAutoCreate : function(){
-        
-	var cls = "";
-        
-	if (!this.allowBlank) {
-	    cls  = "visible";
-	}
-        
+    getAutoCreate : function()
+    {   
         var cfg = {
             tag : this.tag,
             cls : 'roo-bootstrap-field-label ' + this.cls,
