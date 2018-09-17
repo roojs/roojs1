@@ -5879,6 +5879,7 @@ Roo.LoadMask.prototype = {
  * @cfg {Boolean} scrollBody (true|false) default false - body scrolled / fixed header
  * @cfg {Roo.bootstrap.PagingToolbar} footer  a paging toolbar
  * @cfg {Boolean} lazyLoad  auto load data while scrolling to the end (default false)
+ * @cfg {Boolean} autoHideFooter  auto hide footer if only one page (default false)
  
  * 
  * @constructor
@@ -6068,6 +6069,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     lazyLoad : false,
     
     CSS : Roo.util.CSS,
+    
+    autoHideFooter : false,
     
     getAutoCreate : function()
     {
@@ -6591,6 +6594,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 }
                 
             }, this);
+        }
+        
+        if(this.footerShow && this.autoHideFooter){
+            
+            this.footer.hide();
+            
+            if(this.footer.pageSize < ds.getCount()){
+                this.footer.show();
+            }
         }
         
         Roo.each(this.el.select('tbody td', true).elements, function(e){
