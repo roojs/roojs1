@@ -752,6 +752,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }, this);
         }
         
+        
+        
         Roo.each(this.el.select('tbody td', true).elements, function(e){
             e.on('mouseover', _this.onMouseover, _this);
         });
