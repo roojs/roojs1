@@ -754,8 +754,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         if(this.footerShow && this.autoHideFooter){
             
+            this.footer.hide();
             
-            
+            if(this.footer.pageSize < ds.getCount()){
+                this.footer.show();
+            }
         }
         
         Roo.each(this.el.select('tbody td', true).elements, function(e){
