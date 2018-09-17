@@ -269,11 +269,11 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         }
         
         if(!this.fitwindow && this.maxWidth !== 0){
-            Roo.log('get body el height...................');
-            Roo.log(this.bodyEl.getHeight());
+            
             var w = Math.min(this.maxWidth, Roo.lib.Dom.getViewportWidth(true) - 30);
-            var h = this.height || Roo.lib.Dom.getViewportHeight(true) - 60;
-            this.setSize(w,h);
+//            var h = this.height || Roo.lib.Dom.getViewportHeight(true) - 60;
+//            this.setSize(w,h);
+            this.dialogEl.setWidth(w);
         }
         
     },
