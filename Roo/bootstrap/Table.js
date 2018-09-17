@@ -758,7 +758,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             this.mainFoot.setVisibilityMode(Roo.Element.DISPLAY).hide();
             
-            if(this.footer.pageSize < ds.getCount()){
+            var total = this.ds.getTotalCount();
+            
+            if(this.footer.pageSize < total){
                 this.mainFoot.show();
             }
         }
