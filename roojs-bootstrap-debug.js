@@ -2578,7 +2578,7 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
  * @cfg {Boolean} allow_close default true
  * @cfg {Boolean} fitwindow default false
  * @cfg {String} size (sm|lg) default empty
- * @cfg {Number} maxWidth set the maxWidth of modal
+ * @cfg {Number} max_width set the max width of modal
  *
  *
  * @constructor
@@ -2644,7 +2644,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
 
     size: '',
     
-    maxWidth: 0,
+    max_width: 0,
 
 
     onRender : function(ct, position)
@@ -2829,9 +2829,9 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.setSize(w,h);
         }
         
-        if(!this.fitwindow && this.maxWidth !== 0){
+        if(!this.fitwindow && this.max_width !== 0){
             
-            var w = Math.min(this.maxWidth, Roo.lib.Dom.getViewportWidth(true) - 30);
+            var w = Math.min(this.max_width, Roo.lib.Dom.getViewportWidth(true) - 30);
             var h = this.height || Roo.lib.Dom.getViewportHeight(true) - 60;
             this.setSize(w,h);
         }
@@ -5893,7 +5893,7 @@ Roo.LoadMask.prototype = {
  * @cfg {Boolean} scrollBody (true|false) default false - body scrolled / fixed header
  * @cfg {Roo.bootstrap.PagingToolbar} footer  a paging toolbar
  * @cfg {Boolean} lazyLoad  auto load data while scrolling to the end (default false)
- * @cfg {Boolean} autoHideFooter  auto hide footer if only one page (default false)
+ * @cfg {Boolean} auto_hide_footer  auto hide footer if only one page (default false)
  
  * 
  * @constructor
@@ -6084,7 +6084,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     CSS : Roo.util.CSS,
     
-    autoHideFooter : false,
+    auto_hide_footer : false,
     
     getAutoCreate : function()
     {
@@ -6612,7 +6612,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var tfoot = this.el.select('tfoot', true).first();
         
-        if(this.footerShow && this.autoHideFooter && this.mainFoot){
+        if(this.footerShow && this.auto_hide_footer && this.mainFoot){
             
             this.mainFoot.setVisibilityMode(Roo.Element.DISPLAY).hide();
             
