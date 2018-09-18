@@ -882,6 +882,11 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             
         }
         
+        if(this.indicator){
+            this.indicator.removeClass('visible');
+            this.indicator.addClass(this.indicatorpos == 'right' ? 'hidden' : 'invisible');
+        }
+        
         this.fireEvent('valid', this);
     },
     
