@@ -226,7 +226,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     CSS : Roo.util.CSS,
     
-    autoHideFooter : false,
+    auto_hide_footer : false,
     
     getAutoCreate : function()
     {
@@ -754,7 +754,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var tfoot = this.el.select('tfoot', true).first();
         
-        if(this.footerShow && this.autoHideFooter && this.mainFoot){
+        if(this.footerShow && this.auto_hide_footer && this.mainFoot){
             
             this.mainFoot.setVisibilityMode(Roo.Element.DISPLAY).hide();
             
