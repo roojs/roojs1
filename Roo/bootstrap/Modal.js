@@ -83,7 +83,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
 
     size: '',
     
-    maxWidth: 0,
+    max_width: 0,
 
 
     onRender : function(ct, position)
@@ -268,9 +268,9 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.setSize(w,h);
         }
         
-        if(!this.fitwindow && this.maxWidth !== 0){
+        if(!this.fitwindow && this.max_width !== 0){
             
-            var w = Math.min(this.maxWidth, Roo.lib.Dom.getViewportWidth(true) - 30);
+            var w = Math.min(this.max_width, Roo.lib.Dom.getViewportWidth(true) - 30);
             var h = this.height || Roo.lib.Dom.getViewportHeight(true) - 60;
             this.setSize(w,h);
         }
