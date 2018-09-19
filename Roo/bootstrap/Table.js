@@ -1028,8 +1028,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         var _this = this;
         
-        Roo.log(r);
-        
         r.cfg.parentId = (typeof(r.container) == 'string') ? r.container : r.container.id;
         
         var t = r.cfg.render(r.container);
