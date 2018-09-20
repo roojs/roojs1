@@ -996,10 +996,12 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.getEl().removeClass('hidden');
         
         if(visible){
+            this.fireEvent('show', this);
             return;
         }
         
         this.getEl().addClass('hidden');
+        this.fireEvent('hide', this);
     }
    
 });
