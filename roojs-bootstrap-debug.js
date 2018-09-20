@@ -13610,11 +13610,16 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.list.on('scroll', this.onViewScroll, this);
         
         if(!this.tpl){
-            this.tpl = '<li class="roo-select2-result"><div class="checkbox"><input id="{roo-id}" type="checkbox" {roo-data-checked}><label for="{roo-id}"><b>{' + this.displayField + '}</b></label></div></li>';
+            this.tpl = '<li class="roo-select2-result"><div class="checkbox"><input id="{roo-id}"' + 
+                'type="checkbox" {roo-data-checked}><label for="{roo-id}"><b>{' + this.displayField + '}</b></label></div></li>';
         }
 
         this.view = new Roo.View(this.list, this.tpl, {
-            singleSelect:true, tickable:true, parent:this, store: this.store, selectedClass: this.selectedClass
+            singleSelect:true,
+            tickable:true,
+            parent:this,
+            store: this.store,
+            selectedClass: this.selectedClass
         });
         
         //this.view.wrapEl.setDisplayed(false);
@@ -14101,7 +14106,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if(this.tickable){
             
-            Roo.log(e.getTarget().nodeName.toLowerCase());
             if(typeof(e) != 'undefined' && e.getTarget().nodeName.toLowerCase() != 'input'){
                 return;
             }
