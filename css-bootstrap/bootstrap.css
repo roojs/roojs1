@@ -2259,6 +2259,7 @@ th {
   width: 100%;
   max-width: 100%;
   margin-bottom: 20px;
+  border-bottom: 1px solid #dddddd;
 }
 .table > thead > tr > th,
 .table > tbody > tr > th,
@@ -3986,11 +3987,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   background-color: #eeeeee;
 }
 .nav > li.disabled > a {
-  color: #777777;
+  color: #eeeeee;
 }
 .nav > li.disabled > a:hover,
 .nav > li.disabled > a:focus {
-  color: #777777;
+  color: #eeeeee;
   text-decoration: none;
   background-color: transparent;
   cursor: not-allowed;

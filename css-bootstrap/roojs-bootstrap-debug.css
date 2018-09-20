@@ -3527,12 +3527,13 @@ html.bootstrap-sticky body {
   }
 }
 /* paging toolbar */
-.pagination .x-paging-position span {
-  padding-top: 3px;
-  padding-bottom: 3px;
+.table .pagination .x-paging-position span {
+  padding: 3px 6px;
 }
-.pagination .x-paging-position span input {
-  margin: 0 3px;
+.table .pagination .x-paging-position span input {
+  margin: 0 0 0 7px;
+  width: 42px;
+  padding: 0 5px;
 }
 .navbar .pagination > li > span {
   min-height: 34px;
