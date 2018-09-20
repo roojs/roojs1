@@ -1451,7 +1451,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if(this.tickable){
             
-            Roo.log(e.getTarget().nodeName.toLowerCase());
             if(typeof(e) != 'undefined' && e.getTarget().nodeName.toLowerCase() != 'input'){
                 return;
             }
