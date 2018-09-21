@@ -132,7 +132,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         
         if (this.tooltip) {
             this.tooltipEl().attr('tooltip', this.tooltip);
-            this.tooltipEl().attr("data-placement='top'", this.tooltip);
+            this.tooltipEl().attr('data-placement', 'top');
         }
         
         if(this.tabIndex !== undefined){
