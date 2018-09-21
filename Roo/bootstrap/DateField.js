@@ -227,7 +227,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.showMode();
         
         if(this.isInline) {
-            this.show();
+            this.showpopup();
         }
     },
     
