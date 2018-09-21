@@ -18561,7 +18561,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.showMode();
         
         if(this.isInline) {
-            this.show();
+            this.showPopup();
         }
     },
     
@@ -18844,7 +18844,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     onFocus : function()
     {
         Roo.bootstrap.DateField.superclass.onFocus.call(this);
-        this.show();
+        this.showPopup();
     },
     
     onBlur : function()
@@ -18855,7 +18855,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         this.setValue(d);
                 
-        this.hide();
+        this.hidePopup();
     },
     
     showPopup : function()
@@ -18924,7 +18924,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     {
         if (!this.picker().isVisible()){
             if (e.keyCode == 27) { // allow escape to hide and re-show picker
-                this.show();
+                this.showPopup();
             }
             return;
         }
@@ -18935,7 +18935,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         switch(e.keyCode){
             case 27: // escape
-                this.hide();
+                this.hidePopup();
                 e.preventDefault();
                 break;
             case 37: // left
@@ -18995,12 +18995,12 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 break;
             case 13: // enter
                 this.setValue(this.formatDate(this.date));
-                this.hide();
+                this.hidePopup();
                 e.preventDefault();
                 break;
             case 9: // tab
                 this.setValue(this.formatDate(this.date));
-                this.hide();
+                this.hidePopup();
                 break;
             case 16: // shift
             case 17: // ctrl
@@ -19055,7 +19055,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 //                        this.fill()
                         this.setValue(this.formatDate(this.date));
                         
-                        this.hide();
+                        this.hidePopup();
                         break;
                 }
                 break;
@@ -19072,7 +19072,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     
                     if(this.singleMode){
                         this.setValue(this.formatDate(this.viewDate));
-                        this.hide();
+                        this.hidePopup();
                         return;
                     }
                     
@@ -19109,7 +19109,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 //                    this.fill();
                     //Roo.log(this.formatDate(this.date));
                     this.setValue(this.formatDate(this.date));
-                    this.hide();
+                    this.hidePopup();
                 }
                 break;
         }
