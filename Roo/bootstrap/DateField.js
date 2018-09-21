@@ -227,7 +227,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.showMode();
         
         if(this.isInline) {
-            this.showpopup();
+            this.showPopup();
         }
     },
     
@@ -510,7 +510,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     onFocus : function()
     {
         Roo.bootstrap.DateField.superclass.onFocus.call(this);
-        this.show();
+        this.showPopup();
     },
     
     onBlur : function()
@@ -590,7 +590,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     {
         if (!this.picker().isVisible()){
             if (e.keyCode == 27) { // allow escape to hide and re-show picker
-                this.show();
+                this.showPopup();
             }
             return;
         }
