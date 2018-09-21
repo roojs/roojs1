@@ -601,7 +601,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         switch(e.keyCode){
             case 27: // escape
-                this.hide();
+                this.hidePopup();
                 e.preventDefault();
                 break;
             case 37: // left
@@ -661,12 +661,12 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 break;
             case 13: // enter
                 this.setValue(this.formatDate(this.date));
-                this.hide();
+                this.hidePopup();
                 e.preventDefault();
                 break;
             case 9: // tab
                 this.setValue(this.formatDate(this.date));
-                this.hide();
+                this.hidePopup();
                 break;
             case 16: // shift
             case 17: // ctrl
