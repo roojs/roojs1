@@ -721,7 +721,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 //                        this.fill()
                         this.setValue(this.formatDate(this.date));
                         
-                        this.hide();
+                        this.hidePopup();
                         break;
                 }
                 break;
@@ -738,7 +738,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     
                     if(this.singleMode){
                         this.setValue(this.formatDate(this.viewDate));
-                        this.hide();
+                        this.hidePopup();
                         return;
                     }
                     
@@ -775,7 +775,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 //                    this.fill();
                     //Roo.log(this.formatDate(this.date));
                     this.setValue(this.formatDate(this.date));
-                    this.hide();
+                    this.hidePopup();
                 }
                 break;
         }
