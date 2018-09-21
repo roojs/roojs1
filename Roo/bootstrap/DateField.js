@@ -985,23 +985,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.date = this.viewDate = '';
         
         Roo.bootstrap.DateField.superclass.setValue.call(this, '');
-    },
-    
-    setVisible : function(visible)
-    {
-        if(!this.getEl()){
-            return;
-        }
-        
-        this.getEl().removeClass('hidden');
-        
-        if(visible){
-            this.fireEvent('show', this);
-            return;
-        }
-        
-        this.getEl().addClass('hidden');
-        this.fireEvent('hide', this);
     }
    
 });
