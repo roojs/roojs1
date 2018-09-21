@@ -26207,14 +26207,11 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
             
             var scroll = Roo.select('body', true).first().getScroll();
             
-            Roo.log(xy[1]);
-            Roo.log(this.el.getHeight());
-            Roo.log(Roo.lib.Dom.getViewHeight());
-            
-            if((xy[1] + this.el.getHeight()) >= (Roo.lib.Dom.getViewHeight() + scroll.top)){
+            if(xy[1] > Roo.lib.Dom.getViewHeight() + scroll.top - this.el.getHeight()){
                 placement = 'top';
             }
             
+            align = this.alignment[placement];
         }
         
         this.el.alignTo(this.bindEl, align[0],align[1]);

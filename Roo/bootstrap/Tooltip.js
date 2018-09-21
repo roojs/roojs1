@@ -274,6 +274,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
                 placement = 'top';
             }
             
+            align = this.alignment[placement];
         }
         
         this.el.alignTo(this.bindEl, align[0],align[1]);
