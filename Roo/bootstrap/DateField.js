@@ -524,16 +524,16 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.hide();
     },
     
-    show : function()
+    showPopup : function()
     {
         this.picker().show();
         this.update();
         this.place();
         
-        this.fireEvent('show', this, this.date);
+        this.fireEvent('showpopup', this, this.date);
     },
     
-    hide : function()
+    hidePopup : function()
     {
         if(this.isInline) {
             return;
@@ -542,7 +542,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.viewMode = this.startViewMode;
         this.showMode();
         
-        this.fireEvent('hide', this, this.date);
+        this.fireEvent('hidepopup', this, this.date);
         
     },
     
