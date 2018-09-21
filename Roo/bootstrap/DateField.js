@@ -521,7 +521,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         this.setValue(d);
                 
-        this.hide();
+        this.hidePopup();
     },
     
     showPopup : function()
