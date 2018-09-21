@@ -131,7 +131,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         this.el = ct.createChild(cfg, position);
         
         if (this.tooltip) {
-            this.tooltipEl().dom.setAttribute('tooltip', this.tooltip);
+            this.tooltipEl().attr('tooltip', this.tooltip);
+            this.tooltipEl().attr("data-placement='top'", this.tooltip);
         }
         
         if(this.tabIndex !== undefined){
