@@ -620,21 +620,6 @@ table.fc-border-separate {
   -ms-user-select: none;
   user-select: none;
 }
-.checkbox label::before {
-  content: "";
-  display: inline-block;
-  position: absolute;
-  width: 17px;
-  height: 17px;
-  left: 0;
-  margin-left: -20px;
-  border: 1px solid #777777;
-  border-radius: 3px;
-  background-color: #ffffff;
-  -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
-  -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
-  transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
-}
 .checkbox label::after {
   display: inline-block;
   position: absolute;
@@ -652,9 +637,19 @@ table.fc-border-separate {
   display: none;
 }
 .checkbox input[type="checkbox"]:checked + label::after {
-  font-family: 'Font Awesome 5 Free';
+  font-size: 18px;
+  padding-top: 0px;
+  font-family: 'Font Awesome 5 Free 400';
   font-weight: 900;
-  content: "\f00c";
+  color: #5cb85c;
+  content: "\f14a";
+}
+.checkbox input[type="checkbox"]:not(:checked) + label::after {
+  font-size: 18px;
+  padding-top: 0px;
+  font-family: 'Font Awesome 5 Free 400';
+  font-weight: 900;
+  content: "\f0c8";
 }
 .checkbox input[type="checkbox"]:disabled + label {
   opacity: 0.65;
