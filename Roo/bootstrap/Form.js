@@ -178,6 +178,8 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
                 return;
             }
             
+            Roo.log(f.name);
+            
             valid = false;
 
             if(!target && f.el.isVisible(true)){
