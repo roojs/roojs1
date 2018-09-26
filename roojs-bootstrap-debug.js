@@ -2833,7 +2833,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             var w = Math.min(this.max_width, Roo.lib.Dom.getViewportWidth(true) - 30);
             // var h = this.height || Roo.lib.Dom.getViewportHeight(true) - 60;
             this.setSize(w,this.height);
-            
+            Roo.log(this.bodyEl.getHeight());
             // var view_height = Roo.lib.Dom.getViewportHeight(true) - 60;
             // 
             // if(
