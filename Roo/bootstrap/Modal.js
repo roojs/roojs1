@@ -273,17 +273,17 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             // var h = this.height || Roo.lib.Dom.getViewportHeight(true) - 60;
             this.setSize(w,this.height);
             
-            var view_height = Roo.lib.Dom.getViewportHeight(true) - 60;
-            
-            if(
-                (
-                    this.headerEl.getHeight() + 
-                    this.bodyEl.getHeight() + 
-                    this.footerEl.getHeight()
-                ) > view_height) {
-            } {
-                this.setSize(w,view_height);
-            }
+            // var view_height = Roo.lib.Dom.getViewportHeight(true) - 60;
+            // 
+            // if(
+            //     (
+            //         this.headerEl.getHeight() + 
+            //         this.bodyEl.getHeight() + 
+            //         this.footerEl.getHeight()
+            //     ) > view_height) {
+            // } {
+            //     this.setSize(w,view_height);
+            // }
         }
         
     },
