@@ -2175,6 +2175,10 @@ button.list-group-item {
   background-repeat: no-repeat;
   border: 10px solid white;
   border-radius: 20px;
+  display: table;
+}
+.roo-el-mask-msg i {
+  display: table-cell;
 }
 .roo-el-mask-msg div {
   font-family: 'Source Sans Pro', sans-serif;
@@ -2183,6 +2187,7 @@ button.list-group-item {
   z-index: 20001;
   padding: 4px 15px;
   color: #555555;
+  display: table-cell;
 }
 .x-body-masked {
   overflow: hidden !important;
