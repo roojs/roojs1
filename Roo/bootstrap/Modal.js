@@ -280,7 +280,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                     this.footerEl.getHeight()
                 ) > Roo.lib.Dom.getViewportHeight(true) - 60) {
             } {
-                
+                this.setSize(w,Roo.lib.Dom.getViewportHeight(true) - 60);
             }
         }
         
