@@ -270,7 +270,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         if(!this.fitwindow && this.max_width !== 0){
             var w = Math.min(this.max_width, Roo.lib.Dom.getViewportWidth(true) - 30);
-            Roo.log(this.bodyEl.getHeight());
+            // Roo.log(this.bodyEl.getHeight());
             var h = this.height || Roo.lib.Dom.getViewportHeight(true) - 60;
             this.setSize(w,h);
         }
