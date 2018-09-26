@@ -277,6 +277,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                 return;
             }
             
+            if()
+            
             var view_height = Roo.lib.Dom.getViewportHeight(true) - 60;
             
             var body_childs = this.bodyEl.dom.childNodes;
