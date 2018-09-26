@@ -2831,12 +2831,20 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         if(!this.fitwindow && this.max_width !== 0){
             var w = Math.min(this.max_width, Roo.lib.Dom.getViewportWidth(true) - 30);
+            // var h = this.height || Roo.lib.Dom.getViewportHeight(true) - 60;
+            this.setSize(w,this.height);
             
-            Roo.log(this.height);
-            Roo.log(Roo.lib.Dom.getViewportHeight(true));
+            var view_height = Roo.lib.Dom.getViewportHeight(true) - 60;
             
-            var h = this.height || Roo.lib.Dom.getViewportHeight(true) - 60;
-            this.setSize(w,h);
+            if(
+                (
+                    this.headerEl.getHeight() + 
+                    this.bodyEl.getHeight() + 
+                    this.footerEl.getHeight()
+                ) > view_height) {
+            } {
+                this.setSize(w,view_height);
+            }
         }
         
     },
