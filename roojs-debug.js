@@ -9146,7 +9146,18 @@ if(opt.anim.isAnimated()){
            
             if(typeof msg == 'string'){
                 if(!this._maskMsg){
-                    this._maskMsg = Roo.DomHelper.append(this.dom, {cls:"roo-el-mask-msg", cn:{tag:'div'}}, true);
+                    this._maskMsg = Roo.DomHelper.append(this.dom, {
+                        cls: "roo-el-mask-msg", 
+                        cn: [
+                            {
+                                tag: 'i',
+                                cls: 'fa fa-spinner fa-spin'
+                            },
+                            {
+                                tag: 'div'
+                            }   
+                        ]
+                    }, true);
                 }
                 var mm = this._maskMsg;
                 mm.dom.className = msgCls ? "roo-el-mask-msg " + msgCls : "roo-el-mask-msg";
@@ -57179,6 +57190,9 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
      */
     /**
      * @cfg {String} align (Optional) Set the CSS text-align property of the column.  Defaults to undefined.
+     */
+    /**
+     * @cfg {String} valign (Optional) Set the CSS vertical-align property of the column (eg. middle, top, bottom etc).  Defaults to undefined.
      */
     /**
      * @cfg {String} cursor (Optional)
