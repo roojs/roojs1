@@ -2833,35 +2833,18 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             
             var w = Math.min(this.max_width, Roo.lib.Dom.getViewportWidth(true) - 30);
             
-            Roo.log(this.height);
-            
             if(this.height) {
-                this.setSize(w, this.height || Roo.lib.Dom.getViewportHeight(true) - 60);
+                this.setSize(w, this.height);
                 return;
             }
             
-            var view_height = Roo.lib.Dom.getViewportHeight(true) - 60;
-            
             var body_childs = this.bodyEl.dom.childNodes;
-            var body_height = 0;
+            var full_height = this.headerEl.getHeight() + this.footerEl.getHeight();
             for(var i = 0; i < body_childs.length; i++) {
-                body_height += body_childs[i].offsetHeight;
+                full_height += body_childs[i].offsetHeight;
             }
             
-            // this.setSize(w, this.height || view_height);
-            
-            
-            
-            // 
-            // if(
-            //     (
-            //         this.headerEl.getHeight() + 
-            //         this.bodyEl.getHeight() + 
-            //         this.footerEl.getHeight()
-            //     ) > view_height) {
-            // } {
-            //     this.setSize(w,view_height);
-            // }
+            this.setSize(w, Math.min(full_height, Roo.lib.Dom.getViewportHeight(true) - 60));
         }
         
     },
