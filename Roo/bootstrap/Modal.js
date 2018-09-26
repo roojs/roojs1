@@ -274,7 +274,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.setSize(w,this.height);
             
             var view_height = Roo.lib.Dom.getViewportHeight(true) - 60;
-            
+            var modal_height = this.headerEl.getHeight() + this.bodyEl.getHeight() + this.footerEl.getHeight();
             if(
                 (
                     this.headerEl.getHeight() + 
