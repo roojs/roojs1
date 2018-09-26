@@ -275,7 +275,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             var body_childs = this.bodyEl.dom.childNodes;
             var body_height = 0;
             for(var i = 0; i < body_childs.length; i++) {
-                
+                body_height += body_childs[i].offsetHeight;
             }
             
             this.setSize(w, this.height || view_height);
