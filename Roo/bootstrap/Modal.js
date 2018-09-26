@@ -275,7 +275,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             Roo.log(this.height);
             
             if(this.height) {
-                this.setSize(w, this.height);
+                this.setSize(w, this.height || Roo.lib.Dom.getViewportHeight(true) - 60);
                 return;
             }
             
