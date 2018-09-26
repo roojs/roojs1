@@ -2830,11 +2830,28 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         }
         
         if(!this.fitwindow && this.max_width !== 0){
+            
             var w = Math.min(this.max_width, Roo.lib.Dom.getViewportWidth(true) - 30);
-            // var h = this.height || Roo.lib.Dom.getViewportHeight(true) - 60;
-            this.setSize(w, this.height || Roo.lib.Dom.getViewportHeight(true) - 60);
-            Roo.log(this.bodyEl.dom.offsetHeight);
+            
+            Roo.log(this.height);
+            
+            if(this.height) {
+                this.setSize(w, this.height);
+                return;
+            }
+            
             var view_height = Roo.lib.Dom.getViewportHeight(true) - 60;
+            
+            var body_childs = this.bodyEl.dom.childNodes;
+            var body_height = 0;
+            for(var i = 0; i < body_childs.length; i++) {
+                body_height += body_childs[i].offsetHeight;
+            }
+            
+            // this.setSize(w, this.height || view_height);
+            
+            
+            
             // 
             // if(
             //     (

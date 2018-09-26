@@ -272,12 +272,12 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             
             var w = Math.min(this.max_width, Roo.lib.Dom.getViewportWidth(true) - 30);
             
+            Roo.log(this.height);
+            
             if(this.height) {
                 this.setSize(w, this.height);
                 return;
             }
-            
-            if()
             
             var view_height = Roo.lib.Dom.getViewportHeight(true) - 60;
             
@@ -287,7 +287,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                 body_height += body_childs[i].offsetHeight;
             }
             
-            this.setSize(w, this.height || view_height);
+            // this.setSize(w, this.height || view_height);
             
             
             
