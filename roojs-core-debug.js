@@ -9146,7 +9146,18 @@ if(opt.anim.isAnimated()){
            
             if(typeof msg == 'string'){
                 if(!this._maskMsg){
-                    this._maskMsg = Roo.DomHelper.append(this.dom, {cls:"roo-el-mask-msg", cn:{tag:'div'}}, true);
+                    this._maskMsg = Roo.DomHelper.append(this.dom, {
+                        cls: "roo-el-mask-msg", 
+                        cn: [
+                            {
+                                tag: 'i',
+                                cls: 'fa fa-spinner fa-spin'
+                            },
+                            {
+                                tag: 'div'
+                            }   
+                        ]
+                    }, true);
                 }
                 var mm = this._maskMsg;
                 mm.dom.className = msgCls ? "roo-el-mask-msg " + msgCls : "roo-el-mask-msg";
