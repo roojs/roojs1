@@ -277,14 +277,13 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                 return;
             }
             
-            var view_height = Roo.lib.Dom.getViewportHeight(true) - 60;
             var body_childs = this.bodyEl.dom.childNodes;
             var full_height = this.headerEl.getHeight() + this.footerEl.getHeight();
             for(var i = 0; i < body_childs.length; i++) {
                 full_height += body_childs[i].offsetHeight;
             }
             
-            this.setSize(w, Math.min(full_height, view_height));
+            this.setSize(w, Math.min(full_height, Roo.lib.Dom.getViewportHeight(true) - 60));
         }
         
     },
