@@ -2171,7 +2171,7 @@ button.list-group-item {
   /*border: 4px double #557; */
   background-color: #ffffff;
   padding: 0px 30px;
-  background-image: url('../images/ux/lightbox/loading.gif');
+  /*background-image: url('@{bootstrap-image-path}/ux/lightbox/loading.gif');*/
   background-repeat: no-repeat;
   border: 10px solid white;
   border-radius: 20px;
