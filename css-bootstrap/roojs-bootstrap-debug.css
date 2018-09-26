@@ -2178,7 +2178,9 @@ button.list-group-item {
   display: table;
 }
 .roo-el-mask-msg i {
+  font-size: 48px;
   display: table-cell;
+  vertical-align: middle;
 }
 .roo-el-mask-msg div {
   font-family: 'Source Sans Pro', sans-serif;
@@ -2188,6 +2190,7 @@ button.list-group-item {
   padding: 4px 15px;
   color: #555555;
   display: table-cell;
+  vertical-align: middle;
 }
 .x-body-masked {
   overflow: hidden !important;
