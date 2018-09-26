@@ -2839,7 +2839,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             }
             
             var body_childs = this.bodyEl.dom.childNodes;
-            var full_height = this.headerEl.getHeight() + this.footerEl.getHeight();
+            var full_height = this.headerEl.getHeight() + this.footerEl.getHeight() + 60;
             for(var i = 0; i < body_childs.length; i++) {
                 full_height += body_childs[i].offsetHeight;
             }
