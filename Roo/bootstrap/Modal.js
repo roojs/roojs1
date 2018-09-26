@@ -284,10 +284,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                 full_height += body_childs[i].offsetHeight;
             }
             
-            if(body_height + this.headerEl.getHeight() + this.footerEl.getHeight() > view_height) {
-                this.setSize(w, Math.min);
-            }
-            
+            this.setSize(w, Math.min(full_height, view_height));
         }
         
     },
