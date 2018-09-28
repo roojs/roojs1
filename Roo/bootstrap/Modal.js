@@ -276,7 +276,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             // for fix height
             if(this.height) {
                 this.setSize(w, this.height);
-                Roo.log('this height??');
                 return;
             }
             
