@@ -2645,7 +2645,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     size: '',
     
     max_width: 0,
-
+    
+    fit_content: false,
 
     onRender : function(ct, position)
     {
@@ -2832,20 +2833,32 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         if(!this.fitwindow && this.max_width !== 0){
             
             var w = Math.min(this.max_width, Roo.lib.Dom.getViewportWidth(true) - 30);
-            this.setSize(w, this.height || Roo.lib.Dom.getViewportHeight(true) - 60);
+            
             // for fix height
             if(this.height) {
                 this.setSize(w, this.height);
                 return;
             }
             
+            if(!this.fit_content) {
+                this.setSize(w, Roo.lib.Dom.getViewportHeight(true) - 60);
+            }
+            
             var body_childs = this.bodyEl.dom.childNodes;
             var full_height = this.headerEl.getHeight() + this.footerEl.getHeight();
             for(var i = 0; i < body_childs.length; i++) {
+                
+                if(body_childs[i].classList.indexOf('roo-layout-region') * 1 != -1) {
+                    var layout_childs = body_childs[i].childNodes;
+                    for(var j = 0; j < layout_childs.length; j++) {
+                
+                    }
+                }
+                
                 full_height += body_childs[i].offsetHeight;
             }
             
-            // this.setSize(w, Math.min(full_height, Roo.lib.Dom.getViewportHeight(true) - 60));
+            this.setSize(w, Math.min(full_height, Roo.lib.Dom.getViewportHeight(true) - 60));
         }
         
     },
@@ -34692,13 +34705,13 @@ Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
     bindRegion : function(r){
         this.regions[r.config.region] = r;
         
-        // r.on("visibilitychange",    this.layout, this);
-        // r.on("paneladded",          this.layout, this);
-        // r.on("panelremoved",        this.layout, this);
-        // r.on("invalidated",         this.layout, this);
-        // r.on("resized",             this.onRegionResized, this);
-        // r.on("collapsed",           this.onRegionCollapsed, this);
-        // r.on("expanded",            this.onRegionExpanded, this);
+        r.on("visibilitychange",    this.layout, this);
+        r.on("paneladded",          this.layout, this);
+        r.on("panelremoved",        this.layout, this);
+        r.on("invalidated",         this.layout, this);
+        r.on("resized",             this.onRegionResized, this);
+        r.on("collapsed",           this.onRegionCollapsed, this);
+        r.on("expanded",            this.onRegionExpanded, this);
     },
 
     /**
