@@ -283,8 +283,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             for(var i = 0; i < body_childs.length; i++) {
                 
                 if(body_childs[i].classList.indexOf('roo-layout-region') * 1 != -1) {
-                    
                     var layout_childs = body_childs[i].childNodes;
+                    for(var j = 0; j < layout_childs.length; j++) {
                     
                 }
                 
