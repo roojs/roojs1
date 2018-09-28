@@ -282,12 +282,12 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             var full_height = this.headerEl.getHeight() + this.footerEl.getHeight();
             for(var i = 0; i < body_childs.length; i++) {
                 
-                if(body_childs[i].classList.indexOf('roo-layout-region') * 1 != -1) {
-                    var layout_childs = body_childs[i].childNodes;
-                    for(var j = 0; j < layout_childs.length; j++) {
-                        
-                    }
-                }
+                // if(body_childs[i].classList.indexOf('roo-layout-region') * 1 != -1) {
+                //     var layout_childs = body_childs[i].childNodes;
+                //     for(var j = 0; j < layout_childs.length; j++) {
+                // 
+                //     }
+                // }
                 
                 full_height += body_childs[i].offsetHeight;
             }
