@@ -292,7 +292,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                 full_height += body_childs[i].offsetHeight;
             }
             
-            // this.setSize(w, Math.min(full_height, Roo.lib.Dom.getViewportHeight(true) - 60));
+            this.setSize(w, Math.min(full_height, Roo.lib.Dom.getViewportHeight(true) - 60));
         }
         
     },
