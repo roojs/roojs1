@@ -2822,27 +2822,31 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
 
     resize : function()
     {
-        this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true),  Roo.lib.Dom.getViewHeight(true));
+        this.maskEl.setSize(
+            Roo.lib.Dom.getViewWidth(true),
+            Roo.lib.Dom.getViewHeight(true)
+        );
         
         if (this.fitwindow) {
-            var w = this.width || Roo.lib.Dom.getViewportWidth(true) - 30;
-            var h = this.height || Roo.lib.Dom.getViewportHeight(true) - 60;
-            this.setSize(w,h);
+            this.setSize(
+                this.width || Roo.lib.Dom.getViewportWidth(true) - 30,
+                this.height || Roo.lib.Dom.getViewportHeight(true) - 60
+            );
+            return;
         }
         
-        if(!this.fitwindow && this.max_width !== 0){
+        Roo.log('testing');
+        
+        if(this.max_width !== 0) {
             
             var w = Math.min(this.max_width, Roo.lib.Dom.getViewportWidth(true) - 30);
             
-            // for fix height
             if(this.height) {
                 this.setSize(w, this.height);
-                Roo.log('this height??');
                 return;
             }
             
             if(!this.fit_content) {
-                Roo.log('not fitting???');
                 this.setSize(w, Roo.lib.Dom.getViewportHeight(true) - 60);
                 return;
             }
@@ -2850,14 +2854,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             var body_childs = this.bodyEl.dom.childNodes;
             var full_height = this.headerEl.getHeight() + this.footerEl.getHeight();
             for(var i = 0; i < body_childs.length; i++) {
-                
-                // if(body_childs[i].classList.indexOf('roo-layout-region') * 1 != -1) {
-                //     var layout_childs = body_childs[i].childNodes;
-                //     for(var j = 0; j < layout_childs.length; j++) {
-                // 
-                //     }
-                // }
-                
                 full_height += body_childs[i].offsetHeight;
             }
             
