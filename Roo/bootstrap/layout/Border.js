@@ -60,13 +60,13 @@ Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
     bindRegion : function(r){
         this.regions[r.config.region] = r;
         
-        // r.on("visibilitychange",    this.layout, this);
-        // r.on("paneladded",          this.layout, this);
-        // r.on("panelremoved",        this.layout, this);
-        // r.on("invalidated",         this.layout, this);
-        // r.on("resized",             this.onRegionResized, this);
-        // r.on("collapsed",           this.onRegionCollapsed, this);
-        // r.on("expanded",            this.onRegionExpanded, this);
+        r.on("visibilitychange",    this.layout, this);
+        r.on("paneladded",          this.layout, this);
+        r.on("panelremoved",        this.layout, this);
+        r.on("invalidated",         this.layout, this);
+        r.on("resized",             this.onRegionResized, this);
+        r.on("collapsed",           this.onRegionCollapsed, this);
+        r.on("expanded",            this.onRegionExpanded, this);
     },
 
     /**
