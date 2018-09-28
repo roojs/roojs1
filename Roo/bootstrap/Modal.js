@@ -84,7 +84,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     size: '',
     
     max_width: 0,
-
+    
+    fix_content: false,
 
     onRender : function(ct, position)
     {
