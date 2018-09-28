@@ -2842,6 +2842,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             
             if(!this.fit_content) {
                 this.setSize(w, Roo.lib.Dom.getViewportHeight(true) - 60);
+                return;
             }
             
             var body_childs = this.bodyEl.dom.childNodes;
