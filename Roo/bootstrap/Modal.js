@@ -289,6 +289,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             }
             
             var body_childs = this.bodyEl.dom.childNodes;
+            // does not seem to give enough space...
             var full_height = 60 + this.headerEl.getHeight() + this.footerEl.getHeight();
             for(var i = 0; i < body_childs.length; i++) {
                 full_height += body_childs[i].offsetHeight;

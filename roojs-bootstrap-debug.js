@@ -2835,8 +2835,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             return;
         }
         
-        Roo.log('testing');
-        
         if(this.max_width !== 0) {
             
             var w = Math.min(this.max_width, Roo.lib.Dom.getViewportWidth(true) - 30);
@@ -2852,7 +2850,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             }
             
             var body_childs = this.bodyEl.dom.childNodes;
-            var full_height = this.headerEl.getHeight() + this.footerEl.getHeight();
+            // does not seem to give enough space...
+            var full_height = 60 + this.headerEl.getHeight() + this.footerEl.getHeight();
             for(var i = 0; i < body_childs.length; i++) {
                 full_height += body_childs[i].offsetHeight;
             }
