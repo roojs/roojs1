@@ -2633,8 +2633,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     animate : true,
 
     fitwindow: false,
-
-
+    
      // private
     dialogEl: false,
     bodyEl:  false,
@@ -2645,6 +2644,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     size: '',
     
     max_width: 0,
+    
+    max_height: 0,
     
     fit_content: false,
 
@@ -2840,11 +2841,16 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             var w = Math.min(this.max_width, Roo.lib.Dom.getViewportWidth(true) - 30);
             
             if(this.height) {
-                this.setSize(
-                    w,
-                    this.height <= Roo.lib.Dom.getViewportHeight(true) - 60 ? 
-                        this.height : Roo.lib.Dom.getViewportHeight(true) - 60
-                );
+                this.setSize(w, this.height);
+                return;
+            }
+            
+            if(this.max_height) {
+                this.setSize(w,Math.min(
+                    this.max_height,
+                    Roo.lib.Dom.getViewportHeight(true) - 60
+                ));
+                
                 return;
             }
             
@@ -3037,7 +3043,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         for(var i = 0; i < child_nodes.length; i++) {
             
-            // for modal with tabs...
+            /*
+            * for modal with tabs...
             if(child_nodes[i].classList.contains('roo-layout-panel')) {
                 
                 var layout_childs = child_nodes[i].childNodes;
@@ -3052,7 +3059,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                             
                             if(layout_body_childs[k].classList.contains('navbar')) {
                                 child_height += layout_body_childs[k].offsetHeight;
-                                // Roo.log('nav height: '+ layout_body_childs[k].offsetHeight);
                                 continue;
                             }
                             
@@ -3064,7 +3070,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                                     
                                     if(layout_body_tab_childs[m].classList.contains('roo-layout-active-content')) {
                                         child_height += this.getChildHeight(layout_body_tab_childs[m].childNodes);
-                                        // Roo.log('active panel height: '+this.getChildHeight(layout_body_tab_childs[m].childNodes));
                                         continue;
                                     }
                                     
@@ -3077,8 +3082,10 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                 }
                 continue;
             }
+            */
             
             child_height += child_nodes[i].offsetHeight;
+            // Roo.log(child_nodes[i].offsetHeight);
         }
         
         return child_height;
