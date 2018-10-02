@@ -491,7 +491,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                             
                             if(layout_body_childs[k].classList.contains('navbar')) {
                                 child_height += layout_body_childs[k].offsetHeight;
-                                Roo.log('nav height: '+ layout_body_childs[k].offsetHeight);
+                                // Roo.log('nav height: '+ layout_body_childs[k].offsetHeight);
                                 continue;
                             }
                             
@@ -503,7 +503,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                                     
                                     if(layout_body_tab_childs[m].classList.contains('roo-layout-active-content')) {
                                         child_height += this.getChildHeight(layout_body_tab_childs[m].childNodes);
-                                        Roo.log('active panel height: '+this.getChildHeight(layout_body_tab_childs[m].childNodes));
+                                        // Roo.log('active panel height: '+this.getChildHeight(layout_body_tab_childs[m].childNodes));
                                         continue;
                                     }
                                     
