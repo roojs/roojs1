@@ -2601,11 +2601,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if(this._touchViewMask){
             this._touchViewMask.setSize(Roo.lib.Dom.getViewWidth(true),   Roo.lib.Dom.getViewHeight(true));
-            this._touchViewMask.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
+            this._touchViewMask.setStyle('z-index', 10000);
             this._touchViewMask.addClass('show');
         }
         
-
         this.doTouchViewQuery();
         
     },
