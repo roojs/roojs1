@@ -2739,7 +2739,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var listHeight = this.touchViewListGroup.getHeight();
         
         if(this.mobile_restrict_height && listHeight < bodyHeight){
-            this.touchViewBodyEl.setHeight(listHeight);
+            this.touchViewBodyEl.setHeight(listHeight + this.touchViewBodyEl.getPadding('tb'));
         }
         
         var _this = this;
