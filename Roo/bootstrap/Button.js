@@ -371,15 +371,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     {
         return this.el.select('.roo-button-text',true).first().dom.innerHTML;
     },
-    hide: function() {
-       
-     
-        this.el.hide();   
-    },
-    show: function() {
-       
-        this.el.show();   
-    },
+    
     setWeight : function(str)
     {
     	this.el.removeClass(this.weightClass);

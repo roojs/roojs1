@@ -319,6 +319,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
     useNativeIOS : false,
     
+    /**
+     * @cfg {Boolean} mobile_restrict_height (true|false) restrict height for touch view
+     */
+    mobile_restrict_height : false,
+    
     ios_options : false,
     
     //private
@@ -2536,6 +2541,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             document.activeElement.blur();
         }, this);
         
+        this._touchViewMask = Roo.DomHelper.append(document.body, {tag: "div", cls:"x-dlg-mask"}, true);
+        
         return;
         
         
@@ -2596,7 +2603,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }else{
             this.touchViewEl.addClass('in');
         }
-
+        
+        if(this._touchViewMask){
+            Roo.get(document.body).addClass("x-body-masked");
+            this._touchViewMask.setSize(Roo.lib.Dom.getViewWidth(true),   Roo.lib.Dom.getViewHeight(true));
+            this._touchViewMask.setStyle('z-index', 10000);
+            this._touchViewMask.addClass('show');
+        }
+        
         this.doTouchViewQuery();
         
     },
@@ -2612,6 +2626,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.touchViewEl.setStyle('display', 'none');
         }
         
+        if(this._touchViewMask){
+            this._touchViewMask.removeClass('show');
+            Roo.get(document.body).removeClass("x-body-masked");
+        }
     },
     
     setTouchViewValue : function()
@@ -2718,7 +2736,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             bodyHeight = bodyHeight - this.touchViewHeaderEl.getHeight();
         }
 
-        var listHeight = this.touchViewListGroup.getHeight();
+        var listHeight = this.touchViewListGroup.getHeight() + this.touchViewBodyEl.getPadding('tb') * 2;
+        
+        if(this.mobile_restrict_height && listHeight < bodyHeight){
+            this.touchViewBodyEl.setHeight(listHeight);
+        }
         
         var _this = this;
         
