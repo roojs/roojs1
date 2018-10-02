@@ -15275,6 +15275,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             document.activeElement.blur();
         }, this);
         
+        this._touchViewMask = Roo.DomHelper.append(document.body, {tag: "div", cls:"x-dlg-mask"}, true);
+        
         return;
         
         
@@ -15335,7 +15337,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }else{
             this.touchViewEl.addClass('in');
         }
-
+        
+        if(this._touchViewMask){
+            Roo.get(document.body).addClass("x-body-masked");
+            this._touchViewMask.setSize(Roo.lib.Dom.getViewWidth(true),   Roo.lib.Dom.getViewHeight(true));
+            this._touchViewMask.setStyle('z-index', 10000);
+            this._touchViewMask.addClass('show');
+        }
+        
         this.doTouchViewQuery();
         
     },
@@ -15351,6 +15360,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.touchViewEl.setStyle('display', 'none');
         }
         
+        if(this._touchViewMask){
+            this._touchViewMask.removeClass('show');
+            Roo.get(document.body).removeClass("x-body-masked");
+        }
     },
     
     setTouchViewValue : function()
