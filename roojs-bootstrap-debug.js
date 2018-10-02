@@ -15475,7 +15475,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             bodyHeight = bodyHeight - this.touchViewHeaderEl.getHeight();
         }
 
-        var listHeight = this.touchViewListGroup.getHeight();
+        var listHeight = this.touchViewListGroup.getHeight() + this.touchViewBodyEl.getPadding('tb');
+        
+        Roo.log(this.touchViewListGroup.getHeight());
+        Roo.log(this.touchViewListGroup.getHeight(true));
+        Roo.log(this.touchViewBodyEl.getPadding('tb'));
         
         if(this.mobile_restrict_height && listHeight < bodyHeight){
             this.touchViewBodyEl.setHeight(listHeight);
