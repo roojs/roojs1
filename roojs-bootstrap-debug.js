@@ -2853,14 +2853,13 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                 return;
             }
             
-            var body_childs = this.bodyEl.dom.childNodes;
-            // does not seem to give enough space...
-            var full_height = 60 + this.headerEl.getHeight() + this.footerEl.getHeight();
-            for(var i = 0; i < body_childs.length; i++) {
-                full_height += body_childs[i].offsetHeight;
-            }
-            
-            this.setSize(w, Math.min(full_height, Roo.lib.Dom.getViewportHeight(true) - 60));
+            this.setSize(w, Math.min(
+                60 +
+                this.headerEl.getHeight() + 
+                this.footerEl.getHeight() + 
+                this.getChildHeight(this.bodyEl.dom.childNodes),
+                Roo.lib.Dom.getViewportHeight(true) - 60)
+            );
         }
         
     },
@@ -2870,8 +2869,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         if (!w && !h) {
             return;
         }
-        
-        Roo.log(h);
         
         this.resizeTo(w,h);
     },
@@ -3025,6 +3022,66 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             //code
         }
         this.tmpl.overwrite(this.bodyEl, obj);
+    },
+    
+    getChildHeight : function(child_nodes)
+    {
+        if(
+            !child_nodes ||
+            child_nodes.length == 0
+        ) {
+            return;
+        }
+        
+        var child_height = 0;
+        
+        for(var i = 0; i < child_nodes.length; i++) {
+            
+            // for modal with tabs...
+            if(child_nodes[i].classList.contains('roo-layout-panel')) {
+                
+                var layout_childs = child_nodes[i].childNodes;
+                
+                for(var j = 0; j < layout_childs.length; j++) {
+                    
+                    if(layout_childs[j].classList.contains('roo-layout-panel-body')) {
+                        
+                        var layout_body_childs = layout_childs[j].childNodes;
+                        
+                        for(var k = 0; k < layout_body_childs.length; k++) {
+                            
+                            if(layout_body_childs[k].classList.contains('navbar')) {
+                                child_height += layout_body_childs[k].offsetHeight;
+                                Roo.log('nav height: '+ layout_body_childs[k].offsetHeight);
+                                continue;
+                            }
+                            
+                            if(layout_body_childs[k].classList.contains('roo-layout-tabs-body')) {
+                                
+                                var layout_body_tab_childs = layout_body_childs[k].childNodes;
+                                
+                                for(var m = 0; m < layout_body_tab_childs.length; m++) {
+                                    
+                                    if(layout_body_tab_childs[m].classList.contains('roo-layout-active-content')) {
+                                        child_height += this.getChildHeight(layout_body_tab_childs[m].childNodes);
+                                        Roo.log('active panel height: '+this.getChildHeight(layout_body_tab_childs[m].childNodes));
+                                        continue;
+                                    }
+                                    
+                                }
+                                
+                            }
+                            
+                        }
+                    }
+                }
+                continue;
+            }
+            
+            child_height += child_nodes[i].offsetHeight;
+        }
+        
+        return child_height;
     }
 
 });
