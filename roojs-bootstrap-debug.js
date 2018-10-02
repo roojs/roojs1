@@ -8316,11 +8316,6 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 return;
             }
             
-            if(f.xtype == 'DateField'){
-                f.setVisible(false);
-                return;
-            }
-            
             f.hide();
             
         }, this);
@@ -8333,11 +8328,6 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             var f = this.findField(i);
             
             if(!f){
-                return;
-            }
-            
-            if(f.xtype == 'DateField'){
-                f.setVisible(true);
                 return;
             }
             
