@@ -2599,6 +2599,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.touchViewEl.addClass('in');
         }
         
+        if(this._touchViewMask){
+            Roo.get(document.body).addClass("x-body-masked");
+            this._touchViewMask.setSize(Roo.lib.Dom.getViewWidth(true),   Roo.lib.Dom.getViewHeight(true));
+            this._touchViewMask.setStyle('z-index', 10000);
+            this._touchViewMask.addClass('show');
+        }
+        
         this.doTouchViewQuery();
         
     },
