@@ -2621,6 +2621,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.touchViewEl.setStyle('display', 'none');
         }
         
+        if(this._touchViewMask){
+            this._touchViewMask.removeClass('show');
+            Roo.get(document.body).removeClass("x-body-masked");
+        }
+        
+        
     },
     
     setTouchViewValue : function()
