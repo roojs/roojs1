@@ -2536,7 +2536,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             document.activeElement.blur();
         }, this);
         
-        
+        this._touchViewMask = Roo.DomHelper.append(this.dom, {cls:"roo-el-mask"}, true);
         
         return;
         
