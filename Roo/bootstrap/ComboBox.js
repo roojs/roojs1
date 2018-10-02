@@ -106,13 +106,8 @@ Roo.bootstrap.ComboBox = function(config){
             * @param {Roo.bootstrap.ComboBox} combo This combo box
             * @param {Object} cfg set html .
             */
-        'touchviewdisplay' : true,
-        /**
-         * @event ontouchviewload
-         * Fires when touch view load (local store)
-         * @param {Roo.bootstrap.ComboBox} combo This combo box
-        */
-        'ontouchviewload' : true
+        'touchviewdisplay' : true
+        
     });
     
     this.item = [];
@@ -2730,8 +2725,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(firstChecked && listHeight > bodyHeight){
             (function() { firstChecked.findParent('li').scrollIntoView(_this.touchViewListGroup.dom); }).defer(500);
         }
-        
-        this.fireEvent('ontouchviewload', this);
         
     },
     
