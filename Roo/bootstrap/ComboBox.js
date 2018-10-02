@@ -106,8 +106,13 @@ Roo.bootstrap.ComboBox = function(config){
             * @param {Roo.bootstrap.ComboBox} combo This combo box
             * @param {Object} cfg set html .
             */
-        'touchviewdisplay' : true
-        
+        'touchviewdisplay' : true,
+        /**
+         * @event ontouchviewload
+         * Fires when touch view load (local store)
+            * @param {Roo.bootstrap.ComboBox} combo This combo box
+            */
+        'ontouchviewload' : true
     });
     
     this.item = [];
