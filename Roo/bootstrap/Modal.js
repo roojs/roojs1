@@ -278,19 +278,12 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             
             var w = Math.min(this.max_width, Roo.lib.Dom.getViewportWidth(true) - 30);
             
-            if(
-                this.height &&
-                this.height <= Roo.lib.Dom.getViewportHeight(true) - 60
-            ) {
-                this.setSize(w, this.height);
-                return;
-            }
-            
-            if(
-                this.height &&
-                this.height > Roo.lib.Dom.getViewportHeight(true) - 60
-            ) {
-                this.setSize(w, Roo.lib.Dom.getViewportHeight(true) - 60);
+            if(this.height) {
+                this.setSize(
+                    w,
+                    this.height <= Roo.lib.Dom.getViewportHeight(true) - 60 ? 
+                        this.height : Roo.lib.Dom.getViewportHeight(true) - 60
+                );
                 return;
             }
             
@@ -316,6 +309,9 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         if (!w && !h) {
             return;
         }
+        
+        Roo.log(h);
+        
         this.resizeTo(w,h);
     },
 
@@ -429,7 +425,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.diff = this.dialogEl.getHeight() - this.bodyEl.getHeight();
         }
 
-        this.bodyEl.setHeight(h-this.diff);
+        this.bodyEl.setHeight(h - this.diff);
 
         this.fireEvent('resize', this);
 
