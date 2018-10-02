@@ -13058,6 +13058,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
     useNativeIOS : false,
     
+    /**
+     * @cfg {Boolean} mobile_restrict_height (true|false) restrict height for touch view
+     */
+    mobile_restrict_height : false,
+    
     ios_options : false,
     
     //private
@@ -15471,6 +15476,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
 
         var listHeight = this.touchViewListGroup.getHeight();
+        
+        if(this.mobile_restrict_height && listHeight < bodyHeight){
+            this.touchViewBodyEl.setHeight(listHeight);
+        }
         
         var _this = this;
         
