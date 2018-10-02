@@ -2726,7 +2726,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             (function() { firstChecked.findParent('li').scrollIntoView(_this.touchViewListGroup.dom); }).defer(500);
         }
         
-        this.fireEvent('onlocaltouchviewload', this, r, rowIndex) !== false
+        this.fireEvent('ontouchviewload', this);
         
     },
     
