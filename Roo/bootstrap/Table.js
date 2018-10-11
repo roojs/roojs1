@@ -1155,9 +1155,13 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         this.onHeaderChange();
         this.onLoad();
+    },
+    
+    setColumnWidth: function(col_index, width)
+    {
+        // width = "md-2 xs-2..."
         
     }
-    
 });
 
  
