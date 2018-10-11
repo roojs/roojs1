@@ -7089,8 +7089,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var thSelector = '#' + this.id + ' .x-hcol-' + colIndex;
         var tdSelector = '#' + this.id + ' .x-col-' + colIndex;
         
-        Roo.log(this.CSS);
-        
         this.CSS.updateRule(thSelector, "display", "");
         this.CSS.updateRule(tdSelector, "display", "");
         
@@ -7101,9 +7099,19 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         this.onHeaderChange();
         this.onLoad();
-        
-    }
+    },
     
+    setColumnWidth: function(col_index, width)
+    {
+        // width = "md-2 xs-2..."
+        if(!this.colModel.config[col_index]) {
+            return;
+        }
+        
+        var w = width.split(" ");
+        
+        Roo.log(w);
+    }
 });
 
  
