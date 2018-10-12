@@ -1170,12 +1170,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var h_row = this.el.dom.getElementsByClassName("x-hcol-"+col_index);
         
-        h_rows[i].classList.replace(
+        h_row[i].classList.replace(
             "col-"+size_cls[0]+"-"+this.colModel.config[col_index][size_cls[0]],
             "col-"+size_cls[0]+"-"+size_cls[1]
         );
         
-        this.colModel.config[col_index][size_cls[0]] = size_cls[1]
+        this.colModel.config[col_index][size_cls[0]] = size_cls[1];
         
         for(var i = 0; i < rows.length; i++) {
             
