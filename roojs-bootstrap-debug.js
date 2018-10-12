@@ -7114,7 +7114,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var h_row = this.el.dom.getElementsByClassName("x-hcol-"+col_index);
         
-        h_row[i].classList.replace(
+        h_row.classList.replace(
             "col-"+size_cls[0]+"-"+this.colModel.config[col_index][size_cls[0]],
             "col-"+size_cls[0]+"-"+size_cls[1]
         );
