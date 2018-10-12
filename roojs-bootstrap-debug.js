@@ -7140,11 +7140,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 "col-"+size_cls[0]+"-"+size_cls[1]
             );
             
-            this.colModel.config[col_index][size_cls[0]] = size_cls[1];
-        }
-        
-        for(var i = 0; i < rows.length; i++) {
-            
             for(var j = 0; j < w.length; j++) {
                 
                 var size_cls = w[j].split("-");
@@ -7157,8 +7152,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     continue;
                 }
                 
-                Roo.log('returning..');
-                
                 if(!rows[i].classList.contains("col-"+size_cls[0]+"-"+this.colModel.config[col_index][size_cls[0]])) {
                     continue;
                 }
@@ -7168,6 +7161,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     "col-"+size_cls[0]+"-"+size_cls[1]
                 );
             }
+            
+            this.colModel.config[col_index][size_cls[0]] = size_cls[1];
         }
     }
 });
