@@ -1173,6 +1173,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         for(var j = 0; w.length; j++) {
             
+            Roo.log(w[j]);
+            
             if(!w[j]) {
                 continue;
             }
