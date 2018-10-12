@@ -1171,7 +1171,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var h_row = this.el.dom.getElementsByClassName("x-hcol-"+col_index);
         
         
-        for(var j = 0; w.length; j++) {
+        for(var j = 0; j < w.length; j++) {
             
             if(!w[j]) {
                 continue;
@@ -1197,7 +1197,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         for(var i = 0; i < rows.length; i++) {
             
-            for(var j = 0; w.length; j++) {
+            for(var j = 0; j < w.length; j++) {
                 
                 var size_cls = w[j].split("-");
                 
