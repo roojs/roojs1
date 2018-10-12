@@ -1196,7 +1196,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 "col-"+size_cls[0]+"-"+size_cls[1]
             );
             
-            for(var j = 0; j < w.length; j++) {
+            for(var i = 0; i < rows.length; i++) {
                 
                 var size_cls = w[j].split("-");
                 

@@ -282,7 +282,7 @@ var B=Math.ceil(this.mainBody.getScroll().top);var C=this.mainBody.getHeight();i
 ,add:true});}}}},onHeaderChange:function(){var A=this.renderHeader();var B=this.el.select('table',true).first();this.mainHead.remove();this.mainHead=B.createChild(A,this.mainBody,false);},onHiddenChange:function(A,B,C){var D='#'+this.id+' .x-hcol-'+B;var E='#'+this.id+' .x-col-'+B;
 this.CSS.updateRule(D,"display","");this.CSS.updateRule(E,"display","");if(C){this.CSS.updateRule(D,"display","none");this.CSS.updateRule(E,"display","none");}this.onHeaderChange();this.onLoad();},setColumnWidth:function(A,B){if(!this.colModel.config[A]){return;
 }var w=B.split(" ");var C=this.el.dom.getElementsByClassName("x-col-"+A);var D=this.el.dom.getElementsByClassName("x-hcol-"+A);for(var j=0;j<w.length;j++){if(!w[j]){continue;}var E=w[j].split("-");if(!Number.isInteger(E[1]*1)){continue;}if(!this.colModel.config[A][E[0]]){continue;
-}if(!D[0].classList.contains("col-"+E[0]+"-"+this.colModel.config[A][E[0]])){continue;}D[0].classList.replace("col-"+E[0]+"-"+this.colModel.config[A][E[0]],"col-"+E[0]+"-"+E[1]);for(var j=0;j<w.length;j++){var E=w[j].split("-");if(!Number.isInteger(E[1]*1)){continue;
+}if(!D[0].classList.contains("col-"+E[0]+"-"+this.colModel.config[A][E[0]])){continue;}D[0].classList.replace("col-"+E[0]+"-"+this.colModel.config[A][E[0]],"col-"+E[0]+"-"+E[1]);for(var i=0;i<C.length;i++){var E=w[j].split("-");if(!Number.isInteger(E[1]*1)){continue;
 }if(!this.colModel.config[A][E[0]]){continue;}if(!C[i].classList.contains("col-"+E[0]+"-"+this.colModel.config[A][E[0]])){continue;}C[i].classList.replace("col-"+E[0]+"-"+this.colModel.config[A][E[0]],"col-"+E[0]+"-"+E[1]);}this.colModel.config[A][E[0]]=E[1];
 }}});
 // Roo/bootstrap/TableCell.js
