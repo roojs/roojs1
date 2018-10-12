@@ -7117,7 +7117,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         for(var j = 0; w.length; j++) {
             
-            if(w[j].length * 1 == 0) {
+            if(!w[j]) {
                 continue;
             }
             
