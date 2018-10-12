@@ -1182,7 +1182,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     continue;
                 }
                 
-                this.colModel.config[col_index][size_cls[0]] = size_cls
+                rows[i].classList.remove()
+                
+                this.colModel.config[col_index][size_cls[0]] = size_cls[1]
             }
         }
     }
