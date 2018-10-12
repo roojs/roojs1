@@ -1174,11 +1174,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 
                 var size_cls = w[j].split("-");
                 
+                if(!Number.isInteger(size_cls[1] * 1)) {
+                    return;
+                }
+                
                 if(!this.colModel.config[col_index][size_cls[0]]) {
                     continue;
                 }
                 
-                
+                this.colModel.config[col_index][size_cls[0]]
             }
         }
     }
