@@ -7143,8 +7143,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             this.colModel.config[col_index][size_cls[0]] = size_cls[1];
         }
         
-        Roo.log(rows);
-        
         for(var i = 0; i < rows.length; i++) {
             
             for(var j = 0; j < w.length; j++) {
@@ -7162,6 +7160,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 if(!rows[i].classList.contains("col-"+size_cls[0]+"-"+this.colModel.config[col_index][size_cls[0]])) {
                     continue;
                 }
+                
+                Roo.log('not replacing??');
                 
                 rows[i].classList.replace(
                     "col-"+size_cls[0]+"-"+this.colModel.config[col_index][size_cls[0]],
