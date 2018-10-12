@@ -1173,6 +1173,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         for(var j = 0; w.length; j++) {
             
+            Roo.log(w[j]);
+            
             var size_cls = w[j].split("-");
             
             if(!Number.isInteger(size_cls[1] * 1)) {
