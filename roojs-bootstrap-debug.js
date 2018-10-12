@@ -7112,12 +7112,14 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var rows = this.el.dom.getElementsByClassName("x-col-"+col_index);
         
-        var h_rows = this.el.dom.getElementsByClassName("x-hcol-"+col_index);
+        var h_row = this.el.dom.getElementsByClassName("x-hcol-"+col_index);
         
-        if(rows.length != h_rows.length) {
-            Roo.log(h_rows);
-            return;
-        }
+        h_rows[i].classList.replace(
+            "col-"+size_cls[0]+"-"+this.colModel.config[col_index][size_cls[0]],
+            "col-"+size_cls[0]+"-"+size_cls[1]
+        );
+        
+        this.colModel.config[col_index][size_cls[0]] = size_cls[1];
         
         for(var i = 0; i < rows.length; i++) {
             
@@ -7137,13 +7139,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     "col-"+size_cls[0]+"-"+this.colModel.config[col_index][size_cls[0]],
                     "col-"+size_cls[0]+"-"+size_cls[1]
                 );
-                
-                h_rows[i].classList.replace(
-                    "col-"+size_cls[0]+"-"+this.colModel.config[col_index][size_cls[0]],
-                    "col-"+size_cls[0]+"-"+size_cls[1]
-                );
-                
-                this.colModel.config[col_index][size_cls[0]] = size_cls[1]
             }
         }
     }
