@@ -281,7 +281,7 @@ var C=this.getGridEl().select('tbody',true).first();var D=this.getGridEl().selec
 var B=Math.ceil(this.mainBody.getScroll().top);var C=this.mainBody.getHeight();if(A-C==B){var D=this.ds.getTotalCount();if(this.footer.cursor+this.footer.pageSize<D){this.footer.ds.load({params:{start:this.footer.cursor+this.footer.pageSize,limit:this.footer.pageSize}
 ,add:true});}}}},onHeaderChange:function(){var A=this.renderHeader();var B=this.el.select('table',true).first();this.mainHead.remove();this.mainHead=B.createChild(A,this.mainBody,false);},onHiddenChange:function(A,B,C){var D='#'+this.id+' .x-hcol-'+B;var E='#'+this.id+' .x-col-'+B;
 this.CSS.updateRule(D,"display","");this.CSS.updateRule(E,"display","");if(C){this.CSS.updateRule(D,"display","none");this.CSS.updateRule(E,"display","none");}this.onHeaderChange();this.onLoad();},setColumnWidth:function(A,B){if(!this.colModel.config[A]){return;
-}var w=B.split(" ");Roo.log(w);}});
+}var w=B.split(" ");var C=this.el.dom.getElementsByClassName("x-col-"+A);Roo.log(C);}});
 // Roo/bootstrap/TableCell.js
 Roo.bootstrap.TableCell=function(A){Roo.bootstrap.TableCell.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.TableCell,Roo.bootstrap.Component,{html:false,cls:false,tag:false,abbr:false,align:false,axis:false,bgcolor:false,charoff:false,colspan:false,headers:false,height:false,nowrap:false,rowspan:false,scope:false,valign:false,width:false,getAutoCreate:function(){var A=Roo.apply({}
 ,Roo.bootstrap.TableCell.superclass.getAutoCreate.call(this));A={tag:'td'};if(this.tag){A.tag=this.tag;}if(this.html){A.html=this.html}if(this.cls){A.cls=this.cls}if(this.abbr){A.abbr=this.abbr}if(this.align){A.align=this.align}if(this.axis){A.axis=this.axis}
