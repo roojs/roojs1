@@ -1167,6 +1167,13 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var w = width.split(" ");
         
         var rows = this.el.dom.getElementsByClassName("x-col-"+col_index);
+        
+        for(var i = 0; i < rows.length; i++) {
+            
+            for(var j = 0; w.length; j++) {
+                var size_cls = w.split("-");
+            }
+        }
     }
 });
 
