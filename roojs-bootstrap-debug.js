@@ -7112,6 +7112,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var rows = this.el.dom.getElementsByClassName("x-col-"+col_index);
         
+        var h_rows = this.el.dom.getElementsByClassName("x-hcol-"+col_index);
+        
+        if(rows.length != h_rows.length) {
+            return;
+        }
+        
         for(var i = 0; i < rows.length; i++) {
             
             for(var j = 0; w.length; j++) {
@@ -7127,6 +7133,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 }
                 
                 rows[i].classList.replace(
+                    "col-"+size_cls[0]+"-"+this.colModel.config[col_index][size_cls[0]],
+                    "col-"+size_cls[0]+"-"+size_cls[1]
+                );
+                
+                h_rows[i].classList.replace(
                     "col-"+size_cls[0]+"-"+this.colModel.config[col_index][size_cls[0]],
                     "col-"+size_cls[0]+"-"+size_cls[1]
                 );
