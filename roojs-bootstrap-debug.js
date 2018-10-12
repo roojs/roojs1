@@ -7115,6 +7115,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var h_rows = this.el.dom.getElementsByClassName("x-hcol-"+col_index);
         
         if(rows.length != h_rows.length) {
+            Roo.log(h_rows);
             return;
         }
         
