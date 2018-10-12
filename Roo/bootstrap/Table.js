@@ -1170,6 +1170,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var h_rows = this.el.dom.getElementsByClassName("x-hcol-"+col_index);
         
+        if(rows.length != h_rows.length) {
+            return;
+        }
+        
         for(var i = 0; i < rows.length; i++) {
             
             for(var j = 0; w.length; j++) {
