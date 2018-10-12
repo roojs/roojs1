@@ -1171,9 +1171,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         for(var i = 0; i < rows.length; i++) {
             
             for(var j = 0; w.length; j++) {
+                
                 var size_cls = w[j].split("-");
                 
-                this.colModel.config[col_index]
+                if(this.colModel.config[col_index]) {
+                    
+                }
             }
         }
     }
