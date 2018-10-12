@@ -1174,7 +1174,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 
                 var size_cls = w[j].split("-");
                 
-                if(this.colModel.config[col_index]) {
+                if(!this.colModel.config[col_index][size_cls[0]]) {
                     
                 }
             }
