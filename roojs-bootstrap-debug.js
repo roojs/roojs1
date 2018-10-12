@@ -7112,7 +7112,28 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var rows = this.el.dom.getElementsByClassName("x-col-"+col_index);
         
-        Roo.log(rows);
+        for(var i = 0; i < rows.length; i++) {
+            
+            for(var j = 0; w.length; j++) {
+                
+                var size_cls = w[j].split("-");
+                
+                if(!Number.isInteger(size_cls[1] * 1)) {
+                    continue;
+                }
+                
+                if(!this.colModel.config[col_index][size_cls[0]]) {
+                    continue;
+                }
+                
+                rows[i].classList.replace(
+                    "col-"+size_cls[0]+"-"+this.colModel.config[col_index][size_cls[0]],
+                    "col-"+size_cls[0]+"-"+size_cls[1]
+                );
+                
+                this.colModel.config[col_index][size_cls[0]] = size_cls[1]
+            }
+        }
     }
 });
 
