@@ -1203,6 +1203,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             for(var j = 0; j < w.length; j++) {
                 
+                Roo.log('spliting;;;');
+                
                 var size_cls = w[j].split("-");
                 
                 if(!Number.isInteger(size_cls[1] * 1)) {
