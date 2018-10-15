@@ -24732,7 +24732,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         this.first = this.navgroup.addItem({
             tooltip: this.firstText,
             cls: "prev",
-            icon : 'fa fa-backward',
+            icon : 'fa fa-step-backward',
             disabled: true,
             preventDefault: true,
             listeners : { click : this.onClick.createDelegate(this, ["first"]) }
@@ -24741,7 +24741,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         this.prev =  this.navgroup.addItem({
             tooltip: this.prevText,
             cls: "prev",
-            icon : 'fa fa-step-backward',
+            icon : 'fa fa-backward',
             disabled: true,
             preventDefault: true,
             listeners : { click :  this.onClick.createDelegate(this, ["prev"]) }
@@ -24769,14 +24769,14 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         this.next = this.navgroup.addItem({
             tooltip: this.nextText,
             cls: "next",
-            html : ' <i class="fa fa-step-forward">',
+            html : ' <i class="fa fa-forward">',
             disabled: true,
             preventDefault: true,
             listeners : { click :  this.onClick.createDelegate(this, ["next"]) }
         });
         this.last = this.navgroup.addItem({
             tooltip: this.lastText,
-            icon : 'fa fa-forward',
+            icon : 'fa fa-step-forward',
             cls: "next",
             disabled: true,
             preventDefault: true,
