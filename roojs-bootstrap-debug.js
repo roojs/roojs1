@@ -18947,7 +18947,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         }
         
         Roo.each(this.picker().select('>div',true).elements, function(v){
-            Roo.log(v);
             v.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
             v.hide();
         });
@@ -19036,6 +19035,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         if(this.isInline) {
             return;
         }
+        Roo.log(this.picker());
         this.picker().hide();
         this.viewMode = this.startViewMode;
         this.showMode();
