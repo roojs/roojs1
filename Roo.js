@@ -342,6 +342,11 @@ Roo.factory(conf, Roo.data);
             if ((typeof(console) == 'undefined') || (typeof(console.log) == 'undefined')) {
                 return; // alerT?
             }
+            
+            if(window.location.href.indexOf("localhost") !== -1) {
+                return;
+            }
+            
             console.log(s);
             
         },
