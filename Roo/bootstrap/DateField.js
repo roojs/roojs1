@@ -673,7 +673,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             case 18: // alt
                 break;
             default :
-                this.hide();
+                // this.hide();
                 
         }
     },
