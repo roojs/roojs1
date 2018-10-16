@@ -37,12 +37,6 @@ Roo.bootstrap.LayoutMasonry = function(config){
          * @param {Roo.EventObject} e
          */
         "layout" : true,
-        /**
-         * @event childrenrendered
-         * Fires when the children have been rendered..
-         * @param {Roo.bootstrap.Component} this
-         */
-        "childrenrendered" : true
     });
     
 };
