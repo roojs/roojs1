@@ -342,8 +342,12 @@ Roo.factory(conf, Roo.data);
             if ((typeof(console) == 'undefined') || (typeof(console.log) == 'undefined')) {
                 return; // alerT?
             }
-            console.log(s);
             
+            if(window.location.href.indexOf("localhost") == -1) {
+                return;
+            }
+            
+            console.log(s);
         },
         /**
          * Takes an object and converts it to an encoded URL. e.g. Roo.urlEncode({foo: 1, bar: 2}); would return "foo=1&bar=2".  Optionally, property values can be arrays, instead of keys and the resulting string that's returned will contain a name/value pair for each array value.
@@ -9125,6 +9129,9 @@ if(opt.anim.isAnimated()){
             if(!this._mask){
                 this._mask = Roo.DomHelper.append(this.dom, {cls:"roo-el-mask"}, true);
             }
+            
+            this._mask.dom.className = msgCls ? "roo-el-mask " + msgCls : "roo-el-mask";
+            
             this.addClass("x-masked");
             this._mask.setDisplayed(true);
             
