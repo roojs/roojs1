@@ -72,6 +72,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
      */
     thousandsDelimiter : false,
     
+    max_length: false,
+    
     
     inputlg : 9,
     inputmd : 9,
