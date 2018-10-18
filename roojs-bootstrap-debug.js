@@ -30815,13 +30815,7 @@ Roo.bootstrap.LayoutMasonry = function(config){
          * @param {Roo.bootstrap.LayoutMasonry} this
          * @param {Roo.EventObject} e
          */
-        "layout" : true,
-        /**
-         * @event childrenrendered
-         * Fires when the children have been rendered..
-         * @param {Roo.bootstrap.Component} this
-         */
-        "childrenrendered" : true
+        "layout" : true
     });
     
 };
@@ -40485,7 +40479,10 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
      * @cfg {String} thousandsDelimiter Symbol of thousandsDelimiter
      */
     thousandsDelimiter : false,
-    
+    /**
+     * @cfg {Number} max_length Maximum input field length allowed (defaults to Number.MAX_VALUE)
+     */
+    max_length: false,
     
     inputlg : 9,
     inputmd : 9,
@@ -40519,11 +40516,8 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             cls: 'hidden-number-input'
         };
         
-        if(
-            this.maxLength &&
-            Number.isInteger(this.maxLength * 1)
-        ) {
-            input.maxlength = this.maxLength; 
+        if(!this.max_length) {
+            input.maxlength = this.max_length; 
         }
         
         if (this.name) {

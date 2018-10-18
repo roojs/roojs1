@@ -36,7 +36,7 @@ Roo.bootstrap.LayoutMasonry = function(config){
          * @param {Roo.bootstrap.LayoutMasonry} this
          * @param {Roo.EventObject} e
          */
-        "layout" : true,
+        "layout" : true
     });
     
 };
