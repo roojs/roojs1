@@ -106,10 +106,10 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
         };
         
         if(
-            this.maxLength &&
-            Number.isInteger(this.maxLength * 1)
+            this.max_length &&
+            Number.isInteger(this.max_length * 1)
         ) {
-            input.maxlength = this.maxLength; 
+            input.maxlength = this.max_length; 
         }
         
         if (this.name) {
