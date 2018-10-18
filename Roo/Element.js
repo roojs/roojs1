@@ -2112,9 +2112,6 @@ if(opt.anim.isAnimated()){
             if(!this._mask){
                 this._mask = Roo.DomHelper.append(this.dom, {cls:"roo-el-mask"}, true);
             }
-            
-            this._mask.dom.className = msgCls ? "roo-el-mask " + msgCls : "roo-el-mask";
-            
             this.addClass("x-masked");
             this._mask.setDisplayed(true);
             
