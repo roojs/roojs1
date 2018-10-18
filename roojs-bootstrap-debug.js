@@ -40516,7 +40516,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             cls: 'hidden-number-input'
         };
         
-        if(!this.max_length) {
+        if(this.max_length) {
             input.maxlength = this.max_length; 
         }
         
