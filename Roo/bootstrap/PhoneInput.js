@@ -127,7 +127,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             };
             
             var container = {
-                cls: 'roo-select2-container input-group',
+                cls: 'roo-select2-container input-group phone-input-group',
                 cn: [
                     flag_container,
                     box
