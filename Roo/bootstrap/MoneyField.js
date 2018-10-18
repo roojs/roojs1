@@ -108,10 +108,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
             cls: 'hidden-number-input'
         };
         
-        if(
-            this.max_length &&
-            Number.isInteger(this.max_length * 1)
-        ) {
+        if(!this.max_length) {
             input.maxlength = this.max_length; 
         }
         
