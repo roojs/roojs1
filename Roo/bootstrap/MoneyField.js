@@ -71,9 +71,10 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
      * @cfg {String} thousandsDelimiter Symbol of thousandsDelimiter
      */
     thousandsDelimiter : false,
-    
+    /**
+     * @cfg {Number} max_length Maximum input field length allowed (defaults to Number.MAX_VALUE)
+     */
     max_length: false,
-    
     
     inputlg : 9,
     inputmd : 9,
