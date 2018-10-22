@@ -35,6 +35,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         allowed: '0123456789',
         
+        max_length: 15,
+        
         /**
          * @cfg {String} defaultDialCode The default dial code when initializing the input
          */
