@@ -39924,6 +39924,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             var input =  {
                 tag: 'input',
                 id : id,
+                type: 'number',
                 maxlength: this.max_length,
                 cls : 'form-control tel-input',
                 autocomplete: 'new-password'
