@@ -343,10 +343,6 @@ Roo.factory(conf, Roo.data);
                 return; // alerT?
             }
             
-            if(window.location.href.indexOf("localhost") == -1) {
-                return;
-            }
-            
             console.log(s);
         },
         /**
