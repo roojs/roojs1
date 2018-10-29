@@ -40393,7 +40393,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             var k = e.getKey();
             var c = e.getCharCode();
             
-            Roo.log(e.getCharCode());
+            Roo.log(String.fromCharCode(c));
             
             if(
                     [",", ".", "n"].indexOf(String.fromCharCode(c)) > -1 &&
