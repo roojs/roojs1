@@ -550,10 +550,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             var k = e.getKey();
             var c = e.getCharCode();
             
-            Roo.log(String.fromCharCode(c));
-            
             if(
-                    [",", "."].indexOf(String.fromCharCode(c)) > -1 &&
+                    [",", "."].indexOf(String.fromCharCode(c)) > -1 ||
                     this.allowed.indexOf(String.fromCharCode(c)) === -1
             ){
                 e.stopEvent();
