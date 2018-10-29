@@ -553,7 +553,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             Roo.log(String.fromCharCode(c));
             
             if(
-                    [",", ".", "n"].indexOf(String.fromCharCode(c)) > -1 &&
+                    [",", "."].indexOf(String.fromCharCode(c)) > -1 &&
                     this.allowed.indexOf(String.fromCharCode(c)) === -1
             ){
                 e.stopEvent();
