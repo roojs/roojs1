@@ -546,21 +546,13 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             return this.el.select('input.hidden-tel-input',true).first();
         },
         
-        onKeyUp : function(e){
-            this.setValue(this.getValue());
-            
-            Roo.log(this.getValue());
-        },
-        
         onKeyPress : function(e){
             
             if(this.allowed.indexOf(String.fromCharCode(e.getCharCode())) === -1){
                 e.stopEvent();
             }
             
-            Roo.log(this.getValue());
+            this.setValue(this.getValue());
         }
-        
-        
         
 });
