@@ -547,14 +547,9 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         },
         
         onKeyUp : function(e){
-            
-            if(this.allowed.indexOf(String.fromCharCode(e.getCharCode())) === -1){
-                e.stopEvent();
-            }
+            this.setValue(this.getValue());
             
             Roo.log(this.getValue());
-            
-            this.setValue(this.getValue());
         },
         
         onKeyPress : function(e){
@@ -562,6 +557,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             if(this.allowed.indexOf(String.fromCharCode(e.getCharCode())) === -1){
                 e.stopEvent();
             }
+            
+            Roo.log(this.getValue());
         }
         
         
