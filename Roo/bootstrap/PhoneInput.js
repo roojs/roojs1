@@ -295,7 +295,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             
             this.list.on('mouseover', this.onViewOver, this);
             this.list.on('mousemove', this.onViewMove, this);
-            // this.inputEl().on("keyup", this.onKeyUp, this);
             this.inputEl().on("keypress", this.onKeyPress, this);
             
             this.tpl = '<li><a href="#"><div class="flag {iso2}"></div>{name} <span class="dial-code">+{dialCode}</span></a></li>';
@@ -546,28 +545,13 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             return this.el.select('input.hidden-tel-input',true).first();
         },
         
-        onKeyUp : function(e){
-            
-            if(this.allowed.indexOf(String.fromCharCode(e.getCharCode())) === -1){
-                e.stopEvent();
-            }
-            
-            Roo.log(this.getValue());
-            
-            this.setValue(this.getValue());
-        },
-        
         onKeyPress : function(e){
             
             if(this.allowed.indexOf(String.fromCharCode(e.getCharCode())) === -1){
                 e.stopEvent();
             }
             
-            Roo.log(this.getValue());
-            
             this.setValue(this.getValue());
         }
-        
-        
         
 });
