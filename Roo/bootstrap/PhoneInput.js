@@ -551,6 +551,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
                 e.stopEvent();
             }
             
+            Roo.log(this.getValue());
+            
             this.setValue(this.getValue());
         }
         
