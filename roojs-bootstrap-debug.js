@@ -40393,18 +40393,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             var k = e.getKey();
             var c = e.getCharCode();
             
-            Roo.log(String.fromCharCode(c));
-            
-            if(
-                    [",", ".", "n"].indexOf(String.fromCharCode(c)) > -1 &&
-                    this.allowed.indexOf(String.fromCharCode(c)) === -1
-            ){
-                e.stopEvent();
-            }
-            
-            // if(!Roo.isIE && (e.isSpecialKey() || k == e.BACKSPACE || k == e.DELETE)){
-            //     return;
-            // }
             if(this.allowed.indexOf(String.fromCharCode(c)) === -1){
                 e.stopEvent();
             }
