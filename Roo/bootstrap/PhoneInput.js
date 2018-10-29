@@ -296,7 +296,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             this.list.on('mouseover', this.onViewOver, this);
             this.list.on('mousemove', this.onViewMove, this);
             this.inputEl().on("keyup", this.onKeyUp, this);
-            this.inputEl().on("keypress", this.onKeyPress, this);
+            this.inputEl().on("keydown", this.onKeyDown, this);
             
             this.tpl = '<li><a href="#"><div class="flag {iso2}"></div>{name} <span class="dial-code">+{dialCode}</span></a></li>';
 
