@@ -40397,6 +40397,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             Roo.log(this.getValue());
             
             this.setValue(this.getValue());
+            
+            Roo.log(this.getValue());
         }
         
 });
