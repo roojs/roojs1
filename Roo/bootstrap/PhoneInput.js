@@ -562,10 +562,6 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             if(this.allowed.indexOf(String.fromCharCode(e.getCharCode())) === -1){
                 e.stopEvent();
             }
-            
-            Roo.log(this.getValue());
-            
-            this.setValue(this.getValue());
         }
         
         
