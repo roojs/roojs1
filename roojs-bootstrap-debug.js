@@ -39924,7 +39924,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
             var input =  {
                 tag: 'input',
                 id : id,
-                type: 'number',
+                // type: 'number', -- do not use number - we get the flaky up/down arrows.
                 maxlength: this.max_length,
                 cls : 'form-control tel-input',
                 autocomplete: 'new-password'
