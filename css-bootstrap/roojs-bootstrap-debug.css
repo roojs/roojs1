@@ -1876,6 +1876,9 @@ li.dropdown-menu-item i.fa + span {
 li.dropdown-toggle button > i.glyphicon {
   margin: 3px 0 0 5px;
 }
+.dropdown-menu.nowrap li a span {
+  white-space: nowrap;
+}
 div.input-group.has-feedback > .form-control-feedback {
   right: 30px;
 }
@@ -2397,9 +2400,6 @@ a.roo-brick-link:hover {
 .modal-dialog {
   max-width: 100%;
 }
-.modal-body > .container .col-xs-12 {
-  padding: 0;
-}
 @media (max-width: 768px) {
   .modal-body .col-md-12 {
     padding: 0;
@@ -2410,6 +2410,9 @@ a.roo-brick-link:hover {
   .modal-body .row {
     margin-left: -5px;
     margin-right: -5px;
+  }
+  .modal-body > .container .col-xs-12 {
+    padding: 0;
   }
 }
 .modal .roo-mb-progress-wrap {
