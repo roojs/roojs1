@@ -205,7 +205,10 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         if (this.html !== false) {
             this.el.select('.popover-content',true).first().dom.innerHtml = this.html;
         }
-        this.el.removeClass(['fade','top','bottom', 'left', 'right','in', 'bs-popover-top','bs-popover-bottom', 'bs-popover-left', 'bs-popover-right',]);
+        this.el.removeClass([
+            'fade','top','bottom', 'left', 'right','in',
+            'bs-popover-top','bs-popover-bottom', 'bs-popover-left', 'bs-popover-right'
+        ]);
         if (!this.title.length) {
             this.el.select('.popover-title',true).hide();
         }

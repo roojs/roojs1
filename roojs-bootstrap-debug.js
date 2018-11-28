@@ -17645,11 +17645,11 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
                     cn : [
                         {
                             tag: 'h3',
-                            cls: 'popover-title',
+                            cls: 'popover-title popover-header',
                             html : this.title
                         },
                         {
-                            cls : 'popover-content',
+                            cls : 'popover-content popover-body',
                             html : this.html
                         }
                     ]
@@ -17774,7 +17774,10 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         if (this.html !== false) {
             this.el.select('.popover-content',true).first().dom.innerHtml = this.html;
         }
-        this.el.removeClass(['fade','top','bottom', 'left', 'right','in']);
+        this.el.removeClass([
+            'fade','top','bottom', 'left', 'right','in',
+            'bs-popover-top','bs-popover-bottom', 'bs-popover-left', 'bs-popover-right'
+        ]);
         if (!this.title.length) {
             this.el.select('.popover-title',true).hide();
         }
@@ -17835,10 +17838,10 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
 });
 
 Roo.bootstrap.Popover.alignment = {
-    'left' : ['r-l', [-10,0], 'right'],
-    'right' : ['l-r', [10,0], 'left'],
-    'bottom' : ['t-b', [0,10], 'top'],
-    'top' : [ 'b-t', [0,-10], 'bottom']
+    'left' : ['r-l', [-10,0], 'right bs-popover-right'],
+    'right' : ['l-r', [10,0], 'left bs-popover-left'],
+    'bottom' : ['t-b', [0,10], 'top bs-popover-top'],
+    'top' : [ 'b-t', [0,-10], 'bottom bs-popover-bottom']
 };
 
  /*
