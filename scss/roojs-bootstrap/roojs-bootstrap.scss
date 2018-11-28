@@ -1,38 +1,41 @@
 /*
  * CAUTION!
- * This CSS file is auto generated. Please edit the .scss instead!
+ * This CSS file is auto generated. Please edit the  instead!
  */
 
-@import "alert.scss";
-@import "calendar.scss";
-@import "carousel.scss";
-@import "checkbox.scss";
-@import "combobox.scss";
-@import "datepicker.scss";
-@import "document-manager.scss";
-@import "document-slider.scss";
-@import "document-viewer.scss";
-@import "dropdown.scss";
-@import "input.scss";
-@import "label-pill.scss";
-@import "layout.scss";
-@import "list-group.scss";
-@import "mask.scss";
-@import "masonary-squares.scss";
-@import "modal.scss";
-@import "nav-progress-bar.scss";
-@import "nav-tabs.scss";
-@import "navbar.scss";
-@import "numberbox.scss";
-@import "pull-xs-right.scss";
-@import "radio-set.scss";
-@import "secure-pass.scss";
-@import "select2.scss";
-@import "sidebar-nav.scss";
-@import "sticky-footer.scss";
-@import "table.scss";
-@import "top-bar.scss";
-@import "tweaks.scss";
-@import "upload-cropbox.scss";
-@import "phone-input.scss";
-@import "money-field.scss";
+
+$gray-light : $gray-600;
+
+@import "alert";
+@import "calendar";
+@import "carousel";
+@import "checkbox";
+@import "combobox";
+@import "datepicker";
+@import "document-manager";
+@import "document-slider";
+@import "document-viewer";
+@import "dropdown";
+@import "input";
+@import "label-pill";
+@import "layout";
+@import "list-group";
+@import "mask";
+@import "masonary-squares";
+@import "modal";
+@import "nav-progress-bar";
+@import "nav-tabs";
+@import "navbar";
+@import "numberbox";
+@import "pull-xs-right";
+@import "radio-set";
+@import "secure-pass";
+@import "select2";
+@import "sidebar-nav";
+@import "sticky-footer";
+@import "table";
+@import "top-bar";
+@import "tweaks";
+@import "upload-cropbox";
+@import "phone-input";
+@import "money-field";
