@@ -3930,7 +3930,8 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
  * - LGPL
  *
  * navbar
- * 
+ * navbar-fixed-top
+ * navbar-expand-md  fixed-top 
  */
 
 /**
@@ -4022,10 +4023,10 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
             cn : []
         });
         
-        cfg.cls += this.inverse ? ' navbar-inverse' : ' navbar-default';
+        cfg.cls += this.inverse ? ' navbar-inverse navbar-dark bg-dark' : ' navbar-default';
         
         if (['fixed-top','fixed-bottom','static-top'].indexOf(this.position)>-1) {
-            cfg.cls += ' navbar-' + this.position;
+            cfg.cls += ' navbar-' + this.position + ' ' + this.position ;
             
             // tag can override this..
             
