@@ -64,7 +64,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
             if (this.type!=='nav') {
                 Roo.log('nav type must be nav/tabs/pills')
             }
-            cfg.cls += ' navbar-nav mr-auto'
+            cfg.cls += ' navbar-nav'
         }
         
         if (this.parent() && this.parent().sidebar) {
@@ -91,7 +91,9 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         
         if (this.align === 'right') {
             cfg.cls += ' navbar-right ml-md-auto';
-        }
+        } else {
+	    cfg.cls += ' mr-auto';
+	}
         
         if (this.inverse) {
             cfg.cls += ' navbar-inverse';
