@@ -24672,7 +24672,6 @@ Roo.bootstrap.PagingToolbar = function(config)
     if (Roo.bootstrap.version == 4) {
         this.navgroup = new Roo.bootstrap.ButtonGroup({ cls: 'pagination' });
     } else {
-    
         this.navgroup = new Roo.bootstrap.NavGroup({ cls: 'pagination' });
     }
     
@@ -24773,7 +24772,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         
         this.first = this.navgroup.addItem({
             tooltip: this.firstText,
-            cls: "prev",
+            cls: "prev btn-outline-secondary",
             icon : 'fa fa-step-backward',
             disabled: true,
             preventDefault: true,
@@ -24782,7 +24781,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         
         this.prev =  this.navgroup.addItem({
             tooltip: this.prevText,
-            cls: "prev",
+            cls: "prev btn-outline-secondary",
             icon : 'fa fa-backward',
             disabled: true,
             preventDefault: true,
@@ -24810,7 +24809,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         //this.addSeparator();
         this.next = this.navgroup.addItem({
             tooltip: this.nextText,
-            cls: "next",
+            cls: "next btn-outline-secondary",
             html : ' <i class="fa fa-forward">',
             disabled: true,
             preventDefault: true,
@@ -24819,7 +24818,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         this.last = this.navgroup.addItem({
             tooltip: this.lastText,
             icon : 'fa fa-step-forward',
-            cls: "next",
+            cls: "next btn-outline-secondary",
             disabled: true,
             preventDefault: true,
             listeners : { click :  this.onClick.createDelegate(this, ["last"]) }
