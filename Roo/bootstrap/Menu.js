@@ -335,6 +335,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
                 this.activeItem = null;
             }
             this.triggerEl.removeClass('open');;
+	    this.el.removeClass('show');
             this.hidden = true;
             this.fireEvent("hide", this);
         }
