@@ -1,0 +1,46 @@
+
+
+.x-form-field-wrap .form-group { /* what is this doing here?? */
+    margin-bottom: 0px;
+}
+
+.roo-password-meter-grey {
+    background: $gray-light; 
+    margin-bottom: 30px;
+    height: 10px;
+}
+
+.roo-password-meter {
+    font-size: 12px;     
+}
+
+.roo-password-meter-container {
+    margin-bottom: 20px;             
+}
+
+.roo-password-meter-tooweak {
+    background: $brand-danger;   
+    height: 10px;        
+}
+
+.roo-password-meter-weak {
+    background: $brand-warning; //#ffdddd;    
+    height: 10px;         
+}
+
+.roo-password-meter-medium {
+    background: $brand-info;    
+    height: 10px;          
+}
+
+.roo-password-meter-strong {
+    background: $brand-success;
+    height: 10px;          
+}
+
+.roo-password-meter-text { 
+    /* padding-bottom:5px; */
+    margin-bottom:30px;    
+    font-size: 12px;
+    height: 10px;     
+}

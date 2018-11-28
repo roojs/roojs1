@@ -1,0 +1,109 @@
+/* WTF is this! !!
+ *
+ * DO NOT EVER PUT ANYTHIGN IN THIS FILE... tweaks - bad name... *
+ */
+
+
+.navbar-left .input-group[class*="col-"] {
+    float:left;
+}
+
+.ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.sw-child-headline {
+    display: inline-block;
+    width: auto;
+}
+
+.box-input-label {
+    width: 100%;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.box-label {
+    margin-left: 5px;
+    cursor: pointer;
+}
+/* needed as menu ontop of form does not work */
+.input-group .form-control {
+    
+    z-index: 1;
+}
+
+/* admin-lte - messes with checkbox and radio.. */
+.checkbox, .radio {
+    padding-left: 15px !important;
+}
+
+/* inside a column it needs even more padding...*/
+/*
+* It breaks all the checkbox layout. comment it first...
+*/
+/*.column .checkbox,
+.column .radio {
+    padding-left: 25px !important;
+}*/
+/* paging toolbar */
+
+.pagination .x-paging-position span {
+    padding-top:3px; padding-bottom:3px;
+}
+.pagination .x-paging-position span  input {
+    margin: 0 3px;
+}
+
+.panel-header-right {
+    float: right;
+    text-align: right;
+}
+
+.badge-error {
+    background-color: $brand-danger;
+}
+.badge-error:hover {
+    background-color: darken($brand-danger, 10%);
+}
+.badge-warning {
+    background-color: $brand-warning;
+}
+.badge-warning:hover {
+    background-color: darken($brand-warning, 10%);
+}
+.badge-success {
+    background-color: $brand-success;
+}
+.badge-success:hover {
+    background-color: darken($brand-success, 10%);
+}
+.badge-info {
+    background-color: $brand-info;
+}
+.badge-info:hover {
+    background-color: darken($brand-info, 10%);
+}
+.badge-inverse {
+    background-color: $gray-dark;
+}
+.badge-inverse:hover {
+    background-color: $gray-darker;
+}
+
+.tooltip.fade.in {
+    z-index: 10002;
+}
+
+.x-hidden 
+{
+   position:absolute;
+   top:0;
+   left:0;
+   visibility: hidden;
+   display: none;
+}
