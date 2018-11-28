@@ -3972,7 +3972,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
         
         var   cfg = {
             tag: this.nav || 'nav',
-            cls: 'navbar',
+            cls: 'navbar navbar-expand-md',
             role: 'navigation',
             cn: []
         };
@@ -3991,7 +3991,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
                     {
                         tag: 'button',
                         type: 'button',
-                        cls: 'navbar-toggle',
+                        cls: 'navbar-toggle navbar-toggler',
                         'data-toggle': 'collapse',
                         cn: [
                             {
@@ -4001,7 +4001,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
                             },
                             {
                                 tag: 'span',
-                                cls: 'icon-bar'
+                                cls: 'icon-bar navbar-toggler-icon'
                             },
                             {
                                 tag: 'span',
@@ -4519,7 +4519,9 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
                     html: this.html || ''
                 }
             ];
-            
+            if (this.tagtype == 'a') {
+		cfg.cn[0].cls = 'nav-link';
+	    }
             if (this.icon) {
                 cfg.cn[0].html = '<i class="'+this.icon+'"></i> <span>' + cfg.cn[0].html + '</span>'
             }
