@@ -96,7 +96,9 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
                     html: this.html || ''
                 }
             ];
-            
+            if (this.tagtype == 'a') {
+		cfg.cn[0].cls = 'nav-link';
+	    }
             if (this.icon) {
                 cfg.cn[0].html = '<i class="'+this.icon+'"></i> <span>' + cfg.cn[0].html + '</span>'
             }
