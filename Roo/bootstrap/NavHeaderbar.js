@@ -63,7 +63,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
                     {
                         tag: 'button',
                         type: 'button',
-                        cls: 'navbar-toggle',
+                        cls: 'navbar-toggle navbar-toggler',
                         'data-toggle': 'collapse',
                         cn: [
                             {
@@ -73,7 +73,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
                             },
                             {
                                 tag: 'span',
-                                cls: 'icon-bar'
+                                cls: 'icon-bar navbar-toggler-icon'
                             },
                             {
                                 tag: 'span',
