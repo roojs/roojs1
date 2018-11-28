@@ -79,7 +79,7 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
         
         var cfg= {
             tag: 'li',
-            cls: 'dropdown-menu-item',
+            cls: 'dropdown-menu-item dropdown-item',
             cn: [ anc ]
         };
         if (this.parent().type == 'treeview') {
