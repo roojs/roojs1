@@ -53,7 +53,7 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
         if(this.isContainer){
             return {
                 tag: 'li',
-                cls: 'dropdown-menu-item'
+                cls: 'dropdown-menu-item dropdown-item'
             };
         }
         var ctag = {
