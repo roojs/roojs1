@@ -145,7 +145,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
 	
 	if (this.triggerEl.hasClass('nav-item')) {
 	    // dropdown toggle on the 'a' in BS4?
-	    this.triggerEl.addClass('dropdown-toggle').select('.nav-link',true).first().addClass('nav-item');
+	    this.triggerEl.select('.nav-link',true).first().addClass('dropdown-toggle');
 	} else {
 	    this.triggerEl.addClass('dropdown-toggle');
 	}
