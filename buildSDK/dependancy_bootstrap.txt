@@ -1,4 +1,5 @@
 
+Roo.bootstrap.version
 
 Roo.bootstrap.Component
 
