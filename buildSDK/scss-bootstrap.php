@@ -23,17 +23,18 @@ $files = array(
         'name' => 'bootstrap.css',
         'minify' => 'bootstrap.min.css',
         'sourceMapRootpath' => '../scss/bootstrap/',
-    //    'variables' => array("@import 'variables.less';")
+        'variables' =>  "@import 'variables';"
     ),
-    /*
-    "{$rootDir}/roojs1/less/roojs-bootstrap/roojs-bootstrap.less" => array(
+     
+    "roojs-bootstrap.scss" => array(
+        "scssDir" => "{$rootDir}/roojs1/scss/roojs-bootstrap",
         'baseDir' => "{$rootDir}/roojs1/css-bootstrap",
         'name' => 'roojs-bootstrap-debug.css',
         'minify' => 'roojs-bootstrap.css',
-        'sourceMapRootpath' => '../less/roojs-bootstrap/',
-        'variables' => array("@import '../bootstrap/variables.less';")
+        'sourceMapRootpath' => '../scss/roojs-bootstrap/',
+        'variables' => "@import '../bootstrap/variables';"
     )
-    */
+     
 );
 /*
 foreach ($files as $src => $file){
@@ -120,7 +121,7 @@ foreach ($files as $src => $file){
         $scss->setImportPaths($file['scssDir']);
         $scss->setFormatter('Expanded');
         
-        file_put_contents($css, $scss->compile("@import \"{$src}\";"));
+        file_put_contents($css, $scss->compile("{$file['variables']}\n@import \"{$src}\";"));
         
         
         $min = "{$file['baseDir']}/{$file['minify']}";
@@ -131,7 +132,7 @@ foreach ($files as $src => $file){
         
         $scss->setFormatter('Crunched');
         
-        file_put_contents($min,  $scss->compile("@import \"{$src}\";")  );
+        file_put_contents($min,  $scss->compile("{$file['variables']}\n@import \"{$src}\";")  );
     } catch (Exception $ex) {
         echo "scss fatal error: {$ex->getMessage()}\n";
     }

@@ -3,12 +3,32 @@
  * This CSS file is auto generated. Please edit the  instead!
  */
 
-
+$gray-lighter : $gray-400;
 $gray-light : $gray-600;
+$gray: $gray-700;
+$gray-dark : $gray-800;
+$gray-darker : $gray-900;
+
+$gray-base: $black;
+
+$brand-danger: $danger;
+$brand-success: $success;
+$brand-primary: $primary;
 $brand-warning : $warning;
 $brand-info : $info;
-$well-bg : $info;
+$well-bg : $gray-600;
+$black-opacity-20: $gray-200;
+$black-opacity-50: $gray-500;
+$black-opacity-80: $gray-800;
 
+$input-border: $input-border-color;
+$bootstrap-image-path:    "../images";
+
+/** need to find and replace these ..*/
+$state-info-bg:                  #d9edf7;
+$state-success-text:             #3c763d;
+$state-warning-text:             #8a6d3b;
+$state-danger-text:              #a94442;
 
 
 @import "alert";
