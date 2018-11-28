@@ -142,8 +142,12 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         this.triggerEl.on(Roo.isTouch ? 'touchstart' : 'mouseup', this.onTriggerPress, this);
         
-        this.triggerEl.addClass('dropdown-toggle');
-        
+	
+	if (this.triggerEl.hasClass('nav-item')) {
+	    this.triggerEl.addClass('dropdown-toggle').select('.nav-link',true).first().addClass('nav-item');
+	} else {
+	    this.triggerEl.addClass('dropdown-toggle');
+	}
         if (Roo.isTouch) {
             this.el.on('touchstart'  , this.onTouch, this);
         }
