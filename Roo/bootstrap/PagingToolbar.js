@@ -192,7 +192,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         });
         this.last = this.navgroup.addItem({
             tooltip: this.lastText,
-            icon : 'fa fa-step-forward',
+            html : ' <i class="fa fa-step-forward"></i>',
             cls: "next btn-outline-secondary",
             disabled: true,
             preventDefault: true,
