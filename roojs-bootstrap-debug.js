@@ -4260,7 +4260,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
             };
             
             if (this.align === 'right') {
-                cfg.cls += ' navbar-right';
+                cfg.cls += ' navbar-right ml-md-auto';
             } else {
                 cfg.cls += ' navbar-left';
             }
