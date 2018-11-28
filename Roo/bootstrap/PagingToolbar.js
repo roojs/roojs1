@@ -168,7 +168,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         var field = this.navgroup.addItem( {
             tagtype : 'span',
             cls : 'x-paging-position  btn-outline-secondary',
-            
+             disabled: true,
             html : this.beforePageText  +
                 '<input type="text" size="3" value="1" class="x-grid-page-number">' +
                 '<span class="x-paging-after">' +  String.format(this.afterPageText, 1) + '</span>'
