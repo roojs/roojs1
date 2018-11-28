@@ -44,6 +44,10 @@ Roo.bootstrap.PagingToolbar = function(config)
         this.bind(this.ds);
     }
     
+    if (Roo.bootstrap.version == 4) {
+        this.navgroup = new Roo.bootstrap.ButtonGroup({ cls: 'pagination' });
+    }
+    
     this.navgroup = new Roo.bootstrap.NavGroup({ cls: 'pagination' });
     
 };
