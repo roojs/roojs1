@@ -1,0 +1,130 @@
+<!--
+
+just a html scratch pad to see how the layout might look..
+
+Conclusion
+Tab panels are ok in bootstrap - and we can use them
+however the layout stuff is pretty borked, as it was not really designed for a framed layout
+
+looking at porting the roo code for this purpose..
+
+
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Framed layouts for bootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="../../css-bootstrap/bootstrap.min.css">
+       
+    <link rel="stylesheet" href="../../css-bootstrap/font-awesome.min.css">   
+    <link href="../../../bootswatch/AdminLTE-master/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+    
+    <link href="../../css-bootstrap/roojs-bootstrap-debug.css" rel="stylesheet" type="text/css" />
+    
+    
+    
+        
+    <script type="text/javascript" src="../../roojs-core-debug.js"></script>
+    <!-- bootstrap js.. needs to compile it later.. -->
+    <script type="text/javascript" src="../../roojs-bootstrap-debug.js"></script>
+ 
+    
+    <style>
+        /**
+          css modifications that might be needed...
+        */
+        
+        body > .header {
+            overflow: hidden;
+        }
+        .navbar ul.nav-tabs {
+            margin-top: 9px;
+            display: table;
+        }
+        
+    </style>
+    
+    
+     <script type="text/javascript">
+        Dashboard = {};
+     </script>
+
+    <!-- test code -->
+    
+  </head>
+  <body id="body">
+    <script type="text/javascript">
+      Roo.onReady(function() {
+          //Roo.XComponent.build();
+          //Roo.bootstrap.Tooltip.init();
+      });
+    </script>
+    
+    <header class=" header" id="roo-comp-1010">
+        <a href="#" id="roo-comp-1012" class="logo">Example</a>
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" id="roo-comp-1014">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" id="roo-gen23">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="roo-gen26">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="active"><a href="#home"">CRM</a></li>
+                    <li ><a href="#profile" >Document manager</a></li>
+                    <li ><a href="#messages">Content Manager</a></li>
+                    <li ><a href="#settings">Accounts</a></li>
+                    <li ><a href="#settings">Accounts</a></li>
+                    <li ><a href="#settings">MTrack</a></li>
+                    <li ><a href="#settings">Git</a></li>
+                    <li ><a href="#settings">Admin</a></li>
+                    <li ><a href="#settings">Logs</a></li>
+                  </ul>
+            </div>
+            <div class="x-dlg-mask" id="roo-gen25" style="width: 1497px; height: 50px; display: none;"></div>
+        </nav>
+    </header>
+    
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">
+        <aside class=" left-side sidebar-offcanvas" id="roo-comp-1030"><div class="sidebar sidebar-nav" id="roo-comp-1032"><div class="x-dlg-mask" id="roo-gen40" style="width: 220px; height: 1px; display: none;"></div><ul class="dashboard-menu sidebar-menu" id="roo-comp-1034"><li class=" open x-open dropdown-toggle" id="roo-comp-1036"><a href="#" class="dropdown-toggle treeview"><i class="fa fa-bar-chart-o"></i><span>test</span><i class="glyphicon glyphicon-chevron-down pull-right"></i></a><ul class="treeview-menu" style="z-index:1000" id="roo-comp-1038"><li class="treeview-menu" id="roo-comp-1040"><a href="#" id="roo-gen46"><span>test</span></a></li><li class="treeview-menu" id="roo-comp-1042"><a href="#" id="roo-gen47"><span>test</span></a></li><li class="treeview-menu" id="roo-comp-1044"><a href="#" id="roo-gen48"><span>test aaa</span></a></li></ul></li><li class="" id="roo-comp-1046"><a href="#" class=""><span>test</span><span class="badge pull-right badge-default" id="roo-gen51">new</span></a></li></ul></div></aside>
+        <!-- this is a sub module.... -->
+        <header class=" header" id="roo-comp-1010">
+             <nav class="navbar navbar-default navbar-static-top" role="navigation" id="roo-comp-1014">
+                
+                <div class="collapse navbar-collapse" id="roo-gen26">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="active"><a href="#home"">CRM</a></li>
+                        <li ><a href="#profile" >Document manager</a></li>
+                        <li ><a href="#messages">Content Manager</a></li>
+                        <li ><a href="#settings">Accounts</a></li>
+                        <li ><a href="#settings">Accounts</a></li>
+                        <li ><a href="#settings">MTrack</a></li>
+                        <li ><a href="#settings">Git</a></li>
+                        <li ><a href="#settings">Admin</a></li>
+                        <li ><a href="#settings">Logs</a></li>
+                      </ul>
+                </div>
+                <div class="x-dlg-mask" id="roo-gen25" style="width: 1497px; height: 50px; display: none;"></div>
+            </nav>
+        </header>
+        
+     </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </body>
+</html>

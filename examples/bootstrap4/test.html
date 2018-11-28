@@ -1,0 +1,104 @@
+<html>
+<head>
+  <title>Nested Layout</title>
+  
+   <!-- Bootstrap -->
+    <link rel="stylesheet" href="../../css-bootstrap/bootstrap.min.css">
+       
+    <link href="../../css-bootstrap/font-awesome.css" rel="stylesheet" type="text/css" />
+   
+    <link href="../../css-bootstrap/roojs-bootstrap-debug.css" rel="stylesheet" type="text/css" />
+    
+    <link href="../../../bootswatch/material-kit/css/material-kit.css" rel="stylesheet">
+    
+        
+    <script type="text/javascript" src="../../roojs-core-debug.js"></script>
+    <!-- bootstrap js.. needs to compile it later.. -->
+    <script type="text/javascript" src="../../roojs-bootstrap-debug.js"></script>
+   
+
+    <script type="text/javascript">
+
+    Roo.namespace("Dashboard");
+    </script>
+     
+         <script type="text/javascript" src="Dashboard.Header1.js"></script>
+
+     
+     
+     
+    <style type="text/css">
+
+        </style>
+    <script type="text/javascript">
+
+    Roo.namespace("Example");
+
+    Example.Nested = new Roo.XComponent({
+        part     :  ["example", "nested" ],
+        order    : '001-Example-Nested',
+        region   : 'center',
+        parent   : false,
+        name     : "unnamed module",
+        disabled : false, 
+        permname : '', 
+        _tree : function()
+        {
+            var _this = this;
+            var MODULE = this;
+            return {
+                is_root : true,
+                xtype : 'Border',
+                xns : Roo.bootstrap.layout,
+                el : document.body, // border layout can be applied to the outer one...
+                center: {
+                    xtype : 'Region',
+                    xns: Roo.bootstrap.layout,
+                    autoScroll: false,
+                    tabPosition:'top',
+                    titlebar: true
+                },
+                items : [
+
+
+                /*
+                    {
+                    xtype : 'Content',
+                    xns: Roo.bootstrap.panel,
+                    title : "Title Center",
+                    fitToFrame:true,
+                    closable:false,
+                    region : 'center',
+                    html : 'some body center'
+                    },
+                    {
+                    xtype : 'Content',
+                    xns: Roo.bootstrap.panel,
+                    title : "Title Center",
+                    fitToFrame:true,
+                    closable:false,
+                    region : 'center',
+                    html : 'some body center'
+                    }
+                */
+                //s1
+                    {
+                        
+                    }
+                ]
+            }
+        }
+    });
+
+   Roo.onReady(function() {
+        Roo.XComponent.is_alt = true;
+          Roo.XComponent.build();
+          //dRoo.bootstrap.Tooltip.init();
+      });
+  
+    </script>
+</head>
+<body class="xtheme-gray">
+
+ </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Html editor for bootstrap test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="../../css-bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css-bootstrap/font-awesome.min.css">   
+    
+    <link href="../../../bootswatch/AdminLTE-master/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+    
+    <link href="../../css-bootstrap/roojs-bootstrap-debug.css" rel="stylesheet" type="text/css" />
+        
+    <script type="text/javascript" src="../../roojs-core-debug.js"></script>
+    <!-- bootstrap js.. needs to compile it later.. -->
+    <script type="text/javascript" src="../../roojs-bootstrap-debug.js"></script>
+        
+     
+     <script type="text/javascript">
+        Dashboard = {};
+     </script>
+
+    <!-- test code -->
+    <script type="text/javascript" src="Dashboard.Header1.js"></script>
+    <script type="text/javascript" src="Dashboard.Sidebar2.js"></script>
+    <script type="text/javascript" src="dashboard1.js"></script>
+  </head>
+  <body id="body">
+    <script type="text/javascript">
+      Roo.onReady(function() {
+          Roo.XComponent.hideProgress = true;
+          Roo.XComponent.build();
+          Roo.bootstrap.Tooltip.init();
+      });
+    </script>
+  </body>
+</html>
+<script type="text/javascript" src="../../Roo/bootstrap/dash/TabBox.js"></script>
