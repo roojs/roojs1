@@ -118,7 +118,7 @@ foreach ($files as $src => $file){
         echo "Compiling - {$src} To {$css}\n";
         
         $scss->setImportPaths($file['scssDir']);
-        $scss->setFormater('Crunched');
+        $scss->setFormater('Compact');
         
         file_put_contents($scss->compile("@import \"{$src}\";"), $css);
         
