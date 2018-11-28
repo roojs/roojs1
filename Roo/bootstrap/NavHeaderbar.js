@@ -44,7 +44,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
         
         var   cfg = {
             tag: this.nav || 'nav',
-            cls: 'navbar',
+            cls: 'navbar navbar-expand-md',
             role: 'navigation',
             cn: []
         };
