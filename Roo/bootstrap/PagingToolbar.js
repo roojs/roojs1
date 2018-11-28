@@ -201,7 +201,9 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
     //this.addSeparator();
         this.loading = this.navgroup.addItem({
             tooltip: this.refreshText,
-            icon: 'fa fa-refresh',
+            cls: "btn-outline-secondary",
+            html : ' <i class="fa fa-step-refresh"></i>',
+
             preventDefault: true,
             listeners : { click : this.onClick.createDelegate(this, ["refresh"]) }
         });
