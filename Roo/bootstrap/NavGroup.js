@@ -64,7 +64,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
             if (this.type!=='nav') {
                 Roo.log('nav type must be nav/tabs/pills')
             }
-            cfg.cls += ' navbar-nav'
+            cfg.cls += ' navbar-nav mr-auto'
         }
         
         if (this.parent() && this.parent().sidebar) {
