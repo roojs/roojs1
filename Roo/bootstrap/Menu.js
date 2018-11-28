@@ -25,7 +25,7 @@ Roo.bootstrap.Menu = function(config){
     if (this.registerMenu && this.type != 'treeview')  {
         Roo.bootstrap.MenuMgr.register(this);
     }
-    this.openClass = Roo.bootstrap.version = 4 ? 'show' : 'open';
+    
     
     this.addEvents({
         /**
@@ -284,7 +284,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         //this.el.show();
         this.hideMenuItems();
         this.hidden = false;
-        this.triggerEl.addClass(this.openClass);
+        this.triggerEl.addClass('open');
         
         // reassign x when hitting right
         if(this.el.getWidth() + xy[0] >= Roo.lib.Dom.getViewWidth()){
@@ -333,7 +333,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
                 this.activeItem.deactivate();
                 this.activeItem = null;
             }
-            this.triggerEl.removeClass(this.openClass);;
+            this.triggerEl.removeClass('open');;
             this.hidden = true;
             this.fireEvent("hide", this);
         }
@@ -395,9 +395,9 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             return;
         }
         //$(backdrop).remove()
-        this.el.select('.' + this.openClass,true).each(function(aa) {
+        this.el.select('.open',true).each(function(aa) {
             
-            aa.removeClass(this.openClass);
+            aa.removeClass('open');
           //var parent = getParent($(this))
           //var relatedTarget = { relatedTarget: this }
           
