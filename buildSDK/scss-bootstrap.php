@@ -131,7 +131,7 @@ foreach ($files as $src => $file){
         
         $scss->setFormatter('Crunched');
         
-        file_put_contents($min,, $scss->compile("@import \"{$src}\";"), );
+        file_put_contents($min,  $scss->compile("@import \"{$src}\";")  );
     } catch (Exception $ex) {
         echo "scss fatal error: {$ex->getMessage()}\n";
     }
