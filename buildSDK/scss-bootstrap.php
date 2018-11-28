@@ -87,8 +87,8 @@ foreach ($files as $src => $file){
     try {
         
         $scss = new HTML_Scss();
-        /*
-        $scss->setSourceMap(1);
+         
+        $scss->setSourceMap(HTML_Scss::SOURCE_MAP_FILE);
         $scss->setSourceMapOptions(array(
                 'sourceRoot' => $file['sourceMapRootpath'],
         
@@ -111,7 +111,7 @@ foreach ($files as $src => $file){
                 'sourceMapBasepath' => ''
             
         ));
-        */
+       
    
         $css = "{$file['baseDir']}/{$file['name']}";
         
