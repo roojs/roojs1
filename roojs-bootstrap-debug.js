@@ -4574,7 +4574,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             
             if (this.badge !== '') {
                  
-                cfg.cn[0].html += ' <span class="badge">' + this.badge + '</span>';
+                cfg.cn[0].html += ' <span class="badge badge-secondary">' + this.badge + '</span>';
             }
         }
         
