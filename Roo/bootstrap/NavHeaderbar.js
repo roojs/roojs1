@@ -2,7 +2,8 @@
  * - LGPL
  *
  * navbar
- * 
+ * navbar navbar-inverse navbar-fixed-top
+ * navbar navbar-expand-md navbar-dark fixed-top bg-dark
  */
 
 /**
@@ -94,7 +95,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
             cn : []
         });
         
-        cfg.cls += this.inverse ? ' navbar-inverse' : ' navbar-default';
+        cfg.cls += this.inverse ? ' navbar-inverse navbar-dark' : ' navbar-default';
         
         if (['fixed-top','fixed-bottom','static-top'].indexOf(this.position)>-1) {
             cfg.cls += ' navbar-' + this.position;
