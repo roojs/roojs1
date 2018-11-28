@@ -24827,8 +24827,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         this.loading = this.navgroup.addItem({
             tooltip: this.refreshText,
             cls: "btn-outline-secondary",
-            html : ' <i class="fa fa-step-refresh"></i>',
-
+            html : ' <i class="fa fa-refresh"></i>',
             preventDefault: true,
             listeners : { click : this.onClick.createDelegate(this, ["refresh"]) }
         });
