@@ -2119,8 +2119,13 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         this.triggerEl.on(Roo.isTouch ? 'touchstart' : 'mouseup', this.onTriggerPress, this);
         
-        this.triggerEl.addClass('dropdown-toggle');
-        
+	
+	if (this.triggerEl.hasClass('nav-item')) {
+	    // dropdown toggle on the 'a' in BS4?
+	    this.triggerEl.addClass('dropdown-toggle').select('.nav-link',true).first().addClass('nav-item');
+	} else {
+	    this.triggerEl.addClass('dropdown-toggle');
+	}
         if (Roo.isTouch) {
             this.el.on('touchstart'  , this.onTouch, this);
         }
@@ -2452,7 +2457,7 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
         if(this.isContainer){
             return {
                 tag: 'li',
-                cls: 'dropdown-menu-item'
+                cls: 'dropdown-menu-item dropdown-item'
             };
         }
         var ctag = {
@@ -2478,7 +2483,7 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
         
         var cfg= {
             tag: 'li',
-            cls: 'dropdown-menu-item',
+            cls: 'dropdown-menu-item dropdown-item',
             cn: [ anc ]
         };
         if (this.parent().type == 'treeview') {
