@@ -25,6 +25,8 @@ Roo.bootstrap.Menu = function(config){
     if (this.registerMenu && this.type != 'treeview')  {
         Roo.bootstrap.MenuMgr.register(this);
     }
+    this.openClass = Roo.bootstrap.version = 4 ? 'show' : 'open';
+    
     this.addEvents({
         /**
          * @event beforeshow
