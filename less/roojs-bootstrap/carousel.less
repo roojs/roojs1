@@ -1,0 +1,92 @@
+.clear {
+    clear: both;
+}
+
+.carousel-bullets {
+    height: 17px;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+
+    z-index: 1000; 
+    position: absolute;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    -moz-opacity: 1;
+    -khtml-opacity: 1;
+    opacity: 1;
+    -webkit-transition: opacity 0.2s ease-out; 
+    -moz-transition: opacity 0.2s ease-out; 
+    -o-transition: opacity 0.2s ease-out; 
+    -ms-transition: opacity 0.2s ease-out;
+    -webkit-transform: translateZ(5px);
+}
+
+.carousel-bullets > .bullet {
+    cursor: pointer;
+    position: relative !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    width: 6px !important;
+    height: 6px !important;
+    border: 5px solid rgba(0, 0, 0, 0) !important;
+    display: inline-block;
+    margin-right: 2px !important;
+    margin-bottom: 0px !important;
+    -webkit-transition: background-color 0.2s, border-color 0.2s;
+    -moz-transition: background-color 0.2s, border-color 0.2s;
+    -o-transition: background-color 0.2s, border-color 0.2s;
+    -ms-transition: background-color 0.2s, border-color 0.2s;
+    transition: background-color 0.2s, border-color 0.2s;
+    float:none !important;
+    box-sizing:content-box;
+    -moz-box-sizing:content-box;
+    -webkit-box-sizing:content-box;
+}
+
+.carousel-bullets > .bullet:hover,
+.carousel-bullets > .bullet.selected {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    background: rgba(255, 255, 255, 1) !important;
+    width: 6px !important;
+    height: 6px !important;
+    border: 5px solid rgba(0, 0, 0, 1) !important;
+}
+
+.carousel-inner > .carousel-arrow > .carousel-prev {
+    position: absolute;
+    display: block;
+    top: 50%;
+    color: @body-bg;
+    z-index: 100;
+    cursor: pointer;
+    padding: 10px;
+    margin-top: -22px;
+    left: 0;
+}
+
+.carousel-inner > .carousel-arrow > .carousel-next {
+    position: absolute;
+    display: block;
+    top: 50%;
+    color: @body-bg;
+    z-index: 100;
+    cursor: pointer;
+    padding: 10px;
+    margin-top: -22px;
+    right: 0;
+}
+
+.carousel-inner > .carousel-arrow > .carousel-prev > i,
+.carousel-inner > .carousel-arrow > .carousel-next > i {
+    font-size: 24px;
+}
+
+.carousel-inner .tab-pane.clickable {
+    cursor: pointer;
+}

@@ -1,0 +1,197 @@
+.sidebar {
+    margin-bottom: 5px;
+}
+
+/* override boostrap a:hover */
+.sidebar a:hover {
+    text-decoration: none;
+}
+
+.sidebar .sidebar-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* GREY BG */
+.sidebar .sidebar-menu > li,
+.sidebar .sidebar-menu li.active li.treeview-menu
+{
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid @gray-light;
+    background-color: @gray-lighter;
+}
+/* active child menu - white BG */
+.sidebar .sidebar-menu li.active li.treeview-menu {
+    background-color: @gray-light;
+}
+
+.sidebar .sidebar-menu > li > a ,
+.sidebar .sidebar-menu li.open li.treeview-menu > a
+{
+    padding: 12px 5px 12px 15px;
+    display: block;
+    color: @gray-dark; 
+}
+
+.sidebar .sidebar-menu > li > a > .fa,
+.sidebar .sidebar-menu > li > a > .glyphicon,
+.sidebar .sidebar-menu > li > a > .ion {
+    width: 20px;
+}
+
+.sidebar .sidebar-menu li:hover,
+.sidebar .sidebar-menu li:focus,
+.sidebar .sidebar-menu li:active,
+.sidebar .sidebar-menu li.active li.treeview-menu:hover,
+.sidebar .sidebar-menu li.active li.treeview-menu:focus,
+.sidebar .sidebar-menu li.active li.treeview-menu:active
+{
+    background-color: @body-bg;
+}
+
+
+.sidebar .sidebar-menu li:hover a,
+.sidebar .sidebar-menu li:focus a,
+.sidebar .sidebar-menu li:active a,
+.sidebar .sidebar-menu li.oepn li.treeview-menu a:hover,
+.sidebar .sidebar-menu li.open li.treeview-menu a:focus,
+.sidebar .sidebar-menu li.open li.treeview-menu a:active
+{
+    color: @gray-base;
+    text-decoration: none;
+}
+
+
+/* BLUE ACTIVE */
+.sidebar .sidebar-menu li.active {
+  color: @body-bg;
+  background-color: @brand-primary; //#337ab7;
+  border-color: darken(@brand-primary, 10%); //#2e6da4;
+}
+
+.sidebar .sidebar-menu li.active:hover,
+.sidebar .sidebar-menu li.active:focus,
+.sidebar .sidebar-menu li.active.focus
+{
+    color: @body-bg;
+    background-color: @brand-primary; //#204d74;
+    border-color: darken(@brand-primary, 10%); //#122b40;
+}
+
+.sidebar .sidebar-menu li.active  a {
+    color: @body-bg;
+}
+
+.sidebar .sidebar-menu li.disabled {
+  color: @gray-dark;
+  background-color: @body-bg;
+  border-color: @gray-dark;
+}
+
+.sidebar .sidebar-menu li.disabled a {
+    color: @gray-light;
+    cursor: default;
+}
+
+.sidebar .sidebar-menu li.danger,
+.sidebar .sidebar-menu li.danger.active {
+  color: @body-bg;
+  background-color: @brand-danger;
+  border-color: lighten(@brand-danger, 10%);
+}
+
+.sidebar .sidebar-menu li.danger:hover,
+.sidebar .sidebar-menu li.danger:focus,
+.sidebar .sidebar-menu li.danger.active:focus
+{
+    color: @body-bg;
+    background-color: @brand-danger;
+    border-color: darken(@brand-danger, 10%);
+    border-bottom: 1px solid darken(@brand-danger, 10%);
+}
+
+.sidebar .sidebar-menu li.danger a,
+.sidebar .sidebar-menu li.danger.active a{
+    color: @body-bg;
+}
+
+/* --- open  */
+.sidebar .sidebar-menu li.open ul {
+    display:block;
+}
+
+.sidebar .sidebar-menu li.open .treeview-menu {
+    display: block;
+}
+
+/* --- treeview menu  */
+
+.sidebar .sidebar-menu .treeview-menu {
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sidebar .sidebar-menu .treeview-menu > li {
+  margin: 0;
+}
+.sidebar .sidebar-menu li.open li.treeview-menu  > a {
+  padding: 5px 5px 5px 20px;
+  display: block;
+  font-size: 14px;
+  margin: 0px 0px;
+}
+.sidebar .sidebar-menu .treeview-menu > li > a > .fa,
+.sidebar .sidebar-menu .treeview-menu > li > a > .glyphicon,
+.sidebar .sidebar-menu .treeview-menu > li > a > .ion {
+  width: 20px;
+}
+/* background to highlighted treeview node
+.sidebar .sidebar-menu li li.treeview-menu.active  {
+    background: #fff;
+}
+*/
+
+.sidebar .sidebar-menu li li.treeview-menu.active > a {
+    font-weight: bold;
+}
+/* active sidebard... */
+ 
+
+
+.badge-default {
+    background-color: @gray-light;
+    color: @body-bg;
+}
+
+.badge-primary {
+    background-color: @brand-primary;
+    color: @body-bg;
+}
+
+.badge-success {
+    background-color: @brand-success;
+    color: @body-bg;
+}
+
+.badge-info {
+    background-color: @brand-info;
+    color: @body-bg;
+}
+
+.badge-warning {
+    background-color: @brand-warning;
+    color: @body-bg;
+}
+
+.badge-danger {
+    background-color: @brand-danger;
+    color: @body-bg;
+}
+
+.sidebar .sidebar-menu > li.active .badge-info {
+    background-color: @body-bg;
+    color: @brand-info;
+}
