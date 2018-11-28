@@ -554,6 +554,17 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
         }
         
         return cfg;
+    },
+    /**
+     * Add a button to the group (similar to NavItem API.)
+     */
+    addItem : function(cfg)
+    {
+        var cn = new Roo.bootstrap.Button(cfg);
+        //this.register(cn);
+        cn.parentId = this.id;
+        cn.onRender(this.el, null);
+        return cn;
     }
    
 });
