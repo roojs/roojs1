@@ -183,7 +183,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         };
 
         var header = [];
-        if (this.allow_close) {
+        if (this.allow_close && Roo.bootstrap.version == 3) {
             header.push({
                 tag: 'button',
                 cls : 'close',
@@ -193,6 +193,14 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
 
         header.push(title);
 
+        if (this.allow_close && Roo.bootstrap.version == 4) {
+            header.push({
+                tag: 'button',
+                cls : 'close',
+                html : '&times'
+            });
+        }
+        
         var size = '';
 
         if(this.size.length){
@@ -326,7 +334,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
 
         //this.el.setStyle('display', 'block');
         this.el.removeClass('hideing');        
-        this.el.addClass('show');
+        this.el.addClass('show d-block');
+        Roo.get(document.body).addClass('modal-open');
  
         if(this.animate){  // element has 'fade'  - so stuff happens after .3s ?- not sure why the delay?
             var _this = this;
@@ -346,7 +355,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true),   Roo.lib.Dom.getViewHeight(true));
         this.maskEl.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
-        this.maskEl.addClass('show');
+        this.maskEl.addClass('show d-block');
         
         this.resize();
         
@@ -366,7 +375,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     hide : function()
     {
         if(this.fireEvent("beforehide", this) !== false){
-            this.maskEl.removeClass('show');
+            this.maskEl.removeClass('show d-block');
             Roo.get(document.body).removeClass("x-body-masked");
             this.el.removeClass('in');
             this.el.select('.modal-dialog', true).first().setStyle('transform','');
@@ -377,12 +386,16 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                     if (!this.el.hasClass('hideing')) {
                         return; // it's been shown again...
                     }
-                    this.el.removeClass('show');
+                    this.el.removeClass('show d-block');
+
+                    Roo.get(document.body).removeClass('modal-open');
                     this.el.removeClass('hideing');
                 }).defer(150,this);
                 
             }else{
-                 this.el.removeClass('show');
+                this.el.removeClass('show d-block');
+                Roo.get(document.body).removeClass('modal-open');
+
             }
             this.fireEvent('hide', this);
         }

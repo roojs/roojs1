@@ -28,7 +28,7 @@ $files = array(
      
     "roojs-bootstrap.scss" => array(
         "scssDir" => "{$rootDir}/roojs1/scss/roojs-bootstrap",
-        'baseDir' => "{$rootDir}/roojs1/css-bootstrap",
+        'baseDir' => "{$rootDir}/roojs1/css-bootstrap4",
         'name' => 'roojs-bootstrap-debug.css',
         'minify' => 'roojs-bootstrap.css',
         'sourceMapRootpath' => '../scss/roojs-bootstrap/',
