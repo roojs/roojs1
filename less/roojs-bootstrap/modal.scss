@@ -1,0 +1,128 @@
+/* 
+    Document   : modal
+    Created on : Apr 23, 2014, 11:24:28 AM
+    Author     : edward
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+.modal-md-1,
+.modal-md-2,
+.modal-md-3,
+.modal-md-4,
+.modal-md-5,
+.modal-md-6,
+.modal-md-7,
+.modal-md-8,
+.modal-md-9,
+.modal-md-10,
+.modal-md-11,
+.modal-md-12 {
+  float: left;
+}
+
+.modal-md-12 .modal-dialog {
+  width: 100%;
+  margin: 30 auto;
+}
+.modal-md-11 .modal-dialog {
+  width: 91.66666666666666%;
+  margin: 30 auto;
+}
+.modal-md-10 .modal-dialog {
+  width: 83.33333333333334%;
+  margin: 30 auto;
+}
+.modal-md-9 .modal-dialog {
+  width: 75%;
+  margin: 30 auto;
+}
+.modal-md-8 .modal-dialog {
+  width: 66.66666666666666%;
+  margin: 30 auto;
+}
+.modal-md-7 .modal-dialog {
+  width: 58.333333333333336%;
+  margin: 30 auto;
+}
+.modal-md-6 .modal-dialog {
+  width: 50%;
+  margin: 30 auto;
+}
+.modal-md-5 .modal-dialog {
+  width: 41.66666666666667%;
+  margin: 30 auto;
+}
+.modal-md-4 .modal-dialog {
+  width: 33.33333333333333%;
+  margin: 30 auto;
+}
+.modal-md-3 .modal-dialog {
+  width: 25%;
+  margin: 30 auto;
+}
+.modal-md-2 .modal-dialog {
+  width: 16.666666666666664%;
+  margin: 30 auto;
+}
+.modal-md-1 .modal-dialog {
+  width: 8.333333333333332%;
+  margin: 30 auto;
+}
+
+/*
+ this  appears to break the layout on dialog buttons on mobile?
+@media (max-width: 568px) {
+    .modal-footer .btn+.btn {
+            margin-left: 0px;
+            margin-top: 5px;
+    }
+}
+*/
+
+.modal-body.roo-layout-container,
+.modal-body > .container {
+    padding: 0;
+}
+
+.modal-dialog {
+    max-width: 100%;
+}
+
+@media (max-width: 768px) {
+    
+    .modal-body  .col-md-12  {
+        padding : 0;
+    }
+    
+    .modal-body {
+        padding: 5px;
+    }
+     .modal-body    .row {
+        margin-left: -5px;
+        margin-right: -5px;
+    }
+    
+    .modal-body   > .container .col-xs-12 {  
+        padding: 0;
+    }
+     
+}
+  
+.modal .roo-mb-progress-wrap {
+    margin-top: 4px;
+    border: 1px solid darken($brand-primary, 10%);;
+}
+
+.modal .roo-mb-progress-wrap .roo-mb-progress {
+    height: 18px;
+    background: transparent url('#{$bootstrap-image-path}/default/basic-dialog/progress2.gif') repeat-x 1px 1px;
+}
+
+.modal .roo-mb-progress-wrap .roo-mb-progress .roo-mb-progress-bar {
+    height: 18px;
+    overflow: hidden;
+    width: 0;
+    background: $brand-primary;
+}

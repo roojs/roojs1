@@ -1,0 +1,15 @@
+/* for some reason it's -15px on BS */
+
+@media (min-width: 768px) {
+    .navbar-right {
+        margin-right: 15px;
+    }
+}
+/* was -15 before, on mobile it made the buttons too close to the edit.. */
+.navbar-nav {
+    margin: 0px -5px;
+}
+
+table td .navbar {
+    min-height: auto;
+}
