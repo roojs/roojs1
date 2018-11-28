@@ -184,7 +184,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         //this.addSeparator();
         this.next = this.navgroup.addItem({
             tooltip: this.nextText,
-            cls: "next",
+            cls: "next btn-outline-secondary",
             html : ' <i class="fa fa-forward">',
             disabled: true,
             preventDefault: true,
@@ -193,7 +193,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         this.last = this.navgroup.addItem({
             tooltip: this.lastText,
             icon : 'fa fa-step-forward',
-            cls: "next",
+            cls: "next btn-outline-secondary",
             disabled: true,
             preventDefault: true,
             listeners : { click :  this.onClick.createDelegate(this, ["last"]) }
