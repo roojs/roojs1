@@ -125,17 +125,7 @@ foreach ($files as $src => $file){
         
         $min = "{$file['baseDir']}/{$file['minify']}";
         
-        $less = new HTML_Less();
-        
-        $less->setOptions(array(
-            'compress' => true,
-            'variables' => $file['variables'],
-            'sourceMap' => true,
-            'sourceMapWriteTo' => "{$file['baseDir']}/{$file['minify']}.map",
-            'sourceMapURL' => "{$file['minify']}.map",
-            'sourceMapRootpath' => $file['sourceMapRootpath'],
-            'sourceMapBasepath' => dirname(realpath($src))
-        ));
+         
         
         echo "Minifing - {$src} To {$min}\n";
         
