@@ -333,16 +333,19 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         }
 
         //this.el.setStyle('display', 'block');
-        this.el.removeClass('hideing');        
-        this.el.addClass('show d-block');
+        this.el.removeClass('hideing');
+        this.el.dom.style.display='block';
+        
         Roo.get(document.body).addClass('modal-open');
  
         if(this.animate){  // element has 'fade'  - so stuff happens after .3s ?- not sure why the delay?
             var _this = this;
             (function(){
+                this.el.addClass('show');
                 this.el.addClass('in');
             }).defer(50, this);
         }else{
+            this.el.addClass('show');
             this.el.addClass('in');
         }
 
@@ -355,7 +358,9 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true),   Roo.lib.Dom.getViewHeight(true));
         this.maskEl.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
-        this.maskEl.addClass('show d-block');
+        this.maskEl.dom.style.display = 'block';
+        this.maskEl.addClass('show');
+        
         
         this.resize();
         
@@ -375,25 +380,31 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     hide : function()
     {
         if(this.fireEvent("beforehide", this) !== false){
-            this.maskEl.removeClass('show d-block');
+            
+            this.maskEl.removeClass('show');
+            
+            this.maskEl.dom.style.display = '';
             Roo.get(document.body).removeClass("x-body-masked");
             this.el.removeClass('in');
             this.el.select('.modal-dialog', true).first().setStyle('transform','');
 
             if(this.animate){ // why
                 this.el.addClass('hideing');
+                this.el.removeClass('show');
                 (function(){
                     if (!this.el.hasClass('hideing')) {
                         return; // it's been shown again...
                     }
-                    this.el.removeClass('show d-block');
+                    
+                    this.el.dom.style.display='';
 
                     Roo.get(document.body).removeClass('modal-open');
                     this.el.removeClass('hideing');
                 }).defer(150,this);
                 
             }else{
-                this.el.removeClass('show d-block');
+                this.el.removeClass('show');
+                this.el.dom.style.display='';
                 Roo.get(document.body).removeClass('modal-open');
 
             }
