@@ -120,7 +120,7 @@ foreach ($files as $src => $file){
         $scss->setImportPaths($file['scssDir']);
         $scss->setFormatter('Expanded');
         
-        file_put_contents($scss->compile("@import \"{$src}\";"), $css);
+        file_put_contents($css, $scss->compile("@import \"{$src}\";"));
         
         
         $min = "{$file['baseDir']}/{$file['minify']}";
@@ -131,7 +131,7 @@ foreach ($files as $src => $file){
         
         $scss->setFormatter('Crunched');
         
-        file_put_contents($scss->compile("@import \"{$src}\";"), $min);
+        file_put_contents($min,, $scss->compile("@import \"{$src}\";"), );
     } catch (Exception $ex) {
         echo "scss fatal error: {$ex->getMessage()}\n";
     }
