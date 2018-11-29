@@ -13,8 +13,9 @@
  * @cfg {String} html content of button
  * @cfg {String} badge text inside badge
  * @cfg {String} badgecls (bg-green|bg-red|bg-yellow)the extra classes for the badge
- * @cfg {String} glyphicon name of glyphicon
- * @cfg {String} icon name of font awesome icon
+ * @cfg {String} glyphicon DEPRICATED - use fa
+ * @cfg {String} icon DEPRICATED - use fa
+ * @cfg {String} fa - Fontawsome icon name (can add stuff to it like fa-2x)
  * @cfg {Boolean} active Is item active
  * @cfg {Boolean} disabled Is item disabled
  
