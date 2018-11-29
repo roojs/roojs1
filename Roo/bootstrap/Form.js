@@ -125,7 +125,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             cls : ''
         };
         if (this.parent().xtype.match(/^Nav/)) {
-            cfg.cls = 'navbar-form navbar-' + this.align;
+            cfg.cls = 'navbar-form form-inline navbar-' + this.align;
 
         }
 

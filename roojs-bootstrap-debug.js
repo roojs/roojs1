@@ -581,7 +581,9 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
  * @extends Roo.bootstrap.Component
  * Bootstrap Button class
  * @cfg {String} html The button content
- * @cfg {String} weight (default | primary | success | info | warning | danger | link ) default 
+ * @cfg {String} weight (default | primary | secondary | success | info | warning | danger | link ) default
+ * @cfg {String} badge_weight (default | primary | secondary | success | info | warning | danger | link ) default (same as button)
+ * @cfg {Boolean} outline default false (except for weight=default which emulates old behaveiour with an outline)
  * @cfg {String} size ( lg | sm | xs)
  * @cfg {String} tag ( a | input | submit)
  * @cfg {String} href empty or href
@@ -607,7 +609,7 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
 
 Roo.bootstrap.Button = function(config){
     Roo.bootstrap.Button.superclass.constructor.call(this, config);
-    this.weightClass = ["btn-default", 
+    this.weightClass = ["btn-default btn-outline-secondary", 
                        "btn-primary", 
                        "btn-success", 
                        "btn-info", 
@@ -639,6 +641,8 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     html: false,
     active: false,
     weight: '',
+    badge_weight: '',
+    outline : false,
     size: '',
     tag: 'button',
     href: '',
@@ -692,7 +696,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
                 ]
             };
             
-            if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
+            if (['default', 'secondary' , 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
                 cfg.cls += ' '+this.weight;
             }
             
@@ -716,9 +720,15 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             //if (this.parentType != 'Navbar') {
             this.weight = this.weight.length ?  this.weight : 'default';
             //}
-            if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
+            if (['default', 'primary', 'secondary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
                 
-                cfg.cls += ' btn-' + this.weight;
+                var outline = this.outline || this.weight == 'default' ? 'outline-' : '';
+                var weight = this.weight == 'default' ? 'secondary' : this.weight;
+                cfg.cls += ' btn-' + outline + weight;
+                if (this.weight == 'default') {
+                    // BC
+                    cfg.cls += ' btn-' + this.weight;
+                }
             }
         } else if (this.theme==='glow') {
             
@@ -807,12 +817,15 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
                         };
                 
             }
+            var bw = this.badge_weight.length ? this.badge_weight :
+                (this.weight.length ? this.weight : 'secondary');
+            bw = bw == 'default' ? 'secondary' : bw;
             
             cfg.cn = [
                 value,
                 {
                     tag: 'span',
-                    cls: 'badge',
+                    cls: 'badge badge-' + bw,
                     html: this.badge
                 }
             ];
@@ -946,7 +959,13 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     setWeight : function(str)
     {
     	this.el.removeClass(this.weightClass);
-        this.el.addClass('btn-' + str);        
+        this.weight = str;
+        var outline = this.outline ? 'outline-' : '';
+        if (str == 'default') {
+            this.el.addClass('btn-default btn-outline-secondary');        
+            return;
+        }
+        this.el.addClass('btn-' + outline + str);        
     }
     
     
@@ -3894,7 +3913,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
  * 
  * @cfg {String} tag (header|footer|nav|div) default is nav 
 
- * 
+ * @cfg {String} weight (light|primary|secondary|success|danger|warning|info|dark|white) default is light.
  * 
  * 
  * @constructor
@@ -3915,7 +3934,7 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
     arrangement: '',
     align : false,
     
-    
+    weight : 'light',
     
     main : false,
     
@@ -3928,8 +3947,13 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
         
         var cfg = {
             tag : this.tag || 'div',
-            cls : 'navbar'
+            cls : 'navbar navbar-expand-lg'
         };
+	if (['light','white'].indexOf(this.weight) > -1) {
+	    cfg.cls += ['light','white'].indexOf(this.weight) > -1 ? ' navbar-light' : ' navbar-dark';
+	}
+	cfg.cls += ' bg-' + this.weight;
+	
 	  
 	
         cfg.cn = [
@@ -7982,7 +8006,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             cls : ''
         };
         if (this.parent().xtype.match(/^Nav/)) {
-            cfg.cls = 'navbar-form navbar-' + this.align;
+            cfg.cls = 'navbar-form form-inline navbar-' + this.align;
 
         }
 

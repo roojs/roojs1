@@ -21,7 +21,7 @@
  * 
  * @cfg {String} tag (header|footer|nav|div) default is nav 
 
- * 
+ * @cfg {String} weight (light|primary|secondary|success|danger|warning|info|dark|white) default is light.
  * 
  * 
  * @constructor
@@ -42,7 +42,7 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
     arrangement: '',
     align : false,
     
-    
+    weight : 'light',
     
     main : false,
     
@@ -55,8 +55,13 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
         
         var cfg = {
             tag : this.tag || 'div',
-            cls : 'navbar'
+            cls : 'navbar navbar-expand-lg'
         };
+	if (['light','white'].indexOf(this.weight) > -1) {
+	    cfg.cls += ['light','white'].indexOf(this.weight) > -1 ? ' navbar-light' : ' navbar-dark';
+	}
+	cfg.cls += ' bg-' + this.weight;
+	
 	  
 	
         cfg.cn = [

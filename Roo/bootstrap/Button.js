@@ -11,6 +11,7 @@
  * Bootstrap Button class
  * @cfg {String} html The button content
  * @cfg {String} weight (default | primary | secondary | success | info | warning | danger | link ) default
+ * @cfg {String} badge_weight (default | primary | secondary | success | info | warning | danger | link ) default (same as button)
  * @cfg {Boolean} outline default false (except for weight=default which emulates old behaveiour with an outline)
  * @cfg {String} size ( lg | sm | xs)
  * @cfg {String} tag ( a | input | submit)
@@ -69,6 +70,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     html: false,
     active: false,
     weight: '',
+    badge_weight: '',
     outline : false,
     size: '',
     tag: 'button',
@@ -244,12 +246,15 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
                         };
                 
             }
+            var bw = this.badge_weight.length ? this.badge_weight :
+                (this.weight.length ? this.weight : 'secondary');
+            bw = bw == 'default' ? 'secondary' : bw;
             
             cfg.cn = [
                 value,
                 {
                     tag: 'span',
-                    cls: 'badge',
+                    cls: 'badge badge-' + bw,
                     html: this.badge
                 }
             ];
@@ -382,13 +387,13 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     
     setWeight : function(str)
     {
-    	this.weight = str;
+    	this.el.removeClass(this.weightClass);
+        this.weight = str;
         var outline = this.outline ? 'outline-' : '';
         if (str == 'default') {
-            outline = 'outline-';
-            str = 'secondary';
+            this.el.addClass('btn-default btn-outline-secondary');        
+            return;
         }
-        this.el.removeClass(this.weightClass);
         this.el.addClass('btn-' + outline + str);        
     }
     
