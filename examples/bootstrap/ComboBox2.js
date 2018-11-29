@@ -70,7 +70,7 @@ Roo.example.combobox = new Roo.XComponent({
                         proxy : {
                             xtype: 'HttpProxy',
                             xns: Roo.data,
-                            url : baseURL + '/Geoip/Core_geoip_country',
+                            url : baseURL + '/Core/I18n',
                             method : 'GET'
                         },
                         reader : {
