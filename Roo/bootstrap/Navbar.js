@@ -57,10 +57,10 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
                     ce.removeClass('collapse');
                     ce.addClass('show');
                     
-                    ce.setHeight(ce.getHeight()); // resize it ...
                     ce.removeClass('collapsing');
                     ce.addClass('collapsing');
-                        
+                     ce.setHeight(ce.getHeight()); // resize it ...
+
                     // now flag it as moving..
                     
                     (function() {
@@ -73,6 +73,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
                     (function() {
                         ce.removeClass('collapsing');
                         ce.addClass('collapse');
+                        ce.addClass('show');
                     }).defer(200);
                     
                 }
