@@ -65,6 +65,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
                     
                     (function() {
                         ce.removeClass('collapsing');
+                        ce.addClass('show');
                         ce.dom.style.height = '';
                     }).defer(500);
                 } else {
@@ -73,7 +74,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
                     (function() {
                         ce.removeClass('collapsing');
                         ce.addClass('collapse');
-                        ce.addClass('show');
+                        
                     }).defer(200);
                     
                 }
