@@ -120,7 +120,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                 {
                                     xtype: 'NavItem',
                                     xns: Roo.bootstrap,
-                                    glyphicon: 'search',
+                                    fa: 'search',
                                     html: "dialog"
                                     
                                 },
