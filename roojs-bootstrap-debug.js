@@ -3885,14 +3885,16 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
                     ce.setHeight(h);
                     
                 } else {
-                    ce.addClass('collapsing');
+                    ce.setHeight(ce.getHeight());
                     ce.removeClass('show');
-                    (function() {
+                    ce.addClass('collapsing');
+                    
+                    ce.on('transitionend', function() {
+                        ce.dom.style.height = '';
                         ce.removeClass('collapsing');
                         ce.addClass('collapse');
-                        
-                    }).defer(200);
-                    
+                    }, this, { single: true} );
+                    ce.setHeight(0);
                 }
             }
             
