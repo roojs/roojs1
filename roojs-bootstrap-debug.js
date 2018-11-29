@@ -4088,35 +4088,37 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
         }
         
         if(this.srButton){
-            cn.push({
+            var btn = {
+                tag: 'button',
+                type: 'button',
+                cls: 'navbar-toggle navbar-toggler',
+                'data-toggle': 'collapse',
+                cn: [
+                    {
+                        tag: 'span',
+                        cls: 'sr-only',
+                        html: 'Toggle navigation'
+                    },
+                    {
+                        tag: 'span',
+                        cls: 'icon-bar navbar-toggler-icon'
+                    },
+                    {
+                        tag: 'span',
+                        cls: 'icon-bar'
+                    },
+                    {
+                        tag: 'span',
+                        cls: 'icon-bar'
+                    }
+                ]
+            };
+            
+            cn.push( Roo.bootstrap.version == 4 ? btn : {
                 tag: 'div',
                 cls: 'navbar-header',
                 cn: [
-                    {
-                        tag: 'button',
-                        type: 'button',
-                        cls: 'navbar-toggle navbar-toggler',
-                        'data-toggle': 'collapse',
-                        cn: [
-                            {
-                                tag: 'span',
-                                cls: 'sr-only',
-                                html: 'Toggle navigation'
-                            },
-                            {
-                                tag: 'span',
-                                cls: 'icon-bar navbar-toggler-icon'
-                            },
-                            {
-                                tag: 'span',
-                                cls: 'icon-bar'
-                            },
-                            {
-                                tag: 'span',
-                                cls: 'icon-bar'
-                            }
-                        ]
-                    }
+                    btn
                 ]
             });
         }
@@ -4138,7 +4140,8 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
         }
         
         if (this.brand !== '') {
-            cn[0].cn.unshift({ // changed from push ?? BS4 needs it at the start? - does this break or exsiting?
+            var cp =  Roo.bootstrap.version == 4 ? cn : cn[0].cn;
+            cp.unshift({ // changed from push ?? BS4 needs it at the start? - does this break or exsiting?
                 tag: 'a',
                 href: this.brand_href ? this.brand_href : '#',
                 cls: 'navbar-brand',
