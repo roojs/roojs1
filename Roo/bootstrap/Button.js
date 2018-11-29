@@ -149,7 +149,8 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             //}
             if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
                 
-                cfg.cls += ' btn-' + this.weight;
+                var outline = this.outline || this.weight == 'default' ? 'outline-' : '';
+                cfg.cls += ' btn-' + outline + this.weight;
             }
         } else if (this.theme==='glow') {
             
