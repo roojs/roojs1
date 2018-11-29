@@ -36,7 +36,7 @@
 
 Roo.bootstrap.Button = function(config){
     Roo.bootstrap.Button.superclass.constructor.call(this, config);
-    this.weightClass = ["btn-default", 
+    this.weightClass = ["btn-default btn-outline-secondary", 
                        "btn-primary", 
                        "btn-success", 
                        "btn-info", 
