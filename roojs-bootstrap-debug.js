@@ -3866,9 +3866,13 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
                 if (ce.hasClass('collapse')) {
                     // show it...
                     ce.removeClass('collapse');
-                    ce.addClass('collapsing');
+                    ce.addClass('show');
                     var h = ce.getHeight();
                     Roo.log(h);
+                    ce.removeClass('show');
+                    // at this point we should be able to see it..
+                    ce.addClass('collapsing');
+                    
                     ce.setHeight(0); // resize it ...
                     ce.on('transitionend', function() {
                     
