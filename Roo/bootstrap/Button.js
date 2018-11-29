@@ -255,12 +255,19 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             
             if(this.glyphicon){
                 value = {
-                            tag: 'span',
-                            cls: 'glyphicon glyphicon-' + this.glyphicon,
-                            html: this.html
-                        };
-                
+                    tag: 'span',
+                    cls: 'glyphicon glyphicon-' + this.glyphicon,
+                    html: this.html
+                };
             }
+            if(this.glyphicon){
+                value = {
+                    tag: 'i',
+                    cls: 'fa fas fa-' + this.fa,
+                    html: this.html
+                };
+            }
+            
             var bw = this.badge_weight.length ? this.badge_weight :
                 (this.weight.length ? this.weight : 'secondary');
             bw = bw == 'default' ? 'secondary' : bw;
