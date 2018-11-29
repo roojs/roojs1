@@ -150,7 +150,7 @@ Roo.example.combobox = new Roo.XComponent({
                                     'type': 'string'
                                 },
                                 {
-                                    'name': 'name',
+                                    'name': 'title',
                                     'type': 'string'
                                 }
                             ]
