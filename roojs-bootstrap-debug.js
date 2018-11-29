@@ -3874,7 +3874,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
                     (function() {
                         ce.removeClass('collapsing');
                         ce.addClass('collapse');
-                    }).defer(1000);
+                    }).defer(200);
                     
                 }
             }
