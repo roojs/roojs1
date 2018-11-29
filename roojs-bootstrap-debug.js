@@ -10382,20 +10382,9 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             
         };
         
-        var box = {
-            tag: 'div',
-            cn: [
-                {
-                    tag: 'input',
-                    type : 'hidden',
-                    cls: 'form-hidden-field'
-                },
-                inputblock
-            ]
-            
-        };
+      
         
-        var ibwrap = inputbox;
+        var ibwrap = inputblock;
         
         if(this.multiple){
             ibwrap = {
@@ -15140,7 +15129,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var combobox = {
             cls: 'roo-select2-container input-group roo-touchview-combobox ',
-           cn: [
+            cn: [
                 {
                     tag: 'input',
                     type : 'hidden',

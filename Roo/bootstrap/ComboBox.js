@@ -2267,7 +2267,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var combobox = {
             cls: 'roo-select2-container input-group roo-touchview-combobox ',
-           cn: [
+            cn: [
                 {
                     tag: 'input',
                     type : 'hidden',
