@@ -23990,7 +23990,7 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
                 xtype: 'Button',
                 size : 'sm',
                 xns: Roo.bootstrap,
-                glyphicon : 'font',
+                fa : 'font',
                 //html : 'submit'
                 menu : {
                     xtype: 'Menu',
