@@ -180,7 +180,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         
       
         
-        var ibwrap = inputbox;
+        var ibwrap = inputblock;
         
         if(this.multiple){
             ibwrap = {
