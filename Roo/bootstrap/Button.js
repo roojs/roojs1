@@ -150,7 +150,12 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             if (['default', 'primary', 'secondary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
                 
                 var outline = this.outline || this.weight == 'default' ? 'outline-' : '';
-                cfg.cls += ' btn-' + outline + this.weight;
+                var weight = this.weight == 'default' ? 'secondary' : this.weight;
+                cfg.cls += ' btn-' + outline + weight;
+                if (this.weight == 'default') {
+                    // BC
+                    cfg.cls += ' btn-' + this.weight;
+                }
             }
         } else if (this.theme==='glow') {
             
