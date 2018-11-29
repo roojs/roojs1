@@ -4,33 +4,20 @@
     <title>Bootstrap - Editor Example</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-        
-    <link href="../../../bootswatch/AdminLTE-master/css/font-awesome.css" rel="stylesheet" type="text/css" /> 
-    <link rel="stylesheet" href="../../css-bootstrap/select2.css">        
-    <link rel="stylesheet" href="../../css-bootstrap/combobox.css">     
-    <link rel="stylesheet" href="../../css-bootstrap/checkbox.css">
-        
-        
-        
-    <script type="text/javascript" src="../../roojs-core-debug.js"></script>
-    <script type="text/javascript" src="../../roojs-bootstrap.js"></script>
-
-    <!-- bootstrap js.. needs to compile it later.. -->
-     
-    <!--
-    <script type="text/javascript" src="../../../Campaign/editor/Panel.js"></script>
-    <script type="text/javascript" src="../../../Campaign/editor/TextBlock.js"></script>
-    <script type="text/javascript" src="../../../Campaign/editor/ImageBlock.js"></script>
+       <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="../../css-bootstrap4/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css-bootstrap4/roojs-bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../css-bootstrap/font-awesome.css">
     
-    <link rel="stylesheet" href="../../../Campaign/editor/editor.css">
-    -->
+    <script type="text/javascript" src="../../roojs-debug.js"></script>
+    
+     <script type="text/javascript" src="../../roojs-bootstrap-debug.js"></script>
+
+ 
     
     
     <!-- test code -->
-    <script type="text/javascript" src="Editor.js"></script>
+    <script type="text/javascript" src="../bootstrap/Editor.js"></script>
   </head>
   
   <body id="body">
@@ -47,18 +34,15 @@
         });
         
         Roo.XComponent.on('buildcomplete', function() {
+          return;
             Roo.Ajax.request({
                 url : baseURL + '/editor/data.php',
                 method: 'GET',
                 success : function(r)
                 {
-                    var res = Roo.decode(r.responseText);
+                 
                     
-                    if(!res.success){
-                        return;
-                    }
-                    
-                    Roo.example.Editor.previewPanel.body().dom.innerHTML = res.data.email;
+                    Roo.example.Editor.previewPanel.body().dom.innerHTML = "this is an examples"
                     
                     Roo.each(Roo.example.Editor.previewPanel.body().select('.campaign-editable', true).elements, function(el){
                         
@@ -74,7 +58,7 @@
                         
                         Roo.example.Editor[target] = new Roo.bootstrap.editor.ImageBlock({ panel : 'thanks-email' }).render(el);
                         Roo.example.Editor[target].parent = el;
-                        
+                      /*  
                         Roo.example.Editor[target].on('upload', function(){
                             Campaign.Dialog.Images.show(
                                 {
@@ -106,6 +90,7 @@
                                 }
                             );
                         })
+                        */
                         
                     })
                     
