@@ -2957,6 +2957,8 @@ table td .navbar {
   height: 1%;
   margin: 0;
   padding: 0;
+  width: 100%;
+  /* needed on BS4? */
   /*position: relative;*/
   border: 1px solid #6c757d;
   cursor: text;
