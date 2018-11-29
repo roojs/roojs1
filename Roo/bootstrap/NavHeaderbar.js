@@ -56,11 +56,11 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
         }
         
         if(this.srButton){
-            cn.push(/*{
+            cn.push({
                 tag: 'div',
                 cls: 'navbar-header',
                 cn: [
-                   */ {
+                    {
                         tag: 'button',
                         type: 'button',
                         cls: 'navbar-toggle navbar-toggler',
@@ -84,9 +84,9 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
                                 cls: 'icon-bar'
                             }
                         ]
-                    } /*
+                    }
                 ]
-            }*/);
+            });
         }
         
         cn.push({
@@ -106,8 +106,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
         }
         
         if (this.brand !== '') {
-            //cn[0].cn.unshift
-            cn.unshift({ // changed from push ?? BS4 needs it at the start? - does this break or exsiting?
+            cn[0].cn.unshift({ // changed from push ?? BS4 needs it at the start? - does this break or exsiting?
                 tag: 'a',
                 href: this.brand_href ? this.brand_href : '#',
                 cls: 'navbar-brand',
