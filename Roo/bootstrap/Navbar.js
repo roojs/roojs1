@@ -64,7 +64,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
                     
                     ce.setHeight(0); // resize it ...
                     ce.on('transitionend', function() {
-                    
+                        Roo.log('done transition');
                         ce.removeClass('collapsing');
                         ce.addClass('show');
                         ce.removeClass('collapse');
