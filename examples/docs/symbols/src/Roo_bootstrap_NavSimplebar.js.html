@@ -1,0 +1,114 @@
+<html><head><title>../roojs1/Roo/bootstrap/NavSimplebar.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ * navbar
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.NavSimplebar
+ * @extends Roo.bootstrap.Navbar
+ * Bootstrap Sidebar class
+ *
+ * @cfg {Boolean} inverse is inverted color
+ * 
+ * @cfg {String} type (nav | pills | tabs)
+ * @cfg {Boolean} arrangement stacked | justified
+ * @cfg {String} align (left | right) alignment
+ * 
+ * @cfg {Boolean} main (true|false) main nav bar? default false
+ * @cfg {Boolean} loadMask (true|false) loadMask on the bar
+ * 
+ * @cfg {String} tag (header|footer|nav|div) default is nav 
+
+ * 
+ * 
+ * 
+ * @constructor
+ * Create a new Sidebar
+ * @param {Object} config The config object
+ */
+
+
+</span><span class="jsdoc-var">Roo.bootstrap.NavSimplebar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.bootstrap.NavSimplebar.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.NavSimplebar</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Navbar</span><span class="jsdoc-syntax">,  {
+    
+    </span><span class="jsdoc-var">inverse</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">arrangement</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    
+    
+    </span><span class="jsdoc-var">main </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    
+    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.tag </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'navbar'
+        </span><span class="jsdoc-syntax">};
+	  
+	
+        </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
+            {
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'nav'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ul'
+            </span><span class="jsdoc-syntax">}
+        ];
+        
+         
+        </span><span class="jsdoc-var">this.type </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.type </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'nav'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'tabs'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'pills'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.type</span><span class="jsdoc-syntax">)!==-1) {
+            </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' nav-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.type
+        
+        
+        </span><span class="jsdoc-syntax">} </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.type</span><span class="jsdoc-syntax">!==</span><span class="jsdoc-string">'nav'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'nav type must be nav/tabs/pills'</span><span class="jsdoc-syntax">)
+            }
+            </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' navbar-nav'
+        </span><span class="jsdoc-syntax">}
+        
+        
+        
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'stacked'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'justified'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.arrangement</span><span class="jsdoc-syntax">)!==-1) {
+            </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' nav-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.arrangement</span><span class="jsdoc-syntax">;
+        }
+        
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.align </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' navbar-right'</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inverse</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' navbar-inverse'</span><span class="jsdoc-syntax">;
+            
+        }
+        
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    
+        
+    }
+    
+    
+    
+});
+
+
+
+ 
+
+ 
+       </span></code></body></html>

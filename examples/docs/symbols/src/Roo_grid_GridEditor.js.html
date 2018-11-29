@@ -1,0 +1,42 @@
+<html><head><title>../roojs1/Roo/grid/GridEditor.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+// private - not really -- you end up using it !
+// This is a support class used internally by the Grid components
+
+/**
+ * @class Roo.grid.GridEditor
+ * @extends Roo.Editor
+ * Class for creating and editable grid elements.
+ * @param {Object} config any settings (must include field)
+ */
+</span><span class="jsdoc-var">Roo.grid.GridEditor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">field</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">field.field</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">field</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">field </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.field</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.form</span><span class="jsdoc-syntax">);
+    }
+    </span><span class="jsdoc-var">Roo.grid.GridEditor.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">field</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">field.monitorTab </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.grid.GridEditor</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.Editor</span><span class="jsdoc-syntax">, {
+    
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Roo.form.Field} field Field to wrap (or xtyped)
+     */
+    
+    </span><span class="jsdoc-var">alignment</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;tl-tl&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">autoSize</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;width&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">hideEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-small-editor x-grid-editor&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">shim</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">shadow</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;frame&quot;
+</span><span class="jsdoc-syntax">});</span></code></body></html>

@@ -1,0 +1,102 @@
+<html><head><title>../roojs1/Roo/data/SortTypes.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+
+/**
+ * @class Roo.data.SortTypes
+ * @singleton
+ * Defines the default sorting (casting?) comparison functions used when sorting data.
+ */
+</span><span class="jsdoc-var">Roo.data.SortTypes </span><span class="jsdoc-syntax">= {
+    </span><span class="jsdoc-comment">/**
+     * Default sort that does nothing
+     * @param {Mixed} s The value being converted
+     * @return {Mixed} The comparison value
+     */
+    </span><span class="jsdoc-var">none </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * The regular expression used to strip tags
+     * @type {RegExp}
+     * @property
+     */
+    </span><span class="jsdoc-var">stripTagsRE </span><span class="jsdoc-syntax">: /&lt;\/?[^&gt;]+&gt;/gi,
+    
+    </span><span class="jsdoc-comment">/**
+     * Strips all HTML tags to sort on text only
+     * @param {Mixed} s The value being converted
+     * @return {String} The comparison value
+     */
+    </span><span class="jsdoc-var">asText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.stripTagsRE</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Strips all HTML tags to sort on text only - Case insensitive
+     * @param {Mixed} s The value being converted
+     * @return {String} The comparison value
+     */
+    </span><span class="jsdoc-var">asUCText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.toUpperCase</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.stripTagsRE</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Case insensitive string
+     * @param {Mixed} s The value being converted
+     * @return {String} The comparison value
+     */
+    </span><span class="jsdoc-var">asUCString </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">) {
+    	</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.toUpperCase</span><span class="jsdoc-syntax">();
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Date sorting
+     * @param {Mixed} s The value being converted
+     * @return {Number} The comparison value
+     */
+    </span><span class="jsdoc-var">asDate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">0;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">s.getTime</span><span class="jsdoc-syntax">();
+        }
+    	</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Date.parse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">));
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Float sorting
+     * @param {Mixed} s The value being converted
+     * @return {Float} The comparison value
+     */
+    </span><span class="jsdoc-var">asFloat </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">) {
+    	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">val </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parseFloat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/,/g, </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isNaN</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">val </span><span class="jsdoc-syntax">= 0;
+        }
+    	</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Integer sorting
+     * @param {Mixed} s The value being converted
+     * @return {Number} The comparison value
+     */
+    </span><span class="jsdoc-var">asInt </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">val </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/,/g, </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isNaN</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">val </span><span class="jsdoc-syntax">= 0;
+        }
+    	</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">;
+    }
+};</span></code></body></html>

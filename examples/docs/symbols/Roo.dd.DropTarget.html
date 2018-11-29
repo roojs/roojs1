@@ -1,0 +1,4231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=undefined" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		
+		<title>JsDoc Reference - Roo.dd.DropTarget</title>
+		
+		
+	<link rel="stylesheet" type="text/css" href="../../css/roojs.css" />		
+	<link rel="stylesheet" type="text/css" href="../default.css" />
+	
+	
+	<script type="text/javascript" src="../page.js">
+	
+	</script>
+	 
+		
+	</head>
+
+	<body onload="RooDocsPage.onload();">
+	 
+	
+<div class="body-wrap">
+
+    <!-- ============================== links to methods. ================================= -->	
+
+    <div class="top-tools">
+    <!--
+        <a class="inner-link" href="#Roo.dd.DropTarget-props"><img src="resources/s.gif" class="item-icon icon-prop">Properties</a>
+        <a class="inner-link" href="#Roo.dd.DropTarget-methods"><img src="resources/s.gif" class="item-icon icon-method">Methods</a>
+        <a class="inner-link" href="#Roo.dd.DropTarget-events"><img src="resources/s.gif" class="item-icon icon-event">Events</a>
+        <a class="inner-link" href="#Roo.dd.DropTarget-configs"><img src="resources/s.gif" class="item-icon icon-config">Config Options</a>
+        <a class="bookmark" href="NEED_TO_CREATE_DIRECT_LINK_HREF"><img src="resources/s.gif" class="item-icon icon-fav">Direct Link</a>
+	-->
+    </div>
+
+    
+<!-- ============================== inheritance Block. ================================= -->	
+	
+		<div class="inheritance res-block">
+		   <pre class="res-block-inner"><a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+<img src="../../images/default/s.gif" height="1" width="20"/><img src="../../images/default/tree/elbow-end.gif" class="elbow"/><a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+<img src="../../images/default/s.gif" height="1" width="40"/><img src="../../images/default/tree/elbow-end.gif" class="elbow"/><a href="./Roo.dd.DDTarget.html#constructor" roo:cls="Roo.dd.DDTarget.html#constructor">Roo.dd.DDTarget</a>
+<img src="../../images/default/s.gif" height="1"  width="60"/><img class="elbow" src="../../images/default/tree/elbow-end.gif"/>Roo.dd.DropTarget 
+
+		   </pre>
+		</div>
+       
+<!-- ============================== class title / details ============================ -->
+    
+    
+    <h1 class="classTitle">
+				
+				Class Roo.dd.DropTarget
+			</h1>
+			
+    <table cellspacing="0" class="class-summary-table">
+	
+		<tr><td class="label">Package:</td><td class="hd-info">Roo.dd</td></tr>
+	
+        <tr><td class="label">Defined In:</td><td class="hd-info">
+			
+					<a href="./src/Roo_dd_DropTarget.js.html">Roo/dd/DropTarget.js</a>.
+			
+	</td></tr>
+        <tr><td class="label">Class:</td><td class="hd-info">DropTarget</td></tr>
+	
+	
+        <tr><td class="label">Subclasses:</td><td class="hd-info">
+		<a href="./Roo.dd.DropZone.html#constructor" roo:cls="Roo.dd.DropZone.html#constructor">Roo.dd.DropZone</a>
+
+	
+	
+	</td></tr>
+	
+	
+	
+		<tr><td class="label">Extends:</td><td class="hd-info">
+			<a href="./Roo.dd.DDTarget.html#constructor" roo:cls="Roo.dd.DDTarget.html#constructor">Roo.dd.DDTarget</a>
+	
+		</td></tr>    
+	
+	
+    </table>
+
+    
+<!-- ============================== class summary ========================== -->			
+    <div class="description">
+	A simple class that provides the basic implementation needed to make any element a drop target that can have<br/>draggable items dropped onto it.  The drop has no effect until an implementation of notifyDrop is provided.
+    </div>
+
+	
+<!-- ============================== Class comment block... ========================== -->					
+
+<div class="comments">
+	<b>Class Comments / Notes</B> =>  
+	<u onclick="parent.CommentDialog.showCommentId = 'Roo.dd.DropTarget';">[Add Your comment/notes about this class]</u>
+	<br/>
+	<iframe frameborder="0"  id="comments-Roo.dd" style="border: none;width:100%;" 
+		src="/blog.php/GtkDjsComments/Roo.dd.DropTarget.html"></iframe>
+</div>
+	
+
+		
+<!-- ============================== config options ========================== -->						
+		 
+    
+    
+		
+    <div class="hr"></div>
+    <a id="Roo.dd.DropTarget-configs"></a>
+		
+    
+     
+    
+	
+      <table cellspacing="0" class="member-table">   
+      <caption>Config Options (Usually are also Properties)</caption>
+    
+	
+        <tr>
+            <th class="sig-header" colspan="2">Options</th>
+	    
+            <th class="msource-header">Defined By</th>
+        </tr>
+	
+	
+	
+	
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.dd.DropTarget-cfg-ddGroup" name=".ddGroup"></a>
+			<div class="fixedFont">
+				<b  class="itemname">ddGroup</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">The drag drop group to handle drop events for</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    The drag drop group to handle drop events for
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.dd.DropTarget
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.dd.DropTarget-cfg-dropAllowed" name=".dropAllowed"></a>
+			<div class="fixedFont">
+				<b  class="itemname">dropAllowed</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">The CSS class returned to the drag source when drop is allowed (defaults to "x-dd-drop-ok").</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    The CSS class returned to the drag source when drop is allowed (defaults to "x-dd-drop-ok").
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.dd.DropTarget
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.dd.DropTarget-cfg-dropNotAllowed" name=".dropNotAllowed"></a>
+			<div class="fixedFont">
+				<b  class="itemname">dropNotAllowed</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">The CSS class returned to the drag source when drop is not allowed (defaults to "x-dd-drop-nodrop").</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    The CSS class returned to the drag source when drop is not allowed (defaults to "x-dd-drop-nodrop").
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.dd.DropTarget
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.util.Observable-cfg-listeners" name=".listeners"></a>
+			<div class="fixedFont">
+				<b  class="itemname">listeners</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">list of events and functions to call for this object, <br/>For example :<br/><pre><code><br/>    listeners :  { <br/>       'click' : function(e) {<br/>           .</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    list of events and functions to call for this object, <br/>For example :<br/><pre><code><br/>    listeners :  { <br/>       'click' : function(e) {<br/>           ..... <br/>        } ,<br/>        .... <br/>    } <br/>  </code></pre>
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.dd.DropTarget-cfg-overClass" name=".overClass"></a>
+			<div class="fixedFont">
+				<b  class="itemname">overClass</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">The CSS class applied to the drop target element while the drag source is over it (defaults to "").</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    The CSS class applied to the drop target element while the drag source is over it (defaults to "").
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.dd.DropTarget
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.dd.DropTarget-cfg-success" name=".success"></a>
+			<div class="fixedFont">
+				<b  class="itemname">success</b> : boolean
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">set this after drop listener.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    set this after drop listener..
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.dd.DropTarget
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.dd.DropTarget-cfg-valid" name=".valid"></a>
+			<div class="fixedFont">
+				<b  class="itemname">valid</b> : boolean|<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">true/false or string (ok-add/ok-sub/ok/nodrop)<br/>if the drop point is valid for over/enter.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    true/false or string (ok-add/ok-sub/ok/nodrop)<br/>if the drop point is valid for over/enter..
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.dd.DropTarget
+				
+		    </td>
+		</tr>
+        
+        
+    </table>
+  		
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- ============================== public properties ==================== -->	
+  
+  
+  
+    <a id="Roo.dd.DropTarget-props"></a>      
+    
+    
+
+    
+    
+     <table cellspacing="0" class="member-table">
+      <caption class="Empty">Public Properties - Has None</caption>
+     </table>
+    
+    
+     
+    
+  <!-- ============================== methods summary / details ======================== -->
+  
+  
+  <a id="Roo.dd.DropTarget-methods"></a>
+	<!-- constructor?? -->
+  	
+	<!-- static's first 
+	
+	
+	-->
+	
+	<!-- then dynamics first -->
+	
+  
+  
+    
+    
+    
+      <table cellspacing="0" class="member-table">
+      <caption>Public Methods</caption>
+        <tr>
+            <th class="sig-header" colspan="2">Method</th>            
+            <th class="msource-header">Defined By</th>
+
+        </tr>
+        
+	
+	
+	 
+	
+        
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd-method-DropTarget"   name=".DropTarget"></a>
+		<div class="fixedFont">
+			<span class="attributes">new <B>Roo.dd.</B></span><b class="itemname">DropTarget</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement/Element <B><i>el</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>config</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+		 
+			<div class="short">Create a new Roo.dd.DropTarget</div> 
+		 
+		 
+                    <div class="long">
+			
+			
+			
+				Create a new Roo.dd.DropTarget
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement/Element</span>  <b>el</b>
+						
+					</dt>
+					<dd>The container element</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>config</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-addEvents"   name=".addEvents"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">addEvents</b>
+				
+				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>object</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Used to define events on this Observable</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Used to define events on this Observable
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>object</b>
+						
+					</dt>
+					<dd>The object with the events defined</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-addInvalidHandleClass"   name=".addInvalidHandleClass"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">addInvalidHandleClass</b>
+				
+				 (string <B><i>cssClass</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Lets you specify a css class of elements that will not initiate a drag</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Lets you specify a css class of elements that will not initiate a drag
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">string</span>  <b>cssClass</b>
+						
+					</dt>
+					<dd>the class of the elements you wish to ignore</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-addInvalidHandleId"   name=".addInvalidHandleId"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">addInvalidHandleId</b>
+				
+				 (string <B><i>id</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Lets you to specify an element id for a child of a drag handle<br/>that should not initiate a drag</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Lets you to specify an element id for a child of a drag handle<br/>that should not initiate a drag
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">string</span>  <b>id</b>
+						
+					</dt>
+					<dd>the element id of the element you wish to ignore</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-addInvalidHandleType"   name=".addInvalidHandleType"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">addInvalidHandleType</b>
+				
+				 (string <B><i>tagName</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Allows you to specify a tag name that should not start a drag operation<br/>when clicked.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Allows you to specify a tag name that should not start a drag operation<br/>when clicked.  This is designed to facilitate embedding links within a<br/>drag handle that do something other than start the drag.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">string</span>  <b>tagName</b>
+						
+					</dt>
+					<dd>the type of element to exclude</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-addListener"   name=".addListener"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">addListener</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>handler</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>options</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Appends an event handler to this component</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Appends an event handler to this component
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The type of event to listen for</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>handler</b>
+						
+					</dt>
+					<dd>The method the event invokes</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>(optional) The scope in which to execute the handler<br/>function. The handler function's "this" context.</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>options</b>
+						
+					</dt>
+					<dd>(optional) An object containing handler configuration<br/>properties. This may contain any of the following properties:<ul><br/><li>scope {Object} The scope in which to execute the handler function. The handler function's "this" context.</li><br/><li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li><br/><li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li><br/><li>buffer {Number} Causes the handler to be scheduled to run in an {<b>link</b> Roo.util.DelayedTask} delayed<br/>by the specified number of milliseconds. If the event fires again within that time, the original<br/>handler is <em>not</em> invoked, but the new handler is scheduled in its place.</li><br/></ul><br><br/><p><br/><b>Combining Options</b><br><br/>Using the options argument, it is possible to combine different types of listeners:<br><br/><br><br/>A normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)<br/>		<pre><code><br/>		el.on('click', this.onClick, this, {<br/> 			single: true,<br/>    		delay: 100,<br/>    		forumId: 4<br/>		});<br/>		</code></pre><br/><p><br/><b>Attaching multiple handlers in 1 call</b><br><br/>The method also allows for a single argument to be passed which is a config object containing properties<br/>which specify multiple handlers.<br/><pre><code><br/>		el.on({<br/>			'click': {<br/>        		fn: this.onClick,<br/>        		scope: this,<br/>        		delay: 100<br/>    		}, <br/>    		'mouseover': {<br/>        		fn: this.onMouseOver,<br/>        		scope: this<br/>    		},<br/>    		'mouseout': {<br/>        		fn: this.onMouseOut,<br/>        		scope: this<br/>    		}<br/>		});<br/>		</code></pre><br/><p><br/>Or a shorthand syntax which passes the same scope object to all handlers:<br/>     	<pre><code><br/>		el.on({<br/>			'click': this.onClick,<br/>    		'mouseover': this.onMouseOver,<br/>    		'mouseout': this.onMouseOut,<br/>    		scope: this<br/>		});<br/>		</code></pre></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-addToGroup"   name=".addToGroup"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">addToGroup</b>
+				
+				 (<B><i>sGroup</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Add this instance to a group of related drag/drop objects.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Add this instance to a group of related drag/drop objects.  All<br/>instances belong to at least one group, and can belong to as many<br/>groups as needed.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						 <b>sGroup</b>
+						
+					</dt>
+					<dd>{string} the name of the group</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-applyConfig"   name=".applyConfig"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">applyConfig</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Applies the configuration parameters that were passed into the constructor.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Applies the configuration parameters that were passed into the constructor.<br/>This is supposed to happen at each level through the inheritance chain.  So<br/>a DDProxy implentation will execute apply config on DDProxy, DD, and<br/>DragDrop in order to get all of the parameters that are available in<br/>each object.
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-clearConstraints"   name=".clearConstraints"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">clearConstraints</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Clears any constraints applied to this instance.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Clears any constraints applied to this instance.  Also clears ticks<br/>since they can't exist independent of a constraint at this time.
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-clearTicks"   name=".clearTicks"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">clearTicks</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Clears any tick interval defined for this instance</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Clears any tick interval defined for this instance
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-endDrag"   name=".endDrag"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">endDrag</b>
+				
+				 (Event <B><i>e</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Fired when we are done dragging the object</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Fired when we are done dragging the object
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Event</span>  <b>e</b>
+						
+					</dt>
+					<dd>the mouseup event</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-fireEvent"   name=".fireEvent"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">fireEvent</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object...</a> <B><i>args</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Fires the specified event with the passed parameters (minus the event name).</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Fires the specified event with the passed parameters (minus the event name).
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object...</a></span>  <b>args</b>
+						
+					</dt>
+					<dd>Variable number of parameters are passed to handlers</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  returns false if any of the handlers return false otherwise it returns true</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-function toString() {
+    [native code]
+}"   name=".function toString() {
+    [native code]
+}"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">function toString() {
+    [native code]
+}</b>
+				
+				 () 
+			
+				
+					 : 
+					
+						
+						string
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">toString method</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				toString method
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont">string</span>  string representation of the dd obj</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-getDragEl"   name=".getDragEl"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">getDragEl</b>
+				
+				 () 
+			
+				
+					 : 
+					
+						
+						<a href="http://www.w3.org/TR/DOM-Level-2-HTML/html.html#ID-58190037">HTMLElement</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Returns a reference to the actual element to drag.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Returns a reference to the actual element to drag.  By default this is<br/>the same as the html element, but it can be assigned to another<br/>element. An example of this can be found in Roo.dd.DDProxy
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="http://www.w3.org/TR/DOM-Level-2-HTML/html.html#ID-58190037">HTMLElement</a></span>  the html element</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-getEl"   name=".getEl"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">getEl</b>
+				
+				 () 
+			
+				
+					 : 
+					
+						
+						<a href="http://www.w3.org/TR/DOM-Level-2-HTML/html.html#ID-58190037">HTMLElement</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Returns a reference to the linked element</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Returns a reference to the linked element
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="http://www.w3.org/TR/DOM-Level-2-HTML/html.html#ID-58190037">HTMLElement</a></span>  the html element</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-hasListener"   name=".hasListener"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">hasListener</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Checks to see if this object has any listeners for a specified event</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Checks to see if this object has any listeners for a specified event
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The name of the event to check for</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  True if the event is being listened for, else false</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-init"   name=".init"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">init</b>
+				
+				 (<B><i>id</i></B>, <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>sGroup</i></B>, object <B><i>config</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Sets up the DragDrop object.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Sets up the DragDrop object.  Must be called in the constructor of any<br/>Roo.dd.DragDrop subclass
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						 <b>id</b>
+						
+					</dt>
+					<dd>the id of the linked element</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>sGroup</b>
+						
+					</dt>
+					<dd>the group of related items</dd>
+				
+					<dt>
+						<span class="fixedFont">object</span>  <b>config</b>
+						
+					</dt>
+					<dd>configuration attributes</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-initTarget"   name=".initTarget"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">initTarget</b>
+				
+				 (<B><i>id</i></B>, <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>sGroup</i></B>, object <B><i>config</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Initializes Targeting functionality only.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Initializes Targeting functionality only... the object does not<br/>get a mousedown handler.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						 <b>id</b>
+						
+					</dt>
+					<dd>the id of the linked element</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>sGroup</b>
+						
+					</dt>
+					<dd>the group of related items</dd>
+				
+					<dt>
+						<span class="fixedFont">object</span>  <b>config</b>
+						
+					</dt>
+					<dd>configuration attributes</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-isLocked"   name=".isLocked"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">isLocked</b>
+				
+				 () 
+			
+				
+					 : 
+					
+						
+						boolean
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Returns true if this instance is locked, or the drag drop mgr is locked<br/>(meaning that all drag/drop is disabled on the page.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Returns true if this instance is locked, or the drag drop mgr is locked<br/>(meaning that all drag/drop is disabled on the page.)
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont">boolean</span>  true if this obj or all drag/drop is locked, else<br/>false</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-isTarget"   name=".isTarget"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">isTarget</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">By default, all insances can be a drop target.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				By default, all insances can be a drop target.  This can be disabled by<br/>setting isTarget to false.
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-isValidHandleChild"   name=".isValidHandleChild"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">isValidHandleChild</b>
+				
+				 (<a href="http://www.w3.org/TR/DOM-Level-2-HTML/html.html#ID-58190037">HTMLElement</a> <B><i>node</i></B>) 
+			
+				
+					 : 
+					
+						
+						boolean
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Checks the tag exclusion list to see if this click should be ignored</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Checks the tag exclusion list to see if this click should be ignored
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://www.w3.org/TR/DOM-Level-2-HTML/html.html#ID-58190037">HTMLElement</a></span>  <b>node</b>
+						
+					</dt>
+					<dd>the HTMLElement to evaluate</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont">boolean</span>  true if this is a valid tag type, false if not</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-lock"   name=".lock"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">lock</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Lock this instance</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Lock this instance
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DropTarget-method-notifyDrop"   name=".notifyDrop"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">notifyDrop</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short"></div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.dd.DropTarget
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DropTarget-method-notifyEnter"   name=".notifyEnter"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">notifyEnter</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short"></div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.dd.DropTarget
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DropTarget-method-notifyOut"   name=".notifyOut"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">notifyOut</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short"></div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.dd.DropTarget
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DropTarget-method-notifyOver"   name=".notifyOver"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">notifyOver</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short"></div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.dd.DropTarget
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-on"   name=".on"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">on</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>handler</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>options</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Appends an event handler to this element (shorthand for addListener)</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Appends an event handler to this element (shorthand for addListener)
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The type of event to listen for</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>handler</b>
+						
+					</dt>
+					<dd>The method the event invokes</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>(optional) The scope in which to execute the handler<br/>function. The handler function's "this" context.</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>options</b>
+						
+					</dt>
+					<dd>(optional)</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-onAvailable"   name=".onAvailable"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">onAvailable</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Override the onAvailable method to do what is needed after the initial<br/>position was determined.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Override the onAvailable method to do what is needed after the initial<br/>position was determined.
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-onDrag"   name=".onDrag"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">onDrag</b>
+				
+				 (Event <B><i>e</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Abstract method called during the onMouseMove event while dragging an<br/>object.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Abstract method called during the onMouseMove event while dragging an<br/>object.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Event</span>  <b>e</b>
+						
+					</dt>
+					<dd>the mousemove event</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-onDragDrop"   name=".onDragDrop"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">onDragDrop</b>
+				
+				 (Event <B><i>e</i></B>, <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>|DragDrop[] <B><i>id</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Abstract method called when this item is dropped on another DragDrop<br/>obj</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Abstract method called when this item is dropped on another DragDrop<br/>obj
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Event</span>  <b>e</b>
+						
+					</dt>
+					<dd>the mouseup event</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>|DragDrop[]</span>  <b>id</b>
+						
+					</dt>
+					<dd>In POINT mode, the element<br/>id this was dropped on.  In INTERSECT mode, an array of dd items this<br/>was dropped on.</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-onDragEnter"   name=".onDragEnter"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">onDragEnter</b>
+				
+				 (Event <B><i>e</i></B>, <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>|DragDrop[] <B><i>id</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Abstract method called when this element fist begins hovering over<br/>another DragDrop obj</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Abstract method called when this element fist begins hovering over<br/>another DragDrop obj
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Event</span>  <b>e</b>
+						
+					</dt>
+					<dd>the mousemove event</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>|DragDrop[]</span>  <b>id</b>
+						
+					</dt>
+					<dd>In POINT mode, the element<br/>id this is hovering over.  In INTERSECT mode, an array of one or more<br/>dragdrop items being hovered over.</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-onDragOut"   name=".onDragOut"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">onDragOut</b>
+				
+				 (Event <B><i>e</i></B>, <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>|DragDrop[] <B><i>id</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Abstract method called when we are no longer hovering over an element</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Abstract method called when we are no longer hovering over an element
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Event</span>  <b>e</b>
+						
+					</dt>
+					<dd>the mousemove event</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>|DragDrop[]</span>  <b>id</b>
+						
+					</dt>
+					<dd>In POINT mode, the element<br/>id this was hovering over.  In INTERSECT mode, an array of dd items<br/>that the mouse is no longer over.</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-onDragOver"   name=".onDragOver"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">onDragOver</b>
+				
+				 (Event <B><i>e</i></B>, <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>|DragDrop[] <B><i>id</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Abstract method called when this element is hovering over another<br/>DragDrop obj</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Abstract method called when this element is hovering over another<br/>DragDrop obj
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Event</span>  <b>e</b>
+						
+					</dt>
+					<dd>the mousemove event</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>|DragDrop[]</span>  <b>id</b>
+						
+					</dt>
+					<dd>In POINT mode, the element<br/>id this is hovering over.  In INTERSECT mode, an array of dd items<br/>being hovered over.</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-onInvalidDrop"   name=".onInvalidDrop"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">onInvalidDrop</b>
+				
+				 (Event <B><i>e</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Abstract method called when this item is dropped on an area with no<br/>drop target</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Abstract method called when this item is dropped on an area with no<br/>drop target
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Event</span>  <b>e</b>
+						
+					</dt>
+					<dd>the mouseup event</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-onMouseDown"   name=".onMouseDown"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">onMouseDown</b>
+				
+				 (Event <B><i>e</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Event handler that fires when a drag/drop obj gets a mousedown</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Event handler that fires when a drag/drop obj gets a mousedown
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Event</span>  <b>e</b>
+						
+					</dt>
+					<dd>the mousedown event</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-onMouseUp"   name=".onMouseUp"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">onMouseUp</b>
+				
+				 (Event <B><i>e</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Event handler that fires when a drag/drop obj gets a mouseup</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Event handler that fires when a drag/drop obj gets a mouseup
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Event</span>  <b>e</b>
+						
+					</dt>
+					<dd>the mouseup event</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-padding"   name=".padding"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">padding</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">The padding configured for this drag and drop object for calculating<br/>the drop zone intersection with this object.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				The padding configured for this drag and drop object for calculating<br/>the drop zone intersection with this object.
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-purgeListeners"   name=".purgeListeners"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">purgeListeners</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Removes all listeners for this object</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Removes all listeners for this object
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-removeFromGroup"   name=".removeFromGroup"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">removeFromGroup</b>
+				
+				 (string <B><i>sGroup</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Remove's this instance from the supplied interaction group</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Remove's this instance from the supplied interaction group
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">string</span>  <b>sGroup</b>
+						
+					</dt>
+					<dd>The group to drop</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-removeInvalidHandleClass"   name=".removeInvalidHandleClass"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">removeInvalidHandleClass</b>
+				
+				 (string <B><i>cssClass</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Unsets an invalid css class</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Unsets an invalid css class
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">string</span>  <b>cssClass</b>
+						
+					</dt>
+					<dd>the class of the element(s) you wish to<br/>re-enable</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-removeInvalidHandleId"   name=".removeInvalidHandleId"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">removeInvalidHandleId</b>
+				
+				 (string <B><i>id</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Unsets an invalid handle id</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Unsets an invalid handle id
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">string</span>  <b>id</b>
+						
+					</dt>
+					<dd>the id of the element to re-enable</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-removeInvalidHandleType"   name=".removeInvalidHandleType"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">removeInvalidHandleType</b>
+				
+				 (string <B><i>tagName</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Unsets an excluded tag name set by addInvalidHandleType</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Unsets an excluded tag name set by addInvalidHandleType
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">string</span>  <b>tagName</b>
+						
+					</dt>
+					<dd>the type of element to unexclude</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-removeListener"   name=".removeListener"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">removeListener</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>handler</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Removes a listener</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Removes a listener
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The type of event to listen for</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>handler</b>
+						
+					</dt>
+					<dd>The handler to remove</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>(optional) The scope (this object) for the handler</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-resetConstraints"   name=".resetConstraints"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">resetConstraints</b>
+				
+				 (boolean <B><i>maintainOffset</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">resetConstraints must be called if you manually reposition a dd element.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				resetConstraints must be called if you manually reposition a dd element.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">boolean</span>  <b>maintainOffset</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-setDragElId"   name=".setDragElId"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">setDragElId</b>
+				
+				 (<B><i>id</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Allows you to specify that an element other than the linked element<br/>will be moved with the cursor during a drag</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Allows you to specify that an element other than the linked element<br/>will be moved with the cursor during a drag
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						 <b>id</b>
+						
+					</dt>
+					<dd>{string} the id of the element that will be used to initiate the drag</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-setHandleElId"   name=".setHandleElId"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">setHandleElId</b>
+				
+				 (<B><i>id</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Allows you to specify a child of the linked element that should be<br/>used to initiate the drag operation.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Allows you to specify a child of the linked element that should be<br/>used to initiate the drag operation.  An example of this would be if<br/>you have a content div with text and links.  Clicking anywhere in the<br/>content area would normally start the drag operation.  Use this method<br/>to specify that an element inside of the content div is the element<br/>that starts the drag operation.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						 <b>id</b>
+						
+					</dt>
+					<dd>{string} the id of the element that will be used to<br/>initiate the drag.</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-setInitPosition"   name=".setInitPosition"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">setInitPosition</b>
+				
+				 (int <B><i>diffX</i></B>, int <B><i>diffY</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Stores the initial placement of the linked element.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Stores the initial placement of the linked element.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">int</span>  <b>diffX</b>
+						
+					</dt>
+					<dd>the X offset, default 0</dd>
+				
+					<dt>
+						<span class="fixedFont">int</span>  <b>diffY</b>
+						
+					</dt>
+					<dd>the Y offset, default 0</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-setOuterHandleElId"   name=".setOuterHandleElId"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">setOuterHandleElId</b>
+				
+				 (<B><i>id</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Allows you to set an element outside of the linked element as a drag<br/>handle</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Allows you to set an element outside of the linked element as a drag<br/>handle
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						 <b>id</b>
+						
+					</dt>
+					<dd>the id of the element that will be used to initiate the drag</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-setPadding"   name=".setPadding"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">setPadding</b>
+				
+				 (int <B><i>iTop</i></B>, int <B><i>iRight</i></B>, int <B><i>iBot</i></B>, int <B><i>iLeft</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Configures the padding for the target zone in px.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Configures the padding for the target zone in px.  Effectively expands<br/>(or reduces) the virtual object size for targeting calculations.<br/>Supports css-style shorthand; if only one parameter is passed, all sides<br/>will have that padding, and if only two are passed, the top and bottom<br/>will have the first param, the left and right the second.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">int</span>  <b>iTop</b>
+						
+					</dt>
+					<dd>Top pad</dd>
+				
+					<dt>
+						<span class="fixedFont">int</span>  <b>iRight</b>
+						
+					</dt>
+					<dd>Right pad</dd>
+				
+					<dt>
+						<span class="fixedFont">int</span>  <b>iBot</b>
+						
+					</dt>
+					<dd>Bot pad</dd>
+				
+					<dt>
+						<span class="fixedFont">int</span>  <b>iLeft</b>
+						
+					</dt>
+					<dd>Left pad</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-setXConstraint"   name=".setXConstraint"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">setXConstraint</b>
+				
+				 (int <B><i>iLeft</i></B>, int <B><i>iRight</i></B>, int <B><i>iTickSize</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">By default, the element can be dragged any place on the screen.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				By default, the element can be dragged any place on the screen.  Use<br/>this method to limit the horizontal travel of the element.  Pass in<br/>0,0 for the parameters if you want to lock the drag to the y axis.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">int</span>  <b>iLeft</b>
+						
+					</dt>
+					<dd>the number of pixels the element can move to the left</dd>
+				
+					<dt>
+						<span class="fixedFont">int</span>  <b>iRight</b>
+						
+					</dt>
+					<dd>the number of pixels the element can move to the<br/>right</dd>
+				
+					<dt>
+						<span class="fixedFont">int</span>  <b>iTickSize</b>
+						
+					</dt>
+					<dd>optional parameter for specifying that the<br/>element<br/>should move iTickSize pixels at a time.</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-setYConstraint"   name=".setYConstraint"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">setYConstraint</b>
+				
+				 (int <B><i>iUp</i></B>, int <B><i>iDown</i></B>, int <B><i>iTickSize</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">By default, the element can be dragged any place on the screen.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				By default, the element can be dragged any place on the screen.  Set<br/>this to limit the vertical travel of the element.  Pass in 0,0 for the<br/>parameters if you want to lock the drag to the x axis.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">int</span>  <b>iUp</b>
+						
+					</dt>
+					<dd>the number of pixels the element can move up</dd>
+				
+					<dt>
+						<span class="fixedFont">int</span>  <b>iDown</b>
+						
+					</dt>
+					<dd>the number of pixels the element can move down</dd>
+				
+					<dt>
+						<span class="fixedFont">int</span>  <b>iTickSize</b>
+						
+					</dt>
+					<dd>optional parameter for specifying that the<br/>element should move iTickSize pixels at a time.</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-startDrag"   name=".startDrag"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">startDrag</b>
+				
+				 (int <B><i>X</i></B>, int <B><i>Y</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Abstract method called after a drag/drop object is clicked<br/>and the drag or mousedown time thresholds have beeen met.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Abstract method called after a drag/drop object is clicked<br/>and the drag or mousedown time thresholds have beeen met.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">int</span>  <b>X</b>
+						
+					</dt>
+					<dd>click location</dd>
+				
+					<dt>
+						<span class="fixedFont">int</span>  <b>Y</b>
+						
+					</dt>
+					<dd>click location</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-un"   name=".un"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">un</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>handler</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Removes a listener (shorthand for removeListener)</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Removes a listener (shorthand for removeListener)
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The type of event to listen for</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>handler</b>
+						
+					</dt>
+					<dd>The handler to remove</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>(optional) The scope (this object) for the handler</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-unlock"   name=".unlock"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">unlock</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Unlock this instace</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Unlock this instace
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.dd.DragDrop-method-unreg"   name=".unreg"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">unreg</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Remove all drag and drop hooks for this element</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Remove all drag and drop hooks for this element
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.dd.DragDrop.html#constructor" roo:cls="Roo.dd.DragDrop.html#constructor">Roo.dd.DragDrop</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	                                               
+    </table>
+
+  
+  <!-- ============================== events summary / details ======================== -->
+  
+  
+  <a id="Roo.dd.DropTarget-events"></a>
+    
+  
+  	
+   
+  
+    
+    
+    
+      <table cellspacing="0" class="member-table">
+		<caption>Events</caption>
+	      <thead>
+		<tr>
+		    <th class="sig-header" colspan="2">Event</th>            
+		    <th class="msource-header">Defined By</th>
+
+		</tr>
+	      </thead>  
+	
+	
+	 
+	
+        
+          <tr class="method-row expandable config-row-alt0 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.dd.DropTarget-event-*drop"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">drop</b> (<a href="./Roo.dd.DragSource.html#constructor" roo:cls="Roo.dd.DragSource.html#constructor">Roo.dd.DragSource</a> <B><i>source</i></B>, Event <B><i>e</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>data</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">The function a {<b>link</b> Roo.dd.DragSource} calls once to notify this drop target that the dragged item has<br/>been dropped on it.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			The function a {<b>link</b> Roo.dd.DragSource} calls once to notify this drop target that the dragged item has<br/>been dropped on it.  This method has no default implementation and returns false, so you must provide an<br/>implementation that does something to process the drop event and returns true so that the drag source's<br/>repair action does not run.<br/><br/>IMPORTANT : it should set this.success
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.dd.DragSource.html#constructor" roo:cls="Roo.dd.DragSource.html#constructor">Roo.dd.DragSource</a></span> <b>source</b>
+						
+					</dt>
+					<dd>The drag source that was dragged over this drop target</dd>
+				
+					<dt>
+						<span class="fixedFont">Event</span> <b>e</b>
+						
+					</dt>
+					<dd>The event</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span> <b>data</b>
+						
+					</dt>
+					<dd>An object containing arbitrary data supplied by the drag source</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.dd.DropTarget
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.dd.DropTarget-event-*enter"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">enter</b> (<a href="./Roo.dd.DragSource.html#constructor" roo:cls="Roo.dd.DragSource.html#constructor">Roo.dd.DragSource</a> <B><i>source</i></B>, Event <B><i>e</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>data</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">The function a {<b>link</b> Roo.dd.DragSource} calls once to notify this drop target that the source is now over the<br/>target.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			The function a {<b>link</b> Roo.dd.DragSource} calls once to notify this drop target that the source is now over the<br/>target.  This default implementation adds the CSS class specified by overClass (if any) to the drop element<br/>and returns the dropAllowed config value.  This method should be overridden if drop validation is required.<br/><br/>IMPORTANT : it should set this.overClass and this.dropAllowed
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.dd.DragSource.html#constructor" roo:cls="Roo.dd.DragSource.html#constructor">Roo.dd.DragSource</a></span> <b>source</b>
+						
+					</dt>
+					<dd>The drag source that was dragged over this drop target</dd>
+				
+					<dt>
+						<span class="fixedFont">Event</span> <b>e</b>
+						
+					</dt>
+					<dd>The event</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span> <b>data</b>
+						
+					</dt>
+					<dd>An object containing arbitrary data supplied by the drag source</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.dd.DropTarget
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt0 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.dd.DropTarget-event-*out"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">out</b> (<a href="./Roo.dd.DragSource.html#constructor" roo:cls="Roo.dd.DragSource.html#constructor">Roo.dd.DragSource</a> <B><i>source</i></B>, Event <B><i>e</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>data</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">The function a {<b>link</b> Roo.dd.DragSource} calls once to notify this drop target that the source has been dragged<br/>out of the target without dropping.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			The function a {<b>link</b> Roo.dd.DragSource} calls once to notify this drop target that the source has been dragged<br/>out of the target without dropping.  This default implementation simply removes the CSS class specified by<br/>overClass (if any) from the drop element.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.dd.DragSource.html#constructor" roo:cls="Roo.dd.DragSource.html#constructor">Roo.dd.DragSource</a></span> <b>source</b>
+						
+					</dt>
+					<dd>The drag source that was dragged over this drop target</dd>
+				
+					<dt>
+						<span class="fixedFont">Event</span> <b>e</b>
+						
+					</dt>
+					<dd>The event</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span> <b>data</b>
+						
+					</dt>
+					<dd>An object containing arbitrary data supplied by the drag source</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.dd.DropTarget
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.dd.DropTarget-event-*over"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">over</b> (<a href="./Roo.dd.DragSource.html#constructor" roo:cls="Roo.dd.DragSource.html#constructor">Roo.dd.DragSource</a> <B><i>source</i></B>, Event <B><i>e</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>data</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">The function a {<b>link</b> Roo.dd.DragSource} calls continuously while it is being dragged over the target.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			The function a {<b>link</b> Roo.dd.DragSource} calls continuously while it is being dragged over the target.<br/>This method will be called on every mouse movement while the drag source is over the drop target.<br/>This default implementation simply returns the dropAllowed config value.<br/><br/>IMPORTANT : it should set this.dropAllowed
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.dd.DragSource.html#constructor" roo:cls="Roo.dd.DragSource.html#constructor">Roo.dd.DragSource</a></span> <b>source</b>
+						
+					</dt>
+					<dd>The drag source that was dragged over this drop target</dd>
+				
+					<dt>
+						<span class="fixedFont">Event</span> <b>e</b>
+						
+					</dt>
+					<dd>The event</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span> <b>data</b>
+						
+					</dt>
+					<dd>An object containing arbitrary data supplied by the drag source</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.dd.DropTarget
+            </td>
+        </tr>
+	
+	                                               
+    </table>
+
+  
+  
+  
+ 
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Fri Jul 13 2018 14:10:54 GMT+0800 (HKT)
+			Based on 
+			<a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a>  
+		</div>
+	</body>
+</html>

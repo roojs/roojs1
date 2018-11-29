@@ -1,0 +1,334 @@
+<html><head><title>../roojs1/Roo/form/DateField_1.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+ 
+/**
+ * @class Roo.form.DateField
+ * @extends Roo.form.TriggerField
+ * Provides a date input field with a {@link Roo.DatePicker} dropdown and automatic date validation.
+* @constructor
+* Create a new DateField
+* @param {Object} config
+ */
+</span><span class="jsdoc-var">Roo.form.DateField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.form.DateField.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    
+      </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+         
+        </span><span class="jsdoc-comment">/**
+         * @event select
+         * Fires when a date is selected
+	     * @param {Roo.form.DateField} combo This combo box
+	     * @param {Date} date The date selected
+	     */
+        </span><span class="jsdoc-string">'select' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+         
+    </span><span class="jsdoc-syntax">});
+    
+    
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">this.minValue </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">) </span><span class="jsdoc-var">this.minValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.minValue</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">this.maxValue </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">) </span><span class="jsdoc-var">this.maxValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.maxValue</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.ddMatch </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabledDates</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.disabledDates</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">re </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;(?:&quot;</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">dd.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-var">re </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">dd.length</span><span class="jsdoc-syntax">-1) </span><span class="jsdoc-var">re </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">&quot;|&quot;</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.ddMatch </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">RegExp</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">re </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;)&quot;</span><span class="jsdoc-syntax">);
+    }
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.DateField</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.form.TriggerField</span><span class="jsdoc-syntax">,  {
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} format
+     * The default date format string which can be overriden for localization support.  The format must be
+     * valid according to {@link Date#parseDate} (defaults to 'm/d/y').
+     */
+    </span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;m/d/y&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} altFormats
+     * Multiple date formats separated by &quot;|&quot; to try when parsing a user input value and it doesn't match the defined
+     * format (defaults to 'm/d/Y|m-d-y|m-d-Y|m/d|m-d|d').
+     */
+    </span><span class="jsdoc-var">altFormats </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;m/d/Y|m-d-y|m-d-Y|m/d|m-d|md|mdy|mdY|d&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Array} disabledDays
+     * An array of days to disable, 0 based. For example, [0, 6] disables Sunday and Saturday (defaults to null).
+     */
+    </span><span class="jsdoc-var">disabledDays </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} disabledDaysText
+     * The tooltip to display when the date falls on a disabled day (defaults to 'Disabled')
+     */
+    </span><span class="jsdoc-var">disabledDaysText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Disabled&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Array} disabledDates
+     * An array of &quot;dates&quot; to disable, as strings. These strings will be used to build a dynamic regular
+     * expression so they are very powerful. Some examples:
+     * &lt;ul&gt;
+     * &lt;li&gt;[&quot;03/08/2003&quot;, &quot;09/16/2003&quot;] would disable those exact dates&lt;/li&gt;
+     * &lt;li&gt;[&quot;03/08&quot;, &quot;09/16&quot;] would disable those days for every year&lt;/li&gt;
+     * &lt;li&gt;[&quot;^03/08&quot;] would only match the beginning (useful if you are using short years)&lt;/li&gt;
+     * &lt;li&gt;[&quot;03/../2006&quot;] would disable every day in March 2006&lt;/li&gt;
+     * &lt;li&gt;[&quot;^03&quot;] would disable every day in every March&lt;/li&gt;
+     * &lt;/ul&gt;
+     * In order to support regular expressions, if you are using a date format that has &quot;.&quot; in it, you will have to
+     * escape the dot when restricting dates. For example: [&quot;03\\.08\\.03&quot;].
+     */
+    </span><span class="jsdoc-var">disabledDates </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} disabledDatesText
+     * The tooltip text to display when the date falls on a disabled date (defaults to 'Disabled')
+     */
+    </span><span class="jsdoc-var">disabledDatesText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Disabled&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Date/String} minValue
+     * The minimum allowed date. Can be either a Javascript date object or a string date in a
+     * valid format (defaults to null).
+     */
+    </span><span class="jsdoc-var">minValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Date/String} maxValue
+     * The maximum allowed date. Can be either a Javascript date object or a string date in a
+     * valid format (defaults to null).
+     */
+    </span><span class="jsdoc-var">maxValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} minText
+     * The error text to display when the date in the cell is before minValue (defaults to
+     * 'The date in this field must be after {minValue}').
+     */
+    </span><span class="jsdoc-var">minText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;The date in this field must be equal to or after {0}&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} maxText
+     * The error text to display when the date in the cell is after maxValue (defaults to
+     * 'The date in this field must be before {maxValue}').
+     */
+    </span><span class="jsdoc-var">maxText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;The date in this field must be equal to or before {0}&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} invalidText
+     * The error text to display when the date in the field is invalid (defaults to
+     * '{value} is not a valid date - it must be in the format {format}').
+     */
+    </span><span class="jsdoc-var">invalidText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;{0} is not a valid date - it must be in the format {1}&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} triggerClass
+     * An additional CSS class used to style the trigger button.  The trigger will always get the
+     * class 'x-form-trigger' and triggerClass will be &lt;b&gt;appended&lt;/b&gt; if specified (defaults to 'x-form-date-trigger'
+     * which displays a calendar icon).
+     */
+    </span><span class="jsdoc-var">triggerClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-form-date-trigger'</span><span class="jsdoc-syntax">,
+    
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} useIso
+     * if enabled, then the date field will use a hidden field to store the 
+     * real value as iso formated date. default (false)
+     */ 
+    </span><span class="jsdoc-var">useIso </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String/Object} autoCreate
+     * A DomHelper element spec, or true for a default element spec (defaults to
+     * {tag: &quot;input&quot;, type: &quot;text&quot;, size: &quot;10&quot;, autocomplete: &quot;off&quot;})
+     */ 
+    // private
+    </span><span class="jsdoc-var">defaultAutoCreate </span><span class="jsdoc-syntax">: {</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;input&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;text&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;10&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">autocomplete</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;off&quot;</span><span class="jsdoc-syntax">},
+    
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">hiddenField</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">Roo.form.DateField.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.useIso</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.el.dom.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'name'</span><span class="jsdoc-syntax">); 
+            </span><span class="jsdoc-var">this.hiddenField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.insertSibling</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.name </span><span class="jsdoc-syntax">},
+                    </span><span class="jsdoc-string">'before'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.hiddenField.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'Y-m-d'</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-comment">// prevent input submission
+            </span><span class="jsdoc-var">this.hiddenName </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">;
+        }
+            
+            
+    },
+    
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">validateValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">Roo.form.DateField.superclass.validateValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value.length </span><span class="jsdoc-syntax">&lt; 1){ </span><span class="jsdoc-comment">// if it's blank and textfield didn't flag it then it's valid
+             </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">svalue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.invalidText</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">svalue</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.format</span><span class="jsdoc-syntax">));
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">time </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">value.getTime</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.minValue </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">time </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.minValue.getTime</span><span class="jsdoc-syntax">()){
+            </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.minText</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.minValue</span><span class="jsdoc-syntax">)));
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.maxValue </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">time </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.maxValue.getTime</span><span class="jsdoc-syntax">()){
+            </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.maxText</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.maxValue</span><span class="jsdoc-syntax">)));
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabledDays</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">day </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">value.getDay</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.disabledDays.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            	</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">day </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">this.disabledDays</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]){
+            	    </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabledDaysText</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+            	}
+            }
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fvalue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.ddMatch </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.ddMatch.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fvalue</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabledDatesText</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fvalue</span><span class="jsdoc-syntax">));
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">// private
+    // Provides logic to override the default TriggerField.validateBlur which just returns true
+    </span><span class="jsdoc-var">validateBlur </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">!</span><span class="jsdoc-var">this.menu </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.menu.isVisible</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the current date value of the date field.
+     * @return {Date} The date value
+     */
+    </span><span class="jsdoc-var">getValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        
+        </span><span class="jsdoc-keyword">return  </span><span class="jsdoc-var">this.hiddenField </span><span class="jsdoc-syntax">?
+                </span><span class="jsdoc-var">this.hiddenField.value </span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">this.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.DateField.superclass.getValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">)) || </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Sets the value of the date field.  You can pass a date object or any string that can be parsed into a valid
+     * date, using DateField.format as the date format, according to the same rules as {@link Date#parseDate}
+     * (the default format used is &quot;m/d/y&quot;).
+     * &lt;br /&gt;Usage:
+     * &lt;pre&gt;&lt;code&gt;
+//All of these calls set the same date value (May 4, 2006)
+
+//Pass a date object:
+var dt = new Date('5/4/06');
+dateField.setValue(dt);
+
+//Pass a date string (default format):
+dateField.setValue('5/4/06');
+
+//Pass a date string (custom format):
+dateField.format = 'Y-m-d';
+dateField.setValue('2006-5-4');
+&lt;/code&gt;&lt;/pre&gt;
+     * @param {String/Date} date The date or valid date string
+     */
+    </span><span class="jsdoc-var">setValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hiddenField</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.hiddenField.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">), </span><span class="jsdoc-string">'Y-m-d'</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">Roo.form.DateField.superclass.setValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">)));
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">parseDate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">value </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Date.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.format</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.altFormats</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.altFormatsArray</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.altFormatsArray </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.altFormats.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;|&quot;</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.altFormatsArray.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+                </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Date.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.altFormatsArray</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+            }
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">formatDate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fmt</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">date </span><span class="jsdoc-syntax">|| !(</span><span class="jsdoc-var">date </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">)) ?
+               </span><span class="jsdoc-var">date </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">date.dateFormat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fmt </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.format</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">menuListeners </span><span class="jsdoc-syntax">: {
+        </span><span class="jsdoc-var">select</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'select'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">);
+        },
+        </span><span class="jsdoc-var">show </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){ </span><span class="jsdoc-comment">// retain focus styling
+            </span><span class="jsdoc-var">this.onFocus</span><span class="jsdoc-syntax">();
+        },
+        </span><span class="jsdoc-var">hide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+            </span><span class="jsdoc-var">this.focus.defer</span><span class="jsdoc-syntax">(10, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ml </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.menuListeners</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.menu.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;select&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ml.select</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.menu.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;show&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ml.show</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.menu.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;hide&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ml.hide</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    // Implements the default empty TriggerField.onTriggerClick function to display the DatePicker
+    </span><span class="jsdoc-var">onTriggerClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.menu </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.menu </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.menu.DateMenu</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.menu.picker</span><span class="jsdoc-syntax">,  {
+            </span><span class="jsdoc-var">showClear</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.allowBlank</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">minDate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.minValue</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">maxDate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.maxValue</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">disabledDatesRE </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.ddMatch</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">disabledDatesText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.disabledDatesText</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">disabledDays </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.disabledDays</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">disabledDaysText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.disabledDaysText</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.format</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">minText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.minText</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.minValue</span><span class="jsdoc-syntax">)),
+            </span><span class="jsdoc-var">maxText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.maxText</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.maxValue</span><span class="jsdoc-syntax">))
+        });
+        </span><span class="jsdoc-var">this.menu.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">this.menuListeners</span><span class="jsdoc-syntax">, {
+            </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">this
+        </span><span class="jsdoc-syntax">}));
+        </span><span class="jsdoc-var">this.menu.picker.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">() || </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-var">this.menu.show</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;tl-bl?&quot;</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">beforeBlur </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getRawValue</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+        }
+    }
+
+    </span><span class="jsdoc-comment">/** @cfg {Boolean} grow @hide */
+    /** @cfg {Number} growMin @hide */
+    /** @cfg {Number} growMax @hide */
+    /**
+     * @hide
+     * @method autoSize
+     */
+</span><span class="jsdoc-syntax">});</span></code></body></html>

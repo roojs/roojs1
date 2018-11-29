@@ -1,0 +1,2238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=undefined" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		
+		<title>JsDoc Reference - Roo.BorderLayout</title>
+		
+		
+	<link rel="stylesheet" type="text/css" href="../../css/roojs.css" />		
+	<link rel="stylesheet" type="text/css" href="../default.css" />
+	
+	
+	<script type="text/javascript" src="../page.js">
+	
+	</script>
+	 
+		
+	</head>
+
+	<body onload="RooDocsPage.onload();">
+	 
+	
+<div class="body-wrap">
+
+    <!-- ============================== links to methods. ================================= -->	
+
+    <div class="top-tools">
+    <!--
+        <a class="inner-link" href="#Roo.BorderLayout-props"><img src="resources/s.gif" class="item-icon icon-prop">Properties</a>
+        <a class="inner-link" href="#Roo.BorderLayout-methods"><img src="resources/s.gif" class="item-icon icon-method">Methods</a>
+        <a class="inner-link" href="#Roo.BorderLayout-events"><img src="resources/s.gif" class="item-icon icon-event">Events</a>
+        <a class="inner-link" href="#Roo.BorderLayout-configs"><img src="resources/s.gif" class="item-icon icon-config">Config Options</a>
+        <a class="bookmark" href="NEED_TO_CREATE_DIRECT_LINK_HREF"><img src="resources/s.gif" class="item-icon icon-fav">Direct Link</a>
+	-->
+    </div>
+
+    
+<!-- ============================== inheritance Block. ================================= -->	
+	
+		<div class="inheritance res-block">
+		   <pre class="res-block-inner"><a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+<img src="../../images/default/s.gif" height="1" width="20"/><img src="../../images/default/tree/elbow-end.gif" class="elbow"/><a href="./Roo.LayoutManager.html#constructor" roo:cls="Roo.LayoutManager.html#constructor">Roo.LayoutManager</a>
+<img src="../../images/default/s.gif" height="1"  width="40"/><img class="elbow" src="../../images/default/tree/elbow-end.gif"/>Roo.BorderLayout 
+
+		   </pre>
+		</div>
+       
+<!-- ============================== class title / details ============================ -->
+    
+    
+    <h1 class="classTitle">
+				
+				Class Roo.BorderLayout
+			</h1>
+			
+    <table cellspacing="0" class="class-summary-table">
+	
+		<tr><td class="label">Package:</td><td class="hd-info">Roo</td></tr>
+	
+        <tr><td class="label">Defined In:</td><td class="hd-info">
+			
+					<a href="./src/Roo_BorderLayout.js.html">Roo/BorderLayout.js</a>.
+			
+	</td></tr>
+        <tr><td class="label">Class:</td><td class="hd-info">BorderLayout</td></tr>
+	
+	
+        <tr><td class="label">Subclasses:</td><td class="hd-info">
+		<a href="./Roo.ReaderLayout.html#constructor" roo:cls="Roo.ReaderLayout.html#constructor">Roo.ReaderLayout</a>
+
+	
+	
+	</td></tr>
+	
+	
+	
+		<tr><td class="label">Extends:</td><td class="hd-info">
+			<a href="./Roo.LayoutManager.html#constructor" roo:cls="Roo.LayoutManager.html#constructor">Roo.LayoutManager</a>
+	
+		</td></tr>    
+	
+	
+    </table>
+
+    
+<!-- ============================== class summary ========================== -->			
+    <div class="description">
+	This class represents a common layout manager used in desktop applications. For screenshots and more details,<br/>please see: <br><br><br/><a href="http://www.jackslocum.com/yui/2006/10/19/cross-browser-web-20-layouts-with-yahoo-ui/">Cross Browser Layouts - Part 1</a><br><br/><a href="http://www.jackslocum.com/yui/2006/10/28/cross-browser-web-20-layouts-part-2-ajax-feed-viewer-20/">Cross Browser Layouts - Part 2</a><br><br><br/>Example:<br/> <pre><code><br/> var layout = new Roo.BorderLayout(document.body, {<br/>    north: {<br/>        initialSize: 25,<br/>        titlebar: false<br/>    },<br/>    west: {<br/>        split:true,<br/>        initialSize: 200,<br/>        minSize: 175,<br/>        maxSize: 400,<br/>        titlebar: true,<br/>        collapsible: true<br/>    },<br/>    east: {<br/>        split:true,<br/>        initialSize: 202,<br/>        minSize: 175,<br/>        maxSize: 400,<br/>        titlebar: true,<br/>        collapsible: true<br/>    },<br/>    south: {<br/>        split:true,<br/>        initialSize: 100,<br/>        minSize: 100,<br/>        maxSize: 200,<br/>        titlebar: true,<br/>        collapsible: true<br/>    },<br/>    center: {<br/>        titlebar: true,<br/>        autoScroll:true,<br/>        resizeTabs: true,<br/>        minTabWidth: 50,<br/>        preferredTabWidth: 150<br/>    }<br/>});<br/><br/>// shorthand<br/>var CP = Roo.ContentPanel;<br/><br/>layout.beginUpdate();<br/>layout.add("north", new CP("north", "North"));<br/>layout.add("south", new CP("south", {title: "South", closable: true}));<br/>layout.add("west", new CP("west", {title: "West"}));<br/>layout.add("east", new CP("autoTabs", {title: "Auto Tabs", closable: true}));<br/>layout.add("center", new CP("center1", {title: "Close Me", closable: true}));<br/>layout.add("center", new CP("center2", {title: "Center Panel", closable: false}));<br/>layout.getRegion("center").showPanel("center1");<br/>layout.endUpdate();<br/></code></pre><br/><br/><b>The container the layout is rendered into can be either the body element or any other element.<br/>If it is not the body element, the container needs to either be an absolute positioned element,<br/>or you will need to add "position:relative" to the css of the container.  You will also need to specify<br/>the container size if it is not the body element.</b>
+    </div>
+
+	
+<!-- ============================== Class comment block... ========================== -->					
+
+<div class="comments">
+	<b>Class Comments / Notes</B> =>  
+	<u onclick="parent.CommentDialog.showCommentId = 'Roo.BorderLayout';">[Add Your comment/notes about this class]</u>
+	<br/>
+	<iframe frameborder="0"  id="comments-Roo" style="border: none;width:100%;" 
+		src="/blog.php/GtkDjsComments/Roo.BorderLayout.html"></iframe>
+</div>
+	
+
+		
+<!-- ============================== config options ========================== -->						
+		 
+    
+    
+		
+    <div class="hr"></div>
+    <a id="Roo.BorderLayout-configs"></a>
+		
+    
+     
+    
+	
+      <table cellspacing="0" class="member-table">   
+      <caption>Config Options (Usually are also Properties)</caption>
+    
+	
+        <tr>
+            <th class="sig-header" colspan="2">Options</th>
+	    
+            <th class="msource-header">Defined By</th>
+        </tr>
+	
+	
+	
+	
+	
+		<tr class="config-row expandable config-row-alt0">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.util.Observable-cfg-listeners" name=".listeners"></a>
+			<div class="fixedFont">
+				<b  class="itemname">listeners</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">list of events and functions to call for this object, <br/>For example :<br/><pre><code><br/>    listeners :  { <br/>       'click' : function(e) {<br/>           .</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    list of events and functions to call for this object, <br/>For example :<br/><pre><code><br/>    listeners :  { <br/>       'click' : function(e) {<br/>           ..... <br/>        } ,<br/>        .... <br/>    } <br/>  </code></pre>
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+				
+		    </td>
+		</tr>
+        
+        
+    </table>
+  		
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- ============================== public properties ==================== -->	
+  
+  
+  
+    <a id="Roo.BorderLayout-props"></a>      
+    
+    
+
+    
+    
+     <table cellspacing="0" class="member-table">
+      <caption class="Empty">Public Properties - Has None</caption>
+     </table>
+    
+    
+     
+    
+  <!-- ============================== methods summary / details ======================== -->
+  
+  
+  <a id="Roo.BorderLayout-methods"></a>
+	<!-- constructor?? -->
+  	
+	<!-- static's first 
+	
+	
+	-->
+	
+	<!-- then dynamics first -->
+	
+  
+  
+    
+    
+    
+      <table cellspacing="0" class="member-table">
+      <caption>Public Methods</caption>
+        <tr>
+            <th class="sig-header" colspan="2">Method</th>            
+            <th class="msource-header">Defined By</th>
+
+        </tr>
+        
+	
+	
+	 
+	
+        
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo-method-BorderLayout"   name=".BorderLayout"></a>
+		<div class="fixedFont">
+			<span class="attributes">new <B>Roo.</B></span><b class="itemname">BorderLayout</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement/Element <B><i>container</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>config</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+		 
+			<div class="short">Create a new Roo.BorderLayout</div> 
+		 
+		 
+                    <div class="long">
+			
+			
+			
+				Create a new Roo.BorderLayout
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement/Element</span>  <b>container</b>
+						
+					</dt>
+					<dd>The container this layout is bound to</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>config</b>
+						
+					</dt>
+					<dd>Configuration options</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.BorderLayout-method-create"   name=".create"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.BorderLayout.</span><b class="itemname">create</b>
+				
+				 (<B><i>config</i></B>, <B><i>targetEl</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Shortcut for creating a new BorderLayout object and adding one or more ContentPanels to it in a single step, handling<br/>the beginUpdate and endUpdate calls internally.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Shortcut for creating a new BorderLayout object and adding one or more ContentPanels to it in a single step, handling<br/>the beginUpdate and endUpdate calls internally.  The key to this method is the <b>panels</b> property that can be<br/>provided with each region config, which allows you to add ContentPanel configs in addition to the region configs<br/>during creation.  The following code is equivalent to the constructor-based example at the beginning of this class:<br/><pre><code><br/>// shorthand<br/>var CP = Roo.ContentPanel;<br/><br/>var layout = Roo.BorderLayout.create({<br/>    north: {<br/>        initialSize: 25,<br/>        titlebar: false,<br/>        panels: [new CP("north", "North")]<br/>    },<br/>    west: {<br/>        split:true,<br/>        initialSize: 200,<br/>        minSize: 175,<br/>        maxSize: 400,<br/>        titlebar: true,<br/>        collapsible: true,<br/>        panels: [new CP("west", {title: "West"})]<br/>    },<br/>    east: {<br/>        split:true,<br/>        initialSize: 202,<br/>        minSize: 175,<br/>        maxSize: 400,<br/>        titlebar: true,<br/>        collapsible: true,<br/>        panels: [new CP("autoTabs", {title: "Auto Tabs", closable: true})]<br/>    },<br/>    south: {<br/>        split:true,<br/>        initialSize: 100,<br/>        minSize: 100,<br/>        maxSize: 200,<br/>        titlebar: true,<br/>        collapsible: true,<br/>        panels: [new CP("south", {title: "South", closable: true})]<br/>    },<br/>    center: {<br/>        titlebar: true,<br/>        autoScroll:true,<br/>        resizeTabs: true,<br/>        minTabWidth: 50,<br/>        preferredTabWidth: 150,<br/>        panels: [<br/>            new CP("center1", {title: "Close Me", closable: true}),<br/>            new CP("center2", {title: "Center Panel", closable: false})<br/>        ]<br/>    }<br/>}, document.body);<br/><br/>layout.getRegion("center").showPanel("center1");<br/></code></pre>
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						 <b>config</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						 <b>targetEl</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.BorderLayout
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.BorderLayout-method-add"   name=".add"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">add</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>target</i></B>, <a href="./Roo.ContentPanel.html#constructor" roo:cls="Roo.ContentPanel.html#constructor">Roo.ContentPanel</a> <B><i>panel</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="./Roo.ContentPanel.html#constructor" roo:cls="Roo.ContentPanel.html#constructor">Roo.ContentPanel</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Adds a ContentPanel (or subclass) to this layout.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Adds a ContentPanel (or subclass) to this layout.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>target</b>
+						
+					</dt>
+					<dd>The target region key (north, south, east, west or center).</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.ContentPanel.html#constructor" roo:cls="Roo.ContentPanel.html#constructor">Roo.ContentPanel</a></span>  <b>panel</b>
+						
+					</dt>
+					<dd>The panel to add</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Roo.ContentPanel.html#constructor" roo:cls="Roo.ContentPanel.html#constructor">Roo.ContentPanel</a></span>  The added panel</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.BorderLayout
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-addEvents"   name=".addEvents"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">addEvents</b>
+				
+				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>object</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Used to define events on this Observable</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Used to define events on this Observable
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>object</b>
+						
+					</dt>
+					<dd>The object with the events defined</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-addListener"   name=".addListener"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">addListener</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>handler</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>options</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Appends an event handler to this component</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Appends an event handler to this component
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The type of event to listen for</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>handler</b>
+						
+					</dt>
+					<dd>The method the event invokes</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>(optional) The scope in which to execute the handler<br/>function. The handler function's "this" context.</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>options</b>
+						
+					</dt>
+					<dd>(optional) An object containing handler configuration<br/>properties. This may contain any of the following properties:<ul><br/><li>scope {Object} The scope in which to execute the handler function. The handler function's "this" context.</li><br/><li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li><br/><li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li><br/><li>buffer {Number} Causes the handler to be scheduled to run in an {<b>link</b> Roo.util.DelayedTask} delayed<br/>by the specified number of milliseconds. If the event fires again within that time, the original<br/>handler is <em>not</em> invoked, but the new handler is scheduled in its place.</li><br/></ul><br><br/><p><br/><b>Combining Options</b><br><br/>Using the options argument, it is possible to combine different types of listeners:<br><br/><br><br/>A normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)<br/>		<pre><code><br/>		el.on('click', this.onClick, this, {<br/> 			single: true,<br/>    		delay: 100,<br/>    		forumId: 4<br/>		});<br/>		</code></pre><br/><p><br/><b>Attaching multiple handlers in 1 call</b><br><br/>The method also allows for a single argument to be passed which is a config object containing properties<br/>which specify multiple handlers.<br/><pre><code><br/>		el.on({<br/>			'click': {<br/>        		fn: this.onClick,<br/>        		scope: this,<br/>        		delay: 100<br/>    		}, <br/>    		'mouseover': {<br/>        		fn: this.onMouseOver,<br/>        		scope: this<br/>    		},<br/>    		'mouseout': {<br/>        		fn: this.onMouseOut,<br/>        		scope: this<br/>    		}<br/>		});<br/>		</code></pre><br/><p><br/>Or a shorthand syntax which passes the same scope object to all handlers:<br/>     	<pre><code><br/>		el.on({<br/>			'click': this.onClick,<br/>    		'mouseover': this.onMouseOver,<br/>    		'mouseout': this.onMouseOut,<br/>    		scope: this<br/>		});<br/>		</code></pre></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.BorderLayout-method-addRegion"   name=".addRegion"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">addRegion</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>target</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>config</i></B>) 
+			
+				
+					 : 
+					
+						
+						BorderLayoutRegion
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Creates and adds a new region if it doesn't already exist.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Creates and adds a new region if it doesn't already exist.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>target</b>
+						
+					</dt>
+					<dd>The target region key (north, south, east, west or center).</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>config</b>
+						
+					</dt>
+					<dd>The regions config object</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont">BorderLayoutRegion</span>  The new region</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.BorderLayout
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.BorderLayout-method-addxtype"   name=".addxtype"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">addxtype</b>
+				
+				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>cfg</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Adds a xtype elements to the layout.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Adds a xtype elements to the layout.<br/><pre><code><br/><br/>layout.addxtype({<br/>       xtype : 'ContentPanel',<br/>       region: 'west',<br/>       items: [ .... ]<br/>   }<br/>);<br/><br/>layout.addxtype({<br/>        xtype : 'NestedLayoutPanel',<br/>        region: 'west',<br/>        layout: {<br/>           center: { },<br/>           west: { }   <br/>        },<br/>        items : [ ... list of content panels or nested layout panels.. ]<br/>   }<br/>);<br/></code></pre>
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>cfg</b>
+						
+					</dt>
+					<dd>Xtype definition of item to add.</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.BorderLayout
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.BorderLayout-method-batchAdd"   name=".batchAdd"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">batchAdd</b>
+				
+				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>regions</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Adds a batch of multiple ContentPanels dynamically by passing a special regions config object.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Adds a batch of multiple ContentPanels dynamically by passing a special regions config object.  This config<br/>object should contain properties for each region to add ContentPanels to, and each property's value should be<br/>a valid ContentPanel config object.  Example:<br/><pre><code><br/>// Create the main layout<br/>var layout = new Roo.BorderLayout('main-ct', {<br/>    west: {<br/>        split:true,<br/>        minSize: 175,<br/>        titlebar: true<br/>    },<br/>    center: {<br/>        title:'Components'<br/>    }<br/>}, 'main-ct');<br/><br/>// Create and add multiple ContentPanels at once via configs<br/>layout.batchAdd({<br/>   west: {<br/>       id: 'source-files',<br/>       autoCreate:true,<br/>       title:'Ext Source Files',<br/>       autoScroll:true,<br/>       fitToFrame:true<br/>   },<br/>   center : {<br/>       el: cview,<br/>       autoScroll:true,<br/>       fitToFrame:true,<br/>       toolbar: tb,<br/>       resizeEl:'cbody'<br/>   }<br/>});<br/></code></pre>
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>regions</b>
+						
+					</dt>
+					<dd>An object containing ContentPanel configs by region name</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.BorderLayout
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.LayoutManager-method-beginUpdate"   name=".beginUpdate"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">beginUpdate</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Suspend the LayoutManager from doing auto-layouts while<br/>making multiple add or remove calls</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Suspend the LayoutManager from doing auto-layouts while<br/>making multiple add or remove calls
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.LayoutManager.html#constructor" roo:cls="Roo.LayoutManager.html#constructor">Roo.LayoutManager</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.LayoutManager-method-endUpdate"   name=".endUpdate"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">endUpdate</b>
+				
+				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a> <B><i>noLayout</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Restore auto-layouts and optionally disable the manager from performing a layout</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Restore auto-layouts and optionally disable the manager from performing a layout
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  <b>noLayout</b>
+						
+					</dt>
+					<dd>true to disable a layout update</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.LayoutManager.html#constructor" roo:cls="Roo.LayoutManager.html#constructor">Roo.LayoutManager</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.BorderLayout-method-findPanel"   name=".findPanel"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">findPanel</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>panelId</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="./Roo.ContentPanel.html#constructor" roo:cls="Roo.ContentPanel.html#constructor">Roo.ContentPanel</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Searches all regions for a panel with the specified id</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Searches all regions for a panel with the specified id
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>panelId</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Roo.ContentPanel.html#constructor" roo:cls="Roo.ContentPanel.html#constructor">Roo.ContentPanel</a></span>  The panel or null if it wasn't found</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.BorderLayout
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-fireEvent"   name=".fireEvent"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">fireEvent</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object...</a> <B><i>args</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Fires the specified event with the passed parameters (minus the event name).</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Fires the specified event with the passed parameters (minus the event name).
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object...</a></span>  <b>args</b>
+						
+					</dt>
+					<dd>Variable number of parameters are passed to handlers</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  returns false if any of the handlers return false otherwise it returns true</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.LayoutManager-method-getEl"   name=".getEl"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">getEl</b>
+				
+				 () 
+			
+				
+					 : 
+					
+						
+						<a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Returns the Element this layout is bound to.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Returns the Element this layout is bound to.
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a></span>  </dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.LayoutManager.html#constructor" roo:cls="Roo.LayoutManager.html#constructor">Roo.LayoutManager</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.LayoutManager-method-getRegion"   name=".getRegion"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">getRegion</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>target</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="./Roo.LayoutRegion.html#constructor" roo:cls="Roo.LayoutRegion.html#constructor">Roo.LayoutRegion</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Returns the specified region.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Returns the specified region.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>target</b>
+						
+					</dt>
+					<dd>The region key ('center', 'north', 'south', 'east' or 'west')</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Roo.LayoutRegion.html#constructor" roo:cls="Roo.LayoutRegion.html#constructor">Roo.LayoutRegion</a></span>  </dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.LayoutManager.html#constructor" roo:cls="Roo.LayoutManager.html#constructor">Roo.LayoutManager</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.LayoutManager-method-getViewSize"   name=".getViewSize"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">getViewSize</b>
+				
+				 () 
+			
+				
+					 : 
+					
+						
+						<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Returns the size of the current view.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Returns the size of the current view. This method normalizes document.body and element embedded layouts and<br/>performs box-model adjustments.
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  The size as an object {width: (the width), height: (the height)}</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.LayoutManager.html#constructor" roo:cls="Roo.LayoutManager.html#constructor">Roo.LayoutManager</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-hasListener"   name=".hasListener"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">hasListener</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Checks to see if this object has any listeners for a specified event</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Checks to see if this object has any listeners for a specified event
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The name of the event to check for</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  True if the event is being listened for, else false</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.LayoutManager-method-isUpdating"   name=".isUpdating"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">isUpdating</b>
+				
+				 () 
+			
+				
+					 : 
+					
+						
+						<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Returns true if this layout is currently being updated</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Returns true if this layout is currently being updated
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  </dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.LayoutManager.html#constructor" roo:cls="Roo.LayoutManager.html#constructor">Roo.LayoutManager</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.BorderLayout-method-layout"   name=".layout"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">layout</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Performs a layout update.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Performs a layout update.
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.BorderLayout
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-on"   name=".on"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">on</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>handler</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>options</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Appends an event handler to this element (shorthand for addListener)</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Appends an event handler to this element (shorthand for addListener)
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The type of event to listen for</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>handler</b>
+						
+					</dt>
+					<dd>The method the event invokes</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>(optional) The scope in which to execute the handler<br/>function. The handler function's "this" context.</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>options</b>
+						
+					</dt>
+					<dd>(optional)</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-purgeListeners"   name=".purgeListeners"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">purgeListeners</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Removes all listeners for this object</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Removes all listeners for this object
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.BorderLayout-method-remove"   name=".remove"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">remove</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>target</i></B>, <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a>/String/Roo.ContentPanel <B><i>panel</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="./Roo.ContentPanel.html#constructor" roo:cls="Roo.ContentPanel.html#constructor">Roo.ContentPanel</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Remove a ContentPanel (or subclass) to this layout.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Remove a ContentPanel (or subclass) to this layout.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>target</b>
+						
+					</dt>
+					<dd>The target region key (north, south, east, west or center).</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a>/String/Roo.ContentPanel</span>  <b>panel</b>
+						
+					</dt>
+					<dd>The index, id or panel to remove</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Roo.ContentPanel.html#constructor" roo:cls="Roo.ContentPanel.html#constructor">Roo.ContentPanel</a></span>  The removed panel</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.BorderLayout
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-removeListener"   name=".removeListener"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">removeListener</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>handler</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Removes a listener</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Removes a listener
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The type of event to listen for</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>handler</b>
+						
+					</dt>
+					<dd>The handler to remove</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>(optional) The scope (this object) for the handler</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.BorderLayout-method-restoreState"   name=".restoreState"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">restoreState</b>
+				
+				 (<a href="./Roo.state.Provider.html#constructor" roo:cls="Roo.state.Provider.html#constructor">Roo.state.Provider</a> <B><i>provider</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Restores this layout's state using Roo.state.Manager or the state provided by the passed provider.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Restores this layout's state using Roo.state.Manager or the state provided by the passed provider.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.state.Provider.html#constructor" roo:cls="Roo.state.Provider.html#constructor">Roo.state.Provider</a></span>  <b>provider</b>
+						
+					</dt>
+					<dd>(optional) An alternate state provider</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.BorderLayout
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.BorderLayout-method-showPanel"   name=".showPanel"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">showPanel</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/ContentPanel <B><i>panelId</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="./Roo.ContentPanel.html#constructor" roo:cls="Roo.ContentPanel.html#constructor">Roo.ContentPanel</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Searches all regions for a panel with the specified id and activates (shows) it.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Searches all regions for a panel with the specified id and activates (shows) it.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/ContentPanel</span>  <b>panelId</b>
+						
+					</dt>
+					<dd>The panels id or the panel itself</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Roo.ContentPanel.html#constructor" roo:cls="Roo.ContentPanel.html#constructor">Roo.ContentPanel</a></span>  The shown panel or null</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.BorderLayout
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-un"   name=".un"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">un</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>handler</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Removes a listener (shorthand for removeListener)</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Removes a listener (shorthand for removeListener)
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The type of event to listen for</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>handler</b>
+						
+					</dt>
+					<dd>The handler to remove</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>(optional) The scope (this object) for the handler</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	                                               
+    </table>
+
+  
+  <!-- ============================== events summary / details ======================== -->
+  
+  
+  <a id="Roo.BorderLayout-events"></a>
+    
+  
+  	
+   
+  
+    
+    
+    
+      <table cellspacing="0" class="member-table">
+		<caption>Events</caption>
+	      <thead>
+		<tr>
+		    <th class="sig-header" colspan="2">Event</th>            
+		    <th class="msource-header">Defined By</th>
+
+		</tr>
+	      </thead>  
+	
+	
+	 
+	
+        
+          <tr class="method-row expandable config-row-alt0">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.LayoutManager-event-*layout"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">layout</b> (<a href="./Roo.LayoutManager.html#constructor" roo:cls="Roo.LayoutManager.html#constructor">Roo.LayoutManager</a> <B><i>this</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when a layout is performed.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when a layout is performed.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.LayoutManager.html#constructor" roo:cls="Roo.LayoutManager.html#constructor">Roo.LayoutManager</a></span> <b>this</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                <a href="./Roo.LayoutManager.html#constructor" roo:cls="Roo.LayoutManager.html#constructor">Roo.LayoutManager</a>
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.LayoutManager-event-*regioncollapsed"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">regioncollapsed</b> (<a href="./Roo.LayoutRegion.html#constructor" roo:cls="Roo.LayoutRegion.html#constructor">Roo.LayoutRegion</a> <B><i>region</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when a region is collapsed.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when a region is collapsed.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.LayoutRegion.html#constructor" roo:cls="Roo.LayoutRegion.html#constructor">Roo.LayoutRegion</a></span> <b>region</b>
+						
+					</dt>
+					<dd>The collapsed region</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                <a href="./Roo.LayoutManager.html#constructor" roo:cls="Roo.LayoutManager.html#constructor">Roo.LayoutManager</a>
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt0">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.LayoutManager-event-*regionexpanded"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">regionexpanded</b> (<a href="./Roo.LayoutRegion.html#constructor" roo:cls="Roo.LayoutRegion.html#constructor">Roo.LayoutRegion</a> <B><i>region</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when a region is expanded.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when a region is expanded.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.LayoutRegion.html#constructor" roo:cls="Roo.LayoutRegion.html#constructor">Roo.LayoutRegion</a></span> <b>region</b>
+						
+					</dt>
+					<dd>The expanded region</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                <a href="./Roo.LayoutManager.html#constructor" roo:cls="Roo.LayoutManager.html#constructor">Roo.LayoutManager</a>
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.LayoutManager-event-*regionresized"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">regionresized</b> (<a href="./Roo.LayoutRegion.html#constructor" roo:cls="Roo.LayoutRegion.html#constructor">Roo.LayoutRegion</a> <B><i>region</i></B>, <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>newSize</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when the user resizes a region.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when the user resizes a region.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.LayoutRegion.html#constructor" roo:cls="Roo.LayoutRegion.html#constructor">Roo.LayoutRegion</a></span> <b>region</b>
+						
+					</dt>
+					<dd>The resized region</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span> <b>newSize</b>
+						
+					</dt>
+					<dd>The new size (width for east/west, height for north/south)</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                <a href="./Roo.LayoutManager.html#constructor" roo:cls="Roo.LayoutManager.html#constructor">Roo.LayoutManager</a>
+            </td>
+        </tr>
+	
+	                                               
+    </table>
+
+  
+  
+  
+ 
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Fri Jul 13 2018 14:10:53 GMT+0800 (HKT)
+			Based on 
+			<a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a>  
+		</div>
+	</body>
+</html>

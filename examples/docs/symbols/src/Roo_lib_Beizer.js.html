@@ -1,0 +1,29 @@
+<html><head><title>../roojs1/Roo/lib/Beizer.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Portions of this file are based on pieces of Yahoo User Interface Library
+ * Copyright (c) 2007, Yahoo! Inc. All rights reserved.
+ * YUI licensed under the BSD License:
+ * http://developer.yahoo.net/yui/license.txt
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ *
+ */
+</span><span class="jsdoc-var">Roo.lib.Bezier </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new function</span><span class="jsdoc-syntax">() {
+
+        </span><span class="jsdoc-var">this.getPosition </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">points</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">points.length</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tmp </span><span class="jsdoc-syntax">= [];
+
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">; ++</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">tmp</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = [</span><span class="jsdoc-var">points</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">][0], </span><span class="jsdoc-var">points</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">][1]];
+            }
+
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">= 1; </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">; ++</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">; ++</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">tmp</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">][0] = (1 - </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">) * </span><span class="jsdoc-var">tmp</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">][0] + </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">tmp</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">+ 1, 10)][0];
+                    </span><span class="jsdoc-var">tmp</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">][1] = (1 - </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">) * </span><span class="jsdoc-var">tmp</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">][1] + </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">tmp</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">+ 1, 10)][1];
+                }
+            }
+
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[ </span><span class="jsdoc-var">tmp</span><span class="jsdoc-syntax">[0][0], </span><span class="jsdoc-var">tmp</span><span class="jsdoc-syntax">[0][1] ];
+
+        };
+    };</span></code></body></html>

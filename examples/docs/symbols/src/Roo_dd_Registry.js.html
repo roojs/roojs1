@@ -1,0 +1,133 @@
+<html><head><title>../roojs1/Roo/dd/Registry.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+ 
+
+/**
+ * @class Roo.dd.Registry
+ * Provides easy access to all drag drop components that are registered on a page.  Items can be retrieved either
+ * directly by DOM node id, or by passing in the drag drop event that occurred and looking up the event target.
+ * @singleton
+ */
+</span><span class="jsdoc-var">Roo.dd.Registry </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">elements </span><span class="jsdoc-syntax">= {}; 
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">handles </span><span class="jsdoc-syntax">= {}; 
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">autoIdSeed </span><span class="jsdoc-syntax">= 0;
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">getId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">autogen</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.id</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">autogen </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;roodd-&quot; </span><span class="jsdoc-syntax">+ (++</span><span class="jsdoc-var">autoIdSeed</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">el.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">;
+    };
+    
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+    </span><span class="jsdoc-comment">/**
+     * Register a drag drop element
+     * @param {String|HTMLElement} element The id or DOM node to register
+     * @param {Object} data (optional) A custom data object that will be passed between the elements that are involved
+     * in drag drop operations.  You can populate this object with any arbitrary properties that your own code
+     * knows how to interpret, plus there are some specific properties known to the Registry that should be
+     * populated in the data object (if applicable):
+     * &lt;pre&gt;
+Value      Description&lt;br /&gt;
+---------  ------------------------------------------&lt;br /&gt;
+handles    Array of DOM nodes that trigger dragging&lt;br /&gt;
+           for the element being registered&lt;br /&gt;
+isHandle   True if the element passed in triggers&lt;br /&gt;
+           dragging itself, else false
+&lt;/pre&gt;
+     */
+        </span><span class="jsdoc-var">register </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">|| {};
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.getElementById</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-var">data.ddel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">elements</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">getId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)] = </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data.isHandle </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">handles</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">data.ddel.id</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data.handles</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">data.handles</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">hs.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+                	</span><span class="jsdoc-var">handles</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">getId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">])] = </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">;
+                }
+            }
+        },
+
+    </span><span class="jsdoc-comment">/**
+     * Unregister a drag drop element
+     * @param {String|HTMLElement}  element The id or DOM node to unregister
+     */
+        </span><span class="jsdoc-var">unregister </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">getId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">elements</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">elements</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">];
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data.handles</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">data.handles</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">hs.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+                    	</span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">handles</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">getId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">)];
+                    }
+                }
+            }
+        },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the handle registered for a DOM Node by id
+     * @param {String|HTMLElement} id The DOM node or id to look up
+     * @return {Object} handle The custom handle data
+     */
+        </span><span class="jsdoc-var">getHandle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// must be element?
+                </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">id.id</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">handles</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">];
+        },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the handle that is registered for the DOM node that is the target of the event
+     * @param {Event} e The event
+     * @return {Object} handle The custom handle data
+     */
+        </span><span class="jsdoc-var">getHandleFromEvent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Event.getTarget</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">handles</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">t.id</span><span class="jsdoc-syntax">] : </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+        },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns a custom data object that is registered for a DOM node by id
+     * @param {String|HTMLElement} id The DOM node or id to look up
+     * @return {Object} data The custom data
+     */
+        </span><span class="jsdoc-var">getTarget </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// must be element?
+                </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">id.id</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">elements</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">];
+        },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns a custom data object that is registered for the DOM node that is the target of the event
+     * @param {Event} e The event
+     * @return {Object} data The custom data
+     */
+        </span><span class="jsdoc-var">getTargetFromEvent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Event.getTarget</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">elements</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">t.id</span><span class="jsdoc-syntax">] || </span><span class="jsdoc-var">handles</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">t.id</span><span class="jsdoc-syntax">] : </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+        }
+    };
+}();</span></code></body></html>

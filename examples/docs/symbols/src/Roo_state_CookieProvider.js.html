@@ -1,0 +1,94 @@
+<html><head><title>../roojs1/Roo/state/CookieProvider.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+/**
+ * @class Roo.state.CookieProvider
+ * @extends Roo.state.Provider
+ * The default Provider implementation which saves state via cookies.
+ * &lt;br /&gt;Usage:
+ &lt;pre&gt;&lt;code&gt;
+   var cp = new Roo.state.CookieProvider({
+       path: &quot;/cgi-bin/&quot;,
+       expires: new Date(new Date().getTime()+(1000*60*60*24*30)); //30 days
+       domain: &quot;roojs.com&quot;
+   })
+   Roo.state.Manager.setProvider(cp);
+ &lt;/code&gt;&lt;/pre&gt;
+ * @cfg {String} path The path for which the cookie is active (defaults to root '/' which makes it active for all pages in the site)
+ * @cfg {Date} expires The cookie expiration date (defaults to 7 days from now)
+ * @cfg {String} domain The domain to save the cookie for.  Note that you cannot specify a different domain than
+ * your page is on, but you can specify a sub-domain, or simply the domain itself like 'roojs.com' to include
+ * all sub-domains if you need to access cookies across different sub-domains (defaults to null which uses the same
+ * domain the page is running on including the 'www' like 'www.roojs.com')
+ * @cfg {Boolean} secure True if the site is using SSL (defaults to false)
+ * @constructor
+ * Create a new CookieProvider
+ * @param {Object} config The configuration object
+ */
+</span><span class="jsdoc-var">Roo.state.CookieProvider </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.state.CookieProvider.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.path </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;/&quot;</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.expires </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getTime</span><span class="jsdoc-syntax">()+(1000*60*60*24*7)); </span><span class="jsdoc-comment">//7 days
+    </span><span class="jsdoc-var">this.domain </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.secure </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.state </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.readCookies</span><span class="jsdoc-syntax">();
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.state.CookieProvider</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.state.Provider</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">set </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;undefined&quot; </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.clear</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.setCookie</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.state.CookieProvider.superclass.set.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">clear </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.clearCookie</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.state.CookieProvider.superclass.clear.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">readCookies </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cookies </span><span class="jsdoc-syntax">= {};
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.cookie </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;;&quot;</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">re </span><span class="jsdoc-syntax">= /\s?(.*?)=(.*?);/g;
+    	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">matches</span><span class="jsdoc-syntax">;
+    	</span><span class="jsdoc-keyword">while</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">matches </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">re.exec</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">)) != </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">matches</span><span class="jsdoc-syntax">[1];
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">matches</span><span class="jsdoc-syntax">[2];
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">name.substring</span><span class="jsdoc-syntax">(0,3) == </span><span class="jsdoc-string">&quot;ys-&quot;</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">cookies</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">name.substr</span><span class="jsdoc-syntax">(3)] = </span><span class="jsdoc-var">this.decodeValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+            }
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cookies</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">setCookie </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">document.cookie </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;ys-&quot;</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;=&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.encodeValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">) +
+           ((</span><span class="jsdoc-var">this.expires </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">&quot;&quot; </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-string">&quot;; expires=&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.expires.toGMTString</span><span class="jsdoc-syntax">())) +
+           ((</span><span class="jsdoc-var">this.path </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">&quot;&quot; </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-string">&quot;; path=&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.path</span><span class="jsdoc-syntax">)) +
+           ((</span><span class="jsdoc-var">this.domain </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">&quot;&quot; </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-string">&quot;; domain=&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.domain</span><span class="jsdoc-syntax">)) +
+           ((</span><span class="jsdoc-var">this.secure </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">&quot;; secure&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">clearCookie </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">document.cookie </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;ys-&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;=null; expires=Thu, 01-Jan-70 00:00:01 GMT&quot; </span><span class="jsdoc-syntax">+
+           ((</span><span class="jsdoc-var">this.path </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">&quot;&quot; </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-string">&quot;; path=&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.path</span><span class="jsdoc-syntax">)) +
+           ((</span><span class="jsdoc-var">this.domain </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">&quot;&quot; </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-string">&quot;; domain=&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.domain</span><span class="jsdoc-syntax">)) +
+           ((</span><span class="jsdoc-var">this.secure </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">&quot;; secure&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+    }
+});</span></code></body></html>

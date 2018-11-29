@@ -1,0 +1,50 @@
+<html><head><title>../roojs1/Roo/data/DataReader.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+ 
+// Base class for reading structured data from a data source.  This class is intended to be
+// extended (see ArrayReader, JsonReader and XmlReader) and should not be created directly.
+
+/**
+ * @class Roo.data.DataReader
+ * Base class for reading structured data from a data source.  This class is intended to be
+ * extended (see {Roo.data.ArrayReader}, {Roo.data.JsonReader} and {Roo.data.XmlReader}) and should not be created directly.
+ */
+
+</span><span class="jsdoc-var">Roo.data.DataReader </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">meta</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">recordType</span><span class="jsdoc-syntax">){
+    
+    </span><span class="jsdoc-var">this.meta </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">meta</span><span class="jsdoc-syntax">;
+    
+    </span><span class="jsdoc-var">this.recordType </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">recordType </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Array </span><span class="jsdoc-syntax">? 
+        </span><span class="jsdoc-var">Roo.data.Record.create</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">recordType</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">recordType</span><span class="jsdoc-syntax">;
+};
+
+</span><span class="jsdoc-var">Roo.data.DataReader.prototype </span><span class="jsdoc-syntax">= {
+     </span><span class="jsdoc-comment">/**
+     * Create an empty record
+     * @param {Object} data (optional) - overlay some values
+     * @return {Roo.data.Record} record created.
+     */
+    </span><span class="jsdoc-var">newRow </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">da </span><span class="jsdoc-syntax">=  {};
+        </span><span class="jsdoc-var">this.recordType.prototype.fields.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">c.type</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'int' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">da</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c.name</span><span class="jsdoc-syntax">] = 0; </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'date' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">da</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c.name</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'float' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">da</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c.name</span><span class="jsdoc-syntax">] = 0.0; </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'boolean' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">da</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c.name</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">; </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">default </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">da</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c.name</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">; </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            }
+            
+        });
+        </span><span class="jsdoc-keyword">return new </span><span class="jsdoc-var">this.recordType</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">da</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">));
+    }
+    
+};</span></code></body></html>

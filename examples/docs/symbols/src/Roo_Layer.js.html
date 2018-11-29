@@ -1,0 +1,458 @@
+<html><head><title>../roojs1/Roo/Layer.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+ </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){ 
+</span><span class="jsdoc-comment">/**
+ * @class Roo.Layer
+ * @extends Roo.Element
+ * An extended {@link Roo.Element} object that supports a shadow and shim, constrain to viewport and
+ * automatic maintaining of shadow/shim positions.
+ * @cfg {Boolean} shim False to disable the iframe shim in browsers which need one (defaults to true)
+ * @cfg {String/Boolean} shadow True to create a shadow element with default class &quot;x-layer-shadow&quot;, or
+ * you can pass a string with a CSS class name. False turns off the shadow.
+ * @cfg {Object} dh DomHelper object config to create element with (defaults to {tag: &quot;div&quot;, cls: &quot;x-layer&quot;}).
+ * @cfg {Boolean} constrain False to disable constrain to viewport (defaults to true)
+ * @cfg {String} cls CSS class to add to the element
+ * @cfg {Number} zindex Starting z-index (defaults to 11000)
+ * @cfg {Number} shadowOffset Number of pixels to offset the shadow (defaults to 3)
+ * @constructor
+ * @param {Object} config An object with config options.
+ * @param {String/HTMLElement} existingEl (optional) Uses an existing DOM element. If the element is not found it creates it.
+ */
+
+</span><span class="jsdoc-var">Roo.Layer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">existingEl</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">|| {};
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dh </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.parentEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cp </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.getDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cp</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">existingEl</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.dom </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.getDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">existingEl</span><span class="jsdoc-syntax">);
+    }
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.dom</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.dh </span><span class="jsdoc-syntax">|| {</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-layer&quot;</span><span class="jsdoc-syntax">};
+        </span><span class="jsdoc-var">this.dom </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dh.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+    }
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.cls</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.cls</span><span class="jsdoc-syntax">);
+    }
+    </span><span class="jsdoc-var">this.constrain </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.constrain </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.visibilityMode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.Element.VISIBILITY</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.id</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dom.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.id</span><span class="jsdoc-syntax">;
+    }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dom</span><span class="jsdoc-syntax">);
+    }
+    </span><span class="jsdoc-var">this.zindex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.zindex </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.getZIndex</span><span class="jsdoc-syntax">();
+    </span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;absolute&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.zindex</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.shadow</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.shadowOffset </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.shadowOffset </span><span class="jsdoc-syntax">|| 4;
+        </span><span class="jsdoc-var">this.shadow </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Shadow</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">offset </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.shadowOffset</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">mode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">config.shadow
+        </span><span class="jsdoc-syntax">});
+    }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-var">this.shadowOffset </span><span class="jsdoc-syntax">= 0;
+    }
+    </span><span class="jsdoc-var">this.useShim </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.shim </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.useShims</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.useDisplay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.useDisplay</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
+};
+
+</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">supr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.Element.prototype</span><span class="jsdoc-syntax">;
+
+</span><span class="jsdoc-comment">// shims are shared among layer to keep from having 100 iframes
+</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">shims </span><span class="jsdoc-syntax">= [];
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Layer</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.Element</span><span class="jsdoc-syntax">, {
+
+    </span><span class="jsdoc-var">getZIndex </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.zindex </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;z-index&quot;</span><span class="jsdoc-syntax">), 10) || 11000;
+    },
+
+    </span><span class="jsdoc-var">getShim </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.useShim</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.shim</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.shim</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">shim </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">shims.shift</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">shim</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">shim </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.createShim</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">shim.enableDisplayMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">shim.dom.style.display </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'none'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">shim.dom.style.visibility </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'visible'</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dom.parentNode</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">shim.dom.parentNode </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">pn</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">pn.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">shim.dom</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.dom</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">shim.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'z-index'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.getZIndex</span><span class="jsdoc-syntax">()-2);
+        </span><span class="jsdoc-var">this.shim </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">shim</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">shim</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">hideShim </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.shim</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.shim.setDisplayed</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">shims.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.shim</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.shim</span><span class="jsdoc-syntax">;
+        }
+    },
+
+    </span><span class="jsdoc-var">disableShadow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.shadow</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.shadowDisabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.shadow.hide</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.lastShadowOffset </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.shadowOffset</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.shadowOffset </span><span class="jsdoc-syntax">= 0;
+        }
+    },
+
+    </span><span class="jsdoc-var">enableShadow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">show</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.shadow</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.shadowDisabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.shadowOffset </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.lastShadowOffset</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.lastShadowOffset</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">show</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.sync</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            }
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    // this code can execute repeatedly in milliseconds (i.e. during a drag) so
+    // code size was sacrificed for effeciency (e.g. no getBox/setBox, no XY calls)
+    </span><span class="jsdoc-var">sync </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doShow</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.shadow</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.updating </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.isVisible</span><span class="jsdoc-syntax">() &amp;&amp; (</span><span class="jsdoc-var">sw </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.useShim</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sh </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getShim</span><span class="jsdoc-syntax">();
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getWidth</span><span class="jsdoc-syntax">(),
+                </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getHeight</span><span class="jsdoc-syntax">();
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">l </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">),
+                </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sw </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.shadowDisabled</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doShow </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">sw.isVisible</span><span class="jsdoc-syntax">()){
+                    </span><span class="jsdoc-var">sw.show</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                    </span><span class="jsdoc-var">sw.realign</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">);
+                }
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sh</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doShow</span><span class="jsdoc-syntax">){
+                       </span><span class="jsdoc-var">sh.show</span><span class="jsdoc-syntax">();
+                    }
+                    </span><span class="jsdoc-comment">// fit the shim behind the shadow, so it is shimmed too
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sw.adjusts</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sh.dom.style</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">s.left </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">a.l</span><span class="jsdoc-syntax">))+</span><span class="jsdoc-string">&quot;px&quot;</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">s.top </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">a.t</span><span class="jsdoc-syntax">))+</span><span class="jsdoc-string">&quot;px&quot;</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">s.width </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">a.w</span><span class="jsdoc-syntax">)+</span><span class="jsdoc-string">&quot;px&quot;</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">s.height </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">a.h</span><span class="jsdoc-syntax">)+</span><span class="jsdoc-string">&quot;px&quot;</span><span class="jsdoc-syntax">;
+                }
+            }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sh</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doShow</span><span class="jsdoc-syntax">){
+                   </span><span class="jsdoc-var">sh.show</span><span class="jsdoc-syntax">();
+                }
+                </span><span class="jsdoc-var">sh.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">sh.setLeftTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">);
+            }
+            
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">destroy </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.hideShim</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.shadow</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.shadow.hide</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">this.removeAllListeners</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dom.parentNode</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pn</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">pn.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dom</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">Roo.Element.uncache</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">remove </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.destroy</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">beginUpdate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.updating </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">endUpdate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.updating </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.sync</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">hideUnders </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">negOffset</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.shadow</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.shadow.hide</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">this.hideShim</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">constrainXY </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.constrain</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">vw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Dom.getViewWidth</span><span class="jsdoc-syntax">(),
+                </span><span class="jsdoc-var">vh </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.getScroll</span><span class="jsdoc-syntax">();
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">xy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getXY</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[1];   
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dom.offsetWidth</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.shadowOffset</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dom.offsetHeight</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.shadowOffset</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-comment">// only move it if it needs it
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">moved </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-comment">// first validate right/bottom
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">) &gt; </span><span class="jsdoc-var">vw</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">s.left</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">vw </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.shadowOffset</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">moved </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">) &gt; </span><span class="jsdoc-var">vh</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">s.top</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">vh </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.shadowOffset</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">moved </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-comment">// then make sure top/left isn't negative
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">s.left</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">s.left</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">moved </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">s.top</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">s.top</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">moved </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">moved</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.avoidY</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.avoidY</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">&lt;= </span><span class="jsdoc-var">ay </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">) &gt;= </span><span class="jsdoc-var">ay</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ay</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">-5;   
+                    }
+                }
+                </span><span class="jsdoc-var">xy </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">];
+                </span><span class="jsdoc-var">this.storeXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">supr.setXY.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.sync</span><span class="jsdoc-syntax">();
+            }
+        }
+    },
+
+    </span><span class="jsdoc-var">isVisible </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.visible</span><span class="jsdoc-syntax">;    
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">showAction </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.visible </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// track visibility to prevent getStyle calls
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.useDisplay </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.setDisplayed</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+        }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lastXY</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">supr.setXY.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.lastXY</span><span class="jsdoc-syntax">);
+        }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lastLT</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">supr.setLeftTop.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.lastLT</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-var">this.lastLT</span><span class="jsdoc-syntax">[1]);
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">hideAction </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.visible </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.useDisplay </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.setDisplayed</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.setLeftTop</span><span class="jsdoc-syntax">(-10000,-10000);
+        }
+    },
+
+    </span><span class="jsdoc-comment">// overridden Element method
+    </span><span class="jsdoc-var">setVisible </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.showAction</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+                </span><span class="jsdoc-var">this.sync</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">();
+                }
+            }</span><span class="jsdoc-var">.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">supr.setVisible.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cb</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.hideUnders</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">cb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+                    </span><span class="jsdoc-var">this.hideAction</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">();
+                    }
+                }</span><span class="jsdoc-var">.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-var">supr.setVisible.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cb</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.sync</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.hideAction</span><span class="jsdoc-syntax">();
+            }
+        }
+    },
+
+    </span><span class="jsdoc-var">storeXY </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.lastLT</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.lastXY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">storeLeftTop </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">left</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">top</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.lastXY</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.lastLT </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-var">left</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">top</span><span class="jsdoc-syntax">];
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">beforeFx </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.beforeAction</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.Layer.superclass.beforeFx.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">afterFx </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">Roo.Layer.superclass.afterFx.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.sync</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isVisible</span><span class="jsdoc-syntax">());
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">beforeAction </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.updating </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.shadow</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.shadow.hide</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-comment">// overridden Element method
+    </span><span class="jsdoc-var">setLeft </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">left</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.storeLeftTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">left</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">supr.setLeft.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.sync</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">setTop </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">top</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.storeLeftTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">top</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">supr.setTop.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.sync</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">setLeftTop </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">left</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">top</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.storeLeftTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">left</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">top</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">supr.setLeftTop.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.sync</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">setXY </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.fixDisplay</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.beforeAction</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.storeXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.createCB</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">supr.setXY.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cb</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cb</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">createCB </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">return function</span><span class="jsdoc-syntax">(){
+            </span><span class="jsdoc-var">el.constrainXY</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">el.sync</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">();
+            }
+        };
+    },
+
+    </span><span class="jsdoc-comment">// overridden Element method
+    </span><span class="jsdoc-var">setX </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.setXY</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.getY</span><span class="jsdoc-syntax">()], </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// overridden Element method
+    </span><span class="jsdoc-var">setY </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.setXY</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">this.getX</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// overridden Element method
+    </span><span class="jsdoc-var">setSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.beforeAction</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.createCB</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">supr.setSize.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cb</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cb</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-comment">// overridden Element method
+    </span><span class="jsdoc-var">setWidth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.beforeAction</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.createCB</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">supr.setWidth.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cb</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cb</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-comment">// overridden Element method
+    </span><span class="jsdoc-var">setHeight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.beforeAction</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.createCB</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">supr.setHeight.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cb</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cb</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-comment">// overridden Element method
+    </span><span class="jsdoc-var">setBounds </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.beforeAction</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.createCB</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.storeXY</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">]);
+            </span><span class="jsdoc-var">supr.setXY.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">]);
+            </span><span class="jsdoc-var">supr.setSize.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cb</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">cb</span><span class="jsdoc-syntax">();
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">supr.setBounds.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cb</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Sets the z-index of this layer and adjusts any shadow and shim z-indexes. The layer z-index is automatically
+     * incremented by two more than the value passed in so that it always shows above any shadow or shim (the shadow
+     * element, if any, will be assigned z-index + 1, and the shim element, if any, will be assigned the unmodified z-index).
+     * @param {Number} zindex The new z-index to set
+     * @return {this} The Layer
+     */
+    </span><span class="jsdoc-var">setZIndex </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">zindex</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.zindex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">zindex</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;z-index&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">zindex </span><span class="jsdoc-syntax">+ 2);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.shadow</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.shadow.setZIndex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">zindex </span><span class="jsdoc-syntax">+ 1);
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.shim</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.shim.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;z-index&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">zindex</span><span class="jsdoc-syntax">);
+        }
+    }
+});
+})();</span></code></body></html>

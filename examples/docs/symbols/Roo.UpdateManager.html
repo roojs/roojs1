@@ -1,0 +1,1894 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=undefined" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		
+		<title>JsDoc Reference - Roo.UpdateManager</title>
+		
+		
+	<link rel="stylesheet" type="text/css" href="../../css/roojs.css" />		
+	<link rel="stylesheet" type="text/css" href="../default.css" />
+	
+	
+	<script type="text/javascript" src="../page.js">
+	
+	</script>
+	 
+		
+	</head>
+
+	<body onload="RooDocsPage.onload();">
+	 
+	
+<div class="body-wrap">
+
+    <!-- ============================== links to methods. ================================= -->	
+
+    <div class="top-tools">
+    <!--
+        <a class="inner-link" href="#Roo.UpdateManager-props"><img src="resources/s.gif" class="item-icon icon-prop">Properties</a>
+        <a class="inner-link" href="#Roo.UpdateManager-methods"><img src="resources/s.gif" class="item-icon icon-method">Methods</a>
+        <a class="inner-link" href="#Roo.UpdateManager-events"><img src="resources/s.gif" class="item-icon icon-event">Events</a>
+        <a class="inner-link" href="#Roo.UpdateManager-configs"><img src="resources/s.gif" class="item-icon icon-config">Config Options</a>
+        <a class="bookmark" href="NEED_TO_CREATE_DIRECT_LINK_HREF"><img src="resources/s.gif" class="item-icon icon-fav">Direct Link</a>
+	-->
+    </div>
+
+    
+<!-- ============================== inheritance Block. ================================= -->	
+	
+		<div class="inheritance res-block">
+		   <pre class="res-block-inner"><a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+<img src="../../images/default/s.gif" height="1"  width="20"/><img class="elbow" src="../../images/default/tree/elbow-end.gif"/>Roo.UpdateManager 
+
+		   </pre>
+		</div>
+       
+<!-- ============================== class title / details ============================ -->
+    
+    
+    <h1 class="classTitle">
+				
+				Class Roo.UpdateManager
+			</h1>
+			
+    <table cellspacing="0" class="class-summary-table">
+	
+		<tr><td class="label">Package:</td><td class="hd-info">Roo</td></tr>
+	
+        <tr><td class="label">Defined In:</td><td class="hd-info">
+			
+					<a href="./src/Roo_UpdateManager.js.html">Roo/UpdateManager.js</a>.
+			
+	</td></tr>
+        <tr><td class="label">Class:</td><td class="hd-info">UpdateManager</td></tr>
+	
+	
+	
+	
+		<tr><td class="label">Extends:</td><td class="hd-info">
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+	
+		</td></tr>    
+	
+	
+    </table>
+
+    
+<!-- ============================== class summary ========================== -->			
+    <div class="description">
+	Provides AJAX-style update for Element object.<br><br><br/>Usage:<br><br/><pre><code><br/>// Get it from a Roo.Element object<br/>var el = Roo.get("foo");<br/>var mgr = el.getUpdateManager();<br/>mgr.update("http://myserver.com/index.php", "param1=1&amp;param2=2");<br/>...<br/>mgr.formUpdate("myFormId", "http://myserver.com/index.php");<br/><br><br/>// or directly (returns the same UpdateManager instance)<br/>var mgr = new Roo.UpdateManager("myElementId");<br/>mgr.startAutoRefresh(60, "http://myserver.com/index.php");<br/>mgr.on("update", myFcnNeedsToKnow);<br/><br><br/>   // short handed call directly from the element object<br/>   Roo.get("foo").load({<br/>        url: "bar.php",<br/>        scripts:true,<br/>        params: "for=bar",<br/>        text: "Loading Foo..."<br/>   });<br/></code></pre>
+    </div>
+
+	
+<!-- ============================== Class comment block... ========================== -->					
+
+<div class="comments">
+	<b>Class Comments / Notes</B> =>  
+	<u onclick="parent.CommentDialog.showCommentId = 'Roo.UpdateManager';">[Add Your comment/notes about this class]</u>
+	<br/>
+	<iframe frameborder="0"  id="comments-Roo" style="border: none;width:100%;" 
+		src="/blog.php/GtkDjsComments/Roo.UpdateManager.html"></iframe>
+</div>
+	
+
+		
+<!-- ============================== config options ========================== -->						
+		 
+    
+    
+		
+    <div class="hr"></div>
+    <a id="Roo.UpdateManager-configs"></a>
+		
+    
+     
+    
+	
+      <table cellspacing="0" class="member-table">   
+      <caption>Config Options (Usually are also Properties)</caption>
+    
+	
+        <tr>
+            <th class="sig-header" colspan="2">Options</th>
+	    
+            <th class="msource-header">Defined By</th>
+        </tr>
+	
+	
+	
+	
+	
+		<tr class="config-row expandable config-row-alt0">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.util.Observable-cfg-listeners" name=".listeners"></a>
+			<div class="fixedFont">
+				<b  class="itemname">listeners</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">list of events and functions to call for this object, <br/>For example :<br/><pre><code><br/>    listeners :  { <br/>       'click' : function(e) {<br/>           .</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    list of events and functions to call for this object, <br/>For example :<br/><pre><code><br/>    listeners :  { <br/>       'click' : function(e) {<br/>           ..... <br/>        } ,<br/>        .... <br/>    } <br/>  </code></pre>
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+				
+		    </td>
+		</tr>
+        
+        
+    </table>
+  		
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- ============================== public properties ==================== -->	
+  
+  
+  
+    <a id="Roo.UpdateManager-props"></a>      
+    
+    
+
+    
+    
+     <table cellspacing="0" class="member-table">
+      <caption class="Empty">Public Properties - Has None</caption>
+     </table>
+    
+    
+     
+    
+  <!-- ============================== methods summary / details ======================== -->
+  
+  
+  <a id="Roo.UpdateManager-methods"></a>
+	<!-- constructor?? -->
+  	
+	<!-- static's first 
+	
+	
+	-->
+	
+	<!-- then dynamics first -->
+	
+  
+  
+    
+    
+    
+      <table cellspacing="0" class="member-table">
+      <caption>Public Methods</caption>
+        <tr>
+            <th class="sig-header" colspan="2">Method</th>            
+            <th class="msource-header">Defined By</th>
+
+        </tr>
+        
+	
+	
+	 
+	
+        
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo-method-UpdateManager"   name=".UpdateManager"></a>
+		<div class="fixedFont">
+			<span class="attributes">new <B>Roo.</B></span><b class="itemname">UpdateManager</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement/Roo.Element <B><i>el</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a> <B><i>forceNew</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+		 
+			<div class="short">Create a new Roo.UpdateManager</div> 
+		 
+		 
+                    <div class="long">
+			
+			
+			
+				Create a new Roo.UpdateManager
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement/Roo.Element</span>  <b>el</b>
+						
+					</dt>
+					<dd>The element to update</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  <b>forceNew</b>
+						
+					</dt>
+					<dd>(optional) By default the constructor checks to see if the passed element already has an UpdateManager and if it does it returns the same instance. This will skip that check (useful for extending this class).</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.UpdateManager-method-updateElement"   name=".updateElement"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.UpdateManager.</span><b class="itemname">updateElement</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement/Roo.Element <B><i>el</i></B>, <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>url</i></B>, <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/Object <B><i>params</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>options</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Static convenience method.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Static convenience method. This method is deprecated in favor of el.load({url:'foo.php', ...}).<br/>Usage:<br/><pre><code>Roo.UpdateManager.updateElement("my-div", "stuff.php");</code></pre>
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement/Roo.Element</span>  <b>el</b>
+						
+					</dt>
+					<dd>The element to update</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>url</b>
+						
+					</dt>
+					<dd>The url</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/Object</span>  <b>params</b>
+						
+					</dt>
+					<dd>(optional) Url encoded param string or an object of name/value pairs</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>options</b>
+						
+					</dt>
+					<dd>(optional) A config object with any of the UpdateManager properties you want to set - for example: {disableCaching:true, indicatorText: "Loading data..."}</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.UpdateManager
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.UpdateManager-method-abort"   name=".abort"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">abort</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Aborts the executing transaction</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Aborts the executing transaction
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.UpdateManager
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-addEvents"   name=".addEvents"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">addEvents</b>
+				
+				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>object</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Used to define events on this Observable</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Used to define events on this Observable
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>object</b>
+						
+					</dt>
+					<dd>The object with the events defined</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-addListener"   name=".addListener"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">addListener</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>handler</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>options</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Appends an event handler to this component</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Appends an event handler to this component
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The type of event to listen for</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>handler</b>
+						
+					</dt>
+					<dd>The method the event invokes</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>(optional) The scope in which to execute the handler<br/>function. The handler function's "this" context.</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>options</b>
+						
+					</dt>
+					<dd>(optional) An object containing handler configuration<br/>properties. This may contain any of the following properties:<ul><br/><li>scope {Object} The scope in which to execute the handler function. The handler function's "this" context.</li><br/><li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li><br/><li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li><br/><li>buffer {Number} Causes the handler to be scheduled to run in an {<b>link</b> Roo.util.DelayedTask} delayed<br/>by the specified number of milliseconds. If the event fires again within that time, the original<br/>handler is <em>not</em> invoked, but the new handler is scheduled in its place.</li><br/></ul><br><br/><p><br/><b>Combining Options</b><br><br/>Using the options argument, it is possible to combine different types of listeners:<br><br/><br><br/>A normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)<br/>		<pre><code><br/>		el.on('click', this.onClick, this, {<br/> 			single: true,<br/>    		delay: 100,<br/>    		forumId: 4<br/>		});<br/>		</code></pre><br/><p><br/><b>Attaching multiple handlers in 1 call</b><br><br/>The method also allows for a single argument to be passed which is a config object containing properties<br/>which specify multiple handlers.<br/><pre><code><br/>		el.on({<br/>			'click': {<br/>        		fn: this.onClick,<br/>        		scope: this,<br/>        		delay: 100<br/>    		}, <br/>    		'mouseover': {<br/>        		fn: this.onMouseOver,<br/>        		scope: this<br/>    		},<br/>    		'mouseout': {<br/>        		fn: this.onMouseOut,<br/>        		scope: this<br/>    		}<br/>		});<br/>		</code></pre><br/><p><br/>Or a shorthand syntax which passes the same scope object to all handlers:<br/>     	<pre><code><br/>		el.on({<br/>			'click': this.onClick,<br/>    		'mouseover': this.onMouseOver,<br/>    		'mouseout': this.onMouseOut,<br/>    		scope: this<br/>		});<br/>		</code></pre></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-fireEvent"   name=".fireEvent"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">fireEvent</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object...</a> <B><i>args</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Fires the specified event with the passed parameters (minus the event name).</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Fires the specified event with the passed parameters (minus the event name).
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object...</a></span>  <b>args</b>
+						
+					</dt>
+					<dd>Variable number of parameters are passed to handlers</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  returns false if any of the handlers return false otherwise it returns true</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.UpdateManager-method-formUpdate"   name=".formUpdate"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">formUpdate</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement <B><i>form</i></B>, <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>url</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a> <B><i>reset</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>callback</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Performs an async form post, updating this element with the response.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Performs an async form post, updating this element with the response. If the form has the attribute enctype="multipart/form-data", it assumes it's a file upload.<br/>Uses this.sslBlankUrl for SSL file uploads to prevent IE security warning.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement</span>  <b>form</b>
+						
+					</dt>
+					<dd>The form Id or form element</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>url</b>
+						
+					</dt>
+					<dd>(optional) The url to pass the form to. If omitted the action attribute on the form will be used.</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  <b>reset</b>
+						
+					</dt>
+					<dd>(optional) Whether to try to reset the form after the update</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>callback</b>
+						
+					</dt>
+					<dd>(optional) Callback when transaction is complete - called with signature (oElement, bSuccess, oResponse)</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.UpdateManager
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.UpdateManager-method-getEl"   name=".getEl"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">getEl</b>
+				
+				 () 
+			
+				
+					 : 
+					
+						
+						<a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Get the Element this UpdateManager is bound to</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Get the Element this UpdateManager is bound to
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a></span>  The element</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.UpdateManager
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-hasListener"   name=".hasListener"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">hasListener</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Checks to see if this object has any listeners for a specified event</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Checks to see if this object has any listeners for a specified event
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The name of the event to check for</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  True if the event is being listened for, else false</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.UpdateManager-method-isUpdating"   name=".isUpdating"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">isUpdating</b>
+				
+				 () 
+			
+				
+					 : 
+					
+						
+						<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Returns true if an update is in progress</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Returns true if an update is in progress
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  </dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.UpdateManager
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-on"   name=".on"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">on</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>handler</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>options</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Appends an event handler to this element (shorthand for addListener)</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Appends an event handler to this element (shorthand for addListener)
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The type of event to listen for</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>handler</b>
+						
+					</dt>
+					<dd>The method the event invokes</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>(optional) The scope in which to execute the handler<br/>function. The handler function's "this" context.</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>options</b>
+						
+					</dt>
+					<dd>(optional)</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-purgeListeners"   name=".purgeListeners"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">purgeListeners</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Removes all listeners for this object</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Removes all listeners for this object
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.UpdateManager-method-refresh"   name=".refresh"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">refresh</b>
+				
+				 (<a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>callback</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Refresh the element with the last used url or defaultUrl.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Refresh the element with the last used url or defaultUrl. If there is no url, it returns immediately
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>callback</b>
+						
+					</dt>
+					<dd>(optional) Callback when transaction is complete - called with signature (oElement, bSuccess)</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.UpdateManager
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-removeListener"   name=".removeListener"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">removeListener</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>handler</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Removes a listener</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Removes a listener
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The type of event to listen for</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>handler</b>
+						
+					</dt>
+					<dd>The handler to remove</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>(optional) The scope (this object) for the handler</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.UpdateManager-method-setDefaultUrl"   name=".setDefaultUrl"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">setDefaultUrl</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/Function <B><i>defaultUrl</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Set the defaultUrl used for updates</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Set the defaultUrl used for updates
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/Function</span>  <b>defaultUrl</b>
+						
+					</dt>
+					<dd>The url or a function to call to get the url</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.UpdateManager
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.UpdateManager-method-setRenderer"   name=".setRenderer"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">setRenderer</b>
+				
+				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>renderer</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Set the content renderer for this UpdateManager.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Set the content renderer for this UpdateManager. See {<b>link</b> Roo.UpdateManager.BasicRenderer<b>render</b>} for more details.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>renderer</b>
+						
+					</dt>
+					<dd>The object implementing the render() method</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.UpdateManager
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.UpdateManager-method-showLoading"   name=".showLoading"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">showLoading</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Called to update the element to "Loading" state.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Called to update the element to "Loading" state. Override to perform custom action.
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.UpdateManager
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.UpdateManager-method-startAutoRefresh"   name=".startAutoRefresh"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">startAutoRefresh</b>
+				
+				 (<a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>interval</i></B>, <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/Function <B><i>url</i></B>, <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/Object <B><i>params</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>callback</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a> <B><i>refreshNow</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Set this element to auto refresh.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Set this element to auto refresh.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span>  <b>interval</b>
+						
+					</dt>
+					<dd>How often to update (in seconds).</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/Function</span>  <b>url</b>
+						
+					</dt>
+					<dd>(optional) The url for this request or a function to call to get the url (Defaults to the last used url)</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/Object</span>  <b>params</b>
+						
+					</dt>
+					<dd>(optional) The parameters to pass as either a url encoded string "&param1=1&param2=2" or as an object {param1: 1, param2: 2}</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>callback</b>
+						
+					</dt>
+					<dd>(optional) Callback when transaction is complete - called with signature (oElement, bSuccess)</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  <b>refreshNow</b>
+						
+					</dt>
+					<dd>(optional) Whether to execute the refresh now, or wait the interval</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.UpdateManager
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.UpdateManager-method-stopAutoRefresh"   name=".stopAutoRefresh"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">stopAutoRefresh</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Stop auto refresh on this element.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Stop auto refresh on this element.
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.UpdateManager
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-un"   name=".un"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">un</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>handler</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Removes a listener (shorthand for removeListener)</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Removes a listener (shorthand for removeListener)
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The type of event to listen for</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>handler</b>
+						
+					</dt>
+					<dd>The handler to remove</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>(optional) The scope (this object) for the handler</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.UpdateManager-method-update"   name=".update"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">update</b>
+				
+				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a>/String/Function <B><i>url</i></B>, <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/Object <B><i>params</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>callback</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a> <B><i>discardUrl</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Performs an async request, updating this element with the response.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Performs an async request, updating this element with the response. If params are specified it uses POST, otherwise it uses GET.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a>/String/Function</span>  <b>url</b>
+						
+					</dt>
+					<dd>The url for this request or a function to call to get the url or a config object containing any of the following options:<br/><pre><code><br/>um.update({<br/><br/>    url: "your-url.php",<br/><br/>    params: {param1: "foo", param2: "bar"}, // or a URL encoded string<br/><br/>    callback: yourFunction,<br/><br/>    scope: yourObject, //(optional scope)  <br/><br/>    discardUrl: false, <br/><br/>    nocache: false,<br/><br/>    text: "Loading...",<br/><br/>    timeout: 30,<br/><br/>    scripts: false<br/><br/>});<br/></code></pre><br/>The only required property is url. The optional properties nocache, text and scripts<br/>are shorthand for disableCaching, indicatorText and loadScripts and are used to set their associated property on this UpdateManager instance.</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/Object</span>  <b>params</b>
+						
+					</dt>
+					<dd>(optional) The parameters to pass as either a url encoded string "param1=1&amp;param2=2" or an object {param1: 1, param2: 2}</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>callback</b>
+						
+					</dt>
+					<dd>(optional) Callback when transaction is complete - called with signature (oElement, bSuccess, oResponse)</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  <b>discardUrl</b>
+						
+					</dt>
+					<dd>(optional) By default when you execute an update the defaultUrl is changed to the last used url. If true, it will not store the url.</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.UpdateManager
+		&nbsp;
+            </td>
+        </tr>
+	
+	                                               
+    </table>
+
+  
+  <!-- ============================== events summary / details ======================== -->
+  
+  
+  <a id="Roo.UpdateManager-events"></a>
+    
+  
+  	
+   
+  
+    
+    
+    
+      <table cellspacing="0" class="member-table">
+		<caption>Events</caption>
+	      <thead>
+		<tr>
+		    <th class="sig-header" colspan="2">Event</th>            
+		    <th class="msource-header">Defined By</th>
+
+		</tr>
+	      </thead>  
+	
+	
+	 
+	
+        
+          <tr class="method-row expandable config-row-alt0 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.UpdateManager-event-*beforeupdate"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">beforeupdate</b> (<a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a> <B><i>el</i></B>, <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/Object/Function <B><i>url</i></B>, <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/Object <B><i>params</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fired before an update is made, return false from your handler and the update is cancelled.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fired before an update is made, return false from your handler and the update is cancelled.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a></span> <b>el</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/Object/Function</span> <b>url</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/Object</span> <b>params</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.UpdateManager
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.UpdateManager-event-*failure"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">failure</b> (<a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a> <B><i>el</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>oResponseObject</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fired on update failure.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fired on update failure.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a></span> <b>el</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span> <b>oResponseObject</b>
+						
+					</dt>
+					<dd>The response Object</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.UpdateManager
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt0 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.UpdateManager-event-*update"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">update</b> (<a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a> <B><i>el</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>oResponseObject</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fired after successful update is made.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fired after successful update is made.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a></span> <b>el</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span> <b>oResponseObject</b>
+						
+					</dt>
+					<dd>The response Object</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.UpdateManager
+            </td>
+        </tr>
+	
+	                                               
+    </table>
+
+  
+  
+  
+ 
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Fri Jul 13 2018 14:10:53 GMT+0800 (HKT)
+			Based on 
+			<a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a>  
+		</div>
+	</body>
+</html>

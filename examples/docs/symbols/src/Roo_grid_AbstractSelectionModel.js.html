@@ -1,0 +1,52 @@
+<html><head><title>../roojs1/Roo/grid/AbstractSelectionModel.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+/**
+ * @class Roo.grid.AbstractSelectionModel
+ * @extends Roo.util.Observable
+ * Abstract base class for grid SelectionModels.  It provides the interface that should be
+ * implemented by descendant classes.  This class should not be directly instantiated.
+ * @constructor
+ */
+</span><span class="jsdoc-var">Roo.grid.AbstractSelectionModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+    </span><span class="jsdoc-var">this.locked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">Roo.grid.AbstractSelectionModel.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.grid.AbstractSelectionModel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable</span><span class="jsdoc-syntax">,  {
+    </span><span class="jsdoc-comment">/** @ignore Called by the grid automatically. Do not call directly. */
+    </span><span class="jsdoc-var">init </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">grid</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.grid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">grid</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.initEvents</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Locks the selections.
+     */
+    </span><span class="jsdoc-var">lock </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.locked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Unlocks the selections.
+     */
+    </span><span class="jsdoc-var">unlock </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.locked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns true if the selections are locked.
+     * @return {Boolean}
+     */
+    </span><span class="jsdoc-var">isLocked </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.locked</span><span class="jsdoc-syntax">;
+    }
+});</span></code></body></html>

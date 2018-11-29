@@ -1,0 +1,114 @@
+<html><head><title>../roojs1/Roo/tree/ColumnTree.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">//&lt;Script type=&quot;text/javascript&quot;&gt;
+
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+ 
+
+/**
+ * @class Roo.tree.ColumnTree
+ * @extends Roo.data.TreePanel
+ * @cfg {Object} columns  Including width, header, renderer, cls, dataIndex 
+ * @cfg {int} borderWidth  compined right/left border allowance
+ * @constructor
+ * @param {String/HTMLElement/Element} el The container element
+ * @param {Object} config
+ */
+</span><span class="jsdoc-var">Roo.tree.ColumnTree </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">)
+{
+   </span><span class="jsdoc-var">Roo.tree.ColumnTree.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+   </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+        * @event resize
+        * Fire this event on a container when it resizes
+        * @param {int} w Width
+        * @param {int} h Height
+        */
+       </span><span class="jsdoc-string">&quot;resize&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+    </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'resize'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onResize</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.tree.ColumnTree</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.tree.TreePanel</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-comment">//lines:false,
+    
+    
+    </span><span class="jsdoc-var">borderWidth</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.isBorderBox </span><span class="jsdoc-syntax">? 0 : 2, 
+    </span><span class="jsdoc-var">headEls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">render </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-comment">// add the header.....
+       
+        </span><span class="jsdoc-var">Roo.tree.ColumnTree.superclass.render.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'x-column-tree'</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.headers </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.createChild</span><span class="jsdoc-syntax">(
+            {</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'x-tree-headers'</span><span class="jsdoc-syntax">},</span><span class="jsdoc-var">this.innerCt.dom</span><span class="jsdoc-syntax">);
+   
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cols </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.columns</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">totalWidth </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-var">this.headEls </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-keyword">var  </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cols.length</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+             </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cols</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+             </span><span class="jsdoc-var">totalWidth </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">c.width</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.headEls.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.headers.createChild</span><span class="jsdoc-syntax">({
+                 </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'x-tree-hd ' </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">c.cls</span><span class="jsdoc-syntax">?</span><span class="jsdoc-var">c.cls</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'-hd'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">),
+                 </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: {
+                     </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'x-tree-hd-text'</span><span class="jsdoc-syntax">,
+                     </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">c.header
+                 </span><span class="jsdoc-syntax">},
+                 </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'width:'</span><span class="jsdoc-syntax">+(</span><span class="jsdoc-var">c.width</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">this.borderWidth</span><span class="jsdoc-syntax">)+</span><span class="jsdoc-string">'px;'
+             </span><span class="jsdoc-syntax">}));
+        }
+        </span><span class="jsdoc-var">this.headers.createChild</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'x-clear'</span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-comment">// prevent floats from wrapping when clipped
+        </span><span class="jsdoc-var">this.headers.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">totalWidth</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">//this.innerCt.setWidth(totalWidth);
+        </span><span class="jsdoc-var">this.innerCt.setStyle</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">overflow</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'auto' </span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-var">this.onResize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.height</span><span class="jsdoc-syntax">);
+             
+        
+    },
+    </span><span class="jsdoc-var">onResize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">// resize cols..
+        </span><span class="jsdoc-var">this.innerCt.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.innerCt.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.height</span><span class="jsdoc-syntax">-20);
+        
+        </span><span class="jsdoc-comment">// headers...
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cols </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.columns</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">totalWidth </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">expEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cols.length</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cols</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoExpandColumn </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">c.dataIndex </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">this.autoExpandColumn</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-comment">// it's the expander..
+                </span><span class="jsdoc-var">expEl  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.headEls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">totalWidth </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">c.width</span><span class="jsdoc-syntax">;
+            
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">expEl</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">expEl.setWidth</span><span class="jsdoc-syntax">(  ((</span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">totalWidth</span><span class="jsdoc-syntax">)-</span><span class="jsdoc-var">this.borderWidth </span><span class="jsdoc-syntax">- 20));
+        }
+        </span><span class="jsdoc-var">this.headers.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">-20);
+
+        
+        
+        
+    }
+});
+</span></code></body></html>

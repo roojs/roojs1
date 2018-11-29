@@ -1,0 +1,133 @@
+<html><head><title>../roojs1/Roo/data/XmlReader.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+/**
+ * @class Roo.data.XmlReader
+ * @extends Roo.data.DataReader
+ * Data reader class to create an Array of {@link Roo.data.Record} objects from an XML document
+ * based on mappings in a provided Roo.data.Record constructor.&lt;br&gt;&lt;br&gt;
+ * &lt;p&gt;
+ * &lt;em&gt;Note that in order for the browser to parse a returned XML document, the Content-Type
+ * header in the HTTP response must be set to &quot;text/xml&quot;.&lt;/em&gt;
+ * &lt;p&gt;
+ * Example code:
+ * &lt;pre&gt;&lt;code&gt;
+var RecordDef = Roo.data.Record.create([
+   {name: 'name', mapping: 'name'},     // &quot;mapping&quot; property not needed if it's the same as &quot;name&quot;
+   {name: 'occupation'}                 // This field will use &quot;occupation&quot; as the mapping.
+]);
+var myReader = new Roo.data.XmlReader({
+   totalRecords: &quot;results&quot;, // The element which contains the total dataset size (optional)
+   record: &quot;row&quot;,           // The repeated element which contains row information
+   id: &quot;id&quot;                 // The element within the row that provides an ID for the record (optional)
+}, RecordDef);
+&lt;/code&gt;&lt;/pre&gt;
+ * &lt;p&gt;
+ * This would consume an XML file like this:
+ * &lt;pre&gt;&lt;code&gt;
+&amp;lt;?xml?&gt;
+&amp;lt;dataset&gt;
+ &amp;lt;results&gt;2&amp;lt;/results&gt;
+ &amp;lt;row&gt;
+   &amp;lt;id&gt;1&amp;lt;/id&gt;
+   &amp;lt;name&gt;Bill&amp;lt;/name&gt;
+   &amp;lt;occupation&gt;Gardener&amp;lt;/occupation&gt;
+ &amp;lt;/row&gt;
+ &amp;lt;row&gt;
+   &amp;lt;id&gt;2&amp;lt;/id&gt;
+   &amp;lt;name&gt;Ben&amp;lt;/name&gt;
+   &amp;lt;occupation&gt;Horticulturalist&amp;lt;/occupation&gt;
+ &amp;lt;/row&gt;
+&amp;lt;/dataset&gt;
+&lt;/code&gt;&lt;/pre&gt;
+ * @cfg {String} totalRecords The DomQuery path from which to retrieve the total number of records
+ * in the dataset. This is only needed if the whole dataset is not passed in one go, but is being
+ * paged from the remote server.
+ * @cfg {String} record The DomQuery path to the repeated element which contains record information.
+ * @cfg {String} success The DomQuery path to the success attribute used by forms.
+ * @cfg {String} id The DomQuery path relative from the record element to the element that contains
+ * a record identifier value.
+ * @constructor
+ * Create a new XmlReader
+ * @param {Object} meta Metadata configuration options
+ * @param {Mixed} recordType The definition of the data record type to produce.  This can be either a valid
+ * Record subclass created with {@link Roo.data.Record#create}, or an array of objects with which to call
+ * Roo.data.Record.create.  See the {@link Roo.data.Record} class for more details.
+ */
+</span><span class="jsdoc-var">Roo.data.XmlReader </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">meta</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">recordType</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">meta </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">meta </span><span class="jsdoc-syntax">|| {};
+    </span><span class="jsdoc-var">Roo.data.XmlReader.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">meta</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">recordType</span><span class="jsdoc-syntax">||</span><span class="jsdoc-var">meta.fields</span><span class="jsdoc-syntax">);
+};
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.data.XmlReader</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.data.DataReader</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-comment">/**
+     * This method is only used by a DataProxy which has retrieved data from a remote server.
+	 * @param {Object} response The XHR object which contains the parsed XML document.  The response is expected
+	 * to contain a method called 'responseXML' that returns an XML document object.
+     * @return {Object} records A data block which is used by an {@link Roo.data.Store} as
+     * a cache of Roo.data.Records.
+     */
+    </span><span class="jsdoc-var">read </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">doc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">response.responseXML</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">doc</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-syntax">{</span><span class="jsdoc-var">message</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;XmlReader.read: XML Document not available&quot;</span><span class="jsdoc-syntax">};
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.readRecords</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doc</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Create a data block containing Roo.data.Records from an XML document.
+	 * @param {Object} doc A parsed XML document.
+     * @return {Object} records A data block which is used by an {@link Roo.data.Store} as
+     * a cache of Roo.data.Records.
+     */
+    </span><span class="jsdoc-var">readRecords </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doc</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-comment">/**
+         * After any data loads/reads, the raw XML Document is available for further custom processing.
+         * @type XMLDocument
+         */
+        </span><span class="jsdoc-var">this.xmlData </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">root </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.documentElement </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">doc</span><span class="jsdoc-syntax">;
+    	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">q </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomQuery</span><span class="jsdoc-syntax">;
+    	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">recordType </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.recordType</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fields </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">recordType.prototype.fields</span><span class="jsdoc-syntax">;
+    	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.meta.id</span><span class="jsdoc-syntax">;
+    	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">totalRecords </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">success </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+    	</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.meta.totalRecords</span><span class="jsdoc-syntax">){
+    	    </span><span class="jsdoc-var">totalRecords </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">q.selectNumber</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.meta.totalRecords</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">, 0);
+    	}
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.meta.success</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sv </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">q.selectValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.meta.success</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">success </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sv </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">sv </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">'false'</span><span class="jsdoc-syntax">;
+    	}
+    	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">records </span><span class="jsdoc-syntax">= [];
+    	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ns </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">q.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.meta.record</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ns.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+	        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+	        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">values </span><span class="jsdoc-syntax">= {};
+	        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sid </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">q.selectValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sid</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">;
+	        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">jlen </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fields.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">jlen</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">++){
+	            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">f </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fields.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">];
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">q.selectValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.mapping </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">f.name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">f.defaultValue</span><span class="jsdoc-syntax">);
+	            </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">f.convert</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+	            </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">f.name</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
+	        }
+	        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">record </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">recordType</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+	        </span><span class="jsdoc-var">record.node </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">;
+	        </span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">records.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">;
+	    }
+
+	    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+	        </span><span class="jsdoc-var">success </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">success</span><span class="jsdoc-syntax">,
+	        </span><span class="jsdoc-var">records </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">,
+	        </span><span class="jsdoc-var">totalRecords </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">totalRecords </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">records.length
+	    </span><span class="jsdoc-syntax">};
+    }
+});</span></code></body></html>

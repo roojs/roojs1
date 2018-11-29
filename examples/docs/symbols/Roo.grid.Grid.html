@@ -1,0 +1,4127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=undefined" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		
+		<title>JsDoc Reference - Roo.grid.Grid</title>
+		
+		
+	<link rel="stylesheet" type="text/css" href="../../css/roojs.css" />		
+	<link rel="stylesheet" type="text/css" href="../default.css" />
+	
+	
+	<script type="text/javascript" src="../page.js">
+	
+	</script>
+	 
+		
+	</head>
+
+	<body onload="RooDocsPage.onload();">
+	 
+	
+<div class="body-wrap">
+
+    <!-- ============================== links to methods. ================================= -->	
+
+    <div class="top-tools">
+    <!--
+        <a class="inner-link" href="#Roo.grid.Grid-props"><img src="resources/s.gif" class="item-icon icon-prop">Properties</a>
+        <a class="inner-link" href="#Roo.grid.Grid-methods"><img src="resources/s.gif" class="item-icon icon-method">Methods</a>
+        <a class="inner-link" href="#Roo.grid.Grid-events"><img src="resources/s.gif" class="item-icon icon-event">Events</a>
+        <a class="inner-link" href="#Roo.grid.Grid-configs"><img src="resources/s.gif" class="item-icon icon-config">Config Options</a>
+        <a class="bookmark" href="NEED_TO_CREATE_DIRECT_LINK_HREF"><img src="resources/s.gif" class="item-icon icon-fav">Direct Link</a>
+	-->
+    </div>
+
+    
+<!-- ============================== inheritance Block. ================================= -->	
+	
+		<div class="inheritance res-block">
+		   <pre class="res-block-inner"><a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+<img src="../../images/default/s.gif" height="1"  width="20"/><img class="elbow" src="../../images/default/tree/elbow-end.gif"/>Roo.grid.Grid 
+
+		   </pre>
+		</div>
+       
+<!-- ============================== class title / details ============================ -->
+    
+    
+    <h1 class="classTitle">
+				
+				Class Roo.grid.Grid
+			</h1>
+			
+    <table cellspacing="0" class="class-summary-table">
+	
+		<tr><td class="label">Package:</td><td class="hd-info">Roo.grid</td></tr>
+	
+        <tr><td class="label">Defined In:</td><td class="hd-info">
+			
+					<a href="./src/Roo_grid_Grid.js.html">Roo/grid/Grid.js</a>.
+			
+	</td></tr>
+        <tr><td class="label">Class:</td><td class="hd-info">Grid</td></tr>
+	
+	
+        <tr><td class="label">Subclasses:</td><td class="hd-info">
+		<a href="./Roo.grid.EditorGrid.html#constructor" roo:cls="Roo.grid.EditorGrid.html#constructor">Roo.grid.EditorGrid</a>, <a href="./Roo.grid.PropertyGrid.html#constructor" roo:cls="Roo.grid.PropertyGrid.html#constructor">Roo.grid.PropertyGrid</a>
+
+	
+	
+	</td></tr>
+	
+	
+	
+		<tr><td class="label">Extends:</td><td class="hd-info">
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+	
+		</td></tr>    
+	
+	
+    </table>
+
+    
+<!-- ============================== class summary ========================== -->			
+    <div class="description">
+	This class represents the primary interface of a component based grid control.<br/><br><br>Usage:<pre><code><br/> var grid = new Roo.grid.Grid("my-container-id", {<br/>     ds: myDataStore,<br/>     cm: myColModel,<br/>     selModel: mySelectionModel,<br/>     autoSizeColumns: true,<br/>     monitorWindowResize: false,<br/>     trackMouseOver: true<br/> });<br/> // set any options<br/> grid.render();<br/></code></pre><br/><b>Common Problems:</b><br/><br/>- Grid does not resize properly when going smaller: Setting overflow hidden on the container<br/>element will correct this<br/><br/>- If you get el.style[camel]= NaNpx or -2px or something related, be certain you have given your container element<br/>dimensions. The grid adapts to your container's size, if your container has no size defined then the results<br/>are unpredictable.<br/><br/>- Do not render the grid into an element with display:none. Try using visibility:hidden. Otherwise there is no way for the<br/>grid to calculate dimensions/offsets.<br/>
+    </div>
+
+	
+<!-- ============================== Class comment block... ========================== -->					
+
+<div class="comments">
+	<b>Class Comments / Notes</B> =>  
+	<u onclick="parent.CommentDialog.showCommentId = 'Roo.grid.Grid';">[Add Your comment/notes about this class]</u>
+	<br/>
+	<iframe frameborder="0"  id="comments-Roo.grid" style="border: none;width:100%;" 
+		src="/blog.php/GtkDjsComments/Roo.grid.Grid.html"></iframe>
+</div>
+	
+
+		
+<!-- ============================== config options ========================== -->						
+		 
+    
+    
+		
+    <div class="hr"></div>
+    <a id="Roo.grid.Grid-configs"></a>
+		
+    
+     
+    
+	
+      <table cellspacing="0" class="member-table">   
+      <caption>Config Options (Usually are also Properties)</caption>
+    
+	
+        <tr>
+            <th class="sig-header" colspan="2">Options</th>
+	    
+            <th class="msource-header">Defined By</th>
+        </tr>
+	
+	
+	
+	
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.grid.Grid-cfg-autoExpandColumn" name=".autoExpandColumn"></a>
+			<div class="fixedFont">
+				<b  class="itemname">autoExpandColumn</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">The id (or dataIndex) of a column in this grid that should expand to fill unused space.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    The id (or dataIndex) of a column in this grid that should expand to fill unused space. This id can not be 0. Default is false.
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.grid.Grid
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.grid.Grid-cfg-autoExpandMax" name=".autoExpandMax"></a>
+			<div class="fixedFont">
+				<b  class="itemname">autoExpandMax</b> : <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">The maximum width the autoExpandColumn can have (if enabled).</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    The maximum width the autoExpandColumn can have (if enabled). Default is 1000.
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.grid.Grid
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.grid.Grid-cfg-autoExpandMin" name=".autoExpandMin"></a>
+			<div class="fixedFont">
+				<b  class="itemname">autoExpandMin</b> : <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">The minimum width the autoExpandColumn can have (if enabled).</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    The minimum width the autoExpandColumn can have (if enabled).<br/>Default is 50.
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.grid.Grid
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.grid.Grid-cfg-autoHeight" name=".autoHeight"></a>
+			<div class="fixedFont">
+				<b  class="itemname">autoHeight</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">True to fit the height of the grid container to the height of the data.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    True to fit the height of the grid container to the height of the data. Default is false.
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.grid.Grid
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.grid.Grid-cfg-autoSizeColumns" name=".autoSizeColumns"></a>
+			<div class="fixedFont">
+				<b  class="itemname">autoSizeColumns</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">True to automatically resize the columns to fit their content<br/><b>on initial render.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    True to automatically resize the columns to fit their content<br/><b>on initial render.</b> It is more efficient to explicitly size the columns<br/>through the ColumnModel's {<b>link</b> Roo.grid.ColumnModel<b>width</b>} config option.  Default is false.
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.grid.Grid
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.grid.Grid-cfg-autoSizeHeaders" name=".autoSizeHeaders"></a>
+			<div class="fixedFont">
+				<b  class="itemname">autoSizeHeaders</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">True to measure headers with column data when auto sizing columns.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    True to measure headers with column data when auto sizing columns. Default is true.
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.grid.Grid
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.grid.Grid-cfg-autoWidth" name=".autoWidth"></a>
+			<div class="fixedFont">
+				<b  class="itemname">autoWidth</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">True to set the grid's width to the default total width of the grid's columns instead<br/>of a fixed width.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    True to set the grid's width to the default total width of the grid's columns instead<br/>of a fixed width. Default is false.
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.grid.Grid
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.grid.Grid-cfg-ddGroup" name=".ddGroup"></a>
+			<div class="fixedFont">
+				<b  class="itemname">ddGroup</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">- drag drop group.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    - drag drop group.
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.grid.Grid
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.grid.Grid-cfg-dropTarget" name=".dropTarget"></a>
+			<div class="fixedFont">
+				<b  class="itemname">dropTarget</b> : <a href="./Roo.dd.DropTarget.html#constructor" roo:cls="Roo.dd.DropTarget.html#constructor">Roo.dd.DropTarget</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">An {<b>link</b> Roo.dd.DropTarget} config</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    An {<b>link</b> Roo.dd.DropTarget} config
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.grid.Grid
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.grid.Grid-cfg-enableColumnHide" name=".enableColumnHide"></a>
+			<div class="fixedFont">
+				<b  class="itemname">enableColumnHide</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">True to enable hiding of columns with the header context menu.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    True to enable hiding of columns with the header context menu. Default is true.
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.grid.Grid
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.grid.Grid-cfg-enableColumnMove" name=".enableColumnMove"></a>
+			<div class="fixedFont">
+				<b  class="itemname">enableColumnMove</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">True to enable drag and drop reorder of columns.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    True to enable drag and drop reorder of columns. Default is true.
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.grid.Grid
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.grid.Grid-cfg-enableDrag" name=".enableDrag"></a>
+			<div class="fixedFont">
+				<b  class="itemname">enableDrag</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">True to enable drag of rows.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    True to enable drag of rows. Default is false. (double check if this is needed?)
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.grid.Grid
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.grid.Grid-cfg-enableDragDrop" name=".enableDragDrop"></a>
+			<div class="fixedFont">
+				<b  class="itemname">enableDragDrop</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">True to enable drag and drop of rows.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    True to enable drag and drop of rows. Default is false.
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.grid.Grid
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.grid.Grid-cfg-enableRowHeightSync" name=".enableRowHeightSync"></a>
+			<div class="fixedFont">
+				<b  class="itemname">enableRowHeightSync</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">True to manually sync row heights across locked and not locked rows.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    True to manually sync row heights across locked and not locked rows. Default is false.
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.grid.Grid
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.util.Observable-cfg-listeners" name=".listeners"></a>
+			<div class="fixedFont">
+				<b  class="itemname">listeners</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">list of events and functions to call for this object, <br/>For example :<br/><pre><code><br/>    listeners :  { <br/>       'click' : function(e) {<br/>           .</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    list of events and functions to call for this object, <br/>For example :<br/><pre><code><br/>    listeners :  { <br/>       'click' : function(e) {<br/>           ..... <br/>        } ,<br/>        .... <br/>    } <br/>  </code></pre>
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.grid.Grid-cfg-loadMask" name=".loadMask"></a>
+			<div class="fixedFont">
+				<b  class="itemname">loadMask</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">An {<b>link</b> Roo.LoadMask} config or true to mask the grid while loading.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    An {<b>link</b> Roo.LoadMask} config or true to mask the grid while loading. Default is false.
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.grid.Grid
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.grid.Grid-cfg-maxHeight" name=".maxHeight"></a>
+			<div class="fixedFont">
+				<b  class="itemname">maxHeight</b> : <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">Sets the maximum height of the grid - ignored if autoHeight is not on.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    Sets the maximum height of the grid - ignored if autoHeight is not on.
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.grid.Grid
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.grid.Grid-cfg-maxRowsToMeasure" name=".maxRowsToMeasure"></a>
+			<div class="fixedFont">
+				<b  class="itemname">maxRowsToMeasure</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">If autoSizeColumns is on, maxRowsToMeasure can be used to limit the number of<br/>rows measured to get a columns size.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    If autoSizeColumns is on, maxRowsToMeasure can be used to limit the number of<br/>rows measured to get a columns size. Default is 0 (all rows).
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.grid.Grid
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.grid.Grid-cfg-minColumnWidth" name=".minColumnWidth"></a>
+			<div class="fixedFont">
+				<b  class="itemname">minColumnWidth</b> : <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">The minimum width a column can be resized to.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    The minimum width a column can be resized to. Default is 25.
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.grid.Grid
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.grid.Grid-cfg-monitorWindowResize" name=".monitorWindowResize"></a>
+			<div class="fixedFont">
+				<b  class="itemname">monitorWindowResize</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">True to autoSize the grid when the window resizes.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    True to autoSize the grid when the window resizes. Default is true.
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.grid.Grid
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.grid.Grid-cfg-stripeRows" name=".stripeRows"></a>
+			<div class="fixedFont">
+				<b  class="itemname">stripeRows</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">True to stripe the rows.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    True to stripe the rows.  Default is true.
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.grid.Grid
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.grid.Grid-cfg-trackMouseOver" name=".trackMouseOver"></a>
+			<div class="fixedFont">
+				<b  class="itemname">trackMouseOver</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">True to highlight rows when the mouse is over.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    True to highlight rows when the mouse is over. Default is true.
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.grid.Grid
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.grid.Grid-cfg-view" name=".view"></a>
+			<div class="fixedFont">
+				<b  class="itemname">view</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">The {<b>link</b> Roo.grid.GridView} used by the grid.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    The {<b>link</b> Roo.grid.GridView} used by the grid. This can be set before a call to render().
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.grid.Grid
+				
+		    </td>
+		</tr>
+        
+        
+    </table>
+  		
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- ============================== public properties ==================== -->	
+  
+  
+  
+    <a id="Roo.grid.Grid-props"></a>      
+    
+    
+
+    
+    
+     <table cellspacing="0" class="member-table">
+      <caption class="Empty">Public Properties - Has None</caption>
+     </table>
+    
+    
+     
+    
+  <!-- ============================== methods summary / details ======================== -->
+  
+  
+  <a id="Roo.grid.Grid-methods"></a>
+	<!-- constructor?? -->
+  	
+	<!-- static's first 
+	
+	
+	-->
+	
+	<!-- then dynamics first -->
+	
+  
+  
+    
+    
+    
+      <table cellspacing="0" class="member-table">
+      <caption>Public Methods</caption>
+        <tr>
+            <th class="sig-header" colspan="2">Method</th>            
+            <th class="msource-header">Defined By</th>
+
+        </tr>
+        
+	
+	
+	 
+	
+        
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.grid-method-Grid"   name=".Grid"></a>
+		<div class="fixedFont">
+			<span class="attributes">new <B>Roo.grid.</B></span><b class="itemname">Grid</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement/Roo.Element <B><i>container</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>config</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+		 
+			<div class="short">Create a new Roo.grid.Grid</div> 
+		 
+		 
+                    <div class="long">
+			
+			
+			
+				Create a new Roo.grid.Grid
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement/Roo.Element</span>  <b>container</b>
+						
+					</dt>
+					<dd>The element into which this grid will be rendered -<br/>The container MUST have some type of size defined for the grid to fill. The container will be<br/>automatically set to position relative if it isn't already.</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>config</b>
+						
+					</dt>
+					<dd>A config object that sets properties on this grid.</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-addEvents"   name=".addEvents"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">addEvents</b>
+				
+				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>object</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Used to define events on this Observable</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Used to define events on this Observable
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>object</b>
+						
+					</dt>
+					<dd>The object with the events defined</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-addListener"   name=".addListener"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">addListener</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>handler</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>options</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Appends an event handler to this component</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Appends an event handler to this component
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The type of event to listen for</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>handler</b>
+						
+					</dt>
+					<dd>The method the event invokes</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>(optional) The scope in which to execute the handler<br/>function. The handler function's "this" context.</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>options</b>
+						
+					</dt>
+					<dd>(optional) An object containing handler configuration<br/>properties. This may contain any of the following properties:<ul><br/><li>scope {Object} The scope in which to execute the handler function. The handler function's "this" context.</li><br/><li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li><br/><li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li><br/><li>buffer {Number} Causes the handler to be scheduled to run in an {<b>link</b> Roo.util.DelayedTask} delayed<br/>by the specified number of milliseconds. If the event fires again within that time, the original<br/>handler is <em>not</em> invoked, but the new handler is scheduled in its place.</li><br/></ul><br><br/><p><br/><b>Combining Options</b><br><br/>Using the options argument, it is possible to combine different types of listeners:<br><br/><br><br/>A normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)<br/>		<pre><code><br/>		el.on('click', this.onClick, this, {<br/> 			single: true,<br/>    		delay: 100,<br/>    		forumId: 4<br/>		});<br/>		</code></pre><br/><p><br/><b>Attaching multiple handlers in 1 call</b><br><br/>The method also allows for a single argument to be passed which is a config object containing properties<br/>which specify multiple handlers.<br/><pre><code><br/>		el.on({<br/>			'click': {<br/>        		fn: this.onClick,<br/>        		scope: this,<br/>        		delay: 100<br/>    		}, <br/>    		'mouseover': {<br/>        		fn: this.onMouseOver,<br/>        		scope: this<br/>    		},<br/>    		'mouseout': {<br/>        		fn: this.onMouseOut,<br/>        		scope: this<br/>    		}<br/>		});<br/>		</code></pre><br/><p><br/>Or a shorthand syntax which passes the same scope object to all handlers:<br/>     	<pre><code><br/>		el.on({<br/>			'click': this.onClick,<br/>    		'mouseover': this.onMouseOver,<br/>    		'mouseout': this.onMouseOut,<br/>    		scope: this<br/>		});<br/>		</code></pre></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.grid.Grid-method-autoSize"   name=".autoSize"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">autoSize</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Causes the grid to manually recalculate its dimensions.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Causes the grid to manually recalculate its dimensions. Generally this is done automatically,<br/>but if manual update is required this method will initiate it.
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.grid.Grid
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.grid.Grid-method-destroy"   name=".destroy"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">destroy</b>
+				
+				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a> <B><i>removeEl</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Destroy this grid.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Destroy this grid.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  <b>removeEl</b>
+						
+					</dt>
+					<dd>True to remove the element</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.grid.Grid
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-fireEvent"   name=".fireEvent"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">fireEvent</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object...</a> <B><i>args</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Fires the specified event with the passed parameters (minus the event name).</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Fires the specified event with the passed parameters (minus the event name).
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object...</a></span>  <b>args</b>
+						
+					</dt>
+					<dd>Variable number of parameters are passed to handlers</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  returns false if any of the handlers return false otherwise it returns true</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.grid.Grid-method-getColumnModel"   name=".getColumnModel"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">getColumnModel</b>
+				
+				 () 
+			
+				
+					 : 
+					
+						
+						ColumnModel
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Returns the grid's ColumnModel.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Returns the grid's ColumnModel.
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont">ColumnModel</span>  </dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.grid.Grid
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.grid.Grid-method-getDataSource"   name=".getDataSource"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">getDataSource</b>
+				
+				 () 
+			
+				
+					 : 
+					
+						
+						DataSource
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Returns the grid's DataSource.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Returns the grid's DataSource.
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont">DataSource</span>  </dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.grid.Grid
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.grid.Grid-method-getDragDropText"   name=".getDragDropText"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">getDragDropText</b>
+				
+				 () 
+			
+				
+					 : 
+					
+						
+						<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Called to get grid's drag proxy text, by default returns this.ddText.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Called to get grid's drag proxy text, by default returns this.ddText.
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  </dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.grid.Grid
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.grid.Grid-method-getGridEl"   name=".getGridEl"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">getGridEl</b>
+				
+				 () 
+			
+				
+					 : 
+					
+						
+						Element
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Returns the grid's underlying element.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Returns the grid's underlying element.
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont">Element</span>  The element</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.grid.Grid
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.grid.Grid-method-getSelectionModel"   name=".getSelectionModel"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">getSelectionModel</b>
+				
+				 () 
+			
+				
+					 : 
+					
+						
+						SelectionModel
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Returns the grid's SelectionModel.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Returns the grid's SelectionModel.
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont">SelectionModel</span>  </dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.grid.Grid
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.grid.Grid-method-getView"   name=".getView"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">getView</b>
+				
+				 () 
+			
+				
+					 : 
+					
+						
+						GridView
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Returns the grid's GridView object.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Returns the grid's GridView object.
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont">GridView</span>  </dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.grid.Grid
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-hasListener"   name=".hasListener"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">hasListener</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Checks to see if this object has any listeners for a specified event</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Checks to see if this object has any listeners for a specified event
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The name of the event to check for</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  True if the event is being listened for, else false</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-on"   name=".on"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">on</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>handler</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>options</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Appends an event handler to this element (shorthand for addListener)</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Appends an event handler to this element (shorthand for addListener)
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The type of event to listen for</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>handler</b>
+						
+					</dt>
+					<dd>The method the event invokes</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>(optional) The scope in which to execute the handler<br/>function. The handler function's "this" context.</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>options</b>
+						
+					</dt>
+					<dd>(optional)</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-purgeListeners"   name=".purgeListeners"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">purgeListeners</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Removes all listeners for this object</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Removes all listeners for this object
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.grid.Grid-method-reconfigure"   name=".reconfigure"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">reconfigure</b>
+				
+				 (<a href="./Roo.data.Store.html#constructor" roo:cls="Roo.data.Store.html#constructor">Roo.data.Store</a> <B><i>dataSource</i></B>, <a href="./Roo.grid.ColumnModel.html#constructor" roo:cls="Roo.grid.ColumnModel.html#constructor">Roo.grid.ColumnModel</a> <B><i>The</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Reconfigures the grid to use a different Store and Column Model.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Reconfigures the grid to use a different Store and Column Model.<br/>The View will be bound to the new objects and refreshed.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.data.Store.html#constructor" roo:cls="Roo.data.Store.html#constructor">Roo.data.Store</a></span>  <b>dataSource</b>
+						
+					</dt>
+					<dd>The new {<b>link</b> Roo.data.Store} object</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.grid.ColumnModel.html#constructor" roo:cls="Roo.grid.ColumnModel.html#constructor">Roo.grid.ColumnModel</a></span>  <b>The</b>
+						
+					</dt>
+					<dd>new {<b>link</b> Roo.grid.ColumnModel} object</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.grid.Grid
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-removeListener"   name=".removeListener"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">removeListener</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>handler</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Removes a listener</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Removes a listener
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The type of event to listen for</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>handler</b>
+						
+					</dt>
+					<dd>The handler to remove</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>(optional) The scope (this object) for the handler</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.grid.Grid-method-render"   name=".render"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">render</b>
+				
+				 () 
+			
+				
+					 : 
+					
+						
+						<a href="./Roo.grid.Grid.html#constructor" roo:cls="Roo.grid.Grid.html#constructor">Roo.grid.Grid</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Called once after all setup has been completed and the grid is ready to be rendered.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Called once after all setup has been completed and the grid is ready to be rendered.
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Roo.grid.Grid.html#constructor" roo:cls="Roo.grid.Grid.html#constructor">Roo.grid.Grid</a></span>  this</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.grid.Grid
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-un"   name=".un"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">un</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>handler</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Removes a listener (shorthand for removeListener)</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Removes a listener (shorthand for removeListener)
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The type of event to listen for</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>handler</b>
+						
+					</dt>
+					<dd>The handler to remove</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>(optional) The scope (this object) for the handler</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	                                               
+    </table>
+
+  
+  <!-- ============================== events summary / details ======================== -->
+  
+  
+  <a id="Roo.grid.Grid-events"></a>
+    
+  
+  	
+   
+  
+    
+    
+    
+      <table cellspacing="0" class="member-table">
+		<caption>Events</caption>
+	      <thead>
+		<tr>
+		    <th class="sig-header" colspan="2">Event</th>            
+		    <th class="msource-header">Defined By</th>
+
+		</tr>
+	      </thead>  
+	
+	
+	 
+	
+        
+          <tr class="method-row expandable config-row-alt0 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.grid.Grid-event-*bodyscroll"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">bodyscroll</b> (<a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>scrollLeft</i></B>, <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>scrollTop</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when the body element is scrolled
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when the body element is scrolled
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span> <b>scrollLeft</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span> <b>scrollTop</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.grid.Grid
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.grid.Grid-event-*cellclick"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">cellclick</b> (Grid <B><i>this</i></B>, <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>rowIndex</i></B>, <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>columnIndex</i></B>, <a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a> <B><i>e</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when a cell is clicked
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when a cell is clicked
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Grid</span> <b>this</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span> <b>rowIndex</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span> <b>columnIndex</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a></span> <b>e</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.grid.Grid
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt0 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.grid.Grid-event-*cellcontextmenu"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">cellcontextmenu</b> (Grid <B><i>this</i></B>, <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>rowIndex</i></B>, <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>cellIndex</i></B>, <a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a> <B><i>e</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when a cell is right clicked
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when a cell is right clicked
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Grid</span> <b>this</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span> <b>rowIndex</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span> <b>cellIndex</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a></span> <b>e</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.grid.Grid
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.grid.Grid-event-*celldblclick"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">celldblclick</b> (Grid <B><i>this</i></B>, <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>rowIndex</i></B>, <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>columnIndex</i></B>, <a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a> <B><i>e</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when a cell is double clicked
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when a cell is double clicked
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Grid</span> <b>this</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span> <b>rowIndex</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span> <b>columnIndex</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a></span> <b>e</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.grid.Grid
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt0 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.grid.Grid-event-*click"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">click</b> (<a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a> <B><i>e</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">The raw click event for the entire grid.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			The raw click event for the entire grid.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a></span> <b>e</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.grid.Grid
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.grid.Grid-event-*columnmove"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">columnmove</b> (<a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>oldIndex</i></B>, <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>newIndex</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when the user moves a column
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when the user moves a column
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span> <b>oldIndex</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span> <b>newIndex</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.grid.Grid
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt0 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.grid.Grid-event-*columnresize"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">columnresize</b> (<a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>columnIndex</i></B>, <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>newSize</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when the user resizes a column
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when the user resizes a column
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span> <b>columnIndex</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span> <b>newSize</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.grid.Grid
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.grid.Grid-event-*contextmenu"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">contextmenu</b> (<a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a> <B><i>e</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">The raw contextmenu event for the entire grid.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			The raw contextmenu event for the entire grid.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a></span> <b>e</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.grid.Grid
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt0 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.grid.Grid-event-*dblclick"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">dblclick</b> (<a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a> <B><i>e</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">The raw dblclick event for the entire grid.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			The raw dblclick event for the entire grid.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a></span> <b>e</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.grid.Grid
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.grid.Grid-event-*dragdrop"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">dragdrop</b> (Grid <B><i>this</i></B>, Roo.GridDD <B><i>dd</i></B>, <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>targetId</i></B>, event <B><i>e</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when dragged row(s) are dropped on a valid DD target
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when dragged row(s) are dropped on a valid DD target
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Grid</span> <b>this</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont">Roo.GridDD</span> <b>dd</b>
+						
+					</dt>
+					<dd>The drag drop object</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span> <b>targetId</b>
+						
+					</dt>
+					<dd>The target drag drop object</dd>
+				
+					<dt>
+						<span class="fixedFont">event</span> <b>e</b>
+						
+					</dt>
+					<dd>The raw browser event</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.grid.Grid
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt0 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.grid.Grid-event-*dragenter
+ Fires when the dragged row(s) first cross another DD target while being dragged"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">dragenter
+ Fires when the dragged row(s) first cross another DD target while being dragged</b> (Grid <B><i>this</i></B>, Roo.GridDD <B><i>dd</i></B>, <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>targetId</i></B>, event <B><i>e</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Grid</span> <b>this</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont">Roo.GridDD</span> <b>dd</b>
+						
+					</dt>
+					<dd>The drag drop object</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span> <b>targetId</b>
+						
+					</dt>
+					<dd>The target drag drop object</dd>
+				
+					<dt>
+						<span class="fixedFont">event</span> <b>e</b>
+						
+					</dt>
+					<dd>The raw browser event</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.grid.Grid
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.grid.Grid-event-*dragout"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">dragout</b> (Grid <B><i>this</i></B>, Roo.GridDD <B><i>dd</i></B>, <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>targetId</i></B>, event <B><i>e</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when the dragged row(s) leave another DD target while being dragged
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when the dragged row(s) leave another DD target while being dragged
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Grid</span> <b>this</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont">Roo.GridDD</span> <b>dd</b>
+						
+					</dt>
+					<dd>The drag drop object</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span> <b>targetId</b>
+						
+					</dt>
+					<dd>The target drag drop object</dd>
+				
+					<dt>
+						<span class="fixedFont">event</span> <b>e</b>
+						
+					</dt>
+					<dd>The raw browser event</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.grid.Grid
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt0 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.grid.Grid-event-*dragover"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">dragover</b> (Grid <B><i>this</i></B>, Roo.GridDD <B><i>dd</i></B>, <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>targetId</i></B>, event <B><i>e</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires while row(s) are being dragged.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires while row(s) are being dragged. "targetId" is the id of the Yahoo.util.DD object the selected rows are being dragged over.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Grid</span> <b>this</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont">Roo.GridDD</span> <b>dd</b>
+						
+					</dt>
+					<dd>The drag drop object</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span> <b>targetId</b>
+						
+					</dt>
+					<dd>The target drag drop object</dd>
+				
+					<dt>
+						<span class="fixedFont">event</span> <b>e</b>
+						
+					</dt>
+					<dd>The raw browser event</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.grid.Grid
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.grid.Grid-event-*enddrag"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">enddrag</b> (Grid <B><i>this</i></B>, Roo.GridDD <B><i>dd</i></B>, event <B><i>e</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when a drag operation is complete
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when a drag operation is complete
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Grid</span> <b>this</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont">Roo.GridDD</span> <b>dd</b>
+						
+					</dt>
+					<dd>The drag drop object</dd>
+				
+					<dt>
+						<span class="fixedFont">event</span> <b>e</b>
+						
+					</dt>
+					<dd>The raw browser event</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.grid.Grid
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt0 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.grid.Grid-event-*headerclick"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">headerclick</b> (Grid <B><i>this</i></B>, <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>columnIndex</i></B>, <a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a> <B><i>e</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when a header is clicked
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when a header is clicked
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Grid</span> <b>this</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span> <b>columnIndex</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a></span> <b>e</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.grid.Grid
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.grid.Grid-event-*headercontextmenu"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">headercontextmenu</b> (Grid <B><i>this</i></B>, <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>columnIndex</i></B>, <a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a> <B><i>e</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when a header is right clicked
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when a header is right clicked
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Grid</span> <b>this</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span> <b>columnIndex</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a></span> <b>e</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.grid.Grid
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt0 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.grid.Grid-event-*headerdblclick"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">headerdblclick</b> (Grid <B><i>this</i></B>, <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>columnIndex</i></B>, <a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a> <B><i>e</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when a header cell is double clicked
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when a header cell is double clicked
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Grid</span> <b>this</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span> <b>columnIndex</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a></span> <b>e</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.grid.Grid
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.grid.Grid-event-*keydown"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">keydown</b> (<a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a> <B><i>e</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">The raw keydown event for the entire grid.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			The raw keydown event for the entire grid.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a></span> <b>e</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.grid.Grid
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt0 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.grid.Grid-event-*keypress"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">keypress</b> (<a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a> <B><i>e</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">The raw keypress event for the entire grid.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			The raw keypress event for the entire grid.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a></span> <b>e</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.grid.Grid
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.grid.Grid-event-*mousedown"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">mousedown</b> (<a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a> <B><i>e</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">The raw mousedown event for the entire grid.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			The raw mousedown event for the entire grid.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a></span> <b>e</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.grid.Grid
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt0 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.grid.Grid-event-*mouseout"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">mouseout</b> (<a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a> <B><i>e</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">The raw mouseout event for the entire grid.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			The raw mouseout event for the entire grid.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a></span> <b>e</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.grid.Grid
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.grid.Grid-event-*mouseover"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">mouseover</b> (<a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a> <B><i>e</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">The raw mouseover event for the entire grid.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			The raw mouseover event for the entire grid.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a></span> <b>e</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.grid.Grid
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt0 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.grid.Grid-event-*mouseup"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">mouseup</b> (<a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a> <B><i>e</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">The raw mouseup event for the entire grid.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			The raw mouseup event for the entire grid.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a></span> <b>e</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.grid.Grid
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.grid.Grid-event-*render"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">render</b> (Grid <B><i>grid</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when the grid is rendered
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when the grid is rendered
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Grid</span> <b>grid</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.grid.Grid
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt0 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.grid.Grid-event-*rowclass"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">rowclass</b> (GridView <B><i>gridview</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>rowcfg</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when a row is rendered, so you can change add a style to it.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when a row is rendered, so you can change add a style to it.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">GridView</span> <b>gridview</b>
+						
+					</dt>
+					<dd>The grid view</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span> <b>rowcfg</b>
+						
+					</dt>
+					<dd>contains record  rowIndex and rowClass - set rowClass to add a style.</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.grid.Grid
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.grid.Grid-event-*rowclick"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">rowclick</b> (Grid <B><i>this</i></B>, <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>rowIndex</i></B>, <a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a> <B><i>e</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when a row is clicked
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when a row is clicked
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Grid</span> <b>this</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span> <b>rowIndex</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a></span> <b>e</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.grid.Grid
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt0 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.grid.Grid-event-*rowcontextmenu"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">rowcontextmenu</b> (Grid <B><i>this</i></B>, <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>rowIndex</i></B>, <a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a> <B><i>e</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when a row is right clicked
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when a row is right clicked
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Grid</span> <b>this</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span> <b>rowIndex</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a></span> <b>e</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.grid.Grid
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.grid.Grid-event-*rowdblclick"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">rowdblclick</b> (Grid <B><i>this</i></B>, <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>rowIndex</i></B>, <a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a> <B><i>e</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when a row is double clicked
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when a row is double clicked
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Grid</span> <b>this</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span> <b>rowIndex</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a></span> <b>e</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.grid.Grid
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt0 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.grid.Grid-event-*startdrag"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">startdrag</b> (Grid <B><i>this</i></B>, Roo.GridDD <B><i>dd</i></B>, event <B><i>e</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when row(s) start being dragged
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when row(s) start being dragged
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Grid</span> <b>this</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont">Roo.GridDD</span> <b>dd</b>
+						
+					</dt>
+					<dd>The drag drop object</dd>
+				
+					<dt>
+						<span class="fixedFont">event</span> <b>e</b>
+						
+					</dt>
+					<dd>The raw browser event</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.grid.Grid
+            </td>
+        </tr>
+	
+	                                               
+    </table>
+
+  
+  
+  
+ 
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Fri Jul 13 2018 14:10:54 GMT+0800 (HKT)
+			Based on 
+			<a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a>  
+		</div>
+	</body>
+</html>

@@ -1,0 +1,150 @@
+<html><head><title>../roojs1/Roo/data/HttpProxy.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+/**
+ * @class Roo.data.HttpProxy
+ * @extends Roo.data.DataProxy
+ * An implementation of {@link Roo.data.DataProxy} that reads a data object from an {@link Roo.data.Connection} object
+ * configured to reference a certain URL.&lt;br&gt;&lt;br&gt;
+ * &lt;p&gt;
+ * &lt;em&gt;Note that this class cannot be used to retrieve data from a domain other than the domain
+ * from which the running page was served.&lt;br&gt;&lt;br&gt;
+ * &lt;p&gt;
+ * For cross-domain access to remote data, use an {@link Roo.data.ScriptTagProxy}.&lt;/em&gt;&lt;br&gt;&lt;br&gt;
+ * &lt;p&gt;
+ * Be aware that to enable the browser to parse an XML document, the server must set
+ * the Content-Type header in the HTTP response to &quot;text/xml&quot;.
+ * @constructor
+ * @param {Object} conn Connection config options to add to each request (e.g. {url: 'foo.php'} or
+ * an {@link Roo.data.Connection} object.  If a Connection config is passed, the singleton {@link Roo.Ajax} object
+ * will be used to make the request.
+ */
+</span><span class="jsdoc-var">Roo.data.HttpProxy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">conn</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.data.HttpProxy.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-comment">// is conn a conn config or a real conn?
+    </span><span class="jsdoc-var">this.conn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">conn</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.useAjax </span><span class="jsdoc-syntax">= !</span><span class="jsdoc-var">conn </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">conn.events</span><span class="jsdoc-syntax">;
+  
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.data.HttpProxy</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.data.DataProxy</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-comment">// thse are take from connection...
+    
+    /**
+     * @cfg {String} url (Optional) The default URL to be used for requests to the server. (defaults to undefined)
+     */
+    /**
+     * @cfg {Object} extraParams (Optional) An object containing properties which are used as
+     * extra parameters to each request made by this object. (defaults to undefined)
+     */
+    /**
+     * @cfg {Object} defaultHeaders (Optional) An object containing request headers which are added
+     *  to each request made by this object. (defaults to undefined)
+     */
+    /**
+     * @cfg {String} method (Optional) The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GET)
+     */
+    /**
+     * @cfg {Number} timeout (Optional) The timeout in milliseconds to be used for requests. (defaults to 30000)
+     */
+     /**
+     * @cfg {Boolean} autoAbort (Optional) Whether this request should abort any pending requests. (defaults to false)
+     * @type Boolean
+     */
+  
+
+    /**
+     * @cfg {Boolean} disableCaching (Optional) True to add a unique cache-buster param to GET requests. (defaults to true)
+     * @type Boolean
+     */
+    /**
+     * Return the {@link Roo.data.Connection} object being used by this Proxy.
+     * @return {Connection} The Connection object. This object may be used to subscribe to events on
+     * a finer-grained basis than the DataProxy events.
+     */
+    </span><span class="jsdoc-var">getConnection </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.useAjax </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.Ajax </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.conn</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Load data from the configured {@link Roo.data.Connection}, read the data object into
+     * a block of Roo.data.Records using the passed {@link Roo.data.DataReader} implementation, and
+     * process that block using the passed callback.
+     * @param {Object} params An object containing properties which are to be used as HTTP parameters
+     * for the request to the remote server.
+     * @param {Roo.data.DataReader} reader The Reader object which converts the data
+     * object into a block of Roo.data.Records.
+     * @param {Function} callback The function into which to pass the block of Roo.data.Records.
+     * The function must be passed &lt;ul&gt;
+     * &lt;li&gt;The Record block object&lt;/li&gt;
+     * &lt;li&gt;The &quot;arg&quot; argument from the load function&lt;/li&gt;
+     * &lt;li&gt;A boolean success indicator&lt;/li&gt;
+     * &lt;/ul&gt;
+     * @param {Object} scope The scope in which to call the callback
+     * @param {Object} arg An optional argument which is passed to the callback as its second parameter.
+     */
+    </span><span class="jsdoc-var">load </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">params</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">reader</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeload&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">params</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var  </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">params </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">params </span><span class="jsdoc-syntax">|| {},
+                </span><span class="jsdoc-var">request</span><span class="jsdoc-syntax">: {
+                    </span><span class="jsdoc-var">callback </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">arg </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">arg
+                </span><span class="jsdoc-syntax">},
+                </span><span class="jsdoc-var">reader</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">reader</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">callback </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.loadResponse</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this
+            </span><span class="jsdoc-syntax">};
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.useAjax</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">Roo.applyIf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.conn</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.activeRequest</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">Roo.Ajax.abort</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.activeRequest</span><span class="jsdoc-syntax">);
+                }
+                </span><span class="jsdoc-var">this.activeRequest </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.Ajax.request</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">this.conn.request</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+            }
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">callback.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">||</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">loadResponse </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">success</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.activeRequest</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">success</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;loadexception&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">o.request.callback.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.request.scope</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o.request.arg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">result</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">result </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o.reader.read</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">);
+        }</span><span class="jsdoc-keyword">catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;loadexception&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">o.request.callback.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.request.scope</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o.request.arg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;load&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o.request.arg</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">o.request.callback.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.request.scope</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">result</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o.request.arg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">update </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataSet</span><span class="jsdoc-syntax">){
+
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">updateResponse </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataSet</span><span class="jsdoc-syntax">){
+
+    }
+});</span></code></body></html>

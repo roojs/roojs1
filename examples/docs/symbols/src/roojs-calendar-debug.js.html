@@ -1,0 +1,1196 @@
+<html><head><title>../roojs1/roojs-calendar-debug.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ * base class for bootstrap elements.
+ * 
+ */
+
+</span><span class="jsdoc-var">Roo.bootstrap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap </span><span class="jsdoc-syntax">|| {};
+</span><span class="jsdoc-comment">/**
+ * @class Roo.bootstrap.Component
+ * @extends Roo.Component
+ * Bootstrap Component base class
+ * @cfg {String} cls css class
+ * @cfg {String} style any extra css
+ * @cfg {Object} xattr extra attributes to add to 'element' (used by builder to store stuff.)
+ * @cfg {Boolean} can_build_overlaid  True if element can be rebuild from a HTML page
+ * @cfg {string} dataId cutomer id
+ * @cfg {string} name Specifies name attribute
+ * 
+ * @constructor
+ * Do not use directly - it does not do anything..
+ * @param {Object} config The config object
+ */
+
+
+
+</span><span class="jsdoc-var">Roo.bootstrap.Component </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.bootstrap.Component.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.BoxComponent</span><span class="jsdoc-syntax">,  {
+    
+    
+    </span><span class="jsdoc-var">allowDomMove </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// to stop relocations in parent onRender...
+    
+    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">autoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {  },
+    
+    </span><span class="jsdoc-var">xattr </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">parentId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">can_build_overlaid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">dataId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">parent</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-comment">// returns the parent component..
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.ComponentMgr.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parentId</span><span class="jsdoc-syntax">)
+        
+        
+    },
+    
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">)
+    {
+       </span><span class="jsdoc-comment">// Roo.log(&quot;Call onRender: &quot; + this.xtype);
+        
+        </span><span class="jsdoc-var">Roo.bootstrap.Component.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'xtype'</span><span class="jsdoc-syntax">)) {
+                </span><span class="jsdoc-var">this.el.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'xtypex'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.el.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'xtype'</span><span class="jsdoc-syntax">));
+                </span><span class="jsdoc-var">this.el.dom.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'xtype'</span><span class="jsdoc-syntax">);
+                
+                </span><span class="jsdoc-var">this.initEvents</span><span class="jsdoc-syntax">();
+            }
+            
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+         
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({},  </span><span class="jsdoc-var">this.getAutoCreate</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-var">cfg.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-comment">// fill in the extra attributes 
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.xattr </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.xattr</span><span class="jsdoc-syntax">) ==</span><span class="jsdoc-string">'object'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">this.xattr</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">this.xattr</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+            }
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dataId</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.dataId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dataId</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.cls</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">this.cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.style</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// fixme needs to support more complex style data.
+            </span><span class="jsdoc-var">cfg.style </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.style</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ct.createChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tabIndex </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.dom.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tabIndex'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.tabIndex</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">this.initEvents</span><span class="jsdoc-syntax">();
+	
+        
+    },
+    
+    </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
+    },
+    
+    
+    </span><span class="jsdoc-var">addxtype  </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">);
+           
+        </span><span class="jsdoc-var">cn.parentType </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.xtype</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">//??
+        </span><span class="jsdoc-var">cn.parentId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">cntr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cntr </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'getChildContainer' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">has_flexy_each </span><span class="jsdoc-syntax">=  (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'flexy:foreach'</span><span class="jsdoc-syntax">]) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">has_flexy_if </span><span class="jsdoc-syntax">=  (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'flexy:if'</span><span class="jsdoc-syntax">]) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">build_from_html </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">Roo.XComponent.build_from_html</span><span class="jsdoc-syntax">;
+          
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">is_body  </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">tree.xtype </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'Body'</span><span class="jsdoc-syntax">) ;
+          
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">page_has_body </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'xtype'</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'Roo.bootstrap.Body'</span><span class="jsdoc-syntax">);
+          
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">self_cntr_el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">]());
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">has_flexy_each </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">build_from_html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">is_body </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">page_has_body</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">has_flexy_if </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree.name</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">build_from_html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">is_body </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">page_has_body</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.addxtypeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">);
+            }
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">echild </span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">self_cntr_el </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">self_cntr_el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&gt;*[name=' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">tree.name </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">']'</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">echild</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.addxtypeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">),</span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">);
+            }
+            
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'skipping render'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">;
+            
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">echild </span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">self_cntr_el </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">self_cntr_el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&gt;*[xtype]'</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">echild</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">echild </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">echild.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'xtype'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.pop</span><span class="jsdoc-syntax">() != </span><span class="jsdoc-var">cn.xtype</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.addxtypeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">),</span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">addxtypeChild </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">cntr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cntr </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'getChildContainer' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">;
+        
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">has_flexy </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'flexy:if'</span><span class="jsdoc-syntax">]) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ||
+                    (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'flexy:foreach'</span><span class="jsdoc-syntax">]) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">);
+          
+        
+        
+        
+        </span><span class="jsdoc-comment">// render the element if it's not BODY.
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree.xtype </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'Body'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">test </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">);
+           
+            </span><span class="jsdoc-var">cn.parentType </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.xtype</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">//??
+            </span><span class="jsdoc-var">cn.parentId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">build_from_html </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">Roo.XComponent.build_from_html</span><span class="jsdoc-syntax">;
+            
+            
+            </span><span class="jsdoc-comment">// does the container contain child eleemnts with 'xtype' attributes.
+            // that match this xtype..
+            // note - when we render we create these as well..
+            // so we should check to see if body has xtype set.
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'xtype'</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'Roo.bootstrap.Body'</span><span class="jsdoc-syntax">) {
+               
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">self_cntr_el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">]());
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">echild </span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">self_cntr_el </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">self_cntr_el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&gt;*[xtype]'</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">echild </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">echild.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'xtype'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.pop</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-var">cn.xtype</span><span class="jsdoc-syntax">) {
+                  </span><span class="jsdoc-comment">//  Roo.log(&quot;found child for &quot; + this.xtype +&quot;: &quot; + echild.attr('xtype') );
+                  
+                  
+                  
+                    </span><span class="jsdoc-var">cn.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">echild</span><span class="jsdoc-syntax">;
+                  </span><span class="jsdoc-comment">//  Roo.log(&quot;GOT&quot;);
+                    //echild.dom.removeAttribute('xtype');
+                </span><span class="jsdoc-syntax">} </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;MISSING &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cn.xtype </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot; on child of &quot; </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.el.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'xbuilderid'</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">'no parent'</span><span class="jsdoc-syntax">));
+                   
+                }
+            }
+           
+            
+               
+            </span><span class="jsdoc-comment">// if object has flexy:if - then it may or may not be rendered.
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">build_from_html </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">has_flexy </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">cn.el </span><span class="jsdoc-syntax">&amp;&amp;  </span><span class="jsdoc-var">cn.can_build_overlaid</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-comment">// skip a flexy if element.
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'skipping render'</span><span class="jsdoc-syntax">);
+             } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                 
+                </span><span class="jsdoc-comment">// actually if flexy:foreach is found, we really want to create 
+                // multiple copies here...
+                
+                </span><span class="jsdoc-var">cn.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">]());
+             }
+            </span><span class="jsdoc-comment">// then add the element..
+        </span><span class="jsdoc-syntax">}
+        
+        
+        </span><span class="jsdoc-comment">// handle the kids..
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nitems </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree.menu</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">tree.menu.parentType </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cn.xtype</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">tree.menu.triggerEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cn.el</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">nitems.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn.addxtype</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">tree.menu</span><span class="jsdoc-syntax">)));
+            
+        }
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">tree.items </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">tree.items.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cn.items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nitems</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tree.items</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">tree.items</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-comment">//Roo.log(items.length);
+            // add the items..
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0;</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">items.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-var">nitems.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn.addxtype</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">])));
+        }
+	
+        </span><span class="jsdoc-var">cn.items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nitems</span><span class="jsdoc-syntax">;
+	
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">;
+    }
+    
+    
+    
+    
+});
+
+ </span><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ * based on jquery fullcalendar
+ * 
+ */
+
+</span><span class="jsdoc-var">Roo.bootstrap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap </span><span class="jsdoc-syntax">|| {};
+</span><span class="jsdoc-comment">/**
+ * @class Roo.bootstrap.Calendar
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Calendar class
+    
+ * @constructor
+ * Create a new Container
+ * @param {Object} config The config object
+ */
+
+
+
+</span><span class="jsdoc-var">Roo.bootstrap.Calendar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.bootstrap.Calendar.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+	     * @event select
+	     * Fires when a date is selected
+	     * @param {DatePicker} this
+	     * @param {Date} date The selected date
+	     */
+        </span><span class="jsdoc-string">'select'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event monthchange
+	     * Fires when the displayed month changes 
+	     * @param {DatePicker} this
+	     * @param {Date} date The selected month
+	     */
+        </span><span class="jsdoc-string">'monthchange'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event evententer
+	     * Fires when mouse over an event
+	     * @param {Calendar} this
+	     * @param {event} Event
+	     */
+        </span><span class="jsdoc-string">'evententer'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event eventleave
+	     * Fires when the mouse leaves an
+	     * @param {Calendar} this
+	     * @param {event}
+	     */
+        </span><span class="jsdoc-string">'eventleave'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event eventclick
+	     * Fires when the mouse click an
+	     * @param {Calendar} this
+	     * @param {event}
+	     */
+        </span><span class="jsdoc-string">'eventclick'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        
+    </span><span class="jsdoc-syntax">});
+
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Calendar</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+    
+     </span><span class="jsdoc-comment">/**
+     * @cfg {Number} startDay
+     * Day index at which the week should begin, 0-based (defaults to 0, which is Sunday)
+     */
+    </span><span class="jsdoc-var">startDay </span><span class="jsdoc-syntax">: 0,
+      
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fc_button </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">corner</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">content </span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({},{
+                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fc-button fc-button-'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">' fc-state-default ' </span><span class="jsdoc-syntax">+ 
+                         (</span><span class="jsdoc-var">corner.length </span><span class="jsdoc-syntax">?
+                            </span><span class="jsdoc-string">'fc-corner-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">corner.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">' fc-corner-'</span><span class="jsdoc-syntax">) :
+                            </span><span class="jsdoc-string">''
+                        </span><span class="jsdoc-syntax">),
+                </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&lt;SPAN class=&quot;fc-text-'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot;&gt;'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">content </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'&lt;/SPAN&gt;'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">unselectable</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'on'
+            </span><span class="jsdoc-syntax">});
+        };
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">header </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'table'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fc-header'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'width:100%'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tr'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                        {
+                            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'td'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fc-header-left'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                                </span><span class="jsdoc-var">fc_button</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'prev'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'arrow'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'&amp;#8249;' </span><span class="jsdoc-syntax">),
+                                </span><span class="jsdoc-var">fc_button</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'next'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'arrow'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'&amp;#8250;' </span><span class="jsdoc-syntax">),
+                                { </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fc-header-space' </span><span class="jsdoc-syntax">},
+                                </span><span class="jsdoc-var">fc_button</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'today'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'left right'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'today' </span><span class="jsdoc-syntax">)  </span><span class="jsdoc-comment">// neds state disabled..
+                                
+                                
+                            </span><span class="jsdoc-syntax">]
+                        },
+                        
+                        {
+                            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'td'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fc-header-center'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                                {
+                                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fc-header-title'</span><span class="jsdoc-syntax">,
+                                    </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: {
+                                        </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'H2'</span><span class="jsdoc-syntax">,
+                                        </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'month / year'
+                                    </span><span class="jsdoc-syntax">}
+                                }
+                                
+                            ]
+                        },
+                        {
+                            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'td'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fc-header-right'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                          </span><span class="jsdoc-comment">/*      fc_button('month', 'left', '', 'month' ),
+                                fc_button('week', '', '', 'week' ),
+                                fc_button('day', 'right', '', 'day' )
+                            */    
+                                
+                            </span><span class="jsdoc-syntax">]
+                        }
+                        
+                    ]
+                }
+            ]
+        };
+        
+       
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cal_heads </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= [];
+            </span><span class="jsdoc-comment">// fixme - handle this.
+            
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">Date.dayNames.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Date.dayNames</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+                </span><span class="jsdoc-var">ret.push</span><span class="jsdoc-syntax">({
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'th'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fc-day-header fc-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">d.substring</span><span class="jsdoc-syntax">(0,3)</span><span class="jsdoc-var">.toLowerCase</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-string">' fc-widget-header'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d.substring</span><span class="jsdoc-syntax">(0,3)
+                });
+                
+            }
+            </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' fc-first'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[6]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' fc-last'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
+        };
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cal_cell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return  </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'td'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fc-day fc-'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' fc-widget-content'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">///fc-other-month fc-past
+                </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                    {
+                        </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                            {
+                                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fc-day-number'</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'D'
+                            </span><span class="jsdoc-syntax">},
+                            {
+                                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fc-day-content'</span><span class="jsdoc-syntax">,
+                             
+                                </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                                     {
+                                        </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'position: relative;' </span><span class="jsdoc-comment">// height: 17px;
+                                    </span><span class="jsdoc-syntax">}
+                                ]
+                            }
+                            
+                            
+                        ]
+                    }
+                ]
+                
+            }
+        };
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cal_rows </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= []
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">&lt; 6; </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">= {
+                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tr'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fc-week'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: []
+                };
+                
+                </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">Date.dayNames.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Date.dayNames</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+                    </span><span class="jsdoc-var">row.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cal_cell</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.substring</span><span class="jsdoc-syntax">(0,3)</span><span class="jsdoc-var">.toLowerCase</span><span class="jsdoc-syntax">()));
+
+                }
+                </span><span class="jsdoc-var">row.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cls</span><span class="jsdoc-syntax">+=</span><span class="jsdoc-string">' fc-first'</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">row.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.style </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'min-height:90px'</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">row.cn</span><span class="jsdoc-syntax">[6]</span><span class="jsdoc-var">.cls</span><span class="jsdoc-syntax">+=</span><span class="jsdoc-string">' fc-last'</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">ret.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">);
+                
+            }
+            </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' fc-first'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[4]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' fc-prev-last'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[5]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' fc-last'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
+            
+        };
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cal_table </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'table'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fc-border-separate'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'width:100%'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cellspacing  </span><span class="jsdoc-syntax">: 0,
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                { 
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'thead'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                        { 
+                            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tr'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fc-first fc-last'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cal_heads</span><span class="jsdoc-syntax">()
+                        }
+                    ]
+                },
+                { 
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tbody'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cal_rows</span><span class="jsdoc-syntax">()
+                }
+                  
+            ]
+        };
+         
+         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fc fc-ltr'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                </span><span class="jsdoc-var">header</span><span class="jsdoc-syntax">,
+                {
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fc-content'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;position: relative;&quot;</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                        {
+                            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fc-view fc-view-month fc-grid'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'position: relative'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">unselectable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'on'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                                {
+                                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fc-event-container'</span><span class="jsdoc-syntax">,
+                                    </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'position:absolute;z-index:8;top:0;left:0;'
+                                </span><span class="jsdoc-syntax">},
+                                </span><span class="jsdoc-var">cal_table
+                            </span><span class="jsdoc-syntax">]
+                        }
+                    ]
+    
+                }
+           ] 
+            
+        };
+        
+         
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    },
+    
+    
+    </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-string">&quot;can not find store for calendar&quot;</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.store </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.data</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.resize</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">this.cells </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-day'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">//Roo.log(this.cells);
+        </span><span class="jsdoc-var">this.textNodes </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.query</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-day-number'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.cells.addClassOnOver</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fc-state-hover'</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-button-prev'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.showPrevMonth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-button-next'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.showNextMonth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-button-today'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.showToday</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-button'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.addClassOnOver</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fc-state-hover'</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'monthchange'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMonthChange</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.clearTime</span><span class="jsdoc-syntax">());
+    },
+    
+    </span><span class="jsdoc-var">resize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sz  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getSize</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-day-header'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sz.width </span><span class="jsdoc-syntax">/ 7);
+        </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-day-content div'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.setHeight</span><span class="jsdoc-syntax">(34);
+    },
+    
+    
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">showPrevMonth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.activeDate.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mo&quot;</span><span class="jsdoc-syntax">, -1));
+    },
+    </span><span class="jsdoc-var">showToday </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.clearTime</span><span class="jsdoc-syntax">());
+    },
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">showNextMonth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.activeDate.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mo&quot;</span><span class="jsdoc-syntax">, 1));
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">showPrevYear </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.activeDate.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;y&quot;</span><span class="jsdoc-syntax">, -1));
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">showNextYear </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.activeDate.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;y&quot;</span><span class="jsdoc-syntax">, 1));
+    },
+
+    
+   </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">update </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">vd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.activeDate</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.activeDate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">;
+</span><span class="jsdoc-comment">//        if(vd &amp;&amp; this.el){
+//            var t = date.getTime();
+//            if(vd.getMonth() == date.getMonth() &amp;&amp; vd.getFullYear() == date.getFullYear()){
+//                Roo.log('using add remove');
+//                
+//                this.fireEvent('monthchange', this, date);
+//                
+//                this.cells.removeClass(&quot;fc-state-highlight&quot;);
+//                this.cells.each(function(c){
+//                   if(c.dateValue == t){
+//                       c.addClass(&quot;fc-state-highlight&quot;);
+//                       setTimeout(function(){
+//                            try{c.dom.firstChild.focus();}catch(e){}
+//                       }, 50);
+//                       return false;
+//                   }
+//                   return true;
+//                });
+//                return;
+//            }
+//        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">days </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">date.getDaysInMonth</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">firstOfMonth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">date.getFirstDateOfMonth</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">startingPos </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">firstOfMonth.getDay</span><span class="jsdoc-syntax">()-</span><span class="jsdoc-var">this.startDay</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">startingPos </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.startDay</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">startingPos </span><span class="jsdoc-syntax">+= 7;
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">date.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Date.MONTH</span><span class="jsdoc-syntax">, -1);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">prevStart </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pm.getDaysInMonth</span><span class="jsdoc-syntax">()-</span><span class="jsdoc-var">startingPos</span><span class="jsdoc-syntax">;
+</span><span class="jsdoc-comment">//        
+        </span><span class="jsdoc-var">this.cells </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-day'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.textNodes </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.query</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-day-number'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.cells.addClassOnOver</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fc-state-hover'</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cells </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cells.elements</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">textEls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.textNodes</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cell</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cell.removeClass</span><span class="jsdoc-syntax">([ </span><span class="jsdoc-string">'fc-past'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'fc-other-month'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'fc-future'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'fc-state-highlight'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'fc-state-disabled'</span><span class="jsdoc-syntax">]);
+        });
+        
+        </span><span class="jsdoc-var">days </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">startingPos</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-comment">// convert everything to numbers so it's fast
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">day </span><span class="jsdoc-syntax">= 86400000;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pm.getFullYear</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">pm.getMonth</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">prevStart</span><span class="jsdoc-syntax">))</span><span class="jsdoc-var">.clearTime</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-comment">//Roo.log(d);
+        //Roo.log(pm);
+        //Roo.log(prevStart);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">today </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.clearTime</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getTime</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">date.clearTime</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getTime</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">min </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.minDate </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.minDate.clearTime</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-var">Number.NEGATIVE_INFINITY</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">max </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.maxDate </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.maxDate.clearTime</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-var">Number.POSITIVE_INFINITY</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ddMatch </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.disabledDatesRE</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ddText </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.disabledDatesText</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ddays </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.disabledDays </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.disabledDays.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ddaysText </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.disabledDaysText</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.format</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">setCellClass </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cal</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cell</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-comment">//Roo.log('set Cell Class');
+            </span><span class="jsdoc-var">cell.title </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d.getTime</span><span class="jsdoc-syntax">();
+            
+            </span><span class="jsdoc-comment">//Roo.log(d);
+            
+            </span><span class="jsdoc-var">cell.dateValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">today</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">cell.className </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">&quot; fc-today&quot;</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">cell.className </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">&quot; fc-state-highlight&quot;</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">cell.title </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cal.todayText</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-comment">// disable highlight in other month..
+                //cell.className += &quot; fc-state-highlight&quot;;
+                
+            </span><span class="jsdoc-syntax">}
+            </span><span class="jsdoc-comment">// disabling
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">min</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">cell.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot; fc-state-disabled&quot;</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">cell.title </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cal.minText</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">max</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">cell.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot; fc-state-disabled&quot;</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">cell.title </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cal.maxText</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ddays</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ddays.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.getDay</span><span class="jsdoc-syntax">()) != -1){
+                    </span><span class="jsdoc-var">cell.title </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ddaysText</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">cell.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot; fc-state-disabled&quot;</span><span class="jsdoc-syntax">;
+                }
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ddMatch </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fvalue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d.dateFormat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ddMatch.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fvalue</span><span class="jsdoc-syntax">)){
+                    </span><span class="jsdoc-var">cell.title </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ddText.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;%0&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fvalue</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">cell.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot; fc-state-disabled&quot;</span><span class="jsdoc-syntax">;
+                }
+            }
+            
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">cell.initialClassName</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">cell.initialClassName </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cell.dom.className</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-var">cell.dom.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cell.initialClassName  </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+  </span><span class="jsdoc-var">cell.className</span><span class="jsdoc-syntax">;
+        };
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0;
+        
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">startingPos</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-var">textEls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.innerHTML </span><span class="jsdoc-syntax">= (++</span><span class="jsdoc-var">prevStart</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">d.setDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.getDate</span><span class="jsdoc-syntax">()+1);
+            
+            </span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;fc-past fc-other-month&quot;</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">setCellClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">intDay </span><span class="jsdoc-syntax">= 0;
+        
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">days</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-var">intDay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">startingPos </span><span class="jsdoc-syntax">+ 1;
+            </span><span class="jsdoc-var">textEls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.innerHTML </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">intDay</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">d.setDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.getDate</span><span class="jsdoc-syntax">()+1);
+            
+            </span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// &quot;x-date-active&quot;;
+            </span><span class="jsdoc-var">setCellClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">extraDays </span><span class="jsdoc-syntax">= 0;
+        
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; 42; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-var">textEls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.innerHTML </span><span class="jsdoc-syntax">= (++</span><span class="jsdoc-var">extraDays</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">d.setDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.getDate</span><span class="jsdoc-syntax">()+1);
+            
+            </span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;fc-future fc-other-month&quot;</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">setCellClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+        }
+        
+        </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-header-title h2'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Date.monthNames</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">date.getMonth</span><span class="jsdoc-syntax">()] + </span><span class="jsdoc-string">&quot; &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">date.getFullYear</span><span class="jsdoc-syntax">());
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">totalRows </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.ceil</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">date.getDaysInMonth</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">date.getFirstDateOfMonth</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getDay</span><span class="jsdoc-syntax">()) / 7);
+        
+        </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tr.fc-week.fc-prev-last'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fc-last'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tr.fc-week.fc-next-last'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fc-last'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.show</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">totalRows </span><span class="jsdoc-syntax">!= 6){
+            </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tr.fc-week.fc-last'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fc-last'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fc-next-last'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.hide</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tr.fc-week.fc-prev-last'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fc-last'</span><span class="jsdoc-syntax">);
+        }
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'monthchange'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">);
+        
+        
+        </span><span class="jsdoc-comment">/*
+        if(!this.internalRender){
+            var main = this.el.dom.firstChild;
+            var w = main.offsetWidth;
+            this.el.setWidth(w + this.el.getBorderWidth(&quot;lr&quot;));
+            Roo.fly(main).setWidth(w);
+            this.internalRender = true;
+            // opera does not respect the auto grow header center column
+            // then, after it gets a width opera refuses to recalculate
+            // without a second pass
+            if(Roo.isOpera &amp;&amp; !this.secondPass){
+                main.rows[0].cells[1].style.width = (w - (main.rows[0].cells[0].offsetWidth+main.rows[0].cells[2].offsetWidth)) + &quot;px&quot;;
+                this.secondPass = true;
+                this.update.defer(10, this, [date]);
+            }
+        }
+        */
+        
+    </span><span class="jsdoc-syntax">},
+    
+    </span><span class="jsdoc-var">findCell </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dt</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">dt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dt.clearTime</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getTime</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.cells.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-comment">//Roo.log(&quot;check &quot; +c.dateValue + '?=' + dt);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.dateValue </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">dt</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        });
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">findCells </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.start.clone</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.clearTime</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getTime</span><span class="jsdoc-syntax">();
+       </span><span class="jsdoc-comment">// Roo.log(s);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.end.clone</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.clearTime</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getTime</span><span class="jsdoc-syntax">();
+       </span><span class="jsdoc-comment">// Roo.log(e);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-var">this.cells.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">){
+             </span><span class="jsdoc-comment">////Roo.log(&quot;check &quot; +c.dateValue + '&lt;' + e + ' &gt; ' + s);
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.dateValue </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.dateValue </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">ret.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">);
+        });
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;    
+    },
+    
+    </span><span class="jsdoc-var">findBestRow</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= 0;
+        
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0 ; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">cells.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-var">ret  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.rows </span><span class="jsdoc-syntax">|| 0,</span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
+        
+    },
+    
+    
+    </span><span class="jsdoc-var">addItem </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">// look for vertical location slot in
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cells </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.findCells</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">ev.row </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.findBestRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-comment">// work out the location.
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">crow </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rows </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">cells.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">crow</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">crow </span><span class="jsdoc-syntax">= {
+                    </span><span class="jsdoc-var">start </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">],
+                    </span><span class="jsdoc-var">end </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]
+                };
+                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">crow.start.getY</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.getY</span><span class="jsdoc-syntax">()) {
+                </span><span class="jsdoc-comment">// on same row.
+                </span><span class="jsdoc-var">crow.end </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-comment">// different row.
+            </span><span class="jsdoc-var">rows.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">crow</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">crow </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">],
+                </span><span class="jsdoc-var">end </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]
+            };
+            
+        }
+        
+        </span><span class="jsdoc-var">rows.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">crow</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">ev.els </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-var">ev.rows </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rows</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">ev.cells </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">cells.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.rows </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.rows </span><span class="jsdoc-syntax">|| 0 , </span><span class="jsdoc-var">ev.row </span><span class="jsdoc-syntax">+ 1 );
+            
+        }
+        
+        </span><span class="jsdoc-var">this.calevents.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">clearEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.calevents</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cells.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">c.rows </span><span class="jsdoc-syntax">= 0;
+        });
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.calevents</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.els</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">el.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseenter' </span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.onEventEnter</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">el.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseleave' </span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.onEventLeave</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">el.remove</span><span class="jsdoc-syntax">();
+            },</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        },</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+    },
+    
+    </span><span class="jsdoc-var">renderEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {   
+        </span><span class="jsdoc-comment">// first make sure there is enough space..
+        
+        </span><span class="jsdoc-var">this.cells.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">) {
+        
+            </span><span class="jsdoc-var">c.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-day-content div'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(34, </span><span class="jsdoc-var">c.rows </span><span class="jsdoc-syntax">* 20));
+        });
+        
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.calevents.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.calevents</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cells </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.cells</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rows </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.rows</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">rows.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                
+                 
+                </span><span class="jsdoc-comment">// how many rows should it span..
+                
+                </span><span class="jsdoc-keyword">var  </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'position: absolute'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// left: 387px; width: 121px; top: 359px;
+                    
+                    </span><span class="jsdoc-var">unselectable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;on&quot;</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                        {
+                            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fc-event-inner'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                                {
+                                  </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                                  </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fc-event-time'</span><span class="jsdoc-syntax">,
+                                  </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cells.length </span><span class="jsdoc-syntax">&gt; 1 ? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">ev.time
+                                </span><span class="jsdoc-syntax">},
+                                {
+                                  </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                                  </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fc-event-title'</span><span class="jsdoc-syntax">,
+                                  </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'{0}'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ev.title</span><span class="jsdoc-syntax">)
+                                }
+                                
+                                
+                            ]
+                        },
+                        {
+                            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ui-resizable-handle ui-resizable-e'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&amp;nbsp;&amp;nbsp;&amp;nbsp'
+                        </span><span class="jsdoc-syntax">}
+                        
+                    ]
+                };
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">== 0) {
+                    </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' fc-event-start'</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">+1) == </span><span class="jsdoc-var">rows.length</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' fc-event-end'</span><span class="jsdoc-syntax">;
+                }
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ctr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-event-container'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ctr.createChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+                
+                </span><span class="jsdoc-var">cg.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseenter' </span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.onEventEnter</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">cg.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseleave' </span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.onEventLeave</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">cg.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onEventClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">);
+                
+                </span><span class="jsdoc-var">ev.els.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cg</span><span class="jsdoc-syntax">);
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sbox </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.start.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-day-content'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getBox</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ebox </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.end.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-day-content'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getBox</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-comment">//Roo.log(cg);
+                </span><span class="jsdoc-var">cg.setXY</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">sbox.x </span><span class="jsdoc-syntax">+2, </span><span class="jsdoc-var">sbox.y </span><span class="jsdoc-syntax">+(</span><span class="jsdoc-var">ev.row </span><span class="jsdoc-syntax">* 20)]);    
+                </span><span class="jsdoc-var">cg.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ebox.right </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">sbox.x </span><span class="jsdoc-syntax">-2);
+            }
+            
+            
+        }
+        
+    },
+    
+    </span><span class="jsdoc-var">onEventEnter</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'evententer'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">onEventLeave</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'eventleave'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">onEventClick</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'eventclick'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">onMonthChange</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-var">this.store.load</span><span class="jsdoc-syntax">();
+    },
+    
+    </span><span class="jsdoc-var">onLoad</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+        
+        </span><span class="jsdoc-var">this.clearEvents</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-comment">//Roo.log('calendar onload');
+//        
+        </span><span class="jsdoc-var">this.calevents </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cal </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store.getCount</span><span class="jsdoc-syntax">() &gt; 0){
+            </span><span class="jsdoc-var">this.store.data.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">){
+               </span><span class="jsdoc-var">cal.addItem</span><span class="jsdoc-syntax">({
+                    </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d.data.id</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.data.start_dt</span><span class="jsdoc-syntax">),
+                    </span><span class="jsdoc-var">end </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.data.end_dt</span><span class="jsdoc-syntax">),
+                    </span><span class="jsdoc-var">time </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d.data.start_time</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">title </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d.data.title</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">description </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d.data.description</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">venue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d.data.venue
+                </span><span class="jsdoc-syntax">});
+            });
+        }
+        
+        </span><span class="jsdoc-var">this.renderEvents</span><span class="jsdoc-syntax">();
+    }
+});
+
+ 
+ </span><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ * based on jquery fullcalendar
+ * 
+ */
+
+
+/**
+ * @class Roo.Calendar
+ * @extends Roo.Component
+ * Bootstrap Calendar class
+    
+ * @constructor
+ * Create a new Container
+ * @param {Object} config The config object
+ */
+
+</span><span class="jsdoc-var">Roo.CalendarPanel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    
+    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;cal panel ctr&quot;</span><span class="jsdoc-syntax">);
+  
+    </span><span class="jsdoc-var">this.wrapper </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// wrapper for IE7 strict &amp; safari scroll issue
+        </span><span class="jsdoc-syntax">{</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-layout-grid-wrapper x-layout-inactive-content&quot;</span><span class="jsdoc-syntax">}, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        
+    </span><span class="jsdoc-comment">//this.wrapper.dom.appendChild(grid.getGridEl().dom);
+    
+    </span><span class="jsdoc-var">Roo.CalendarPanel.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.wrapper</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    
+    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">);
+    
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbar</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.toolbar.el.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.wrapper.dom.firstChild</span><span class="jsdoc-syntax">);
+    }
+    </span><span class="jsdoc-comment">// xtype created footer. - not sure if will work as we normally have to render first..
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.footer </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.footer.el </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.footer.xtype</span><span class="jsdoc-syntax">) {
+        
+        </span><span class="jsdoc-comment">//this.footer.container = this.grid.getView().getFooterPanel(true);
+        //this.footer.dataSource = this.grid.dataSource;
+        //this.footer = Roo.factory(this.footer, Roo);
+        
+    </span><span class="jsdoc-syntax">}
+    </span><span class="jsdoc-var">this.view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.calendar.View</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-var">skipNavHeader </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">skipMonthHeader </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false
+        
+    </span><span class="jsdoc-syntax">},</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">));
+    
+     
+    </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'activate'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'activate'</span><span class="jsdoc-syntax">);
+         
+        </span><span class="jsdoc-comment">//console.log('render tree');
+        </span><span class="jsdoc-var">this.render</span><span class="jsdoc-syntax">();
+    },</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+	     * @event select
+	     * Fires when a date is selected
+	     * @param {DatePicker} this
+	     * @param {Date} date The selected date
+	     */
+        </span><span class="jsdoc-string">'select'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event monthchange
+	     * Fires when the displayed month changes 
+	     * @param {DatePicker} this
+	     * @param {Date} date The selected month
+	     */
+        </span><span class="jsdoc-string">'monthchange'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event evententer
+	     * Fires when mouse over an event
+	     * @param {Calendar} this
+	     * @param {event} Event
+	     */
+        </span><span class="jsdoc-string">'evententer'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event eventleave
+	     * Fires when the mouse leaves an
+	     * @param {Calendar} this
+	     * @param {event}
+	     */
+        </span><span class="jsdoc-string">'eventleave'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event eventclick
+	     * Fires when the mouse click an
+	     * @param {Calendar} this
+	     * @param {event}
+	     */
+        </span><span class="jsdoc-string">'eventclick'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event rendered
+	     * Fires when the grid is rendered
+	     * @param {Calendar} this
+	    
+	     */
+        </span><span class="jsdoc-string">'rendered'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        
+        
+    </span><span class="jsdoc-syntax">});
+    </span><span class="jsdoc-var">this.relayEvents</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.view</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-string">&quot;select&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;monthchange&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;evententer&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;eventleave&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;rendered&quot;</span><span class="jsdoc-syntax">]);
+
+    </span><span class="jsdoc-comment">//this.grid = grid;
+    //this.grid.getGridEl().replaceClass(&quot;x-layout-inactive-content&quot;, &quot;x-layout-component-panel&quot;);
+</span><span class="jsdoc-syntax">};
+
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.CalendarPanel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.ContentPanel</span><span class="jsdoc-syntax">, {
+    
+      
+    </span><span class="jsdoc-var">render </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ct </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">this.onRender</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">)
+    },
+    
+    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rendered</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.rendered </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;render calendar&quot;</span><span class="jsdoc-syntax">);
+        
+        
+        </span><span class="jsdoc-comment">//Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
+        
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({},  </span><span class="jsdoc-var">this.view.getAutoCreate</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-var">cfg.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-comment">// fill in the extra attributes 
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.xattr </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.xattr</span><span class="jsdoc-syntax">) ==</span><span class="jsdoc-string">'object'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">this.xattr</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">this.xattr</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+            }
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dataId</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.dataId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dataId</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.cls</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">this.cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.style</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// fixme needs to support more complex style data.
+            </span><span class="jsdoc-var">cfg.style </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.style</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.view.el </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">ct.createChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-comment">//if(this.tabIndex !== undefined){
+        //    this.el.dom.setAttribute('tabIndex', this.tabIndex);
+        //}
+        
+        
+        </span><span class="jsdoc-var">this.view.initEvents</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'rendered'</span><span class="jsdoc-syntax">);
+    }
+    
+    
+    
+    
+});
+
+ 
+</span></code></body></html>

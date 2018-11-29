@@ -1,0 +1,339 @@
+<html><head><title>../roojs1/Roo/form/FCKeditor.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">//&lt;script type=&quot;text/javascript&quot;&gt;
+
+/**
+ * @class Roo.form.FCKeditor
+ * @extends Roo.form.TextArea
+ * Wrapper around the FCKEditor http://www.fckeditor.net
+ * @constructor
+ * Creates a new FCKeditor
+ * @param {Object} config Configuration options
+ */
+</span><span class="jsdoc-var">Roo.form.FCKeditor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.form.FCKeditor.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+         </span><span class="jsdoc-comment">/**
+         * @event editorinit
+         * Fired when the editor is initialized - you can add extra handlers here..
+         * @param {FCKeditor} this
+         * @param {Object} the FCK object.
+         */
+        </span><span class="jsdoc-var">editorinit </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+    
+    
+};
+</span><span class="jsdoc-var">Roo.form.FCKeditor.editors </span><span class="jsdoc-syntax">= { };
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.FCKeditor</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.form.TextArea</span><span class="jsdoc-syntax">,
+{
+    </span><span class="jsdoc-comment">//defaultAutoCreate : {
+    //    tag : &quot;textarea&quot;,style   : &quot;width:100px;height:60px;&quot; ,autocomplete    : &quot;off&quot;
+    //},
+    // private
+    /**
+     * @cfg {Object} fck options - see fck manual for details.
+     */
+    </span><span class="jsdoc-var">fckconfig </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Object} fck toolbar set (Basic or Default)
+     */
+    </span><span class="jsdoc-var">toolbarSet </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Basic'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Object} fck BasePath
+     */ 
+    </span><span class="jsdoc-var">basePath </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'/fckeditor/'</span><span class="jsdoc-syntax">,
+    
+    
+    </span><span class="jsdoc-var">frame </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    
+   
+    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.defaultAutoCreate </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;textarea&quot;</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;width:300px;height:60px;&quot;</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">autocomplete</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;new-password&quot;
+            </span><span class="jsdoc-syntax">};
+        }
+        </span><span class="jsdoc-var">Roo.form.FCKeditor.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">/*
+        if(this.grow){
+            this.textSizeEl = Roo.DomHelper.append(document.body, {tag: &quot;pre&quot;, cls: &quot;x-form-grow-sizer&quot;});
+            if(this.preventScrollbars){
+                this.el.setStyle(&quot;overflow&quot;, &quot;hidden&quot;);
+            }
+            this.el.setHeight(this.growMin);
+        }
+        */
+        //console.log('onrender' + this.getId() );
+        </span><span class="jsdoc-var">Roo.form.FCKeditor.editors</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.getId</span><span class="jsdoc-syntax">()] = </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+         
+
+        </span><span class="jsdoc-var">this.replaceTextarea</span><span class="jsdoc-syntax">() ;
+        
+    },
+    
+    </span><span class="jsdoc-var">getEditor </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.fckEditor</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-comment">/**
+     * Sets a data value into the field and validates it.  To set the value directly without validation see {@link #setRawValue}.
+     * @param {Mixed} value The value to set
+     */
+    
+    
+    </span><span class="jsdoc-var">setValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">//console.log('setValue: ' + value);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// not sure why this is happending...
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">Roo.form.FCKeditor.superclass.setValue.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,[</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">]);
+        
+        </span><span class="jsdoc-comment">//if(!this.el || !this.getEditor()) {
+        //    this.value = value;
+            //this.setValue.defer(100,this,[value]);    
+        //    return;
+        //} 
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.getEditor</span><span class="jsdoc-syntax">()) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.getEditor</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.SetData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-comment">//
+
+    </span><span class="jsdoc-syntax">},
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}.
+     * @return {Mixed} value The field value
+     */
+    </span><span class="jsdoc-var">getValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.frame </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.frame.dom.style.display </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'none'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.form.FCKeditor.superclass.getValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.getEditor</span><span class="jsdoc-syntax">()) {
+           
+           </span><span class="jsdoc-comment">// this.getValue.defer(100,this); 
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">;
+        }
+       
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">this.getEditor</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.GetData</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">Roo.form.FCKeditor.superclass.setValue.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,[</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">]);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.form.FCKeditor.superclass.getValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the raw data value which may or may not be a valid, defined value.  To return a normalized value see {@link #getValue}.
+     * @return {Mixed} value The field value
+     */
+    </span><span class="jsdoc-var">getRawValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.frame </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.frame.dom.style.display </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'none'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.form.FCKeditor.superclass.getRawValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.getEditor</span><span class="jsdoc-syntax">()) {
+            </span><span class="jsdoc-comment">//this.getRawValue.defer(100,this); 
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">this.getEditor</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.GetData</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">Roo.form.FCKeditor.superclass.setRawValue.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,[</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">]);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.form.FCKeditor.superclass.getRawValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+         
+    },
+    
+    </span><span class="jsdoc-var">setSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">) {
+        
+        
+        
+        </span><span class="jsdoc-comment">//if (this.frame &amp;&amp; this.frame.dom.style.display == 'none') {
+        //    Roo.form.FCKeditor.superclass.setSize.apply(this, [w, h]);
+        //    return;
+        //}
+        //if(!this.el || !this.getEditor()) {
+        //    this.setSize.defer(100,this, [w,h]); 
+        //    return;
+        //}
+        
+        
+        
+        </span><span class="jsdoc-var">Roo.form.FCKeditor.superclass.setSize.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">]);
+        
+        </span><span class="jsdoc-var">this.frame.dom.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'width'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.frame.dom.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'height'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.frame.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">);
+        
+    },
+    
+    </span><span class="jsdoc-var">toggleSourceEdit </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">) {
+        
+      
+         
+        </span><span class="jsdoc-var">this.el.dom.style.display </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'none'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.frame.dom.style.display </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">?  </span><span class="jsdoc-string">'none' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        
+    },
+    
+    
+    </span><span class="jsdoc-var">focus</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.frame.dom.style.display </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'none'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.form.FCKeditor.superclass.focus.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.getEditor</span><span class="jsdoc-syntax">()) {
+            </span><span class="jsdoc-var">this.focus.defer</span><span class="jsdoc-syntax">(100,</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">]); 
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        
+        
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tgs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getEditor</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.EditorDocument.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.getEditor</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.Focus</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tgs.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.getEditor</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.Selection.GetSelection</span><span class="jsdoc-syntax">()) {
+                </span><span class="jsdoc-var">this.focus.defer</span><span class="jsdoc-syntax">(100,</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">]); 
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getEditor</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.EditorDocument.createRange</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">r.setStart</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tgs</span><span class="jsdoc-syntax">[0],0);
+            </span><span class="jsdoc-var">r.setEnd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tgs</span><span class="jsdoc-syntax">[0],0);
+            </span><span class="jsdoc-var">this.getEditor</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.Selection.GetSelection</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.removeAllRanges</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.getEditor</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.Selection.GetSelection</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.getEditor</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.Focus</span><span class="jsdoc-syntax">();
+        }
+        
+    },
+    
+    
+    
+    </span><span class="jsdoc-var">replaceTextarea </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">document.getElementById</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.getId</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-string">'___Frame' </span><span class="jsdoc-syntax">) ) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-comment">//if ( !this.checkBrowser || this._isCompatibleBrowser() )
+        //{
+            // We must check the elements firstly using the Id and then the name.
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">oTextarea </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.getElementById</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.getId</span><span class="jsdoc-syntax">() );
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">colElementsByName </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.getElementsByName</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.getId</span><span class="jsdoc-syntax">() ) ;
+         
+        </span><span class="jsdoc-var">oTextarea.style.display </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'none' </span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">oTextarea.tabIndex </span><span class="jsdoc-syntax">) {            
+            </span><span class="jsdoc-var">this.TabIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">oTextarea.tabIndex </span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this._insertHtmlBefore</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this._getConfigHtml</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">oTextarea </span><span class="jsdoc-syntax">) ;
+        </span><span class="jsdoc-var">this._insertHtmlBefore</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this._getIFrameHtml</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">oTextarea </span><span class="jsdoc-syntax">) ;
+        </span><span class="jsdoc-var">this.frame </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getId</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-string">'___Frame'</span><span class="jsdoc-syntax">)
+    },
+    
+    </span><span class="jsdoc-var">_getConfigHtml </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sConfig </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">( </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">o </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">this.fckconfig </span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">sConfig </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">sConfig.length </span><span class="jsdoc-syntax">&gt; 0  ? </span><span class="jsdoc-string">'&amp;amp;' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">sConfig </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">encodeURIComponent</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">'=' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">encodeURIComponent</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.fckconfig</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">] ) ;
+        }
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'&lt;input type=&quot;hidden&quot; id=&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.getId</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-string">'___Config&quot; value=&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">sConfig </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot; style=&quot;display:none&quot; /&gt;' </span><span class="jsdoc-syntax">;
+    },
+    
+    
+    </span><span class="jsdoc-var">_getIFrameHtml </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sFile </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'fckeditor.html' </span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">/* no idea what this is about..
+        try
+        {
+            if ( (/fcksource=true/i).test( window.top.location.search ) )
+                sFile = 'fckeditor.original.html' ;
+        }
+        catch (e) { 
+        */
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sLink </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.basePath </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'editor/' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">sFile </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'?InstanceName=' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">encodeURIComponent</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.getId</span><span class="jsdoc-syntax">() ) ;
+        </span><span class="jsdoc-var">sLink </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.toolbarSet </span><span class="jsdoc-syntax">? ( </span><span class="jsdoc-string">'&amp;amp;Toolbar=' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.toolbarSet</span><span class="jsdoc-syntax">)  : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;iframe id=&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.getId</span><span class="jsdoc-syntax">() +
+            </span><span class="jsdoc-string">'___Frame&quot; src=&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">sLink </span><span class="jsdoc-syntax">+
+            </span><span class="jsdoc-string">'&quot; width=&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">+
+            </span><span class="jsdoc-string">'&quot; height=&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.height </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot;' </span><span class="jsdoc-syntax">+
+            (</span><span class="jsdoc-var">this.tabIndex </span><span class="jsdoc-syntax">?  </span><span class="jsdoc-string">' tabindex=&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.tabIndex </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot;' </span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">) +
+            </span><span class="jsdoc-string">' frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;/iframe&gt;' </span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">_insertHtmlBefore </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">element </span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">element.insertAdjacentHTML </span><span class="jsdoc-syntax">)	{
+            </span><span class="jsdoc-comment">// IE
+            </span><span class="jsdoc-var">element.insertAdjacentHTML</span><span class="jsdoc-syntax">( </span><span class="jsdoc-string">'beforeBegin'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">) ;
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{ </span><span class="jsdoc-comment">// Gecko
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">oRange </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createRange</span><span class="jsdoc-syntax">() ;
+            </span><span class="jsdoc-var">oRange.setStartBefore</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">element </span><span class="jsdoc-syntax">) ;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">oFragment </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">oRange.createContextualFragment</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">element.parentNode.insertBefore</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">oFragment</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">element </span><span class="jsdoc-syntax">) ;
+        }
+    }
+    
+    
+  
+    
+    
+    
+    
+
+});
+
+</span><span class="jsdoc-comment">//Roo.reg('fckeditor', Roo.form.FCKeditor);
+
+</span><span class="jsdoc-keyword">function </span><span class="jsdoc-var">FCKeditor_OnComplete</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">editorInstance</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">f </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.form.FCKeditor.editors</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">editorInstance.Name</span><span class="jsdoc-syntax">];
+    </span><span class="jsdoc-var">f.fckEditor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editorInstance</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-comment">//console.log(&quot;loaded&quot;);
+    </span><span class="jsdoc-var">f.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'editorinit'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editorInstance</span><span class="jsdoc-syntax">);
+} 
+  
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</span></code></body></html>

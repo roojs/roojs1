@@ -1,0 +1,685 @@
+<html><head><title>../roojs1/Roo/Resizable.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+/**
+ * @class Roo.Resizable
+ * @extends Roo.util.Observable
+ * &lt;p&gt;Applies drag handles to an element to make it resizable. The drag handles are inserted into the element
+ * and positioned absolute. Some elements, such as a textarea or image, don't support this. To overcome that, you can wrap
+ * the textarea in a div and set &quot;resizeChild&quot; to true (or to the id of the element), &lt;b&gt;or&lt;/b&gt; set wrap:true in your config and
+ * the element will be wrapped for you automatically.&lt;/p&gt;
+ * &lt;p&gt;Here is the list of valid resize handles:&lt;/p&gt;
+ * &lt;pre&gt;
+Value   Description
+------  -------------------
+ 'n'     north
+ 's'     south
+ 'e'     east
+ 'w'     west
+ 'nw'    northwest
+ 'sw'    southwest
+ 'se'    southeast
+ 'ne'    northeast
+ 'hd'    horizontal drag
+ 'all'   all
+&lt;/pre&gt;
+ * &lt;p&gt;Here's an example showing the creation of a typical Resizable:&lt;/p&gt;
+ * &lt;pre&gt;&lt;code&gt;
+var resizer = new Roo.Resizable(&quot;element-id&quot;, {
+    handles: 'all',
+    minWidth: 200,
+    minHeight: 100,
+    maxWidth: 500,
+    maxHeight: 400,
+    pinned: true
+});
+resizer.on(&quot;resize&quot;, myHandler);
+&lt;/code&gt;&lt;/pre&gt;
+ * &lt;p&gt;To hide a particular handle, set its display to none in CSS, or through script:&lt;br&gt;
+ * resizer.east.setDisplayed(false);&lt;/p&gt;
+ * @cfg {Boolean/String/Element} resizeChild True to resize the first child, or id/element to resize (defaults to false)
+ * @cfg {Array/String} adjustments String &quot;auto&quot; or an array [width, height] with values to be &lt;b&gt;added&lt;/b&gt; to the
+ * resize operation's new size (defaults to [0, 0])
+ * @cfg {Number} minWidth The minimum width for the element (defaults to 5)
+ * @cfg {Number} minHeight The minimum height for the element (defaults to 5)
+ * @cfg {Number} maxWidth The maximum width for the element (defaults to 10000)
+ * @cfg {Number} maxHeight The maximum height for the element (defaults to 10000)
+ * @cfg {Boolean} enabled False to disable resizing (defaults to true)
+ * @cfg {Boolean} wrap True to wrap an element with a div if needed (required for textareas and images, defaults to false)
+ * @cfg {Number} width The width of the element in pixels (defaults to null)
+ * @cfg {Number} height The height of the element in pixels (defaults to null)
+ * @cfg {Boolean} animate True to animate the resize (not compatible with dynamic sizing, defaults to false)
+ * @cfg {Number} duration Animation duration if animate = true (defaults to .35)
+ * @cfg {Boolean} dynamic True to resize the element while dragging instead of using a proxy (defaults to false)
+ * @cfg {String} handles String consisting of the resize handles to display (defaults to undefined)
+ * @cfg {Boolean} multiDirectional &lt;b&gt;Deprecated&lt;/b&gt;.  The old style of adding multi-direction resize handles, deprecated
+ * in favor of the handles config option (defaults to false)
+ * @cfg {Boolean} disableTrackOver True to disable mouse tracking. This is only applied at config time. (defaults to false)
+ * @cfg {String} easing Animation easing if animate = true (defaults to 'easingOutStrong')
+ * @cfg {Number} widthIncrement The increment to snap the width resize in pixels (dynamic must be true, defaults to 0)
+ * @cfg {Number} heightIncrement The increment to snap the height resize in pixels (dynamic must be true, defaults to 0)
+ * @cfg {Boolean} pinned True to ensure that the resize handles are always visible, false to display them only when the
+ * user mouses over the resizable borders. This is only applied at config time. (defaults to false)
+ * @cfg {Boolean} preserveRatio True to preserve the original ratio between height and width during resize (defaults to false)
+ * @cfg {Boolean} transparent True for transparent handles. This is only applied at config time. (defaults to false)
+ * @cfg {Number} minX The minimum allowed page X for the element (only used for west resizing, defaults to 0)
+ * @cfg {Number} minY The minimum allowed page Y for the element (only used for north resizing, defaults to 0)
+ * @cfg {Boolean} draggable Convenience to initialize drag drop (defaults to false)
+ * @constructor
+ * Create a new resizable component
+ * @param {String/HTMLElement/Roo.Element} el The id or element to resize
+ * @param {Object} config configuration options
+  */
+</span><span class="jsdoc-var">Roo.Resizable </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">)
+{
+    </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">config.wrap</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">config.resizeChild </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.wrap</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">config.wrap </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;object&quot; </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">config.wrap </span><span class="jsdoc-syntax">: {</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;xresizable-wrap&quot;</span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-var">this.el.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.dom.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.resizeChild.id </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;-rzwrap&quot;</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;overflow&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;hidden&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el.setPositioning</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.resizeChild.getPositioning</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-var">config.resizeChild.clearPositioning</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">config.width </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">config.height</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">csize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.resizeChild.getSize</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.el.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">csize.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">csize.height</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.pinned </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">config.adjustments</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">config.adjustments </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;auto&quot;</span><span class="jsdoc-syntax">;
+        }
+    }
+
+    </span><span class="jsdoc-var">this.proxy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.createProxy</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-resizable-proxy&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.el.id </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;-rzproxy&quot;</span><span class="jsdoc-syntax">});
+    </span><span class="jsdoc-var">this.proxy.unselectable</span><span class="jsdoc-syntax">();
+    </span><span class="jsdoc-var">this.proxy.enableDisplayMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.pinned</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.disableTrackOver </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-resizable-pinned&quot;</span><span class="jsdoc-syntax">);
+    }
+    </span><span class="jsdoc-comment">// if the element isn't positioned, make it relative
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">position </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;position&quot;</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">position </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;absolute&quot; </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">position </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;fixed&quot;</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;position&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;relative&quot;</span><span class="jsdoc-syntax">);
+    }
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.handles</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// no handles passed, must be legacy style
+        </span><span class="jsdoc-var">this.handles </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'s,e,se'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.multiDirectional</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.handles </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">',n,w'</span><span class="jsdoc-syntax">;
+        }
+    }
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.handles </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;all&quot;</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.handles </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;n s e w ne nw se sw&quot;</span><span class="jsdoc-syntax">;
+    }
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.handles.split</span><span class="jsdoc-syntax">(/\s*?[,;]\s*?| /);
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ps </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.Resizable.positions</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">hs.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] &amp;&amp; </span><span class="jsdoc-var">ps</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">hs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]]){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ps</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">hs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]];
+            </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Resizable.Handle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.disableTrackOver</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.transparent</span><span class="jsdoc-syntax">);
+        }
+    }
+    </span><span class="jsdoc-comment">// legacy
+    </span><span class="jsdoc-var">this.corner </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.southeast</span><span class="jsdoc-syntax">;
+    
+    </span><span class="jsdoc-comment">// updateBox = the box can move..
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.handles.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;n&quot;</span><span class="jsdoc-syntax">) != -1 || </span><span class="jsdoc-var">this.handles.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;w&quot;</span><span class="jsdoc-syntax">) != -1 || </span><span class="jsdoc-var">this.handles.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;hd&quot;</span><span class="jsdoc-syntax">) != -1) {
+        </span><span class="jsdoc-var">this.updateBox </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+    }
+
+    </span><span class="jsdoc-var">this.activeHandle </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizeChild</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">this.resizeChild </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;boolean&quot;</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.resizeChild </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom.firstChild</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.resizeChild </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizeChild</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        }
+    }
+    
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.adjustments </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;auto&quot;</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.resizeChild</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.west</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">he </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.east</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.north</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.south</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rc </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">hw </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">hn</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-var">rc.position</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;relative&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">rc.setLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hw </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">hw.el.getWidth</span><span class="jsdoc-syntax">() : 0);
+            </span><span class="jsdoc-var">rc.setTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hn </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">hn.el.getHeight</span><span class="jsdoc-syntax">() : 0);
+        }
+        </span><span class="jsdoc-var">this.adjustments </span><span class="jsdoc-syntax">= [
+            (</span><span class="jsdoc-var">he </span><span class="jsdoc-syntax">? -</span><span class="jsdoc-var">he.el.getWidth</span><span class="jsdoc-syntax">() : 0) + (</span><span class="jsdoc-var">hw </span><span class="jsdoc-syntax">? -</span><span class="jsdoc-var">hw.el.getWidth</span><span class="jsdoc-syntax">() : 0),
+            (</span><span class="jsdoc-var">hn </span><span class="jsdoc-syntax">? -</span><span class="jsdoc-var">hn.el.getHeight</span><span class="jsdoc-syntax">() : 0) + (</span><span class="jsdoc-var">hs </span><span class="jsdoc-syntax">? -</span><span class="jsdoc-var">hs.el.getHeight</span><span class="jsdoc-syntax">() : 0) -1
+        ];
+    }
+
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.draggable</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.dd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dynamic </span><span class="jsdoc-syntax">?
+            </span><span class="jsdoc-var">this.el.initDD</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">this.el.initDDProxy</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, {</span><span class="jsdoc-var">dragElId</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.proxy.id</span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-var">this.dd.setHandleElId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizeChild </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.resizeChild.id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.el.id</span><span class="jsdoc-syntax">);
+    }
+
+    </span><span class="jsdoc-comment">// public events
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+         * @event beforeresize
+         * Fired before resize is allowed. Set enabled to false to cancel resize.
+         * @param {Roo.Resizable} this
+         * @param {Roo.EventObject} e The mousedown event
+         */
+        </span><span class="jsdoc-string">&quot;beforeresize&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event resizing
+         * Fired a resizing.
+         * @param {Roo.Resizable} this
+         * @param {Number} x The new x position
+         * @param {Number} y The new y position
+         * @param {Number} w The new w width
+         * @param {Number} h The new h hight
+         * @param {Roo.EventObject} e The mouseup event
+         */
+        </span><span class="jsdoc-string">&quot;resizing&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event resize
+         * Fired after a resize.
+         * @param {Roo.Resizable} this
+         * @param {Number} width The new width
+         * @param {Number} height The new height
+         * @param {Roo.EventObject} e The mouseup event
+         */
+        </span><span class="jsdoc-string">&quot;resize&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">null </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.height </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.resizeTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.height</span><span class="jsdoc-syntax">);
+    }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-var">this.updateChildSize</span><span class="jsdoc-syntax">();
+    }
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isIE</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.el.dom.style.zoom </span><span class="jsdoc-syntax">= 1;
+    }
+    </span><span class="jsdoc-var">Roo.Resizable.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Resizable</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable</span><span class="jsdoc-syntax">, {
+        </span><span class="jsdoc-var">resizeChild </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">adjustments </span><span class="jsdoc-syntax">: [0, 0],
+        </span><span class="jsdoc-var">minWidth </span><span class="jsdoc-syntax">: 5,
+        </span><span class="jsdoc-var">minHeight </span><span class="jsdoc-syntax">: 5,
+        </span><span class="jsdoc-var">maxWidth </span><span class="jsdoc-syntax">: 10000,
+        </span><span class="jsdoc-var">maxHeight </span><span class="jsdoc-syntax">: 10000,
+        </span><span class="jsdoc-var">enabled </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">animate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">duration </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">.</span><span class="jsdoc-syntax">35,
+        </span><span class="jsdoc-var">dynamic </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">handles </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">multiDirectional </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">disableTrackOver </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">easing </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'easeOutStrong'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">widthIncrement </span><span class="jsdoc-syntax">: 0,
+        </span><span class="jsdoc-var">heightIncrement </span><span class="jsdoc-syntax">: 0,
+        </span><span class="jsdoc-var">pinned </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">preserveRatio </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">transparent</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">minX</span><span class="jsdoc-syntax">: 0,
+        </span><span class="jsdoc-var">minY</span><span class="jsdoc-syntax">: 0,
+        </span><span class="jsdoc-var">draggable</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+        </span><span class="jsdoc-comment">/**
+         * @cfg {String/HTMLElement/Element} constrainTo Constrain the resize to a particular element
+         */
+        </span><span class="jsdoc-var">constrainTo</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @cfg {Roo.lib.Region} resizeRegion Constrain the resize to a particular region
+         */
+        </span><span class="jsdoc-var">resizeRegion</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">,
+
+
+    </span><span class="jsdoc-comment">/**
+     * Perform a manual resize
+     * @param {Number} width
+     * @param {Number} height
+     */
+    </span><span class="jsdoc-var">resizeTo </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.el.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.updateChildSize</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;resize&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">startSizing </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">handle</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeresize&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.enabled</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// 2nd enabled check in case disabled before beforeresize handler
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.overlay</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.overlay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.createProxy</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-resizable-overlay&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&amp;#160;&quot;</span><span class="jsdoc-syntax">});
+                </span><span class="jsdoc-var">this.overlay.unselectable</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">this.overlay.enableDisplayMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;block&quot;</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.overlay.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mousemove&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMouseMove</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.overlay.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mouseup&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMouseUp</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-var">this.overlay.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;cursor&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">handle.el.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;cursor&quot;</span><span class="jsdoc-syntax">));
+
+            </span><span class="jsdoc-var">this.resizing </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.startBox </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getBox</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.startPoint </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getXY</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.offsets </span><span class="jsdoc-syntax">= [(</span><span class="jsdoc-var">this.startBox.x </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.startBox.width</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">this.startPoint</span><span class="jsdoc-syntax">[0],
+                            (</span><span class="jsdoc-var">this.startBox.y </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.startBox.height</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">this.startPoint</span><span class="jsdoc-syntax">[1]];
+
+            </span><span class="jsdoc-var">this.overlay.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.lib.Dom.getViewWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
+            </span><span class="jsdoc-var">this.overlay.show</span><span class="jsdoc-syntax">();
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.constrainTo</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ct </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.constrainTo</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.resizeRegion </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ct.getRegion</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.adjust</span><span class="jsdoc-syntax">(
+                    </span><span class="jsdoc-var">ct.getFrameWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'t'</span><span class="jsdoc-syntax">),
+                    </span><span class="jsdoc-var">ct.getFrameWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'l'</span><span class="jsdoc-syntax">),
+                    -</span><span class="jsdoc-var">ct.getFrameWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'b'</span><span class="jsdoc-syntax">),
+                    -</span><span class="jsdoc-var">ct.getFrameWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'r'</span><span class="jsdoc-syntax">)
+                );
+            }
+
+            </span><span class="jsdoc-var">this.proxy.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'visibility'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// workaround display none
+            </span><span class="jsdoc-var">this.proxy.show</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.proxy.setBox</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.startBox</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.dynamic</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.proxy.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'visibility'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'visible'</span><span class="jsdoc-syntax">);
+            }
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onMouseDown </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">handle</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.enabled</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.activeHandle </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">handle</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.startSizing</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">handle</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onMouseUp </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.resizeElement</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.resizing </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.handleOut</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.overlay.hide</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.proxy.hide</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;resize&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">size.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">size.height</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">updateChildSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizeChild</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">child </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.resizeChild</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">adj </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.adjustments</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.dom.offsetWidth</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.getSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">child.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b.width</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">adj</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-var">b.height</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">adj</span><span class="jsdoc-syntax">[1]);
+            }
+            </span><span class="jsdoc-comment">// Second call here for IE
+            // The first call enables instant resizing and
+            // the second call corrects scroll bars if they
+            // exist
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isIE</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">setTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.dom.offsetWidth</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.getSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">child.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b.width</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">adj</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-var">b.height</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">adj</span><span class="jsdoc-syntax">[1]);
+                    }
+                }, 10);
+            }
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">snap </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">inc</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">min</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">inc </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">newValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">m </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">% </span><span class="jsdoc-var">inc</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m </span><span class="jsdoc-syntax">&gt; 0){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m </span><span class="jsdoc-syntax">&gt; (</span><span class="jsdoc-var">inc</span><span class="jsdoc-syntax">/2)){
+                </span><span class="jsdoc-var">newValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">inc</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">);
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">newValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">;
+            }
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">min</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newValue</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">resizeElement </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">box </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.proxy.getBox</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.updateBox</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.setBox</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.animate</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.duration</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.easing</span><span class="jsdoc-syntax">);
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.el.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">box.height</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.animate</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.duration</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.easing</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">this.updateChildSize</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.dynamic</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.proxy.hide</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">constrain </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">diff</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mx</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">diff </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">diff </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">;
+        }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">diff </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">mx</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">diff </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">mx </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">diff</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onMouseMove </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.enabled</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">try</span><span class="jsdoc-syntax">{</span><span class="jsdoc-comment">// try catch so if something goes wrong the user doesn't get hung
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizeRegion </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.resizeRegion.contains</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.getPoint</span><span class="jsdoc-syntax">())) {
+            	</span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-comment">//var curXY = this.startPoint;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">curSize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.curSize </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.startBox</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.startBox.x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.startBox.y</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ox </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">oy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">curSize.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">curSize.height</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ow </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">oh </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">mw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.minWidth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mh </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.minHeight</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">mxw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.maxWidth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mxh </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.maxHeight</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">wi </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.widthIncrement</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hi </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.heightIncrement</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">eventXY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getXY</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">diffX </span><span class="jsdoc-syntax">= -(</span><span class="jsdoc-var">this.startPoint</span><span class="jsdoc-syntax">[0] - </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.minX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">eventXY</span><span class="jsdoc-syntax">[0]));
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">diffY </span><span class="jsdoc-syntax">= -(</span><span class="jsdoc-var">this.startPoint</span><span class="jsdoc-syntax">[1] - </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.minY</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">eventXY</span><span class="jsdoc-syntax">[1]));
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.activeHandle.position</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;east&quot;</span><span class="jsdoc-syntax">:
+                    </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">diffX</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mw</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">mxw</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+             
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;south&quot;</span><span class="jsdoc-syntax">:
+                    </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">diffY</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mh</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">mxh</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;southeast&quot;</span><span class="jsdoc-syntax">:
+                    </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">diffX</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">diffY</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mw</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">mxw</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mh</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">mxh</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;north&quot;</span><span class="jsdoc-syntax">:
+                    </span><span class="jsdoc-var">diffY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.constrain</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">diffY</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mh</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mxh</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">diffY</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">diffY</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;hdrag&quot;</span><span class="jsdoc-syntax">:
+                    
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">wi</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">adiffX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.abs</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">diffX</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sub </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">adiffX </span><span class="jsdoc-syntax">% </span><span class="jsdoc-var">wi</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// how much 
+                        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sub </span><span class="jsdoc-syntax">&gt; (</span><span class="jsdoc-var">wi</span><span class="jsdoc-syntax">/2)) { </span><span class="jsdoc-comment">// far enough to snap
+                            </span><span class="jsdoc-var">diffX </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">diffX </span><span class="jsdoc-syntax">&gt; 0) ? </span><span class="jsdoc-var">diffX</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">sub </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">wi </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">diffX</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">sub </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">wi</span><span class="jsdoc-syntax">;
+                        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                            </span><span class="jsdoc-comment">// remove difference.. 
+                            </span><span class="jsdoc-var">diffX </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">diffX </span><span class="jsdoc-syntax">&gt; 0) ? </span><span class="jsdoc-var">diffX</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">sub </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">diffX</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">sub</span><span class="jsdoc-syntax">;
+                        }
+                    }
+                    </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">diffX</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.minX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;west&quot;</span><span class="jsdoc-syntax">:
+                    </span><span class="jsdoc-var">diffX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.constrain</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">diffX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mw</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mxw</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">diffX</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">diffX</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;northeast&quot;</span><span class="jsdoc-syntax">:
+                    </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">diffX</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mw</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">mxw</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">diffY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.constrain</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">diffY</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mh</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mxh</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">diffY</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">diffY</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;northwest&quot;</span><span class="jsdoc-syntax">:
+                    </span><span class="jsdoc-var">diffX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.constrain</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">diffX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mw</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mxw</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">diffY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.constrain</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">diffY</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mh</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mxh</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">diffY</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">diffY</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">diffX</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">diffX</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+               </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;southwest&quot;</span><span class="jsdoc-syntax">:
+                    </span><span class="jsdoc-var">diffX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.constrain</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">diffX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mw</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mxw</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">diffY</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mh</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">mxh</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">diffX</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">diffX</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.snap</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">wi</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mw</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sh </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.snap</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hi</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mh</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sw </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">sh </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;northeast&quot;</span><span class="jsdoc-syntax">:
+                        </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">sh </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;north&quot;</span><span class="jsdoc-syntax">:
+                        </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">sh </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;southwest&quot;</span><span class="jsdoc-syntax">:
+                        </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">sw </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;west&quot;</span><span class="jsdoc-syntax">:
+                        </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">sw </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;northwest&quot;</span><span class="jsdoc-syntax">:
+                        </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">sw </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">sh </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sw</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sh</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.preserveRatio</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;southeast&quot;</span><span class="jsdoc-syntax">:
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;east&quot;</span><span class="jsdoc-syntax">:
+                        </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">oh </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">/</span><span class="jsdoc-var">ow</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mh</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">mxh</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ow </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">/</span><span class="jsdoc-var">oh</span><span class="jsdoc-syntax">);
+                       </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;south&quot;</span><span class="jsdoc-syntax">:
+                        </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ow </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">/</span><span class="jsdoc-var">oh</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mw</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">mxw</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">oh </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">/</span><span class="jsdoc-var">ow</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;northeast&quot;</span><span class="jsdoc-syntax">:
+                        </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ow </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">/</span><span class="jsdoc-var">oh</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mw</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">mxw</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">oh </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">/</span><span class="jsdoc-var">ow</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;north&quot;</span><span class="jsdoc-syntax">:
+                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ow </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">/</span><span class="jsdoc-var">oh</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mw</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">mxw</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">oh </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">/</span><span class="jsdoc-var">ow</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+= (</span><span class="jsdoc-var">tw </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">) / 2;
+                        </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;southwest&quot;</span><span class="jsdoc-syntax">:
+                        </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">oh </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">/</span><span class="jsdoc-var">ow</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mh</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">mxh</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ow </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">/</span><span class="jsdoc-var">oh</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">tw </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;west&quot;</span><span class="jsdoc-syntax">:
+                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">th </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">oh </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">/</span><span class="jsdoc-var">ow</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mh</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">mxh</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">+= (</span><span class="jsdoc-var">th </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">) / 2;
+                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ow </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">/</span><span class="jsdoc-var">oh</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">tw </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">;
+                       </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;northwest&quot;</span><span class="jsdoc-syntax">:
+                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">th </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">oh </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">/</span><span class="jsdoc-var">ow</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mh</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">mxh</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ow </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">/</span><span class="jsdoc-var">oh</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">th </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">tw </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">;
+                       </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+
+                }
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'hdrag'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ow</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">this.proxy.setBounds</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dynamic</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.resizeElement</span><span class="jsdoc-syntax">();
+            }
+            }</span><span class="jsdoc-keyword">catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){}
+        }
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;resizing&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">handleOver </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.enabled</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-resizable-over&quot;</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">handleOut </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.resizing</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-resizable-over&quot;</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the element this component is bound to.
+     * @return {Roo.Element}
+     */
+    </span><span class="jsdoc-var">getEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the resizeChild element (or null).
+     * @return {Roo.Element}
+     */
+    </span><span class="jsdoc-var">getResizeChild </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.resizeChild</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-var">groupHandler </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        
+    },
+    </span><span class="jsdoc-comment">/**
+     * Destroys this resizable. If the element was wrapped and
+     * removeEl is not true then the element remains.
+     * @param {Boolean} removeEl (optional) true to remove the element from the DOM
+     */
+    </span><span class="jsdoc-var">destroy </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">removeEl</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.proxy.remove</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.overlay</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.overlay.removeAllListeners</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.overlay.remove</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ps </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.Resizable.positions</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">ps</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">ps</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">] != </span><span class="jsdoc-string">&quot;function&quot; </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">ps</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">]]){
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">ps</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">]];
+                </span><span class="jsdoc-var">h.el.removeAllListeners</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">h.el.remove</span><span class="jsdoc-syntax">();
+            }
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">removeEl</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.el.remove</span><span class="jsdoc-syntax">();
+        }
+    }
+});
+
+</span><span class="jsdoc-comment">// private
+// hash to map config positions to true positions
+</span><span class="jsdoc-var">Roo.Resizable.positions </span><span class="jsdoc-syntax">= {
+    </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;north&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;south&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;east&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;west&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">se</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;southeast&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sw</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;southwest&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nw</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;northwest&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ne</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;northeast&quot;</span><span class="jsdoc-syntax">, 
+    </span><span class="jsdoc-var">hd</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;hdrag&quot;
+</span><span class="jsdoc-syntax">};
+
+</span><span class="jsdoc-comment">// private
+</span><span class="jsdoc-var">Roo.Resizable.Handle </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rz</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">disableTrackOver</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">transparent</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.tpl</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-comment">// only initialize the template if resizable is used
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper.createTemplate</span><span class="jsdoc-syntax">(
+            {</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-resizable-handle x-resizable-handle-{0}&quot;</span><span class="jsdoc-syntax">}
+        );
+        </span><span class="jsdoc-var">tpl.compile</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">Roo.Resizable.Handle.prototype.tpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tpl</span><span class="jsdoc-syntax">;
+    }
+    </span><span class="jsdoc-var">this.position </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.rz </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rz</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-comment">// show north drag fro topdra
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">handlepos </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'hdrag' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'north' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">;
+    
+    </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tpl.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rz.el.dom</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-var">handlepos</span><span class="jsdoc-syntax">], </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'hdrag'</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'cursor'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'pointer'</span><span class="jsdoc-syntax">);
+    }
+    </span><span class="jsdoc-var">this.el.unselectable</span><span class="jsdoc-syntax">();
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">transparent</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.el.setOpacity</span><span class="jsdoc-syntax">(0);
+    }
+    </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mousedown&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMouseDown</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">disableTrackOver</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mouseover&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMouseOver</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mouseout&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMouseOut</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    }
+};
+
+</span><span class="jsdoc-comment">// private
+</span><span class="jsdoc-var">Roo.Resizable.Handle.prototype </span><span class="jsdoc-syntax">= {
+    </span><span class="jsdoc-var">afterResize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rz</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'after?'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">// do nothing
+    </span><span class="jsdoc-syntax">},
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onMouseDown </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.rz.onMouseDown</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+    },
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onMouseOver </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.rz.handleOver</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+    },
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onMouseOut </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.rz.handleOut</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+    }
+};</span></code></body></html>

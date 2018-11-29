@@ -1,0 +1,95 @@
+<html><head><title>../roojs1/Roo/bootstrap/ProgressBar.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ * ProgressBar
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.ProgressBar
+ * @extends Roo.bootstrap.Component
+ * Bootstrap ProgressBar class
+ * @cfg {Number} aria_valuenow aria-value now
+ * @cfg {Number} aria_valuemin aria-value min
+ * @cfg {Number} aria_valuemax aria-value max
+ * @cfg {String} label label for the progress bar
+ * @cfg {String} panel (success | info | warning | danger )
+ * @cfg {String} role role of the progress bar
+ * @cfg {String} sr_only text
+ * 
+ * 
+ * @constructor
+ * Create a new ProgressBar
+ * @param {Object} config The config object
+ */
+
+</span><span class="jsdoc-var">Roo.bootstrap.ProgressBar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.bootstrap.ProgressBar.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.ProgressBar</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+    
+    </span><span class="jsdoc-var">aria_valuenow </span><span class="jsdoc-syntax">: 0,
+    </span><span class="jsdoc-var">aria_valuemin </span><span class="jsdoc-syntax">: 0,
+    </span><span class="jsdoc-var">aria_valuemax </span><span class="jsdoc-syntax">: 100,
+    </span><span class="jsdoc-var">label </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">panel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">role </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">sr_only</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'progress-bar'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'width:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">Math.ceil</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">this.aria_valuenow </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">this.aria_valuemax</span><span class="jsdoc-syntax">) * 100) + </span><span class="jsdoc-string">'%'
+        </span><span class="jsdoc-syntax">};
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.sr_only</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'sr-only'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.sr_only
+            </span><span class="jsdoc-syntax">}
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.role</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.role </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.role</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.aria_valuenow</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'aria-valuenow'</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">this.aria_valuenow</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.aria_valuemin</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'aria-valuemin'</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">this.aria_valuemin</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.aria_valuemax</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'aria-valuemax'</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">this.aria_valuemax</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.label </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.sr_only</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.label</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.panel</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' progress-bar-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.panel</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">update </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">aria_valuenow</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.aria_valuenow </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">aria_valuenow</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'width'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Math.ceil</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">this.aria_valuenow </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">this.aria_valuemax</span><span class="jsdoc-syntax">) * 100) + </span><span class="jsdoc-string">'%'</span><span class="jsdoc-syntax">);
+    }
+   
+});
+
+ 
+
+ </span></code></body></html>

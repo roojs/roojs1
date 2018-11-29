@@ -1,0 +1,141 @@
+<html><head><title>../roojs1/Roo/form/DisplayField.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+/**
+ * @class Roo.form.DisplayField
+ * @extends Roo.form.Field
+ * A generic Field to display non-editable data.
+ * @cfg {Boolean} closable (true|false) default false
+ * @constructor
+ * Creates a new Display Field item.
+ * @param {Object} config Configuration options
+ */
+</span><span class="jsdoc-var">Roo.form.DisplayField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.form.DisplayField.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+         * @event close
+         * Fires after the click the close btn
+	     * @param {Roo.form.DisplayField} this
+	     */
+        </span><span class="jsdoc-var">close </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.DisplayField</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.form.TextField</span><span class="jsdoc-syntax">,  {
+    </span><span class="jsdoc-var">inputType</span><span class="jsdoc-syntax">:      </span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">allowBlank</span><span class="jsdoc-syntax">:     </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">readOnly</span><span class="jsdoc-syntax">:         </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    
+ 
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} focusClass The CSS class to use when the checkbox receives focus (defaults to undefined)
+     */
+    </span><span class="jsdoc-var">focusClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} fieldClass The default CSS class for the checkbox (defaults to &quot;x-form-field&quot;)
+     */
+    </span><span class="jsdoc-var">fieldClass</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-form-field'</span><span class="jsdoc-syntax">,
+    
+     </span><span class="jsdoc-comment">/**
+     * @cfg {Function} valueRenderer The renderer for the field (so you can reformat output). should return raw HTML
+     */
+    </span><span class="jsdoc-var">valueRenderer</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 100,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String/Object} autoCreate A DomHelper element spec, or true for a default element spec (defaults to
+     * {tag: &quot;input&quot;, type: &quot;checkbox&quot;, autocomplete: &quot;off&quot;})
+     */
+     
+ //   defaultAutoCreate : { tag: 'input', type: 'hidden', autocomplete: 'off'},
+ 
+    </span><span class="jsdoc-var">closable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">onResize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">Roo.form.DisplayField.superclass.onResize.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
+        
+    },
+
+    </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-comment">// Roo.form.Checkbox.superclass.initEvents.call(this);
+        // has no events...
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.closable</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.closeEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClose</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+       
+    },
+
+
+    </span><span class="jsdoc-var">getResizeEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.wrap</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">getPositionEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.wrap</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">){
+        
+        </span><span class="jsdoc-var">Roo.form.DisplayField.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">//if(this.inputValue !== undefined){
+        </span><span class="jsdoc-var">this.wrap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.wrap</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">this.viewEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.wrap.createChild</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-form-displayfield'</span><span class="jsdoc-syntax">});
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.closable</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.closeEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.wrap.createChild</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-dlg-close'</span><span class="jsdoc-syntax">});
+        }
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bodyStyle</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.viewEl.applyStyles</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bodyStyle</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-comment">//this.viewEl.setStyle('padding', '2px');
+        
+        </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">);
+        
+    },
+</span><span class="jsdoc-comment">/*
+    // private
+    initValue : Roo.emptyFn,
+
+  */
+
+	// private
+    </span><span class="jsdoc-var">onClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Sets the checked state of the checkbox.
+     * @param {Boolean/String} checked True, 'true', '1', or 'on' to check the checkbox, any other value will uncheck it.
+     */
+    </span><span class="jsdoc-var">setValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.valueRenderer </span><span class="jsdoc-syntax">?  </span><span class="jsdoc-var">this.valueRenderer</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'{0}'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">// this might be called before we have a dom element..
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.viewEl</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.viewEl.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">Roo.form.DisplayField.superclass.setValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+
+    },
+    
+    </span><span class="jsdoc-var">onClose </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'close'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    }
+});</span></code></body></html>

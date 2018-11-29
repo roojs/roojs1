@@ -1,0 +1,34 @@
+<html><head><title>../roojs1/Roo/data/SimpleStore.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+/**
+ * @class Roo.data.SimpleStore
+ * @extends Roo.data.Store
+ * Small helper class to make creating Stores from Array data easier.
+ * @cfg {Number} id The array index of the record id. Leave blank to auto generate ids.
+ * @cfg {Array} fields An array of field definition objects, or field name strings.
+ * @cfg {Array} data The multi-dimensional array of data
+ * @constructor
+ * @param {Object} config
+ */
+</span><span class="jsdoc-var">Roo.data.SimpleStore </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.data.SimpleStore.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, {
+        </span><span class="jsdoc-var">isLocal </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">reader</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.data.ArrayReader</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">config.id
+            </span><span class="jsdoc-syntax">},
+            </span><span class="jsdoc-var">Roo.data.Record.create</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.fields</span><span class="jsdoc-syntax">)
+        ),
+        </span><span class="jsdoc-var">proxy </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.data.MemoryProxy</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.data</span><span class="jsdoc-syntax">)
+    });
+    </span><span class="jsdoc-var">this.load</span><span class="jsdoc-syntax">();
+};
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.data.SimpleStore</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.data.Store</span><span class="jsdoc-syntax">);</span></code></body></html>

@@ -1,0 +1,485 @@
+<html><head><title>../roojs1/Roo/lib/Ajax.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Portions of this file are based on pieces of Yahoo User Interface Library
+ * Copyright (c) 2007, Yahoo! Inc. All rights reserved.
+ * YUI licensed under the BSD License:
+ * http://developer.yahoo.net/yui/license.txt
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ *
+ */
+
+</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+    </span><span class="jsdoc-comment">/**
+     * @class Roo.lib.Ajax
+     *
+     */
+    </span><span class="jsdoc-var">Roo.lib.Ajax </span><span class="jsdoc-syntax">= {
+        </span><span class="jsdoc-comment">/**
+         * @static 
+         */
+        </span><span class="jsdoc-var">request </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">method</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">uri</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cb</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">options.headers</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hs</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">h </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">hs</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hs.hasOwnProperty</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">)){
+                            </span><span class="jsdoc-var">this.initHeader</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">], </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+                        }
+                    }
+                }
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">options.xmlData</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">this.initHeader</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Content-Type'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'text/xml'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">method </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'POST'</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">options.xmlData</span><span class="jsdoc-syntax">;
+                }
+            }
+
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.asyncRequest</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">method</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">uri</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cb</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">);
+        },
+
+        </span><span class="jsdoc-var">serializeForm </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">form</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">form </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">form </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">document.getElementById</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">form</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">document.forms</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">form</span><span class="jsdoc-syntax">]);
+            }
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">disabled</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hasSubmit </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">form.elements.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">form.elements</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+                </span><span class="jsdoc-var">disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">form.elements</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.disabled</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">form.elements</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.name</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">val </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">form.elements</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.value</span><span class="jsdoc-syntax">;
+
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">disabled </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">switch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.type</span><span class="jsdoc-syntax">)
+                            {
+                        </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'select-one'</span><span class="jsdoc-syntax">:
+                        </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'select-multiple'</span><span class="jsdoc-syntax">:
+                            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">el.options.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">++) {
+                                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.options</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.selected</span><span class="jsdoc-syntax">) {
+                                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isIE</span><span class="jsdoc-syntax">) {
+                                        </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">Roo.encodeURIComponent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">'=' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">Roo.encodeURIComponent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.options</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.attributes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'value'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.specified </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">el.options</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">el.options</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.text</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">'&amp;'</span><span class="jsdoc-syntax">;
+                                    }
+                                    </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                                        </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">Roo.encodeURIComponent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">'=' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">Roo.encodeURIComponent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.options</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'value'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">el.options</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">el.options</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.text</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">'&amp;'</span><span class="jsdoc-syntax">;
+                                    }
+                                }
+                            }
+                            </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'radio'</span><span class="jsdoc-syntax">:
+                        </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'checkbox'</span><span class="jsdoc-syntax">:
+                            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.checked</span><span class="jsdoc-syntax">) {
+                                </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">Roo.encodeURIComponent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">'=' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">Roo.encodeURIComponent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">'&amp;'</span><span class="jsdoc-syntax">;
+                            }
+                            </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'file'</span><span class="jsdoc-syntax">:
+
+                        </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">:
+
+                        </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'reset'</span><span class="jsdoc-syntax">:
+
+                        </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">:
+
+                            </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'submit'</span><span class="jsdoc-syntax">:
+                            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hasSubmit </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+                                </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">Roo.encodeURIComponent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">'=' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">Roo.encodeURIComponent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">'&amp;'</span><span class="jsdoc-syntax">;
+                                </span><span class="jsdoc-var">hasSubmit </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+                            }
+                            </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-keyword">default</span><span class="jsdoc-syntax">:
+                            </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">Roo.encodeURIComponent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">'=' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">Roo.encodeURIComponent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">'&amp;'</span><span class="jsdoc-syntax">;
+                            </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    }
+                }
+            }
+            </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">data.substr</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-var">data.length </span><span class="jsdoc-syntax">- 1);
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-var">headers</span><span class="jsdoc-syntax">:{},
+
+        </span><span class="jsdoc-var">hasHeaders</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+        </span><span class="jsdoc-var">useDefaultHeader</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+
+        </span><span class="jsdoc-var">defaultPostHeader</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'application/x-www-form-urlencoded'</span><span class="jsdoc-syntax">,
+
+        </span><span class="jsdoc-var">useDefaultXhrHeader</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+
+        </span><span class="jsdoc-var">defaultXhrHeader</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'XMLHttpRequest'</span><span class="jsdoc-syntax">,
+
+        </span><span class="jsdoc-var">hasDefaultHeaders</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+
+        </span><span class="jsdoc-var">defaultHeaders</span><span class="jsdoc-syntax">:{},
+
+        </span><span class="jsdoc-var">poll</span><span class="jsdoc-syntax">:{},
+
+        </span><span class="jsdoc-var">timeout</span><span class="jsdoc-syntax">:{},
+
+        </span><span class="jsdoc-var">pollInterval</span><span class="jsdoc-syntax">:50,
+
+        </span><span class="jsdoc-var">transactionId</span><span class="jsdoc-syntax">:0,
+
+        </span><span class="jsdoc-var">setProgId</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">)
+        {
+            </span><span class="jsdoc-var">this.activeX.unshift</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+        },
+
+        </span><span class="jsdoc-var">setDefaultPostHeader</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">)
+        {
+            </span><span class="jsdoc-var">this.useDefaultHeader </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-var">setDefaultXhrHeader</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">)
+        {
+            </span><span class="jsdoc-var">this.useDefaultXhrHeader </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-var">setPollingInterval</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)
+        {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'number' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">isFinite</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)) {
+                </span><span class="jsdoc-var">this.pollInterval </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">;
+            }
+        },
+
+        </span><span class="jsdoc-var">createXhrObject</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">transactionId</span><span class="jsdoc-syntax">)
+        {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">obj</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">http</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">try
+            </span><span class="jsdoc-syntax">{
+
+                </span><span class="jsdoc-var">http </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">XMLHttpRequest</span><span class="jsdoc-syntax">();
+
+                </span><span class="jsdoc-var">obj </span><span class="jsdoc-syntax">= { </span><span class="jsdoc-var">conn</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">http</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tId</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">transactionId </span><span class="jsdoc-syntax">};
+            }
+            </span><span class="jsdoc-keyword">catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+            {
+                </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.activeX.length</span><span class="jsdoc-syntax">; ++</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">try
+                    </span><span class="jsdoc-syntax">{
+
+                        </span><span class="jsdoc-var">http </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">ActiveXObject</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.activeX</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+
+                        </span><span class="jsdoc-var">obj </span><span class="jsdoc-syntax">= { </span><span class="jsdoc-var">conn</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">http</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tId</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">transactionId </span><span class="jsdoc-syntax">};
+                        </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    }
+                    </span><span class="jsdoc-keyword">catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+                    }
+                }
+            }
+            </span><span class="jsdoc-keyword">finally
+            </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">obj</span><span class="jsdoc-syntax">;
+            }
+        },
+
+        </span><span class="jsdoc-var">getConnectionObject</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+        {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.transactionId</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">try
+            </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.createXhrObject</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tId</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">this.transactionId</span><span class="jsdoc-syntax">++;
+                }
+            }
+            </span><span class="jsdoc-keyword">catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            }
+            </span><span class="jsdoc-keyword">finally
+            </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">;
+            }
+        },
+
+        </span><span class="jsdoc-var">asyncRequest</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">method</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">uri</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">postData</span><span class="jsdoc-syntax">)
+        {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getConnectionObject</span><span class="jsdoc-syntax">();
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">o.conn.open</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">method</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">uri</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.useDefaultXhrHeader</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.defaultHeaders</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'X-Requested-With'</span><span class="jsdoc-syntax">]) {
+                        </span><span class="jsdoc-var">this.initHeader</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'X-Requested-With'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.defaultXhrHeader</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+                    }
+                }
+
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">postData </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.useDefaultHeader</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">this.initHeader</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Content-Type'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.defaultPostHeader</span><span class="jsdoc-syntax">);
+                }
+
+                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasDefaultHeaders </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.hasHeaders</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">this.setHeader</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+                }
+
+                </span><span class="jsdoc-var">this.handleReadyState</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">o.conn.send</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">postData </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
+
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">;
+            }
+        },
+
+        </span><span class="jsdoc-var">handleReadyState</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">)
+        {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">oConn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">callback </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">callback.timeout</span><span class="jsdoc-syntax">) {
+                
+                </span><span class="jsdoc-var">this.timeout</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">o.tId</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">window.setTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+                    </span><span class="jsdoc-var">oConn.abort</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+                }, </span><span class="jsdoc-var">callback.timeout</span><span class="jsdoc-syntax">);
+            }
+
+            </span><span class="jsdoc-var">this.poll</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">o.tId</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">window.setInterval</span><span class="jsdoc-syntax">(
+                    </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+                        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.conn </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">o.conn.readyState </span><span class="jsdoc-syntax">== 4) {
+                            </span><span class="jsdoc-var">window.clearInterval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oConn.poll</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">o.tId</span><span class="jsdoc-syntax">]);
+                            </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">oConn.poll</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">o.tId</span><span class="jsdoc-syntax">];
+
+                            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">callback </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">callback.timeout</span><span class="jsdoc-syntax">) {
+                                </span><span class="jsdoc-var">window.clearTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oConn.timeout</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">o.tId</span><span class="jsdoc-syntax">]);
+                                </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">oConn.timeout</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">o.tId</span><span class="jsdoc-syntax">];
+                            }
+
+                            </span><span class="jsdoc-var">oConn.handleTransactionResponse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">);
+                        }
+                    }
+                    , </span><span class="jsdoc-var">this.pollInterval</span><span class="jsdoc-syntax">);
+        },
+
+        </span><span class="jsdoc-var">handleTransactionResponse</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">isAbort</span><span class="jsdoc-syntax">)
+        {
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.releaseObject</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">httpStatus</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">responseObject</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">try
+            </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.conn.status </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">o.conn.status </span><span class="jsdoc-syntax">!= 0) {
+                    </span><span class="jsdoc-var">httpStatus </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o.conn.status</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                    </span><span class="jsdoc-var">httpStatus </span><span class="jsdoc-syntax">= 13030;
+                }
+            }
+            </span><span class="jsdoc-keyword">catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+
+
+                </span><span class="jsdoc-var">httpStatus </span><span class="jsdoc-syntax">= 13030;
+            }
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">httpStatus </span><span class="jsdoc-syntax">&gt;= 200 &amp;&amp; </span><span class="jsdoc-var">httpStatus </span><span class="jsdoc-syntax">&lt; 300) {
+                </span><span class="jsdoc-var">responseObject </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.createResponseObject</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">callback.argument</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">callback.success</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">callback.scope</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">callback.success</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">responseObject</span><span class="jsdoc-syntax">);
+                    }
+                    </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+
+
+                        </span><span class="jsdoc-var">callback.success.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">callback.scope</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-var">responseObject</span><span class="jsdoc-syntax">]);
+                    }
+                }
+            }
+            </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-keyword">switch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">httpStatus</span><span class="jsdoc-syntax">) {
+
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">12002:
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">12029:
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">12030:
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">12031:
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">12152:
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">13030:
+                        </span><span class="jsdoc-var">responseObject </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.createExceptionObject</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.tId</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">callback.argument</span><span class="jsdoc-syntax">, (</span><span class="jsdoc-var">isAbort </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">isAbort </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">));
+                        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">callback.failure</span><span class="jsdoc-syntax">) {
+                            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">callback.scope</span><span class="jsdoc-syntax">) {
+                                </span><span class="jsdoc-var">callback.failure</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">responseObject</span><span class="jsdoc-syntax">);
+                            }
+                            </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                                </span><span class="jsdoc-var">callback.failure.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">callback.scope</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-var">responseObject</span><span class="jsdoc-syntax">]);
+                            }
+                        }
+                        </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">default</span><span class="jsdoc-syntax">:
+                        </span><span class="jsdoc-var">responseObject </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.createResponseObject</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">callback.argument</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">callback.failure</span><span class="jsdoc-syntax">) {
+                            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">callback.scope</span><span class="jsdoc-syntax">) {
+                                </span><span class="jsdoc-var">callback.failure</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">responseObject</span><span class="jsdoc-syntax">);
+                            }
+                            </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                                </span><span class="jsdoc-var">callback.failure.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">callback.scope</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-var">responseObject</span><span class="jsdoc-syntax">]);
+                            }
+                        }
+                }
+            }
+
+            </span><span class="jsdoc-var">this.releaseObject</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">responseObject </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-var">createResponseObject</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">callbackArg</span><span class="jsdoc-syntax">)
+        {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">obj </span><span class="jsdoc-syntax">= {};
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">headerObj </span><span class="jsdoc-syntax">= {};
+
+            </span><span class="jsdoc-keyword">try
+            </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">headerStr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o.conn.getAllResponseHeaders</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">header </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">headerStr.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'\n'</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">header.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">delimitPos </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">header</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">':'</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">delimitPos </span><span class="jsdoc-syntax">!= -1) {
+                        </span><span class="jsdoc-var">headerObj</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">header</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.substring</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-var">delimitPos</span><span class="jsdoc-syntax">)] = </span><span class="jsdoc-var">header</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.substring</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">delimitPos </span><span class="jsdoc-syntax">+ 2);
+                    }
+                }
+            }
+            </span><span class="jsdoc-keyword">catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            }
+
+            </span><span class="jsdoc-var">obj.tId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o.tId</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">obj.status </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o.conn.status</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">obj.statusText </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o.conn.statusText</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">obj.getResponseHeader </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">headerObj</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">obj.getAllResponseHeaders </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">headerStr</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">obj.responseText </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o.conn.responseText</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">obj.responseXML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o.conn.responseXML</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">callbackArg </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">obj.argument </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">callbackArg</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">obj</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-var">createExceptionObject</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tId</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">callbackArg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">isAbort</span><span class="jsdoc-syntax">)
+        {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">COMM_CODE </span><span class="jsdoc-syntax">= 0;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">COMM_ERROR </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'communication failure'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ABORT_CODE </span><span class="jsdoc-syntax">= -1;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ABORT_ERROR </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'transaction aborted'</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">obj </span><span class="jsdoc-syntax">= {};
+
+            </span><span class="jsdoc-var">obj.tId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tId</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isAbort</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">obj.status </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ABORT_CODE</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">obj.statusText </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ABORT_ERROR</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">obj.status </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">COMM_CODE</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">obj.statusText </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">COMM_ERROR</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">callbackArg</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">obj.argument </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">callbackArg</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">obj</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-var">initHeader</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">isDefault</span><span class="jsdoc-syntax">)
+        {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">headerObj </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">isDefault</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">this.defaultHeaders </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.headers</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">headerObj</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">] === </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">headerObj</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+
+
+                </span><span class="jsdoc-var">headerObj</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;,&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">headerObj</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">];
+            }
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isDefault</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.hasDefaultHeaders </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">this.hasHeaders </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            }
+        },
+
+
+        </span><span class="jsdoc-var">setHeader</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">)
+        {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasDefaultHeaders</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">prop </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">this.defaultHeaders</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.defaultHeaders.hasOwnProperty</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">prop</span><span class="jsdoc-syntax">)) {
+                        </span><span class="jsdoc-var">o.conn.setRequestHeader</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">prop</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.defaultHeaders</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">prop</span><span class="jsdoc-syntax">]);
+                    }
+                }
+            }
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasHeaders</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">prop </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">this.headers</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.headers.hasOwnProperty</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">prop</span><span class="jsdoc-syntax">)) {
+                        </span><span class="jsdoc-var">o.conn.setRequestHeader</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">prop</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.headers</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">prop</span><span class="jsdoc-syntax">]);
+                    }
+                }
+                </span><span class="jsdoc-var">this.headers </span><span class="jsdoc-syntax">= {};
+                </span><span class="jsdoc-var">this.hasHeaders </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            }
+        },
+
+        </span><span class="jsdoc-var">resetDefaultHeaders</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.defaultHeaders</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.defaultHeaders </span><span class="jsdoc-syntax">= {};
+            </span><span class="jsdoc-var">this.hasDefaultHeaders </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-var">abort</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">isTimeout</span><span class="jsdoc-syntax">)
+        {
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isCallInProgress</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">)) {
+                </span><span class="jsdoc-var">o.conn.abort</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">window.clearInterval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.poll</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">o.tId</span><span class="jsdoc-syntax">]);
+                </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.poll</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">o.tId</span><span class="jsdoc-syntax">];
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isTimeout</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.timeout</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">o.tId</span><span class="jsdoc-syntax">];
+                }
+
+                </span><span class="jsdoc-var">this.handleTransactionResponse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+            }
+        },
+
+
+        </span><span class="jsdoc-var">isCallInProgress</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">)
+        {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">o.conn</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">o.conn.readyState </span><span class="jsdoc-syntax">!= 4 &amp;&amp; </span><span class="jsdoc-var">o.conn.readyState </span><span class="jsdoc-syntax">!= 0;
+            }
+            </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+
+                </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+            }
+        },
+
+
+        </span><span class="jsdoc-var">releaseObject</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">)
+        {
+
+            </span><span class="jsdoc-var">o.conn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-var">activeX</span><span class="jsdoc-syntax">:[
+        </span><span class="jsdoc-string">'MSXML2.XMLHTTP.3.0'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'MSXML2.XMLHTTP'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Microsoft.XMLHTTP'
+        </span><span class="jsdoc-syntax">]
+
+
+    };
+})();</span></code></body></html>

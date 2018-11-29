@@ -1,0 +1,526 @@
+<html><head><title>../roojs1/Roo/lib/Event.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Portions of this file are based on pieces of Yahoo User Interface Library
+ * Copyright (c) 2007, Yahoo! Inc. All rights reserved.
+ * YUI licensed under the BSD License:
+ * http://developer.yahoo.net/yui/license.txt
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ *
+ */
+
+</span><span class="jsdoc-var">Roo.lib.Event </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">loadComplete </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">= [];
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">unloadListeners </span><span class="jsdoc-syntax">= [];
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">retryCount </span><span class="jsdoc-syntax">= 0;
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">onAvailStack </span><span class="jsdoc-syntax">= [];
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">counter </span><span class="jsdoc-syntax">= 0;
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lastError </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-var">POLL_RETRYS</span><span class="jsdoc-syntax">: 200,
+        </span><span class="jsdoc-var">POLL_INTERVAL</span><span class="jsdoc-syntax">: 20,
+        </span><span class="jsdoc-var">EL</span><span class="jsdoc-syntax">: 0,
+        </span><span class="jsdoc-var">TYPE</span><span class="jsdoc-syntax">: 1,
+        </span><span class="jsdoc-var">FN</span><span class="jsdoc-syntax">: 2,
+        </span><span class="jsdoc-var">WFN</span><span class="jsdoc-syntax">: 3,
+        </span><span class="jsdoc-var">OBJ</span><span class="jsdoc-syntax">: 3,
+        </span><span class="jsdoc-var">ADJ_SCOPE</span><span class="jsdoc-syntax">: 4,
+        </span><span class="jsdoc-var">_interval</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+
+        </span><span class="jsdoc-var">startInterval</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this._interval</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">self </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">callback </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+                    </span><span class="jsdoc-var">self._tryPreloadAttach</span><span class="jsdoc-syntax">();
+                };
+                </span><span class="jsdoc-var">this._interval </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">setInterval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.POLL_INTERVAL</span><span class="jsdoc-syntax">);
+
+            }
+        },
+
+        </span><span class="jsdoc-var">onAvailable</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p_id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">p_fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">p_obj</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">p_override</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">onAvailStack.push</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">:         </span><span class="jsdoc-var">p_id</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">:         </span><span class="jsdoc-var">p_fn</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">obj</span><span class="jsdoc-syntax">:        </span><span class="jsdoc-var">p_obj</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">override</span><span class="jsdoc-syntax">:   </span><span class="jsdoc-var">p_override</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">checkReady</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false    </span><span class="jsdoc-syntax">});
+
+            </span><span class="jsdoc-var">retryCount </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.POLL_RETRYS</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.startInterval</span><span class="jsdoc-syntax">();
+        },
+
+
+        </span><span class="jsdoc-var">addListener</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.getDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;unload&quot; </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">unloadListeners</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">unloadListeners.length</span><span class="jsdoc-syntax">] =
+                [</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">];
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">wrappedFn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.lib.Event.getEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">));
+            };
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">li </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">wrappedFn</span><span class="jsdoc-syntax">];
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">listeners.length</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">listeners</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">li</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-var">this.doAdd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">wrappedFn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+
+        },
+
+
+        </span><span class="jsdoc-var">removeListener</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.getDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.purgeElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">);
+            }
+
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;unload&quot; </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">) {
+
+                </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0,</span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">unloadListeners.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">li </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">unloadListeners</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">li </span><span class="jsdoc-syntax">&amp;&amp;
+                        </span><span class="jsdoc-var">li</span><span class="jsdoc-syntax">[0] == </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">&amp;&amp;
+                        </span><span class="jsdoc-var">li</span><span class="jsdoc-syntax">[1] == </span><span class="jsdoc-var">eventName </span><span class="jsdoc-syntax">&amp;&amp;
+                        </span><span class="jsdoc-var">li</span><span class="jsdoc-syntax">[2] == </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">unloadListeners.splice</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, 1);
+                        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+                    }
+                }
+
+                </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cacheItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">[3];
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;undefined&quot; </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this._getCacheIndex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">);
+            }
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">&gt;= 0) {
+                </span><span class="jsdoc-var">cacheItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">listeners</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">];
+            }
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">cacheItem</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-var">this.doRemove</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cacheItem</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.WFN</span><span class="jsdoc-syntax">], </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">listeners</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">this.WFN</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">listeners</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">this.FN</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-var">listeners.splice</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, 1);
+
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+
+        },
+
+
+        </span><span class="jsdoc-var">getTarget</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">resolveTextNode</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.browserEvent </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.touches </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-var">ev.touches</span><span class="jsdoc-syntax">[0] || </span><span class="jsdoc-var">ev.changedTouches</span><span class="jsdoc-syntax">[0] || </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">)  : </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.target </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">ev.srcElement</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.resolveTextNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">);
+        },
+
+
+        </span><span class="jsdoc-var">resolveTextNode</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isSafari </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">&amp;&amp; 3 == </span><span class="jsdoc-var">node.nodeType</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">node.parentNode</span><span class="jsdoc-syntax">;
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">;
+            }
+        },
+
+
+        </span><span class="jsdoc-var">getPageX</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.browserEvent </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.touches </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-var">ev.touches</span><span class="jsdoc-syntax">[0] || </span><span class="jsdoc-var">ev.changedTouches</span><span class="jsdoc-syntax">[0] || </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">)  : </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.pageX</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">&amp;&amp; 0 !== </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.clientX </span><span class="jsdoc-syntax">|| 0;
+
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isIE</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.getScroll</span><span class="jsdoc-syntax">()[1];
+                }
+            }
+
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">;
+        },
+
+
+        </span><span class="jsdoc-var">getPageY</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.browserEvent </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.touches </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-var">ev.touches</span><span class="jsdoc-syntax">[0] || </span><span class="jsdoc-var">ev.changedTouches</span><span class="jsdoc-syntax">[0] || </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">)  : </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.pageY</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">&amp;&amp; 0 !== </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.clientY </span><span class="jsdoc-syntax">|| 0;
+
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isIE</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.getScroll</span><span class="jsdoc-syntax">()[0];
+                }
+            }
+
+
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">;
+        },
+
+
+        </span><span class="jsdoc-var">getXY</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.browserEvent </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.touches </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-var">ev.touches</span><span class="jsdoc-syntax">[0] || </span><span class="jsdoc-var">ev.changedTouches</span><span class="jsdoc-syntax">[0] || </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">)  : </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.getPageX</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">this.getPageY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">)];
+        },
+
+
+        </span><span class="jsdoc-var">getRelatedTarget</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.browserEvent </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.touches </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-var">ev.touches</span><span class="jsdoc-syntax">[0] || </span><span class="jsdoc-var">ev.changedTouches</span><span class="jsdoc-syntax">[0] || </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">)  : </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.relatedTarget</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev.type </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;mouseout&quot;</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.toElement</span><span class="jsdoc-syntax">;
+                } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev.type </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;mouseover&quot;</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.fromElement</span><span class="jsdoc-syntax">;
+                }
+            }
+
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.resolveTextNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">);
+        },
+
+
+        </span><span class="jsdoc-var">getTime</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.browserEvent </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.touches </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-var">ev.touches</span><span class="jsdoc-syntax">[0] || </span><span class="jsdoc-var">ev.changedTouches</span><span class="jsdoc-syntax">[0] || </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">)  : </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">ev.time</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getTime</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
+                    </span><span class="jsdoc-var">ev.time </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">;
+                } </span><span class="jsdoc-keyword">catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ex</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">this.lastError </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ex</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">;
+                }
+            }
+
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ev.time</span><span class="jsdoc-syntax">;
+        },
+
+
+        </span><span class="jsdoc-var">stopEvent</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.stopPropagation</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.preventDefault</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">);
+        },
+
+
+        </span><span class="jsdoc-var">stopPropagation</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.browserEvent </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev.stopPropagation</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">ev.stopPropagation</span><span class="jsdoc-syntax">();
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">ev.cancelBubble </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            }
+        },
+
+
+        </span><span class="jsdoc-var">preventDefault</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.browserEvent </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev.preventDefault</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">ev.preventDefault</span><span class="jsdoc-syntax">();
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">ev.returnValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            }
+        },
+
+
+        </span><span class="jsdoc-var">getEvent</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">window.event</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getEvent.caller</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">c.arguments</span><span class="jsdoc-syntax">[0];
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Event </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">ev.constructor</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    }
+                    </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">c.caller</span><span class="jsdoc-syntax">;
+                }
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">;
+        },
+
+
+        </span><span class="jsdoc-var">getCharCode</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.browserEvent </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ev.charCode </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">ev.keyCode </span><span class="jsdoc-syntax">|| 0;
+        },
+
+
+        </span><span class="jsdoc-var">_getCacheIndex</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0,</span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">listeners.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; ++</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">li </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">listeners</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">li </span><span class="jsdoc-syntax">&amp;&amp;
+                    </span><span class="jsdoc-var">li</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.FN</span><span class="jsdoc-syntax">] == </span><span class="jsdoc-var">fn </span><span class="jsdoc-syntax">&amp;&amp;
+                    </span><span class="jsdoc-var">li</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.EL</span><span class="jsdoc-syntax">] == </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">&amp;&amp;
+                    </span><span class="jsdoc-var">li</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.TYPE</span><span class="jsdoc-syntax">] == </span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">;
+                }
+            }
+
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">-1;
+        },
+
+
+        </span><span class="jsdoc-var">elCache</span><span class="jsdoc-syntax">: {},
+
+
+        </span><span class="jsdoc-var">getEl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">document.getElementById</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+        },
+
+
+        </span><span class="jsdoc-var">clearCache</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        },
+
+
+        </span><span class="jsdoc-var">_load</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">loadComplete </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">EU </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Event</span><span class="jsdoc-syntax">;
+
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isIE</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">EU.doRemove</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">window</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;load&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">EU._load</span><span class="jsdoc-syntax">);
+            }
+        },
+
+
+        </span><span class="jsdoc-var">_tryPreloadAttach</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.locked</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-var">this.locked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tryAgain </span><span class="jsdoc-syntax">= !</span><span class="jsdoc-var">loadComplete</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">tryAgain</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">tryAgain </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">retryCount </span><span class="jsdoc-syntax">&gt; 0);
+            }
+
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">notAvail </span><span class="jsdoc-syntax">= [];
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0,</span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">onAvailStack.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; ++</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">item </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">onAvailStack</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getEl</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item.id</span><span class="jsdoc-syntax">);
+
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">item.checkReady </span><span class="jsdoc-syntax">||
+                            </span><span class="jsdoc-var">loadComplete </span><span class="jsdoc-syntax">||
+                            </span><span class="jsdoc-var">el.nextSibling </span><span class="jsdoc-syntax">||
+                            (</span><span class="jsdoc-var">document </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)) {
+
+                            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">;
+                            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item.override</span><span class="jsdoc-syntax">) {
+                                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item.override </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) {
+                                    </span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">item.obj</span><span class="jsdoc-syntax">;
+                                } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                                    </span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">item.override</span><span class="jsdoc-syntax">;
+                                }
+                            }
+                            </span><span class="jsdoc-var">item.fn.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">item.obj</span><span class="jsdoc-syntax">);
+                            </span><span class="jsdoc-var">onAvailStack</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+                        }
+                    } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                        </span><span class="jsdoc-var">notAvail.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">);
+                    }
+                }
+            }
+
+            </span><span class="jsdoc-var">retryCount </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">notAvail.length </span><span class="jsdoc-syntax">=== 0) ? 0 : </span><span class="jsdoc-var">retryCount </span><span class="jsdoc-syntax">- 1;
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tryAgain</span><span class="jsdoc-syntax">) {
+
+                </span><span class="jsdoc-var">this.startInterval</span><span class="jsdoc-syntax">();
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">clearInterval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this._interval</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this._interval </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-var">this.locked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+
+        },
+
+
+        </span><span class="jsdoc-var">purgeElement</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">recurse</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">elListeners </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getListeners</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">elListeners</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0,</span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">elListeners.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; ++</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">l </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">elListeners</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+                    </span><span class="jsdoc-var">this.removeListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">l.type</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">l.fn</span><span class="jsdoc-syntax">);
+                }
+            }
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">recurse </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">el.childNodes</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0,</span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.childNodes.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; ++</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">this.purgeElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.childNodes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">recurse</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">);
+                }
+            }
+        },
+
+
+        </span><span class="jsdoc-var">getListeners</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">results </span><span class="jsdoc-syntax">= [], </span><span class="jsdoc-var">searchLists</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">searchLists </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-var">listeners</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">unloadListeners</span><span class="jsdoc-syntax">];
+            } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">eventName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;unload&quot;</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">searchLists </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-var">unloadListeners</span><span class="jsdoc-syntax">];
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">searchLists </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-var">listeners</span><span class="jsdoc-syntax">];
+            }
+
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">searchLists.length</span><span class="jsdoc-syntax">; ++</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">searchList </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">searchLists</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">];
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">searchList </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">searchList.length </span><span class="jsdoc-syntax">&gt; 0) {
+                    </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0,</span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">searchList.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; ++</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">l </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">searchList</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+                        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">l </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.EL</span><span class="jsdoc-syntax">] === </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">&amp;&amp;
+                            (!</span><span class="jsdoc-var">eventName </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">eventName </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.TYPE</span><span class="jsdoc-syntax">])) {
+                            </span><span class="jsdoc-var">results.push</span><span class="jsdoc-syntax">({
+                                </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">:   </span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.TYPE</span><span class="jsdoc-syntax">],
+                                </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">:     </span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.FN</span><span class="jsdoc-syntax">],
+                                </span><span class="jsdoc-var">obj</span><span class="jsdoc-syntax">:    </span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.OBJ</span><span class="jsdoc-syntax">],
+                                </span><span class="jsdoc-var">adjust</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.ADJ_SCOPE</span><span class="jsdoc-syntax">],
+                                </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">i
+                            </span><span class="jsdoc-syntax">});
+                        }
+                    }
+                }
+            }
+
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">results.length</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">results </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+        },
+
+
+        </span><span class="jsdoc-var">_unload</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">EU </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Event</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0,</span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">unloadListeners.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; ++</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">l </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">unloadListeners</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">window</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">EU.ADJ_SCOPE</span><span class="jsdoc-syntax">]) {
+                        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">EU.ADJ_SCOPE</span><span class="jsdoc-syntax">] === </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) {
+                            </span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">EU.OBJ</span><span class="jsdoc-syntax">];
+                        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                            </span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">EU.ADJ_SCOPE</span><span class="jsdoc-syntax">];
+                        }
+                    }
+                    </span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">EU.FN</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">EU.getEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">EU.OBJ</span><span class="jsdoc-syntax">]);
+                    </span><span class="jsdoc-var">unloadListeners</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">l </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+                }
+            }
+
+            </span><span class="jsdoc-var">unloadListeners </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">listeners.length </span><span class="jsdoc-syntax">&gt; 0) {
+                </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">listeners.length</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">- 1;
+                    </span><span class="jsdoc-var">l </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">listeners</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">];
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">EU.removeListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">EU.EL</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">EU.TYPE</span><span class="jsdoc-syntax">],
+                                </span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">EU.FN</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
+                    }
+                    </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">- 1;
+                }
+                </span><span class="jsdoc-var">l </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+
+                </span><span class="jsdoc-var">EU.clearCache</span><span class="jsdoc-syntax">();
+            }
+
+            </span><span class="jsdoc-var">EU.doRemove</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">window</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;unload&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">EU._unload</span><span class="jsdoc-syntax">);
+
+        },
+
+
+        </span><span class="jsdoc-var">getScroll</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.documentElement</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">db </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dd </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">dd.scrollTop </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">dd.scrollLeft</span><span class="jsdoc-syntax">)) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">dd.scrollTop</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd.scrollLeft</span><span class="jsdoc-syntax">];
+            } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">db</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">db.scrollTop</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">db.scrollLeft</span><span class="jsdoc-syntax">];
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[0, 0];
+            }
+        },
+
+
+        </span><span class="jsdoc-var">doAdd</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">window.addEventListener</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">capture</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">el.addEventListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, (</span><span class="jsdoc-var">capture</span><span class="jsdoc-syntax">));
+                };
+            } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">window.attachEvent</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">capture</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">el.attachEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;on&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">);
+                };
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-keyword">return function</span><span class="jsdoc-syntax">() {
+                };
+            }
+        }(),
+
+
+        </span><span class="jsdoc-var">doRemove</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">window.removeEventListener</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">capture</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">el.removeEventListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, (</span><span class="jsdoc-var">capture</span><span class="jsdoc-syntax">));
+                };
+            } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">window.detachEvent</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">el.detachEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;on&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">);
+                };
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-keyword">return function</span><span class="jsdoc-syntax">() {
+                };
+            }
+        }()
+    };
+    
+}();
+(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {     
+   
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">E </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Event</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">E.on </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">E.addListener</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">E.un </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">E.removeListener</span><span class="jsdoc-syntax">;
+
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">E._load</span><span class="jsdoc-syntax">();
+    } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-var">E.doAdd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">window</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;load&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">E._load</span><span class="jsdoc-syntax">);
+    }
+    </span><span class="jsdoc-var">E.doAdd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">window</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;unload&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">E._unload</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">E._tryPreloadAttach</span><span class="jsdoc-syntax">();
+})();
+
+</span></code></body></html>

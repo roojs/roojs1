@@ -1,0 +1,319 @@
+<html><head><title>../roojs1/Roo/XTemplate.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+
+/**
+ * @class Roo.XTemplate
+ * @extends Roo.Template
+ * Provides a template that can have nested templates for loops or conditionals. The syntax is:
+&lt;pre&gt;&lt;code&gt;
+var t = new Roo.XTemplate(
+	'&amp;lt;select name=&quot;{name}&quot;&amp;gt;',
+		'&amp;lt;tpl for=&quot;options&quot;&amp;gt;&amp;lt;option value=&quot;{value:trim}&quot;&amp;gt;{text:ellipsis(10)}&amp;lt;/option&amp;gt;&amp;lt;/tpl&amp;gt;',
+	'&amp;lt;/select&amp;gt;'
+);
+ 
+// then append, applying the master template values
+ &lt;/code&gt;&lt;/pre&gt;
+ *
+ * Supported features:
+ *
+ *  Tags:
+
+&lt;pre&gt;&lt;code&gt;
+      {a_variable} - output encoded.
+      {a_variable.format:(&quot;Y-m-d&quot;)} - call a method on the variable
+      {a_variable:raw} - unencoded output
+      {a_variable:toFixed(1,2)} - Roo.util.Format.&quot;toFixed&quot;
+      {a_variable:this.method_on_template(...)} - call a method on the template object.
+ 
+&lt;/code&gt;&lt;/pre&gt;
+ *  The tpl tag:
+&lt;pre&gt;&lt;code&gt;
+        &amp;lt;tpl for=&quot;a_variable or condition..&quot;&amp;gt;&amp;lt;/tpl&amp;gt;
+        &amp;lt;tpl if=&quot;a_variable or condition&quot;&amp;gt;&amp;lt;/tpl&amp;gt;
+        &amp;lt;tpl exec=&quot;some javascript&quot;&amp;gt;&amp;lt;/tpl&amp;gt;
+        &amp;lt;tpl name=&quot;named_template&quot;&amp;gt;&amp;lt;/tpl&amp;gt; (experimental)
+  
+        &amp;lt;tpl for=&quot;.&quot;&amp;gt;&amp;lt;/tpl&amp;gt; - just iterate the property..
+        &amp;lt;tpl for=&quot;..&quot;&amp;gt;&amp;lt;/tpl&amp;gt; - iterates with the parent (probably the template) 
+&lt;/code&gt;&lt;/pre&gt;
+ *      
+ */
+</span><span class="jsdoc-var">Roo.XTemplate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+{
+    </span><span class="jsdoc-var">Roo.XTemplate.superclass.constructor.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.html</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.compile</span><span class="jsdoc-syntax">();
+    }
+};
+
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.XTemplate</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">, {
+
+    </span><span class="jsdoc-comment">/**
+     * The various sub templates
+     */
+    </span><span class="jsdoc-var">tpls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     *
+     * basic tag replacing syntax
+     * WORD:WORD()
+     *
+     * // you can fake an object call by doing this
+     *  x.t:(test,tesT) 
+     * 
+     */
+    </span><span class="jsdoc-var">re </span><span class="jsdoc-syntax">: /\{([\w-\.]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?\}/g,
+
+    </span><span class="jsdoc-comment">/**
+     * compile the template
+     *
+     * This is not recursive, so I'm not sure how nested templates are really going to be handled..
+     *
+     */
+    </span><span class="jsdoc-var">compile</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.html</span><span class="jsdoc-syntax">;
+     
+        </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-string">'&lt;tpl&gt;'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'&lt;/tpl&gt;'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+    
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">re     </span><span class="jsdoc-syntax">= /&lt;tpl\b[^&gt;]*&gt;((?:(?=([^&lt;]+))\2|&lt;(?!tpl\b[^&gt;]*&gt;))*?)&lt;\/tpl&gt;/,
+            </span><span class="jsdoc-var">nameRe </span><span class="jsdoc-syntax">= /^&lt;tpl\b[^&gt;]*?for=&quot;(.*?)&quot;/,
+            </span><span class="jsdoc-var">ifRe   </span><span class="jsdoc-syntax">= /^&lt;tpl\b[^&gt;]*?if=&quot;(.*?)&quot;/,
+            </span><span class="jsdoc-var">execRe </span><span class="jsdoc-syntax">= /^&lt;tpl\b[^&gt;]*?exec=&quot;(.*?)&quot;/,
+            </span><span class="jsdoc-var">namedRe </span><span class="jsdoc-syntax">= /^&lt;tpl\b[^&gt;]*?name=&quot;(\w+)&quot;/,  </span><span class="jsdoc-comment">// named templates..
+            </span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">id     </span><span class="jsdoc-syntax">= 0,
+            </span><span class="jsdoc-var">tpls   </span><span class="jsdoc-syntax">= [];
+    
+        </span><span class="jsdoc-keyword">while</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">== !!(</span><span class="jsdoc-var">m </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">s.match</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">re</span><span class="jsdoc-syntax">))){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">forMatch   </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nameRe</span><span class="jsdoc-syntax">),
+                </span><span class="jsdoc-var">ifMatch   </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ifRe</span><span class="jsdoc-syntax">),
+                </span><span class="jsdoc-var">execMatch   </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">execRe</span><span class="jsdoc-syntax">),
+                </span><span class="jsdoc-var">namedMatch   </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">namedRe</span><span class="jsdoc-syntax">),
+                
+                </span><span class="jsdoc-var">exp  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, 
+                </span><span class="jsdoc-var">fn   </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">exec </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">forMatch </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">forMatch</span><span class="jsdoc-syntax">[1] ? </span><span class="jsdoc-var">forMatch</span><span class="jsdoc-syntax">[1] : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+                
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ifMatch</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-comment">// if - puts fn into test..
+                </span><span class="jsdoc-var">exp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ifMatch </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ifMatch</span><span class="jsdoc-syntax">[1] ? </span><span class="jsdoc-var">ifMatch</span><span class="jsdoc-syntax">[1] : </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">exp</span><span class="jsdoc-syntax">){
+                   </span><span class="jsdoc-var">fn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'values'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'parent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'with(values){ return '</span><span class="jsdoc-syntax">+(</span><span class="jsdoc-var">Roo.util.Format.htmlDecode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">exp</span><span class="jsdoc-syntax">))+</span><span class="jsdoc-string">'; }'</span><span class="jsdoc-syntax">);
+                }
+            }
+            
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">execMatch</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-comment">// exec - calls a function... returns empty if true is  returned.
+                </span><span class="jsdoc-var">exp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">execMatch </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">execMatch</span><span class="jsdoc-syntax">[1] ? </span><span class="jsdoc-var">execMatch</span><span class="jsdoc-syntax">[1] : </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">exp</span><span class="jsdoc-syntax">){
+                   </span><span class="jsdoc-var">exec </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'values'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'parent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'with(values){ '</span><span class="jsdoc-syntax">+(</span><span class="jsdoc-var">Roo.util.Format.htmlDecode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">exp</span><span class="jsdoc-syntax">))+</span><span class="jsdoc-string">'; }'</span><span class="jsdoc-syntax">);
+                }
+            }
+            
+            
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-comment">// for = 
+                </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'.'</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'values'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'parent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'with(values){ return values; }'</span><span class="jsdoc-syntax">); </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'..'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'values'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'parent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'with(values){ return parent; }'</span><span class="jsdoc-syntax">); </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">default</span><span class="jsdoc-syntax">:   </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'values'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'parent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'with(values){ return '</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'; }'</span><span class="jsdoc-syntax">);
+                }
+            }
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">uid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">namedMatch </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">namedMatch</span><span class="jsdoc-syntax">[1] : </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">;
+            
+            
+            </span><span class="jsdoc-var">tpls.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">:     </span><span class="jsdoc-var">namedMatch </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">namedMatch</span><span class="jsdoc-syntax">[1] : </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">exec</span><span class="jsdoc-syntax">:   </span><span class="jsdoc-var">exec</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">test</span><span class="jsdoc-syntax">:   </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">:   </span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">[1] || </span><span class="jsdoc-string">''
+            </span><span class="jsdoc-syntax">});
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">namedMatch</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">s.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{ 
+                </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">s.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-string">'{xtpl'</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'}'</span><span class="jsdoc-syntax">);
+            }
+            ++</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.tpls </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tpls.length</span><span class="jsdoc-syntax">-1; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&gt;= 0; --</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.compileTpl</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tpls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+            </span><span class="jsdoc-var">this.tpls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">tpls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.id</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">tpls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+        }
+        </span><span class="jsdoc-var">this.master </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tpls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">tpls.length</span><span class="jsdoc-syntax">-1];
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-comment">/**
+     * same as applyTemplate, except it's done to one of the subTemplates
+     * when using named templates, you can do:
+     *
+     * var str = pl.applySubTemplate('your-name', values);
+     *
+     * 
+     * @param {Number} id of the template
+     * @param {Object} values to apply to template
+     * @param {Object} parent (normaly the instance of this object)
+     */
+    </span><span class="jsdoc-var">applySubTemplate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">parent</span><span class="jsdoc-syntax">)
+    {
+        
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tpls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">];
+        
+        
+        </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{ 
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t.test </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">t.test.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">parent</span><span class="jsdoc-syntax">)){
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+            }
+        } </span><span class="jsdoc-keyword">catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Xtemplate.applySubTemplate 'test': Exception thrown&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.toString</span><span class="jsdoc-syntax">());
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t.test</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">''
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{ 
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t.exec </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">t.exec.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">parent</span><span class="jsdoc-syntax">)){
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+            }
+        } </span><span class="jsdoc-keyword">catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Xtemplate.applySubTemplate 'exec': Exception thrown&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.toString</span><span class="jsdoc-syntax">());
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t.exec</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">''
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">vs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">t.target </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">t.target.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">parent</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">parent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">t.target </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">values </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">parent</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t.target </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">vs </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Array</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">buf </span><span class="jsdoc-syntax">= [];
+                </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">vs.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+                    </span><span class="jsdoc-var">buf</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">buf.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">t.compiled.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">vs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">parent</span><span class="jsdoc-syntax">);
+                }
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">buf.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">t.compiled.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">vs</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">parent</span><span class="jsdoc-syntax">);
+        } </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Xtemplate.applySubTemplate : Exception thrown&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.toString</span><span class="jsdoc-syntax">());
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t.compiled</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        }
+    },
+
+    </span><span class="jsdoc-var">compileTpl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tpl</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.util.Format</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">useF </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.disableFormats </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sep </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.isGecko </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">&quot;+&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;,&quot;</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">undef </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Property not found :&quot;  </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        };
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">)
+        {
+            </span><span class="jsdoc-comment">//Roo.log(arguments);
+            </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">args.replace</span><span class="jsdoc-syntax">(/\\'/g,</span><span class="jsdoc-string">&quot;'&quot;</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-comment">//[&quot;{TEST:(a,b,c)}&quot;, &quot;TEST&quot;, &quot;&quot;, &quot;a,b,c&quot;, 0, &quot;{TEST:(a,b,c)}&quot;]
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'htmlEncode'</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'raw' </span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name.substr</span><span class="jsdoc-syntax">(0, 4) == </span><span class="jsdoc-string">'xtpl'</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">&quot;'&quot;</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">sep </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'this.applySubTemplate('</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">name.substr</span><span class="jsdoc-syntax">(4)+</span><span class="jsdoc-string">', values, parent)'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">sep</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">&quot;'&quot;</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-comment">// build an array of options to determine if value is undefined..
+            
+            // basically get 'xxxx.yyyy' then do
+            // (typeof(xxxx) == 'undefined' || typeof(xxx.yyyy) == 'undefined') ?
+            //    (function () { Roo.log(&quot;Property not found&quot;); return ''; })() :
+            //    ......
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">udef_ar </span><span class="jsdoc-syntax">= [];
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lookfor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.'</span><span class="jsdoc-syntax">), </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">st</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">lookfor </span><span class="jsdoc-syntax">+= (</span><span class="jsdoc-var">lookfor.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'.'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-var">st</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">udef_ar.push</span><span class="jsdoc-syntax">(  </span><span class="jsdoc-string">&quot;(typeof(&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">lookfor </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;) == 'undefined')&quot;  </span><span class="jsdoc-syntax">);
+            });
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">udef_st </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'((' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">udef_ar.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot; || &quot;</span><span class="jsdoc-syntax">) +</span><span class="jsdoc-string">&quot;) ? undef('&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;') : &quot;</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// .. needs )
+            
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">useF</span><span class="jsdoc-syntax">){
+                
+                </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">',' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+                 
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">format.substr</span><span class="jsdoc-syntax">(0, 5) != </span><span class="jsdoc-string">&quot;this.&quot;</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;fm.&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'('</span><span class="jsdoc-syntax">;
+                }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                    </span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'this.call(&quot;'</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">format.substr</span><span class="jsdoc-syntax">(5) + </span><span class="jsdoc-string">'&quot;, '</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;, values&quot;</span><span class="jsdoc-syntax">;
+                }
+                
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">&quot;'&quot;</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">sep </span><span class="jsdoc-syntax">+   </span><span class="jsdoc-var">udef_st   </span><span class="jsdoc-syntax">+    </span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;))&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">sep</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">&quot;'&quot;</span><span class="jsdoc-syntax">;
+            }
+             
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">args.length</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-comment">// called with xxyx.yuu:(test,test)
+                // change to ()
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">&quot;'&quot;</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">sep </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">udef_st  </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'(' </span><span class="jsdoc-syntax">+  </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;))&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">sep</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">&quot;'&quot;</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-comment">// raw.. - :raw modifier..
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">&quot;'&quot;</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">sep </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">udef_st  </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;)&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">sep</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">&quot;'&quot;</span><span class="jsdoc-syntax">;
+            
+        };
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">// branched to use + in gecko and [].join() in others
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isGecko</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">body </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;tpl.compiled = function(values, parent){  with(values) { return '&quot; </span><span class="jsdoc-syntax">+
+                   </span><span class="jsdoc-var">tpl.body.replace</span><span class="jsdoc-syntax">(/(\r\n|\n)/g, </span><span class="jsdoc-string">'\\n'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/'/g, </span><span class="jsdoc-string">&quot;\\'&quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.re</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">) +
+                    </span><span class="jsdoc-string">&quot;';};};&quot;</span><span class="jsdoc-syntax">;
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">body </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-string">&quot;tpl.compiled = function(values, parent){  with (values) { return ['&quot;</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-var">body.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tpl.body.replace</span><span class="jsdoc-syntax">(/(\r\n|\n)/g,
+                            </span><span class="jsdoc-string">'\\n'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/'/g, </span><span class="jsdoc-string">&quot;\\'&quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.re</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">));
+            </span><span class="jsdoc-var">body.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;'].join('');};};&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">body </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">body.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+        }
+        
+        </span><span class="jsdoc-var">Roo.debug </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body.replace</span><span class="jsdoc-syntax">(/\\n/,</span><span class="jsdoc-string">'\n'</span><span class="jsdoc-syntax">));
+       
+        </span><span class="jsdoc-comment">/** eval:var:tpl eval:var:fm eval:var:useF eval:var:undef  */
+        </span><span class="jsdoc-keyword">eval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">applyTemplate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.master.compiled.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">, {});
+        </span><span class="jsdoc-comment">//var s = this.subs;
+    </span><span class="jsdoc-syntax">},
+
+    </span><span class="jsdoc-var">apply </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.applyTemplate.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
+    }
+
+ });
+
+</span><span class="jsdoc-var">Roo.XTemplate.from </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.getDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">return new </span><span class="jsdoc-var">Roo.XTemplate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.value </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">el.innerHTML</span><span class="jsdoc-syntax">);
+};</span></code></body></html>

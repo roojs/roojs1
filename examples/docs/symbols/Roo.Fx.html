@@ -1,0 +1,1917 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=undefined" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		
+		<title>JsDoc Reference - Roo.Fx</title>
+		
+		
+	<link rel="stylesheet" type="text/css" href="../../css/roojs.css" />		
+	<link rel="stylesheet" type="text/css" href="../default.css" />
+	
+	
+	<script type="text/javascript" src="../page.js">
+	
+	</script>
+	 
+		
+	</head>
+
+	<body onload="RooDocsPage.onload();">
+	 
+	
+<div class="body-wrap">
+
+    <!-- ============================== links to methods. ================================= -->	
+
+    <div class="top-tools">
+    <!--
+        <a class="inner-link" href="#Roo.Fx-props"><img src="resources/s.gif" class="item-icon icon-prop">Properties</a>
+        <a class="inner-link" href="#Roo.Fx-methods"><img src="resources/s.gif" class="item-icon icon-method">Methods</a>
+        <a class="inner-link" href="#Roo.Fx-events"><img src="resources/s.gif" class="item-icon icon-event">Events</a>
+        <a class="inner-link" href="#Roo.Fx-configs"><img src="resources/s.gif" class="item-icon icon-config">Config Options</a>
+        <a class="bookmark" href="NEED_TO_CREATE_DIRECT_LINK_HREF"><img src="resources/s.gif" class="item-icon icon-fav">Direct Link</a>
+	-->
+    </div>
+
+    
+<!-- ============================== inheritance Block. ================================= -->	
+	
+<!-- ============================== class title / details ============================ -->
+    
+    
+    <h1 class="classTitle">
+				
+				Class Roo.Fx
+			</h1>
+			
+    <table cellspacing="0" class="class-summary-table">
+	
+		<tr><td class="label">Package:</td><td class="hd-info">Roo</td></tr>
+	
+        <tr><td class="label">Defined In:</td><td class="hd-info">
+			
+					<a href="./src/Roo_Fx.js.html">Roo/Fx.js</a>.
+			
+	</td></tr>
+        <tr><td class="label">Class:</td><td class="hd-info">Fx</td></tr>
+	
+	
+	
+	
+    </table>
+
+    
+<!-- ============================== class summary ========================== -->			
+    <div class="description">
+	<p>A class to provide basic animation and visual effects support.  <b>Note:</b> This class is automatically applied<br/>to the {<b>link</b> Roo.Element} interface when included, so all effects calls should be performed via Element.<br/>Conversely, since the effects are not actually defined in Element, Roo.Fx <b>must</b> be included in order for the <br/>Element effects to work.</p><br/><br/><br/><p>It is important to note that although the Fx methods and many non-Fx Element methods support "method chaining" in that<br/>they return the Element object itself as the method return value, it is not always possible to mix the two in a single<br/>method chain.  The Fx methods use an internal effects queue so that each effect can be properly timed and sequenced.<br/>Non-Fx methods, on the other hand, have no such internal queueing and will always execute immediately.  For this reason,<br/>while it may be possible to mix certain Fx and non-Fx method calls in a single chain, it may not always provide the<br/>expected results and should be done with care.</p><br/><br/><br/><p>Motion effects support 8-way anchoring, meaning that you can choose one of 8 different anchor points on the Element<br/>that will serve as either the start or end point of the animation.  Following are all of the supported anchor positions:</p><br/><pre><br/>Value  Description<br/>-----  -----------------------------<br/>tl     The top left corner<br/>t      The center of the top edge<br/>tr     The top right corner<br/>l      The center of the left edge<br/>r      The center of the right edge<br/>bl     The bottom left corner<br/>b      The center of the bottom edge<br/>br     The bottom right corner<br/></pre><br/><b>Although some Fx methods accept specific custom config parameters, the ones shown in the Config Options section<br/>below are common options that can be passed to any Fx method.</b>
+    </div>
+
+	
+<!-- ============================== Class comment block... ========================== -->					
+
+<div class="comments">
+	<b>Class Comments / Notes</B> =>  
+	<u onclick="parent.CommentDialog.showCommentId = 'Roo.Fx';">[Add Your comment/notes about this class]</u>
+	<br/>
+	<iframe frameborder="0"  id="comments-Roo" style="border: none;width:100%;" 
+		src="/blog.php/GtkDjsComments/Roo.Fx.html"></iframe>
+</div>
+	
+
+		
+<!-- ============================== config options ========================== -->						
+		 
+    
+    
+		
+    <div class="hr"></div>
+    <a id="Roo.Fx-configs"></a>
+		
+    
+     
+    
+	
+      <table cellspacing="0" class="member-table">   
+      <caption>Config Options (Usually are also Properties)</caption>
+    
+	
+        <tr>
+            <th class="sig-header" colspan="2">Options</th>
+	    
+            <th class="msource-header">Defined By</th>
+        </tr>
+	
+	
+	
+	
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.Fx-cfg-afterCls" name=".afterCls"></a>
+			<div class="fixedFont">
+				<b  class="itemname">afterCls</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">A css class to apply after the effect</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    A css class to apply after the effect
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.Fx
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.Fx-cfg-afterStyle" name=".afterStyle"></a>
+			<div class="fixedFont">
+				<b  class="itemname">afterStyle</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/Object/Function
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">A style specification string, e.g.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    A style specification string, e.g. "width:100px", or an object in the form {width:"100px"}, or<br/>a function which returns such a specification that will be applied to the Element after the effect finishes
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.Fx
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.Fx-cfg-block" name=".block"></a>
+			<div class="fixedFont">
+				<b  class="itemname">block</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">Whether the effect should block other effects from queueing while it runs</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    Whether the effect should block other effects from queueing while it runs
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.Fx
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.Fx-cfg-callback" name=".callback"></a>
+			<div class="fixedFont">
+				<b  class="itemname">callback</b> : <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">A function called when the effect is finished</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    A function called when the effect is finished
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.Fx
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.Fx-cfg-concurrent" name=".concurrent"></a>
+			<div class="fixedFont">
+				<b  class="itemname">concurrent</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">Whether to allow subsequently-queued effects to run at the same time as the current effect, or to ensure that they run in sequence</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    Whether to allow subsequently-queued effects to run at the same time as the current effect, or to ensure that they run in sequence
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.Fx
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.Fx-cfg-duration" name=".duration"></a>
+			<div class="fixedFont">
+				<b  class="itemname">duration</b> : <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">The length of time (in seconds) that the effect should last</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    The length of time (in seconds) that the effect should last
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.Fx
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.Fx-cfg-easing" name=".easing"></a>
+			<div class="fixedFont">
+				<b  class="itemname">easing</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">A valid Easing value for the effect</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    A valid Easing value for the effect
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.Fx
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.Fx-cfg-remove" name=".remove"></a>
+			<div class="fixedFont">
+				<b  class="itemname">remove</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">Whether the Element should be removed from the DOM and destroyed after the effect finishes</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    Whether the Element should be removed from the DOM and destroyed after the effect finishes
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.Fx
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.Fx-cfg-scope" name=".scope"></a>
+			<div class="fixedFont">
+				<b  class="itemname">scope</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">The scope of the effect function</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    The scope of the effect function
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.Fx
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.Fx-cfg-stopFx" name=".stopFx"></a>
+			<div class="fixedFont">
+				<b  class="itemname">stopFx</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">Whether subsequent effects should be stopped and removed after the current effect finishes</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    Whether subsequent effects should be stopped and removed after the current effect finishes
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.Fx
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.Fx-cfg-useDisplay" name=".useDisplay"></a>
+			<div class="fixedFont">
+				<b  class="itemname">useDisplay</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">Whether to use the <i>display</i> CSS property instead of <i>visibility</i> when hiding Elements (only applies to <br/>effects that end with the element being visually hidden, ignored otherwise)</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    Whether to use the <i>display</i> CSS property instead of <i>visibility</i> when hiding Elements (only applies to <br/>effects that end with the element being visually hidden, ignored otherwise)
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.Fx
+				
+		    </td>
+		</tr>
+        
+        
+    </table>
+  		
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- ============================== public properties ==================== -->	
+  
+  
+  
+    <a id="Roo.Fx-props"></a>      
+    
+    
+
+    
+    
+     <table cellspacing="0" class="member-table">
+      <caption class="Empty">Public Properties - Has None</caption>
+     </table>
+    
+    
+     
+    
+  <!-- ============================== methods summary / details ======================== -->
+  
+  
+  <a id="Roo.Fx-methods"></a>
+	<!-- constructor?? -->
+  	
+	<!-- static's first 
+	
+	
+	-->
+	
+	<!-- then dynamics first -->
+	
+  
+  
+    
+    
+    
+      <table cellspacing="0" class="member-table">
+      <caption>Public Methods</caption>
+        <tr>
+            <th class="sig-header" colspan="2">Method</th>            
+            <th class="msource-header">Defined By</th>
+
+        </tr>
+        
+	
+	
+	 
+	
+        
+	  
+          <tr class="method-row config-row-alt0 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo-method-Fx"   name=".Fx"></a>
+		<div class="fixedFont">
+			<span class="attributes">new <B>Roo.</B></span><b class="itemname">Fx</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+		 
+			<div class="short">Create a new Roo.Fx</div> 
+		 
+		 
+                    <div class="long">
+			
+			
+			
+				Create a new Roo.Fx
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.Fx-method-fadeIn"   name=".fadeIn"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.Fx.</span><b class="itemname">fadeIn</b>
+				
+				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>options</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Fade an element in (from transparent to opaque).</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Fade an element in (from transparent to opaque).  The ending opacity can be specified<br/>using the "endOpacity" config option.<br/>Usage:<br/><pre><code><br/>// default: fade in from opacity 0 to 100%<br/>el.fadeIn();<br/><br/>// custom: fade in from opacity 0 to 75% over 2 seconds<br/>el.fadeIn({ endOpacity: .75, duration: 2});<br/><br/>// common config options shown with default values<br/>el.fadeIn({<br/>    endOpacity: 1, //can be any value between 0 and 1 (e.g. .5)<br/>    easing: 'easeOut',<br/>    duration: .5<br/>});<br/></code></pre>
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>options</b>
+						
+					</dt>
+					<dd>(optional) Object literal with any of the Fx config options</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a></span>  The Element</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.Fx
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.Fx-method-fadeOut"   name=".fadeOut"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.Fx.</span><b class="itemname">fadeOut</b>
+				
+				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>options</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Fade an element out (from opaque to transparent).</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Fade an element out (from opaque to transparent).  The ending opacity can be specified<br/>using the "endOpacity" config option.<br/>Usage:<br/><pre><code><br/>// default: fade out from the element's current opacity to 0<br/>el.fadeOut();<br/><br/>// custom: fade out from the element's current opacity to 25% over 2 seconds<br/>el.fadeOut({ endOpacity: .25, duration: 2});<br/><br/>// common config options shown with default values<br/>el.fadeOut({<br/>    endOpacity: 0, //can be any value between 0 and 1 (e.g. .5)<br/>    easing: 'easeOut',<br/>    duration: .5<br/>    remove: false,<br/>    useDisplay: false<br/>});<br/></code></pre>
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>options</b>
+						
+					</dt>
+					<dd>(optional) Object literal with any of the Fx config options</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a></span>  The Element</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.Fx
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.Fx-method-frame"   name=".frame"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.Fx.</span><b class="itemname">frame</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>color</i></B>, <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>count</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>options</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Shows a ripple of exploding, attenuating borders to draw attention to an Element.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Shows a ripple of exploding, attenuating borders to draw attention to an Element.<br/>Usage:<br/><pre><code><br/>// default: a single light blue ripple<br/>el.frame();<br/><br/>// custom: 3 red ripples lasting 3 seconds total<br/>el.frame("ff0000", 3, { duration: 3 });<br/><br/>// common config options shown with default values<br/>el.frame("C3DAF9", 1, {<br/>    duration: 1 //duration of entire animation (not each individual ripple)<br/>    // Note: Easing is not configurable and will be ignored if included<br/>});<br/></code></pre>
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>color</b>
+						
+					</dt>
+					<dd>(optional) The color of the border.  Should be a 6 char hex color without the leading # (defaults to light blue: 'C3DAF9').</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span>  <b>count</b>
+						
+					</dt>
+					<dd>(optional) The number of ripples to display (defaults to 1)</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>options</b>
+						
+					</dt>
+					<dd>(optional) Object literal with any of the Fx config options</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a></span>  The Element</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.Fx
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.Fx-method-ghost"   name=".ghost"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.Fx.</span><b class="itemname">ghost</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>anchor</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>options</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Slides the element while fading it out of view.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Slides the element while fading it out of view.  An anchor point can be optionally passed to set the <br/>ending point of the effect.<br/>Usage:<br/><pre><code><br/>// default: slide the element downward while fading out<br/>el.ghost();<br/><br/>// custom: slide the element out to the right with a 2-second duration<br/>el.ghost('r', { duration: 2 });<br/><br/>// common config options shown with default values<br/>el.ghost('b', {<br/>    easing: 'easeOut',<br/>    duration: .5<br/>    remove: false,<br/>    useDisplay: false<br/>});<br/></code></pre>
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>anchor</b>
+						
+					</dt>
+					<dd>(optional) One of the valid Fx anchor positions (defaults to bottom: 'b')</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>options</b>
+						
+					</dt>
+					<dd>(optional) Object literal with any of the Fx config options</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a></span>  The Element</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.Fx
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.Fx-method-hasActiveFx"   name=".hasActiveFx"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.Fx.</span><b class="itemname">hasActiveFx</b>
+				
+				 () 
+			
+				
+					 : 
+					
+						
+						<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Returns true if the element has any effects actively running or queued, else returns false.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Returns true if the element has any effects actively running or queued, else returns false.
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  True if element has active effects, else false</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.Fx
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.Fx-method-hasFxBlock"   name=".hasFxBlock"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.Fx.</span><b class="itemname">hasFxBlock</b>
+				
+				 () 
+			
+				
+					 : 
+					
+						
+						<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Returns true if the element is currently blocking so that no other effect can be queued<br/>until this effect is finished, else returns false if blocking is not set.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Returns true if the element is currently blocking so that no other effect can be queued<br/>until this effect is finished, else returns false if blocking is not set.  This is commonly<br/>used to ensure that an effect initiated by a user action runs to completion prior to the<br/>same effect being restarted (e.g., firing only one effect even if the user clicks several times).
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  True if blocking, else false</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.Fx
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.Fx-method-highlight"   name=".highlight"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.Fx.</span><b class="itemname">highlight</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>color</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>options</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Highlights the Element by setting a color (applies to the background-color by default, but can be<br/>changed using the "attr" config option) and then fading back to the original color.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Highlights the Element by setting a color (applies to the background-color by default, but can be<br/>changed using the "attr" config option) and then fading back to the original color. If no original<br/>color is available, you should provide the "endColor" config option which will be cleared after the animation.<br/>Usage:<br/><pre><code><br/>// default: highlight background to yellow<br/>el.highlight();<br/><br/>// custom: highlight foreground text to blue for 2 seconds<br/>el.highlight("0000ff", { attr: 'color', duration: 2 });<br/><br/>// common config options shown with default values<br/>el.highlight("ffff9c", {<br/>    attr: "background-color", //can be any valid CSS property (attribute) that supports a color value<br/>    endColor: (current color) or "ffffff",<br/>    easing: 'easeIn',<br/>    duration: 1<br/>});<br/></code></pre>
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>color</b>
+						
+					</dt>
+					<dd>(optional) The highlight color. Should be a 6 char hex color without the leading # (defaults to yellow: 'ffff9c')</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>options</b>
+						
+					</dt>
+					<dd>(optional) Object literal with any of the Fx config options</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a></span>  The Element</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.Fx
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.Fx-method-pause"   name=".pause"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.Fx.</span><b class="itemname">pause</b>
+				
+				 (<a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>seconds</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Creates a pause before any subsequent queued effects begin.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Creates a pause before any subsequent queued effects begin.  If there are<br/>no effects queued after the pause it will have no effect.<br/>Usage:<br/><pre><code><br/>el.pause(1);<br/></code></pre>
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span>  <b>seconds</b>
+						
+					</dt>
+					<dd>The length of time to pause (in seconds)</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a></span>  The Element</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.Fx
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.Fx-method-puff"   name=".puff"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.Fx.</span><b class="itemname">puff</b>
+				
+				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>options</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Fades the element out while slowly expanding it in all directions.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Fades the element out while slowly expanding it in all directions.  When the effect is completed, the <br/>element will be hidden (visibility = 'hidden') but block elements will still take up space in the document. <br/>The element must be removed from the DOM using the 'remove' config option if desired.<br/>Usage:<br/><pre><code><br/>// default<br/>el.puff();<br/><br/>// common config options shown with default values<br/>el.puff({<br/>    easing: 'easeOut',<br/>    duration: .5,<br/>    remove: false,<br/>    useDisplay: false<br/>});<br/></code></pre>
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>options</b>
+						
+					</dt>
+					<dd>(optional) Object literal with any of the Fx config options</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a></span>  The Element</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.Fx
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.Fx-method-scale"   name=".scale"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.Fx.</span><b class="itemname">scale</b>
+				
+				 (<a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>width</i></B>, <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>height</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>options</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Animates the transition of an element's dimensions from a starting height/width<br/>to an ending height/width.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Animates the transition of an element's dimensions from a starting height/width<br/>to an ending height/width.<br/>Usage:<br/><pre><code><br/>// change height and width to 100x100 pixels<br/>el.scale(100, 100);<br/><br/>// common config options shown with default values.  The height and width will default to<br/>// the element's existing values if passed as null.<br/>el.scale(<br/>    [element's width],<br/>    [element's height], {<br/>    easing: 'easeOut',<br/>    duration: .35<br/>});<br/></code></pre>
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span>  <b>width</b>
+						
+					</dt>
+					<dd>The new width (pass undefined to keep the original width)</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span>  <b>height</b>
+						
+					</dt>
+					<dd>The new height (pass undefined to keep the original height)</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>options</b>
+						
+					</dt>
+					<dd>(optional) Object literal with any of the Fx config options</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a></span>  The Element</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.Fx
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.Fx-method-sequenceFx"   name=".sequenceFx"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.Fx.</span><b class="itemname">sequenceFx</b>
+				
+				 () 
+			
+				
+					 : 
+					
+						
+						<a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Ensures that all effects queued after sequenceFx is called on the element are<br/>run in sequence.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Ensures that all effects queued after sequenceFx is called on the element are<br/>run in sequence.  This is the opposite of {<b>link</b> <b>syncFx</b>}.
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a></span>  The Element</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.Fx
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.Fx-method-shift"   name=".shift"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.Fx.</span><b class="itemname">shift</b>
+				
+				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>options</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Animates the transition of any combination of an element's dimensions, xy position and/or opacity.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Animates the transition of any combination of an element's dimensions, xy position and/or opacity.<br/>Any of these properties not specified in the config object will not be changed.  This effect <br/>requires that at least one new dimension, position or opacity setting must be passed in on<br/>the config object in order for the function to have any effect.<br/>Usage:<br/><pre><code><br/>// slide the element horizontally to x position 200 while changing the height and opacity<br/>el.shift({ x: 200, height: 50, opacity: .8 });<br/><br/>// common config options shown with default values.<br/>el.shift({<br/>    width: [element's width],<br/>    height: [element's height],<br/>    x: [element's x position],<br/>    y: [element's y position],<br/>    opacity: [element's opacity],<br/>    easing: 'easeOut',<br/>    duration: .35<br/>});<br/></code></pre>
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>options</b>
+						
+					</dt>
+					<dd>Object literal with any of the Fx config options</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a></span>  The Element</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.Fx
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.Fx-method-slideIn"   name=".slideIn"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.Fx.</span><b class="itemname">slideIn</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>anchor</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>options</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Slides the element into view.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Slides the element into view.  An anchor point can be optionally passed to set the point of<br/>origin for the slide effect.  This function automatically handles wrapping the element with<br/>a fixed-size container if needed.  See the Fx class overview for valid anchor point options.<br/>Usage:<br/><pre><code><br/>// default: slide the element in from the top<br/>el.slideIn();<br/><br/>// custom: slide the element in from the right with a 2-second duration<br/>el.slideIn('r', { duration: 2 });<br/><br/>// common config options shown with default values<br/>el.slideIn('t', {<br/>    easing: 'easeOut',<br/>    duration: .5<br/>});<br/></code></pre>
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>anchor</b>
+						
+					</dt>
+					<dd>(optional) One of the valid Fx anchor positions (defaults to top: 't')</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>options</b>
+						
+					</dt>
+					<dd>(optional) Object literal with any of the Fx config options</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a></span>  The Element</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.Fx
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.Fx-method-slideOut"   name=".slideOut"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.Fx.</span><b class="itemname">slideOut</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>anchor</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>options</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Slides the element out of view.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Slides the element out of view.  An anchor point can be optionally passed to set the end point<br/>for the slide effect.  When the effect is completed, the element will be hidden (visibility = <br/>'hidden') but block elements will still take up space in the document.  The element must be removed<br/>from the DOM using the 'remove' config option if desired.  This function automatically handles <br/>wrapping the element with a fixed-size container if needed.  See the Fx class overview for valid anchor point options.<br/>Usage:<br/><pre><code><br/>// default: slide the element out to the top<br/>el.slideOut();<br/><br/>// custom: slide the element out to the right with a 2-second duration<br/>el.slideOut('r', { duration: 2 });<br/><br/>// common config options shown with default values<br/>el.slideOut('t', {<br/>    easing: 'easeOut',<br/>    duration: .5,<br/>    remove: false,<br/>    useDisplay: false<br/>});<br/></code></pre>
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>anchor</b>
+						
+					</dt>
+					<dd>(optional) One of the valid Fx anchor positions (defaults to top: 't')</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>options</b>
+						
+					</dt>
+					<dd>(optional) Object literal with any of the Fx config options</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a></span>  The Element</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.Fx
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.Fx-method-stopFx"   name=".stopFx"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.Fx.</span><b class="itemname">stopFx</b>
+				
+				 () 
+			
+				
+					 : 
+					
+						
+						<a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Stops any running effects and clears the element's internal effects queue if it contains<br/>any additional effects that haven't started yet.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Stops any running effects and clears the element's internal effects queue if it contains<br/>any additional effects that haven't started yet.
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a></span>  The Element</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.Fx
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.Fx-method-switchOff"   name=".switchOff"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.Fx.</span><b class="itemname">switchOff</b>
+				
+				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>options</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Blinks the element as if it was clicked and then collapses on its center (similar to switching off a television).</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Blinks the element as if it was clicked and then collapses on its center (similar to switching off a television).<br/>When the effect is completed, the element will be hidden (visibility = 'hidden') but block elements will still <br/>take up space in the document. The element must be removed from the DOM using the 'remove' config option if desired.<br/>Usage:<br/><pre><code><br/>// default<br/>el.switchOff();<br/><br/>// all config options shown with default values<br/>el.switchOff({<br/>    easing: 'easeIn',<br/>    duration: .3,<br/>    remove: false,<br/>    useDisplay: false<br/>});<br/></code></pre>
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>options</b>
+						
+					</dt>
+					<dd>(optional) Object literal with any of the Fx config options</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a></span>  The Element</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.Fx
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.Fx-method-syncFx"   name=".syncFx"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.Fx.</span><b class="itemname">syncFx</b>
+				
+				 () 
+			
+				
+					 : 
+					
+						
+						<a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Ensures that all effects queued after syncFx is called on the element are<br/>run concurrently.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Ensures that all effects queued after syncFx is called on the element are<br/>run concurrently.  This is the opposite of {<b>link</b> <b>sequenceFx</b>}.
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a></span>  The Element</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.Fx
+		&nbsp;
+            </td>
+        </tr>
+	
+	                                               
+    </table>
+
+  
+  <!-- ============================== events summary / details ======================== -->
+  
+  
+  <a id="Roo.Fx-events"></a>
+    
+  
+  	
+   
+    
+     <table cellspacing="0" class="member-table">
+      <caption class="Empty">Events - Has None</caption>
+     </table>
+    
+    
+  
+    
+    
+  
+  
+  
+ 
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Fri Jul 13 2018 14:10:53 GMT+0800 (HKT)
+			Based on 
+			<a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a>  
+		</div>
+	</body>
+</html>

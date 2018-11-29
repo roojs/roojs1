@@ -1,0 +1,65 @@
+<html><head><title>../roojs1/Roo/util/DelayedTask.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+/**
+ * @class Roo.util.DelayedTask
+ * Provides a convenient method of performing setTimeout where a new
+ * timeout cancels the old timeout. An example would be performing validation on a keypress.
+ * You can use this class to buffer
+ * the keypress events for a certain number of milliseconds, and perform only if they stop
+ * for that amount of time.
+ * @constructor The parameters to this constructor serve as defaults and are not required.
+ * @param {Function} fn (optional) The default function to timeout
+ * @param {Object} scope (optional) The default scope of that timeout
+ * @param {Array} args (optional) The default Array of arguments
+ */
+</span><span class="jsdoc-var">Roo.util.DelayedTask </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">;
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">call </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">now </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getTime</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">now </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">clearInterval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">fn.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">|| []);
+        }
+    };
+    </span><span class="jsdoc-comment">/**
+     * Cancels any pending timeout and queues a new one
+     * @param {Number} delay The milliseconds to delay
+     * @param {Function} newFn (optional) Overrides function passed to constructor
+     * @param {Object} newScope (optional) Overrides scope passed to constructor
+     * @param {Array} newArgs (optional) Overrides args passed to constructor
+     */
+    </span><span class="jsdoc-var">this.delay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">delay</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newFn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newScope</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newArgs</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">delay </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.cancel</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">delay</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getTime</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">fn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">newFn </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">newScope </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">newArgs </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">setInterval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">call</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">);
+        }
+    };
+
+    </span><span class="jsdoc-comment">/**
+     * Cancel the last queued timeout
+     */
+    </span><span class="jsdoc-var">this.cancel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">clearInterval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+        }
+    };
+};</span></code></body></html>

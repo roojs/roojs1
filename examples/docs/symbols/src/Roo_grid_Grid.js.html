@@ -1,0 +1,726 @@
+<html><head><title>../roojs1/Roo/grid/Grid.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+ 
+/**
+ * @class Roo.grid.Grid
+ * @extends Roo.util.Observable
+ * This class represents the primary interface of a component based grid control.
+ * &lt;br&gt;&lt;br&gt;Usage:&lt;pre&gt;&lt;code&gt;
+ var grid = new Roo.grid.Grid(&quot;my-container-id&quot;, {
+     ds: myDataStore,
+     cm: myColModel,
+     selModel: mySelectionModel,
+     autoSizeColumns: true,
+     monitorWindowResize: false,
+     trackMouseOver: true
+ });
+ // set any options
+ grid.render();
+ * &lt;/code&gt;&lt;/pre&gt;
+ * &lt;b&gt;Common Problems:&lt;/b&gt;&lt;br/&gt;
+ * - Grid does not resize properly when going smaller: Setting overflow hidden on the container
+ * element will correct this&lt;br/&gt;
+ * - If you get el.style[camel]= NaNpx or -2px or something related, be certain you have given your container element
+ * dimensions. The grid adapts to your container's size, if your container has no size defined then the results
+ * are unpredictable.&lt;br/&gt;
+ * - Do not render the grid into an element with display:none. Try using visibility:hidden. Otherwise there is no way for the
+ * grid to calculate dimensions/offsets.&lt;br/&gt;
+  * @constructor
+ * @param {String/HTMLElement/Roo.Element} container The element into which this grid will be rendered -
+ * The container MUST have some type of size defined for the grid to fill. The container will be
+ * automatically set to position relative if it isn't already.
+ * @param {Object} config A config object that sets properties on this grid.
+ */
+</span><span class="jsdoc-var">Roo.grid.Grid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+	</span><span class="jsdoc-comment">// initialize the container
+	</span><span class="jsdoc-var">this.container </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">);
+	</span><span class="jsdoc-var">this.container.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+	</span><span class="jsdoc-var">this.container.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;overflow&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;hidden&quot;</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.container.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'x-grid-container'</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.container.id</span><span class="jsdoc-syntax">;
+
+    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-comment">// check and correct shorthanded configs
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.ds</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.dataSource </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.ds</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.ds</span><span class="jsdoc-syntax">;
+    }
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cm</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.colModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cm</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.cm</span><span class="jsdoc-syntax">;
+    }
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.sm</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.selModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.sm</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.sm</span><span class="jsdoc-syntax">;
+    }
+
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.selModel</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.selModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.selModel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.grid</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.sm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.selModel</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.sm.xmodule </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.xmodule </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    }
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.colModel.config</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.colModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.grid.ColumnModel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.colModel</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.cm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.colModel</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.cm.xmodule </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.xmodule </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    }
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dataSource</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.dataSource</span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dataSource</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.data</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.ds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dataSource</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.ds.xmodule </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.xmodule </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+         
+    }
+    
+    
+    
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.container.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">);
+    }
+
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.height</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.container.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.height</span><span class="jsdoc-syntax">);
+    }
+    </span><span class="jsdoc-comment">/** @private */
+	</span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">// raw events
+        /**
+         * @event click
+         * The raw click event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;click&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event dblclick
+         * The raw dblclick event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;dblclick&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event contextmenu
+         * The raw contextmenu event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;contextmenu&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event mousedown
+         * The raw mousedown event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;mousedown&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event mouseup
+         * The raw mouseup event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;mouseup&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event mouseover
+         * The raw mouseover event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;mouseover&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event mouseout
+         * The raw mouseout event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;mouseout&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event keypress
+         * The raw keypress event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;keypress&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event keydown
+         * The raw keydown event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;keydown&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+
+        </span><span class="jsdoc-comment">// custom events
+
+        /**
+         * @event cellclick
+         * Fires when a cell is clicked
+         * @param {Grid} this
+         * @param {Number} rowIndex
+         * @param {Number} columnIndex
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;cellclick&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event celldblclick
+         * Fires when a cell is double clicked
+         * @param {Grid} this
+         * @param {Number} rowIndex
+         * @param {Number} columnIndex
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;celldblclick&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event rowclick
+         * Fires when a row is clicked
+         * @param {Grid} this
+         * @param {Number} rowIndex
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;rowclick&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event rowdblclick
+         * Fires when a row is double clicked
+         * @param {Grid} this
+         * @param {Number} rowIndex
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;rowdblclick&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event headerclick
+         * Fires when a header is clicked
+         * @param {Grid} this
+         * @param {Number} columnIndex
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;headerclick&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event headerdblclick
+         * Fires when a header cell is double clicked
+         * @param {Grid} this
+         * @param {Number} columnIndex
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;headerdblclick&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event rowcontextmenu
+         * Fires when a row is right clicked
+         * @param {Grid} this
+         * @param {Number} rowIndex
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;rowcontextmenu&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event cellcontextmenu
+         * Fires when a cell is right clicked
+         * @param {Grid} this
+         * @param {Number} rowIndex
+         * @param {Number} cellIndex
+         * @param {Roo.EventObject} e
+         */
+         </span><span class="jsdoc-string">&quot;cellcontextmenu&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event headercontextmenu
+         * Fires when a header is right clicked
+         * @param {Grid} this
+         * @param {Number} columnIndex
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;headercontextmenu&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event bodyscroll
+         * Fires when the body element is scrolled
+         * @param {Number} scrollLeft
+         * @param {Number} scrollTop
+         */
+        </span><span class="jsdoc-string">&quot;bodyscroll&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event columnresize
+         * Fires when the user resizes a column
+         * @param {Number} columnIndex
+         * @param {Number} newSize
+         */
+        </span><span class="jsdoc-string">&quot;columnresize&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event columnmove
+         * Fires when the user moves a column
+         * @param {Number} oldIndex
+         * @param {Number} newIndex
+         */
+        </span><span class="jsdoc-string">&quot;columnmove&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event startdrag
+         * Fires when row(s) start being dragged
+         * @param {Grid} this
+         * @param {Roo.GridDD} dd The drag drop object
+         * @param {event} e The raw browser event
+         */
+        </span><span class="jsdoc-string">&quot;startdrag&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event enddrag
+         * Fires when a drag operation is complete
+         * @param {Grid} this
+         * @param {Roo.GridDD} dd The drag drop object
+         * @param {event} e The raw browser event
+         */
+        </span><span class="jsdoc-string">&quot;enddrag&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event dragdrop
+         * Fires when dragged row(s) are dropped on a valid DD target
+         * @param {Grid} this
+         * @param {Roo.GridDD} dd The drag drop object
+         * @param {String} targetId The target drag drop object
+         * @param {event} e The raw browser event
+         */
+        </span><span class="jsdoc-string">&quot;dragdrop&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event dragover
+         * Fires while row(s) are being dragged. &quot;targetId&quot; is the id of the Yahoo.util.DD object the selected rows are being dragged over.
+         * @param {Grid} this
+         * @param {Roo.GridDD} dd The drag drop object
+         * @param {String} targetId The target drag drop object
+         * @param {event} e The raw browser event
+         */
+        </span><span class="jsdoc-string">&quot;dragover&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event dragenter
+         *  Fires when the dragged row(s) first cross another DD target while being dragged
+         * @param {Grid} this
+         * @param {Roo.GridDD} dd The drag drop object
+         * @param {String} targetId The target drag drop object
+         * @param {event} e The raw browser event
+         */
+        </span><span class="jsdoc-string">&quot;dragenter&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event dragout
+         * Fires when the dragged row(s) leave another DD target while being dragged
+         * @param {Grid} this
+         * @param {Roo.GridDD} dd The drag drop object
+         * @param {String} targetId The target drag drop object
+         * @param {event} e The raw browser event
+         */
+        </span><span class="jsdoc-string">&quot;dragout&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event rowclass
+         * Fires when a row is rendered, so you can change add a style to it.
+         * @param {GridView} gridview   The grid view
+         * @param {Object} rowcfg   contains record  rowIndex and rowClass - set rowClass to add a style.
+         */
+        </span><span class="jsdoc-string">'rowclass' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+
+        </span><span class="jsdoc-comment">/**
+         * @event render
+         * Fires when the grid is rendered
+         * @param {Grid} grid
+         */
+        </span><span class="jsdoc-string">'render' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+
+    </span><span class="jsdoc-var">Roo.grid.Grid.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+};
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.grid.Grid</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable</span><span class="jsdoc-syntax">, {
+    
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} ddGroup - drag drop group.
+     */
+
+    /**
+     * @cfg {Number} minColumnWidth The minimum width a column can be resized to. Default is 25.
+     */
+    </span><span class="jsdoc-var">minColumnWidth </span><span class="jsdoc-syntax">: 25,
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} autoSizeColumns True to automatically resize the columns to fit their content
+     * &lt;b&gt;on initial render.&lt;/b&gt; It is more efficient to explicitly size the columns
+     * through the ColumnModel's {@link Roo.grid.ColumnModel#width} config option.  Default is false.
+     */
+    </span><span class="jsdoc-var">autoSizeColumns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} autoSizeHeaders True to measure headers with column data when auto sizing columns. Default is true.
+     */
+    </span><span class="jsdoc-var">autoSizeHeaders </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} monitorWindowResize True to autoSize the grid when the window resizes. Default is true.
+     */
+    </span><span class="jsdoc-var">monitorWindowResize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} maxRowsToMeasure If autoSizeColumns is on, maxRowsToMeasure can be used to limit the number of
+     * rows measured to get a columns size. Default is 0 (all rows).
+     */
+    </span><span class="jsdoc-var">maxRowsToMeasure </span><span class="jsdoc-syntax">: 0,
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} trackMouseOver True to highlight rows when the mouse is over. Default is true.
+     */
+    </span><span class="jsdoc-var">trackMouseOver </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+    * @cfg {Boolean} enableDrag  True to enable drag of rows. Default is false. (double check if this is needed?)
+    */
+    
+    /**
+    * @cfg {Boolean} enableDragDrop True to enable drag and drop of rows. Default is false.
+    */
+    </span><span class="jsdoc-var">enableDragDrop </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-comment">/**
+    * @cfg {Boolean} enableColumnMove True to enable drag and drop reorder of columns. Default is true.
+    */
+    </span><span class="jsdoc-var">enableColumnMove </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-comment">/**
+    * @cfg {Boolean} enableColumnHide True to enable hiding of columns with the header context menu. Default is true.
+    */
+    </span><span class="jsdoc-var">enableColumnHide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-comment">/**
+    * @cfg {Boolean} enableRowHeightSync True to manually sync row heights across locked and not locked rows. Default is false.
+    */
+    </span><span class="jsdoc-var">enableRowHeightSync </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-comment">/**
+    * @cfg {Boolean} stripeRows True to stripe the rows.  Default is true.
+    */
+    </span><span class="jsdoc-var">stripeRows </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-comment">/**
+    * @cfg {Boolean} autoHeight True to fit the height of the grid container to the height of the data. Default is false.
+    */
+    </span><span class="jsdoc-var">autoHeight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} autoExpandColumn The id (or dataIndex) of a column in this grid that should expand to fill unused space. This id can not be 0. Default is false.
+     */
+    </span><span class="jsdoc-var">autoExpandColumn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+    * @cfg {Number} autoExpandMin The minimum width the autoExpandColumn can have (if enabled).
+    * Default is 50.
+    */
+    </span><span class="jsdoc-var">autoExpandMin </span><span class="jsdoc-syntax">: 50,
+
+    </span><span class="jsdoc-comment">/**
+    * @cfg {Number} autoExpandMax The maximum width the autoExpandColumn can have (if enabled). Default is 1000.
+    */
+    </span><span class="jsdoc-var">autoExpandMax </span><span class="jsdoc-syntax">: 1000,
+
+    </span><span class="jsdoc-comment">/**
+    * @cfg {Object} view The {@link Roo.grid.GridView} used by the grid. This can be set before a call to render().
+    */
+    </span><span class="jsdoc-var">view </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+    * @cfg {Object} loadMask An {@link Roo.LoadMask} config or true to mask the grid while loading. Default is false.
+    */
+    </span><span class="jsdoc-var">loadMask </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+    * @cfg {Roo.dd.DropTarget} dropTarget An {@link Roo.dd.DropTarget} config
+    */
+    </span><span class="jsdoc-var">dropTarget</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+   
+    
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">rendered </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+    * @cfg {Boolean} autoWidth True to set the grid's width to the default total width of the grid's columns instead
+    * of a fixed width. Default is false.
+    */
+    /**
+    * @cfg {Number} maxHeight Sets the maximum height of the grid - ignored if autoHeight is not on.
+    */
+    /**
+     * Called once after all setup has been completed and the grid is ready to be rendered.
+     * @return {Roo.grid.Grid} this
+     */
+    </span><span class="jsdoc-var">render </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.container</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">// try to detect autoHeight/width mode
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">((!</span><span class="jsdoc-var">c.dom.offsetHeight </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">c.dom.offsetHeight </span><span class="jsdoc-syntax">&lt; 20) || </span><span class="jsdoc-var">c.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;height&quot;</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">&quot;auto&quot;</span><span class="jsdoc-syntax">){
+    	    </span><span class="jsdoc-var">this.autoHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+    	}
+    	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getView</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">view.init</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">c.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">c.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;dblclick&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onDblClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">c.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;contextmenu&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onContextMenu</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">c.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;keydown&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onKeyDown</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isTouch</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">c.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;touchstart&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTouchStart</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+
+        </span><span class="jsdoc-var">this.relayEvents</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-string">&quot;mousedown&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;mouseup&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;mouseover&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;mouseout&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;keypress&quot;</span><span class="jsdoc-syntax">]);
+
+        </span><span class="jsdoc-var">this.getSelectionModel</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.init</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">view.render</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loadMask</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.loadMask </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.LoadMask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.container</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">store</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">this.dataSource</span><span class="jsdoc-syntax">}, </span><span class="jsdoc-var">this.loadMask</span><span class="jsdoc-syntax">));
+        }
+        
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbar </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.toolbar.xtype</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.toolbar.container </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getView</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getHeaderPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.toolbar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Toolbar</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbar</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.footer </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.footer.xtype</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.footer.dataSource </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getDataSource</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.footer.container </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getView</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getFooterPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.footer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.footer</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dropTarget </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.dropTarget.xtype</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.dropTarget.xtype</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.dropTarget </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.dd.DropTarget</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getView</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.mainBody</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.dropTarget</span><span class="jsdoc-syntax">);
+        }
+        
+        
+        </span><span class="jsdoc-var">this.rendered </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'render'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+    },
+
+	</span><span class="jsdoc-comment">/**
+	 * Reconfigures the grid to use a different Store and Column Model.
+	 * The View will be bound to the new objects and refreshed.
+	 * @param {Roo.data.Store} dataSource The new {@link Roo.data.Store} object
+	 * @param {Roo.grid.ColumnModel} The new {@link Roo.grid.ColumnModel} object
+	 */
+    </span><span class="jsdoc-var">reconfigure </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataSource</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">colModel</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loadMask</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.loadMask.destroy</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.loadMask </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.LoadMask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.container</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">store</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">dataSource</span><span class="jsdoc-syntax">}, </span><span class="jsdoc-var">this.loadMask</span><span class="jsdoc-syntax">));
+        }
+        </span><span class="jsdoc-var">this.view.bind</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataSource</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">colModel</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.dataSource </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dataSource</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.colModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">colModel</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.view.refresh</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onKeyDown </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;keydown&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Destroy this grid.
+     * @param {Boolean} removeEl True to remove the element
+     */
+    </span><span class="jsdoc-var">destroy </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">removeEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">keepListeners</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loadMask</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.loadMask.destroy</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.container</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">c.removeAllListeners</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.view.destroy</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.colModel.purgeListeners</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">keepListeners</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.purgeListeners</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">c.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">removeEl </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">c.remove</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">processEvent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-comment">// does this fire select???
+        //Roo.log('grid:processEvent '  + name);
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'touchstart' </span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);    
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.view</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">header </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v.findHeaderIndex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">header </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ename </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'touchstart' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'click' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">;
+             
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;header&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">ename</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">header</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v.findRowIndex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v.findCellIndex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'touchstart'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-comment">// first touch is always a click.
+                // hopefull this happens after selection is updated.?
+                </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.selModel.getSelectedCell</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.selModel.getSelectedCell</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[0] &amp;&amp; </span><span class="jsdoc-var">cell </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[1]){
+                        </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'dblclick'</span><span class="jsdoc-syntax">;
+                    }
+                }
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.selModel.getSelections</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.selModel.getSelections</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dataSource</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cs.length </span><span class="jsdoc-syntax">== 1 &amp;&amp; </span><span class="jsdoc-var">ds.getAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[0]){
+                        </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'dblclick'</span><span class="jsdoc-syntax">;
+                    }
+                }
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+            }
+            
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;row&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cell </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;cell&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cell</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+                }
+            }
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.processEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+    },
+   </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onTouchStart </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.processEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;touchstart&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onContextMenu </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.processEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;contextmenu&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onDblClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.processEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;dblclick&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">walkCells </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">step</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.colModel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">clen </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.getColumnCount</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dataSource</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rlen </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ds.getCount</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">first </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">step </span><span class="jsdoc-syntax">&lt; 0){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col </span><span class="jsdoc-syntax">&lt; 0){
+                </span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">--;
+                </span><span class="jsdoc-var">first </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">while</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">&gt;= 0){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">first</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">col </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">clen</span><span class="jsdoc-syntax">-1;
+                }
+                </span><span class="jsdoc-var">first </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">while</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col </span><span class="jsdoc-syntax">&gt;= 0){
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cm</span><span class="jsdoc-syntax">) === </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">];
+                    }
+                    </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">--;
+                }
+                </span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">--;
+            }
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-var">clen</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">++;
+                </span><span class="jsdoc-var">first </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">while</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">rlen</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">first</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">col </span><span class="jsdoc-syntax">= 0;
+                }
+                </span><span class="jsdoc-var">first </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">while</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">clen</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cm</span><span class="jsdoc-syntax">) === </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">];
+                    }
+                    </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">++;
+                }
+                </span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">++;
+            }
+        }
+        </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">getSelections </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.selModel.getSelections</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Causes the grid to manually recalculate its dimensions. Generally this is done automatically,
+     * but if manual update is required this method will initiate it.
+     */
+    </span><span class="jsdoc-var">autoSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rendered</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.view.layout</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.view.adjustForScroll</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.view.adjustForScroll</span><span class="jsdoc-syntax">();
+            }
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the grid's underlying element.
+     * @return {Element} The element
+     */
+    </span><span class="jsdoc-var">getGridEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.container</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">// private for compatibility, overridden by editor grid
+    </span><span class="jsdoc-var">stopEditing </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){},
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the grid's SelectionModel.
+     * @return {SelectionModel}
+     */
+    </span><span class="jsdoc-var">getSelectionModel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.selModel</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.selModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.grid.RowSelectionModel</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.selModel</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the grid's DataSource.
+     * @return {DataSource}
+     */
+    </span><span class="jsdoc-var">getDataSource </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.dataSource</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the grid's ColumnModel.
+     * @return {ColumnModel}
+     */
+    </span><span class="jsdoc-var">getColumnModel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.colModel</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the grid's GridView object.
+     * @return {GridView}
+     */
+    </span><span class="jsdoc-var">getView </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.view</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.grid.GridView</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.viewConfig</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.view</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-comment">/**
+     * Called to get grid's drag proxy text, by default returns this.ddText.
+     * @return {String}
+     */
+    </span><span class="jsdoc-var">getDragDropText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">count </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.selModel.getCount</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.ddText</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">count</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">count </span><span class="jsdoc-syntax">== 1 ? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'s'</span><span class="jsdoc-syntax">);
+    }
+});
+</span><span class="jsdoc-comment">/**
+ * Configures the text is the drag proxy (defaults to &quot;%0 selected row(s)&quot;).
+ * %0 is replaced with the number of selected rows.
+ * @type String
+ */
+</span><span class="jsdoc-var">Roo.grid.Grid.prototype.ddText </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;{0} selected row{1}&quot;</span><span class="jsdoc-syntax">;</span></code></body></html>

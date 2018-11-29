@@ -1,0 +1,78 @@
+<html><head><title>../roojs1/Roo/state/Manager.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+/**
+ * @class Roo.state.Manager
+ * This is the global state manager. By default all components that are &quot;state aware&quot; check this class
+ * for state information if you don't pass them a custom state provider. In order for this class
+ * to be useful, it must be initialized with a provider when your application initializes.
+ &lt;pre&gt;&lt;code&gt;
+// in your initialization function
+init : function(){
+   Roo.state.Manager.setProvider(new Roo.state.CookieProvider());
+   ...
+   // supposed you have a {@link Roo.BorderLayout}
+   var layout = new Roo.BorderLayout(...);
+   layout.restoreState();
+   // or a {Roo.BasicDialog}
+   var dialog = new Roo.BasicDialog(...);
+   dialog.restoreState();
+ &lt;/code&gt;&lt;/pre&gt;
+ * @singleton
+ */
+</span><span class="jsdoc-var">Roo.state.Manager </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">provider </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.state.Provider</span><span class="jsdoc-syntax">();
+    
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-comment">/**
+         * Configures the default state provider for your application
+         * @param {Provider} stateProvider The state provider to set
+         */
+        </span><span class="jsdoc-var">setProvider </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">stateProvider</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">provider </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">stateProvider</span><span class="jsdoc-syntax">;
+        },
+        
+        </span><span class="jsdoc-comment">/**
+         * Returns the current value for a key
+         * @param {String} name The key name
+         * @param {Mixed} defaultValue The default value to return if the key lookup does not match
+         * @return {Mixed} The state data
+         */
+        </span><span class="jsdoc-var">get </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">defaultValue</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">provider.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">defaultValue</span><span class="jsdoc-syntax">);
+        },
+        
+        </span><span class="jsdoc-comment">/**
+         * Sets the value for a key
+         * @param {String} name The key name
+         * @param {Mixed} value The state data
+         */
+         </span><span class="jsdoc-var">set </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">provider.set</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+        },
+        
+        </span><span class="jsdoc-comment">/**
+         * Clears a value from the state
+         * @param {String} name The key name
+         */
+        </span><span class="jsdoc-var">clear </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">provider.clear</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">);
+        },
+        
+        </span><span class="jsdoc-comment">/**
+         * Gets the currently configured state provider
+         * @return {Provider} The state provider
+         */
+        </span><span class="jsdoc-var">getProvider </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">provider</span><span class="jsdoc-syntax">;
+        }
+    };
+}();
+</span></code></body></html>

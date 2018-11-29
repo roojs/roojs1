@@ -1,0 +1,157 @@
+<html><head><title>../roojs1/Roo/KeyNav.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+ 
+/**
+ * @class Roo.KeyNav
+ * &lt;p&gt;Provides a convenient wrapper for normalized keyboard navigation.  KeyNav allows you to bind
+ * navigation keys to function calls that will get called when the keys are pressed, providing an easy
+ * way to implement custom navigation schemes for any UI component.&lt;/p&gt;
+ * &lt;p&gt;The following are all of the possible keys that can be implemented: enter, left, right, up, down, tab, esc,
+ * pageUp, pageDown, del, home, end.  Usage:&lt;/p&gt;
+ &lt;pre&gt;&lt;code&gt;
+var nav = new Roo.KeyNav(&quot;my-element&quot;, {
+    &quot;left&quot; : function(e){
+        this.moveLeft(e.ctrlKey);
+    },
+    &quot;right&quot; : function(e){
+        this.moveRight(e.ctrlKey);
+    },
+    &quot;enter&quot; : function(e){
+        this.save();
+    },
+    scope : this
+});
+&lt;/code&gt;&lt;/pre&gt;
+ * @constructor
+ * @param {String/HTMLElement/Roo.Element} el The element to bind to
+ * @param {Object} config The config
+ */
+</span><span class="jsdoc-var">Roo.KeyNav </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.enable</span><span class="jsdoc-syntax">();
+    }
+};
+
+</span><span class="jsdoc-var">Roo.KeyNav.prototype </span><span class="jsdoc-syntax">= {
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} disabled
+     * True to disable this KeyNav instance (defaults to false)
+     */
+    </span><span class="jsdoc-var">disabled </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} defaultEventAction
+     * The method to call on the {@link Roo.EventObject} after this KeyNav intercepts a key.  Valid values are
+     * {@link Roo.EventObject#stopEvent}, {@link Roo.EventObject#preventDefault} and
+     * {@link Roo.EventObject#stopPropagation} (defaults to 'stopEvent')
+     */
+    </span><span class="jsdoc-var">defaultEventAction</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;stopEvent&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} forceKeyDown
+     * Handle the keydown event instead of keypress (defaults to false).  KeyNav automatically does this for IE since
+     * IE does not propagate special keys on keypress, but setting this to true will force other browsers to also
+     * handle keydown instead of keypress.
+     */
+    </span><span class="jsdoc-var">forceKeyDown </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">prepareEvent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getKey</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.keyToHandler</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-comment">//if(h &amp;&amp; this[h]){
+        //    e.stopPropagation();
+        //}
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isSafari </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">&gt;= 37 &amp;&amp; </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">&lt;= 40){
+            </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">relay </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getKey</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.keyToHandler</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">]){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doRelay</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.defaultEventAction</span><span class="jsdoc-syntax">]();
+            }
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">doRelay </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hname</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">h.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.scope </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// possible handlers
+    </span><span class="jsdoc-var">enter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">left </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">right </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">up </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">down </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">tab </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">esc </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">pageUp </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">pageDown </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">del </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">home </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">end </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">// quick lookup hash
+    </span><span class="jsdoc-var">keyToHandler </span><span class="jsdoc-syntax">: {
+        37 : </span><span class="jsdoc-string">&quot;left&quot;</span><span class="jsdoc-syntax">,
+        39 : </span><span class="jsdoc-string">&quot;right&quot;</span><span class="jsdoc-syntax">,
+        38 : </span><span class="jsdoc-string">&quot;up&quot;</span><span class="jsdoc-syntax">,
+        40 : </span><span class="jsdoc-string">&quot;down&quot;</span><span class="jsdoc-syntax">,
+        33 : </span><span class="jsdoc-string">&quot;pageUp&quot;</span><span class="jsdoc-syntax">,
+        34 : </span><span class="jsdoc-string">&quot;pageDown&quot;</span><span class="jsdoc-syntax">,
+        46 : </span><span class="jsdoc-string">&quot;del&quot;</span><span class="jsdoc-syntax">,
+        36 : </span><span class="jsdoc-string">&quot;home&quot;</span><span class="jsdoc-syntax">,
+        35 : </span><span class="jsdoc-string">&quot;end&quot;</span><span class="jsdoc-syntax">,
+        13 : </span><span class="jsdoc-string">&quot;enter&quot;</span><span class="jsdoc-syntax">,
+        27 : </span><span class="jsdoc-string">&quot;esc&quot;</span><span class="jsdoc-syntax">,
+        9  : </span><span class="jsdoc-string">&quot;tab&quot;
+    </span><span class="jsdoc-syntax">},
+
+	</span><span class="jsdoc-comment">/**
+	 * Enable this KeyNav
+	 */
+	</span><span class="jsdoc-var">enable</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+		</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-comment">// ie won't do special keys on keypress, no one else will repeat keys with keydown
+            // the EventObject will normalize Safari automatically
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.forceKeyDown </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.isIE </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.isAir</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;keydown&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.relay</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;keydown&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.prepareEvent</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;keypress&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.relay</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            }
+		    </span><span class="jsdoc-var">this.disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+		}
+	},
+
+	</span><span class="jsdoc-comment">/**
+	 * Disable this KeyNav
+	 */
+	</span><span class="jsdoc-var">disable</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+		</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">){
+		    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.forceKeyDown </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.isIE </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.isAir</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.el.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;keydown&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.relay</span><span class="jsdoc-syntax">);
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">this.el.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;keydown&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.prepareEvent</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.el.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;keypress&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.relay</span><span class="jsdoc-syntax">);
+            }
+		    </span><span class="jsdoc-var">this.disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+		}
+	}
+};</span></code></body></html>

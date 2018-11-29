@@ -1,0 +1,68 @@
+<html><head><title>../roojs1/Roo/lib/Scroll.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Portions of this file are based on pieces of Yahoo User Interface Library
+ * Copyright (c) 2007, Yahoo! Inc. All rights reserved.
+ * YUI licensed under the BSD License:
+ * http://developer.yahoo.net/yui/license.txt
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ *
+ */
+    </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-var">Roo.lib.Scroll </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">attributes</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">duration</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">method</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">Roo.lib.Scroll.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">attributes</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">duration</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">method</span><span class="jsdoc-syntax">);
+            }
+        };
+
+        </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.lib.Scroll</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.lib.ColorAnim</span><span class="jsdoc-syntax">);
+
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">Y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">superclass </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Y.Scroll.superclass</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">proto </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Y.Scroll.prototype</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">proto.toString </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getEl</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.id </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">el.tagName</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Scroll &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+        };
+
+        </span><span class="jsdoc-var">proto.doMethod </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">end</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">val </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'scroll'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">val </span><span class="jsdoc-syntax">= [
+                        </span><span class="jsdoc-var">this.method</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.currentFrame</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-var">end</span><span class="jsdoc-syntax">[0] - </span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-var">this.totalFrames</span><span class="jsdoc-syntax">),
+                        </span><span class="jsdoc-var">this.method</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.currentFrame</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">[1], </span><span class="jsdoc-var">end</span><span class="jsdoc-syntax">[1] - </span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">[1], </span><span class="jsdoc-var">this.totalFrames</span><span class="jsdoc-syntax">)
+                        ];
+
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">val </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">superclass.doMethod.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">end</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">;
+        };
+
+        </span><span class="jsdoc-var">proto.getAttribute </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">val </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getEl</span><span class="jsdoc-syntax">();
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'scroll'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">val </span><span class="jsdoc-syntax">= [ </span><span class="jsdoc-var">el.scrollLeft</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el.scrollTop </span><span class="jsdoc-syntax">];
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">val </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">superclass.getAttribute.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">);
+            }
+
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">;
+        };
+
+        </span><span class="jsdoc-var">proto.setAttribute </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">unit</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getEl</span><span class="jsdoc-syntax">();
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'scroll'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">el.scrollLeft </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">[0];
+                </span><span class="jsdoc-var">el.scrollTop </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">[1];
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">superclass.setAttribute.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">unit</span><span class="jsdoc-syntax">);
+            }
+        };
+    })();
+</span></code></body></html>

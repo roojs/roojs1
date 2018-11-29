@@ -1,0 +1,1308 @@
+<html><head><title>../roojs1/Roo/dd/DragDropMgr.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+
+/**
+ * The drag and drop utility provides a framework for building drag and drop
+ * applications.  In addition to enabling drag and drop for specific elements,
+ * the drag and drop elements are tracked by the manager class, and the
+ * interactions between the various elements are tracked during the drag and
+ * the implementing code is notified about these important moments.
+ */
+
+// Only load the library once.  Rewriting the manager class would orphan
+// existing drag and drop instances.
+</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">Roo.dd.DragDropMgr</span><span class="jsdoc-syntax">) {
+
+</span><span class="jsdoc-comment">/**
+ * @class Roo.dd.DragDropMgr
+ * DragDropMgr is a singleton that tracks the element interaction for
+ * all DragDrop items in the window.  Generally, you will not call
+ * this class directly, but it does have helper methods that could
+ * be useful in your DragDrop implementations.
+ * @singleton
+ */
+</span><span class="jsdoc-var">Roo.dd.DragDropMgr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">Event </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.EventManager</span><span class="jsdoc-syntax">;
+
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+
+        </span><span class="jsdoc-comment">/**
+         * Two dimensional Array of registered DragDrop objects.  The first
+         * dimension is the DragDrop item group, the second the DragDrop
+         * object.
+         * @property ids
+         * @type {string: string}
+         * @private
+         * @static
+         */
+        </span><span class="jsdoc-var">ids</span><span class="jsdoc-syntax">: {},
+
+        </span><span class="jsdoc-comment">/**
+         * Array of element ids defined as drag handles.  Used to determine
+         * if the element that generated the mousedown event is actually the
+         * handle and not the html element itself.
+         * @property handleIds
+         * @type {string: string}
+         * @private
+         * @static
+         */
+        </span><span class="jsdoc-var">handleIds</span><span class="jsdoc-syntax">: {},
+
+        </span><span class="jsdoc-comment">/**
+         * the DragDrop object that is currently being dragged
+         * @property dragCurrent
+         * @type DragDrop
+         * @private
+         * @static
+         **/
+        </span><span class="jsdoc-var">dragCurrent</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+
+        </span><span class="jsdoc-comment">/**
+         * the DragDrop object(s) that are being hovered over
+         * @property dragOvers
+         * @type Array
+         * @private
+         * @static
+         */
+        </span><span class="jsdoc-var">dragOvers</span><span class="jsdoc-syntax">: {},
+
+        </span><span class="jsdoc-comment">/**
+         * the X distance between the cursor and the object being dragged
+         * @property deltaX
+         * @type int
+         * @private
+         * @static
+         */
+        </span><span class="jsdoc-var">deltaX</span><span class="jsdoc-syntax">: 0,
+
+        </span><span class="jsdoc-comment">/**
+         * the Y distance between the cursor and the object being dragged
+         * @property deltaY
+         * @type int
+         * @private
+         * @static
+         */
+        </span><span class="jsdoc-var">deltaY</span><span class="jsdoc-syntax">: 0,
+
+        </span><span class="jsdoc-comment">/**
+         * Flag to determine if we should prevent the default behavior of the
+         * events we define. By default this is true, but this can be set to
+         * false if you need the default behavior (not recommended)
+         * @property preventDefault
+         * @type boolean
+         * @static
+         */
+        </span><span class="jsdoc-var">preventDefault</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+
+        </span><span class="jsdoc-comment">/**
+         * Flag to determine if we should stop the propagation of the events
+         * we generate. This is true by default but you may want to set it to
+         * false if the html element contains other features that require the
+         * mouse click.
+         * @property stopPropagation
+         * @type boolean
+         * @static
+         */
+        </span><span class="jsdoc-var">stopPropagation</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+
+        </span><span class="jsdoc-comment">/**
+         * Internal flag that is set to true when drag and drop has been
+         * intialized
+         * @property initialized
+         * @private
+         * @static
+         */
+        </span><span class="jsdoc-var">initalized</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+        </span><span class="jsdoc-comment">/**
+         * All drag and drop can be disabled.
+         * @property locked
+         * @private
+         * @static
+         */
+        </span><span class="jsdoc-var">locked</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+        </span><span class="jsdoc-comment">/**
+         * Called the first time an element is registered.
+         * @method init
+         * @private
+         * @static
+         */
+        </span><span class="jsdoc-var">init</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-var">this.initialized </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * In point mode, drag and drop interaction is defined by the
+         * location of the cursor during the drag/drop
+         * @property POINT
+         * @type int
+         * @static
+         */
+        </span><span class="jsdoc-var">POINT</span><span class="jsdoc-syntax">: 0,
+
+        </span><span class="jsdoc-comment">/**
+         * In intersect mode, drag and drop interactio nis defined by the
+         * overlap of two or more drag and drop objects.
+         * @property INTERSECT
+         * @type int
+         * @static
+         */
+        </span><span class="jsdoc-var">INTERSECT</span><span class="jsdoc-syntax">: 1,
+
+        </span><span class="jsdoc-comment">/**
+         * The current drag and drop mode.  Default: POINT
+         * @property mode
+         * @type int
+         * @static
+         */
+        </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">: 0,
+
+        </span><span class="jsdoc-comment">/**
+         * Runs method on all drag and drop objects
+         * @method _execOnAll
+         * @private
+         * @static
+         */
+        </span><span class="jsdoc-var">_execOnAll</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sMethod</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">this.ids</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">j </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">this.ids</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]) {
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">oDD </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.ids</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">];
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(! </span><span class="jsdoc-var">this.isTypeOfDD</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oDD</span><span class="jsdoc-syntax">)) {
+                        </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+                    }
+                    </span><span class="jsdoc-var">oDD</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">sMethod</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oDD</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">);
+                }
+            }
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Drag and drop initialization.  Sets up the global event handlers
+         * @method _onLoad
+         * @private
+         * @static
+         */
+        </span><span class="jsdoc-var">_onLoad</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+
+            </span><span class="jsdoc-var">this.init</span><span class="jsdoc-syntax">();
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">Roo.isTouch</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">Event.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;mouseup&quot;</span><span class="jsdoc-syntax">,   </span><span class="jsdoc-var">this.handleMouseUp</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">Event.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;mousemove&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.handleMouseMove</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-var">Event.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;touchend&quot;</span><span class="jsdoc-syntax">,   </span><span class="jsdoc-var">this.handleMouseUp</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">Event.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;touchmove&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.handleMouseMove</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-var">Event.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">window</span><span class="jsdoc-syntax">,   </span><span class="jsdoc-string">&quot;unload&quot;</span><span class="jsdoc-syntax">,    </span><span class="jsdoc-var">this._onUnload</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">Event.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">window</span><span class="jsdoc-syntax">,   </span><span class="jsdoc-string">&quot;resize&quot;</span><span class="jsdoc-syntax">,    </span><span class="jsdoc-var">this._onResize</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-comment">// Event.on(window,   &quot;mouseout&quot;,    this._test);
+
+        </span><span class="jsdoc-syntax">},
+
+        </span><span class="jsdoc-comment">/**
+         * Reset constraints on all drag and drop objs
+         * @method _onResize
+         * @private
+         * @static
+         */
+        </span><span class="jsdoc-var">_onResize</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this._execOnAll</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;resetConstraints&quot;</span><span class="jsdoc-syntax">, []);
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Lock all drag and drop functionality
+         * @method lock
+         * @static
+         */
+        </span><span class="jsdoc-var">lock</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { </span><span class="jsdoc-var">this.locked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">; },
+
+        </span><span class="jsdoc-comment">/**
+         * Unlock all drag and drop functionality
+         * @method unlock
+         * @static
+         */
+        </span><span class="jsdoc-var">unlock</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { </span><span class="jsdoc-var">this.locked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">; },
+
+        </span><span class="jsdoc-comment">/**
+         * Is drag and drop locked?
+         * @method isLocked
+         * @return {boolean} True if drag and drop is locked, false otherwise.
+         * @static
+         */
+        </span><span class="jsdoc-var">isLocked</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.locked</span><span class="jsdoc-syntax">; },
+
+        </span><span class="jsdoc-comment">/**
+         * Location cache that is set for all drag drop objects when a drag is
+         * initiated, cleared when the drag is finished.
+         * @property locationCache
+         * @private
+         * @static
+         */
+        </span><span class="jsdoc-var">locationCache</span><span class="jsdoc-syntax">: {},
+
+        </span><span class="jsdoc-comment">/**
+         * Set useCache to false if you want to force object the lookup of each
+         * drag and drop linked element constantly during a drag.
+         * @property useCache
+         * @type boolean
+         * @static
+         */
+        </span><span class="jsdoc-var">useCache</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+
+        </span><span class="jsdoc-comment">/**
+         * The number of pixels that the mouse needs to move after the
+         * mousedown before the drag is initiated.  Default=3;
+         * @property clickPixelThresh
+         * @type int
+         * @static
+         */
+        </span><span class="jsdoc-var">clickPixelThresh</span><span class="jsdoc-syntax">: 3,
+
+        </span><span class="jsdoc-comment">/**
+         * The number of milliseconds after the mousedown event to initiate the
+         * drag if we don't get a mouseup event. Default=1000
+         * @property clickTimeThresh
+         * @type int
+         * @static
+         */
+        </span><span class="jsdoc-var">clickTimeThresh</span><span class="jsdoc-syntax">: 350,
+
+        </span><span class="jsdoc-comment">/**
+         * Flag that indicates that either the drag pixel threshold or the
+         * mousdown time threshold has been met
+         * @property dragThreshMet
+         * @type boolean
+         * @private
+         * @static
+         */
+        </span><span class="jsdoc-var">dragThreshMet</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+        </span><span class="jsdoc-comment">/**
+         * Timeout used for the click time threshold
+         * @property clickTimeout
+         * @type Object
+         * @private
+         * @static
+         */
+        </span><span class="jsdoc-var">clickTimeout</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+
+        </span><span class="jsdoc-comment">/**
+         * The X position of the mousedown event stored for later use when a
+         * drag threshold is met.
+         * @property startX
+         * @type int
+         * @private
+         * @static
+         */
+        </span><span class="jsdoc-var">startX</span><span class="jsdoc-syntax">: 0,
+
+        </span><span class="jsdoc-comment">/**
+         * The Y position of the mousedown event stored for later use when a
+         * drag threshold is met.
+         * @property startY
+         * @type int
+         * @private
+         * @static
+         */
+        </span><span class="jsdoc-var">startY</span><span class="jsdoc-syntax">: 0,
+
+        </span><span class="jsdoc-comment">/**
+         * Each DragDrop instance must be registered with the DragDropMgr.
+         * This is executed in DragDrop.init()
+         * @method regDragDrop
+         * @param {DragDrop} oDD the DragDrop object to register
+         * @param {String} sGroup the name of the group this element belongs to
+         * @static
+         */
+        </span><span class="jsdoc-var">regDragDrop</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oDD</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sGroup</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.initialized</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-var">this.init</span><span class="jsdoc-syntax">(); }
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.ids</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">sGroup</span><span class="jsdoc-syntax">]) {
+                </span><span class="jsdoc-var">this.ids</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">sGroup</span><span class="jsdoc-syntax">] = {};
+            }
+            </span><span class="jsdoc-var">this.ids</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">sGroup</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">oDD.id</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">oDD</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Removes the supplied dd instance from the supplied group. Executed
+         * by DragDrop.removeFromGroup, so don't call this function directly.
+         * @method removeDDFromGroup
+         * @private
+         * @static
+         */
+        </span><span class="jsdoc-var">removeDDFromGroup</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oDD</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sGroup</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.ids</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">sGroup</span><span class="jsdoc-syntax">]) {
+                </span><span class="jsdoc-var">this.ids</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">sGroup</span><span class="jsdoc-syntax">] = {};
+            }
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">obj </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.ids</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">sGroup</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">obj </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">obj</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">oDD.id</span><span class="jsdoc-syntax">]) {
+                </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">obj</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">oDD.id</span><span class="jsdoc-syntax">];
+            }
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Unregisters a drag and drop item.  This is executed in
+         * DragDrop.unreg, use that method instead of calling this directly.
+         * @method _remove
+         * @private
+         * @static
+         */
+        </span><span class="jsdoc-var">_remove</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oDD</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">g </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">oDD.groups</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">g </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.ids</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">oDD.id</span><span class="jsdoc-syntax">]) {
+                    </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.ids</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">oDD.id</span><span class="jsdoc-syntax">];
+                }
+            }
+            </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.handleIds</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">oDD.id</span><span class="jsdoc-syntax">];
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Each DragDrop handle element must be registered.  This is done
+         * automatically when executing DragDrop.setHandleElId()
+         * @method regHandle
+         * @param {String} sDDId the DragDrop id this element is a handle for
+         * @param {String} sHandleId the id of the element that is the drag
+         * handle
+         * @static
+         */
+        </span><span class="jsdoc-var">regHandle</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sDDId</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sHandleId</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.handleIds</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">sDDId</span><span class="jsdoc-syntax">]) {
+                </span><span class="jsdoc-var">this.handleIds</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">sDDId</span><span class="jsdoc-syntax">] = {};
+            }
+            </span><span class="jsdoc-var">this.handleIds</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">sDDId</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">sHandleId</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">sHandleId</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Utility function to determine if a given element has been
+         * registered as a drag drop item.
+         * @method isDragDrop
+         * @param {String} id the element id to check
+         * @return {boolean} true if this element is a DragDrop item,
+         * false otherwise
+         * @static
+         */
+        </span><span class="jsdoc-var">isDragDrop</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.getDDById</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">) ) ? </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Returns the drag and drop instances that are in all groups the
+         * passed in instance belongs to.
+         * @method getRelated
+         * @param {DragDrop} p_oDD the obj to get related data for
+         * @param {boolean} bTargetsOnly if true, only return targetable objs
+         * @return {DragDrop[]} the related instances
+         * @static
+         */
+        </span><span class="jsdoc-var">getRelated</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p_oDD</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">bTargetsOnly</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">oDDs </span><span class="jsdoc-syntax">= [];
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">p_oDD.groups</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">j </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">this.ids</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]) {
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.ids</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">];
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(! </span><span class="jsdoc-var">this.isTypeOfDD</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">)) {
+                        </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+                    }
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">bTargetsOnly </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">dd.isTarget</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">oDDs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">oDDs.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">;
+                    }
+                }
+            }
+
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">oDDs</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Returns true if the specified dd target is a legal target for
+         * the specifice drag obj
+         * @method isLegalTarget
+         * @param {DragDrop} the drag obj
+         * @param {DragDrop} the target
+         * @return {boolean} true if the target is a legal target for the
+         * dd obj
+         * @static
+         */
+        </span><span class="jsdoc-var">isLegalTarget</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oDD</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">oTargetDD</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">targets </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getRelated</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oDD</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">=0, </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">targets.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">&lt;</span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">;++</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">targets</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.id </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">oTargetDD.id</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+                }
+            }
+
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * My goal is to be able to transparently determine if an object is
+         * typeof DragDrop, and the exact subclass of DragDrop.  typeof
+         * returns &quot;object&quot;, oDD.constructor.toString() always returns
+         * &quot;DragDrop&quot; and not the name of the subclass.  So for now it just
+         * evaluates a well-known variable in DragDrop.
+         * @method isTypeOfDD
+         * @param {Object} the object to evaluate
+         * @return {boolean} true if typeof oDD = DragDrop
+         * @static
+         */
+        </span><span class="jsdoc-var">isTypeOfDD</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oDD</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oDD </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">oDD.__ygDragDrop</span><span class="jsdoc-syntax">);
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Utility function to determine if a given element has been
+         * registered as a drag drop handle for the given Drag Drop object.
+         * @method isHandle
+         * @param {String} id the element id to check
+         * @return {boolean} true if this element is a DragDrop handle, false
+         * otherwise
+         * @static
+         */
+        </span><span class="jsdoc-var">isHandle</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sDDId</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sHandleId</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.handleIds</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">sDDId</span><span class="jsdoc-syntax">] &amp;&amp;
+                            </span><span class="jsdoc-var">this.handleIds</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">sDDId</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">sHandleId</span><span class="jsdoc-syntax">] );
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Returns the DragDrop instance for a given id
+         * @method getDDById
+         * @param {String} id the id of the DragDrop object
+         * @return {DragDrop} the drag drop object, null if it is not found
+         * @static
+         */
+        </span><span class="jsdoc-var">getDDById</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">this.ids</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.ids</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">]) {
+                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.ids</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">];
+                }
+            }
+            </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Fired after a registered DragDrop object gets the mousedown event.
+         * Sets up the events required to track the object being dragged
+         * @method handleMouseDown
+         * @param {Event} e the event
+         * @param oDD the DragDrop object being dragged
+         * @private
+         * @static
+         */
+        </span><span class="jsdoc-var">handleMouseDown</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">oDD</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.QuickTips</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">Roo.QuickTips.disable</span><span class="jsdoc-syntax">();
+            }
+            </span><span class="jsdoc-var">this.currentTarget </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">();
+
+            </span><span class="jsdoc-var">this.dragCurrent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">oDD</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">oDD.getEl</span><span class="jsdoc-syntax">();
+
+            </span><span class="jsdoc-comment">// track start position
+            </span><span class="jsdoc-var">this.startX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getPageX</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.startY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getPageY</span><span class="jsdoc-syntax">();
+
+            </span><span class="jsdoc-var">this.deltaX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.startX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">el.offsetLeft</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.deltaY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.startY </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">el.offsetTop</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-var">this.dragThreshMet </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-var">this.clickTimeout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">setTimeout</span><span class="jsdoc-syntax">(
+                    </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">DDM </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.dd.DDM</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-var">DDM.startDrag</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">DDM.startX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">DDM.startY</span><span class="jsdoc-syntax">);
+                    },
+                    </span><span class="jsdoc-var">this.clickTimeThresh </span><span class="jsdoc-syntax">);
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Fired when either the drag pixel threshol or the mousedown hold
+         * time threshold has been met.
+         * @method startDrag
+         * @param x {int} the X position of the original mousedown
+         * @param y {int} the Y position of the original mousedown
+         * @static
+         */
+        </span><span class="jsdoc-var">startDrag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">clearTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.clickTimeout</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dragCurrent</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.dragCurrent.b4StartDrag</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.dragCurrent.startDrag</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-var">this.dragThreshMet </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Internal function to handle the mouseup event.  Will be invoked
+         * from the context of the document.
+         * @method handleMouseUp
+         * @param {Event} e the event
+         * @private
+         * @static
+         */
+        </span><span class="jsdoc-var">handleMouseUp</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.QuickTips</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">Roo.QuickTips.enable</span><span class="jsdoc-syntax">();
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(! </span><span class="jsdoc-var">this.dragCurrent</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-var">clearTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.clickTimeout</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dragThreshMet</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.fireEvents</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            }
+
+            </span><span class="jsdoc-var">this.stopDrag</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-var">this.stopEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Utility to stop event propagation and event default, if these
+         * features are turned on.
+         * @method stopEvent
+         * @param {Event} e the event as returned by this.getEvent()
+         * @static
+         */
+        </span><span class="jsdoc-var">stopEvent</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.stopPropagation</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">e.stopPropagation</span><span class="jsdoc-syntax">();
+            }
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.preventDefault</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+            }
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Internal function to clean up event handlers after the drag
+         * operation is complete
+         * @method stopDrag
+         * @param {Event} e the event
+         * @private
+         * @static
+         */
+        </span><span class="jsdoc-var">stopDrag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// Fire the drag end event for the item that was dragged
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dragCurrent</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dragThreshMet</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">this.dragCurrent.b4EndDrag</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">this.dragCurrent.endDrag</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+                }
+
+                </span><span class="jsdoc-var">this.dragCurrent.onMouseUp</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+            }
+
+            </span><span class="jsdoc-var">this.dragCurrent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.dragOvers </span><span class="jsdoc-syntax">= {};
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Internal function to handle the mousemove event.  Will be invoked
+         * from the context of the html element.
+         *
+         * @TODO figure out what we can do about mouse events lost when the
+         * user drags objects beyond the window boundary.  Currently we can
+         * detect this in internet explorer by verifying that the mouse is
+         * down during the mousemove event.  Firefox doesn't give us the
+         * button state on the mousemove event.
+         * @method handleMouseMove
+         * @param {Event} e the event
+         * @private
+         * @static
+         */
+        </span><span class="jsdoc-var">handleMouseMove</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(! </span><span class="jsdoc-var">this.dragCurrent</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-comment">// var button = e.which || e.button;
+
+            // check for IE mouseup outside of page boundary
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isIE </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">e.button </span><span class="jsdoc-syntax">!== 0 &amp;&amp; </span><span class="jsdoc-var">e.button </span><span class="jsdoc-syntax">!== 1 &amp;&amp; </span><span class="jsdoc-var">e.button </span><span class="jsdoc-syntax">!== 2)) {
+                </span><span class="jsdoc-var">this.stopEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.handleMouseUp</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+            }
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.dragThreshMet</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">diffX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.abs</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.startX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">e.getPageX</span><span class="jsdoc-syntax">());
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">diffY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.abs</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.startY </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">e.getPageY</span><span class="jsdoc-syntax">());
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">diffX </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.clickPixelThresh </span><span class="jsdoc-syntax">||
+                            </span><span class="jsdoc-var">diffY </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.clickPixelThresh</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">this.startDrag</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.startX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.startY</span><span class="jsdoc-syntax">);
+                }
+            }
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dragThreshMet</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.dragCurrent.b4Drag</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.dragCurrent.onDrag</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.dragCurrent.moveOnly</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">this.fireEvents</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+                }
+            }
+
+            </span><span class="jsdoc-var">this.stopEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Iterates over all of the DragDrop elements to find ones we are
+         * hovering over or dropping on
+         * @method fireEvents
+         * @param {Event} e the event
+         * @param {boolean} isDrop is this a drop op or a mouseover op?
+         * @private
+         * @static
+         */
+        </span><span class="jsdoc-var">fireEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">isDrop</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dragCurrent</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-comment">// If the user did the mouse up outside of the window, we could
+            // get here even though we have ended the drag.
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">dc </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">dc.isLocked</span><span class="jsdoc-syntax">()) {
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getPoint</span><span class="jsdoc-syntax">();
+
+            </span><span class="jsdoc-comment">// cache the previous dragOver array
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">oldOvers </span><span class="jsdoc-syntax">= [];
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">outEvts   </span><span class="jsdoc-syntax">= [];
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">overEvts  </span><span class="jsdoc-syntax">= [];
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dropEvts  </span><span class="jsdoc-syntax">= [];
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">enterEvts </span><span class="jsdoc-syntax">= [];
+
+            </span><span class="jsdoc-comment">// Check to see if the object(s) we were hovering over is no longer
+            // being hovered over so we can fire the onDragOut event
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">this.dragOvers</span><span class="jsdoc-syntax">) {
+
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ddo </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dragOvers</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(! </span><span class="jsdoc-var">this.isTypeOfDD</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ddo</span><span class="jsdoc-syntax">)) {
+                    </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+                }
+
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(! </span><span class="jsdoc-var">this.isOverTarget</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pt</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ddo</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.mode</span><span class="jsdoc-syntax">)) {
+                    </span><span class="jsdoc-var">outEvts.push</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">ddo </span><span class="jsdoc-syntax">);
+                }
+
+                </span><span class="jsdoc-var">oldOvers</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.dragOvers</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+            }
+
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sGroup </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">dc.groups</span><span class="jsdoc-syntax">) {
+
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;string&quot; </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">sGroup</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+                }
+
+                </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">this.ids</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">sGroup</span><span class="jsdoc-syntax">]) {
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">oDD </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.ids</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">sGroup</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(! </span><span class="jsdoc-var">this.isTypeOfDD</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oDD</span><span class="jsdoc-syntax">)) {
+                        </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+                    }
+
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oDD.isTarget </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">oDD.isLocked</span><span class="jsdoc-syntax">() &amp;&amp; </span><span class="jsdoc-var">oDD </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">dc</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isOverTarget</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pt</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">oDD</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.mode</span><span class="jsdoc-syntax">)) {
+                            </span><span class="jsdoc-comment">// look for drop interactions
+                            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isDrop</span><span class="jsdoc-syntax">) {
+                                </span><span class="jsdoc-var">dropEvts.push</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">oDD </span><span class="jsdoc-syntax">);
+                            </span><span class="jsdoc-comment">// look for drag enter and drag over interactions
+                            </span><span class="jsdoc-syntax">} </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+
+                                </span><span class="jsdoc-comment">// initial drag over: dragEnter fires
+                                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">oldOvers</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">oDD.id</span><span class="jsdoc-syntax">]) {
+                                    </span><span class="jsdoc-var">enterEvts.push</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">oDD </span><span class="jsdoc-syntax">);
+                                </span><span class="jsdoc-comment">// subsequent drag overs: dragOver fires
+                                </span><span class="jsdoc-syntax">} </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                                    </span><span class="jsdoc-var">overEvts.push</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">oDD </span><span class="jsdoc-syntax">);
+                                }
+
+                                </span><span class="jsdoc-var">this.dragOvers</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">oDD.id</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">oDD</span><span class="jsdoc-syntax">;
+                            }
+                        }
+                    }
+                }
+            }
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.mode</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">outEvts.length</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">dc.b4DragOut</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">outEvts</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">dc.onDragOut</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">outEvts</span><span class="jsdoc-syntax">);
+                }
+
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">enterEvts.length</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">dc.onDragEnter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">enterEvts</span><span class="jsdoc-syntax">);
+                }
+
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">overEvts.length</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">dc.b4DragOver</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">overEvts</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">dc.onDragOver</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">overEvts</span><span class="jsdoc-syntax">);
+                }
+
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dropEvts.length</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">dc.b4DragDrop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dropEvts</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">dc.onDragDrop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dropEvts</span><span class="jsdoc-syntax">);
+                }
+
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-comment">// fire dragout events
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= 0;
+                </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">=0, </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">outEvts.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">&lt;</span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; ++</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">dc.b4DragOut</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">outEvts</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.id</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">dc.onDragOut</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">outEvts</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.id</span><span class="jsdoc-syntax">);
+                }
+
+                </span><span class="jsdoc-comment">// fire enter events
+                </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">=0,</span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">enterEvts.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">&lt;</span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; ++</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-comment">// dc.b4DragEnter(e, oDD.id);
+                    </span><span class="jsdoc-var">dc.onDragEnter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">enterEvts</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.id</span><span class="jsdoc-syntax">);
+                }
+
+                </span><span class="jsdoc-comment">// fire over events
+                </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">=0,</span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">overEvts.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">&lt;</span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; ++</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">dc.b4DragOver</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">overEvts</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.id</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">dc.onDragOver</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">overEvts</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.id</span><span class="jsdoc-syntax">);
+                }
+
+                </span><span class="jsdoc-comment">// fire drop events
+                </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">=0, </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">dropEvts.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">&lt;</span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; ++</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">dc.b4DragDrop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dropEvts</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.id</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">dc.onDragDrop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dropEvts</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.id</span><span class="jsdoc-syntax">);
+                }
+
+            }
+
+            </span><span class="jsdoc-comment">// notify about a drop that did not find a target
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isDrop </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">dropEvts.length</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">dc.onInvalidDrop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+            }
+
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Helper function for getting the best match from the list of drag
+         * and drop objects returned by the drag and drop events when we are
+         * in INTERSECT mode.  It returns either the first object that the
+         * cursor is over, or the object that has the greatest overlap with
+         * the dragged element.
+         * @method getBestMatch
+         * @param  {DragDrop[]} dds The array of drag and drop objects
+         * targeted
+         * @return {DragDrop}       The best single match
+         * @static
+         */
+        </span><span class="jsdoc-var">getBestMatch</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dds</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">winner </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-comment">// Return null if the input is not what we expect
+            //if (!dds || !dds.length || dds.length == 0) {
+               // winner = null;
+            // If there is only one item, it wins
+            //} else if (dds.length == 1) {
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dds.length</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">== 1) {
+                </span><span class="jsdoc-var">winner </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dds</span><span class="jsdoc-syntax">[0];
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-comment">// Loop through the targeted items
+                </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">&lt;</span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; ++</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dds</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+                    </span><span class="jsdoc-comment">// If the cursor is over the object, it wins.  If the
+                    // cursor is over multiple matches, the first one we come
+                    // to wins.
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dd.cursorIsOver</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">winner </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-comment">// Otherwise the object with the most overlap wins
+                    </span><span class="jsdoc-syntax">} </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">winner </span><span class="jsdoc-syntax">||
+                            </span><span class="jsdoc-var">winner.overlap.getArea</span><span class="jsdoc-syntax">() &lt; </span><span class="jsdoc-var">dd.overlap.getArea</span><span class="jsdoc-syntax">()) {
+                            </span><span class="jsdoc-var">winner </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">;
+                        }
+                    }
+                }
+            }
+
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">winner</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Refreshes the cache of the top-left and bottom-right points of the
+         * drag and drop objects in the specified group(s).  This is in the
+         * format that is stored in the drag and drop instance, so typical
+         * usage is:
+         * &lt;code&gt;
+         * Roo.dd.DragDropMgr.refreshCache(ddinstance.groups);
+         * &lt;/code&gt;
+         * Alternatively:
+         * &lt;code&gt;
+         * Roo.dd.DragDropMgr.refreshCache({group1:true, group2:true});
+         * &lt;/code&gt;
+         * @TODO this really should be an indexed array.  Alternatively this
+         * method could accept both.
+         * @method refreshCache
+         * @param {Object} groups an associative array of groups to refresh
+         * @static
+         */
+        </span><span class="jsdoc-var">refreshCache</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">groups</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sGroup </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">groups</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;string&quot; </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">sGroup</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">this.ids</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">sGroup</span><span class="jsdoc-syntax">]) {
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">oDD </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.ids</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">sGroup</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isTypeOfDD</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oDD</span><span class="jsdoc-syntax">)) {
+                    </span><span class="jsdoc-comment">// if (this.isTypeOfDD(oDD) &amp;&amp; oDD.isTarget) {
+                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">loc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getLocation</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oDD</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">loc</span><span class="jsdoc-syntax">) {
+                            </span><span class="jsdoc-var">this.locationCache</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">oDD.id</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">loc</span><span class="jsdoc-syntax">;
+                        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                            </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.locationCache</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">oDD.id</span><span class="jsdoc-syntax">];
+                            </span><span class="jsdoc-comment">// this will unregister the drag and drop object if
+                            // the element is not in a usable state
+                            // oDD.unreg();
+                        </span><span class="jsdoc-syntax">}
+                    }
+                }
+            }
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * This checks to make sure an element exists and is in the DOM.  The
+         * main purpose is to handle cases where innerHTML is used to remove
+         * drag and drop objects from the DOM.  IE provides an 'unspecified
+         * error' when trying to access the offsetParent of such an element
+         * @method verifyEl
+         * @param {HTMLElement} el the element to check
+         * @return {boolean} true if the element looks usable
+         * @static
+         */
+        </span><span class="jsdoc-var">verifyEl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">parent</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isIE</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">try</span><span class="jsdoc-syntax">{
+                        </span><span class="jsdoc-var">parent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.offsetParent</span><span class="jsdoc-syntax">;
+                    }</span><span class="jsdoc-keyword">catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){}
+                }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                    </span><span class="jsdoc-var">parent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.offsetParent</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">parent</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+                }
+            }
+
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Returns a Region object containing the drag and drop element's position
+         * and size, including the padding configured for it
+         * @method getLocation
+         * @param {DragDrop} oDD the drag and drop object to get the
+         *                       location for
+         * @return {Roo.lib.Region} a Region object representing the total area
+         *                             the element occupies, including any padding
+         *                             the instance is configured for.
+         * @static
+         */
+        </span><span class="jsdoc-var">getLocation</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oDD</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(! </span><span class="jsdoc-var">this.isTypeOfDD</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oDD</span><span class="jsdoc-syntax">)) {
+                </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">oDD.getEl</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">x1</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">x2</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y1</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y2</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Dom.getXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+            } </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) { }
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-var">x1 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">[0];
+            </span><span class="jsdoc-var">x2 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">x1 </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">el.offsetWidth</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">y1 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">[1];
+            </span><span class="jsdoc-var">y2 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">y1 </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">el.offsetHeight</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">y1 </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">oDD.padding</span><span class="jsdoc-syntax">[0];
+            </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">x2 </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">oDD.padding</span><span class="jsdoc-syntax">[1];
+            </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">y2 </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">oDD.padding</span><span class="jsdoc-syntax">[2];
+            </span><span class="jsdoc-var">l </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">x1 </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">oDD.padding</span><span class="jsdoc-syntax">[3];
+
+            </span><span class="jsdoc-keyword">return new </span><span class="jsdoc-var">Roo.lib.Region</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">l </span><span class="jsdoc-syntax">);
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Checks the cursor location to see if it over the target
+         * @method isOverTarget
+         * @param {Roo.lib.Point} pt The point to evaluate
+         * @param {DragDrop} oTarget the DragDrop object we are inspecting
+         * @return {boolean} true if the mouse is over the target
+         * @private
+         * @static
+         */
+        </span><span class="jsdoc-var">isOverTarget</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pt</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">oTarget</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">intersect</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// use cache if available
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">loc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.locationCache</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">oTarget.id</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">loc </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.useCache</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">loc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getLocation</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oTarget</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.locationCache</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">oTarget.id</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">loc</span><span class="jsdoc-syntax">;
+
+            }
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">loc</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-var">oTarget.cursorIsOver </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">loc.contains</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">pt </span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-comment">// DragDrop is using this as a sanity check for the initial mousedown
+            // in this case we are done.  In POINT mode, if the drag obj has no
+            // contraints, we are also done. Otherwise we need to evaluate the
+            // location of the target as related to the actual location of the
+            // dragged element.
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dragCurrent</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">dc </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">dc.getTargetCoord </span><span class="jsdoc-syntax">||
+                    (!</span><span class="jsdoc-var">intersect </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">dc.constrainX </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">dc.constrainY</span><span class="jsdoc-syntax">)) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">oTarget.cursorIsOver</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-var">oTarget.overlap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-comment">// Get the current location of the drag element, this is the
+            // location of the mouse event less the delta that represents
+            // where the original mousedown happened on the element.  We
+            // need to consider constraints and ticks as well.
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dc.getTargetCoord</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pt.x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pt.y</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dc.getDragEl</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">curRegion </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.lib.Region</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">pos.y</span><span class="jsdoc-syntax">,
+                                                   </span><span class="jsdoc-var">pos.x </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">el.offsetWidth</span><span class="jsdoc-syntax">,
+                                                   </span><span class="jsdoc-var">pos.y </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">el.offsetHeight</span><span class="jsdoc-syntax">,
+                                                   </span><span class="jsdoc-var">pos.x </span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">overlap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">curRegion.intersect</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">loc</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">overlap</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">oTarget.overlap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">overlap</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">intersect</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">oTarget.cursorIsOver</span><span class="jsdoc-syntax">;
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+            }
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * unload event handler
+         * @method _onUnload
+         * @private
+         * @static
+         */
+        </span><span class="jsdoc-var">_onUnload</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">me</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.dd.DragDropMgr.unregAll</span><span class="jsdoc-syntax">();
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Cleans up the drag and drop events and objects.
+         * @method unregAll
+         * @private
+         * @static
+         */
+        </span><span class="jsdoc-var">unregAll</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dragCurrent</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.stopDrag</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">this.dragCurrent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-var">this._execOnAll</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;unreg&quot;</span><span class="jsdoc-syntax">, []);
+
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">this.elementCache</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.elementCache</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+            }
+
+            </span><span class="jsdoc-var">this.elementCache </span><span class="jsdoc-syntax">= {};
+            </span><span class="jsdoc-var">this.ids </span><span class="jsdoc-syntax">= {};
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * A cache of DOM elements
+         * @property elementCache
+         * @private
+         * @static
+         */
+        </span><span class="jsdoc-var">elementCache</span><span class="jsdoc-syntax">: {},
+
+        </span><span class="jsdoc-comment">/**
+         * Get the wrapper for the DOM element specified
+         * @method getElWrapper
+         * @param {String} id the id of the element to get
+         * @return {Roo.dd.DDM.ElementWrapper} the wrapped element
+         * @private
+         * @deprecated This wrapper isn't that useful
+         * @static
+         */
+        </span><span class="jsdoc-var">getElWrapper</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">oWrapper </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.elementCache</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">oWrapper </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">oWrapper.el</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">oWrapper </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.elementCache</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">] =
+                    </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">this.ElementWrapper</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.getDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">));
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">oWrapper</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Returns the actual DOM element
+         * @method getElement
+         * @param {String} id the id of the elment to get
+         * @return {Object} The element
+         * @deprecated use Roo.getDom instead
+         * @static
+         */
+        </span><span class="jsdoc-var">getElement</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.getDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Returns the style property for the DOM element (i.e.,
+         * document.getElById(id).style)
+         * @method getCss
+         * @param {String} id the id of the elment to get
+         * @return {Object} The style property of the element
+         * @deprecated use Roo.getDom instead
+         * @static
+         */
+        </span><span class="jsdoc-var">getCss</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.getDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">el.style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Inner class for cached elements
+         * @class DragDropMgr.ElementWrapper
+         * @for DragDropMgr
+         * @private
+         * @deprecated
+         */
+        </span><span class="jsdoc-var">ElementWrapper</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-comment">/**
+                 * The element
+                 * @property el
+                 */
+                </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-comment">/**
+                 * The element id
+                 * @property id
+                 */
+                </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">el.id</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-comment">/**
+                 * A reference to the style property
+                 * @property css
+                 */
+                </span><span class="jsdoc-var">this.css </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">el.style</span><span class="jsdoc-syntax">;
+            },
+
+        </span><span class="jsdoc-comment">/**
+         * Returns the X position of an html element
+         * @method getPosX
+         * @param el the element for which to get the position
+         * @return {int} the X coordinate
+         * @for DragDropMgr
+         * @deprecated use Roo.lib.Dom.getX instead
+         * @static
+         */
+        </span><span class="jsdoc-var">getPosX</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.lib.Dom.getX</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Returns the Y position of an html element
+         * @method getPosY
+         * @param el the element for which to get the position
+         * @return {int} the Y coordinate
+         * @deprecated use Roo.lib.Dom.getY instead
+         * @static
+         */
+        </span><span class="jsdoc-var">getPosY</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.lib.Dom.getY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Swap two nodes.  In IE, we use the native method, for others we
+         * emulate the IE behavior
+         * @method swapNode
+         * @param n1 the first node to swap
+         * @param n2 the other node to swap
+         * @static
+         */
+        </span><span class="jsdoc-var">swapNode</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n1</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">n2</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n1.swapNode</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">n1.swapNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n2</span><span class="jsdoc-syntax">);
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n2.parentNode</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n2.nextSibling</span><span class="jsdoc-syntax">;
+
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">n1</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">p.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n1</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">n2</span><span class="jsdoc-syntax">);
+                } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n2 </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">n1.nextSibling</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">p.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n2</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">n1</span><span class="jsdoc-syntax">);
+                } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                    </span><span class="jsdoc-var">n1.parentNode.replaceChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n2</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">n1</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">p.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n1</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">);
+                }
+            }
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Returns the current scroll position
+         * @method getScroll
+         * @private
+         * @static
+         */
+        </span><span class="jsdoc-var">getScroll</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dde</span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">document.documentElement</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">db</span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dde </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">dde.scrollTop </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">dde.scrollLeft</span><span class="jsdoc-syntax">)) {
+                </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dde.scrollTop</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">l </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dde.scrollLeft</span><span class="jsdoc-syntax">;
+            } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">db</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">db.scrollTop</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">l </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">db.scrollLeft</span><span class="jsdoc-syntax">;
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{ </span><span class="jsdoc-var">top</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">left</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">l </span><span class="jsdoc-syntax">};
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Returns the specified element style property
+         * @method getStyle
+         * @param {HTMLElement} el          the element
+         * @param {string}      styleProp   the style property
+         * @return {string} The value of the style property
+         * @deprecated use Roo.lib.Dom.getStyle
+         * @static
+         */
+        </span><span class="jsdoc-var">getStyle</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">styleProp</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">styleProp</span><span class="jsdoc-syntax">);
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Gets the scrollTop
+         * @method getScrollTop
+         * @return {int} the document's scrollTop
+         * @static
+         */
+        </span><span class="jsdoc-var">getScrollTop</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() { </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getScroll</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.top</span><span class="jsdoc-syntax">; },
+
+        </span><span class="jsdoc-comment">/**
+         * Gets the scrollLeft
+         * @method getScrollLeft
+         * @return {int} the document's scrollTop
+         * @static
+         */
+        </span><span class="jsdoc-var">getScrollLeft</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() { </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getScroll</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.left</span><span class="jsdoc-syntax">; },
+
+        </span><span class="jsdoc-comment">/**
+         * Sets the x/y position of an element to the location of the
+         * target element.
+         * @method moveToEl
+         * @param {HTMLElement} moveEl      The element to move
+         * @param {HTMLElement} targetEl    The position reference element
+         * @static
+         */
+        </span><span class="jsdoc-var">moveToEl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">moveEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">targetEl</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">aCoord </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Dom.getXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">targetEl</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">Roo.lib.Dom.setXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">moveEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">aCoord</span><span class="jsdoc-syntax">);
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Numeric array sort function
+         * @method numericSort
+         * @static
+         */
+        </span><span class="jsdoc-var">numericSort</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">); },
+
+        </span><span class="jsdoc-comment">/**
+         * Internal counter
+         * @property _timeoutCount
+         * @private
+         * @static
+         */
+        </span><span class="jsdoc-var">_timeoutCount</span><span class="jsdoc-syntax">: 0,
+
+        </span><span class="jsdoc-comment">/**
+         * Trying to make the load order less important.  Without this we get
+         * an error if this file is loaded before the Event Utility.
+         * @method _addListeners
+         * @private
+         * @static
+         */
+        </span><span class="jsdoc-var">_addListeners</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">DDM </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.dd.DDM</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">Roo.lib.Event </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">document </span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">DDM._onLoad</span><span class="jsdoc-syntax">();
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">DDM._timeoutCount </span><span class="jsdoc-syntax">&gt; 2000) {
+                } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                    </span><span class="jsdoc-var">setTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">DDM._addListeners</span><span class="jsdoc-syntax">, 10);
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">DDM._timeoutCount </span><span class="jsdoc-syntax">+= 1;
+                    }
+                }
+            }
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Recursively searches the immediate parent and all child nodes for
+         * the handle element in order to determine wheter or not it was
+         * clicked.
+         * @method handleWasClicked
+         * @param node the html element to inspect
+         * @static
+         */
+        </span><span class="jsdoc-var">handleWasClicked</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isHandle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node.id</span><span class="jsdoc-syntax">)) {
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-comment">// check to see if this is a text node child of the one we want
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.parentNode</span><span class="jsdoc-syntax">;
+
+                </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isHandle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">p.id</span><span class="jsdoc-syntax">)) {
+                        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+                    } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                        </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">p.parentNode</span><span class="jsdoc-syntax">;
+                    }
+                }
+            }
+
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+
+    };
+
+}();
+
+</span><span class="jsdoc-comment">// shorter alias, save a few bytes
+</span><span class="jsdoc-var">Roo.dd.DDM </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.dd.DragDropMgr</span><span class="jsdoc-syntax">;
+</span><span class="jsdoc-var">Roo.dd.DDM._addListeners</span><span class="jsdoc-syntax">();
+
+}</span></code></body></html>

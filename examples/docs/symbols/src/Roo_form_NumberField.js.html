@@ -1,0 +1,151 @@
+<html><head><title>../roojs1/Roo/form/NumberField.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+ 
+
+/**
+ * @class Roo.form.NumberField
+ * @extends Roo.form.TextField
+ * Numeric text field that provides automatic keystroke filtering and numeric validation.
+ * @constructor
+ * Creates a new NumberField
+ * @param {Object} config Configuration options
+ */
+</span><span class="jsdoc-var">Roo.form.NumberField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.form.NumberField.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.NumberField</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.form.TextField</span><span class="jsdoc-syntax">,  {
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} fieldClass The default CSS class for the field (defaults to &quot;x-form-field x-form-num-field&quot;)
+     */
+    </span><span class="jsdoc-var">fieldClass</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-form-field x-form-num-field&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} allowDecimals False to disallow decimal values (defaults to true)
+     */
+    </span><span class="jsdoc-var">allowDecimals </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} decimalSeparator Character(s) to allow as the decimal separator (defaults to '.')
+     */
+    </span><span class="jsdoc-var">decimalSeparator </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;.&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Number} decimalPrecision The maximum precision to display after the decimal separator (defaults to 2)
+     */
+    </span><span class="jsdoc-var">decimalPrecision </span><span class="jsdoc-syntax">: 2,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} allowNegative False to prevent entering a negative sign (defaults to true)
+     */
+    </span><span class="jsdoc-var">allowNegative </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Number} minValue The minimum allowed value (defaults to Number.NEGATIVE_INFINITY)
+     */
+    </span><span class="jsdoc-var">minValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Number.NEGATIVE_INFINITY</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Number} maxValue The maximum allowed value (defaults to Number.MAX_VALUE)
+     */
+    </span><span class="jsdoc-var">maxValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Number.MAX_VALUE</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} minText Error text to display if the minimum value validation fails (defaults to &quot;The minimum value for this field is {minValue}&quot;)
+     */
+    </span><span class="jsdoc-var">minText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;The minimum value for this field is {0}&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} maxText Error text to display if the maximum value validation fails (defaults to &quot;The maximum value for this field is {maxValue}&quot;)
+     */
+    </span><span class="jsdoc-var">maxText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;The maximum value for this field is {0}&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} nanText Error text to display if the value is not a valid number.  For example, this can happen
+     * if a valid character like '.' or '-' is left in the field with no number (defaults to &quot;{value} is not a valid number&quot;)
+     */
+    </span><span class="jsdoc-var">nanText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;{0} is not a valid number&quot;</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">Roo.form.NumberField.superclass.initEvents.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">allowed </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;0123456789&quot;</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.allowDecimals</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">allowed </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.decimalSeparator</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.allowNegative</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">allowed </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">&quot;-&quot;</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.stripCharsRe </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">RegExp</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'[^'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">allowed</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">']'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'gi'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">keyPress </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getKey</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">Roo.isIE </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">e.isSpecialKey</span><span class="jsdoc-syntax">() || </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.BACKSPACE </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.DELETE</span><span class="jsdoc-syntax">)){
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getCharCode</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">allowed.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String.fromCharCode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">)) === -1){
+                </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
+            }
+        };
+        </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;keypress&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">keyPress</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">validateValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">Roo.form.NumberField.superclass.validateValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value.length </span><span class="jsdoc-syntax">&lt; 1){ </span><span class="jsdoc-comment">// if it's blank and textfield didn't flag it then it's valid
+             </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">num </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isNaN</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">num</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.nanText</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">));
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">num </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.minValue</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.minText</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.minValue</span><span class="jsdoc-syntax">));
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">num </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.maxValue</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.maxText</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.maxValue</span><span class="jsdoc-syntax">));
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">getValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.fixPrecision</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parseValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.NumberField.superclass.getValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">)));
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">parseValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parseFloat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.decimalSeparator</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;.&quot;</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">isNaN</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">fixPrecision </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nan </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">isNaN</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.allowDecimals </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.decimalPrecision </span><span class="jsdoc-syntax">== -1 || </span><span class="jsdoc-var">nan </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">nan </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">parseFloat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.toFixed</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.decimalPrecision</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">setValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.fixPrecision</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.form.NumberField.superclass.setValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;.&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.decimalSeparator</span><span class="jsdoc-syntax">));
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">decimalPrecisionFcn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">beforeBlur </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getRawValue</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+        }
+    }
+});</span></code></body></html>

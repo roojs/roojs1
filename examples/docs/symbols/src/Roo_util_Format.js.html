@@ -1,0 +1,253 @@
+<html><head><title>../roojs1/Roo/util/Format.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+ 
+/**
+ * @class Roo.util.Format
+ * Reusable data formatting functions
+ * @singleton
+ */
+</span><span class="jsdoc-var">Roo.util.Format </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">trimRe </span><span class="jsdoc-syntax">= /^\s+|\s+$/g;
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-comment">/**
+         * Truncate a string and add an ellipsis ('...') to the end if it exceeds the specified length
+         * @param {String} value The string to truncate
+         * @param {Number} length The maximum length to allow before truncating
+         * @return {String} The converted text
+         */
+        </span><span class="jsdoc-var">ellipsis </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">value.length </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">value.substr</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">-3)+</span><span class="jsdoc-string">&quot;...&quot;</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Checks a reference and converts it to empty string if it is undefined
+         * @param {Mixed} value Reference to check
+         * @return {Mixed} Empty string if converted, otherwise the original value
+         */
+        </span><span class="jsdoc-var">undef </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return typeof </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;undefined&quot; </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Convert certain characters (&amp;, &lt;, &gt;, and ') to their HTML character equivalents for literal display in web pages.
+         * @param {String} value The string to encode
+         * @return {String} The encoded text
+         */
+        </span><span class="jsdoc-var">htmlEncode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">!</span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/&amp;/g, </span><span class="jsdoc-string">&quot;&amp;amp;&quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/&gt;/g, </span><span class="jsdoc-string">&quot;&amp;gt;&quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/&lt;/g, </span><span class="jsdoc-string">&quot;&amp;lt;&quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/&quot;/g, </span><span class="jsdoc-string">&quot;&amp;quot;&quot;</span><span class="jsdoc-syntax">);
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Convert certain characters (&amp;, &lt;, &gt;, and ') from their HTML character equivalents.
+         * @param {String} value The string to decode
+         * @return {String} The decoded text
+         */
+        </span><span class="jsdoc-var">htmlDecode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">!</span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/&amp;amp;/g, </span><span class="jsdoc-string">&quot;&amp;&quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/&amp;gt;/g, </span><span class="jsdoc-string">&quot;&gt;&quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/&amp;lt;/g, </span><span class="jsdoc-string">&quot;&lt;&quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/&amp;quot;/g, </span><span class="jsdoc-string">'&quot;'</span><span class="jsdoc-syntax">);
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Trims any whitespace from either side of a string
+         * @param {String} value The text to trim
+         * @return {String} The trimmed text
+         */
+        </span><span class="jsdoc-var">trim </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">trimRe</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Returns a substring from within an original string
+         * @param {String} value The original text
+         * @param {Number} start The start index of the substring
+         * @param {Number} length The length of the substring
+         * @return {String} The substring
+         */
+        </span><span class="jsdoc-var">substr </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">length</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.substr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">length</span><span class="jsdoc-syntax">);
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Converts a string to all lower case letters
+         * @param {String} value The text to convert
+         * @return {String} The converted text
+         */
+        </span><span class="jsdoc-var">lowercase </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.toLowerCase</span><span class="jsdoc-syntax">();
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Converts a string to all upper case letters
+         * @param {String} value The text to convert
+         * @return {String} The converted text
+         */
+        </span><span class="jsdoc-var">uppercase </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.toUpperCase</span><span class="jsdoc-syntax">();
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Converts the first character only of a string to upper case
+         * @param {String} value The text to convert
+         * @return {String} The converted text
+         */
+        </span><span class="jsdoc-var">capitalize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">!</span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">value.charAt</span><span class="jsdoc-syntax">(0)</span><span class="jsdoc-var">.toUpperCase</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">value.substr</span><span class="jsdoc-syntax">(1)</span><span class="jsdoc-var">.toLowerCase</span><span class="jsdoc-syntax">();
+        },
+
+        </span><span class="jsdoc-comment">// private
+        </span><span class="jsdoc-var">call </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">arguments.length </span><span class="jsdoc-syntax">&gt; 2){
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Array.prototype.slice.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">, 2);
+                </span><span class="jsdoc-var">args.unshift</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+                 
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-comment">/** eval:var:value */  </span><span class="jsdoc-keyword">eval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">window</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">);
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-comment">/** eval:var:value */
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-comment">/** eval:var:value */ </span><span class="jsdoc-keyword">eval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">window</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+            }
+        },
+
+       
+        </span><span class="jsdoc-comment">/**
+         * safer version of Math.toFixed..??/
+         * @param {Number/String} value The numeric value to format
+         * @param {Number/String} value Decimal places 
+         * @return {String} The formatted currency string
+         */
+        </span><span class="jsdoc-var">toFixed </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">)
+        {
+            </span><span class="jsdoc-comment">// why not use to fixed - precision is buggered???
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Math.round</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">-0);
+            }
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fact </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.pow</span><span class="jsdoc-syntax">(10,</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">+1);
+            </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">Math.round</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">-0)*</span><span class="jsdoc-var">fact</span><span class="jsdoc-syntax">))/</span><span class="jsdoc-var">fact</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">z </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">fact</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.substring</span><span class="jsdoc-syntax">(2);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">'.' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">z</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-comment">// now just padd decimals..
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ps </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fd </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">ps</span><span class="jsdoc-syntax">[1] + </span><span class="jsdoc-var">z</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fd.substring</span><span class="jsdoc-syntax">(0,</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">); 
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fd.substring</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">); 
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rm </span><span class="jsdoc-syntax">&lt; 5) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ps</span><span class="jsdoc-syntax">[0] + </span><span class="jsdoc-string">'.' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">*=1; </span><span class="jsdoc-comment">// turn it into a number;
+            </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">++;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.length </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">ps</span><span class="jsdoc-syntax">[0]*=1;
+                </span><span class="jsdoc-var">ps</span><span class="jsdoc-syntax">[0]++;
+                </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.substring</span><span class="jsdoc-syntax">(1); </span><span class="jsdoc-comment">// chop the end off.
+            </span><span class="jsdoc-syntax">}
+            
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ps</span><span class="jsdoc-syntax">[0] + </span><span class="jsdoc-string">'.' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
+             
+        },
+        
+        </span><span class="jsdoc-comment">/**
+         * Format a number as US currency
+         * @param {Number/String} value The numeric value to format
+         * @return {String} The formatted currency string
+         */
+        </span><span class="jsdoc-var">usMoney </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'$' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">Roo.util.Format.number</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+        },
+        
+        </span><span class="jsdoc-comment">/**
+         * Format a number
+         * eventually this should probably emulate php's number_format
+         * @param {Number/String} value The numeric value to format
+         * @param {Number} decimals number of decimal places
+         * @param {String} delimiter for thousands (default comma)
+         * @return {String} The formatted currency string
+         */
+        </span><span class="jsdoc-var">number </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">decimals</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">thousandsDelimiter</span><span class="jsdoc-syntax">)
+        {
+            </span><span class="jsdoc-comment">// multiply and round.
+            </span><span class="jsdoc-var">decimals </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">decimals</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? 2 : </span><span class="jsdoc-var">decimals</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">thousandsDelimiter </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">thousandsDelimiter</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">',' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">thousandsDelimiter</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">mul </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.pow</span><span class="jsdoc-syntax">(10, </span><span class="jsdoc-var">decimals</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">zero </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mul</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.substring</span><span class="jsdoc-syntax">(1);
+            </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">Math.round</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">-0)*</span><span class="jsdoc-var">mul</span><span class="jsdoc-syntax">))/</span><span class="jsdoc-var">mul</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-comment">// if it's '0' number.. then
+            
+            //v = (v == Math.floor(v)) ? v + &quot;.&quot; + zero : ((v*10 == Math.floor(v*10)) ? v + &quot;0&quot; : v);
+            </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ps </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">whole </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ps</span><span class="jsdoc-syntax">[0];
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= /(\d+)(\d{3})/;
+            </span><span class="jsdoc-comment">// add comma's
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">thousandsDelimiter.length </span><span class="jsdoc-syntax">!= 0) {
+                </span><span class="jsdoc-var">whole </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">whole.replace</span><span class="jsdoc-syntax">(/\B(?=(\d{3})+(?!\d))/g, </span><span class="jsdoc-var">thousandsDelimiter </span><span class="jsdoc-syntax">);
+            } 
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sub </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ps</span><span class="jsdoc-syntax">[1] ?
+                    </span><span class="jsdoc-comment">// has decimals..
+                    </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">decimals </span><span class="jsdoc-syntax">?  (</span><span class="jsdoc-string">'.'</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">ps</span><span class="jsdoc-syntax">[1] + </span><span class="jsdoc-var">zero.substring</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ps</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.length</span><span class="jsdoc-syntax">)) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) :
+                    </span><span class="jsdoc-comment">// does not have decimals
+                    </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">decimals </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-string">'.' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">zero</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+            
+            
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">whole </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">sub </span><span class="jsdoc-syntax">;
+        },
+        
+        </span><span class="jsdoc-comment">/**
+         * Parse a value into a formatted date using the specified format pattern.
+         * @param {Mixed} value The value to format
+         * @param {String} format (optional) Any valid date format string (defaults to 'm/d/Y')
+         * @return {String} The formatted date string
+         */
+        </span><span class="jsdoc-var">date </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!(</span><span class="jsdoc-var">v </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">)){
+                </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Date.parse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">));
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">v.dateFormat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.util.Format.defaults.date</span><span class="jsdoc-syntax">);
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Returns a date rendering function that can be reused to apply a date format multiple times efficiently
+         * @param {String} format Any valid date format string
+         * @return {Function} The date formatting function
+         */
+        </span><span class="jsdoc-var">dateRenderer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.util.Format.date</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">);  
+            };
+        },
+
+        </span><span class="jsdoc-comment">// private
+        </span><span class="jsdoc-var">stripTagsRE </span><span class="jsdoc-syntax">: /&lt;\/?[^&gt;]+&gt;/gi,
+        
+        </span><span class="jsdoc-comment">/**
+         * Strips all HTML tags
+         * @param {Mixed} value The text from which to strip tags
+         * @return {String} The stripped text
+         */
+        </span><span class="jsdoc-var">stripTags </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">!</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.stripTagsRE</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+        }
+    };
+}();
+</span><span class="jsdoc-var">Roo.util.Format.defaults </span><span class="jsdoc-syntax">= {
+    </span><span class="jsdoc-var">date </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'d/M/Y'
+</span><span class="jsdoc-syntax">};</span></code></body></html>

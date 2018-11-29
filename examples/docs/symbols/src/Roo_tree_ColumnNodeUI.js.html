@@ -1,0 +1,149 @@
+<html><head><title>../roojs1/Roo/tree/ColumnNodeUI.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">//&lt;Script type=&quot;text/javascript&quot;&gt;
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+ 
+/**
+ * Not documented??? - probably should be...
+ */
+
+</span><span class="jsdoc-var">Roo.tree.ColumnNodeUI </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.tree.TreeNodeUI</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-comment">//focus: Roo.emptyFn, // prevent odd scrolling behavior
+    
+    </span><span class="jsdoc-var">renderElements </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">targetNode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">bulkRender</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-comment">//consel.log(&quot;renderElements?&quot;);
+        </span><span class="jsdoc-var">this.indentMarkup </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n.parentNode </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">n.parentNode.ui.getChildIndent</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n.getOwnerTree</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Pman.Tab.Document_TypesTree.tree.el.id</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cols </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">t.columns</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">t.borderWidth</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cols</span><span class="jsdoc-syntax">[0];
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">href </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">a.href </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">a.href </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.isGecko </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">&quot;&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;#&quot;</span><span class="jsdoc-syntax">;
+         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">a.checked </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;boolean&quot;</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tx </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'{0}'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">n.text </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">c.renderer </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">c.renderer</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c.dataIndex</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c.dataIndex</span><span class="jsdoc-syntax">]));
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">colcls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'x-t-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">tid </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-c0'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">buf </span><span class="jsdoc-syntax">= [
+            </span><span class="jsdoc-string">'&lt;li class=&quot;x-tree-node&quot;&gt;'</span><span class="jsdoc-syntax">,
+            
+                
+                </span><span class="jsdoc-string">'&lt;div class=&quot;x-tree-node-el '</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a.cls</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'&quot;&gt;'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-comment">// extran...
+                    </span><span class="jsdoc-string">'&lt;div class=&quot;x-tree-col '</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">colcls</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'&quot; style=&quot;width:'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c.width</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">bw</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'px;&quot;&gt;'</span><span class="jsdoc-syntax">,
+                
+                
+                        </span><span class="jsdoc-string">'&lt;span class=&quot;x-tree-node-indent&quot;&gt;'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.indentMarkup</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'&lt;/span&gt;'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-string">'&lt;img src=&quot;'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.emptyIcon</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'&quot; class=&quot;x-tree-ec-icon  &quot; /&gt;'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-string">'&lt;img src=&quot;'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a.icon </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.emptyIcon</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'&quot; class=&quot;x-tree-node-icon'</span><span class="jsdoc-syntax">,
+                           (</span><span class="jsdoc-var">a.icon </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">' x-tree-node-inline-icon' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">),
+                           (</span><span class="jsdoc-var">a.iconCls </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">a.iconCls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">),
+                           </span><span class="jsdoc-string">'&quot; unselectable=&quot;on&quot; /&gt;'</span><span class="jsdoc-syntax">,
+                        (</span><span class="jsdoc-var">cb </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-string">'&lt;input class=&quot;x-tree-node-cb&quot; type=&quot;checkbox&quot; ' </span><span class="jsdoc-syntax">+ 
+                             (</span><span class="jsdoc-var">a.checked </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'checked=&quot;checked&quot; /&gt;' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">' /&gt;'</span><span class="jsdoc-syntax">)) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">),
+                             
+                        </span><span class="jsdoc-string">'&lt;a class=&quot;x-tree-node-anchor&quot; hidefocus=&quot;on&quot; href=&quot;'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">href</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'&quot; tabIndex=&quot;1&quot; '</span><span class="jsdoc-syntax">,
+                            (</span><span class="jsdoc-var">a.hrefTarget </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">' target=&quot;' </span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">a.hrefTarget </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot;' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">), </span><span class="jsdoc-string">'&gt;'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-string">'&lt;span unselectable=&quot;on&quot; qtip=&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">tx </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot;&gt;'</span><span class="jsdoc-syntax">,
+                             </span><span class="jsdoc-var">tx</span><span class="jsdoc-syntax">,
+                             </span><span class="jsdoc-string">'&lt;/span&gt;&lt;/a&gt;' </span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'&lt;/div&gt;'</span><span class="jsdoc-syntax">,
+                     </span><span class="jsdoc-string">'&lt;a class=&quot;x-tree-node-anchor&quot; hidefocus=&quot;on&quot; href=&quot;'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">href</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'&quot; tabIndex=&quot;1&quot; '</span><span class="jsdoc-syntax">,
+                            (</span><span class="jsdoc-var">a.hrefTarget </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">' target=&quot;' </span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">a.hrefTarget </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot;' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">), </span><span class="jsdoc-string">'&gt;'
+                 </span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 1, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cols.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cols</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-var">colcls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'x-t-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">tid </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-c' </span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">tx </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'{0}'</span><span class="jsdoc-syntax">, (</span><span class="jsdoc-var">c.renderer </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">c.renderer</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c.dataIndex</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c.dataIndex</span><span class="jsdoc-syntax">]));
+            </span><span class="jsdoc-var">buf.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&lt;div class=&quot;x-tree-col '</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">colcls</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">,(</span><span class="jsdoc-var">c.cls</span><span class="jsdoc-syntax">?</span><span class="jsdoc-var">c.cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">),</span><span class="jsdoc-string">'&quot; style=&quot;width:'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">c.width</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">bw</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'px;&quot;&gt;'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-string">'&lt;div class=&quot;x-tree-col-text&quot; qtip=&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">tx </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'&quot;&gt;'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">tx</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;&lt;/div&gt;&quot;</span><span class="jsdoc-syntax">,
+                      </span><span class="jsdoc-string">&quot;&lt;/div&gt;&quot;</span><span class="jsdoc-syntax">);
+         }
+         
+         </span><span class="jsdoc-var">buf.push</span><span class="jsdoc-syntax">(
+            </span><span class="jsdoc-string">'&lt;/a&gt;'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-string">'&lt;div class=&quot;x-clear&quot;&gt;&lt;/div&gt;&lt;/div&gt;'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-string">'&lt;ul class=&quot;x-tree-node-ct&quot; style=&quot;display:none;&quot;&gt;&lt;/ul&gt;'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-string">&quot;&lt;/li&gt;&quot;</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bulkRender </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">n.nextSibling </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">n.nextSibling.ui.getEl</span><span class="jsdoc-syntax">()){
+            </span><span class="jsdoc-var">this.wrap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper.insertHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeBegin&quot;</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">n.nextSibling.ui.getEl</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">buf.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">));
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.wrap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper.insertHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeEnd&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">targetNode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">buf.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">));
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.wrap.firstChild</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.elRow </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.elNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.firstChild</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.ranchor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.childNodes</span><span class="jsdoc-syntax">[1];
+        </span><span class="jsdoc-var">this.ctNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.wrap.childNodes</span><span class="jsdoc-syntax">[1];
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.firstChild.childNodes</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.indentNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[0];
+        </span><span class="jsdoc-var">this.ecNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[1];
+        </span><span class="jsdoc-var">this.iconNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[2];
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">= 3;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cb</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.checkbox </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[3];
+            </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">++;
+        }
+        </span><span class="jsdoc-var">this.anchor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">];
+        
+        </span><span class="jsdoc-var">this.textNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.firstChild</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-comment">//el.on(&quot;click&quot;, this.onClick, this);
+        //el.on(&quot;dblclick&quot;, this.onDblClick, this);
+        
+        
+       // console.log(this);
+    </span><span class="jsdoc-syntax">},
+    </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">Roo.tree.ColumnNodeUI.superclass.initEvents.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+            
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.ranchor</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isOpera</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// opera render bug ignores the CSS
+            </span><span class="jsdoc-var">el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;text-decoration&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;none&quot;</span><span class="jsdoc-syntax">);
+        }
+
+        </span><span class="jsdoc-var">el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;dblclick&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onDblClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;contextmenu&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onContextMenu</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+    },
+    
+    </span><span class="jsdoc-comment">/*onSelectedChange : function(state){
+        if(state){
+            this.focus();
+            this.addClass(&quot;x-tree-selected&quot;);
+        }else{
+            //this.blur();
+            this.removeClass(&quot;x-tree-selected&quot;);
+        }
+    },*/
+    </span><span class="jsdoc-var">addClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.elRow</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.elRow</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">);
+        }
+        
+    },
+    
+    
+    </span><span class="jsdoc-var">removeClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.elRow</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.elRow</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">);
+        }
+    }
+
+    
+    
+});</span></code></body></html>

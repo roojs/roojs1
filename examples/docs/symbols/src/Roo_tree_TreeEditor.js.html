@@ -1,0 +1,163 @@
+<html><head><title>../roojs1/Roo/tree/TreeEditor.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+/**
+ * @class Roo.tree.TreeEditor
+ * @extends Roo.Editor
+ * Provides editor functionality for inline tree node editing.  Any valid {@link Roo.form.Field} can be used
+ * as the editor field.
+ * @constructor
+ * @param {Object} config (used to be the tree panel.)
+ * @param {Object} oldconfig DEPRECIATED Either a prebuilt {@link Roo.form.Field} instance or a Field config object
+ * 
+ * @cfg {Roo.tree.TreePanel} tree The tree to bind to.
+ * @cfg {Roo.form.TextField|Object} field The field configuration
+ *
+ * 
+ */
+</span><span class="jsdoc-var">Roo.tree.TreeEditor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">oldconfig</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// was -- (tree, config){
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tree </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">field</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oldconfig</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// old style..
+        </span><span class="jsdoc-var">field </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">oldconfig.events </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">oldconfig </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.form.TextField</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oldconfig</span><span class="jsdoc-syntax">);
+    } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-comment">// new style..
+        </span><span class="jsdoc-var">tree </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.tree</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">config.field </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.field  </span><span class="jsdoc-syntax">|| {};
+        </span><span class="jsdoc-var">config.field.xtype </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'TextField'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">field </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.field</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.form</span><span class="jsdoc-syntax">);
+    }
+    </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">|| {};
+    
+    
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+         * @event beforenodeedit
+         * Fires when editing is initiated, but before the value changes.  Editing can be canceled by returning
+         * false from the handler of this event.
+         * @param {Editor} this
+         * @param {Roo.tree.Node} node 
+         */
+        </span><span class="jsdoc-string">&quot;beforenodeedit&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+    
+    </span><span class="jsdoc-comment">//Roo.log(config);
+    </span><span class="jsdoc-var">Roo.tree.TreeEditor.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">field</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-var">this.tree </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">;
+
+    </span><span class="jsdoc-var">tree.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeclick'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.beforeNodeClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">tree.getTreeEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mousedown'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'complete'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.updateNode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforestartedit'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.fitToTree</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'startedit'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.bindScroll</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, {</span><span class="jsdoc-var">delay</span><span class="jsdoc-syntax">:10});
+    </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'specialkey'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onSpecialKey</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.tree.TreeEditor</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.Editor</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} alignment
+     * The position to align to (see {@link Roo.Element#alignTo} for more details, defaults to &quot;l-l&quot;).
+     */
+    </span><span class="jsdoc-var">alignment</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;l-l&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">// inherit
+    </span><span class="jsdoc-var">autoSize</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} hideEl
+     * True to hide the bound element while the editor is displayed (defaults to false)
+     */
+    </span><span class="jsdoc-var">hideEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} cls
+     * CSS class to apply to the editor (defaults to &quot;x-small-editor x-tree-editor&quot;)
+     */
+    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-small-editor x-tree-editor&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} shim
+     * True to shim the editor if selects/iframes could be displayed beneath it (defaults to false)
+     */
+    </span><span class="jsdoc-var">shim</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">// inherit
+    </span><span class="jsdoc-var">shadow</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;frame&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Number} maxWidth
+     * The maximum width in pixels of the editor field (defaults to 250).  Note that if the maxWidth would exceed
+     * the containing tree element's size, it will be automatically limited for you to the container width, taking
+     * scroll and client offsets into account prior to each edit.
+     */
+    </span><span class="jsdoc-var">maxWidth</span><span class="jsdoc-syntax">: 250,
+
+    </span><span class="jsdoc-var">editDelay </span><span class="jsdoc-syntax">: 350,
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">fitToTree </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ed</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">td </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tree.getTreeEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.dom</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td.scrollLeft </span><span class="jsdoc-syntax">&gt;  </span><span class="jsdoc-var">nd.offsetLeft</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// ensure the node left point is visible
+            </span><span class="jsdoc-var">td.scrollLeft </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nd.offsetLeft</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(
+                </span><span class="jsdoc-var">this.maxWidth</span><span class="jsdoc-syntax">,
+                (</span><span class="jsdoc-var">td.clientWidth </span><span class="jsdoc-syntax">&gt; 20 ? </span><span class="jsdoc-var">td.clientWidth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">td.offsetWidth</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-var">nd.offsetLeft</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">td.scrollLeft</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-comment">/*cushion*/</span><span class="jsdoc-syntax">5);
+        </span><span class="jsdoc-var">this.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforenodeedit'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.editNode</span><span class="jsdoc-syntax">);
+        
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">triggerEdit </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.completeEdit</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.editNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.startEdit</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.ui.textNode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node.text</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">bindScroll </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.tree.getTreeEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'scroll'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cancelEdit</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">beforeNodeClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sinceLast </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.lastClick </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.lastClick.getElapsed</span><span class="jsdoc-syntax">() : 0);
+        </span><span class="jsdoc-var">this.lastClick </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sinceLast </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.editDelay </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.tree.getSelectionModel</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.isSelected</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.triggerEdit</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">updateNode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ed</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.tree.getTreeEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'scroll'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cancelEdit</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.editNode.setText</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onHide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">Roo.tree.TreeEditor.superclass.onHide.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editNode</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.editNode.ui.focus</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onSpecialKey </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">field</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getKey</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.ESC</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.cancelEdit</span><span class="jsdoc-syntax">();
+        }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.ENTER </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">e.hasModifier</span><span class="jsdoc-syntax">()){
+            </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.completeEdit</span><span class="jsdoc-syntax">();
+        }
+    }
+});</span></code></body></html>

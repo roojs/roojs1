@@ -1,0 +1,524 @@
+<html><head><title>../roojs1/Roo/util/MixedCollection.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+ 
+/**
+ * @class Roo.util.MixedCollection
+ * @extends Roo.util.Observable
+ * A Collection class that maintains both numeric indexes and keys and exposes events.
+ * @constructor
+ * @param {Boolean} allowFunctions True if the addAll function should add function references to the
+ * collection (defaults to false)
+ * @param {Function} keyFn A function that can accept an item of the type(s) stored in this MixedCollection
+ * and return the key value for that item.  This is used when available to look up the key on items that
+ * were passed without an explicit key parameter to a MixedCollection method.  Passing this parameter is
+ * equivalent to providing an implementation for the {@link #getKey} method.
+ */
+</span><span class="jsdoc-var">Roo.util.MixedCollection </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">allowFunctions</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">keyFn</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">this.items </span><span class="jsdoc-syntax">= [];
+    </span><span class="jsdoc-var">this.map </span><span class="jsdoc-syntax">= {};
+    </span><span class="jsdoc-var">this.keys </span><span class="jsdoc-syntax">= [];
+    </span><span class="jsdoc-var">this.length </span><span class="jsdoc-syntax">= 0;
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+         * @event clear
+         * Fires when the collection is cleared.
+         */
+        </span><span class="jsdoc-string">&quot;clear&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event add
+         * Fires when an item is added to the collection.
+         * @param {Number} index The index at which the item was added.
+         * @param {Object} o The item added.
+         * @param {String} key The key associated with the added item.
+         */
+        </span><span class="jsdoc-string">&quot;add&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event replace
+         * Fires when an item is replaced in the collection.
+         * @param {String} key he key associated with the new added.
+         * @param {Object} old The item being replaced.
+         * @param {Object} new The new item.
+         */
+        </span><span class="jsdoc-string">&quot;replace&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event remove
+         * Fires when an item is removed from the collection.
+         * @param {Object} o The item being removed.
+         * @param {String} key (optional) The key associated with the removed item.
+         */
+        </span><span class="jsdoc-string">&quot;remove&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;sort&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+    </span><span class="jsdoc-var">this.allowFunctions </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">allowFunctions </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">keyFn</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.getKey </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">keyFn</span><span class="jsdoc-syntax">;
+    }
+    </span><span class="jsdoc-var">Roo.util.MixedCollection.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.util.MixedCollection</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-var">allowFunctions </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+</span><span class="jsdoc-comment">/**
+ * Adds an item to the collection.
+ * @param {String} key The key to associate with the item
+ * @param {Object} o The item to add.
+ * @return {Object} The item added.
+ */
+    </span><span class="jsdoc-var">add </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">arguments.length </span><span class="jsdoc-syntax">== 1){
+            </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">[0];
+            </span><span class="jsdoc-var">key </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getKey</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">key </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;undefined&quot; </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">key </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.length</span><span class="jsdoc-syntax">++;
+            </span><span class="jsdoc-var">this.items.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.keys.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">old </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.map</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">old</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-var">this.length</span><span class="jsdoc-syntax">++;
+            </span><span class="jsdoc-var">this.items.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.map</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.keys.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;add&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.length</span><span class="jsdoc-syntax">-1, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">;
+    },
+       
+</span><span class="jsdoc-comment">/**
+  * MixedCollection has a generic way to fetch keys if you implement getKey.
+&lt;pre&gt;&lt;code&gt;
+// normal way
+var mc = new Roo.util.MixedCollection();
+mc.add(someEl.dom.id, someEl);
+mc.add(otherEl.dom.id, otherEl);
+//and so on
+
+// using getKey
+var mc = new Roo.util.MixedCollection();
+mc.getKey = function(el){
+   return el.dom.id;
+};
+mc.add(someEl);
+mc.add(otherEl);
+
+// or via the constructor
+var mc = new Roo.util.MixedCollection(false, function(el){
+   return el.dom.id;
+});
+mc.add(someEl);
+mc.add(otherEl);
+&lt;/code&gt;&lt;/pre&gt;
+ * @param o {Object} The item for which to find the key.
+ * @return {Object} The key for the passed item.
+ */
+    </span><span class="jsdoc-var">getKey </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">){
+         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">o.id</span><span class="jsdoc-syntax">; 
+    },
+   
+</span><span class="jsdoc-comment">/**
+ * Replaces an item in the collection.
+ * @param {String} key The key associated with the item to replace, or the item to replace.
+ * @param o {Object} o (optional) If the first parameter passed was a key, the item to associate with that key.
+ * @return {Object}  The new item.
+ */
+    </span><span class="jsdoc-var">replace </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">arguments.length </span><span class="jsdoc-syntax">== 1){
+            </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">[0];
+            </span><span class="jsdoc-var">key </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getKey</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">old </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.item</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">key </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;undefined&quot; </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">key </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">null </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">old </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;undefined&quot;</span><span class="jsdoc-syntax">){
+             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.indexOfKey</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.map</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;replace&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">old</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">;
+    },
+   
+</span><span class="jsdoc-comment">/**
+ * Adds all elements of an Array or an Object to the collection.
+ * @param {Object/Array} objs An Object containing properties which will be added to the collection, or
+ * an Array of values, each of which are added to the collection.
+ */
+    </span><span class="jsdoc-var">addAll </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">objs</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">arguments.length </span><span class="jsdoc-syntax">&gt; 1 || </span><span class="jsdoc-var">objs </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Array</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">arguments.length </span><span class="jsdoc-syntax">&gt; 1 ? </span><span class="jsdoc-var">arguments </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">objs</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">args.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+                </span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+            }
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">key </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">objs</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.allowFunctions </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">objs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">] != </span><span class="jsdoc-string">&quot;function&quot;</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">objs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">]);
+                }
+            }
+        }
+    },
+   
+</span><span class="jsdoc-comment">/**
+ * Executes the specified function once for every item in the collection, passing each
+ * item as the first and only parameter. returning false from the function will stop the iteration.
+ * @param {Function} fn The function to execute for each item.
+ * @param {Object} scope (optional) The scope in which to execute the function.
+ */
+    </span><span class="jsdoc-var">each </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">= []</span><span class="jsdoc-var">.concat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// each safe for removal
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">items.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">) === </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            }
+        }
+    },
+   
+</span><span class="jsdoc-comment">/**
+ * Executes the specified function once for every key in the collection, passing each
+ * key, and its associated item as the first two parameters.
+ * @param {Function} fn The function to execute for each item.
+ * @param {Object} scope (optional) The scope in which to execute the function.
+ */
+    </span><span class="jsdoc-var">eachKey </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.keys.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-var">fn.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">window</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.keys</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">);
+        }
+    },
+   
+</span><span class="jsdoc-comment">/**
+ * Returns the first item in the collection which elicits a true return value from the
+ * passed selection function.
+ * @param {Function} fn The selection function to execute for each item.
+ * @param {Object} scope (optional) The scope in which to execute the function.
+ * @return {Object} The first item in the collection which returned true from the selection function.
+ */
+    </span><span class="jsdoc-var">find </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.items.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">window</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">this.keys</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">])){
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+            }
+        }
+        </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
+    },
+   
+</span><span class="jsdoc-comment">/**
+ * Inserts an item at the specified index in the collection.
+ * @param {Number} index The index to insert the item at.
+ * @param {String} key The key to associate with the new item, or the item itself.
+ * @param {Object} o  (optional) If the second parameter was a key, the new item.
+ * @return {Object} The item inserted.
+ */
+    </span><span class="jsdoc-var">insert </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">arguments.length </span><span class="jsdoc-syntax">== 2){
+            </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">[1];
+            </span><span class="jsdoc-var">key </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getKey</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-var">this.length</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">this.length</span><span class="jsdoc-syntax">++;
+        </span><span class="jsdoc-var">this.items.splice</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, 0, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">key </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;undefined&quot; </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">key </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.map</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.keys.splice</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, 0, </span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;add&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">;
+    },
+   
+</span><span class="jsdoc-comment">/**
+ * Removed an item from the collection.
+ * @param {Object} o The item to remove.
+ * @return {Object} The item removed.
+ */
+    </span><span class="jsdoc-var">remove </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.removeAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">));
+    },
+   
+</span><span class="jsdoc-comment">/**
+ * Remove an item from a specified index in the collection.
+ * @param {Number} index The index within the collection of the item to remove.
+ */
+    </span><span class="jsdoc-var">removeAt </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.length </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">&gt;= 0){
+            </span><span class="jsdoc-var">this.length</span><span class="jsdoc-syntax">--;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-var">this.items.splice</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, 1);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">key </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.keys</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">key </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;undefined&quot;</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.map</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">];
+            }
+            </span><span class="jsdoc-var">this.keys.splice</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, 1);
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;remove&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">);
+        }
+    },
+   
+</span><span class="jsdoc-comment">/**
+ * Removed an item associated with the passed key fom the collection.
+ * @param {String} key The key of the item to remove.
+ */
+    </span><span class="jsdoc-var">removeKey </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.removeAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.indexOfKey</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">));
+    },
+   
+</span><span class="jsdoc-comment">/**
+ * Returns the number of items in the collection.
+ * @return {Number} the number of items in the collection.
+ */
+    </span><span class="jsdoc-var">getCount </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.length</span><span class="jsdoc-syntax">; 
+    },
+   
+</span><span class="jsdoc-comment">/**
+ * Returns index within the collection of the passed Object.
+ * @param {Object} o The item to find the index of.
+ * @return {Number} index of the item.
+ */
+    </span><span class="jsdoc-var">indexOf </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.items.indexOf</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.items.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] == </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">;
+                }
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">-1;
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.items.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+        }
+    },
+   
+</span><span class="jsdoc-comment">/**
+ * Returns index within the collection of the passed key.
+ * @param {String} key The key to find the index of.
+ * @return {Number} index of the key.
+ */
+    </span><span class="jsdoc-var">indexOfKey </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.keys.indexOf</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.keys.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.keys</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] == </span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">;
+                }
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">-1;
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.keys.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">);
+        }
+    },
+   
+</span><span class="jsdoc-comment">/**
+ * Returns the item associated with the passed key OR index. Key has priority over index.
+ * @param {String/Number} key The key or index of the item.
+ * @return {Object} The item associated with the passed key.
+ */
+    </span><span class="jsdoc-var">item </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">item </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">this.map</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">] != </span><span class="jsdoc-string">&quot;undefined&quot; </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.map</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">] : </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-keyword">return typeof </span><span class="jsdoc-var">item </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'function' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.allowFunctions </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">item </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// for prototype!
+    </span><span class="jsdoc-syntax">},
+    
+</span><span class="jsdoc-comment">/**
+ * Returns the item at the specified index.
+ * @param {Number} index The index of the item.
+ * @return {Object}
+ */
+    </span><span class="jsdoc-var">itemAt </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">];
+    },
+    
+</span><span class="jsdoc-comment">/**
+ * Returns the item associated with the passed key.
+ * @param {String/Number} key The key of the item.
+ * @return {Object} The item associated with the passed key.
+ */
+    </span><span class="jsdoc-var">key </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.map</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">];
+    },
+   
+</span><span class="jsdoc-comment">/**
+ * Returns true if the collection contains the passed Object as an item.
+ * @param {Object} o  The Object to look for in the collection.
+ * @return {Boolean} True if the collection contains the Object as an item.
+ */
+    </span><span class="jsdoc-var">contains </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">) != -1;
+    },
+   
+</span><span class="jsdoc-comment">/**
+ * Returns true if the collection contains the passed Object as a key.
+ * @param {String} key The key to look for in the collection.
+ * @return {Boolean} True if the collection contains the Object as a key.
+ */
+    </span><span class="jsdoc-var">containsKey </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return typeof </span><span class="jsdoc-var">this.map</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">] != </span><span class="jsdoc-string">&quot;undefined&quot;</span><span class="jsdoc-syntax">;
+    },
+   
+</span><span class="jsdoc-comment">/**
+ * Removes all items from the collection.
+ */
+    </span><span class="jsdoc-var">clear </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.length </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-var">this.items </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-var">this.keys </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-var">this.map </span><span class="jsdoc-syntax">= {};
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;clear&quot;</span><span class="jsdoc-syntax">);
+    },
+   
+</span><span class="jsdoc-comment">/**
+ * Returns the first item in the collection.
+ * @return {Object} the first item in the collection..
+ */
+    </span><span class="jsdoc-var">first </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[0]; 
+    },
+   
+</span><span class="jsdoc-comment">/**
+ * Returns the last item in the collection.
+ * @return {Object} the last item in the collection..
+ */
+    </span><span class="jsdoc-var">last </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.length</span><span class="jsdoc-syntax">-1];   
+    },
+    
+    </span><span class="jsdoc-var">_sort </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">property</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dir</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dsc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dir</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.toUpperCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">&quot;DESC&quot; </span><span class="jsdoc-syntax">? -1 : 1;
+        </span><span class="jsdoc-var">fn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fn </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">;
+        };
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= [], </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.keys</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">items.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c.length</span><span class="jsdoc-syntax">] = {</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">};
+        }
+        </span><span class="jsdoc-var">c.sort</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">property</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">property</span><span class="jsdoc-syntax">]) * </span><span class="jsdoc-var">dsc</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">== 0){
+                </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">a.index </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">b.index </span><span class="jsdoc-syntax">? -1 : 1);
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
+        });
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">c.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.value</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.key</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;sort&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Sorts this collection with the passed comparison function
+     * @param {String} direction (optional) &quot;ASC&quot; or &quot;DESC&quot;
+     * @param {Function} fn (optional) comparison function
+     */
+    </span><span class="jsdoc-var">sort </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dir</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this._sort</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;value&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dir</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Sorts this collection by keys
+     * @param {String} direction (optional) &quot;ASC&quot; or &quot;DESC&quot;
+     * @param {Function} fn (optional) a comparison function (defaults to case insensitive string)
+     */
+    </span><span class="jsdoc-var">keySort </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dir</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this._sort</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;key&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dir</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.toUpperCase</span><span class="jsdoc-syntax">()-</span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.toUpperCase</span><span class="jsdoc-syntax">();
+        });
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Returns a range of items in this collection
+     * @param {Number} startIndex (optional) defaults to 0
+     * @param {Number} endIndex (optional) default to the last item
+     * @return {Array} An array of items
+     */
+    </span><span class="jsdoc-var">getRange </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">end</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">items.length </span><span class="jsdoc-syntax">&lt; 1){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[];
+        }
+        </span><span class="jsdoc-var">start </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">start </span><span class="jsdoc-syntax">|| 0;
+        </span><span class="jsdoc-var">end </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">end </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;undefined&quot; </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.length</span><span class="jsdoc-syntax">-1 : </span><span class="jsdoc-var">end</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.length</span><span class="jsdoc-syntax">-1);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">start </span><span class="jsdoc-syntax">&lt;= </span><span class="jsdoc-var">end</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt;= </span><span class="jsdoc-var">end</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+        	    </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">r.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+            }
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-var">end</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">--) {
+        	    </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">r.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+            }
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
+    },
+        
+    </span><span class="jsdoc-comment">/**
+     * Filter the &lt;i&gt;objects&lt;/i&gt; in this collection by a specific property. 
+     * Returns a new collection that has been filtered.
+     * @param {String} property A property on your objects
+     * @param {String/RegExp} value Either string that the property values 
+     * should start with or a RegExp to test against the property
+     * @return {MixedCollection} The new filtered collection
+     */
+    </span><span class="jsdoc-var">filter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">property</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">value.exec</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// not a regex
+            </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value.length </span><span class="jsdoc-syntax">== 0){
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.clone</span><span class="jsdoc-syntax">();
+            }
+            </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">RegExp</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;^&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">Roo.escapeRe</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">), </span><span class="jsdoc-string">&quot;i&quot;</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.filterBy</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">value.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">property</span><span class="jsdoc-syntax">]);
+        });
+	},
+    
+    </span><span class="jsdoc-comment">/**
+     * Filter by a function. * Returns a new collection that has been filtered.
+     * The passed function will be called with each 
+     * object in the collection. If the function returns true, the value is included 
+     * otherwise it is filtered.
+     * @param {Function} fn The function to be called, it will receive the args o (the object), k (the key)
+     * @param {Object} scope (optional) The scope of the function (defaults to this) 
+     * @return {MixedCollection} The new filtered collection
+     */
+    </span><span class="jsdoc-var">filterBy </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.util.MixedCollection</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">r.getKey </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getKey</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.keys</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">it </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">it.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">||</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">it</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">])){
+				</span><span class="jsdoc-var">r.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">it</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+			}
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Creates a duplicate of this collection
+     * @return {MixedCollection}
+     */
+    </span><span class="jsdoc-var">clone </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.util.MixedCollection</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.keys</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">it </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">it.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-var">r.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">it</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+        }
+        </span><span class="jsdoc-var">r.getKey </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getKey</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
+    }
+});
+</span><span class="jsdoc-comment">/**
+ * Returns the item associated with the passed key or index.
+ * @method
+ * @param {String/Number} key The key or index of the item.
+ * @return {Object} The item associated with the passed key.
+ */
+</span><span class="jsdoc-var">Roo.util.MixedCollection.prototype.get </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.util.MixedCollection.prototype.item</span><span class="jsdoc-syntax">;</span></code></body></html>

@@ -1,0 +1,62 @@
+<html><head><title>../roojs1/Roo/data/MemoryProxy.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+/**
+ * @class Roo.data.MemoryProxy
+ * An implementation of Roo.data.DataProxy that simply passes the data specified in its constructor
+ * to the Reader when its load method is called.
+ * @constructor
+ * @param {Object} data The data object which the Reader uses to construct a block of Roo.data.Records.
+ */
+</span><span class="jsdoc-var">Roo.data.MemoryProxy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data.data</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">data.data</span><span class="jsdoc-syntax">;
+    }
+    </span><span class="jsdoc-var">Roo.data.MemoryProxy.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">;
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.data.MemoryProxy</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.data.DataProxy</span><span class="jsdoc-syntax">, {
+    
+    </span><span class="jsdoc-comment">/**
+     * Load data from the requested source (in this case an in-memory
+     * data object passed to the constructor), read the data object into
+     * a block of Roo.data.Records using the passed Roo.data.DataReader implementation, and
+     * process that block using the passed callback.
+     * @param {Object} params This parameter is not used by the MemoryProxy class.
+     * @param {Roo.data.DataReader} reader The Reader object which converts the data
+     * object into a block of Roo.data.Records.
+     * @param {Function} callback The function into which to pass the block of Roo.data.records.
+     * The function must be passed &lt;ul&gt;
+     * &lt;li&gt;The Record block object&lt;/li&gt;
+     * &lt;li&gt;The &quot;arg&quot; argument from the load function&lt;/li&gt;
+     * &lt;li&gt;A boolean success indicator&lt;/li&gt;
+     * &lt;/ul&gt;
+     * @param {Object} scope The scope in which to call the callback
+     * @param {Object} arg An optional argument which is passed to the callback as its second parameter.
+     */
+    </span><span class="jsdoc-var">load </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">params</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">reader</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">params </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">params </span><span class="jsdoc-syntax">|| {};
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">result</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">result </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">reader.readRecords</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.data</span><span class="jsdoc-syntax">);
+        }</span><span class="jsdoc-keyword">catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;loadexception&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">callback.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">callback.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">result</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">update </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">params</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">){
+        
+    }
+});</span></code></body></html>

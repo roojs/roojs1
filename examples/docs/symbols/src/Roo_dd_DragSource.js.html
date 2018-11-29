@@ -1,0 +1,364 @@
+<html><head><title>../roojs1/Roo/dd/DragSource.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+/**
+ * @class Roo.dd.DragSource
+ * @extends Roo.dd.DDProxy
+ * A simple class that provides the basic implementation needed to make any element draggable.
+ * @constructor
+ * @param {String/HTMLElement/Element} el The container element
+ * @param {Object} config
+ */
+</span><span class="jsdoc-var">Roo.dd.DragSource </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.dragData </span><span class="jsdoc-syntax">= {};
+    
+    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.proxy</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.proxy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.dd.StatusProxy</span><span class="jsdoc-syntax">();
+    }
+
+    </span><span class="jsdoc-var">Roo.dd.DragSource.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.ddGroup </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.group</span><span class="jsdoc-syntax">,
+          {</span><span class="jsdoc-var">dragElId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.proxy.id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">resizeFrame</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">isTarget</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scroll</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.scroll </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">});
+    
+    </span><span class="jsdoc-var">this.dragging </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.dd.DragSource</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.dd.DDProxy</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} dropAllowed
+     * The CSS class returned to the drag source when drop is allowed (defaults to &quot;x-dd-drop-ok&quot;).
+     */
+    </span><span class="jsdoc-var">dropAllowed </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-dd-drop-ok&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} dropNotAllowed
+     * The CSS class returned to the drag source when drop is not allowed (defaults to &quot;x-dd-drop-nodrop&quot;).
+     */
+    </span><span class="jsdoc-var">dropNotAllowed </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-dd-drop-nodrop&quot;</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the data object associated with this drag source
+     * @return {Object} data An object containing arbitrary data
+     */
+    </span><span class="jsdoc-var">getDragData </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.dragData</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onDragEnter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.dd.DragDropMgr.getDDById</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.cachedTarget </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.beforeDragEnter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target.isNotifyTarget</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">status </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">target.notifyEnter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.dragData</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.proxy.setStatus</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">status</span><span class="jsdoc-syntax">);
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">this.proxy.setStatus</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dropAllowed</span><span class="jsdoc-syntax">);
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.afterDragEnter</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-comment">/**
+                 * An empty function by default, but provided so that you can perform a custom action
+                 * when the dragged item enters the drop target by providing an implementation.
+                 * @param {Roo.dd.DragDrop} target The drop target
+                 * @param {Event} e The event object
+                 * @param {String} id The id of the dragged element
+                 * @method afterDragEnter
+                 */
+                </span><span class="jsdoc-var">this.afterDragEnter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+            }
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * An empty function by default, but provided so that you can perform a custom action
+     * before the dragged item enters the drop target and optionally cancel the onDragEnter.
+     * @param {Roo.dd.DragDrop} target The drop target
+     * @param {Event} e The event object
+     * @param {String} id The id of the dragged element
+     * @return {Boolean} isValid True if the drag event is valid, else false to cancel
+     */
+    </span><span class="jsdoc-var">beforeDragEnter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">alignElWithMouse</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-var">Roo.dd.DragSource.superclass.alignElWithMouse.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.proxy.sync</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onDragOver </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cachedTarget </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.dd.DragDropMgr.getDDById</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.beforeDragOver</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target.isNotifyTarget</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">status </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">target.notifyOver</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.dragData</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.proxy.setStatus</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">status</span><span class="jsdoc-syntax">);
+            }
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.afterDragOver</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-comment">/**
+                 * An empty function by default, but provided so that you can perform a custom action
+                 * while the dragged item is over the drop target by providing an implementation.
+                 * @param {Roo.dd.DragDrop} target The drop target
+                 * @param {Event} e The event object
+                 * @param {String} id The id of the dragged element
+                 * @method afterDragOver
+                 */
+                </span><span class="jsdoc-var">this.afterDragOver</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+            }
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * An empty function by default, but provided so that you can perform a custom action
+     * while the dragged item is over the drop target and optionally cancel the onDragOver.
+     * @param {Roo.dd.DragDrop} target The drop target
+     * @param {Event} e The event object
+     * @param {String} id The id of the dragged element
+     * @return {Boolean} isValid True if the drag event is valid, else false to cancel
+     */
+    </span><span class="jsdoc-var">beforeDragOver </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onDragOut </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cachedTarget </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.dd.DragDropMgr.getDDById</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.beforeDragOut</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target.isNotifyTarget</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">target.notifyOut</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.dragData</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-var">this.proxy.reset</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.afterDragOut</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-comment">/**
+                 * An empty function by default, but provided so that you can perform a custom action
+                 * after the dragged item is dragged out of the target without dropping.
+                 * @param {Roo.dd.DragDrop} target The drop target
+                 * @param {Event} e The event object
+                 * @param {String} id The id of the dragged element
+                 * @method afterDragOut
+                 */
+                </span><span class="jsdoc-var">this.afterDragOut</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+            }
+        }
+        </span><span class="jsdoc-var">this.cachedTarget </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * An empty function by default, but provided so that you can perform a custom action before the dragged
+     * item is dragged out of the target without dropping, and optionally cancel the onDragOut.
+     * @param {Roo.dd.DragDrop} target The drop target
+     * @param {Event} e The event object
+     * @param {String} id The id of the dragged element
+     * @return {Boolean} isValid True if the drag event is valid, else false to cancel
+     */
+    </span><span class="jsdoc-var">beforeDragOut </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onDragDrop </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cachedTarget </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.dd.DragDropMgr.getDDById</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.beforeDragDrop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target.isNotifyTarget</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target.notifyDrop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.dragData</span><span class="jsdoc-syntax">)){ </span><span class="jsdoc-comment">// valid drop?
+                    </span><span class="jsdoc-var">this.onValidDrop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+                }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                    </span><span class="jsdoc-var">this.onInvalidDrop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+                }
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">this.onValidDrop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.afterDragDrop</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-comment">/**
+                 * An empty function by default, but provided so that you can perform a custom action
+                 * after a valid drag drop has occurred by providing an implementation.
+                 * @param {Roo.dd.DragDrop} target The drop target
+                 * @param {Event} e The event object
+                 * @param {String} id The id of the dropped element
+                 * @method afterDragDrop
+                 */
+                </span><span class="jsdoc-var">this.afterDragDrop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+            }
+        }
+        </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.cachedTarget</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * An empty function by default, but provided so that you can perform a custom action before the dragged
+     * item is dropped onto the target and optionally cancel the onDragDrop.
+     * @param {Roo.dd.DragDrop} target The drop target
+     * @param {Event} e The event object
+     * @param {String} id The id of the dragged element
+     * @return {Boolean} isValid True if the drag drop event is valid, else false to cancel
+     */
+    </span><span class="jsdoc-var">beforeDragDrop </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onValidDrop </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.hideProxy</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.afterValidDrop</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-comment">/**
+             * An empty function by default, but provided so that you can perform a custom action
+             * after a valid drop has occurred by providing an implementation.
+             * @param {Object} target The target DD 
+             * @param {Event} e The event object
+             * @param {String} id The id of the dropped element
+             * @method afterInvalidDrop
+             */
+            </span><span class="jsdoc-var">this.afterValidDrop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">getRepairXY </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.getXY</span><span class="jsdoc-syntax">();  
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onInvalidDrop </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.beforeInvalidDrop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cachedTarget</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cachedTarget.isNotifyTarget</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.cachedTarget.notifyOut</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.dragData</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-var">this.cacheTarget </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.proxy.repair</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getRepairXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.dragData</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">this.afterRepair</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.afterInvalidDrop</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-comment">/**
+             * An empty function by default, but provided so that you can perform a custom action
+             * after an invalid drop has occurred by providing an implementation.
+             * @param {Event} e The event object
+             * @param {String} id The id of the dropped element
+             * @method afterInvalidDrop
+             */
+            </span><span class="jsdoc-var">this.afterInvalidDrop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">afterRepair </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.enableFx</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.highlight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hlColor </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">&quot;c3daf9&quot;</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">this.dragging </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * An empty function by default, but provided so that you can perform a custom action after an invalid
+     * drop has occurred.
+     * @param {Roo.dd.DragDrop} target The drop target
+     * @param {Event} e The event object
+     * @param {String} id The id of the dragged element
+     * @return {Boolean} isValid True if the invalid drop should proceed, else false to cancel
+     */
+    </span><span class="jsdoc-var">beforeInvalidDrop </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">handleMouseDown </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dragging</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getDragData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.onBeforeDrag</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.dragData </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.proxy.stop</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">Roo.dd.DragSource.superclass.handleMouseDown.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
+        } 
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * An empty function by default, but provided so that you can perform a custom action before the initial
+     * drag event begins and optionally cancel it.
+     * @param {Object} data An object containing arbitrary data to be shared with drop targets
+     * @param {Event} e The event object
+     * @return {Boolean} isValid True if the drag event is valid, else false to cancel
+     */
+    </span><span class="jsdoc-var">onBeforeDrag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * An empty function by default, but provided so that you can perform a custom action once the initial
+     * drag event has begun.  The drag cannot be canceled from this function.
+     * @param {Number} x The x position of the click on the dragged object
+     * @param {Number} y The y position of the click on the dragged object
+     */
+    </span><span class="jsdoc-var">onStartDrag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.emptyFn</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">// private - YUI override
+    </span><span class="jsdoc-var">startDrag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.proxy.reset</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.dragging </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.proxy.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.onInitDrag</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.proxy.show</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onInitDrag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">clone </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.dom.cloneNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">clone.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-comment">// prevent duplicate ids
+        </span><span class="jsdoc-var">this.proxy.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">clone</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.onStartDrag</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the drag source's underlying {@link Roo.dd.StatusProxy}
+     * @return {Roo.dd.StatusProxy} proxy The StatusProxy
+     */
+    </span><span class="jsdoc-var">getProxy </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.proxy</span><span class="jsdoc-syntax">;  
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Hides the drag source's {@link Roo.dd.StatusProxy}
+     */
+    </span><span class="jsdoc-var">hideProxy </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.proxy.hide</span><span class="jsdoc-syntax">();  
+        </span><span class="jsdoc-var">this.proxy.reset</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.dragging </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">triggerCacheRefresh </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">Roo.dd.DDM.refreshCache</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.groups</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// private - override to prevent hiding
+    </span><span class="jsdoc-var">b4EndDrag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+    },
+
+    </span><span class="jsdoc-comment">// private - override to prevent moving
+    </span><span class="jsdoc-var">endDrag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.onEndDrag</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dragData</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onEndDrag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+    },
+    
+    </span><span class="jsdoc-comment">// private - pin to cursor
+    </span><span class="jsdoc-var">autoOffset </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.setDelta</span><span class="jsdoc-syntax">(-12, -20);
+    }    
+});</span></code></body></html>

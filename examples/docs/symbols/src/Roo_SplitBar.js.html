@@ -1,0 +1,442 @@
+<html><head><title>../roojs1/Roo/SplitBar.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+
+/**
+ * @class Roo.SplitBar
+ * @extends Roo.util.Observable
+ * Creates draggable splitter bar functionality from two elements (element to be dragged and element to be resized).
+ * &lt;br&gt;&lt;br&gt;
+ * Usage:
+ * &lt;pre&gt;&lt;code&gt;
+var split = new Roo.SplitBar(&quot;elementToDrag&quot;, &quot;elementToSize&quot;,
+                   Roo.SplitBar.HORIZONTAL, Roo.SplitBar.LEFT);
+split.setAdapter(new Roo.SplitBar.AbsoluteLayoutAdapter(&quot;container&quot;));
+split.minSize = 100;
+split.maxSize = 600;
+split.animate = true;
+split.on('moved', splitterMoved);
+&lt;/code&gt;&lt;/pre&gt;
+ * @constructor
+ * Create a new SplitBar
+ * @param {String/HTMLElement/Roo.Element} dragElement The element to be dragged and act as the SplitBar. 
+ * @param {String/HTMLElement/Roo.Element} resizingElement The element to be resized based on where the SplitBar element is dragged 
+ * @param {Number} orientation (optional) Either Roo.SplitBar.HORIZONTAL or Roo.SplitBar.VERTICAL. (Defaults to HORIZONTAL)
+ * @param {Number} placement (optional) Either Roo.SplitBar.LEFT or Roo.SplitBar.RIGHT for horizontal or  
+                        Roo.SplitBar.TOP or Roo.SplitBar.BOTTOM for vertical. (By default, this is determined automatically by the initial
+                        position of the SplitBar).
+ */
+</span><span class="jsdoc-var">Roo.SplitBar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dragElement</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">resizingElement</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">orientation</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">placement</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">existingProxy</span><span class="jsdoc-syntax">){
+    
+    </span><span class="jsdoc-comment">/** @private */
+    </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dragElement</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.el.dom.unselectable </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;on&quot;</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-comment">/** @private */
+    </span><span class="jsdoc-var">this.resizingEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">resizingElement</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-comment">/**
+     * @private
+     * The orientation of the split. Either Roo.SplitBar.HORIZONTAL or Roo.SplitBar.VERTICAL. (Defaults to HORIZONTAL)
+     * Note: If this is changed after creating the SplitBar, the placement property must be manually updated
+     * @type Number
+     */
+    </span><span class="jsdoc-var">this.orientation </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">orientation </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.SplitBar.HORIZONTAL</span><span class="jsdoc-syntax">;
+    
+    </span><span class="jsdoc-comment">/**
+     * The minimum size of the resizing element. (Defaults to 0)
+     * @type Number
+     */
+    </span><span class="jsdoc-var">this.minSize </span><span class="jsdoc-syntax">= 0;
+    
+    </span><span class="jsdoc-comment">/**
+     * The maximum size of the resizing element. (Defaults to 2000)
+     * @type Number
+     */
+    </span><span class="jsdoc-var">this.maxSize </span><span class="jsdoc-syntax">= 2000;
+    
+    </span><span class="jsdoc-comment">/**
+     * Whether to animate the transition to the new size
+     * @type Boolean
+     */
+    </span><span class="jsdoc-var">this.animate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    
+    </span><span class="jsdoc-comment">/**
+     * Whether to create a transparent shim that overlays the page when dragging, enables dragging across iframes.
+     * @type Boolean
+     */
+    </span><span class="jsdoc-var">this.useShim </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    
+    </span><span class="jsdoc-comment">/** @private */
+    </span><span class="jsdoc-var">this.shim </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+    
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">existingProxy</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-comment">/** @private */
+        </span><span class="jsdoc-var">this.proxy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.SplitBar.createProxy</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.orientation</span><span class="jsdoc-syntax">);
+    }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-var">this.proxy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">existingProxy</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.dom</span><span class="jsdoc-syntax">;
+    }
+    </span><span class="jsdoc-comment">/** @private */
+    </span><span class="jsdoc-var">this.dd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.dd.DDProxy</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom.id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;XSplitBars&quot;</span><span class="jsdoc-syntax">, {</span><span class="jsdoc-var">dragElId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.proxy.id</span><span class="jsdoc-syntax">});
+    
+    </span><span class="jsdoc-comment">/** @private */
+    </span><span class="jsdoc-var">this.dd.b4StartDrag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.onStartProxyDrag.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    
+    </span><span class="jsdoc-comment">/** @private */
+    </span><span class="jsdoc-var">this.dd.endDrag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.onEndProxyDrag.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    
+    </span><span class="jsdoc-comment">/** @private */
+    </span><span class="jsdoc-var">this.dragSpecs </span><span class="jsdoc-syntax">= {};
+    
+    </span><span class="jsdoc-comment">/**
+     * @private The adapter to use to positon and resize elements
+     */
+    </span><span class="jsdoc-var">this.adapter </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.SplitBar.BasicLayoutAdapter</span><span class="jsdoc-syntax">();
+    </span><span class="jsdoc-var">this.adapter.init</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.orientation </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">Roo.SplitBar.HORIZONTAL</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-comment">/** @private */
+        </span><span class="jsdoc-var">this.placement </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">placement </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">this.el.getX</span><span class="jsdoc-syntax">() &gt; </span><span class="jsdoc-var">this.resizingEl.getX</span><span class="jsdoc-syntax">() ? </span><span class="jsdoc-var">Roo.SplitBar.LEFT </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.SplitBar.RIGHT</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-splitbar-h&quot;</span><span class="jsdoc-syntax">);
+    }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-comment">/** @private */
+        </span><span class="jsdoc-var">this.placement </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">placement </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">this.el.getY</span><span class="jsdoc-syntax">() &gt; </span><span class="jsdoc-var">this.resizingEl.getY</span><span class="jsdoc-syntax">() ? </span><span class="jsdoc-var">Roo.SplitBar.TOP </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.SplitBar.BOTTOM</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-splitbar-v&quot;</span><span class="jsdoc-syntax">);
+    }
+    
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+         * @event resize
+         * Fires when the splitter is moved (alias for {@link #event-moved})
+         * @param {Roo.SplitBar} this
+         * @param {Number} newSize the new width or height
+         */
+        </span><span class="jsdoc-string">&quot;resize&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event moved
+         * Fires when the splitter is moved
+         * @param {Roo.SplitBar} this
+         * @param {Number} newSize the new width or height
+         */
+        </span><span class="jsdoc-string">&quot;moved&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event beforeresize
+         * Fires before the splitter is dragged
+         * @param {Roo.SplitBar} this
+         */
+        </span><span class="jsdoc-string">&quot;beforeresize&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+
+        </span><span class="jsdoc-string">&quot;beforeapply&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+
+    </span><span class="jsdoc-var">Roo.util.Observable.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.SplitBar</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-var">onStartProxyDrag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeresize&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.overlay</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper.insertFirst</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">,  {</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-drag-overlay&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&amp;#160;&quot;</span><span class="jsdoc-syntax">}, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">o.unselectable</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">o.enableDisplayMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;block&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-comment">// all splitbars share the same overlay
+            </span><span class="jsdoc-var">Roo.SplitBar.prototype.overlay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.overlay.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.lib.Dom.getViewWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">this.overlay.show</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.proxy</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.setDisplayed</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;block&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.adapter.getElementSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.activeMinSize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getMinimumSize</span><span class="jsdoc-syntax">();;
+        </span><span class="jsdoc-var">this.activeMaxSize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getMaximumSize</span><span class="jsdoc-syntax">();;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c1 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.activeMinSize</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c2 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.activeMaxSize </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">, 0);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.orientation </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">Roo.SplitBar.HORIZONTAL</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.dd.resetConstraints</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.dd.setXConstraint</span><span class="jsdoc-syntax">(
+                </span><span class="jsdoc-var">this.placement </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">Roo.SplitBar.LEFT </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">c1 </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">c2</span><span class="jsdoc-syntax">, 
+                </span><span class="jsdoc-var">this.placement </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">Roo.SplitBar.LEFT </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">c2 </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">c1
+            </span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.dd.setYConstraint</span><span class="jsdoc-syntax">(0, 0);
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.dd.resetConstraints</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.dd.setXConstraint</span><span class="jsdoc-syntax">(0, 0);
+            </span><span class="jsdoc-var">this.dd.setYConstraint</span><span class="jsdoc-syntax">(
+                </span><span class="jsdoc-var">this.placement </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">Roo.SplitBar.TOP </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">c1 </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">c2</span><span class="jsdoc-syntax">, 
+                </span><span class="jsdoc-var">this.placement </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">Roo.SplitBar.TOP </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">c2 </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">c1
+            </span><span class="jsdoc-syntax">);
+         }
+        </span><span class="jsdoc-var">this.dragSpecs.startSize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.dragSpecs.startPoint </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-var">Roo.dd.DDProxy.prototype.b4StartDrag.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-comment">/** 
+     * @private Called after the drag operation by the DDProxy
+     */
+    </span><span class="jsdoc-var">onEndProxyDrag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.proxy</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.setDisplayed</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">endPoint </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Event.getXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.overlay</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.overlay.hide</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">newSize</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.orientation </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">Roo.SplitBar.HORIZONTAL</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">newSize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dragSpecs.startSize </span><span class="jsdoc-syntax">+ 
+                (</span><span class="jsdoc-var">this.placement </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">Roo.SplitBar.LEFT </span><span class="jsdoc-syntax">?
+                    </span><span class="jsdoc-var">endPoint</span><span class="jsdoc-syntax">[0] - </span><span class="jsdoc-var">this.dragSpecs.startPoint</span><span class="jsdoc-syntax">[0] :
+                    </span><span class="jsdoc-var">this.dragSpecs.startPoint</span><span class="jsdoc-syntax">[0] - </span><span class="jsdoc-var">endPoint</span><span class="jsdoc-syntax">[0]
+                );
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">newSize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dragSpecs.startSize </span><span class="jsdoc-syntax">+ 
+                (</span><span class="jsdoc-var">this.placement </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">Roo.SplitBar.TOP </span><span class="jsdoc-syntax">?
+                    </span><span class="jsdoc-var">endPoint</span><span class="jsdoc-syntax">[1] - </span><span class="jsdoc-var">this.dragSpecs.startPoint</span><span class="jsdoc-syntax">[1] :
+                    </span><span class="jsdoc-var">this.dragSpecs.startPoint</span><span class="jsdoc-syntax">[1] - </span><span class="jsdoc-var">endPoint</span><span class="jsdoc-syntax">[1]
+                );
+        }
+        </span><span class="jsdoc-var">newSize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newSize</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.activeMinSize</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">this.activeMaxSize</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newSize </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this.dragSpecs.startSize</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeapply'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newSize</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.adapter.setElementSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newSize</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;moved&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newSize</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;resize&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newSize</span><span class="jsdoc-syntax">);
+            }
+        }
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Get the adapter this SplitBar uses
+     * @return The adapter object
+     */
+    </span><span class="jsdoc-var">getAdapter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.adapter</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Set the adapter this SplitBar uses
+     * @param {Object} adapter A SplitBar adapter object
+     */
+    </span><span class="jsdoc-var">setAdapter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">adapter</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.adapter </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">adapter</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.adapter.init</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Gets the minimum size for the resizing element
+     * @return {Number} The minimum size
+     */
+    </span><span class="jsdoc-var">getMinimumSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.minSize</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Sets the minimum size for the resizing element
+     * @param {Number} minSize The minimum size
+     */
+    </span><span class="jsdoc-var">setMinimumSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">minSize</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.minSize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">minSize</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Gets the maximum size for the resizing element
+     * @return {Number} The maximum size
+     */
+    </span><span class="jsdoc-var">getMaximumSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.maxSize</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Sets the maximum size for the resizing element
+     * @param {Number} maxSize The maximum size
+     */
+    </span><span class="jsdoc-var">setMaximumSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">maxSize</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.maxSize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">maxSize</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Sets the initialize size for the resizing element
+     * @param {Number} size The initial size
+     */
+    </span><span class="jsdoc-var">setCurrentSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">oldAnimate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.animate</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.animate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.adapter.setElementSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.animate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">oldAnimate</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Destroy this splitbar. 
+     * @param {Boolean} removeEl True to remove the element
+     */
+    </span><span class="jsdoc-var">destroy </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">removeEl</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.shim</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.shim.remove</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">this.dd.unreg</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.proxy.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.proxy</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">removeEl</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.remove</span><span class="jsdoc-syntax">();
+        }
+    }
+});
+
+</span><span class="jsdoc-comment">/**
+ * @private static Create our own proxy element element. So it will be the same same size on all browsers, we won't use borders. Instead we use a background color.
+ */
+</span><span class="jsdoc-var">Roo.SplitBar.createProxy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dir</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">proxy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Element</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">));
+    </span><span class="jsdoc-var">proxy.unselectable</span><span class="jsdoc-syntax">();
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'x-splitbar-proxy'</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">proxy.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">dir </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">Roo.SplitBar.HORIZONTAL </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'-h' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-v'</span><span class="jsdoc-syntax">));
+    </span><span class="jsdoc-var">document.body.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">proxy.dom</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">proxy.dom</span><span class="jsdoc-syntax">;
+};
+
+</span><span class="jsdoc-comment">/** 
+ * @class Roo.SplitBar.BasicLayoutAdapter
+ * Default Adapter. It assumes the splitter and resizing element are not positioned
+ * elements and only gets/sets the width of the element. Generally used for table based layouts.
+ */
+</span><span class="jsdoc-var">Roo.SplitBar.BasicLayoutAdapter </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+};
+
+</span><span class="jsdoc-var">Roo.SplitBar.BasicLayoutAdapter.prototype </span><span class="jsdoc-syntax">= {
+    </span><span class="jsdoc-comment">// do nothing for now
+    </span><span class="jsdoc-var">init </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">){
+    
+    },
+    </span><span class="jsdoc-comment">/**
+     * Called before drag operations to get the current size of the resizing element. 
+     * @param {Roo.SplitBar} s The SplitBar using this adapter
+     */
+     </span><span class="jsdoc-var">getElementSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s.orientation </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">Roo.SplitBar.HORIZONTAL</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">s.resizingEl.getWidth</span><span class="jsdoc-syntax">();
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">s.resizingEl.getHeight</span><span class="jsdoc-syntax">();
+        }
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Called after drag operations to set the size of the resizing element.
+     * @param {Roo.SplitBar} s The SplitBar using this adapter
+     * @param {Number} newSize The new size to set
+     * @param {Function} onComplete A function to be invoked when resizing is complete
+     */
+    </span><span class="jsdoc-var">setElementSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newSize</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">onComplete</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s.orientation </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">Roo.SplitBar.HORIZONTAL</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">s.animate</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">s.resizingEl.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newSize</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">onComplete</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">onComplete</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newSize</span><span class="jsdoc-syntax">);
+                }
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">s.resizingEl.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newSize</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">.</span><span class="jsdoc-syntax">1, </span><span class="jsdoc-var">onComplete</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'easeOut'</span><span class="jsdoc-syntax">);
+            }
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">s.animate</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">s.resizingEl.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newSize</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">onComplete</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">onComplete</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newSize</span><span class="jsdoc-syntax">);
+                }
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">s.resizingEl.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newSize</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">.</span><span class="jsdoc-syntax">1, </span><span class="jsdoc-var">onComplete</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'easeOut'</span><span class="jsdoc-syntax">);
+            }
+        }
+    }
+};
+
+</span><span class="jsdoc-comment">/** 
+ *@class Roo.SplitBar.AbsoluteLayoutAdapter
+ * @extends Roo.SplitBar.BasicLayoutAdapter
+ * Adapter that  moves the splitter element to align with the resized sizing element. 
+ * Used with an absolute positioned SplitBar.
+ * @param {String/HTMLElement/Roo.Element} container The container that wraps around the absolute positioned content. If it's
+ * document.body, make sure you assign an id to the body element.
+ */
+</span><span class="jsdoc-var">Roo.SplitBar.AbsoluteLayoutAdapter </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">this.basic </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.SplitBar.BasicLayoutAdapter</span><span class="jsdoc-syntax">();
+    </span><span class="jsdoc-var">this.container </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.SplitBar.AbsoluteLayoutAdapter.prototype </span><span class="jsdoc-syntax">= {
+    </span><span class="jsdoc-var">init </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.basic.init</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">getElementSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.basic.getElementSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">setElementSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newSize</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">onComplete</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.basic.setElementSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newSize</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.moveSplitter.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">]));
+    },
+    
+    </span><span class="jsdoc-var">moveSplitter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">yes </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.SplitBar</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s.placement</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">yes.LEFT</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">s.el.setX</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s.resizingEl.getRight</span><span class="jsdoc-syntax">());
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">yes.RIGHT</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">s.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;right&quot;</span><span class="jsdoc-syntax">, (</span><span class="jsdoc-var">this.container.getWidth</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">s.resizingEl.getLeft</span><span class="jsdoc-syntax">()) + </span><span class="jsdoc-string">&quot;px&quot;</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">yes.TOP</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">s.el.setY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s.resizingEl.getBottom</span><span class="jsdoc-syntax">());
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">yes.BOTTOM</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">s.el.setY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s.resizingEl.getTop</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">s.el.getHeight</span><span class="jsdoc-syntax">());
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+        }
+    }
+};
+
+</span><span class="jsdoc-comment">/**
+ * Orientation constant - Create a vertical SplitBar
+ * @static
+ * @type Number
+ */
+</span><span class="jsdoc-var">Roo.SplitBar.VERTICAL </span><span class="jsdoc-syntax">= 1;
+
+</span><span class="jsdoc-comment">/**
+ * Orientation constant - Create a horizontal SplitBar
+ * @static
+ * @type Number
+ */
+</span><span class="jsdoc-var">Roo.SplitBar.HORIZONTAL </span><span class="jsdoc-syntax">= 2;
+
+</span><span class="jsdoc-comment">/**
+ * Placement constant - The resizing element is to the left of the splitter element
+ * @static
+ * @type Number
+ */
+</span><span class="jsdoc-var">Roo.SplitBar.LEFT </span><span class="jsdoc-syntax">= 1;
+
+</span><span class="jsdoc-comment">/**
+ * Placement constant - The resizing element is to the right of the splitter element
+ * @static
+ * @type Number
+ */
+</span><span class="jsdoc-var">Roo.SplitBar.RIGHT </span><span class="jsdoc-syntax">= 2;
+
+</span><span class="jsdoc-comment">/**
+ * Placement constant - The resizing element is positioned above the splitter element
+ * @static
+ * @type Number
+ */
+</span><span class="jsdoc-var">Roo.SplitBar.TOP </span><span class="jsdoc-syntax">= 3;
+
+</span><span class="jsdoc-comment">/**
+ * Placement constant - The resizing element is positioned under splitter element
+ * @static
+ * @type Number
+ */
+</span><span class="jsdoc-var">Roo.SplitBar.BOTTOM </span><span class="jsdoc-syntax">= 4;
+</span></code></body></html>

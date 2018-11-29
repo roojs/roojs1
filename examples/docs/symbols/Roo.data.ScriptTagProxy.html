@@ -1,0 +1,532 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=undefined" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		
+		<title>JsDoc Reference - Roo.data.ScriptTagProxy</title>
+		
+		
+	<link rel="stylesheet" type="text/css" href="../../css/roojs.css" />		
+	<link rel="stylesheet" type="text/css" href="../default.css" />
+	
+	
+	<script type="text/javascript" src="../page.js">
+	
+	</script>
+	 
+		
+	</head>
+
+	<body onload="RooDocsPage.onload();">
+	 
+	
+<div class="body-wrap">
+
+    <!-- ============================== links to methods. ================================= -->	
+
+    <div class="top-tools">
+    <!--
+        <a class="inner-link" href="#Roo.data.ScriptTagProxy-props"><img src="resources/s.gif" class="item-icon icon-prop">Properties</a>
+        <a class="inner-link" href="#Roo.data.ScriptTagProxy-methods"><img src="resources/s.gif" class="item-icon icon-method">Methods</a>
+        <a class="inner-link" href="#Roo.data.ScriptTagProxy-events"><img src="resources/s.gif" class="item-icon icon-event">Events</a>
+        <a class="inner-link" href="#Roo.data.ScriptTagProxy-configs"><img src="resources/s.gif" class="item-icon icon-config">Config Options</a>
+        <a class="bookmark" href="NEED_TO_CREATE_DIRECT_LINK_HREF"><img src="resources/s.gif" class="item-icon icon-fav">Direct Link</a>
+	-->
+    </div>
+
+    
+<!-- ============================== inheritance Block. ================================= -->	
+	
+<!-- ============================== class title / details ============================ -->
+    
+    
+    <h1 class="classTitle">
+				
+				Class Roo.data.ScriptTagProxy
+			</h1>
+			
+    <table cellspacing="0" class="class-summary-table">
+	
+		<tr><td class="label">Package:</td><td class="hd-info">Roo.data</td></tr>
+	
+        <tr><td class="label">Defined In:</td><td class="hd-info">
+			
+					<a href="./src/Roo_data_ScriptTagProxy.js.html">Roo/data/ScriptTagProxy.js</a>.
+			
+	</td></tr>
+        <tr><td class="label">Class:</td><td class="hd-info">ScriptTagProxy</td></tr>
+	
+	
+	
+	
+    </table>
+
+    
+<!-- ============================== class summary ========================== -->			
+    <div class="description">
+	An implementation of Roo.data.DataProxy that reads a data object from a URL which may be in a domain<br/>other than the originating domain of the running page.<br><br><br/><p><br/><em>Note that if you are retrieving data from a page that is in a domain that is NOT the same as the originating domain<br/>of the running page, you must use this class, rather than DataProxy.</em><br><br><br/><p><br/>The content passed back from a server resource requested by a ScriptTagProxy is executable JavaScript<br/>source code that is used as the source inside a &lt;script> tag.<br><br><br/><p><br/>In order for the browser to process the returned data, the server must wrap the data object<br/>with a call to a callback function, the name of which is passed as a parameter by the ScriptTagProxy.<br/>Below is a Java example for a servlet which returns data for either a ScriptTagProxy, or an HttpProxy<br/>depending on whether the callback name was passed:<br/><p><br/><pre><code><br/>boolean scriptTag = false;<br/>String cb = request.getParameter("callback");<br/>if (cb != null) {<br/>    scriptTag = true;<br/>    response.setContentType("text/javascript");<br/>} else {<br/>    response.setContentType("application/x-json");<br/>}<br/>Writer out = response.getWriter();<br/>if (scriptTag) {<br/>    out.write(cb + "(");<br/>}<br/>out.print(dataBlock.toJsonString());<br/>if (scriptTag) {<br/>    out.write(");");<br/>}<br/></pre></code>
+    </div>
+
+	
+<!-- ============================== Class comment block... ========================== -->					
+
+<div class="comments">
+	<b>Class Comments / Notes</B> =>  
+	<u onclick="parent.CommentDialog.showCommentId = 'Roo.data.ScriptTagProxy';">[Add Your comment/notes about this class]</u>
+	<br/>
+	<iframe frameborder="0"  id="comments-Roo.data" style="border: none;width:100%;" 
+		src="/blog.php/GtkDjsComments/Roo.data.ScriptTagProxy.html"></iframe>
+</div>
+	
+
+		
+<!-- ============================== config options ========================== -->						
+		 
+    
+    
+		
+    <div class="hr"></div>
+    <a id="Roo.data.ScriptTagProxy-configs"></a>
+		
+    
+     
+    
+	
+      <table cellspacing="0" class="member-table">   
+      <caption>Config Options (Usually are also Properties)</caption>
+    
+	
+        <tr>
+            <th class="sig-header" colspan="2">Options</th>
+	    
+            <th class="msource-header">Defined By</th>
+        </tr>
+	
+	
+	
+	
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.data.ScriptTagProxy-cfg-callbackParam" name=".callbackParam"></a>
+			<div class="fixedFont">
+				<b  class="itemname">callbackParam</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">(Optional) The name of the parameter to pass to the server which tells<br/>the server the name of the callback function set up by the load call to process the returned data object.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    (Optional) The name of the parameter to pass to the server which tells<br/>the server the name of the callback function set up by the load call to process the returned data object.<br/>Defaults to "callback".<p>The server-side processing must read this parameter value, and generate<br/>javascript output which calls this named function passing the data object as its only parameter.
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.data.ScriptTagProxy
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.data.ScriptTagProxy-cfg-nocache" name=".nocache"></a>
+			<div class="fixedFont">
+				<b  class="itemname">nocache</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">(Optional) Defaults to true.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    (Optional) Defaults to true. Disable cacheing by adding a unique parameter<br/>name to the request.
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.data.ScriptTagProxy
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.data.ScriptTagProxy-cfg-timeout" name=".timeout"></a>
+			<div class="fixedFont">
+				<b  class="itemname">timeout</b> : <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">(Optional) The number of milliseconds to wait for a response.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    (Optional) The number of milliseconds to wait for a response. Defaults to 30 seconds.
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.data.ScriptTagProxy
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.data.ScriptTagProxy-cfg-url" name=".url"></a>
+			<div class="fixedFont">
+				<b  class="itemname">url</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">The URL from which to request the data object.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    The URL from which to request the data object.
+                    
+                </div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.data.ScriptTagProxy
+				
+		    </td>
+		</tr>
+        
+        
+    </table>
+  		
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- ============================== public properties ==================== -->	
+  
+  
+  
+    <a id="Roo.data.ScriptTagProxy-props"></a>      
+    
+    
+
+    
+    
+     <table cellspacing="0" class="member-table">
+      <caption class="Empty">Public Properties - Has None</caption>
+     </table>
+    
+    
+     
+    
+  <!-- ============================== methods summary / details ======================== -->
+  
+  
+  <a id="Roo.data.ScriptTagProxy-methods"></a>
+	<!-- constructor?? -->
+  	
+	<!-- static's first 
+	
+	
+	-->
+	
+	<!-- then dynamics first -->
+	
+  
+  
+    
+    
+    
+      <table cellspacing="0" class="member-table">
+      <caption>Public Methods</caption>
+        <tr>
+            <th class="sig-header" colspan="2">Method</th>            
+            <th class="msource-header">Defined By</th>
+
+        </tr>
+        
+	
+	
+	 
+	
+        
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.data-method-ScriptTagProxy"   name=".ScriptTagProxy"></a>
+		<div class="fixedFont">
+			<span class="attributes">new <B>Roo.data.</B></span><b class="itemname">ScriptTagProxy</b>
+				
+				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>config</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+		 
+			<div class="short">Create a new Roo.data.ScriptTagProxy</div> 
+		 
+		 
+                    <div class="long">
+			
+			
+			
+				Create a new Roo.data.ScriptTagProxy
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>config</b>
+						
+					</dt>
+					<dd>A configuration object.</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.data.ScriptTagProxy-method-abort"   name=".abort"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">abort</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Abort the current server request.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Abort the current server request.
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.data.ScriptTagProxy
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.data.ScriptTagProxy-method-load"   name=".load"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">load</b>
+				
+				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>params</i></B>, <a href="./Roo.data.DataReader.html#constructor" roo:cls="Roo.data.DataReader.html#constructor">Roo.data.DataReader</a> <B><i>reader</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>callback</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>arg</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Load data from the configured URL, read the data object into<br/>a block of Roo.data.Records using the passed Roo.data.DataReader implementation, and<br/>process that block using the passed callback.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Load data from the configured URL, read the data object into<br/>a block of Roo.data.Records using the passed Roo.data.DataReader implementation, and<br/>process that block using the passed callback.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>params</b>
+						
+					</dt>
+					<dd>An object containing properties which are to be used as HTTP parameters<br/>for the request to the remote server.</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.data.DataReader.html#constructor" roo:cls="Roo.data.DataReader.html#constructor">Roo.data.DataReader</a></span>  <b>reader</b>
+						
+					</dt>
+					<dd>The Reader object which converts the data<br/>object into a block of Roo.data.Records.</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>callback</b>
+						
+					</dt>
+					<dd>The function into which to pass the block of Roo.data.Records.<br/>The function must be passed <ul><br/><li>The Record block object</li><br/><li>The "arg" argument from the load function</li><br/><li>A boolean success indicator</li><br/></ul></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>The scope in which to call the callback</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>arg</b>
+						
+					</dt>
+					<dd>An optional argument which is passed to the callback as its second parameter.</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.data.ScriptTagProxy
+		&nbsp;
+            </td>
+        </tr>
+	
+	                                               
+    </table>
+
+  
+  <!-- ============================== events summary / details ======================== -->
+  
+  
+  <a id="Roo.data.ScriptTagProxy-events"></a>
+    
+  
+  	
+   
+    
+     <table cellspacing="0" class="member-table">
+      <caption class="Empty">Events - Has None</caption>
+     </table>
+    
+    
+  
+    
+    
+  
+  
+  
+ 
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Fri Jul 13 2018 14:10:54 GMT+0800 (HKT)
+			Based on 
+			<a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a>  
+		</div>
+	</body>
+</html>
