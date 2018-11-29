@@ -106,7 +106,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
         }
         
         if (this.brand !== '') {
-            cn[0].cn.push({
+            cn[0].cn.unshift({ // changed from push ?? BS4 needs it at the end? - does this break or exsiting?
                 tag: 'a',
                 href: this.brand_href ? this.brand_href : '#',
                 cls: 'navbar-brand',
