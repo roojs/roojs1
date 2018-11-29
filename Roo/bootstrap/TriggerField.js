@@ -178,18 +178,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             
         };
         
-        var box = {
-            tag: 'div',
-            cn: [
-                {
-                    tag: 'input',
-                    type : 'hidden',
-                    cls: 'form-hidden-field'
-                },
-                inputblock
-            ]
-            
-        };
+      
         
         var ibwrap = inputbox;
         
