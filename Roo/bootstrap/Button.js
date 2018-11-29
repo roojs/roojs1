@@ -10,7 +10,8 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap Button class
  * @cfg {String} html The button content
- * @cfg {String} weight (default | primary | secondary | success | info | warning | danger | link ) default 
+ * @cfg {String} weight (default | primary | secondary | success | info | warning | danger | link ) default
+ * @cfg {Boolean} outline default false (except for weight=default which emulates old behaveiour with an outline)
  * @cfg {String} size ( lg | sm | xs)
  * @cfg {String} tag ( a | input | submit)
  * @cfg {String} href empty or href
