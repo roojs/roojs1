@@ -2952,6 +2952,10 @@ table td .navbar {
   display: none;
 }
 /* multiselect */
+.roo-select2-container-multi {
+  width: 100%;
+  /* needed on BS4? */
+}
 .roo-select2-container-multi .roo-select2-choices {
   height: auto !important;
   height: 1%;
