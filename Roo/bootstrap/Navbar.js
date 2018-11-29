@@ -60,15 +60,12 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
                     ce.setHeight(0); // resize it ...
                     ce.on('transitionend', function() {
                     
-                     
-                    // now flag it as moving..
-                    
                         ce.removeClass('collapsing');
                         ce.addClass('show');
                         ce.removeClass('collapse');
 
                         ce.dom.style.height = '';
-                    }, true);
+                    }, this, { single: true} );
                     ce.setHeight(h);
                     
                 } else {
