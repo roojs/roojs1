@@ -13631,7 +13631,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         */
             
         if(!this.tpl){
-            this.tpl = '<li><a href="#">{' + this.displayField + '}</a></li>';
+            this.tpl = '<li><a class="drobpdown-item" href="#">{' + this.displayField + '}</a></li>';
         }
 
         this.view = new Roo.View(this.list, this.tpl, {
