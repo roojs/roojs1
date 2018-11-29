@@ -770,8 +770,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
         if(!this.tpl){
             this.tpl = Roo.bootstrap.version == 4 ?
-                '<a class="dropdown-item" href="#">{' + this.displayField + '}</a>';
-                '<a class="dropdown-item" href="#">{' + this.displayField + '}</a>';
+                '<a class="dropdown-item" href="#">{' + this.displayField + '}</a>' :  // 4 does not need <li> and it get's really confisued.
+                '<li><a class="dropdown-item" href="#">{' + this.displayField + '}</a></li>';
         }
 
         this.view = new Roo.View(this.list, this.tpl, {
