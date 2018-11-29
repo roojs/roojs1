@@ -481,7 +481,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     createList : function()
     {
         this.list = Roo.get(document.body).createChild({
-            tag: 'ul',
+            tag: Roo.bootstrap.version == 4 ? 'div' : 'ul',
             cls: 'typeahead typeahead-long dropdown-menu',
             style: 'display:none'
         });
