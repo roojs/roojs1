@@ -65,6 +65,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     html: '',
     badge: '',
     icon: false,
+    fa : false,
     glyphicon: false,
     active: false,
     preventDefault : false,
@@ -89,7 +90,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             cfg.cls += ' disabled';
         }
         
-        if (this.href || this.html || this.glyphicon || this.icon) {
+        if (this.href || this.html || this.glyphicon || this.icon || this.fa) {
             cfg.cn = [
                 {
                     tag: this.tagtype,
@@ -103,7 +104,9 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             if (this.icon) {
                 cfg.cn[0].html = '<i class="'+this.icon+'"></i> <span>' + cfg.cn[0].html + '</span>'
             }
-
+	    if (this.fa) {
+                cfg.cn[0].html = '<i class="fa fas fa-'+this.fa+'"></i> <span>' + cfg.cn[0].html + '</span>'
+            }
             if(this.glyphicon) {
                 cfg.cn[0].html = '<span class="glyphicon glyphicon-' + this.glyphicon + '"></span> '  + cfg.cn[0].html;
             }

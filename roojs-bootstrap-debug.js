@@ -4542,8 +4542,9 @@ Roo.apply(Roo.bootstrap.NavGroup, {
  * @cfg {String} html content of button
  * @cfg {String} badge text inside badge
  * @cfg {String} badgecls (bg-green|bg-red|bg-yellow)the extra classes for the badge
- * @cfg {String} glyphicon name of glyphicon
- * @cfg {String} icon name of font awesome icon
+ * @cfg {String} glyphicon DEPRICATED - use fa
+ * @cfg {String} icon DEPRICATED - use fa
+ * @cfg {String} fa - Fontawsome icon name (can add stuff to it like fa-2x)
  * @cfg {Boolean} active Is item active
  * @cfg {Boolean} disabled Is item disabled
  
@@ -4593,6 +4594,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     html: '',
     badge: '',
     icon: false,
+    fa : false,
     glyphicon: false,
     active: false,
     preventDefault : false,
@@ -4617,7 +4619,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             cfg.cls += ' disabled';
         }
         
-        if (this.href || this.html || this.glyphicon || this.icon) {
+        if (this.href || this.html || this.glyphicon || this.icon || this.fa) {
             cfg.cn = [
                 {
                     tag: this.tagtype,
@@ -4631,7 +4633,9 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             if (this.icon) {
                 cfg.cn[0].html = '<i class="'+this.icon+'"></i> <span>' + cfg.cn[0].html + '</span>'
             }
-
+	    if (this.fa) {
+                cfg.cn[0].html = '<i class="fa fas fa-'+this.fa+'"></i> <span>' + cfg.cn[0].html + '</span>'
+            }
             if(this.glyphicon) {
                 cfg.cn[0].html = '<span class="glyphicon glyphicon-' + this.glyphicon + '"></span> '  + cfg.cn[0].html;
             }
