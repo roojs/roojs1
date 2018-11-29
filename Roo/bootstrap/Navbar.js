@@ -55,7 +55,11 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
                 if (ce.hasClass('collapse')) {
                     // show it...
                     ce.removeClass('collapse show');
-                    ce.setHeight(ce.getHeight()); // resize it ...
+                    (function() {
+                        ce.setHeight(ce.getHeight()); // resize it ...
+                        ce.removeClass('collapsing');
+                    }).defer(50);
+                    
                     // now flag it as moving..
                     ce.addClass('collapsing');
                     
