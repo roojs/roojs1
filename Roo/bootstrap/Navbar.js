@@ -77,11 +77,11 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
                     ce.setHeight(ce.getHeight());
                     ce.removeClass('show');
                     ce.addClass('collapsing');
-                    
-                    (function() {
+                    ce.setHeight(0);
+                    ce.on('transitionend', function() {
+                        ce.dom.style.height = '';
                         ce.removeClass('collapsing');
                         ce.addClass('collapse');
-                        
                     }).defer(200);
                     
                 }
