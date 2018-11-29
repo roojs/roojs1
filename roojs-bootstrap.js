@@ -151,7 +151,7 @@ this.updateText(B.msg);if(B.cls){d.el.addClass(B.cls);}d.proxyDrag=B.proxyDrag==
 Roo.MessageBox=Roo.MessageBox||Roo.bootstrap.MessageBox;Roo.Msg=Roo.Msg||Roo.MessageBox;
 // Roo/bootstrap/Navbar.js
 Roo.bootstrap.Navbar=function(A){Roo.bootstrap.Navbar.superclass.constructor.call(this,A);this.addEvents({"beforetoggle":true});};Roo.extend(Roo.bootstrap.Navbar,Roo.bootstrap.Component,{navItems:false,loadMask:false,getAutoCreate:function(){throw {message:"nav bar is now a abstract base class - use NavSimplebar / NavHeaderbar / NavSidebar etc..."}
-;},initEvents:function(){this.el.select('.navbar-toggle',true).on('click',function(){if(this.fireEvent('beforetoggle',this)!==false){this.el.select('.navbar-collapse',true).toggleClass('in');}},this);var A={tag:"div",cls:"x-dlg-mask"};this.maskEl=Roo.DomHelper.append(this.el,A,true);
+;},initEvents:function(){this.el.select('.navbar-toggle',true).on('click',function(){if(this.fireEvent('beforetoggle',this)!==false){this.el.select('.navbar-collapse',true).toggleClass('in collapse');}},this);var A={tag:"div",cls:"x-dlg-mask"};this.maskEl=Roo.DomHelper.append(this.el,A,true);
 var B=this.el.getSize();this.maskEl.setSize(B.width,B.height);this.maskEl.enableDisplayMode("block");this.maskEl.hide();if(this.loadMask){this.maskEl.show();}},getChildContainer:function(){if(this.el.select('.collapse').getCount()){return this.el.select('.collapse',true).first();
 }return this.el;},mask:function(){this.maskEl.show();},unmask:function(){this.maskEl.hide();}});
 // Roo/bootstrap/NavSimplebar.js
