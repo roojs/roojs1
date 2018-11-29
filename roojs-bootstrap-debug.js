@@ -3875,7 +3875,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
                     // now flag it as moving..
                     
                     
-                    (function() { ce.removeClass('collapsing'); }).defer(100);
+                    (function() { ce.removeClass('collapsing'); }).defer(500);
                 } else {
                     ce.addClass('collapsing');
                     ce.removeClass('show');
