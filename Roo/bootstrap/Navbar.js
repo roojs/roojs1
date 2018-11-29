@@ -52,9 +52,13 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
             if(this.fireEvent('beforetoggle', this) !== false){
                 var ce = this.el.select('.navbar-collapse',true).first();
                 ce.toggleClass('in'); // old...
+                if (ce.hasClass('collapse')) {
+                    ce.removeClass('collapse');
+                    ce.addClass('collapsing');
+                } else {
                
-               
-               this.el.select('.navbar-collapse',true).toggleClass('collapse');
+                    ce.addClass('collapse');
+                }
             }
             
         }, this);
