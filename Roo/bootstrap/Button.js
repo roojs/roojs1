@@ -78,6 +78,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     disabled: false,
     isClose: false,
     glyphicon: '',
+    fa: '',
     badge: '',
     theme: 'default',
     inverse: false,
@@ -188,6 +189,10 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             Roo.log('changing to ul' );
             cfg.tag = 'ul';
             this.glyphicon = 'caret';
+            if (Roo.bootstrap.version == 4) {
+                this.fa = 'caret-down';
+            }
+            
         }
         
         cfg.cls += this.size.length ? (' btn-' + this.size) : '';
@@ -223,6 +228,16 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
                 {
                     tag: 'span',
                     cls: 'glyphicon glyphicon-' + this.glyphicon
+                }
+            ];
+        }
+        if (this.fa) {
+            cfg.html = ' ' + cfg.html;
+            
+            cfg.cn = [
+                {
+                    tag: 'i',
+                    cls: 'fa fa-' + this.fa
                 }
             ];
         }
