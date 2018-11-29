@@ -10395,42 +10395,35 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             
         };
         
+        var ibwrap = inputbox;
+        
         if(this.multiple){
-            box = {
-                tag: 'div',
-                cn: [
+            ibwrap = {
+                tag: 'ul',
+                cls: 'roo-select2-choices',
+                cn:[
                     {
-                        tag: 'input',
-                        type : 'hidden',
-                        cls: 'form-hidden-field'
-                    },
-                    {
-                        tag: 'ul',
-                        cls: 'roo-select2-choices',
-                        cn:[
-                            {
-                                tag: 'li',
-                                cls: 'roo-select2-search-field',
-                                cn: [
+                        tag: 'li',
+                        cls: 'roo-select2-search-field',
+                        cn: [
 
-                                    inputblock
-                                ]
-                            }
+                            inputblock
                         ]
                     }
                 ]
-            }
-        };
+            };
+                
+        }
         
         var combobox = {
             cls: 'roo-select2-container input-group',
             cn: [
-                box
-//                {
-//                    tag: 'ul',
-//                    cls: 'typeahead typeahead-long dropdown-menu',
-//                    style: 'display:none'
-//                }
+                 {
+                    tag: 'input',
+                    type : 'hidden',
+                    cls: 'form-hidden-field'
+                },
+                ibwrap
             ]
         };
         
