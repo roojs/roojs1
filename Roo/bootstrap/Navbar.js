@@ -50,7 +50,10 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         //Roo.log(this.el.select('.navbar-toggle',true));
         this.el.select('.navbar-toggle',true).on('click', function() {
             if(this.fireEvent('beforetoggle', this) !== false){
-               this.el.select('.navbar-collapse',true).toggleClass('in');
+                var ce = this.el.select('.navbar-collapse',true).first();
+                ce.toggleClass('in'); // old...
+               
+               
                this.el.select('.navbar-collapse',true).toggleClass('collapse');
             }
             
