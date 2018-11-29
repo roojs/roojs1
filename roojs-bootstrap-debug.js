@@ -3864,11 +3864,13 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
                 var ce = this.el.select('.navbar-collapse',true).first();
                 ce.toggleClass('in'); // old...
                 if (ce.hasClass('collapse')) {
+                    // show it...
                     ce.removeClass('collapse');
-                    ce.addClass('collapsing');
+                    ce.addClass('collapsing show');
                     (function() { ce.removeClass('collapsing'); }).defer(50);
                 } else {
                     ce.addClass('collapsing');
+                    ce.removeClass('show');
                     (function() {
                         ce.removeClass('collapsing');
                         ce.addClass('collapse');
