@@ -61,7 +61,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
                     ce.addClass('collapsing');
                     (function() {
                         ce.removeClass('collapsing');
-                        ce.rmeove('collapse');
+                        ce.removeClass('show');
                     }).defer(500);
                     
                 }
