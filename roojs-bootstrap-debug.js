@@ -3874,14 +3874,14 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
                     ce.addClass('collapsing');
                     
                     ce.setHeight(0); // resize it ...
-                     (function() {
+                    ce.on('transitionend', function() {
                         Roo.log('done transition');
                         ce.removeClass('collapsing');
                         ce.addClass('show');
                         ce.removeClass('collapse');
 
                         ce.dom.style.height = '';
-                    }).defer(500);
+                    }, this, { single: true} );
                     ce.setHeight(h);
                     
                 } else {
