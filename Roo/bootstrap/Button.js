@@ -376,7 +376,11 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     
     setWeight : function(str)
     {
-    	var outline = this.outline ? 'outline-' : ''
+    	var outline = this.outline ? 'outline-' : '';
+        if (str == 'default') {
+            outline = 'outline-';
+            str = 'secondary';
+        }
         this.el.removeClass(this.weightClass);
         this.el.addClass('btn-' + outline + str);        
     }
