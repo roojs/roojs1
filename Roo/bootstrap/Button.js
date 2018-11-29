@@ -260,7 +260,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
                     html: this.html
                 };
             }
-            if(this.glyphicon){
+            if(this.fa){
                 value = {
                     tag: 'i',
                     cls: 'fa fas fa-' + this.fa,
