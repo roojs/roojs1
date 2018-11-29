@@ -472,6 +472,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var combobox = {
             cls: 'roo-select2-container input-group roo-select2-container-multi',
             cn: [
+                
                 box
 //                {
 //                    tag: 'ul',
@@ -2242,50 +2243,37 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             });
         }
 
-        var box = {
-            tag: 'div',
-            cn: [
+        
+        var ibwrap = inputblock;
+        
+        if(this.multiple){
+            ibwrap = {
+                tag: 'ul',
+                cls: 'roo-select2-choices',
+                cn:[
+                    {
+                        tag: 'li',
+                        cls: 'roo-select2-search-field',
+                        cn: [
+
+                            inputblock
+                        ]
+                    }
+                ]
+            };
+        
+            
+        }
+        
+        var combobox = {
+            cls: 'roo-select2-container input-group roo-touchview-combobox ',
+           cn: [
                 {
                     tag: 'input',
                     type : 'hidden',
                     cls: 'form-hidden-field'
                 },
-                inputblock
-            ]
-            
-        };
-        
-        if(this.multiple){
-            box = {
-                tag: 'div',
-                cn: [
-                    {
-                        tag: 'input',
-                        type : 'hidden',
-                        cls: 'form-hidden-field'
-                    },
-                    {
-                        tag: 'ul',
-                        cls: 'roo-select2-choices',
-                        cn:[
-                            {
-                                tag: 'li',
-                                cls: 'roo-select2-search-field',
-                                cn: [
-
-                                    inputblock
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            }
-        };
-        
-        var combobox = {
-            cls: 'roo-select2-container input-group roo-touchview-combobox ',
-            cn: [
-                box
+                ibwrap
             ]
         };
         
