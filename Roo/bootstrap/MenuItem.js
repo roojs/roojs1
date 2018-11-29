@@ -53,7 +53,7 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
         if(this.isContainer){
             return {
                 tag: 'li',
-                cls: 'dropdown-menu-item dropdown-item'
+                cls: 'dropdown-menu-item '
             };
         }
         var ctag = {
@@ -63,6 +63,7 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
         
         var anc = {
             tag : 'a',
+            cls : 'dropdown-item',
             href : '#',
             cn : [  ]
         };
@@ -79,7 +80,7 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
         
         var cfg= {
             tag: 'li',
-            cls: 'dropdown-menu-item dropdown-item',
+            cls: 'dropdown-menu-item',
             cn: [ anc ]
         };
         if (this.parent().type == 'treeview') {
