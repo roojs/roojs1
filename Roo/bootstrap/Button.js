@@ -237,7 +237,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             cfg.cn = [
                 {
                     tag: 'i',
-                    cls: 'fa fa-' + this.fa
+                    cls: 'fa fas fa-' + this.fa
                 }
             ];
         }
