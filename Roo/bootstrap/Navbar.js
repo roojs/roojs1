@@ -59,12 +59,11 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
                     (function() { ce.removeClass('collapsing'); }).defer(50);
                 } else {
                     ce.addClass('collapsing');
-                    e.addClass('collapse');
                     ce.removeClass('show');
                     (function() {
                         ce.removeClass('collapsing');
                         ce.addClass('collapse');
-                    }).defer(500);
+                    }).defer(1000);
                     
                 }
             }
