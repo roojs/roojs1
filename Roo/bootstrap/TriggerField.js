@@ -156,7 +156,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             if (this.before) {
                 inputblock.cn.push({
                     tag :'span',
-                    cls : 'input-group-addon',
+                    cls : 'input-group-addon input-group-prepend input-group-text',
                     html : this.before
                 });
             }
@@ -171,7 +171,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             if (this.after) {
                 inputblock.cn.push({
                     tag :'span',
-                    cls : 'input-group-addon',
+                    cls : 'input-group-addon input-group-append input-group-text',
                     html : this.after
                 });
             }
@@ -246,7 +246,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             
             combobox.cn.push({
                 tag :'span',
-                cls : 'input-group-addon btn dropdown-toggle',
+                cls : 'input-group-addon input-group-append input-group-text btn dropdown-toggle',
                 cn : [
                     caret,
                     {
@@ -267,17 +267,25 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         if(this.multiple){
             combobox.cls += ' roo-select2-container-multi';
         }
+         var indicator = {
+            tag : 'i',
+            cls : 'roo-required-indicator ' + (this.indicatorpos == 'right'  ? 'right' : 'left') +'-indicator text-danger fa fa-lg fa-star',
+            tooltip : 'This field is required'
+        };
+        if (Roo.bootstrap.version == 4) {
+            indicator = {
+                tag : 'i',
+                style : 'display:none'
+            };
+        }
+        
         
         if (align ==='left' && this.fieldLabel.length) {
             
-            cfg.cls += ' roo-form-group-label-left';
+            cfg.cls += ' roo-form-group-label-left row';
 
             cfg.cn = [
-                {
-                    tag : 'i',
-                    cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
-                    tooltip : 'This field is required'
-                },
+                indicator,
                 {
                     tag: 'label',
                     'for' :  id,
@@ -308,11 +316,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                                 tag : 'span',
                                 html : this.fieldLabel
                             },
-                            {
-                                tag : 'i',
-                                cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
-                                tooltip : 'This field is required'
-                            }
+                            indicator
                         ]
                     },
                     {
@@ -359,11 +363,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         } else if ( this.fieldLabel.length) {
 //                Roo.log(" label");
             cfg.cn = [
-                {
-                   tag : 'i',
-                   cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
-                   tooltip : 'This field is required'
-               },
+                indicator,
                {
                    tag: 'label',
                    //cls : 'input-group-addon',
@@ -385,11 +385,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                                tag : 'span',
                                html : this.fieldLabel
                            },
-                           {
-                              tag : 'i',
-                              cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
-                              tooltip : 'This field is required'
-                           }
+                           indicator
                        ]
 
                     },

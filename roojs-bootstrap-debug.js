@@ -9118,7 +9118,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 
                 inputblock.cn.push({
                     tag :'span',
-                    cls : 'roo-input-before input-group-addon',
+                    cls : 'roo-input-before input-group-addon input-group-prepend input-group-text',
                     html : this.before
                 });
             }
@@ -9127,7 +9127,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 
                 inputblock.cn.push({
                     tag :'span',
-                    cls : 'roo-input-before input-group-' +
+                    cls : 'roo-input-before input-group-prepend input-group-text input-group-' +
                         (this.before.xtype == 'Button' ? 'btn' : 'addon')  //?? what about checkboxes - that looks like a bit of a hack thought? 
                 });
             }
@@ -9137,7 +9137,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             if (this.after && typeof(this.after) == 'string') {
                 inputblock.cn.push({
                     tag :'span',
-                    cls : 'roo-input-after input-group-addon',
+                    cls : 'roo-input-after input-group-append input-group-text input-group-addon',
                     html : this.after
                 });
             }
@@ -9146,7 +9146,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 
                 inputblock.cn.push({
                     tag :'span',
-                    cls : 'roo-input-after input-group-' +
+                    cls : 'roo-input-after input-group-append input-group-text input-group-' +
                         (this.after.xtype == 'Button' ? 'btn' : 'addon')  //?? what about checkboxes - that looks like a bit of a hack thought? 
                 });
             }
@@ -9156,21 +9156,27 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 inputblock.cn.push(feedback);
             }
         };
-        
+        var indicator = {
+            tag : 'i',
+            cls : 'roo-required-indicator ' + (this.indicatorpos == 'right'  ? 'right' : 'left') +'-indicator text-danger fa fa-lg fa-star',
+            tooltip : 'This field is required'
+        };
+        if (Roo.bootstrap.version == 4) {
+            indicator = {
+                tag : 'i',
+                style : 'display-none'
+            };
+        }
         if (align ==='left' && this.fieldLabel.length) {
             
-            cfg.cls += ' roo-form-group-label-left';
+            cfg.cls += ' roo-form-group-label-left row';
             
             cfg.cn = [
-                {
-                    tag : 'i',
-                    cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
-                    tooltip : 'This field is required'
-                },
+                indicator,
                 {
                     tag: 'label',
                     'for' :  id,
-                    cls : 'control-label',
+                    cls : 'control-label col-form-label',
                     html : this.fieldLabel
 
                 },
@@ -9190,17 +9196,13 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                     {
                         tag: 'label',
                         'for' :  id,
-                        cls : 'control-label',
+                        cls : 'control-label col-form-label',
                         cn : [
                             {
                                 tag : 'span',
                                 html : this.fieldLabel
                             },
-                            {
-                                tag : 'i',
-                                cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
-                                tooltip : 'This field is required'
-                            }
+                            indicator
                         ]
                     },
                     {
@@ -9324,6 +9326,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     
     indicatorEl : function()
     {
+        if (Roo.bootstrap.version == 4) {
+            return false; // not enabled in v4 yet.
+        }
+        
         var indicator = this.el.select('i.roo-required-indicator',true).first();
         
         if(!indicator){
@@ -9809,7 +9815,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         
-        if(this.indicator){
+        if(this.indicatorEl()){
             var ar = this.el.select('label > span',true);
             
             if (ar.elements.length) {
@@ -10354,7 +10360,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             if (this.before) {
                 inputblock.cn.push({
                     tag :'span',
-                    cls : 'input-group-addon',
+                    cls : 'input-group-addon input-group-prepend input-group-text',
                     html : this.before
                 });
             }
@@ -10369,7 +10375,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             if (this.after) {
                 inputblock.cn.push({
                     tag :'span',
-                    cls : 'input-group-addon',
+                    cls : 'input-group-addon input-group-append input-group-text',
                     html : this.after
                 });
             }
@@ -10444,7 +10450,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             
             combobox.cn.push({
                 tag :'span',
-                cls : 'input-group-addon btn dropdown-toggle',
+                cls : 'input-group-addon input-group-append input-group-text btn dropdown-toggle',
                 cn : [
                     caret,
                     {
@@ -10465,17 +10471,25 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         if(this.multiple){
             combobox.cls += ' roo-select2-container-multi';
         }
+         var indicator = {
+            tag : 'i',
+            cls : 'roo-required-indicator ' + (this.indicatorpos == 'right'  ? 'right' : 'left') +'-indicator text-danger fa fa-lg fa-star',
+            tooltip : 'This field is required'
+        };
+        if (Roo.bootstrap.version == 4) {
+            indicator = {
+                tag : 'i',
+                style : 'display:none'
+            };
+        }
+        
         
         if (align ==='left' && this.fieldLabel.length) {
             
-            cfg.cls += ' roo-form-group-label-left';
+            cfg.cls += ' roo-form-group-label-left row';
 
             cfg.cn = [
-                {
-                    tag : 'i',
-                    cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
-                    tooltip : 'This field is required'
-                },
+                indicator,
                 {
                     tag: 'label',
                     'for' :  id,
@@ -10506,11 +10520,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                                 tag : 'span',
                                 html : this.fieldLabel
                             },
-                            {
-                                tag : 'i',
-                                cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
-                                tooltip : 'This field is required'
-                            }
+                            indicator
                         ]
                     },
                     {
@@ -10557,11 +10567,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         } else if ( this.fieldLabel.length) {
 //                Roo.log(" label");
             cfg.cn = [
-                {
-                   tag : 'i',
-                   cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
-                   tooltip : 'This field is required'
-               },
+                indicator,
                {
                    tag: 'label',
                    //cls : 'input-group-addon',
@@ -10583,11 +10589,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                                tag : 'span',
                                html : this.fieldLabel
                            },
-                           {
-                              tag : 'i',
-                              cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
-                              tooltip : 'This field is required'
-                           }
+                           indicator
                        ]
 
                     },
@@ -13369,21 +13371,27 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             combobox.cn.push(feedback);
         }
         
-        
+        var indicator = {
+            tag : 'i',
+            cls : 'roo-required-indicator ' + (this.indicatorpos == 'right'  ? 'right' : 'left') +'-indicator text-danger fa fa-lg fa-star',
+            tooltip : 'This field is required'
+        };
+        if (Roo.bootstrap.version == 4) {
+            indicator = {
+                tag : 'i',
+                style : 'display:none'
+            };
+        }
         if (align ==='left' && this.fieldLabel.length) {
             
-            cfg.cls += ' roo-form-group-label-left';
+            cfg.cls += ' roo-form-group-label-left row';
             
             cfg.cn = [
-                {
-                    tag : 'i',
-                    cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
-                    tooltip : 'This field is required'
-                },
+                indicator,
                 {
                     tag: 'label',
                     'for' :  id,
-                    cls : 'control-label',
+                    cls : 'control-label col-form-label',
                     html : this.fieldLabel
 
                 },
@@ -13406,17 +13414,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     {
                         tag: 'label',
                         'for' :  id,
-                        cls : 'control-label',
+                        cls : 'control-label col-form-label',
                         cn : [
                             {
                                 tag : 'span',
                                 html : this.fieldLabel
                             },
-                            {
-                                tag : 'i',
-                                cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
-                                tooltip : 'This field is required'
-                            }
+                            indicator
                         ]
                     },
                     {
@@ -13467,11 +13471,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         } else if ( this.fieldLabel.length) {
 //                Roo.log(" label");
                  cfg.cn = [
-                    {
-                        tag : 'i',
-                        cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
-                        tooltip : 'This field is required'
-                    },
+                   indicator,
                     {
                         tag: 'label',
                         //cls : 'input-group-addon',
@@ -13487,11 +13487,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                             //cls : 'input-group-addon',
                             html : this.fieldLabel
                         },
-                        {
-                            tag : 'i',
-                            cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
-                            tooltip : 'This field is required'
-                        },
+                        indicator,
                         combobox
                     ];
                     
@@ -15089,7 +15085,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
             inputblock.cn.unshift({
                 tag :'span',
-                cls : 'input-group-addon',
+                cls : 'input-group-addon input-group-prepend input-group-text',
                 html : this.before
             });
         }
@@ -15121,7 +15117,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
             inputblock.cn.push({
                 tag :'span',
-                cls : 'input-group-addon',
+                cls : 'input-group-addon input-group-append input-group-text',
                 html : this.after
             });
         }
@@ -15190,7 +15186,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
             combobox.cn.push({
                 tag :'span',
-                cls : 'input-group-addon btn dropdown-toggle',
+                cls : 'input-group-addon input-group-append input-group-text btn dropdown-toggle',
                 cn : [
                     caret,
                     {
@@ -15224,7 +15220,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 },
                 {
                     tag: 'label',
-                    cls : 'control-label',
+                    cls : 'control-label col-form-label',
                     html : this.fieldLabel
 
                 },
@@ -15245,7 +15241,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     {
                         tag: 'label',
                         'for' :  id,
-                        cls : 'control-label',
+                        cls : 'control-label col-form-label',
                         cn : [
                             {
                                 tag : 'span',

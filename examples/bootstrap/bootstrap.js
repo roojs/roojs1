@@ -463,11 +463,20 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xns: Roo.bootstrap,
                                     name : 'test',
                                     fieldLabel : 'test - keyup',
+                                    
                                     listeners : {
                                         keyup : function() {
                                             alert("Test");
                                         }
                                     }
+                                },
+                                {
+                                    xtype: 'Input',
+                                    xns: Roo.bootstrap,
+                                    name : 'test2',
+                                    fieldLabel : 'test - icon',
+                                    after : '@'
+                                    
                                 },
                                 {
                                     xtype: 'ComboBox',
