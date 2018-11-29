@@ -13373,6 +13373,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var box = {
             tag: 'div',
+            style : 'display: contents',
             cn: [
                 {
                     tag: 'input',
