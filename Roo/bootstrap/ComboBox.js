@@ -769,7 +769,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         */
             
         if(!this.tpl){
-            this.tpl = '<li><a class="dropdown-item" href="#">{' + this.displayField + '}</a></li>';
+            this.tpl = Roo.bootstrap.version == 4 ?
+                '<a class="dropdown-item" href="#">{' + this.displayField + '}</a>';
+                '<a class="dropdown-item" href="#">{' + this.displayField + '}</a>';
         }
 
         this.view = new Roo.View(this.list, this.tpl, {
