@@ -75,8 +75,9 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
                     
                 } else {
                     ce.setHeight(ce.getHeight());
-                    ce.addClass('collapsing');
                     ce.removeClass('show');
+                    ce.addClass('collapsing');
+                    
                     (function() {
                         ce.removeClass('collapsing');
                         ce.addClass('collapse');
