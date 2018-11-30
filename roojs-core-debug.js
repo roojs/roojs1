@@ -16573,6 +16573,7 @@ Roo.apply(Roo.XComponent, {
                msg: msg,
                width:450,
                progress:true,
+	       buttons : false,
                closable:false,
                modal: false
               
