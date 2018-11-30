@@ -49,7 +49,7 @@ Example.Nested = new Roo.XComponent({
                 {
                     xtype : 'Content',
                     xns: Roo.bootstrap.panel,
-                    title : "Title west" ,
+                    title : "Title westx" ,
                     fitToFrame:true,
                     closable:false,
                     region : 'north',
