@@ -12,7 +12,7 @@
  * @cfg {Roo.Template} tmpl - a template with variables. to use it, add a handler in show:method  adn
  * @cfg {Boolean} specificTitle default false
  * @cfg {Array} buttons Array of buttons or standard button set..
- * @cfg {String} buttonPosition (left|right|center) default right
+ * @cfg {String} buttonPosition (left|right|center) default right (DEPRICATED) - use mr-auto on buttons to put them on the left
  * @cfg {Boolean} animate default true
  * @cfg {Boolean} allow_close default true
  * @cfg {Boolean} fitwindow default false
