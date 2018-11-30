@@ -62,7 +62,16 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
 	}
 	cfg.cls += ' bg-' + this.weight;
 	
-	  
+	if (this.inverse) {
+            cfg.cls += ' navbar-inverse';
+            
+        }
+	
+	// i'm not actually sure these are really used - normally we add a navGroup to a navbar
+	
+	if (Roo.bootstrap.version == 4) {
+	    return cfg;
+	}
 	
         cfg.cn = [
             {
@@ -96,10 +105,7 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
             cfg.cn[0].cls += ' navbar-right';
         }
         
-        if (this.inverse) {
-            cfg.cls += ' navbar-inverse';
-            
-        }
+        
         
         
         return cfg;
