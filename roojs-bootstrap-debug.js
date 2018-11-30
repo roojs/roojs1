@@ -38083,9 +38083,11 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
      * Adds an existing {@link Roo.TabPanelItem}.
      * @param {Roo.TabPanelItem} item The TabPanelItem to add
      */
-    addTabItem : function(item){
+    addTabItem : function(item)
+    {
         this.items[item.id] = item;
         this.items.push(item);
+        
       //  if(this.resizeTabs){
     //       item.setWidth(this.currentTabWidth || this.preferredTabWidth);
   //         this.autoSizeTabs();
@@ -38167,7 +38169,8 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
      * @param {String/Number} id The id or index of the TabPanelItem to activate.
      * @return {Roo.TabPanelItem} The TabPanelItem.
      */
-    activate : function(id){
+    activate : function(id)
+    {
         var tab = this.items[id];
         if(!tab){
             return null;
@@ -38233,12 +38236,19 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
     /**
      * Manual call to resize the tabs (if {@link #resizeTabs} is false this does nothing)
      */
-    autoSizeTabs : function(){
+    autoSizeTabs : function()
+    {
         var count = this.items.length;
         var vcount = count - this.hiddenCount;
         if(!this.resizeTabs || count < 1 || vcount < 1 || this.updating) {
             return;
         }
+        if (vcount < 2) {
+            this.stripEl.hide();
+        } else {
+            this.stripEl.show();
+        }
+        
         var w = Math.max(this.el.getWidth() - this.cpad, 10);
         var availWidth = Math.floor(w / vcount);
         var b = this.stripBody;

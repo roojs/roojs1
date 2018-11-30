@@ -388,6 +388,8 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
         }
         if (vcount < 2) {
             this.stripEl.hide();
+        } else {
+            this.stripEl.show();
         }
         
         var w = Math.max(this.el.getWidth() - this.cpad, 10);
