@@ -3,10 +3,10 @@
 Roo.example = Roo.example || {};
 
 Roo.example.combobox = new Roo.XComponent({
-    part     :  ["layout","viewpanel"],
+    part     :  ["example","combobox"],
     order    : '001-viewpanel',
     region   : '',
-    parent   : '#bootstrap',
+    parent   : false,
     name     : "unnamed module",
     disabled : false, 
     permname : '', 
