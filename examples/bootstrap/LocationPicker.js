@@ -39,6 +39,27 @@ Roo.example.locationpicker = new Roo.XComponent({
                             style : 'margin-top: 50px',
                             items : [
                                 {
+                                    xtype : 'Header',
+                                    xns: Roo.bootstrap,
+                                    level : 1,
+                                    html : "This requires an API now"
+                                }
+                            ]
+                        }
+                    ]
+                },
+		{
+                    xtype : 'Container',
+                    xns : Roo.bootstrap,
+                    items : [
+                        {
+                            xtype : 'Column',
+                            xns: Roo.bootstrap,
+                            md : 6,
+                            cls : 'col-md-offset-3',
+                            style : 'margin-top: 50px',
+                            items : [
+                                {
                                     xtype : 'Input',
                                     xns: Roo.bootstrap,
                                     fieldLabel : 'Location',
