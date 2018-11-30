@@ -44,7 +44,7 @@ Roo.bootstrap.panel.TabItem = function(config){
      this.textEl = Roo.bootstrap.version == 4 ?
         this.el : Roo.get(this.el.dom.firstChild, true);
 
-    this.linode = Roo.get(els.el.parentNode, true);
+    this.pnode = this.linode = Roo.get(els.el.parentNode, true);
     this.status_node = Roo.bootstrap.version == 4 ? this.el : this.linode;
 
     
