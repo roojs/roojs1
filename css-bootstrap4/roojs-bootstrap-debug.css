@@ -3312,6 +3312,9 @@ html.bootstrap-sticky body {
 .navbar .pagination > li > span {
   min-height: 34px;
 }
+.table tfoot td {
+  padding: 0;
+}
 .navbar .pagination {
   margin: 0;
 }
