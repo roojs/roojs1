@@ -310,7 +310,8 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
      * @param {String/Number} id The id or index of the TabPanelItem to activate.
      * @return {Roo.TabPanelItem} The TabPanelItem.
      */
-    activate : function(id){
+    activate : function(id)
+    {
         var tab = this.items[id];
         if(!tab){
             return null;
