@@ -264,7 +264,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             this.render();
         }
         this.fireEvent("beforeshow", this);
-        this.showAt(this.el.getAlignToXY(el, pos || this.defaultAlign), parentMenu, '?');
+        this.showAt(this.el.getAlignToXY(el, pos || this.defaultAlign), parentMenu, false);
     },
      /**
      * Displays this menu at a specific xy position
@@ -380,7 +380,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             this.hide();
         } else {
             Roo.log('show');
-            this.show(this.triggerEl, false, false);
+            this.show(this.triggerEl, '?', false);
         }
         
         if(this.stopEvent || e.getTarget().nodeName.toLowerCase() === 'i'){

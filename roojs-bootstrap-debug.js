@@ -2410,7 +2410,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             this.hide();
         } else {
             Roo.log('show');
-            this.show(this.triggerEl, false, false);
+            this.show(this.triggerEl, '?', false);
         }
         
         if(this.stopEvent || e.getTarget().nodeName.toLowerCase() === 'i'){
@@ -4360,15 +4360,20 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
             tag : 'ul',
             cls: 'nav' 
         };
-        
-        if (['tabs','pills'].indexOf(this.type)!==-1) {
-            cfg.cls += ' nav-' + this.type
-        } else {
-            if (this.type!=='nav') {
-                Roo.log('nav type must be nav/tabs/pills')
-            }
-            cfg.cls += ' navbar-nav'
-        }
+        if (Roo.bootstrap.version == 4) {
+	    if (this.type == 'pills') {
+		cfg.cls = ' nav-pills';
+	    }
+	} else {
+	    if (['tabs','pills'].indexOf(this.type)!==-1) {
+		cfg.cls += ' nav-' + this.type
+	    } else {
+		if (this.type !== 'nav') {
+		    Roo.log('nav type must be nav/tabs/pills')
+		}
+		cfg.cls += ' navbar-nav'
+	    }
+	}
         
         if (this.parent() && this.parent().sidebar) {
             cfg = {
@@ -4382,7 +4387,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         if (this.form === true) {
             cfg = {
                 tag: 'form',
-                cls: 'navbar-form'
+                cls: 'navbar-form form-inline'
             };
             
             if (this.align === 'right') {
@@ -4469,7 +4474,10 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     */
     addItem : function(cfg)
     {
-        var cn = new Roo.bootstrap.NavItem(cfg);
+        if (this.form && Roo.bootstrap.version == 4) {
+	    cfg.tag = 'div';
+	}
+	var cn = new Roo.bootstrap.NavItem(cfg);
         this.register(cn);
         cn.parentId = this.id;
         cn.onRender(this.el, null);
@@ -4656,6 +4664,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     preventDefault : false,
     tabId : false,
     tagtype : 'a',
+    tag: 'li',
     disabled : false,
     animateRef : false,
     was_active : false,
@@ -4663,7 +4672,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
          
         var cfg = {
-            tag: 'li',
+            tag: this.tag,
             cls: 'nav-item'
             
         };
@@ -4712,6 +4721,17 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         
         return cfg;
     },
+    onRender : function(ct, position)
+    {
+       // Roo.log("Call onRender: " + this.xtype);
+        if (Roo.bootstrap.version == 4 && ct.dom.type != 'ul') {
+	    this.tag = 'div';
+	}
+	
+        return Roo.bootstrap.NavItem.superclass.onRender.call(this, ct, position);
+    },
+      
+    
     initEvents: function() 
     {
         if (typeof (this.menu) != 'undefined') {
@@ -9385,9 +9405,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
            cfg.cls += ' navbar-form';
         }
         
-        if (this.parentType === 'NavGroup') {
-           cfg.cls += ' navbar-form';
-           cfg.tag = 'li';
+        if (this.parentType === 'NavGroup' && !(Roo.bootstrap.version == 4 && this.parent().form)) {
+            // on BS4 we do this only if not form 
+            cfg.cls += ' navbar-form';
+            cfg.tag = 'li';
         }
         
         return cfg;
