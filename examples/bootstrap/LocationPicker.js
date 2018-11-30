@@ -6,7 +6,7 @@ Roo.example.locationpicker = new Roo.XComponent({
     part     :  ["layout","viewpanel"],
     order    : '001-viewpanel',
     region   : '',
-    parent   : '#bootstrap',
+    parent   : false,
     name     : "unnamed module",
     disabled : false, 
     permname : '', 
