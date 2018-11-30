@@ -264,7 +264,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         
         if (align ==='left' && this.fieldLabel.length) {
             
-            cfg.cls += ' roo-form-group-label-left row';
+            cfg.cls += ' roo-form-group-label-left'  + Roo.bootstrap.version == 4 ? ' row' : '';;
 
             cfg.cn = [
                 indicator,

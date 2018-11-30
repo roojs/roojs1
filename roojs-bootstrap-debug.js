@@ -589,7 +589,8 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
  * @cfg {String} href empty or href
  * @cfg {Boolean} disabled default false;
  * @cfg {Boolean} isClose default false;
- * @cfg {String} glyphicon depricated - use fs
+ * @cfg {String} glyphicon depricated - use fa
+ * @cfg {String} fa fontawesome icon - eg. 'comment' - without the fa/fas etc..
  * @cfg {String} badge text for badge
  * @cfg {String} theme (default|glow)  
  * @cfg {Boolean} inverse dark themed version
@@ -9233,7 +9234,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         }
         if (align ==='left' && this.fieldLabel.length) {
             
-            cfg.cls += ' roo-form-group-label-left row';
+            cfg.cls += ' roo-form-group-label-left'  + Roo.bootstrap.version == 4 ? ' row' : '';
             
             cfg.cn = [
                 indicator,
@@ -10532,7 +10533,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         
         if (align ==='left' && this.fieldLabel.length) {
             
-            cfg.cls += ' roo-form-group-label-left row';
+            cfg.cls += ' roo-form-group-label-left'  + Roo.bootstrap.version == 4 ? ' row' : '';;
 
             cfg.cn = [
                 indicator,
@@ -13432,7 +13433,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         if (align ==='left' && this.fieldLabel.length) {
             
-            cfg.cls += ' roo-form-group-label-left row';
+            cfg.cls += ' roo-form-group-label-left'  + Roo.bootstrap.version == 4 ? ' row' : '';
             
             cfg.cn = [
                 indicator,
