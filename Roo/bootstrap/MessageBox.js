@@ -61,10 +61,11 @@ Roo.bootstrap.MessageBox = function(){
             buttons["cancel"].hide();
             buttons["yes"].hide();
             buttons["no"].hide();
-            //dlg.footer.dom.style.display = 'none';
+            dlg.footerEl.hide();
+            
             return width;
         }
-        dlg.footerEl.dom.style.display = '';
+        dlg.footerEl.show();
         for(var k in buttons){
             if(typeof buttons[k] != "function"){
                 if(b[k]){
