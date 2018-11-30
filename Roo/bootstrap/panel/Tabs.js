@@ -383,14 +383,17 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
     {
         var count = this.items.length;
         var vcount = count - this.hiddenCount;
-        if(!this.resizeTabs || count < 1 || vcount < 1 || this.updating) {
-            return;
-        }
+        
         if (vcount < 2) {
             this.stripEl.hide();
         } else {
             this.stripEl.show();
         }
+        
+        if(!this.resizeTabs || count < 1 || vcount < 1 || this.updating) {
+            return;
+        }
+        
         
         var w = Math.max(this.el.getWidth() - this.cpad, 10);
         var availWidth = Math.floor(w / vcount);
