@@ -2642,7 +2642,7 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
  * @cfg {Roo.Template} tmpl - a template with variables. to use it, add a handler in show:method  adn
  * @cfg {Boolean} specificTitle default false
  * @cfg {Array} buttons Array of buttons or standard button set..
- * @cfg {String} buttonPosition (left|right|center) default right
+ * @cfg {String} buttonPosition (left|right|center) default right (DEPRICATED) - use mr-auto on buttons to put them on the left
  * @cfg {Boolean} animate default true
  * @cfg {Boolean} allow_close default true
  * @cfg {Boolean} fitwindow default false
@@ -2836,7 +2836,26 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         if(this.size.length){
             size = 'modal-' + this.size;
         }
+        
+        var footer = Roo.bootstrap.version == 3 ?
+            {
+                cls : 'modal-footer',
+                cn : [
+                    {
+                        tag: 'div',
+                        cls: 'btn-' + this.buttonPosition
+                    }
+                ]
 
+            } :
+            {  // BS4 uses mr-auto on left buttons....
+                cls : 'modal-footer'
+            };
+
+            
+
+        
+        
         var modal = {
             cls: "modal",
              cn : [
@@ -2885,7 +2904,10 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
 
     },
     getButtonContainer : function() {
-         return this.el.select('.modal-footer div',true).first();
+        
+         return Roo.bootstrap.version == 4 ?
+            this.el.select('.modal-footer',true).first()
+            : this.el.select('.modal-footer div',true).first();
 
     },
     initEvents : function()

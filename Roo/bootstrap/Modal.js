@@ -219,8 +219,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
 
             } :
             {  // BS4 uses mr-auto on left buttons....
-                cls : 'modal-footer',
-            }
+                cls : 'modal-footer'
+            };
 
             
 
