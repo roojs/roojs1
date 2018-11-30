@@ -38087,7 +38087,7 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
     {
         this.items[item.id] = item;
         this.items.push(item);
-        
+        this.autoSizeTabs();
       //  if(this.resizeTabs){
     //       item.setWidth(this.currentTabWidth || this.preferredTabWidth);
   //         this.autoSizeTabs();
