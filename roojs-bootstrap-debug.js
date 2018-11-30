@@ -29176,6 +29176,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         this.progressDialog = new Roo.bootstrap.Modal({
             cls : 'roo-document-manager-progress-dialog',
             allow_close : false,
+            animate : false,
             title : '',
             buttons : [
                 {
@@ -29253,10 +29254,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             this.files = this.files.slice(0, this.boxes);
         }
         
-        this.uploader.show(false);
+        this.uploader.show();
         
         if(this.boxes > 0 && this.files.length > this.boxes - 1){
-            this.uploader.hide(false);
+            this.uploader.hide();
         }
         
         var _this = this;
@@ -29310,14 +29311,14 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     arrange : function()
     {
         if(!this.delegates.length){
-            this.progressDialog.hide(false);
+            this.progressDialog.hide();
             this.refresh();
             return;
         }
         
         var delegate = this.delegates.shift();
         
-        this.progressDialog.show(false);
+        this.progressDialog.show();
         
         this.progressDialog.setTitle((this.progressBar.aria_valuemax - this.delegates.length) + ' / ' + this.progressBar.aria_valuemax);
         
@@ -29328,10 +29329,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     refresh : function()
     {
-        this.uploader.show(false);
+        this.uploader.show();
         
         if(this.boxes > 0 && this.files.length > this.boxes - 1){
-            this.uploader.hide(false);
+            this.uploader.hide();
         }
         
         Roo.isTouch ? this.closable(false) : this.closable(true);
