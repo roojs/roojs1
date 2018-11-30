@@ -264,7 +264,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             this.render();
         }
         this.fireEvent("beforeshow", this);
-        this.showAt(this.el.getAlignToXY(el, pos || this.defaultAlign), parentMenu, false);
+        this.showAt(this.el.getAlignToXY(el, pos || this.defaultAlign), parentMenu, '?');
     },
      /**
      * Displays this menu at a specific xy position
