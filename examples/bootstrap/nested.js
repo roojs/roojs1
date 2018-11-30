@@ -302,7 +302,7 @@ Example.Nested = new Roo.XComponent({
         }
     }
 });
-  
+   
    Roo.onReady(function() {
         Roo.XComponent.is_alt = true;
           Roo.XComponent.build();
