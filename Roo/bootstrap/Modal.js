@@ -206,7 +206,26 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         if(this.size.length){
             size = 'modal-' + this.size;
         }
+        
+        var footer = Roo.bootstrap.version == 3 ?
+            {
+                cls : 'modal-footer',
+                cn : [
+                    {
+                        tag: 'div',
+                        cls: 'btn-' + this.buttonPosition
+                    }
+                ]
 
+            } :
+            {  // BS4 uses mr-auto on left buttons....
+                cls : 'modal-footer',
+            }
+
+            
+
+        
+        
         var modal = {
             cls: "modal",
              cn : [
