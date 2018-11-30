@@ -414,7 +414,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             return;
         }
         
-        this.getVisibilityEl().addClass('hidden');
+        this.getVisibilityEl().addClass(['hidden','d-none']);
         
         this.fireEvent('hide', this);
         
