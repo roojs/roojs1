@@ -141,10 +141,12 @@ Example.Nested = new Roo.XComponent({
                     toolbar : {
                         xtype: 'NavSimplebar',
                         xns : Roo.bootstrap,
+			
                         items: [
                             {
                                 xtype: 'NavGroup',
                                 xns: Roo.bootstrap,
+				form: true,
                                 items : [
                                     {
                                         xtype: 'NavItem',

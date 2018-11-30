@@ -537,9 +537,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
            cfg.cls += ' navbar-form';
         }
         
-        if (this.parentType === 'NavGroup') {
-           cfg.cls += ' navbar-form';
-           cfg.tag = 'li';
+        if (this.parentType === 'NavGroup' && !(Roo.bootstrap.version == 4 && this.parent().form)) {
+            // on BS4 we do this only if not form 
+            cfg.cls += ' navbar-form';
+            cfg.tag = 'li';
         }
         
         return cfg;

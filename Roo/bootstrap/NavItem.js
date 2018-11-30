@@ -71,6 +71,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     preventDefault : false,
     tabId : false,
     tagtype : 'a',
+    tag: 'li',
     disabled : false,
     animateRef : false,
     was_active : false,
@@ -78,7 +79,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
          
         var cfg = {
-            tag: 'li',
+            tag: this.tag,
             cls: 'nav-item'
             
         };
@@ -127,6 +128,17 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         
         return cfg;
     },
+    onRender : function(ct, position)
+    {
+       // Roo.log("Call onRender: " + this.xtype);
+        if (Roo.bootstrap.version == 4 && ct.dom.type != 'ul') {
+	    this.tag = 'div';
+	}
+	
+        return Roo.bootstrap.NavItem.superclass.onRender.call(this, ct, position);
+    },
+      
+    
     initEvents: function() 
     {
         if (typeof (this.menu) != 'undefined') {
