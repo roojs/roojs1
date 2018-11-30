@@ -226,7 +226,8 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
      * Adds an existing {@link Roo.TabPanelItem}.
      * @param {Roo.TabPanelItem} item The TabPanelItem to add
      */
-    addTabItem : function(item){
+    addTabItem : function(item)
+    {
         this.items[item.id] = item;
         this.items.push(item);
       //  if(this.resizeTabs){
