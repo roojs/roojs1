@@ -43,8 +43,8 @@ Roo.example.Editor = new Roo.XComponent({
                                             xns : Roo.bootstrap
                                         },
                                         {
-                                            xtype : 'Panel',
-                                            xns : Roo.bootstrap.HtmlEditor,
+                                            xtype : 'HtmlEditor',
+                                            xns : Roo.bootstrap,
                                             name : 'thanks-email',
                                             width : 1000,
                                             height : 1500,
