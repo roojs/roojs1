@@ -34,7 +34,7 @@ Roo.apply(Roo.example.modal, {
      
         var _this = this;
             
-        return {
+        this.dialog = Roo.factory({
             xtype: 'Modal',
             xns: Roo.bootstrap,
             title : "Login",
@@ -88,6 +88,6 @@ Roo.apply(Roo.example.modal, {
                     ]
                 }
             ]
-        };
+        });
     }
 });
