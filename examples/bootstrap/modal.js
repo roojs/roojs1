@@ -7,24 +7,33 @@
 
 Roo.example = Roo.example || {};
 
-Roo.example.modal = new Roo.XComponent({
-    part     :  ["layout","modal"],
-    order    : '001-modal',
-    region   : '',
-    parent   : '#bootstrap',
-    name     : "unnamed module",
-    disabled : false, 
-    permname : '', 
-    _tree : function()
-    {
-         
-        this.parent.el.layout = false;
-        this.parent.el.render(document.body);
-        
+Roo.example.modal= function() {}
+Roo.apply(Roo.example.modal, {
+ dialog : false,
+ callback:  false,
+
+ show : function(data, cb)
+ {
+  if (!this.dialog) {
+   this.create();
+  }
+
+  this.callback = cb;
+  this.data = data;
+  this.dialog.show(this.data._el);
+  if (this.form) {
+   this.form.reset();
+   this.form.setValues(data);
+   this.form.fireEvent('actioncomplete', this.form,  { type: 'setdata', data: data });
+  }
+
+ },
+
+ create : function()
+ {
+     
         var _this = this;
-        var MODULE = this;
-        var baseURL = '/web.eventmanager/demo.local.php';
-        
+            
         return {
             xtype: 'Modal',
             xns: Roo.bootstrap,
