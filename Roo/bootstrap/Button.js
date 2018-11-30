@@ -18,7 +18,8 @@
  * @cfg {String} href empty or href
  * @cfg {Boolean} disabled default false;
  * @cfg {Boolean} isClose default false;
- * @cfg {String} glyphicon depricated - use fs
+ * @cfg {String} glyphicon depricated - use fa
+ * @cfg {String} fa fontawesome icon - eg. 'comment' - without the fa/fas etc..
  * @cfg {String} badge text for badge
  * @cfg {String} theme (default|glow)  
  * @cfg {Boolean} inverse dark themed version
