@@ -399,7 +399,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             return;
         }
          
-        this.getVisibilityEl().removeClass('hidden');
+        this.getVisibilityEl().removeClass(['hidden','d-none']);
         
         this.fireEvent('show', this);
         
