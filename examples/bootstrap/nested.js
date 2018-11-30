@@ -90,7 +90,7 @@ Example.Nested = new Roo.XComponent({
                                             listeners : {
                                                 click : function()
                                                 {
-                                                    Example.NestedDialog.show({});
+                                                   // Example.NestedDialog.show({});
                                                 }
                                             },
                                             html : 'test dialog',
@@ -134,7 +134,8 @@ Example.Nested = new Roo.XComponent({
                     listeners : {
                             activate : function()
                             {
-                                this.grid.store.load.defer(100, this.grid.store);
+                              //  this.grid.store.load.defer(100, this.grid.store);
+				this.grid.footer.onClick('first');
                             }
                         },
                     toolbar : {

@@ -441,7 +441,9 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
     createStrip : function(container)
     {
         var strip = document.createElement("nav");
-        strip.className = "navbar navbar-default"; //"x-tabs-wrap";
+        strip.className = Roo.bootstrap.version == 4 ?
+            "navbar-light bg-light" : 
+            "navbar navbar-default"; //"x-tabs-wrap";
         container.appendChild(strip);
         return strip;
     },
@@ -480,7 +482,7 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
     createStripElements :  function(stripEl, text, closable, tpl)
     {
         var td = document.createElement("li"); // was td..
-        
+        td.className = 'nav-item';
         
         //stripEl.insertBefore(td, stripEl.childNodes[stripEl.childNodes.length-1]);
         
@@ -520,12 +522,18 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
             var template = tpl || this.tabTpl || false;
             
             if(!template){
-                
-                template = new Roo.Template(
-                   '<a href="#">' +
-                   '<span unselectable="on"' +
-                            (this.disableTooltips ? '' : ' title="{text}"') +
-                            ' >{text}</span></a>'
+                template =  new Roo.Template(
+                        Roo.bootstrap.version == 4 ? 
+                            (
+                                '<a class="nav-link" href="#" unselectable="on"' +
+                                     (this.disableTooltips ? '' : ' title="{text}"') +
+                                     ' >{text}</a>'
+                            ) : (
+                                '<a class="nav-link" href="#">' +
+                                '<span unselectable="on"' +
+                                         (this.disableTooltips ? '' : ' title="{text}"') +
+                                    ' >{text}</span></a>'
+                            )
                 );
             }
             

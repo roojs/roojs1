@@ -41,8 +41,13 @@ Roo.bootstrap.panel.TabItem = function(config){
     /** @private */
     this.el = Roo.get(els.el);
     this.inner = Roo.get(els.inner, true);
-    this.textEl = Roo.get(this.el.dom.firstChild, true);
-    this.pnode = Roo.get(els.el.parentNode, true);
+     this.textEl = Roo.bootstrap.version == 4 ?
+        this.el : Roo.get(this.el.dom.firstChild, true);
+
+    this.linode = Roo.get(els.el.parentNode, true);
+    this.status_node = Roo.bootstrap.version == 4 ? this.el : this.linode;
+
+    
 //    this.el.on("mousedown", this.onTabMouseDown, this);
     this.el.on("click", this.onTabClick, this);
     /** @private */
@@ -97,7 +102,7 @@ Roo.extend(Roo.bootstrap.panel.TabItem, Roo.util.Observable,
      * Shows this TabPanelItem -- this <b>does not</b> deactivate the currently active TabPanelItem.
      */
     show : function(){
-        this.pnode.addClass("active");
+        this.status_node.addClass("active");
         this.showAction();
         if(Roo.isOpera){
             this.tabPanel.stripWrap.repaint();
@@ -117,7 +122,7 @@ Roo.extend(Roo.bootstrap.panel.TabItem, Roo.util.Observable,
      * Hides this TabPanelItem -- if you don't activate another TabPanelItem this could look odd.
      */
     hide : function(){
-        this.pnode.removeClass("active");
+        this.status_node.removeClass("active");
         this.hideAction();
         this.fireEvent("deactivate", this.tabPanel, this);
     },
@@ -164,10 +169,10 @@ Roo.extend(Roo.bootstrap.panel.TabItem, Roo.util.Observable,
     },
 
     setWidth : function(width){
-        var iwidth = width - this.pnode.getPadding("lr");
+        var iwidth = width - this.linode.getPadding("lr");
         this.inner.setWidth(iwidth);
         this.textEl.setWidth(iwidth-this.inner.getPadding("lr"));
-        this.pnode.setWidth(width);
+        this.linode.setWidth(width);
     },
 */
     /**
@@ -176,7 +181,7 @@ Roo.extend(Roo.bootstrap.panel.TabItem, Roo.util.Observable,
      */
     setHidden : function(hidden){
         this.hidden = hidden;
-        this.pnode.setStyle("display", hidden ? "none" : "");
+        this.linode.setStyle("display", hidden ? "none" : "");
     },
 
     /**
@@ -202,7 +207,7 @@ Roo.extend(Roo.bootstrap.panel.TabItem, Roo.util.Observable,
          *  #2804 [new] Tabs in Roojs
          *  increase the width by 2-4 pixels to prevent the ellipssis showing in chrome
          */
-        //this.setWidth(this.textEl.dom.scrollWidth+this.pnode.getPadding("lr")+this.inner.getPadding("lr") + 2);
+        //this.setWidth(this.textEl.dom.scrollWidth+this.linode.getPadding("lr")+this.inner.getPadding("lr") + 2);
         //this.el.endMeasure();
     //},
 
@@ -231,7 +236,7 @@ Roo.extend(Roo.bootstrap.panel.TabItem, Roo.util.Observable,
     disable : function(){
         if(this.tabPanel.active != this){
             this.disabled = true;
-            this.pnode.addClass("disabled");
+            this.status_node.addClass("disabled");
         }
     },
 
@@ -240,7 +245,7 @@ Roo.extend(Roo.bootstrap.panel.TabItem, Roo.util.Observable,
      */
     enable : function(){
         this.disabled = false;
-        this.pnode.removeClass("disabled");
+        this.status_node.removeClass("disabled");
     },
 
     /**
