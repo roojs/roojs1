@@ -139,7 +139,7 @@ Example.Nested = new Roo.XComponent({
                             }
                         },
                     toolbar : {
-                        xtype: 'NavSimplebar',
+                        xtype: 'NavToolbar',
                         xns : Roo.bootstrap,
                         items: [
                             {
