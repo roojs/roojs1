@@ -75,7 +75,7 @@ Roo.example.combobox = new Roo.XComponent({
                         proxy : {
                             xtype: 'HttpProxy',
                             xns: Roo.data,
-                            url : baseURL + '/Geoip/Core_geoip_country',
+                            url : '../boostrap/data.country.js',
                             method : 'GET'
                         },
                         reader : {
@@ -91,7 +91,7 @@ Roo.example.combobox = new Roo.XComponent({
                                     'type': 'string'
                                 },
                                 {
-                                    'name': 'name',
+                                    'name': 'title',
                                     'type': 'string'
                                 }
                             ]
