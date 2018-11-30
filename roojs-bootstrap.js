@@ -13,8 +13,8 @@ var D=(typeof(A['flexy:if'])!='undefined')||(typeof(A['flexy:foreach'])!='undefi
 var G=F?F.child('>*[xtype]'):false;if(G){}if(G&&G.attr('xtype').split('.').pop()==cn.xtype){cn.el=G;}else{Roo.debug&&Roo.log("MISSING "+cn.xtype+" on child of "+(this.el?this.el.attr('xbuilderid'):'no parent'));Roo.debug&&Roo.log(F);Roo.debug&&Roo.log(G);
 Roo.debug&&Roo.log(cn);}}if(E&&D&&!cn.el&&cn.can_build_overlaid){Roo.debug&&Roo.log('skipping render');Roo.debug&&Roo.log(A);if(!cn.el){Roo.debug&&Roo.log('skipping all children');skip_children=true;}}else{cn.render&&cn.render(this[B](true));}}var H=[];if(!A.items||!A.items.length){cn.items=H;
 return cn;}var I=A.items;delete A.items;if(!skip_children){for(var i=0;i<I.length;i++){H.push(cn.addxtype(Roo.apply({},I[i])));}}cn.items=H;cn.fireEvent('childrenrendered',this);return cn;},setVisibilityEl:function(el){this.visibilityEl=el;},getVisibilityEl:function(){if(typeof(this.visibilityEl)=='object'){return this.visibilityEl;
-}if(typeof(this.visibilityEl)=='string'){return this.visibilityEl=='parent'?this.parent().getEl():this.getEl();}return this.getEl();},show:function(){if(!this.getVisibilityEl()){return;}this.getVisibilityEl().removeClass('hidden');this.fireEvent('show',this);
-},hide:function(){if(!this.getVisibilityEl()){return;}this.getVisibilityEl().addClass('hidden');this.fireEvent('hide',this);}});
+}if(typeof(this.visibilityEl)=='string'){return this.visibilityEl=='parent'?this.parent().getEl():this.getEl();}return this.getEl();},show:function(){if(!this.getVisibilityEl()){return;}this.getVisibilityEl().removeClass(['hidden','d-none']);this.fireEvent('show',this);
+},hide:function(){if(!this.getVisibilityEl()){return;}this.getVisibilityEl().addClass(['hidden','d-none']);this.fireEvent('hide',this);}});
 // Roo/bootstrap/Body.js
 Roo.bootstrap.Body=function(A){A=A||{};Roo.bootstrap.Body.superclass.constructor.call(this,A);this.el=Roo.get(A.el?A.el:document.body);if(this.cls&&this.cls.length){Roo.get(document.body).addClass(this.cls);}};Roo.extend(Roo.bootstrap.Body,Roo.bootstrap.Component,{is_body:true,autoCreate:{cls:'container'}
 ,onRender:function(ct,A){}});
