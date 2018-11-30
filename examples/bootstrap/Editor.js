@@ -12,16 +12,10 @@ Roo.example.Editor = new Roo.XComponent({
     permname : '', 
     _tree : function()
     {
-        this.parent = {
-            el : new Roo.bootstrap.Body()
-        }
-        this.parent.el.layout = false;
-        this.parent.el.render(document.body);
-        
+         
         var _this = this;
         var MODULE = this;
-        var baseURL = '/web.campaign/index.local.php';
-        
+         
         return {
             xtype: 'Body',
             xns: Roo.bootstrap,
