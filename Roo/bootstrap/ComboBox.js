@@ -451,7 +451,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             cn: [
                 {
                     tag: 'input',
-                    type : 'hidden',
+                    type : 'hidden d-none',
                     cls: 'form-hidden-field'
                 },
                 {
