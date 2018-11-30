@@ -3605,6 +3605,9 @@ Roo.Msg.show({
                 textareaEl.hide();
             }
             progressEl.setDisplayed(opt.progress === true);
+            if (opt.progress) {
+                d.animate = false; // do not animate progress, as it may not have finished animating before we close it..
+            }
             this.updateProgress(0);
             activeTextEl.dom.value = opt.value || "";
             if(opt.prompt){
