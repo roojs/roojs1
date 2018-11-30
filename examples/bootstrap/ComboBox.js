@@ -6,7 +6,7 @@ Roo.example.combobox = new Roo.XComponent({
     part     :  ["layout","viewpanel"],
     order    : '001-viewpanel',
     region   : '',
-   // parent   : '#bootstrap',
+    parent   : '#bootstrap',
     name     : "unnamed module",
     disabled : false, 
     permname : '', 
