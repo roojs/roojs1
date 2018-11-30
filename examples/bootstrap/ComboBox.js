@@ -69,7 +69,7 @@ Roo.example.combobox = new Roo.XComponent({
                         proxy : {
                             xtype: 'HttpProxy',
                             xns: Roo.data,
-                            url : '../boostrap/data.country.js',
+                            url : '../bootstrap/data.country.js',
                             method : 'GET'
                         },
                         reader : {
