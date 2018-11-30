@@ -37924,6 +37924,7 @@ Roo.bootstrap.panel.Tabs = function(config){
     }
     this.stripWrap = Roo.get(this.createStrip(this.el.dom), true);
     this.stripEl = Roo.get(this.createStripList(this.stripWrap.dom), true);
+    this.stripEl.setVisibilityMode(Roo.Element.DISPLAY);
     this.stripBody = Roo.get(this.stripWrap.dom.firstChild.firstChild, true);
     if(Roo.isIE){
         Roo.fly(this.stripWrap.dom.firstChild).setStyle("overflow-x", "hidden");
