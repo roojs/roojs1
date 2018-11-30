@@ -362,10 +362,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             this.files = this.files.slice(0, this.boxes);
         }
         
-        this.uploader.show();
+        this.uploader.show(false);
         
         if(this.boxes > 0 && this.files.length > this.boxes - 1){
-            this.uploader.hide();
+            this.uploader.hide(false);
         }
         
         var _this = this;
@@ -419,14 +419,14 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     arrange : function()
     {
         if(!this.delegates.length){
-            this.progressDialog.hide();
+            this.progressDialog.hide(false);
             this.refresh();
             return;
         }
         
         var delegate = this.delegates.shift();
         
-        this.progressDialog.show();
+        this.progressDialog.show(false);
         
         this.progressDialog.setTitle((this.progressBar.aria_valuemax - this.delegates.length) + ' / ' + this.progressBar.aria_valuemax);
         
@@ -437,10 +437,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     refresh : function()
     {
-        this.uploader.show();
+        this.uploader.show(false);
         
         if(this.boxes > 0 && this.files.length > this.boxes - 1){
-            this.uploader.hide();
+            this.uploader.hide(false);
         }
         
         Roo.isTouch ? this.closable(false) : this.closable(true);
