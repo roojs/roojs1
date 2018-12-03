@@ -25,95 +25,136 @@
     cursor: not-allowed; 
 }
 
-.roo-radio-primary .radio label::after 
-{
-    background-color: $body-bg; 
+
+.roo-radio-primary {
+    .radio label::after 
+    {
+        background-color: $body-bg; 
+    }
+
+    .radio.checked label::before 
+    {
+        border-color: $brand-primary; //#428bca; 
+    }
+
+    .radio.checked label::after 
+    {
+        background-color: $brand-primary; //#428bca;    
+    }
 }
 
-.roo-radio-primary .radio.checked label::before 
-{
-    border-color: $brand-primary; //#428bca; 
-}
 
-.roo-radio-primary .radio.checked label::after 
-{
-    background-color: $brand-primary; //#428bca; 
-}
+.roo-radio-danger {
+    .radio label::after 
+    {
+        background-color: $brand-danger; 
+    }
 
-.roo-radio-danger .radio label::after 
-{
-    background-color: $brand-danger; 
-}
+    .radio.checked label::before 
+    {
+        border-color: $brand-danger; 
+    }
 
-.roo-radio-danger .radio.checked label::before 
-{
-    border-color: $brand-danger; 
-}
-
-.roo-radio-danger .radio.checked label::after 
-{
-    background-color: $brand-danger; 
+    .radio.checked label::after 
+    {
+        background-color: $brand-danger; 
+    }
 }
     
-.roo-radio-info .radio label::after 
-{
-    background-color: $body-bg;
+.roo-radio-info {
+    .radio label::after 
+    {
+        background-color: $body-bg;
+    }
+
+    .radio.checked label::before 
+    {
+        border-color: $brand-info; 
+    }
+
+    .radio.checked label::after 
+    {
+        background-color: $brand-info; 
+    }
 }
 
-.roo-radio-info .radio.checked label::before 
-{
-    border-color: $brand-info; 
+.roo-radio-warning {
+    .radio label::after 
+    {
+        background-color: $body-bg; 
+    }
+
+    .radio.checked label::before 
+    {
+        border-color: $brand-warning; 
+    }
+
+    .radio.checked label::after 
+    {
+        background-color: $brand-warning; 
+    }
+}
+.roo-radio-success {
+    .radio label::after 
+    {
+        background-color: $body-bg; 
+    }
+    
+    .radio.checked label::before 
+    {
+        border-color: $brand-success; 
+    }
+
+    .radio.checked label::after 
+    {
+        background-color: $brand-success; 
+    }
 }
 
-.roo-radio-info .radio.checked label::after 
-{
-    background-color: $brand-info; 
+
+/** not sure if these are needed with is-valid / is-invalid.. */
+  
+/*
+.roo-radio-set.has-warning {
+    .roo-radio-set-items label,
+    .roo-radio-set-label {
+        color: $brand-warning; //#8a6d3b;
+    }
+}
+.roo-radio-set.has-error {
+    .roo-radio-set-items label,
+    .roo-radio-set-label {
+        color: $brand-danger; //#a94442;
+    }
 }
 
-.roo-radio-warning .radio label::after 
-{
-    background-color: $body-bg; 
+.roo-radio-set.has-success {
+    .roo-radio-set-items label,
+    .roo-radio-set-label
+    {
+        color: $brand-success; //#3c763d;
+    }
+}
+*/
+
+
+.roo-radio-set.is-invalid {
+    .roo-radio-set-items label,
+    .roo-radio-set-label {
+        color:  $form-feedback-invalid-color; //#8a6d3b;
+    }
 }
 
-.roo-radio-warning .radio.checked label::before 
-{
-    border-color: $brand-warning; 
+
+.roo-radio-set.is-valid {
+    .roo-radio-set-items label,
+    .roo-radio-set-label {
+        color:  $form-feedback-valid-color; //#8a6d3b;
+    }
 }
 
-.roo-radio-warning .radio.checked label::after 
-{
-    background-color: $brand-warning; 
-}
 
-.roo-radio-success .radio label::after 
-{
-    background-color: $body-bg; 
-}
 
-.roo-radio-success .radio.checked label::before 
-{
-    border-color: $brand-success; 
-}
-
-.roo-radio-success .radio.checked label::after 
-{
-    background-color: $brand-success; 
-}
-
-.roo-radio-set.has-warning .roo-radio-set-items label,
-.roo-radio-set.has-warning .roo-radio-set-label {
-    color: $brand-warning; //#8a6d3b;
-}
-
-.roo-radio-set.has-error .roo-radio-set-items label,
-.roo-radio-set.has-error .roo-radio-set-label {
-    color: $brand-danger; //#a94442;
-}
-
-.roo-radio-set.has-success .roo-radio-set-items label,
-.roo-radio-set.has-success .roo-radio-set-label {
-    color: $brand-success; //#3c763d;
-}
 
 .roo-radio-set-inline .radio {
     position: relative;

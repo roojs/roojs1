@@ -2510,13 +2510,32 @@ table td .navbar {
 .roo-radio-success .radio.checked label::after {
   background-color: #28a745;
 }
-.roo-radio-set.has-warning .roo-radio-set-items label, .roo-radio-set.has-warning .roo-radio-set-label {
-  color: #ffc107;
-}
-.roo-radio-set.has-error .roo-radio-set-items label, .roo-radio-set.has-error .roo-radio-set-label {
+/** not sure if these are needed with is-valid / is-invalid.. */
+/*
+ .roo-radio-set.has-warning {
+ .roo-radio-set-items label,
+ .roo-radio-set-label {
+ color: $brand-warning; //#8a6d3b;
+ }
+ }
+ .roo-radio-set.has-error {
+ .roo-radio-set-items label,
+ .roo-radio-set-label {
+ color: $brand-danger; //#a94442;
+ }
+ }
+ .roo-radio-set.has-success {
+ .roo-radio-set-items label,
+ .roo-radio-set-label
+ {
+ color: $brand-success; //#3c763d;
+ }
+ }
+ */
+.roo-radio-set.is-invalid .roo-radio-set-items label, .roo-radio-set.is-invalid .roo-radio-set-label {
   color: #dc3545;
 }
-.roo-radio-set.has-success .roo-radio-set-items label, .roo-radio-set.has-success .roo-radio-set-label {
+.roo-radio-set.is-valid .roo-radio-set-items label, .roo-radio-set.is-valid .roo-radio-set-label {
   color: #28a745;
 }
 .roo-radio-set-inline .radio {

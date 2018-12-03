@@ -680,11 +680,9 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         }
         
         if(value.length < this.minLength){
-            this.invalidText = String.format(this.minLengthText, this.minLength);
             return false;
         }
         if(value.length > this.maxLength){
-            this.invalidText = String.format(this.maxLengthText, this.maxLength);
             return false;
         }
         if(this.vtype){
@@ -909,7 +907,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         }
         
         this.el.removeClass([this.invalidClass, this.validClass]);
-        
+        this.inputEl().removeClass(['is-valid', 'is-invalid']);
+
         var feedback = this.el.select('.form-control-feedback', true).first();
             
         if(feedback){
@@ -928,9 +927,12 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         if(this.allowBlank && !this.getRawValue().length){
             return;
         }
+        if (Roo.bootstrap.version == 3) {
+            this.el.addClass(this.validClass);
+        }
         
-        this.el.addClass(this.validClass);
-        
+        this.inputEl().addClass('is-valid');
+
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank && (this.getValue().length || this.forceFeedback)){
             
             var feedback = this.el.select('.form-control-feedback', true).first();
@@ -956,11 +958,13 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         }
         
         this.el.removeClass([this.invalidClass, this.validClass]);
+        this.inputEl().removeClass(['is-valid', 'is-invalid']);
         
         var feedback = this.el.select('.form-control-feedback', true).first();
             
         if(feedback){
-            this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+            this.el.select('.form-control-feedback', true).first().removeClass(
+                    [this.invalidFeedbackClass, this.validFeedbackClass]);
         }
 
         if(this.disabled){
@@ -975,8 +979,11 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             this.indicator.removeClass(this.indicatorpos == 'right' ? 'hidden' : 'invisible');
             this.indicator.addClass('visible');
         }
+        if (Roo.bootstrap.version == 3) {
+            this.el.addClass(this.invalidClass);
+        }
         
-        this.el.addClass(this.invalidClass);
+        this.inputEl().addClass('is-invalid');
         
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
             

@@ -68,21 +68,23 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
                 }
             ]
         };
-        
-        if(this.indicatorpos == 'left'){
-            label.cn.unshift({
-                tag : 'i',
-                cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
-                tooltip : 'This field is required'
-            });
-        } else {
-            label.cn.push({
-                tag : 'i',
-                cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
-                tooltip : 'This field is required'
-            });
+        if (Roo.bootstrap.version == 3) {
+            
+            
+            if(this.indicatorpos == 'left'){
+                label.cn.unshift({
+                    tag : 'i',
+                    cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
+                    tooltip : 'This field is required'
+                });
+            } else {
+                label.cn.push({
+                    tag : 'i',
+                    cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
+                    tooltip : 'This field is required'
+                });
+            }
         }
-        
         var items = {
             tag : 'div',
             cls : 'roo-radio-set-items'
@@ -234,14 +236,17 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
     
     markValid : function()
     {
-        if(this.labelEl.isVisible(true)){
+        if(this.labelEl.isVisible(true) && this.indicatorEl()){
             this.indicatorEl().removeClass('visible');
             this.indicatorEl().addClass('invisible');
         }
         
         this.el.removeClass([this.invalidClass, this.validClass]);
         this.el.addClass(this.validClass);
-        
+        if (Roo.bootstrap.version == 3) {
+            this.el.removeClass(['is-invalid','is-valid']);
+            this.el.addClass(['is-valid']);
+        }
         this.fireEvent('valid', this);
     },
     
@@ -251,13 +256,16 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
             return;
         }
         
-        if(this.labelEl.isVisible(true)){
+        if(this.labelEl.isVisible(true) && this.indicatorEl()){
             this.indicatorEl().removeClass('invisible');
             this.indicatorEl().addClass('visible');
         }
-        
-        this.el.removeClass([this.invalidClass, this.validClass]);
-        this.el.addClass(this.invalidClass);
+        if (Roo.bootstrap.version == 3) {
+            this.el.removeClass([this.invalidClass, this.validClass]);
+            this.el.addClass(this.invalidClass);
+        }
+        this.el.removeClass(['is-invalid','is-valid']);
+        this.el.addClass(['is-invalid']);
         
         this.fireEvent('invalid', this, msg);
         
