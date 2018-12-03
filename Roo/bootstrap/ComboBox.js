@@ -295,12 +295,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     multiple : false,
     
     /**
-     * @cfg {String} invalidClass The CSS class to use when marking a field invalid (defaults to "x-form-invalid")
+     * @cfg {String} invalidClass DEPRICATED - uses BS4 is-valid now
      */
     invalidClass : "has-warning",
     
     /**
-     * @cfg {String} validClass The CSS class to use when marking a field valid (defaults to "x-form-invalid")
+     * @cfg {String} validClass DEPRICATED - uses BS4 is-valid now
      */
     validClass : "has-success",
     

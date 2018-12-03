@@ -14,8 +14,8 @@
  * @cfg {String} cls class of the element
  * @cfg {String} target label target 
  * @cfg {Boolean} allowBlank (true|false) target allowBlank default true
- * @cfg {String} invalidClass default "text-warning"
- * @cfg {String} validClass default "text-success"
+ * @cfg {String} invalidClass DEPRICATED - BS4 uses is-invalid
+ * @cfg {String} validClass DEPRICATED - BS4 uses is-valid
  * @cfg {String} iconTooltip default "This field is required"
  * @cfg {String} indicatorpos (left|right) default left
  * 
@@ -137,10 +137,14 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
             this.indicator.removeClass('visible');
             this.indicator.addClass('invisible');
         }
+        if (Roo.bootstrap.version == 3) {
+	    this.el.removeClass(this.invalidClass);
+	    this.el.addClass(this.validClass);
+	} else {
+	    this.el.removeClass('is-invalid');
+            this.el.addClass('is-valid');
+	}
         
-        this.el.removeClass(this.invalidClass);
-        
-        this.el.addClass(this.validClass);
         
         this.fireEvent('valid', this);
     },
@@ -155,10 +159,14 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
             this.indicator.removeClass('invisible');
             this.indicator.addClass('visible');
         }
+          if (Roo.bootstrap.version == 3) {
+	    this.el.removeClass(this.validClass);
+	    this.el.addClass(this.invalidClass);
+	} else {
+	    this.el.removeClass('is-valid');
+            this.el.addClass('is-invalid');
+	}
         
-        this.el.removeClass(this.validClass);
-        
-        this.el.addClass(this.invalidClass);
         
         this.fireEvent('invalid', this, msg);
     }

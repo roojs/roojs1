@@ -876,8 +876,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         
-     
-        this.el.removeClass(this.invalidClass);
+        
+        this.el.removeClass([this.invalidClass, 'is-invalid']);
         
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
             
@@ -929,9 +929,9 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         }
         if (Roo.bootstrap.version == 3) {
             this.el.addClass(this.validClass);
+        } else {
+            this.inputEl().addClass('is-valid');
         }
-        
-        this.inputEl().addClass('is-valid');
 
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank && (this.getValue().length || this.forceFeedback)){
             
@@ -981,9 +981,11 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         }
         if (Roo.bootstrap.version == 3) {
             this.el.addClass(this.invalidClass);
+        } else {
+            this.inputEl().addClass('is-invalid');
         }
         
-        this.inputEl().addClass('is-invalid');
+        
         
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
             
