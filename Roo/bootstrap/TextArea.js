@@ -345,7 +345,7 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
             this.inputEl().addClass('is-invalid');
         }
         
-        
+        // fixme ... this may be depricated need to test..
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
             
             var feedback = this.el.select('.form-control-feedback', true).first();
