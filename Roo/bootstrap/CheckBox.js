@@ -491,16 +491,26 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
 
         if(this.inputType == 'radio'){
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
-                e.findParent('.form-group', false, true).removeClass([_this.invalidClass, _this.validClass]);
-                e.findParent('.form-group', false, true).addClass(_this.validClass);
+                if (Roo.bootstrap.version == 3) {
+                    e.findParent('.form-group', false, true).removeClass([_this.invalidClass, _this.validClass]);
+                    e.findParent('.form-group', false, true).addClass(_this.validClass);
+                } else {
+                    e.findParent('.form-group', false, true).removeClass(['is-valid', 'is-invalid']);
+                    e.findParent('.form-group', false, true).addClass('is-valid');
+                }
             });
             
             return;
         }
 
         if(!this.groupId){
-            this.el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
-            this.el.findParent('.form-group', false, true).addClass(this.validClass);
+            if (Roo.bootstrap.version == 3) {
+                this.el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
+                this.el.findParent('.form-group', false, true).addClass(this.validClass);
+            } else {
+                this.el.findParent('.form-group', false, true).removeClass(['is-valid', 'is-invalid']);
+                this.el.findParent('.form-group', false, true).addClass('is-valid');
+            }
             return;
         }
         
@@ -541,10 +551,20 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         }
             
         if(this.inputType == 'radio'){
+            
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
-                e.findParent('.form-group', false, true).removeClass([_this.invalidClass, _this.validClass]);
-                e.findParent('.form-group', false, true).addClass(_this.invalidClass);
+                var fg = e.findParent('.form-group', false, true);
+                if (Roo.bootstrap.version == 3) {
+                    fg.removeClass([_this.invalidClass, _this.validClass]);
+                    fg.addClass(_this.invalidClass);
+                } else {
+                    fg.removeClass(['is-invalid', 'is-valid']);
+                    fg.addClass('is-invalid');
+                }
             });
+            } else {
+                
+            }
             
             return;
         }
