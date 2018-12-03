@@ -491,12 +491,13 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
 
         if(this.inputType == 'radio'){
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
+                var fg = e.findParent('.form-group', false, true);
                 if (Roo.bootstrap.version == 3) {
-                    e.findParent('.form-group', false, true).removeClass([_this.invalidClass, _this.validClass]);
-                    e.findParent('.form-group', false, true).addClass(_this.validClass);
+                    fg.removeClass([_this.invalidClass, _this.validClass]);
+                    fg.addClass(_this.validClass);
                 } else {
-                    e.findParent('.form-group', false, true).removeClass(['is-valid', 'is-invalid']);
-                    e.findParent('.form-group', false, true).addClass('is-valid');
+                    fg.removeClass(['is-valid', 'is-invalid']);
+                    fg.addClass('is-valid');
                 }
             });
             
