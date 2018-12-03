@@ -284,8 +284,12 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
         if(label && icon){
             icon.remove();
         }
+        if (Roo.bootstrap.version == 3) {
+            this.el.addClass(this.validClass);
+        } else {
+            this.inputEl().addClass('is-valid');
+        }
         
-        this.el.addClass(this.validClass);
         
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank && (this.getValue().length || this.forceFeedback)){
             
