@@ -680,9 +680,11 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         }
         
         if(value.length < this.minLength){
+            this.invalidText = String.format(this.minLengthText, this.minLength);
             return false;
         }
         if(value.length > this.maxLength){
+            this.invalidText = String.format(this.maxLengthText, this.maxLength);
             return false;
         }
         if(this.vtype){
