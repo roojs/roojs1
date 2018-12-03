@@ -615,7 +615,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         if (label && label.iconEl) {
             label.iconEl.removeClass([ label.validClass, label.invalidClass ]);
-            
+            label.iconEl.removeClass(['is-invalid', 'is-valid']);
         }
     },
     
