@@ -241,7 +241,7 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
             icon.remove();
         }
         
-        this.el.removeClass(this.invalidClass);
+        this.el.removeClass([ this.invalidClass, 'is-invalid']);
         
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
             
