@@ -340,11 +340,11 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
         }
         
         if (Roo.bootstrap.version == 3) {
-            this.el.addClass(this.validClass);
+            this.el.addClass(this.invalidClass);
         } else {
-            this.inputEl().addClass('is-valid');
+            this.inputEl().addClass('is-invalid');
         }
-        this.el.addClass(this.invalidClass);
+        
         
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
             
