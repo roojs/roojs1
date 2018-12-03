@@ -505,12 +505,13 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         }
 
         if(!this.groupId){
+            var fg = this.el.findParent('.form-group', false, true);
             if (Roo.bootstrap.version == 3) {
-                this.el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
-                this.el.findParent('.form-group', false, true).addClass(this.validClass);
+                fg.removeClass([this.invalidClass, this.validClass]);
+                fg.addClass(this.validClass);
             } else {
-                this.el.findParent('.form-group', false, true).removeClass(['is-valid', 'is-invalid']);
-                this.el.findParent('.form-group', false, true).addClass('is-valid');
+                fg.removeClass(['is-valid', 'is-invalid']);
+                fg.addClass('is-valid');
             }
             return;
         }
