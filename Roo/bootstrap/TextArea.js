@@ -315,7 +315,7 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
             return;
         }
         
-        this.el.removeClass([this.invalidClass, this.validClass]);
+        this.el.removeClass([this.invalidClass, this.validClass, 'is-valid', 'is-invalid']);
         
         var feedback = this.el.select('.form-control-feedback', true).first();
             
@@ -338,7 +338,12 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
                 style : 'margin-right:5px;'
             }, label, true);
         }
-
+        
+        if (Roo.bootstrap.version == 3) {
+            this.el.addClass(this.validClass);
+        } else {
+            this.inputEl().addClass('is-valid');
+        }
         this.el.addClass(this.invalidClass);
         
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
