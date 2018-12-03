@@ -241,9 +241,11 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
             this.indicatorEl().addClass('invisible');
         }
         
-        this.el.removeClass([this.invalidClass, this.validClass]);
-        this.el.addClass(this.validClass);
+        
         if (Roo.bootstrap.version == 3) {
+            this.el.removeClass([this.invalidClass, this.validClass]);
+            this.el.addClass(this.validClass);
+        } else {
             this.el.removeClass(['is-invalid','is-valid']);
             this.el.addClass(['is-valid']);
         }
@@ -261,11 +263,13 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
             this.indicatorEl().addClass('visible');
         }
         if (Roo.bootstrap.version == 3) {
+            this.el.removeClass(['is-invalid','is-valid']);
+            this.el.addClass(['is-invalid']);
+        } else {
             this.el.removeClass([this.invalidClass, this.validClass]);
             this.el.addClass(this.invalidClass);
         }
-        this.el.removeClass(['is-invalid','is-valid']);
-        this.el.addClass(['is-invalid']);
+        
         
         this.fireEvent('invalid', this, msg);
         
