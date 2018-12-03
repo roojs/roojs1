@@ -562,16 +562,19 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                     fg.addClass('is-invalid');
                 }
             });
-            } else {
-                
-            }
             
             return;
         }
         
         if(!this.groupId){
-            this.el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
-            this.el.findParent('.form-group', false, true).addClass(this.invalidClass);
+            var fg = this.el.findParent('.form-group', false, true);
+            if (Roo.bootstrap.version == 3) {
+                fg.removeClass([_this.invalidClass, _this.validClass]);
+                fg.addClass(_this.invalidClass);
+            } else {
+                fg.removeClass(['is-invalid', 'is-valid']);
+                fg.addClass('is-invalid');
+            }
             return;
         }
         
