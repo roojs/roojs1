@@ -8991,12 +8991,12 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     
        
     /**
-     * @cfg {String} invalidClass The CSS class to use when marking a field invalid (defaults to "x-form-invalid")
+     * @cfg {String} invalidClass DEPRICATED - code uses BS4 - is-valid / is-invalid
      */
     invalidClass : "has-warning",
     
     /**
-     * @cfg {String} validClass The CSS class to use when marking a field valid (defaults to "x-form-invalid")
+     * @cfg {String} validClass DEPRICATED - code uses BS4 - is-valid / is-invalid
      */
     validClass : "has-success",
     
@@ -9748,8 +9748,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         
-     
-        this.el.removeClass(this.invalidClass);
+        
+        this.el.removeClass([this.invalidClass, 'is-invalid']);
         
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
             
@@ -9801,9 +9801,9 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         }
         if (Roo.bootstrap.version == 3) {
             this.el.addClass(this.validClass);
+        } else {
+            this.inputEl().addClass('is-valid');
         }
-        
-        this.inputEl().addClass('is-valid');
 
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank && (this.getValue().length || this.forceFeedback)){
             
@@ -9853,9 +9853,11 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         }
         if (Roo.bootstrap.version == 3) {
             this.el.addClass(this.invalidClass);
+        } else {
+            this.inputEl().addClass('is-invalid');
         }
         
-        this.inputEl().addClass('is-invalid');
+        
         
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
             
@@ -10203,7 +10205,7 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
             icon.remove();
         }
         
-        this.el.removeClass(this.invalidClass);
+        this.el.removeClass([ this.invalidClass, 'is-invalid']);
         
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
             
@@ -10227,7 +10229,8 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
             return;
         }
         
-        this.el.removeClass([this.invalidClass, this.validClass]);
+        this.el.removeClass([this.invalidClass, this.validClass, 'is-valid', 'is-invalid']);
+        
         
         var feedback = this.el.select('.form-control-feedback', true).first();
             
@@ -10245,8 +10248,12 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
         if(label && icon){
             icon.remove();
         }
+        if (Roo.bootstrap.version == 3) {
+            this.el.addClass(this.validClass);
+        } else {
+            this.inputEl().addClass('is-valid');
+        }
         
-        this.el.addClass(this.validClass);
         
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank && (this.getValue().length || this.forceFeedback)){
             
@@ -10272,7 +10279,7 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
             return;
         }
         
-        this.el.removeClass([this.invalidClass, this.validClass]);
+        this.el.removeClass([this.invalidClass, this.validClass, 'is-valid', 'is-invalid']);
         
         var feedback = this.el.select('.form-control-feedback', true).first();
             
@@ -10295,9 +10302,14 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
                 style : 'margin-right:5px;'
             }, label, true);
         }
-
-        this.el.addClass(this.invalidClass);
         
+        if (Roo.bootstrap.version == 3) {
+            this.el.addClass(this.invalidClass);
+        } else {
+            this.inputEl().addClass('is-invalid');
+        }
+        
+        // fixme ... this may be depricated need to test..
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
             
             var feedback = this.el.select('.form-control-feedback', true).first();
@@ -13273,12 +13285,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     multiple : false,
     
     /**
-     * @cfg {String} invalidClass The CSS class to use when marking a field invalid (defaults to "x-form-invalid")
+     * @cfg {String} invalidClass DEPRICATED - uses BS4 is-valid now
      */
     invalidClass : "has-warning",
     
     /**
-     * @cfg {String} validClass The CSS class to use when marking a field valid (defaults to "x-form-invalid")
+     * @cfg {String} validClass DEPRICATED - uses BS4 is-valid now
      */
     validClass : "has-success",
     
@@ -21203,16 +21215,28 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
 
         if(this.inputType == 'radio'){
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
-                e.findParent('.form-group', false, true).removeClass([_this.invalidClass, _this.validClass]);
-                e.findParent('.form-group', false, true).addClass(_this.validClass);
+                var fg = e.findParent('.form-group', false, true);
+                if (Roo.bootstrap.version == 3) {
+                    fg.removeClass([_this.invalidClass, _this.validClass]);
+                    fg.addClass(_this.validClass);
+                } else {
+                    fg.removeClass(['is-valid', 'is-invalid']);
+                    fg.addClass('is-valid');
+                }
             });
             
             return;
         }
 
         if(!this.groupId){
-            this.el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
-            this.el.findParent('.form-group', false, true).addClass(this.validClass);
+            var fg = this.el.findParent('.form-group', false, true);
+            if (Roo.bootstrap.version == 3) {
+                fg.removeClass([this.invalidClass, this.validClass]);
+                fg.addClass(this.validClass);
+            } else {
+                fg.removeClass(['is-valid', 'is-invalid']);
+                fg.addClass('is-valid');
+            }
             return;
         }
         
@@ -21223,8 +21247,14 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         }
         
         for(var i in group){
-            group[i].el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
-            group[i].el.findParent('.form-group', false, true).addClass(this.validClass);
+            var fg = group[i].el.findParent('.form-group', false, true);
+            if (Roo.bootstrap.version == 3) {
+                fg.removeClass([this.invalidClass, this.validClass]);
+                fg.addClass(this.validClass);
+            } else {
+                fg.removeClass(['is-valid', 'is-invalid']);
+                fg.addClass('is-valid');
+            }
         }
     },
     
@@ -21253,17 +21283,30 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         }
             
         if(this.inputType == 'radio'){
+            
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
-                e.findParent('.form-group', false, true).removeClass([_this.invalidClass, _this.validClass]);
-                e.findParent('.form-group', false, true).addClass(_this.invalidClass);
+                var fg = e.findParent('.form-group', false, true);
+                if (Roo.bootstrap.version == 3) {
+                    fg.removeClass([_this.invalidClass, _this.validClass]);
+                    fg.addClass(_this.invalidClass);
+                } else {
+                    fg.removeClass(['is-invalid', 'is-valid']);
+                    fg.addClass('is-invalid');
+                }
             });
             
             return;
         }
         
         if(!this.groupId){
-            this.el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
-            this.el.findParent('.form-group', false, true).addClass(this.invalidClass);
+            var fg = this.el.findParent('.form-group', false, true);
+            if (Roo.bootstrap.version == 3) {
+                fg.removeClass([_this.invalidClass, _this.validClass]);
+                fg.addClass(_this.invalidClass);
+            } else {
+                fg.removeClass(['is-invalid', 'is-valid']);
+                fg.addClass('is-invalid');
+            }
             return;
         }
         
@@ -21274,8 +21317,14 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         }
         
         for(var i in group){
-            group[i].el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
-            group[i].el.findParent('.form-group', false, true).addClass(this.invalidClass);
+            var fg = group[i].el.findParent('.form-group', false, true);
+            if (Roo.bootstrap.version == 3) {
+                fg.removeClass([_this.invalidClass, _this.validClass]);
+                fg.addClass(_this.invalidClass);
+            } else {
+                fg.removeClass(['is-invalid', 'is-valid']);
+                fg.addClass('is-invalid');
+            }
         }
         
     },
@@ -21289,8 +21338,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         var label = Roo.bootstrap.FieldLabel.get(this.name + '-group');
         
         if (label && label.iconEl) {
-            label.iconEl.removeClass(label.validClass);
-            label.iconEl.removeClass(label.invalidClass);
+            label.iconEl.removeClass([ label.validClass, label.invalidClass ]);
+            label.iconEl.removeClass(['is-invalid', 'is-valid']);
         }
     },
     
@@ -23919,9 +23968,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
     /**
      * @cfg {String} inputType @hide
      */
-    /**
-     * @cfg {String} invalidClass @hide
-     */
+     
     /**
      * @cfg {String} invalidText @hide
      */
@@ -30343,8 +30390,8 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
  * @cfg {String} cls class of the element
  * @cfg {String} target label target 
  * @cfg {Boolean} allowBlank (true|false) target allowBlank default true
- * @cfg {String} invalidClass default "text-warning"
- * @cfg {String} validClass default "text-success"
+ * @cfg {String} invalidClass DEPRICATED - BS4 uses is-invalid
+ * @cfg {String} validClass DEPRICATED - BS4 uses is-valid
  * @cfg {String} iconTooltip default "This field is required"
  * @cfg {String} indicatorpos (left|right) default left
  * 
@@ -30466,10 +30513,14 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
             this.indicator.removeClass('visible');
             this.indicator.addClass('invisible');
         }
+        if (Roo.bootstrap.version == 3) {
+	    this.el.removeClass(this.invalidClass);
+	    this.el.addClass(this.validClass);
+	} else {
+	    this.el.removeClass('is-invalid');
+            this.el.addClass('is-valid');
+	}
         
-        this.el.removeClass(this.invalidClass);
-        
-        this.el.addClass(this.validClass);
         
         this.fireEvent('valid', this);
     },
@@ -30484,10 +30535,14 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
             this.indicator.removeClass('invisible');
             this.indicator.addClass('visible');
         }
+          if (Roo.bootstrap.version == 3) {
+	    this.el.removeClass(this.validClass);
+	    this.el.addClass(this.invalidClass);
+	} else {
+	    this.el.removeClass('is-valid');
+            this.el.addClass('is-invalid');
+	}
         
-        this.el.removeClass(this.validClass);
-        
-        this.el.addClass(this.invalidClass);
         
         this.fireEvent('invalid', this, msg);
     }
@@ -34232,9 +34287,11 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
             this.indicatorEl().addClass('invisible');
         }
         
-        this.el.removeClass([this.invalidClass, this.validClass]);
-        this.el.addClass(this.validClass);
+        
         if (Roo.bootstrap.version == 3) {
+            this.el.removeClass([this.invalidClass, this.validClass]);
+            this.el.addClass(this.validClass);
+        } else {
             this.el.removeClass(['is-invalid','is-valid']);
             this.el.addClass(['is-valid']);
         }
@@ -34254,9 +34311,10 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
         if (Roo.bootstrap.version == 3) {
             this.el.removeClass([this.invalidClass, this.validClass]);
             this.el.addClass(this.invalidClass);
+        } else {
+            this.el.removeClass(['is-invalid','is-valid']);
+            this.el.addClass(['is-invalid']);
         }
-        this.el.removeClass(['is-invalid','is-valid']);
-        this.el.addClass(['is-invalid']);
         
         this.fireEvent('invalid', this, msg);
         
