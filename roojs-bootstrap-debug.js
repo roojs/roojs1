@@ -10204,9 +10204,9 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
         if(label && icon){
             icon.remove();
         }
-        
-        this.el.removeClass([ this.invalidClass, 'is-invalid']);
-        
+        this.el.removeClass( this.validClass);
+        this.inputEl().removeClass('is-invalid');
+         
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
             
             var feedback = this.el.select('.form-control-feedback', true).first();
@@ -10229,8 +10229,8 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
             return;
         }
         
-        this.el.removeClass([this.invalidClass, this.validClass, 'is-valid', 'is-invalid']);
-        
+        this.el.removeClass([this.invalidClass, this.validClass]);
+        this.inputEl().removeClass(['is-valid', 'is-invalid']);
         
         var feedback = this.el.select('.form-control-feedback', true).first();
             
@@ -10279,7 +10279,8 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
             return;
         }
         
-        this.el.removeClass([this.invalidClass, this.validClass, 'is-valid', 'is-invalid']);
+        this.el.removeClass([this.invalidClass, this.validClass]);
+        this.inputEl().removeClass(['is-valid', 'is-invalid']);
         
         var feedback = this.el.select('.form-control-feedback', true).first();
             

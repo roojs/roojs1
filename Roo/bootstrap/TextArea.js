@@ -240,9 +240,9 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
         if(label && icon){
             icon.remove();
         }
-        
-        this.el.removeClass([ this.invalidClass, 'is-invalid']);
-        
+        this.el.removeClass( this.validClass);
+        this.inputEl().removeClass('is-invalid');
+         
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
             
             var feedback = this.el.select('.form-control-feedback', true).first();
