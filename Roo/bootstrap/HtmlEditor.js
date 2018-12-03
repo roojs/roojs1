@@ -416,9 +416,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
     /**
      * @cfg {String} inputType @hide
      */
-    /**
-     * @cfg {String} invalidClass @hide
-     */
+     
     /**
      * @cfg {String} invalidText @hide
      */
