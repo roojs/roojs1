@@ -523,8 +523,14 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         }
         
         for(var i in group){
-            group[i].el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
-            group[i].el.findParent('.form-group', false, true).addClass(this.validClass);
+            var fg = group[i].el.findParent('.form-group', false, true);
+            if (Roo.bootstrap.version == 3) {
+                fg.removeClass([this.invalidClass, this.validClass]);
+                fg.addClass(this.validClass);
+            } else {
+                fg.removeClass(['is-valid', 'is-invalid']);
+                fg.addClass('is-valid');
+            }
         }
     },
     
