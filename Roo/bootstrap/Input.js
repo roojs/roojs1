@@ -119,12 +119,12 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     
        
     /**
-     * @cfg {String} invalidClass The CSS class to use when marking a field invalid (defaults to "x-form-invalid")
+     * @cfg {String} invalidClass DEPRICATED - code uses BS4 - is-valid / is-invalid
      */
     invalidClass : "has-warning",
     
     /**
-     * @cfg {String} validClass The CSS class to use when marking a field valid (defaults to "x-form-invalid")
+     * @cfg {String} validClass DEPRICATED - code uses BS4 - is-valid / is-invalid
      */
     validClass : "has-success",
     
