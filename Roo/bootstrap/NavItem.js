@@ -76,6 +76,8 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     animateRef : false,
     was_active : false,
     
+    navLink: false,
+    
     getAutoCreate : function(){
          
         var cfg = {
