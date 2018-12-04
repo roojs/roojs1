@@ -59,7 +59,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         };
         if (Roo.bootstrap.version == 4) {
 	    if (['nav','pills'].indexOf(this.type) != -1) {
-		cfg.cls = ' nav-' + this.type; 
+		cfg.cls = ' navbar-' + this.type; 
 	    }
 	} else {
 	    if (['tabs','pills'].indexOf(this.type) != -1) {
