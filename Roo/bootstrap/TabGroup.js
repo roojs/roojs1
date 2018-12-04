@@ -253,10 +253,10 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             cur.el.on('transitionend', function() {
                 Roo.log("trans end?");
                 
-                pan.el.removeClass([lr,dir]);
+                pan.el.removeClass([lr,dir, 'carousel-item-' + lr, 'carousel-item-' + dir]);
                 pan.setActive(true);
                 
-                cur.el.removeClass([lr]);
+                cur.el.removeClass([lr, 'carousel-item-' + lr]);
                 cur.setActive(false);
                 
                 _this.transition = false;
