@@ -55,10 +55,12 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
     href : '',
     
     getAutoCreate : function(){
-        var cfg = {
+        
+	
+	var cfg = {
             tag: 'div',
             // item is needed for carousel - not sure if it has any effect otherwise
-            cls: 'tab-pane item' + ((this.href.length) ? ' clickable ' : ''),
+            cls: 'carousel-item tab-pane item' + ((this.href.length) ? ' clickable ' : ''),
             html: this.html || ''
         };
         
@@ -70,6 +72,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
             cfg.tabId = this.tabId;
         }
         
+	
         
         return cfg;
     },
