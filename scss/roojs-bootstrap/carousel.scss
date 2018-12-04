@@ -94,6 +94,9 @@
 
 .tab-content {
     > .carousel-inner {
+                
+        padding: 16px 35px;
+        background: $light-grey;
         > .tab-pane {
           display: none;
         }
