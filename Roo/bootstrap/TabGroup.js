@@ -203,7 +203,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     {
         if(this.transition || typeof(pan) == 'undefined'){
             Roo.log("waiting for the transitionend");
-            return;
+            return false;
         }
         
         if (typeof(pan) == 'number') {
