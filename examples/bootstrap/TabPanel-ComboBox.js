@@ -403,7 +403,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                                                         proxy : {
                                                                                             xtype: 'HttpProxy',
                                                                                             xns: Roo.data,
-                                                                                            url : baseURL + '/Geoip/Core_geoip_country',
+                                                                                            url : './data.country.js'',
                                                                                             method : 'GET'
                                                                                         },
                                                                                         reader : {
