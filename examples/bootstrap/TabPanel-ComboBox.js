@@ -419,7 +419,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                                                                     'type': 'string'
                                                                                                 },
                                                                                                 {
-                                                                                                    'name': 'name',
+                                                                                                    'name': 'title',
                                                                                                     'type': 'string'
                                                                                                 }
                                                                                             ]
