@@ -579,6 +579,10 @@ table.fc-border-separate {
 .carousel-inner .tab-pane.clickable {
   cursor: pointer;
 }
+.tab-content > .carousel-inner {
+  padding: 16px 35px;
+  background: #f8f9fa;
+}
 .tab-content > .carousel-inner > .tab-pane {
   display: none;
 }
