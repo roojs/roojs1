@@ -244,8 +244,14 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         
         if (!state ) {
             this.el.removeClass('active');
+	    this.navLink ? this.navLink.removeClass('active') : false;
         } else if (!this.el.hasClass('active')) {
+	    
             this.el.addClass('active');
+	    if (Roo.bootstrap.version == 4) {
+		this.navLink ? this.navLink.addClass('active') : false;
+	    }
+	    
         }
         if (fire) {
             this.fireEvent('changed', this, state);
