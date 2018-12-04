@@ -579,6 +579,12 @@ table.fc-border-separate {
 .carousel-inner .tab-pane.clickable {
   cursor: pointer;
 }
+.tab-content > .carousel-inner > .tab-pane {
+  display: none;
+}
+.tab-content > .carousel-inner > .active {
+  display: block;
+}
 /*
  *
  * From https://github.com/flatlogic/awesome-bootstrap-checkbox
@@ -2512,6 +2518,7 @@ table td .navbar {
 }
 /** not sure if these are needed with is-valid / is-invalid.. */
 /*
+ * DISABLED probably needs deleting...
  .roo-radio-set.has-warning {
  .roo-radio-set-items label,
  .roo-radio-set-label {
