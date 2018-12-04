@@ -152,7 +152,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                                                             xtype: 'ComboBox',
                                                                                             xns: Roo.bootstrap,
                                                                                             placeholder : 'Select a country',
-                                                                                            displayField : 'name',
+                                                                                            displayField : 'title',
                                                                                             hiddenName : 'country_id',
                                                                                             md : '12',
                                                                                             size : 'sm',
