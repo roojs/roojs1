@@ -90,3 +90,16 @@
 .carousel-inner .tab-pane.clickable {
     cursor: pointer;
 }
+
+
+.tab-content {
+    > .carousel {
+        > .tab-pane {
+          display: none;
+        }
+        > .active {
+          display: block;
+        }
+    }
+}
+
