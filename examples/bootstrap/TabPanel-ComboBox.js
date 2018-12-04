@@ -187,7 +187,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                                                                 proxy : {
                                                                                                     xtype: 'HttpProxy',
                                                                                                     xns: Roo.data,
-                                                                                                    url : './data.country.js',
+                                                                                                    url : '../bootstrap/data.country.js',
                                                                                                     method : 'GET'
                                                                                                 },
                                                                                                 reader : {
@@ -297,7 +297,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                                                                 proxy : {
                                                                                                     xtype: 'HttpProxy',
                                                                                                     xns: Roo.data,
-                                                                                                    url : './data.country.js',
+                                                                                                    url : '../bootstrap/data.country.js',
                                                                                                     method : 'GET'
                                                                                                 },
                                                                                                 reader : {
