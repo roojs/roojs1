@@ -555,7 +555,7 @@ table.fc-border-separate {
   position: absolute;
   display: block;
   top: 50%;
-  color: #fff;
+  color: #343a40;
   z-index: 100;
   cursor: pointer;
   padding: 10px;
@@ -566,7 +566,7 @@ table.fc-border-separate {
   position: absolute;
   display: block;
   top: 50%;
-  color: #fff;
+  color: #343a40;
   z-index: 100;
   cursor: pointer;
   padding: 10px;
