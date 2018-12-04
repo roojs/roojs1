@@ -159,7 +159,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                                                             name : 'country_id_name',
                                                                                             triggerAction : 'all',
                                                                                             minChars : '1',
-                                                                                            tpl : '<li class="roo-select2-result"><b>{name}</b></div>',
+                                                                                            tpl : '<li class="roo-select2-result"><b>{title}</b></div>',
                                                                                             style : 'margin-top:20px;',
                                                                                             listeners : {
                                                                                                 render : function (_self) {
@@ -261,14 +261,14 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                                                             xtype: 'ComboBox',
                                                                                             xns: Roo.bootstrap,
                                                                                             placeholder : 'Select a country',
-                                                                                            displayField : 'name',
+                                                                                            displayField : 'title',
                                                                                             hiddenName : 'country_id',
                                                                                             md : '12',
                                                                                             size : 'sm',
                                                                                             name : 'country_id_name',
                                                                                             triggerAction : 'all',
                                                                                             minChars : '1',
-                                                                                            tpl : '<li class="roo-select2-result"><b>{name}</b></div>',
+                                                                                            tpl : '<li class="roo-select2-result"><b>{title}</b></div>',
                                                                                             style : 'margin-top:20px;',
                                                                                             multiple: true,
                                                                                             listeners : {
@@ -292,7 +292,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
 
                                                                                                     }
                                                                                                 },
-                                                                                                remoteSort : true,
+                                                                                                remoteSort : false,
                                                                                                 sortInfo : { direction : 'ASC', field: 'title' },
                                                                                                 proxy : {
                                                                                                     xtype: 'HttpProxy',
