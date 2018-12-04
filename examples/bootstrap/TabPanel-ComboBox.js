@@ -366,7 +366,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                                                     xtype: 'ComboBox',
                                                                                     xns: Roo.bootstrap,
                                                                                     placeholder : 'Select a country',
-                                                                                    displayField : 'name',
+                                                                                    displayField : 'title',
                                                                                     hiddenName : 'country_id',
                                                                                     md : '12',
                                                                                     size : 'sm',
@@ -398,12 +398,12 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
 
                                                                                             }
                                                                                         },
-                                                                                        remoteSort : true,
-                                                                                        sortInfo : { direction : 'ASC', field: 'name' },
+                                                                                        remoteSort : false,
+                                                                                        sortInfo : { direction : 'ASC', field: 'title' },
                                                                                         proxy : {
                                                                                             xtype: 'HttpProxy',
                                                                                             xns: Roo.data,
-                                                                                            url : './data.country.js'',
+                                                                                            url : './data.country.js',
                                                                                             method : 'GET'
                                                                                         },
                                                                                         reader : {
