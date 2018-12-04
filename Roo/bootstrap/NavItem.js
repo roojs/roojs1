@@ -137,7 +137,9 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
 	    this.tag = 'div';
 	}
 	
-        return Roo.bootstrap.NavItem.superclass.onRender.call(this, ct, position);
+        var ret = Roo.bootstrap.NavItem.superclass.onRender.call(this, ct, position);
+	this.navLink = this.el.select('nav-link').first();
+	return ret;
     },
       
     
