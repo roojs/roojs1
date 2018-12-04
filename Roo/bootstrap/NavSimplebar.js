@@ -82,7 +82,7 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
         
          
         this.type = this.type || 'nav';
-        if (['tabs','pills'].indexOf(this.type)!==-1) {
+        if (['tabs','pills'].indexOf(this.type) != -1) {
             cfg.cn[0].cls += ' nav-' + this.type
         
         
