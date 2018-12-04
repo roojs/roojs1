@@ -18325,7 +18325,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     {
         if(this.transition || typeof(pan) == 'undefined'){
             Roo.log("waiting for the transitionend");
-            return;
+            return false;
         }
         
         if (typeof(pan) == 'number') {
@@ -18357,22 +18357,28 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
         if (this.carousel && typeof(Roo.get(document.body).dom.style.transition) != 'undefined') {
             
+            //class="carousel-item carousel-item-next carousel-item-left"
+            
             this.transition = true;
             var dir = this.indexOfPanel(pan) > this.indexOfPanel(cur)  ? 'next' : 'prev';
             var lr = dir == 'next' ? 'left' : 'right';
             pan.el.addClass(dir); // or prev
+            pan.el.addClass('carousel-item-' + dir); // or prev
             pan.el.dom.offsetWidth; // find the offset with - causing a reflow?
             cur.el.addClass(lr); // or right
             pan.el.addClass(lr);
+            cur.el.addClass('carousel-item-' +lr); // or right
+            pan.el.addClass('carousel-item-' +lr);
+            
             
             var _this = this;
             cur.el.on('transitionend', function() {
                 Roo.log("trans end?");
                 
-                pan.el.removeClass([lr,dir]);
+                pan.el.removeClass([lr,dir, 'carousel-item-' + lr, 'carousel-item-' + dir]);
                 pan.setActive(true);
                 
-                cur.el.removeClass([lr]);
+                cur.el.removeClass([lr, 'carousel-item-' + lr]);
                 cur.setActive(false);
                 
                 _this.transition = false;
