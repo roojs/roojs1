@@ -293,11 +293,11 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                                                                     }
                                                                                                 },
                                                                                                 remoteSort : true,
-                                                                                                sortInfo : { direction : 'ASC', field: 'name' },
+                                                                                                sortInfo : { direction : 'ASC', field: 'title' },
                                                                                                 proxy : {
                                                                                                     xtype: 'HttpProxy',
                                                                                                     xns: Roo.data,
-                                                                                                    url : baseURL + '/Geoip/Core_geoip_country',
+                                                                                                    url : './data.country.js',
                                                                                                     method : 'GET'
                                                                                                 },
                                                                                                 reader : {
@@ -313,7 +313,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                                                                             'type': 'string'
                                                                                                         },
                                                                                                         {
-                                                                                                            'name': 'name',
+                                                                                                            'name': 'title',
                                                                                                             'type': 'string'
                                                                                                         }
                                                                                                     ]
