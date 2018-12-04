@@ -13,16 +13,10 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
     _tree : function()
     {
         
-        this.parent = {
-            el : new Roo.bootstrap.Body()
-        }
-        this.parent.el.layout = false;
-        this.parent.el.render(document.body);
         
         var _this = this;
         var MODULE = this;
-        var baseURL = '/web.eventmanager/demo.local.php';
-        
+         
         return {
             xtype: 'Body',
             xns: Roo.bootstrap,
