@@ -4681,6 +4681,8 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     animateRef : false,
     was_active : false,
     
+    navLink: false,
+    
     getAutoCreate : function(){
          
         var cfg = {
@@ -4740,7 +4742,9 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
 	    this.tag = 'div';
 	}
 	
-        return Roo.bootstrap.NavItem.superclass.onRender.call(this, ct, position);
+        var ret = Roo.bootstrap.NavItem.superclass.onRender.call(this, ct, position);
+	this.navLink = this.el.select('nav-link').first();
+	return ret;
     },
       
     
@@ -4845,8 +4849,14 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         
         if (!state ) {
             this.el.removeClass('active');
+	    this.navLink ? this.navLink.removeClass('active') : false;
         } else if (!this.el.hasClass('active')) {
+	    
             this.el.addClass('active');
+	    if (Roo.bootstrap.version == 4 && this.navLink ) {
+		this.navLink.addClass('active');
+	    }
+	    
         }
         if (fire) {
             this.fireEvent('changed', this, state);

@@ -248,8 +248,8 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         } else if (!this.el.hasClass('active')) {
 	    
             this.el.addClass('active');
-	    if (Roo.bootstrap.version == 4) {
-		this.navLink ? this.navLink.addClass('active') : false;
+	    if (Roo.bootstrap.version == 4 && this.navLink ) {
+		this.navLink.addClass('active');
 	    }
 	    
         }
