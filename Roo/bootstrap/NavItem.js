@@ -107,11 +107,9 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
 	    if (this.fa) {
                 cfg.html = '<i class="fa fas fa-'+this.fa+'"></i> <span>' + this.html + '</span>';
             }
-	    if (this.menu) {
-                
-                cfg.cn[0].html += " <span class='caret'></span>";
-             
-            }
+	    
+	    // menu .. should add dropdown-menu class - so no need for carat..
+	    
 	    if (this.badge !== '') {
                  
                 cfg.html += ' <span class="badge badge-secondary">' + this.badge + '</span>';
