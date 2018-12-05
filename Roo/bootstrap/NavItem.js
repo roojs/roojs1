@@ -96,6 +96,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             cfg.cls += ' disabled';
         }
 	
+	// BS4 only?
 	if (this.button_weight.length) {
 	    cfg.tag = this.href ? 'a' : 'button';
 	    cfg.html = this.html || '';
@@ -103,7 +104,9 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
 	    if (this.href) {
 		cfg.href = this.href;
 	    }
-	    
+	    if (this.fa) {
+                cfg.html = '<i class="fa fas fa-'+this.fa+'"></i> <span>' + this.html + '</span>'
+            }
 	    
 	    
 	}
