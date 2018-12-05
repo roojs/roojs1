@@ -77,6 +77,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     disabled : false,
     animateRef : false,
     was_active : false,
+    button_weight : '',
     
     navLink: false,
     
