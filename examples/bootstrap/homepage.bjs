@@ -90,6 +90,7 @@
          "string button_weight" : "primary",
          "String cls" : "btn",
          "xtype" : "NavItem",
+         "bool button_outline" : true,
          "$ xns" : "Roo.bootstrap",
          "String html" : "Sign in / Sign up"
         }

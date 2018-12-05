@@ -105,6 +105,7 @@ homepage = new Roo.XComponent({
         },
         {
          xtype : 'NavItem',
+         button_outline : true,
          button_weight : 'primary',
          cls : 'btn',
          html : _this._strings['5ac2119f318eaad0c139c729c78eba5f'] /* Sign in / Sign up */,
