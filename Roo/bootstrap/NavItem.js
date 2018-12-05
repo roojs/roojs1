@@ -78,6 +78,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     animateRef : false,
     was_active : false,
     button_weight : '',
+    button_outline : null,
     
     navLink: false,
     
@@ -86,7 +87,6 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         var cfg = {
             tag: this.tag,
             cls: 'nav-item'
-            
         };
         
         if (this.active) {
@@ -95,6 +95,18 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         if (this.disabled) {
             cfg.cls += ' disabled';
         }
+	
+	if (this.button_weight.length) {
+	    cfg.tag = this.href ? 'a' : 'button';
+	    cfg.html = this.html || '';
+	    cfg.cls += ' btn' + btn-
+	    if (this.href) {
+		//code
+	    }
+	    
+	    
+	    
+	}
         
         if (this.href || this.html || this.glyphicon || this.icon || this.fa) {
             cfg.cn = [
