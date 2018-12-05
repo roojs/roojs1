@@ -105,7 +105,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
 		cfg.href = this.href;
 	    }
 	    if (this.fa) {
-                cfg.html = '<i class="fa fas fa-'+this.fa+'"></i> <span>' + this.html + '</span>'
+                cfg.html = '<i class="fa fas fa-'+this.fa+'"></i> <span>' + this.html + '</span>';
             }
 	    
 	    
@@ -123,10 +123,10 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
 		cfg.cn[0].cls = 'nav-link';
 	    }
             if (this.icon) {
-                cfg.cn[0].html = '<i class="'+this.icon+'"></i> <span>' + cfg.cn[0].html + '</span>'
+                cfg.cn[0].html = '<i class="'+this.icon+'"></i> <span>' + cfg.cn[0].html + '</span>';
             }
 	    if (this.fa) {
-                cfg.cn[0].html = '<i class="fa fas fa-'+this.fa+'"></i> <span>' + cfg.cn[0].html + '</span>'
+                cfg.cn[0].html = '<i class="fa fas fa-'+this.fa+'"></i> <span>' + cfg.cn[0].html + '</span>';
             }
             if(this.glyphicon) {
                 cfg.cn[0].html = '<span class="glyphicon glyphicon-' + this.glyphicon + '"></span> '  + cfg.cn[0].html;
