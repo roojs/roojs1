@@ -101,7 +101,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
 	    cfg.html = this.html || '';
 	    cfg.cls += ' btn' + (this.btn_outline ? '-outline' : '') + this.button_weight;
 	    if (this.href) {
-		
+		cfg.href = this.href;
 	    }
 	    
 	    
