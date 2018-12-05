@@ -4705,7 +4705,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
 	if (this.button_weight.length) {
 	    cfg.tag = this.href ? 'a' : 'button';
 	    cfg.html = this.html || '';
-	    cfg.cls += ' btn' + (this.btn_outline ? '-outline' : '') + this.button_weight;
+	    cfg.cls += ' btn btn' + (this.btn_outline ? '-outline' : '') + '-' + this.button_weight;
 	    if (this.href) {
 		cfg.href = this.href;
 	    }
