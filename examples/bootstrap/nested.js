@@ -302,6 +302,7 @@ Example.Nested = new Roo.XComponent({
                     xtype : 'Content',
                     xns: Roo.bootstrap.panel,
                     title : "Title Center",
+		    background : true,
                     fitToFrame:true,
                     closable:false,
                     region : 'center',
