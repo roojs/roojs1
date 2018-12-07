@@ -301,7 +301,7 @@ layout.addxtype({
             case 'Content':  // ContentPanel (el, cfg)
             case 'Scroll':  // ContentPanel (el, cfg)
             case 'View': 
-                cfg.autoCreate = true;
+                cfg.autoCreate = cfg.autoCreate || true;
                 ret = new cfg.xns[cfg.xtype](cfg); // new panel!!!!!
                 //} else {
                 //    var el = this.el.createChild();
