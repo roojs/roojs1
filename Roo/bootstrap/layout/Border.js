@@ -296,8 +296,8 @@ layout.addxtype({
         }
         var nb = false;
 	
-	if (cfg.region == 'center') {
-	    Roo.log("Center" + cfg.title);
+	if ( region == 'center') {
+	    Roo.log("Center: " + cfg.title);
 	}
 	
         
