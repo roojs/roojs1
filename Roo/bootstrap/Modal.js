@@ -287,9 +287,12 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         );
         
         if (this.fitwindow) {
+            
+            var view_height = Roo.lib.Dom.getViewportHeight(true);
+            
             this.setSize(
                 this.width || Roo.lib.Dom.getViewportWidth(true) - 30,
-                this.height || Roo.lib.Dom.getViewportHeight(true) - 60
+                this.height || Roo.lib.Dom.getViewportHeight(true) // catering margin-top 30 margin-bottom 30
             );
             return;
         }
@@ -452,22 +455,18 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     {
         //this.el.select('.modal-footer').()
     },
-    diff : false,
 
     resizeTo: function(w,h)
     {
-        // skip.. ?? why??
-
         this.dialogEl.setWidth(w);
-        if (this.diff === false) {
-            this.diff = this.dialogEl.getHeight() - this.bodyEl.getHeight();
-        }
+        
+        var diff = this.headerEl.getHeight() + this.footerEl.getHeight() + 30; // dialog margin-bottom: 30  
 
-        this.bodyEl.setHeight(h - this.diff);
-
+        this.bodyEl.setHeight(h - diff);
+        
         this.fireEvent('resize', this);
-
     },
+    
     setContentSize  : function(w, h)
     {
 
