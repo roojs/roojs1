@@ -41,6 +41,9 @@ Roo.bootstrap.layout.Border = function(config){
 Roo.bootstrap.layout.Border.regions =  ["north","south","east","west","center"];
 
 Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
+    
+    parent : false, // this might point to a 'nest' or a ???
+    
     /**
      * Creates and adds a new region if it doesn't already exist.
      * @param {String} target The target region key (north, south, east, west or center).

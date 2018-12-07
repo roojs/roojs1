@@ -2671,7 +2671,14 @@ Roo.bootstrap.Modal = function(config){
          * @param {Roo.bootstrap.Modal} this
          * @param {Roo.EventObject} e
          */
-        "resize" : true
+        "resize" : true,
+         /**
+         * @event close
+         * Fire when the top 'x' close button is pressed.
+         * @param {Roo.bootstrap.Modal} this
+         * @param {Roo.EventObject} e
+         */
+        "close" : true
     });
     this.buttons = this.buttons || [];
 
@@ -2902,11 +2909,16 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     initEvents : function()
     {
         if (this.allow_close) {
-            this.closeEl.on('click', this.hide, this);
+            this.closeEl.on('click', this.onClosePress, this);
         }
         Roo.EventManager.onWindowResize(this.resize, this, true);
 
 
+    },
+    
+    onClosePress : function()
+    {
+        
     },
 
     resize : function()
@@ -2919,9 +2931,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         if (this.fitwindow) {
             
             var view_height = Roo.lib.Dom.getViewportHeight(true);
-            
-            Roo.log("dialog height: "+this.height);
-            Roo.log("view height:" + view_height);
             
             this.setSize(
                 this.width || Roo.lib.Dom.getViewportWidth(true) - 30,
@@ -35124,6 +35133,9 @@ Roo.bootstrap.layout.Border = function(config){
 Roo.bootstrap.layout.Border.regions =  ["north","south","east","west","center"];
 
 Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
+    
+    parent : false, // this might point to a 'nest' or a ???
+    
     /**
      * Creates and adds a new region if it doesn't already exist.
      * @param {String} target The target region key (north, south, east, west or center).
@@ -35378,6 +35390,11 @@ layout.addxtype({
             delete cfg.items;
         }
         var nb = false;
+	
+	if ( region == 'center') {
+	    Roo.log("Center: " + cfg.title);
+	}
+	
         
         switch(cfg.xtype) 
         {
@@ -35955,6 +35972,12 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
 
     position: '', // set by wrapper (eg. north/south etc..)
     unrendered_panels : null,  // unrendered panels.
+    
+    tabPosition : false,
+    
+    mgr: false, // points to 'Border'
+    
+    
     createBody : function(){
         /** This region's body element 
         * @type Roo.Element */
@@ -35976,15 +35999,15 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         /** This region's title element 
         * @type Roo.Element */
     
-        this.titleEl = dh.append(this.el.dom,
-            {
-                    tag: "div",
-                    unselectable: "on",
-                    cls: "roo-unselectable roo-layout-panel-hd breadcrumb roo-layout-title-" + this.position,
-                    children:[
-                        {tag: "span", cls: "roo-unselectable roo-layout-panel-hd-text", unselectable: "on", html: "&#160;"},
-                        {tag: "div", cls: "roo-unselectable roo-layout-panel-hd-tools", unselectable: "on"}
-                    ]}, true);
+        this.titleEl = dh.append(this.el.dom,  {
+                tag: "div",
+                unselectable: "on",
+                cls: "roo-unselectable roo-layout-panel-hd breadcrumb roo-layout-title-" + this.position,
+                children:[
+                    {tag: "span", cls: "roo-unselectable roo-layout-panel-hd-text", unselectable: "on", html: "&#160;"},
+                    {tag: "div", cls: "roo-unselectable roo-layout-panel-hd-tools", unselectable: "on"}
+                ]
+            }, true);
         
         this.titleEl.enableDisplayMode();
         /** This region's title text element 
@@ -36089,7 +36112,7 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         this.margins = c.margins || this.margins || {top: 0, left: 0, right:0, bottom: 0};
         
         
-        this.bottomTabs = c.tabPosition != "top";
+        this.tabPosition = [ 'top','bottom', 'west'].indexOf(c.tabPosition) > -1 ? c.tabPosition : "top";
         
         this.autoScroll = c.autoScroll || false;
         
@@ -36328,11 +36351,12 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         //this.bodyEl.setStyle("overflow", "hidden"); -- this is set in render?
         
         var ts = new Roo.bootstrap.panel.Tabs({
-                el: this.bodyEl.dom,
-                tabPosition: this.bottomTabs ? 'bottom' : 'top',
-                disableTooltips: this.config.disableTabTips,
-                toolbar : this.config.toolbar
-            });
+            el: this.bodyEl.dom,
+            region : this,
+            tabPosition: this.tabPosition ? this.tabPosition  : 'top',
+            disableTooltips: this.config.disableTabTips,
+            toolbar : this.config.toolbar
+        });
         
         if(this.config.hideTabs){
             ts.stripWrap.setDisplayed(false);
@@ -37023,6 +37047,7 @@ Roo.extend(Roo.bootstrap.layout.Center, Roo.bootstrap.layout.Region, {
 
 
 
+
 Roo.bootstrap.layout.North = function(config)
 {
     config.region = 'north';
@@ -37215,8 +37240,7 @@ Roo.extend(Roo.bootstrap.layout.West, Roo.bootstrap.layout.Split, {
         }
         Roo.bootstrap.layout.Region.prototype.updateBox.call(this, box);
     }
-});
-Roo.namespace("Roo.bootstrap.panel");/*
+});Roo.namespace("Roo.bootstrap.panel");/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -37917,6 +37941,7 @@ Roo.bootstrap.panel.Nest = function(config)
     config.layout.monitorWindowResize = false; // turn off autosizing
     this.layout = config.layout;
     this.layout.getEl().addClass("roo-layout-nested-layout");
+    this.layout.parent = this;
     
     
     
@@ -38015,7 +38040,7 @@ panel.addxtype({
         return this.layout.addxtype(cfg);
     
     }
-});        /*
+});/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -38079,16 +38104,48 @@ Roo.bootstrap.panel.Tabs = function(config){
     }
     
     if(this.tabPosition == "bottom"){
+        // if tabs are at the bottom = create the body first.
         this.bodyEl = Roo.get(this.createBody(this.el.dom));
         this.el.addClass("roo-tabs-bottom");
     }
-    this.stripWrap = Roo.get(this.createStrip(this.el.dom), true);
-    this.stripEl = Roo.get(this.createStripList(this.stripWrap.dom), true);
-    this.stripEl.setVisibilityMode(Roo.Element.DISPLAY);
-    this.stripBody = Roo.get(this.stripWrap.dom.firstChild.firstChild, true);
+    // next create the tabs holders
+    
+    if (this.tabPosition == "west"){
+        
+        var reg = this.region; // fake it..
+        while (reg) {
+            if (!reg.mgr.parent) {
+                break;
+            }
+            reg = reg.mgr.parent.region;
+        }
+        Roo.log("got nest?");
+        Roo.log(reg);
+        if (reg.mgr.getRegion('west')) {
+            var ctrdom = reg.mgr.getRegion('west').bodyEl.dom;
+            this.stripWrap = Roo.get(this.createStrip(ctrdom ), true);
+            this.stripEl = Roo.get(this.createStripList(this.stripWrap.dom), true);
+            this.stripEl.setVisibilityMode(Roo.Element.DISPLAY);
+            this.stripBody = Roo.get(this.stripWrap.dom.firstChild.firstChild, true);
+        
+            
+        }
+        
+        
+    } else {
+     
+        this.stripWrap = Roo.get(this.createStrip(this.el.dom), true);
+        this.stripEl = Roo.get(this.createStripList(this.stripWrap.dom), true);
+        this.stripEl.setVisibilityMode(Roo.Element.DISPLAY);
+        this.stripBody = Roo.get(this.stripWrap.dom.firstChild.firstChild, true);
+    }
+    
+    
     if(Roo.isIE){
         Roo.fly(this.stripWrap.dom.firstChild).setStyle("overflow-x", "hidden");
     }
+    
+    // finally - if tabs are at the top, then create the body last..
     if(this.tabPosition != "bottom"){
         /** The body element that contains {@link Roo.TabPanelItem} bodies. +
          * @type Roo.Element
@@ -38179,7 +38236,11 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
     /*
      *@cfg {Object} toolbar xtype description of toolbar to show at the right of the tab bar. 
      */
-    toolbar : false,
+    toolbar : false,  // set by caller..
+    
+    region : false, /// set by caller
+    
+    disableTooltips : true, // not used yet...
 
     /**
      * Creates a new {@link Roo.TabPanelItem} by looking for an existing element with the provided id -- if it's not found it creates one.
@@ -38332,6 +38393,8 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
      */
     activate : function(id)
     {
+        Roo.log('activite:'  + id);
+        
         var tab = this.items[id];
         if(!tab){
             return null;

@@ -62,16 +62,48 @@ Roo.bootstrap.panel.Tabs = function(config){
     }
     
     if(this.tabPosition == "bottom"){
+        // if tabs are at the bottom = create the body first.
         this.bodyEl = Roo.get(this.createBody(this.el.dom));
         this.el.addClass("roo-tabs-bottom");
     }
-    this.stripWrap = Roo.get(this.createStrip(this.el.dom), true);
-    this.stripEl = Roo.get(this.createStripList(this.stripWrap.dom), true);
-    this.stripEl.setVisibilityMode(Roo.Element.DISPLAY);
-    this.stripBody = Roo.get(this.stripWrap.dom.firstChild.firstChild, true);
+    // next create the tabs holders
+    
+    if (this.tabPosition == "west"){
+        
+        var reg = this.region; // fake it..
+        while (reg) {
+            if (!reg.mgr.parent) {
+                break;
+            }
+            reg = reg.mgr.parent.region;
+        }
+        Roo.log("got nest?");
+        Roo.log(reg);
+        if (reg.mgr.getRegion('west')) {
+            var ctrdom = reg.mgr.getRegion('west').bodyEl.dom;
+            this.stripWrap = Roo.get(this.createStrip(ctrdom ), true);
+            this.stripEl = Roo.get(this.createStripList(this.stripWrap.dom), true);
+            this.stripEl.setVisibilityMode(Roo.Element.DISPLAY);
+            this.stripBody = Roo.get(this.stripWrap.dom.firstChild.firstChild, true);
+        
+            
+        }
+        
+        
+    } else {
+     
+        this.stripWrap = Roo.get(this.createStrip(this.el.dom), true);
+        this.stripEl = Roo.get(this.createStripList(this.stripWrap.dom), true);
+        this.stripEl.setVisibilityMode(Roo.Element.DISPLAY);
+        this.stripBody = Roo.get(this.stripWrap.dom.firstChild.firstChild, true);
+    }
+    
+    
     if(Roo.isIE){
         Roo.fly(this.stripWrap.dom.firstChild).setStyle("overflow-x", "hidden");
     }
+    
+    // finally - if tabs are at the top, then create the body last..
     if(this.tabPosition != "bottom"){
         /** The body element that contains {@link Roo.TabPanelItem} bodies. +
          * @type Roo.Element
@@ -162,7 +194,11 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
     /*
      *@cfg {Object} toolbar xtype description of toolbar to show at the right of the tab bar. 
      */
-    toolbar : false,
+    toolbar : false,  // set by caller..
+    
+    region : false, /// set by caller
+    
+    disableTooltips : true, // not used yet...
 
     /**
      * Creates a new {@link Roo.TabPanelItem} by looking for an existing element with the provided id -- if it's not found it creates one.
@@ -315,6 +351,8 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
      */
     activate : function(id)
     {
+        //Roo.log('activite:'  + id);
+        
         var tab = this.items[id];
         if(!tab){
             return null;

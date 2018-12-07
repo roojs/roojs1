@@ -32,8 +32,17 @@ Example.Nested = new Roo.XComponent({
                 xtype : 'Region',
                 xns: Roo.bootstrap.layout,
                 autoScroll: false,
-                tabPosition:'top',
-                 titlebar: true
+                tabPosition:'west',
+                titlebar: true
+            },
+	    west: {
+                xtype : 'Region',
+                xns: Roo.bootstrap.layout,
+                autoScroll: false,
+                tabPosition:'west',
+                titlebar: true,
+		initialSize: 200,
+		title : "Menu"
             },
             items : [
                 {
@@ -126,12 +135,14 @@ Example.Nested = new Roo.XComponent({
 			    maxSize: 400,
 			    autoScroll:true,
 			    collapsible:true,
-			    titlebar: true
+			    titlebar: true,
+			    tabPosition : 'bottom'
 	                 },
 	                center: {
                             xtype : 'Region',
                             xns: Roo.bootstrap.layout,
 	                    autoScroll:true,
+			    tabPosition:'west'
 	                },
 			
 			west: {
@@ -150,7 +161,15 @@ Example.Nested = new Roo.XComponent({
                             {
                                 xtype : 'Content',
                                 xns: Roo.bootstrap.panel,
-                                title : "More Info",
+                                title : "South Tab 1",
+                                region : 'south',
+                                html : 'some body south'
+                            },
+			    {
+                                xtype : 'Content',
+                                xns: Roo.bootstrap.panel,
+                                title : "South Tab 2",
+				background : true,
                                 region : 'south',
                                 html : 'some body south'
                             },
@@ -160,6 +179,13 @@ Example.Nested = new Roo.XComponent({
                                 title : "the body",
                                 region : 'center',
                                 html : 'some body center'
+                            },
+			     {
+                                xtype : 'Content',
+                                xns: Roo.bootstrap.panel,
+                                title : "the body 2",
+                                region : 'center',
+                                html : 'some body center 2 '
                             },
 			    
 			    {
@@ -298,7 +324,7 @@ Example.Nested = new Roo.XComponent({
                 
                     
                 },
-		 {
+		{
                     xtype : 'Content',
                     xns: Roo.bootstrap.panel,
                     title : "Title Center",

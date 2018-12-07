@@ -75,6 +75,12 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
 
     position: '', // set by wrapper (eg. north/south etc..)
     unrendered_panels : null,  // unrendered panels.
+    
+    tabPosition : false,
+    
+    mgr: false, // points to 'Border'
+    
+    
     createBody : function(){
         /** This region's body element 
         * @type Roo.Element */
@@ -96,15 +102,15 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         /** This region's title element 
         * @type Roo.Element */
     
-        this.titleEl = dh.append(this.el.dom,
-            {
-                    tag: "div",
-                    unselectable: "on",
-                    cls: "roo-unselectable roo-layout-panel-hd breadcrumb roo-layout-title-" + this.position,
-                    children:[
-                        {tag: "span", cls: "roo-unselectable roo-layout-panel-hd-text", unselectable: "on", html: "&#160;"},
-                        {tag: "div", cls: "roo-unselectable roo-layout-panel-hd-tools", unselectable: "on"}
-                    ]}, true);
+        this.titleEl = dh.append(this.el.dom,  {
+                tag: "div",
+                unselectable: "on",
+                cls: "roo-unselectable roo-layout-panel-hd breadcrumb roo-layout-title-" + this.position,
+                children:[
+                    {tag: "span", cls: "roo-unselectable roo-layout-panel-hd-text", unselectable: "on", html: "&#160;"},
+                    {tag: "div", cls: "roo-unselectable roo-layout-panel-hd-tools", unselectable: "on"}
+                ]
+            }, true);
         
         this.titleEl.enableDisplayMode();
         /** This region's title text element 
@@ -209,7 +215,7 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         this.margins = c.margins || this.margins || {top: 0, left: 0, right:0, bottom: 0};
         
         
-        this.bottomTabs = c.tabPosition != "top";
+        this.tabPosition = [ 'top','bottom', 'west'].indexOf(c.tabPosition) > -1 ? c.tabPosition : "top";
         
         this.autoScroll = c.autoScroll || false;
         
@@ -448,11 +454,12 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
         //this.bodyEl.setStyle("overflow", "hidden"); -- this is set in render?
         
         var ts = new Roo.bootstrap.panel.Tabs({
-                el: this.bodyEl.dom,
-                tabPosition: this.bottomTabs ? 'bottom' : 'top',
-                disableTooltips: this.config.disableTabTips,
-                toolbar : this.config.toolbar
-            });
+            el: this.bodyEl.dom,
+            region : this,
+            tabPosition: this.tabPosition ? this.tabPosition  : 'top',
+            disableTooltips: this.config.disableTabTips,
+            toolbar : this.config.toolbar
+        });
         
         if(this.config.hideTabs){
             ts.stripWrap.setDisplayed(false);
