@@ -295,6 +295,11 @@ layout.addxtype({
             delete cfg.items;
         }
         var nb = false;
+	
+	if (cfg.region == 'center') {
+	    Roo.log(cfg.title);
+	}
+	
         
         switch(cfg.xtype) 
         {
