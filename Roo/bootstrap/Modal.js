@@ -472,7 +472,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     {
         this.dialogEl.setWidth(w);
         
-        var diff = this.headerEl.getHeight() + this.footerEl.getHeight() + 30; // dialog margin-bottom: 30  
+        var diff = this.headerEl.getHeight() + this.footerEl.getHeight() + 60; // dialog margin-bottom: 30  
 
         this.bodyEl.setHeight(h - diff);
         
