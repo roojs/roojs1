@@ -3102,7 +3102,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     {
         this.dialogEl.setWidth(w);
         
-        var diff = this.headerEl.getHeight() + this.footerEl.getHeight() + 30; // dialog margin-bottom: 30  
+        var diff = this.headerEl.getHeight() + this.footerEl.getHeight() + 60; // dialog margin-bottom: 30  
 
         this.bodyEl.setHeight(h - diff);
         
@@ -38393,7 +38393,7 @@ Roo.extend(Roo.bootstrap.panel.Tabs, Roo.util.Observable, {
      */
     activate : function(id)
     {
-        Roo.log('activite:'  + id);
+        //Roo.log('activite:'  + id);
         
         var tab = this.items[id];
         if(!tab){
