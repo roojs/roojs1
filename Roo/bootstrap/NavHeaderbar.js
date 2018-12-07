@@ -99,6 +99,12 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
         
         cfg.cls += this.inverse ? ' navbar-inverse navbar-dark bg-dark' : ' navbar-default';
         
+        if (['light','white'].indexOf(this.weight) > -1) {
+	    cfg.cls += ['light','white'].indexOf(this.weight) > -1 ? ' navbar-light' : ' navbar-dark';
+	}
+	cfg.cls += ' bg-' + this.weight;
+        
+        
         if (['fixed-top','fixed-bottom','static-top'].indexOf(this.position)>-1) {
             cfg.cls += ' navbar-' + this.position + ' ' + this.position ;
             

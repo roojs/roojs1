@@ -4020,7 +4020,7 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
         
         var cfg = {
             tag : this.tag || 'div',
-            cls : 'navbar navbar-expand-lg'
+            cls : 'navbar navbar-expand-lg roo-navbar-simple'
         };
 	if (['light','white'].indexOf(this.weight) > -1) {
 	    cfg.cls += ['light','white'].indexOf(this.weight) > -1 ? ' navbar-light' : ' navbar-dark';
@@ -4034,9 +4034,9 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
 	
 	// i'm not actually sure these are really used - normally we add a navGroup to a navbar
 	
-	if (Roo.bootstrap.version == 4) {
-	    return cfg;
-	}
+	//if (Roo.bootstrap.version == 4) {
+	//    return cfg;
+	//}
 	
         cfg.cn = [
             {
@@ -4047,7 +4047,7 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
         
          
         this.type = this.type || 'nav';
-        if (['tabs','pills'].indexOf(this.type)!==-1) {
+        if (['tabs','pills'].indexOf(this.type) != -1) {
             cfg.cn[0].cls += ' nav-' + this.type
         
         
@@ -4061,7 +4061,7 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
         
         
         
-        if (['stacked','justified'].indexOf(this.arrangement)!==-1) {
+        if (['stacked','justified'].indexOf(this.arrangement) != -1) {
             cfg.cn[0].cls += ' nav-' + this.arrangement;
         }
         
@@ -4187,6 +4187,12 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
         });
         
         cfg.cls += this.inverse ? ' navbar-inverse navbar-dark bg-dark' : ' navbar-default';
+        
+        if (['light','white'].indexOf(this.weight) > -1) {
+	    cfg.cls += ['light','white'].indexOf(this.weight) > -1 ? ' navbar-light' : ' navbar-dark';
+	}
+	cfg.cls += ' bg-' + this.weight;
+        
         
         if (['fixed-top','fixed-bottom','static-top'].indexOf(this.position)>-1) {
             cfg.cls += ' navbar-' + this.position + ' ' + this.position ;
@@ -4365,11 +4371,13 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
             cls: 'nav' 
         };
         if (Roo.bootstrap.version == 4) {
-	    if (this.type == 'pills') {
-		cfg.cls = ' nav-pills';
+	    if (['tabs','pills'].indexOf(this.type) != -1) {
+		cfg.cls += ' nav-' + this.type; 
+	    } else {
+		cfg.cls += ' navbar-nav';
 	    }
 	} else {
-	    if (['tabs','pills'].indexOf(this.type)!==-1) {
+	    if (['tabs','pills'].indexOf(this.type) != -1) {
 		cfg.cls += ' nav-' + this.type
 	    } else {
 		if (this.type !== 'nav') {
@@ -4607,6 +4615,8 @@ Roo.apply(Roo.bootstrap.NavGroup, {
  * @extends Roo.bootstrap.Component
  * Bootstrap Navbar.NavItem class
  * @cfg {String} href  link to
+ * @cfg {String} button_weight (default | primary | secondary | success | info | warning | danger | link ) default none
+
  * @cfg {String} html content of button
  * @cfg {String} badge text inside badge
  * @cfg {String} badgecls (bg-green|bg-red|bg-yellow)the extra classes for the badge
@@ -4672,13 +4682,16 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     disabled : false,
     animateRef : false,
     was_active : false,
+    button_weight : '',
+    button_outline : false,
+    
+    navLink: false,
     
     getAutoCreate : function(){
          
         var cfg = {
             tag: this.tag,
             cls: 'nav-item'
-            
         };
         
         if (this.active) {
@@ -4687,6 +4700,27 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         if (this.disabled) {
             cfg.cls += ' disabled';
         }
+	
+	// BS4 only?
+	if (this.button_weight.length) {
+	    cfg.tag = this.href ? 'a' : 'button';
+	    cfg.html = this.html || '';
+	    cfg.cls += ' btn btn' + (this.button_outline ? '-outline' : '') + '-' + this.button_weight;
+	    if (this.href) {
+		cfg.href = this.href;
+	    }
+	    if (this.fa) {
+                cfg.html = '<i class="fa fas fa-'+this.fa+'"></i> <span>' + this.html + '</span>';
+            }
+	    
+	    // menu .. should add dropdown-menu class - so no need for carat..
+	    
+	    if (this.badge !== '') {
+                 
+                cfg.html += ' <span class="badge badge-secondary">' + this.badge + '</span>';
+            }
+	    return cfg;
+	}
         
         if (this.href || this.html || this.glyphicon || this.icon || this.fa) {
             cfg.cn = [
@@ -4700,10 +4734,10 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
 		cfg.cn[0].cls = 'nav-link';
 	    }
             if (this.icon) {
-                cfg.cn[0].html = '<i class="'+this.icon+'"></i> <span>' + cfg.cn[0].html + '</span>'
+                cfg.cn[0].html = '<i class="'+this.icon+'"></i> <span>' + cfg.cn[0].html + '</span>';
             }
 	    if (this.fa) {
-                cfg.cn[0].html = '<i class="fa fas fa-'+this.fa+'"></i> <span>' + cfg.cn[0].html + '</span>'
+                cfg.cn[0].html = '<i class="fa fas fa-'+this.fa+'"></i> <span>' + cfg.cn[0].html + '</span>';
             }
             if(this.glyphicon) {
                 cfg.cn[0].html = '<span class="glyphicon glyphicon-' + this.glyphicon + '"></span> '  + cfg.cn[0].html;
@@ -4732,7 +4766,9 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
 	    this.tag = 'div';
 	}
 	
-        return Roo.bootstrap.NavItem.superclass.onRender.call(this, ct, position);
+        var ret = Roo.bootstrap.NavItem.superclass.onRender.call(this, ct, position);
+	this.navLink = this.el.select('.nav-link',true).first();
+	return ret;
     },
       
     
@@ -4837,8 +4873,14 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         
         if (!state ) {
             this.el.removeClass('active');
+	    this.navLink ? this.navLink.removeClass('active') : false;
         } else if (!this.el.hasClass('active')) {
+	    
             this.el.addClass('active');
+	    if (Roo.bootstrap.version == 4 && this.navLink ) {
+		this.navLink.addClass('active');
+	    }
+	    
         }
         if (fire) {
             this.fireEvent('changed', this, state);
@@ -18317,7 +18359,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     {
         if(this.transition || typeof(pan) == 'undefined'){
             Roo.log("waiting for the transitionend");
-            return;
+            return false;
         }
         
         if (typeof(pan) == 'number') {
@@ -18349,22 +18391,28 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
         if (this.carousel && typeof(Roo.get(document.body).dom.style.transition) != 'undefined') {
             
+            //class="carousel-item carousel-item-next carousel-item-left"
+            
             this.transition = true;
             var dir = this.indexOfPanel(pan) > this.indexOfPanel(cur)  ? 'next' : 'prev';
             var lr = dir == 'next' ? 'left' : 'right';
             pan.el.addClass(dir); // or prev
+            pan.el.addClass('carousel-item-' + dir); // or prev
             pan.el.dom.offsetWidth; // find the offset with - causing a reflow?
             cur.el.addClass(lr); // or right
             pan.el.addClass(lr);
+            cur.el.addClass('carousel-item-' +lr); // or right
+            pan.el.addClass('carousel-item-' +lr);
+            
             
             var _this = this;
             cur.el.on('transitionend', function() {
                 Roo.log("trans end?");
                 
-                pan.el.removeClass([lr,dir]);
+                pan.el.removeClass([lr,dir, 'carousel-item-' + lr, 'carousel-item-' + dir]);
                 pan.setActive(true);
                 
-                cur.el.removeClass([lr]);
+                cur.el.removeClass([lr, 'carousel-item-' + lr]);
                 cur.setActive(false);
                 
                 _this.transition = false;
@@ -18556,10 +18604,12 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
     href : '',
     
     getAutoCreate : function(){
-        var cfg = {
+        
+	
+	var cfg = {
             tag: 'div',
             // item is needed for carousel - not sure if it has any effect otherwise
-            cls: 'tab-pane item' + ((this.href.length) ? ' clickable ' : ''),
+            cls: 'carousel-item tab-pane item' + ((this.href.length) ? ' clickable ' : ''),
             html: this.html || ''
         };
         
@@ -18571,6 +18621,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
             cfg.tabId = this.tabId;
         }
         
+	
         
         return cfg;
     },

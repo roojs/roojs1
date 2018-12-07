@@ -10,6 +10,8 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap Navbar.NavItem class
  * @cfg {String} href  link to
+ * @cfg {String} button_weight (default | primary | secondary | success | info | warning | danger | link ) default none
+
  * @cfg {String} html content of button
  * @cfg {String} badge text inside badge
  * @cfg {String} badgecls (bg-green|bg-red|bg-yellow)the extra classes for the badge
@@ -75,13 +77,16 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     disabled : false,
     animateRef : false,
     was_active : false,
+    button_weight : '',
+    button_outline : false,
+    
+    navLink: false,
     
     getAutoCreate : function(){
          
         var cfg = {
             tag: this.tag,
             cls: 'nav-item'
-            
         };
         
         if (this.active) {
@@ -90,6 +95,27 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         if (this.disabled) {
             cfg.cls += ' disabled';
         }
+	
+	// BS4 only?
+	if (this.button_weight.length) {
+	    cfg.tag = this.href ? 'a' : 'button';
+	    cfg.html = this.html || '';
+	    cfg.cls += ' btn btn' + (this.button_outline ? '-outline' : '') + '-' + this.button_weight;
+	    if (this.href) {
+		cfg.href = this.href;
+	    }
+	    if (this.fa) {
+                cfg.html = '<i class="fa fas fa-'+this.fa+'"></i> <span>' + this.html + '</span>';
+            }
+	    
+	    // menu .. should add dropdown-menu class - so no need for carat..
+	    
+	    if (this.badge !== '') {
+                 
+                cfg.html += ' <span class="badge badge-secondary">' + this.badge + '</span>';
+            }
+	    return cfg;
+	}
         
         if (this.href || this.html || this.glyphicon || this.icon || this.fa) {
             cfg.cn = [
@@ -103,10 +129,10 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
 		cfg.cn[0].cls = 'nav-link';
 	    }
             if (this.icon) {
-                cfg.cn[0].html = '<i class="'+this.icon+'"></i> <span>' + cfg.cn[0].html + '</span>'
+                cfg.cn[0].html = '<i class="'+this.icon+'"></i> <span>' + cfg.cn[0].html + '</span>';
             }
 	    if (this.fa) {
-                cfg.cn[0].html = '<i class="fa fas fa-'+this.fa+'"></i> <span>' + cfg.cn[0].html + '</span>'
+                cfg.cn[0].html = '<i class="fa fas fa-'+this.fa+'"></i> <span>' + cfg.cn[0].html + '</span>';
             }
             if(this.glyphicon) {
                 cfg.cn[0].html = '<span class="glyphicon glyphicon-' + this.glyphicon + '"></span> '  + cfg.cn[0].html;
@@ -135,7 +161,9 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
 	    this.tag = 'div';
 	}
 	
-        return Roo.bootstrap.NavItem.superclass.onRender.call(this, ct, position);
+        var ret = Roo.bootstrap.NavItem.superclass.onRender.call(this, ct, position);
+	this.navLink = this.el.select('.nav-link',true).first();
+	return ret;
     },
       
     
@@ -240,8 +268,14 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         
         if (!state ) {
             this.el.removeClass('active');
+	    this.navLink ? this.navLink.removeClass('active') : false;
         } else if (!this.el.hasClass('active')) {
+	    
             this.el.addClass('active');
+	    if (Roo.bootstrap.version == 4 && this.navLink ) {
+		this.navLink.addClass('active');
+	    }
+	    
         }
         if (fire) {
             this.fireEvent('changed', this, state);

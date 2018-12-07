@@ -62,7 +62,7 @@
     position: absolute;
     display: block;
     top: 50%;
-    color: $body-bg;
+    color: $dark;
     z-index: 100;
     cursor: pointer;
     padding: 10px;
@@ -74,7 +74,7 @@
     position: absolute;
     display: block;
     top: 50%;
-    color: $body-bg;
+    color: $dark;
     z-index: 100;
     cursor: pointer;
     padding: 10px;
@@ -90,3 +90,19 @@
 .carousel-inner .tab-pane.clickable {
     cursor: pointer;
 }
+
+
+.tab-content {
+    > .carousel-inner {
+                
+        padding: 16px 35px;
+        background: $light;
+        > .tab-pane {
+          display: none;
+        }
+        > .active {
+          display: block;
+        }
+    }
+}
+

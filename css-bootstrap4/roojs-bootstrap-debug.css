@@ -555,7 +555,7 @@ table.fc-border-separate {
   position: absolute;
   display: block;
   top: 50%;
-  color: #fff;
+  color: #343a40;
   z-index: 100;
   cursor: pointer;
   padding: 10px;
@@ -566,7 +566,7 @@ table.fc-border-separate {
   position: absolute;
   display: block;
   top: 50%;
-  color: #fff;
+  color: #343a40;
   z-index: 100;
   cursor: pointer;
   padding: 10px;
@@ -578,6 +578,16 @@ table.fc-border-separate {
 }
 .carousel-inner .tab-pane.clickable {
   cursor: pointer;
+}
+.tab-content > .carousel-inner {
+  padding: 16px 35px;
+  background: #f8f9fa;
+}
+.tab-content > .carousel-inner > .tab-pane {
+  display: none;
+}
+.tab-content > .carousel-inner > .active {
+  display: block;
 }
 /*
  *
@@ -2512,6 +2522,7 @@ table td .navbar {
 }
 /** not sure if these are needed with is-valid / is-invalid.. */
 /*
+ * DISABLED probably needs deleting...
  .roo-radio-set.has-warning {
  .roo-radio-set-items label,
  .roo-radio-set-label {
