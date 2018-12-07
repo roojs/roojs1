@@ -48,7 +48,7 @@ Roo.bootstrap.Modal = function(config){
          * @param {Roo.bootstrap.Modal} this
          * @param {Roo.EventObject} e
          */
-        "resize" : true,
+        "close" : true
     });
     this.buttons = this.buttons || [];
 
