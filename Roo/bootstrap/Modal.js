@@ -187,7 +187,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         if(this.specificTitle){
             title = this.title;
 
-        };
+        }
 
         var header = [];
         if (this.allow_close && Roo.bootstrap.version == 3) {
@@ -279,17 +279,13 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     initEvents : function()
     {
         if (this.allow_close) {
-            this.closeEl.on('click', this.onClosePress, this);
+            this.closeEl.on('click', this.hide, this);
         }
         Roo.EventManager.onWindowResize(this.resize, this, true);
 
 
     },
-    
-    onClosePress : function()
-    {
-        
-    },
+  
 
     resize : function()
     {
