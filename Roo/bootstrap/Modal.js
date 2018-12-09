@@ -296,8 +296,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         if (this.fitwindow) {
             
-            var view_height = Roo.lib.Dom.getViewportHeight(true);
-            
+           
             this.setSize(
                 this.width || Roo.lib.Dom.getViewportWidth(true) - 30,
                 this.height || Roo.lib.Dom.getViewportHeight(true) // catering margin-top 30 margin-bottom 30
@@ -361,7 +360,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         Roo.get(document.body).addClass('modal-open');
  
         if(this.animate){  // element has 'fade'  - so stuff happens after .3s ?- not sure why the delay?
-            var _this = this;
+            
             (function(){
                 this.el.addClass('show');
                 this.el.addClass('in');
