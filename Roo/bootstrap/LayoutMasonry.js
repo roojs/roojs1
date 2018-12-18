@@ -242,7 +242,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         this.colWidth = boxWidth + avail - this.padWidth;
         
         this.unitWidth = Math.round((this.colWidth - (this.gutter * 2)) / 3);
-        
         this.unitHeight = this.boxHeight > 0 ? this.boxHeight  : this.unitWidth;
     },
     
@@ -640,8 +639,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var pos = this.el.getBox(true);
         var x = pos.x;
         var y = pos.y;
-        Roo.log(pos);
-        alert(JSON.stringify(pos));
         var maxY = [];
         
         for (var i = 0; i < this.cols; i++){
