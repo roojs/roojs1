@@ -301,8 +301,9 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 tag: 'iframe',
                 cls: 'masonry-brick-image-view',
                 src: vurl,
-                frameborder : 2,
-                allowfullscreen : true
+                frameborder : 0,
+                allowfullscreen : true,
+                style: "border: 5px dotted green;"
             });
         }
         
