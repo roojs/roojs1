@@ -303,8 +303,8 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 src: vurl,
                 frameborder : 1,
                 allowfullscreen : true,
-                width: '530px',
-                height: '348px'
+                width: 530,
+                height: 348
             });
         }
         
