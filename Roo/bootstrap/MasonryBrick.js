@@ -90,7 +90,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             return this.getSplitAutoCreate();
         }
         
-        var cls = 'masonry-brick masonry-brick-full embed-responsive';
+        var cls = 'masonry-brick masonry-brick-full';
         
         if(this.href.length){
             cls += ' masonry-brick-link';
@@ -194,7 +194,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             // youtube support only?
             cfg.cn.push({
                 tag: 'iframe',
-                cls: 'masonry-brick-image-view embed-responsive-item',
+                cls: 'masonry-brick-image-view',
                 src: vurl,
                 frameborder : 0,
                 allowfullscreen : true
