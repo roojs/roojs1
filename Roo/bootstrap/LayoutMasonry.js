@@ -651,7 +651,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             Roo.each(box, function(b,kk){
                 
-//                b.el.position('absolute');
+                b.el.position('absolute');
                 
                 var width = Math.floor(this.unitWidth * b.x + (this.gutter * (b.x - 1)) + b.el.getPadding('lr'));
                 var height = Math.floor(this.unitHeight * b.y + (this.gutter * (b.y - 1)) + b.el.getPadding('tb'));
