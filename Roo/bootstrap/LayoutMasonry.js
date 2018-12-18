@@ -667,6 +667,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 b.el.select('iframe',true).setSize(width,height);
                 
                 if(k == 0) {
+                    console.log(b.el.getStyles());
                     alert(JSON.stringify(b.el.getStyles()));
                 }
                 
