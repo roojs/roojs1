@@ -303,6 +303,8 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 src: vurl,
                 frameborder : 0,
                 allowfullscreen : true
+                
+                
             });
         }
         
