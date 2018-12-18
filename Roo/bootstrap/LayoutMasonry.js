@@ -152,7 +152,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         this.selectedBrick = [];
         
         this.currentSize = this.el.getBox(true);
-        
+        alert(this.currentSize);
         Roo.EventManager.onWindowResize(this.resize, this); 
 
         if(!this.isAutoInitial){
