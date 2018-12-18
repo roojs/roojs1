@@ -661,13 +661,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                     height = Math.floor(this.unitHeight * (b.y - 1) + (this.gutter * (b.y - 2)) + b.el.getPadding('tb'));
                 }
                 
-                if(!b.videourl || !b.videourl.length) {
-                    b.el.setWidth(width);
-                    b.el.setHeight(height);
-                }
-//                
-//                b.el.setWidth(width);
-//                b.el.setHeight(height);
+                b.el.setWidth(width);
+                b.el.setHeight(height);
                 // iframe?
                 b.el.select('iframe',true).setSize(width,height);
                 
