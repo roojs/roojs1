@@ -90,7 +90,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             return this.getSplitAutoCreate();
         }
         
-        var cls = 'masonry-brick masonry-brick-full embed-responsive embed-responsive-16by9';
+        var cls = 'masonry-brick masonry-brick-full embed-responsive';
         
         if(this.href.length){
             cls += ' masonry-brick-link';
