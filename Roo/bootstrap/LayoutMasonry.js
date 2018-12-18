@@ -651,10 +651,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             Roo.each(box, function(b,kk){
                 
-                if(b.videourl && b.videourl.length) {
-                    
-                }
-                
                 b.el.position('absolute');
                 
                 var width = Math.floor(this.unitWidth * b.x + (this.gutter * (b.x - 1)) + b.el.getPadding('lr'));
@@ -663,6 +659,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 if(b.size == 'md-left' || b.size == 'md-right'){
                     width = Math.floor(this.unitWidth * (b.x - 1) + (this.gutter * (b.x - 2)) + b.el.getPadding('lr'));
                     height = Math.floor(this.unitHeight * (b.y - 1) + (this.gutter * (b.y - 2)) + b.el.getPadding('tb'));
+                }
+                
+                if(b.videourl && b.videourl.length) {
+                    alert([width, height]);
                 }
                 
                 b.el.setWidth(width);
