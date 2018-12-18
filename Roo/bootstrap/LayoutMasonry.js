@@ -115,7 +115,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             tag: this.tag,
             cls: 'blog-masonary-wrapper ' + this.cls,
             cn : {
-                cls : 'mas-boxes masonary'
+                cls : 'mas-boxes masonary test'
             }
         };
         
