@@ -194,7 +194,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             // youtube support only?
             cfg.cn.push({
                 tag: 'iframe',
-                cls: 'masonry-brick-image-view',
+                cls: 'masonry-brick-image-view embed-responsive embed-responsive-16by9',
                 src: vurl,
                 frameborder : 0,
                 allowfullscreen : true
