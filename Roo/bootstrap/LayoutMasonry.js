@@ -651,7 +651,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             
             Roo.each(box, function(b,kk){
                 
-                Roo.log(b);
+                if(b.videourl && b.videourl.length) {
+                    
+                }
+                
                 b.el.position('absolute');
                 
                 var width = Math.floor(this.unitWidth * b.x + (this.gutter * (b.x - 1)) + b.el.getPadding('lr'));
