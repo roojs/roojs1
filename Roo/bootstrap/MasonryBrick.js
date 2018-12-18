@@ -302,7 +302,9 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 cls: 'masonry-brick-image-view',
                 src: vurl,
                 frameborder : 0,
-                allowfullscreen : true
+                allowfullscreen : true,
+                width: '530px',
+                height: '348px'
             });
         }
         
