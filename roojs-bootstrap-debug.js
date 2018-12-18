@@ -2671,14 +2671,7 @@ Roo.bootstrap.Modal = function(config){
          * @param {Roo.bootstrap.Modal} this
          * @param {Roo.EventObject} e
          */
-        "resize" : true,
-         /**
-         * @event close
-         * Fire when the top 'x' close button is pressed.
-         * @param {Roo.bootstrap.Modal} this
-         * @param {Roo.EventObject} e
-         */
-        "close" : true
+        "resize" : true
     });
     this.buttons = this.buttons || [];
 
