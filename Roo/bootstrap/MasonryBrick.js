@@ -193,7 +193,7 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             var vurl = this.videourl.replace(/https:\/\/youtu\.be/, 'https://www.youtube.com/embed/');
             // youtube support only?
             cfg.cn.push({
-                tag: 'iframe',
+                tag: 'iframe?',
                 cls: 'masonry-brick-image-view',
                 src: vurl,
                 frameborder : 0,
