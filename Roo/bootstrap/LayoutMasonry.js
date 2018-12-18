@@ -662,6 +662,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 }
                 
                 if(b.videourl && b.videourl.length) {
+                    console.log([width, height]);
                     alert([width, height]);
                 }
                 
