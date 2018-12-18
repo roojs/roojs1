@@ -299,11 +299,10 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             // youtube support only?
             cfg.cn[0].cn.cn.push({
                 tag: 'iframe',
-                cls: 'masonry-brick-image-view',
+                cls: 'masonry-brick-image-view1',
                 src: vurl,
-                frameborder : 5,
-                allowfullscreen : true,
-                style: "border: 5px dotted green;"
+                frameborder : 0,
+                allowfullscreen : true
             });
         }
         
