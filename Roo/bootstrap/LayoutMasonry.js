@@ -666,12 +666,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 // iframe?
                 b.el.select('iframe',true).setSize(width,height);
                 
-                if(k == 0) {
-                    console.log(b.el.getWidth());
-                    alert(JSON.stringify(b.el.getWidth()));
-                }
-                
-                
             }, this);
             
             for (var i = 0; i < this.cols; i++){
