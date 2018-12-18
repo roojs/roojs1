@@ -194,11 +194,10 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
             // youtube support only?
             cfg.cn.push({
                 tag: 'iframe',
-                cls: 'masonry-brick-image-view iframe',
+                cls: 'masonry-brick-image-view',
                 src: vurl,
                 frameborder : 0,
-                allowfullscreen : true,
-                style: 'order: 5px dotted green;'
+                allowfullscreen : true
             });
         }
         
@@ -304,8 +303,6 @@ Roo.extend(Roo.bootstrap.MasonryBrick, Roo.bootstrap.Component,  {
                 src: vurl,
                 frameborder : 0,
                 allowfullscreen : true
-                
-                
             });
         }
         
