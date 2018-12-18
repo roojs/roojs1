@@ -226,7 +226,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         if(this.containerWidth < this.boxWidth){
             boxWidth = this.containerWidth
         }
-        alert(boxWidth);
+        
         var containerWidth = this.containerWidth;
         
         var cols = Math.floor(containerWidth / boxWidth);
