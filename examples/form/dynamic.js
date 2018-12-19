@@ -305,7 +305,7 @@ Roo.onReady(function(){
     mform.addButton('Save');
     mform.addButton('Cancel');
 
-   
+   /*
     mform.render('form-ct2');
     mform.setValues({
         country  : 'AK,LA',
@@ -313,6 +313,7 @@ Roo.onReady(function(){
         countrylist  : 'AG,AZ',
         countrylist_names : 'Antigua and Barbuda,Azerbaijan'        
     });
+    */
     /*
      * ================  Form 3  =======================
      */
