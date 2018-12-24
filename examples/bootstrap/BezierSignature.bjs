@@ -1,0 +1,32 @@
+{
+ "name" : "BezierSignature",
+ "parent" : "",
+ "title" : "BezierSignature",
+ "path" : "/home/veridate/gitlive/roojs1/examples/bootstrap/BezierSignature.bjs",
+ "permname" : "",
+ "modOrder" : "001",
+ "items" : [
+  {
+   "xtype" : "Body",
+   "$ xns" : "Roo.bootstrap",
+   "items" : [
+    {
+     "listeners" : {
+      "render" : "function (_self)\n{\n    _this.ctn = this;\n}"
+     },
+     "xtype" : "Container",
+     "$ xns" : "Roo.bootstrap",
+     "items" : [
+      {
+       "listeners" : {
+        "render" : "function (_self)\n{\n    _this.sign = this;\n}"
+       },
+       "xtype" : "BezierSignature",
+       "$ xns" : "Roo.bootstrap"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

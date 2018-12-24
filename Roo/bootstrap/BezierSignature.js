@@ -17,17 +17,6 @@
 
 Roo.bootstrap.BezierSignature = function(config){
     Roo.bootstrap.BezierSignature.superclass.constructor.call(this, config);
-    
-    this.addEvents({
-        // raw events
-        /**
-         * @event click
-         * When a Brick is click
-         * @param {Roo.bootstrap.Brick} this
-         * @param {Roo.EventObject} e
-         */
-        "click" : true
-    });
 };
 
 Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
@@ -182,7 +171,7 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
                     cn: [
                         {
                             tag: 'canvas',
-                            cls: 'roo-signature-footer'
+                            cls: 'roo-signature-body-canvas'
                         }
                     ]
                 }
@@ -194,12 +183,18 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
+        Roo.bootstrap.BezierSignature.superclass.initEvents.call(this);
         // assign all object in here...
     },
     
     isValid: function()
     {
         // form cannot detect...
+    },
+    
+    canvasEl: function()
+    {
+        // catching canvas
     }
     
 });
