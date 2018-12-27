@@ -11800,6 +11800,8 @@ Roo.extend(Roo.data.Connection, Roo.util.Observable, {
     
     doFormDataUpload : function(o, ps, url)
     {
+        
+        form.enctype = form.encoding = 'multipart/form-data';
         var formData = o.formData === true ? new FormData(Roo.getDom(o.form)) : o.formData;
       
         var cb = {
