@@ -342,7 +342,7 @@ Roo.extend(Roo.data.Connection, Roo.util.Observable, {
         var formData = new FormData(Roo.getDom(o.form));
         
          
-         var cb = {
+        var cb = {
             success: this.handleResponse,
             failure: this.handleFailure,
             scope: this,
