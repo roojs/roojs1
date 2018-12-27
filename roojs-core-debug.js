@@ -11820,9 +11820,10 @@ Roo.extend(Roo.data.Connection, Roo.util.Observable, {
             this.abort();
         }
 
-        Roo.lib.Ajax.defaultPostHeader = undefined;
+        //Roo.lib.Ajax.defaultPostHeader = null;
+        Roo.lib.Ajax.useDefaultHeader = false;
         this.transId = Roo.lib.Ajax.request( "POST", url, cb, o.formData, o);
-        Roo.lib.Ajax.defaultPostHeader = 'application/x-www-form-urlencoded';
+        Roo.lib.Ajax.useDefaultHeader = true;
  
          
     }
