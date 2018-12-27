@@ -41522,7 +41522,9 @@ Roo.bootstrap.BezierSignature = function(config){
 
 Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
     
-    _data: [], 
+    _data: [],
+    
+    _isEmpty: true,
     
     _mouseButtonDown: true,
     
@@ -41554,7 +41556,7 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
     /**
      * @cfg(string) Color used to clear the background. Can be any color format accepted by context.fillStyle. Defaults to "rgba(0,0,0,0)" (transparent black). Use a non-transparent color e.g. "rgb(255,255,255)" (opaque white) if you'd like to save signatures as JPEG images.
      */
-    backgroundColor: 'rgba(0,0,0,0)',
+    backgroundColor: 'rgba(0, 0, 0, 0)',
     
     /**
      * @cfg(string) Color used to draw the lines. Can be any color format accepted by context.fillStyle. Defaults to "black".
@@ -41610,13 +41612,13 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
         
         var canvas = this.canvasEl();
         
+        // mouse && touch event swapping...
         canvas.dom.style.touchAction = 'none';
         canvas.dom.style.msTouchAction = 'none';
         
         this._mouseButtonDown = false;
         canvas.on('mousedown', this._handleMouseDown, this);
         canvas.on('mousemove', this._handleMouseMove, this);
-        // catching mouseup for whole doc... any better way to catch it
         Roo.select('html').first().on('mouseup', this._handleMouseUp, this);
         
         if (window.ontouchstart) {
@@ -41625,7 +41627,7 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
             canvas.on('touchend', this._handleTouchEnd, this);
         }
         
-        // this.canvas.on('click', this.onClick, this);
+        this.clear();
     },
     
     _handleMouseDown: function(e)
@@ -41647,6 +41649,33 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
     {
         if (e.browserEvent.which === 1 && this._mouseButtonDown) {
             this._mouseButtonDown = false;
+            this.strokeEnd(e);
+        }
+    },
+    
+    _handleTouchStart: function (e) {
+        e.preventDefault();
+        if (e.browserEvent.targetTouches.length === 1) {
+            // var touch = e.browserEvent.changedTouches[0];
+            // this.strokeBegin(touch);
+            
+             this.strokeBegin(e); // assume e catching the correct xy...
+        }
+    },
+    
+    _handleTouchMove: function (e) {
+        e.preventDefault();
+        // var touch = event.targetTouches[0];
+        // _this._strokeMoveUpdate(touch);
+        this._strokeMoveUpdate(e);
+    },
+    
+    _handleTouchEnd: function (e) {
+        var wasCanvasTouched = e.target === this.canvasEl().dom;
+        if (wasCanvasTouched) {
+            e.preventDefault();
+            // var touch = event.changedTouches[0];
+            // _this._strokeEnd(touch);
             this.strokeEnd(e);
         }
     },
@@ -41689,7 +41718,7 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
     strokeUpdate: function(e)
     {
         var rect = this.canvasEl().dom.getBoundingClientRect();
-        var point = new this.Point(e.browserEvent.clientX - rect.left, e.browserEvent.clientY - rect.top, new Date().getTime());
+        var point = new this.Point(e.xy[0] - rect.left, e.xy[1] - rect.top, new Date().getTime());
         var lastPointGroup = this._data[this._data.length - 1];
         var lastPoints = lastPointGroup.points;
         var lastPoint = lastPoints.length > 0 && lastPoints[lastPoints.length - 1];
@@ -41798,9 +41827,16 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
         this._isEmpty = false;
     },
     
-    isValid: function()
+    clear: function()
     {
-        // form cannot detect...
+        var ctx = this.canvasElCtx();
+        var canvas = this.canvasEl().dom;
+        ctx.fillStyle = this.backgroundColor;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        this._data = [];
+        this.reset();
+        this._isEmpty = true;
     },
     
     canvasEl: function()
@@ -41811,6 +41847,27 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
     canvasElCtx: function()
     {
         return this.el.select('canvas',true).first().dom.getContext('2d');
+    },
+    
+    getImage: function(type)
+    {
+        if(this._isEmpty) {
+            return false;
+        }
+        
+        // encryption ?
+        return this.canvasEl().dom.toDataURL('image/'+type, false);
+    },
+    
+    drawFromImage: function(img_src)
+    {
+        var img = new Image();
+        
+        img.src = img_src;
+        
+        Roo.log(img);
+        
+        this.canvasElCtx().drawImage(img, 0, 0);
     },
     
     // Bezier Point Constructor
