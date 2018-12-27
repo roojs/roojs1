@@ -344,9 +344,7 @@ Roo.extend(Roo.data.Connection, Roo.util.Observable, {
     
     doFormDataUpload : function(o, ps, url){
          
-        var formData = o.formdata; //new FormData(Roo.getDom(o.form));
-        
-         
+      
         var cb = {
             success: this.handleResponse,
             failure: this.handleFailure,
@@ -368,7 +366,7 @@ Roo.extend(Roo.data.Connection, Roo.util.Observable, {
         }
 
        
-        this.transId = Roo.lib.Ajax.request(method, url, cb, formData, o);
+        this.transId = Roo.lib.Ajax.request(method, url, cb, o.formData, o);
  
  
          
