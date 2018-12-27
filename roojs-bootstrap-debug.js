@@ -41518,6 +41518,9 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
 
 Roo.bootstrap.BezierSignature = function(config){
     Roo.bootstrap.BezierSignature.superclass.constructor.call(this, config);
+    this.addEvents({
+        "resize" : true
+    });
 };
 
 Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
@@ -41527,6 +41530,11 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
     _isEmpty: true,
     
     _mouseButtonDown: true,
+    
+    /**
+     * @cfg(int) canvas height
+     */
+    canvas_height: '200px',
     
     /**
      * @cfg(float or function) Radius of a single dot.
@@ -41580,10 +41588,23 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
     
     getAutoCreate : function()
     {
-        var cls = 'roo-signature';
+        var cls = 'roo-signature column';
         
         if(this.cls){
             cls += ' ' + this.cls;
+        }
+        
+        var col_sizes = [
+            'lg',
+            'md',
+            'sm',
+            'xs'
+        ];
+        
+        for(var i = 0; i < col_sizes.length; i++) {
+            if(this[col_sizes[i]]) {
+                cls += " col-"+col_sizes[i]+"-"+this[col_sizes[i]];
+            }
         }
         
         var cfg = {
@@ -41596,7 +41617,9 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
                     cn: [
                         {
                             tag: 'canvas',
-                            cls: 'roo-signature-body-canvas'
+                            cls: 'roo-signature-body-canvas',
+                            height: this.canvas_height,
+                            width: this.canvas_width
                         }
                     ]
                 }
@@ -41627,7 +41650,17 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
             canvas.on('touchend', this._handleTouchEnd, this);
         }
         
+        if(this.resize_to_parent_width) {
+            Roo.EventManager.onWindowResize(this.resize, this, true);
+        }
+        
         this.clear();
+        
+        this.resize();
+    },
+    
+    resize: function(){
+        this.canvasEl().dom.width = this.el.dom.offsetWidth;
     },
     
     _handleMouseDown: function(e)
@@ -41864,8 +41897,6 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
         var img = new Image();
         
         img.src = img_src;
-        
-        Roo.log(img);
         
         this.canvasElCtx().drawImage(img, 0, 0);
     },
