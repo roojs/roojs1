@@ -355,8 +355,6 @@ Roo.extend(Roo.data.Connection, Roo.util.Observable, {
 
         var method =   "POST";
 
-         
-
         if(typeof o.autoAbort == 'boolean'){ // options gets top priority
             if(o.autoAbort){
                 this.abort();
