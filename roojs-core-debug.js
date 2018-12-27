@@ -11612,6 +11612,11 @@ Roo.extend(Roo.data.Connection, Roo.util.Observable, {
                 url = url || form.action;
 
                 var enctype = form.getAttribute("enctype");
+                
+                if (o.formData) {
+                    return this.doFormDataUpload(o,p,url);
+                }
+                
                 if(o.isUpload || (enctype && enctype.toLowerCase() == 'multipart/form-data')){
                     return this.doFormUpload(o, p, url);
                 }
@@ -11789,7 +11794,37 @@ Roo.extend(Roo.data.Connection, Roo.util.Observable, {
                 form.removeChild(hiddens[i]);
             }
         }
+    },
+    // this is a 'formdata version???'
+    
+    
+    doFormDataUpload : function(o, ps, url)
+    {
+        var formData = o.formData === true ? new FormData(Roo.getDom(o.form)) : o.formData;
+      
+        var cb = {
+            success: this.handleResponse,
+            failure: this.handleFailure,
+            scope: this,
+            argument: {options: o},
+            timeout : o.timeout || this.timeout
+        };
+ 
+        if(typeof o.autoAbort == 'boolean'){ // options gets top priority
+            if(o.autoAbort){
+                this.abort();
+            }
+        }else if(this.autoAbort !== false){
+            this.abort();
+        }
+
+       
+        this.transId = Roo.lib.Ajax.request( "POST", url, cb, o.formData, o);
+ 
+ 
+         
     }
+    
 });
 /*
  * Based on:
