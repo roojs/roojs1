@@ -352,9 +352,7 @@ Roo.extend(Roo.data.Connection, Roo.util.Observable, {
             argument: {options: o},
             timeout : o.timeout || this.timeout
         };
-
-        var method =   "POST";
-
+ 
         if(typeof o.autoAbort == 'boolean'){ // options gets top priority
             if(o.autoAbort){
                 this.abort();
@@ -364,7 +362,7 @@ Roo.extend(Roo.data.Connection, Roo.util.Observable, {
         }
 
        
-        this.transId = Roo.lib.Ajax.request(method, url, cb, o.formData, o);
+        this.transId = Roo.lib.Ajax.request( "POST", url, cb, o.formData, o);
  
  
          
