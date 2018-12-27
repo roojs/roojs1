@@ -41865,8 +41865,6 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
         
         img.src = img_src;
         
-        Roo.log(img);
-        
         this.canvasElCtx().drawImage(img, 0, 0);
     },
     
