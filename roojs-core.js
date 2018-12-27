@@ -486,7 +486,7 @@ hd.name=k;hd.value=ps[k];C.appendChild(hd);D.push(hd);}}}function cb(){var r={re
 }if(F&&F.XMLDocument){r.responseXML=F.XMLDocument;}else{r.responseXML=F;}}catch(e){}Roo.EventManager.removeListener(B,'load',cb,this);this.fireEvent("requestcomplete",this,r,o);Roo.callback(o.success,o.scope,[r,o]);Roo.callback(o.callback,o.scope,[o,true,r]);
 setTimeout(function(){document.body.removeChild(B);},100);}Roo.EventManager.on(B,'load',cb,this);C.submit();if(D){for(var i=0,E=D.length;i<E;i++){C.removeChild(D[i]);}}},doFormDataUpload:function(o,ps,A){var B=Roo.getDom(o.form);B.enctype=B.encoding='multipart/form-data';
 var C=o.formData===true?new FormData(B):o.formData;var cb={success:this.handleResponse,failure:this.handleFailure,scope:this,argument:{options:o},timeout:o.timeout||this.timeout};if(typeof o.autoAbort=='boolean'){if(o.autoAbort){this.abort();}}else if(this.autoAbort!==false){this.abort();
-}this.transId=Roo.lib.Ajax.request("POST",A,cb,o.formData,o);}});
+}Roo.lib.Ajax.defaultPostHeader='multipart/form-data';this.transId=Roo.lib.Ajax.request("POST",A,cb,o.formData,o);Roo.lib.Ajax.defaultPostHeader='application/x-www-form-urlencoded';}});
 // Roo/Ajax.js
 Roo.Ajax=new Roo.data.Connection({autoAbort:false,serializeForm:function(A){return Roo.lib.Ajax.serializeForm(A);}});
 // Roo/UpdateManager.js

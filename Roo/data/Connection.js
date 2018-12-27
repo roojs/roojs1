@@ -364,9 +364,9 @@ Roo.extend(Roo.data.Connection, Roo.util.Observable, {
             this.abort();
         }
 
-       
+        Roo.lib.Ajax.defaultPostHeader = 'multipart/form-data';
         this.transId = Roo.lib.Ajax.request( "POST", url, cb, o.formData, o);
- 
+        Roo.lib.Ajax.defaultPostHeader = 'application/x-www-form-urlencoded';
  
          
     }
