@@ -339,7 +339,7 @@ Roo.extend(Roo.data.Connection, Roo.util.Observable, {
     
     doFormDataUpload : function(o, ps, url){
          
-        var formData = new FormData(Roo.getDom(o.form));
+        var formData = o.formdata; //new FormData(Roo.getDom(o.form));
         
          
         var cb = {
