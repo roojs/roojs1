@@ -333,5 +333,94 @@ Roo.extend(Roo.data.Connection, Roo.util.Observable, {
                 form.removeChild(hiddens[i]);
             }
         }
+    },
+    // this is a 'formdata version???'
+    
+    
+    doFormUploadNew : function(o, ps, url){
+        var id = Roo.id();
+        var frame = document.createElement('iframe');
+        frame.id = id;
+        frame.name = id;
+        frame.className = 'x-hidden';
+        if(Roo.isIE){
+            frame.src = Roo.SSL_SECURE_URL;
+        }
+        document.body.appendChild(frame);
+
+        if(Roo.isIE){
+           document.frames[id].name = id;
+        }
+
+        var form = Roo.getDom(o.form);
+        form.target = id;
+        form.method = 'POST';
+        form.enctype = form.encoding = 'multipart/form-data';
+        if(url){
+            form.action = url;
+        }
+
+        var hiddens, hd;
+        if(ps){ // add dynamic params
+            hiddens = [];
+            ps = Roo.urlDecode(ps, false);
+            for(var k in ps){
+                if(ps.hasOwnProperty(k)){
+                    hd = document.createElement('input');
+                    hd.type = 'hidden';
+                    hd.name = k;
+                    hd.value = ps[k];
+                    form.appendChild(hd);
+                    hiddens.push(hd);
+                }
+            }
+        }
+
+        function cb(){
+            var r = {  // bogus response object
+                responseText : '',
+                responseXML : null
+            };
+
+            r.argument = o ? o.argument : null;
+
+            try { //
+                var doc;
+                if(Roo.isIE){
+                    doc = frame.contentWindow.document;
+                }else {
+                    doc = (frame.contentDocument || window.frames[id].document);
+                }
+                if(doc && doc.body){
+                    r.responseText = doc.body.innerHTML;
+                }
+                if(doc && doc.XMLDocument){
+                    r.responseXML = doc.XMLDocument;
+                }else {
+                    r.responseXML = doc;
+                }
+            }
+            catch(e) {
+                // ignore
+            }
+
+            Roo.EventManager.removeListener(frame, 'load', cb, this);
+
+            this.fireEvent("requestcomplete", this, r, o);
+            Roo.callback(o.success, o.scope, [r, o]);
+            Roo.callback(o.callback, o.scope, [o, true, r]);
+
+            setTimeout(function(){document.body.removeChild(frame);}, 100);
+        }
+
+        Roo.EventManager.on(frame, 'load', cb, this);
+        form.submit();
+
+        if(hiddens){ // remove dynamic params
+            for(var i = 0, len = hiddens.length; i < len; i++){
+                form.removeChild(hiddens[i]);
+            }
+        }
     }
+    
 });
