@@ -156,6 +156,11 @@ Roo.extend(Roo.data.Connection, Roo.util.Observable, {
                 url = url || form.action;
 
                 var enctype = form.getAttribute("enctype");
+                
+                if (o.formData) {
+                    return this.doFormDataUpload(o,p,url);
+                }
+                
                 if(o.isUpload || (enctype && enctype.toLowerCase() == 'multipart/form-data')){
                     return this.doFormUpload(o, p, url);
                 }
