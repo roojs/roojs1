@@ -342,8 +342,9 @@ Roo.extend(Roo.data.Connection, Roo.util.Observable, {
     // this is a 'formdata version???'
     
     
-    doFormDataUpload : function(o, ps, url){
-         
+    doFormDataUpload : function(o, ps, url)
+    {
+        var formData = o.fromData === true ? new FormData(Roo.getDom(o.form));
       
         var cb = {
             success: this.handleResponse,
