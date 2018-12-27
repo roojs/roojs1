@@ -344,7 +344,7 @@ Roo.extend(Roo.data.Connection, Roo.util.Observable, {
     
     doFormDataUpload : function(o, ps, url)
     {
-        var formData = o.fromData === true ? new FormData(Roo.getDom(o.form));
+        var formData = o.formData === true ? new FormData(Roo.getDom(o.form)) : o.formData;
       
         var cb = {
             success: this.handleResponse,
