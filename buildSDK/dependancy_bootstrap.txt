@@ -160,3 +160,5 @@ Roo.bootstrap.PhoneInputData
 Roo.bootstrap.PhoneInput
 
 Roo.bootstrap.MoneyField
+
+Roo.bootstrap.BezierSignature
