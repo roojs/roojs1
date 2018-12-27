@@ -226,7 +226,8 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                 url:this.getUrl(!isPost),
                 method: method,
                 params:isPost ? this.getParams() : null,
-                isUpload: this.form.fileUpload
+                isUpload: this.form.fileUpload,
+                formData : this.form.formData
             }));
             
             this.uploadProgress();
