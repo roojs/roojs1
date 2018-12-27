@@ -41518,20 +41518,13 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
 
 Roo.bootstrap.BezierSignature = function(config){
     Roo.bootstrap.BezierSignature.superclass.constructor.call(this, config);
-    
-    // this.addEvents({
-    //     // raw events
-    //     /**
-    //      * @event click
-    //      * When a Brick is click
-    //      * @param {Roo.bootstrap.Brick} this
-    //      * @param {Roo.EventObject} e
-    //      */
-    //     "click" : true
-    // });
 };
 
 Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
+    
+    _data: [], 
+    
+    _mouseButtonDown: true,
     
     /**
      * @cfg(float or function) Radius of a single dot.
@@ -41583,6 +41576,244 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
      */
     onEnd: false,
     
+    getAutoCreate : function()
+    {
+        var cls = 'roo-signature';
+        
+        if(this.cls){
+            cls += ' ' + this.cls;
+        }
+        
+        var cfg = {
+            tag: 'div',
+            cls: cls,
+            cn: [
+                {
+                    tag: 'div',
+                    cls: 'roo-signature-body',
+                    cn: [
+                        {
+                            tag: 'canvas',
+                            cls: 'roo-signature-body-canvas'
+                        }
+                    ]
+                }
+            ]
+        };
+        
+        return cfg;
+    },
+    
+    initEvents: function() 
+    {
+        Roo.bootstrap.BezierSignature.superclass.initEvents.call(this);
+        
+        var canvas = this.canvasEl();
+        
+        canvas.dom.style.touchAction = 'none';
+        canvas.dom.style.msTouchAction = 'none';
+        
+        this._mouseButtonDown = false;
+        canvas.on('mousedown', this._handleMouseDown, this);
+        canvas.on('mousemove', this._handleMouseMove, this);
+        // catching mouseup for whole doc... any better way to catch it
+        Roo.select('html').first().on('mouseup', this._handleMouseUp, this);
+        
+        if (window.ontouchstart) {
+            canvas.on('touchstart', this._handleTouchStart, this);
+            canvas.on('touchmove', this._handleTouchMove, this);
+            canvas.on('touchend', this._handleTouchEnd, this);
+        }
+        
+        // this.canvas.on('click', this.onClick, this);
+    },
+    
+    _handleMouseDown: function(e)
+    {
+        if (e.browserEvent.which === 1) {
+            this._mouseButtonDown = true;
+            this.strokeBegin(e);
+        }
+    },
+    
+    _handleMouseMove: function (e)
+    {
+        if (this._mouseButtonDown) {
+            this.strokeMoveUpdate(e);
+        }
+    },
+    
+    _handleMouseUp: function (e)
+    {
+        if (e.browserEvent.which === 1 && this._mouseButtonDown) {
+            this._mouseButtonDown = false;
+            this.strokeEnd(e);
+        }
+    },
+    
+    reset: function () {
+        this._lastPoints = [];
+        this._lastVelocity = 0;
+        this._lastWidth = (this.minWidth + this.maxWidth) / 2;
+        this.canvasElCtx().fillStyle = this.penColor;
+    },
+    
+    strokeMoveUpdate: function(e)
+    {
+        this.strokeUpdate(e);
+        
+        if (this.throttle) {
+            this.throttle(this.strokeUpdate, this.throttle);
+        }
+        else {
+            this.strokeUpdate(e);
+        }
+    },
+    
+    strokeBegin: function(e)
+    {
+        var newPointGroup = {
+            color: this.penColor,
+            points: []
+        };
+        
+        if (typeof this.onBegin === 'function') {
+            this.onBegin(e);
+        }
+        
+        this._data.push(newPointGroup);
+        this.reset();
+        this.strokeUpdate(e);
+    },
+    
+    strokeUpdate: function(e)
+    {
+        var rect = this.canvasEl().dom.getBoundingClientRect();
+        var point = new this.Point(e.browserEvent.clientX - rect.left, e.browserEvent.clientY - rect.top, new Date().getTime());
+        var lastPointGroup = this._data[this._data.length - 1];
+        var lastPoints = lastPointGroup.points;
+        var lastPoint = lastPoints.length > 0 && lastPoints[lastPoints.length - 1];
+        var isLastPointTooClose = lastPoint
+            ? point.distanceTo(lastPoint) <= this.minDistance
+            : false;
+        var color = lastPointGroup.color;
+        if (!lastPoint || !(lastPoint && isLastPointTooClose)) {
+            var curve = this.addPoint(point);
+            if (!lastPoint) {
+                this.drawDot({color: color, point: point});
+            }
+            else if (curve) {
+                this.drawCurve({color: color, curve: curve});
+            }
+            lastPoints.push({
+                time: point.time,
+                x: point.x,
+                y: point.y
+            });
+        }
+    },
+    
+    strokeEnd: function(e)
+    {
+        this.strokeUpdate(e);
+        if (typeof this.onEnd === 'function') {
+            this.onEnd(e);
+        }
+    },
+    
+    addPoint:  function (point) {
+        var _lastPoints = this._lastPoints;
+        _lastPoints.push(point);
+        if (_lastPoints.length > 2) {
+            if (_lastPoints.length === 3) {
+                _lastPoints.unshift(_lastPoints[0]);
+            }
+            var widths = this.calculateCurveWidths(_lastPoints[1], _lastPoints[2]);
+            var curve = this.Bezier.fromPoints(_lastPoints, widths, this);
+            _lastPoints.shift();
+            return curve;
+        }
+        return null;
+    },
+    
+    calculateCurveWidths: function (startPoint, endPoint) {
+        var velocity = this.velocityFilterWeight * endPoint.velocityFrom(startPoint) +
+            (1 - this.velocityFilterWeight) * this._lastVelocity;
+
+        var newWidth = Math.max(this.maxWidth / (velocity + 1), this.minWidth);
+        var widths = {
+            end: newWidth,
+            start: this._lastWidth
+        };
+        
+        this._lastVelocity = velocity;
+        this._lastWidth = newWidth;
+        return widths;
+    },
+    
+    drawDot: function (_a) {
+        var color = _a.color, point = _a.point;
+        var ctx = this.canvasElCtx();
+        var width = typeof this.dotSize === 'function' ? this.dotSize() : this.dotSize;
+        ctx.beginPath();
+        this.drawCurveSegment(point.x, point.y, width);
+        ctx.closePath();
+        ctx.fillStyle = color;
+        ctx.fill();
+    },
+    
+    drawCurve: function (_a) {
+        var color = _a.color, curve = _a.curve;
+        var ctx = this.canvasElCtx();
+        var widthDelta = curve.endWidth - curve.startWidth;
+        var drawSteps = Math.floor(curve.length()) * 2;
+        ctx.beginPath();
+        ctx.fillStyle = color;
+        for (var i = 0; i < drawSteps; i += 1) {
+        var t = i / drawSteps;
+        var tt = t * t;
+        var ttt = tt * t;
+        var u = 1 - t;
+        var uu = u * u;
+        var uuu = uu * u;
+        var x = uuu * curve.startPoint.x;
+        x += 3 * uu * t * curve.control1.x;
+        x += 3 * u * tt * curve.control2.x;
+        x += ttt * curve.endPoint.x;
+        var y = uuu * curve.startPoint.y;
+        y += 3 * uu * t * curve.control1.y;
+        y += 3 * u * tt * curve.control2.y;
+        y += ttt * curve.endPoint.y;
+        var width = curve.startWidth + ttt * widthDelta;
+        this.drawCurveSegment(x, y, width);
+        }
+        ctx.closePath();
+        ctx.fill();
+    },
+    
+    drawCurveSegment: function (x, y, width) {
+        var ctx = this.canvasElCtx();
+        ctx.moveTo(x, y);
+        ctx.arc(x, y, width, 0, 2 * Math.PI, false);
+        this._isEmpty = false;
+    },
+    
+    isValid: function()
+    {
+        // form cannot detect...
+    },
+    
+    canvasEl: function()
+    {
+        return this.el.select('canvas',true).first();
+    },
+    
+    canvasElCtx: function()
+    {
+        return this.el.select('canvas',true).first().dom.getContext('2d');
+    },
+    
+    // Bezier Point Constructor
     Point: (function () {
         function Point(x, y, time) {
             this.x = x;
@@ -41603,6 +41834,8 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
         return Point;
     }()),
     
+    
+    // Bezier Constructor
     Bezier: (function () {
         function Bezier(startPoint, control2, control1, endPoint, startWidth, endWidth) {
             this.startPoint = startPoint;
@@ -41612,12 +41845,12 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
             this.startWidth = startWidth;
             this.endWidth = endWidth;
         }
-        Bezier.fromPoints = function (points, widths) {
-            var c2 = this.calculateControlPoints(points[0], points[1], points[2]).c2;
-            var c3 = this.calculateControlPoints(points[1], points[2], points[3]).c1;
+        Bezier.fromPoints = function (points, widths, scope) {
+            var c2 = this.calculateControlPoints(points[0], points[1], points[2], scope).c2;
+            var c3 = this.calculateControlPoints(points[1], points[2], points[3], scope).c1;
             return new Bezier(points[1], c2, c3, points[2], widths.start, widths.end);
         };
-        Bezier.calculateControlPoints = function (s1, s2, s3) {
+        Bezier.calculateControlPoints = function (s1, s2, s3, scope) {
             var dx1 = s1.x - s2.x;
             var dy1 = s1.y - s2.y;
             var dx2 = s2.x - s3.x;
@@ -41633,8 +41866,8 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
             var tx = s2.x - cm.x;
             var ty = s2.y - cm.y;
             return {
-                c1: new Point(m1.x + tx, m1.y + ty),
-                c2: new Point(m2.x + tx, m2.y + ty)
+                c1: new scope.Point(m1.x + tx, m1.y + ty),
+                c2: new scope.Point(m2.x + tx, m2.y + ty)
             };
         };
         Bezier.prototype.length = function () {
@@ -41665,52 +41898,50 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
         return Bezier;
     }()),
     
-    getAutoCreate : function()
-    {
-        Roo.log('runing???');
-        
-        var cls = 'roo-signature';
-        
-        if(this.cls){
-            cls += ' ' + this.cls;
-        }
-        
-        var cfg = {
-            tag: 'div',
-            cls: cls,
-            cn: [
-                {
-                    tag: 'div',
-                    cls: 'roo-signature-body',
-                    cn: [
-                        {
-                            tag: 'canvas',
-                            cls: 'roo-signature-body-canvas'
-                        }
-                    ]
-                }
-            ]
-        };
-        
-        return cfg;
-    },
-    
-    initEvents: function() 
-    {
-        Roo.bootstrap.BezierSignature.superclass.initEvents.call(this);
-        // assign all object in here...
-    },
-    
-    isValid: function()
-    {
-        // form cannot detect...
-    },
-    
-    canvasEl: function()
-    {
-        // catching canvas
-    }
-    
+    throttle: function(fn, wait) {
+      if (wait === void 0) { wait = 250; }
+      var previous = 0;
+      var timeout = null;
+      var result;
+      var storedContext;
+      var storedArgs;
+      var later = function () {
+          previous = Date.now();
+          timeout = null;
+          result = fn.apply(storedContext, storedArgs);
+          if (!timeout) {
+              storedContext = null;
+              storedArgs = [];
+          }
+      };
+      return function wrapper() {
+          var args = [];
+          for (var _i = 0; _i < arguments.length; _i++) {
+              args[_i] = arguments[_i];
+          }
+          var now = Date.now();
+          var remaining = wait - (now - previous);
+          storedContext = this;
+          storedArgs = args;
+          if (remaining <= 0 || remaining > wait) {
+              if (timeout) {
+                  clearTimeout(timeout);
+                  timeout = null;
+              }
+              previous = now;
+              result = fn.apply(storedContext, storedArgs);
+              if (!timeout) {
+                  storedContext = null;
+                  storedArgs = [];
+              }
+          }
+          else if (!timeout) {
+              timeout = window.setTimeout(later, remaining);
+          }
+          return result;
+      };
+  }
+  
 });
 
  
