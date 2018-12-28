@@ -25001,7 +25001,13 @@ Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
      */
     
     progressUrl : false,
-  
+    /**
+     * @cfg {boolean|FormData} formData - true to use new 'FormData' post, or set to a new FormData({dom form}) Object, if
+     * sending a formdata with extra parameters - eg uploaded elements.
+     */
+    
+    formData : false,
+    
     /**
      * Opens a new {@link Roo.form.Column} container in the layout stack. If fields are passed after the config, the
      * fields are added and the column is closed. If no fields are passed the column remains open
@@ -25557,7 +25563,8 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                 url:this.getUrl(!isPost),
                 method: method,
                 params:isPost ? this.getParams() : null,
-                isUpload: this.form.fileUpload
+                isUpload: this.form.fileUpload,
+                formData : this.form.formData
             }));
             
             this.uploadProgress();
