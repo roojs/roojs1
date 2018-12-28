@@ -157,6 +157,13 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
     },
     
     resize: function(){
+        var canvas = this.canvasEl().dom;
+        var ctx = this.canvasElCtx();
+        
+        var img_data = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        
+        // setting canvas width will clean img data inside
+        canvas.width = 0;
         
         var style = window.getComputedStyle ? 
             getComputedStyle(this.el.dom, null) : this.el.dom.currentStyle;
@@ -164,7 +171,9 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
         var padding_left = parseInt(style.paddingLeft) || 0;
         var padding_right = parseInt(style.paddingRight) || 0;
         
-        this.canvasEl().dom.width = this.el.dom.clientWidth - padding_left - padding_right;
+        canvas.width = this.el.dom.clientWidth - padding_left - padding_right;
+        
+        ctx.putImageData(img_data, 0, 0);
     },
     
     _handleMouseDown: function(e)
