@@ -143,7 +143,13 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
         canvas.on('mousemove', this._handleMouseMove, this);
         Roo.select('html').first().on('mouseup', this._handleMouseUp, this);
         
-        if (window.ontouchstart) {
+        if (window.PointerEvent) {
+            canvas.on('pointerdown', this._handleMouseDown, this);
+            canvas.on('pointermove', this._handleMouseMove, this);
+            Roo.select('html').first().on('pointerup', this._handleMouseUp, this);
+        }
+        
+        if ('ontouchstart' in window) {
             canvas.on('touchstart', this._handleTouchStart, this);
             canvas.on('touchmove', this._handleTouchMove, this);
             canvas.on('touchend', this._handleTouchEnd, this);
@@ -157,17 +163,17 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
     },
     
     resize: function(){
+        
         var canvas = this.canvasEl().dom;
         var ctx = this.canvasElCtx();
-        
         var img_data = ctx.getImageData(0, 0, canvas.width, canvas.height);
         
-        // setting canvas width will clean img data inside
+        // setting canvas width will clean img data
         canvas.width = 0;
         
         var style = window.getComputedStyle ? 
             getComputedStyle(this.el.dom, null) : this.el.dom.currentStyle;
-        
+            
         var padding_left = parseInt(style.paddingLeft) || 0;
         var padding_right = parseInt(style.paddingRight) || 0;
         
@@ -200,6 +206,7 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
     },
     
     _handleTouchStart: function (e) {
+        
         e.preventDefault();
         if (e.browserEvent.targetTouches.length === 1) {
             // var touch = e.browserEvent.changedTouches[0];
@@ -213,7 +220,7 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
         e.preventDefault();
         // var touch = event.targetTouches[0];
         // _this._strokeMoveUpdate(touch);
-        this._strokeMoveUpdate(e);
+        this.strokeMoveUpdate(e);
     },
     
     _handleTouchEnd: function (e) {
