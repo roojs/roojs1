@@ -24,11 +24,11 @@ Roo.bootstrap.BezierSignature = function(config){
 
 Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
     
-    _data: [],
+    curve_data: [],
     
-    _isEmpty: true,
+    is_empty: true,
     
-    _mouseButtonDown: true,
+    mouse_btn_down: true,
     
     /**
      * @cfg(int) canvas height
@@ -38,17 +38,17 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
     /**
      * @cfg(float or function) Radius of a single dot.
      */ 
-    dotSize: false,
+    dot_size: false,
     
     /**
      * @cfg(float) Minimum width of a line. Defaults to 0.5.
      */
-    minWidth: 0.5,
+    min_width: 0.5,
     
     /**
      * @cfg(float) Maximum width of a line. Defaults to 2.5.
      */
-    maxWidth: 2.5,
+    max_width: 2.5,
     
     /**
      * @cfg(integer) Draw the next point at most once per every x milliseconds. Set it to 0 to turn off throttling. Defaults to 16.
@@ -58,22 +58,22 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
     /**
      * @cfg(integer) Add the next point only if the previous one is farther than x pixels. Defaults to 5.
      */
-    minDistance: 5,
+    min_distance: 5,
     
     /**
      * @cfg(string) Color used to clear the background. Can be any color format accepted by context.fillStyle. Defaults to "rgba(0,0,0,0)" (transparent black). Use a non-transparent color e.g. "rgb(255,255,255)" (opaque white) if you'd like to save signatures as JPEG images.
      */
-    backgroundColor: 'rgba(0, 0, 0, 0)',
+    bg_color: 'rgba(0, 0, 0, 0)',
     
     /**
      * @cfg(string) Color used to draw the lines. Can be any color format accepted by context.fillStyle. Defaults to "black".
      */
-    penColor: 'black',
+    dot_color: 'black',
     
     /**
      * @cfg(float) Weight used to modify new velocity based on the previous velocity. Defaults to 0.7.
      */
-    velocityFilterWeight: 0.7,
+    velocity_filter_weight: 0.7,
     
     /**
      * @cfg(function) Callback when stroke begin.
@@ -138,7 +138,7 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
         canvas.dom.style.touchAction = 'none';
         canvas.dom.style.msTouchAction = 'none';
         
-        this._mouseButtonDown = false;
+        this.mouse_btn_down = false;
         canvas.on('mousedown', this._handleMouseDown, this);
         canvas.on('mousemove', this._handleMouseMove, this);
         Roo.select('html').first().on('mouseup', this._handleMouseUp, this);
@@ -149,9 +149,7 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
             canvas.on('touchend', this._handleTouchEnd, this);
         }
         
-        if(this.resize_to_parent_width) {
-            Roo.EventManager.onWindowResize(this.resize, this, true);
-        }
+        Roo.EventManager.onWindowResize(this.resize, this, true);
         
         this.clear();
         
@@ -159,28 +157,35 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
     },
     
     resize: function(){
-        this.canvasEl().dom.width = this.el.dom.offsetWidth;
+        
+        var style = window.getComputedStyle ? 
+            getComputedStyle(this.el.dom, null) : this.el.dom.currentStyle;
+        
+        var padding_left = parseInt(style.paddingLeft) || 0;
+        var padding_right = parseInt(style.paddingRight) || 0;
+        
+        this.canvasEl().dom.width = this.el.dom.clientWidth - padding_left - padding_right;
     },
     
     _handleMouseDown: function(e)
     {
         if (e.browserEvent.which === 1) {
-            this._mouseButtonDown = true;
+            this.mouse_btn_down = true;
             this.strokeBegin(e);
         }
     },
     
     _handleMouseMove: function (e)
     {
-        if (this._mouseButtonDown) {
+        if (this.mouse_btn_down) {
             this.strokeMoveUpdate(e);
         }
     },
     
     _handleMouseUp: function (e)
     {
-        if (e.browserEvent.which === 1 && this._mouseButtonDown) {
-            this._mouseButtonDown = false;
+        if (e.browserEvent.which === 1 && this.mouse_btn_down) {
+            this.mouse_btn_down = false;
             this.strokeEnd(e);
         }
     },
@@ -215,8 +220,8 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
     reset: function () {
         this._lastPoints = [];
         this._lastVelocity = 0;
-        this._lastWidth = (this.minWidth + this.maxWidth) / 2;
-        this.canvasElCtx().fillStyle = this.penColor;
+        this._lastWidth = (this.min_width + this.max_width) / 2;
+        this.canvasElCtx().fillStyle = this.dot_color;
     },
     
     strokeMoveUpdate: function(e)
@@ -234,7 +239,7 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
     strokeBegin: function(e)
     {
         var newPointGroup = {
-            color: this.penColor,
+            color: this.dot_color,
             points: []
         };
         
@@ -242,7 +247,7 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
             this.onBegin(e);
         }
         
-        this._data.push(newPointGroup);
+        this.curve_data.push(newPointGroup);
         this.reset();
         this.strokeUpdate(e);
     },
@@ -251,11 +256,11 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
     {
         var rect = this.canvasEl().dom.getBoundingClientRect();
         var point = new this.Point(e.xy[0] - rect.left, e.xy[1] - rect.top, new Date().getTime());
-        var lastPointGroup = this._data[this._data.length - 1];
+        var lastPointGroup = this.curve_data[this.curve_data.length - 1];
         var lastPoints = lastPointGroup.points;
         var lastPoint = lastPoints.length > 0 && lastPoints[lastPoints.length - 1];
         var isLastPointTooClose = lastPoint
-            ? point.distanceTo(lastPoint) <= this.minDistance
+            ? point.distanceTo(lastPoint) <= this.min_distance
             : false;
         var color = lastPointGroup.color;
         if (!lastPoint || !(lastPoint && isLastPointTooClose)) {
@@ -298,10 +303,10 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
     },
     
     calculateCurveWidths: function (startPoint, endPoint) {
-        var velocity = this.velocityFilterWeight * endPoint.velocityFrom(startPoint) +
-            (1 - this.velocityFilterWeight) * this._lastVelocity;
+        var velocity = this.velocity_filter_weight * endPoint.velocityFrom(startPoint) +
+            (1 - this.velocity_filter_weight) * this._lastVelocity;
 
-        var newWidth = Math.max(this.maxWidth / (velocity + 1), this.minWidth);
+        var newWidth = Math.max(this.max_width / (velocity + 1), this.min_width);
         var widths = {
             end: newWidth,
             start: this._lastWidth
@@ -315,7 +320,7 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
     drawDot: function (_a) {
         var color = _a.color, point = _a.point;
         var ctx = this.canvasElCtx();
-        var width = typeof this.dotSize === 'function' ? this.dotSize() : this.dotSize;
+        var width = typeof this.dot_size === 'function' ? this.dot_size() : this.dot_size;
         ctx.beginPath();
         this.drawCurveSegment(point.x, point.y, width);
         ctx.closePath();
@@ -356,19 +361,19 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
         var ctx = this.canvasElCtx();
         ctx.moveTo(x, y);
         ctx.arc(x, y, width, 0, 2 * Math.PI, false);
-        this._isEmpty = false;
+        this.is_empty = false;
     },
     
     clear: function()
     {
         var ctx = this.canvasElCtx();
         var canvas = this.canvasEl().dom;
-        ctx.fillStyle = this.backgroundColor;
+        ctx.fillStyle = this.bg_color;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        this._data = [];
+        this.curve_data = [];
         this.reset();
-        this._isEmpty = true;
+        this.is_empty = true;
     },
     
     canvasEl: function()
@@ -383,7 +388,7 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
     
     getImage: function(type)
     {
-        if(this._isEmpty) {
+        if(this.is_empty) {
             return false;
         }
         
