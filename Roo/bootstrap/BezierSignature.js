@@ -409,7 +409,7 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
         }
         
         // encryption ?
-        return this.canvasEl().dom.toDataURL('image/'+type, false);
+        return this.canvasEl().dom.toDataURL('image/'+type, 1);
     },
     
     drawFromImage: function(img_src)
