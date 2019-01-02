@@ -41918,9 +41918,13 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
     {
         var img = new Image();
         
+        img.onload = function(){
+            this.canvasElCtx().drawImage(img, 0, 0);
+        }.bind(this);
+        
         img.src = img_src;
         
-        this.canvasElCtx().drawImage(img, 0, 0);
+        this.is_empty = false;
     },
     
     // Bezier Point Constructor
