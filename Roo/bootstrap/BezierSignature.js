@@ -121,6 +121,11 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
                             width: this.canvas_width
                         }
                     ]
+                },
+                {
+                    tag: 'input',
+                    type: 'file',
+                    style: 'display: none'
                 }
             ]
         };
@@ -156,6 +161,9 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
         }
         
         Roo.EventManager.onWindowResize(this.resize, this, true);
+        
+        // file input event
+        this.fileEl().on('change', this.uploadImage, this);
         
         this.clear();
         
@@ -392,6 +400,11 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
         this.is_empty = true;
     },
     
+    fileEl: function()
+    {
+        return  this.el.select('input',true).first();
+    },
+    
     canvasEl: function()
     {
         return this.el.select('canvas',true).first();
@@ -423,6 +436,27 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
         img.src = img_src;
         
         this.is_empty = false;
+    },
+    
+    selectImage: function()
+    {
+        this.fileEl().dom.click();
+    },
+    
+    uploadImage: function(e)
+    {
+        var reader = new FileReader();
+        
+        reader.onload = function(e){
+            var img = new Image();
+            img.onload = function(){
+                this.reset();
+                this.canvasElCtx().drawImage(img, 0, 0);
+            }.bind(this);
+            img.src = e.target.result;
+        }.bind(this);
+        
+        reader.readAsDataURL(e.target.files[0]);
     },
     
     // Bezier Point Constructor
