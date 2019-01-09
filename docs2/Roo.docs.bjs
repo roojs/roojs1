@@ -5,6 +5,9 @@
  "path" : "/home/alan/gitlive/roojs1/docs2/Roo.docs.bjs",
  "permname" : "",
  "modOrder" : "001",
+ "strings" : {
+  "098f6bcd4621d373cade4e832627b4f6" : "test"
+ },
  "items" : [
   {
    "listeners" : {
@@ -16,12 +19,12 @@
    "items" : [
     {
      "xtype" : "NavHeaderbar",
-     "* xinclude" : "Roo.doc.MobileSidebarMenu",
+     "* xinclude" : "Roo.docs.MobileSidebarMenu",
      "$ xns" : "Roo.bootstrap"
     },
     {
      "xtype" : "NavSidebar",
-     "* xinclude" : "Roo.doc.SidebarNav",
+     "* xinclude" : "Roo.docs.SidebarNav",
      "$ xns" : "Roo.bootstrap"
     },
     {
@@ -42,26 +45,21 @@
          "items" : [
           {
            "xtype" : "Header",
-           "$ String html" : "pagedata.page.title",
            "Number level" : 2,
-           "$ xns" : "Roo.bootstrap"
+           "$ xns" : "Roo.bootstrap",
+           "String html" : "test"
           },
           {
            "String tag" : "div",
            "xtype" : "Element",
-           "$ String html" : "pagedata.page.body",
-           "$ xns" : "Roo.bootstrap"
+           "$ xns" : "Roo.bootstrap",
+           "String html" : "test"
           }
          ]
         }
        ]
       }
      ]
-    },
-    {
-     "xtype" : "Container",
-     "* xinclude" : "Roo.docs.MobileFooter",
-     "$ xns" : "Roo.bootstrap"
     }
    ]
   }

@@ -1,6 +1,6 @@
 {
  "name" : "Roo.docs.SidebarNav",
- "parent" : "",
+ "parent" : "#disabled",
  "title" : "",
  "path" : "/home/alan/gitlive/roojs1/docs2/Roo.docs.SidebarNav.bjs",
  "permname" : "",
@@ -12,7 +12,7 @@
  "items" : [
   {
    "listeners" : {
-    "render" : "function (_self)\n{\n    this.el.addClass(language);\n    \n}"
+    "render" : "function (_self)\n{\n  //  this.el.addClass(language);\n    \n}"
    },
    "String cls" : "left-menu-sidebar",
    "xtype" : "NavSidebar",

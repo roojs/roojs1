@@ -14,7 +14,7 @@ Roo.docs.SidebarNav = new Roo.XComponent({
   part     :  ["docs2", "SidebarNav" ],
   order    : '001-Roo.docs.SidebarNav',
   region   : 'center',
-  parent   : false,
+  parent   : '#disabled',
   name     : "unnamed module",
   disabled : false, 
   permname : '', 
@@ -28,7 +28,7 @@ Roo.docs.SidebarNav = new Roo.XComponent({
    listeners : {
     render : function (_self)
      {
-         this.el.addClass(language);
+       //  this.el.addClass(language);
          
      }
    },

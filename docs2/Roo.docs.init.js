@@ -16,15 +16,7 @@ Roo.docs.init = {
         
         Roo.XComponent.on('buildcomplete', function() {
             
-            var length = Roo.XComponent.modules.length;
-
-            if(
-                typeof(Roo.XComponent.modules[length - 1]) != 'undefined' 
-                && 
-                typeof(Roo.XComponent.modules[length - 1].el) != 'undefined'
-            ){
-                Roo.XComponent.modules[length - 1].el.fireEvent('render');
-            }
+            Roo.XComponent.modules[0].el.fireEvent('render');
             
         });
         

@@ -420,7 +420,7 @@ Roo.apply(Roo.XComponent, {
                 break;
             
             default:
-                if (obj.disabled) {
+                if (obj.disabled || obj.region == '#disabled') {
                         return;
                 }
                 break;

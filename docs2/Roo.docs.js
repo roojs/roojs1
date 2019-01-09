@@ -6,7 +6,9 @@ Roo.namespace('Roo');
 
 Roo.docs = new Roo.XComponent({
 
-
+ _strings : {
+  '098f6bcd4621d373cade4e832627b4f6' :"test"
+ },
 
   part     :  ["docs2", "docs" ],
   order    : '001-Roo.docs',
@@ -33,12 +35,12 @@ Roo.docs = new Roo.XComponent({
    xns : Roo.bootstrap,
    '|xns' : 'Roo.bootstrap',
    items  : [
-    Roo.apply(Roo.doc.MobileSidebarMenu._tree(), {
+    Roo.apply(Roo.docs.MobileSidebarMenu._tree(), {
      xtype : 'NavHeaderbar',
      xns : Roo.bootstrap,
      '|xns' : 'Roo.bootstrap'
     }),
-    Roo.apply(Roo.doc.SidebarNav._tree(), {
+    Roo.apply(Roo.docs.SidebarNav._tree(), {
      xtype : 'NavSidebar',
      xns : Roo.bootstrap,
      '|xns' : 'Roo.bootstrap'
@@ -64,14 +66,14 @@ Roo.docs = new Roo.XComponent({
          items  : [
           {
            xtype : 'Header',
-           html : pagedata.page.title,
+           html : _this._strings['098f6bcd4621d373cade4e832627b4f6'] /* test */,
            level : 2,
            xns : Roo.bootstrap,
            '|xns' : 'Roo.bootstrap'
           },
           {
            xtype : 'Element',
-           html : pagedata.page.body,
+           html : _this._strings['098f6bcd4621d373cade4e832627b4f6'] /* test */,
            tag : 'div',
            xns : Roo.bootstrap,
            '|xns' : 'Roo.bootstrap'
@@ -81,12 +83,7 @@ Roo.docs = new Roo.XComponent({
        ]
       }
      ]
-    },
-    Roo.apply(Roo.docs.MobileFooter._tree(), {
-     xtype : 'Container',
-     xns : Roo.bootstrap,
-     '|xns' : 'Roo.bootstrap'
-    })
+    }
    ]
   };  }
 });
