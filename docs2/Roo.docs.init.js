@@ -5,10 +5,10 @@ Roo.docs.init = {
     onReady : function()
     {
        
-        if (typeof(pagedata) == 'undefined') {
-            Site.onReady.defer(100, Site);
-            return;
-        }
+        //if (typeof(pagedata) == 'undefined') {
+        //    Site.onReady.defer(100, Roo.docs.init);
+        //    return;
+        //}
         //Roo.debug = 1;
         
         Roo.XComponent.hideProgress = true;
