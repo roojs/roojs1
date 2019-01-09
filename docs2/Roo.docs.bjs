@@ -1,0 +1,69 @@
+{
+ "name" : "Roo.docs",
+ "parent" : "",
+ "title" : "",
+ "path" : "/home/alan/gitlive/roojs1/docs2/Roo.docs.bjs",
+ "permname" : "",
+ "modOrder" : "001",
+ "items" : [
+  {
+   "listeners" : {
+    "render" : "function (_self)\n{\n      \n   \n    \n}"
+   },
+   "String cls" : "doc-body",
+   "xtype" : "Body",
+   "$ xns" : "Roo.bootstrap",
+   "items" : [
+    {
+     "xtype" : "NavHeaderbar",
+     "* xinclude" : "Roo.doc.MobileSidebarMenu",
+     "$ xns" : "Roo.bootstrap"
+    },
+    {
+     "xtype" : "NavSidebar",
+     "* xinclude" : "Roo.doc.SidebarNav",
+     "$ xns" : "Roo.bootstrap"
+    },
+    {
+     "String cls" : "general-content-body",
+     "xtype" : "Container",
+     "$ xns" : "Roo.bootstrap",
+     "items" : [
+      {
+       "xtype" : "Row",
+       "$ xns" : "Roo.bootstrap",
+       "String style" : "margin: 0px;",
+       "items" : [
+        {
+         "Number md" : 6,
+         "xtype" : "Column",
+         "$ xns" : "Roo.bootstrap",
+         "String style" : "padding-left: 0px;",
+         "items" : [
+          {
+           "xtype" : "Header",
+           "$ String html" : "pagedata.page.title",
+           "Number level" : 2,
+           "$ xns" : "Roo.bootstrap"
+          },
+          {
+           "String tag" : "div",
+           "xtype" : "Element",
+           "$ String html" : "pagedata.page.body",
+           "$ xns" : "Roo.bootstrap"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "xtype" : "Container",
+     "* xinclude" : "Roo.docs.MobileFooter",
+     "$ xns" : "Roo.bootstrap"
+    }
+   ]
+  }
+ ]
+}
