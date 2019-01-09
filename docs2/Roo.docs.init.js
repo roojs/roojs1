@@ -28,34 +28,7 @@ Roo.docs.init = {
             
         });
         
-        /*    
-        var ts = template.replace(/\.html$/,'').split('.');
-        if (!ts.length) {
-            return;
-        }
-        var ret = window;
-        for (var i = 0; i < ts.length;i++) {
-            ret = ret[ts[i]];
-            if (!ret) {
-                break;
-            }
-        }
-        if (ret) {
-            Roo.log(ret);
-            Roo.XComponent.build_from_html  = true;
-            Roo.XComponent.modules = [ ret ];
-            Roo.XComponent.topModule = ret;
-            Roo.XComponent.build();
-    
-        } else {
-            // just build the nav bar...
-            var e = new Roo.bootstrap.Element('nav-headerbar');
-            e.addxtype(Release.NavHeaderbar._tree())
-            
-            
-            
-        }
-        */
+      
         
     },
     
