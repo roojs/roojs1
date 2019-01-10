@@ -373,7 +373,7 @@ Roo.docs = new Roo.XComponent({
                 click : function (e)
                  {
                      
-                     Roo.log(["click", this);
+                     Roo.log(["click", this]);
                      if (this.el.dom.innerHTML.length > 0) {
                          Roo.docs.loadDoc(this.el.dom.innerHTML);
                      }

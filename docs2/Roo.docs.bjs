@@ -160,7 +160,7 @@
               {
                "listeners" : {
                 "render" : "function (_self)\n{\n    _this.doc_source = this;\n}",
-                "click" : "function (e)\n{\n    \n    Roo.log([\"click\", this);\n    if (this.el.dom.innerHTML.length > 0) {\n        Roo.docs.loadDoc(this.el.dom.innerHTML);\n    }\n}"
+                "click" : "function (e)\n{\n    \n    Roo.log([\"click\", this]);\n    if (this.el.dom.innerHTML.length > 0) {\n        Roo.docs.loadDoc(this.el.dom.innerHTML);\n    }\n}"
                },
                "String cls" : "doc-source",
                "Boolean preventDefault" : false,
