@@ -466,7 +466,7 @@ Roo.docs = new Roo.XComponent({
            },
           rowclass : function (_self, rowcfg)
            {
-                   Roo.log(rowcfg.record.json.expanded);
+                   rowcfg.rowClass = rowcfg.record.json.expanded ? 'expanded' : '';
            },
           rowclick : function (_self, el, rowIndex, e)
            {
