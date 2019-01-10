@@ -229,6 +229,8 @@ Roo.docs = new Roo.XComponent({
        },
       render : function (_self)
        {
+           return;
+           
            _this.navHeaderBar = this;
            
            this.el.addClass(language); 
