@@ -493,6 +493,11 @@ Roo.docs = new Roo.XComponent({
            '|xns' : 'Roo.data'
           }
          },
+         sm : {
+          xtype : 'RowSelectionModel',
+          xns : Roo.bootstrap.Table,
+          '|xns' : 'Roo.bootstrap.Table'
+         },
          cm : [
           {
            xtype : 'ColumnModel',
