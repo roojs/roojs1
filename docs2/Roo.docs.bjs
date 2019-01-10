@@ -136,6 +136,9 @@
                "String html" : " extends "
               },
               {
+               "listeners" : {
+                "render" : "function (_self)\n{\n    _this.doc_extends = this;\n}"
+               },
                "String cls" : "doc-extends",
                "Boolean preventDefault" : true,
                "xtype" : "Link",

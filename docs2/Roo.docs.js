@@ -339,6 +339,12 @@ Roo.docs = new Roo.XComponent({
                cls : 'doc-extends',
                html : _this._strings['494a64a432ff6a121e4ab9003c7a0df3'] /* parentcls */,
                preventDefault : true,
+               listeners : {
+                render : function (_self)
+                 {
+                     _this.doc_extends = this;
+                 }
+               },
                xns : Roo.bootstrap,
                '|xns' : 'Roo.bootstrap'
               }
