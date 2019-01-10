@@ -14,43 +14,65 @@ Roo.docs.init = {
         Roo.XComponent.hideProgress = true;
         Roo.XComponent.build();
         
+        
+        
+        
         Roo.XComponent.on('buildcomplete', function() {
             
-            Roo.XComponent.modules[0].el.fireEvent('render');
-            
-        });
+            //Roo.XComponent.modules[0].el.fireEvent('render');
+             this.loadTree();
+        }, this);
         
       
         
     },
     
-    onLoad : function()
+    loadTree: function()
     {
-        /*var data_url = document.createElement('script'); 
-        data_url.type = 'text/javascript'; 
-        data_url.async = true;
+        Roo.Ajax.request({
+            url : 'tree.json',
+            method : 'GET',
+            success : function(res, o)
+            {
+                var d = Roo.decode(res.responseText);
+                Roo.log(d);
+                d.forEach(function(e) {
+                    this.addTreeItem(Roo.docs.SidebarNav.navGroup, e, 'NavSidebarItem');
+                }, this);
+                
+            },
+            scope : this
+        });
         
-        var href =  window.location.href.replace(/#.*$/, '');
         
-        var url = href + '?_toPageData=1';
+    },
+    addTreeItem : function(parent, e, type) {
+        // add a node..
+        var node = parent.addxtypeChild(Roo.factory({
+            html: e.name.split('.').pop(),
+            id : e.name,
+            xns : Roo.bootstrap,
+            xtype : type,
+            menu : !e.cn.length ? false  : Roo.factory({
+                type : 'treeview',
+                xns: Roo.bootstrap,
+                xtype : 'Menu'
+            })
+        }));
         
-        if(window.location.search.length){
-            url = href + '&_toPageData=1';
+        if (!e.cn.length) {
+            return;
         }
+        e.cn.forEach(function(ec) {
+            this.addTreeItem(node.menu, ec,'MenuItem');
+        }, this);
         
-        data_url.src = url;
-
-        var s = document.getElementsByTagName('script')[0]; 
-        
-        s.parentNode.insertBefore(data_url, s);
-        */
     }
+    
     
 };
 
 
-Roo.docs.init.onLoad();
-
-Roo.onReady(Roo.docs.init.onReady);
+Roo.onReady(Roo.docs.init.onReady, Roo.docs.init);
     
  

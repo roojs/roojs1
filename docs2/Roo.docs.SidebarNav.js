@@ -6,10 +6,7 @@ Roo.namespace('Roo.docs');
 
 Roo.docs.SidebarNav = new Roo.XComponent({
 
- _strings : {
-  '0cbc6611f5540bd0809a388dc95a615b' :"Test",
-  '38b0d2ff1c03df82aea67222983d337e' :"test 2"
- },
+
 
   part     :  ["docs2", "SidebarNav" ],
   order    : '001-Roo.docs.SidebarNav',
@@ -28,7 +25,7 @@ Roo.docs.SidebarNav = new Roo.XComponent({
    listeners : {
     render : function (_self)
      {
-       //  this.el.addClass(language);
+         this.el.addClass(language);
          
      }
    },
@@ -172,39 +169,6 @@ Roo.docs.SidebarNav = new Roo.XComponent({
          '|xns' : 'Roo.bootstrap'
         }
        ]
-      },
-      {
-       xtype : 'NavSidebarItem',
-       html : _this._strings['0cbc6611f5540bd0809a388dc95a615b'] /* Test */,
-       xns : Roo.bootstrap,
-       '|xns' : 'Roo.bootstrap',
-       menu : {
-        xtype : 'Menu',
-        type : 'treeview',
-        xns : Roo.bootstrap,
-        '|xns' : 'Roo.bootstrap',
-        items  : [
-         {
-          xtype : 'MenuItem',
-          href : baseURL + '/AboutUs.html',
-          html : _this._strings['0cbc6611f5540bd0809a388dc95a615b'] /* Test */,
-          xns : Roo.bootstrap,
-          '|xns' : 'Roo.bootstrap'
-         },
-         {
-          xtype : 'MenuItem',
-          html : _this._strings['38b0d2ff1c03df82aea67222983d337e'] /* test 2 */,
-          xns : Roo.bootstrap,
-          '|xns' : 'Roo.bootstrap'
-         }
-        ]
-       }
-      },
-      {
-       xtype : 'NavSidebarItem',
-       html : _this._strings['0cbc6611f5540bd0809a388dc95a615b'] /* Test */,
-       xns : Roo.bootstrap,
-       '|xns' : 'Roo.bootstrap'
       }
      ]
     },
