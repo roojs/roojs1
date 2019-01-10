@@ -129,6 +129,9 @@
                "String html" : "xxx"
               },
               {
+               "listeners" : {
+                "render" : "function (_self)\n{\n    _this.doc_extends_sep = this;\n}"
+               },
                "String tag" : "span",
                "String cls" : "doc-extends-str",
                "xtype" : "Element",

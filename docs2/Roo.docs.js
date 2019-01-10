@@ -331,6 +331,12 @@ Roo.docs = new Roo.XComponent({
                cls : 'doc-extends-str',
                html : _this._strings['ae635f08107a69569e636835f24e6f6f'] /*  extends  */,
                tag : 'span',
+               listeners : {
+                render : function (_self)
+                 {
+                     _this.doc_extends_sep = this;
+                 }
+               },
                xns : Roo.bootstrap,
                '|xns' : 'Roo.bootstrap'
               },
