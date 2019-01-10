@@ -347,6 +347,12 @@ Roo.docs = new Roo.XComponent({
                html : _this._strings['494a64a432ff6a121e4ab9003c7a0df3'] /* parentcls */,
                preventDefault : true,
                listeners : {
+                click : function (e)
+                 {
+                     if (this.el.dom.innerHTML.length) {
+                         Roo.doc.init.loadDoc(this.el.dom.innerHTML);
+                     }
+                 },
                 render : function (_self)
                  {
                      _this.doc_extends = this;

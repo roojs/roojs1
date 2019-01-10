@@ -141,7 +141,8 @@
               },
               {
                "listeners" : {
-                "render" : "function (_self)\n{\n    _this.doc_extends = this;\n}"
+                "render" : "function (_self)\n{\n    _this.doc_extends = this;\n}",
+                "click" : "function (e)\n{\n    if (this.el.dom.innerHTML.length) {\n        Roo.doc.init.loadDoc(this.el.dom.innerHTML);\n    }\n}"
                },
                "String cls" : "doc-extends",
                "Boolean preventDefault" : true,
