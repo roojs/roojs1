@@ -345,28 +345,30 @@ Roo.docs = new Roo.XComponent({
                  }
                },
                xns : Roo.bootstrap,
-               '|xns' : 'Roo.bootstrap'
-              },
-              {
-               xtype : 'Link',
-               cls : 'doc-extends',
-               html : _this._strings['494a64a432ff6a121e4ab9003c7a0df3'] /* parentcls */,
-               preventDefault : false,
-               listeners : {
-                click : function (e)
-                 {
-                 
-                     if (this.el.dom.innerHTML.length) {
-                         Roo.docs.init.loadDoc({ name : this.el.dom.innerHTML, is_class : true});
-                     }
+               '|xns' : 'Roo.bootstrap',
+               items  : [
+                {
+                 xtype : 'Link',
+                 cls : 'doc-extends',
+                 html : _this._strings['494a64a432ff6a121e4ab9003c7a0df3'] /* parentcls */,
+                 preventDefault : false,
+                 listeners : {
+                  click : function (e)
+                   {
+                   
+                       if (this.el.dom.innerHTML.length) {
+                           Roo.docs.init.loadDoc({ name : this.el.dom.innerHTML, is_class : true});
+                       }
+                   },
+                  render : function (_self)
+                   {
+                       _this.doc_extends = this;
+                   }
                  },
-                render : function (_self)
-                 {
-                     _this.doc_extends = this;
-                 }
-               },
-               xns : Roo.bootstrap,
-               '|xns' : 'Roo.bootstrap'
+                 xns : Roo.bootstrap,
+                 '|xns' : 'Roo.bootstrap'
+                }
+               ]
               }
              ]
             },

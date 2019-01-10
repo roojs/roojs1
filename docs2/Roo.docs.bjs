@@ -140,18 +140,20 @@
                "String cls" : "doc-extends-str",
                "xtype" : "Element",
                "$ xns" : "Roo.bootstrap",
-               "String html" : " extends "
-              },
-              {
-               "listeners" : {
-                "render" : "function (_self)\n{\n    _this.doc_extends = this;\n}",
-                "click" : "function (e)\n{\n\n    if (this.el.dom.innerHTML.length) {\n        Roo.docs.init.loadDoc({ name : this.el.dom.innerHTML, is_class : true});\n    }\n}"
-               },
-               "String cls" : "doc-extends",
-               "Boolean preventDefault" : false,
-               "xtype" : "Link",
-               "$ xns" : "Roo.bootstrap",
-               "String html" : "parentcls"
+               "String html" : " extends ",
+               "items" : [
+                {
+                 "listeners" : {
+                  "render" : "function (_self)\n{\n    _this.doc_extends = this;\n}",
+                  "click" : "function (e)\n{\n\n    if (this.el.dom.innerHTML.length) {\n        Roo.docs.init.loadDoc({ name : this.el.dom.innerHTML, is_class : true});\n    }\n}"
+                 },
+                 "String cls" : "doc-extends",
+                 "Boolean preventDefault" : false,
+                 "xtype" : "Link",
+                 "$ xns" : "Roo.bootstrap",
+                 "String html" : "parentcls"
+                }
+               ]
               }
              ]
             },
