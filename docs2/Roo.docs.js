@@ -12,7 +12,6 @@ Roo.docs = new Roo.XComponent({
   '3d067bedfe2f4677470dd6ccf64d05ed' :"Public  ",
   '87f9f735a1d36793ceaecd4e47124b63' :"Events",
   '232cedface5acac121a6e099364a2b07' :"source: ",
-  '8444c6c15c56a27bfe83ffcaf459bbdd' :"Defined by",
   '9c5a24f0cbb12d939e4622b93bea904b' :"Public Methods",
   '36cd38f49b9afa08222c0dc9ebfe35eb' :"source",
   '50f33d14f129e4548c1c270fd6725a78' :"Configuration options",
@@ -486,7 +485,7 @@ Roo.docs = new Roo.XComponent({
           {
            xtype : 'ColumnModel',
            dataIndex : 'def',
-           header : _this._strings['8444c6c15c56a27bfe83ffcaf459bbdd'] /* Defined by */,
+           header : _this._strings['f361257612a512f9be2fdc2abfb25aef'] /* <small>Defined by</small> */,
            md : 1,
            xns : Roo.grid,
            '|xns' : 'Roo.grid'
@@ -542,7 +541,7 @@ Roo.docs = new Roo.XComponent({
           {
            xtype : 'ColumnModel',
            dataIndex : 'def',
-           header : _this._strings['8444c6c15c56a27bfe83ffcaf459bbdd'] /* Defined by */,
+           header : _this._strings['f361257612a512f9be2fdc2abfb25aef'] /* <small>Defined by</small> */,
            md : 1,
            xns : Roo.grid,
            '|xns' : 'Roo.grid'
