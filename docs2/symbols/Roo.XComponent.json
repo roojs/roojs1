@@ -9,43 +9,57 @@
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable"
+      "memberOf" : "Roo.util.Observable",
+      "values" : [
+      ]
     },
     {
       "name" : "region",
       "type" : "String",
       "desc" : "Region to render component to (defaults to center)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "disabled",
       "type" : "Function|boolean",
       "desc" : "If this module is disabled by some rule, return true from the funtion",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "order",
       "type" : "String",
       "desc" : "Used to set the order in which elements are created (usefull for multiple tabs)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "items",
       "type" : "Array",
       "desc" : "A single item array - the first element is the root of the tree..\nIt's done this way to stay compatible with the Xtype system...",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "parent",
       "type" : "String",
       "desc" : "Name of parent element which it get xtype added to..",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "name",
       "type" : "String",
       "desc" : "String to display while loading.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     }
   ],
   "methods" : [

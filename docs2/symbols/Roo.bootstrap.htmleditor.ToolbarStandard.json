@@ -8,13 +8,17 @@
       "name" : "btns",
       "type" : "Array",
       "desc" : "List of additional buttons.\n\n\nNEEDS Extra CSS? \n.x-html-editor-tb .x-edit-none .x-btn-text { background: none; }",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "disable",
       "type" : "Object",
       "desc" : "List of elements to disable..",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     }
   ],
   "methods" : [

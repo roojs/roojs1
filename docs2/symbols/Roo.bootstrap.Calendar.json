@@ -11,25 +11,33 @@
       "name" : "startDay",
       "type" : "Number",
       "desc" : "Day index at which the week should begin, 0-based (defaults to 0, which is Sunday)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable"
+      "memberOf" : "Roo.util.Observable",
+      "values" : [
+      ]
     },
     {
       "name" : "tooltip",
       "type" : "string",
       "desc" : "Text for the tooltip",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "container_method",
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "visibilityEl",
@@ -45,7 +53,9 @@
       "name" : "can_build_overlaid",
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "hideMode",
@@ -61,19 +71,25 @@
       "name" : "style",
       "type" : "String",
       "desc" : "any extra css",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "css class",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "loadMask",
@@ -89,37 +105,49 @@
       "name" : "xattr",
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el'",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "header",
       "type" : "Object",
       "desc" : "generate the user specific header of the calendar, default false",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "dataId",
       "type" : "string",
       "desc" : "cutomer id",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "name",
       "type" : "string",
       "desc" : "Specifies name attribute",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "values" : [
+      ]
     }
   ],
   "methods" : [

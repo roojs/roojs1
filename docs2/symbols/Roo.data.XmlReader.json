@@ -9,25 +9,33 @@
       "name" : "id",
       "type" : "String",
       "desc" : "The DomQuery path relative from the record element to the element that contains\na record identifier value.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "success",
       "type" : "String",
       "desc" : "The DomQuery path to the success attribute used by forms.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "record",
       "type" : "String",
       "desc" : "The DomQuery path to the repeated element which contains record information.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "totalRecords",
       "type" : "String",
       "desc" : "The DomQuery path from which to retrieve the total number of records\nin the dataset. This is only needed if the whole dataset is not passed in one go, but is being\npaged from the remote server.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     }
   ],
   "methods" : [

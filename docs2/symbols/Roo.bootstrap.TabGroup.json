@@ -12,7 +12,9 @@
       "name" : "xsoff",
       "type" : "Number",
       "desc" : "colspan offset out of 12 for mobile-sized screens or 0 for hidden",
-      "memberOf" : "Roo.bootstrap.Column"
+      "memberOf" : "Roo.bootstrap.Column",
+      "values" : [
+      ]
     },
     {
       "name" : "showarrow",
@@ -28,13 +30,17 @@
       "name" : "lg",
       "type" : "Number",
       "desc" : "colspan out of 12 for large computer-sized screens or 0 for hidden",
-      "memberOf" : "Roo.bootstrap.Column"
+      "memberOf" : "Roo.bootstrap.Column",
+      "values" : [
+      ]
     },
     {
       "name" : "xs",
       "type" : "Number",
       "desc" : "colspan out of 12 for mobile-sized screens or 0 for hidden",
-      "memberOf" : "Roo.bootstrap.Column"
+      "memberOf" : "Roo.bootstrap.Column",
+      "values" : [
+      ]
     },
     {
       "name" : "hideMode",
@@ -50,37 +56,49 @@
       "name" : "navId",
       "type" : "String",
       "desc" : "the navigation id (for use with navbars) - will be auto generated if it does not exist..",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "bullets",
       "type" : "Boolean",
       "desc" : "show bullets for the panels",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "xattr",
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "name",
       "type" : "string",
       "desc" : "Specifies name attribute",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "timer",
       "type" : "Number",
       "desc" : "auto slide timer .. default 0 millisecond",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "tooltip",
       "type" : "string",
       "desc" : "Text for the tooltip",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "autoslide",
@@ -96,13 +114,17 @@
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "style",
       "type" : "String",
       "desc" : "any extra css",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "fasize",
@@ -119,31 +141,41 @@
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el'",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "sm",
       "type" : "Number",
       "desc" : "colspan out of 12 for tablet-sized screens or 0 for hidden",
-      "memberOf" : "Roo.bootstrap.Column"
+      "memberOf" : "Roo.bootstrap.Column",
+      "values" : [
+      ]
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable"
+      "memberOf" : "Roo.util.Observable",
+      "values" : [
+      ]
     },
     {
       "name" : "container_method",
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "carousel",
       "type" : "Boolean",
       "desc" : "true to make the group behave like a carousel",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "hidden",
@@ -170,7 +202,9 @@
       "name" : "cls",
       "type" : "String",
       "desc" : "css class",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "icon",
@@ -187,13 +221,17 @@
       "name" : "can_build_overlaid",
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "alert",
@@ -211,7 +249,9 @@
       "name" : "lgoff",
       "type" : "Number",
       "desc" : "colspan offset out of 12 for large computer-sized screens or 0 for hidden",
-      "memberOf" : "Roo.bootstrap.Column"
+      "memberOf" : "Roo.bootstrap.Column",
+      "values" : [
+      ]
     },
     {
       "name" : "visibilityEl",
@@ -227,31 +267,41 @@
       "name" : "smoff",
       "type" : "Number",
       "desc" : "colspan offset out of 12 for tablet-sized screens or 0 for hidden",
-      "memberOf" : "Roo.bootstrap.Column"
+      "memberOf" : "Roo.bootstrap.Column",
+      "values" : [
+      ]
     },
     {
       "name" : "dataId",
       "type" : "string",
       "desc" : "cutomer id",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "mdoff",
       "type" : "Number",
       "desc" : "colspan offset out of 12 for computer-sized screens or 0 for hidden",
-      "memberOf" : "Roo.bootstrap.Column"
+      "memberOf" : "Roo.bootstrap.Column",
+      "values" : [
+      ]
     },
     {
       "name" : "md",
       "type" : "Number",
       "desc" : "colspan out of 12 for computer-sized screens or 0 for hidden",
-      "memberOf" : "Roo.bootstrap.Column"
+      "memberOf" : "Roo.bootstrap.Column",
+      "values" : [
+      ]
     },
     {
       "name" : "html",
       "type" : "String",
       "desc" : "content of column.",
-      "memberOf" : "Roo.bootstrap.Column"
+      "memberOf" : "Roo.bootstrap.Column",
+      "values" : [
+      ]
     }
   ],
   "methods" : [

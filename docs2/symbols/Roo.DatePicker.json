@@ -10,67 +10,89 @@
       "name" : "startDay",
       "type" : "Number",
       "desc" : "Day index at which the week should begin, 0-based (defaults to 0, which is Sunday)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "monthYearText",
       "type" : "String",
       "desc" : "The header month selector tooltip (defaults to 'Choose a month (Control+Up/Down to move years)')",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "monthNames",
       "type" : "Array",
       "desc" : "An array of textual month names which can be overriden for localization support (defaults to Date.monthNames)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable"
+      "memberOf" : "Roo.util.Observable",
+      "values" : [
+      ]
     },
     {
       "name" : "format",
       "type" : "String",
       "desc" : "The default date format string which can be overriden for localization support.  The format must be\nvalid according to {@link Date#parseDate} (defaults to 'm/d/y').",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "nextText",
       "type" : "String",
       "desc" : "The next month navigation button tooltip (defaults to 'Next Month (Control+Right)')",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "maxText",
       "type" : "String",
       "desc" : "The error text to display if the maxDate validation fails (defaults to \"This date is after the maximum date\")",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "constrainToViewport",
       "type" : "Boolean",
       "desc" : "True to constrain the date picker to the viewport (defaults to true)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "minText",
       "type" : "String",
       "desc" : "The error text to display if the minDate validation fails (defaults to \"This date is before the minimum date\")",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "disabledDatesText",
       "type" : "String",
       "desc" : "The tooltip text to display when the date falls on a disabled date (defaults to \"\")",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "todayTip",
       "type" : "String",
       "desc" : "The tooltip to display for the button that selects the current date (defaults to \"{current date} (Spacebar)\")",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "hideMode",
@@ -86,85 +108,113 @@
       "name" : "todayText",
       "type" : "String",
       "desc" : "The text to display on the button that selects the current date (defaults to \"Today\")",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "cancelText",
       "type" : "String",
       "desc" : "The text to display on the cancel button",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "showClear",
       "type" : "Bool",
       "desc" : "Show a clear button (usefull for date form elements that can be blank.)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "prevText",
       "type" : "String",
       "desc" : "The previous month navigation button tooltip (defaults to 'Previous Month (Control+Left)')",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "dayNames",
       "type" : "Array",
       "desc" : "An array of textual day names which can be overriden for localization support (defaults to Date.dayNames)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el'",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "disabledDaysText",
       "type" : "String",
       "desc" : "The tooltip to display when the date falls on a disabled day (defaults to \"\")",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "disabledDatesRE",
       "type" : "RegExp",
       "desc" : "JavaScript regular expression used to disable a pattern of dates (defaults to null)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "minDate",
       "type" : "Date",
       "desc" : "Minimum allowable date (JavaScript date object, defaults to null)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "disabledDays",
       "type" : "Array",
       "desc" : "An array of days to disable, 0-based. For example, [0, 6] disables Sunday and Saturday (defaults to null).",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "okText",
       "type" : "String",
       "desc" : "The text to display on the ok button",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "maxDate",
       "type" : "Date",
       "desc" : "Maximum allowable date (JavaScript date object, defaults to null)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "values" : [
+      ]
     }
   ],
   "methods" : [

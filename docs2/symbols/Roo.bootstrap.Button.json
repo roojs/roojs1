@@ -11,19 +11,25 @@
       "name" : "toggle",
       "type" : "Boolean",
       "desc" : "is it a slidy toggle button",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "inverse",
       "type" : "Boolean",
       "desc" : "dark themed version",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "badge",
       "type" : "String",
       "desc" : "text for badge",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "hideMode",
@@ -39,19 +45,25 @@
       "name" : "xattr",
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "disabled",
       "type" : "Boolean",
       "desc" : "default false;",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "name",
       "type" : "string",
       "desc" : "Specifies name attribute",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "weight",
@@ -73,19 +85,25 @@
       "name" : "tooltip",
       "type" : "string",
       "desc" : "Text for the tooltip",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "ontext",
       "type" : "String",
       "desc" : "text for on slidy toggle state",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "preventDefault",
       "type" : "Boolean",
       "desc" : "default true (stop click event triggering the URL if it's a link.)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "theme",
@@ -101,55 +119,73 @@
       "name" : "target",
       "type" : "String",
       "desc" : "target for a href. (_self|_blank|_parent|_top| other)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "glyphicon",
       "type" : "String",
       "desc" : "depricated - use fa",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "style",
       "type" : "String",
       "desc" : "any extra css",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "isClose",
       "type" : "Boolean",
       "desc" : "default false;",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el'",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable"
+      "memberOf" : "Roo.util.Observable",
+      "values" : [
+      ]
     },
     {
       "name" : "container_method",
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "fa",
       "type" : "String",
       "desc" : "fontawesome icon - eg. 'comment' - without the fa/fas etc..",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "size",
@@ -166,7 +202,9 @@
       "name" : "cls",
       "type" : "String",
       "desc" : "css class",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "badge_weight",
@@ -188,13 +226,17 @@
       "name" : "can_build_overlaid",
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "visibilityEl",
@@ -210,7 +252,9 @@
       "name" : "href",
       "type" : "String",
       "desc" : "empty or href",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "tag",
@@ -227,31 +271,41 @@
       "name" : "dataId",
       "type" : "string",
       "desc" : "cutomer id",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "outline",
       "type" : "Boolean",
       "desc" : "default false (except for weight=default which emulates old behaveiour with an outline)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "offtext",
       "type" : "String",
       "desc" : "text for off slidy toggle state",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "removeClass",
       "type" : "Boolean",
       "desc" : "remove the standard class..",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "html",
       "type" : "String",
       "desc" : "The button content",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "pressed",

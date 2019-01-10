@@ -31,7 +31,9 @@
       "name" : "auto_hide_footer",
       "type" : "Boolean",
       "desc" : "auto hide footer if only one page (default false)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "scrollBody",
@@ -47,73 +49,97 @@
       "name" : "xattr",
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "border",
       "type" : "Number",
       "desc" : "Specifies whether the table cells should have borders or not",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "name",
       "type" : "string",
       "desc" : "Specifies name attribute",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "width",
       "type" : "Number",
       "desc" : "Specifies the width of a table",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "bordered",
       "type" : "boolean",
       "desc" : "Add borders to the table",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "rules",
       "type" : "String",
       "desc" : "Specifies which parts of the inside borders that should be visible",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "tooltip",
       "type" : "string",
       "desc" : "Text for the tooltip",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "layout",
       "type" : "String",
       "desc" : "table layout (auto | fixed | initial | inherit)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "condensed",
       "type" : "boolean",
       "desc" : "Format condensed",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "style",
       "type" : "String",
       "desc" : "any extra css",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "frame",
       "type" : "String",
       "desc" : "Specifies which parts of the outside borders that should be visible",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "cellSelection",
@@ -129,37 +155,49 @@
       "name" : "sortable",
       "type" : "String",
       "desc" : "Specifies that the table should be sortable",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el'",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable"
+      "memberOf" : "Roo.util.Observable",
+      "values" : [
+      ]
     },
     {
       "name" : "striped",
       "type" : "boolean",
       "desc" : "Should the rows be alternative striped",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "container_method",
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "cellspacing",
       "type" : "Number",
       "desc" : "Specifies the space between cells",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "align",
@@ -176,25 +214,33 @@
       "name" : "lazyLoad",
       "type" : "Boolean",
       "desc" : "auto load data while scrolling to the end (default false)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "footer",
       "type" : "Roo.bootstrap.PagingToolbar",
       "desc" : "a paging toolbar",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "table class",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "bgcolor",
       "type" : "String",
       "desc" : "Specifies the background color for a table",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "headerShow",
@@ -220,25 +266,33 @@
       "name" : "hover",
       "type" : "boolean",
       "desc" : "Add hover highlighting",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "can_build_overlaid",
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "cellpadding",
       "type" : "Number",
       "desc" : "Specifies the space between the cell wall and the cell content",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "visibilityEl",
@@ -254,13 +308,17 @@
       "name" : "dataId",
       "type" : "string",
       "desc" : "cutomer id",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "summary",
       "type" : "String",
       "desc" : "Specifies a summary of the content of a table",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "rowSelection",
@@ -276,7 +334,9 @@
       "name" : "responsive",
       "type" : "boolean",
       "desc" : "Format condensed",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     }
   ],
   "methods" : [

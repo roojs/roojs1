@@ -11,43 +11,57 @@
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable"
+      "memberOf" : "Roo.util.Observable",
+      "values" : [
+      ]
     },
     {
       "name" : "alignment",
       "type" : "String",
       "desc" : "The position to align to (see {@link Roo.Element#alignTo} for more details, defaults to \"l-l\").",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "hideEl",
       "type" : "Boolean",
       "desc" : "True to hide the bound element while the editor is displayed (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "maxWidth",
       "type" : "Number",
       "desc" : "The maximum width in pixels of the editor field (defaults to 250).  Note that if the maxWidth would exceed\nthe containing tree element's size, it will be automatically limited for you to the container width, taking\nscroll and client offsets into account prior to each edit.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "constrain",
       "type" : "Boolean",
       "desc" : "True to constrain the editor to the viewport",
-      "memberOf" : "Roo.Editor"
+      "memberOf" : "Roo.Editor",
+      "values" : [
+      ]
     },
     {
       "name" : "shadow",
       "type" : "Boolean/String",
       "desc" : "\"sides\" for sides/bottom only, \"frame\" for 4-way shadow, and \"drop\"\nfor bottom-right shadow (defaults to \"frame\")",
-      "memberOf" : "Roo.Editor"
+      "memberOf" : "Roo.Editor",
+      "values" : [
+      ]
     },
     {
       "name" : "field",
       "type" : "Roo.form.TextField|Object",
       "desc" : "The field configuration",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "hideMode",
@@ -63,79 +77,105 @@
       "name" : "value",
       "type" : "Mixed",
       "desc" : "The data value of the underlying field (defaults to \"\")",
-      "memberOf" : "Roo.Editor"
+      "memberOf" : "Roo.Editor",
+      "values" : [
+      ]
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "CSS class to apply to the editor (defaults to \"x-small-editor x-tree-editor\")",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "shim",
       "type" : "Boolean",
       "desc" : "True to shim the editor if selects/iframes could be displayed beneath it (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "cancelOnEsc",
       "type" : "Boolean",
       "desc" : "True to cancel the edit when the escape key is pressed (defaults to false)",
-      "memberOf" : "Roo.Editor"
+      "memberOf" : "Roo.Editor",
+      "values" : [
+      ]
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el'",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "completeOnEnter",
       "type" : "Boolean",
       "desc" : "True to complete the edit when the enter key is pressed (defaults to false)",
-      "memberOf" : "Roo.Editor"
+      "memberOf" : "Roo.Editor",
+      "values" : [
+      ]
     },
     {
       "name" : "revertInvalid",
       "type" : "Boolean",
       "desc" : "True to automatically revert the field value and cancel the edit when the user completes an edit and the field\nvalidation fails (defaults to true)",
-      "memberOf" : "Roo.Editor"
+      "memberOf" : "Roo.Editor",
+      "values" : [
+      ]
     },
     {
       "name" : "tree",
       "type" : "Roo.tree.TreePanel",
       "desc" : "The tree to bind to.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "ignoreNoChange",
       "type" : "Boolean",
       "desc" : "True to skip the the edit completion process (no save, no events fired) if the user completes an edit and\nthe value has not changed (defaults to false).  Applies only to string values - edits for other data types\nwill never be ignored.",
-      "memberOf" : "Roo.Editor"
+      "memberOf" : "Roo.Editor",
+      "values" : [
+      ]
     },
     {
       "name" : "autosize",
       "type" : "Boolean/String",
       "desc" : "True for the editor to automatically adopt the size of the underlying field, \"width\" to adopt the width only,\nor \"height\" to adopt the height only (defaults to false)",
-      "memberOf" : "Roo.Editor"
+      "memberOf" : "Roo.Editor",
+      "values" : [
+      ]
     },
     {
       "name" : "updateEl",
       "type" : "Boolean",
       "desc" : "True to update the innerHTML of the bound element when the update completes (defaults to false)",
-      "memberOf" : "Roo.Editor"
+      "memberOf" : "Roo.Editor",
+      "values" : [
+      ]
     }
   ],
   "methods" : [

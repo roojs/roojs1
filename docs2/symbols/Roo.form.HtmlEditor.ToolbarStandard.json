@@ -8,37 +8,49 @@
       "name" : "createLinkText",
       "type" : "String",
       "desc" : "The default text for the create link prompt",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "btns",
       "type" : "Array",
       "desc" : "List of additional buttons.\n\n\nNEEDS Extra CSS? \n.x-html-editor-tb .x-edit-none .x-btn-text { background: none; }",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "defaultFont",
       "type" : "String",
       "desc" : "default font to use.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "defaultLinkValue",
       "type" : "String",
       "desc" : "The default value for the create link prompt (defaults to http:/ /)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "fontFamilies",
       "type" : "Array",
       "desc" : "An array of available font families",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "disable",
       "type" : "Object",
       "desc" : "List of elements to disable..",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     }
   ],
   "methods" : [

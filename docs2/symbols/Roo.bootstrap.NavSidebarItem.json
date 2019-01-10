@@ -12,7 +12,9 @@
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable"
+      "memberOf" : "Roo.util.Observable",
+      "values" : [
+      ]
     },
     {
       "name" : "tagtype",
@@ -38,13 +40,17 @@
       "name" : "tooltip",
       "type" : "string",
       "desc" : "Text for the tooltip",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "container_method",
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "visibilityEl",
@@ -60,13 +66,17 @@
       "name" : "tabId",
       "type" : "String",
       "desc" : "the tab that this item activates.",
-      "memberOf" : "Roo.bootstrap.NavItem"
+      "memberOf" : "Roo.bootstrap.NavItem",
+      "values" : [
+      ]
     },
     {
       "name" : "can_build_overlaid",
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "hideMode",
@@ -82,31 +92,41 @@
       "name" : "badge",
       "type" : "String",
       "desc" : "text inside badge",
-      "memberOf" : "Roo.bootstrap.NavItem"
+      "memberOf" : "Roo.bootstrap.NavItem",
+      "values" : [
+      ]
     },
     {
       "name" : "disabled",
       "type" : "Boolean",
       "desc" : "Is item disabled",
-      "memberOf" : "Roo.bootstrap.NavItem"
+      "memberOf" : "Roo.bootstrap.NavItem",
+      "values" : [
+      ]
     },
     {
       "name" : "style",
       "type" : "String",
       "desc" : "any extra css",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "html",
       "type" : "String",
       "desc" : "content of button",
-      "memberOf" : "Roo.bootstrap.NavItem"
+      "memberOf" : "Roo.bootstrap.NavItem",
+      "values" : [
+      ]
     },
     {
       "name" : "preventDefault",
@@ -122,31 +142,41 @@
       "name" : "cls",
       "type" : "String",
       "desc" : "css class",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "glyphicon",
       "type" : "String",
       "desc" : "DEPRICATED - use fa",
-      "memberOf" : "Roo.bootstrap.NavItem"
+      "memberOf" : "Roo.bootstrap.NavItem",
+      "values" : [
+      ]
     },
     {
       "name" : "xattr",
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el'",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "icon",
       "type" : "String",
       "desc" : "DEPRICATED - use fa",
-      "memberOf" : "Roo.bootstrap.NavItem"
+      "memberOf" : "Roo.bootstrap.NavItem",
+      "values" : [
+      ]
     },
     {
       "name" : "badgecls",
@@ -163,7 +193,9 @@
       "name" : "dataId",
       "type" : "string",
       "desc" : "cutomer id",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "button_weight",
@@ -185,31 +217,41 @@
       "name" : "fa",
       "type" : "String",
       "desc" : "- Fontawsome icon name (can add stuff to it like fa-2x)",
-      "memberOf" : "Roo.bootstrap.NavItem"
+      "memberOf" : "Roo.bootstrap.NavItem",
+      "values" : [
+      ]
     },
     {
       "name" : "active",
       "type" : "Boolean",
       "desc" : "Is item active",
-      "memberOf" : "Roo.bootstrap.NavItem"
+      "memberOf" : "Roo.bootstrap.NavItem",
+      "values" : [
+      ]
     },
     {
       "name" : "name",
       "type" : "string",
       "desc" : "Specifies name attribute",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "href",
       "type" : "String",
       "desc" : "link to",
-      "memberOf" : "Roo.bootstrap.NavItem"
+      "memberOf" : "Roo.bootstrap.NavItem",
+      "values" : [
+      ]
     }
   ],
   "methods" : [

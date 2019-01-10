@@ -8,13 +8,17 @@
       "name" : "container",
       "type" : "String/HTMLElement/Element",
       "desc" : "The id or element that will contain the toolbar",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "items",
       "type" : "Array",
       "desc" : "array of button configs or elements to add (will be converted to a MixedCollection)",
-      "memberOf" : "Roo"
+      "memberOf" : "Roo",
+      "values" : [
+      ]
     }
   ],
   "methods" : [

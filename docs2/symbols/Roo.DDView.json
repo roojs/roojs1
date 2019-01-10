@@ -8,25 +8,33 @@
       "name" : "dropGroup",
       "type" : "String/Array",
       "desc" : "The ddgroup name(s) for the View's DropZone.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "allowCopy",
       "type" : "Boolean",
       "desc" : "Causes ctrl/drag operations to copy nodes rather than move.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "copy",
       "type" : "Boolean",
       "desc" : "Causes drag operations to copy nodes rather than move.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "dragGroup",
       "type" : "String/Array",
       "desc" : "The ddgroup name(s) for the View's DragZone.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     }
   ],
   "methods" : [

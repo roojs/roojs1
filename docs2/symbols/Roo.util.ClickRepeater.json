@@ -9,49 +9,65 @@
       "name" : "stopDefault",
       "type" : "Boolean",
       "desc" : "True to stop the default click event",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable"
+      "memberOf" : "Roo.util.Observable",
+      "values" : [
+      ]
     },
     {
       "name" : "delay",
       "type" : "Number",
       "desc" : "The initial delay before the repeating event begins firing.\nSimilar to an autorepeat key delay.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "accelerate",
       "type" : "Boolean",
       "desc" : "True if autorepeating should start slowly and accelerate.\n          \"interval\" and \"delay\" are ignored. \"immediate\" is honored.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "preventDefault",
       "type" : "Boolean",
       "desc" : "True to prevent the default click event",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "interval",
       "type" : "Number",
       "desc" : "The interval between firings of the \"click\" event. Default 10 ms.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "el",
       "type" : "String/HTMLElement/Element",
       "desc" : "The element to act as a button.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "pressClass",
       "type" : "String",
       "desc" : "A CSS class name to be applied to the element while pressed.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     }
   ],
   "methods" : [

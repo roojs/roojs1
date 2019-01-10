@@ -8,91 +8,121 @@
       "name" : "showDelay",
       "type" : "Number",
       "desc" : "Delay in milliseconds before the quick tip displays after the mouse enters the target element (defaults to 500)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "maxWidth",
       "type" : "Number",
       "desc" : "The maximum width of the quick tip (defaults to 300)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "Delay",
       "type" : "Number",
       "desc" : "in milliseconds before the quick tip hides when autoDismiss = true (defaults to 5000)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "text",
       "type" : "String",
       "desc" : "Body text to display (defaults to '').  This can be any valid HTML markup.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "hideOnClick",
       "type" : "Boolean",
       "desc" : "True to hide the quick tip if the user clicks anywhere in the document (defaults to true)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "minWidth",
       "type" : "Number",
       "desc" : "The minimum width of the quick tip (defaults to 40)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "hideDelay",
       "type" : "Number",
       "desc" : "Delay in milliseconds before the quick tip hides when autoHide = true (defaults to 200)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "title",
       "type" : "String",
       "desc" : "Title text to display (defaults to '').  This can be any valid HTML markup.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "A CSS class to apply to the base quick tip element (defaults to '').",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "width",
       "type" : "Number",
       "desc" : "Width in pixels of the quick tip (defaults to auto).  Width will be ignored if it exceeds the bounds of\nminWidth or maxWidth.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "interceptTitles",
       "type" : "Boolean",
       "desc" : "True to automatically use the element's DOM title value if available (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "trackMouse",
       "type" : "Boolean",
       "desc" : "True to have the quick tip follow the mouse as it moves over the target element (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "True",
       "type" : "Boolean",
       "desc" : "to automatically hide the quick tip after a set period of time, regardless of the user's actions\n(defaults to true).  Used in conjunction with autoDismissDelay.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "animate",
       "type" : "Boolean",
       "desc" : "True to turn on fade animation. Defaults to false (ClearType/scrollbar flicker issues in IE7).",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "autoHide",
       "type" : "Boolean",
       "desc" : "True to automatically hide the quick tip after the mouse exits the target element (defaults to true).\nUsed in conjunction with hideDelay.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     }
   ],
   "methods" : [

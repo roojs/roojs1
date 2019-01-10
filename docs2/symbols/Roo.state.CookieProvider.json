@@ -9,25 +9,33 @@
       "name" : "path",
       "type" : "String",
       "desc" : "The path for which the cookie is active (defaults to root '/' which makes it active for all pages in the site)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "secure",
       "type" : "Boolean",
       "desc" : "True if the site is using SSL (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "domain",
       "type" : "String",
       "desc" : "The domain to save the cookie for.  Note that you cannot specify a different domain than\nyour page is on, but you can specify a sub-domain, or simply the domain itself like 'roojs.com' to include\nall sub-domains if you need to access cookies across different sub-domains (defaults to null which uses the same\ndomain the page is running on including the 'www' like 'www.roojs.com')",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "expires",
       "type" : "Date",
       "desc" : "The cookie expiration date (defaults to 7 days from now)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     }
   ],
   "methods" : [

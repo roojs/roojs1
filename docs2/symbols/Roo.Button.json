@@ -9,145 +9,193 @@
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable"
+      "memberOf" : "Roo.util.Observable",
+      "values" : [
+      ]
     },
     {
       "name" : "tooltip",
       "type" : "String/Object",
       "desc" : "The tooltip for the button - can be a string or QuickTips config object",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "text",
       "type" : "String",
       "desc" : "The button text",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "renderTo",
       "type" : "String/HTMLElement/Element",
       "desc" : "The element to append the button to",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "hidden",
       "type" : "Boolean",
       "desc" : "True to start hidden (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "toggleGroup",
       "type" : "String",
       "desc" : "The group this toggle button is a member of (only 1 per group can be pressed, only\n   applies if enableToggle = true)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "handleMouseEvents",
       "type" : "Boolean",
       "desc" : "False to disable visual cues on mouseover, mouseout and mousedown (defaults to true)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "menu",
       "type" : "Mixed",
       "desc" : "Standard menu attribute consisting of a reference to a menu object, a menu id or a menu config blob (defaults to undefined).",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "enableToggle",
       "type" : "Boolean",
       "desc" : "True to enable pressed/not pressed toggling (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "handler",
       "type" : "Function",
       "desc" : "A function called when the button is clicked (can be used instead of click event)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "scope",
       "type" : "Object",
       "desc" : "The scope of the handler",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "minWidth",
       "type" : "Number",
       "desc" : "The minimum width for this button (used to give a set of buttons a common width)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "disabled",
       "type" : "Boolean",
       "desc" : "True to start disabled (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "pressed",
       "type" : "Boolean",
       "desc" : "True to start pressed (only if enableToggle = true)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "template",
       "type" : "Roo.Template",
       "desc" : "(Optional)\nAn {@link Roo.Template} with which to create the Button's main element. This Template must\ncontain numeric substitution parameter 0 if it is to display the tRoo property. Changing the template could\nrequire code modifications if required elements (e.g. a button) aren't present.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "A CSS class to apply to the button's main element.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "tabIndex",
       "type" : "Number",
       "desc" : "The DOM tabIndex for this button (defaults to undefined)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "iconCls",
       "type" : "String",
       "desc" : "A css class which sets a background image to be used as the icon for this button (defaults to undefined).",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "menuAlign",
       "type" : "String",
       "desc" : "The position to align the menu to (see {@link Roo.Element#alignTo} for more details, defaults to 'tl-bl?').",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "icon",
       "type" : "String",
       "desc" : "The path to an image to display in the button (the image will be set as the background-image\nCSS property of the button by default, so if you want a mixed icon/text button, set cls:\"x-btn-text-icon\")",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "tooltipType",
       "type" : "String",
       "desc" : "The type of tooltip to use. Either \"qtip\" (default) for QuickTips or \"title\" for title attribute.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "clickEvent",
       "type" : "String",
       "desc" : "The type of event to map to the button's event handler (defaults to 'click')",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "repeat",
       "type" : "Boolean/Object",
       "desc" : "True to repeat fire the click event while the mouse is down. This can also be\n  an {@link Roo.util.ClickRepeater} config object (defaults to false).",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "type",
       "type" : "String",
       "desc" : "The button's type, corresponding to the DOM input element type attribute.  Either \"submit,\" \"reset\" or \"button\" (default).",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     }
   ],
   "methods" : [

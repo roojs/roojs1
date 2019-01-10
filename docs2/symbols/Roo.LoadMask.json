@@ -8,19 +8,25 @@
       "name" : "msg",
       "type" : "String",
       "desc" : "The text to display in a centered loading message box (defaults to 'Loading...')",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "removeMask",
       "type" : "Boolean",
       "desc" : "True to create a single-use mask that is automatically destroyed after loading (useful for page loads),\nFalse to persist the mask element reference for multiple uses (e.g., for paged data widgets).  Defaults to false.",
-      "memberOf" : "Roo"
+      "memberOf" : "Roo",
+      "values" : [
+      ]
     },
     {
       "name" : "msgCls",
       "type" : "String",
       "desc" : "The CSS class to apply to the loading message element (defaults to \"x-mask-loading\")",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     }
   ],
   "methods" : [

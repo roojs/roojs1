@@ -8,67 +8,89 @@
       "name" : "easing",
       "type" : "String",
       "desc" : "A valid Easing value for the effect",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "afterCls",
       "type" : "String",
       "desc" : "A css class to apply after the effect",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "useDisplay",
       "type" : "Boolean",
       "desc" : "Whether to use the <i>display</i> CSS property instead of <i>visibility</i> when hiding Elements (only applies to \neffects that end with the element being visually hidden, ignored otherwise)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "stopFx",
       "type" : "Boolean",
       "desc" : "Whether subsequent effects should be stopped and removed after the current effect finishes",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "callback",
       "type" : "Function",
       "desc" : "A function called when the effect is finished",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "scope",
       "type" : "Object",
       "desc" : "The scope of the effect function",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "remove",
       "type" : "Boolean",
       "desc" : "Whether the Element should be removed from the DOM and destroyed after the effect finishes",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "concurrent",
       "type" : "Boolean",
       "desc" : "Whether to allow subsequently-queued effects to run at the same time as the current effect, or to ensure that they run in sequence",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "duration",
       "type" : "Number",
       "desc" : "The length of time (in seconds) that the effect should last",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "afterStyle",
       "type" : "String/Object/Function",
       "desc" : "A style specification string, e.g. \"width:100px\", or an object in the form {width:\"100px\"}, or\na function which returns such a specification that will be applied to the Element after the effect finishes",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "block",
       "type" : "Boolean",
       "desc" : "Whether the effect should block other effects from queueing while it runs",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     }
   ],
   "methods" : [

@@ -10,133 +10,177 @@
       "name" : "editor",
       "type" : "Object|Roo.tree.TreeEditor",
       "desc" : "The TreeEditor or xtype data to display when clicked.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable"
+      "memberOf" : "Roo.util.Observable",
+      "values" : [
+      ]
     },
     {
       "name" : "singleExpand",
       "type" : "Boolean",
       "desc" : "true if only 1 node per branch may be expanded",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "ddAppendOnly",
       "type" : "String",
       "desc" : "True if the tree should only allow append drops (use for trees which are sorted)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "dragConfig",
       "type" : "Object",
       "desc" : "Custom config to pass to the {@link Roo.tree.TreeDragZone} instance",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "enableDrop",
       "type" : "Boolean",
       "desc" : "true to enable just drop",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "hlColor",
       "type" : "String",
       "desc" : "The color of the node highlight (defaults to C3DAF9)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "rendererTip",
       "type" : "Function",
       "desc" : "DEPRECATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes hovertip to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "enableDD",
       "type" : "Boolean",
       "desc" : "true to enable drag and drop",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "hlDrop",
       "type" : "Boolean",
       "desc" : "false to disable node highlight on drop (defaults to the value of Roo.enableFx)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "renderer",
       "type" : "Function",
       "desc" : "DEPRECATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes. to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "rootVisible",
       "type" : "Boolean",
       "desc" : "false to hide the root node (defaults to true)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "enableDrag",
       "type" : "Boolean",
       "desc" : "true to enable just drag",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "ddGroup",
       "type" : "String",
       "desc" : "The DD group this TreePanel belongs to",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "lines",
       "type" : "Boolean",
       "desc" : "false to disable tree lines (defaults to true)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "dropConfig",
       "type" : "Object",
       "desc" : "Custom config to pass to the {@link Roo.tree.TreeDropZone} instance",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "selModel",
       "type" : "Boolean",
       "desc" : "A tree selection model to use with this TreePanel (defaults to a {@link Roo.tree.DefaultSelectionModel})",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "loader",
       "type" : "Boolean",
       "desc" : "A TreeLoader for use with this TreePanel",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "containerScroll",
       "type" : "Boolean",
       "desc" : "true to register this container with ScrollManager",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "ddScroll",
       "type" : "Boolean",
       "desc" : "true to enable YUI body scrolling",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "animate",
       "type" : "Boolean",
       "desc" : "true to enable animated expand/collapse (defaults to the value of Roo.enableFx)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "pathSeparator",
       "type" : "String",
       "desc" : "The token used to separate sub-paths in path strings (defaults to '/')",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     }
   ],
   "methods" : [

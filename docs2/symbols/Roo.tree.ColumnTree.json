@@ -8,13 +8,17 @@
       "name" : "columns",
       "type" : "Object",
       "desc" : "Including width, header, renderer, cls, dataIndex",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "borderWidth",
       "type" : "int",
       "desc" : "compined right/left border allowance",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     }
   ],
   "methods" : [

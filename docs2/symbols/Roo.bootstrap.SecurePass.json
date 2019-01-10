@@ -12,13 +12,17 @@
       "name" : "validFeedbackIcon",
       "type" : "String",
       "desc" : "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "lg",
       "type" : "Number",
       "desc" : "colspan out of 12 for large computer-sized screens",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "accept",
@@ -35,7 +39,9 @@
       "name" : "xs",
       "type" : "Number",
       "desc" : "colspan out of 12 for mobile-sized screens",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "hideMode",
@@ -51,43 +57,57 @@
       "name" : "disableKeyFilter",
       "type" : "Boolean",
       "desc" : "True to disable input keystroke filtering (defaults to false)",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "xattr",
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "disabled",
       "type" : "Boolean",
       "desc" : "is it disabled",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "name",
       "type" : "String",
       "desc" : "name of the input",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "validator",
       "type" : "Function",
       "desc" : "A custom validation function to be called during field validation (defaults to null).\nIf available, this function will be called only after the basic validators all return true, and will be passed the\ncurrent field value and expected to return boolean true if the value is valid or a string error message if invalid.",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "autocomplete",
       "type" : "String",
       "desc" : "- default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "tooltip",
       "type" : "string",
       "desc" : "Text for the tooltip",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "labelAlign",
@@ -103,43 +123,57 @@
       "name" : "regexText",
       "type" : "String",
       "desc" : "-- Depricated - use Invalid Text",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "errors",
       "type" : "String/Object",
       "desc" : "A Error spec, or true for a default spec (defaults to\n{\n PwdEmpty: \"Please type a password, and then retype it to confirm.\",\n PwdShort: \"Your password must be at least 6 characters long. Please type a different password.\",\n PwdLong: \"Your password can't contain more than 16 characters. Please type a different password.\",\n PwdBadChar: \"The password contains characters that aren't allowed. Please type a different password.\",\n IDInPwd: \"Your password can't include the part of your ID. Please type a different password.\",\n FNInPwd: \"Your password can't contain your first name. Please type a different password.\",\n LNInPwd: \"Your password can't contain your last name. Please type a different password.\"\n})",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "style",
       "type" : "String",
       "desc" : "any extra css",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "labelmd",
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "value",
       "type" : "string",
       "desc" : "default value of the input",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "Label",
       "type" : "String/Object",
       "desc" : "for the strength meter (defaults to\n'Password strength:')",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "hasFeedback",
@@ -155,43 +189,57 @@
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el'",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "sm",
       "type" : "Number",
       "desc" : "colspan out of 12 for tablet-sized screens",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "minLengthText",
       "type" : "String",
       "desc" : "Error text to display if the minimum length validation fails (defaults to \"The minimum length for this field is {minLength}\")",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "maxLengthText",
       "type" : "String",
       "desc" : "Error text to display if the maximum length validation fails (defaults to \"The maximum length for this field is {maxLength}\")",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable"
+      "memberOf" : "Roo.util.Observable",
+      "values" : [
+      ]
     },
     {
       "name" : "container_method",
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "readOnly",
       "type" : "Boolean",
       "desc" : "Specifies that the field should be read-only",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "indicatorpos",
@@ -218,121 +266,161 @@
       "name" : "size",
       "type" : "string",
       "desc" : "- (lg|sm) or leave empty..",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "focusClass",
       "type" : "String",
       "desc" : "The CSS class to use when the field receives focus (defaults to \"x-form-focus\")",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "labellg",
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "labelxs",
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "validateOnBlur",
       "type" : "Boolean",
       "desc" : "Whether the field should validate when it loses focus (defaults to true).",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "css class",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "inputType",
       "type" : "String",
       "desc" : "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "invalidClass",
       "type" : "String",
       "desc" : "DEPRICATED - code uses BS4 - is-valid / is-invalid",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "maskRe",
       "type" : "String",
       "desc" : "An input mask regular expression that will be used to filter keystrokes that don't match (defaults to null)",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "validationEvent",
       "type" : "String/Boolean",
       "desc" : "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "vtype",
       "type" : "String",
       "desc" : "A validation type name as defined in {@link Roo.form.VTypes} (defaults to null)",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "pwdStrengths",
       "type" : "String/Object",
       "desc" : "A pwdStrengths spec, or true for a default spec (defaults to\n['Weak', 'Medium', 'Strong'])",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "fieldLabel",
       "type" : "string",
       "desc" : "- the label associated",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "can_build_overlaid",
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "blankText",
       "type" : "String",
       "desc" : "Error text to display if the allow blank validation fails (defaults to \"This field is required\")",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "before",
       "type" : "string",
       "desc" : "- input group add on before",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "validationDelay",
       "type" : "Number",
       "desc" : "The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "selectOnFocus",
       "type" : "Boolean",
       "desc" : "True to automatically select any existing field text when the field receives input focus (defaults to false)",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "invalidFeedbackIcon",
       "type" : "String",
       "desc" : "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "visibilityEl",
@@ -348,37 +436,49 @@
       "name" : "placeholder",
       "type" : "string",
       "desc" : "- placeholder to put in text.",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "dataId",
       "type" : "string",
       "desc" : "cutomer id",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "md",
       "type" : "Number",
       "desc" : "colspan out of 12 for computer-sized screens",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "regex",
       "type" : "RegExp",
       "desc" : "A JavaScript RegExp object to be tested against the field value during validation (defaults to null).\nIf available, this regex will be evaluated only after the basic validators all return true, and will be passed the\ncurrent field value.  If the test fails, the field will be marked invalid using {@link #regexText}.",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "labelWidth",
       "type" : "Number",
       "desc" : "set the width of label",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "minLength",
       "type" : "Number",
       "desc" : "Minimum input field length required (defaults to 0)",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "capture",
@@ -394,13 +494,17 @@
       "name" : "validClass",
       "type" : "String",
       "desc" : "DEPRICATED - code uses BS4 - is-valid / is-invalid",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "allowBlank",
       "type" : "Boolean",
       "desc" : "False to validate that the value length > 0 (defaults to true)",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "forceFeedback",
@@ -416,25 +520,33 @@
       "name" : "labelsm",
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "after",
       "type" : "string",
       "desc" : "- input group add on after",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "maxLength",
       "type" : "Number",
       "desc" : "Maximum input field length allowed (defaults to Number.MAX_VALUE)",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     },
     {
       "name" : "invalidText",
       "type" : "String",
       "desc" : "The error text to display if {@link #validator} test fails during validation (defaults to \"\")",
-      "memberOf" : "Roo.bootstrap.Input"
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
+      ]
     }
   ],
   "methods" : [

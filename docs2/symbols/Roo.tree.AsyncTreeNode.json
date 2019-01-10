@@ -11,115 +11,153 @@
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable"
+      "memberOf" : "Roo.util.Observable",
+      "values" : [
+      ]
     },
     {
       "name" : "hrefTarget",
       "type" : "String",
       "desc" : "target frame for the link",
-      "memberOf" : "Roo.tree.TreeNode"
+      "memberOf" : "Roo.tree.TreeNode",
+      "values" : [
+      ]
     },
     {
       "name" : "id",
       "type" : "String",
       "desc" : "The id for this node. If one is not specified, one is generated.",
-      "memberOf" : "Roo.data.Node"
+      "memberOf" : "Roo.data.Node",
+      "values" : [
+      ]
     },
     {
       "name" : "text",
       "type" : "String",
       "desc" : "The text for this node",
-      "memberOf" : "Roo.tree.TreeNode"
+      "memberOf" : "Roo.tree.TreeNode",
+      "values" : [
+      ]
     },
     {
       "name" : "uiProvider",
       "type" : "Function",
       "desc" : "A UI <b>class</b> to use for this node (defaults to Roo.tree.TreeNodeUI)",
-      "memberOf" : "Roo.tree.TreeNode"
+      "memberOf" : "Roo.tree.TreeNode",
+      "values" : [
+      ]
     },
     {
       "name" : "expanded",
       "type" : "Boolean",
       "desc" : "true to start the node expanded",
-      "memberOf" : "Roo.tree.TreeNode"
+      "memberOf" : "Roo.tree.TreeNode",
+      "values" : [
+      ]
     },
     {
       "name" : "qtipCfg",
       "type" : "String",
       "desc" : "An Ext QuickTip config for the node (used instead of qtip)",
-      "memberOf" : "Roo.tree.TreeNode"
+      "memberOf" : "Roo.tree.TreeNode",
+      "values" : [
+      ]
     },
     {
       "name" : "allowDrop",
       "type" : "Boolean",
       "desc" : "false if this node cannot be drop on",
-      "memberOf" : "Roo.tree.TreeNode"
+      "memberOf" : "Roo.tree.TreeNode",
+      "values" : [
+      ]
     },
     {
       "name" : "disabled",
       "type" : "Boolean",
       "desc" : "true to start the node disabled",
-      "memberOf" : "Roo.tree.TreeNode"
+      "memberOf" : "Roo.tree.TreeNode",
+      "values" : [
+      ]
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "A css class to be added to the node",
-      "memberOf" : "Roo.tree.TreeNode"
+      "memberOf" : "Roo.tree.TreeNode",
+      "values" : [
+      ]
     },
     {
       "name" : "iconCls",
       "type" : "String",
       "desc" : "A css class to be added to the nodes icon element for applying css background images",
-      "memberOf" : "Roo.tree.TreeNode"
+      "memberOf" : "Roo.tree.TreeNode",
+      "values" : [
+      ]
     },
     {
       "name" : "allowDrag",
       "type" : "Boolean",
       "desc" : "false to make this node undraggable if DD is on (defaults to true)",
-      "memberOf" : "Roo.tree.TreeNode"
+      "memberOf" : "Roo.tree.TreeNode",
+      "values" : [
+      ]
     },
     {
       "name" : "loader",
       "type" : "TreeLoader",
       "desc" : "A TreeLoader to be used by this node (defaults to the loader defined on the tree)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "icon",
       "type" : "String",
       "desc" : "The path to an icon for the node. The preferred way to do this",
-      "memberOf" : "Roo.tree.TreeNode"
+      "memberOf" : "Roo.tree.TreeNode",
+      "values" : [
+      ]
     },
     {
       "name" : "singleClickExpand",
       "type" : "Boolean",
       "desc" : "True for single click expand on this node",
-      "memberOf" : "Roo.tree.TreeNode"
+      "memberOf" : "Roo.tree.TreeNode",
+      "values" : [
+      ]
     },
     {
       "name" : "qtip",
       "type" : "String",
       "desc" : "An Ext QuickTip for the node",
-      "memberOf" : "Roo.tree.TreeNode"
+      "memberOf" : "Roo.tree.TreeNode",
+      "values" : [
+      ]
     },
     {
       "name" : "checked",
       "type" : "Boolean",
       "desc" : "True to render a checked checkbox for this node, false to render an unchecked checkbox\n(defaults to undefined with no checkbox rendered)",
-      "memberOf" : "Roo.tree.TreeNode"
+      "memberOf" : "Roo.tree.TreeNode",
+      "values" : [
+      ]
     },
     {
       "name" : "href",
       "type" : "String",
       "desc" : "URL of the link used for the node (defaults to #)",
-      "memberOf" : "Roo.tree.TreeNode"
+      "memberOf" : "Roo.tree.TreeNode",
+      "values" : [
+      ]
     },
     {
       "name" : "leaf",
       "type" : "Boolean",
       "desc" : "true if this node is a leaf and does not have children",
-      "memberOf" : "Roo.data.Node"
+      "memberOf" : "Roo.data.Node",
+      "values" : [
+      ]
     }
   ],
   "methods" : [

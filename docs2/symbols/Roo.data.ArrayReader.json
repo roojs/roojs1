@@ -9,13 +9,17 @@
       "name" : "fields",
       "type" : "Array",
       "desc" : "Array of field definition objects",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "id",
       "type" : "String",
       "desc" : "(optional) The subscript within row Array that provides an ID for the Record",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     }
   ],
   "methods" : [

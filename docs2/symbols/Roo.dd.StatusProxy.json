@@ -8,13 +8,17 @@
       "name" : "dropNotAllowed",
       "type" : "String",
       "desc" : "The CSS class to apply to the status element when drop is not allowed (defaults to \"x-dd-drop-nodrop\").",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "dropAllowed",
       "type" : "String",
       "desc" : "The CSS class to apply to the status element when drop is allowed (defaults to \"x-dd-drop-ok\").",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     }
   ],
   "methods" : [

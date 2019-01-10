@@ -12,31 +12,41 @@
       "name" : "whitelist",
       "type" : "Array",
       "desc" : "of html tags - in addition to statndard whitelist",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable"
+      "memberOf" : "Roo.util.Observable",
+      "values" : [
+      ]
     },
     {
       "name" : "fieldLabel",
       "type" : "String",
       "desc" : "Label to use when rendering a form.",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : "Roo.form.Field",
+      "values" : [
+      ]
     },
     {
       "name" : "validationDelay",
       "type" : "Number",
       "desc" : "The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : "Roo.form.Field",
+      "values" : [
+      ]
     },
     {
       "name" : "msgTarget",
       "type" : "String",
       "desc" : "The location where error text should display.  Should be one of the following values (defaults to 'qtip'):\n<pre>\nValue         Description\n-----------   ----------------------------------------------------------------------\nqtip          Display a quick tip when the user hovers over the field\ntitle         Display a default browser title attribute popup\nunder         Add a block div beneath the field containing the error text\nside          Add an error icon to the right of the field with a popup on hover\n[element id]  Add the error text directly to the innerHTML of the specified element\n</pre>",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : "Roo.form.Field",
+      "values" : [
+      ]
     },
     {
       "name" : "hideMode",
@@ -52,109 +62,145 @@
       "name" : "disabled",
       "type" : "Boolean",
       "desc" : "True to disable the field (defaults to false).",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : "Roo.form.Field",
+      "values" : [
+      ]
     },
     {
       "name" : "value",
       "type" : "Mixed",
       "desc" : "A value to initialize this field with.",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : "Roo.form.Field",
+      "values" : [
+      ]
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "tabIndex",
       "type" : "Number",
       "desc" : "The tabIndex for this field. Note this only applies to fields that are rendered, not those which are built via applyTo (defaults to undefined).",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : "Roo.form.Field",
+      "values" : [
+      ]
     },
     {
       "name" : "readOnly",
       "type" : "Boolean",
       "desc" : "True to mark the field as readOnly in HTML (defaults to false) -- Note: this only sets the element's readOnly DOM attribute.",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : "Roo.form.Field",
+      "values" : [
+      ]
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "A CSS class to apply to the field's underlying element.",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : "Roo.form.Field",
+      "values" : [
+      ]
     },
     {
       "name" : "toolbars",
       "type" : "Array",
       "desc" : "Array of toolbars. - defaults to just the Standard one",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el'",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "width",
       "type" : "Number",
       "desc" : "(in pixels)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "resizable",
       "type" : "String",
       "desc" : "'s' or 'se' or 'e' - wrapps the element in a\n                       Roo.resizable.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "validationEvent",
       "type" : "String/Boolean",
       "desc" : "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : "Roo.form.Field",
+      "values" : [
+      ]
     },
     {
       "name" : "height",
       "type" : "Number",
       "desc" : "(in pixels)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "name",
       "type" : "String",
       "desc" : "The field's HTML name attribute.",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : "Roo.form.Field",
+      "values" : [
+      ]
     },
     {
       "name" : "qtip",
       "type" : "String",
       "desc" : "Mouse over tip",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : "Roo.form.Field",
+      "values" : [
+      ]
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "stylesheets",
       "type" : "Array",
       "desc" : "url of stylesheets. set to [] to disable stylesheets.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "blacklist",
       "type" : "Array",
       "desc" : "of html tags - in addition to standard blacklist.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "clearUp",
       "type" : "Boolean",
       "desc" : "",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     }
   ],
   "methods" : [

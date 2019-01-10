@@ -12,31 +12,41 @@
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable"
+      "memberOf" : "Roo.util.Observable",
+      "values" : [
+      ]
     },
     {
       "name" : "showDelay",
       "type" : "Number",
       "desc" : "Length of time in milliseconds to wait before showing this item (defaults to 200)",
-      "memberOf" : "Roo.menu.Item"
+      "memberOf" : "Roo.menu.Item",
+      "values" : [
+      ]
     },
     {
       "name" : "text",
       "type" : "String",
       "desc" : "The text to show on the menu item.",
-      "memberOf" : "Roo.menu.Item"
+      "memberOf" : "Roo.menu.Item",
+      "values" : [
+      ]
     },
     {
       "name" : "activeClass",
       "type" : "String",
       "desc" : "The CSS class to use when the item becomes activated (defaults to \"x-menu-item-active\")",
-      "memberOf" : "Roo.menu.BaseItem"
+      "memberOf" : "Roo.menu.BaseItem",
+      "values" : [
+      ]
     },
     {
       "name" : "hidden",
       "type" : "Boolean",
       "desc" : "True to prevent creation of this menu item (defaults to false)",
-      "memberOf" : "Roo.menu.BaseItem"
+      "memberOf" : "Roo.menu.BaseItem",
+      "values" : [
+      ]
     },
     {
       "name" : "hideMode",
@@ -52,79 +62,105 @@
       "name" : "group",
       "type" : "String",
       "desc" : "All check items with the same group name will automatically be grouped into a single-select\nradio button group (defaults to '')",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "handler",
       "type" : "Function",
       "desc" : "A function that will handle the click event of this menu item (defaults to undefined)",
-      "memberOf" : "Roo.menu.BaseItem"
+      "memberOf" : "Roo.menu.BaseItem",
+      "values" : [
+      ]
     },
     {
       "name" : "hideDelay",
       "type" : "Number",
       "desc" : "Length of time in milliseconds to wait before hiding after a click (defaults to 100)",
-      "memberOf" : "Roo.menu.BaseItem"
+      "memberOf" : "Roo.menu.BaseItem",
+      "values" : [
+      ]
     },
     {
       "name" : "hideOnClick",
       "type" : "Boolean",
       "desc" : "True to hide the containing menu after this item is clicked (defaults to true)",
-      "memberOf" : "Roo.menu.BaseItem"
+      "memberOf" : "Roo.menu.BaseItem",
+      "values" : [
+      ]
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "itemCls",
       "type" : "String",
       "desc" : "The default CSS class to use for check items (defaults to \"x-menu-item x-menu-check-item\")",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "HTML",
       "type" : "String",
       "desc" : "to render in menu\nThe text to show on the menu item (HTML version).",
-      "memberOf" : "Roo.menu.Item"
+      "memberOf" : "Roo.menu.Item",
+      "values" : [
+      ]
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el'",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "values" : [
+      ]
     },
     {
       "name" : "groupClass",
       "type" : "String",
       "desc" : "The default CSS class to use for radio group check items (defaults to \"x-menu-group-item\")",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "canActivate",
       "type" : "Boolean",
       "desc" : "True if this item can be visually activated (defaults to true)",
-      "memberOf" : "Roo.menu.Item"
+      "memberOf" : "Roo.menu.Item",
+      "values" : [
+      ]
     },
     {
       "name" : "icon",
       "type" : "String",
       "desc" : "The path to an icon to display in this menu item (defaults to Roo.BLANK_IMAGE_URL)",
-      "memberOf" : "Roo.menu.Item"
+      "memberOf" : "Roo.menu.Item",
+      "values" : [
+      ]
     },
     {
       "name" : "checked",
       "type" : "Boolean",
       "desc" : "True to initialize this checkbox as checked (defaults to false).  Note that\nif this checkbox is part of a radio group (group = true) only the last item in the group that is\ninitialized with checked = true will be rendered as checked.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "values" : [
+      ]
     }
   ],
   "methods" : [

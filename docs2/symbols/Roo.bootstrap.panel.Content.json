@@ -9,43 +9,57 @@
       "name" : "loadOnce",
       "type" : "Boolean",
       "desc" : "When used with {@link #url}, calls {@link #setUrl} with this value",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable"
+      "memberOf" : "Roo.util.Observable",
+      "values" : [
+      ]
     },
     {
       "name" : "badges",
       "type" : "Boolean",
       "desc" : "render the badges",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "autoScroll",
       "type" : "Boolean",
       "desc" : "True to scroll overflow in this panel (use with {@link #fitToFrame})",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "fitToFrame",
       "type" : "Boolean",
       "desc" : "True for this panel to adjust its size to fit when the region resizes  (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "background",
       "type" : "Boolean",
       "desc" : "True if the panel should not be activated when it is added (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "toolbar",
       "type" : "Toolbar",
       "desc" : "A toolbar for this panel",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "region",
@@ -64,55 +78,73 @@
       "name" : "content",
       "type" : "String",
       "desc" : "Raw content to fill content panel with (uses setContent on construction.)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "title",
       "type" : "String",
       "desc" : "The title for this panel",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "autoCreate",
       "type" : "Boolean/Object",
       "desc" : "True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "fitContainer",
       "type" : "Boolean",
       "desc" : "When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "closable",
       "type" : "Boolean",
       "desc" : "True if the panel can be closed/removed",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "params",
       "type" : "String/Object",
       "desc" : "When used with {@link #url}, calls {@link #setUrl} with this value",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "adjustments",
       "type" : "Array",
       "desc" : "Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "url",
       "type" : "String",
       "desc" : "Calls {@link #setUrl} with this value",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     },
     {
       "name" : "resizeEl",
       "type" : "String/HTMLElement/Element",
       "desc" : "An element to resize if {@link #fitToFrame} is true (instead of this panel's element)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "values" : [
+      ]
     }
   ],
   "methods" : [
