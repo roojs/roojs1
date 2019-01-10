@@ -463,6 +463,11 @@ Roo.docs = new Roo.XComponent({
           render : function (_self)
            {
                _this.configTable = this;
+           },
+          rowclick : function (_self, el, rowIndex, e)
+           {
+               var r = this.store.getAt(rowIndex);
+               this.refershRow(r);
            }
          },
          xns : Roo.bootstrap,
