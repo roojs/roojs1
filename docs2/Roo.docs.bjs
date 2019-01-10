@@ -104,7 +104,8 @@
            "String html" : "Class",
            "items" : [
             {
-             "xtype" : "Container",
+             "String tag" : "span",
+             "xtype" : "Element",
              "$ xns" : "Roo.bootstrap"
             }
            ]
