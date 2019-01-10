@@ -887,7 +887,9 @@ header-menu-options ul.socials > li:first-child,
 }
  
  
- .doc-table-container { }
+ .doc-table-container .panel-body  {
+    padding: 0
+}
  
  
  
