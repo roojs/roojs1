@@ -294,7 +294,14 @@ Roo.docs = new Roo.XComponent({
            html : _this._strings['9bd81329febf6efe22788e03ddeaf0af'] /* Class */,
            level : 2,
            xns : Roo.bootstrap,
-           '|xns' : 'Roo.bootstrap'
+           '|xns' : 'Roo.bootstrap',
+           items  : [
+            {
+             xtype : 'Container',
+             xns : Roo.bootstrap,
+             '|xns' : 'Roo.bootstrap'
+            }
+           ]
           },
           {
            xtype : 'Element',

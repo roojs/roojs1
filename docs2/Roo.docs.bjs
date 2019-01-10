@@ -101,7 +101,13 @@
            "xtype" : "Header",
            "$ xns" : "Roo.bootstrap",
            "Number level" : 2,
-           "String html" : "Class"
+           "String html" : "Class",
+           "items" : [
+            {
+             "xtype" : "Container",
+             "$ xns" : "Roo.bootstrap"
+            }
+           ]
           },
           {
            "String tag" : "div",
