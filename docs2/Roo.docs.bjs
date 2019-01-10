@@ -286,6 +286,7 @@
           "render" : "function (_self)\n{\n    _this.methodsTable = this;\n}"
          },
          "xtype" : "Table",
+         "Boolean rowSelection" : true,
          "$ xns" : "Roo.bootstrap",
          "items" : [
           {
@@ -344,6 +345,7 @@
           "render" : "function (_self)\n{\n    _this.eventsTable = this;\n}"
          },
          "xtype" : "Table",
+         "Boolean rowSelection" : true,
          "$ xns" : "Roo.bootstrap",
          "items" : [
           {
