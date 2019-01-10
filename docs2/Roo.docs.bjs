@@ -139,6 +139,7 @@
            "String html" : "test"
           },
           {
+           "Boolean preventDefault" : true,
            "xtype" : "Link",
            "$ xns" : "Roo.bootstrap"
           }
