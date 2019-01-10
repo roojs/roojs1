@@ -245,6 +245,11 @@
              "xtype" : "MemoryProxy",
              "$ xns" : "Roo.data",
              "* prop" : "proxy"
+            },
+            {
+             "xtype" : "JsonReader",
+             "$ xns" : "Roo.data",
+             "* prop" : "reader"
             }
            ]
           }
