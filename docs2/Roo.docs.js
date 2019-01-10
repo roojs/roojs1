@@ -345,7 +345,7 @@ Roo.docs = new Roo.XComponent({
                xtype : 'Link',
                cls : 'doc-extends',
                html : _this._strings['494a64a432ff6a121e4ab9003c7a0df3'] /* parentcls */,
-               preventDefault : true,
+               preventDefault : false,
                listeners : {
                 click : function (e)
                  {
