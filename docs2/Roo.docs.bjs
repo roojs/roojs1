@@ -160,6 +160,9 @@
            ]
           },
           {
+           "listeners" : {
+            "render" : "function (_self)\n{\n    _this.doc_desc\n}"
+           },
            "String cls" : "doc-desc",
            "xtype" : "Container",
            "$ xns" : "Roo.bootstrap",

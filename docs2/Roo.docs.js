@@ -370,6 +370,12 @@ Roo.docs = new Roo.XComponent({
            xtype : 'Container',
            cls : 'doc-desc',
            html : _this._strings['e64b94523532dbac62df6795a5153f04'] /* doc-desc */,
+           listeners : {
+            render : function (_self)
+             {
+                 _this.doc_desc
+             }
+           },
            xns : Roo.bootstrap,
            '|xns' : 'Roo.bootstrap'
           },
