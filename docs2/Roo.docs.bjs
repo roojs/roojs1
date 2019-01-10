@@ -232,11 +232,6 @@
          "$ xns" : "Roo.bootstrap",
          "items" : [
           {
-           "xtype" : "RowSelectionModel",
-           "$ xns" : "Roo.bootstrap.Table",
-           "* prop" : "sm"
-          },
-          {
            "String header" : "",
            "Number md" : 11,
            "String dataIndex" : "name",
