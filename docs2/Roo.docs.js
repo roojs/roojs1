@@ -503,6 +503,22 @@ Roo.docs = new Roo.XComponent({
            dataIndex : 'memberOf',
            header : _this._strings['f361257612a512f9be2fdc2abfb25aef'] /* <small>Defined by</small> */,
            md : 1,
+           renderer : function(v,x,r) { 
+           
+           
+           		return 	'<div class="fixedFont">' +
+           				'<b class="itemname">' + r.json.name + '</b>' +
+           				     (r.json.type.length ? (' : <a href="#' + r.json.type+'-constructor">' + r.json.type + '</a>') : '') +
+            				     (r.json.values.length ? ' : ( ' +  r.json.values.join(", ") + ' )' : '') +
+           			    '</div>' +
+           		  
+           			/*'<div class="mdesc">' +
+           			    '<div class="short">' + (r.json.desc.split("\n")[0]) + '</div>' +
+           			'</div>'+ */
+           			
+           			'<div class="mdesc"><div class="long">' + r.json.desc.split("\n").join('<br/>') + '</div></div>';
+           			
+           },
            xns : Roo.grid,
            '|xns' : 'Roo.grid'
           }
