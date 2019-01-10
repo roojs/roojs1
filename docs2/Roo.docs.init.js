@@ -137,7 +137,7 @@ Roo.docs.init = {
               {
         */
         for (var k in d) {
-            if (typeof(Roo.docs['doc_' + k])  !=  null) {
+            if (typeof(Roo.docs['doc_' + k])  !=  'undefined') {
                 Roo.docs['doc_' + k].el.dom.innerHTML = d[k];
             }
         }
