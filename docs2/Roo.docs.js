@@ -416,7 +416,7 @@ Roo.docs = new Roo.XComponent({
        listeners : {
         render : function (_self)
          {
-             _this.navGroup = this;
+           //  _this.navGroup = this;
              
          }
        },

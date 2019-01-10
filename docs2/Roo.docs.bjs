@@ -120,7 +120,7 @@
      "items" : [
       {
        "listeners" : {
-        "render" : "function (_self)\n{\n    _this.navGroup = this;\n    \n}"
+        "render" : "function (_self)\n{\n  //  _this.navGroup = this;\n    \n}"
        },
        "| function activeLookup" : "function() \n{ \n    return;\n    var pathname = window.location.pathname.substring(baseURL.length);\n    \n    if(!pathname.length){\n        return;\n    }\n    \n    if(pathname.match(/^\\/Projects/)){\n        pathname = '/Projects';\n    }\n    \n    var lookupPath = function(item)\n    {\n        if(typeof(item.href) == 'undefined' || !item.href.length || item.href == '#'){\n            return true;\n        }\n        \n        item.el.removeClass('active');\n        \n        var href = item.href.substring(baseURL.length);\n        \n        if(href != pathname){\n            return true;\n        }\n        \n        item.el.addClass('active');\n        return false;\n            \n    };\n    \n    var seted = false;\n    \n    Roo.each(_this.navGroup.items, function(i){\n        \n        var s = lookupPath(i);\n        \n        if(!s){\n            return false;\n        }\n        \n        if(typeof(i.menu) == 'undefined' || !i.menu.items.length){\n            return;\n        }\n        \n        Roo.each(i.menu.items, function(ii){\n            \n            var ss = lookupPath(ii);\n            \n            if(!ss){\n                seted = true;\n                return false;\n            }\n            \n        });\n        \n        if(seted){\n            return false;\n        }\n        \n    });\n}",
        "String type" : "nav",
