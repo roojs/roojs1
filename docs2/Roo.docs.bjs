@@ -164,7 +164,13 @@
         {
          "Number md" : 3,
          "xtype" : "Column",
-         "$ xns" : "Roo.bootstrap"
+         "$ xns" : "Roo.bootstrap",
+         "items" : [
+          {
+           "xtype" : "Container",
+           "$ xns" : "Roo.bootstrap"
+          }
+         ]
         }
        ]
       },
