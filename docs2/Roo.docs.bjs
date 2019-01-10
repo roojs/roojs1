@@ -159,7 +159,8 @@
              "items" : [
               {
                "listeners" : {
-                "render" : "function (_self)\n{\n    _this.doc_source = this;\n}"
+                "render" : "function (_self)\n{\n    _this.doc_source = this;\n}",
+                "click" : "function (e)\n{\n    if (this.el.dom.innerHTML.length > 0) {\n    \n    }\n}"
                },
                "String cls" : "doc-source",
                "Boolean preventDefault" : true,

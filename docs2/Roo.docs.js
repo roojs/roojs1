@@ -370,6 +370,12 @@ Roo.docs = new Roo.XComponent({
                html : _this._strings['36cd38f49b9afa08222c0dc9ebfe35eb'] /* source */,
                preventDefault : true,
                listeners : {
+                click : function (e)
+                 {
+                     if (this.el.dom.innerHTML.length > 0) {
+                     
+                     }
+                 },
                 render : function (_self)
                  {
                      _this.doc_source = this;
