@@ -106,7 +106,14 @@ Roo.docs.init = {
             }
         }, this);
         
+    },
+    loadDoc : function(name)
+    {
+        
+        
+        
     }
+    
     
     
 };
