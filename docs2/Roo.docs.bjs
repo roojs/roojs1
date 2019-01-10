@@ -225,7 +225,7 @@
            "String header" : "",
            "Number md" : 11,
            "String dataIndex" : "name",
-           "$ Function renderer" : "function(v,x,r) { \n\n\n\t\treturn \t'<div class=\"fixedFont\">' +\n\t\t\t\t'<b class=\"itemname\">' + r.json.name + '</b>' +\n\t\t\t\t     (r.json.type.length ? (' : <a href=\"#' + r.json.type+'-constructor\">' + r.json.type + '</a>') : '') +\n \t\t\t\t     (r.values.length ? (' : ( ' +  r.values.implode(\", \") + \" )\" : \"\") +\n\t\t\t    '</div>' +\n\t\t  \n\t\t\t/*'<div class=\"mdesc\">' +\n\t\t\t    '<div class=\"short\">' + (r.json.desc.split(\"\\n\")[0]) + '</div>' +\n\t\t\t'</div>'+ */\n\t\t\t\n\t\t\t'<div class=\"mdesc\"><div class=\"long\">' + r.json.desc.split(\"\\n\").join('<br/>') + '</div></div>';\n\t\t\t\n}",
+           "$ Function renderer" : "function(v,x,r) { \n\n\n\t\treturn \t'<div class=\"fixedFont\">' +\n\t\t\t\t'<b class=\"itemname\">' + r.json.name + '</b>' +\n\t\t\t\t     (r.json.type.length ? (' : <a href=\"#' + r.json.type+'-constructor\">' + r.json.type + '</a>') : '') +\n \t\t\t\t     (r.values.length ? (' : ( ' +  r.values.implode(\", \") + ' )' : '') +\n\t\t\t    '</div>' +\n\t\t  \n\t\t\t/*'<div class=\"mdesc\">' +\n\t\t\t    '<div class=\"short\">' + (r.json.desc.split(\"\\n\")[0]) + '</div>' +\n\t\t\t'</div>'+ */\n\t\t\t\n\t\t\t'<div class=\"mdesc\"><div class=\"long\">' + r.json.desc.split(\"\\n\").join('<br/>') + '</div></div>';\n\t\t\t\n}",
            "xtype" : "ColumnModel",
            "$ xns" : "Roo.grid",
            "* prop" : "cm[]"
