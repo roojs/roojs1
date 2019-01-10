@@ -160,6 +160,10 @@
            "String html" : "doc-comments"
           }
          ]
+        },
+        {
+         "xtype" : "Column",
+         "$ xns" : "Roo.bootstrap"
         }
        ]
       },

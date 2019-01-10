@@ -360,6 +360,11 @@ Roo.docs = new Roo.XComponent({
            '|xns' : 'Roo.bootstrap'
           }
          ]
+        },
+        {
+         xtype : 'Column',
+         xns : Roo.bootstrap,
+         '|xns' : 'Roo.bootstrap'
         }
        ]
       },
