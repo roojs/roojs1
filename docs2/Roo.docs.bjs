@@ -162,6 +162,7 @@
          ]
         },
         {
+         "Number md" : 3,
          "xtype" : "Column",
          "$ xns" : "Roo.bootstrap"
         }
