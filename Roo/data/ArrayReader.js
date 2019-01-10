@@ -42,6 +42,9 @@ var myReader = new Roo.data.ArrayReader({
  * created using {@link Roo.data.Record#create}.
  */
 Roo.data.ArrayReader = function(meta, recordType){
+    
+    
+    
     Roo.data.ArrayReader.superclass.constructor.call(this, meta, recordType);
 };
 
