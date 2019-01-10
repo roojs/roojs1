@@ -866,39 +866,8 @@ header-menu-options ul.socials > li:first-child,
     background-color: #c2cde0; 
 }
 
-/* this is in the mansorary code?? not sure why? */
-.masonry-brick-split .masonry-brick-split-head,
-.masonry-brick-split .masonry-brick-split-head .masonry-brick-paragraph {
-    height: 96%;
-}
-.masonry-brick-split .masonry-brick-split-body {
-    height: 4%;
-}
-/* hide the news at present */
-.mobile-home-news {
-    display: none;
-}
-
-/* really old iphone */
-@media (max-width: 330px) {
-    .services .masonry-brick-image.masonry-center-title>.masonry-brick-paragraph .masonry-brick-title {
-        font-size: 24px;
-    }
-    .main-content-projects .masonry-brick .masonry-brick-title
-    {
-        font-size: 12px;
-    }
-    .contact-us-location-content h4.roo-brick-title
-    {
-        font-size: 9px;
-        margin-bottom: 4px;
-
-    }
-    .contact-us-location-content .roo-brick-text {
-        font-size: 7px
-    }
-}
-
+ 
+ 
 .dont-break-out {
     /* These are technically the same, but use both */
     overflow-wrap: break-word;
@@ -916,7 +885,9 @@ header-menu-options ul.socials > li:first-child,
     -webkit-hyphens: auto;
     hyphens: auto;
 }
-
-iframe.masonry-brick-image-view {
-    object-fit: fill;
-}
+ 
+ 
+ .doc-table-container { }
+ 
+ 
+ 
