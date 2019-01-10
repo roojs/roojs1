@@ -214,7 +214,7 @@
       },
       {
        "String header" : "Configuration options",
-       "Boolean expanded" : false,
+       "Boolean expanded" : true,
        "String cls" : "doc-table-container",
        "xtype" : "Container",
        "String panel" : "info",
