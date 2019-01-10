@@ -293,35 +293,42 @@ Roo.docs = new Roo.XComponent({
          '|xns' : 'Roo.bootstrap',
          items  : [
           {
-           xtype : 'Header',
-           html : _this._strings['9bd81329febf6efe22788e03ddeaf0af'] /*  Class  */,
-           level : 2,
+           xtype : 'Container',
            xns : Roo.bootstrap,
            '|xns' : 'Roo.bootstrap',
            items  : [
             {
-             xtype : 'Element',
-             cls : 'doc-classname',
-             html : _this._strings['f561aaf6ef0bf14d4208bb46a4ccb3ad'] /* xxx */,
-             tag : 'span',
+             xtype : 'Header',
+             html : _this._strings['9bd81329febf6efe22788e03ddeaf0af'] /*  Class  */,
+             level : 2,
              xns : Roo.bootstrap,
-             '|xns' : 'Roo.bootstrap'
-            },
-            {
-             xtype : 'Element',
-             cls : 'doc-extends-str',
-             html : _this._strings['ae635f08107a69569e636835f24e6f6f'] /*  extends  */,
-             tag : 'span',
-             xns : Roo.bootstrap,
-             '|xns' : 'Roo.bootstrap'
-            },
-            {
-             xtype : 'Link',
-             cls : 'doc-extends',
-             html : _this._strings['494a64a432ff6a121e4ab9003c7a0df3'] /* parentcls */,
-             preventDefault : true,
-             xns : Roo.bootstrap,
-             '|xns' : 'Roo.bootstrap'
+             '|xns' : 'Roo.bootstrap',
+             items  : [
+              {
+               xtype : 'Element',
+               cls : 'doc-classname',
+               html : _this._strings['f561aaf6ef0bf14d4208bb46a4ccb3ad'] /* xxx */,
+               tag : 'span',
+               xns : Roo.bootstrap,
+               '|xns' : 'Roo.bootstrap'
+              },
+              {
+               xtype : 'Element',
+               cls : 'doc-extends-str',
+               html : _this._strings['ae635f08107a69569e636835f24e6f6f'] /*  extends  */,
+               tag : 'span',
+               xns : Roo.bootstrap,
+               '|xns' : 'Roo.bootstrap'
+              },
+              {
+               xtype : 'Link',
+               cls : 'doc-extends',
+               html : _this._strings['494a64a432ff6a121e4ab9003c7a0df3'] /* parentcls */,
+               preventDefault : true,
+               xns : Roo.bootstrap,
+               '|xns' : 'Roo.bootstrap'
+              }
+             ]
             }
            ]
           },

@@ -101,31 +101,37 @@
          "String style" : "padding-left: 0px;",
          "items" : [
           {
-           "xtype" : "Header",
+           "xtype" : "Container",
            "$ xns" : "Roo.bootstrap",
-           "Number level" : 2,
-           "String html" : " Class ",
            "items" : [
             {
-             "String tag" : "span",
-             "String cls" : "doc-classname",
-             "xtype" : "Element",
+             "xtype" : "Header",
              "$ xns" : "Roo.bootstrap",
-             "String html" : "xxx"
-            },
-            {
-             "String tag" : "span",
-             "String cls" : "doc-extends-str",
-             "xtype" : "Element",
-             "$ xns" : "Roo.bootstrap",
-             "String html" : " extends "
-            },
-            {
-             "String cls" : "doc-extends",
-             "Boolean preventDefault" : true,
-             "xtype" : "Link",
-             "$ xns" : "Roo.bootstrap",
-             "String html" : "parentcls"
+             "Number level" : 2,
+             "String html" : " Class ",
+             "items" : [
+              {
+               "String tag" : "span",
+               "String cls" : "doc-classname",
+               "xtype" : "Element",
+               "$ xns" : "Roo.bootstrap",
+               "String html" : "xxx"
+              },
+              {
+               "String tag" : "span",
+               "String cls" : "doc-extends-str",
+               "xtype" : "Element",
+               "$ xns" : "Roo.bootstrap",
+               "String html" : " extends "
+              },
+              {
+               "String cls" : "doc-extends",
+               "Boolean preventDefault" : true,
+               "xtype" : "Link",
+               "$ xns" : "Roo.bootstrap",
+               "String html" : "parentcls"
+              }
+             ]
             }
            ]
           },
