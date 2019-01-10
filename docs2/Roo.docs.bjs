@@ -217,6 +217,7 @@
          "listeners" : {
           "render" : "function (_self)\n{\n    _this.configTable = this;\n}"
          },
+         "boolean striped" : true,
          "xtype" : "Table",
          "$ xns" : "Roo.bootstrap",
          "items" : [
