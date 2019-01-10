@@ -10,15 +10,16 @@
     {
       "name" : "panel",
       "type" : "String",
-      "desc" : [
+      "desc" : "render as panel  - type - primary/success.....",
+      "memberOf" : "",
+      "values" : [
         "(default",
         "primary",
         "success",
         "info",
         "warning",
         "danger)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "footer",
@@ -47,11 +48,12 @@
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : [
+      "desc" : "What element to use for visibility (@see getVisibilityEl())",
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
         "(el",
         "parent)"
-      ],
-      "memberOf" : "Roo.bootstrap.Component"
+      ]
     },
     {
       "name" : "jumbotron",
@@ -62,30 +64,33 @@
     {
       "name" : "sticky",
       "type" : "String",
-      "desc" : [
+      "desc" : "block to use as footer or body- needs css-bootstrap/sticky-footer.css",
+      "memberOf" : "",
+      "values" : [
         "(footer",
         "wrap",
         "push)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "hidden",
       "type" : "Boolean",
-      "desc" : [
+      "desc" : "hide the element",
+      "memberOf" : "",
+      "values" : [
         "(true",
         "false)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "expanded",
       "type" : "Boolean",
-      "desc" : [
+      "desc" : "default true",
+      "memberOf" : "",
+      "values" : [
         "(true",
         "false)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "rheader",
@@ -102,21 +107,23 @@
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : [
+      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "memberOf" : "Roo.Component",
+      "values" : [
         "(display",
         "visibility)"
-      ],
-      "memberOf" : "Roo.Component"
+      ]
     },
     {
       "name" : "tag",
       "type" : "String",
-      "desc" : [
+      "desc" : "type of HTML tag.",
+      "memberOf" : "",
+      "values" : [
         "(header",
         "aside",
         "section)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "style",
@@ -133,12 +140,13 @@
     {
       "name" : "well",
       "type" : "String",
-      "desc" : [
+      "desc" : "a well, large, small or medium.",
+      "memberOf" : "",
+      "values" : [
         "(lg",
         "sm",
         "md)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "html",
@@ -155,11 +163,12 @@
     {
       "name" : "clickable",
       "type" : "Boolean",
-      "desc" : [
+      "desc" : "default false",
+      "memberOf" : "",
+      "values" : [
         "(true",
         "false)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "xattr",
@@ -182,32 +191,35 @@
     {
       "name" : "icon",
       "type" : "String",
-      "desc" : [
+      "desc" : "glyphicon name",
+      "memberOf" : "",
+      "values" : [
         "(info-sign",
         "check",
         "...)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "expandable",
       "type" : "Boolean",
-      "desc" : [
+      "desc" : "default false",
+      "memberOf" : "",
+      "values" : [
         "(true",
         "false)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "alert",
       "type" : "String",
-      "desc" : [
+      "desc" : "type alert (changes background / border...)",
+      "memberOf" : "",
+      "values" : [
         "(success",
         "info",
         "warning",
         "danger)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "dataId",

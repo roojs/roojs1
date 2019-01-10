@@ -106,11 +106,12 @@
     {
       "name" : "tabPosition",
       "type" : "String",
-      "desc" : [
+      "desc" : "\"top\" or \"bottom\" (defaults to \"bottom\")",
+      "memberOf" : "Roo.LayoutRegion",
+      "values" : [
         "(top",
         "bottom)"
-      ],
-      "memberOf" : "Roo.LayoutRegion"
+      ]
     },
     {
       "name" : "width",

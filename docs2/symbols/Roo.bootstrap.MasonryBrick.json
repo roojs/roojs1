@@ -28,20 +28,22 @@
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : [
+      "desc" : "What element to use for visibility (@see getVisibilityEl())",
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
         "(el",
         "parent)"
-      ],
-      "memberOf" : "Roo.bootstrap.Component"
+      ]
     },
     {
       "name" : "placetitle",
       "type" : "String",
-      "desc" : [
+      "desc" : "",
+      "memberOf" : "",
+      "values" : [
         "(center",
         "bottom)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "inverse",
@@ -58,11 +60,12 @@
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : [
+      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "memberOf" : "Roo.Component",
+      "values" : [
         "(display",
         "visibility)"
-      ],
-      "memberOf" : "Roo.Component"
+      ]
     },
     {
       "name" : "title",
@@ -127,7 +130,9 @@
     {
       "name" : "size",
       "type" : "String",
-      "desc" : [
+      "desc" : "",
+      "memberOf" : "",
+      "values" : [
         "(xs",
         "sm",
         "md",
@@ -135,8 +140,7 @@
         "md-right",
         "tall",
         "wide)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "name",

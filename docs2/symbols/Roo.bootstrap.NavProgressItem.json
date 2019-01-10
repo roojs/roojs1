@@ -34,20 +34,22 @@
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : [
+      "desc" : "What element to use for visibility (@see getVisibilityEl())",
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
         "(el",
         "parent)"
-      ],
-      "memberOf" : "Roo.bootstrap.Component"
+      ]
     },
     {
       "name" : "position",
       "type" : "String",
-      "desc" : [
+      "desc" : "text position default bottom",
+      "memberOf" : "",
+      "values" : [
         "(top",
         "bottom)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "can_build_overlaid",
@@ -58,20 +60,22 @@
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : [
+      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "memberOf" : "Roo.Component",
+      "values" : [
         "(display",
         "visibility)"
-      ],
-      "memberOf" : "Roo.Component"
+      ]
     },
     {
       "name" : "disabled",
       "type" : "Boolean",
-      "desc" : [
+      "desc" : "Is item active default false",
+      "memberOf" : "",
+      "values" : [
         "(true",
         "false)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "style",
@@ -124,11 +128,12 @@
     {
       "name" : "active",
       "type" : "Boolean",
-      "desc" : [
+      "desc" : "Is item active default false",
+      "memberOf" : "",
+      "values" : [
         "(true",
         "false)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "name",

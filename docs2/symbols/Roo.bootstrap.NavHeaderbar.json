@@ -42,11 +42,12 @@
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : [
+      "desc" : "What element to use for visibility (@see getVisibilityEl())",
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
         "(el",
         "parent)"
-      ],
-      "memberOf" : "Roo.bootstrap.Component"
+      ]
     },
     {
       "name" : "inverse",
@@ -57,11 +58,12 @@
     {
       "name" : "align",
       "type" : "String",
-      "desc" : [
+      "desc" : "alignment",
+      "memberOf" : "Roo.bootstrap.NavSimplebar",
+      "values" : [
         "(left",
         "right)"
-      ],
-      "memberOf" : "Roo.bootstrap.NavSimplebar"
+      ]
     },
     {
       "name" : "brand",
@@ -72,12 +74,13 @@
     {
       "name" : "position",
       "type" : "String",
-      "desc" : [
+      "desc" : "position",
+      "memberOf" : "",
+      "values" : [
         "(fixed-top",
         "fixed-bottom",
         "static-top)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "can_build_overlaid",
@@ -88,11 +91,12 @@
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : [
+      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "memberOf" : "Roo.Component",
+      "values" : [
         "(display",
         "visibility)"
-      ],
-      "memberOf" : "Roo.Component"
+      ]
     },
     {
       "name" : "srButton",
@@ -103,13 +107,14 @@
     {
       "name" : "tag",
       "type" : "String",
-      "desc" : [
+      "desc" : "default is nav",
+      "memberOf" : "Roo.bootstrap.NavSimplebar",
+      "values" : [
         "(header",
         "footer",
         "nav",
         "div)"
-      ],
-      "memberOf" : "Roo.bootstrap.NavSimplebar"
+      ]
     },
     {
       "name" : "style",
@@ -144,11 +149,12 @@
     {
       "name" : "loadMask",
       "type" : "Boolean",
-      "desc" : [
+      "desc" : "loadMask on the bar",
+      "memberOf" : "Roo.bootstrap.NavSimplebar",
+      "values" : [
         "(true",
         "false)"
-      ],
-      "memberOf" : "Roo.bootstrap.NavSimplebar"
+      ]
     },
     {
       "name" : "xattr",
@@ -165,11 +171,12 @@
     {
       "name" : "main",
       "type" : "Boolean",
-      "desc" : [
+      "desc" : "main nav bar? default false",
+      "memberOf" : "Roo.bootstrap.NavSimplebar",
+      "values" : [
         "(true",
         "false)"
-      ],
-      "memberOf" : "Roo.bootstrap.NavSimplebar"
+      ]
     },
     {
       "name" : "dataId",
@@ -180,17 +187,20 @@
     {
       "name" : "type",
       "type" : "String",
-      "desc" : [
+      "desc" : "",
+      "memberOf" : "Roo.bootstrap.NavSimplebar",
+      "values" : [
         "(nav",
         "pills",
         "tabs)"
-      ],
-      "memberOf" : "Roo.bootstrap.NavSimplebar"
+      ]
     },
     {
       "name" : "weight",
       "type" : "String",
-      "desc" : [
+      "desc" : "default is light.",
+      "memberOf" : "Roo.bootstrap.NavSimplebar",
+      "values" : [
         "(light",
         "primary",
         "secondary",
@@ -200,8 +210,7 @@
         "info",
         "dark",
         "white)"
-      ],
-      "memberOf" : "Roo.bootstrap.NavSimplebar"
+      ]
     },
     {
       "name" : "name",

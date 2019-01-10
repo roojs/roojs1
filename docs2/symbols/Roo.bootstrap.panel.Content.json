@@ -50,14 +50,15 @@
     {
       "name" : "region",
       "type" : "String",
-      "desc" : [
+      "desc" : "which region to put this panel on (when used with xtype constructors)",
+      "memberOf" : "",
+      "values" : [
         "(center",
         "north",
         "south",
         "east",
         "west)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "content",

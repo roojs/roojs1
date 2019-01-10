@@ -28,11 +28,12 @@
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : [
+      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "memberOf" : "Roo.Component",
+      "values" : [
         "(display",
         "visibility)"
-      ],
-      "memberOf" : "Roo.Component"
+      ]
     },
     {
       "name" : "xattr",
@@ -55,7 +56,9 @@
     {
       "name" : "weight",
       "type" : "String",
-      "desc" : [
+      "desc" : "default",
+      "memberOf" : "",
+      "values" : [
         "(default",
         "primary",
         "secondary",
@@ -64,8 +67,7 @@
         "warning",
         "danger",
         "link )"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "tooltip",
@@ -88,11 +90,12 @@
     {
       "name" : "theme",
       "type" : "String",
-      "desc" : [
+      "desc" : "",
+      "memberOf" : "",
+      "values" : [
         "(default",
         "glow)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "target",
@@ -151,12 +154,13 @@
     {
       "name" : "size",
       "type" : "String",
-      "desc" : [
+      "desc" : "",
+      "memberOf" : "",
+      "values" : [
         "( lg",
         "sm",
         "xs)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "cls",
@@ -167,7 +171,9 @@
     {
       "name" : "badge_weight",
       "type" : "String",
-      "desc" : [
+      "desc" : "default (same as button)",
+      "memberOf" : "",
+      "values" : [
         "(default",
         "primary",
         "secondary",
@@ -176,8 +182,7 @@
         "warning",
         "danger",
         "link )"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "can_build_overlaid",
@@ -194,11 +199,12 @@
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : [
+      "desc" : "What element to use for visibility (@see getVisibilityEl())",
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
         "(el",
         "parent)"
-      ],
-      "memberOf" : "Roo.bootstrap.Component"
+      ]
     },
     {
       "name" : "href",
@@ -209,12 +215,13 @@
     {
       "name" : "tag",
       "type" : "String",
-      "desc" : [
+      "desc" : "",
+      "memberOf" : "",
+      "values" : [
         "( a",
         "input",
         "submit)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "dataId",
@@ -249,11 +256,12 @@
     {
       "name" : "pressed",
       "type" : "Boolean",
-      "desc" : [
+      "desc" : "default null - if the button ahs active state",
+      "memberOf" : "",
+      "values" : [
         "(true",
         "false)"
-      ],
-      "memberOf" : ""
+      ]
     }
   ],
   "methods" : [

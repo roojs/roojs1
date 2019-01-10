@@ -29,11 +29,12 @@
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : [
+      "desc" : "What element to use for visibility (@see getVisibilityEl())",
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
         "(el",
         "parent)"
-      ],
-      "memberOf" : "Roo.bootstrap.Component"
+      ]
     },
     {
       "name" : "inverse",
@@ -44,11 +45,12 @@
     {
       "name" : "align",
       "type" : "String",
-      "desc" : [
+      "desc" : "alignment",
+      "memberOf" : "",
+      "values" : [
         "(left",
         "right)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "can_build_overlaid",
@@ -59,22 +61,24 @@
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : [
+      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "memberOf" : "Roo.Component",
+      "values" : [
         "(display",
         "visibility)"
-      ],
-      "memberOf" : "Roo.Component"
+      ]
     },
     {
       "name" : "tag",
       "type" : "String",
-      "desc" : [
+      "desc" : "default is nav",
+      "memberOf" : "",
+      "values" : [
         "(header",
         "footer",
         "nav",
         "div)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "style",
@@ -103,11 +107,12 @@
     {
       "name" : "loadMask",
       "type" : "Boolean",
-      "desc" : [
+      "desc" : "loadMask on the bar",
+      "memberOf" : "",
+      "values" : [
         "(true",
         "false)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "xattr",
@@ -124,11 +129,12 @@
     {
       "name" : "main",
       "type" : "Boolean",
-      "desc" : [
+      "desc" : "main nav bar? default false",
+      "memberOf" : "",
+      "values" : [
         "(true",
         "false)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "dataId",
@@ -139,17 +145,20 @@
     {
       "name" : "type",
       "type" : "String",
-      "desc" : [
+      "desc" : "",
+      "memberOf" : "",
+      "values" : [
         "(nav",
         "pills",
         "tabs)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "weight",
       "type" : "String",
-      "desc" : [
+      "desc" : "default is light.",
+      "memberOf" : "",
+      "values" : [
         "(light",
         "primary",
         "secondary",
@@ -159,8 +168,7 @@
         "info",
         "dark",
         "white)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "name",

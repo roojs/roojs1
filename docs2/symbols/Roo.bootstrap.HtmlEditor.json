@@ -24,12 +24,13 @@
     {
       "name" : "accept",
       "type" : "String",
-      "desc" : [
+      "desc" : "use for file input only. (default empty)",
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
         "(image",
         "video",
         "audio)"
-      ],
-      "memberOf" : "Roo.bootstrap.Input"
+      ]
     },
     {
       "name" : "xs",
@@ -40,11 +41,12 @@
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : [
+      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "memberOf" : "Roo.Component",
+      "values" : [
         "(display",
         "visibility)"
-      ],
-      "memberOf" : "Roo.Component"
+      ]
     },
     {
       "name" : "disableKeyFilter",
@@ -109,11 +111,12 @@
     {
       "name" : "labelAlign",
       "type" : "String",
-      "desc" : [
+      "desc" : "",
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
         "(top",
         "left)"
-      ],
-      "memberOf" : "Roo.bootstrap.Input"
+      ]
     },
     {
       "name" : "regexText",
@@ -154,11 +157,12 @@
     {
       "name" : "hasFeedback",
       "type" : "Boolean",
-      "desc" : [
+      "desc" : "default true",
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
         "(true",
         "false)"
-      ],
-      "memberOf" : "Roo.bootstrap.Input"
+      ]
     },
     {
       "name" : "actionMode",
@@ -205,30 +209,33 @@
     {
       "name" : "indicatorpos",
       "type" : "String",
-      "desc" : [
+      "desc" : "default left",
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
         "(left",
         "right)"
-      ],
-      "memberOf" : "Roo.bootstrap.Input"
+      ]
     },
     {
       "name" : "align",
       "type" : "String",
-      "desc" : [
+      "desc" : "Default left",
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
         "(left",
         "center",
         "right)"
-      ],
-      "memberOf" : "Roo.bootstrap.Input"
+      ]
     },
     {
       "name" : "wrap",
       "type" : "string",
-      "desc" : [
+      "desc" : "Specifies how the text in a text area is to be wrapped when submitted in a form",
+      "memberOf" : "Roo.bootstrap.TextArea",
+      "values" : [
         "(soft",
         "hard)"
-      ],
-      "memberOf" : "Roo.bootstrap.TextArea"
+      ]
     },
     {
       "name" : "size",
@@ -347,11 +354,12 @@
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : [
+      "desc" : "What element to use for visibility (@see getVisibilityEl())",
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
         "(el",
         "parent)"
-      ],
-      "memberOf" : "Roo.bootstrap.Component"
+      ]
     },
     {
       "name" : "stylesheets",
@@ -362,15 +370,16 @@
     {
       "name" : "resize",
       "type" : "string",
-      "desc" : [
+      "desc" : "",
+      "memberOf" : "Roo.bootstrap.TextArea",
+      "values" : [
         "(none",
         "both",
         "horizontal",
         "vertical",
         "inherit",
         "initial)"
-      ],
-      "memberOf" : "Roo.bootstrap.TextArea"
+      ]
     },
     {
       "name" : "placeholder",
@@ -411,11 +420,12 @@
     {
       "name" : "capture",
       "type" : "String",
-      "desc" : [
+      "desc" : "use for file input only. (default empty)",
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
         "(user",
         "camera)"
-      ],
-      "memberOf" : "Roo.bootstrap.Input"
+      ]
     },
     {
       "name" : "validClass",
@@ -438,11 +448,12 @@
     {
       "name" : "forceFeedback",
       "type" : "Boolean",
-      "desc" : [
+      "desc" : "Default false",
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
         "(true",
         "false)"
-      ],
-      "memberOf" : "Roo.bootstrap.Input"
+      ]
     },
     {
       "name" : "labelsm",

@@ -28,11 +28,12 @@
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : [
+      "desc" : "What element to use for visibility (@see getVisibilityEl())",
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
         "(el",
         "parent)"
-      ],
-      "memberOf" : "Roo.bootstrap.Component"
+      ]
     },
     {
       "name" : "can_build_overlaid",
@@ -43,11 +44,12 @@
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : [
+      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "memberOf" : "Roo.Component",
+      "values" : [
         "(display",
         "visibility)"
-      ],
-      "memberOf" : "Roo.Component"
+      ]
     },
     {
       "name" : "style",
@@ -70,11 +72,12 @@
     {
       "name" : "preventDefault",
       "type" : "Boolean",
-      "desc" : [
+      "desc" : "default true",
+      "memberOf" : "",
+      "values" : [
         "(true",
         "false)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "pos",
@@ -91,20 +94,22 @@
     {
       "name" : "submenu",
       "type" : "Boolean",
-      "desc" : [
+      "desc" : "default false",
+      "memberOf" : "",
+      "values" : [
         "(true",
         "false)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "disable",
       "type" : "Boolean",
-      "desc" : [
+      "desc" : "default false",
+      "memberOf" : "",
+      "values" : [
         "(true",
         "false)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "xattr",

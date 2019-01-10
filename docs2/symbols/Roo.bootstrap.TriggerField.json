@@ -29,12 +29,13 @@
     {
       "name" : "accept",
       "type" : "String",
-      "desc" : [
+      "desc" : "use for file input only. (default empty)",
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
         "(image",
         "video",
         "audio)"
-      ],
-      "memberOf" : "Roo.bootstrap.Input"
+      ]
     },
     {
       "name" : "xs",
@@ -45,11 +46,12 @@
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : [
+      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "memberOf" : "Roo.Component",
+      "values" : [
         "(display",
         "visibility)"
-      ],
-      "memberOf" : "Roo.Component"
+      ]
     },
     {
       "name" : "disableKeyFilter",
@@ -90,11 +92,12 @@
     {
       "name" : "labelAlign",
       "type" : "String",
-      "desc" : [
+      "desc" : "",
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
         "(top",
         "left)"
-      ],
-      "memberOf" : "Roo.bootstrap.Input"
+      ]
     },
     {
       "name" : "tooltip",
@@ -135,11 +138,12 @@
     {
       "name" : "hasFeedback",
       "type" : "Boolean",
-      "desc" : [
+      "desc" : "default true",
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
         "(true",
         "false)"
-      ],
-      "memberOf" : "Roo.bootstrap.Input"
+      ]
     },
     {
       "name" : "actionMode",
@@ -186,21 +190,23 @@
     {
       "name" : "indicatorpos",
       "type" : "String",
-      "desc" : [
+      "desc" : "default left",
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
         "(left",
         "right)"
-      ],
-      "memberOf" : "Roo.bootstrap.Input"
+      ]
     },
     {
       "name" : "align",
       "type" : "String",
-      "desc" : [
+      "desc" : "Default left",
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
         "(left",
         "center",
         "right)"
-      ],
-      "memberOf" : "Roo.bootstrap.Input"
+      ]
     },
     {
       "name" : "size",
@@ -235,11 +241,12 @@
     {
       "name" : "removable",
       "type" : "Boolean",
-      "desc" : [
+      "desc" : "special filter default false",
+      "memberOf" : "",
+      "values" : [
         "(true",
         "false)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "labelxs",
@@ -256,11 +263,12 @@
     {
       "name" : "caret",
       "type" : "String",
-      "desc" : [
+      "desc" : "a fontawesome for the trigger icon see http://fortawesome.github.io/Font-Awesome/icons/",
+      "memberOf" : "",
+      "values" : [
         "(search",
         "calendar)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "inputType",
@@ -343,11 +351,12 @@
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : [
+      "desc" : "What element to use for visibility (@see getVisibilityEl())",
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
         "(el",
         "parent)"
-      ],
-      "memberOf" : "Roo.bootstrap.Component"
+      ]
     },
     {
       "name" : "placeholder",
@@ -388,11 +397,12 @@
     {
       "name" : "capture",
       "type" : "String",
-      "desc" : [
+      "desc" : "use for file input only. (default empty)",
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
         "(user",
         "camera)"
-      ],
-      "memberOf" : "Roo.bootstrap.Input"
+      ]
     },
     {
       "name" : "validClass",
@@ -409,11 +419,12 @@
     {
       "name" : "forceFeedback",
       "type" : "Boolean",
-      "desc" : [
+      "desc" : "Default false",
+      "memberOf" : "Roo.bootstrap.Input",
+      "values" : [
         "(true",
         "false)"
-      ],
-      "memberOf" : "Roo.bootstrap.Input"
+      ]
     },
     {
       "name" : "labelsm",

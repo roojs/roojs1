@@ -45,14 +45,15 @@
     {
       "name" : "region",
       "type" : "String",
-      "desc" : [
+      "desc" : "which region to put this panel on (when used with xtype constructors)",
+      "memberOf" : "Roo.ContentPanel",
+      "values" : [
         "(center",
         "north",
         "south",
         "east",
         "west)"
-      ],
-      "memberOf" : "Roo.ContentPanel"
+      ]
     },
     {
       "name" : "content",

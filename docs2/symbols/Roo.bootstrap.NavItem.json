@@ -16,20 +16,22 @@
     {
       "name" : "tagtype",
       "type" : "String",
-      "desc" : [
+      "desc" : "render as a href or span?",
+      "memberOf" : "",
+      "values" : [
         "(a",
         "span)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "animateRef",
       "type" : "Boolean",
-      "desc" : [
+      "desc" : "link to element default false",
+      "memberOf" : "",
+      "values" : [
         "(true",
         "false)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "tooltip",
@@ -46,11 +48,12 @@
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : [
+      "desc" : "What element to use for visibility (@see getVisibilityEl())",
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
         "(el",
         "parent)"
-      ],
-      "memberOf" : "Roo.bootstrap.Component"
+      ]
     },
     {
       "name" : "tabId",
@@ -67,11 +70,12 @@
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : [
+      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "memberOf" : "Roo.Component",
+      "values" : [
         "(display",
         "visibility)"
-      ],
-      "memberOf" : "Roo.Component"
+      ]
     },
     {
       "name" : "badge",
@@ -106,11 +110,12 @@
     {
       "name" : "preventDefault",
       "type" : "Boolean",
-      "desc" : [
+      "desc" : "default false",
+      "memberOf" : "",
+      "values" : [
         "(true",
         "false)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "cls",
@@ -145,12 +150,13 @@
     {
       "name" : "badgecls",
       "type" : "String",
-      "desc" : [
+      "desc" : "the extra classes for the badge",
+      "memberOf" : "",
+      "values" : [
         "(bg-green",
         "bg-red",
         "bg-yellow)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "dataId",
@@ -161,7 +167,9 @@
     {
       "name" : "button_weight",
       "type" : "String",
-      "desc" : [
+      "desc" : "default none",
+      "memberOf" : "",
+      "values" : [
         "(default",
         "primary",
         "secondary",
@@ -170,8 +178,7 @@
         "warning",
         "danger",
         "link )"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "fa",

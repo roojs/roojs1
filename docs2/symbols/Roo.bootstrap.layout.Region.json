@@ -21,11 +21,12 @@
     {
       "name" : "overflow",
       "type" : "String",
-      "desc" : [
+      "desc" : "if you have menus in the region, then you need to set this to visible.",
+      "memberOf" : "",
+      "values" : [
         "(hidden",
         "visible)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "listeners",
@@ -120,11 +121,12 @@
     {
       "name" : "tabPosition",
       "type" : "String",
-      "desc" : [
+      "desc" : "\"top\" or \"bottom\" (defaults to \"bottom\")",
+      "memberOf" : "",
+      "values" : [
         "(top",
         "bottom)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "width",

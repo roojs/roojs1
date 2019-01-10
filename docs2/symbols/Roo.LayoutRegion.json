@@ -105,11 +105,12 @@
     {
       "name" : "tabPosition",
       "type" : "String",
-      "desc" : [
+      "desc" : "\"top\" or \"bottom\" (defaults to \"bottom\")",
+      "memberOf" : "",
+      "values" : [
         "(top",
         "bottom)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "width",

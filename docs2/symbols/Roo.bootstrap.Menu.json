@@ -10,11 +10,12 @@
     {
       "name" : "isLink",
       "type" : "bool",
-      "desc" : [
+      "desc" : "the menu has link disable auto expand and collaspe (default false)",
+      "memberOf" : "",
+      "values" : [
         "(true",
         "false)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "listeners",
@@ -37,11 +38,12 @@
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : [
+      "desc" : "What element to use for visibility (@see getVisibilityEl())",
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
         "(el",
         "parent)"
-      ],
-      "memberOf" : "Roo.bootstrap.Component"
+      ]
     },
     {
       "name" : "hidden",
@@ -58,20 +60,22 @@
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : [
+      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "memberOf" : "Roo.Component",
+      "values" : [
         "(display",
         "visibility)"
-      ],
-      "memberOf" : "Roo.Component"
+      ]
     },
     {
       "name" : "stopEvent",
       "type" : "bool",
-      "desc" : [
+      "desc" : "Stop event after trigger press (default true)",
+      "memberOf" : "",
+      "values" : [
         "(true",
         "false)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "style",
@@ -118,12 +122,13 @@
     {
       "name" : "type",
       "type" : "String",
-      "desc" : [
+      "desc" : "type of menu",
+      "memberOf" : "",
+      "values" : [
         "(dropdown",
         "treeview",
         "submenu)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "name",

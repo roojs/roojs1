@@ -17,11 +17,12 @@
     {
       "name" : "showarrow",
       "type" : "Boolean",
-      "desc" : [
+      "desc" : "show arrow default true",
+      "memberOf" : "",
+      "values" : [
         "(true",
         "false)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "lg",
@@ -38,11 +39,12 @@
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : [
+      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "memberOf" : "Roo.Component",
+      "values" : [
         "(display",
         "visibility)"
-      ],
-      "memberOf" : "Roo.Component"
+      ]
     },
     {
       "name" : "navId",
@@ -83,11 +85,12 @@
     {
       "name" : "autoslide",
       "type" : "Boolean",
-      "desc" : [
+      "desc" : "auto slide .. default false",
+      "memberOf" : "",
+      "values" : [
         "(true",
         "false)"
-      ],
-      "memberOf" : ""
+      ]
     },
     {
       "name" : "allowDomMove",
@@ -104,12 +107,13 @@
     {
       "name" : "fasize",
       "type" : "Number",
-      "desc" : [
+      "desc" : "font awsome size",
+      "memberOf" : "Roo.bootstrap.Column",
+      "values" : [
         "(1",
         "2",
         "....)"
-      ],
-      "memberOf" : "Roo.bootstrap.Column"
+      ]
     },
     {
       "name" : "actionMode",
@@ -144,21 +148,23 @@
     {
       "name" : "hidden",
       "type" : "Boolean",
-      "desc" : [
+      "desc" : "hide the element",
+      "memberOf" : "Roo.bootstrap.Column",
+      "values" : [
         "(true",
         "false)"
-      ],
-      "memberOf" : "Roo.bootstrap.Column"
+      ]
     },
     {
       "name" : "fa",
       "type" : "String",
-      "desc" : [
+      "desc" : "font awesome icon",
+      "memberOf" : "Roo.bootstrap.Column",
+      "values" : [
         "(ban",
         "check",
         "...)"
-      ],
-      "memberOf" : "Roo.bootstrap.Column"
+      ]
     },
     {
       "name" : "cls",
@@ -169,12 +175,13 @@
     {
       "name" : "icon",
       "type" : "String",
-      "desc" : [
+      "desc" : "glyphicon name",
+      "memberOf" : "Roo.bootstrap.Column",
+      "values" : [
         "(info-sign",
         "check",
         "...)"
-      ],
-      "memberOf" : "Roo.bootstrap.Column"
+      ]
     },
     {
       "name" : "can_build_overlaid",
@@ -191,13 +198,14 @@
     {
       "name" : "alert",
       "type" : "String",
-      "desc" : [
+      "desc" : "type alert (changes background / border...)",
+      "memberOf" : "Roo.bootstrap.Column",
+      "values" : [
         "(success",
         "info",
         "warning",
         "danger)"
-      ],
-      "memberOf" : "Roo.bootstrap.Column"
+      ]
     },
     {
       "name" : "lgoff",
@@ -208,11 +216,12 @@
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : [
+      "desc" : "What element to use for visibility (@see getVisibilityEl())",
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
         "(el",
         "parent)"
-      ],
-      "memberOf" : "Roo.bootstrap.Component"
+      ]
     },
     {
       "name" : "smoff",
