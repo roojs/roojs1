@@ -154,6 +154,10 @@ Roo.docs.init = {
         Roo.docs.doc_source.el.dom.innerHTML = d.name.replace(/\./g,"/") + ".js";
         
         
+        Roo.docs.configTable.store.load( { params : { data : d.config }});
+
+
+        
     }
     
     
