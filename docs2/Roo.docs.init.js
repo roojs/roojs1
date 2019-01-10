@@ -37,9 +37,15 @@ Roo.docs.init = {
                 var d = Roo.decode(res.responseText);
                 Roo.log(d);
                 d.forEach(function(e) {
-                    this.addTreeItem(Roo.docs.SidebarNav.navGroup, e, 'NavSidebarItem');
+                    if (e.cn.length) {
+                        this.addTreeItem(Roo.docs.SidebarNav.navGroup, e, 'NavSidebarItem');
+                    }
                 }, this);
-                
+                d.forEach(function(e) {
+                    if (!e.cn.length) {
+                        this.addTreeItem(Roo.docs.SidebarNav.navGroup, e, 'NavSidebarItem');
+                    }
+                }, this);
             },
             scope : this
         });
@@ -53,18 +59,51 @@ Roo.docs.init = {
             id : e.name,
             xns : Roo.bootstrap,
             xtype : type,
+            preventDefault : true,
+            cls : type == 'NavSidebarItem' ? 'open' : '',
+            listeners : {
+                click : (function(mi,ev,c)
+                {
+                    
+                    if (c) { //
+                       ev.stopPropagation();
+                    } else {
+                        c = ev;
+                    }
+                    
+                    Roo.log(c);
+                    
+                }).createDelegate(this,[e], true)
+                
+            },
             menu : !e.cn.length ? false  : Roo.factory({
                 type : 'treeview',
                 xns: Roo.bootstrap,
                 xtype : 'Menu'
+                
             })
         }));
+        if (e.cn.length  && type == 'NavSidebarItem') {
+            this.topm = node.menu;
+        }
+        
         
         if (!e.cn.length) {
             return;
         }
         e.cn.forEach(function(ec) {
-            this.addTreeItem(node.menu, ec,'MenuItem');
+            var cn = ec.name.split('.').pop();
+            Roo.log(cn);
+            if (cn == cn.toLowerCase()) {
+                this.addTreeItem(node.menu, ec,'MenuItem');
+            }
+            
+        }, this);
+        e.cn.forEach(function(ec) {
+            var cn = ec.name.split('.').pop();
+            if (cn != cn.toLowerCase()) {
+                this.addTreeItem(node.menu, ec,'MenuItem');
+            }
         }, this);
         
     }

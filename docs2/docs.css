@@ -173,6 +173,7 @@ h6,
     background-size: cover;
     display: none;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .left-menu-sidebar .left-menu-sidebar-options  {
