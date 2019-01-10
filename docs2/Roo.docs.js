@@ -7,6 +7,7 @@ Roo.namespace('Roo');
 Roo.docs = new Roo.XComponent({
 
  _strings : {
+  '3e6ec55e2dff4342e3f25b0b0b988de9' :"Inheritance tree",
   'ae635f08107a69569e636835f24e6f6f' :" extends ",
   '87f9f735a1d36793ceaecd4e47124b63' :"Events",
   '8444c6c15c56a27bfe83ffcaf459bbdd' :"Defined by",
@@ -369,6 +370,7 @@ Roo.docs = new Roo.XComponent({
          items  : [
           {
            xtype : 'Container',
+           header : _this._strings['3e6ec55e2dff4342e3f25b0b0b988de9'] /* Inheritance tree */,
            panel : 'info',
            xns : Roo.bootstrap,
            '|xns' : 'Roo.bootstrap'
