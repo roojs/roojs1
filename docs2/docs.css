@@ -891,5 +891,8 @@ header-menu-options ul.socials > li:first-child,
     padding: 0
 }
  
- 
- 
+ /** --------- from original --------*/
+ .itemname
+{
+    color: #002EBE; 
+}
