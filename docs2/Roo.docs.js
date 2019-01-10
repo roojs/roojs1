@@ -389,36 +389,34 @@ Roo.docs = new Roo.XComponent({
          xns : Roo.grid,
          '|xns' : 'Roo.grid'
         }
-       ],
-       items  : [
+       ]
+      },
+      {
+       xtype : 'Table',
+       listeners : {
+        render : function (_self)
+         {
+             _this.methodsTable = this;
+         }
+       },
+       xns : Roo.bootstrap,
+       '|xns' : 'Roo.bootstrap',
+       cm : [
         {
-         xtype : 'Table',
-         listeners : {
-          render : function (_self)
-           {
-               _this.methodsTable = this;
-           }
-         },
-         xns : Roo.bootstrap,
-         '|xns' : 'Roo.bootstrap',
-         cm : [
-          {
-           xtype : 'ColumnModel',
-           dataIndex : 'doc',
-           header : _this._strings['9c5a24f0cbb12d939e4622b93bea904b'] /* Public Methods */,
-           md : 11,
-           xns : Roo.grid,
-           '|xns' : 'Roo.grid'
-          },
-          {
-           xtype : 'ColumnModel',
-           dataIndex : 'def',
-           header : _this._strings['8444c6c15c56a27bfe83ffcaf459bbdd'] /* Defined by */,
-           md : 1,
-           xns : Roo.grid,
-           '|xns' : 'Roo.grid'
-          }
-         ]
+         xtype : 'ColumnModel',
+         dataIndex : 'doc',
+         header : _this._strings['9c5a24f0cbb12d939e4622b93bea904b'] /* Public Methods */,
+         md : 11,
+         xns : Roo.grid,
+         '|xns' : 'Roo.grid'
+        },
+        {
+         xtype : 'ColumnModel',
+         dataIndex : 'def',
+         header : _this._strings['8444c6c15c56a27bfe83ffcaf459bbdd'] /* Defined by */,
+         md : 1,
+         xns : Roo.grid,
+         '|xns' : 'Roo.grid'
         }
        ]
       },
