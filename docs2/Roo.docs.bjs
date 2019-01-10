@@ -94,6 +94,9 @@
      "String style" : ""
     },
     {
+     "listeners" : {
+      "render" : "function (_self)\n{\n    _this.doc_body_content = this;\n}"
+     },
      "String cls" : "general-content-body",
      "xtype" : "Container",
      "$ xns" : "Roo.bootstrap",

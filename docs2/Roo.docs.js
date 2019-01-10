@@ -286,6 +286,12 @@ Roo.docs = new Roo.XComponent({
     {
      xtype : 'Container',
      cls : 'general-content-body',
+     listeners : {
+      render : function (_self)
+       {
+           _this.doc_body_content = this;
+       }
+     },
      xns : Roo.bootstrap,
      '|xns' : 'Roo.bootstrap',
      items  : [
