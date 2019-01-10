@@ -151,6 +151,10 @@
              ]
             },
             {
+             "xtype" : "Header",
+             "$ xns" : "Roo.bootstrap"
+            },
+            {
              "listeners" : {
               "render" : "function (_self)\n{\n    _this.doc_source = this;\n}"
              },

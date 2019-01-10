@@ -357,6 +357,11 @@ Roo.docs = new Roo.XComponent({
              ]
             },
             {
+             xtype : 'Header',
+             xns : Roo.bootstrap,
+             '|xns' : 'Roo.bootstrap'
+            },
+            {
              xtype : 'Link',
              cls : 'doc-source',
              html : _this._strings['36cd38f49b9afa08222c0dc9ebfe35eb'] /* source */,
