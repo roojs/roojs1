@@ -245,11 +245,6 @@
              "xtype" : "MemoryProxy",
              "$ xns" : "Roo.data",
              "* prop" : "proxy"
-            },
-            {
-             "xtype" : "ArrayReader",
-             "$ xns" : "Roo.data",
-             "* prop" : "reader"
             }
            ]
           }
