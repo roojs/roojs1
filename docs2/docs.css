@@ -914,6 +914,9 @@ td.attributes, .fixedFont
     font-size: 13px;
 } 
 
+.doc-table-container td.short {
+    display : block;
+}
 .doc-table-container td.expanded .short {
     display : none;
 }
@@ -921,5 +924,5 @@ td.attributes, .fixedFont
     display : none;
 }
 .doc-table-container td.expanded .long {
-    display : none;
+    display : block;
 }
