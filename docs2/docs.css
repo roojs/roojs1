@@ -913,3 +913,10 @@ td.attributes, .fixedFont
     padding: 5px 10px;
     font-size: 13px;
 } 
+
+.doc-table-container td.expanded .short {
+    display : none;
+}
+.doc-table-container td .long {
+    display : none;
+}
