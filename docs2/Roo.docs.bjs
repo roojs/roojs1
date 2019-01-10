@@ -232,7 +232,7 @@
           {
            "String header" : "<small>Defined by</small>",
            "Number md" : 1,
-           "String dataIndex" : "def",
+           "String dataIndex" : "memberOf",
            "xtype" : "ColumnModel",
            "$ xns" : "Roo.grid",
            "* prop" : "cm[]"
