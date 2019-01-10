@@ -20,8 +20,7 @@ Roo.docs = new Roo.XComponent({
   'f361257612a512f9be2fdc2abfb25aef' :"<small>Defined by</small>",
   '494a64a432ff6a121e4ab9003c7a0df3' :"parentcls",
   '9bd81329febf6efe22788e03ddeaf0af' :" Class ",
-  'f561aaf6ef0bf14d4208bb46a4ccb3ad' :"xxx",
-  'd41d8cd98f00b204e9800998ecf8427e' :" "
+  'f561aaf6ef0bf14d4208bb46a4ccb3ad' :"xxx"
  },
 
   part     :  ["docs2", "docs" ],
@@ -561,16 +560,35 @@ Roo.docs = new Roo.XComponent({
            header : _this._strings['d41d8cd98f00b204e9800998ecf8427e'] /*  */,
            md : 11,
            renderer : function(v,x,r) { 
-               Roo.log(r);
+           
+           
+           		return 	'<div class="fixedFont">' +
+           				'<b class="itemname">' + r.json.name + '</b>' +
+           				     (r.json.type.length ? (' : <a href="#' + r.json.type+'-constructor">' + r.json.type + '</a>') : '') +
+            				     (r.json.values.length ? ' : ( ' +  r.json.values.join(", ") + ' )' : '') +
+           			    '</div>' +
+           		  
+           			/*'<div class="mdesc">' +
+           			    '<div class="short">' + (r.json.desc.split("\n")[0]) + '</div>' +
+           			'</div>'+ */
+           			
+           			'<div class="mdesc"><div class="long">' + r.json.desc.split("\n").join('<br/>') + '</div></div>';
+           			
            },
            xns : Roo.grid,
            '|xns' : 'Roo.grid'
           },
           {
            xtype : 'ColumnModel',
-           dataIndex : 'def',
+           dataIndex : 'memberOf',
            header : _this._strings['f361257612a512f9be2fdc2abfb25aef'] /* <small>Defined by</small> */,
            md : 1,
+           renderer : function(v,x,r) { 
+           
+           
+           		return 	'<small><a href="#' + r.json.memberOf + '">' + r.json.memberOf + '</a></small>';
+           			
+           },
            xns : Roo.grid,
            '|xns' : 'Roo.grid'
           }
@@ -614,17 +632,39 @@ Roo.docs = new Roo.XComponent({
          cm : [
           {
            xtype : 'ColumnModel',
-           dataIndex : 'doc',
-           header : _this._strings['d41d8cd98f00b204e9800998ecf8427e'] /*   */,
+           dataIndex : 'name',
+           header : _this._strings['d41d8cd98f00b204e9800998ecf8427e'] /*  */,
            md : 11,
+           renderer : function(v,x,r) { 
+           
+           
+           		return 	'<div class="fixedFont">' +
+           				'<b class="itemname">' + r.json.name + '</b>' +
+           				     (r.json.type.length ? (' : <a href="#' + r.json.type+'-constructor">' + r.json.type + '</a>') : '') +
+            				     (r.json.values.length ? ' : ( ' +  r.json.values.join(", ") + ' )' : '') +
+           			    '</div>' +
+           		  
+           			/*'<div class="mdesc">' +
+           			    '<div class="short">' + (r.json.desc.split("\n")[0]) + '</div>' +
+           			'</div>'+ */
+           			
+           			'<div class="mdesc"><div class="long">' + r.json.desc.split("\n").join('<br/>') + '</div></div>';
+           			
+           },
            xns : Roo.grid,
            '|xns' : 'Roo.grid'
           },
           {
            xtype : 'ColumnModel',
-           dataIndex : 'def',
+           dataIndex : 'memberOf',
            header : _this._strings['f361257612a512f9be2fdc2abfb25aef'] /* <small>Defined by</small> */,
            md : 1,
+           renderer : function(v,x,r) { 
+           
+           
+           		return 	'<small><a href="#' + r.json.memberOf + '">' + r.json.memberOf + '</a></small>';
+           			
+           },
            xns : Roo.grid,
            '|xns' : 'Roo.grid'
           }
