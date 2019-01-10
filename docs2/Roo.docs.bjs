@@ -221,6 +221,7 @@
        "xtype" : "Container",
        "String panel" : "info",
        "$ xns" : "Roo.bootstrap",
+       "String style" : "margin-top:15px",
        "Boolean expandable" : true,
        "items" : [
         {

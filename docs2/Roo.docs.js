@@ -455,6 +455,7 @@ Roo.docs = new Roo.XComponent({
        expanded : true,
        header : _this._strings['50f33d14f129e4548c1c270fd6725a78'] /* Configuration options */,
        panel : 'info',
+       style : 'margin-top:15px',
        xns : Roo.bootstrap,
        '|xns' : 'Roo.bootstrap',
        items  : [
