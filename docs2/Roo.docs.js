@@ -361,6 +361,12 @@ Roo.docs = new Roo.XComponent({
              cls : 'doc-source',
              html : _this._strings['36cd38f49b9afa08222c0dc9ebfe35eb'] /* source */,
              preventDefault : true,
+             listeners : {
+              render : function (_self)
+               {
+                   _this.doc_source = this;
+               }
+             },
              xns : Roo.bootstrap,
              '|xns' : 'Roo.bootstrap'
             }

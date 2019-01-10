@@ -151,6 +151,9 @@
              ]
             },
             {
+             "listeners" : {
+              "render" : "function (_self)\n{\n    _this.doc_source = this;\n}"
+             },
              "String cls" : "doc-source",
              "Boolean preventDefault" : true,
              "xtype" : "Link",
