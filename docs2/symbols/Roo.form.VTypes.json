@@ -1,0 +1,72 @@
+{
+  "name" : "Roo.form.VTypes",
+  "augments" : [
+  ],
+  "desc" : "Overridable validation definitions. The validations provided are basic and intended to be easily customizable and extended.",
+  "config" : [
+  ],
+  "methods" : [
+    {
+      "name" : "email'",
+      "desc" : "The function used to validate email addresses",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "value",
+          "type" : "String",
+          "desc" : "The email address"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "url'",
+      "desc" : "The function used to validate URLs",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "value",
+          "type" : "String",
+          "desc" : "The URL"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "alpha'",
+      "desc" : "The function used to validate alpha values",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "value",
+          "type" : "String",
+          "desc" : "The value"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "alphanum'",
+      "desc" : "The function used to validate alphanumeric values",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "value",
+          "type" : "String",
+          "desc" : "The value"
+        }
+      ],
+      "returns" : ""
+    }
+  ],
+  "events" : [
+  ]
+}

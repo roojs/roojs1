@@ -1,0 +1,22 @@
+{
+  "name" : "Roo.lib.Ajax",
+  "augments" : [
+  ],
+  "desc" : "",
+  "config" : [
+  ],
+  "methods" : [
+    {
+      "name" : "request",
+      "desc" : "",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    }
+  ],
+  "events" : [
+  ]
+}

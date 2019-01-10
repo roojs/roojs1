@@ -1,0 +1,1303 @@
+{
+  "name" : "Roo.dd.DropZone",
+  "augments" : [
+    "Roo.dd.DropTarget",
+    "Roo.dd.DDTarget",
+    "Roo.dd.DragDrop",
+    "Roo.util.Observable"
+  ],
+  "desc" : "This class provides a container DD instance that proxies for multiple child node targets.<br />\nBy default, this class requires that child nodes accepting drop are registered with {@link Roo.dd.Registry}.",
+  "config" : [
+    {
+      "name" : "listeners",
+      "type" : "Object",
+      "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+      "memberOf" : "Roo.util.Observable"
+    },
+    {
+      "name" : "dropNotAllowed",
+      "type" : "String",
+      "desc" : "The CSS class returned to the drag source when drop is not allowed (defaults to \"x-dd-drop-nodrop\").",
+      "memberOf" : "Roo.dd.DropTarget"
+    },
+    {
+      "name" : "valid",
+      "type" : "boolean|String",
+      "desc" : "true/false or string (ok-add/ok-sub/ok/nodrop)\nif the drop point is valid for over/enter..",
+      "memberOf" : "Roo.dd.DropTarget"
+    },
+    {
+      "name" : "success",
+      "type" : "boolean",
+      "desc" : "set this after drop listener..",
+      "memberOf" : "Roo.dd.DropTarget"
+    },
+    {
+      "name" : "dropAllowed",
+      "type" : "String",
+      "desc" : "The CSS class returned to the drag source when drop is allowed (defaults to \"x-dd-drop-ok\").",
+      "memberOf" : "Roo.dd.DropTarget"
+    },
+    {
+      "name" : "overClass",
+      "type" : "String",
+      "desc" : "The CSS class applied to the drop target element while the drag source is over it (defaults to \"\").",
+      "memberOf" : "Roo.dd.DropTarget"
+    },
+    {
+      "name" : "ddGroup",
+      "type" : "String",
+      "desc" : "The drag drop group to handle drop events for",
+      "memberOf" : "Roo.dd.DropTarget"
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "onNodeEnter",
+      "desc" : "Called internally when the DropZone determines that a {@link Roo.dd.DragSource} has entered a drop node\nthat it has registered.  This method has no default implementation and should be overridden to provide\nnode-specific processing if necessary.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "nodeData",
+          "type" : "Object",
+          "desc" : "The custom data associated with the drop node (this is the same value returned from \n{@link #getTargetFromEvent} for this node)"
+        },
+        {
+          "name" : "source",
+          "type" : "Roo.dd.DragSource",
+          "desc" : "The drag source that was dragged over this drop zone"
+        },
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "The event"
+        },
+        {
+          "name" : "data",
+          "type" : "Object",
+          "desc" : "An object containing arbitrary data supplied by the drag source"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "onContainerDrop",
+      "desc" : "Called internally when the DropZone determines that a {@link Roo.dd.DragSource} has been dropped on it,\nbut not on any of its registered drop nodes.  The default implementation returns false, so it should be\noverridden to provide the appropriate processing of the drop event if you need the drop zone itself to\nbe able to accept drops.  It should return true when valid so that the drag source's repair action does not run.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "source",
+          "type" : "Roo.dd.DragSource",
+          "desc" : "The drag source that was dragged over this drop zone"
+        },
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "The event"
+        },
+        {
+          "name" : "data",
+          "type" : "Object",
+          "desc" : "An object containing arbitrary data supplied by the drag source"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "notifyOver",
+      "desc" : "The function a {@link Roo.dd.DragSource} calls continuously while it is being dragged over the drop zone.\nThis method will be called on every mouse movement while the drag source is over the drop zone.\nIt will call {@link #onNodeOver} while the drag source is over a registered node, and will also automatically\ndelegate to the appropriate node-specific methods as necessary when the drag source enters and exits\nregistered nodes ({@link #onNodeEnter}, {@link #onNodeOut}). If the drag source is not currently over a\nregistered node, it will call {@link #onContainerOver}.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "source",
+          "type" : "Roo.dd.DragSource",
+          "desc" : "The drag source that was dragged over this drop zone"
+        },
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "The event"
+        },
+        {
+          "name" : "data",
+          "type" : "Object",
+          "desc" : "An object containing arbitrary data supplied by the drag source"
+        }
+      ],
+      "returns" : "String"
+    },
+    {
+      "name" : "onNodeDrop",
+      "desc" : "Called internally when the DropZone determines that a {@link Roo.dd.DragSource} has been dropped onto\nthe drop node.  The default implementation returns false, so it should be overridden to provide the\nappropriate processing of the drop event and return true so that the drag source's repair action does not run.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "nodeData",
+          "type" : "Object",
+          "desc" : "The custom data associated with the drop node (this is the same value returned from\n{@link #getTargetFromEvent} for this node)"
+        },
+        {
+          "name" : "source",
+          "type" : "Roo.dd.DragSource",
+          "desc" : "The drag source that was dragged over this drop zone"
+        },
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "The event"
+        },
+        {
+          "name" : "data",
+          "type" : "Object",
+          "desc" : "An object containing arbitrary data supplied by the drag source"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "notifyOut",
+      "desc" : "The function a {@link Roo.dd.DragSource} calls once to notify this drop zone that the source has been dragged\nout of the zone without dropping.  If the drag source is currently over a registered node, the notification\nwill be delegated to {@link #onNodeOut} for node-specific handling, otherwise it will be ignored.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "source",
+          "type" : "Roo.dd.DragSource",
+          "desc" : "The drag source that was dragged over this drop target"
+        },
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "The event"
+        },
+        {
+          "name" : "data",
+          "type" : "Object",
+          "desc" : "An object containing arbitrary data supplied by the drag zone"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "notifyEnter",
+      "desc" : "The function a {@link Roo.dd.DragSource} calls once to notify this drop zone that the source is now over\nthe zone.  The default implementation returns this.dropNotAllowed and expects that only registered drop\nnodes can process drag drop operations, so if you need the drop zone itself to be able to process drops\nyou should override this method and provide a custom implementation.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "source",
+          "type" : "Roo.dd.DragSource",
+          "desc" : "The drag source that was dragged over this drop zone"
+        },
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "The event"
+        },
+        {
+          "name" : "data",
+          "type" : "Object",
+          "desc" : "An object containing arbitrary data supplied by the drag source"
+        }
+      ],
+      "returns" : "String"
+    },
+    {
+      "name" : "notifyDrop",
+      "desc" : "The function a {@link Roo.dd.DragSource} calls once to notify this drop zone that the dragged item has\nbeen dropped on it.  The drag zone will look up the target node based on the event passed in, and if there\nis a node registered for that event, it will delegate to {@link #onNodeDrop} for node-specific handling,\notherwise it will call {@link #onContainerDrop}.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "source",
+          "type" : "Roo.dd.DragSource",
+          "desc" : "The drag source that was dragged over this drop zone"
+        },
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "The event"
+        },
+        {
+          "name" : "data",
+          "type" : "Object",
+          "desc" : "An object containing arbitrary data supplied by the drag source"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "onNodeOut",
+      "desc" : "Called internally when the DropZone determines that a {@link Roo.dd.DragSource} has been dragged out of\nthe drop node without dropping.  This method has no default implementation and should be overridden to provide\nnode-specific processing if necessary.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "nodeData",
+          "type" : "Object",
+          "desc" : "The custom data associated with the drop node (this is the same value returned from\n{@link #getTargetFromEvent} for this node)"
+        },
+        {
+          "name" : "source",
+          "type" : "Roo.dd.DragSource",
+          "desc" : "The drag source that was dragged over this drop zone"
+        },
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "The event"
+        },
+        {
+          "name" : "data",
+          "type" : "Object",
+          "desc" : "An object containing arbitrary data supplied by the drag source"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "onContainerOver",
+      "desc" : "Called internally while the DropZone determines that a {@link Roo.dd.DragSource} is being dragged over it,\nbut not over any of its registered drop nodes.  The default implementation returns this.dropNotAllowed, so\nit should be overridden to provide the proper feedback if necessary.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "source",
+          "type" : "Roo.dd.DragSource",
+          "desc" : "The drag source that was dragged over this drop zone"
+        },
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "The event"
+        },
+        {
+          "name" : "data",
+          "type" : "Object",
+          "desc" : "An object containing arbitrary data supplied by the drag source"
+        }
+      ],
+      "returns" : "String"
+    },
+    {
+      "name" : "getTargetFromEvent",
+      "desc" : "Returns a custom data object associated with the DOM node that is the target of the event.  By default\nthis looks up the event target in the {@link Roo.dd.Registry}, although you can override this method to\nprovide your own custom lookup.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "The event"
+        }
+      ],
+      "returns" : "Object"
+    },
+    {
+      "name" : "onNodeOver",
+      "desc" : "Called internally while the DropZone determines that a {@link Roo.dd.DragSource} is over a drop node\nthat it has registered.  The default implementation returns this.dropNotAllowed, so it should be\noverridden to provide the proper feedback.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "nodeData",
+          "type" : "Object",
+          "desc" : "The custom data associated with the drop node (this is the same value returned from\n{@link #getTargetFromEvent} for this node)"
+        },
+        {
+          "name" : "source",
+          "type" : "Roo.dd.DragSource",
+          "desc" : "The drag source that was dragged over this drop zone"
+        },
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "The event"
+        },
+        {
+          "name" : "data",
+          "type" : "Object",
+          "desc" : "An object containing arbitrary data supplied by the drag source"
+        }
+      ],
+      "returns" : "String"
+    },
+    {
+      "name" : "setHandleElId",
+      "desc" : "Allows you to specify a child of the linked element that should be\nused to initiate the drag operation.  An example of this would be if\nyou have a content div with text and links.  Clicking anywhere in the\ncontent area would normally start the drag operation.  Use this method\nto specify that an element inside of the content div is the element\nthat starts the drag operation.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "",
+          "desc" : "{string} the id of the element that will be used to\ninitiate the drag."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "init",
+      "desc" : "Sets up the DragDrop object.  Must be called in the constructor of any\nRoo.dd.DragDrop subclass",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "",
+          "desc" : "the id of the linked element"
+        },
+        {
+          "name" : "sGroup",
+          "type" : "String",
+          "desc" : "the group of related items"
+        },
+        {
+          "name" : "config",
+          "type" : "object",
+          "desc" : "configuration attributes"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "removeInvalidHandleType",
+      "desc" : "Unsets an excluded tag name set by addInvalidHandleType",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+        {
+          "name" : "tagName",
+          "type" : "string",
+          "desc" : "the type of element to unexclude"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "unreg",
+      "desc" : "Remove all drag and drop hooks for this element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addInvalidHandleType",
+      "desc" : "Allows you to specify a tag name that should not start a drag operation\nwhen clicked.  This is designed to facilitate embedding links within a\ndrag handle that do something other than start the drag.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+        {
+          "name" : "tagName",
+          "type" : "string",
+          "desc" : "the type of element to exclude"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "onDragDrop",
+      "desc" : "Abstract method called when this item is dropped on another DragDrop\nobj",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "the mouseup event"
+        },
+        {
+          "name" : "id",
+          "type" : "String|DragDrop[]",
+          "desc" : "In POINT mode, the element\nid this was dropped on.  In INTERSECT mode, an array of dd items this\nwas dropped on."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "removeInvalidHandleId",
+      "desc" : "Unsets an invalid handle id",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "string",
+          "desc" : "the id of the element to re-enable"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "onAvailable",
+      "desc" : "Override the onAvailable method to do what is needed after the initial\nposition was determined.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "setOuterHandleElId",
+      "desc" : "Allows you to set an element outside of the linked element as a drag\nhandle",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "",
+          "desc" : "the id of the element that will be used to initiate the drag"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "onMouseUp",
+      "desc" : "Event handler that fires when a drag/drop obj gets a mouseup",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "the mouseup event"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getDragEl",
+      "desc" : "Returns a reference to the actual element to drag.  By default this is\nthe same as the html element, but it can be assigned to another\nelement. An example of this can be found in Roo.dd.DDProxy",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+      ],
+      "returns" : "HTMLElement"
+    },
+    {
+      "name" : "setYConstraint",
+      "desc" : "By default, the element can be dragged any place on the screen.  Set\nthis to limit the vertical travel of the element.  Pass in 0,0 for the\nparameters if you want to lock the drag to the x axis.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+        {
+          "name" : "iUp",
+          "type" : "int",
+          "desc" : "the number of pixels the element can move up"
+        },
+        {
+          "name" : "iDown",
+          "type" : "int",
+          "desc" : "the number of pixels the element can move down"
+        },
+        {
+          "name" : "iTickSize",
+          "type" : "int",
+          "desc" : "optional parameter for specifying that the\nelement should move iTickSize pixels at a time."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "clearConstraints",
+      "desc" : "Clears any constraints applied to this instance.  Also clears ticks\nsince they can't exist independent of a constraint at this time.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "onInvalidDrop",
+      "desc" : "Abstract method called when this item is dropped on an area with no\ndrop target",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "the mouseup event"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addInvalidHandleId",
+      "desc" : "Lets you to specify an element id for a child of a drag handle\nthat should not initiate a drag",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "string",
+          "desc" : "the element id of the element you wish to ignore"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "removeInvalidHandleClass",
+      "desc" : "Unsets an invalid css class",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+        {
+          "name" : "cssClass",
+          "type" : "string",
+          "desc" : "the class of the element(s) you wish to\nre-enable"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "onDragOut",
+      "desc" : "Abstract method called when we are no longer hovering over an element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "the mousemove event"
+        },
+        {
+          "name" : "id",
+          "type" : "String|DragDrop[]",
+          "desc" : "In POINT mode, the element\nid this was hovering over.  In INTERSECT mode, an array of dd items\nthat the mouse is no longer over."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "setDragElId",
+      "desc" : "Allows you to specify that an element other than the linked element\nwill be moved with the cursor during a drag",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "",
+          "desc" : "{string} the id of the element that will be used to initiate the drag"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "endDrag",
+      "desc" : "Fired when we are done dragging the object",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "the mouseup event"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getEl",
+      "desc" : "Returns a reference to the linked element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+      ],
+      "returns" : "HTMLElement"
+    },
+    {
+      "name" : "onDrag",
+      "desc" : "Abstract method called during the onMouseMove event while dragging an\nobject.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "the mousemove event"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "onDragEnter",
+      "desc" : "Abstract method called when this element fist begins hovering over\nanother DragDrop obj",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "the mousemove event"
+        },
+        {
+          "name" : "id",
+          "type" : "String|DragDrop[]",
+          "desc" : "In POINT mode, the element\nid this is hovering over.  In INTERSECT mode, an array of one or more\ndragdrop items being hovered over."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "lock",
+      "desc" : "Lock this instance",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "onMouseDown",
+      "desc" : "Event handler that fires when a drag/drop obj gets a mousedown",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "the mousedown event"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "applyConfig",
+      "desc" : "Applies the configuration parameters that were passed into the constructor.\nThis is supposed to happen at each level through the inheritance chain.  So\na DDProxy implentation will execute apply config on DDProxy, DD, and\nDragDrop in order to get all of the parameters that are available in\neach object.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "unlock",
+      "desc" : "Unlock this instace",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "isTarget",
+      "desc" : "By default, all insances can be a drop target.  This can be disabled by\nsetting isTarget to false.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "setInitPosition",
+      "desc" : "Stores the initial placement of the linked element.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+        {
+          "name" : "diffX",
+          "type" : "int",
+          "desc" : "the X offset, default 0"
+        },
+        {
+          "name" : "diffY",
+          "type" : "int",
+          "desc" : "the Y offset, default 0"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "initTarget",
+      "desc" : "Initializes Targeting functionality only... the object does not\nget a mousedown handler.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "",
+          "desc" : "the id of the linked element"
+        },
+        {
+          "name" : "sGroup",
+          "type" : "String",
+          "desc" : "the group of related items"
+        },
+        {
+          "name" : "config",
+          "type" : "object",
+          "desc" : "configuration attributes"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addToGroup",
+      "desc" : "Add this instance to a group of related drag/drop objects.  All\ninstances belong to at least one group, and can belong to as many\ngroups as needed.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+        {
+          "name" : "sGroup",
+          "type" : "",
+          "desc" : "{string} the name of the group"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "onDragOver",
+      "desc" : "Abstract method called when this element is hovering over another\nDragDrop obj",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "the mousemove event"
+        },
+        {
+          "name" : "id",
+          "type" : "String|DragDrop[]",
+          "desc" : "In POINT mode, the element\nid this is hovering over.  In INTERSECT mode, an array of dd items\nbeing hovered over."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "toString",
+      "desc" : "toString method",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+      ],
+      "returns" : "string"
+    },
+    {
+      "name" : "setPadding",
+      "desc" : "Configures the padding for the target zone in px.  Effectively expands\n(or reduces) the virtual object size for targeting calculations.\nSupports css-style shorthand; if only one parameter is passed, all sides\nwill have that padding, and if only two are passed, the top and bottom\nwill have the first param, the left and right the second.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+        {
+          "name" : "iTop",
+          "type" : "int",
+          "desc" : "Top pad"
+        },
+        {
+          "name" : "iRight",
+          "type" : "int",
+          "desc" : "Right pad"
+        },
+        {
+          "name" : "iBot",
+          "type" : "int",
+          "desc" : "Bot pad"
+        },
+        {
+          "name" : "iLeft",
+          "type" : "int",
+          "desc" : "Left pad"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "removeFromGroup",
+      "desc" : "Remove's this instance from the supplied interaction group",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+        {
+          "name" : "sGroup",
+          "type" : "string",
+          "desc" : "The group to drop"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addInvalidHandleClass",
+      "desc" : "Lets you specify a css class of elements that will not initiate a drag",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+        {
+          "name" : "cssClass",
+          "type" : "string",
+          "desc" : "the class of the elements you wish to ignore"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "startDrag",
+      "desc" : "Abstract method called after a drag/drop object is clicked\nand the drag or mousedown time thresholds have beeen met.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+        {
+          "name" : "X",
+          "type" : "int",
+          "desc" : "click location"
+        },
+        {
+          "name" : "Y",
+          "type" : "int",
+          "desc" : "click location"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "padding",
+      "desc" : "The padding configured for this drag and drop object for calculating\nthe drop zone intersection with this object.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "resetConstraints",
+      "desc" : "resetConstraints must be called if you manually reposition a dd element.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+        {
+          "name" : "maintainOffset",
+          "type" : "boolean",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "clearTicks",
+      "desc" : "Clears any tick interval defined for this instance",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "isLocked",
+      "desc" : "Returns true if this instance is locked, or the drag drop mgr is locked\n(meaning that all drag/drop is disabled on the page.)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+      ],
+      "returns" : "boolean"
+    },
+    {
+      "name" : "setXConstraint",
+      "desc" : "By default, the element can be dragged any place on the screen.  Use\nthis method to limit the horizontal travel of the element.  Pass in\n0,0 for the parameters if you want to lock the drag to the y axis.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+        {
+          "name" : "iLeft",
+          "type" : "int",
+          "desc" : "the number of pixels the element can move to the left"
+        },
+        {
+          "name" : "iRight",
+          "type" : "int",
+          "desc" : "the number of pixels the element can move to the\nright"
+        },
+        {
+          "name" : "iTickSize",
+          "type" : "int",
+          "desc" : "optional parameter for specifying that the\nelement\nshould move iTickSize pixels at a time."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "isValidHandleChild",
+      "desc" : "Checks the tag exclusion list to see if this click should be ignored",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DragDrop",
+      "params" : [
+        {
+          "name" : "node",
+          "type" : "HTMLElement",
+          "desc" : "the HTMLElement to evaluate"
+        }
+      ],
+      "returns" : "boolean"
+    },
+    {
+      "name" : "purgeListeners",
+      "desc" : "Removes all listeners for this object",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "on",
+      "desc" : "Appends an event handler to this element (shorthand for addListener)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context."
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional)"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "un",
+      "desc" : "Removes a listener (shorthand for removeListener)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The handler to remove"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the handler"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addEvents",
+      "desc" : "Used to define events on this Observable",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "object",
+          "type" : "Object",
+          "desc" : "The object with the events defined"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "releaseCapture",
+      "desc" : "Removes <b>all</b> added captures from the Observable.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Observable",
+          "desc" : "The Observable to release"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "removeListener",
+      "desc" : "Removes a listener",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The handler to remove"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the handler"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "fireEvent",
+      "desc" : "Fires the specified event with the passed parameters (minus the event name).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : ""
+        },
+        {
+          "name" : "args",
+          "type" : "Object...",
+          "desc" : "Variable number of parameters are passed to handlers"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "hasListener",
+      "desc" : "Checks to see if this object has any listeners for a specified event",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The name of the event to check for"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "capture",
+      "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Observable",
+          "desc" : "The Observable to capture"
+        },
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : "The function to call"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the fn"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addListener",
+      "desc" : "Appends an event handler to this component",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context."
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional) An object containing handler configuration\nproperties. This may contain any of the following properties:<ul>\n<li>scope {Object} The scope in which to execute the handler function. The handler function's \"this\" context.</li>\n<li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li>\n<li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li>\n<li>buffer {Number} Causes the handler to be scheduled to run in an {@link Roo.util.DelayedTask} delayed\nby the specified number of milliseconds. If the event fires again within that time, the original\nhandler is <em>not</em> invoked, but the new handler is scheduled in its place.</li>\n</ul><br>\n<p>\n<b>Combining Options</b><br>\nUsing the options argument, it is possible to combine different types of listeners:<br>\n<br>\nA normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)\n\t\t<pre><code>\n\t\tel.on('click', this.onClick, this, {\n \t\t\tsingle: true,\n    \t\tdelay: 100,\n    \t\tforumId: 4\n\t\t});\n\t\t</code></pre>\n<p>\n<b>Attaching multiple handlers in 1 call</b><br>\nThe method also allows for a single argument to be passed which is a config object containing properties\nwhich specify multiple handlers.\n<pre><code>\n\t\tel.on({\n\t\t\t'click': {\n        \t\tfn: this.onClick,\n        \t\tscope: this,\n        \t\tdelay: 100\n    \t\t}, \n    \t\t'mouseover': {\n        \t\tfn: this.onMouseOver,\n        \t\tscope: this\n    \t\t},\n    \t\t'mouseout': {\n        \t\tfn: this.onMouseOut,\n        \t\tscope: this\n    \t\t}\n\t\t});\n\t\t</code></pre>\n<p>\nOr a shorthand syntax which passes the same scope object to all handlers:\n     \t<pre><code>\n\t\tel.on({\n\t\t\t'click': this.onClick,\n    \t\t'mouseover': this.onMouseOver,\n    \t\t'mouseout': this.onMouseOut,\n    \t\tscope: this\n\t\t});\n\t\t</code></pre>"
+        }
+      ],
+      "returns" : ""
+    }
+  ],
+  "events" : [
+    {
+      "name" : "*out",
+      "desc" : "The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the source has been dragged\nout of the target without dropping.  This default implementation simply removes the CSS class specified by\noverClass (if any) from the drop element.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DropTarget",
+      "params" : [
+        {
+          "name" : "source",
+          "type" : "Roo.dd.DragSource",
+          "desc" : "The drag source that was dragged over this drop target"
+        },
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "The event"
+        },
+        {
+          "name" : "data",
+          "type" : "Object",
+          "desc" : "An object containing arbitrary data supplied by the drag source"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*over",
+      "desc" : "The function a {@link Roo.dd.DragSource} calls continuously while it is being dragged over the target.\nThis method will be called on every mouse movement while the drag source is over the drop target.\nThis default implementation simply returns the dropAllowed config value.\n\nIMPORTANT : it should set this.dropAllowed",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DropTarget",
+      "params" : [
+        {
+          "name" : "source",
+          "type" : "Roo.dd.DragSource",
+          "desc" : "The drag source that was dragged over this drop target"
+        },
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "The event"
+        },
+        {
+          "name" : "data",
+          "type" : "Object",
+          "desc" : "An object containing arbitrary data supplied by the drag source"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*enter",
+      "desc" : "The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the source is now over the\ntarget.  This default implementation adds the CSS class specified by overClass (if any) to the drop element\nand returns the dropAllowed config value.  This method should be overridden if drop validation is required.\n\nIMPORTANT : it should set this.overClass and this.dropAllowed",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DropTarget",
+      "params" : [
+        {
+          "name" : "source",
+          "type" : "Roo.dd.DragSource",
+          "desc" : "The drag source that was dragged over this drop target"
+        },
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "The event"
+        },
+        {
+          "name" : "data",
+          "type" : "Object",
+          "desc" : "An object containing arbitrary data supplied by the drag source"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*drop",
+      "desc" : "The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the dragged item has\nbeen dropped on it.  This method has no default implementation and returns false, so you must provide an\nimplementation that does something to process the drop event and returns true so that the drag source's\nrepair action does not run.\n\nIMPORTANT : it should set this.success",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "Roo.dd.DropTarget",
+      "params" : [
+        {
+          "name" : "source",
+          "type" : "Roo.dd.DragSource",
+          "desc" : "The drag source that was dragged over this drop target"
+        },
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "The event"
+        },
+        {
+          "name" : "data",
+          "type" : "Object",
+          "desc" : "An object containing arbitrary data supplied by the drag source"
+        }
+      ],
+      "returns" : ""
+    }
+  ]
+}

@@ -1,0 +1,1879 @@
+{
+  "name" : "Roo.form.ComboBox",
+  "augments" : [
+    "Roo.form.TriggerField",
+    "Roo.form.TextField",
+    "Roo.form.Field",
+    "Roo.BoxComponent",
+    "Roo.Component",
+    "Roo.util.Observable"
+  ],
+  "desc" : "A combobox control with support for autocomplete, remote-loading, paging and many other features.",
+  "config" : [
+    {
+      "name" : "triggerClass",
+      "type" : "String",
+      "desc" : "An additional CSS class used to style the trigger button.  The trigger will always get the\nclass 'x-form-trigger' and triggerClass will be <b>appended</b> if specified (defaults to 'x-form-arrow-trigger'\nwhich displays a downward arrow icon).",
+      "memberOf" : ""
+    },
+    {
+      "name" : "pageSize",
+      "type" : "Number",
+      "desc" : "If greater than 0, a paging toolbar is displayed in the footer of the dropdown list and the\nfilter queries will execute with page start and limit parameters.  Only applies when mode = 'remote' (defaults to 0)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "hideMode",
+      "type" : "String",
+      "desc" : [
+        "(display",
+        "visibility)"
+      ],
+      "memberOf" : "Roo.Component"
+    },
+    {
+      "name" : "disableKeyFilter",
+      "type" : "Boolean",
+      "desc" : "True to disable input keystroke filtering (defaults to false)",
+      "memberOf" : "Roo.form.TextField"
+    },
+    {
+      "name" : "queryParam",
+      "type" : "String",
+      "desc" : "Name of the query as it will be passed on the querystring (defaults to 'query')",
+      "memberOf" : ""
+    },
+    {
+      "name" : "title",
+      "type" : "String",
+      "desc" : "If supplied, a header element is created containing this text and added into the top of\nthe dropdown list (defaults to undefined, with no header element)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "disabled",
+      "type" : "Boolean",
+      "desc" : "True to disable the field (defaults to false).",
+      "memberOf" : "Roo.form.Field"
+    },
+    {
+      "name" : "resizable",
+      "type" : "Boolean",
+      "desc" : "True to add a resize handle to the bottom of the dropdown list (defaults to false)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "validator",
+      "type" : "Function",
+      "desc" : "A custom validation function to be called during field validation (defaults to null).\nIf available, this function will be called only after the basic validators all return true, and will be passed the\ncurrent field value and expected to return boolean true if the value is valid or a string error message if invalid.",
+      "memberOf" : "Roo.form.TextField"
+    },
+    {
+      "name" : "name",
+      "type" : "String",
+      "desc" : "The field's HTML name attribute.",
+      "memberOf" : "Roo.form.Field"
+    },
+    {
+      "name" : "editable",
+      "type" : "Boolean",
+      "desc" : "False to prevent the user from typing text directly into the field, just like a\ntraditional select (defaults to true)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "width",
+      "type" : "Number",
+      "desc" : "width (optional) size of component",
+      "memberOf" : "Roo.BoxComponent"
+    },
+    {
+      "name" : "regexText",
+      "type" : "String",
+      "desc" : "The error text to display if {@link #regex} is used and the test fails during validation (defaults to \"\")",
+      "memberOf" : "Roo.form.TextField"
+    },
+    {
+      "name" : "listWidth",
+      "type" : "Number",
+      "desc" : "The width in pixels of the dropdown list (defaults to the width of the ComboBox field)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "allowDomMove",
+      "type" : "Boolean",
+      "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
+      "memberOf" : "Roo.Component"
+    },
+    {
+      "name" : "tpl",
+      "type" : "String/Roo.Template",
+      "desc" : "The template to use to render the output",
+      "memberOf" : ""
+    },
+    {
+      "name" : "typeAheadDelay",
+      "type" : "Number",
+      "desc" : "The length of time in milliseconds to wait until the typeahead text is displayed\nif typeAhead = true (defaults to 250)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "height",
+      "type" : "Number",
+      "desc" : "height (optional) size of component",
+      "memberOf" : "Roo.BoxComponent"
+    },
+    {
+      "name" : "disableClear",
+      "type" : "Boolean",
+      "desc" : "Disable showing of clear button.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "store",
+      "type" : "Roo.data.Store",
+      "desc" : "The data store to which this combo is bound (defaults to undefined)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "emptyText",
+      "type" : "String",
+      "desc" : "The default text to display in an empty field - placeholder... (defaults to null).",
+      "memberOf" : "Roo.form.TextField"
+    },
+    {
+      "name" : "value",
+      "type" : "Mixed",
+      "desc" : "A value to initialize this field with.",
+      "memberOf" : "Roo.form.Field"
+    },
+    {
+      "name" : "msgFx",
+      "type" : "String",
+      "desc" : "<b>Experimental</b> The effect used when displaying a validation message under the field (defaults to 'normal').",
+      "memberOf" : "Roo.form.Field"
+    },
+    {
+      "name" : "actionMode",
+      "type" : "String",
+      "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el'",
+      "memberOf" : "Roo.Component"
+    },
+    {
+      "name" : "allQuery",
+      "type" : "String",
+      "desc" : "The text query to send to the server to return all records for the list with no filtering (defaults to '')",
+      "memberOf" : ""
+    },
+    {
+      "name" : "minListWidth",
+      "type" : "Number",
+      "desc" : "The minimum width of the dropdown list in pixels (defaults to 70, will be ignored if\nlistWidth has a higher value)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "alwaysQuery",
+      "type" : "Boolean",
+      "desc" : "Disable caching of results, and always send query",
+      "memberOf" : ""
+    },
+    {
+      "name" : "minLengthText",
+      "type" : "String",
+      "desc" : "Error text to display if the minimum length validation fails (defaults to \"The minimum length for this field is {minLength}\")",
+      "memberOf" : "Roo.form.TextField"
+    },
+    {
+      "name" : "maxLengthText",
+      "type" : "String",
+      "desc" : "Error text to display if the maximum length validation fails (defaults to \"The maximum length for this field is {maxLength}\")",
+      "memberOf" : "Roo.form.TextField"
+    },
+    {
+      "name" : "msgTarget",
+      "type" : "String",
+      "desc" : "The location where error text should display.  Should be one of the following values (defaults to 'qtip'):\n<pre>\nValue         Description\n-----------   ----------------------------------------------------------------------\nqtip          Display a quick tip when the user hovers over the field\ntitle         Display a default browser title attribute popup\nunder         Add a block div beneath the field containing the error text\nside          Add an error icon to the right of the field with a popup on hover\n[element id]  Add the error text directly to the innerHTML of the specified element\n</pre>",
+      "memberOf" : "Roo.form.Field"
+    },
+    {
+      "name" : "listeners",
+      "type" : "Object",
+      "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+      "memberOf" : "Roo.util.Observable"
+    },
+    {
+      "name" : "shadow",
+      "type" : "Boolean/String",
+      "desc" : "True or \"sides\" for the default effect, \"frame\" for 4-way shadow, and \"drop\" for bottom-right",
+      "memberOf" : ""
+    },
+    {
+      "name" : "readOnly",
+      "type" : "Boolean",
+      "desc" : "True to mark the field as readOnly in HTML (defaults to false) -- Note: this only sets the element's readOnly DOM attribute.",
+      "memberOf" : "Roo.form.Field"
+    },
+    {
+      "name" : "focusClass",
+      "type" : "String",
+      "desc" : "The CSS class to use when the field receives focus (defaults to \"x-form-focus\")",
+      "memberOf" : "Roo.form.Field"
+    },
+    {
+      "name" : "valueNotFoundText",
+      "type" : "String",
+      "desc" : "When using a name/value combo, if the value passed to setValue is not found in\nthe store, valueNotFoundText will be displayed as the field text if defined (defaults to undefined)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "hiddenName",
+      "type" : "String",
+      "desc" : "If specified, a hidden form field with this name is dynamically generated to store the\nfield's data value (defaults to the underlying DOM element's name)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "selectedClass",
+      "type" : "String",
+      "desc" : "CSS class to apply to the selected item in the dropdown list (defaults to 'x-combo-selected')",
+      "memberOf" : ""
+    },
+    {
+      "name" : "displayField",
+      "type" : "String",
+      "desc" : "The underlying data field name to bind to this CombBox (defaults to undefined if\nmode = 'remote' or 'text' if mode = 'local')",
+      "memberOf" : ""
+    },
+    {
+      "name" : "hideTrigger",
+      "type" : "Boolean",
+      "desc" : "True to hide the trigger element and display only the base text field (defaults to false)",
+      "memberOf" : "Roo.form.TriggerField"
+    },
+    {
+      "name" : "cls",
+      "type" : "String",
+      "desc" : "A CSS class to apply to the field's underlying element.",
+      "memberOf" : "Roo.form.Field"
+    },
+    {
+      "name" : "validateOnBlur",
+      "type" : "Boolean",
+      "desc" : "Whether the field should validate when it loses focus (defaults to true).",
+      "memberOf" : "Roo.form.Field"
+    },
+    {
+      "name" : "listAlign",
+      "type" : "String",
+      "desc" : "A valid anchor position value. See {@link Roo.Element#alignTo} for details on supported\nanchor positions (defaults to 'tl-bl')",
+      "memberOf" : ""
+    },
+    {
+      "name" : "typeAhead",
+      "type" : "Boolean",
+      "desc" : "True to populate and autoselect the remainder of the text being typed after a configurable\ndelay (typeAheadDelay) if it matches a known value (defaults to false)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "forceSelection",
+      "type" : "Boolean",
+      "desc" : "True to restrict the selected value to one of the values in the list, false to\nallow the user to set arbitrary text into the field (defaults to false)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "triggerAction",
+      "type" : "String",
+      "desc" : "The action to execute when the trigger field is activated.  Use 'all' to run the\nquery specified by the allQuery config option (defaults to 'query')",
+      "memberOf" : ""
+    },
+    {
+      "name" : "inputType",
+      "type" : "String",
+      "desc" : "The type attribute for input fields -- e.g. radio, text, password (defaults to \"text\").",
+      "memberOf" : "Roo.form.Field"
+    },
+    {
+      "name" : "fieldClass",
+      "type" : "String",
+      "desc" : "The default CSS class for the field (defaults to \"x-form-field\")",
+      "memberOf" : "Roo.form.Field"
+    },
+    {
+      "name" : "autoCreate",
+      "type" : "Boolean/Object",
+      "desc" : "A DomHelper element spec, or true for a default element spec (defaults to:\n{tag: \"input\", type: \"text\", size: \"24\", autocomplete: \"off\"})",
+      "memberOf" : ""
+    },
+    {
+      "name" : "minChars",
+      "type" : "Number",
+      "desc" : "The minimum number of characters the user must type before autocomplete and typeahead activate\n(defaults to 4, does not apply if editable = false)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "growMin",
+      "type" : "Number",
+      "desc" : "",
+      "memberOf" : ""
+    },
+    {
+      "name" : "vtype",
+      "type" : "String",
+      "desc" : "A validation type name as defined in {@link Roo.form.VTypes} (defaults to null)",
+      "memberOf" : "Roo.form.TextField"
+    },
+    {
+      "name" : "maskRe",
+      "type" : "String",
+      "desc" : "An input mask regular expression that will be used to filter keystrokes that don't match (defaults to null)",
+      "memberOf" : "Roo.form.TextField"
+    },
+    {
+      "name" : "invalidClass",
+      "type" : "String",
+      "desc" : "The CSS class to use when marking a field invalid (defaults to \"x-form-invalid\")",
+      "memberOf" : "Roo.form.Field"
+    },
+    {
+      "name" : "validationEvent",
+      "type" : "String/Boolean",
+      "desc" : "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
+      "memberOf" : "Roo.form.Field"
+    },
+    {
+      "name" : "blockFocus",
+      "type" : "Boolean",
+      "desc" : "Prevents all focus calls, so it can work with things like HTML edtor bar",
+      "memberOf" : ""
+    },
+    {
+      "name" : "fieldLabel",
+      "type" : "String",
+      "desc" : "Label to use when rendering a form.",
+      "memberOf" : "Roo.form.Field"
+    },
+    {
+      "name" : "selectOnFocus",
+      "type" : "Boolean",
+      "desc" : "True to select any existing text in the field immediately on focus.  Only applies\nwhen editable = true (defaults to false)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "blankText",
+      "type" : "String",
+      "desc" : "Error text to display if the allow blank validation fails (defaults to \"This field is required\")",
+      "memberOf" : "Roo.form.TextField"
+    },
+    {
+      "name" : "validationDelay",
+      "type" : "Number",
+      "desc" : "The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)",
+      "memberOf" : "Roo.form.Field"
+    },
+    {
+      "name" : "disableClass",
+      "type" : "String",
+      "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
+      "memberOf" : "Roo.Component"
+    },
+    {
+      "name" : "tabIndex",
+      "type" : "Number",
+      "desc" : "The tabIndex for this field. Note this only applies to fields that are rendered, not those which are built via applyTo (defaults to undefined).",
+      "memberOf" : "Roo.form.Field"
+    },
+    {
+      "name" : "growMax",
+      "type" : "Number",
+      "desc" : "",
+      "memberOf" : ""
+    },
+    {
+      "name" : "transform",
+      "type" : "String/HTMLElement/Element",
+      "desc" : "The id, DOM node or element of an existing select to convert to a ComboBox",
+      "memberOf" : ""
+    },
+    {
+      "name" : "listClass",
+      "type" : "String",
+      "desc" : "CSS class to apply to the dropdown list element (defaults to '')",
+      "memberOf" : ""
+    },
+    {
+      "name" : "handleHeight",
+      "type" : "Number",
+      "desc" : "The height in pixels of the dropdown list resize handle if resizable = true (defaults to 8)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "regex",
+      "type" : "RegExp",
+      "desc" : "A JavaScript RegExp object to be tested against the field value during validation (defaults to null).\nIf available, this regex will be evaluated only after the basic validators all return true, and will be passed the\ncurrent field value.  If the test fails, the field will be marked invalid using {@link #regexText}.",
+      "memberOf" : "Roo.form.TextField"
+    },
+    {
+      "name" : "grow",
+      "type" : "Boolean",
+      "desc" : "",
+      "memberOf" : ""
+    },
+    {
+      "name" : "minLength",
+      "type" : "Number",
+      "desc" : "Minimum input field length required (defaults to 0)",
+      "memberOf" : "Roo.form.TextField"
+    },
+    {
+      "name" : "queryDelay",
+      "type" : "Number",
+      "desc" : "The length of time in milliseconds to delay between the start of typing and sending the\nquery to filter the dropdown list (defaults to 500 if mode = 'remote' or 10 if mode = 'local')",
+      "memberOf" : ""
+    },
+    {
+      "name" : "mode",
+      "type" : "String",
+      "desc" : "Set to 'local' if the ComboBox loads local data (defaults to 'remote' which loads from the server)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "allowBlank",
+      "type" : "Boolean",
+      "desc" : "False to validate that the value length > 0 (defaults to true)",
+      "memberOf" : "Roo.form.TextField"
+    },
+    {
+      "name" : "qtip",
+      "type" : "String",
+      "desc" : "Mouse over tip",
+      "memberOf" : "Roo.form.Field"
+    },
+    {
+      "name" : "maxHeight",
+      "type" : "Number",
+      "desc" : "The maximum height in pixels of the dropdown list before scrollbars are shown (defaults to 300)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "valueField",
+      "type" : "String",
+      "desc" : "The underlying data value name to bind to this CombBox (defaults to undefined if\nmode = 'remote' or 'value' if mode = 'local'). \nNote: use of a valueField requires the user make a selection\nin order for a value to be mapped.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "loadingText",
+      "type" : "String",
+      "desc" : "The text to display in the dropdown list while data is loading.  Only applies\nwhen mode = 'remote' (defaults to 'Loading...')",
+      "memberOf" : ""
+    },
+    {
+      "name" : "maxLength",
+      "type" : "Number",
+      "desc" : "Maximum input field length allowed (defaults to Number.MAX_VALUE)",
+      "memberOf" : "Roo.form.TextField"
+    },
+    {
+      "name" : "lazyRender",
+      "type" : "Boolean",
+      "desc" : "True to prevent the ComboBox from rendering until requested (should always be used when\nrendering into an Roo.Editor, defaults to false)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "invalidText",
+      "type" : "String",
+      "desc" : "The error text to use when marking a field invalid and no message is provided (defaults to \"The value in this field is invalid\")",
+      "memberOf" : "Roo.form.Field"
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "getValue",
+      "desc" : "Returns the currently selected field value or empty string if no value is set.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "String"
+    },
+    {
+      "name" : "expand",
+      "desc" : "Expands the dropdown list if it is currently hidden. Fires the 'expand' event on completion.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "setValue",
+      "desc" : "Sets the specified value into the field.  If the value finds a match, the corresponding record text\nwill be displayed in the field.  If the value does not match the data value of an existing item,\nand the valueNotFoundText config option is defined, it will be displayed as the default field text.\nOtherwise the field will be blank (although the value will still be set).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "value",
+          "type" : "String",
+          "desc" : "The value to match"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "select",
+      "desc" : "Select an item in the dropdown list by its numeric index in the list. This function does NOT cause the select event to fire.\nThe store must be loaded and the list expanded for this function to work, otherwise use setValue.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "index",
+          "type" : "Number",
+          "desc" : "The zero-based index of the list item to select"
+        },
+        {
+          "name" : "scrollIntoView",
+          "type" : "Boolean",
+          "desc" : "False to prevent the dropdown list from autoscrolling to display the\nselected item if it is not currently in view (defaults to true)"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "isExpanded",
+      "desc" : "Returns true if the dropdown list is expanded, else false.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "doQuery",
+      "desc" : "Execute a query to filter the dropdown list.  Fires the beforequery event prior to performing the\nquery allowing the query action to be canceled if needed.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "query",
+          "type" : "String",
+          "desc" : "The SQL query to execute"
+        },
+        {
+          "name" : "forceAll",
+          "type" : "Boolean",
+          "desc" : "True to force the query to execute even if there are currently fewer characters\nin the field than the minimum specified by the minChars config option.  It also clears any filter previously\nsaved in the current store (defaults to false)"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "setFromData",
+      "desc" : "Sets the value of the field based on a object which is related to the record format for the store.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "value",
+          "type" : "Object",
+          "desc" : "the value to set as. or false on reset?"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "selectByValue",
+      "desc" : "Select an item in the dropdown list by its data value. This function does NOT cause the select event to fire.\nThe store must be loaded and the list expanded for this function to work, otherwise use setValue.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "value",
+          "type" : "String",
+          "desc" : "The data value of the item to select"
+        },
+        {
+          "name" : "scrollIntoView",
+          "type" : "Boolean",
+          "desc" : "False to prevent the dropdown list from autoscrolling to display the\nselected item if it is not currently in view (defaults to true)"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "setEditable",
+      "desc" : "Allow or prevent the user from directly editing the field text.  If false is passed,\nthe user will only be able to select from the items defined in the dropdown list.  This method\nis the runtime equivalent of setting the 'editable' config option at config time.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "value",
+          "type" : "Boolean",
+          "desc" : "True to allow the user to directly edit the field text"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "collapse",
+      "desc" : "Hides the dropdown list if it is currently expanded. Fires the 'collapse' event on completion.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "clearValue",
+      "desc" : "Clears any text/value currently set in the field",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "onTriggerClick",
+      "desc" : "The function that should handle the trigger's click event.  This method does nothing by default until overridden\nby an implementing function.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.form.TriggerField",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "autoSize",
+      "desc" : "",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.form.TriggerField",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "selectText",
+      "desc" : "Selects text in this field",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.form.TextField",
+      "params" : [
+        {
+          "name" : "start",
+          "type" : "Number",
+          "desc" : "(optional) The index where the selection should start (defaults to 0)"
+        },
+        {
+          "name" : "end",
+          "type" : "Number",
+          "desc" : "(optional) The index where the selection should end (defaults to the text length)"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "validateValue",
+      "desc" : "Validates a value according to the field's validation rules and marks the field as invalid\nif the validation fails",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.form.TextField",
+      "params" : [
+        {
+          "name" : "value",
+          "type" : "Mixed",
+          "desc" : "The value to validate"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "reset",
+      "desc" : "Resets the current field value to the originally-loaded value and clears any validation messages.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.form.TextField",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "validate",
+      "desc" : "Validates the field value",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.form.Field",
+      "params" : [
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "getName",
+      "desc" : "Returns the name attribute of the field if available",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.form.Field",
+      "params" : [
+      ],
+      "returns" : "String"
+    },
+    {
+      "name" : "markInvalid",
+      "desc" : "Mark this field as invalid",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.form.Field",
+      "params" : [
+        {
+          "name" : "msg",
+          "type" : "String",
+          "desc" : "The validation message"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getRawValue",
+      "desc" : "Returns the raw data value which may or may not be a valid, defined value.  To return a normalized value see {@link #getValue}.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.form.Field",
+      "params" : [
+      ],
+      "returns" : "Mixed"
+    },
+    {
+      "name" : "applyTo",
+      "desc" : "Apply the behaviors of this component to an existing element. <b>This is used instead of render().</b>",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.form.Field",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement/Element",
+          "desc" : "The id of the node, a DOM node or an existing Element"
+        }
+      ],
+      "returns" : "Roo.form.Field"
+    },
+    {
+      "name" : "resetHasChanged",
+      "desc" : "stores the current value in loadedValue",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.form.Field",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "isDirty",
+      "desc" : "Returns true if this field has been changed since it was originally loaded and is not disabled.\nDEPRICATED  - it never worked well - use hasChanged/resetHasChanged.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.form.Field",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "setRawValue",
+      "desc" : "Sets the underlying DOM field's value directly, bypassing validation.  To set the value with validation see {@link #setValue}.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.form.Field",
+      "params" : [
+        {
+          "name" : "value",
+          "type" : "Mixed",
+          "desc" : "The value to set"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "clearInvalid",
+      "desc" : "Clear any invalid styles/messages for this field",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.form.Field",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "isValid",
+      "desc" : "Returns whether or not the field value is currently valid",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.form.Field",
+      "params" : [
+        {
+          "name" : "preventMark",
+          "type" : "Boolean",
+          "desc" : "True to disable marking the field invalid"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "hasChanged",
+      "desc" : "checks the current value against the 'loaded' value.\nNote - will return false if 'resetHasChanged' has not been called first.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.form.Field",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "updateBox",
+      "desc" : "Sets the current box measurements of the component's underlying element.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.BoxComponent",
+      "params" : [
+        {
+          "name" : "box",
+          "type" : "Object",
+          "desc" : "An object in the format {x, y, width, height}"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "setPagePosition",
+      "desc" : "Sets the page XY position of the component.  To set the left and top instead, use {@link #setPosition}.\nThis method fires the move event.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.BoxComponent",
+      "params" : [
+        {
+          "name" : "x",
+          "type" : "Number",
+          "desc" : "The new x position"
+        },
+        {
+          "name" : "y",
+          "type" : "Number",
+          "desc" : "The new y position"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "syncSize",
+      "desc" : "Force the component's size to recalculate based on the underlying element's current height and width.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.BoxComponent",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "setSize",
+      "desc" : "Sets the width and height of the component.  This method fires the resize event.  This method can accept\neither width and height as separate numeric arguments, or you can pass a size object like {width:10, height:20}.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.BoxComponent",
+      "params" : [
+        {
+          "name" : "width",
+          "type" : "Number/Object",
+          "desc" : "The new width to set, or a size object in the format {width, height}"
+        },
+        {
+          "name" : "height",
+          "type" : "Number",
+          "desc" : "The new height to set (not required if a size object is passed as the first arg)"
+        }
+      ],
+      "returns" : "Roo.BoxComponent"
+    },
+    {
+      "name" : "getPosition",
+      "desc" : "Gets the current XY position of the component's underlying element.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.BoxComponent",
+      "params" : [
+        {
+          "name" : "local",
+          "type" : "Boolean",
+          "desc" : "(optional) If true the element's left and top are returned instead of page XY (defaults to false)"
+        }
+      ],
+      "returns" : "Array"
+    },
+    {
+      "name" : "onResize",
+      "desc" : "Called after the component is resized, this method is empty by default but can be implemented by any\nsubclass that needs to perform custom logic after a resize occurs.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.BoxComponent",
+      "params" : [
+        {
+          "name" : "adjWidth",
+          "type" : "Number",
+          "desc" : "The box-adjusted width that was set"
+        },
+        {
+          "name" : "adjHeight",
+          "type" : "Number",
+          "desc" : "The box-adjusted height that was set"
+        },
+        {
+          "name" : "rawWidth",
+          "type" : "Number",
+          "desc" : "The width that was originally specified"
+        },
+        {
+          "name" : "rawHeight",
+          "type" : "Number",
+          "desc" : "The height that was originally specified"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getBox",
+      "desc" : "Gets the current box measurements of the component's underlying element.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.BoxComponent",
+      "params" : [
+        {
+          "name" : "local",
+          "type" : "Boolean",
+          "desc" : "(optional) If true the element's left and top are returned instead of page XY (defaults to false)"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getSize",
+      "desc" : "Gets the current size of the component's underlying element.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.BoxComponent",
+      "params" : [
+      ],
+      "returns" : "Object"
+    },
+    {
+      "name" : "onPosition",
+      "desc" : "Called after the component is moved, this method is empty by default but can be implemented by any\nsubclass that needs to perform custom logic after a move occurs.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.BoxComponent",
+      "params" : [
+        {
+          "name" : "x",
+          "type" : "Number",
+          "desc" : "The new x position"
+        },
+        {
+          "name" : "y",
+          "type" : "Number",
+          "desc" : "The new y position"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "setPosition",
+      "desc" : "Sets the left and top of the component.  To set the page XY position instead, use {@link #setPagePosition}.\nThis method fires the move event.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.BoxComponent",
+      "params" : [
+        {
+          "name" : "left",
+          "type" : "Number",
+          "desc" : "The new left"
+        },
+        {
+          "name" : "top",
+          "type" : "Number",
+          "desc" : "The new top"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getId",
+      "desc" : "Returns the id of this component.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+      ],
+      "returns" : "String"
+    },
+    {
+      "name" : "render",
+      "desc" : "If this is a lazy rendering component, render it to its container element.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "container",
+          "type" : "String/HTMLElement/Element",
+          "desc" : "(optional) The element this component should be rendered into. If it is being applied to existing markup, this should be left off."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "destroy",
+      "desc" : "Destroys this component by purging any event listeners, removing the component's element from the DOM,\nremoving the component from its {@link Roo.Container} (if applicable) and unregistering it from {@link Roo.ComponentMgr}.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "isVisible",
+      "desc" : "Returns true if this component is visible.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "setDisabled",
+      "desc" : "Convenience function for setting disabled/enabled by boolean.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "disabled",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "hide",
+      "desc" : "Hide this component.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+      ],
+      "returns" : "Roo.Component"
+    },
+    {
+      "name" : "focus",
+      "desc" : "Try to focus this component.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "selectText",
+          "type" : "Boolean",
+          "desc" : "True to also select the text in this component (if applicable)"
+        }
+      ],
+      "returns" : "Roo.Component"
+    },
+    {
+      "name" : "show",
+      "desc" : "Show this component.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+      ],
+      "returns" : "Roo.Component"
+    },
+    {
+      "name" : "enable",
+      "desc" : "Enable this component.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+      ],
+      "returns" : "Roo.Component"
+    },
+    {
+      "name" : "setVisible",
+      "desc" : "Convenience function to hide or show this component by boolean.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "visible",
+          "type" : "Boolean",
+          "desc" : "True to show, false to hide"
+        }
+      ],
+      "returns" : "Roo.Component"
+    },
+    {
+      "name" : "disable",
+      "desc" : "Disable this component.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+      ],
+      "returns" : "Roo.Component"
+    },
+    {
+      "name" : "getEl",
+      "desc" : "Returns the underlying {@link Roo.Element}.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "purgeListeners",
+      "desc" : "Removes all listeners for this object",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "on",
+      "desc" : "Appends an event handler to this element (shorthand for addListener)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context."
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional)"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "un",
+      "desc" : "Removes a listener (shorthand for removeListener)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The handler to remove"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the handler"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addEvents",
+      "desc" : "Used to define events on this Observable",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "object",
+          "type" : "Object",
+          "desc" : "The object with the events defined"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "releaseCapture",
+      "desc" : "Removes <b>all</b> added captures from the Observable.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Observable",
+          "desc" : "The Observable to release"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "removeListener",
+      "desc" : "Removes a listener",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The handler to remove"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the handler"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "fireEvent",
+      "desc" : "Fires the specified event with the passed parameters (minus the event name).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : ""
+        },
+        {
+          "name" : "args",
+          "type" : "Object...",
+          "desc" : "Variable number of parameters are passed to handlers"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "hasListener",
+      "desc" : "Checks to see if this object has any listeners for a specified event",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The name of the event to check for"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "capture",
+      "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Observable",
+          "desc" : "The Observable to capture"
+        },
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : "The function to call"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the fn"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addListener",
+      "desc" : "Appends an event handler to this component",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context."
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional) An object containing handler configuration\nproperties. This may contain any of the following properties:<ul>\n<li>scope {Object} The scope in which to execute the handler function. The handler function's \"this\" context.</li>\n<li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li>\n<li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li>\n<li>buffer {Number} Causes the handler to be scheduled to run in an {@link Roo.util.DelayedTask} delayed\nby the specified number of milliseconds. If the event fires again within that time, the original\nhandler is <em>not</em> invoked, but the new handler is scheduled in its place.</li>\n</ul><br>\n<p>\n<b>Combining Options</b><br>\nUsing the options argument, it is possible to combine different types of listeners:<br>\n<br>\nA normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)\n\t\t<pre><code>\n\t\tel.on('click', this.onClick, this, {\n \t\t\tsingle: true,\n    \t\tdelay: 100,\n    \t\tforumId: 4\n\t\t});\n\t\t</code></pre>\n<p>\n<b>Attaching multiple handlers in 1 call</b><br>\nThe method also allows for a single argument to be passed which is a config object containing properties\nwhich specify multiple handlers.\n<pre><code>\n\t\tel.on({\n\t\t\t'click': {\n        \t\tfn: this.onClick,\n        \t\tscope: this,\n        \t\tdelay: 100\n    \t\t}, \n    \t\t'mouseover': {\n        \t\tfn: this.onMouseOver,\n        \t\tscope: this\n    \t\t},\n    \t\t'mouseout': {\n        \t\tfn: this.onMouseOut,\n        \t\tscope: this\n    \t\t}\n\t\t});\n\t\t</code></pre>\n<p>\nOr a shorthand syntax which passes the same scope object to all handlers:\n     \t<pre><code>\n\t\tel.on({\n\t\t\t'click': this.onClick,\n    \t\t'mouseover': this.onMouseOver,\n    \t\t'mouseout': this.onMouseOut,\n    \t\tscope: this\n\t\t});\n\t\t</code></pre>"
+        }
+      ],
+      "returns" : ""
+    }
+  ],
+  "events" : [
+    {
+      "name" : "*add",
+      "desc" : "Fires when the 'add' icon is pressed (add a listener to enable add button)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "combo",
+          "type" : "Roo.form.ComboBox",
+          "desc" : "This combo box"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*expand",
+      "desc" : "Fires when the dropdown list is expanded",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "combo",
+          "type" : "Roo.form.ComboBox",
+          "desc" : "This combo box"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*collapse",
+      "desc" : "Fires when the dropdown list is collapsed",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "combo",
+          "type" : "Roo.form.ComboBox",
+          "desc" : "This combo box"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*select",
+      "desc" : "Fires when a list item is selected",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "combo",
+          "type" : "Roo.form.ComboBox",
+          "desc" : "This combo box"
+        },
+        {
+          "name" : "record",
+          "type" : "Roo.data.Record",
+          "desc" : "The data record returned from the underlying store (or false on clear)"
+        },
+        {
+          "name" : "index",
+          "type" : "Number",
+          "desc" : "The index of the selected item in the dropdown list"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*edit",
+      "desc" : "Fires when the 'edit' icon is pressed (add a listener to enable add button)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "combo",
+          "type" : "Roo.form.ComboBox",
+          "desc" : "This combo box"
+        },
+        {
+          "name" : "record",
+          "type" : "Roo.data.Record|false",
+          "desc" : "The data record returned from the underlying store (or false on nothing selected)"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*beforequery",
+      "desc" : "Fires before all queries are processed. Return false to cancel the query or set cancel to true.\nThe event object passed has these properties:",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "combo",
+          "type" : "Roo.form.ComboBox",
+          "desc" : "This combo box"
+        },
+        {
+          "name" : "query",
+          "type" : "String",
+          "desc" : "The query"
+        },
+        {
+          "name" : "forceAll",
+          "type" : "Boolean",
+          "desc" : "true to force \"all\" query"
+        },
+        {
+          "name" : "cancel",
+          "type" : "Boolean",
+          "desc" : "true to cancel the query"
+        },
+        {
+          "name" : "e",
+          "type" : "Object",
+          "desc" : "The query event object"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*beforeselect",
+      "desc" : "Fires before a list item is selected. Return false to cancel the selection.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "combo",
+          "type" : "Roo.form.ComboBox",
+          "desc" : "This combo box"
+        },
+        {
+          "name" : "record",
+          "type" : "Roo.data.Record",
+          "desc" : "The data record returned from the underlying store"
+        },
+        {
+          "name" : "index",
+          "type" : "Number",
+          "desc" : "The index of the selected item in the dropdown list"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*autosize",
+      "desc" : "Fires when the autosize function is triggered.  The field may or may not have actually changed size\naccording to the default logic, but this event provides a hook for the developer to apply additional\nlogic at runtime to resize the field if needed.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.form.TextField",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.form.Field",
+          "desc" : "This text field"
+        },
+        {
+          "name" : "width",
+          "type" : "Number",
+          "desc" : "The new field width"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*blur",
+      "desc" : "Fires when this field loses input focus.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.form.Field",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.form.Field",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*valid",
+      "desc" : "Fires after the field has been validated with no errors.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.form.Field",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.form.Field",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*specialkey",
+      "desc" : "Fires when any key related to navigation (arrows, tab, enter, esc, etc.) is pressed.  You can check\n{@link Roo.EventObject#getKey} to determine which key was pressed.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.form.Field",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.form.Field",
+          "desc" : ""
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : "The event object"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*focus",
+      "desc" : "Fires when this field receives input focus.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.form.Field",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.form.Field",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*keyup",
+      "desc" : "Fires after the key up",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.form.Field",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.form.Field",
+          "desc" : ""
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : "The event Object"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*invalid",
+      "desc" : "Fires after the field has been marked as invalid.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.form.Field",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.form.Field",
+          "desc" : ""
+        },
+        {
+          "name" : "msg",
+          "type" : "String",
+          "desc" : "The validation message"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*change",
+      "desc" : "Fires just before the field blurs if the field value has changed.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.form.Field",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.form.Field",
+          "desc" : ""
+        },
+        {
+          "name" : "newValue",
+          "type" : "Mixed",
+          "desc" : "The new value"
+        },
+        {
+          "name" : "oldValue",
+          "type" : "Mixed",
+          "desc" : "The original value"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*move",
+      "desc" : "Fires after the component is moved.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.BoxComponent",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        },
+        {
+          "name" : "x",
+          "type" : "Number",
+          "desc" : "The new x position"
+        },
+        {
+          "name" : "y",
+          "type" : "Number",
+          "desc" : "The new y position"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*resize",
+      "desc" : "Fires after the component is resized.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.BoxComponent",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        },
+        {
+          "name" : "adjWidth",
+          "type" : "Number",
+          "desc" : "The box-adjusted width that was set"
+        },
+        {
+          "name" : "adjHeight",
+          "type" : "Number",
+          "desc" : "The box-adjusted height that was set"
+        },
+        {
+          "name" : "rawWidth",
+          "type" : "Number",
+          "desc" : "The width that was originally specified"
+        },
+        {
+          "name" : "rawHeight",
+          "type" : "Number",
+          "desc" : "The height that was originally specified"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*beforerender",
+      "desc" : "Fires before the component is rendered. Return false to stop the render.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*disable",
+      "desc" : "Fires after the component is disabled.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*render",
+      "desc" : "Fires after the component is rendered.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*destroy",
+      "desc" : "Fires after the component is destroyed.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*hide",
+      "desc" : "Fires after the component is hidden.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*beforehide",
+      "desc" : "Fires before the component is hidden. Return false to stop the hide.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*show",
+      "desc" : "Fires after the component is shown.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*beforeshow",
+      "desc" : "Fires before the component is shown.  Return false to stop the show.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*enable",
+      "desc" : "Fires after the component is enabled.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*beforedestroy",
+      "desc" : "Fires before the component is destroyed. Return false to stop the destroy.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    }
+  ]
+}

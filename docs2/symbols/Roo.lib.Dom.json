@@ -1,0 +1,12 @@
+{
+  "name" : "Roo.lib.Dom",
+  "augments" : [
+  ],
+  "desc" : "Dom utils (from YIU afaik)",
+  "config" : [
+  ],
+  "methods" : [
+  ],
+  "events" : [
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "name" : "Roo.data.DataProxy",
+  "augments" : [
+  ],
+  "desc" : "This class is an abstract base class for implementations which provide retrieval of\nunformatted data objects.<br>\n<p>\nDataProxy implementations are usually used in conjunction with an implementation of Roo.data.DataReader\n(of the appropriate type which knows how to parse the data object) to provide a block of\n{@link Roo.data.Records} to an {@link Roo.data.Store}.<br>\n<p>\nCustom implementations must implement the load method as described in\n{@link Roo.data.HttpProxy#load}.",
+  "config" : [
+  ],
+  "methods" : [
+  ],
+  "events" : [
+    {
+      "name" : "*load",
+      "desc" : "Fires before the load method's callback is called.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "This",
+          "type" : "Object",
+          "desc" : "DataProxy object."
+        },
+        {
+          "name" : "o",
+          "type" : "Object",
+          "desc" : "The data object."
+        },
+        {
+          "name" : "arg",
+          "type" : "Object",
+          "desc" : "The callback argument object passed to the load function."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*beforeload",
+      "desc" : "Fires before a network request is made to retrieve a data object.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "This",
+          "type" : "Object",
+          "desc" : "DataProxy object."
+        },
+        {
+          "name" : "params",
+          "type" : "Object",
+          "desc" : "The params parameter to the load function."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*loadexception",
+      "desc" : "Fires if an Exception occurs during data retrieval.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "This",
+          "type" : "Object",
+          "desc" : "DataProxy object."
+        },
+        {
+          "name" : "o",
+          "type" : "Object",
+          "desc" : "The data object."
+        },
+        {
+          "name" : "arg",
+          "type" : "Object",
+          "desc" : "The callback argument object passed to the load function."
+        },
+        {
+          "name" : "e",
+          "type" : "Object",
+          "desc" : "The Exception."
+        }
+      ],
+      "returns" : ""
+    }
+  ]
+}

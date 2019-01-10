@@ -1,0 +1,92 @@
+{
+  "name" : "Roo.state.Manager",
+  "augments" : [
+  ],
+  "desc" : "This is the global state manager. By default all components that are \"state aware\" check this class\nfor state information if you don't pass them a custom state provider. In order for this class\nto be useful, it must be initialized with a provider when your application initializes.\n <pre><code>\n// in your initialization function\ninit : function(){\n   Roo.state.Manager.setProvider(new Roo.state.CookieProvider());\n   ...\n   // supposed you have a {@link Roo.BorderLayout}\n   var layout = new Roo.BorderLayout(...);\n   layout.restoreState();\n   // or a {Roo.BasicDialog}\n   var dialog = new Roo.BasicDialog(...);\n   dialog.restoreState();\n </code></pre>",
+  "config" : [
+  ],
+  "methods" : [
+    {
+      "name" : "getProvider",
+      "desc" : "Gets the currently configured state provider",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "Provider"
+    },
+    {
+      "name" : "clear",
+      "desc" : "Clears a value from the state",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "name",
+          "type" : "String",
+          "desc" : "The key name"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "get",
+      "desc" : "Returns the current value for a key",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "name",
+          "type" : "String",
+          "desc" : "The key name"
+        },
+        {
+          "name" : "defaultValue",
+          "type" : "Mixed",
+          "desc" : "The default value to return if the key lookup does not match"
+        }
+      ],
+      "returns" : "Mixed"
+    },
+    {
+      "name" : "set",
+      "desc" : "Sets the value for a key",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "name",
+          "type" : "String",
+          "desc" : "The key name"
+        },
+        {
+          "name" : "value",
+          "type" : "Mixed",
+          "desc" : "The state data"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "setProvider",
+      "desc" : "Configures the default state provider for your application",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "stateProvider",
+          "type" : "Provider",
+          "desc" : "The state provider to set"
+        }
+      ],
+      "returns" : ""
+    }
+  ],
+  "events" : [
+  ]
+}

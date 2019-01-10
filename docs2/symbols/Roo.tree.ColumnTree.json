@@ -1,0 +1,44 @@
+{
+  "name" : "Roo.tree.ColumnTree",
+  "augments" : [
+  ],
+  "desc" : "",
+  "config" : [
+    {
+      "name" : "columns",
+      "type" : "Object",
+      "desc" : "Including width, header, renderer, cls, dataIndex",
+      "memberOf" : ""
+    },
+    {
+      "name" : "borderWidth",
+      "type" : "int",
+      "desc" : "compined right/left border allowance",
+      "memberOf" : ""
+    }
+  ],
+  "methods" : [
+  ],
+  "events" : [
+    {
+      "name" : "*resize",
+      "desc" : "Fire this event on a container when it resizes",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "w",
+          "type" : "int",
+          "desc" : "Width"
+        },
+        {
+          "name" : "h",
+          "type" : "int",
+          "desc" : "Height"
+        }
+      ],
+      "returns" : ""
+    }
+  ]
+}

@@ -1,0 +1,642 @@
+{
+  "name" : "Roo.form.BasicForm",
+  "augments" : [
+    "Roo.util.Observable"
+  ],
+  "desc" : "Supplies the functionality to do \"actions\" on forms and initialize Roo.form.Field types on existing markup.",
+  "config" : [
+    {
+      "name" : "listeners",
+      "type" : "Object",
+      "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+      "memberOf" : "Roo.util.Observable"
+    },
+    {
+      "name" : "fileUpload",
+      "type" : "Boolean",
+      "desc" : "Set to true if this form is a file upload.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "method",
+      "type" : "String",
+      "desc" : "The request method to use (GET or POST) for form actions if one isn't supplied in the action options.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "timeout",
+      "type" : "Number",
+      "desc" : "Timeout for form actions in seconds (default is 30 seconds).",
+      "memberOf" : ""
+    },
+    {
+      "name" : "baseParams",
+      "type" : "Object",
+      "desc" : "Parameters to pass with all requests. e.g. baseParams: {id: '123', foo: 'bar'}.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "trackResetOnLoad",
+      "type" : "Boolean",
+      "desc" : "If set to true, form.reset() resets to the last loaded\nor setValues() data instead of when the form was first created.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "reader",
+      "type" : "DataReader",
+      "desc" : "An Roo.data.DataReader (e.g. {@link Roo.data.XmlReader}) to be used to read data when executing \"load\" actions.\nThis is optional as there is built-in support for processing JSON.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "errorReader",
+      "type" : "DataReader",
+      "desc" : "An Roo.data.DataReader (e.g. {@link Roo.data.XmlReader}) to be used to read data when reading validation errors on \"submit\" actions.\nThis is completely optional as there is built-in support for processing JSON.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "url",
+      "type" : "String",
+      "desc" : "The URL to use for form actions if one isn't supplied in the action options.",
+      "memberOf" : ""
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "remove",
+      "desc" : "Removes a field from the items collection (does NOT remove its markup).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "field",
+          "type" : "Field",
+          "desc" : ""
+        }
+      ],
+      "returns" : "BasicForm"
+    },
+    {
+      "name" : "loadRecord",
+      "desc" : "Loads an Roo.data.Record into this form.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "record",
+          "type" : "Record",
+          "desc" : "The record to load"
+        }
+      ],
+      "returns" : "BasicForm"
+    },
+    {
+      "name" : "load",
+      "desc" : "Shortcut to do a load action.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "The options to pass to the action (see {@link #doAction} for details)"
+        }
+      ],
+      "returns" : "BasicForm"
+    },
+    {
+      "name" : "doAction",
+      "desc" : "Performs a predefined action (submit or load) or custom actions you define on this form.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "actionName",
+          "type" : "String",
+          "desc" : "The name of the action type"
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional) The options to pass to the action.  All of the config options listed\nbelow are supported by both the submit and load actions unless otherwise noted (custom actions could also\naccept other config options):\n<pre>\nProperty          Type             Description\n----------------  ---------------  ----------------------------------------------------------------------------------\nurl               String           The url for the action (defaults to the form's url)\nmethod            String           The form method to use (defaults to the form's method, or POST if not defined)\nparams            String/Object    The params to pass (defaults to the form's baseParams, or none if not defined)\nclientValidation  Boolean          Applies to submit only.  Pass true to call form.isValid() prior to posting to\n                                   validate the form on the client (defaults to false)\n</pre>"
+        }
+      ],
+      "returns" : "BasicForm"
+    },
+    {
+      "name" : "getValues",
+      "desc" : "Returns the fields in this form as an object with key/value pairs. If multiple fields exist with the same name\nthey are returned as an array.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "asString",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ],
+      "returns" : "Object"
+    },
+    {
+      "name" : "resetHasChanged",
+      "desc" : "Resets all hasChanged to 'false' -\nThe old 'isDirty' used 'original value..' however this breaks reset() and a few other things.\nSo hasChanged storage is only to be used for this purpose",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "clearInvalid",
+      "desc" : "Clears all invalid messages in this form.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "BasicForm"
+    },
+    {
+      "name" : "isDirty",
+      "desc" : "DEPRICATED Returns true if any fields in this form have changed since their original load.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "updateRecord",
+      "desc" : "Persists the values in this form into the passed Roo.data.Record object in a beginEdit/endEdit block.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "record",
+          "type" : "Record",
+          "desc" : "The record to edit"
+        }
+      ],
+      "returns" : "BasicForm"
+    },
+    {
+      "name" : "hasChanged",
+      "desc" : "Returns true if any fields in this form have changed since their original load. (New version)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "applyToFields",
+      "desc" : "Calls {@link Ext#apply} for all fields in this form with the passed object.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "values",
+          "type" : "Object",
+          "desc" : ""
+        }
+      ],
+      "returns" : "BasicForm"
+    },
+    {
+      "name" : "getFieldValues",
+      "desc" : "Returns the fields in this form as an object with key/value pairs. \nThis differs from getValues as it calls getValue on each child item, rather than using dom data.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "Object"
+    },
+    {
+      "name" : "submit",
+      "desc" : "Shortcut to do a submit action.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "The options to pass to the action (see {@link #doAction} for details)"
+        }
+      ],
+      "returns" : "BasicForm"
+    },
+    {
+      "name" : "markInvalid",
+      "desc" : "Mark fields in this form invalid in bulk.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "errors",
+          "type" : "Array/Object",
+          "desc" : "Either an array in the form [{id:'fieldId', msg:'The message'},...] or an object hash of {id: msg, id2: msg2}"
+        }
+      ],
+      "returns" : "BasicForm"
+    },
+    {
+      "name" : "setValues",
+      "desc" : "Set values for fields in this form in bulk.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "values",
+          "type" : "Array/Object",
+          "desc" : "Either an array in the form [{id:'fieldId', value:'foo'},...] or an object hash of {id: value, id2: value2}"
+        }
+      ],
+      "returns" : "BasicForm"
+    },
+    {
+      "name" : "isValid",
+      "desc" : "Returns true if client-side validation on the form is successful.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "render",
+      "desc" : "Looks at the fields in this form, checks them for an id attribute,\nand calls applyTo on the existing dom element with that id.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "BasicForm"
+    },
+    {
+      "name" : "add",
+      "desc" : "Add Roo.form components to this form.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "field1",
+          "type" : "Field",
+          "desc" : ""
+        },
+        {
+          "name" : "field2",
+          "type" : "Field",
+          "desc" : "(optional)"
+        },
+        {
+          "name" : "etc",
+          "type" : "Field",
+          "desc" : "(optional)"
+        }
+      ],
+      "returns" : "BasicForm"
+    },
+    {
+      "name" : "applyIfToFields",
+      "desc" : "Calls {@link Ext#applyIf} for all field in this form with the passed object.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "values",
+          "type" : "Object",
+          "desc" : ""
+        }
+      ],
+      "returns" : "BasicForm"
+    },
+    {
+      "name" : "findField",
+      "desc" : "Find a Roo.form.Field in this form by id, dataIndex, name or hiddenName",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "String",
+          "desc" : "The value to search for"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "reset",
+      "desc" : "Resets this form.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "BasicForm"
+    },
+    {
+      "name" : "addForm",
+      "desc" : "Add a secondary form to this one, \nUsed to provide tabbed forms. One form is primary, with hidden values \nwhich mirror the elements from the other forms.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "form",
+          "type" : "Roo.form.Form",
+          "desc" : "to add."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "purgeListeners",
+      "desc" : "Removes all listeners for this object",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "on",
+      "desc" : "Appends an event handler to this element (shorthand for addListener)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context."
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional)"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "un",
+      "desc" : "Removes a listener (shorthand for removeListener)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The handler to remove"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the handler"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addEvents",
+      "desc" : "Used to define events on this Observable",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "object",
+          "type" : "Object",
+          "desc" : "The object with the events defined"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "releaseCapture",
+      "desc" : "Removes <b>all</b> added captures from the Observable.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Observable",
+          "desc" : "The Observable to release"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "removeListener",
+      "desc" : "Removes a listener",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The handler to remove"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the handler"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "fireEvent",
+      "desc" : "Fires the specified event with the passed parameters (minus the event name).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : ""
+        },
+        {
+          "name" : "args",
+          "type" : "Object...",
+          "desc" : "Variable number of parameters are passed to handlers"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "hasListener",
+      "desc" : "Checks to see if this object has any listeners for a specified event",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The name of the event to check for"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "capture",
+      "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Observable",
+          "desc" : "The Observable to capture"
+        },
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : "The function to call"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the fn"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addListener",
+      "desc" : "Appends an event handler to this component",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context."
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional) An object containing handler configuration\nproperties. This may contain any of the following properties:<ul>\n<li>scope {Object} The scope in which to execute the handler function. The handler function's \"this\" context.</li>\n<li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li>\n<li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li>\n<li>buffer {Number} Causes the handler to be scheduled to run in an {@link Roo.util.DelayedTask} delayed\nby the specified number of milliseconds. If the event fires again within that time, the original\nhandler is <em>not</em> invoked, but the new handler is scheduled in its place.</li>\n</ul><br>\n<p>\n<b>Combining Options</b><br>\nUsing the options argument, it is possible to combine different types of listeners:<br>\n<br>\nA normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)\n\t\t<pre><code>\n\t\tel.on('click', this.onClick, this, {\n \t\t\tsingle: true,\n    \t\tdelay: 100,\n    \t\tforumId: 4\n\t\t});\n\t\t</code></pre>\n<p>\n<b>Attaching multiple handlers in 1 call</b><br>\nThe method also allows for a single argument to be passed which is a config object containing properties\nwhich specify multiple handlers.\n<pre><code>\n\t\tel.on({\n\t\t\t'click': {\n        \t\tfn: this.onClick,\n        \t\tscope: this,\n        \t\tdelay: 100\n    \t\t}, \n    \t\t'mouseover': {\n        \t\tfn: this.onMouseOver,\n        \t\tscope: this\n    \t\t},\n    \t\t'mouseout': {\n        \t\tfn: this.onMouseOut,\n        \t\tscope: this\n    \t\t}\n\t\t});\n\t\t</code></pre>\n<p>\nOr a shorthand syntax which passes the same scope object to all handlers:\n     \t<pre><code>\n\t\tel.on({\n\t\t\t'click': this.onClick,\n    \t\t'mouseover': this.onMouseOver,\n    \t\t'mouseout': this.onMouseOut,\n    \t\tscope: this\n\t\t});\n\t\t</code></pre>"
+        }
+      ],
+      "returns" : ""
+    }
+  ],
+  "events" : [
+    {
+      "name" : "*beforeaction",
+      "desc" : "Fires before any action is performed. Return false to cancel the action.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Form",
+          "desc" : ""
+        },
+        {
+          "name" : "action",
+          "type" : "Action",
+          "desc" : "The action to be performed"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*actioncomplete",
+      "desc" : "Fires when an action is completed.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Form",
+          "desc" : ""
+        },
+        {
+          "name" : "action",
+          "type" : "Action",
+          "desc" : "The action that completed"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*actionfailed",
+      "desc" : "Fires when an action fails.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Form",
+          "desc" : ""
+        },
+        {
+          "name" : "action",
+          "type" : "Action",
+          "desc" : "The action that failed"
+        }
+      ],
+      "returns" : ""
+    }
+  ]
+}

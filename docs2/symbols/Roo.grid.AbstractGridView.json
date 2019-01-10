@@ -1,0 +1,12 @@
+{
+  "name" : "Roo.grid.AbstractGridView",
+  "augments" : [
+  ],
+  "desc" : "",
+  "config" : [
+  ],
+  "methods" : [
+  ],
+  "events" : [
+  ]
+}

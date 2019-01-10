@@ -1,0 +1,1116 @@
+{
+  "name" : "Roo.grid.Grid",
+  "augments" : [
+    "Roo.util.Observable"
+  ],
+  "desc" : "This class represents the primary interface of a component based grid control.\n<br><br>Usage:<pre><code>\n var grid = new Roo.grid.Grid(\"my-container-id\", {\n     ds: myDataStore,\n     cm: myColModel,\n     selModel: mySelectionModel,\n     autoSizeColumns: true,\n     monitorWindowResize: false,\n     trackMouseOver: true\n });\n // set any options\n grid.render();\n</code></pre>\n<b>Common Problems:</b><br/>\n- Grid does not resize properly when going smaller: Setting overflow hidden on the container\nelement will correct this<br/>\n- If you get el.style[camel]= NaNpx or -2px or something related, be certain you have given your container element\ndimensions. The grid adapts to your container's size, if your container has no size defined then the results\nare unpredictable.<br/>\n- Do not render the grid into an element with display:none. Try using visibility:hidden. Otherwise there is no way for the\ngrid to calculate dimensions/offsets.<br/>",
+  "config" : [
+    {
+      "name" : "autoSizeColumns",
+      "type" : "Boolean",
+      "desc" : "True to automatically resize the columns to fit their content\n<b>on initial render.</b> It is more efficient to explicitly size the columns\nthrough the ColumnModel's {@link Roo.grid.ColumnModel#width} config option.  Default is false.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "listeners",
+      "type" : "Object",
+      "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+      "memberOf" : "Roo.util.Observable"
+    },
+    {
+      "name" : "maxRowsToMeasure",
+      "type" : "Boolean",
+      "desc" : "If autoSizeColumns is on, maxRowsToMeasure can be used to limit the number of\nrows measured to get a columns size. Default is 0 (all rows).",
+      "memberOf" : ""
+    },
+    {
+      "name" : "minColumnWidth",
+      "type" : "Number",
+      "desc" : "The minimum width a column can be resized to. Default is 25.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "autoExpandColumn",
+      "type" : "String",
+      "desc" : "The id (or dataIndex) of a column in this grid that should expand to fill unused space. This id can not be 0. Default is false.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "autoExpandMax",
+      "type" : "Number",
+      "desc" : "The maximum width the autoExpandColumn can have (if enabled). Default is 1000.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "enableRowHeightSync",
+      "type" : "Boolean",
+      "desc" : "True to manually sync row heights across locked and not locked rows. Default is false.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "monitorWindowResize",
+      "type" : "Boolean",
+      "desc" : "True to autoSize the grid when the window resizes. Default is true.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "autoExpandMin",
+      "type" : "Number",
+      "desc" : "The minimum width the autoExpandColumn can have (if enabled).\nDefault is 50.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "view",
+      "type" : "Object",
+      "desc" : "The {@link Roo.grid.GridView} used by the grid. This can be set before a call to render().",
+      "memberOf" : ""
+    },
+    {
+      "name" : "autoWidth",
+      "type" : "Boolean",
+      "desc" : "True to set the grid's width to the default total width of the grid's columns instead\nof a fixed width. Default is false.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "ddGroup",
+      "type" : "String",
+      "desc" : "- drag drop group.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "enableDrag",
+      "type" : "Boolean",
+      "desc" : "True to enable drag of rows. Default is false. (double check if this is needed?)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "maxHeight",
+      "type" : "Number",
+      "desc" : "Sets the maximum height of the grid - ignored if autoHeight is not on.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "trackMouseOver",
+      "type" : "Boolean",
+      "desc" : "True to highlight rows when the mouse is over. Default is true.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "loadMask",
+      "type" : "Object",
+      "desc" : "An {@link Roo.LoadMask} config or true to mask the grid while loading. Default is false.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "stripeRows",
+      "type" : "Boolean",
+      "desc" : "True to stripe the rows.  Default is true.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "enableColumnMove",
+      "type" : "Boolean",
+      "desc" : "True to enable drag and drop reorder of columns. Default is true.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "enableColumnHide",
+      "type" : "Boolean",
+      "desc" : "True to enable hiding of columns with the header context menu. Default is true.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "autoSizeHeaders",
+      "type" : "Boolean",
+      "desc" : "True to measure headers with column data when auto sizing columns. Default is true.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "enableDragDrop",
+      "type" : "Boolean",
+      "desc" : "True to enable drag and drop of rows. Default is false.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "dropTarget",
+      "type" : "Roo.dd.DropTarget",
+      "desc" : "An {@link Roo.dd.DropTarget} config",
+      "memberOf" : ""
+    },
+    {
+      "name" : "autoHeight",
+      "type" : "Boolean",
+      "desc" : "True to fit the height of the grid container to the height of the data. Default is false.",
+      "memberOf" : ""
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "getSelectionModel",
+      "desc" : "Returns the grid's SelectionModel.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "SelectionModel"
+    },
+    {
+      "name" : "destroy",
+      "desc" : "Destroy this grid.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "removeEl",
+          "type" : "Boolean",
+          "desc" : "True to remove the element"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getColumnModel",
+      "desc" : "Returns the grid's ColumnModel.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "ColumnModel"
+    },
+    {
+      "name" : "getGridEl",
+      "desc" : "Returns the grid's underlying element.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "Element"
+    },
+    {
+      "name" : "getDataSource",
+      "desc" : "Returns the grid's DataSource.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "DataSource"
+    },
+    {
+      "name" : "autoSize",
+      "desc" : "Causes the grid to manually recalculate its dimensions. Generally this is done automatically,\nbut if manual update is required this method will initiate it.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getView",
+      "desc" : "Returns the grid's GridView object.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "GridView"
+    },
+    {
+      "name" : "getDragDropText",
+      "desc" : "Called to get grid's drag proxy text, by default returns this.ddText.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "String"
+    },
+    {
+      "name" : "reconfigure",
+      "desc" : "Reconfigures the grid to use a different Store and Column Model.\nThe View will be bound to the new objects and refreshed.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "dataSource",
+          "type" : "Roo.data.Store",
+          "desc" : "The new {@link Roo.data.Store} object"
+        },
+        {
+          "name" : "The",
+          "type" : "Roo.grid.ColumnModel",
+          "desc" : "new {@link Roo.grid.ColumnModel} object"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "render",
+      "desc" : "Called once after all setup has been completed and the grid is ready to be rendered.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "purgeListeners",
+      "desc" : "Removes all listeners for this object",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "on",
+      "desc" : "Appends an event handler to this element (shorthand for addListener)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context."
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional)"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "un",
+      "desc" : "Removes a listener (shorthand for removeListener)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The handler to remove"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the handler"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addEvents",
+      "desc" : "Used to define events on this Observable",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "object",
+          "type" : "Object",
+          "desc" : "The object with the events defined"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "releaseCapture",
+      "desc" : "Removes <b>all</b> added captures from the Observable.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Observable",
+          "desc" : "The Observable to release"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "removeListener",
+      "desc" : "Removes a listener",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The handler to remove"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the handler"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "fireEvent",
+      "desc" : "Fires the specified event with the passed parameters (minus the event name).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : ""
+        },
+        {
+          "name" : "args",
+          "type" : "Object...",
+          "desc" : "Variable number of parameters are passed to handlers"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "hasListener",
+      "desc" : "Checks to see if this object has any listeners for a specified event",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The name of the event to check for"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "capture",
+      "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Observable",
+          "desc" : "The Observable to capture"
+        },
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : "The function to call"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the fn"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addListener",
+      "desc" : "Appends an event handler to this component",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context."
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional) An object containing handler configuration\nproperties. This may contain any of the following properties:<ul>\n<li>scope {Object} The scope in which to execute the handler function. The handler function's \"this\" context.</li>\n<li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li>\n<li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li>\n<li>buffer {Number} Causes the handler to be scheduled to run in an {@link Roo.util.DelayedTask} delayed\nby the specified number of milliseconds. If the event fires again within that time, the original\nhandler is <em>not</em> invoked, but the new handler is scheduled in its place.</li>\n</ul><br>\n<p>\n<b>Combining Options</b><br>\nUsing the options argument, it is possible to combine different types of listeners:<br>\n<br>\nA normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)\n\t\t<pre><code>\n\t\tel.on('click', this.onClick, this, {\n \t\t\tsingle: true,\n    \t\tdelay: 100,\n    \t\tforumId: 4\n\t\t});\n\t\t</code></pre>\n<p>\n<b>Attaching multiple handlers in 1 call</b><br>\nThe method also allows for a single argument to be passed which is a config object containing properties\nwhich specify multiple handlers.\n<pre><code>\n\t\tel.on({\n\t\t\t'click': {\n        \t\tfn: this.onClick,\n        \t\tscope: this,\n        \t\tdelay: 100\n    \t\t}, \n    \t\t'mouseover': {\n        \t\tfn: this.onMouseOver,\n        \t\tscope: this\n    \t\t},\n    \t\t'mouseout': {\n        \t\tfn: this.onMouseOut,\n        \t\tscope: this\n    \t\t}\n\t\t});\n\t\t</code></pre>\n<p>\nOr a shorthand syntax which passes the same scope object to all handlers:\n     \t<pre><code>\n\t\tel.on({\n\t\t\t'click': this.onClick,\n    \t\t'mouseover': this.onMouseOver,\n    \t\t'mouseout': this.onMouseOut,\n    \t\tscope: this\n\t\t});\n\t\t</code></pre>"
+        }
+      ],
+      "returns" : ""
+    }
+  ],
+  "events" : [
+    {
+      "name" : "*rowcontextmenu",
+      "desc" : "Fires when a row is right clicked",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Grid",
+          "desc" : ""
+        },
+        {
+          "name" : "rowIndex",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*columnmove",
+      "desc" : "Fires when the user moves a column",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "oldIndex",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "newIndex",
+          "type" : "Number",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*headercontextmenu",
+      "desc" : "Fires when a header is right clicked",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Grid",
+          "desc" : ""
+        },
+        {
+          "name" : "columnIndex",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*render",
+      "desc" : "Fires when the grid is rendered",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "grid",
+          "type" : "Grid",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*bodyscroll",
+      "desc" : "Fires when the body element is scrolled",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "scrollLeft",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "scrollTop",
+          "type" : "Number",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*columnresize",
+      "desc" : "Fires when the user resizes a column",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "columnIndex",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "newSize",
+          "type" : "Number",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*enddrag",
+      "desc" : "Fires when a drag operation is complete",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Grid",
+          "desc" : ""
+        },
+        {
+          "name" : "dd",
+          "type" : "Roo.GridDD",
+          "desc" : "The drag drop object"
+        },
+        {
+          "name" : "e",
+          "type" : "event",
+          "desc" : "The raw browser event"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*mouseout",
+      "desc" : "The raw mouseout event for the entire grid.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*cellclick",
+      "desc" : "Fires when a cell is clicked",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Grid",
+          "desc" : ""
+        },
+        {
+          "name" : "rowIndex",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "columnIndex",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*dragover",
+      "desc" : "Fires while row(s) are being dragged. \"targetId\" is the id of the Yahoo.util.DD object the selected rows are being dragged over.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Grid",
+          "desc" : ""
+        },
+        {
+          "name" : "dd",
+          "type" : "Roo.GridDD",
+          "desc" : "The drag drop object"
+        },
+        {
+          "name" : "targetId",
+          "type" : "String",
+          "desc" : "The target drag drop object"
+        },
+        {
+          "name" : "e",
+          "type" : "event",
+          "desc" : "The raw browser event"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*rowclass",
+      "desc" : "Fires when a row is rendered, so you can change add a style to it.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "gridview",
+          "type" : "GridView",
+          "desc" : "The grid view"
+        },
+        {
+          "name" : "rowcfg",
+          "type" : "Object",
+          "desc" : "contains record  rowIndex and rowClass - set rowClass to add a style."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*keydown",
+      "desc" : "The raw keydown event for the entire grid.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*mousedown",
+      "desc" : "The raw mousedown event for the entire grid.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*dragenter",
+      "desc" : "Fires when the dragged row(s) first cross another DD target while being dragged",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Grid",
+          "desc" : ""
+        },
+        {
+          "name" : "dd",
+          "type" : "Roo.GridDD",
+          "desc" : "The drag drop object"
+        },
+        {
+          "name" : "targetId",
+          "type" : "String",
+          "desc" : "The target drag drop object"
+        },
+        {
+          "name" : "e",
+          "type" : "event",
+          "desc" : "The raw browser event"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*dragout",
+      "desc" : "Fires when the dragged row(s) leave another DD target while being dragged",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Grid",
+          "desc" : ""
+        },
+        {
+          "name" : "dd",
+          "type" : "Roo.GridDD",
+          "desc" : "The drag drop object"
+        },
+        {
+          "name" : "targetId",
+          "type" : "String",
+          "desc" : "The target drag drop object"
+        },
+        {
+          "name" : "e",
+          "type" : "event",
+          "desc" : "The raw browser event"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*mouseup",
+      "desc" : "The raw mouseup event for the entire grid.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*keypress",
+      "desc" : "The raw keypress event for the entire grid.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*headerclick",
+      "desc" : "Fires when a header is clicked",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Grid",
+          "desc" : ""
+        },
+        {
+          "name" : "columnIndex",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*mouseover",
+      "desc" : "The raw mouseover event for the entire grid.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*headerdblclick",
+      "desc" : "Fires when a header cell is double clicked",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Grid",
+          "desc" : ""
+        },
+        {
+          "name" : "columnIndex",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*dragdrop",
+      "desc" : "Fires when dragged row(s) are dropped on a valid DD target",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Grid",
+          "desc" : ""
+        },
+        {
+          "name" : "dd",
+          "type" : "Roo.GridDD",
+          "desc" : "The drag drop object"
+        },
+        {
+          "name" : "targetId",
+          "type" : "String",
+          "desc" : "The target drag drop object"
+        },
+        {
+          "name" : "e",
+          "type" : "event",
+          "desc" : "The raw browser event"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*rowclick",
+      "desc" : "Fires when a row is clicked",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Grid",
+          "desc" : ""
+        },
+        {
+          "name" : "rowIndex",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*click",
+      "desc" : "The raw click event for the entire grid.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*rowdblclick",
+      "desc" : "Fires when a row is double clicked",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Grid",
+          "desc" : ""
+        },
+        {
+          "name" : "rowIndex",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*startdrag",
+      "desc" : "Fires when row(s) start being dragged",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Grid",
+          "desc" : ""
+        },
+        {
+          "name" : "dd",
+          "type" : "Roo.GridDD",
+          "desc" : "The drag drop object"
+        },
+        {
+          "name" : "e",
+          "type" : "event",
+          "desc" : "The raw browser event"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*dblclick",
+      "desc" : "The raw dblclick event for the entire grid.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*cellcontextmenu",
+      "desc" : "Fires when a cell is right clicked",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Grid",
+          "desc" : ""
+        },
+        {
+          "name" : "rowIndex",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "cellIndex",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*contextmenu",
+      "desc" : "The raw contextmenu event for the entire grid.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*celldblclick",
+      "desc" : "Fires when a cell is double clicked",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Grid",
+          "desc" : ""
+        },
+        {
+          "name" : "rowIndex",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "columnIndex",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    }
+  ]
+}

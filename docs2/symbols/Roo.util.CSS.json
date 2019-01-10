@@ -1,0 +1,137 @@
+{
+  "name" : "Roo.util.CSS",
+  "augments" : [
+  ],
+  "desc" : "Utility class for manipulating CSS rules",
+  "config" : [
+  ],
+  "methods" : [
+    {
+      "name" : "createStyleSheet",
+      "desc" : "Very simple dynamic creation of stylesheets from a text blob of rules.  The text will wrapped in a style\ntag and appended to the HEAD of the document.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "cssText",
+          "type" : "String|Object",
+          "desc" : "The text containing the css rules"
+        },
+        {
+          "name" : "id",
+          "type" : "String",
+          "desc" : "An id to add to the stylesheet for later removal"
+        }
+      ],
+      "returns" : "StyleSheet"
+    },
+    {
+      "name" : "getRules",
+      "desc" : "Gets all css rules for the document",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "refreshCache",
+          "type" : "Boolean",
+          "desc" : "true to refresh the internal cache"
+        }
+      ],
+      "returns" : "Object"
+    },
+    {
+      "name" : "swapStyleSheet",
+      "desc" : "Dynamically swaps an existing stylesheet reference for a new one",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "String",
+          "desc" : "The id of an existing link tag to remove"
+        },
+        {
+          "name" : "url",
+          "type" : "String",
+          "desc" : "The href of the new stylesheet to include"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "updateRule",
+      "desc" : "Updates a rule property",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "selector",
+          "type" : "String/Array",
+          "desc" : "If it's an array it tries each selector until it finds one. Stops immediately once one is found."
+        },
+        {
+          "name" : "property",
+          "type" : "String",
+          "desc" : "The css property"
+        },
+        {
+          "name" : "value",
+          "type" : "String",
+          "desc" : "The new value for the property"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "getRule",
+      "desc" : "Gets an an individual CSS rule by selector(s)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "selector",
+          "type" : "String/Array",
+          "desc" : "The CSS selector or an array of selectors to try. The first selector that is found is returned."
+        },
+        {
+          "name" : "refreshCache",
+          "type" : "Boolean",
+          "desc" : "true to refresh the internal cache if you have recently updated any rules or added styles dynamically"
+        }
+      ],
+      "returns" : "CSSRule"
+    },
+    {
+      "name" : "refreshCache",
+      "desc" : "Refresh the rule cache if you have dynamically added stylesheets",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "Object"
+    },
+    {
+      "name" : "removeStyleSheet",
+      "desc" : "Removes a style or link tag by id",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "String",
+          "desc" : "The id of the tag"
+        }
+      ],
+      "returns" : ""
+    }
+  ],
+  "events" : [
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name" : "Roo.form.Action",
+  "augments" : [
+  ],
+  "desc" : "Internal Class used to handle form actions",
+  "config" : [
+  ],
+  "methods" : [
+  ],
+  "events" : [
+  ]
+}

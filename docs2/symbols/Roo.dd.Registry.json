@@ -1,0 +1,107 @@
+{
+  "name" : "Roo.dd.Registry",
+  "augments" : [
+  ],
+  "desc" : "Provides easy access to all drag drop components that are registered on a page.  Items can be retrieved either\ndirectly by DOM node id, or by passing in the drag drop event that occurred and looking up the event target.",
+  "config" : [
+  ],
+  "methods" : [
+    {
+      "name" : "getHandleFromEvent",
+      "desc" : "Returns the handle that is registered for the DOM node that is the target of the event",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "The event"
+        }
+      ],
+      "returns" : "Object"
+    },
+    {
+      "name" : "getTargetFromEvent",
+      "desc" : "Returns a custom data object that is registered for the DOM node that is the target of the event",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "The event"
+        }
+      ],
+      "returns" : "Object"
+    },
+    {
+      "name" : "register",
+      "desc" : "Register a drag drop element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "element",
+          "type" : "String|HTMLElement",
+          "desc" : "The id or DOM node to register"
+        },
+        {
+          "name" : "data",
+          "type" : "Object",
+          "desc" : "(optional) A custom data object that will be passed between the elements that are involved\nin drag drop operations.  You can populate this object with any arbitrary properties that your own code\nknows how to interpret, plus there are some specific properties known to the Registry that should be\npopulated in the data object (if applicable):\n<pre>\nValue      Description<br />\n---------  ------------------------------------------<br />\nhandles    Array of DOM nodes that trigger dragging<br />\n           for the element being registered<br />\nisHandle   True if the element passed in triggers<br />\n           dragging itself, else false\n</pre>"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "unregister",
+      "desc" : "Unregister a drag drop element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "element",
+          "type" : "String|HTMLElement",
+          "desc" : "The id or DOM node to unregister"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getHandle",
+      "desc" : "Returns the handle registered for a DOM Node by id",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "String|HTMLElement",
+          "desc" : "The DOM node or id to look up"
+        }
+      ],
+      "returns" : "Object"
+    },
+    {
+      "name" : "getTarget",
+      "desc" : "Returns a custom data object that is registered for a DOM node by id",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "String|HTMLElement",
+          "desc" : "The DOM node or id to look up"
+        }
+      ],
+      "returns" : "Object"
+    }
+  ],
+  "events" : [
+  ]
+}

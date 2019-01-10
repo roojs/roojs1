@@ -1,0 +1,122 @@
+{
+  "name" : "Roo.state.Provider",
+  "augments" : [
+  ],
+  "desc" : "Abstract base class for state provider implementations. This class provides methods\nfor encoding and decoding <b>typed</b> variables including dates and defines the \nProvider interface.",
+  "config" : [
+  ],
+  "methods" : [
+    {
+      "name" : "clear",
+      "desc" : "Clears a value from the state",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "name",
+          "type" : "String",
+          "desc" : "The key name"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "decodeValue",
+      "desc" : "Decodes a string previously encoded with {@link #encodeValue}.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "value",
+          "type" : "String",
+          "desc" : "The value to decode"
+        }
+      ],
+      "returns" : "Mixed"
+    },
+    {
+      "name" : "get",
+      "desc" : "Returns the current value for a key",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "name",
+          "type" : "String",
+          "desc" : "The key name"
+        },
+        {
+          "name" : "defaultValue",
+          "type" : "Mixed",
+          "desc" : "A default value to return if the key's value is not found"
+        }
+      ],
+      "returns" : "Mixed"
+    },
+    {
+      "name" : "set",
+      "desc" : "Sets the value for a key",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "name",
+          "type" : "String",
+          "desc" : "The key name"
+        },
+        {
+          "name" : "value",
+          "type" : "Mixed",
+          "desc" : "The value to set"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "encodeValue",
+      "desc" : "Encodes a value including type information.  Decode with {@link #decodeValue}.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "value",
+          "type" : "Mixed",
+          "desc" : "The value to encode"
+        }
+      ],
+      "returns" : "String"
+    }
+  ],
+  "events" : [
+    {
+      "name" : "*statechange",
+      "desc" : "Fires when a state change occurs.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Provider",
+          "desc" : "This state provider"
+        },
+        {
+          "name" : "key",
+          "type" : "String",
+          "desc" : "The state key which was changed"
+        },
+        {
+          "name" : "value",
+          "type" : "String",
+          "desc" : "The encoded value for the state"
+        }
+      ],
+      "returns" : ""
+    }
+  ]
+}

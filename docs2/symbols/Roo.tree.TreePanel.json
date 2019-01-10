@@ -1,0 +1,1156 @@
+{
+  "name" : "Roo.tree.TreePanel",
+  "augments" : [
+    "Roo.data.Tree",
+    "Roo.util.Observable"
+  ],
+  "desc" : "",
+  "config" : [
+    {
+      "name" : "editor",
+      "type" : "Object|Roo.tree.TreeEditor",
+      "desc" : "The TreeEditor or xtype data to display when clicked.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "listeners",
+      "type" : "Object",
+      "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+      "memberOf" : "Roo.util.Observable"
+    },
+    {
+      "name" : "singleExpand",
+      "type" : "Boolean",
+      "desc" : "true if only 1 node per branch may be expanded",
+      "memberOf" : ""
+    },
+    {
+      "name" : "ddAppendOnly",
+      "type" : "String",
+      "desc" : "True if the tree should only allow append drops (use for trees which are sorted)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "dragConfig",
+      "type" : "Object",
+      "desc" : "Custom config to pass to the {@link Roo.tree.TreeDragZone} instance",
+      "memberOf" : ""
+    },
+    {
+      "name" : "enableDrop",
+      "type" : "Boolean",
+      "desc" : "true to enable just drop",
+      "memberOf" : ""
+    },
+    {
+      "name" : "hlColor",
+      "type" : "String",
+      "desc" : "The color of the node highlight (defaults to C3DAF9)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "rendererTip",
+      "type" : "Function",
+      "desc" : "DEPRECATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes hovertip to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>",
+      "memberOf" : ""
+    },
+    {
+      "name" : "enableDD",
+      "type" : "Boolean",
+      "desc" : "true to enable drag and drop",
+      "memberOf" : ""
+    },
+    {
+      "name" : "hlDrop",
+      "type" : "Boolean",
+      "desc" : "false to disable node highlight on drop (defaults to the value of Roo.enableFx)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "renderer",
+      "type" : "Function",
+      "desc" : "DEPRECATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes. to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>",
+      "memberOf" : ""
+    },
+    {
+      "name" : "rootVisible",
+      "type" : "Boolean",
+      "desc" : "false to hide the root node (defaults to true)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "enableDrag",
+      "type" : "Boolean",
+      "desc" : "true to enable just drag",
+      "memberOf" : ""
+    },
+    {
+      "name" : "ddGroup",
+      "type" : "String",
+      "desc" : "The DD group this TreePanel belongs to",
+      "memberOf" : ""
+    },
+    {
+      "name" : "lines",
+      "type" : "Boolean",
+      "desc" : "false to disable tree lines (defaults to true)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "dropConfig",
+      "type" : "Object",
+      "desc" : "Custom config to pass to the {@link Roo.tree.TreeDropZone} instance",
+      "memberOf" : ""
+    },
+    {
+      "name" : "selModel",
+      "type" : "Boolean",
+      "desc" : "A tree selection model to use with this TreePanel (defaults to a {@link Roo.tree.DefaultSelectionModel})",
+      "memberOf" : ""
+    },
+    {
+      "name" : "loader",
+      "type" : "Boolean",
+      "desc" : "A TreeLoader for use with this TreePanel",
+      "memberOf" : ""
+    },
+    {
+      "name" : "containerScroll",
+      "type" : "Boolean",
+      "desc" : "true to register this container with ScrollManager",
+      "memberOf" : ""
+    },
+    {
+      "name" : "ddScroll",
+      "type" : "Boolean",
+      "desc" : "true to enable YUI body scrolling",
+      "memberOf" : ""
+    },
+    {
+      "name" : "animate",
+      "type" : "Boolean",
+      "desc" : "true to enable animated expand/collapse (defaults to the value of Roo.enableFx)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "pathSeparator",
+      "type" : "String",
+      "desc" : "The token used to separate sub-paths in path strings (defaults to '/')",
+      "memberOf" : ""
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "getLoader",
+      "desc" : "Returns the default TreeLoader for this TreePanel",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "render",
+      "desc" : "Trigger rendering of this TreePanel",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getSelectionModel",
+      "desc" : "Returns the selection model used by this TreePanel",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "expandPath",
+      "desc" : "Expands a specified path in this TreePanel. A path can be retrieved from a node with {@link Roo.data.Node#getPath}",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "path",
+          "type" : "String",
+          "desc" : ""
+        },
+        {
+          "name" : "attr",
+          "type" : "String",
+          "desc" : "(optional) The attribute used in the path (see {@link Roo.data.Node#getPath} for more info)"
+        },
+        {
+          "name" : "callback",
+          "type" : "Function",
+          "desc" : "(optional) The callback to call when the expand is complete. The callback will be called with\n(bSuccess, oLastNode) where bSuccess is if the expand was successful and oLastNode is the last node that was expanded."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "expandAll",
+      "desc" : "Expand all nodes",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getChecked",
+      "desc" : "Retrieve an array of checked nodes, or an array of a specific attribute of checked nodes (e.g. \"id\")",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "attribute",
+          "type" : "String",
+          "desc" : "(optional) Defaults to null (return the actual nodes)"
+        },
+        {
+          "name" : "startNode",
+          "type" : "TreeNode",
+          "desc" : "(optional) The node to start from, defaults to the root"
+        }
+      ],
+      "returns" : "Array"
+    },
+    {
+      "name" : "selectPath",
+      "desc" : "Selects the node in this tree at the specified path. A path can be retrieved from a node with {@link Roo.data.Node#getPath}",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "path",
+          "type" : "String",
+          "desc" : ""
+        },
+        {
+          "name" : "attr",
+          "type" : "String",
+          "desc" : "(optional) The attribute used in the path (see {@link Roo.data.Node#getPath} for more info)"
+        },
+        {
+          "name" : "callback",
+          "type" : "Function",
+          "desc" : "(optional) The callback to call when the selection is complete. The callback will be called with\n(bSuccess, oSelNode) where bSuccess is if the selection was successful and oSelNode is the selected node."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getEl",
+      "desc" : "Returns the container element for this TreePanel",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "collapseAll",
+      "desc" : "Collapse all nodes",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "setRootNode",
+      "desc" : "Sets the root node for this tree.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.data.Tree",
+      "params" : [
+        {
+          "name" : "node",
+          "type" : "Node",
+          "desc" : ""
+        }
+      ],
+      "returns" : "Node"
+    },
+    {
+      "name" : "getRootNode",
+      "desc" : "Returns the root node for this tree.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.data.Tree",
+      "params" : [
+      ],
+      "returns" : "Node"
+    },
+    {
+      "name" : "getNodeById",
+      "desc" : "Gets a node in this tree by its id.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.data.Tree",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "String",
+          "desc" : ""
+        }
+      ],
+      "returns" : "Node"
+    },
+    {
+      "name" : "purgeListeners",
+      "desc" : "Removes all listeners for this object",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "on",
+      "desc" : "Appends an event handler to this element (shorthand for addListener)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context."
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional)"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "un",
+      "desc" : "Removes a listener (shorthand for removeListener)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The handler to remove"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the handler"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addEvents",
+      "desc" : "Used to define events on this Observable",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "object",
+          "type" : "Object",
+          "desc" : "The object with the events defined"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "releaseCapture",
+      "desc" : "Removes <b>all</b> added captures from the Observable.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Observable",
+          "desc" : "The Observable to release"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "removeListener",
+      "desc" : "Removes a listener",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The handler to remove"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the handler"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "fireEvent",
+      "desc" : "Fires the specified event with the passed parameters (minus the event name).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : ""
+        },
+        {
+          "name" : "args",
+          "type" : "Object...",
+          "desc" : "Variable number of parameters are passed to handlers"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "hasListener",
+      "desc" : "Checks to see if this object has any listeners for a specified event",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The name of the event to check for"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "capture",
+      "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Observable",
+          "desc" : "The Observable to capture"
+        },
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : "The function to call"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the fn"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addListener",
+      "desc" : "Appends an event handler to this component",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context."
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional) An object containing handler configuration\nproperties. This may contain any of the following properties:<ul>\n<li>scope {Object} The scope in which to execute the handler function. The handler function's \"this\" context.</li>\n<li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li>\n<li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li>\n<li>buffer {Number} Causes the handler to be scheduled to run in an {@link Roo.util.DelayedTask} delayed\nby the specified number of milliseconds. If the event fires again within that time, the original\nhandler is <em>not</em> invoked, but the new handler is scheduled in its place.</li>\n</ul><br>\n<p>\n<b>Combining Options</b><br>\nUsing the options argument, it is possible to combine different types of listeners:<br>\n<br>\nA normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)\n\t\t<pre><code>\n\t\tel.on('click', this.onClick, this, {\n \t\t\tsingle: true,\n    \t\tdelay: 100,\n    \t\tforumId: 4\n\t\t});\n\t\t</code></pre>\n<p>\n<b>Attaching multiple handlers in 1 call</b><br>\nThe method also allows for a single argument to be passed which is a config object containing properties\nwhich specify multiple handlers.\n<pre><code>\n\t\tel.on({\n\t\t\t'click': {\n        \t\tfn: this.onClick,\n        \t\tscope: this,\n        \t\tdelay: 100\n    \t\t}, \n    \t\t'mouseover': {\n        \t\tfn: this.onMouseOver,\n        \t\tscope: this\n    \t\t},\n    \t\t'mouseout': {\n        \t\tfn: this.onMouseOut,\n        \t\tscope: this\n    \t\t}\n\t\t});\n\t\t</code></pre>\n<p>\nOr a shorthand syntax which passes the same scope object to all handlers:\n     \t<pre><code>\n\t\tel.on({\n\t\t\t'click': this.onClick,\n    \t\t'mouseover': this.onMouseOver,\n    \t\t'mouseout': this.onMouseOut,\n    \t\tscope: this\n\t\t});\n\t\t</code></pre>"
+        }
+      ],
+      "returns" : ""
+    }
+  ],
+  "events" : [
+    {
+      "name" : "*dblclick",
+      "desc" : "Fires when a node is double clicked",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "node",
+          "type" : "Node",
+          "desc" : "The node"
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : "The event object"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*contextmenu",
+      "desc" : "Fires when a node is right clicked",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "node",
+          "type" : "Node",
+          "desc" : "The node"
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : "The event object"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*beforeclick",
+      "desc" : "Fires before click processing on a node. Return false to cancel the default action.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "node",
+          "type" : "Node",
+          "desc" : "The node"
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : "The event object"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*checkchange",
+      "desc" : "Fires when a node with a checkbox's checked property changes",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Node",
+          "desc" : "This node"
+        },
+        {
+          "name" : "checked",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*nodedragover",
+      "desc" : "Fires when a tree node is being targeted for a drag drop, return false to signal drop not allowed. The dragOverEvent\npassed to handlers has the following properties:<br />\n<ul style=\"padding:5px;padding-left:16px;\">\n<li>tree - The TreePanel</li>\n<li>target - The node being targeted for the drop</li>\n<li>data - The drag data from the drag source</li>\n<li>point - The point of the drop - append, above or below</li>\n<li>source - The drag source</li>\n<li>rawEvent - Raw mouse event</li>\n<li>dropNode - Drop node(s) provided by the source.</li>\n<li>cancel - Set this to true to signal drop not allowed.</li>\n</ul>",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "dragOverEvent",
+          "type" : "Object",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*beforeexpand",
+      "desc" : "Fires before a node is expanded, return false to cancel.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "node",
+          "type" : "Node",
+          "desc" : "The node"
+        },
+        {
+          "name" : "deep",
+          "type" : "Boolean",
+          "desc" : ""
+        },
+        {
+          "name" : "anim",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*collapse",
+      "desc" : "Fires when a node is collapsed",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "node",
+          "type" : "Node",
+          "desc" : "The node"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*beforenodedrop",
+      "desc" : "Fires when a DD object is dropped on a node in this tree for preprocessing. Return false to cancel the drop. The dropEvent\npassed to handlers has the following properties:<br />\n<ul style=\"padding:5px;padding-left:16px;\">\n<li>tree - The TreePanel</li>\n<li>target - The node being targeted for the drop</li>\n<li>data - The drag data from the drag source</li>\n<li>point - The point of the drop - append, above or below</li>\n<li>source - The drag source</li>\n<li>rawEvent - Raw mouse event</li>\n<li>dropNode - Drop node(s) provided by the source <b>OR</b> you can supply node(s)\nto be inserted by setting them on this object.</li>\n<li>cancel - Set this to true to cancel the drop.</li>\n</ul>",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "dropEvent",
+          "type" : "Object",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*beforechildrenrendered",
+      "desc" : "Fires right before the child nodes for a node are rendered",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "node",
+          "type" : "Node",
+          "desc" : "The node"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*textchange",
+      "desc" : "Fires when the text for a node is changed",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "node",
+          "type" : "Node",
+          "desc" : "The node"
+        },
+        {
+          "name" : "text",
+          "type" : "String",
+          "desc" : "The new text"
+        },
+        {
+          "name" : "oldText",
+          "type" : "String",
+          "desc" : "The old text"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*load",
+      "desc" : "Fires when a node is loaded",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "node",
+          "type" : "Node",
+          "desc" : "The node that was loaded"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*startdrag",
+      "desc" : "Fires when a node starts being dragged",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.tree.TreePanel",
+          "desc" : ""
+        },
+        {
+          "name" : "node",
+          "type" : "Roo.tree.TreeNode",
+          "desc" : ""
+        },
+        {
+          "name" : "e",
+          "type" : "event",
+          "desc" : "The raw browser event"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*click",
+      "desc" : "Fires when a node is clicked",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "node",
+          "type" : "Node",
+          "desc" : "The node"
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : "The event object"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*expand",
+      "desc" : "Fires when a node is expanded",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "node",
+          "type" : "Node",
+          "desc" : "The node"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*enddrag",
+      "desc" : "Fires when a drag operation is complete",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.tree.TreePanel",
+          "desc" : ""
+        },
+        {
+          "name" : "node",
+          "type" : "Roo.tree.TreeNode",
+          "desc" : ""
+        },
+        {
+          "name" : "e",
+          "type" : "event",
+          "desc" : "The raw browser event"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*nodedrop",
+      "desc" : "Fires after a DD object is dropped on a node in this tree. The dropEvent\npassed to handlers has the following properties:<br />\n<ul style=\"padding:5px;padding-left:16px;\">\n<li>tree - The TreePanel</li>\n<li>target - The node being targeted for the drop</li>\n<li>data - The drag data from the drag source</li>\n<li>point - The point of the drop - append, above or below</li>\n<li>source - The drag source</li>\n<li>rawEvent - Raw mouse event</li>\n<li>dropNode - Dropped node(s).</li>\n</ul>",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "dropEvent",
+          "type" : "Object",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*dragdrop",
+      "desc" : "Fires when a dragged node is dropped on a valid DD target",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.tree.TreePanel",
+          "desc" : ""
+        },
+        {
+          "name" : "node",
+          "type" : "Roo.tree.TreeNode",
+          "desc" : ""
+        },
+        {
+          "name" : "dd",
+          "type" : "DD",
+          "desc" : "The dd it was dropped on"
+        },
+        {
+          "name" : "e",
+          "type" : "event",
+          "desc" : "The raw browser event"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*beforecollapse",
+      "desc" : "Fires before a node is collapsed, return false to cancel.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "node",
+          "type" : "Node",
+          "desc" : "The node"
+        },
+        {
+          "name" : "deep",
+          "type" : "Boolean",
+          "desc" : ""
+        },
+        {
+          "name" : "anim",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*disabledchange",
+      "desc" : "Fires when the disabled status of a node changes",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "node",
+          "type" : "Node",
+          "desc" : "The node"
+        },
+        {
+          "name" : "disabled",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*beforeload",
+      "desc" : "Fires before a node is loaded, return false to cancel",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "node",
+          "type" : "Node",
+          "desc" : "The node being loaded"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*append",
+      "desc" : "Fires when a new child node is appended to a node in this tree.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.data.Tree",
+      "params" : [
+        {
+          "name" : "tree",
+          "type" : "Tree",
+          "desc" : "The owner tree"
+        },
+        {
+          "name" : "parent",
+          "type" : "Node",
+          "desc" : "The parent node"
+        },
+        {
+          "name" : "node",
+          "type" : "Node",
+          "desc" : "The newly appended node"
+        },
+        {
+          "name" : "index",
+          "type" : "Number",
+          "desc" : "The index of the newly appended node"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*beforemove",
+      "desc" : "Fires before a node is moved to a new location in the tree. Return false to cancel the move.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.data.Tree",
+      "params" : [
+        {
+          "name" : "tree",
+          "type" : "Tree",
+          "desc" : "The owner tree"
+        },
+        {
+          "name" : "node",
+          "type" : "Node",
+          "desc" : "The node being moved"
+        },
+        {
+          "name" : "oldParent",
+          "type" : "Node",
+          "desc" : "The parent of the node"
+        },
+        {
+          "name" : "newParent",
+          "type" : "Node",
+          "desc" : "The new parent the node is moving to"
+        },
+        {
+          "name" : "index",
+          "type" : "Number",
+          "desc" : "The index it is being moved to"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*insert",
+      "desc" : "Fires when a new child node is inserted in a node in this tree.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.data.Tree",
+      "params" : [
+        {
+          "name" : "tree",
+          "type" : "Tree",
+          "desc" : "The owner tree"
+        },
+        {
+          "name" : "parent",
+          "type" : "Node",
+          "desc" : "The parent node"
+        },
+        {
+          "name" : "node",
+          "type" : "Node",
+          "desc" : "The child node inserted"
+        },
+        {
+          "name" : "refNode",
+          "type" : "Node",
+          "desc" : "The child node the node was inserted before"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*beforeappend",
+      "desc" : "Fires before a new child is appended to a node in this tree, return false to cancel the append.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.data.Tree",
+      "params" : [
+        {
+          "name" : "tree",
+          "type" : "Tree",
+          "desc" : "The owner tree"
+        },
+        {
+          "name" : "parent",
+          "type" : "Node",
+          "desc" : "The parent node"
+        },
+        {
+          "name" : "node",
+          "type" : "Node",
+          "desc" : "The child node to be appended"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*move",
+      "desc" : "Fires when a node is moved to a new location in the tree",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.data.Tree",
+      "params" : [
+        {
+          "name" : "tree",
+          "type" : "Tree",
+          "desc" : "The owner tree"
+        },
+        {
+          "name" : "node",
+          "type" : "Node",
+          "desc" : "The node moved"
+        },
+        {
+          "name" : "oldParent",
+          "type" : "Node",
+          "desc" : "The old parent of this node"
+        },
+        {
+          "name" : "newParent",
+          "type" : "Node",
+          "desc" : "The new parent of this node"
+        },
+        {
+          "name" : "index",
+          "type" : "Number",
+          "desc" : "The index it was moved to"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*beforeremove",
+      "desc" : "Fires before a child is removed from a node in this tree, return false to cancel the remove.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.data.Tree",
+      "params" : [
+        {
+          "name" : "tree",
+          "type" : "Tree",
+          "desc" : "The owner tree"
+        },
+        {
+          "name" : "parent",
+          "type" : "Node",
+          "desc" : "The parent node"
+        },
+        {
+          "name" : "node",
+          "type" : "Node",
+          "desc" : "The child node to be removed"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*remove",
+      "desc" : "Fires when a child node is removed from a node in this tree.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.data.Tree",
+      "params" : [
+        {
+          "name" : "tree",
+          "type" : "Tree",
+          "desc" : "The owner tree"
+        },
+        {
+          "name" : "parent",
+          "type" : "Node",
+          "desc" : "The parent node"
+        },
+        {
+          "name" : "node",
+          "type" : "Node",
+          "desc" : "The child node removed"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*beforeinsert",
+      "desc" : "Fires before a new child is inserted in a node in this tree, return false to cancel the insert.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.data.Tree",
+      "params" : [
+        {
+          "name" : "tree",
+          "type" : "Tree",
+          "desc" : "The owner tree"
+        },
+        {
+          "name" : "parent",
+          "type" : "Node",
+          "desc" : "The parent node"
+        },
+        {
+          "name" : "node",
+          "type" : "Node",
+          "desc" : "The child node to be inserted"
+        },
+        {
+          "name" : "refNode",
+          "type" : "Node",
+          "desc" : "The child node the node is being inserted before"
+        }
+      ],
+      "returns" : ""
+    }
+  ]
+}

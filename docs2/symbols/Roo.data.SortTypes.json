@@ -1,0 +1,117 @@
+{
+  "name" : "Roo.data.SortTypes",
+  "augments" : [
+  ],
+  "desc" : "Defines the default sorting (casting?) comparison functions used when sorting data.",
+  "config" : [
+  ],
+  "methods" : [
+    {
+      "name" : "asFloat",
+      "desc" : "Float sorting",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "s",
+          "type" : "Mixed",
+          "desc" : "The value being converted"
+        }
+      ],
+      "returns" : "Float"
+    },
+    {
+      "name" : "asUCString",
+      "desc" : "Case insensitive string",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "s",
+          "type" : "Mixed",
+          "desc" : "The value being converted"
+        }
+      ],
+      "returns" : "String"
+    },
+    {
+      "name" : "asDate",
+      "desc" : "Date sorting",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "s",
+          "type" : "Mixed",
+          "desc" : "The value being converted"
+        }
+      ],
+      "returns" : "Number"
+    },
+    {
+      "name" : "asUCText",
+      "desc" : "Strips all HTML tags to sort on text only - Case insensitive",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "s",
+          "type" : "Mixed",
+          "desc" : "The value being converted"
+        }
+      ],
+      "returns" : "String"
+    },
+    {
+      "name" : "asInt",
+      "desc" : "Integer sorting",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "s",
+          "type" : "Mixed",
+          "desc" : "The value being converted"
+        }
+      ],
+      "returns" : "Number"
+    },
+    {
+      "name" : "asText",
+      "desc" : "Strips all HTML tags to sort on text only",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "s",
+          "type" : "Mixed",
+          "desc" : "The value being converted"
+        }
+      ],
+      "returns" : "String"
+    },
+    {
+      "name" : "none",
+      "desc" : "Default sort that does nothing",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "s",
+          "type" : "Mixed",
+          "desc" : "The value being converted"
+        }
+      ],
+      "returns" : "Mixed"
+    }
+  ],
+  "events" : [
+  ]
+}

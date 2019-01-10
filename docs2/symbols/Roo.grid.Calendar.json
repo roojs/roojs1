@@ -1,0 +1,788 @@
+{
+  "name" : "Roo.grid.Calendar",
+  "augments" : [
+  ],
+  "desc" : "This class extends the Grid to provide a calendar widget\n<br><br>Usage:<pre><code>\n var grid = new Roo.grid.Calendar(\"my-container-id\", {\n     ds: myDataStore,\n     cm: myColModel,\n     selModel: mySelectionModel,\n     autoSizeColumns: true,\n     monitorWindowResize: false,\n     trackMouseOver: true\n     eventstore : real data store..\n });\n // set any options\n grid.render();",
+  "config" : [
+    {
+      "name" : "eventStore",
+      "type" : "Store",
+      "desc" : "The store that loads events.",
+      "memberOf" : ""
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "getSelectionModel",
+      "desc" : "Returns the grid's SelectionModel.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "SelectionModel"
+    }
+  ],
+  "events" : [
+    {
+      "name" : "*eventclick",
+      "desc" : "Fires when the mouse click an",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Calendar",
+          "desc" : ""
+        },
+        {
+          "name" : "",
+          "type" : "event",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*select",
+      "desc" : "Fires when a date is selected",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "DatePicker",
+          "desc" : ""
+        },
+        {
+          "name" : "date",
+          "type" : "Date",
+          "desc" : "The selected date"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*mouseout",
+      "desc" : "The raw mouseout event for the entire grid.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*monthchange",
+      "desc" : "Fires when the displayed month changes",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "DatePicker",
+          "desc" : ""
+        },
+        {
+          "name" : "date",
+          "type" : "Date",
+          "desc" : "The selected month"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*dragdrop",
+      "desc" : "Fires when dragged row(s) are dropped on a valid DD target",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Grid",
+          "desc" : ""
+        },
+        {
+          "name" : "dd",
+          "type" : "Roo.GridDD",
+          "desc" : "The drag drop object"
+        },
+        {
+          "name" : "targetId",
+          "type" : "String",
+          "desc" : "The target drag drop object"
+        },
+        {
+          "name" : "e",
+          "type" : "event",
+          "desc" : "The raw browser event"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*rowclick",
+      "desc" : "Fires when a row is clicked",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Grid",
+          "desc" : ""
+        },
+        {
+          "name" : "rowIndex",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*headerclick",
+      "desc" : "Fires when a header is clicked",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Grid",
+          "desc" : ""
+        },
+        {
+          "name" : "columnIndex",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*startdrag",
+      "desc" : "Fires when row(s) start being dragged",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Grid",
+          "desc" : ""
+        },
+        {
+          "name" : "dd",
+          "type" : "Roo.GridDD",
+          "desc" : "The drag drop object"
+        },
+        {
+          "name" : "e",
+          "type" : "event",
+          "desc" : "The raw browser event"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*enddrag",
+      "desc" : "Fires when a drag operation is complete",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Grid",
+          "desc" : ""
+        },
+        {
+          "name" : "dd",
+          "type" : "Roo.GridDD",
+          "desc" : "The drag drop object"
+        },
+        {
+          "name" : "e",
+          "type" : "event",
+          "desc" : "The raw browser event"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*headerdblclick",
+      "desc" : "Fires when a header cell is double clicked",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Grid",
+          "desc" : ""
+        },
+        {
+          "name" : "columnIndex",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*dragenter",
+      "desc" : "Fires when the dragged row(s) first cross another DD target while being dragged",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Grid",
+          "desc" : ""
+        },
+        {
+          "name" : "dd",
+          "type" : "Roo.GridDD",
+          "desc" : "The drag drop object"
+        },
+        {
+          "name" : "targetId",
+          "type" : "String",
+          "desc" : "The target drag drop object"
+        },
+        {
+          "name" : "e",
+          "type" : "event",
+          "desc" : "The raw browser event"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*keydown",
+      "desc" : "The raw keydown event for the entire grid.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*dblclick",
+      "desc" : "The raw dblclick event for the entire grid.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*dragout",
+      "desc" : "Fires when the dragged row(s) leave another DD target while being dragged",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Grid",
+          "desc" : ""
+        },
+        {
+          "name" : "dd",
+          "type" : "Roo.GridDD",
+          "desc" : "The drag drop object"
+        },
+        {
+          "name" : "targetId",
+          "type" : "String",
+          "desc" : "The target drag drop object"
+        },
+        {
+          "name" : "e",
+          "type" : "event",
+          "desc" : "The raw browser event"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*columnmove",
+      "desc" : "Fires when the user moves a column",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "oldIndex",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "newIndex",
+          "type" : "Number",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*mouseup",
+      "desc" : "The raw mouseup event for the entire grid.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*eventrender",
+      "desc" : "Fires before each cell is rendered, so you can modify the contents, like cls / title / qtip",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Calendar",
+          "desc" : ""
+        },
+        {
+          "name" : "data",
+          "type" : "data",
+          "desc" : "to be modified"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*bodyscroll",
+      "desc" : "Fires when the body element is scrolled",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "scrollLeft",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "scrollTop",
+          "type" : "Number",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*rowdblclick",
+      "desc" : "Fires when a row is double clicked",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Grid",
+          "desc" : ""
+        },
+        {
+          "name" : "rowIndex",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*cellclick",
+      "desc" : "Fires when a cell is clicked",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Grid",
+          "desc" : ""
+        },
+        {
+          "name" : "rowIndex",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "columnIndex",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*evententer",
+      "desc" : "Fires when mouse over an event",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Calendar",
+          "desc" : ""
+        },
+        {
+          "name" : "Event",
+          "type" : "event",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*mousedown",
+      "desc" : "The raw mousedown event for the entire grid.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*click",
+      "desc" : "The raw click event for the entire grid.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*contextmenu",
+      "desc" : "The raw contextmenu event for the entire grid.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*eventleave",
+      "desc" : "Fires when the mouse leaves an",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Calendar",
+          "desc" : ""
+        },
+        {
+          "name" : "",
+          "type" : "event",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*dragover",
+      "desc" : "Fires while row(s) are being dragged. \"targetId\" is the id of the Yahoo.util.DD object the selected rows are being dragged over.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Grid",
+          "desc" : ""
+        },
+        {
+          "name" : "dd",
+          "type" : "Roo.GridDD",
+          "desc" : "The drag drop object"
+        },
+        {
+          "name" : "targetId",
+          "type" : "String",
+          "desc" : "The target drag drop object"
+        },
+        {
+          "name" : "e",
+          "type" : "event",
+          "desc" : "The raw browser event"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*rowcontextmenu",
+      "desc" : "Fires when a row is right clicked",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Grid",
+          "desc" : ""
+        },
+        {
+          "name" : "rowIndex",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*celldblclick",
+      "desc" : "Fires when a cell is double clicked",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Grid",
+          "desc" : ""
+        },
+        {
+          "name" : "rowIndex",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "columnIndex",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*headercontextmenu",
+      "desc" : "Fires when a header is right clicked",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Grid",
+          "desc" : ""
+        },
+        {
+          "name" : "columnIndex",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*rowclass",
+      "desc" : "Fires when a row is rendered, so you can change add a style to it.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "gridview",
+          "type" : "GridView",
+          "desc" : "The grid view"
+        },
+        {
+          "name" : "rowcfg",
+          "type" : "Object",
+          "desc" : "contains record  rowIndex and rowClass - set rowClass to add a style."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*mouseover",
+      "desc" : "The raw mouseover event for the entire grid.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*keypress",
+      "desc" : "The raw keypress event for the entire grid.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*render",
+      "desc" : "Fires when the grid is rendered",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "grid",
+          "type" : "Grid",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*columnresize",
+      "desc" : "Fires when the user resizes a column",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "columnIndex",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "newSize",
+          "type" : "Number",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*cellcontextmenu",
+      "desc" : "Fires when a cell is right clicked",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Grid",
+          "desc" : ""
+        },
+        {
+          "name" : "rowIndex",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "cellIndex",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    }
+  ]
+}

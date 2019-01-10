@@ -1,0 +1,34 @@
+{
+  "name" : "Roo.form.HtmlEditor.ToolbarContext",
+  "augments" : [
+  ],
+  "desc" : "Context Toolbar\n\nUsage:\n\n new Roo.form.HtmlEditor({\n    ....\n    toolbars : [\n        { xtype: 'ToolbarStandard', styles : {} }\n        { xtype: 'ToolbarContext', disable : {} }\n    ]\n})",
+  "config" : [
+    {
+      "name" : "disable",
+      "type" : "Object",
+      "desc" : "List of toolbar elements to disable",
+      "memberOf" : ""
+    },
+    {
+      "name" : "styles",
+      "type" : "Object",
+      "desc" : "List of styles \n   eg. { '*' : [ 'headline' ] , 'TD' : [ 'underline', 'double-underline' ] } \n\nThese must be defined in the page, so they get rendered correctly..\n.headline { }\nTD.underline { }",
+      "memberOf" : ""
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "updateToolbar",
+      "desc" : "Protected method that will not generally be called directly. It triggers\na toolbar update by reading the markup state of the current selection in the editor.\n\nNote you can force an update by calling on('editorevent', scope, false)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    }
+  ],
+  "events" : [
+  ]
+}

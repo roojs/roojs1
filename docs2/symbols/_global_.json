@@ -1,0 +1,72 @@
+{
+  "name" : "_global_",
+  "augments" : [
+  ],
+  "desc" : "",
+  "config" : [
+  ],
+  "methods" : [
+    {
+      "name" : "escape",
+      "desc" : "Helpers",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "Renderer",
+      "desc" : "Renderer",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "InlineLexer",
+      "desc" : "Inline Lexer & Compiler",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "marked",
+      "desc" : "Marked",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "Lexer",
+      "desc" : "Block Lexer",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "Parser",
+      "desc" : "Parsing & Compiling",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    }
+  ],
+  "events" : [
+  ]
+}
