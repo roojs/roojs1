@@ -300,6 +300,7 @@
             {
              "$ Array fields" : "[ \n    'name', 'type' ,'desc', 'memberOf'\n]",
              "xtype" : "JsonReader",
+             "String root" : "data",
              "$ xns" : "Roo.data",
              "* prop" : "reader"
             }

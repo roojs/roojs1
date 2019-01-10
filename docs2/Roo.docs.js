@@ -525,6 +525,7 @@ Roo.docs = new Roo.XComponent({
            fields : [ 
                'name', 'type' ,'desc', 'memberOf'
            ],
+           root : 'data',
            xns : Roo.data,
            '|xns' : 'Roo.data'
           }
