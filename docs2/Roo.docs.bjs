@@ -134,6 +134,10 @@
            "xtype" : "Link",
            "$ xns" : "Roo.bootstrap",
            "String html" : "source"
+          },
+          {
+           "xtype" : "Container",
+           "$ xns" : "Roo.bootstrap"
           }
          ]
         }
