@@ -113,6 +113,7 @@
          "String style" : "padding-left: 0px;",
          "items" : [
           {
+           "String cls" : "doc-header-container",
            "xtype" : "Container",
            "$ xns" : "Roo.bootstrap",
            "items" : [
