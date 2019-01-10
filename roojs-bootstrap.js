@@ -507,7 +507,7 @@ break;case 'date':da[c.name]=new Date();break;case 'float':da[c.name]=0.0;break;
 // Roo/data/DataProxy.js
 Roo.data.DataProxy=function(){this.addEvents({beforeload:true,load:true,loadexception:true});Roo.data.DataProxy.superclass.constructor.call(this);};Roo.extend(Roo.data.DataProxy,Roo.util.Observable);
 // Roo/data/MemoryProxy.js
-Roo.data.MemoryProxy=function(A){if(A.data){A=A.data;}Roo.data.MemoryProxy.superclass.constructor.call(this);this.data=A;};Roo.extend(Roo.data.MemoryProxy,Roo.data.DataProxy,{load:function(A,B,C,D,E){A=A||{};var F;try{F=B.readRecords(this.data);}catch(e){this.fireEvent("loadexception",this,E,null,e);
+Roo.data.MemoryProxy=function(A){if(A.data){A=A.data;}Roo.data.MemoryProxy.superclass.constructor.call(this);this.data=A;};Roo.extend(Roo.data.MemoryProxy,Roo.data.DataProxy,{load:function(A,B,C,D,E){A=A||{};var F;try{F=B.readRecords(A.data||this.data);}catch(e){this.fireEvent("loadexception",this,E,null,e);
 C.call(D,null,E,false);return;}C.call(D,F,E,true);},update:function(A,B){}});
 // Roo/data/HttpProxy.js
 Roo.data.HttpProxy=function(A){Roo.data.HttpProxy.superclass.constructor.call(this);this.conn=A;this.useAjax=!A||!A.events;};Roo.extend(Roo.data.HttpProxy,Roo.data.DataProxy,{getConnection:function(){return this.useAjax?Roo.Ajax:this.conn;},load:function(A,B,C,D,E){if(this.fireEvent("beforeload",this,A)!==false){var o={params:A||{}
