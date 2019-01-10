@@ -131,7 +131,8 @@
                "String cls" : "doc-classname",
                "xtype" : "Element",
                "$ xns" : "Roo.bootstrap",
-               "String html" : "xxx"
+               "String html" : "xxx",
+               "String style" : "font-size: 24px;\n    font-weight: bold;"
               },
               {
                "listeners" : {

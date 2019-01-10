@@ -324,6 +324,7 @@ Roo.docs = new Roo.XComponent({
                xtype : 'Element',
                cls : 'doc-classname',
                html : _this._strings['f561aaf6ef0bf14d4208bb46a4ccb3ad'] /* xxx */,
+               style : 'font-size: 24px;\n    font-weight: bold;',
                tag : 'span',
                listeners : {
                 render : function (_self)
