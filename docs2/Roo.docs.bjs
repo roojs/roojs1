@@ -305,10 +305,9 @@
              "* prop" : "proxy"
             },
             {
-             "$ Array fields" : "[ \n    'name', 'type' ,'desc', 'memberOf'\n]",
-             "xtype" : "JsonReader",
-             "String root" : "data",
+             "xtype" : "ArrayReader",
              "$ xns" : "Roo.data",
+             "$ fields" : "[ 'name', 'type', 'desc', 'memberOf' ]",
              "* prop" : "reader"
             }
            ]
@@ -352,16 +351,15 @@
            "* prop" : "store",
            "items" : [
             {
+             "xtype" : "ArrayReader",
+             "$ fields" : "[ 'name', 'type', 'desc', 'memberOf' ]",
+             "$ xns" : "Roo.data",
+             "* prop" : "reader"
+            },
+            {
              "xtype" : "MemoryProxy",
              "$ xns" : "Roo.data",
              "* prop" : "proxy"
-            },
-            {
-             "$ Array fields" : "[ \n    'name', 'type' ,'desc', 'memberOf'\n]",
-             "xtype" : "JsonReader",
-             "String root" : "data",
-             "$ xns" : "Roo.data",
-             "* prop" : "reader"
             }
            ]
           }

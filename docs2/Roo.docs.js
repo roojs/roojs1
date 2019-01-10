@@ -549,11 +549,8 @@ Roo.docs = new Roo.XComponent({
            '|xns' : 'Roo.data'
           },
           reader : {
-           xtype : 'JsonReader',
-           fields : [ 
-               'name', 'type' ,'desc', 'memberOf'
-           ],
-           root : 'data',
+           xtype : 'ArrayReader',
+           fields : [ 'name', 'type', 'desc', 'memberOf' ],
            xns : Roo.data,
            '|xns' : 'Roo.data'
           }
@@ -609,11 +606,8 @@ Roo.docs = new Roo.XComponent({
            '|xns' : 'Roo.data'
           },
           reader : {
-           xtype : 'JsonReader',
-           fields : [ 
-               'name', 'type' ,'desc', 'memberOf'
-           ],
-           root : 'data',
+           xtype : 'ArrayReader',
+           fields : [ 'name', 'type', 'desc', 'memberOf' ],
            xns : Roo.data,
            '|xns' : 'Roo.data'
           }
