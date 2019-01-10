@@ -486,9 +486,9 @@ Roo.docs = new Roo.XComponent({
            				     (r.json.type.length ? (' : <a href="#' + r.json.type+'-constructor">' + r.json.type + '</a>') : '') +
            			'</div>' +
            		  
-           			'<div class="mdesc">' +
+           			/*'<div class="mdesc">' +
            			    '<div class="short">' + (r.json.desc.split("\n")[0]) + '</div>' +
-           			'</div>'+
+           			'</div>'+ */
            			
            			'<div class="mdesc"><div class="long">' + r.json.desc.split("\n").join('<br/>') + '</div></div>';
            			
