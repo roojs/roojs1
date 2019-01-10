@@ -150,6 +150,7 @@
            "String html" : "doc-desc"
           },
           {
+           "String cls" : "doc-comments",
            "xtype" : "Container",
            "$ xns" : "Roo.bootstrap",
            "String html" : "doc-comments"
