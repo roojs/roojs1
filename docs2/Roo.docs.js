@@ -11,6 +11,7 @@ Roo.docs = new Roo.XComponent({
   'ae635f08107a69569e636835f24e6f6f' :" extends ",
   '3d067bedfe2f4677470dd6ccf64d05ed' :"Public  ",
   '87f9f735a1d36793ceaecd4e47124b63' :"Events",
+  '232cedface5acac121a6e099364a2b07' :"source:",
   '8444c6c15c56a27bfe83ffcaf459bbdd' :"Defined by",
   '9c5a24f0cbb12d939e4622b93bea904b' :"Public Methods",
   '36cd38f49b9afa08222c0dc9ebfe35eb' :"source",
@@ -358,22 +359,26 @@ Roo.docs = new Roo.XComponent({
             },
             {
              xtype : 'Header',
+             html : _this._strings['232cedface5acac121a6e099364a2b07'] /* source: */,
+             level : 5,
              xns : Roo.bootstrap,
-             '|xns' : 'Roo.bootstrap'
-            },
-            {
-             xtype : 'Link',
-             cls : 'doc-source',
-             html : _this._strings['36cd38f49b9afa08222c0dc9ebfe35eb'] /* source */,
-             preventDefault : true,
-             listeners : {
-              render : function (_self)
-               {
-                   _this.doc_source = this;
-               }
-             },
-             xns : Roo.bootstrap,
-             '|xns' : 'Roo.bootstrap'
+             '|xns' : 'Roo.bootstrap',
+             items  : [
+              {
+               xtype : 'Link',
+               cls : 'doc-source',
+               html : _this._strings['36cd38f49b9afa08222c0dc9ebfe35eb'] /* source */,
+               preventDefault : true,
+               listeners : {
+                render : function (_self)
+                 {
+                     _this.doc_source = this;
+                 }
+               },
+               xns : Roo.bootstrap,
+               '|xns' : 'Roo.bootstrap'
+              }
+             ]
             }
            ]
           },
