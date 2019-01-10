@@ -338,6 +338,11 @@ Roo.docs = new Roo.XComponent({
            tag : 'div',
            xns : Roo.bootstrap,
            '|xns' : 'Roo.bootstrap'
+          },
+          {
+           xtype : 'Link',
+           xns : Roo.bootstrap,
+           '|xns' : 'Roo.bootstrap'
           }
          ]
         }

@@ -137,6 +137,10 @@
            "xtype" : "Element",
            "$ xns" : "Roo.bootstrap",
            "String html" : "test"
+          },
+          {
+           "xtype" : "Link",
+           "$ xns" : "Roo.bootstrap"
           }
          ]
         }
