@@ -119,7 +119,7 @@
            "items" : [
             {
              "xtype" : "Header",
-             "Number level" : 2,
+             "Number level" : 4,
              "$ xns" : "Roo.bootstrap",
              "String html" : " Class ",
              "items" : [

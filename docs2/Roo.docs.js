@@ -316,7 +316,7 @@ Roo.docs = new Roo.XComponent({
             {
              xtype : 'Header',
              html : _this._strings['9bd81329febf6efe22788e03ddeaf0af'] /*  Class  */,
-             level : 2,
+             level : 4,
              xns : Roo.bootstrap,
              '|xns' : 'Roo.bootstrap',
              items  : [
