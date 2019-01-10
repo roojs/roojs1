@@ -1,0 +1,186 @@
+<html><head><title>/home/alan/gitlive/roojs1/Roo/util/CSS.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+
+/**
+ * @class Roo.util.CSS
+ * Utility class for manipulating CSS rules
+ * @singleton
+ */
+</span><span class="jsdoc-var">Roo.util.CSS </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rules </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+   	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">doc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">;
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">camelRe </span><span class="jsdoc-syntax">= /(-[a-z])/gi;
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">camelFn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">a.charAt</span><span class="jsdoc-syntax">(1)</span><span class="jsdoc-var">.toUpperCase</span><span class="jsdoc-syntax">(); };
+
+   </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+   </span><span class="jsdoc-comment">/**
+    * Very simple dynamic creation of stylesheets from a text blob of rules.  The text will wrapped in a style
+    * tag and appended to the HEAD of the document.
+    * @param {String|Object} cssText The text containing the css rules
+    * @param {String} id An id to add to the stylesheet for later removal
+    * @return {StyleSheet}
+    */
+    </span><span class="jsdoc-var">createStyleSheet </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cssText</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ss</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">head </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;head&quot;</span><span class="jsdoc-syntax">)[0];
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nrules </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;style&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">nrules.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;type&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;text/css&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">nrules.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;id&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cssText</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// support object maps..
+            // not sure if this a good idea.. 
+            // perhaps it should be merged with the general css handling
+            // and handle js style props.
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cssTextNew </span><span class="jsdoc-syntax">= [];
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">n </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">cssText</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">citems </span><span class="jsdoc-syntax">= [];
+                </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">cssText</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">]) {
+                    </span><span class="jsdoc-var">citems.push</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' : ' </span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">cssText</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">] + </span><span class="jsdoc-string">';' </span><span class="jsdoc-syntax">);
+                }
+                </span><span class="jsdoc-var">cssTextNew.push</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' { ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">citems.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">'} '</span><span class="jsdoc-syntax">);
+
+            }
+            </span><span class="jsdoc-var">cssText </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cssTextNew.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;\n&quot;</span><span class="jsdoc-syntax">);
+
+        }
+
+
+       </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isIE</span><span class="jsdoc-syntax">){
+           </span><span class="jsdoc-var">head.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nrules</span><span class="jsdoc-syntax">);
+           </span><span class="jsdoc-var">ss </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nrules.styleSheet</span><span class="jsdoc-syntax">;
+           </span><span class="jsdoc-var">ss.cssText </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cssText</span><span class="jsdoc-syntax">;
+       }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+           </span><span class="jsdoc-keyword">try</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">nrules.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doc.createTextNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cssText</span><span class="jsdoc-syntax">));
+           }</span><span class="jsdoc-keyword">catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+               </span><span class="jsdoc-var">nrules.cssText </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cssText</span><span class="jsdoc-syntax">;
+           }
+           </span><span class="jsdoc-var">head.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nrules</span><span class="jsdoc-syntax">);
+           </span><span class="jsdoc-var">ss </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nrules.styleSheet </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">nrules.styleSheet </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">nrules.sheet </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">doc.styleSheets</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">doc.styleSheets.length</span><span class="jsdoc-syntax">-1]);
+       }
+       </span><span class="jsdoc-var">this.cacheStyleSheet</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ss</span><span class="jsdoc-syntax">);
+       </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ss</span><span class="jsdoc-syntax">;
+   },
+
+   </span><span class="jsdoc-comment">/**
+    * Removes a style or link tag by id
+    * @param {String} id The id of the tag
+    */
+   </span><span class="jsdoc-var">removeStyleSheet </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+       </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">existing </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.getElementById</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+       </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">existing</span><span class="jsdoc-syntax">){
+           </span><span class="jsdoc-var">existing.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">existing</span><span class="jsdoc-syntax">);
+       }
+   },
+
+   </span><span class="jsdoc-comment">/**
+    * Dynamically swaps an existing stylesheet reference for a new one
+    * @param {String} id The id of an existing link tag to remove
+    * @param {String} url The href of the new stylesheet to include
+    */
+   </span><span class="jsdoc-var">swapStyleSheet </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">){
+       </span><span class="jsdoc-var">this.removeStyleSheet</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+       </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ss </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;link&quot;</span><span class="jsdoc-syntax">);
+       </span><span class="jsdoc-var">ss.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;rel&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;stylesheet&quot;</span><span class="jsdoc-syntax">);
+       </span><span class="jsdoc-var">ss.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;type&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;text/css&quot;</span><span class="jsdoc-syntax">);
+       </span><span class="jsdoc-var">ss.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;id&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+       </span><span class="jsdoc-var">ss.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;href&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">);
+       </span><span class="jsdoc-var">doc.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;head&quot;</span><span class="jsdoc-syntax">)[0]</span><span class="jsdoc-var">.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ss</span><span class="jsdoc-syntax">);
+   },
+
+   </span><span class="jsdoc-comment">/**
+    * Refresh the rule cache if you have dynamically added stylesheets
+    * @return {Object} An object (hash) of rules indexed by selector
+    */
+   </span><span class="jsdoc-var">refreshCache </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+       </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getRules</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+   },
+
+   </span><span class="jsdoc-comment">// private
+   </span><span class="jsdoc-var">cacheStyleSheet </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">stylesheet</span><span class="jsdoc-syntax">){
+       </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">rules</span><span class="jsdoc-syntax">){
+           </span><span class="jsdoc-var">rules </span><span class="jsdoc-syntax">= {};
+       }
+       </span><span class="jsdoc-keyword">try</span><span class="jsdoc-syntax">{</span><span class="jsdoc-comment">// try catch for cross domain access issue
+           </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ssRules </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">stylesheet.cssRules </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">stylesheet.rules</span><span class="jsdoc-syntax">;
+           </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ssRules.length</span><span class="jsdoc-syntax">-1; </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">&gt;= 0; --</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">){
+               </span><span class="jsdoc-var">rules</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">ssRules</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.selectorText</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">ssRules</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">];
+           }
+       }</span><span class="jsdoc-keyword">catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){}
+   },
+
+   </span><span class="jsdoc-comment">/**
+    * Gets all css rules for the document
+    * @param {Boolean} refreshCache true to refresh the internal cache
+    * @return {Object} An object (hash) of rules indexed by selector
+    */
+   </span><span class="jsdoc-var">getRules </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">refreshCache</span><span class="jsdoc-syntax">){
+   		</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rules </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">null </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">refreshCache</span><span class="jsdoc-syntax">){
+   			</span><span class="jsdoc-var">rules </span><span class="jsdoc-syntax">= {};
+   			</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.styleSheets</span><span class="jsdoc-syntax">;
+   			</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ds.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+   			    </span><span class="jsdoc-keyword">try</span><span class="jsdoc-syntax">{
+    		        </span><span class="jsdoc-var">this.cacheStyleSheet</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+    		    }</span><span class="jsdoc-keyword">catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){}
+	        }
+   		}
+   		</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">rules</span><span class="jsdoc-syntax">;
+   	},
+
+   	</span><span class="jsdoc-comment">/**
+    * Gets an an individual CSS rule by selector(s)
+    * @param {String/Array} selector The CSS selector or an array of selectors to try. The first selector that is found is returned.
+    * @param {Boolean} refreshCache true to refresh the internal cache if you have recently updated any rules or added styles dynamically
+    * @return {CSSRule} The CSS rule or null if one is not found
+    */
+   </span><span class="jsdoc-var">getRule </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">selector</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">refreshCache</span><span class="jsdoc-syntax">){
+   		</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getRules</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">refreshCache</span><span class="jsdoc-syntax">);
+   		</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!(</span><span class="jsdoc-var">selector </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Array</span><span class="jsdoc-syntax">)){
+   		    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">rs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">selector</span><span class="jsdoc-syntax">];
+   		}
+   		</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">selector.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+			</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">selector</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]]){
+				</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">rs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">selector</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]];
+			}
+		}
+		</span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
+   	},
+
+
+   	</span><span class="jsdoc-comment">/**
+    * Updates a rule property
+    * @param {String/Array} selector If it's an array it tries each selector until it finds one. Stops immediately once one is found.
+    * @param {String} property The css property
+    * @param {String} value The new value for the property
+    * @return {Boolean} true If a rule was found and updated
+    */
+   </span><span class="jsdoc-var">updateRule </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">selector</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">property</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
+   		</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!(</span><span class="jsdoc-var">selector </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Array</span><span class="jsdoc-syntax">)){
+   			</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rule </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getRule</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">selector</span><span class="jsdoc-syntax">);
+   			</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rule</span><span class="jsdoc-syntax">){
+   				</span><span class="jsdoc-var">rule.style</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">property.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">camelRe</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">camelFn</span><span class="jsdoc-syntax">)] = </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
+   				</span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+   			}
+   		}</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+   			</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">selector.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+   				</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.updateRule</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">selector</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">property</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)){
+   					</span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+   				}
+   			}
+   		}
+   		</span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+   	}
+   };
+}();</span></code></body></html>

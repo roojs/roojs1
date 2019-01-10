@@ -1,0 +1,401 @@
+<html><head><title>/home/alan/gitlive/roojs1/Roo/QuickTips.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+/**
+ * @class Roo.QuickTips
+ * Provides attractive and customizable tooltips for any element.
+ * @singleton
+ */
+</span><span class="jsdoc-var">Roo.QuickTips </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tipBody</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tipBodyText</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tipTitle</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">close</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tagEls </span><span class="jsdoc-syntax">= {}, </span><span class="jsdoc-var">esc</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">removeCls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">bdLeft</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">bdRight</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ce</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">bd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">visible </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">inited </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">showProc </span><span class="jsdoc-syntax">= 1, </span><span class="jsdoc-var">hideProc </span><span class="jsdoc-syntax">= 1, </span><span class="jsdoc-var">dismissProc </span><span class="jsdoc-syntax">= 1, </span><span class="jsdoc-var">locks </span><span class="jsdoc-syntax">= [];
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">onOver </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">disabled</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">t.nodeType </span><span class="jsdoc-syntax">!== 1 || </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">document </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ce </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">ce.el</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">clearTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hideProc</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">tagEls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">t.id</span><span class="jsdoc-syntax">]){
+            </span><span class="jsdoc-var">tagEls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">t.id</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">showProc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">show.defer</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tm.showDelay</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-var">tagEls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">t.id</span><span class="jsdoc-syntax">]]);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ttp</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">et </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ns </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.namespace</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tm.interceptTitles </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">t.title</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">ttp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">t.title</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">t.qtip </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ttp</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">t.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;title&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">ttp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">t.qtip </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">et.getAttributeNS</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg.attribute</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">et.getAttributeNS</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.alt_namespace</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg.attribute</span><span class="jsdoc-syntax">) ;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ttp</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">showProc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">show.defer</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tm.showDelay</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">, [{
+                </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">ttp.replace</span><span class="jsdoc-syntax">(/\\n/g,</span><span class="jsdoc-string">'&lt;br/&gt;'</span><span class="jsdoc-syntax">),
+                </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">et.getAttributeNS</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg.width</span><span class="jsdoc-syntax">),
+                </span><span class="jsdoc-var">autoHide</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">et.getAttributeNS</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg.hide</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">&quot;user&quot;</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">et.getAttributeNS</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg.title</span><span class="jsdoc-syntax">),
+           	    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">et.getAttributeNS</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg.cls</span><span class="jsdoc-syntax">)
+            }]);
+        }
+    };
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">onOut </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">clearTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">showProc</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ce </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ce.el </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">tm.autoHide </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ce.autoHide </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-var">hideProc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">setTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hide</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tm.hideDelay</span><span class="jsdoc-syntax">);
+        }
+    };
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">onMove </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">disabled</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">xy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getXY</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[1] += 18;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tm.trackMouse </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ce</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">el.setXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">);
+        }
+    };
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">onDown </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">clearTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">showProc</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">clearTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hideProc</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">e.within</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tm.hideOnClick</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">hide</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">tm.disable</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">tm.enable.defer</span><span class="jsdoc-syntax">(100, </span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">);
+            }
+        }
+    };
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">getPad </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">2;</span><span class="jsdoc-comment">//bdLeft.getPadding('l')+bdRight.getPadding('r');
+    </span><span class="jsdoc-syntax">};
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">show </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">disabled</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">clearTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dismissProc</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">ce </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">removeCls</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// in case manually hidden
+            </span><span class="jsdoc-var">el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">removeCls</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">removeCls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ce.cls</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ce.cls</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">removeCls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ce.cls</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ce.title</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">tipTitle.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ce.title</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">tipTitle.show</span><span class="jsdoc-syntax">();
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">tipTitle.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">tipTitle.hide</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">el.dom.style.width  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tm.maxWidth</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">//tipBody.dom.style.width = '';
+        </span><span class="jsdoc-var">tipBodyText.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.text</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">getPad</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ce.width</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">td </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tipBodyText.dom</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">aw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td.offsetWidth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">td.clientWidth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">td.scrollWidth</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">aw </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">tm.maxWidth</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tm.maxWidth</span><span class="jsdoc-syntax">;
+            }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">aw </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">tm.minWidth</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tm.minWidth</span><span class="jsdoc-syntax">;
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">aw</span><span class="jsdoc-syntax">;
+            }
+        }
+        </span><span class="jsdoc-comment">//tipBody.setWidth(w);
+        </span><span class="jsdoc-var">el.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, 10) + </span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ce.autoHide </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">close.setDisplayed</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">dd.unlock</span><span class="jsdoc-syntax">();
+            }
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">close.setDisplayed</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">dd.lock</span><span class="jsdoc-syntax">();
+            }
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">el.avoidY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[1]-18;
+            </span><span class="jsdoc-var">el.setXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tm.animate</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">el.setOpacity</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">.1</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;visibility&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;visible&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">el.fadeIn</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">afterShow</span><span class="jsdoc-syntax">});
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">afterShow</span><span class="jsdoc-syntax">();
+        }
+    };
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">afterShow </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ce</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">el.show</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">esc.enable</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tm.autoDismiss </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ce.autoHide </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">dismissProc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">setTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hide</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tm.autoDismissDelay</span><span class="jsdoc-syntax">);
+            }
+        }
+    };
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hide </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">noanim</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">clearTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dismissProc</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">clearTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hideProc</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">ce </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.isVisible</span><span class="jsdoc-syntax">()){
+            </span><span class="jsdoc-var">esc.disable</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">noanim </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">tm.animate</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">el.fadeOut</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">afterHide</span><span class="jsdoc-syntax">});
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">afterHide</span><span class="jsdoc-syntax">();
+            }
+        }
+    };
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">afterHide </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">el.hide</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">removeCls</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">removeCls</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">removeCls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+        }
+    };
+
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-comment">/**
+        * @cfg {Number} minWidth
+        * The minimum width of the quick tip (defaults to 40)
+        */
+       </span><span class="jsdoc-var">minWidth </span><span class="jsdoc-syntax">: 40,
+        </span><span class="jsdoc-comment">/**
+        * @cfg {Number} maxWidth
+        * The maximum width of the quick tip (defaults to 300)
+        */
+       </span><span class="jsdoc-var">maxWidth </span><span class="jsdoc-syntax">: 300,
+        </span><span class="jsdoc-comment">/**
+        * @cfg {Boolean} interceptTitles
+        * True to automatically use the element's DOM title value if available (defaults to false)
+        */
+       </span><span class="jsdoc-var">interceptTitles </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+        * @cfg {Boolean} trackMouse
+        * True to have the quick tip follow the mouse as it moves over the target element (defaults to false)
+        */
+       </span><span class="jsdoc-var">trackMouse </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+        * @cfg {Boolean} hideOnClick
+        * True to hide the quick tip if the user clicks anywhere in the document (defaults to true)
+        */
+       </span><span class="jsdoc-var">hideOnClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+        * @cfg {Number} showDelay
+        * Delay in milliseconds before the quick tip displays after the mouse enters the target element (defaults to 500)
+        */
+       </span><span class="jsdoc-var">showDelay </span><span class="jsdoc-syntax">: 500,
+        </span><span class="jsdoc-comment">/**
+        * @cfg {Number} hideDelay
+        * Delay in milliseconds before the quick tip hides when autoHide = true (defaults to 200)
+        */
+       </span><span class="jsdoc-var">hideDelay </span><span class="jsdoc-syntax">: 200,
+        </span><span class="jsdoc-comment">/**
+        * @cfg {Boolean} autoHide
+        * True to automatically hide the quick tip after the mouse exits the target element (defaults to true).
+        * Used in conjunction with hideDelay.
+        */
+       </span><span class="jsdoc-var">autoHide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+        * @cfg {Boolean}
+        * True to automatically hide the quick tip after a set period of time, regardless of the user's actions
+        * (defaults to true).  Used in conjunction with autoDismissDelay.
+        */
+       </span><span class="jsdoc-var">autoDismiss </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+        * @cfg {Number}
+        * Delay in milliseconds before the quick tip hides when autoDismiss = true (defaults to 5000)
+        */
+       </span><span class="jsdoc-var">autoDismissDelay </span><span class="jsdoc-syntax">: 5000,
+       </span><span class="jsdoc-comment">/**
+        * @cfg {Boolean} animate
+        * True to turn on fade animation. Defaults to false (ClearType/scrollbar flicker issues in IE7).
+        */
+       </span><span class="jsdoc-var">animate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+       </span><span class="jsdoc-comment">/**
+        * @cfg {String} title
+        * Title text to display (defaults to '').  This can be any valid HTML markup.
+        */
+        </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+       </span><span class="jsdoc-comment">/**
+        * @cfg {String} text
+        * Body text to display (defaults to '').  This can be any valid HTML markup.
+        */
+        </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+       </span><span class="jsdoc-comment">/**
+        * @cfg {String} cls
+        * A CSS class to apply to the base quick tip element (defaults to '').
+        */
+        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+       </span><span class="jsdoc-comment">/**
+        * @cfg {Number} width
+        * Width in pixels of the quick tip (defaults to auto).  Width will be ignored if it exceeds the bounds of
+        * minWidth or maxWidth.
+        */
+        </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * Initialize and enable QuickTips for first use.  This should be called once before the first attempt to access
+     * or display QuickTips in a page.
+     */
+       </span><span class="jsdoc-var">init </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+          </span><span class="jsdoc-var">tm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.QuickTips</span><span class="jsdoc-syntax">;
+          </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tm.tagConfig</span><span class="jsdoc-syntax">;
+          </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">inited</span><span class="jsdoc-syntax">){
+              </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">Roo.isReady</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// allow calling of init() before onReady
+                  </span><span class="jsdoc-var">Roo.onReady</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.QuickTips.init</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.QuickTips</span><span class="jsdoc-syntax">);
+                  </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+              }
+              </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Layer</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;x-tip&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">shadow</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;drop&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">shim</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">constrain</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">shadowOffset</span><span class="jsdoc-syntax">:4});
+              </span><span class="jsdoc-var">el.fxDefaults </span><span class="jsdoc-syntax">= {</span><span class="jsdoc-var">stopFx</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">};
+              </span><span class="jsdoc-comment">// maximum custom styling
+              //el.update('&lt;div class=&quot;x-tip-top-left&quot;&gt;&lt;div class=&quot;x-tip-top-right&quot;&gt;&lt;div class=&quot;x-tip-top&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;x-tip-bd-left&quot;&gt;&lt;div class=&quot;x-tip-bd-right&quot;&gt;&lt;div class=&quot;x-tip-bd&quot;&gt;&lt;div class=&quot;x-tip-close&quot;&gt;&lt;/div&gt;&lt;h3&gt;&lt;/h3&gt;&lt;div class=&quot;x-tip-bd-inner&quot;&gt;&lt;/div&gt;&lt;div class=&quot;x-clear&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;x-tip-ft-left&quot;&gt;&lt;div class=&quot;x-tip-ft-right&quot;&gt;&lt;div class=&quot;x-tip-ft&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;');
+              </span><span class="jsdoc-var">el.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&lt;div class=&quot;x-tip-bd&quot;&gt;&lt;div class=&quot;x-tip-close&quot;&gt;&lt;/div&gt;&lt;h3&gt;&lt;/h3&gt;&lt;div class=&quot;x-tip-bd-inner&quot;&gt;&lt;/div&gt;&lt;div class=&quot;x-clear&quot;&gt;&lt;/div&gt;&lt;/div&gt;'</span><span class="jsdoc-syntax">);
+              </span><span class="jsdoc-var">tipTitle </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'h3'</span><span class="jsdoc-syntax">);
+              </span><span class="jsdoc-var">tipTitle.enableDisplayMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;block&quot;</span><span class="jsdoc-syntax">);
+              </span><span class="jsdoc-var">tipBody </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'div.x-tip-bd'</span><span class="jsdoc-syntax">);
+              </span><span class="jsdoc-var">tipBodyText </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'div.x-tip-bd-inner'</span><span class="jsdoc-syntax">);
+              </span><span class="jsdoc-comment">//bdLeft = el.child('div.x-tip-bd-left');
+              //bdRight = el.child('div.x-tip-bd-right');
+              </span><span class="jsdoc-var">close </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'div.x-tip-close'</span><span class="jsdoc-syntax">);
+              </span><span class="jsdoc-var">close.enableDisplayMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;block&quot;</span><span class="jsdoc-syntax">);
+              </span><span class="jsdoc-var">close.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hide</span><span class="jsdoc-syntax">);
+              </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">);
+              </span><span class="jsdoc-var">d.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mousedown&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">onDown</span><span class="jsdoc-syntax">);
+              </span><span class="jsdoc-var">d.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mouseover&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">onOver</span><span class="jsdoc-syntax">);
+              </span><span class="jsdoc-var">d.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mouseout&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">onOut</span><span class="jsdoc-syntax">);
+              </span><span class="jsdoc-var">d.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mousemove&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">onMove</span><span class="jsdoc-syntax">);
+              </span><span class="jsdoc-var">esc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d.addKeyListener</span><span class="jsdoc-syntax">(27, </span><span class="jsdoc-var">hide</span><span class="jsdoc-syntax">);
+              </span><span class="jsdoc-var">esc.disable</span><span class="jsdoc-syntax">();
+              </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.dd.DD</span><span class="jsdoc-syntax">){
+                  </span><span class="jsdoc-var">dd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.initDD</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;default&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, {
+                      </span><span class="jsdoc-var">onDrag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+                          </span><span class="jsdoc-var">el.sync</span><span class="jsdoc-syntax">();
+                      }
+                  });
+                  </span><span class="jsdoc-var">dd.setHandleElId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tipTitle.id</span><span class="jsdoc-syntax">);
+                  </span><span class="jsdoc-var">dd.lock</span><span class="jsdoc-syntax">();
+              }
+              </span><span class="jsdoc-var">inited </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+          }
+          </span><span class="jsdoc-var">this.enable</span><span class="jsdoc-syntax">();
+       },
+
+    </span><span class="jsdoc-comment">/**
+     * Configures a new quick tip instance and assigns it to a target element.  The following config options
+     * are supported:
+     * &lt;pre&gt;
+Property    Type                   Description
+----------  ---------------------  ------------------------------------------------------------------------
+target      Element/String/Array   An Element, id or array of ids that this quick tip should be tied to
+     * &lt;/ul&gt;
+     * @param {Object} config The config object
+     */
+       </span><span class="jsdoc-var">register </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+           </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Array </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">;
+           </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cs.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+               </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+               </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">c.target</span><span class="jsdoc-syntax">;
+               </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">){
+                   </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Array</span><span class="jsdoc-syntax">){
+                       </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">jlen </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">target.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">jlen</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">++){
+                           </span><span class="jsdoc-var">tagEls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">]] = </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
+                       }
+                   }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                       </span><span class="jsdoc-var">tagEls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">)] = </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
+                   }
+               }
+           }
+       },
+
+    </span><span class="jsdoc-comment">/**
+     * Removes this quick tip from its element and destroys it.
+     * @param {String/HTMLElement/Element} el The element from which the quick tip is to be removed.
+     */
+       </span><span class="jsdoc-var">unregister </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
+           </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">tagEls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)];
+       },
+
+    </span><span class="jsdoc-comment">/**
+     * Enable this quick tip.
+     */
+       </span><span class="jsdoc-var">enable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+           </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">inited </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">disabled</span><span class="jsdoc-syntax">){
+               </span><span class="jsdoc-var">locks.pop</span><span class="jsdoc-syntax">();
+               </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">locks.length </span><span class="jsdoc-syntax">&lt; 1){
+                   </span><span class="jsdoc-var">disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+               }
+           }
+       },
+
+    </span><span class="jsdoc-comment">/**
+     * Disable this quick tip.
+     */
+       </span><span class="jsdoc-var">disable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+          </span><span class="jsdoc-var">disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+          </span><span class="jsdoc-var">clearTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">showProc</span><span class="jsdoc-syntax">);
+          </span><span class="jsdoc-var">clearTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hideProc</span><span class="jsdoc-syntax">);
+          </span><span class="jsdoc-var">clearTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dismissProc</span><span class="jsdoc-syntax">);
+          </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ce</span><span class="jsdoc-syntax">){
+              </span><span class="jsdoc-var">hide</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+          }
+          </span><span class="jsdoc-var">locks.push</span><span class="jsdoc-syntax">(1);
+       },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns true if the quick tip is enabled, else false.
+     */
+       </span><span class="jsdoc-var">isEnabled </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">!</span><span class="jsdoc-var">disabled</span><span class="jsdoc-syntax">;
+       },
+
+        </span><span class="jsdoc-comment">// private
+       </span><span class="jsdoc-var">tagConfig </span><span class="jsdoc-syntax">: {
+           </span><span class="jsdoc-var">namespace </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;roo&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// was ext?? this may break..
+           </span><span class="jsdoc-var">alt_namespace </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;ext&quot;</span><span class="jsdoc-syntax">,
+           </span><span class="jsdoc-var">attribute </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;qtip&quot;</span><span class="jsdoc-syntax">,
+           </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;width&quot;</span><span class="jsdoc-syntax">,
+           </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;target&quot;</span><span class="jsdoc-syntax">,
+           </span><span class="jsdoc-var">title </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;qtitle&quot;</span><span class="jsdoc-syntax">,
+           </span><span class="jsdoc-var">hide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;hide&quot;</span><span class="jsdoc-syntax">,
+           </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;qclass&quot;
+       </span><span class="jsdoc-syntax">}
+   };
+}();
+
+</span><span class="jsdoc-comment">// backwards compat
+</span><span class="jsdoc-var">Roo.QuickTips.tips </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.QuickTips.register</span><span class="jsdoc-syntax">;</span></code></body></html>

@@ -1,0 +1,40 @@
+<html><head><title>/home/alan/gitlive/roojs1/Roo/menu/DateItem.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+/**
+ * @class Roo.menu.DateItem
+ * @extends Roo.menu.Adapter
+ * A menu item that wraps the {@link Roo.DatPicker} component.
+ * @constructor
+ * Creates a new DateItem
+ * @param {Object} config Configuration options
+ */
+</span><span class="jsdoc-var">Roo.menu.DateItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.menu.DateItem.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.DatePicker</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-comment">/** The Roo.DatePicker object @type Roo.DatePicker */
+    </span><span class="jsdoc-var">this.picker </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.component</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">select</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">});
+
+    </span><span class="jsdoc-var">this.picker.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;render&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">picker</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">picker.getEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.swallowEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">picker.container.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-menu-date-item&quot;</span><span class="jsdoc-syntax">);
+    });
+
+    </span><span class="jsdoc-var">this.picker.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;select&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onSelect</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.menu.DateItem</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.menu.Adapter</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onSelect </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">picker</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;select&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">picker</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.menu.DateItem.superclass.handleClick.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    }
+});</span></code></body></html>

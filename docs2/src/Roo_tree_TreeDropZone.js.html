@@ -1,0 +1,256 @@
+<html><head><title>/home/alan/gitlive/roojs1/Roo/tree/TreeDropZone.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.dd.DropZone</span><span class="jsdoc-syntax">){
+
+</span><span class="jsdoc-var">Roo.tree.TreeDropZone </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">this.allowParentInsert </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.allowContainerDrop </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.appendOnly </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">Roo.tree.TreeDropZone.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tree.innerCt</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.tree </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.lastInsertClass </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;x-tree-no-status&quot;</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.dragOverData </span><span class="jsdoc-syntax">= {};
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.tree.TreeDropZone</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.dd.DropZone</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-var">ddGroup </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;TreeDD&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">scroll</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">expandDelay </span><span class="jsdoc-syntax">: 1000,
+
+    </span><span class="jsdoc-var">expandNode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.hasChildNodes</span><span class="jsdoc-syntax">() &amp;&amp; !</span><span class="jsdoc-var">node.isExpanded</span><span class="jsdoc-syntax">()){
+            </span><span class="jsdoc-var">node.expand</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.triggerCacheRefresh.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">));
+        }
+    },
+
+    </span><span class="jsdoc-var">queueExpand </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.expandProcId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.expandNode.defer</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.expandDelay</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">]);
+    },
+
+    </span><span class="jsdoc-var">cancelExpand </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.expandProcId</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">clearTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.expandProcId</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.expandProcId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        }
+    },
+
+    </span><span class="jsdoc-var">isValidDropPoint </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pt</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">; }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">targetNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n.node</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dropNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">data.node</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">// default drop rules
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!(</span><span class="jsdoc-var">targetNode </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">targetNode.isTarget </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">pt</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pt </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;append&quot; </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">targetNode.allowChildren </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">pt </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;above&quot; </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">pt </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;below&quot;</span><span class="jsdoc-syntax">) &amp;&amp; (</span><span class="jsdoc-var">targetNode.parentNode </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">targetNode.parentNode.allowChildren </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dropNode </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">targetNode </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">dropNode </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">dropNode.contains</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">targetNode</span><span class="jsdoc-syntax">))){
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-comment">// reuse the object
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">overEvent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dragOverData</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">overEvent.tree </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tree</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">overEvent.target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">targetNode</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">overEvent.data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">overEvent.point </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pt</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">overEvent.source </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">overEvent.rawEvent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">overEvent.dropNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dropNode</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">overEvent.cancel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">result </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tree.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;nodedragover&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">overEvent</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">overEvent.cancel </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">result </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">getDropPoint </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n.node</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tn.isRoot</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">tn.allowChildren </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">&quot;append&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// always append for root
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dragEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n.ddel</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Dom.getY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dragEl</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">dragEl.offsetHeight</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Event.getPageY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">//var noAppend = tn.allowChildren === false || tn.isLeaf();
+
+        // we may drop nodes anywhere, as long as allowChildren has not been set to false..
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">noAppend </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tn.allowChildren </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.appendOnly </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">tn.parentNode.allowChildren </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">noAppend </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;append&quot;</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">noBelow </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.allowParentInsert</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">noBelow </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tn.hasChildNodes</span><span class="jsdoc-syntax">() &amp;&amp; </span><span class="jsdoc-var">tn.isExpanded</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">q </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">) / (</span><span class="jsdoc-var">noAppend </span><span class="jsdoc-syntax">? 2 : 3);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">&lt; (</span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">q</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">&quot;above&quot;</span><span class="jsdoc-syntax">;
+        }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">noBelow </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">noAppend </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">q </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">&lt;= </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">&quot;below&quot;</span><span class="jsdoc-syntax">;
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">&quot;append&quot;</span><span class="jsdoc-syntax">;
+        }
+    },
+
+    </span><span class="jsdoc-var">onNodeEnter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.cancelExpand</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">onNodeOver </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">)
+    {
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getDropPoint</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n.node</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-comment">// auto node expand check
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.expandProcId </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">pt </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;append&quot; </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">node.hasChildNodes</span><span class="jsdoc-syntax">() &amp;&amp; !</span><span class="jsdoc-var">n.node.isExpanded</span><span class="jsdoc-syntax">()){
+            </span><span class="jsdoc-var">this.queueExpand</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+        }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pt </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;append&quot;</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.cancelExpand</span><span class="jsdoc-syntax">();
+        }
+
+        </span><span class="jsdoc-comment">// set the insert point style on the target node
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">returnCls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dropNotAllowed</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isValidDropPoint</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pt</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">)){
+           </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pt</span><span class="jsdoc-syntax">){
+               </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n.ddel</span><span class="jsdoc-syntax">;
+               </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">;
+               </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pt </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;above&quot;</span><span class="jsdoc-syntax">){
+                   </span><span class="jsdoc-var">returnCls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n.node.isFirst</span><span class="jsdoc-syntax">() ? </span><span class="jsdoc-string">&quot;x-tree-drop-ok-above&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-tree-drop-ok-between&quot;</span><span class="jsdoc-syntax">;
+                   </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;x-tree-drag-insert-above&quot;</span><span class="jsdoc-syntax">;
+               }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pt </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;below&quot;</span><span class="jsdoc-syntax">){
+                   </span><span class="jsdoc-var">returnCls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n.node.isLast</span><span class="jsdoc-syntax">() ? </span><span class="jsdoc-string">&quot;x-tree-drop-ok-below&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-tree-drop-ok-between&quot;</span><span class="jsdoc-syntax">;
+                   </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;x-tree-drag-insert-below&quot;</span><span class="jsdoc-syntax">;
+               }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                   </span><span class="jsdoc-var">returnCls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;x-tree-drop-ok-append&quot;</span><span class="jsdoc-syntax">;
+                   </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;x-tree-drag-append&quot;</span><span class="jsdoc-syntax">;
+               }
+               </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lastInsertClass </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">){
+                   </span><span class="jsdoc-var">Roo.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replaceClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lastInsertClass</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">);
+                   </span><span class="jsdoc-var">this.lastInsertClass </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">;
+               }
+           }
+       }
+       </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">returnCls</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">onNodeOut </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">){
+
+        </span><span class="jsdoc-var">this.cancelExpand</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.removeDropIndicators</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">onNodeDrop </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">point </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getDropPoint</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">targetNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n.node</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">targetNode.ui.startDrop</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.isValidDropPoint</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">point</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-var">targetNode.ui.endDrop</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-comment">// first try to find the drop node
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dropNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">data.node </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">dd.getTreeNode </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">dd.getTreeNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">targetNode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">point</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dropEvent </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tree </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.tree</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">targetNode</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">point</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">point</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">source</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">rawEvent</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">dropNode</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">dropNode</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cancel</span><span class="jsdoc-syntax">: !</span><span class="jsdoc-var">dropNode
+        </span><span class="jsdoc-syntax">};
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">retval </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tree.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforenodedrop&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dropEvent</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">retval </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">dropEvent.cancel </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">dropEvent.dropNode</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">targetNode.ui.endDrop</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-comment">// allow target changing
+        </span><span class="jsdoc-var">targetNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dropEvent.target</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">point </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;append&quot; </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">targetNode.isExpanded</span><span class="jsdoc-syntax">()){
+            </span><span class="jsdoc-var">targetNode.expand</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+                </span><span class="jsdoc-var">this.completeDrop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dropEvent</span><span class="jsdoc-syntax">);
+            }</span><span class="jsdoc-var">.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">));
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.completeDrop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dropEvent</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">completeDrop </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">de</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ns </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">de.dropNode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">de.point</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">de.target</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!(</span><span class="jsdoc-var">ns </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Array</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-var">ns </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">];
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ns.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;above&quot;</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">t.parentNode.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">);
+            }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;below&quot;</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">t.parentNode.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t.nextSibling</span><span class="jsdoc-syntax">);
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">t.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">);
+            }
+        }
+        </span><span class="jsdoc-var">n.ui.focus</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tree.hlDrop</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">n.ui.highlight</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">t.ui.endDrop</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.tree.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;nodedrop&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">de</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">afterNodeMoved </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">targetNode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dropNode</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tree.hlDrop</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">dropNode.ui.focus</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">dropNode.ui.highlight</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">this.tree.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;nodedrop&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.tree</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">targetNode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">getTree </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.tree</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">removeDropIndicators </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">n.ddel</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n.ddel</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">Roo.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">([
+                    </span><span class="jsdoc-string">&quot;x-tree-drag-insert-above&quot;</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">&quot;x-tree-drag-insert-below&quot;</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">&quot;x-tree-drag-append&quot;</span><span class="jsdoc-syntax">]);
+            </span><span class="jsdoc-var">this.lastInsertClass </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;_noclass&quot;</span><span class="jsdoc-syntax">;
+        }
+    },
+
+    </span><span class="jsdoc-var">beforeDragDrop </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.cancelExpand</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">afterRepair </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.enableFx</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">data.node.ui.highlight</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">this.hideProxy</span><span class="jsdoc-syntax">();
+    }
+
+});
+
+}
+</span></code></body></html>

@@ -1,0 +1,342 @@
+<html><head><title>/home/alan/gitlive/roojs1/Roo/Editor.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+/**
+ * @class Roo.Editor
+ * @extends Roo.Component
+ * A base editor field that handles displaying/hiding on demand and has some built-in sizing and event handling logic.
+ * @constructor
+ * Create a new Editor
+ * @param {Roo.form.Field} field The Field object (or descendant)
+ * @param {Object} config The config object
+ */
+</span><span class="jsdoc-var">Roo.Editor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">field</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.Editor.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.field </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">field</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+	     * @event beforestartedit
+	     * Fires when editing is initiated, but before the value changes.  Editing can be canceled by returning
+	     * false from the handler of this event.
+	     * @param {Editor} this
+	     * @param {Roo.Element} boundEl The underlying element bound to this editor
+	     * @param {Mixed} value The field value being set
+	     */
+        </span><span class="jsdoc-string">&quot;beforestartedit&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event startedit
+	     * Fires when this editor is displayed
+	     * @param {Roo.Element} boundEl The underlying element bound to this editor
+	     * @param {Mixed} value The starting field value
+	     */
+        </span><span class="jsdoc-string">&quot;startedit&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event beforecomplete
+	     * Fires after a change has been made to the field, but before the change is reflected in the underlying
+	     * field.  Saving the change to the field can be canceled by returning false from the handler of this event.
+	     * Note that if the value has not changed and ignoreNoChange = true, the editing will still end but this
+	     * event will not fire since no edit actually occurred.
+	     * @param {Editor} this
+	     * @param {Mixed} value The current field value
+	     * @param {Mixed} startValue The original field value
+	     */
+        </span><span class="jsdoc-string">&quot;beforecomplete&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event complete
+	     * Fires after editing is complete and any changed value has been written to the underlying field.
+	     * @param {Editor} this
+	     * @param {Mixed} value The current field value
+	     * @param {Mixed} startValue The original field value
+	     */
+        </span><span class="jsdoc-string">&quot;complete&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event specialkey
+         * Fires when any key related to navigation (arrows, tab, enter, esc, etc.) is pressed.  You can check
+         * {@link Roo.EventObject#getKey} to determine which key was pressed.
+         * @param {Roo.form.Field} this
+         * @param {Roo.EventObject} e The event object
+         */
+        </span><span class="jsdoc-string">&quot;specialkey&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Editor</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.Component</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean/String} autosize
+     * True for the editor to automatically adopt the size of the underlying field, &quot;width&quot; to adopt the width only,
+     * or &quot;height&quot; to adopt the height only (defaults to false)
+     */
+    /**
+     * @cfg {Boolean} revertInvalid
+     * True to automatically revert the field value and cancel the edit when the user completes an edit and the field
+     * validation fails (defaults to true)
+     */
+    /**
+     * @cfg {Boolean} ignoreNoChange
+     * True to skip the the edit completion process (no save, no events fired) if the user completes an edit and
+     * the value has not changed (defaults to false).  Applies only to string values - edits for other data types
+     * will never be ignored.
+     */
+    /**
+     * @cfg {Boolean} hideEl
+     * False to keep the bound element visible while the editor is displayed (defaults to true)
+     */
+    /**
+     * @cfg {Mixed} value
+     * The data value of the underlying field (defaults to &quot;&quot;)
+     */
+    </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} alignment
+     * The position to align to (see {@link Roo.Element#alignTo} for more details, defaults to &quot;c-c?&quot;).
+     */
+    </span><span class="jsdoc-var">alignment</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;c-c?&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean/String} shadow &quot;sides&quot; for sides/bottom only, &quot;frame&quot; for 4-way shadow, and &quot;drop&quot;
+     * for bottom-right shadow (defaults to &quot;frame&quot;)
+     */
+    </span><span class="jsdoc-var">shadow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;frame&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} constrain True to constrain the editor to the viewport
+     */
+    </span><span class="jsdoc-var">constrain </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} completeOnEnter True to complete the edit when the enter key is pressed (defaults to false)
+     */
+    </span><span class="jsdoc-var">completeOnEnter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} cancelOnEsc True to cancel the edit when the escape key is pressed (defaults to false)
+     */
+    </span><span class="jsdoc-var">cancelOnEsc </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} updateEl True to update the innerHTML of the bound element when the update completes (defaults to false)
+     */
+    </span><span class="jsdoc-var">updateEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Layer</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">shadow</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.shadow</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-editor&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">parentEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">shim </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.shim</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">shadowOffset</span><span class="jsdoc-syntax">:4,
+            </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">constrain</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.constrain
+        </span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-var">this.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;overflow&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.isGecko </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">&quot;auto&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;hidden&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.field.msgTarget </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'title'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.field.msgTarget </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'qtip'</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.field.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isGecko</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.field.el.dom.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'autocomplete'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'off'</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">this.field.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;specialkey&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onSpecialKey</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.swallowKeys</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.field.el.swallowEvent</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'keydown'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'keypress'</span><span class="jsdoc-syntax">]);
+        }
+        </span><span class="jsdoc-var">this.field.show</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.field.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;blur&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onBlur</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.field.grow</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.field.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;autosize&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.el.sync</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">, {</span><span class="jsdoc-var">delay</span><span class="jsdoc-syntax">:1});
+        }
+    },
+
+    </span><span class="jsdoc-var">onSpecialKey </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">field</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">//Roo.log('editor onSpecialKey');
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.completeOnEnter </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">e.getKey</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-var">e.ENTER</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.completeEdit</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-comment">// do not fire special key otherwise it might hide close the editor...
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.getKey</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-var">e.ENTER</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cancelOnEsc </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">e.getKey</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-var">e.ESC</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.cancelEdit</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'specialkey'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">field</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Starts the editing process and shows the editor.
+     * @param {String/HTMLElement/Element} el The element to edit
+     * @param {String} value (optional) A value to initialize the editor with. If a value is not provided, it defaults
+      * to the innerHTML of el.
+     */
+    </span><span class="jsdoc-var">startEdit </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editing</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.completeEdit</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">this.boundEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.boundEl.dom.innerHTML</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.rendered</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parentEl </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforestartedit&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.boundEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) === </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.startValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.field.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoSize</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sz </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.boundEl.getSize</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoSize</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;width&quot;</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">this.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sz.width</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;height&quot;</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">this.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">sz.height</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">default</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">this.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sz.width</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">sz.height</span><span class="jsdoc-syntax">);
+            }
+        }
+        </span><span class="jsdoc-var">this.el.alignTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.boundEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.alignment</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.editing </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.QuickTips</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.QuickTips.disable</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">this.show</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Sets the height and width of this editor.
+     * @param {Number} width The new width
+     * @param {Number} height The new height
+     */
+    </span><span class="jsdoc-var">setSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.field.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.sync</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Realigns the editor to the bound field based on the current alignment config value.
+     */
+    </span><span class="jsdoc-var">realign </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.el.alignTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.boundEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.alignment</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Ends the editing process, persists the changed value to the underlying field, and hides the editor.
+     * @param {Boolean} remainVisible Override the default behavior and keep the editor visible after edit (defaults to false)
+     */
+    </span><span class="jsdoc-var">completeEdit </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">remainVisible</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.editing</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.revertInvalid </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.field.isValid</span><span class="jsdoc-syntax">()){
+            </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.startValue</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.cancelEdit</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) === </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.startValue</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">this.ignoreNoChange</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.editing </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforecomplete&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.startValue</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.editing </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.updateEl </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.boundEl</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.boundEl.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">remainVisible </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
+            }
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;complete&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.startValue</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onShow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.el.show</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hideEl </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.boundEl.hide</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">this.field.show</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isIE </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.fixIEFocus</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// IE has problems with focusing the first time
+            </span><span class="jsdoc-var">this.fixIEFocus </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.deferredFocus.defer</span><span class="jsdoc-syntax">(50, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.field.focus</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;startedit&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.boundEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.startValue</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">deferredFocus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editing</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.field.focus</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Cancels the editing process and hides the editor without persisting any changes.  The field value will be
+     * reverted to the original starting value.
+     * @param {Boolean} remainVisible Override the default behavior and keep the editor visible after
+     * cancel (defaults to false)
+     */
+    </span><span class="jsdoc-var">cancelEdit </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">remainVisible</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editing</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.startValue</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">remainVisible </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
+            }
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onBlur </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.allowBlur </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.editing</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.completeEdit</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onHide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editing</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.completeEdit</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.field.blur</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.field.collapse</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.field.collapse</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">this.el.hide</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hideEl </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.boundEl.show</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.QuickTips</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.QuickTips.enable</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Sets the data value of the editor
+     * @param {Mixed} value Any valid value supported by the underlying field
+     */
+    </span><span class="jsdoc-var">setValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.field.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Gets the data value of the editor
+     * @return {Mixed} The data value
+     */
+    </span><span class="jsdoc-var">getValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.field.getValue</span><span class="jsdoc-syntax">();
+    }
+});</span></code></body></html>

@@ -1,0 +1,100 @@
+<html><head><title>/home/alan/gitlive/roojs1/Roo/grid/AbstractGridView.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+</span><span class="jsdoc-var">Roo.grid.AbstractGridView </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+	</span><span class="jsdoc-var">this.grid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+
+	</span><span class="jsdoc-var">this.events </span><span class="jsdoc-syntax">= {
+	    </span><span class="jsdoc-string">&quot;beforerowremoved&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+	    </span><span class="jsdoc-string">&quot;beforerowsinserted&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+	    </span><span class="jsdoc-string">&quot;beforerefresh&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+	    </span><span class="jsdoc-string">&quot;rowremoved&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+	    </span><span class="jsdoc-string">&quot;rowsinserted&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+	    </span><span class="jsdoc-string">&quot;rowupdated&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+	    </span><span class="jsdoc-string">&quot;refresh&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+	</span><span class="jsdoc-syntax">};
+    </span><span class="jsdoc-var">Roo.grid.AbstractGridView.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.grid.AbstractGridView</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-var">rowClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-grid-row&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">cellClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-grid-cell&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">tdClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-grid-td&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">hdClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-grid-hd&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">splitClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-grid-hd-split&quot;</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">init</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">grid</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.grid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">grid</span><span class="jsdoc-syntax">;
+		</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.getGridEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.id</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.colSelector </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;#&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cid </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot; .&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.cellClass </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;-&quot;</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.tdSelector </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;#&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cid </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot; .&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.tdClass </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;-&quot;</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.hdSelector </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;#&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cid </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot; .&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.hdClass </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;-&quot;</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.splitSelector </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;#&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cid </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot; .&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.splitClass </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;-&quot;</span><span class="jsdoc-syntax">;
+	},
+
+    </span><span class="jsdoc-var">getColumnRenderers </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+    	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">renderers </span><span class="jsdoc-syntax">= [];
+    	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.colModel</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">colCount </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.getColumnCount</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">colCount</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-var">renderers</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">cm.getRenderer</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">renderers</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">getColumnIds </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+    	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ids </span><span class="jsdoc-syntax">= [];
+    	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.colModel</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">colCount </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.getColumnCount</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">colCount</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-var">ids</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">cm.getColumnId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ids</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">getDataIndexes </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+    	</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.indexMap</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.indexMap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.buildIndexMap</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.indexMap.colToData</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">getColumnIndexByDataIndex </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataIndex</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.indexMap</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.indexMap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.buildIndexMap</span><span class="jsdoc-syntax">();
+        }
+    	</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.indexMap.dataToCol</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">dataIndex</span><span class="jsdoc-syntax">];
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Set a css style for a column dynamically. 
+     * @param {Number} colIndex The index of the column
+     * @param {String} name The css property name
+     * @param {String} value The css value
+     */
+    </span><span class="jsdoc-var">setCSSStyle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">selector </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;#&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.grid.id </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot; .x-grid-col-&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">Roo.util.CSS.updateRule</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">selector</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">generateRules </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cm</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ruleBuf </span><span class="jsdoc-syntax">= [], </span><span class="jsdoc-var">rulesId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.id </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-cssrules'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">Roo.util.CSS.removeStyleSheet</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rulesId</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.getColumnCount</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.getColumnId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">ruleBuf.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.colSelector</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cid</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot; {\n&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cm.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.css</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;}\n&quot;</span><span class="jsdoc-syntax">,
+                         </span><span class="jsdoc-var">this.tdSelector</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cid</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot; {\n}\n&quot;</span><span class="jsdoc-syntax">,
+                         </span><span class="jsdoc-var">this.hdSelector</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cid</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot; {\n}\n&quot;</span><span class="jsdoc-syntax">,
+                         </span><span class="jsdoc-var">this.splitSelector</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cid</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot; {\n}\n&quot;</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.util.CSS.createStyleSheet</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ruleBuf.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">rulesId</span><span class="jsdoc-syntax">);
+    }
+});</span></code></body></html>
