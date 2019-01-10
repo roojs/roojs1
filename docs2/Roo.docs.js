@@ -362,7 +362,14 @@ Roo.docs = new Roo.XComponent({
       {
        xtype : 'Table',
        xns : Roo.bootstrap,
-       '|xns' : 'Roo.bootstrap'
+       '|xns' : 'Roo.bootstrap',
+       cm : [
+        {
+         xtype : 'ColumnModel',
+         xns : Roo.grid,
+         '|xns' : 'Roo.grid'
+        }
+       ]
       }
      ]
     }

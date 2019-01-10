@@ -161,7 +161,14 @@
       },
       {
        "xtype" : "Table",
-       "$ xns" : "Roo.bootstrap"
+       "$ xns" : "Roo.bootstrap",
+       "items" : [
+        {
+         "xtype" : "ColumnModel",
+         "$ xns" : "Roo.grid",
+         "* prop" : "cm[]"
+        }
+       ]
       }
      ]
     }
