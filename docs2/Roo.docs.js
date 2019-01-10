@@ -481,29 +481,17 @@ Roo.docs = new Roo.XComponent({
            renderer : function(v,x,r) { 
            
            
-           
-           
            		return 	'<div class="fixedFont">' +
            				'<b class="itemname">' + r.json.name + '</b>' +
            				     (r.json.type.length ? ' : <a href="#' + r.json.type+'-constructor">' + r.json.type + '</a>' +
-           			'</div>'
+           			'</div>' +
            		  
-           			<div class="mdesc">
-           			    <div class="short">Array of field definition objects</div> 
-           			</div>
+           			'<div class="mdesc">'
+           			    '<div class="short">' + (r.json.desc.split("\n")[0]) + '</div>' +
+           			'</div>'
            			
-           			<div class="mdesc">
-           			    <div class="long">
-                               Array of field definition objects
-                               
-                           </div> 
-           			</div>
+           			'<div class="mdesc"><div class="long">' + r.json.desc + '</div></div>';
            			
-           			
-           
-           		    </td>
-           
-               Roo.log(r);
            },
            xns : Roo.grid,
            '|xns' : 'Roo.grid'
