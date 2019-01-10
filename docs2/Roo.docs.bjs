@@ -133,6 +133,7 @@
            ]
           },
           {
+           "String cls" : "doc-source",
            "Boolean preventDefault" : true,
            "xtype" : "Link",
            "$ xns" : "Roo.bootstrap",
