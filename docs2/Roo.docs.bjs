@@ -249,6 +249,7 @@
             {
              "xtype" : "ArrayReader",
              "$ xns" : "Roo.data",
+             "$ fields" : "",
              "* prop" : "reader"
             }
            ]
