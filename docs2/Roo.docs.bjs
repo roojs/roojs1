@@ -7,7 +7,8 @@
  "modOrder" : "001",
  "strings" : {
   "098f6bcd4621d373cade4e832627b4f6" : "test",
-  "9bd81329febf6efe22788e03ddeaf0af" : "Class"
+  "9bd81329febf6efe22788e03ddeaf0af" : "Class",
+  "f561aaf6ef0bf14d4208bb46a4ccb3ad" : "xxx"
  },
  "items" : [
   {
@@ -97,7 +98,6 @@
          "String style" : "padding-left: 0px;",
          "items" : [
           {
-           "String cls" : "doc-classname",
            "xtype" : "Header",
            "$ xns" : "Roo.bootstrap",
            "Number level" : 2,
@@ -105,8 +105,10 @@
            "items" : [
             {
              "String tag" : "span",
+             "String cls" : "doc-classname",
              "xtype" : "Element",
-             "$ xns" : "Roo.bootstrap"
+             "$ xns" : "Roo.bootstrap",
+             "String html" : "xxx"
             }
            ]
           },
