@@ -214,9 +214,11 @@
       },
       {
        "String header" : "Configuration options",
+       "Boolean expanded" : false,
        "xtype" : "Container",
        "String panel" : "info",
        "$ xns" : "Roo.bootstrap",
+       "Boolean expandable" : true,
        "items" : [
         {
          "listeners" : {
@@ -268,9 +270,11 @@
       },
       {
        "String header" : "Public Methods",
+       "Boolean expanded" : false,
        "String panel" : "info",
        "xtype" : "Container",
        "$ xns" : "Roo.bootstrap",
+       "Boolean expandable" : true,
        "items" : [
         {
          "listeners" : {

@@ -448,6 +448,8 @@ Roo.docs = new Roo.XComponent({
       },
       {
        xtype : 'Container',
+       expandable : true,
+       expanded : false,
        header : _this._strings['50f33d14f129e4548c1c270fd6725a78'] /* Configuration options */,
        panel : 'info',
        xns : Roo.bootstrap,
@@ -525,6 +527,8 @@ Roo.docs = new Roo.XComponent({
       },
       {
        xtype : 'Container',
+       expandable : true,
+       expanded : false,
        header : _this._strings['9c5a24f0cbb12d939e4622b93bea904b'] /* Public Methods */,
        panel : 'info',
        xns : Roo.bootstrap,
