@@ -892,7 +892,16 @@ header-menu-options ul.socials > li:first-child,
 }
  
  /** --------- from original --------*/
- .itemname
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+/*	color: #002EBE; */
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+    margin-left: 10px;
+}
+
+.itemname
 {
     color: #002EBE; 
 }
