@@ -125,6 +125,22 @@ Roo.docs.init = {
     },
     fillDoc : function(d)
     {
+        /*{
+            "name" : "Roo.bootstrap.Progress",
+            "augments" : [
+              "Roo.bootstrap.Component",
+              "Roo.Component",
+              "Roo.util.Observable"
+            ],
+            "desc" : "Bootstrap Progress class",
+            "config" : [
+              {
+        */
+        for (var k in d) {
+            if (typeof(Roo.docs['doc_' + k])  !=  null) {
+                Roo.docs['doc_' + k].el.dom.innerHTML = d[k];
+            }
+        }
         
         
         
