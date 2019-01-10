@@ -12,6 +12,7 @@
   "9c5a24f0cbb12d939e4622b93bea904b" : "Public Methods",
   "8444c6c15c56a27bfe83ffcaf459bbdd" : "Defined by",
   "36cd38f49b9afa08222c0dc9ebfe35eb" : "source",
+  "50f33d14f129e4548c1c270fd6725a78" : "Configuration options",
   "e64b94523532dbac62df6795a5153f04" : "doc-desc",
   "d2b697ad8e989a6c4592987f22f5bbfc" : "doc-comments",
   "494a64a432ff6a121e4ab9003c7a0df3" : "parentcls",
@@ -228,6 +229,7 @@
        ]
       },
       {
+       "String header" : "Configuration options",
        "String panel" : "info",
        "xtype" : "Container",
        "$ xns" : "Roo.bootstrap",
