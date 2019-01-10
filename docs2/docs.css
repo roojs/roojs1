@@ -887,7 +887,7 @@ header-menu-options ul.socials > li:first-child,
 }
  
  
- .doc-table-container .panel-body  {
+.doc-table-container .panel-body  {
     padding: 0
 }
  
@@ -905,3 +905,12 @@ td.attributes, .fixedFont
 {
     color: #002EBE; 
 }
+
+.doc-table-container .short,
+.doc-table-container .long,
+{
+    border-top: 1px solid #D0D0D0;
+    vertical-align: top;
+    padding: 5px;
+    font-size: 13px;
+} 
