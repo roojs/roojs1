@@ -43,9 +43,8 @@ var myReader = new Roo.data.ArrayReader({
  */
 Roo.data.ArrayReader = function(meta, recordType){
     
-    
-    
-    Roo.data.ArrayReader.superclass.constructor.call(this, meta, recordType);
+     
+    Roo.data.ArrayReader.superclass.constructor.call(this, meta, recordType||meta.fields);
 };
 
 Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
