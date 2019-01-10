@@ -345,6 +345,12 @@ Roo.docs = new Roo.XComponent({
            html : _this._strings['e64b94523532dbac62df6795a5153f04'] /* doc-desc */,
            xns : Roo.bootstrap,
            '|xns' : 'Roo.bootstrap'
+          },
+          {
+           xtype : 'Container',
+           html : _this._strings['e64b94523532dbac62df6795a5153f04'] /* doc-desc */,
+           xns : Roo.bootstrap,
+           '|xns' : 'Roo.bootstrap'
           }
          ]
         }

@@ -146,6 +146,11 @@
            "xtype" : "Container",
            "$ xns" : "Roo.bootstrap",
            "String html" : "doc-desc"
+          },
+          {
+           "xtype" : "Container",
+           "$ xns" : "Roo.bootstrap",
+           "String html" : "doc-desc"
           }
          ]
         }
