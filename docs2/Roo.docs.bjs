@@ -7,6 +7,7 @@
  "modOrder" : "001",
  "strings" : {
   "098f6bcd4621d373cade4e832627b4f6" : "test",
+  "ae635f08107a69569e636835f24e6f6f" : "extends",
   "9bd81329febf6efe22788e03ddeaf0af" : " Class ",
   "f561aaf6ef0bf14d4208bb46a4ccb3ad" : "xxx"
  },
@@ -109,6 +110,12 @@
              "xtype" : "Element",
              "$ xns" : "Roo.bootstrap",
              "String html" : "xxx"
+            },
+            {
+             "String tag" : "span",
+             "xtype" : "Element",
+             "$ xns" : "Roo.bootstrap",
+             "String html" : "extends"
             }
            ]
           },
