@@ -534,6 +534,7 @@ Roo.docs = new Roo.XComponent({
            dataIndex : 'name',
            header : _this._strings['3d067bedfe2f4677470dd6ccf64d05ed'] /* Public   */,
            md : 11,
+           renderer : funciton(v,x,r) { },
            xns : Roo.grid,
            '|xns' : 'Roo.grid'
           },
