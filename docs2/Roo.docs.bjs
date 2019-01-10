@@ -167,6 +167,7 @@
          "$ xns" : "Roo.bootstrap",
          "items" : [
           {
+           "String panel" : "info",
            "xtype" : "Container",
            "$ xns" : "Roo.bootstrap"
           }

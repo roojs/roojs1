@@ -369,6 +369,7 @@ Roo.docs = new Roo.XComponent({
          items  : [
           {
            xtype : 'Container',
+           panel : 'info',
            xns : Roo.bootstrap,
            '|xns' : 'Roo.bootstrap'
           }
