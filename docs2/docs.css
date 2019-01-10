@@ -915,6 +915,7 @@ td.attributes, .fixedFont
      vertical-align: top;
     padding: 5px 10px;
     font-size: 13px;
+    color: #666;
 } 
 
 .doc-table-container td.short {
