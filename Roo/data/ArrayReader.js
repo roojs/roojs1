@@ -37,6 +37,7 @@ var myReader = new Roo.data.ArrayReader({
  * Create a new JsonReader
  * @param {Object} meta Metadata configuration options.
  * @param {Object} recordType Either an Array of field definition objects
+ * @cfg {Array} fields Array of field definition objects
  * as specified to {@link Roo.data.Record#create},
  * or an {@link Roo.data.Record} object
  * created using {@link Roo.data.Record#create}.
