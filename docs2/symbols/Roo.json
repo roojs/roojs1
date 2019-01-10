@@ -1,0 +1,506 @@
+{
+  "name" : "Roo",
+  "augments" : [
+  ],
+  "desc" : "Roo core utilities and functions.",
+  "config" : [
+    {
+      "name" : "removeMask",
+      "type" : "Boolean",
+      "desc" : "True to create a single-use mask that is automatically destroyed after loading (useful for page loads),\nFalse to persist the mask element reference for multiple uses (e.g., for paged data widgets).  Defaults to false.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "items",
+      "type" : "Array",
+      "desc" : "array of button configs or elements to add (will be converted to a MixedCollection)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "mode",
+      "type" : "String",
+      "desc" : "The shadow display mode.  Supports the following options:<br />\nsides: Shadow displays on both sides and bottom only<br />\nframe: Shadow displays equally on all four sides<br />\ndrop: Traditional bottom-right drop shadow (default)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "tree",
+      "type" : "Roo.tree.TreePanel",
+      "desc" : "The tree TreePanel, with config etc.",
+      "memberOf" : ""
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "each",
+      "desc" : "Iterates an array calling the passed function with each item, stopping if your function returns false. If the\npassed array is not really an array, your function is called once with it.\nThe supplied function is called with (Object item, Number index, Array allItems).",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "array",
+          "type" : "Array/NodeList/Mixed",
+          "desc" : ""
+        },
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : ""
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "get",
+      "desc" : "Static method to retrieve Element objects. Uses simple caching to consistently return the same object.\nAutomatically fixes if an object was recreated with the same id via AJAX or DOM.\nShorthand of {@link Roo.Element#get}",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement/Element",
+          "desc" : "The id of the node, a DOM Node or an existing Element."
+        }
+      ],
+      "returns" : "Element"
+    },
+    {
+      "name" : "decode",
+      "desc" : "Shorthand for {@link Roo.util.JSON#decode}",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getDom",
+      "desc" : "Return the dom node for the passed string (id), dom node, or Roo.Element",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement/Roo.Element",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "urlEncode",
+      "desc" : "Takes an object and converts it to an encoded URL. e.g. Roo.urlEncode({foo: 1, bar: 2}); would return \"foo=1&bar=2\".  Optionally, property values can be arrays, instead of keys and the resulting string that's returned will contain a name/value pair for each array value.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Object",
+          "desc" : ""
+        }
+      ],
+      "returns" : "String"
+    },
+    {
+      "name" : "addBehaviors",
+      "desc" : "Applies event listeners to elements by selectors when the document is ready.\nThe event name is specified with an @ suffix.\n<pre><code>\nRoo.addBehaviors({\n   // add a listener for click on all anchors in element with id foo\n   '#foo a@click' : function(e, t){\n       // do something\n   },\n\n   // add the same listener to multiple selectors (separated by comma BEFORE the @)\n   '#foo a, #bar span.some-class@mouseover' : function(){\n       // do something\n   }\n});\n</code></pre>",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "obj",
+          "type" : "Object",
+          "desc" : "The list of behaviors to apply"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "factory",
+      "desc" : "Creates namespaces to be used for scoping variables and classes so that they are not global.  Usage:\n<pre><code>\nRoo.factory({ xns: Roo.data, xtype : 'Store', .....});\nRoo.factory(conf, Roo.data);\n</code></pre>",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "classname",
+          "type" : "String",
+          "desc" : ""
+        },
+        {
+          "name" : "namespace",
+          "type" : "String",
+          "desc" : "(optional)"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "apply",
+      "desc" : "Copies all the properties of config to obj.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "obj",
+          "type" : "Object",
+          "desc" : "The receiver of the properties"
+        },
+        {
+          "name" : "config",
+          "type" : "Object",
+          "desc" : "The source of the properties"
+        },
+        {
+          "name" : "defaults",
+          "type" : "Object",
+          "desc" : "A different object that will also be applied for default values"
+        }
+      ],
+      "returns" : "Object"
+    },
+    {
+      "name" : "onReady",
+      "desc" : "Fires when the document is ready (before onload and before images are loaded).  Shorthand of {@link Roo.EventManager#onDocumentReady}.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : "The method the event invokes"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "An  object that becomes the scope of the handler"
+        },
+        {
+          "name" : "override",
+          "type" : "boolean",
+          "desc" : "If true, the obj passed in becomes\n                            the execution scope of the listener"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "select",
+      "desc" : "Selects elements based on the passed CSS selector to enable working on them as 1.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "selector",
+          "type" : "String/Array",
+          "desc" : "The CSS selector or an array of elements"
+        },
+        {
+          "name" : "unique",
+          "type" : "Boolean",
+          "desc" : "(optional) true to create a unique Roo.Element for each element (defaults to a shared flyweight object)"
+        },
+        {
+          "name" : "root",
+          "type" : "HTMLElement/String",
+          "desc" : "(optional) The root element of the query or id of the root"
+        }
+      ],
+      "returns" : "CompositeElementLite/CompositeElement"
+    },
+    {
+      "name" : "applyIf",
+      "desc" : "Copies all the properties of config to obj if they don't already exist.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "obj",
+          "type" : "Object",
+          "desc" : "The receiver of the properties"
+        },
+        {
+          "name" : "config",
+          "type" : "Object",
+          "desc" : "The source of the properties"
+        }
+      ],
+      "returns" : "Object"
+    },
+    {
+      "name" : "getCmp",
+      "desc" : "Shorthand for {@link Roo.ComponentMgr#get}",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "String",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "id",
+      "desc" : "Generates unique ids. If the element already has an id, it is unchanged",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement/Element",
+          "desc" : "(optional) The element to generate an id for"
+        },
+        {
+          "name" : "prefix",
+          "type" : "String",
+          "desc" : "(optional) Id prefix (defaults \"Roo-gen\")"
+        }
+      ],
+      "returns" : "String"
+    },
+    {
+      "name" : "encodeURIComponent",
+      "desc" : "Safe version of encodeURIComponent",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "data",
+          "type" : "String",
+          "desc" : ""
+        }
+      ],
+      "returns" : "String"
+    },
+    {
+      "name" : "encode",
+      "desc" : "Shorthand for {@link Roo.util.JSON#encode}",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "fly",
+      "desc" : "Gets the globally shared flyweight Element, with the passed node as the active element. Do not store a reference to this element -\nthe dom node can be overwritten by other code.\nShorthand of {@link Roo.Element#fly}",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement",
+          "desc" : "The dom node or id"
+        },
+        {
+          "name" : "named",
+          "type" : "String",
+          "desc" : "(optional) Allows for creation of named reusable flyweights to\n                                 prevent conflicts (e.g. internally Roo uses \"_internal\")"
+        }
+      ],
+      "returns" : "Element"
+    },
+    {
+      "name" : "isEmpty",
+      "desc" : "Returns true if the passed value is null, undefined or an empty string (optional).",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "value",
+          "type" : "Mixed",
+          "desc" : "The value to test"
+        },
+        {
+          "name" : "allowBlank",
+          "type" : "Boolean",
+          "desc" : "(optional) Pass true if an empty string is not considered empty"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "query",
+      "desc" : "Selects an array of DOM nodes by CSS/XPath selector. Shorthand of {@link Roo.DomQuery#select}",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "path",
+          "type" : "String",
+          "desc" : "The selector/xpath query"
+        },
+        {
+          "name" : "root",
+          "type" : "Node",
+          "desc" : "(optional) The start of the query (defaults to document)."
+        }
+      ],
+      "returns" : "Array"
+    },
+    {
+      "name" : "urlDecode",
+      "desc" : "Takes an encoded URL and and converts it to an object. e.g. Roo.urlDecode(\"foo=1&bar=2\"); would return {foo: 1, bar: 2} or Roo.urlDecode(\"foo=1&bar=2&bar=3&bar=4\", true); would return {foo: 1, bar: [2, 3, 4]}.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "string",
+          "type" : "String",
+          "desc" : ""
+        },
+        {
+          "name" : "overwrite",
+          "type" : "Boolean",
+          "desc" : "(optional) Items of the same name will overwrite previous values instead of creating an an array (Defaults to false)."
+        }
+      ],
+      "returns" : "Object"
+    },
+    {
+      "name" : "escapeRe",
+      "desc" : "Escapes the passed string for use in a regular expression",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "str",
+          "type" : "String",
+          "desc" : ""
+        }
+      ],
+      "returns" : "String"
+    },
+    {
+      "name" : "extend",
+      "desc" : "Extends one class with another class and optionally overrides members with the passed literal. This class\nalso adds the function \"override()\" to the class that can be used to override\nmembers on an instance.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "subclass",
+          "type" : "Object",
+          "desc" : "The class inheriting the functionality"
+        },
+        {
+          "name" : "superclass",
+          "type" : "Object",
+          "desc" : "The class being extended"
+        },
+        {
+          "name" : "overrides",
+          "type" : "Object",
+          "desc" : "(optional) A literal with members"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "namespace",
+      "desc" : "Creates namespaces to be used for scoping variables and classes so that they are not global.  Usage:\n<pre><code>\nRoo.namespace('Company', 'Company.data');\nCompany.Widget = function() { ... }\nCompany.data.CustomStore = function(config) { ... }\n</code></pre>",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "namespace1",
+          "type" : "String",
+          "desc" : ""
+        },
+        {
+          "name" : "namespace2",
+          "type" : "String",
+          "desc" : ""
+        },
+        {
+          "name" : "etc",
+          "type" : "String",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "override",
+      "desc" : "Adds a list of functions to the prototype of an existing class, overwriting any existing methods with the same name.\nUsage:<pre><code>\nRoo.override(MyClass, {\n    newMethod1: function(){\n        // etc.\n    },\n    newMethod2: function(foo){\n        // etc.\n    }\n});\n </code></pre>",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "origclass",
+          "type" : "Object",
+          "desc" : "The class to override"
+        },
+        {
+          "name" : "overrides",
+          "type" : "Object",
+          "desc" : "The list of functions to add to origClass.  This should be specified as an object literal\ncontaining one or more methods."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "selectNode",
+      "desc" : "Selects a single element as a Roo Element\nThis is about as close as you can get to jQuery's $('do crazy stuff')",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "selector",
+          "type" : "String",
+          "desc" : "The selector/xpath query"
+        },
+        {
+          "name" : "root",
+          "type" : "Node",
+          "desc" : "(optional) The start of the query (defaults to document)."
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "type",
+      "desc" : "Returns the type of object that is passed in. If the object passed in is null or undefined it\nreturn false otherwise it returns one of the following values:<ul>\n<li><b>string</b>: If the object passed is a string</li>\n<li><b>number</b>: If the object passed is a number</li>\n<li><b>boolean</b>: If the object passed is a boolean value</li>\n<li><b>function</b>: If the object passed is a function reference</li>\n<li><b>object</b>: If the object passed is an object</li>\n<li><b>array</b>: If the object passed is an array</li>\n<li><b>regexp</b>: If the object passed is a regular expression</li>\n<li><b>element</b>: If the object passed is a DOM Element</li>\n<li><b>nodelist</b>: If the object passed is a DOM NodeList</li>\n<li><b>textnode</b>: If the object passed is a DOM text node and contains something other than whitespace</li>\n<li><b>whitespace</b>: If the object passed is a DOM text node and contains only whitespace</li>",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "object",
+          "type" : "Mixed",
+          "desc" : ""
+        }
+      ],
+      "returns" : "String"
+    }
+  ],
+  "events" : [
+  ]
+}

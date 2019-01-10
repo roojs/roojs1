@@ -1,0 +1,42 @@
+{
+  "name" : "Roo.UpdateManager.BasicRenderer",
+  "augments" : [
+  ],
+  "desc" : "Default Content renderer. Updates the elements innerHTML with the responseText.",
+  "config" : [
+  ],
+  "methods" : [
+    {
+      "name" : "render",
+      "desc" : "This is called when the transaction is completed and it's time to update the element - The BasicRenderer\nupdates the elements innerHTML with the responseText - To perform a custom render (i.e. XML or JSON processing),\ncreate an object with a \"render(el, response)\" method and pass it to setRenderer on the UpdateManager.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "Roo.Element",
+          "desc" : "The element being rendered"
+        },
+        {
+          "name" : "response",
+          "type" : "Object",
+          "desc" : "The YUI Connect response object"
+        },
+        {
+          "name" : "updateManager",
+          "type" : "UpdateManager",
+          "desc" : "The calling update manager"
+        },
+        {
+          "name" : "callback",
+          "type" : "Function",
+          "desc" : "A callback that will need to be called if loadScripts is true on the UpdateManager"
+        }
+      ],
+      "returns" : ""
+    }
+  ],
+  "events" : [
+  ]
+}

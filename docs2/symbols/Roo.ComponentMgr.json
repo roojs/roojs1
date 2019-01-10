@@ -1,0 +1,82 @@
+{
+  "name" : "Roo.ComponentMgr",
+  "augments" : [
+  ],
+  "desc" : "Provides a common registry of all components on a page so that they can be easily accessed by component id (see {@link Roo.getCmp}).",
+  "config" : [
+  ],
+  "methods" : [
+    {
+      "name" : "onAvailable",
+      "desc" : "Registers a function that will be called when a specified component is added to ComponentMgr",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "String",
+          "desc" : "The component id"
+        },
+        {
+          "name" : "fn",
+          "type" : "Funtction",
+          "desc" : "The callback function"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "The scope of the callback"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "get",
+      "desc" : "Returns a component by id",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "String",
+          "desc" : "The component id"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "register",
+      "desc" : "Registers a component.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "c",
+          "type" : "Roo.Component",
+          "desc" : "The component"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "unregister",
+      "desc" : "Unregisters a component.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "c",
+          "type" : "Roo.Component",
+          "desc" : "The component"
+        }
+      ],
+      "returns" : ""
+    }
+  ],
+  "events" : [
+  ]
+}

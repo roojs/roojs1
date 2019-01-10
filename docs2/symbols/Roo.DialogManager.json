@@ -1,0 +1,67 @@
+{
+  "name" : "Roo.DialogManager",
+  "augments" : [
+  ],
+  "desc" : "Provides global access to BasicDialogs that have been created and\nsupport for z-indexing (layering) multiple open dialogs.",
+  "config" : [
+  ],
+  "methods" : [
+    {
+      "name" : "bringToFront",
+      "desc" : "Brings the specified dialog to the front",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "dlg",
+          "type" : "String/Object",
+          "desc" : "The id of the dialog or a dialog"
+        }
+      ],
+      "returns" : "Roo.BasicDialog"
+    },
+    {
+      "name" : "sendToBack",
+      "desc" : "Sends the specified dialog to the back",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "dlg",
+          "type" : "String/Object",
+          "desc" : "The id of the dialog or a dialog"
+        }
+      ],
+      "returns" : "Roo.BasicDialog"
+    },
+    {
+      "name" : "hideAll",
+      "desc" : "Hides all dialogs",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "get",
+      "desc" : "Gets a registered dialog by id",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "String/Object",
+          "desc" : "The id of the dialog or a dialog"
+        }
+      ],
+      "returns" : "Roo.BasicDialog"
+    }
+  ],
+  "events" : [
+  ]
+}

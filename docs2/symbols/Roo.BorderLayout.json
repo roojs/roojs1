@@ -1,0 +1,530 @@
+{
+  "name" : "Roo.BorderLayout",
+  "augments" : [
+    "Roo.LayoutManager",
+    "Roo.util.Observable"
+  ],
+  "desc" : "This class represents a common layout manager used in desktop applications. For screenshots and more details,\nplease see: <br><br>\n<a href=\"http://www.jackslocum.com/yui/2006/10/19/cross-browser-web-20-layouts-with-yahoo-ui/\">Cross Browser Layouts - Part 1</a><br>\n<a href=\"http://www.jackslocum.com/yui/2006/10/28/cross-browser-web-20-layouts-part-2-ajax-feed-viewer-20/\">Cross Browser Layouts - Part 2</a><br><br>\nExample:\n <pre><code>\n var layout = new Roo.BorderLayout(document.body, {\n    north: {\n        initialSize: 25,\n        titlebar: false\n    },\n    west: {\n        split:true,\n        initialSize: 200,\n        minSize: 175,\n        maxSize: 400,\n        titlebar: true,\n        collapsible: true\n    },\n    east: {\n        split:true,\n        initialSize: 202,\n        minSize: 175,\n        maxSize: 400,\n        titlebar: true,\n        collapsible: true\n    },\n    south: {\n        split:true,\n        initialSize: 100,\n        minSize: 100,\n        maxSize: 200,\n        titlebar: true,\n        collapsible: true\n    },\n    center: {\n        titlebar: true,\n        autoScroll:true,\n        resizeTabs: true,\n        minTabWidth: 50,\n        preferredTabWidth: 150\n    }\n});\n\n// shorthand\nvar CP = Roo.ContentPanel;\n\nlayout.beginUpdate();\nlayout.add(\"north\", new CP(\"north\", \"North\"));\nlayout.add(\"south\", new CP(\"south\", {title: \"South\", closable: true}));\nlayout.add(\"west\", new CP(\"west\", {title: \"West\"}));\nlayout.add(\"east\", new CP(\"autoTabs\", {title: \"Auto Tabs\", closable: true}));\nlayout.add(\"center\", new CP(\"center1\", {title: \"Close Me\", closable: true}));\nlayout.add(\"center\", new CP(\"center2\", {title: \"Center Panel\", closable: false}));\nlayout.getRegion(\"center\").showPanel(\"center1\");\nlayout.endUpdate();\n</code></pre>\n\n<b>The container the layout is rendered into can be either the body element or any other element.\nIf it is not the body element, the container needs to either be an absolute positioned element,\nor you will need to add \"position:relative\" to the css of the container.  You will also need to specify\nthe container size if it is not the body element.</b>",
+  "config" : [
+    {
+      "name" : "listeners",
+      "type" : "Object",
+      "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+      "memberOf" : "Roo.util.Observable"
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "create",
+      "desc" : "Shortcut for creating a new BorderLayout object and adding one or more ContentPanels to it in a single step, handling\nthe beginUpdate and endUpdate calls internally.  The key to this method is the <b>panels</b> property that can be\nprovided with each region config, which allows you to add ContentPanel configs in addition to the region configs\nduring creation.  The following code is equivalent to the constructor-based example at the beginning of this class:\n<pre><code>\n// shorthand\nvar CP = Roo.ContentPanel;\n\nvar layout = Roo.BorderLayout.create({\n    north: {\n        initialSize: 25,\n        titlebar: false,\n        panels: [new CP(\"north\", \"North\")]\n    },\n    west: {\n        split:true,\n        initialSize: 200,\n        minSize: 175,\n        maxSize: 400,\n        titlebar: true,\n        collapsible: true,\n        panels: [new CP(\"west\", {title: \"West\"})]\n    },\n    east: {\n        split:true,\n        initialSize: 202,\n        minSize: 175,\n        maxSize: 400,\n        titlebar: true,\n        collapsible: true,\n        panels: [new CP(\"autoTabs\", {title: \"Auto Tabs\", closable: true})]\n    },\n    south: {\n        split:true,\n        initialSize: 100,\n        minSize: 100,\n        maxSize: 200,\n        titlebar: true,\n        collapsible: true,\n        panels: [new CP(\"south\", {title: \"South\", closable: true})]\n    },\n    center: {\n        titlebar: true,\n        autoScroll:true,\n        resizeTabs: true,\n        minTabWidth: 50,\n        preferredTabWidth: 150,\n        panels: [\n            new CP(\"center1\", {title: \"Close Me\", closable: true}),\n            new CP(\"center2\", {title: \"Center Panel\", closable: false})\n        ]\n    }\n}, document.body);\n\nlayout.getRegion(\"center\").showPanel(\"center1\");\n</code></pre>",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "config",
+          "type" : "",
+          "desc" : ""
+        },
+        {
+          "name" : "targetEl",
+          "type" : "",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "restoreState",
+      "desc" : "Restores this layout's state using Roo.state.Manager or the state provided by the passed provider.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "provider",
+          "type" : "Roo.state.Provider",
+          "desc" : "(optional) An alternate state provider"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addRegion",
+      "desc" : "Creates and adds a new region if it doesn't already exist.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "target",
+          "type" : "String",
+          "desc" : "The target region key (north, south, east, west or center)."
+        },
+        {
+          "name" : "config",
+          "type" : "Object",
+          "desc" : "The regions config object"
+        }
+      ],
+      "returns" : "BorderLayoutRegion"
+    },
+    {
+      "name" : "showPanel",
+      "desc" : "Searches all regions for a panel with the specified id and activates (shows) it.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "panelId",
+          "type" : "String/ContentPanel",
+          "desc" : "The panels id or the panel itself"
+        }
+      ],
+      "returns" : "Roo.ContentPanel"
+    },
+    {
+      "name" : "batchAdd",
+      "desc" : "Adds a batch of multiple ContentPanels dynamically by passing a special regions config object.  This config\nobject should contain properties for each region to add ContentPanels to, and each property's value should be\na valid ContentPanel config object.  Example:\n<pre><code>\n// Create the main layout\nvar layout = new Roo.BorderLayout('main-ct', {\n    west: {\n        split:true,\n        minSize: 175,\n        titlebar: true\n    },\n    center: {\n        title:'Components'\n    }\n}, 'main-ct');\n\n// Create and add multiple ContentPanels at once via configs\nlayout.batchAdd({\n   west: {\n       id: 'source-files',\n       autoCreate:true,\n       title:'Ext Source Files',\n       autoScroll:true,\n       fitToFrame:true\n   },\n   center : {\n       el: cview,\n       autoScroll:true,\n       fitToFrame:true,\n       toolbar: tb,\n       resizeEl:'cbody'\n   }\n});\n</code></pre>",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "regions",
+          "type" : "Object",
+          "desc" : "An object containing ContentPanel configs by region name"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "remove",
+      "desc" : "Remove a ContentPanel (or subclass) to this layout.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "target",
+          "type" : "String",
+          "desc" : "The target region key (north, south, east, west or center)."
+        },
+        {
+          "name" : "panel",
+          "type" : "Number/String/Roo.ContentPanel",
+          "desc" : "The index, id or panel to remove"
+        }
+      ],
+      "returns" : "Roo.ContentPanel"
+    },
+    {
+      "name" : "findPanel",
+      "desc" : "Searches all regions for a panel with the specified id",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "panelId",
+          "type" : "String",
+          "desc" : ""
+        }
+      ],
+      "returns" : "Roo.ContentPanel"
+    },
+    {
+      "name" : "layout",
+      "desc" : "Performs a layout update.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addxtype",
+      "desc" : "Adds a xtype elements to the layout.\n<pre><code>\n\nlayout.addxtype({\n       xtype : 'ContentPanel',\n       region: 'west',\n       items: [ .... ]\n   }\n);\n\nlayout.addxtype({\n        xtype : 'NestedLayoutPanel',\n        region: 'west',\n        layout: {\n           center: { },\n           west: { }   \n        },\n        items : [ ... list of content panels or nested layout panels.. ]\n   }\n);\n</code></pre>",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "cfg",
+          "type" : "Object",
+          "desc" : "Xtype definition of item to add."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "add",
+      "desc" : "Adds a ContentPanel (or subclass) to this layout.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "target",
+          "type" : "String",
+          "desc" : "The target region key (north, south, east, west or center)."
+        },
+        {
+          "name" : "panel",
+          "type" : "Roo.ContentPanel",
+          "desc" : "The panel to add"
+        }
+      ],
+      "returns" : "Roo.ContentPanel"
+    },
+    {
+      "name" : "getRegion",
+      "desc" : "Returns the specified region.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.LayoutManager",
+      "params" : [
+        {
+          "name" : "target",
+          "type" : "String",
+          "desc" : "The region key ('center', 'north', 'south', 'east' or 'west')"
+        }
+      ],
+      "returns" : "Roo.LayoutRegion"
+    },
+    {
+      "name" : "beginUpdate",
+      "desc" : "Suspend the LayoutManager from doing auto-layouts while\nmaking multiple add or remove calls",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.LayoutManager",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "isUpdating",
+      "desc" : "Returns true if this layout is currently being updated",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.LayoutManager",
+      "params" : [
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "getViewSize",
+      "desc" : "Returns the size of the current view. This method normalizes document.body and element embedded layouts and\nperforms box-model adjustments.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.LayoutManager",
+      "params" : [
+      ],
+      "returns" : "Object"
+    },
+    {
+      "name" : "endUpdate",
+      "desc" : "Restore auto-layouts and optionally disable the manager from performing a layout",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.LayoutManager",
+      "params" : [
+        {
+          "name" : "noLayout",
+          "type" : "Boolean",
+          "desc" : "true to disable a layout update"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getEl",
+      "desc" : "Returns the Element this layout is bound to.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.LayoutManager",
+      "params" : [
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "purgeListeners",
+      "desc" : "Removes all listeners for this object",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "on",
+      "desc" : "Appends an event handler to this element (shorthand for addListener)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context."
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional)"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "un",
+      "desc" : "Removes a listener (shorthand for removeListener)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The handler to remove"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the handler"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addEvents",
+      "desc" : "Used to define events on this Observable",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "object",
+          "type" : "Object",
+          "desc" : "The object with the events defined"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "releaseCapture",
+      "desc" : "Removes <b>all</b> added captures from the Observable.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Observable",
+          "desc" : "The Observable to release"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "removeListener",
+      "desc" : "Removes a listener",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The handler to remove"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the handler"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "fireEvent",
+      "desc" : "Fires the specified event with the passed parameters (minus the event name).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : ""
+        },
+        {
+          "name" : "args",
+          "type" : "Object...",
+          "desc" : "Variable number of parameters are passed to handlers"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "hasListener",
+      "desc" : "Checks to see if this object has any listeners for a specified event",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The name of the event to check for"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "capture",
+      "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Observable",
+          "desc" : "The Observable to capture"
+        },
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : "The function to call"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the fn"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addListener",
+      "desc" : "Appends an event handler to this component",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context."
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional) An object containing handler configuration\nproperties. This may contain any of the following properties:<ul>\n<li>scope {Object} The scope in which to execute the handler function. The handler function's \"this\" context.</li>\n<li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li>\n<li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li>\n<li>buffer {Number} Causes the handler to be scheduled to run in an {@link Roo.util.DelayedTask} delayed\nby the specified number of milliseconds. If the event fires again within that time, the original\nhandler is <em>not</em> invoked, but the new handler is scheduled in its place.</li>\n</ul><br>\n<p>\n<b>Combining Options</b><br>\nUsing the options argument, it is possible to combine different types of listeners:<br>\n<br>\nA normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)\n\t\t<pre><code>\n\t\tel.on('click', this.onClick, this, {\n \t\t\tsingle: true,\n    \t\tdelay: 100,\n    \t\tforumId: 4\n\t\t});\n\t\t</code></pre>\n<p>\n<b>Attaching multiple handlers in 1 call</b><br>\nThe method also allows for a single argument to be passed which is a config object containing properties\nwhich specify multiple handlers.\n<pre><code>\n\t\tel.on({\n\t\t\t'click': {\n        \t\tfn: this.onClick,\n        \t\tscope: this,\n        \t\tdelay: 100\n    \t\t}, \n    \t\t'mouseover': {\n        \t\tfn: this.onMouseOver,\n        \t\tscope: this\n    \t\t},\n    \t\t'mouseout': {\n        \t\tfn: this.onMouseOut,\n        \t\tscope: this\n    \t\t}\n\t\t});\n\t\t</code></pre>\n<p>\nOr a shorthand syntax which passes the same scope object to all handlers:\n     \t<pre><code>\n\t\tel.on({\n\t\t\t'click': this.onClick,\n    \t\t'mouseover': this.onMouseOver,\n    \t\t'mouseout': this.onMouseOut,\n    \t\tscope: this\n\t\t});\n\t\t</code></pre>"
+        }
+      ],
+      "returns" : ""
+    }
+  ],
+  "events" : [
+    {
+      "name" : "*layout",
+      "desc" : "Fires when a layout is performed.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.LayoutManager",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.LayoutManager",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*regionexpanded",
+      "desc" : "Fires when a region is expanded.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.LayoutManager",
+      "params" : [
+        {
+          "name" : "region",
+          "type" : "Roo.LayoutRegion",
+          "desc" : "The expanded region"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*regionresized",
+      "desc" : "Fires when the user resizes a region.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.LayoutManager",
+      "params" : [
+        {
+          "name" : "region",
+          "type" : "Roo.LayoutRegion",
+          "desc" : "The resized region"
+        },
+        {
+          "name" : "newSize",
+          "type" : "Number",
+          "desc" : "The new size (width for east/west, height for north/south)"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*regioncollapsed",
+      "desc" : "Fires when a region is collapsed.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.LayoutManager",
+      "params" : [
+        {
+          "name" : "region",
+          "type" : "Roo.LayoutRegion",
+          "desc" : "The collapsed region"
+        }
+      ],
+      "returns" : ""
+    }
+  ]
+}

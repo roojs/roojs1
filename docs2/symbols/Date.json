@@ -1,0 +1,227 @@
+{
+  "name" : "Date",
+  "augments" : [
+  ],
+  "desc" : "The date parsing and format syntax is a subset of\n<a href=\"http://www.php.net/date\">PHP's date() function</a>, and the formats that are\nsupported will provide results equivalent to their PHP versions.\n\nFollowing is the list of all currently supported formats:\n<pre>\nSample date:\n'Wed Jan 10 2007 15:05:01 GMT-0600 (Central Standard Time)'\n\nFormat  Output      Description\n------  ----------  --------------------------------------------------------------\n  d      10         Day of the month, 2 digits with leading zeros\n  D      Wed        A textual representation of a day, three letters\n  j      10         Day of the month without leading zeros\n  l      Wednesday  A full textual representation of the day of the week\n  S      th         English ordinal day of month suffix, 2 chars (use with j)\n  w      3          Numeric representation of the day of the week\n  z      9          The julian date, or day of the year (0-365)\n  W      01         ISO-8601 2-digit week number of year, weeks starting on Monday (00-52)\n  F      January    A full textual representation of the month\n  m      01         Numeric representation of a month, with leading zeros\n  M      Jan        Month name abbreviation, three letters\n  n      1          Numeric representation of a month, without leading zeros\n  t      31         Number of days in the given month\n  L      0          Whether it's a leap year (1 if it is a leap year, else 0)\n  Y      2007       A full numeric representation of a year, 4 digits\n  y      07         A two digit representation of a year\n  a      pm         Lowercase Ante meridiem and Post meridiem\n  A      PM         Uppercase Ante meridiem and Post meridiem\n  g      3          12-hour format of an hour without leading zeros\n  G      15         24-hour format of an hour without leading zeros\n  h      03         12-hour format of an hour with leading zeros\n  H      15         24-hour format of an hour with leading zeros\n  i      05         Minutes with leading zeros\n  s      01         Seconds, with leading zeros\n  O      -0600      Difference to Greenwich time (GMT) in hours (Allows +08, without minutes)\n  P      -06:00     Difference to Greenwich time (GMT) with colon between hours and minutes\n  T      CST        Timezone setting of the machine running the code\n  Z      -21600     Timezone offset in seconds (negative if west of UTC, positive if east)\n</pre>\n\nExample usage (note that you must escape format specifiers with '\\\\' to render them as character literals):\n<pre><code>\nvar dt = new Date('1/10/2007 03:05:01 PM GMT-0600');\ndocument.write(dt.format('Y-m-d'));                         //2007-01-10\ndocument.write(dt.format('F j, Y, g:i a'));                 //January 10, 2007, 3:05 pm\ndocument.write(dt.format('l, \\\\t\\\\he dS of F Y h:i:s A'));  //Wednesday, the 10th of January 2007 03:05:01 PM\n </code></pre>\n\nHere are some standard date/time patterns that you might find helpful.  They\nare not part of the source of Date.js, but to use them you can simply copy this\nblock of code into any script that is included after Date.js and they will also become\nglobally available on the Date object.  Feel free to add or remove patterns as needed in your code.\n<pre><code>\nDate.patterns = {\n    ISO8601Long:\"Y-m-d H:i:s\",\n    ISO8601Short:\"Y-m-d\",\n    ShortDate: \"n/j/Y\",\n    LongDate: \"l, F d, Y\",\n    FullDateTime: \"l, F d, Y g:i:s A\",\n    MonthDay: \"F d\",\n    ShortTime: \"g:i A\",\n    LongTime: \"g:i:s A\",\n    SortableDateTime: \"Y-m-d\\\\TH:i:s\",\n    UniversalSortableDateTime: \"Y-m-d H:i:sO\",\n    YearMonth: \"F, Y\"\n};\n</code></pre>\n\nExample usage:\n<pre><code>\nvar dt = new Date();\ndocument.write(dt.format(Date.patterns.ShortDate));\n </code></pre>",
+  "config" : [
+  ],
+  "methods" : [
+    {
+      "name" : "getDayOfYear",
+      "desc" : "Get the numeric day number of the year, adjusted for leap year.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "Number"
+    },
+    {
+      "name" : "getFirstDateOfMonth",
+      "desc" : "Get the first date of this date's month",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "Date"
+    },
+    {
+      "name" : "format",
+      "desc" : "Formats a date given the supplied format string",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "format",
+          "type" : "String",
+          "desc" : "The format string"
+        }
+      ],
+      "returns" : "String"
+    },
+    {
+      "name" : "clearTime",
+      "desc" : "Clears any time information from this date",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "clone",
+          "type" : "Boolean",
+          "desc" : "true to create a clone of this date, clear the time and return it"
+        }
+      ],
+      "returns" : "Date"
+    },
+    {
+      "name" : "getGMTColonOffset",
+      "desc" : "Get the offset from GMT of the current date (equivalent to the format specifier 'P').",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "String"
+    },
+    {
+      "name" : "getLastDateOfMonth",
+      "desc" : "Get the last date of this date's month",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "Date"
+    },
+    {
+      "name" : "getTimezone",
+      "desc" : "Get the timezone abbreviation of the current date (equivalent to the format specifier 'T').",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "String"
+    },
+    {
+      "name" : "getElapsed",
+      "desc" : "Returns the number of milliseconds between this date and date",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "date",
+          "type" : "Date",
+          "desc" : "(optional) Defaults to now"
+        }
+      ],
+      "returns" : "Number"
+    },
+    {
+      "name" : "add",
+      "desc" : "Provides a convenient method of performing basic date arithmetic.  This method\ndoes not modify the Date instance being called - it creates and returns\na new Date instance containing the resulting date value.\n\nExamples:\n<pre><code>\n//Basic usage:\nvar dt = new Date('10/29/2006').add(Date.DAY, 5);\ndocument.write(dt); //returns 'Fri Oct 06 2006 00:00:00'\n\n//Negative values will subtract correctly:\nvar dt2 = new Date('10/1/2006').add(Date.DAY, -5);\ndocument.write(dt2); //returns 'Tue Sep 26 2006 00:00:00'\n\n//You can even chain several calls together in one line!\nvar dt3 = new Date('10/1/2006').add(Date.DAY, 5).add(Date.HOUR, 8).add(Date.MINUTE, -30);\ndocument.write(dt3); //returns 'Fri Oct 06 2006 07:30:00'\n </code></pre>",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "interval",
+          "type" : "String",
+          "desc" : "A valid date interval enum value"
+        },
+        {
+          "name" : "value",
+          "type" : "Number",
+          "desc" : "The amount to add to the current date"
+        }
+      ],
+      "returns" : "Date"
+    },
+    {
+      "name" : "getSuffix",
+      "desc" : "Get the English ordinal suffix of the current day (equivalent to the format specifier 'S').",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "String"
+    },
+    {
+      "name" : "getFirstDayOfMonth",
+      "desc" : "Get the first day of the current month, adjusted for leap year.  The returned value\nis the numeric day index within the week (0-6) which can be used in conjunction with\nthe {@link #monthNames} array to retrieve the textual day name.\nExample:\n<pre><code>\nvar dt = new Date('1/10/2007');\ndocument.write(Date.dayNames[dt.getFirstDayOfMonth()]); //output: 'Monday'\n</code></pre>",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "Number"
+    },
+    {
+      "name" : "getGMTOffset",
+      "desc" : "Get the offset from GMT of the current date (equivalent to the format specifier 'O').",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "String"
+    },
+    {
+      "name" : "getDaysInMonth",
+      "desc" : "Get the number of days in the current month, adjusted for leap year.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "Number"
+    },
+    {
+      "name" : "clone",
+      "desc" : "Creates and returns a new Date instance with the exact same date value as the called instance.\nDates are copied and passed by reference, so if a copied date variable is modified later, the original\nvariable will also be changed.  When the intention is to create a new variable that will not\nmodify the original instance, you should create a clone.\n\nExample of correctly cloning a date:\n<pre><code>\n//wrong way:\nvar orig = new Date('10/1/2006');\nvar copy = orig;\ncopy.setDate(5);\ndocument.write(orig);  //returns 'Thu Oct 05 2006'!\n\n//correct way:\nvar orig = new Date('10/1/2006');\nvar copy = orig.clone();\ncopy.setDate(5);\ndocument.write(orig);  //returns 'Thu Oct 01 2006'\n</code></pre>",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "Date"
+    },
+    {
+      "name" : "getWeekOfYear",
+      "desc" : "Get the string representation of the numeric week number of the year\n(equivalent to the format specifier 'W').",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "String"
+    },
+    {
+      "name" : "isLeapYear",
+      "desc" : "Whether or not the current date is in a leap year.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "getLastDayOfMonth",
+      "desc" : "Get the last day of the current month, adjusted for leap year.  The returned value\nis the numeric day index within the week (0-6) which can be used in conjunction with\nthe {@link #monthNames} array to retrieve the textual day name.\nExample:\n<pre><code>\nvar dt = new Date('1/10/2007');\ndocument.write(Date.dayNames[dt.getLastDayOfMonth()]); //output: 'Wednesday'\n</code></pre>",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "Number"
+    },
+    {
+      "name" : "parseDate",
+      "desc" : "Parses the passed string using the specified format. Note that this function expects dates in normal calendar\nformat, meaning that months are 1-based (1 = January) and not zero-based like in JavaScript dates.  Any part of\nthe date format that is not specified will default to the current date value for that part.  Time parts can also\nbe specified, but default to 0.  Keep in mind that the input date string must precisely match the specified format\nstring or the parse operation will fail.\nExample Usage:\n<pre><code>\n//dt = Fri May 25 2007 (current date)\nvar dt = new Date();\n\n//dt = Thu May 25 2006 (today's month/day in 2006)\ndt = Date.parseDate(\"2006\", \"Y\");\n\n//dt = Sun Jan 15 2006 (all date parts specified)\ndt = Date.parseDate(\"2006-1-15\", \"Y-m-d\");\n\n//dt = Sun Jan 15 2006 15:20:01 GMT-0600 (CST)\ndt = Date.parseDate(\"2006-1-15 3:20:01 PM\", \"Y-m-d h:i:s A\" );\n</code></pre>",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "input",
+          "type" : "String",
+          "desc" : "The unparsed date as a string"
+        },
+        {
+          "name" : "format",
+          "type" : "String",
+          "desc" : "The format the date is in"
+        }
+      ],
+      "returns" : "Date"
+    }
+  ],
+  "events" : [
+  ]
+}

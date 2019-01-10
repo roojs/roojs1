@@ -1,0 +1,117 @@
+{
+  "name" : "Function",
+  "augments" : [
+  ],
+  "desc" : "These functions are available on every Function object (any JavaScript function).",
+  "config" : [
+  ],
+  "methods" : [
+    {
+      "name" : "createDelegate",
+      "desc" : "Creates a delegate (callback) that sets the scope to obj.\nCall directly on any function. Example: <code>this.myFunction.createDelegate(this)</code>\nWill create a function that is automatically scoped to this.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "obj",
+          "type" : "Object",
+          "desc" : "(optional) The object for which the scope is set"
+        },
+        {
+          "name" : "args",
+          "type" : "Array",
+          "desc" : "(optional) Overrides arguments for the call. (Defaults to the arguments passed by the caller)"
+        },
+        {
+          "name" : "appendArgs",
+          "type" : "Boolean/Number",
+          "desc" : "(optional) if True args are appended to call args instead of overriding,\n                                            if a number the args are inserted at the specified position"
+        }
+      ],
+      "returns" : "Function"
+    },
+    {
+      "name" : "defer",
+      "desc" : "Calls this function after the number of millseconds specified.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "millis",
+          "type" : "Number",
+          "desc" : "The number of milliseconds for the setTimeout call (if 0 the function is executed immediately)"
+        },
+        {
+          "name" : "obj",
+          "type" : "Object",
+          "desc" : "(optional) The object for which the scope is set"
+        },
+        {
+          "name" : "args",
+          "type" : "Array",
+          "desc" : "(optional) Overrides arguments for the call. (Defaults to the arguments passed by the caller)"
+        },
+        {
+          "name" : "appendArgs",
+          "type" : "Boolean/Number",
+          "desc" : "(optional) if True args are appended to call args instead of overriding,\n                                            if a number the args are inserted at the specified position"
+        }
+      ],
+      "returns" : "Number"
+    },
+    {
+      "name" : "createSequence",
+      "desc" : "Create a combined function call sequence of the original function + the passed function.\nThe resulting function returns the results of the original function.\nThe passed fcn is called with the parameters of the original function",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "fcn",
+          "type" : "Function",
+          "desc" : "The function to sequence"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope of the passed fcn (Defaults to scope of original function or window)"
+        }
+      ],
+      "returns" : "Function"
+    },
+    {
+      "name" : "createInterceptor",
+      "desc" : "Creates an interceptor function. The passed fcn is called before the original one. If it returns false, the original one is not called.\nThe resulting function returns the results of the original function.\nThe passed fcn is called with the parameters of the original function.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "fcn",
+          "type" : "Function",
+          "desc" : "The function to call before the original"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope of the passed fcn (Defaults to scope of original function or window)"
+        }
+      ],
+      "returns" : "Function"
+    },
+    {
+      "name" : "createCallback",
+      "desc" : "Creates a callback that passes arguments[0], arguments[1], arguments[2], ...\nCall directly on any function. Example: <code>myFunction.createCallback(myarg, myarg2)</code>\nWill create a function that is bound to those 2 args.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "Function"
+    }
+  ],
+  "events" : [
+  ]
+}

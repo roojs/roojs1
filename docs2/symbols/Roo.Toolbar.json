@@ -1,0 +1,229 @@
+{
+  "name" : "Roo.Toolbar",
+  "augments" : [
+  ],
+  "desc" : "Basic Toolbar class.",
+  "config" : [
+    {
+      "name" : "container",
+      "type" : "String/HTMLElement/Element",
+      "desc" : "The id or element that will contain the toolbar",
+      "memberOf" : ""
+    },
+    {
+      "name" : "items",
+      "type" : "Array",
+      "desc" : "array of button configs or elements to add (will be converted to a MixedCollection)",
+      "memberOf" : "Roo"
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "addDom",
+      "desc" : "Adds a new element to the toolbar from the passed {@link Roo.DomHelper} config.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "config",
+          "type" : "Object",
+          "desc" : ""
+        }
+      ],
+      "returns" : "Roo.Toolbar.Item"
+    },
+    {
+      "name" : "addElement",
+      "desc" : "Adds any standard HTML element to the toolbar",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement/Element",
+          "desc" : "The element or id of the element to add"
+        }
+      ],
+      "returns" : "Roo.Toolbar.Item"
+    },
+    {
+      "name" : "getEl",
+      "desc" : "Returns the Element for this toolbar.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "hide",
+      "desc" : "Hide the toolbar",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addSeparator",
+      "desc" : "Adds a separator",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "Roo.Toolbar.Item"
+    },
+    {
+      "name" : "show",
+      "desc" : "Show the toolbar",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addFill",
+      "desc" : "Adds a fill element that forces subsequent additions to the right side of the toolbar",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "Roo.Toolbar.Fill"
+    },
+    {
+      "name" : "addSpacer",
+      "desc" : "Adds a spacer element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "Roo.Toolbar.Spacer"
+    },
+    {
+      "name" : "add",
+      "desc" : "Adds element(s) to the toolbar -- this function takes a variable number of \narguments of mixed type and adds them to the toolbar.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "arg1",
+          "type" : "Mixed",
+          "desc" : "The following types of arguments are all valid:<br />\n<ul>\n<li>{@link Roo.Toolbar.Button} config: A valid button config object (equivalent to {@link #addButton})</li>\n<li>HtmlElement: Any standard HTML element (equivalent to {@link #addElement})</li>\n<li>Field: Any form field (equivalent to {@link #addField})</li>\n<li>Item: Any subclass of {@link Roo.Toolbar.Item} (equivalent to {@link #addItem})</li>\n<li>String: Any generic string (gets wrapped in a {@link Roo.Toolbar.TextItem}, equivalent to {@link #addText}).\nNote that there are a few special strings that are treated differently as explained nRoo.</li>\n<li>'separator' or '-': Creates a separator element (equivalent to {@link #addSeparator})</li>\n<li>' ': Creates a spacer element (equivalent to {@link #addSpacer})</li>\n<li>'->': Creates a fill element (equivalent to {@link #addFill})</li>\n</ul>"
+        },
+        {
+          "name" : "arg2",
+          "type" : "Mixed",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addField",
+      "desc" : "Adds a dynamically rendered Roo.form field (TextField, ComboBox, etc).\nNote: the field should not have been rendered yet. For a field that has already been\nrendered, use {@link #addElement}.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "field",
+          "type" : "Roo.form.Field",
+          "desc" : ""
+        }
+      ],
+      "returns" : "Roo.ToolbarItem"
+    },
+    {
+      "name" : "addText",
+      "desc" : "Adds text to the toolbar",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "text",
+          "type" : "String",
+          "desc" : "The text to add"
+        }
+      ],
+      "returns" : "Roo.Toolbar.Item"
+    },
+    {
+      "name" : "addItem",
+      "desc" : "Adds any Toolbar.Item or subclass",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "item",
+          "type" : "Roo.Toolbar.Item",
+          "desc" : ""
+        }
+      ],
+      "returns" : "Roo.Toolbar.Item"
+    },
+    {
+      "name" : "addButton",
+      "desc" : "Adds a button (or buttons). See {@link Roo.Toolbar.Button} for more info on the config.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "config",
+          "type" : "Object/Array",
+          "desc" : "A button config or array of configs"
+        }
+      ],
+      "returns" : "Roo.Toolbar.Button/Array"
+    },
+    {
+      "name" : "insertButton",
+      "desc" : "Inserts any {@link Roo.Toolbar.Item}/{@link Roo.Toolbar.Button} at the specified index.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "index",
+          "type" : "Number",
+          "desc" : "The index where the item is to be inserted"
+        },
+        {
+          "name" : "item",
+          "type" : "Object/Roo.Toolbar.Item/Roo.Toolbar.Button (may be Array)",
+          "desc" : "The button, or button config object to be inserted."
+        }
+      ],
+      "returns" : "Roo.Toolbar.Button/Item"
+    },
+    {
+      "name" : "addxtype",
+      "desc" : "Add an Xtype element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "xtype",
+          "type" : "Object",
+          "desc" : "Xtype Object"
+        }
+      ],
+      "returns" : "Object"
+    }
+  ],
+  "events" : [
+  ]
+}

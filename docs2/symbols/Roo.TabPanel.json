@@ -1,0 +1,519 @@
+{
+  "name" : "Roo.TabPanel",
+  "augments" : [
+    "Roo.util.Observable"
+  ],
+  "desc" : "A lightweight tab container.\n<br><br>\nUsage:\n<pre><code>\n// basic tabs 1, built from existing content\nvar tabs = new Roo.TabPanel(\"tabs1\");\ntabs.addTab(\"script\", \"View Script\");\ntabs.addTab(\"markup\", \"View Markup\");\ntabs.activate(\"script\");\n\n// more advanced tabs, built from javascript\nvar jtabs = new Roo.TabPanel(\"jtabs\");\njtabs.addTab(\"jtabs-1\", \"Normal Tab\", \"My content was added during construction.\");\n\n// set up the UpdateManager\nvar tab2 = jtabs.addTab(\"jtabs-2\", \"Ajax Tab 1\");\nvar updater = tab2.getUpdateManager();\nupdater.setDefaultUrl(\"ajax1.htm\");\ntab2.on('activate', updater.refresh, updater, true);\n\n// Use setUrl for Ajax loading\nvar tab3 = jtabs.addTab(\"jtabs-3\", \"Ajax Tab 2\");\ntab3.setUrl(\"ajax2.htm\", null, true);\n\n// Disabled tab\nvar tab4 = jtabs.addTab(\"tabs1-5\", \"Disabled Tab\", \"Can't see me cause I'm disabled\");\ntab4.disable();\n\njtabs.activate(\"jtabs-1\");\n</code></pre>",
+  "config" : [
+    {
+      "name" : "listeners",
+      "type" : "Object",
+      "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+      "memberOf" : "Roo.util.Observable"
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "getActiveTab",
+      "desc" : "Gets the active {@link Roo.TabPanelItem}.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "Roo.TabPanelItem"
+    },
+    {
+      "name" : "beginUpdate",
+      "desc" : "Disables tab resizing while tabs are being added (if {@link #resizeTabs} is false this does nothing)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "unhideTab",
+      "desc" : "\"Unhides\" the {@link Roo.TabPanelItem} with the specified id/index.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "String/Number",
+          "desc" : "The id or index of the TabPanelItem to unhide."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "enableTab",
+      "desc" : "Enables a {@link Roo.TabPanelItem} that is disabled.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "String/Number",
+          "desc" : "The id or index of the TabPanelItem to enable."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "setTabWidth",
+      "desc" : "Resizes all the tabs to the passed width",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "The",
+          "type" : "Number",
+          "desc" : "new width"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "endUpdate",
+      "desc" : "Stops an update and resizes the tabs (if {@link #resizeTabs} is false this does nothing)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addTab",
+      "desc" : "Creates a new {@link Roo.TabPanelItem} by looking for an existing element with the provided id -- if it's not found it creates one.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "String",
+          "desc" : "The id of the div to use <b>or create</b>"
+        },
+        {
+          "name" : "text",
+          "type" : "String",
+          "desc" : "The text for the tab"
+        },
+        {
+          "name" : "content",
+          "type" : "String",
+          "desc" : "(optional) Content to put in the TabPanelItem body"
+        },
+        {
+          "name" : "closable",
+          "type" : "Boolean",
+          "desc" : "(optional) True to create a close icon on the tab"
+        }
+      ],
+      "returns" : "Roo.TabPanelItem"
+    },
+    {
+      "name" : "disableTab",
+      "desc" : "Disables a {@link Roo.TabPanelItem}. It cannot be the active tab, if it is this call is ignored.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "String/Number",
+          "desc" : "The id or index of the TabPanelItem to disable."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "destroy",
+      "desc" : "Destroys this TabPanel",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "removeEl",
+          "type" : "Boolean",
+          "desc" : "(optional) True to remove the element from the DOM as well (defaults to undefined)"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getTab",
+      "desc" : "Returns the {@link Roo.TabPanelItem} with the specified id/index",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "String/Number",
+          "desc" : "The id or index of the TabPanelItem to fetch."
+        }
+      ],
+      "returns" : "Roo.TabPanelItem"
+    },
+    {
+      "name" : "getCount",
+      "desc" : "Returns the number of tabs in this TabPanel.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "Number"
+    },
+    {
+      "name" : "autoSizeTabs",
+      "desc" : "Manual call to resize the tabs (if {@link #resizeTabs} is false this does nothing)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "removeTab",
+      "desc" : "Removes a {@link Roo.TabPanelItem}.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "String/Number",
+          "desc" : "The id or index of the TabPanelItem to remove."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "activate",
+      "desc" : "Activates a {@link Roo.TabPanelItem}. The currently active one will be deactivated.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "String/Number",
+          "desc" : "The id or index of the TabPanelItem to activate."
+        }
+      ],
+      "returns" : "Roo.TabPanelItem"
+    },
+    {
+      "name" : "syncHeight",
+      "desc" : "Updates the tab body element to fit the height of the container element\nfor overflow scrolling",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "targetHeight",
+          "type" : "Number",
+          "desc" : "(optional) Override the starting height from the elements height"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addTabItem",
+      "desc" : "Adds an existing {@link Roo.TabPanelItem}.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "item",
+          "type" : "Roo.TabPanelItem",
+          "desc" : "The TabPanelItem to add"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "hideTab",
+      "desc" : "Hides the {@link Roo.TabPanelItem} with the specified id/index",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "String/Number",
+          "desc" : "The id or index of the TabPanelItem to hide."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "purgeListeners",
+      "desc" : "Removes all listeners for this object",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "on",
+      "desc" : "Appends an event handler to this element (shorthand for addListener)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context."
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional)"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "un",
+      "desc" : "Removes a listener (shorthand for removeListener)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The handler to remove"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the handler"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addEvents",
+      "desc" : "Used to define events on this Observable",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "object",
+          "type" : "Object",
+          "desc" : "The object with the events defined"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "releaseCapture",
+      "desc" : "Removes <b>all</b> added captures from the Observable.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Observable",
+          "desc" : "The Observable to release"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "removeListener",
+      "desc" : "Removes a listener",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The handler to remove"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the handler"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "fireEvent",
+      "desc" : "Fires the specified event with the passed parameters (minus the event name).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : ""
+        },
+        {
+          "name" : "args",
+          "type" : "Object...",
+          "desc" : "Variable number of parameters are passed to handlers"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "hasListener",
+      "desc" : "Checks to see if this object has any listeners for a specified event",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The name of the event to check for"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "capture",
+      "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Observable",
+          "desc" : "The Observable to capture"
+        },
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : "The function to call"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the fn"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addListener",
+      "desc" : "Appends an event handler to this component",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context."
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional) An object containing handler configuration\nproperties. This may contain any of the following properties:<ul>\n<li>scope {Object} The scope in which to execute the handler function. The handler function's \"this\" context.</li>\n<li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li>\n<li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li>\n<li>buffer {Number} Causes the handler to be scheduled to run in an {@link Roo.util.DelayedTask} delayed\nby the specified number of milliseconds. If the event fires again within that time, the original\nhandler is <em>not</em> invoked, but the new handler is scheduled in its place.</li>\n</ul><br>\n<p>\n<b>Combining Options</b><br>\nUsing the options argument, it is possible to combine different types of listeners:<br>\n<br>\nA normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)\n\t\t<pre><code>\n\t\tel.on('click', this.onClick, this, {\n \t\t\tsingle: true,\n    \t\tdelay: 100,\n    \t\tforumId: 4\n\t\t});\n\t\t</code></pre>\n<p>\n<b>Attaching multiple handlers in 1 call</b><br>\nThe method also allows for a single argument to be passed which is a config object containing properties\nwhich specify multiple handlers.\n<pre><code>\n\t\tel.on({\n\t\t\t'click': {\n        \t\tfn: this.onClick,\n        \t\tscope: this,\n        \t\tdelay: 100\n    \t\t}, \n    \t\t'mouseover': {\n        \t\tfn: this.onMouseOver,\n        \t\tscope: this\n    \t\t},\n    \t\t'mouseout': {\n        \t\tfn: this.onMouseOut,\n        \t\tscope: this\n    \t\t}\n\t\t});\n\t\t</code></pre>\n<p>\nOr a shorthand syntax which passes the same scope object to all handlers:\n     \t<pre><code>\n\t\tel.on({\n\t\t\t'click': this.onClick,\n    \t\t'mouseover': this.onMouseOver,\n    \t\t'mouseout': this.onMouseOut,\n    \t\tscope: this\n\t\t});\n\t\t</code></pre>"
+        }
+      ],
+      "returns" : ""
+    }
+  ],
+  "events" : [
+    {
+      "name" : "*beforetabchange",
+      "desc" : "Fires before the active tab changes, set cancel to true on the \"e\" parameter to cancel the change",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.TabPanel",
+          "desc" : ""
+        },
+        {
+          "name" : "e",
+          "type" : "Object",
+          "desc" : "Set cancel to true on this object to cancel the tab change"
+        },
+        {
+          "name" : "tab",
+          "type" : "Roo.TabPanelItem",
+          "desc" : "The tab being changed to"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*tabchange",
+      "desc" : "Fires when the active tab changes",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.TabPanel",
+          "desc" : ""
+        },
+        {
+          "name" : "activePanel",
+          "type" : "Roo.TabPanelItem",
+          "desc" : "The new active tab"
+        }
+      ],
+      "returns" : ""
+    }
+  ]
+}

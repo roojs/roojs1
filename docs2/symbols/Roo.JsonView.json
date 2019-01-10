@@ -1,0 +1,926 @@
+{
+  "name" : "Roo.JsonView",
+  "augments" : [
+    "Roo.View",
+    "Roo.util.Observable"
+  ],
+  "desc" : "Shortcut class to create a JSON + {@link Roo.UpdateManager} template view. Usage:\n<pre><code>\nvar view = new Roo.JsonView({\n    container: \"my-element\",\n    tpl: '&lt;div id=\"{id}\"&gt;{foo} - {bar}&lt;/div&gt;', // auto create template\n    multiSelect: true, \n    jsonRoot: \"data\" \n});\n\n// listen for node click?\nview.on(\"click\", function(vw, index, node, e){\n    alert('Node \"' + node.id + '\" at index: ' + index + \" was clicked.\");\n});\n\n// direct load of JSON data\nview.load(\"foobar.php\");\n\n// Example from my blog list\nvar tpl = new Roo.Template(\n    '&lt;div class=\"entry\"&gt;' +\n    '&lt;a class=\"entry-title\" href=\"{link}\"&gt;{title}&lt;/a&gt;' +\n    \"&lt;h4&gt;{date} by {author} | {comments} Comments&lt;/h4&gt;{description}\" +\n    \"&lt;/div&gt;&lt;hr /&gt;\"\n);\n\nvar moreView = new Roo.JsonView({\n    container :  \"entry-list\", \n    template : tpl,\n    jsonRoot: \"posts\"\n});\nmoreView.on(\"beforerender\", this.sortEntries, this);\nmoreView.load({\n    url: \"/blog/get-posts.php\",\n    params: \"allposts=true\",\n    text: \"Loading Blog Entries...\"\n});\n</code></pre>\n\nNote: old code is supported with arguments : (container, template, config)",
+  "config" : [
+    {
+      "name" : "selectedClass",
+      "type" : "String",
+      "desc" : "The css class to add to selected nodes",
+      "memberOf" : "Roo.View"
+    },
+    {
+      "name" : "listeners",
+      "type" : "Object",
+      "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+      "memberOf" : "Roo.util.Observable"
+    },
+    {
+      "name" : "dataName",
+      "type" : "String",
+      "desc" : "the named area of the template to use as the data area\n                         Works with domtemplates roo-name=\"name\"",
+      "memberOf" : "Roo.View"
+    },
+    {
+      "name" : "text",
+      "type" : "String",
+      "desc" : "to display on mask (default Loading)",
+      "memberOf" : "Roo.View"
+    },
+    {
+      "name" : "multiSelect",
+      "type" : "Boolean",
+      "desc" : "Allow multiple selection",
+      "memberOf" : "Roo.View"
+    },
+    {
+      "name" : "emptyText",
+      "type" : "String",
+      "desc" : "The empty text to show when nothing is loaded.",
+      "memberOf" : "Roo.View"
+    },
+    {
+      "name" : "store",
+      "type" : "Roo.data.Store",
+      "desc" : "Data store to load data from.",
+      "memberOf" : "Roo.View"
+    },
+    {
+      "name" : "toggleSelect",
+      "type" : "Boolean",
+      "desc" : "- selecting",
+      "memberOf" : "Roo.View"
+    },
+    {
+      "name" : "singleSelect",
+      "type" : "Boolean",
+      "desc" : "Allow single selection",
+      "memberOf" : "Roo.View"
+    },
+    {
+      "name" : "tickable",
+      "type" : "Boolean",
+      "desc" : "- selecting",
+      "memberOf" : "Roo.View"
+    },
+    {
+      "name" : "el",
+      "type" : "String|Roo.Element",
+      "desc" : "The container element.",
+      "memberOf" : "Roo.View"
+    },
+    {
+      "name" : "tpl",
+      "type" : "String|Roo.Template",
+      "desc" : "The template used by this View",
+      "memberOf" : "Roo.View"
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "getNodeData",
+      "desc" : "Returns the JSON object for the specified node(s)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "node",
+          "type" : "HTMLElement/Array",
+          "desc" : "The node or an array of nodes"
+        }
+      ],
+      "returns" : "Object/Array"
+    },
+    {
+      "name" : "getCount",
+      "desc" : "Get the number of records in the current JSON dataset",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "Number"
+    },
+    {
+      "name" : "sort",
+      "desc" : "Sorts the data for this view and refreshes it.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "property",
+          "type" : "String",
+          "desc" : "A property on your JSON objects to sort on"
+        },
+        {
+          "name" : "direction",
+          "type" : "String",
+          "desc" : "(optional) \"desc\" or \"asc\" (defaults to \"asc\")"
+        },
+        {
+          "name" : "sortType",
+          "type" : "Function",
+          "desc" : "(optional) A function to call to convert the data to a sortable value."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "refresh",
+      "desc" : "Refreshes the view.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "filterBy",
+      "desc" : "Filter by a function. The passed function will be called with each\nobject in the current dataset. If the function returns true the value is kept,\notherwise it is filtered.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : ""
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope of the function (defaults to this JsonView)"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "clearFilter",
+      "desc" : "Clears the current filter.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "load",
+      "desc" : "Performs an async HTTP request, and loads the JSON from the response. If <i>params</i> are specified it uses POST, otherwise it uses GET.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "url",
+          "type" : "Object/String/Function",
+          "desc" : "The URL for this request, or a function to call to get the URL, or a config object containing any of the following options:\n     <pre><code>\n     view.load({\n         url: \"your-url.php\",\n         params: {param1: \"foo\", param2: \"bar\"}, // or a URL encoded string\n         callback: yourFunction,\n         scope: yourObject, //(optional scope)\n         discardUrl: false,\n         nocache: false,\n         text: \"Loading...\",\n         timeout: 30,\n         scripts: false\n     });\n     </code></pre>\nThe only required property is <i>url</i>. The optional properties <i>nocache</i>, <i>text</i> and <i>scripts</i>\nare respectively shorthand for <i>disableCaching</i>, <i>indicatorText</i>, and <i>loadScripts</i> and are used to set their associated property on this UpdateManager instance."
+        },
+        {
+          "name" : "params",
+          "type" : "String/Object",
+          "desc" : "(optional) The parameters to pass, as either a URL encoded string \"param1=1&amp;param2=2\" or an object {param1: 1, param2: 2}"
+        },
+        {
+          "name" : "callback",
+          "type" : "Function",
+          "desc" : "(optional) Callback when transaction is complete - called with signature (oElement, bSuccess)"
+        },
+        {
+          "name" : "discardUrl",
+          "type" : "Boolean",
+          "desc" : "(optional) By default when you execute an update the defaultUrl is changed to the last used URL. If true, it will not store the URL."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "filter",
+      "desc" : "Filter the data by a specific property.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "property",
+          "type" : "String",
+          "desc" : "A property on your JSON objects"
+        },
+        {
+          "name" : "value",
+          "type" : "String/RegExp",
+          "desc" : "Either string that the property values\nshould start with, or a RegExp to test against the property"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getSelectedNodes",
+      "desc" : "Get the currently selected nodes.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.View",
+      "params" : [
+      ],
+      "returns" : "Array"
+    },
+    {
+      "name" : "getNodes",
+      "desc" : "Gets a range template nodes.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.View",
+      "params" : [
+        {
+          "name" : "startIndex",
+          "type" : "Number",
+          "desc" : ""
+        },
+        {
+          "name" : "endIndex",
+          "type" : "Number",
+          "desc" : ""
+        }
+      ],
+      "returns" : "Array"
+    },
+    {
+      "name" : "select",
+      "desc" : "Selects nodes.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.View",
+      "params" : [
+        {
+          "name" : "nodeInfo",
+          "type" : "Array/HTMLElement/String/Number",
+          "desc" : "An HTMLElement template node, index of a template node, id of a template node or an array of any of those to select"
+        },
+        {
+          "name" : "keepExisting",
+          "type" : "Boolean",
+          "desc" : "(optional) true to keep existing selections"
+        },
+        {
+          "name" : "suppressEvent",
+          "type" : "Boolean",
+          "desc" : "(optional) true to skip firing of the selectionchange vent"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "clearSelections",
+      "desc" : "Clear all selections",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.View",
+      "params" : [
+        {
+          "name" : "suppressEvent",
+          "type" : "Boolean",
+          "desc" : "(optional) true to skip firing of the selectionchange event"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "isSelected",
+      "desc" : "Returns true if the passed node is selected",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.View",
+      "params" : [
+        {
+          "name" : "node",
+          "type" : "HTMLElement/Number",
+          "desc" : "The node or node index"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "onBeforeLoad",
+      "desc" : "onbeforeLoad - masks the loading area.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.View",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getSelectedIndexes",
+      "desc" : "Get the indexes of the selected nodes.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.View",
+      "params" : [
+      ],
+      "returns" : "Array"
+    },
+    {
+      "name" : "indexOf",
+      "desc" : "Finds the index of the passed node",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.View",
+      "params" : [
+        {
+          "name" : "nodeInfo",
+          "type" : "HTMLElement/String/Number",
+          "desc" : "An HTMLElement template node, index of a template node or the id of a template node"
+        }
+      ],
+      "returns" : "Number"
+    },
+    {
+      "name" : "getEl",
+      "desc" : "Returns the element this view is bound to.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.View",
+      "params" : [
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "setStore",
+      "desc" : "Changes the data store this view uses and refresh the view.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.View",
+      "params" : [
+        {
+          "name" : "store",
+          "type" : "Store",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "refreshNode",
+      "desc" : "Refresh an individual node.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.View",
+      "params" : [
+        {
+          "name" : "index",
+          "type" : "Number",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "prepareData",
+      "desc" : "Function to override to reformat the data that is sent to\nthe template for each node.\nDEPRICATED - use the preparedata event handler.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.View",
+      "params" : [
+        {
+          "name" : "data",
+          "type" : "Array/Object",
+          "desc" : "The raw data (array of colData for a data model bound view or\na JSON object for an UpdateManager bound view)."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getSelectionCount",
+      "desc" : "Get the number of selected nodes.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.View",
+      "params" : [
+      ],
+      "returns" : "Number"
+    },
+    {
+      "name" : "findItemFromChild",
+      "desc" : "Returns the template node the passed child belongs to or null if it doesn't belong to one.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.View",
+      "params" : [
+        {
+          "name" : "node",
+          "type" : "HTMLElement",
+          "desc" : ""
+        }
+      ],
+      "returns" : "HTMLElement"
+    },
+    {
+      "name" : "unselect",
+      "desc" : "Unselects nodes.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.View",
+      "params" : [
+        {
+          "name" : "nodeInfo",
+          "type" : "Array/HTMLElement/String/Number",
+          "desc" : "An HTMLElement template node, index of a template node, id of a template node or an array of any of those to select"
+        },
+        {
+          "name" : "keepExisting",
+          "type" : "Boolean",
+          "desc" : "(optional) true IGNORED (for campatibility with select)"
+        },
+        {
+          "name" : "suppressEvent",
+          "type" : "Boolean",
+          "desc" : "(optional) true to skip firing of the selectionchange vent"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getNode",
+      "desc" : "Gets a template node.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.View",
+      "params" : [
+        {
+          "name" : "nodeInfo",
+          "type" : "HTMLElement/String/Number",
+          "desc" : "An HTMLElement template node, index of a template node or the id of a template node"
+        }
+      ],
+      "returns" : "HTMLElement"
+    },
+    {
+      "name" : "purgeListeners",
+      "desc" : "Removes all listeners for this object",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "on",
+      "desc" : "Appends an event handler to this element (shorthand for addListener)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context."
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional)"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "un",
+      "desc" : "Removes a listener (shorthand for removeListener)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The handler to remove"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the handler"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addEvents",
+      "desc" : "Used to define events on this Observable",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "object",
+          "type" : "Object",
+          "desc" : "The object with the events defined"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "releaseCapture",
+      "desc" : "Removes <b>all</b> added captures from the Observable.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Observable",
+          "desc" : "The Observable to release"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "removeListener",
+      "desc" : "Removes a listener",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The handler to remove"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the handler"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "fireEvent",
+      "desc" : "Fires the specified event with the passed parameters (minus the event name).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : ""
+        },
+        {
+          "name" : "args",
+          "type" : "Object...",
+          "desc" : "Variable number of parameters are passed to handlers"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "hasListener",
+      "desc" : "Checks to see if this object has any listeners for a specified event",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The name of the event to check for"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "capture",
+      "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Observable",
+          "desc" : "The Observable to capture"
+        },
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : "The function to call"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the fn"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addListener",
+      "desc" : "Appends an event handler to this component",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context."
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional) An object containing handler configuration\nproperties. This may contain any of the following properties:<ul>\n<li>scope {Object} The scope in which to execute the handler function. The handler function's \"this\" context.</li>\n<li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li>\n<li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li>\n<li>buffer {Number} Causes the handler to be scheduled to run in an {@link Roo.util.DelayedTask} delayed\nby the specified number of milliseconds. If the event fires again within that time, the original\nhandler is <em>not</em> invoked, but the new handler is scheduled in its place.</li>\n</ul><br>\n<p>\n<b>Combining Options</b><br>\nUsing the options argument, it is possible to combine different types of listeners:<br>\n<br>\nA normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)\n\t\t<pre><code>\n\t\tel.on('click', this.onClick, this, {\n \t\t\tsingle: true,\n    \t\tdelay: 100,\n    \t\tforumId: 4\n\t\t});\n\t\t</code></pre>\n<p>\n<b>Attaching multiple handlers in 1 call</b><br>\nThe method also allows for a single argument to be passed which is a config object containing properties\nwhich specify multiple handlers.\n<pre><code>\n\t\tel.on({\n\t\t\t'click': {\n        \t\tfn: this.onClick,\n        \t\tscope: this,\n        \t\tdelay: 100\n    \t\t}, \n    \t\t'mouseover': {\n        \t\tfn: this.onMouseOver,\n        \t\tscope: this\n    \t\t},\n    \t\t'mouseout': {\n        \t\tfn: this.onMouseOut,\n        \t\tscope: this\n    \t\t}\n\t\t});\n\t\t</code></pre>\n<p>\nOr a shorthand syntax which passes the same scope object to all handlers:\n     \t<pre><code>\n\t\tel.on({\n\t\t\t'click': this.onClick,\n    \t\t'mouseover': this.onMouseOver,\n    \t\t'mouseout': this.onMouseOut,\n    \t\tscope: this\n\t\t});\n\t\t</code></pre>"
+        }
+      ],
+      "returns" : ""
+    }
+  ],
+  "events" : [
+    {
+      "name" : "*loadexception",
+      "desc" : "Fires when loading fails.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.JsonView",
+          "desc" : ""
+        },
+        {
+          "name" : "response",
+          "type" : "Object",
+          "desc" : "The raw Connect response object"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*load",
+      "desc" : "Fires when data is loaded.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.JsonView",
+          "desc" : ""
+        },
+        {
+          "name" : "data",
+          "type" : "Object",
+          "desc" : "The JSON data loaded"
+        },
+        {
+          "name" : "response",
+          "type" : "Object",
+          "desc" : "The raw Connect response object"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*beforerender",
+      "desc" : "Fires before rendering of the downloaded JSON data.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.JsonView",
+          "desc" : ""
+        },
+        {
+          "name" : "data",
+          "type" : "Object",
+          "desc" : "The JSON data loaded"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*dblclick",
+      "desc" : "Fires when a template node is double clicked.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.View",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.View",
+          "desc" : ""
+        },
+        {
+          "name" : "index",
+          "type" : "Number",
+          "desc" : "The index of the target node"
+        },
+        {
+          "name" : "node",
+          "type" : "HTMLElement",
+          "desc" : "The target node"
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : "The raw event object"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*preparedata",
+      "desc" : "Fires on every row to render, to allow you to change the data.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.View",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.View",
+          "desc" : ""
+        },
+        {
+          "name" : "data",
+          "type" : "Object",
+          "desc" : "to be rendered (change this)"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*selectionchange",
+      "desc" : "Fires when the selected nodes change.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.View",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.View",
+          "desc" : ""
+        },
+        {
+          "name" : "selections",
+          "type" : "Array",
+          "desc" : "Array of the selected nodes"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*beforeselect",
+      "desc" : "Fires before a selection is made. If any handlers return false, the selection is cancelled.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.View",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.View",
+          "desc" : ""
+        },
+        {
+          "name" : "node",
+          "type" : "HTMLElement",
+          "desc" : "The node to be selected"
+        },
+        {
+          "name" : "selections",
+          "type" : "Array",
+          "desc" : "Array of currently selected nodes"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*beforeclick",
+      "desc" : "Fires before a click is processed. Returns false to cancel the default action.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.View",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.View",
+          "desc" : ""
+        },
+        {
+          "name" : "index",
+          "type" : "Number",
+          "desc" : "The index of the target node"
+        },
+        {
+          "name" : "node",
+          "type" : "HTMLElement",
+          "desc" : "The target node"
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : "The raw event object"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*click",
+      "desc" : "Fires when a template node is clicked.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.View",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.View",
+          "desc" : ""
+        },
+        {
+          "name" : "index",
+          "type" : "Number",
+          "desc" : "The index of the target node"
+        },
+        {
+          "name" : "node",
+          "type" : "HTMLElement",
+          "desc" : "The target node"
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : "The raw event object"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*contextmenu",
+      "desc" : "Fires when a template node is right clicked.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.View",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.View",
+          "desc" : ""
+        },
+        {
+          "name" : "index",
+          "type" : "Number",
+          "desc" : "The index of the target node"
+        },
+        {
+          "name" : "node",
+          "type" : "HTMLElement",
+          "desc" : "The target node"
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : "The raw event object"
+        }
+      ],
+      "returns" : ""
+    }
+  ]
+}

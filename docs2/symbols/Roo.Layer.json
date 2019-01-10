@@ -1,0 +1,2515 @@
+{
+  "name" : "Roo.Layer",
+  "augments" : [
+    "Roo.Element"
+  ],
+  "desc" : "An extended {@link Roo.Element} object that supports a shadow and shim, constrain to viewport and\nautomatic maintaining of shadow/shim positions.",
+  "config" : [
+    {
+      "name" : "shadow",
+      "type" : "String/Boolean",
+      "desc" : "True to create a shadow element with default class \"x-layer-shadow\", or\nyou can pass a string with a CSS class name. False turns off the shadow.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "constrain",
+      "type" : "Boolean",
+      "desc" : "False to disable constrain to viewport (defaults to true)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "zindex",
+      "type" : "Number",
+      "desc" : "Starting z-index (defaults to 11000)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "shadowOffset",
+      "type" : "Number",
+      "desc" : "Number of pixels to offset the shadow (defaults to 3)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "dh",
+      "type" : "Object",
+      "desc" : "DomHelper object config to create element with (defaults to {tag: \"div\", cls: \"x-layer\"}).",
+      "memberOf" : ""
+    },
+    {
+      "name" : "cls",
+      "type" : "String",
+      "desc" : "CSS class to add to the element",
+      "memberOf" : ""
+    },
+    {
+      "name" : "shim",
+      "type" : "Boolean",
+      "desc" : "False to disable the iframe shim in browsers which need one (defaults to true)",
+      "memberOf" : ""
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "setZIndex",
+      "desc" : "Sets the z-index of this layer and adjusts any shadow and shim z-indexes. The layer z-index is automatically\nincremented by two more than the value passed in so that it always shows above any shadow or shim (the shadow\nelement, if any, will be assigned z-index + 1, and the shim element, if any, will be assigned the unmodified z-index).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "zindex",
+          "type" : "Number",
+          "desc" : "The new z-index to set"
+        }
+      ],
+      "returns" : "this"
+    },
+    {
+      "name" : "getCenterXY",
+      "desc" : "Calculates the x, y to center this element on the screen",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : "Array"
+    },
+    {
+      "name" : "getScroll",
+      "desc" : "Returns the current scroll position of the element.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : "Object"
+    },
+    {
+      "name" : "createShim",
+      "desc" : "Creates an iframe shim for this element to keep selects and other windowed objects from\nshowing through.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "scrollTo",
+      "desc" : "Scrolls this element the specified scroll point. It does NOT do bounds checking so if you scroll to a weird value it will try to do it. For auto bounds checking, use scroll().",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "side",
+          "type" : "String",
+          "desc" : "Either \"left\" for scrollLeft values or \"top\" for scrollTop values."
+        },
+        {
+          "name" : "value",
+          "type" : "Number",
+          "desc" : "The new scroll value"
+        },
+        {
+          "name" : "animate",
+          "type" : "Boolean/Object",
+          "desc" : "(optional) true for the default animation or a standard Element animation config object"
+        }
+      ],
+      "returns" : "Element"
+    },
+    {
+      "name" : "removeAllListeners",
+      "desc" : "Removes all previous added listeners from this element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "setStyle",
+      "desc" : "Wrapper for setting style properties, also takes single object parameter of multiple styles.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "property",
+          "type" : "String/Object",
+          "desc" : "The style property to be set, or an object of multiple styles."
+        },
+        {
+          "name" : "value",
+          "type" : "String",
+          "desc" : "(optional) The value to apply to the given property, or null if an object was passed."
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "on",
+      "desc" : "Appends an event handler (Shorthand for addListener)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to append"
+        },
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : "The method the event invokes"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) of the fn"
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional)An object with standard {@link Roo.EventManager#addListener} options"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addClassOnClick",
+      "desc" : "Sets up event handlers to add and remove a css class when the mouse is down and then up on this element (a click effect)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "className",
+          "type" : "String",
+          "desc" : ""
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "getBorderWidth",
+      "desc" : "Gets the width of the border(s) for the specified side(s)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "side",
+          "type" : "String",
+          "desc" : "Can be t, l, r, b or any combination of those to add multiple values. For example,\npassing lr would get the border (l)eft width + the border (r)ight width."
+        }
+      ],
+      "returns" : "Number"
+    },
+    {
+      "name" : "scroll",
+      "desc" : "Scrolls this element the specified direction. Does bounds checking to make sure the scroll is\nwithin this element's scrollable range.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "direction",
+          "type" : "String",
+          "desc" : "Possible values are: \"l\",\"left\" - \"r\",\"right\" - \"t\",\"top\",\"up\" - \"b\",\"bottom\",\"down\"."
+        },
+        {
+          "name" : "distance",
+          "type" : "Number",
+          "desc" : "How far to scroll the element in pixels"
+        },
+        {
+          "name" : "animate",
+          "type" : "Boolean/Object",
+          "desc" : "(optional) true for the default animation or a standard Element animation config object"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "addKeyMap",
+      "desc" : "Creates a KeyMap for this element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "config",
+          "type" : "Object",
+          "desc" : "The KeyMap config. See {@link Roo.KeyMap} for more details"
+        }
+      ],
+      "returns" : "Roo.KeyMap"
+    },
+    {
+      "name" : "createChild",
+      "desc" : "Creates the passed DomHelper config and appends it to this element or optionally inserts it before the passed child element.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "config",
+          "type" : "Object",
+          "desc" : "DomHelper element config object.  If no tag is specified (e.g., {tag:'input'}) then a div will be\nautomatically generated with the specified attributes."
+        },
+        {
+          "name" : "insertBefore",
+          "type" : "HTMLElement",
+          "desc" : "(optional) a child element of this element"
+        },
+        {
+          "name" : "returnDom",
+          "type" : "Boolean",
+          "desc" : "(optional) true to return the dom node instead of creating an Element"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "addClass",
+      "desc" : "Adds one or more CSS classes to the element. Duplicate classes are automatically filtered out.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "className",
+          "type" : "String/Array",
+          "desc" : "The CSS class to add, or an array of classes"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "attr",
+      "desc" : "Sets or Returns the value the dom attribute value",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "name",
+          "type" : "String|Object",
+          "desc" : "The attribute name (or object to set multiple attributes)"
+        },
+        {
+          "name" : "value",
+          "type" : "String",
+          "desc" : "(optional) The value to set the attribute to"
+        }
+      ],
+      "returns" : "String"
+    },
+    {
+      "name" : "setOpacity",
+      "desc" : "Set the opacity of the element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "opacity",
+          "type" : "Float",
+          "desc" : "The new opacity. 0 = transparent, .5 = 50% visibile, 1 = fully visible, etc"
+        },
+        {
+          "name" : "animate",
+          "type" : "Boolean/Object",
+          "desc" : "(optional) true for the default animation or a standard Element animation config object"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "setSize",
+      "desc" : "Set the size of the element. If animation is true, both width an height will be animated concurrently.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "width",
+          "type" : "Number",
+          "desc" : "The new width"
+        },
+        {
+          "name" : "height",
+          "type" : "Number",
+          "desc" : "The new height"
+        },
+        {
+          "name" : "animate",
+          "type" : "Boolean/Object",
+          "desc" : "(optional) true for the default animation or a standard Element animation config object"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "un",
+      "desc" : "Removes an event handler from this element (shorthand for removeListener)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "the type of event to remove"
+        },
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : "the method the event invokes"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "up",
+      "desc" : "Walks up the dom looking for a parent node that matches the passed simple selector (e.g. div.some-class or span:first-child).\nThis is a shortcut for findParentNode() that always returns an Roo.Element.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "selector",
+          "type" : "String",
+          "desc" : "The simple selector to test"
+        },
+        {
+          "name" : "maxDepth",
+          "type" : "Number/String/HTMLElement/Element",
+          "desc" : "(optional) The max depth to\n                search as a number or element (defaults to 10 || document.body)"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "repaint",
+      "desc" : "Forces the browser to repaint this element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "translatePoints",
+      "desc" : "Translates the passed page coordinates into left/top css values for this element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "x",
+          "type" : "Number/Array",
+          "desc" : "The page x or an array containing [x, y]"
+        },
+        {
+          "name" : "y",
+          "type" : "Number",
+          "desc" : "The page y"
+        }
+      ],
+      "returns" : "Object"
+    },
+    {
+      "name" : "createProxy",
+      "desc" : "Creates a proxy element of this element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "config",
+          "type" : "String/Object",
+          "desc" : "The class name of the proxy element or a DomHelper config object"
+        },
+        {
+          "name" : "renderTo",
+          "type" : "String/HTMLElement",
+          "desc" : "(optional) The element or element id to render the proxy to (defaults to document.body)"
+        },
+        {
+          "name" : "matchBox",
+          "type" : "Boolean",
+          "desc" : "(optional) True to align and size the proxy to this element now (defaults to false)"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "down",
+      "desc" : "Selects a single *direct* child based on the passed CSS selector (the selector should not contain an id).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "selector",
+          "type" : "String",
+          "desc" : "The CSS selector"
+        },
+        {
+          "name" : "returnDom",
+          "type" : "Boolean",
+          "desc" : "(optional) True to return the DOM node instead of Roo.Element (defaults to false)"
+        }
+      ],
+      "returns" : "HTMLElement/Roo.Element"
+    },
+    {
+      "name" : "getBox",
+      "desc" : "Return a box {x, y, width, height} that can be used to set another elements\nsize/location to match this element.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "contentBox",
+          "type" : "Boolean",
+          "desc" : "(optional) If true a box for the content of the element is returned."
+        },
+        {
+          "name" : "local",
+          "type" : "Boolean",
+          "desc" : "(optional) If true the element's left and top are returned instead of page x/y."
+        }
+      ],
+      "returns" : "Object"
+    },
+    {
+      "name" : "toggle",
+      "desc" : "Toggles the element's visibility or display, depending on visibility mode.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "animate",
+          "type" : "Boolean/Object",
+          "desc" : "(optional) True for the default animation, or a standard Element animation config object"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "setBounds",
+      "desc" : "Sets the element's position and size in one shot. If animation is true then width, height, x and y will be animated concurrently.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "x",
+          "type" : "Number",
+          "desc" : "X value for new position (coordinates are page-based)"
+        },
+        {
+          "name" : "y",
+          "type" : "Number",
+          "desc" : "Y value for new position (coordinates are page-based)"
+        },
+        {
+          "name" : "width",
+          "type" : "Number",
+          "desc" : "The new width"
+        },
+        {
+          "name" : "height",
+          "type" : "Number",
+          "desc" : "The new height"
+        },
+        {
+          "name" : "animate",
+          "type" : "Boolean/Object",
+          "desc" : "(optional) true for the default animation or a standard Element animation config object"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "getX",
+      "desc" : "Gets the current X position of the element based on page coordinates.  Element must be part of the DOM tree to have page coordinates (display:none or elements not appended return false).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : "Number"
+    },
+    {
+      "name" : "getY",
+      "desc" : "Gets the current Y position of the element based on page coordinates.  Element must be part of the DOM tree to have page coordinates (display:none or elements not appended return false).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : "Number"
+    },
+    {
+      "name" : "focus",
+      "desc" : "Tries to focus the element. Any exceptions are caught and ignored.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "get",
+      "desc" : "Static method to retrieve Element objects. Uses simple caching to consistently return the same object.\nAutomatically fixes if an object was recreated with the same id via AJAX or DOM.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement/Element",
+          "desc" : "The id of the node, a DOM Node or an existing Element."
+        }
+      ],
+      "returns" : "Element"
+    },
+    {
+      "name" : "autoHeight",
+      "desc" : "Measures the element's content height and updates height to match. Note: this function uses setTimeout so\nthe new height may not be available immediately.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "animate",
+          "type" : "Boolean",
+          "desc" : "(optional) Animate the transition (defaults to false)"
+        },
+        {
+          "name" : "duration",
+          "type" : "Float",
+          "desc" : "(optional) Length of the animation in seconds (defaults to .35)"
+        },
+        {
+          "name" : "onComplete",
+          "type" : "Function",
+          "desc" : "(optional) Function to call when animation completes"
+        },
+        {
+          "name" : "easing",
+          "type" : "String",
+          "desc" : "(optional) Easing method to use (defaults to easeOut)"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "scrollIntoView",
+      "desc" : "Scrolls this element into view within the passed container.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "container",
+          "type" : "String/HTMLElement/Element",
+          "desc" : "(optional) The container element to scroll (defaults to document.body)"
+        },
+        {
+          "name" : "hscroll",
+          "type" : "Boolean",
+          "desc" : "(optional) False to disable horizontal scroll (defaults to true)"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "getAlignToXY",
+      "desc" : "Gets the x,y coordinates to align this element with another element. See {@link #alignTo} for more info on the\nsupported position values.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "element",
+          "type" : "String/HTMLElement/Roo.Element",
+          "desc" : "The element to align to."
+        },
+        {
+          "name" : "position",
+          "type" : "String",
+          "desc" : "The position to align to."
+        },
+        {
+          "name" : "offsets",
+          "type" : "Array",
+          "desc" : "(optional) Offset the positioning by [x, y]"
+        }
+      ],
+      "returns" : "Array"
+    },
+    {
+      "name" : "clearOpacity",
+      "desc" : "Clears any opacity settings from this element. Required in some cases for IE.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "setPositioning",
+      "desc" : "Set positioning with an object returned by getPositioning().",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "posCfg",
+          "type" : "Object",
+          "desc" : ""
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "getMargins",
+      "desc" : "Returns an object with properties top, left, right and bottom representing the margins of this element unless sides is passed,\nthen it returns the calculated width of the sides (see getPadding)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "sides",
+          "type" : "String",
+          "desc" : "(optional) Any combination of l, r, t, b to get the sum of those sides"
+        }
+      ],
+      "returns" : "Object/Number"
+    },
+    {
+      "name" : "setRegion",
+      "desc" : "Sets the element's position and size the the specified region. If animation is true then width, height, x and y will be animated concurrently.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "region",
+          "type" : "Roo.lib.Region",
+          "desc" : "The region to fill"
+        },
+        {
+          "name" : "animate",
+          "type" : "Boolean/Object",
+          "desc" : "(optional) true for the default animation or a standard Element animation config object"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "getAttributeNS",
+      "desc" : "Returns the value of a namespaced attribute from the element's underlying DOM node.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "namespace",
+          "type" : "String",
+          "desc" : "The namespace in which to look for the attribute"
+        },
+        {
+          "name" : "name",
+          "type" : "String",
+          "desc" : "The attribute name"
+        }
+      ],
+      "returns" : "String"
+    },
+    {
+      "name" : "setLeft",
+      "desc" : "Sets the element's left position directly using CSS style (instead of {@link #setX}).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "left",
+          "type" : "String",
+          "desc" : "The left CSS property value"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "load",
+      "desc" : "Direct access to the UpdateManager update() method (takes the same parameters).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "url",
+          "type" : "String/Function",
+          "desc" : "The url for this request or a function to call to get the url"
+        },
+        {
+          "name" : "params",
+          "type" : "String/Object",
+          "desc" : "(optional) The parameters to pass as either a url encoded string \"param1=1&amp;param2=2\" or an object {param1: 1, param2: 2}"
+        },
+        {
+          "name" : "callback",
+          "type" : "Function",
+          "desc" : "(optional) Callback when transaction is complete - called with signature (oElement, bSuccess)"
+        },
+        {
+          "name" : "discardUrl",
+          "type" : "Boolean",
+          "desc" : "(optional) By default when you execute an update the defaultUrl is changed to the last used url. If true, it will not store the url."
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "replaceClass",
+      "desc" : "Replaces a CSS class on the element with another.  If the old name does not exist, the new name will simply be added.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "oldClassName",
+          "type" : "String",
+          "desc" : "The CSS class to replace"
+        },
+        {
+          "name" : "newClassName",
+          "type" : "String",
+          "desc" : "The replacement CSS class"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "initDDTarget",
+      "desc" : "Initializes a {@link Roo.dd.DDTarget} object for this element.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "group",
+          "type" : "String",
+          "desc" : "The group the DDTarget object is member of"
+        },
+        {
+          "name" : "config",
+          "type" : "Object",
+          "desc" : "The DDTarget config object"
+        },
+        {
+          "name" : "overrides",
+          "type" : "Object",
+          "desc" : "An object containing methods to override/implement on the DDTarget object"
+        }
+      ],
+      "returns" : "Roo.dd.DDTarget"
+    },
+    {
+      "name" : "setHeight",
+      "desc" : "Set the height of the element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "height",
+          "type" : "Number",
+          "desc" : "The new height"
+        },
+        {
+          "name" : "animate",
+          "type" : "Boolean/Object",
+          "desc" : "(optional) true for the default animation or a standard Element animation config object"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "clean",
+      "desc" : "Removes worthless text nodes",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "forceReclean",
+          "type" : "Boolean",
+          "desc" : "(optional) By default the element\nkeeps track if it has been cleaned already so\nyou can call this over and over. However, if you update the element and\nneed to force a reclean, you can pass true."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getPositioning",
+      "desc" : "Gets an object with all CSS positioning properties. Useful along with setPostioning to get\nsnapshot before performing an update and then restoring the element.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : "Object"
+    },
+    {
+      "name" : "update",
+      "desc" : "Update the innerHTML of this element, optionally searching for and processing scripts",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "html",
+          "type" : "String",
+          "desc" : "The new HTML"
+        },
+        {
+          "name" : "loadScripts",
+          "type" : "Boolean",
+          "desc" : "(optional) true to look for and process scripts"
+        },
+        {
+          "name" : "callback",
+          "type" : "Function",
+          "desc" : "For async script loading you can be noticed when the update completes"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "contains",
+      "desc" : "Returns true if this element is an ancestor of the passed element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "HTMLElement/String",
+          "desc" : "The element to check"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "appendChild",
+      "desc" : "Appends the passed element(s) to this element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement/Array/Element/CompositeElement",
+          "desc" : ""
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "getValue",
+      "desc" : "Returns the value of the \"value\" attribute",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "asNumber",
+          "type" : "Boolean",
+          "desc" : "true to parse the value as a number"
+        }
+      ],
+      "returns" : "String/Number"
+    },
+    {
+      "name" : "getRegion",
+      "desc" : "Returns the region of the given element.\nThe element must be part of the DOM tree to have a region (display:none or elements not appended return false).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : "Region"
+    },
+    {
+      "name" : "anchorTo",
+      "desc" : "Anchors an element to another element and realigns it when the window is resized.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "element",
+          "type" : "String/HTMLElement/Roo.Element",
+          "desc" : "The element to align to."
+        },
+        {
+          "name" : "position",
+          "type" : "String",
+          "desc" : "The position to align to."
+        },
+        {
+          "name" : "offsets",
+          "type" : "Array",
+          "desc" : "(optional) Offset the positioning by [x, y]"
+        },
+        {
+          "name" : "animate",
+          "type" : "Boolean/Object",
+          "desc" : "(optional) True for the default animation or a standard Element animation config object"
+        },
+        {
+          "name" : "monitorScroll",
+          "type" : "Boolean/Number",
+          "desc" : "(optional) True to monitor body scroll and reposition. If this parameter\nis a number, it is used as the buffer delay (defaults to 50ms)."
+        },
+        {
+          "name" : "callback",
+          "type" : "Function",
+          "desc" : "The function to call after the animation finishes"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "removeClass",
+      "desc" : "Removes one or more CSS classes from the element.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "className",
+          "type" : "String/Array",
+          "desc" : "The CSS class to remove, or an array of classes"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "radioClass",
+      "desc" : "Adds one or more CSS classes to this element and removes the same class(es) from all siblings.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "className",
+          "type" : "String/Array",
+          "desc" : "The CSS class to add, or an array of classes"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "getWidth",
+      "desc" : "Returns the offset width of the element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "contentWidth",
+          "type" : "Boolean",
+          "desc" : "(optional) true to get the width minus borders and padding"
+        }
+      ],
+      "returns" : "Number"
+    },
+    {
+      "name" : "insertBefore",
+      "desc" : "Inserts this element before the passed element in the DOM",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement/Element",
+          "desc" : "The element to insert before"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "getHeight",
+      "desc" : "Returns the offset height of the element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "contentHeight",
+          "type" : "Boolean",
+          "desc" : "(optional) true to get the height minus borders and padding"
+        }
+      ],
+      "returns" : "Number"
+    },
+    {
+      "name" : "setTop",
+      "desc" : "Sets the element's top position directly using CSS style (instead of {@link #setY}).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "top",
+          "type" : "String",
+          "desc" : "The top CSS property value"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "toggleClass",
+      "desc" : "Toggles the specified CSS class on this element (removes it if it already exists, otherwise adds it).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "className",
+          "type" : "String",
+          "desc" : "The CSS class to toggle"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "wrap",
+      "desc" : "Creates and wraps this element with another element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "config",
+          "type" : "Object",
+          "desc" : "(optional) DomHelper element config object for the wrapper element or null for an empty div"
+        },
+        {
+          "name" : "returnDom",
+          "type" : "Boolean",
+          "desc" : "(optional) True to return the raw DOM element instead of Roo.Element"
+        }
+      ],
+      "returns" : "HTMLElement/Element"
+    },
+    {
+      "name" : "setVisible",
+      "desc" : "Sets the visibility of the element (see details). If the visibilityMode is set to Element.DISPLAY, it will use\nthe display property to hide the element, otherwise it uses visibility. The default is to hide and show using the visibility property.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "visible",
+          "type" : "Boolean",
+          "desc" : "Whether the element is visible"
+        },
+        {
+          "name" : "animate",
+          "type" : "Boolean/Object",
+          "desc" : "(optional) True for the default animation, or a standard Element animation config object"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "addListener",
+      "desc" : "Appends an event handler",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to append"
+        },
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : "The method the event invokes"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) of the fn"
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional)An object with standard {@link Roo.EventManager#addListener} options"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "setWidth",
+      "desc" : "Set the width of the element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "width",
+          "type" : "Number",
+          "desc" : "The new width"
+        },
+        {
+          "name" : "animate",
+          "type" : "Boolean/Object",
+          "desc" : "(optional) true for the default animation or a standard Element animation config object"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "center",
+      "desc" : "Centers the Element in either the viewport, or another Element.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "centerIn",
+          "type" : "String/HTMLElement/Roo.Element",
+          "desc" : "(optional) The element in which to center the element."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "isVisible",
+      "desc" : "Checks whether the element is currently visible using both visibility and display properties.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "deep",
+          "type" : "Boolean",
+          "desc" : "(optional) True to walk the dom and see if parent elements are hidden (defaults to false)"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "findParent",
+      "desc" : "Looks at this node and then at parent nodes for a match of the passed simple selector (e.g. div.some-class or span:first-child)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "selector",
+          "type" : "String",
+          "desc" : "The simple selector to test"
+        },
+        {
+          "name" : "maxDepth",
+          "type" : "Number/String/HTMLElement/Element",
+          "desc" : "(optional) The max depth to\n                search as a number or element (defaults to 10 || document.body)"
+        },
+        {
+          "name" : "returnEl",
+          "type" : "Boolean",
+          "desc" : "(optional) True to return a Roo.Element object instead of DOM node"
+        }
+      ],
+      "returns" : "HTMLElement"
+    },
+    {
+      "name" : "addKeyListener",
+      "desc" : "Convenience method for constructing a KeyMap",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "key",
+          "type" : "Number/Array/Object/String",
+          "desc" : "Either a string with the keys to listen for, the numeric key code, array of key codes or an object with the following options:\n                                 {key: (number or array), shift: (true/false), ctrl: (true/false), alt: (true/false)}"
+        },
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : "The function to call"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope of the function"
+        }
+      ],
+      "returns" : "Roo.KeyMap"
+    },
+    {
+      "name" : "swallowEvent",
+      "desc" : "Stops the specified event from bubbling and optionally prevents the default action",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : ""
+        },
+        {
+          "name" : "preventDefault",
+          "type" : "Boolean",
+          "desc" : "(optional) true to prevent the default action too"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "getStyles",
+      "desc" : "Returns an object with properties matching the styles requested.\nFor example, el.getStyles('color', 'font-size', 'width') might return\n{'color': '#FFFFFF', 'font-size': '13px', 'width': '100px'}.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "style1",
+          "type" : "String",
+          "desc" : "A style name"
+        },
+        {
+          "name" : "style2",
+          "type" : "String",
+          "desc" : "A style name"
+        }
+      ],
+      "returns" : "Object"
+    },
+    {
+      "name" : "getSize",
+      "desc" : "Returns the size of the element.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "contentSize",
+          "type" : "Boolean",
+          "desc" : "(optional) true to get the width/size minus borders and padding"
+        }
+      ],
+      "returns" : "Object"
+    },
+    {
+      "name" : "endMeasure",
+      "desc" : "Restores displays to before beginMeasure was called",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "getViewSize",
+      "desc" : "Returns the width and height of the viewport.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : "Object"
+    },
+    {
+      "name" : "addClassOnFocus",
+      "desc" : "Sets up event handlers to add and remove a css class when this element has the focus",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "className",
+          "type" : "String",
+          "desc" : ""
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "alignTo",
+      "desc" : "Aligns this element with another element relative to the specified anchor points. If the other element is the\ndocument it aligns it to the viewport.\nThe position parameter is optional, and can be specified in any one of the following formats:\n<ul>\n  <li><b>Blank</b>: Defaults to aligning the element's top-left corner to the target's bottom-left corner (\"tl-bl\").</li>\n  <li><b>One anchor (deprecated)</b>: The passed anchor position is used as the target element's anchor point.\n      The element being aligned will position its top-left corner (tl) to that point.  <i>This method has been\n      deprecated in favor of the newer two anchor syntax below</i>.</li>\n  <li><b>Two anchors</b>: If two values from the table below are passed separated by a dash, the first value is used as the\n      element's anchor point, and the second value is used as the target's anchor point.</li>\n</ul>\nIn addition to the anchor points, the position parameter also supports the \"?\" character.  If \"?\" is passed at the end of\nthe position string, the element will attempt to align as specified, but the position will be adjusted to constrain to\nthe viewport if necessary.  Note that the element being aligned might be swapped to align to a different position than\nthat specified in order to enforce the viewport constraints.\nFollowing are all of the supported anchor positions:\n    <pre>\n    Value  Description\n    -----  -----------------------------\n    tl     The top left corner (default)\n    t      The center of the top edge\n    tr     The top right corner\n    l      The center of the left edge\n    c      In the center of the element\n    r      The center of the right edge\n    bl     The bottom left corner\n    b      The center of the bottom edge\n    br     The bottom right corner\n    </pre>\n    Example Usage:\n    <pre><code>\n    // align el to other-el using the default positioning (\"tl-bl\", non-constrained)\n    el.alignTo(\"other-el\");\n\n    // align the top left corner of el with the top right corner of other-el (constrained to viewport)\n    el.alignTo(\"other-el\", \"tr?\");\n\n    // align the bottom right corner of el with the center left edge of other-el\n    el.alignTo(\"other-el\", \"br-l?\");\n\n    // align the center of el with the bottom left corner of other-el and\n    // adjust the x position by -6 pixels (and the y position by 0)\n    el.alignTo(\"other-el\", \"c-bl\", [-6, 0]);\n    </code></pre>",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "element",
+          "type" : "String/HTMLElement/Roo.Element",
+          "desc" : "The element to align to."
+        },
+        {
+          "name" : "position",
+          "type" : "String",
+          "desc" : "The position to align to."
+        },
+        {
+          "name" : "offsets",
+          "type" : "Array",
+          "desc" : "(optional) Offset the positioning by [x, y]"
+        },
+        {
+          "name" : "animate",
+          "type" : "Boolean/Object",
+          "desc" : "(optional) true for the default animation or a standard Element animation config object"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "insertAfter",
+      "desc" : "Inserts this element after the passed element in the DOM",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement/Element",
+          "desc" : "The element to insert after"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "hide",
+      "desc" : "Hide this element - Uses display mode to determine whether to use \"display\" or \"visibility\". See {@link #setVisible}.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "animate",
+          "type" : "Boolean/Object",
+          "desc" : "(optional) true for the default animation or a standard Element animation config object"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "setBottom",
+      "desc" : "Sets the element's CSS bottom style.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "bottom",
+          "type" : "String",
+          "desc" : "The bottom CSS property value"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "clearPositioning",
+      "desc" : "Clear positioning back to the default when the document was loaded",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "value",
+          "type" : "String",
+          "desc" : "(optional) The value to use for the left,right,top,bottom, defaults to '' (empty string). You could use 'auto'."
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "isDisplayed",
+      "desc" : "Returns true if display is not \"none\"",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "show",
+      "desc" : "Show this element - Uses display mode to determine whether to use \"display\" or \"visibility\". See {@link #setVisible}.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "animate",
+          "type" : "Boolean/Object",
+          "desc" : "(optional) true for the default animation or a standard Element animation config object"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "setLeftTop",
+      "desc" : "Quick set left and top adding default units",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "left",
+          "type" : "String",
+          "desc" : "The left CSS property value"
+        },
+        {
+          "name" : "top",
+          "type" : "String",
+          "desc" : "The top CSS property value"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "child",
+      "desc" : "Selects a single child at any depth below this element based on the passed CSS selector (the selector should not contain an id).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "selector",
+          "type" : "String",
+          "desc" : "The CSS selector"
+        },
+        {
+          "name" : "returnDom",
+          "type" : "Boolean",
+          "desc" : "(optional) True to return the DOM node instead of Roo.Element (defaults to false)"
+        }
+      ],
+      "returns" : "HTMLElement/Roo.Element"
+    },
+    {
+      "name" : "unmask",
+      "desc" : "Removes a previously applied mask. If removeEl is true the mask overlay is destroyed, otherwise\nit is cached for reuse.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "moveTo",
+      "desc" : "Sets the position of the element in page coordinates, regardless of how the element is positioned.\nThe element must be part of the DOM tree to have page coordinates (display:none or elements not appended return false).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "x",
+          "type" : "Number",
+          "desc" : "X value for new position (coordinates are page-based)"
+        },
+        {
+          "name" : "y",
+          "type" : "Number",
+          "desc" : "Y value for new position (coordinates are page-based)"
+        },
+        {
+          "name" : "animate",
+          "type" : "Boolean/Object",
+          "desc" : "(optional) True for the default animation, or a standard Element animation config object"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "addClassOnOver",
+      "desc" : "Sets up event handlers to add and remove a css class when the mouse is over this element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "className",
+          "type" : "String",
+          "desc" : ""
+        },
+        {
+          "name" : "preventFlicker",
+          "type" : "Boolean",
+          "desc" : "(optional) If set to true, it prevents flickering by filtering\nmouseout events for children elements"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "getLeft",
+      "desc" : "Gets the left X coordinate",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "local",
+          "type" : "Boolean",
+          "desc" : "True to get the local css position instead of page coordinate"
+        }
+      ],
+      "returns" : "Number"
+    },
+    {
+      "name" : "isScrollable",
+      "desc" : "Returns true if this element is scrollable.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "boxWrap",
+      "desc" : "Wraps the specified element with a special markup/CSS block that renders by default as a gray container with a\ngradient background, rounded corners and a 4-way shadow.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "class",
+          "type" : "String",
+          "desc" : "(optional) A base CSS class to apply to the containing wrapper element (defaults to 'x-box').\nNote that there are a number of CSS rules that are dependent on this name to make the overall effect work,\nso if you supply an alternate base class, make sure you also supply all of the necessary rules."
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "replace",
+      "desc" : "Replaces the passed element with this element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement/Element",
+          "desc" : "The element to replace"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "select",
+      "desc" : "Creates a {@link Roo.CompositeElement} for child nodes based on the passed CSS selector (the selector should not contain an id).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "selector",
+          "type" : "String",
+          "desc" : "The CSS selector"
+        },
+        {
+          "name" : "unique",
+          "type" : "Boolean",
+          "desc" : "(optional) True to create a unique Roo.Element for each child (defaults to false, which creates a single shared flyweight object)"
+        }
+      ],
+      "returns" : "CompositeElement/CompositeElementLite"
+    },
+    {
+      "name" : "isMasked",
+      "desc" : "Returns true if this element is masked",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "getUpdateManager",
+      "desc" : "Gets this element's UpdateManager",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : "Roo.UpdateManager"
+    },
+    {
+      "name" : "insertHtml",
+      "desc" : "Inserts an html fragment into this element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "where",
+          "type" : "String",
+          "desc" : "Where to insert the html in relation to the this element - beforeBegin, afterBegin, beforeEnd, afterEnd."
+        },
+        {
+          "name" : "html",
+          "type" : "String",
+          "desc" : "The HTML fragment"
+        },
+        {
+          "name" : "returnEl",
+          "type" : "Boolean",
+          "desc" : "True to return an Roo.Element"
+        }
+      ],
+      "returns" : "HTMLElement/Roo.Element"
+    },
+    {
+      "name" : "mask",
+      "desc" : "Puts a mask over this element to disable user interaction. Requires core.css.\nThis method can only be applied to elements which accept child nodes.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "msg",
+          "type" : "String",
+          "desc" : "(optional) A message to display in the mask"
+        },
+        {
+          "name" : "msgCls",
+          "type" : "String",
+          "desc" : "(optional) A css class to apply to the msg element"
+        }
+      ],
+      "returns" : "Element"
+    },
+    {
+      "name" : "getTop",
+      "desc" : "Gets the top Y coordinate",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "local",
+          "type" : "Boolean",
+          "desc" : "True to get the local css position instead of page coordinate"
+        }
+      ],
+      "returns" : "Number"
+    },
+    {
+      "name" : "getBottom",
+      "desc" : "Gets the bottom Y coordinate of the element (element Y position + element height)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "local",
+          "type" : "Boolean",
+          "desc" : "True to get the local css position instead of page coordinate"
+        }
+      ],
+      "returns" : "Number"
+    },
+    {
+      "name" : "getRight",
+      "desc" : "Gets the right X coordinate of the element (element X position + element width)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "local",
+          "type" : "Boolean",
+          "desc" : "True to get the local css position instead of page coordinate"
+        }
+      ],
+      "returns" : "Number"
+    },
+    {
+      "name" : "beginMeasure",
+      "desc" : "Temporarily enables offsets (width,height,x,y) for an element with display:none, use endMeasure() when done.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "appendTo",
+      "desc" : "Appends this element to the passed element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement/Element",
+          "desc" : "The new parent element"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "fly",
+      "desc" : "Gets the globally shared flyweight Element, with the passed node as the active element. Do not store a reference to this element -\nthe dom node can be overwritten by other code.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement",
+          "desc" : "The dom node or id"
+        },
+        {
+          "name" : "named",
+          "type" : "String",
+          "desc" : "(optional) Allows for creation of named reusable flyweights to\n                                 prevent conflicts (e.g. internally Roo uses \"_internal\")"
+        }
+      ],
+      "returns" : "Element"
+    },
+    {
+      "name" : "hasClass",
+      "desc" : "Checks if the specified CSS class exists on this element's DOM node.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "className",
+          "type" : "String",
+          "desc" : "The CSS class to check for"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "findScrollableParent",
+      "desc" : "Looks at  the scrollable parent element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "fitToParent",
+      "desc" : "Sizes this element to its parent element's dimensions performing\nneccessary box adjustments.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "monitorResize",
+          "type" : "Boolean",
+          "desc" : "(optional) If true maintains the fit when the browser window is resized."
+        },
+        {
+          "name" : "targetParent",
+          "type" : "String/HTMLElment/Element",
+          "desc" : "(optional) The target parent, default to the parentNode."
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "setXY",
+      "desc" : "Sets the position of the element in page coordinates, regardless of how the element is positioned.\nThe element must be part of the DOM tree to have page coordinates (display:none or elements not appended return false).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "pos",
+          "type" : "Array",
+          "desc" : "Contains X & Y [x, y] values for new position (coordinates are page-based)"
+        },
+        {
+          "name" : "animate",
+          "type" : "Boolean/Object",
+          "desc" : "(optional) True for the default animation, or a standard Element animation config object"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "getXY",
+      "desc" : "Gets the current position of the element based on page coordinates.  Element must be part of the DOM tree to have page coordinates (display:none or elements not appended return false).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : "Array"
+    },
+    {
+      "name" : "unselectable",
+      "desc" : "Disables text selection for this element (normalized across browsers)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "blur",
+      "desc" : "Tries to blur the element. Any exceptions are caught and ignored.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "setRight",
+      "desc" : "Sets the element's CSS right style.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "right",
+          "type" : "String",
+          "desc" : "The right CSS property value"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "findParentNode",
+      "desc" : "Looks at parent nodes for a match of the passed simple selector (e.g. div.some-class or span:first-child)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "selector",
+          "type" : "String",
+          "desc" : "The simple selector to test"
+        },
+        {
+          "name" : "maxDepth",
+          "type" : "Number/String/HTMLElement/Element",
+          "desc" : "(optional) The max depth to\n                search as a number or element (defaults to 10 || document.body)"
+        },
+        {
+          "name" : "returnEl",
+          "type" : "Boolean",
+          "desc" : "(optional) True to return a Roo.Element object instead of DOM node"
+        }
+      ],
+      "returns" : "HTMLElement"
+    },
+    {
+      "name" : "position",
+      "desc" : "Initializes positioning on this element. If a desired position is not passed, it will make the\nthe element positioned relative IF it is not already positioned.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "pos",
+          "type" : "String",
+          "desc" : "(optional) Positioning to use \"relative\", \"absolute\" or \"fixed\""
+        },
+        {
+          "name" : "zIndex",
+          "type" : "Number",
+          "desc" : "(optional) The zIndex to apply"
+        },
+        {
+          "name" : "x",
+          "type" : "Number",
+          "desc" : "(optional) Set the page X position"
+        },
+        {
+          "name" : "y",
+          "type" : "Number",
+          "desc" : "(optional) Set the page Y position"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getFrameWidth",
+      "desc" : "Returns the sum width of the padding and borders for the passed \"sides\". See getBorderWidth()\n         for more information about the sides.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "sides",
+          "type" : "String",
+          "desc" : ""
+        }
+      ],
+      "returns" : "Number"
+    },
+    {
+      "name" : "setLocation",
+      "desc" : "Sets the position of the element in page coordinates, regardless of how the element is positioned.\nThe element must be part of the DOM tree to have page coordinates (display:none or elements not appended return false).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "x",
+          "type" : "Number",
+          "desc" : "X value for new position (coordinates are page-based)"
+        },
+        {
+          "name" : "y",
+          "type" : "Number",
+          "desc" : "Y value for new position (coordinates are page-based)"
+        },
+        {
+          "name" : "animate",
+          "type" : "Boolean/Object",
+          "desc" : "(optional) True for the default animation, or a standard Element animation config object"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "unclip",
+      "desc" : "Return clipping (overflow) to original clipping before clip() was called",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "set",
+      "desc" : "Sets the passed attributes as attributes of this element (a style attribute can be a string, object or function)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Object",
+          "desc" : "The object with the attributes"
+        },
+        {
+          "name" : "useSet",
+          "type" : "Boolean",
+          "desc" : "(optional) false to override the default setAttribute to use expandos."
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "setDisplayed",
+      "desc" : "Sets the CSS display property. Uses originalDisplay if the specified value is a boolean true.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "value",
+          "type" : "Boolean",
+          "desc" : "Boolean value to display the element using its default display, or a string to set the display directly"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "insertFirst",
+      "desc" : "Inserts (or creates) an element (or DomHelper config) as the first child of the this element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement/Element/Object",
+          "desc" : "The id or element to insert or a DomHelper config to create and insert"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "animate",
+      "desc" : "Perform animation on this element.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "args",
+          "type" : "Object",
+          "desc" : "The YUI animation control args"
+        },
+        {
+          "name" : "duration",
+          "type" : "Float",
+          "desc" : "(optional) How long the animation lasts in seconds (defaults to .35)"
+        },
+        {
+          "name" : "onComplete",
+          "type" : "Function",
+          "desc" : "(optional) Function to call when animation completes"
+        },
+        {
+          "name" : "easing",
+          "type" : "String",
+          "desc" : "(optional) Easing method to use (defaults to 'easeOut')"
+        },
+        {
+          "name" : "animType",
+          "type" : "String",
+          "desc" : "(optional) 'run' is the default. Can also be 'color', 'motion', or 'scroll'"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "enableDisplayMode",
+      "desc" : "Convenience method for setVisibilityMode(Element.DISPLAY)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "display",
+          "type" : "String",
+          "desc" : "(optional) What to set display to when visible"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "getComputedWidth",
+      "desc" : "Returns either the offsetWidth or the width of this element based on CSS width adjusted by padding or borders\nwhen needed to simulate offsetWidth when offsets aren't available. This may not work on display:none elements\nif a width has not been set using CSS.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : "Number"
+    },
+    {
+      "name" : "clip",
+      "desc" : "Store the current overflow setting and clip overflow on the element - use {@link #unclip} to remove",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "setVisibilityMode",
+      "desc" : "Sets the element's visibility mode. When setVisible() is called it\nwill use this to determine whether to set the visibility or the display property.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "visMode",
+          "type" : "",
+          "desc" : "Element.VISIBILITY or Element.DISPLAY"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "getColor",
+      "desc" : "Return the CSS color for the specified CSS attribute. rgb, 3 digit (like #fff) and valid values\nare convert to standard 6 digit hex color.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "attr",
+          "type" : "String",
+          "desc" : "The css attribute"
+        },
+        {
+          "name" : "defaultValue",
+          "type" : "String",
+          "desc" : "The default value to use when a valid color isn't found"
+        },
+        {
+          "name" : "prefix",
+          "type" : "String",
+          "desc" : "(optional) defaults to #. Use an empty string when working with\nYUI color anims."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "insertSibling",
+      "desc" : "Inserts (or creates) the passed element (or DomHelper config) as a sibling of this element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement/Element/Object",
+          "desc" : "The id or element to insert or a DomHelper config to create and insert"
+        },
+        {
+          "name" : "where",
+          "type" : "String",
+          "desc" : "(optional) 'before' or 'after' defaults to before"
+        },
+        {
+          "name" : "returnDom",
+          "type" : "Boolean",
+          "desc" : "(optional) True to return the raw DOM element instead of Roo.Element"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "removeListener",
+      "desc" : "Removes an event handler from this element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "the type of event to remove"
+        },
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : "the method the event invokes"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "applyStyles",
+      "desc" : "More flexible version of {@link #setStyle} for setting style properties.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "styles",
+          "type" : "String/Object/Function",
+          "desc" : "A style specification string, e.g. \"width:100px\", or object in the form {width:\"100px\"}, or\na function which returns such a specification."
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "getPrevSibling",
+      "desc" : "Gets the previous sibling, skipping text nodes",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : "HTMLElement"
+    },
+    {
+      "name" : "setBox",
+      "desc" : "Sets the element's box. Use getBox() on another element to get a box obj. If animate is true then width, height, x and y will be animated concurrently.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "box",
+          "type" : "Object",
+          "desc" : "The box to fill {x, y, width, height}"
+        },
+        {
+          "name" : "adjust",
+          "type" : "Boolean",
+          "desc" : "(optional) Whether to adjust for box-model issues automatically"
+        },
+        {
+          "name" : "animate",
+          "type" : "Boolean/Object",
+          "desc" : "(optional) true for the default animation or a standard Element animation config object"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "initDDProxy",
+      "desc" : "Initializes a {@link Roo.dd.DDProxy} object for this element.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "group",
+          "type" : "String",
+          "desc" : "The group the DDProxy object is member of"
+        },
+        {
+          "name" : "config",
+          "type" : "Object",
+          "desc" : "The DDProxy config object"
+        },
+        {
+          "name" : "overrides",
+          "type" : "Object",
+          "desc" : "An object containing methods to override/implement on the DDProxy object"
+        }
+      ],
+      "returns" : "Roo.dd.DDProxy"
+    },
+    {
+      "name" : "setX",
+      "desc" : "Sets the X position of the element based on page coordinates.  Element must be part of the DOM tree to have page coordinates (display:none or elements not appended return false).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "The",
+          "type" : "Number",
+          "desc" : "X position of the element"
+        },
+        {
+          "name" : "animate",
+          "type" : "Boolean/Object",
+          "desc" : "(optional) True for the default animation, or a standard Element animation config object"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "setY",
+      "desc" : "Sets the Y position of the element based on page coordinates.  Element must be part of the DOM tree to have page coordinates (display:none or elements not appended return false).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "The",
+          "type" : "Number",
+          "desc" : "Y position of the element"
+        },
+        {
+          "name" : "animate",
+          "type" : "Boolean/Object",
+          "desc" : "(optional) True for the default animation, or a standard Element animation config object"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "query",
+      "desc" : "Selects child nodes based on the passed CSS selector (the selector should not contain an id).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "selector",
+          "type" : "String",
+          "desc" : "The CSS selector"
+        }
+      ],
+      "returns" : "Array"
+    },
+    {
+      "name" : "getAnchorXY",
+      "desc" : "Gets the x,y coordinates specified by the anchor position on the element.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "anchor",
+          "type" : "String",
+          "desc" : "(optional) The specified anchor position (defaults to \"c\").  See {@link #alignTo} for details on supported anchor positions."
+        },
+        {
+          "name" : "size",
+          "type" : "Object",
+          "desc" : "(optional) An object containing the size to use for calculating anchor position\n                      {width: (target width), height: (target height)} (defaults to the element's current size)"
+        },
+        {
+          "name" : "local",
+          "type" : "Boolean",
+          "desc" : "(optional) True to get the local (element top/left-relative) anchor position instead of page coordinates"
+        }
+      ],
+      "returns" : "Array"
+    },
+    {
+      "name" : "initDD",
+      "desc" : "Initializes a {@link Roo.dd.DD} drag drop object for this element.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "group",
+          "type" : "String",
+          "desc" : "The group the DD object is member of"
+        },
+        {
+          "name" : "config",
+          "type" : "Object",
+          "desc" : "The DD config object"
+        },
+        {
+          "name" : "overrides",
+          "type" : "Object",
+          "desc" : "An object containing methods to override/implement on the DD object"
+        }
+      ],
+      "returns" : "Roo.dd.DD"
+    },
+    {
+      "name" : "getComputedHeight",
+      "desc" : "Returns either the offsetHeight or the height of this element based on CSS height adjusted by padding or borders\nwhen needed to simulate offsetHeight when offsets aren't available. This may not work on display:none elements\nif a height has not been set using CSS.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : "Number"
+    },
+    {
+      "name" : "is",
+      "desc" : "Returns true if this element matches the passed simple selector (e.g. div.some-class or span:first-child)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "selector",
+          "type" : "String",
+          "desc" : "The simple selector to test"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "move",
+      "desc" : "Move this element relative to its current position.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "direction",
+          "type" : "String",
+          "desc" : "Possible values are: \"l\",\"left\" - \"r\",\"right\" - \"t\",\"top\",\"up\" - \"b\",\"bottom\",\"down\"."
+        },
+        {
+          "name" : "distance",
+          "type" : "Number",
+          "desc" : "How far to move the element in pixels"
+        },
+        {
+          "name" : "animate",
+          "type" : "Boolean/Object",
+          "desc" : "(optional) true for the default animation or a standard Element animation config object"
+        }
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "remove",
+      "desc" : "Removes this element from the DOM and deletes it from the cache",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getNextSibling",
+      "desc" : "Gets the next sibling, skipping text nodes",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : "HTMLElement"
+    },
+    {
+      "name" : "getStyle",
+      "desc" : "Normalizes currentStyle and computedStyle. This is not YUI getStyle, it is an optimised version.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "property",
+          "type" : "String",
+          "desc" : "The style property whose value is returned."
+        }
+      ],
+      "returns" : "String"
+    },
+    {
+      "name" : "isBorderBox",
+      "desc" : "Tests various css rules/browsers to determine if this element uses a border box",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "getPadding",
+      "desc" : "Gets the width of the padding(s) for the specified side(s)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Element",
+      "params" : [
+        {
+          "name" : "side",
+          "type" : "String",
+          "desc" : "Can be t, l, r, b or any combination of those to add multiple values. For example,\npassing lr would get the padding (l)eft + the padding (r)ight."
+        }
+      ],
+      "returns" : "Number"
+    }
+  ],
+  "events" : [
+  ]
+}

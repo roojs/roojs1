@@ -1,0 +1,711 @@
+{
+  "name" : "Roo.bootstrap.MessageBar",
+  "augments" : [
+    "Roo.bootstrap.Component",
+    "Roo.Component",
+    "Roo.util.Observable"
+  ],
+  "desc" : "Bootstrap MessageBar class",
+  "config" : [
+    {
+      "name" : "listeners",
+      "type" : "Object",
+      "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+      "memberOf" : "Roo.util.Observable"
+    },
+    {
+      "name" : "tooltip",
+      "type" : "string",
+      "desc" : "Text for the tooltip",
+      "memberOf" : "Roo.bootstrap.Component"
+    },
+    {
+      "name" : "container_method",
+      "type" : "string",
+      "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+      "memberOf" : "Roo.bootstrap.Component"
+    },
+    {
+      "name" : "visibilityEl",
+      "type" : "string|object",
+      "desc" : [
+        "(el",
+        "parent)"
+      ],
+      "memberOf" : "Roo.bootstrap.Component"
+    },
+    {
+      "name" : "beforeClass",
+      "type" : "String",
+      "desc" : "insert the bar before the given class",
+      "memberOf" : ""
+    },
+    {
+      "name" : "fixed",
+      "type" : "Boolean",
+      "desc" : [
+        "(true",
+        "false)"
+      ],
+      "memberOf" : ""
+    },
+    {
+      "name" : "can_build_overlaid",
+      "type" : "Boolean",
+      "desc" : "True if element can be rebuild from a HTML page",
+      "memberOf" : "Roo.bootstrap.Component"
+    },
+    {
+      "name" : "hideMode",
+      "type" : "String",
+      "desc" : [
+        "(display",
+        "visibility)"
+      ],
+      "memberOf" : "Roo.Component"
+    },
+    {
+      "name" : "style",
+      "type" : "String",
+      "desc" : "any extra css",
+      "memberOf" : "Roo.bootstrap.Component"
+    },
+    {
+      "name" : "allowDomMove",
+      "type" : "Boolean",
+      "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
+      "memberOf" : "Roo.Component"
+    },
+    {
+      "name" : "html",
+      "type" : "String",
+      "desc" : "contents of the MessageBar",
+      "memberOf" : ""
+    },
+    {
+      "name" : "cls",
+      "type" : "String",
+      "desc" : "css class",
+      "memberOf" : "Roo.bootstrap.Component"
+    },
+    {
+      "name" : "xattr",
+      "type" : "Object",
+      "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
+      "memberOf" : "Roo.bootstrap.Component"
+    },
+    {
+      "name" : "actionMode",
+      "type" : "String",
+      "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el'",
+      "memberOf" : "Roo.Component"
+    },
+    {
+      "name" : "closable",
+      "type" : "Boolean",
+      "desc" : [
+        "(true",
+        "false)"
+      ],
+      "memberOf" : ""
+    },
+    {
+      "name" : "dataId",
+      "type" : "string",
+      "desc" : "cutomer id",
+      "memberOf" : "Roo.bootstrap.Component"
+    },
+    {
+      "name" : "weight",
+      "type" : "String",
+      "desc" : [
+        "(info",
+        "success",
+        "warning",
+        "danger)"
+      ],
+      "memberOf" : ""
+    },
+    {
+      "name" : "name",
+      "type" : "string",
+      "desc" : "Specifies name attribute",
+      "memberOf" : "Roo.bootstrap.Component"
+    },
+    {
+      "name" : "disableClass",
+      "type" : "String",
+      "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
+      "memberOf" : "Roo.Component"
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "tooltipEl",
+      "desc" : "Fetch the element to display the tooltip on.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Component",
+      "params" : [
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "hide",
+      "desc" : "Hide a component - adds 'hidden' class",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Component",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "show",
+      "desc" : "Show a component - removes 'hidden' class",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Component",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "setVisibilityEl",
+      "desc" : "Set the element that will be used to show or hide",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Component",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getVisibilityEl",
+      "desc" : "Get the element that will be used to show or hide",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Component",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "initEvents",
+      "desc" : "Initialize Events for the element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Component",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getChildContainer",
+      "desc" : "Fetch the element to add children to",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Component",
+      "params" : [
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "getId",
+      "desc" : "Returns the id of this component.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+      ],
+      "returns" : "String"
+    },
+    {
+      "name" : "render",
+      "desc" : "If this is a lazy rendering component, render it to its container element.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "container",
+          "type" : "String/HTMLElement/Element",
+          "desc" : "(optional) The element this component should be rendered into. If it is being applied to existing markup, this should be left off."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "destroy",
+      "desc" : "Destroys this component by purging any event listeners, removing the component's element from the DOM,\nremoving the component from its {@link Roo.Container} (if applicable) and unregistering it from {@link Roo.ComponentMgr}.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "isVisible",
+      "desc" : "Returns true if this component is visible.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "setDisabled",
+      "desc" : "Convenience function for setting disabled/enabled by boolean.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "disabled",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "focus",
+      "desc" : "Try to focus this component.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "selectText",
+          "type" : "Boolean",
+          "desc" : "True to also select the text in this component (if applicable)"
+        }
+      ],
+      "returns" : "Roo.Component"
+    },
+    {
+      "name" : "enable",
+      "desc" : "Enable this component.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+      ],
+      "returns" : "Roo.Component"
+    },
+    {
+      "name" : "setVisible",
+      "desc" : "Convenience function to hide or show this component by boolean.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "visible",
+          "type" : "Boolean",
+          "desc" : "True to show, false to hide"
+        }
+      ],
+      "returns" : "Roo.Component"
+    },
+    {
+      "name" : "disable",
+      "desc" : "Disable this component.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+      ],
+      "returns" : "Roo.Component"
+    },
+    {
+      "name" : "getEl",
+      "desc" : "Returns the underlying {@link Roo.Element}.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "purgeListeners",
+      "desc" : "Removes all listeners for this object",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "on",
+      "desc" : "Appends an event handler to this element (shorthand for addListener)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context."
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional)"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "un",
+      "desc" : "Removes a listener (shorthand for removeListener)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The handler to remove"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the handler"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addEvents",
+      "desc" : "Used to define events on this Observable",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "object",
+          "type" : "Object",
+          "desc" : "The object with the events defined"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "releaseCapture",
+      "desc" : "Removes <b>all</b> added captures from the Observable.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Observable",
+          "desc" : "The Observable to release"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "removeListener",
+      "desc" : "Removes a listener",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The handler to remove"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the handler"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "fireEvent",
+      "desc" : "Fires the specified event with the passed parameters (minus the event name).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : ""
+        },
+        {
+          "name" : "args",
+          "type" : "Object...",
+          "desc" : "Variable number of parameters are passed to handlers"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "hasListener",
+      "desc" : "Checks to see if this object has any listeners for a specified event",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The name of the event to check for"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "capture",
+      "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Observable",
+          "desc" : "The Observable to capture"
+        },
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : "The function to call"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the fn"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addListener",
+      "desc" : "Appends an event handler to this component",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context."
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional) An object containing handler configuration\nproperties. This may contain any of the following properties:<ul>\n<li>scope {Object} The scope in which to execute the handler function. The handler function's \"this\" context.</li>\n<li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li>\n<li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li>\n<li>buffer {Number} Causes the handler to be scheduled to run in an {@link Roo.util.DelayedTask} delayed\nby the specified number of milliseconds. If the event fires again within that time, the original\nhandler is <em>not</em> invoked, but the new handler is scheduled in its place.</li>\n</ul><br>\n<p>\n<b>Combining Options</b><br>\nUsing the options argument, it is possible to combine different types of listeners:<br>\n<br>\nA normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)\n\t\t<pre><code>\n\t\tel.on('click', this.onClick, this, {\n \t\t\tsingle: true,\n    \t\tdelay: 100,\n    \t\tforumId: 4\n\t\t});\n\t\t</code></pre>\n<p>\n<b>Attaching multiple handlers in 1 call</b><br>\nThe method also allows for a single argument to be passed which is a config object containing properties\nwhich specify multiple handlers.\n<pre><code>\n\t\tel.on({\n\t\t\t'click': {\n        \t\tfn: this.onClick,\n        \t\tscope: this,\n        \t\tdelay: 100\n    \t\t}, \n    \t\t'mouseover': {\n        \t\tfn: this.onMouseOver,\n        \t\tscope: this\n    \t\t},\n    \t\t'mouseout': {\n        \t\tfn: this.onMouseOut,\n        \t\tscope: this\n    \t\t}\n\t\t});\n\t\t</code></pre>\n<p>\nOr a shorthand syntax which passes the same scope object to all handlers:\n     \t<pre><code>\n\t\tel.on({\n\t\t\t'click': this.onClick,\n    \t\t'mouseover': this.onMouseOver,\n    \t\t'mouseout': this.onMouseOut,\n    \t\tscope: this\n\t\t});\n\t\t</code></pre>"
+        }
+      ],
+      "returns" : ""
+    }
+  ],
+  "events" : [
+    {
+      "name" : "*childrenrendered",
+      "desc" : "Fires when the children have been rendered..",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.bootstrap.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*beforerender",
+      "desc" : "Fires before the component is rendered. Return false to stop the render.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*disable",
+      "desc" : "Fires after the component is disabled.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*render",
+      "desc" : "Fires after the component is rendered.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*destroy",
+      "desc" : "Fires after the component is destroyed.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*hide",
+      "desc" : "Fires after the component is hidden.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*beforehide",
+      "desc" : "Fires before the component is hidden. Return false to stop the hide.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*show",
+      "desc" : "Fires after the component is shown.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*beforeshow",
+      "desc" : "Fires before the component is shown.  Return false to stop the show.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*enable",
+      "desc" : "Fires after the component is enabled.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*beforedestroy",
+      "desc" : "Fires before the component is destroyed. Return false to stop the destroy.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    }
+  ]
+}

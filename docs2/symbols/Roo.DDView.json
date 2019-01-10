@@ -1,0 +1,166 @@
+{
+  "name" : "Roo.DDView",
+  "augments" : [
+  ],
+  "desc" : "A DnD enabled version of Roo.View.",
+  "config" : [
+    {
+      "name" : "dropGroup",
+      "type" : "String/Array",
+      "desc" : "The ddgroup name(s) for the View's DropZone.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "allowCopy",
+      "type" : "Boolean",
+      "desc" : "Causes ctrl/drag operations to copy nodes rather than move.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "copy",
+      "type" : "Boolean",
+      "desc" : "Causes drag operations to copy nodes rather than move.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "dragGroup",
+      "type" : "String/Array",
+      "desc" : "The ddgroup name(s) for the View's DragZone.",
+      "memberOf" : ""
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "getDropPoint",
+      "desc" : "Decide whether to drop above or below a View node.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getValue",
+      "desc" : "",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "String"
+    },
+    {
+      "name" : "setDeletable",
+      "desc" : "Utility method. Add a delete option to the DDView's context menu.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "imageUrl",
+          "type" : "String",
+          "desc" : "The URL of the \"delete\" icon image."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "setValue",
+      "desc" : "Loads the View from a JSON string representing the Records to put into the Store.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getTargetFromEvent",
+      "desc" : "Part of the Roo.dd.DropZone interface. If no target node is found, the\n\twhole Element becomes the target, and this causes the drop gesture to append.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "onDblClick",
+      "desc" : "Double click fires the event, but also, if this is draggable, and there is only one other\n\trelated DropZone, it transfers the selected node.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getDragData",
+      "desc" : "Create the drag data which consists of an object which has the property \"ddel\" as\n\tthe drag proxy element.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "setDraggable",
+      "desc" : "Specify to which ddGroup items in this DDView may be dragged.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getName",
+      "desc" : "Allows this class to be an Roo.form.Field so it can be found using {@link Roo.form.BasicForm#findField}.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "remove",
+      "desc" : "Remove {@link Roo.data.Record}s at the specified indices.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "selectedIndices",
+          "type" : "Array/Number",
+          "desc" : "The index (or Array of indices) of Records to remove."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getContextMenu",
+      "desc" : "Return the context menu for this DDView.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "setDroppable",
+      "desc" : "Specify from which ddGroup this DDView accepts drops.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    }
+  ],
+  "events" : [
+  ]
+}

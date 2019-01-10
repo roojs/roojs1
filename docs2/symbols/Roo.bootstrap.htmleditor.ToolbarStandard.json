@@ -1,0 +1,34 @@
+{
+  "name" : "Roo.bootstrap.htmleditor.ToolbarStandard",
+  "augments" : [
+  ],
+  "desc" : "Basic Toolbar\n\nUsage:\n\n new Roo.bootstrap.HtmlEditor({\n    ....\n    toolbars : [\n        new Roo.bootstrap.HtmlEditorToolbar1({\n            disable : { fonts: 1 , format: 1, ..., ... , ...],\n            btns : [ .... ]\n        })\n    }",
+  "config" : [
+    {
+      "name" : "btns",
+      "type" : "Array",
+      "desc" : "List of additional buttons.\n\n\nNEEDS Extra CSS? \n.x-html-editor-tb .x-edit-none .x-btn-text { background: none; }",
+      "memberOf" : ""
+    },
+    {
+      "name" : "disable",
+      "type" : "Object",
+      "desc" : "List of elements to disable..",
+      "memberOf" : ""
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "updateToolbar",
+      "desc" : "Protected method that will not generally be called directly. It triggers\na toolbar update by reading the markup state of the current selection in the editor.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    }
+  ],
+  "events" : [
+  ]
+}

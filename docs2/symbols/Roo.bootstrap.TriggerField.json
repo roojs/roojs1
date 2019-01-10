@@ -1,0 +1,1307 @@
+{
+  "name" : "Roo.bootstrap.TriggerField",
+  "augments" : [
+    "Roo.bootstrap.Input",
+    "Roo.bootstrap.Component",
+    "Roo.Component",
+    "Roo.util.Observable"
+  ],
+  "desc" : "Provides a convenient wrapper for TextFields that adds a clickable trigger button (looks like a combobox by default).\nThe trigger has no default action, so you must assign a function to implement the trigger click handler by\noverriding {@link #onTriggerClick}. You can create a TriggerField directly, as it renders exactly like a combobox\nfor which you can provide a custom implementation.  For example:\n<pre><code>\nvar trigger = new Roo.bootstrap.TriggerField();\ntrigger.onTriggerClick = myTriggerFn;\ntrigger.applyTo('my-field');\n</code></pre>\n\nHowever, in general you will most likely want to use TriggerField as the base class for a reusable component.\n{@link Roo.bootstrap.DateField} and {@link Roo.bootstrap.ComboBox} are perfect examples of this.",
+  "config" : [
+    {
+      "name" : "triggerClass",
+      "type" : "String",
+      "desc" : "An additional CSS class used to style the trigger button.  The trigger will always get the\nclass 'x-form-trigger' by default and triggerClass will be <b>appended</b> if specified.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "validFeedbackIcon",
+      "type" : "String",
+      "desc" : "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "lg",
+      "type" : "Number",
+      "desc" : "colspan out of 12 for large computer-sized screens",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "accept",
+      "type" : "String",
+      "desc" : [
+        "(image",
+        "video",
+        "audio)"
+      ],
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "xs",
+      "type" : "Number",
+      "desc" : "colspan out of 12 for mobile-sized screens",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "hideMode",
+      "type" : "String",
+      "desc" : [
+        "(display",
+        "visibility)"
+      ],
+      "memberOf" : "Roo.Component"
+    },
+    {
+      "name" : "disableKeyFilter",
+      "type" : "Boolean",
+      "desc" : "True to disable input keystroke filtering (defaults to false)",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "disabled",
+      "type" : "Boolean",
+      "desc" : "is it disabled",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "xattr",
+      "type" : "Object",
+      "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
+      "memberOf" : "Roo.bootstrap.Component"
+    },
+    {
+      "name" : "name",
+      "type" : "String",
+      "desc" : "name of the input",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "validator",
+      "type" : "Function",
+      "desc" : "A custom validation function to be called during field validation (defaults to null).\nIf available, this function will be called only after the basic validators all return true, and will be passed the\ncurrent field value and expected to return boolean true if the value is valid or a string error message if invalid.",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "autocomplete",
+      "type" : "String",
+      "desc" : "- default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "labelAlign",
+      "type" : "String",
+      "desc" : [
+        "(top",
+        "left)"
+      ],
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "tooltip",
+      "type" : "string",
+      "desc" : "Text for the tooltip",
+      "memberOf" : "Roo.bootstrap.Component"
+    },
+    {
+      "name" : "regexText",
+      "type" : "String",
+      "desc" : "-- Depricated - use Invalid Text",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "allowDomMove",
+      "type" : "Boolean",
+      "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
+      "memberOf" : "Roo.Component"
+    },
+    {
+      "name" : "style",
+      "type" : "String",
+      "desc" : "any extra css",
+      "memberOf" : "Roo.bootstrap.Component"
+    },
+    {
+      "name" : "labelmd",
+      "type" : "Number",
+      "desc" : "set the width of label (1-12)",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "value",
+      "type" : "string",
+      "desc" : "default value of the input",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "hasFeedback",
+      "type" : "Boolean",
+      "desc" : [
+        "(true",
+        "false)"
+      ],
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "actionMode",
+      "type" : "String",
+      "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el'",
+      "memberOf" : "Roo.Component"
+    },
+    {
+      "name" : "sm",
+      "type" : "Number",
+      "desc" : "colspan out of 12 for tablet-sized screens",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "minLengthText",
+      "type" : "String",
+      "desc" : "Error text to display if the minimum length validation fails (defaults to \"The minimum length for this field is {minLength}\")",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "maxLengthText",
+      "type" : "String",
+      "desc" : "Error text to display if the maximum length validation fails (defaults to \"The maximum length for this field is {maxLength}\")",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "listeners",
+      "type" : "Object",
+      "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+      "memberOf" : "Roo.util.Observable"
+    },
+    {
+      "name" : "container_method",
+      "type" : "string",
+      "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+      "memberOf" : "Roo.bootstrap.Component"
+    },
+    {
+      "name" : "readOnly",
+      "type" : "Boolean",
+      "desc" : "Specifies that the field should be read-only",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "indicatorpos",
+      "type" : "String",
+      "desc" : [
+        "(left",
+        "right)"
+      ],
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "align",
+      "type" : "String",
+      "desc" : [
+        "(left",
+        "center",
+        "right)"
+      ],
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "size",
+      "type" : "string",
+      "desc" : "- (lg|sm) or leave empty..",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "focusClass",
+      "type" : "String",
+      "desc" : "The CSS class to use when the field receives focus (defaults to \"x-form-focus\")",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "labellg",
+      "type" : "Number",
+      "desc" : "set the width of label (1-12)",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "validateOnBlur",
+      "type" : "Boolean",
+      "desc" : "Whether the field should validate when it loses focus (defaults to true).",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "hideTrigger",
+      "type" : "Boolean",
+      "desc" : "True to hide the trigger element and display only the base text field (defaults to false)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "removable",
+      "type" : "Boolean",
+      "desc" : [
+        "(true",
+        "false)"
+      ],
+      "memberOf" : ""
+    },
+    {
+      "name" : "labelxs",
+      "type" : "Number",
+      "desc" : "set the width of label (1-12)",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "cls",
+      "type" : "String",
+      "desc" : "css class",
+      "memberOf" : "Roo.bootstrap.Component"
+    },
+    {
+      "name" : "caret",
+      "type" : "String",
+      "desc" : [
+        "(search",
+        "calendar)"
+      ],
+      "memberOf" : ""
+    },
+    {
+      "name" : "inputType",
+      "type" : "String",
+      "desc" : "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "invalidClass",
+      "type" : "String",
+      "desc" : "DEPRICATED - code uses BS4 - is-valid / is-invalid",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "maskRe",
+      "type" : "String",
+      "desc" : "An input mask regular expression that will be used to filter keystrokes that don't match (defaults to null)",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "validationEvent",
+      "type" : "String/Boolean",
+      "desc" : "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "vtype",
+      "type" : "String",
+      "desc" : "A validation type name as defined in {@link Roo.form.VTypes} (defaults to null)",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "fieldLabel",
+      "type" : "string",
+      "desc" : "- the label associated",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "can_build_overlaid",
+      "type" : "Boolean",
+      "desc" : "True if element can be rebuild from a HTML page",
+      "memberOf" : "Roo.bootstrap.Component"
+    },
+    {
+      "name" : "blankText",
+      "type" : "String",
+      "desc" : "Error text to display if the allow blank validation fails (defaults to \"This field is required\")",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "before",
+      "type" : "string",
+      "desc" : "- input group add on before",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "validationDelay",
+      "type" : "Number",
+      "desc" : "The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "selectOnFocus",
+      "type" : "Boolean",
+      "desc" : "True to automatically select any existing field text when the field receives input focus (defaults to false)",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "disableClass",
+      "type" : "String",
+      "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
+      "memberOf" : "Roo.Component"
+    },
+    {
+      "name" : "invalidFeedbackIcon",
+      "type" : "String",
+      "desc" : "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "visibilityEl",
+      "type" : "string|object",
+      "desc" : [
+        "(el",
+        "parent)"
+      ],
+      "memberOf" : "Roo.bootstrap.Component"
+    },
+    {
+      "name" : "placeholder",
+      "type" : "string",
+      "desc" : "- placeholder to put in text.",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "dataId",
+      "type" : "string",
+      "desc" : "cutomer id",
+      "memberOf" : "Roo.bootstrap.Component"
+    },
+    {
+      "name" : "md",
+      "type" : "Number",
+      "desc" : "colspan out of 12 for computer-sized screens",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "regex",
+      "type" : "RegExp",
+      "desc" : "A JavaScript RegExp object to be tested against the field value during validation (defaults to null).\nIf available, this regex will be evaluated only after the basic validators all return true, and will be passed the\ncurrent field value.  If the test fails, the field will be marked invalid using {@link #regexText}.",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "labelWidth",
+      "type" : "Number",
+      "desc" : "set the width of label",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "minLength",
+      "type" : "Number",
+      "desc" : "Minimum input field length required (defaults to 0)",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "capture",
+      "type" : "String",
+      "desc" : [
+        "(user",
+        "camera)"
+      ],
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "validClass",
+      "type" : "String",
+      "desc" : "DEPRICATED - code uses BS4 - is-valid / is-invalid",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "allowBlank",
+      "type" : "Boolean",
+      "desc" : "False to validate that the value length > 0 (defaults to true)",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "forceFeedback",
+      "type" : "Boolean",
+      "desc" : [
+        "(true",
+        "false)"
+      ],
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "labelsm",
+      "type" : "Number",
+      "desc" : "set the width of label (1-12)",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "after",
+      "type" : "string",
+      "desc" : "- input group add on after",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "maxLength",
+      "type" : "Number",
+      "desc" : "Maximum input field length allowed (defaults to Number.MAX_VALUE)",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "invalidText",
+      "type" : "String",
+      "desc" : "The error text to display if {@link #validator} test fails during validation (defaults to \"\")",
+      "memberOf" : "Roo.bootstrap.Input"
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "onTriggerClick",
+      "desc" : "The function that should handle the trigger's click event.  This method does nothing by default until overridden\nby an implementing function.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "EventObject",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "autoSize",
+      "desc" : "",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "clearInvalid",
+      "desc" : "Clear any invalid styles/messages for this field",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Input",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "validate",
+      "desc" : "Validates the field value",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Input",
+      "params" : [
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "markInvalid",
+      "desc" : "Mark this field as invalid",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Input",
+      "params" : [
+        {
+          "name" : "msg",
+          "type" : "String",
+          "desc" : "The validation message"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getRawValue",
+      "desc" : "Returns the raw data value which may or may not be a valid, defined value.  To return a normalized value see {@link #getValue}.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Input",
+      "params" : [
+      ],
+      "returns" : "Mixed"
+    },
+    {
+      "name" : "markValid",
+      "desc" : "Mark this field as valid",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Input",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getName",
+      "desc" : "Returns the name of the field",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Input",
+      "params" : [
+      ],
+      "returns" : "Mixed"
+    },
+    {
+      "name" : "reset",
+      "desc" : "Resets the current field value to the originally loaded value and clears any validation messages",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Input",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getValue",
+      "desc" : "Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Input",
+      "params" : [
+      ],
+      "returns" : "Mixed"
+    },
+    {
+      "name" : "setValue",
+      "desc" : "Sets a data value into the field and validates it.  To set the value directly without validation see {@link #setRawValue}.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Input",
+      "params" : [
+        {
+          "name" : "value",
+          "type" : "Mixed",
+          "desc" : "The value to set"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "setRawValue",
+      "desc" : "Sets the underlying DOM field's value directly, bypassing validation.  To set the value with validation see {@link #setValue}.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Input",
+      "params" : [
+        {
+          "name" : "value",
+          "type" : "Mixed",
+          "desc" : "The value to set"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "inputEl",
+      "desc" : "return the real input element.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Input",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "validateValue",
+      "desc" : "Validates a value according to the field's validation rules and marks the field as invalid\nif the validation fails",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Input",
+      "params" : [
+        {
+          "name" : "value",
+          "type" : "Mixed",
+          "desc" : "The value to validate"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "tooltipEl",
+      "desc" : "Fetch the element to display the tooltip on.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Component",
+      "params" : [
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "hide",
+      "desc" : "Hide a component - adds 'hidden' class",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Component",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "show",
+      "desc" : "Show a component - removes 'hidden' class",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Component",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "setVisibilityEl",
+      "desc" : "Set the element that will be used to show or hide",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Component",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getVisibilityEl",
+      "desc" : "Get the element that will be used to show or hide",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Component",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "initEvents",
+      "desc" : "Initialize Events for the element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Component",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "getChildContainer",
+      "desc" : "Fetch the element to add children to",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Component",
+      "params" : [
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "getId",
+      "desc" : "Returns the id of this component.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+      ],
+      "returns" : "String"
+    },
+    {
+      "name" : "render",
+      "desc" : "If this is a lazy rendering component, render it to its container element.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "container",
+          "type" : "String/HTMLElement/Element",
+          "desc" : "(optional) The element this component should be rendered into. If it is being applied to existing markup, this should be left off."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "destroy",
+      "desc" : "Destroys this component by purging any event listeners, removing the component's element from the DOM,\nremoving the component from its {@link Roo.Container} (if applicable) and unregistering it from {@link Roo.ComponentMgr}.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "isVisible",
+      "desc" : "Returns true if this component is visible.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "setDisabled",
+      "desc" : "Convenience function for setting disabled/enabled by boolean.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "disabled",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "focus",
+      "desc" : "Try to focus this component.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "selectText",
+          "type" : "Boolean",
+          "desc" : "True to also select the text in this component (if applicable)"
+        }
+      ],
+      "returns" : "Roo.Component"
+    },
+    {
+      "name" : "enable",
+      "desc" : "Enable this component.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+      ],
+      "returns" : "Roo.Component"
+    },
+    {
+      "name" : "setVisible",
+      "desc" : "Convenience function to hide or show this component by boolean.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "visible",
+          "type" : "Boolean",
+          "desc" : "True to show, false to hide"
+        }
+      ],
+      "returns" : "Roo.Component"
+    },
+    {
+      "name" : "disable",
+      "desc" : "Disable this component.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+      ],
+      "returns" : "Roo.Component"
+    },
+    {
+      "name" : "getEl",
+      "desc" : "Returns the underlying {@link Roo.Element}.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+      ],
+      "returns" : "Roo.Element"
+    },
+    {
+      "name" : "purgeListeners",
+      "desc" : "Removes all listeners for this object",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "on",
+      "desc" : "Appends an event handler to this element (shorthand for addListener)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context."
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional)"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "un",
+      "desc" : "Removes a listener (shorthand for removeListener)",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The handler to remove"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the handler"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addEvents",
+      "desc" : "Used to define events on this Observable",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "object",
+          "type" : "Object",
+          "desc" : "The object with the events defined"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "releaseCapture",
+      "desc" : "Removes <b>all</b> added captures from the Observable.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Observable",
+          "desc" : "The Observable to release"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "removeListener",
+      "desc" : "Removes a listener",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The handler to remove"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the handler"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "fireEvent",
+      "desc" : "Fires the specified event with the passed parameters (minus the event name).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : ""
+        },
+        {
+          "name" : "args",
+          "type" : "Object...",
+          "desc" : "Variable number of parameters are passed to handlers"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "hasListener",
+      "desc" : "Checks to see if this object has any listeners for a specified event",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The name of the event to check for"
+        }
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "capture",
+      "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Observable",
+          "desc" : "The Observable to capture"
+        },
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : "The function to call"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the fn"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "addListener",
+      "desc" : "Appends an event handler to this component",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.util.Observable",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context."
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional) An object containing handler configuration\nproperties. This may contain any of the following properties:<ul>\n<li>scope {Object} The scope in which to execute the handler function. The handler function's \"this\" context.</li>\n<li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li>\n<li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li>\n<li>buffer {Number} Causes the handler to be scheduled to run in an {@link Roo.util.DelayedTask} delayed\nby the specified number of milliseconds. If the event fires again within that time, the original\nhandler is <em>not</em> invoked, but the new handler is scheduled in its place.</li>\n</ul><br>\n<p>\n<b>Combining Options</b><br>\nUsing the options argument, it is possible to combine different types of listeners:<br>\n<br>\nA normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)\n\t\t<pre><code>\n\t\tel.on('click', this.onClick, this, {\n \t\t\tsingle: true,\n    \t\tdelay: 100,\n    \t\tforumId: 4\n\t\t});\n\t\t</code></pre>\n<p>\n<b>Attaching multiple handlers in 1 call</b><br>\nThe method also allows for a single argument to be passed which is a config object containing properties\nwhich specify multiple handlers.\n<pre><code>\n\t\tel.on({\n\t\t\t'click': {\n        \t\tfn: this.onClick,\n        \t\tscope: this,\n        \t\tdelay: 100\n    \t\t}, \n    \t\t'mouseover': {\n        \t\tfn: this.onMouseOver,\n        \t\tscope: this\n    \t\t},\n    \t\t'mouseout': {\n        \t\tfn: this.onMouseOut,\n        \t\tscope: this\n    \t\t}\n\t\t});\n\t\t</code></pre>\n<p>\nOr a shorthand syntax which passes the same scope object to all handlers:\n     \t<pre><code>\n\t\tel.on({\n\t\t\t'click': this.onClick,\n    \t\t'mouseover': this.onMouseOver,\n    \t\t'mouseout': this.onMouseOut,\n    \t\tscope: this\n\t\t});\n\t\t</code></pre>"
+        }
+      ],
+      "returns" : ""
+    }
+  ],
+  "events" : [
+    {
+      "name" : "*change",
+      "desc" : "Fires just before the field blurs if the field value has changed.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Input",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.form.Field",
+          "desc" : ""
+        },
+        {
+          "name" : "newValue",
+          "type" : "Mixed",
+          "desc" : "The new value"
+        },
+        {
+          "name" : "oldValue",
+          "type" : "Mixed",
+          "desc" : "The original value"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*invalid",
+      "desc" : "Fires after the field has been marked as invalid.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Input",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.form.Field",
+          "desc" : ""
+        },
+        {
+          "name" : "msg",
+          "type" : "String",
+          "desc" : "The validation message"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*valid",
+      "desc" : "Fires after the field has been validated with no errors.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Input",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.form.Field",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*blur",
+      "desc" : "Fires when this field loses input focus.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Input",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.form.Field",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*specialkey",
+      "desc" : "Fires when any key related to navigation (arrows, tab, enter, esc, etc.) is pressed.  You can check\n{@link Roo.EventObject#getKey} to determine which key was pressed.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Input",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.form.Field",
+          "desc" : ""
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : "The event object"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*focus",
+      "desc" : "Fires when this field receives input focus.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Input",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.form.Field",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*keyup",
+      "desc" : "Fires after the key up",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Input",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.form.Field",
+          "desc" : ""
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : "The event Object"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*childrenrendered",
+      "desc" : "Fires when the children have been rendered..",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.bootstrap.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.bootstrap.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*beforerender",
+      "desc" : "Fires before the component is rendered. Return false to stop the render.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*disable",
+      "desc" : "Fires after the component is disabled.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*render",
+      "desc" : "Fires after the component is rendered.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*destroy",
+      "desc" : "Fires after the component is destroyed.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*hide",
+      "desc" : "Fires after the component is hidden.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*beforehide",
+      "desc" : "Fires before the component is hidden. Return false to stop the hide.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*show",
+      "desc" : "Fires after the component is shown.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*beforeshow",
+      "desc" : "Fires before the component is shown.  Return false to stop the show.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*enable",
+      "desc" : "Fires after the component is enabled.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "*beforedestroy",
+      "desc" : "Fires before the component is destroyed. Return false to stop the destroy.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Component",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    }
+  ]
+}

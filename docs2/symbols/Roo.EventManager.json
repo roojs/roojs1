@@ -1,0 +1,227 @@
+{
+  "name" : "Roo.EventManager",
+  "augments" : [
+  ],
+  "desc" : "Registers event handlers that want to receive a normalized EventObject instead of the standard browser event and provides \nseveral useful events directly.\nSee {@link Roo.EventObject} for more details on normalized event objects.",
+  "config" : [
+  ],
+  "methods" : [
+    {
+      "name" : "addListener",
+      "desc" : "Appends an event handler to an element (shorthand for addListener)",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "element",
+          "type" : "String/HTMLElement",
+          "desc" : "The html element or id to assign the"
+        },
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context."
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional) An object containing handler configuration\nproperties. This may contain any of the following properties:<ul>\n<li>scope {Object} The scope in which to execute the handler function. The handler function's \"this\" context.</li>\n<li>delegate {String} A simple selector to filter the target or look for a descendant of the target</li>\n<li>stopEvent {Boolean} True to stop the event. That is stop propagation, and prevent the default action.</li>\n<li>preventDefault {Boolean} True to prevent the default action</li>\n<li>stopPropagation {Boolean} True to prevent event propagation</li>\n<li>normalized {Boolean} False to pass a browser event to the handler function instead of an Roo.EventObject</li>\n<li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li>\n<li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li>\n<li>buffer {Number} Causes the handler to be scheduled to run in an {@link Roo.util.DelayedTask} delayed\nby the specified number of milliseconds. If the event fires again within that time, the original\nhandler is <em>not</em> invoked, but the new handler is scheduled in its place.</li>\n</ul><br>\n<p>\n<b>Combining Options</b><br>\nUsing the options argument, it is possible to combine different types of listeners:<br>\n<br>\nA normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)<div style=\"margin: 5px 20px 20px;\">\nCode:<pre><code>\nel.on('click', this.onClick, this, {\n    single: true,\n    delay: 100,\n    stopEvent : true,\n    forumId: 4\n});</code></pre>\n<p>\n<b>Attaching multiple handlers in 1 call</b><br>\nThe method also allows for a single argument to be passed which is a config object containing properties\nwhich specify multiple handlers.\n<p>\nCode:<pre><code>\nel.on({\n    'click' : {\n        fn: this.onClick\n        scope: this,\n        delay: 100\n    },\n    'mouseover' : {\n        fn: this.onMouseOver\n        scope: this\n    },\n    'mouseout' : {\n        fn: this.onMouseOut\n        scope: this\n    }\n});</code></pre>\n<p>\nOr a shorthand syntax:<br>\nCode:<pre><code>\nel.on({\n    'click' : this.onClick,\n    'mouseover' : this.onMouseOver,\n    'mouseout' : this.onMouseOut\n    scope: this\n});</code></pre>"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "onDocumentReady",
+      "desc" : "Fires when the document is ready (before onload and before images are loaded). Can be \naccessed shorthanded Roo.onReady().",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : "The method the event invokes"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "An  object that becomes the scope of the handler"
+        },
+        {
+          "name" : "options",
+          "type" : "boolean",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "onTextResize",
+      "desc" : "Fires when the user changes the active text size. Handler gets called with 2 params, the old size and the new size.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : "The method the event invokes"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "An object that becomes the scope of the handler"
+        },
+        {
+          "name" : "options",
+          "type" : "boolean",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "on",
+      "desc" : "Appends an event handler to an element (shorthand for addListener)",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "element",
+          "type" : "String/HTMLElement",
+          "desc" : "The html element or id to assign the"
+        },
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for"
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context."
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional) An object containing handler configuration\nproperties. This may contain any of the following properties:<ul>\n<li>scope {Object} The scope in which to execute the handler function. The handler function's \"this\" context.</li>\n<li>delegate {String} A simple selector to filter the target or look for a descendant of the target</li>\n<li>stopEvent {Boolean} True to stop the event. That is stop propagation, and prevent the default action.</li>\n<li>preventDefault {Boolean} True to prevent the default action</li>\n<li>stopPropagation {Boolean} True to prevent event propagation</li>\n<li>normalized {Boolean} False to pass a browser event to the handler function instead of an Roo.EventObject</li>\n<li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li>\n<li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li>\n<li>buffer {Number} Causes the handler to be scheduled to run in an {@link Roo.util.DelayedTask} delayed\nby the specified number of milliseconds. If the event fires again within that time, the original\nhandler is <em>not</em> invoked, but the new handler is scheduled in its place.</li>\n</ul><br>\n<p>\n<b>Combining Options</b><br>\nUsing the options argument, it is possible to combine different types of listeners:<br>\n<br>\nA normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)<div style=\"margin: 5px 20px 20px;\">\nCode:<pre><code>\nel.on('click', this.onClick, this, {\n    single: true,\n    delay: 100,\n    stopEvent : true,\n    forumId: 4\n});</code></pre>\n<p>\n<b>Attaching multiple handlers in 1 call</b><br>\nThe method also allows for a single argument to be passed which is a config object containing properties\nwhich specify multiple handlers.\n<p>\nCode:<pre><code>\nel.on({\n    'click' : {\n        fn: this.onClick\n        scope: this,\n        delay: 100\n    },\n    'mouseover' : {\n        fn: this.onMouseOver\n        scope: this\n    },\n    'mouseout' : {\n        fn: this.onMouseOut\n        scope: this\n    }\n});</code></pre>\n<p>\nOr a shorthand syntax:<br>\nCode:<pre><code>\nel.on({\n    'click' : this.onClick,\n    'mouseover' : this.onMouseOver,\n    'mouseout' : this.onMouseOut\n    scope: this\n});</code></pre>"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "removeResizeListener",
+      "desc" : "Removes the passed window resize listener.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : "The method the event invokes"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "The scope of handler"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "onWindowResize",
+      "desc" : "Fires when the window is resized and provides resize event buffering (50 milliseconds), passes new viewport width and height to handlers.",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : "The method the event invokes"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "An object that becomes the scope of the handler"
+        },
+        {
+          "name" : "options",
+          "type" : "boolean",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "wrap",
+      "desc" : "This is no longer needed and is deprecated. Places a simple wrapper around an event handler to override the browser event\nobject with a Roo.EventObject",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : "The method the event invokes"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "An object that becomes the scope of the handler"
+        },
+        {
+          "name" : "override",
+          "type" : "boolean",
+          "desc" : "If true, the obj passed in becomes\n                            the execution scope of the listener"
+        }
+      ],
+      "returns" : "Function"
+    },
+    {
+      "name" : "removeListener",
+      "desc" : "Removes an event handler",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "element",
+          "type" : "String/HTMLElement",
+          "desc" : "The id or html element to remove the \n                            event from"
+        },
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event"
+        },
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : ""
+        }
+      ],
+      "returns" : "Boolean"
+    }
+  ],
+  "events" : [
+  ]
+}

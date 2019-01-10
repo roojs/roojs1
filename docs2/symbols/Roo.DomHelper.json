@@ -1,0 +1,212 @@
+{
+  "name" : "Roo.DomHelper",
+  "augments" : [
+  ],
+  "desc" : "Utility class for working with DOM and/or Templates. It transparently supports using HTML fragments or DOM.\nFor more information see <a href=\"http://web.archive.org/web/20071221063734/http://www.jackslocum.com/blog/2006/10/06/domhelper-create-elements-using-dom-html-fragments-or-templates/\">this blog post with examples</a>.",
+  "config" : [
+  ],
+  "methods" : [
+    {
+      "name" : "insertHtml",
+      "desc" : "Inserts an HTML fragment into the Dom",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "where",
+          "type" : "String",
+          "desc" : "Where to insert the html in relation to el - beforeBegin, afterBegin, beforeEnd, afterEnd."
+        },
+        {
+          "name" : "el",
+          "type" : "HTMLElement",
+          "desc" : "The context element"
+        },
+        {
+          "name" : "html",
+          "type" : "String",
+          "desc" : "The HTML fragmenet"
+        }
+      ],
+      "returns" : "HTMLElement"
+    },
+    {
+      "name" : "createTemplate",
+      "desc" : "Creates a new Roo.DomHelper.Template from the Dom object spec",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Object",
+          "desc" : "The Dom object spec (and children)"
+        }
+      ],
+      "returns" : "Roo.DomHelper.Template"
+    },
+    {
+      "name" : "insertAfter",
+      "desc" : "Creates new Dom element(s) and inserts them after el",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement/Element",
+          "desc" : "The context element"
+        },
+        {
+          "name" : "o",
+          "type" : "Object",
+          "desc" : "The Dom object spec (and children)"
+        },
+        {
+          "name" : "returnElement",
+          "type" : "Boolean",
+          "desc" : "(optional) true to return a Roo.Element"
+        }
+      ],
+      "returns" : "HTMLElement/Roo.Element"
+    },
+    {
+      "name" : "insertFirst",
+      "desc" : "Creates new Dom element(s) and inserts them as the first child of el",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement/Element",
+          "desc" : "The context element"
+        },
+        {
+          "name" : "o",
+          "type" : "Object/String",
+          "desc" : "The Dom object spec (and children) or raw HTML blob"
+        },
+        {
+          "name" : "returnElement",
+          "type" : "Boolean",
+          "desc" : "(optional) true to return a Roo.Element"
+        }
+      ],
+      "returns" : "HTMLElement/Roo.Element"
+    },
+    {
+      "name" : "append",
+      "desc" : "Creates new Dom element(s) and appends them to el",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement/Element",
+          "desc" : "The context element"
+        },
+        {
+          "name" : "o",
+          "type" : "Object/String",
+          "desc" : "The Dom object spec (and children) or raw HTML blob"
+        },
+        {
+          "name" : "returnElement",
+          "type" : "Boolean",
+          "desc" : "(optional) true to return a Roo.Element"
+        }
+      ],
+      "returns" : "HTMLElement/Roo.Element"
+    },
+    {
+      "name" : "applyStyles",
+      "desc" : "Applies a style specification to an element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement",
+          "desc" : "The element to apply styles to"
+        },
+        {
+          "name" : "styles",
+          "type" : "String/Object/Function",
+          "desc" : "A style specification string eg \"width:100px\", or object in the form {width:\"100px\"}, or\na function which returns such a specification."
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "markup",
+      "desc" : "Returns the markup for the passed Element(s) config",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Object",
+          "desc" : "The Dom object spec (and children)"
+        }
+      ],
+      "returns" : "String"
+    },
+    {
+      "name" : "overwrite",
+      "desc" : "Creates new Dom element(s) and overwrites the contents of el with them",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement/Element",
+          "desc" : "The context element"
+        },
+        {
+          "name" : "o",
+          "type" : "Object/String",
+          "desc" : "The Dom object spec (and children) or raw HTML blob"
+        },
+        {
+          "name" : "returnElement",
+          "type" : "Boolean",
+          "desc" : "(optional) true to return a Roo.Element"
+        }
+      ],
+      "returns" : "HTMLElement/Roo.Element"
+    },
+    {
+      "name" : "insertBefore",
+      "desc" : "Creates new Dom element(s) and inserts them before el",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement/Element",
+          "desc" : "The context element"
+        },
+        {
+          "name" : "o",
+          "type" : "Object/String",
+          "desc" : "The Dom object spec (and children) or raw HTML blob"
+        },
+        {
+          "name" : "returnElement",
+          "type" : "Boolean",
+          "desc" : "(optional) true to return a Roo.Element"
+        }
+      ],
+      "returns" : "HTMLElement/Roo.Element"
+    }
+  ],
+  "events" : [
+  ]
+}

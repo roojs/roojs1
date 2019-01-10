@@ -1,0 +1,290 @@
+{
+  "name" : "Roo.MasterTemplate",
+  "augments" : [
+    "Roo.Template"
+  ],
+  "desc" : "Provides a template that can have child templates. The syntax is:\n<pre><code>\nvar t = new Roo.MasterTemplate(\n\t'&lt;select name=\"{name}\"&gt;',\n\t\t'&lt;tpl name=\"options\"&gt;&lt;option value=\"{value:trim}\"&gt;{text:ellipsis(10)}&lt;/option&gt;&lt;/tpl&gt;',\n\t'&lt;/select&gt;'\n);\nt.add('options', {value: 'foo', text: 'bar'});\n// or you can add multiple child elements in one shot\nt.addAll('options', [\n    {value: 'foo', text: 'bar'},\n    {value: 'foo2', text: 'bar2'},\n    {value: 'foo3', text: 'bar3'}\n]);\n// then append, applying the master template values\nt.append('my-form', {name: 'my-select'});\n</code></pre>\nA name attribute for the child template is not required if you have only one child\ntemplate or you want to refer to them by index.",
+  "config" : [
+    {
+      "name" : "html",
+      "type" : "String",
+      "desc" : "The HTML fragment or an array of fragments to join(\"\") or multiple arguments to join(\"\")",
+      "memberOf" : "Roo.Template"
+    },
+    {
+      "name" : "url",
+      "type" : "String",
+      "desc" : "The Url to load the template from. beware if you are loading from a url, the data may not be ready if you use it instantly..\n                   it should be fixed so that template is observable...",
+      "memberOf" : "Roo.Template"
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "fill",
+      "desc" : "Applies all the passed values to a child template.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "name",
+          "type" : "String/Number",
+          "desc" : "(optional) The name or index of the child template"
+        },
+        {
+          "name" : "values",
+          "type" : "Array",
+          "desc" : "The values to be applied to the template, this should be an array of objects."
+        },
+        {
+          "name" : "reset",
+          "type" : "Boolean",
+          "desc" : "(optional) True to reset the template first"
+        }
+      ],
+      "returns" : "MasterTemplate"
+    },
+    {
+      "name" : "add",
+      "desc" : "Applies the passed values to a child template.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "name",
+          "type" : "String/Number",
+          "desc" : "(optional) The name or index of the child template"
+        },
+        {
+          "name" : "values",
+          "type" : "Array/Object",
+          "desc" : "The values to be applied to the template"
+        }
+      ],
+      "returns" : "MasterTemplate"
+    },
+    {
+      "name" : "from",
+      "desc" : "Creates a template from the passed element's value (display:none textarea, preferred) or innerHTML. e.g.\nvar tpl = Roo.MasterTemplate.from('element-id');",
+      "static" : true,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement",
+          "desc" : ""
+        },
+        {
+          "name" : "config",
+          "type" : "Object",
+          "desc" : ""
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "reset",
+      "desc" : "Resets the template for reuse",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "MasterTemplate"
+    },
+    {
+      "name" : "addAll",
+      "desc" : "Alias for fill().",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "insertFirst",
+      "desc" : "Applies the supplied values to the template and inserts the new node(s) as the first child of el.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Template",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement/Roo.Element",
+          "desc" : "The context element"
+        },
+        {
+          "name" : "values",
+          "type" : "Object",
+          "desc" : "The template values. Can be an array if your params are numeric (i.e. {0}) or an object (i.e. {foo: 'bar'})"
+        },
+        {
+          "name" : "returnElement",
+          "type" : "Boolean",
+          "desc" : "(optional) true to return a Roo.Element (defaults to undefined)"
+        }
+      ],
+      "returns" : "HTMLElement/Roo.Element"
+    },
+    {
+      "name" : "overwrite",
+      "desc" : "Applies the supplied values to the template and overwrites the content of el with the new node(s).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Template",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement/Roo.Element",
+          "desc" : "The context element"
+        },
+        {
+          "name" : "values",
+          "type" : "Object",
+          "desc" : "The template values. Can be an array if your params are numeric (i.e. {0}) or an object (i.e. {foo: 'bar'})"
+        },
+        {
+          "name" : "returnElement",
+          "type" : "Boolean",
+          "desc" : "(optional) true to return a Roo.Element (defaults to undefined)"
+        }
+      ],
+      "returns" : "HTMLElement/Roo.Element"
+    },
+    {
+      "name" : "insertBefore",
+      "desc" : "Applies the supplied values to the template and inserts the new node(s) before el.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Template",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement/Roo.Element",
+          "desc" : "The context element"
+        },
+        {
+          "name" : "values",
+          "type" : "Object",
+          "desc" : "The template values. Can be an array if your params are numeric (i.e. {0}) or an object (i.e. {foo: 'bar'})"
+        },
+        {
+          "name" : "returnElement",
+          "type" : "Boolean",
+          "desc" : "(optional) true to return a Roo.Element (defaults to undefined)"
+        }
+      ],
+      "returns" : "HTMLElement/Roo.Element"
+    },
+    {
+      "name" : "applyTemplate",
+      "desc" : "Returns an HTML fragment of this template with the specified values applied.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Template",
+      "params" : [
+        {
+          "name" : "values",
+          "type" : "Object",
+          "desc" : "The template values. Can be an array if your params are numeric (i.e. {0}) or an object (i.e. {foo: 'bar'})"
+        }
+      ],
+      "returns" : "String"
+    },
+    {
+      "name" : "compile",
+      "desc" : "Compiles the template into an internal function, eliminating the RegEx overhead.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Template",
+      "params" : [
+      ],
+      "returns" : "Roo.Template"
+    },
+    {
+      "name" : "set",
+      "desc" : "Sets the HTML used as the template and optionally compiles it.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Template",
+      "params" : [
+        {
+          "name" : "html",
+          "type" : "String",
+          "desc" : ""
+        },
+        {
+          "name" : "compile",
+          "type" : "Boolean",
+          "desc" : "(optional) True to compile the template (defaults to undefined)"
+        }
+      ],
+      "returns" : "Roo.Template"
+    },
+    {
+      "name" : "insertAfter",
+      "desc" : "Applies the supplied values to the template and inserts the new node(s) after el.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Template",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement/Roo.Element",
+          "desc" : "The context element"
+        },
+        {
+          "name" : "values",
+          "type" : "Object",
+          "desc" : "The template values. Can be an array if your params are numeric (i.e. {0}) or an object (i.e. {foo: 'bar'})"
+        },
+        {
+          "name" : "returnElement",
+          "type" : "Boolean",
+          "desc" : "(optional) true to return a Roo.Element (defaults to undefined)"
+        }
+      ],
+      "returns" : "HTMLElement/Roo.Element"
+    },
+    {
+      "name" : "append",
+      "desc" : "Applies the supplied values to the template and appends the new node(s) to el.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Template",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement/Roo.Element",
+          "desc" : "The context element"
+        },
+        {
+          "name" : "values",
+          "type" : "Object",
+          "desc" : "The template values. Can be an array if your params are numeric (i.e. {0}) or an object (i.e. {foo: 'bar'})"
+        },
+        {
+          "name" : "returnElement",
+          "type" : "Boolean",
+          "desc" : "(optional) true to return a Roo.Element (defaults to undefined)"
+        }
+      ],
+      "returns" : "HTMLElement/Roo.Element"
+    },
+    {
+      "name" : "apply",
+      "desc" : "Alias for {@link #applyTemplate}",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "Roo.Template",
+      "params" : [
+      ],
+      "returns" : ""
+    }
+  ],
+  "events" : [
+  ]
+}

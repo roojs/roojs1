@@ -1,0 +1,227 @@
+{
+  "name" : "Roo.bootstrap.MessageBox",
+  "augments" : [
+  ],
+  "desc" : "Utility class for generating different styles of message boxes.  The alias Roo.Msg can also be used.\nExample usage:\n<pre><code>\n// Basic alert:\nRoo.Msg.alert('Status', 'Changes saved successfully.');\n\n// Prompt for user data:\nRoo.Msg.prompt('Name', 'Please enter your name:', function(btn, text){\n    if (btn == 'ok'){\n        // process text value...\n    }\n});\n\n// Show a dialog using config options:\nRoo.Msg.show({\n   title:'Save Changes?',\n   msg: 'Your are closing a tab that has unsaved changes. Would you like to save your changes?',\n   buttons: Roo.Msg.YESNOCANCEL,\n   fn: processResult,\n   animEl: 'elId'\n});\n</code></pre>",
+  "config" : [
+  ],
+  "methods" : [
+    {
+      "name" : "alert",
+      "desc" : "Displays a standard read-only message box with an OK button (comparable to the basic JavaScript Window.alert).\nIf a callback function is passed it will be called after the user clicks the button, and the\nid of the button that was clicked will be passed as the only parameter to the callback\n(could also be the top-right close button).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "title",
+          "type" : "String",
+          "desc" : "The title bar text"
+        },
+        {
+          "name" : "msg",
+          "type" : "String",
+          "desc" : "The message box body text"
+        },
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : "(optional) The callback function invoked after the message box is closed"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope of the callback function"
+        }
+      ],
+      "returns" : "Roo.MessageBox"
+    },
+    {
+      "name" : "confirm",
+      "desc" : "Displays a confirmation message box with Yes and No buttons (comparable to JavaScript's Window.confirm).\nIf a callback function is passed it will be called after the user clicks either button, and the id of the\nbutton that was clicked will be passed as the only parameter to the callback (could also be the top-right close button).",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "title",
+          "type" : "String",
+          "desc" : "The title bar text"
+        },
+        {
+          "name" : "msg",
+          "type" : "String",
+          "desc" : "The message box body text"
+        },
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : "(optional) The callback function invoked after the message box is closed"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope of the callback function"
+        }
+      ],
+      "returns" : "Roo.MessageBox"
+    },
+    {
+      "name" : "getDialog",
+      "desc" : "Returns a reference to the underlying {@link Roo.BasicDialog} element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "Roo.BasicDialog"
+    },
+    {
+      "name" : "progress",
+      "desc" : "Displays a message box with a progress bar.  This message box has no buttons and is not closeable by\nthe user.  You are responsible for updating the progress bar as needed via {@link Roo.MessageBox#updateProgress}\nand closing the message box when the process is complete.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "title",
+          "type" : "String",
+          "desc" : "The title bar text"
+        },
+        {
+          "name" : "msg",
+          "type" : "String",
+          "desc" : "The message box body text"
+        }
+      ],
+      "returns" : "Roo.MessageBox"
+    },
+    {
+      "name" : "hide",
+      "desc" : "Hides the message box if it is displayed",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "show",
+      "desc" : "Displays a new message box, or reinitializes an existing message box, based on the config options\npassed in. All functions (e.g. prompt, alert, etc) on MessageBox call this function internally.\nThe following config object properties are supported:\n<pre>\nProperty    Type             Description\n----------  ---------------  ------------------------------------------------------------------------------------\nanimEl            String/Element   An id or Element from which the message box should animate as it opens and\n                                   closes (defaults to undefined)\nbuttons           Object/Boolean   A button config object (e.g., Roo.MessageBox.OKCANCEL or {ok:'Foo',\n                                   cancel:'Bar'}), or false to not show any buttons (defaults to false)\nclosable          Boolean          False to hide the top-right close button (defaults to true).  Note that\n                                   progress and wait dialogs will ignore this property and always hide the\n                                   close button as they can only be closed programmatically.\ncls               String           A custom CSS class to apply to the message box element\ndefaultTextHeight Number           The default height in pixels of the message box's multiline textarea if\n                                   displayed (defaults to 75)\nfn                Function         A callback function to execute after closing the dialog.  The arguments to the\n                                   function will be btn (the name of the button that was clicked, if applicable,\n                                   e.g. \"ok\"), and text (the value of the active text field, if applicable).\n                                   Progress and wait dialogs will ignore this option since they do not respond to\n                                   user actions and can only be closed programmatically, so any required function\n                                   should be called by the same code after it closes the dialog.\nicon              String           A CSS class that provides a background image to be used as an icon for\n                                   the dialog (e.g., Roo.MessageBox.WARNING or 'custom-class', defaults to '')\nmaxWidth          Number           The maximum width in pixels of the message box (defaults to 600)\nminWidth          Number           The minimum width in pixels of the message box (defaults to 100)\nmodal             Boolean          False to allow user interaction with the page while the message box is\n                                   displayed (defaults to true)\nmsg               String           A string that will replace the existing message box body text (defaults\n                                   to the XHTML-compliant non-breaking space character '&#160;')\nmultiline         Boolean          True to prompt the user to enter multi-line text (defaults to false)\nprogress          Boolean          True to display a progress bar (defaults to false)\nprogressText      String           The text to display inside the progress bar if progress = true (defaults to '')\nprompt            Boolean          True to prompt the user to enter single-line text (defaults to false)\nproxyDrag         Boolean          True to display a lightweight proxy while dragging (defaults to false)\ntitle             String           The title text\nvalue             String           The string value to set into the active textbox element if displayed\nwait              Boolean          True to display a progress bar (defaults to false)\nwidth             Number           The width of the dialog in pixels\n</pre>\n\nExample usage:\n<pre><code>\nRoo.Msg.show({\n   title: 'Address',\n   msg: 'Please enter your address:',\n   width: 300,\n   buttons: Roo.MessageBox.OKCANCEL,\n   multiline: true,\n   fn: saveAddress,\n   animEl: 'addAddressBtn'\n});\n</code></pre>",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "config",
+          "type" : "Object",
+          "desc" : "Configuration options"
+        }
+      ],
+      "returns" : "Roo.MessageBox"
+    },
+    {
+      "name" : "isVisible",
+      "desc" : "Returns true if the message box is currently displayed",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : "Boolean"
+    },
+    {
+      "name" : "wait",
+      "desc" : "Displays a message box with an infinitely auto-updating progress bar.  This can be used to block user\ninteraction while waiting for a long-running process to complete that does not have defined intervals.\nYou are responsible for closing the message box when the process is complete.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "msg",
+          "type" : "String",
+          "desc" : "The message box body text"
+        },
+        {
+          "name" : "title",
+          "type" : "String",
+          "desc" : "(optional) The title bar text"
+        }
+      ],
+      "returns" : "Roo.MessageBox"
+    },
+    {
+      "name" : "updateText",
+      "desc" : "Updates the message box body text",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "text",
+          "type" : "String",
+          "desc" : "(optional) Replaces the message box element's innerHTML with the specified string (defaults to\nthe XHTML-compliant non-breaking space character '&amp;#160;')"
+        }
+      ],
+      "returns" : "Roo.MessageBox"
+    },
+    {
+      "name" : "updateProgress",
+      "desc" : "Updates a progress-style message box's text and progress bar.  Only relevant on message boxes\ninitiated via {@link Roo.MessageBox#progress} or by calling {@link Roo.MessageBox#show} with progress: true.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "value",
+          "type" : "Number",
+          "desc" : "Any number between 0 and 1 (e.g., .5)"
+        },
+        {
+          "name" : "text",
+          "type" : "String",
+          "desc" : "(optional) If defined, the message box's body text is replaced with the specified string (defaults to undefined)"
+        }
+      ],
+      "returns" : "Roo.MessageBox"
+    },
+    {
+      "name" : "prompt",
+      "desc" : "Displays a message box with OK and Cancel buttons prompting the user to enter some text (comparable to\nJavaScript's Window.prompt).  The prompt can be a single-line or multi-line textbox.  If a callback function\nis passed it will be called after the user clicks either button, and the id of the button that was clicked\n(could also be the top-right close button) and the text that was entered will be passed as the two\nparameters to the callback.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "title",
+          "type" : "String",
+          "desc" : "The title bar text"
+        },
+        {
+          "name" : "msg",
+          "type" : "String",
+          "desc" : "The message box body text"
+        },
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : "(optional) The callback function invoked after the message box is closed"
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope of the callback function"
+        },
+        {
+          "name" : "multiline",
+          "type" : "Boolean/Number",
+          "desc" : "(optional) True to create a multiline textbox using the defaultTextHeight\nproperty, or the height in pixels to create the textbox (defaults to false / single-line)"
+        }
+      ],
+      "returns" : "Roo.MessageBox"
+    }
+  ],
+  "events" : [
+  ]
+}

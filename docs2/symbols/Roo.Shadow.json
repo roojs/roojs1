@@ -1,0 +1,104 @@
+{
+  "name" : "Roo.Shadow",
+  "augments" : [
+  ],
+  "desc" : "Simple class that can provide a shadow effect for any element.  Note that the element MUST be absolutely positioned,\nand the shadow does not provide any shimming.  This should be used only in simple cases -- for more advanced\nfunctionality that can also provide the same shadow effect, see the {@link Roo.Layer} class.",
+  "config" : [
+    {
+      "name" : "offset",
+      "type" : "String",
+      "desc" : "The number of pixels to offset the shadow from the element (defaults to 4)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "mode",
+      "type" : "String",
+      "desc" : "The shadow display mode.  Supports the following options:<br />\nsides: Shadow displays on both sides and bottom only<br />\nframe: Shadow displays equally on all four sides<br />\ndrop: Traditional bottom-right drop shadow (default)",
+      "memberOf" : "Roo"
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "setZIndex",
+      "desc" : "Adjust the z-index of this shadow",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "zindex",
+          "type" : "Number",
+          "desc" : "The new z-index"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "isVisible",
+      "desc" : "Returns true if the shadow is visible, else false",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "hide",
+      "desc" : "Hides this shadow",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "show",
+      "desc" : "Displays the shadow under the target element",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "targetEl",
+          "type" : "String/HTMLElement/Element",
+          "desc" : "The id or element under which the shadow should display"
+        }
+      ],
+      "returns" : ""
+    },
+    {
+      "name" : "realign",
+      "desc" : "Direct alignment when values are already available. Show must be called at least once before\ncalling this method to ensure it is initialized.",
+      "static" : false,
+      "constructor" : false,
+      "memberOf" : "",
+      "params" : [
+        {
+          "name" : "left",
+          "type" : "Number",
+          "desc" : "The target element left position"
+        },
+        {
+          "name" : "top",
+          "type" : "Number",
+          "desc" : "The target element top position"
+        },
+        {
+          "name" : "width",
+          "type" : "Number",
+          "desc" : "The target element width"
+        },
+        {
+          "name" : "height",
+          "type" : "Number",
+          "desc" : "The target element height"
+        }
+      ],
+      "returns" : ""
+    }
+  ],
+  "events" : [
+  ]
+}
