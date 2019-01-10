@@ -172,6 +172,7 @@ h6,
     -o-background-size: cover;
     background-size: cover;
     display: none;
+    overflow-y: auto;
 }
 
 .left-menu-sidebar .left-menu-sidebar-options  {
