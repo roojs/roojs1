@@ -38,12 +38,12 @@ Roo.docs.init = {
                 Roo.log(d);
                 d.forEach(function(e) {
                     if (e.cn.length) {
-                        this.addTreeItem(Roo.docs.SidebarNav.navGroup, e, 'NavSidebarItem');
+                        this.addTreeItem(Roo.docs.navGroup, e, 'NavSidebarItem');
                     }
                 }, this);
                 d.forEach(function(e) {
                     if (!e.cn.length) {
-                        this.addTreeItem(Roo.docs.SidebarNav.navGroup, e, 'NavSidebarItem');
+                        this.addTreeItem(Roo.docs.navGroup, e, 'NavSidebarItem');
                     }
                 }, this);
             },
