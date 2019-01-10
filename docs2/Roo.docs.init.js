@@ -115,14 +115,21 @@ Roo.docs.init = {
             success : function(res, o)
             {
                 var d = Roo.decode(res.responseText);
-                this.updateData(d);
+                this.fillDoc(d);
                 
             },
             scope : this
         });
         
         
+    },
+    fillDoc : function(d)
+    {
+        
+        
+        
     }
+    
     
     
     
