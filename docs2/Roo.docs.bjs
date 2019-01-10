@@ -215,6 +215,7 @@
       {
        "String header" : "Configuration options",
        "Boolean expanded" : false,
+       "String cls" : "",
        "xtype" : "Container",
        "String panel" : "info",
        "$ xns" : "Roo.bootstrap",
