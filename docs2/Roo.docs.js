@@ -463,6 +463,11 @@ Roo.docs = new Roo.XComponent({
            xtype : 'MemoryProxy',
            xns : Roo.data,
            '|xns' : 'Roo.data'
+          },
+          reader : {
+           xtype : 'ArrayReader',
+           xns : Roo.data,
+           '|xns' : 'Roo.data'
           }
          },
          cm : [

@@ -84,8 +84,8 @@
       "render" : "function (_self)\n{\n    return;\n    \n    _this.navHeaderBar = this;\n    \n    this.el.addClass(language); \n    \n    var body = Roo.select('body', true).first();\n    \n    var mark = {\n        tag: \"div\",\n        cls:\"x-dlg-mask\"\n    };\n    \n    this.mask = Roo.DomHelper.append(body, mark, true);\n    \n    var size = body.getSize();\n    this.mask.setSize(size.width, size.height);\n    \n    this.mask.setStyle('z-index', '1029');\n    \n    this.mask.enableDisplayMode(\"block\");\n    this.mask.hide();\n    \n    this.mask.on('click', function(){\n        \n        this.el.select('.navbar-collapse',true).removeClass('in'); \n        this.mask.hide();\n        \n    }, this);\n    \n    \n    var maxHeight = Roo.lib.Dom.getViewHeight() - this.el.select('.navbar-header', true).first().getHeight();\n    \n    this.el.select('.navbar-collapse', true).first().setStyle('max-height', maxHeight);\n    \n}"
      },
      "$ String brand_href" : "baseURL + '/'",
-     "String cls" : "mobile-header-menu",
      "String position" : "fixed-top",
+     "String cls" : "mobile-header-menu",
      "bool autohide" : true,
      "xtype" : "NavHeaderbar",
      "Boolean inverse" : false,
@@ -115,8 +115,8 @@
            "items" : [
             {
              "xtype" : "Header",
-             "$ xns" : "Roo.bootstrap",
              "Number level" : 2,
+             "$ xns" : "Roo.bootstrap",
              "String html" : " Class ",
              "items" : [
               {
@@ -154,8 +154,8 @@
             },
             {
              "xtype" : "Header",
-             "Number level" : 5,
              "$ xns" : "Roo.bootstrap",
+             "Number level" : 5,
              "String html" : "source: ",
              "items" : [
               {
@@ -164,8 +164,8 @@
                 "click" : "function (e)\n{\n    \n    Roo.log([\"click\", this]);\n    if (this.el.dom.innerHTML.length > 0) {\n        Roo.docs.loadSource();\n    }\n}"
                },
                "String cls" : "doc-source",
-               "String href" : "#",
                "Boolean preventDefault" : true,
+               "String href" : "#",
                "xtype" : "Link",
                "$ xns" : "Roo.bootstrap",
                "String html" : "source"
@@ -199,8 +199,8 @@
          "items" : [
           {
            "String header" : "Inheritance tree",
-           "String panel" : "info",
            "xtype" : "Container",
+           "String panel" : "info",
            "$ xns" : "Roo.bootstrap"
           }
          ]
@@ -209,8 +209,8 @@
       },
       {
        "String header" : "Configuration options",
-       "String panel" : "info",
        "xtype" : "Container",
+       "String panel" : "info",
        "$ xns" : "Roo.bootstrap",
        "items" : [
         {
@@ -222,16 +222,16 @@
          "items" : [
           {
            "String header" : " ",
-           "String dataIndex" : "doc",
            "Number md" : 11,
+           "String dataIndex" : "doc",
            "xtype" : "ColumnModel",
            "$ xns" : "Roo.grid",
            "* prop" : "cm[]"
           },
           {
            "String header" : "Defined by",
-           "String dataIndex" : "def",
            "Number md" : 1,
+           "String dataIndex" : "def",
            "xtype" : "ColumnModel",
            "$ xns" : "Roo.grid",
            "* prop" : "cm[]"
@@ -245,6 +245,11 @@
              "xtype" : "MemoryProxy",
              "$ xns" : "Roo.data",
              "* prop" : "proxy"
+            },
+            {
+             "xtype" : "ArrayReader",
+             "$ xns" : "Roo.data",
+             "* prop" : "reader"
             }
            ]
           }
@@ -254,8 +259,8 @@
       },
       {
        "String header" : "Public Methods",
-       "xtype" : "Container",
        "String panel" : "info",
+       "xtype" : "Container",
        "$ xns" : "Roo.bootstrap",
        "items" : [
         {
@@ -267,16 +272,16 @@
          "items" : [
           {
            "String header" : "Public  ",
-           "Number md" : 11,
            "String dataIndex" : "doc",
+           "Number md" : 11,
            "xtype" : "ColumnModel",
            "$ xns" : "Roo.grid",
            "* prop" : "cm[]"
           },
           {
            "String header" : "Defined by",
-           "Number md" : 1,
            "String dataIndex" : "def",
+           "Number md" : 1,
            "xtype" : "ColumnModel",
            "$ xns" : "Roo.grid",
            "* prop" : "cm[]"
@@ -292,8 +297,8 @@
       },
       {
        "String header" : "Events",
-       "String panel" : "info",
        "xtype" : "Container",
+       "String panel" : "info",
        "$ xns" : "Roo.bootstrap",
        "items" : [
         {
@@ -305,16 +310,16 @@
          "items" : [
           {
            "String header" : " ",
-           "Number md" : 11,
            "String dataIndex" : "doc",
+           "Number md" : 11,
            "xtype" : "ColumnModel",
            "$ xns" : "Roo.grid",
            "* prop" : "cm[]"
           },
           {
            "String header" : "Defined by",
-           "Number md" : 1,
            "String dataIndex" : "def",
+           "Number md" : 1,
            "xtype" : "ColumnModel",
            "$ xns" : "Roo.grid",
            "* prop" : "cm[]"
