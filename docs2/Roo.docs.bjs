@@ -168,6 +168,7 @@
        "items" : [
         {
          "String header" : "Expand",
+         "String dataIndex" : "ex",
          "xtype" : "ColumnModel",
          "$ xns" : "Roo.grid",
          "* prop" : "cm[]"

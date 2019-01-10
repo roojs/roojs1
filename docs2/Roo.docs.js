@@ -369,6 +369,7 @@ Roo.docs = new Roo.XComponent({
        cm : [
         {
          xtype : 'ColumnModel',
+         dataIndex : 'ex',
          header : _this._strings['8098b34f582537833b36b58273c3545b'] /* Expand */,
          xns : Roo.grid,
          '|xns' : 'Roo.grid'
