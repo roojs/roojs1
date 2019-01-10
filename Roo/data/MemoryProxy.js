@@ -46,7 +46,7 @@ Roo.extend(Roo.data.MemoryProxy, Roo.data.DataProxy, {
         params = params || {};
         var result;
         try {
-            result = reader.readRecords(this.data);
+            result = reader.readRecords(params.data || this.data);
         }catch(e){
             this.fireEvent("loadexception", this, arg, null, e);
             callback.call(scope, null, arg, false);
