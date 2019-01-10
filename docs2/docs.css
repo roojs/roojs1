@@ -926,3 +926,15 @@ td.attributes, .fixedFont
 .doc-table-container td.expanded .long {
     display : block;
 }
+
+.doc-table-container td.expaned .fixedFont::before {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    content: "\f068";
+}
+
+.doc-table-container td .fixedFont::before {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+        content: "\f067";
+}
