@@ -8,8 +8,8 @@
  "strings" : {
   "3e6ec55e2dff4342e3f25b0b0b988de9" : "Inheritance tree",
   "ae635f08107a69569e636835f24e6f6f" : " extends ",
-  "87f9f735a1d36793ceaecd4e47124b63" : "Events",
   "3d067bedfe2f4677470dd6ccf64d05ed" : "Public  ",
+  "87f9f735a1d36793ceaecd4e47124b63" : "Events",
   "8444c6c15c56a27bfe83ffcaf459bbdd" : "Defined by",
   "9c5a24f0cbb12d939e4622b93bea904b" : "Public Methods",
   "36cd38f49b9afa08222c0dc9ebfe35eb" : "source",
@@ -180,31 +180,6 @@
        ]
       },
       {
-       "listeners" : {
-        "render" : "function (_self)\n{\n    _this.eventsTable = this;\n}"
-       },
-       "xtype" : "Table",
-       "$ xns" : "Roo.bootstrap",
-       "items" : [
-        {
-         "String header" : "Events",
-         "Number md" : 11,
-         "String dataIndex" : "doc",
-         "xtype" : "ColumnModel",
-         "$ xns" : "Roo.grid",
-         "* prop" : "cm[]"
-        },
-        {
-         "String header" : "Defined by",
-         "Number md" : 1,
-         "String dataIndex" : "def",
-         "xtype" : "ColumnModel",
-         "$ xns" : "Roo.grid",
-         "* prop" : "cm[]"
-        }
-       ]
-      },
-      {
        "String header" : "Configuration options",
        "String panel" : "info",
        "xtype" : "Container",
@@ -252,6 +227,39 @@
          "items" : [
           {
            "String header" : "Public  ",
+           "Number md" : 11,
+           "String dataIndex" : "doc",
+           "xtype" : "ColumnModel",
+           "$ xns" : "Roo.grid",
+           "* prop" : "cm[]"
+          },
+          {
+           "String header" : "Defined by",
+           "Number md" : 1,
+           "String dataIndex" : "def",
+           "xtype" : "ColumnModel",
+           "$ xns" : "Roo.grid",
+           "* prop" : "cm[]"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "String header" : "Events",
+       "String panel" : "info",
+       "xtype" : "Container",
+       "$ xns" : "Roo.bootstrap",
+       "items" : [
+        {
+         "listeners" : {
+          "render" : "function (_self)\n{\n    _this.eventsTable = this;\n}"
+         },
+         "xtype" : "Table",
+         "$ xns" : "Roo.bootstrap",
+         "items" : [
+          {
+           "String header" : "Events",
            "Number md" : 11,
            "String dataIndex" : "doc",
            "xtype" : "ColumnModel",

@@ -9,8 +9,8 @@ Roo.docs = new Roo.XComponent({
  _strings : {
   '3e6ec55e2dff4342e3f25b0b0b988de9' :"Inheritance tree",
   'ae635f08107a69569e636835f24e6f6f' :" extends ",
-  '87f9f735a1d36793ceaecd4e47124b63' :"Events",
   '3d067bedfe2f4677470dd6ccf64d05ed' :"Public  ",
+  '87f9f735a1d36793ceaecd4e47124b63' :"Events",
   '8444c6c15c56a27bfe83ffcaf459bbdd' :"Defined by",
   '9c5a24f0cbb12d939e4622b93bea904b' :"Public Methods",
   '36cd38f49b9afa08222c0dc9ebfe35eb' :"source",
@@ -382,35 +382,6 @@ Roo.docs = new Roo.XComponent({
        ]
       },
       {
-       xtype : 'Table',
-       listeners : {
-        render : function (_self)
-         {
-             _this.eventsTable = this;
-         }
-       },
-       xns : Roo.bootstrap,
-       '|xns' : 'Roo.bootstrap',
-       cm : [
-        {
-         xtype : 'ColumnModel',
-         dataIndex : 'doc',
-         header : _this._strings['87f9f735a1d36793ceaecd4e47124b63'] /* Events */,
-         md : 11,
-         xns : Roo.grid,
-         '|xns' : 'Roo.grid'
-        },
-        {
-         xtype : 'ColumnModel',
-         dataIndex : 'def',
-         header : _this._strings['8444c6c15c56a27bfe83ffcaf459bbdd'] /* Defined by */,
-         md : 1,
-         xns : Roo.grid,
-         '|xns' : 'Roo.grid'
-        }
-       ]
-      },
-      {
        xtype : 'Container',
        header : _this._strings['50f33d14f129e4548c1c270fd6725a78'] /* Configuration options */,
        panel : 'info',
@@ -470,6 +441,44 @@ Roo.docs = new Roo.XComponent({
            xtype : 'ColumnModel',
            dataIndex : 'doc',
            header : _this._strings['3d067bedfe2f4677470dd6ccf64d05ed'] /* Public   */,
+           md : 11,
+           xns : Roo.grid,
+           '|xns' : 'Roo.grid'
+          },
+          {
+           xtype : 'ColumnModel',
+           dataIndex : 'def',
+           header : _this._strings['8444c6c15c56a27bfe83ffcaf459bbdd'] /* Defined by */,
+           md : 1,
+           xns : Roo.grid,
+           '|xns' : 'Roo.grid'
+          }
+         ]
+        }
+       ]
+      },
+      {
+       xtype : 'Container',
+       header : _this._strings['87f9f735a1d36793ceaecd4e47124b63'] /* Events */,
+       panel : 'info',
+       xns : Roo.bootstrap,
+       '|xns' : 'Roo.bootstrap',
+       items  : [
+        {
+         xtype : 'Table',
+         listeners : {
+          render : function (_self)
+           {
+               _this.eventsTable = this;
+           }
+         },
+         xns : Roo.bootstrap,
+         '|xns' : 'Roo.bootstrap',
+         cm : [
+          {
+           xtype : 'ColumnModel',
+           dataIndex : 'doc',
+           header : _this._strings['87f9f735a1d36793ceaecd4e47124b63'] /* Events */,
            md : 11,
            xns : Roo.grid,
            '|xns' : 'Roo.grid'
