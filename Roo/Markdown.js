@@ -138,7 +138,7 @@ Roo.Markdown.toHtml = function(text) {
      * Block Lexer
      */
     
-    Lexer = function (options) {
+    var Lexer = function (options) {
       this.tokens = [];
       this.tokens.links = {};
       this.options = options || marked.defaults;
@@ -556,7 +556,7 @@ Roo.Markdown.toHtml = function(text) {
      * Inline Lexer & Compiler
      */
     
-    InlineLexer = function (links, options) {
+    var InlineLexer = function (links, options) {
       this.options = options || marked.defaults;
       this.links = links;
       this.rules = inline.normal;
@@ -796,7 +796,7 @@ Roo.Markdown.toHtml = function(text) {
      * Renderer
      */
     
-    Renderer = function (options) {
+    var Renderer = function (options) {
       this.options = options || {};
     }
     
@@ -946,7 +946,7 @@ Roo.Markdown.toHtml = function(text) {
      * Parsing & Compiling
      */
     
-    function Parser(options) {
+    var Parser = function (options) {
       this.tokens = [];
       this.token = null;
       this.options = options || marked.defaults;
