@@ -6,8 +6,8 @@
  "permname" : "",
  "modOrder" : "001",
  "strings" : {
+  "ae635f08107a69569e636835f24e6f6f" : " extends ",
   "36cd38f49b9afa08222c0dc9ebfe35eb" : "source",
-  "ae635f08107a69569e636835f24e6f6f" : "extends",
   "b068931cc450442b63f5b3d276ea4297" : "name",
   "9bd81329febf6efe22788e03ddeaf0af" : " Class ",
   "f561aaf6ef0bf14d4208bb46a4ccb3ad" : "xxx"
@@ -117,7 +117,7 @@
              "String cls" : "doc-extends-str",
              "xtype" : "Element",
              "$ xns" : "Roo.bootstrap",
-             "String html" : "extends"
+             "String html" : " extends "
             },
             {
              "listeners" : {
@@ -129,6 +129,13 @@
              "Boolean clickable" : true,
              "$ xns" : "Roo.bootstrap",
              "String html" : "name"
+            },
+            {
+             "String cls" : "doc-source",
+             "Boolean preventDefault" : true,
+             "xtype" : "Link",
+             "$ xns" : "Roo.bootstrap",
+             "String html" : "source"
             }
            ]
           },
