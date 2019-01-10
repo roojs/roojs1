@@ -273,6 +273,11 @@
            "xtype" : "ColumnModel",
            "$ xns" : "Roo.grid",
            "* prop" : "cm[]"
+          },
+          {
+           "xtype" : "SimpleStore",
+           "$ xns" : "Roo.data",
+           "* prop" : "store"
           }
          ]
         }
@@ -306,6 +311,11 @@
            "xtype" : "ColumnModel",
            "$ xns" : "Roo.grid",
            "* prop" : "cm[]"
+          },
+          {
+           "xtype" : "SimpleStore",
+           "$ xns" : "Roo.data",
+           "* prop" : "store"
           }
          ]
         }

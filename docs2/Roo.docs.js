@@ -498,6 +498,11 @@ Roo.docs = new Roo.XComponent({
          },
          xns : Roo.bootstrap,
          '|xns' : 'Roo.bootstrap',
+         store : {
+          xtype : 'SimpleStore',
+          xns : Roo.data,
+          '|xns' : 'Roo.data'
+         },
          cm : [
           {
            xtype : 'ColumnModel',
@@ -536,6 +541,11 @@ Roo.docs = new Roo.XComponent({
          },
          xns : Roo.bootstrap,
          '|xns' : 'Roo.bootstrap',
+         store : {
+          xtype : 'SimpleStore',
+          xns : Roo.data,
+          '|xns' : 'Roo.data'
+         },
          cm : [
           {
            xtype : 'ColumnModel',
