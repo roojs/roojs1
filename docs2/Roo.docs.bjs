@@ -162,6 +162,9 @@
        ]
       },
       {
+       "listeners" : {
+        "render" : "function (_self)\n{\n    _this.configTable = this;\n}"
+       },
        "xtype" : "Table",
        "$ xns" : "Roo.bootstrap",
        "items" : [
@@ -177,6 +180,31 @@
          "String header" : "Defined by",
          "String dataIndex" : "def",
          "Number md" : 1,
+         "xtype" : "ColumnModel",
+         "$ xns" : "Roo.grid",
+         "* prop" : "cm[]"
+        }
+       ]
+      },
+      {
+       "listeners" : {
+        "render" : "function (_self)\n{\n    _this.configTable = this;\n}"
+       },
+       "xtype" : "Table",
+       "$ xns" : "Roo.bootstrap",
+       "items" : [
+        {
+         "String header" : "Configuration Option",
+         "Number md" : 11,
+         "String dataIndex" : "doc",
+         "xtype" : "ColumnModel",
+         "$ xns" : "Roo.grid",
+         "* prop" : "cm[]"
+        },
+        {
+         "String header" : "Defined by",
+         "Number md" : 1,
+         "String dataIndex" : "def",
          "xtype" : "ColumnModel",
          "$ xns" : "Roo.grid",
          "* prop" : "cm[]"
