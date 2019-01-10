@@ -172,7 +172,8 @@
            "String cls" : "doc-comments",
            "xtype" : "Container",
            "$ xns" : "Roo.bootstrap",
-           "String html" : "doc-comments"
+           "String html" : "doc-comments",
+           "Boolean hidden" : true
           }
          ]
         },

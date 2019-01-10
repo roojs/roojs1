@@ -382,6 +382,7 @@ Roo.docs = new Roo.XComponent({
           {
            xtype : 'Container',
            cls : 'doc-comments',
+           hidden : true,
            html : _this._strings['d2b697ad8e989a6c4592987f22f5bbfc'] /* doc-comments */,
            xns : Roo.bootstrap,
            '|xns' : 'Roo.bootstrap'
