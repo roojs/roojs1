@@ -142,10 +142,11 @@ Roo.docs.init = {
             }
         }
         Roo.docs.doc_extends.hide();
-        Roo.docs.doc_entends_sep.hide();
+        Roo.docs.doc_extends_sep.hide();
         if (d.augments.length) {
             Roo.docs.doc_extends.show();
-            Roo.docs.doc_entends_sep.show();    
+            Roo.docs.doc_extends_sep.show();
+            Roo.docs.doc_extends.el.dom.innerHTML = d.augments[0];
         }
         
         
