@@ -490,7 +490,7 @@ Roo.docs = new Roo.XComponent({
            			    '<div class="short">' + (r.json.desc.split("\n")[0]) + '</div>' +
            			'</div>'+
            			
-           			'<div class="mdesc"><div class="long">' + r.json.desc + '</div></div>';
+           			'<div class="mdesc"><div class="long">' + r.json.desc.split("\n").join('<br/>') + '</div></div>';
            			
            },
            xns : Roo.grid,
