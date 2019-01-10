@@ -9,7 +9,6 @@ Roo.docs = new Roo.XComponent({
  _strings : {
   '3e6ec55e2dff4342e3f25b0b0b988de9' :"Inheritance tree",
   'ae635f08107a69569e636835f24e6f6f' :" extends ",
-  '3d067bedfe2f4677470dd6ccf64d05ed' :"Public  ",
   '87f9f735a1d36793ceaecd4e47124b63' :"Events",
   'd41d8cd98f00b204e9800998ecf8427e' :"",
   '232cedface5acac121a6e099364a2b07' :"source: ",
@@ -559,7 +558,7 @@ Roo.docs = new Roo.XComponent({
           {
            xtype : 'ColumnModel',
            dataIndex : 'name',
-           header : _this._strings['3d067bedfe2f4677470dd6ccf64d05ed'] /* Public   */,
+           header : _this._strings['d41d8cd98f00b204e9800998ecf8427e'] /*  */,
            md : 11,
            renderer : function(v,x,r) { 
                Roo.log(r);
