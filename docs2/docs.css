@@ -920,3 +920,6 @@ td.attributes, .fixedFont
 .doc-table-container td .long {
     display : none;
 }
+.doc-table-container td.expanded .long {
+    display : none;
+}
