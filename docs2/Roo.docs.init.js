@@ -71,7 +71,7 @@ Roo.docs.init = {
                         c = ev;
                     }
                     
-                    Roo.log(c);
+                    Roo.docs.init.loadDoc(c.name);
                     
                 }).createDelegate(this,[e], true)
                 
