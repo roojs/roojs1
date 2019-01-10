@@ -6,15 +6,8 @@
  "permname" : "",
  "modOrder" : "001",
  "strings" : {
-  "54e1d44609e3abed11f6e1eb6ae54988" : "Projects",
-  "f66cdb8a3ef49c79c633e1bffcfd1e74" : "Awards",
-  "0cbc6611f5540bd0809a388dc95a615b" : "Test",
   "098f6bcd4621d373cade4e832627b4f6" : "test",
-  "27c7b8732d1a279720d27cc8c3a26c93" : "Careers",
-  "992a0f0542384f1ee5ef51b7cf4ae6c4" : "Services",
-  "bbaff12800505b22a853e8b7f4eb6a22" : "Contact",
-  "9bd81329febf6efe22788e03ddeaf0af" : "Class",
-  "38b0d2ff1c03df82aea67222983d337e" : "test 2"
+  "9bd81329febf6efe22788e03ddeaf0af" : "Class"
  },
  "items" : [
   {
@@ -56,37 +49,6 @@
            "$ string href" : "baseURL +'/'"
           }
          ]
-        },
-        {
-         "xtype" : "NavSidebarItem",
-         "$ xns" : "Roo.bootstrap",
-         "String html" : "Test",
-         "items" : [
-          {
-           "String type" : "treeview",
-           "xtype" : "Menu",
-           "$ xns" : "Roo.bootstrap",
-           "* prop" : "menu",
-           "items" : [
-            {
-             "xtype" : "MenuItem",
-             "$ xns" : "Roo.bootstrap",
-             "String html" : "Test",
-             "$ String href" : "baseURL + '/AboutUs.html'"
-            },
-            {
-             "xtype" : "MenuItem",
-             "$ xns" : "Roo.bootstrap",
-             "String html" : "test 2"
-            }
-           ]
-          }
-         ]
-        },
-        {
-         "xtype" : "NavSidebarItem",
-         "$ xns" : "Roo.bootstrap",
-         "String html" : "Test"
         }
        ]
       },
@@ -116,75 +78,7 @@
      "Boolean inverse" : false,
      "$ xns" : "Roo.bootstrap",
      "String brand" : " ",
-     "String style" : "",
-     "items" : [
-      {
-       "listeners" : {
-        "render" : "function (_self)\n{\n  //  _this.navGroup = this;\n    \n}"
-       },
-       "| function activeLookup" : "function() \n{ \n    return;\n    var pathname = window.location.pathname.substring(baseURL.length);\n    \n    if(!pathname.length){\n        return;\n    }\n    \n    if(pathname.match(/^\\/Projects/)){\n        pathname = '/Projects';\n    }\n    \n    var lookupPath = function(item)\n    {\n        if(typeof(item.href) == 'undefined' || !item.href.length || item.href == '#'){\n            return true;\n        }\n        \n        item.el.removeClass('active');\n        \n        var href = item.href.substring(baseURL.length);\n        \n        if(href != pathname){\n            return true;\n        }\n        \n        item.el.addClass('active');\n        return false;\n            \n    };\n    \n    var seted = false;\n    \n    Roo.each(_this.navGroup.items, function(i){\n        \n        var s = lookupPath(i);\n        \n        if(!s){\n            return false;\n        }\n        \n        if(typeof(i.menu) == 'undefined' || !i.menu.items.length){\n            return;\n        }\n        \n        Roo.each(i.menu.items, function(ii){\n            \n            var ss = lookupPath(ii);\n            \n            if(!ss){\n                seted = true;\n                return false;\n            }\n            \n        });\n        \n        if(seted){\n            return false;\n        }\n        \n    });\n}",
-       "String type" : "nav",
-       "xtype" : "NavGroup",
-       "String align" : "right",
-       "$ xns" : "Roo.bootstrap",
-       "| function autoExpand" : "function() \n{ \n    return;\n    _this.menu_expand = false;\n    \n    var lookupMenu = function(menu, index){\n        \n        if(menu.target == pagedata.page.target){\n            _this.menu_expand = index;\n            return;\n        }\n        \n        if(!menu.children.length){\n            return;\n        }\n        \n        Roo.each(menu.children, function(c){\n            lookupMenu(c, index);\n        });\n        \n    }\n    \n    Roo.each(pagemenus, function(v, k){\n        \n        lookupMenu(v, k);\n        \n    });\n    \n    if(_this.menu_expand === false){\n        return;\n    }\n    \n    if(typeof(_this.navGroup.items[_this.menu_expand].menu) == 'undefined'){\n        return;\n    }\n    \n    _this.navGroup.items[_this.menu_expand].menu.show(_this.navGroup.items[_this.menu_expand].el, false, false);\n    \n}",
-       "items" : [
-        {
-         "xtype" : "NavSidebarItem",
-         "$ xns" : "Roo.bootstrap",
-         "String html" : "Test",
-         "items" : [
-          {
-           "String type" : "treeview",
-           "xtype" : "Menu",
-           "$ xns" : "Roo.bootstrap",
-           "* prop" : "menu",
-           "items" : [
-            {
-             "xtype" : "MenuItem",
-             "$ xns" : "Roo.bootstrap",
-             "String html" : "Test",
-             "$ String href" : "baseURL + '/AboutUs.html'"
-            },
-            {
-             "xtype" : "MenuItem",
-             "$ xns" : "Roo.bootstrap",
-             "String html" : "test 2"
-            }
-           ]
-          }
-         ]
-        },
-        {
-         "xtype" : "NavSidebarItem",
-         "$ xns" : "Roo.bootstrap",
-         "String html" : "Projects",
-         "$ String href" : "baseURL + '/Projects.html'"
-        },
-        {
-         "xtype" : "NavSidebarItem",
-         "$ xns" : "Roo.bootstrap",
-         "String html" : "Services"
-        },
-        {
-         "xtype" : "NavSidebarItem",
-         "$ xns" : "Roo.bootstrap",
-         "String html" : "Awards"
-        },
-        {
-         "xtype" : "NavSidebarItem",
-         "$ xns" : "Roo.bootstrap",
-         "String html" : "Contact",
-         "$ String href" : "baseURL + '/ContactUs.html'"
-        },
-        {
-         "xtype" : "NavSidebarItem",
-         "$ xns" : "Roo.bootstrap",
-         "String html" : "Careers"
-        }
-       ]
-      }
-     ]
+     "String style" : ""
     },
     {
      "String cls" : "general-content-body",
