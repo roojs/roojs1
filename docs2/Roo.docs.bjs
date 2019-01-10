@@ -164,6 +164,7 @@
                },
                "String cls" : "doc-source",
                "Boolean preventDefault" : false,
+               "String href" : "#",
                "xtype" : "Link",
                "$ xns" : "Roo.bootstrap",
                "String html" : "source"

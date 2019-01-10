@@ -367,6 +367,7 @@ Roo.docs = new Roo.XComponent({
               {
                xtype : 'Link',
                cls : 'doc-source',
+               href : '#',
                html : _this._strings['36cd38f49b9afa08222c0dc9ebfe35eb'] /* source */,
                preventDefault : false,
                listeners : {
