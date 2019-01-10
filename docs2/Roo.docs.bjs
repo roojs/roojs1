@@ -116,6 +116,12 @@
              "xtype" : "Element",
              "$ xns" : "Roo.bootstrap",
              "String html" : "extends"
+            },
+            {
+             "String tag" : "span",
+             "xtype" : "Element",
+             "$ xns" : "Roo.bootstrap",
+             "String html" : "extends"
             }
            ]
           },

@@ -311,6 +311,13 @@ Roo.docs = new Roo.XComponent({
              tag : 'span',
              xns : Roo.bootstrap,
              '|xns' : 'Roo.bootstrap'
+            },
+            {
+             xtype : 'Element',
+             html : _this._strings['ae635f08107a69569e636835f24e6f6f'] /* extends */,
+             tag : 'span',
+             xns : Roo.bootstrap,
+             '|xns' : 'Roo.bootstrap'
             }
            ]
           },
