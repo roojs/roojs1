@@ -158,6 +158,7 @@ Roo.docs.init = {
         Roo.docs.configTable.store.load( { params : { data : d.config }});
 
         Roo.docs.methodsTable.store.load( { params : { data : d.methods }});
+        Roo.docs.eventsTable.store.load( { params : { data : d.events}});
         
     }
     
