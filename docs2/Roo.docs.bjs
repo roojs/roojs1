@@ -113,6 +113,7 @@
             },
             {
              "String tag" : "span",
+             "String cls" : "doc-extends-str",
              "xtype" : "Element",
              "$ xns" : "Roo.bootstrap",
              "String html" : "extends"
