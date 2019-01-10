@@ -466,6 +466,7 @@ Roo.docs = new Roo.XComponent({
           },
           reader : {
            xtype : 'ArrayReader',
+           fields : [ 'name', 'type', 'desc', 'memberOf' ],
            xns : Roo.data,
            '|xns' : 'Roo.data'
           }
