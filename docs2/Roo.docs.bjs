@@ -184,12 +184,37 @@
          "xtype" : "ColumnModel",
          "$ xns" : "Roo.grid",
          "* prop" : "cm[]"
+        },
+        {
+         "listeners" : {
+          "render" : "function (_self)\n{\n    _this.methodsTable = this;\n}"
+         },
+         "xtype" : "Table",
+         "$ xns" : "Roo.bootstrap",
+         "items" : [
+          {
+           "String header" : "Public Methods",
+           "String dataIndex" : "doc",
+           "Number md" : 11,
+           "xtype" : "ColumnModel",
+           "$ xns" : "Roo.grid",
+           "* prop" : "cm[]"
+          },
+          {
+           "String header" : "Defined by",
+           "String dataIndex" : "def",
+           "Number md" : 1,
+           "xtype" : "ColumnModel",
+           "$ xns" : "Roo.grid",
+           "* prop" : "cm[]"
+          }
+         ]
         }
        ]
       },
       {
        "listeners" : {
-        "render" : "function (_self)\n{\n    _this.configTable = this;\n}"
+        "render" : "function (_self)\n{\n    _this.methodsTable = this;\n}"
        },
        "xtype" : "Table",
        "$ xns" : "Roo.bootstrap",
