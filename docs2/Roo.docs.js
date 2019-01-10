@@ -10,6 +10,7 @@ Roo.docs = new Roo.XComponent({
   'ae635f08107a69569e636835f24e6f6f' :" extends ",
   '36cd38f49b9afa08222c0dc9ebfe35eb' :"source",
   'e64b94523532dbac62df6795a5153f04' :"doc-desc",
+  'd2b697ad8e989a6c4592987f22f5bbfc' :"doc-comments",
   '494a64a432ff6a121e4ab9003c7a0df3' :"parentcls",
   '9bd81329febf6efe22788e03ddeaf0af' :" Class ",
   'f561aaf6ef0bf14d4208bb46a4ccb3ad' :"xxx"
@@ -342,13 +343,14 @@ Roo.docs = new Roo.XComponent({
           },
           {
            xtype : 'Container',
+           cls : 'doc-desc',
            html : _this._strings['e64b94523532dbac62df6795a5153f04'] /* doc-desc */,
            xns : Roo.bootstrap,
            '|xns' : 'Roo.bootstrap'
           },
           {
            xtype : 'Container',
-           html : _this._strings['e64b94523532dbac62df6795a5153f04'] /* doc-desc */,
+           html : _this._strings['d2b697ad8e989a6c4592987f22f5bbfc'] /* doc-comments */,
            xns : Roo.bootstrap,
            '|xns' : 'Roo.bootstrap'
           }
