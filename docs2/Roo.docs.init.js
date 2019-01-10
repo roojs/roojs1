@@ -113,7 +113,7 @@ Roo.docs.init = {
             return;
         }
         Roo.Ajax.request({
-            url : 'symbols/' + c.name + '.json',
+            url : 'symbols/' + cls.name + '.json',
             method : 'GET',
             success : function(res, o)
             {
