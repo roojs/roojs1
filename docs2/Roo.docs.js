@@ -19,6 +19,7 @@ Roo.docs = new Roo.XComponent({
   'd2b697ad8e989a6c4592987f22f5bbfc' :"doc-comments",
   'f361257612a512f9be2fdc2abfb25aef' :"<small>Defined by</small>",
   '494a64a432ff6a121e4ab9003c7a0df3' :"parentcls",
+  '49ee3087348e8d44e1feda1917443987' :"Name",
   '9bd81329febf6efe22788e03ddeaf0af' :" Class ",
   'f561aaf6ef0bf14d4208bb46a4ccb3ad' :"xxx"
  },
@@ -558,7 +559,7 @@ Roo.docs = new Roo.XComponent({
           {
            xtype : 'ColumnModel',
            dataIndex : 'name',
-           header : _this._strings['d41d8cd98f00b204e9800998ecf8427e'] /*  */,
+           header : _this._strings['49ee3087348e8d44e1feda1917443987'] /* Name */,
            md : 11,
            renderer : function(v,x,r) { 
            
@@ -576,6 +577,7 @@ Roo.docs = new Roo.XComponent({
            			'<div class="mdesc"><div class="long">' + r.json.desc.split("\n").join('<br/>') + '</div></div>';
            			
            },
+           sortable : true,
            xns : Roo.grid,
            '|xns' : 'Roo.grid'
           },

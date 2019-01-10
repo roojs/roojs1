@@ -18,6 +18,7 @@
   "d2b697ad8e989a6c4592987f22f5bbfc" : "doc-comments",
   "f361257612a512f9be2fdc2abfb25aef" : "<small>Defined by</small>",
   "494a64a432ff6a121e4ab9003c7a0df3" : "parentcls",
+  "49ee3087348e8d44e1feda1917443987" : "Name",
   "9bd81329febf6efe22788e03ddeaf0af" : " Class ",
   "f561aaf6ef0bf14d4208bb46a4ccb3ad" : "xxx"
  },
@@ -277,12 +278,13 @@
          "$ xns" : "Roo.bootstrap",
          "items" : [
           {
-           "String header" : "",
+           "String header" : "Name",
            "String dataIndex" : "name",
            "Number md" : 11,
            "$ Function renderer" : "function(v,x,r) { \n\n\n\t\treturn \t'<div class=\"fixedFont\">' +\n\t\t\t\t'<b class=\"itemname\">' + r.json.name + '</b>' +\n\t\t\t \t     (r.json.returns.length ? (' : <a href=\"#' + r.json.returns+'-constructor\">' + r.json.returns + '</a>') : '') +\n \t\t\t\t//     (r.json.values.length ? ' : ( ' +  r.json.values.join(\", \") + ' )' : '') +\n\t\t\t    '</div>' +\n\t\t  \n\t\t\t/*'<div class=\"mdesc\">' +\n\t\t\t    '<div class=\"short\">' + (r.json.desc.split(\"\\n\")[0]) + '</div>' +\n\t\t\t'</div>'+ */\n\t\t\t\n\t\t\t'<div class=\"mdesc\"><div class=\"long\">' + r.json.desc.split(\"\\n\").join('<br/>') + '</div></div>';\n\t\t\t\n}",
            "xtype" : "ColumnModel",
            "$ xns" : "Roo.grid",
+           "Boolean sortable" : true,
            "* prop" : "cm[]"
           },
           {
