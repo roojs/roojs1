@@ -320,6 +320,13 @@ Roo.docs = new Roo.XComponent({
              cls : 'doc-extends',
              html : _this._strings['b068931cc450442b63f5b3d276ea4297'] /* name */,
              tag : 'span',
+             listeners : {
+              click : function (_self, e)
+               {
+                   Roo.docs.init.loadParent();
+                   
+               }
+             },
              xns : Roo.bootstrap,
              '|xns' : 'Roo.bootstrap'
             }

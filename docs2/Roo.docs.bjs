@@ -120,6 +120,9 @@
              "String html" : "extends"
             },
             {
+             "listeners" : {
+              "click" : "function (_self, e)\n{\n    Roo.docs.init.loadParent();\n    \n}"
+             },
              "String tag" : "span",
              "String cls" : "doc-extends",
              "xtype" : "Element",
