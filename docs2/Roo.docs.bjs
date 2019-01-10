@@ -8,7 +8,7 @@
  "strings" : {
   "ae635f08107a69569e636835f24e6f6f" : " extends ",
   "36cd38f49b9afa08222c0dc9ebfe35eb" : "source",
-  "b068931cc450442b63f5b3d276ea4297" : "name",
+  "494a64a432ff6a121e4ab9003c7a0df3" : "parentcls",
   "9bd81329febf6efe22788e03ddeaf0af" : " Class ",
   "f561aaf6ef0bf14d4208bb46a4ccb3ad" : "xxx"
  },
@@ -120,22 +120,11 @@
              "String html" : " extends "
             },
             {
-             "listeners" : {
-              "click" : "function (_self, e)\n{\n    Roo.docs.init.loadParent();\n    \n}"
-             },
-             "String tag" : "span",
              "String cls" : "doc-extends",
-             "xtype" : "Element",
-             "Boolean clickable" : true,
-             "$ xns" : "Roo.bootstrap",
-             "String html" : "name"
-            },
-            {
-             "String cls" : "doc-source",
              "Boolean preventDefault" : true,
              "xtype" : "Link",
              "$ xns" : "Roo.bootstrap",
-             "String html" : "source"
+             "String html" : "parentcls"
             }
            ]
           },

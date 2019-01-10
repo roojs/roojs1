@@ -9,7 +9,7 @@ Roo.docs = new Roo.XComponent({
  _strings : {
   'ae635f08107a69569e636835f24e6f6f' :" extends ",
   '36cd38f49b9afa08222c0dc9ebfe35eb' :"source",
-  'b068931cc450442b63f5b3d276ea4297' :"name",
+  '494a64a432ff6a121e4ab9003c7a0df3' :"parentcls",
   '9bd81329febf6efe22788e03ddeaf0af' :" Class ",
   'f561aaf6ef0bf14d4208bb46a4ccb3ad' :"xxx"
  },
@@ -315,25 +315,9 @@ Roo.docs = new Roo.XComponent({
              '|xns' : 'Roo.bootstrap'
             },
             {
-             xtype : 'Element',
-             clickable : true,
-             cls : 'doc-extends',
-             html : _this._strings['b068931cc450442b63f5b3d276ea4297'] /* name */,
-             tag : 'span',
-             listeners : {
-              click : function (_self, e)
-               {
-                   Roo.docs.init.loadParent();
-                   
-               }
-             },
-             xns : Roo.bootstrap,
-             '|xns' : 'Roo.bootstrap'
-            },
-            {
              xtype : 'Link',
-             cls : 'doc-source',
-             html : _this._strings['36cd38f49b9afa08222c0dc9ebfe35eb'] /* source */,
+             cls : 'doc-extends',
+             html : _this._strings['494a64a432ff6a121e4ab9003c7a0df3'] /* parentcls */,
              preventDefault : true,
              xns : Roo.bootstrap,
              '|xns' : 'Roo.bootstrap'
