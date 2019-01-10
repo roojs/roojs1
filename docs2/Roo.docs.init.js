@@ -109,7 +109,26 @@ Roo.docs.init = {
     },
     loadDoc : function(name)
     {
-        
+        Roo.Ajax.request({
+            url : 'symbols/' + name + '.json',
+            method : 'GET',
+            success : function(res, o)
+            {
+                var d = Roo.decode(res.responseText);
+                Roo.log(d);
+                d.forEach(function(e) {
+                    if (e.cn.length) {
+                        this.addTreeItem(Roo.docs.navGroup, e, 'NavSidebarItem');
+                    }
+                }, this);
+                d.forEach(function(e) {
+                    if (!e.cn.length) {
+                        this.addTreeItem(Roo.docs.navGroup, e, 'NavSidebarItem');
+                    }
+                }, this);
+            },
+            scope : this
+        });
         
         
     }
