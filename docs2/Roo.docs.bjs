@@ -158,6 +158,10 @@
          ]
         }
        ]
+      },
+      {
+       "xtype" : "Table",
+       "$ xns" : "Roo.bootstrap"
       }
      ]
     }

@@ -358,6 +358,11 @@ Roo.docs = new Roo.XComponent({
          ]
         }
        ]
+      },
+      {
+       xtype : 'Table',
+       xns : Roo.bootstrap,
+       '|xns' : 'Roo.bootstrap'
       }
      ]
     }
