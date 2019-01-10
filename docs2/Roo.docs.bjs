@@ -259,7 +259,7 @@
          "$ xns" : "Roo.bootstrap",
          "items" : [
           {
-           "String header" : "Events",
+           "String header" : " ",
            "Number md" : 11,
            "String dataIndex" : "doc",
            "xtype" : "ColumnModel",
