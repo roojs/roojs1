@@ -327,9 +327,11 @@
       },
       {
        "String header" : "Events",
+       "Boolean expanded" : false,
        "xtype" : "Container",
        "String panel" : "info",
        "$ xns" : "Roo.bootstrap",
+       "Boolean expandable" : true,
        "items" : [
         {
          "listeners" : {
