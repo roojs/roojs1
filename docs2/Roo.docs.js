@@ -17,9 +17,9 @@ Roo.docs = new Roo.XComponent({
   'e64b94523532dbac62df6795a5153f04' :"doc-desc",
   'd2b697ad8e989a6c4592987f22f5bbfc' :"doc-comments",
   '494a64a432ff6a121e4ab9003c7a0df3' :"parentcls",
-  '9a78865208fed6e5b3972c4fd29dbb78' :"Configuration Option",
   '9bd81329febf6efe22788e03ddeaf0af' :" Class ",
-  'f561aaf6ef0bf14d4208bb46a4ccb3ad' :"xxx"
+  'f561aaf6ef0bf14d4208bb46a4ccb3ad' :"xxx",
+  'd41d8cd98f00b204e9800998ecf8427e' :" "
  },
 
   part     :  ["docs2", "docs" ],
@@ -459,7 +459,7 @@ Roo.docs = new Roo.XComponent({
           {
            xtype : 'ColumnModel',
            dataIndex : 'doc',
-           header : _this._strings['9a78865208fed6e5b3972c4fd29dbb78'] /* Configuration Option */,
+           header : _this._strings['d41d8cd98f00b204e9800998ecf8427e'] /*   */,
            md : 11,
            xns : Roo.grid,
            '|xns' : 'Roo.grid'
