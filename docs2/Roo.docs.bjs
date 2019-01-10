@@ -223,7 +223,7 @@
        "items" : [
         {
          "listeners" : {
-          "rowclass" : "function (_self, rowcfg)\n{\n\n}",
+          "rowclass" : "function (_self, rowcfg)\n{\n        Roo.log(rowcfg.record.json.expanded);\n}",
           "render" : "function (_self)\n{\n    _this.configTable = this;\n}",
           "rowclick" : "function (_self, el, rowIndex, e)\n{\n    var r = this.store.getAt(rowIndex);\n    r.json.expanded = !r.json.expanded ;\n    this.refreshRow(r);\n}"
          },
