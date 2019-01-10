@@ -927,7 +927,7 @@ td.attributes, .fixedFont
     display : block;
 }
 
-.doc-table-container td.expaned .fixedFont::before {
+.doc-table-container td.expanded .fixedFont::before {
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
     content: "\f068";
