@@ -275,7 +275,7 @@
            "String header" : "Public  ",
            "String dataIndex" : "name",
            "Number md" : 11,
-           "$ Function renderer" : "funciton(v,x,r) { }",
+           "$ Function renderer" : "function(v,x,r) { \n    Roo.log(r);\n}",
            "xtype" : "ColumnModel",
            "$ xns" : "Roo.grid",
            "* prop" : "cm[]"
