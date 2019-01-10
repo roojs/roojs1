@@ -458,6 +458,7 @@ Roo.docs = new Roo.XComponent({
        items  : [
         {
          xtype : 'Table',
+         rowSelection : true,
          striped : true,
          listeners : {
           render : function (_self)

@@ -229,6 +229,7 @@
          },
          "boolean striped" : true,
          "xtype" : "Table",
+         "Boolean rowSelection" : true,
          "$ xns" : "Roo.bootstrap",
          "items" : [
           {
