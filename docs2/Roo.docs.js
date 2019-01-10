@@ -542,7 +542,7 @@ Roo.docs = new Roo.XComponent({
          '|xns' : 'Roo.bootstrap',
          store : {
           xtype : 'Store',
-          sortInfo : { field : 'name', order : 'ASC' },
+          sortInfo : { field : 'name', direction : 'ASC' },
           xns : Roo.data,
           '|xns' : 'Roo.data',
           proxy : {

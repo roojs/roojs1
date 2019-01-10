@@ -299,7 +299,7 @@
            "* prop" : "cm[]"
           },
           {
-           "$ Object sortInfo" : "{ field : 'name', order : 'ASC' }",
+           "$ Object sortInfo" : "{ field : 'name', direction : 'ASC' }",
            "xtype" : "Store",
            "$ xns" : "Roo.data",
            "* prop" : "store",
