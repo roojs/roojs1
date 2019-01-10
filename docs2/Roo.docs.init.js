@@ -146,7 +146,7 @@ Roo.docs.init = {
         document.body.scrollTop  = 0;
         for (var k in d) {
             if (typeof(Roo.docs['doc_' + k])  !=  'undefined') {
-                Roo.docs['doc_' + k].el.dom.innerHTML = d[k];
+                Roo.docs['doc_' + k].el.dom.innerHTML = d[k].split("\n").join("<br/>");
             }
         }
         Roo.docs.doc_extends.hide();
