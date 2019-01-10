@@ -71,7 +71,7 @@ Roo.docs.init = {
                         c = ev;
                     }
                     
-                    Roo.docs.init.loadDoc(c.name);
+                    Roo.docs.init.loadDoc(c);
                     
                 }).createDelegate(this,[e], true)
                 
@@ -107,10 +107,13 @@ Roo.docs.init = {
         }, this);
         
     },
-    loadDoc : function(name)
+    loadDoc : function(cls)
     {
+        if (!cls.is_class) {
+            return;
+        }
         Roo.Ajax.request({
-            url : 'symbols/' + name + '.json',
+            url : 'symbols/' + c.name + '.json',
             method : 'GET',
             success : function(res, o)
             {
