@@ -8,7 +8,7 @@ Roo.docs = new Roo.XComponent({
 
  _strings : {
   '098f6bcd4621d373cade4e832627b4f6' :"test",
-  '9bd81329febf6efe22788e03ddeaf0af' :"Class",
+  '9bd81329febf6efe22788e03ddeaf0af' :" Class ",
   'f561aaf6ef0bf14d4208bb46a4ccb3ad' :"xxx"
  },
 
@@ -291,7 +291,7 @@ Roo.docs = new Roo.XComponent({
          items  : [
           {
            xtype : 'Header',
-           html : _this._strings['9bd81329febf6efe22788e03ddeaf0af'] /* Class */,
+           html : _this._strings['9bd81329febf6efe22788e03ddeaf0af'] /*  Class  */,
            level : 2,
            xns : Roo.bootstrap,
            '|xns' : 'Roo.bootstrap',

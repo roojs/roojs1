@@ -7,7 +7,7 @@
  "modOrder" : "001",
  "strings" : {
   "098f6bcd4621d373cade4e832627b4f6" : "test",
-  "9bd81329febf6efe22788e03ddeaf0af" : "Class",
+  "9bd81329febf6efe22788e03ddeaf0af" : " Class ",
   "f561aaf6ef0bf14d4208bb46a4ccb3ad" : "xxx"
  },
  "items" : [
@@ -101,7 +101,7 @@
            "xtype" : "Header",
            "$ xns" : "Roo.bootstrap",
            "Number level" : 2,
-           "String html" : "Class",
+           "String html" : " Class ",
            "items" : [
             {
              "String tag" : "span",
