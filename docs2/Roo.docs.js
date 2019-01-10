@@ -506,7 +506,7 @@ Roo.docs = new Roo.XComponent({
            renderer : function(v,x,r) { 
            
            
-           		return 	<small>r.json.memberOf</small>;
+           		return 	'<small><a href="#' + r.json.memberOf + '">' + r.json.memberOf + '</a></small>';
            			
            },
            xns : Roo.grid,

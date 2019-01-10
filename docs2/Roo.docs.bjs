@@ -234,7 +234,7 @@
            "String header" : "<small>Defined by</small>",
            "Number md" : 1,
            "String dataIndex" : "memberOf",
-           "$ Function renderer" : "function(v,x,r) { \n\n\n\t\treturn \t<small>r.json.memberOf</small>;\n\t\t\t\n}",
+           "$ Function renderer" : "function(v,x,r) { \n\n\n\t\treturn \t'<small><a href=\"#' + r.json.memberOf + '\">' + r.json.memberOf + '</a></small>';\n\t\t\t\n}",
            "xtype" : "ColumnModel",
            "$ xns" : "Roo.grid",
            "* prop" : "cm[]"
