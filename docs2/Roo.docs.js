@@ -448,7 +448,7 @@ Roo.docs = new Roo.XComponent({
       },
       {
        xtype : 'Container',
-       cls : '',
+       cls : 'doc-table-container',
        expandable : true,
        expanded : false,
        header : _this._strings['50f33d14f129e4548c1c270fd6725a78'] /* Configuration options */,
@@ -528,6 +528,7 @@ Roo.docs = new Roo.XComponent({
       },
       {
        xtype : 'Container',
+       cls : 'doc-table-container',
        expandable : true,
        expanded : false,
        header : _this._strings['9c5a24f0cbb12d939e4622b93bea904b'] /* Public Methods */,
