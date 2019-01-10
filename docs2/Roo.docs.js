@@ -350,7 +350,7 @@ Roo.docs = new Roo.XComponent({
                 click : function (e)
                  {
                      if (this.el.dom.innerHTML.length) {
-                         Roo.doc.init.loadDoc(this.el.dom.innerHTML);
+                         Roo.docs.init.loadDoc(this.el.dom.innerHTML);
                      }
                  },
                 render : function (_self)
