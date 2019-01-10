@@ -29,6 +29,8 @@ Roo.docs.init = {
     
     loadTree: function()
     {
+        Roo.docs.doc_body_content.hide();
+        
         Roo.Ajax.request({
             url : 'tree.json',
             method : 'GET',
@@ -109,9 +111,11 @@ Roo.docs.init = {
     },
     loadDoc : function(cls)
     {
+        Roo.docs.doc_body_content.hide();
         if (!cls.is_class) {
             return;
         }
+        Roo.docs.doc_body_content.show();
         Roo.Ajax.request({
             url : 'symbols/' + cls.name + '.json',
             method : 'GET',
