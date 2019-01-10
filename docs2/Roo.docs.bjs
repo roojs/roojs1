@@ -273,7 +273,7 @@
          "items" : [
           {
            "String header" : "Public  ",
-           "String dataIndex" : "doc",
+           "String dataIndex" : "name",
            "Number md" : 11,
            "xtype" : "ColumnModel",
            "$ xns" : "Roo.grid",
