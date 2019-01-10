@@ -316,6 +316,7 @@ Roo.docs = new Roo.XComponent({
             },
             {
              xtype : 'Element',
+             clickable : true,
              cls : 'doc-extends',
              html : _this._strings['b068931cc450442b63f5b3d276ea4297'] /* name */,
              tag : 'span',

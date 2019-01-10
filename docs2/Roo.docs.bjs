@@ -123,6 +123,7 @@
              "String tag" : "span",
              "String cls" : "doc-extends",
              "xtype" : "Element",
+             "Boolean clickable" : true,
              "$ xns" : "Roo.bootstrap",
              "String html" : "name"
             }
