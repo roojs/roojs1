@@ -320,7 +320,7 @@ Roo.docs = new Roo.XComponent({
                listeners : {
                 render : function (_self)
                  {
-                     _this.doc_name 
+                     _this.doc_name = this
                  }
                },
                xns : Roo.bootstrap,

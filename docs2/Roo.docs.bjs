@@ -120,7 +120,7 @@
              "items" : [
               {
                "listeners" : {
-                "render" : "function (_self)\n{\n    _this.doc_name \n}"
+                "render" : "function (_self)\n{\n    _this.doc_name = this\n}"
                },
                "String tag" : "span",
                "String cls" : "doc-classname",
