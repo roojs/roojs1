@@ -562,7 +562,8 @@ header-menu-options ul.socials > li:first-child,
     .main-content,
     .general-content-body,
     .slide-container {
-        margin-left: 270px; /*340px;*/
+        margin-left: 260px;
+        margin-right: 10px;
     }
     
     .project-detail .general-content-body,
