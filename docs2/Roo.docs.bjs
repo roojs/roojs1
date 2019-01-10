@@ -295,6 +295,7 @@
            "* prop" : "cm[]"
           },
           {
+           "$ Object sortInfo" : "{ field : 'name', order : 'ASC' }",
            "xtype" : "Store",
            "$ xns" : "Roo.data",
            "* prop" : "store",
