@@ -456,9 +456,14 @@ Roo.docs = new Roo.XComponent({
          xns : Roo.bootstrap,
          '|xns' : 'Roo.bootstrap',
          store : {
-          xtype : 'SimpleStore',
+          xtype : 'Store',
           xns : Roo.data,
-          '|xns' : 'Roo.data'
+          '|xns' : 'Roo.data',
+          proxy : {
+           xtype : 'MemoryProxy',
+           xns : Roo.data,
+           '|xns' : 'Roo.data'
+          }
          },
          cm : [
           {

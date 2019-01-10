@@ -237,9 +237,16 @@
            "* prop" : "cm[]"
           },
           {
-           "xtype" : "SimpleStore",
+           "xtype" : "Store",
            "$ xns" : "Roo.data",
-           "* prop" : "store"
+           "* prop" : "store",
+           "items" : [
+            {
+             "xtype" : "MemoryProxy",
+             "$ xns" : "Roo.data",
+             "* prop" : "proxy"
+            }
+           ]
           }
          ]
         }
