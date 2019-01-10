@@ -405,7 +405,7 @@ Roo.docs = new Roo.XComponent({
            listeners : {
             render : function (_self)
              {
-                 _this.doc_desc
+                 _this.doc_desc = this;
              }
            },
            xns : Roo.bootstrap,

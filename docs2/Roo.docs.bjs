@@ -176,7 +176,7 @@
           },
           {
            "listeners" : {
-            "render" : "function (_self)\n{\n    _this.doc_desc\n}"
+            "render" : "function (_self)\n{\n    _this.doc_desc = this;\n}"
            },
            "String cls" : "doc-desc",
            "xtype" : "Container",
