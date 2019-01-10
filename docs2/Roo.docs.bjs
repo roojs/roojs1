@@ -182,6 +182,7 @@
         },
         {
          "String header" : "Defined by",
+         "String dataIndex" : "def",
          "xtype" : "ColumnModel",
          "$ xns" : "Roo.grid",
          "* prop" : "cm[]"
