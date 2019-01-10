@@ -370,6 +370,7 @@ Roo.docs = new Roo.XComponent({
          xtype : 'ColumnModel',
          dataIndex : 'doc',
          header : _this._strings['9a78865208fed6e5b3972c4fd29dbb78'] /* Configuration Option */,
+         md : 11,
          xns : Roo.grid,
          '|xns' : 'Roo.grid'
         },
@@ -377,6 +378,7 @@ Roo.docs = new Roo.XComponent({
          xtype : 'ColumnModel',
          dataIndex : 'def',
          header : _this._strings['8444c6c15c56a27bfe83ffcaf459bbdd'] /* Defined by */,
+         md : 1,
          xns : Roo.grid,
          '|xns' : 'Roo.grid'
         }

@@ -168,6 +168,7 @@
         {
          "String header" : "Configuration Option",
          "String dataIndex" : "doc",
+         "Number md" : 11,
          "xtype" : "ColumnModel",
          "$ xns" : "Roo.grid",
          "* prop" : "cm[]"
@@ -175,6 +176,7 @@
         {
          "String header" : "Defined by",
          "String dataIndex" : "def",
+         "Number md" : 1,
          "xtype" : "ColumnModel",
          "$ xns" : "Roo.grid",
          "* prop" : "cm[]"
