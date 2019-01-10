@@ -905,6 +905,9 @@ td.attributes, .fixedFont
 {
     color: #002EBE; 
 }
+.doc-table-container .table>tbody>tr>td {
+    padding: 2px 14px 0px 4px;
+}
 
 .doc-table-container .short,
 .doc-table-container .long
