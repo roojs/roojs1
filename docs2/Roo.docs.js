@@ -565,7 +565,7 @@ Roo.docs = new Roo.XComponent({
            		return 	'<div class="fixedFont">' +
            				'<b class="itemname">' + r.json.name + '</b>' +
            				     (r.json.type.length ? (' : <a href="#' + r.json.type+'-constructor">' + r.json.type + '</a>') : '') +
-            				     (r.json.values.length ? ' : ( ' +  r.json.values.join(", ") + ' )' : '') +
+            				//     (r.json.values.length ? ' : ( ' +  r.json.values.join(", ") + ' )' : '') +
            			    '</div>' +
            		  
            			/*'<div class="mdesc">' +
