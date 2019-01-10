@@ -7,7 +7,7 @@ Roo.namespace('Roo');
 Roo.docs = new Roo.XComponent({
 
  _strings : {
-  '098f6bcd4621d373cade4e832627b4f6' :"test",
+  '36cd38f49b9afa08222c0dc9ebfe35eb' :"source",
   'ae635f08107a69569e636835f24e6f6f' :"extends",
   'b068931cc450442b63f5b3d276ea4297' :"name",
   '9bd81329febf6efe22788e03ddeaf0af' :" Class ",
@@ -333,14 +333,8 @@ Roo.docs = new Roo.XComponent({
            ]
           },
           {
-           xtype : 'Element',
-           html : _this._strings['098f6bcd4621d373cade4e832627b4f6'] /* test */,
-           tag : 'div',
-           xns : Roo.bootstrap,
-           '|xns' : 'Roo.bootstrap'
-          },
-          {
            xtype : 'Link',
+           html : _this._strings['36cd38f49b9afa08222c0dc9ebfe35eb'] /* source */,
            preventDefault : true,
            xns : Roo.bootstrap,
            '|xns' : 'Roo.bootstrap'
