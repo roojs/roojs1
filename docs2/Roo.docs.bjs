@@ -288,9 +288,22 @@
            "* prop" : "cm[]"
           },
           {
-           "xtype" : "SimpleStore",
+           "xtype" : "Store",
            "$ xns" : "Roo.data",
-           "* prop" : "store"
+           "* prop" : "store",
+           "items" : [
+            {
+             "xtype" : "MemoryProxy",
+             "$ xns" : "Roo.data",
+             "* prop" : "proxy"
+            },
+            {
+             "$ Array fields" : "[ \n    'name', 'type' ,'desc', 'memberOf'\n]",
+             "xtype" : "JsonReader",
+             "$ xns" : "Roo.data",
+             "* prop" : "reader"
+            }
+           ]
           }
          ]
         }
@@ -326,9 +339,22 @@
            "* prop" : "cm[]"
           },
           {
-           "xtype" : "SimpleStore",
+           "xtype" : "Store",
            "$ xns" : "Roo.data",
-           "* prop" : "store"
+           "* prop" : "store",
+           "items" : [
+            {
+             "xtype" : "MemoryProxy",
+             "$ xns" : "Roo.data",
+             "* prop" : "proxy"
+            },
+            {
+             "$ Array fields" : "[ \n    'name', 'type' ,'desc', 'memberOf'\n]",
+             "xtype" : "JsonReader",
+             "$ xns" : "Roo.data",
+             "* prop" : "reader"
+            }
+           ]
           }
          ]
         }

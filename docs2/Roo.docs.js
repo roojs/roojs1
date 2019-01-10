@@ -512,9 +512,22 @@ Roo.docs = new Roo.XComponent({
          xns : Roo.bootstrap,
          '|xns' : 'Roo.bootstrap',
          store : {
-          xtype : 'SimpleStore',
+          xtype : 'Store',
           xns : Roo.data,
-          '|xns' : 'Roo.data'
+          '|xns' : 'Roo.data',
+          proxy : {
+           xtype : 'MemoryProxy',
+           xns : Roo.data,
+           '|xns' : 'Roo.data'
+          },
+          reader : {
+           xtype : 'JsonReader',
+           fields : [ 
+               'name', 'type' ,'desc', 'memberOf'
+           ],
+           xns : Roo.data,
+           '|xns' : 'Roo.data'
+          }
          },
          cm : [
           {
@@ -555,9 +568,22 @@ Roo.docs = new Roo.XComponent({
          xns : Roo.bootstrap,
          '|xns' : 'Roo.bootstrap',
          store : {
-          xtype : 'SimpleStore',
+          xtype : 'Store',
           xns : Roo.data,
-          '|xns' : 'Roo.data'
+          '|xns' : 'Roo.data',
+          proxy : {
+           xtype : 'MemoryProxy',
+           xns : Roo.data,
+           '|xns' : 'Roo.data'
+          },
+          reader : {
+           xtype : 'JsonReader',
+           fields : [ 
+               'name', 'type' ,'desc', 'memberOf'
+           ],
+           xns : Roo.data,
+           '|xns' : 'Roo.data'
+          }
          },
          cm : [
           {
