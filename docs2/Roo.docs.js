@@ -349,6 +349,7 @@ Roo.docs = new Roo.XComponent({
                listeners : {
                 click : function (e)
                  {
+                     Roo.log([this, "click"]);
                      if (this.el.dom.innerHTML.length) {
                          Roo.docs.init.loadDoc(this.el.dom.innerHTML);
                      }
