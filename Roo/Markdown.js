@@ -556,7 +556,7 @@ Roo.Markdown.toHtml = function(text) {
      * Inline Lexer & Compiler
      */
     
-    function InlineLexer(links, options) {
+    InlineLexer = function (links, options) {
       this.options = options || marked.defaults;
       this.links = links;
       this.rules = inline.normal;
