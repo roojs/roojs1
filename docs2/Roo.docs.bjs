@@ -163,7 +163,7 @@
                 "click" : "function (e)\n{\n    if (this.el.dom.innerHTML.length > 0) {\n        Roo.docs.loadDoc(this.el.dom.innerHTML);\n    }\n}"
                },
                "String cls" : "doc-source",
-               "Boolean preventDefault" : true,
+               "Boolean preventDefault" : false,
                "xtype" : "Link",
                "$ xns" : "Roo.bootstrap",
                "String html" : "source"
