@@ -330,6 +330,7 @@
       {
        "String header" : "Events",
        "Boolean expanded" : false,
+       "String cls" : "doc-table-container",
        "xtype" : "Container",
        "String panel" : "info",
        "$ xns" : "Roo.bootstrap",

@@ -609,6 +609,7 @@ Roo.docs = new Roo.XComponent({
       },
       {
        xtype : 'Container',
+       cls : 'doc-table-container',
        expandable : true,
        expanded : false,
        header : _this._strings['87f9f735a1d36793ceaecd4e47124b63'] /* Events */,
