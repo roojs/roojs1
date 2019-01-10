@@ -930,11 +930,11 @@ td.attributes, .fixedFont
 .doc-table-container td.expanded .fixedFont::before {
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
-    content: "\f068&nbsp;";
+    content: "\f068 ";
 }
 
 .doc-table-container td .fixedFont::before {
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
-        content: "\f067&nbsp;";
+        content: "\f067 ";
 }
