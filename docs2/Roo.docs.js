@@ -317,6 +317,12 @@ Roo.docs = new Roo.XComponent({
                cls : 'doc-classname',
                html : _this._strings['f561aaf6ef0bf14d4208bb46a4ccb3ad'] /* xxx */,
                tag : 'span',
+               listeners : {
+                render : function (_self)
+                 {
+                     _this.doc_name 
+                 }
+               },
                xns : Roo.bootstrap,
                '|xns' : 'Roo.bootstrap'
               },

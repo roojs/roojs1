@@ -141,10 +141,11 @@ Roo.docs.init = {
                 Roo.docs['doc_' + k].el.dom.innerHTML = d[k];
             }
         }
-        Roo.docs.doc_augments.hide();
-        Roo.docs.doc_augments_sep.hide();
+        Roo.docs.doc_extends.hide();
+        Roo.docs.doc_entends_sep.hide();
         if (d.augments.length) {
-            
+            Roo.docs.doc_extends.show();
+            Roo.docs.doc_entends_sep.show();    
         }
         
         

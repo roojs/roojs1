@@ -119,6 +119,9 @@
              "String html" : " Class ",
              "items" : [
               {
+               "listeners" : {
+                "render" : "function (_self)\n{\n    _this.doc_name \n}"
+               },
                "String tag" : "span",
                "String cls" : "doc-classname",
                "xtype" : "Element",
