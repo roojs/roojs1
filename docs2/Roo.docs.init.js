@@ -151,7 +151,7 @@ Roo.docs.init = {
             Roo.docs.doc_extends_sep.show();
             Roo.docs.doc_extends.el.dom.innerHTML = d.augments[0];
         }
-        
+        Roo.docs.doc_source 
         
         
     }
