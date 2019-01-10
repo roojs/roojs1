@@ -8,6 +8,7 @@
  "strings" : {
   "098f6bcd4621d373cade4e832627b4f6" : "test",
   "ae635f08107a69569e636835f24e6f6f" : "extends",
+  "b068931cc450442b63f5b3d276ea4297" : "name",
   "9bd81329febf6efe22788e03ddeaf0af" : " Class ",
   "f561aaf6ef0bf14d4208bb46a4ccb3ad" : "xxx"
  },
@@ -120,9 +121,10 @@
             },
             {
              "String tag" : "span",
+             "String cls" : "doc-extends",
              "xtype" : "Element",
              "$ xns" : "Roo.bootstrap",
-             "String html" : "extends"
+             "String html" : "name"
             }
            ]
           },
