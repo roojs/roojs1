@@ -466,6 +466,7 @@ Roo.docs = new Roo.XComponent({
           },
           reader : {
            xtype : 'JsonReader',
+           fields : [ ],
            xns : Roo.data,
            '|xns' : 'Roo.data'
           }

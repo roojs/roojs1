@@ -247,6 +247,7 @@
              "* prop" : "proxy"
             },
             {
+             "$ Array fields" : "[ ] ",
              "xtype" : "JsonReader",
              "$ xns" : "Roo.data",
              "* prop" : "reader"
