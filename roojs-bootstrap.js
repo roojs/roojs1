@@ -507,8 +507,8 @@ break;case 'date':da[c.name]=new Date();break;case 'float':da[c.name]=0.0;break;
 // Roo/data/DataProxy.js
 Roo.data.DataProxy=function(){this.addEvents({beforeload:true,load:true,loadexception:true});Roo.data.DataProxy.superclass.constructor.call(this);};Roo.extend(Roo.data.DataProxy,Roo.util.Observable);
 // Roo/data/MemoryProxy.js
-Roo.data.MemoryProxy=function(A){if(A.data){A=A.data;}Roo.data.MemoryProxy.superclass.constructor.call(this);this.data=A;};Roo.extend(Roo.data.MemoryProxy,Roo.data.DataProxy,{load:function(A,B,C,D,E){A=A||{};var F;try{F=B.readRecords(A.data||this.data);}catch(e){this.fireEvent("loadexception",this,E,null,e);
-C.call(D,null,E,false);return;}C.call(D,F,E,true);},update:function(A,B){}});
+Roo.data.MemoryProxy=function(A){if(A.data){A=A.data;}Roo.data.MemoryProxy.superclass.constructor.call(this);this.data=A;};Roo.extend(Roo.data.MemoryProxy,Roo.data.DataProxy,{load:function(A,B,C,D,E){A=A||{};var F;try{F=B.readRecords(A.data?A.data:this.data);
+}catch(e){this.fireEvent("loadexception",this,E,null,e);C.call(D,null,E,false);return;}C.call(D,F,E,true);},update:function(A,B){}});
 // Roo/data/HttpProxy.js
 Roo.data.HttpProxy=function(A){Roo.data.HttpProxy.superclass.constructor.call(this);this.conn=A;this.useAjax=!A||!A.events;};Roo.extend(Roo.data.HttpProxy,Roo.data.DataProxy,{getConnection:function(){return this.useAjax?Roo.Ajax:this.conn;},load:function(A,B,C,D,E){if(this.fireEvent("beforeload",this,A)!==false){var o={params:A||{}
 ,request:{callback:C,scope:D,arg:E},reader:B,callback:this.loadResponse,scope:this};if(this.useAjax){Roo.applyIf(o,this.conn);if(this.activeRequest){Roo.Ajax.abort(this.activeRequest);}this.activeRequest=Roo.Ajax.request(o);}else{this.conn.request(o);}}else{C.call(D||this,null,E,false);
@@ -532,8 +532,8 @@ jj<fl;jj++){f=fi[jj];var B=(f.mapping!==undefined&&f.mapping!==null)?f.mapping:f
 if(vs===false||vs==='false'){E=false;}}var F=[];for(var i=0;i<c;i++){var n=C[i];var G={};var id=this.getId(n);for(var j=0;j<fl;j++){f=fi[j];var v=this.ef[j](n);if(!f.convert){Roo.log('missing convert for '+f.name);Roo.log(f);continue;}G[f.name]=f.convert((v!==undefined)?v:f.defaultValue);
 }var H=new A(G,id);H.json=n;F[i]=H;}return {raw:o,success:E,records:F,totalRecords:D};}});
 // Roo/data/ArrayReader.js
-Roo.data.ArrayReader=function(A,B){Roo.data.ArrayReader.superclass.constructor.call(this,A,B);};Roo.extend(Roo.data.ArrayReader,Roo.data.JsonReader,{readRecords:function(o){var A=this.meta?this.meta.id:null;var B=this.recordType,C=B.prototype.fields;var D=[];
-var E=o;for(var i=0;i<E.length;i++){var n=E[i];var F={};var id=((A||A===0)&&n[A]!==undefined&&n[A]!==""?n[A]:null);for(var j=0,G=C.length;j<G;j++){var f=C.items[j];var k=f.mapping!==undefined&&f.mapping!==null?f.mapping:j;var v=n[k]!==undefined?n[k]:f.defaultValue;
+Roo.data.ArrayReader=function(A,B){Roo.data.ArrayReader.superclass.constructor.call(this,A,B||A.fields);};Roo.extend(Roo.data.ArrayReader,Roo.data.JsonReader,{readRecords:function(o){var A=this.meta?this.meta.id:null;var B=this.recordType,C=B.prototype.fields;
+var D=[];var E=o;for(var i=0;i<E.length;i++){var n=E[i];var F={};var id=((A||A===0)&&n[A]!==undefined&&n[A]!==""?n[A]:null);for(var j=0,G=C.length;j<G;j++){var f=C.items[j];var k=f.mapping!==undefined&&f.mapping!==null?f.mapping:j;var v=n[k]!==undefined?n[k]:f.defaultValue;
 v=f.convert(v);F[f.name]=v;}var H=new B(F,id);H.json=n;D[D.length]=H;}return {records:D,totalRecords:D.length};}});
 // Roo/bootstrap/ComboBox.js
 Roo.bootstrap.ComboBox=function(A){Roo.bootstrap.ComboBox.superclass.constructor.call(this,A);this.addEvents({'expand':true,'collapse':true,'beforeselect':true,'select':true,'beforequery':true,'add':true,'edit':true,'remove':true,'afterremove':true,'specialfilter':true,'tick':true,'touchviewdisplay':true}
