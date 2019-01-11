@@ -4,169 +4,169 @@ Roo.docs.template  = {
 
     augments : function(data)
     {
-	if (!data.augments.length) {
-	    return '';
-	}
-	var linkSymbol  = this.linkSymbol;
-	var output = '<div class="inheritance res-block"> <pre class="res-block-inner">';
+    if (!data.augments.length) {
+        return '';
+    }
+    var linkSymbol  = this.linkSymbol;
+    var output = '<div class="inheritance res-block"> <pre class="res-block-inner">';
     
-	var iblock_indent = 0;
-	 data.augments.reverse().map(
-		function($) {  
-		    output += iblock_indent ? ('<img src="../images/default/s.gif" height="1" width="' + 
-			    iblock_indent + '"/><img src="../images/default/tree/elbow-end.gif" class="elbow"/>') : '';
-		    output += linkSymbol($) + "\n"; 
-		    iblock_indent += 20;
-		}
-	)
-	 
-	return output +  '<img src="../images/default/s.gif" height="1"  width="' +  iblock_indent +'"/>' +
-		'<img class="elbow" src="../images/default/tree/elbow-end.gif"/>'+data.name+
+    var iblock_indent = 0;
+     data.augments.reverse().map(
+        function($) {  
+            output += iblock_indent ? ('<img src="../images/default/s.gif" height="1" width="' + 
+                iblock_indent + '"/><img src="../images/default/tree/elbow-end.gif" class="elbow"/>') : '';
+            output += linkSymbol($) + "\n"; 
+            iblock_indent += 20;
+        }
+    )
+     
+    return output +  '<img src="../images/default/s.gif" height="1"  width="' +  iblock_indent +'"/>' +
+        '<img class="elbow" src="../images/default/tree/elbow-end.gif"/>'+data.name+
 
-		   '</pre></div>'
+           '</pre></div>'
        
     },
     
     config : function(dtag)
     {
-	   
-	var output = '<a name="'+dtag.memberOf+'-cfg-'+dtag.name+'"></a>';
-	output += '<div class="fixedFont"><b  class="itemname"> ' + dtag.name + '</b> : ' +
-		(dtag.type.length ? this.linkSymbol(dtag.type) : "" ) + '</div>';
-		  
-	output += '<div class="mdesc"><div class="short">'+this.resolveLinks(this.summarize(dtag.desc))+'</div></div>';
-			
-	output += '<div class="mdesc"><div class="long">' + this.resolveLinks(dtag.desc)+ ' ' + 
+       
+    var output = '<a name="'+dtag.memberOf+'-cfg-'+dtag.name+'"></a>';
+    output += '<div class="fixedFont"><b  class="itemname"> ' + dtag.name + '</b> : ' +
+        (dtag.type.length ? this.linkSymbol(dtag.type) : "" ) + '</div>';
+          
+    output += '<div class="mdesc"><div class="short">'+this.resolveLinks(this.summarize(dtag.desc))+'</div></div>';
+            
+    output += '<div class="mdesc"><div class="long">' + this.resolveLinks(dtag.desc)+ ' ' + 
                     (dtag.values.length ? ("<BR/>Possible Values: " +
-				dtag.values.map(function(v) {
-				    return v.length ? v : "<B>Empty</B>";
-				}).join(", ")) : ''
-		    ) + '</div>';
-	return output;
+                dtag.values.map(function(v) {
+                    return v.length ? v : "<B>Empty</B>";
+                }).join(", ")) : ''
+            ) + '</div>';
+    return output;
     },
     
     methodsSort : function(data)
     {
-	
-  	
-	var ownMethods = [];
+    
+      
+    var ownMethods = [];
 
-	if (data.comment.name.length && 
-		!data.isBuiltin() && 
-		!data.isSingleton &&
-		!data.isStatic
-		) {
-		data.isInherited = false;
-		ownMethods.push(data);   // should push ctor???
-	}
-	
-	var msorted = data.methods.sort(makeSortby("name"));
-	
-	// static first?
-	
-	msorted.filter(
-	    function($){
-		    
-		//if (/@hide/.test($.desc)) { == not needed - done in the backend
-		//	return false;
-		//}
-		    
-		//if (!$.isEvent && (data.comment.getTag("instanceOf").length || data.comment.getTag("singleton").length)) {
-		
-		// not sure if we should just ignore signletons???
-		//if (!data.isSingleton) {
-		//    return true; 
-		//}
-		
-		
-		
-		if (data.isSingleton) {
-		 
-		    if ($.isStatic && $.memberOf != data.name) { // it's a singleton - can not inherit static methods.
-			return true;
-		    }
-		
-		    $.isInherited = ($.memberOf != data.name);
-		    ownMethods.push($);
-		    return true;
-		}
-		
-			
-		if ($.isNamespace || (($.memberOf != data.name) && $.isStatic)){
-			return true;
-		}
-		if ($.isStatic) {
-			$.isInherited = ($.memberOf != data.name);
-			ownMethods.push($);
-		}
-			
-		return true;
-	    }
-    	);
+    if (data.comment.name.length && 
+        !data.isBuiltin() && 
+        !data.isSingleton &&
+        !data.isStatic
+        ) {
+        data.isInherited = false;
+        ownMethods.push(data);   // should push ctor???
+    }
+    
+    var msorted = data.methods.sort(makeSortby("name"));
+    
+    // static first?
+    
+    msorted.filter(
+        function($){
+            
+        //if (/@hide/.test($.desc)) { == not needed - done in the backend
+        //    return false;
+        //}
+            
+        //if (!$.isEvent && (data.comment.getTag("instanceOf").length || data.comment.getTag("singleton").length)) {
+        
+        // not sure if we should just ignore signletons???
+        //if (!data.isSingleton) {
+        //    return true; 
+        //}
+        
+        
+        
+        if (data.isSingleton) {
+         
+            if ($.isStatic && $.memberOf != data.name) { // it's a singleton - can not inherit static methods.
+            return true;
+            }
+        
+            $.isInherited = ($.memberOf != data.name);
+            ownMethods.push($);
+            return true;
+        }
+        
+            
+        if ($.isNamespace || (($.memberOf != data.name) && $.isStatic)){
+            return true;
+        }
+        if ($.isStatic) {
+            $.isInherited = ($.memberOf != data.name);
+            ownMethods.push($);
+        }
+            
+        return true;
+        }
+        );
 
-	// then dynamics..
+    // then dynamics..
 
-	msorted.filter(
-	    function($){
-		    //if (/@hide/.test($.desc)) {
-		    //	    return false;
-		    //}
-		    // it's a signleton class - can not have dynamic methods..
-		    if (data.isSingleton) {
-			    return true;
-		    }
-		    if ($.isNamespace || (($.memberOf != data.name) && $.isStatic)){
-			    return true;
-		    }
-		    if (!$.isStatic) {
-			$.isInherited = ($.memberOf != data.alias);
-			ownMethods.push($);
-		    }
-		    
-		    return true;
-	    }
-	);
-	return msorted;
-	
+    msorted.filter(
+        function($){
+            //if (/@hide/.test($.desc)) {
+            //        return false;
+            //}
+            // it's a signleton class - can not have dynamic methods..
+            if (data.isSingleton) {
+                return true;
+            }
+            if ($.isNamespace || (($.memberOf != data.name) && $.isStatic)){
+                return true;
+            }
+            if (!$.isStatic) {
+            $.isInherited = ($.memberOf != data.alias);
+            ownMethods.push($);
+            }
+            
+            return true;
+        }
+    );
+    return msorted;
+    
     },
 
     
     method : function(member) {
       
         var output = '<a name="' + member.memberOf +'.' + member.name + '"></a>' +
-		'<div class="fixedFont"> <span class="attributes">';
+        '<div class="fixedFont"> <span class="attributes">';
 
         if (member.isConstructor) {
                 output += "new <B>" + member.memberOf + (member.memberOf.length ? "." : "") +"</B>";
         } else {
                 
-	    if (member.isPrivate) output += "&lt;private&gt; ";
-	    if (member.isInner) output += "&lt;inner&gt; ";
-	    if (member.isStatic || member.singleton.length) { //|| data.comment.getTag("instanceOf").length) {
-		    output +=  member.memberOf + ".";	
-	    }
+        if (member.isPrivate) output += "&lt;private&gt; ";
+        if (member.isInner) output += "&lt;inner&gt; ";
+        if (member.isStatic || member.singleton.length) { //|| data.comment.getTag("instanceOf").length) {
+            output +=  member.memberOf + ".";    
+        }
         }
         output += '</span><b class="itemname">' + member.name + '</b>';
-				
+                
         output += this.makeSignature(member.params);
         if (member.returns.length) {
             output += ': ';
-	    for(var i = 0;i< member.returns.length;i++) {
-		var item = member.returns[i];
-		output += (i > 0 ? ' or ' : '') +
-		    this.linkSymbol(item.type);
-	    }
+        for(var i = 0;i< member.returns.length;i++) {
+        var item = member.returns[i];
+        output += (i > 0 ? ' or ' : '') +
+            this.linkSymbol(item.type);
         }
-			
-			
-	output += '</div> <div class="mdesc">';
+        }
+            
+            
+    output += '</div> <div class="mdesc">';
         if (!member.isConstructor) {
             output+= '<div class="short">'+this.resolveLinks(this.summarize(member.desc)) +'</div>';
         } else  {
             //ctor
-	    output+= '<div class="short">Create a new '+member.memberOf +'</div>';
+        output+= '<div class="short">Create a new '+member.memberOf +'</div>';
         }
-	output +='<div class="long">';
+    output +='<div class="long">';
         if (!member.isConstructor) {
             output+= this.resolveLinks(member.desc) ;
             if (member.example.length) {
@@ -175,7 +175,7 @@ Roo.docs.template  = {
         } else {
             //ctor
             output+= 'Create a new '+member.memberOf;
-	    // example and desc.. are normally on the 'top'...
+        // example and desc.. are normally on the 'top'...
         }
         if (member.params.length) {
         
@@ -224,10 +224,10 @@ Roo.docs.template  = {
                 */
         if (member.returns.length) {
             output += '<dl class="detailList"><dt class="heading">Returns:</dt>';
-	    for (var i =0; i < member.returns.length; i++) {
-		var item = member.returns[i];
-		output+= '<dd>' + this.linkSymbol( item.type ) + ' ' + this.resolveLinks(item.desc) + '</dd></dl>';
-	    }
+        for (var i =0; i < member.returns.length; i++) {
+        var item = member.returns[i];
+        output+= '<dd>' + this.linkSymbol( item.type ) + ' ' + this.resolveLinks(item.desc) + '</dd></dl>';
+        }
                     
         }
         
@@ -256,21 +256,21 @@ Roo.docs.template  = {
      
   
         var output = '<a name="' + member.memberOf +'-event-' + member.name + '"></a>' +
-		'<div class="fixedFont"> ';
+        '<div class="fixedFont"> ';
 
         
         output += '<b class="itemname">'+member.name+'</b>' +this.makeSignature(member.params) + '</div>';
               
         output += '<div class="mdesc">';
-	output += '<div class="short">' +this.resolveLinks(this.summarize(member.desc))+   '</div>';
-		   
-		    
+    output += '<div class="short">' +this.resolveLinks(this.summarize(member.desc))+   '</div>';
+           
+            
         output += '<div class="long">' + this.resolveLinks(member.desc);
-	
-	if (member.example.length) {
-	    output +'<pre class="code">'+member.example+'</pre>';
-	}
-	if (member.params.length) {
+    
+    if (member.example.length) {
+        output +'<pre class="code">'+member.example+'</pre>';
+    }
+    if (member.params.length) {
         
      
             output+= '<dl class="detailList"> <dt class="heading">Parameters:</dt>';
@@ -291,8 +291,8 @@ Roo.docs.template  = {
                     output +='</dt><dd>'+this.resolveLinks(item.desc)+'</dd>';
             }
             output+= '</dl>';
-        }    		
-	  if (member.deprecated.length) {
+        }            
+      if (member.deprecated.length) {
             output+= '<dl class="detailList"><dt class="heading">Deprecated:</dt><dt>' +
                         +member.deprecated+'</dt></dl>';
         }
@@ -314,13 +314,13 @@ Roo.docs.template  = {
                         </for>
                         </dl>
                 </if>
-                */	
-	  if (member.returns.length) {
+                */    
+      if (member.returns.length) {
             output += '<dl class="detailList"><dt class="heading">Returns:</dt>';
-	    for (var i =0; i < member.returns.length; i++) {
-		var item = member.returns[i];
-		output+= '<dd>' + this.linkSymbol( item.type ) + ' ' + this.resolveLinks(item.desc) + '</dd></dl>';
-	    }
+        for (var i =0; i < member.returns.length; i++) {
+        var item = member.returns[i];
+        output+= '<dd>' + this.linkSymbol( item.type ) + ' ' + this.resolveLinks(item.desc) + '</dd></dl>';
+        }
                     
         }
         
@@ -338,9 +338,9 @@ Roo.docs.template  = {
             output+= '<dl class="detailList"><dt class="heading">See:</dt><dt>' +
                         '<dd>' + this.linkSymbol( member.see ) +'</dd></dl>';
         }
-        output +='</div></div>';		 
-		  
-	return output;
+        output +='</div></div>';         
+          
+    return output;
     },
     
     
@@ -357,7 +357,7 @@ Roo.docs.template  = {
         
             if (!params.length) return "()";
         var linkSymbol = this.linkSymbol;
-        var signature = "("	+
+        var signature = "("    +
             params.filter(
                 function($) {
                     return $.name.indexOf(".") == -1; // don't show config params in signature
@@ -428,7 +428,7 @@ Roo.docs.template  = {
     summarize : function(desc)
     {
         if (typeof desc != "undefined") {
-	    // finds the first fulls stop...
+        // finds the first fulls stop...
             return desc.match(/([\w\W]+?\.)[^a-z0-9]/i)? RegExp.$1.replace("\n", " ") : desc.split("\n")[0];
         }
         return '';
@@ -438,14 +438,14 @@ Roo.docs.template  = {
         return '<span class=\"fixedFont\"><a href="#' + str + '">' + str + '</a></span>';
     },
     makeSortby : function(attribute) {
-	return function(a, b) {
-	    if (a[attribute] != undefined && b[attribute] != undefined) {
-		a = a[attribute]; //.toLowerCase();
-		b = b[attribute];//.toLowerCase();
-		if (a < b) return -1;
-		if (a > b) return 1;
-		return 0;
-	    }
-	}
+    return function(a, b) {
+        if (a[attribute] != undefined && b[attribute] != undefined) {
+        a = a[attribute]; //.toLowerCase();
+        b = b[attribute];//.toLowerCase();
+        if (a < b) return -1;
+        if (a > b) return 1;
+        return 0;
+        }
+    }
     }
 }
