@@ -154,13 +154,10 @@ Roo.docs.init = {
         
     },
     
-    loadSource : function(cls)
+    loadSource : function( )
     {
         
-        this.currentClass = cls.name;
-        if (!cls.is_class) {
-            return;
-        }
+       
         Roo.Ajax.request({
             url : 'src/' +this.currentClass + '.json',
             method : 'GET',
