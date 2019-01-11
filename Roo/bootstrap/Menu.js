@@ -331,7 +331,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
      */
     hide : function(deep)
     {
-        if (true === this.fireEvent("beforehide", this)) {
+        if (false === this.fireEvent("beforehide", this)) {
 	    Roo.log("hide canceled");
 	    return;
 	}
