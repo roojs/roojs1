@@ -30,22 +30,18 @@ Roo.docs.template  = {
     config : function(dtag)
     {
 	   
-	output += '<a name="'+dtag.memberOf+'-cfg-'+dtag.name+'"></a>
-			<div class="fixedFont">
-				<b  class="itemname">{+dtag.name+}</b> : {+((dtag.type) ? (new Link().toSymbol(dtag.type)) : "" )+}
-				
-				
-			</div>
+	output += '<a name="'+dtag.memberOf+'-cfg-'+dtag.name+'"></a>';
+	output += '<div class="fixedFont"><b  class="itemname"> ' + dtag.name + '</b> : ' +
+		(dtag.type.length ? this.linkSymbol(dtag.type) : "" ) + '</div>';
 		  
-			<div class="mdesc">
-			    <div class="short">{+resolveLinks(summarize(dtag.desc))+}</div> 
-			</div>
+	output += '<div class="mdesc"><div class="short">'+this.resolveLinks(this.summarize(dtag.desc))+'</div></div>';
 			
-			<div class="mdesc">
-			    <div class="long">
-                    {+resolveLinks(dtag.desc)+}
-                    {+dtag.optvalues ? ("<BR/>Possible Values: " + dtag.optvalues.map(function(v) { return v.length ? v : "<B>Empty</B>"; }).join(", ")) : '' +}
-                </div> 
+	output += '<div class="mdesc"><div class="long">' + this.resolveLinks(dtag.desc)+ ' ' + 
+                    (dtag.optvalues ? ("<BR/>Possible Values: " +
+				dtag.optvalues.map(function(v) {
+				    return v.length ? v : "<B>Empty</B>";
+				}).join(", ")) : ''
+		    ) + '</div>'
     }
     
 
