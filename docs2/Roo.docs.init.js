@@ -223,7 +223,7 @@ Roo.docs.init = {
         }
         e.stopPropagation();
         var link = e.target.href.split('#')[1];
-        this.loadDoc(link);
+        this.loadClass(link);
         
     }
     
