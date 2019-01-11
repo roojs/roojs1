@@ -131,7 +131,10 @@ h6,
     display: none;
 }
 
+
+ .sidebar-menu ul.treeview-menu.show , 
 /* expanded non-menu item */
+
 .left-menu-sidebar.sidebar.sidebar-menu ul.treeview-menu.show > li.treeview-menu.dropdown-toggle > a.dropdown-item,
 .left-menu-sidebar.sidebar .sidebar-menu ul.treeview-menu.show > li.treeview-menu.dropdown-toggle >  li.treeview-menu
 {
