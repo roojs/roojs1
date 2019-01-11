@@ -84,11 +84,8 @@ Roo.docs.render  = {
     method : function(member) {
       
           
-            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-	   
-	   
-            <td class="sig">
-                <a id="{+member.memberOf+}-method-{+member.name+}"   name=".{+member.name+}"></a>
+           
+                <a name="{member.memberOf}.{+member.name+}"></a>
 		<div class="fixedFont">
 			<span class="attributes">{!
 					if (member.is('CONSTRUCTOR')) {
