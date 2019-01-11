@@ -93,7 +93,7 @@ Roo.docs.init = {
                 xns: Roo.bootstrap,
                 xtype : 'Menu',
                 listeners : {
-                    beforehide : (function(mi,ev,c)
+                    beforehide : (function(mi,c)
                     {
                         if (c.name.split('.').length < 2) {
                             return false;
