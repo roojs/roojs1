@@ -11,7 +11,6 @@ Roo.docs = new Roo.XComponent({
   'ae635f08107a69569e636835f24e6f6f' :" extends ",
   '87f9f735a1d36793ceaecd4e47124b63' :"Events",
   'd41d8cd98f00b204e9800998ecf8427e' :"",
-  '232cedface5acac121a6e099364a2b07' :"source: ",
   '9c5a24f0cbb12d939e4622b93bea904b' :"Public Methods",
   '50f33d14f129e4548c1c270fd6725a78' :"Configuration options",
   'e64b94523532dbac62df6795a5153f04' :"doc-desc",
@@ -379,7 +378,7 @@ Roo.docs = new Roo.XComponent({
             },
             {
              xtype : 'Header',
-             html : _this._strings['232cedface5acac121a6e099364a2b07'] /* source:  */,
+             html : _this._strings['3673e725413179fe76f341ed908a5c36'] /* Defined in:  */,
              level : 5,
              xns : Roo.bootstrap,
              '|xns' : 'Roo.bootstrap',
