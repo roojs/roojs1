@@ -1,0 +1,268 @@
+{
+  "name" : "Roo.DomQuery",
+  "augments" : [
+  ],
+  "desc" : "Provides high performance selector/xpath processing by compiling queries into reusable functions. New pseudo classes and matchers can be plugged. It works on HTML and XML documents (if a content node is passed in).\n<p>\nDomQuery supports most of the <a href=\"http://www.w3.org/TR/2005/WD-css3-selectors-20051215/\">CSS3 selectors spec</a>, along with some custom selectors and basic XPath.</p>\n\n<p>\nAll selectors, attribute filters and pseudos below can be combined infinitely in any order. For example \"div.foo:nth-child(odd)[@foo=bar].bar:first\" would be a perfectly valid selector. Node filters are processed in the order in which they appear, which allows you to optimize your queries for your document structure.\n</p>\n<h4>Element Selectors:</h4>\n<ul class=\"list\">\n    <li> <b>*</b> any element</li>\n    <li> <b>E</b> an element with the tag E</li>\n    <li> <b>E F</b> All descendent elements of E that have the tag F</li>\n    <li> <b>E > F</b> or <b>E/F</b> all direct children elements of E that have the tag F</li>\n    <li> <b>E + F</b> all elements with the tag F that are immediately preceded by an element with the tag E</li>\n    <li> <b>E ~ F</b> all elements with the tag F that are preceded by a sibling element with the tag E</li>\n</ul>\n<h4>Attribute Selectors:</h4>\n<p>The use of @ and quotes are optional. For example, div[@foo='bar'] is also a valid attribute selector.</p>\n<ul class=\"list\">\n    <li> <b>E[foo]</b> has an attribute \"foo\"</li>\n    <li> <b>E[foo=bar]</b> has an attribute \"foo\" that equals \"bar\"</li>\n    <li> <b>E[foo^=bar]</b> has an attribute \"foo\" that starts with \"bar\"</li>\n    <li> <b>E[foo$=bar]</b> has an attribute \"foo\" that ends with \"bar\"</li>\n    <li> <b>E[foo*=bar]</b> has an attribute \"foo\" that contains the substring \"bar\"</li>\n    <li> <b>E[foo%=2]</b> has an attribute \"foo\" that is evenly divisible by 2</li>\n    <li> <b>E[foo!=bar]</b> has an attribute \"foo\" that does not equal \"bar\"</li>\n</ul>\n<h4>Pseudo Classes:</h4>\n<ul class=\"list\">\n    <li> <b>E:first-child</b> E is the first child of its parent</li>\n    <li> <b>E:last-child</b> E is the last child of its parent</li>\n    <li> <b>E:nth-child(<i>n</i>)</b> E is the <i>n</i>th child of its parent (1 based as per the spec)</li>\n    <li> <b>E:nth-child(odd)</b> E is an odd child of its parent</li>\n    <li> <b>E:nth-child(even)</b> E is an even child of its parent</li>\n    <li> <b>E:only-child</b> E is the only child of its parent</li>\n    <li> <b>E:checked</b> E is an element that is has a checked attribute that is true (e.g. a radio or checkbox) </li>\n    <li> <b>E:first</b> the first E in the resultset</li>\n    <li> <b>E:last</b> the last E in the resultset</li>\n    <li> <b>E:nth(<i>n</i>)</b> the <i>n</i>th E in the resultset (1 based)</li>\n    <li> <b>E:odd</b> shortcut for :nth-child(odd)</li>\n    <li> <b>E:even</b> shortcut for :nth-child(even)</li>\n    <li> <b>E:contains(foo)</b> E's innerHTML contains the substring \"foo\"</li>\n    <li> <b>E:nodeValue(foo)</b> E contains a textNode with a nodeValue that equals \"foo\"</li>\n    <li> <b>E:not(S)</b> an E element that does not match simple selector S</li>\n    <li> <b>E:has(S)</b> an E element that has a descendent that matches simple selector S</li>\n    <li> <b>E:next(S)</b> an E element whose next sibling matches simple selector S</li>\n    <li> <b>E:prev(S)</b> an E element whose previous sibling matches simple selector S</li>\n</ul>\n<h4>CSS Value Selectors:</h4>\n<ul class=\"list\">\n    <li> <b>E{display=none}</b> css value \"display\" that equals \"none\"</li>\n    <li> <b>E{display^=none}</b> css value \"display\" that starts with \"none\"</li>\n    <li> <b>E{display$=none}</b> css value \"display\" that ends with \"none\"</li>\n    <li> <b>E{display*=none}</b> css value \"display\" that contains the substring \"none\"</li>\n    <li> <b>E{display%=2}</b> css value \"display\" that is evenly divisible by 2</li>\n    <li> <b>E{display!=none}</b> css value \"display\" that does not equal \"none\"</li>\n</ul>",
+  "isSingleton" : true,
+  "isStatic" : false,
+  "isBuiltin" : false,
+  "memberOf" : "DomQuery",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+  ],
+  "returns" : [
+  ],
+  "config" : [
+  ],
+  "methods" : [
+    {
+      "name" : "selectNumber",
+      "desc" : "Selects the value of a node, parsing integers and floats.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.DomQuery",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "selector",
+          "type" : "String",
+          "desc" : "The selector/xpath query",
+          "isOptional" : false
+        },
+        {
+          "name" : "root",
+          "type" : "Node",
+          "desc" : "(optional) The start of the query (defaults to document).",
+          "isOptional" : false
+        },
+        {
+          "name" : "defaultValue",
+          "type" : "Number",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : ""
+        }
+      ]
+    },
+    {
+      "name" : "is",
+      "desc" : "Returns true if the passed element(s) match the passed simple selector (e.g. div.some-class or span:first-child)",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.DomQuery",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement/Array",
+          "desc" : "An element id, element or array of elements",
+          "isOptional" : false
+        },
+        {
+          "name" : "selector",
+          "type" : "String",
+          "desc" : "The simple selector to test",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
+    },
+    {
+      "name" : "selectValue",
+      "desc" : "Selects the value of a node, optionally replacing null with the defaultValue.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.DomQuery",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "selector",
+          "type" : "String",
+          "desc" : "The selector/xpath query",
+          "isOptional" : false
+        },
+        {
+          "name" : "root",
+          "type" : "Node",
+          "desc" : "(optional) The start of the query (defaults to document).",
+          "isOptional" : false
+        },
+        {
+          "name" : "defaultValue",
+          "type" : "String",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "filter",
+      "desc" : "Filters an array of elements to only include matches of a simple selector (e.g. div.some-class or span:first-child)",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.DomQuery",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "Array",
+          "desc" : "An array of elements to filter",
+          "isOptional" : false
+        },
+        {
+          "name" : "selector",
+          "type" : "String",
+          "desc" : "The simple selector to test",
+          "isOptional" : false
+        },
+        {
+          "name" : "nonMatches",
+          "type" : "Boolean",
+          "desc" : "If true, it returns the elements that DON'T match\nthe selector instead of the ones that match",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Array",
+          "desc" : ""
+        }
+      ]
+    },
+    {
+      "name" : "select",
+      "desc" : "Selects a group of elements.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.DomQuery",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "selector",
+          "type" : "String",
+          "desc" : "The selector/xpath query (can be a comma separated list of selectors)",
+          "isOptional" : false
+        },
+        {
+          "name" : "root",
+          "type" : "Node",
+          "desc" : "(optional) The start of the query (defaults to document).",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Array",
+          "desc" : ""
+        }
+      ]
+    },
+    {
+      "name" : "selectNode",
+      "desc" : "Selects a single element.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.DomQuery",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "selector",
+          "type" : "String",
+          "desc" : "The selector/xpath query",
+          "isOptional" : false
+        },
+        {
+          "name" : "root",
+          "type" : "Node",
+          "desc" : "(optional) The start of the query (defaults to document).",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Element",
+          "desc" : ""
+        }
+      ]
+    },
+    {
+      "name" : "compile",
+      "desc" : "Compiles a selector/xpath query into a reusable function. The returned function\ntakes one parameter \"root\" (optional), which is the context node from where the query should start.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.DomQuery",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "selector",
+          "type" : "String",
+          "desc" : "The selector/xpath query",
+          "isOptional" : false
+        },
+        {
+          "name" : "type",
+          "type" : "String",
+          "desc" : "(optional) Either \"select\" (the default) or \"simple\" for a simple selector match",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Function",
+          "desc" : ""
+        }
+      ]
+    }
+  ],
+  "events" : [
+  ]
+}

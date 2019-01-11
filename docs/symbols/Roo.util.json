@@ -1,0 +1,24 @@
+{
+  "name" : "Roo.util",
+  "augments" : [
+  ],
+  "desc" : "",
+  "isSingleton" : false,
+  "isStatic" : true,
+  "isBuiltin" : false,
+  "memberOf" : "Roo.util",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+  ],
+  "returns" : [
+  ],
+  "config" : [
+  ],
+  "methods" : [
+  ],
+  "events" : [
+  ]
+}

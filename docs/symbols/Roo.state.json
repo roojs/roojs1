@@ -1,0 +1,24 @@
+{
+  "name" : "Roo.state",
+  "augments" : [
+  ],
+  "desc" : "",
+  "isSingleton" : false,
+  "isStatic" : true,
+  "isBuiltin" : false,
+  "memberOf" : "Roo.state",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+  ],
+  "returns" : [
+  ],
+  "config" : [
+  ],
+  "methods" : [
+  ],
+  "events" : [
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "name" : "Roo.Toolbar.Fill",
+  "augments" : [
+    "Roo.Toolbar.Spacer",
+    "Roo.Toolbar.Item"
+  ],
+  "desc" : "A simple element that adds a greedy (100% width) horizontal space to a toolbar.",
+  "isSingleton" : false,
+  "isStatic" : false,
+  "isBuiltin" : false,
+  "memberOf" : "Fill",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+  ],
+  "returns" : [
+  ],
+  "config" : [
+  ],
+  "methods" : [
+    {
+      "name" : "disable",
+      "desc" : "Disables this item.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.Toolbar.Item",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "hide",
+      "desc" : "Hides this item.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.Toolbar.Item",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "focus",
+      "desc" : "Try to focus this item.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.Toolbar.Item",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "show",
+      "desc" : "Shows this item.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.Toolbar.Item",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "getEl",
+      "desc" : "Get this item's HTML Element",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.Toolbar.Item",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "HTMLElement",
+          "desc" : ""
+        }
+      ]
+    },
+    {
+      "name" : "destroy",
+      "desc" : "Removes and destroys this item.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.Toolbar.Item",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "enable",
+      "desc" : "Enables this item.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.Toolbar.Item",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "setVisible",
+      "desc" : "Convenience function for boolean show/hide.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.Toolbar.Item",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "visible",
+          "type" : "Boolean",
+          "desc" : "true to show/false to hide",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    }
+  ],
+  "events" : [
+    {
+      "name" : "render",
+      "desc" : "Fires when the button is rendered",
+      "memberOf" : "Roo.Toolbar.Item",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Button",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    }
+  ]
+}

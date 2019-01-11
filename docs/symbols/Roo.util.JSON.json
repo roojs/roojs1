@@ -1,0 +1,24 @@
+{
+  "name" : "Roo.util.JSON",
+  "augments" : [
+  ],
+  "desc" : "Modified version of Douglas Crockford\"s json.js that doesn\"t\nmess with the Object prototype \nhttp://www.json.org/js.html",
+  "isSingleton" : true,
+  "isStatic" : false,
+  "isBuiltin" : false,
+  "memberOf" : "JSON",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+  ],
+  "returns" : [
+  ],
+  "config" : [
+  ],
+  "methods" : [
+  ],
+  "events" : [
+  ]
+}

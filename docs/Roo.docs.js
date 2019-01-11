@@ -1,0 +1,746 @@
+//<script type="text/javascript">
+
+// Auto generated file - created by app.Builder.js- do not edit directly (at present!)
+
+Roo.namespace('Roo');
+
+Roo.docs = new Roo.XComponent({
+
+ _strings : {
+  '3e6ec55e2dff4342e3f25b0b0b988de9' :"Inheritance tree",
+  'ae635f08107a69569e636835f24e6f6f' :" extends ",
+  '87f9f735a1d36793ceaecd4e47124b63' :"Events",
+  'd41d8cd98f00b204e9800998ecf8427e' :"",
+  '50f33d14f129e4548c1c270fd6725a78' :"Configuration options",
+  'e64b94523532dbac62df6795a5153f04' :"doc-desc",
+  '3673e725413179fe76f341ed908a5c36' :"Defined in: ",
+  'd2b697ad8e989a6c4592987f22f5bbfc' :"doc-comments",
+  'f361257612a512f9be2fdc2abfb25aef' :"<small>Defined by</small>",
+  '494a64a432ff6a121e4ab9003c7a0df3' :"parentcls",
+  '9bd81329febf6efe22788e03ddeaf0af' :" Class ",
+  'f561aaf6ef0bf14d4208bb46a4ccb3ad' :"xxx",
+  'a1d108496af420635536a4e29e87d42b' :"Constructor, Static and Public Methods",
+  'd41d8cd98f00b204e9800998ecf8427e' :" "
+ },
+
+  part     :  ["docs2", "docs" ],
+  order    : '001-Roo.docs',
+  region   : 'center',
+  parent   : false,
+  name     : "unnamed module",
+  disabled : false, 
+  permname : '', 
+  _tree : function(_data)
+  {
+   var _this = this;
+   var MODULE = this;
+   return {
+   xtype : 'Body',
+   cls : 'doc-body',
+   listeners : {
+    render : function (_self)
+     {
+           
+        
+         
+     }
+   },
+   xns : Roo.bootstrap,
+   '|xns' : 'Roo.bootstrap',
+   items  : [
+    {
+     xtype : 'NavSidebar',
+     cls : 'left-menu-sidebar',
+     style : 'padding-top:80px;',
+     listeners : {
+      render : function (_self)
+       {
+         //  this.el.addClass(language);
+           
+       }
+     },
+     xns : Roo.bootstrap,
+     '|xns' : 'Roo.bootstrap',
+     items  : [
+      {
+       xtype : 'NavGroup',
+       activeLookup : function() 
+       { 
+           return;
+           
+           var pathname = window.location.pathname.substring(baseURL.length);
+           
+           if(!pathname.length){
+               return;
+           }
+           
+           if(pathname.match(/^\/Projects/)){
+               pathname = '/Projects';
+           }
+           
+           var lookupPath = function(item)
+           {
+               if(typeof(item.href) == 'undefined' || !item.href.length || item.href == '#'){
+                   return true;
+               }
+               
+               item.el.removeClass('active');
+               
+               var href = item.href.substring(baseURL.length);
+               
+               if(href != pathname){
+                   return true;
+               }
+               
+               item.el.addClass('active');
+               return false;
+                   
+           };
+           
+           var seted = false;
+           
+           Roo.each(_this.navGroup.items, function(i){
+               
+               var s = lookupPath(i);
+               
+               if(!s){
+                   return false;
+               }
+               
+               if(typeof(i.menu) == 'undefined' || !i.menu.items.length){
+                   return;
+               }
+               
+               Roo.each(i.menu.items, function(ii){
+                   
+                   var ss = lookupPath(ii);
+                   
+                   if(!ss){
+                       seted = true;
+                       return false;
+                   }
+                   
+               });
+               
+               if(seted){
+                   return false;
+               }
+               
+           });
+       },
+       autoExpand : function() 
+       { 
+           return;
+           
+           _this.menu_expand = false;
+           
+           var lookupMenu = function(menu, index){
+               
+               if(menu.target == pagedata.page.target){
+                   _this.menu_expand = index + 1;
+                   return;
+               }
+               
+               if(!menu.children.length){
+                   return;
+               }
+               
+               Roo.each(menu.children, function(c){
+                   lookupMenu(c, index);
+               });
+               
+           }
+           
+           Roo.each(pagemenus, function(v, k){
+               
+               lookupMenu(v, k);
+               
+           });
+           
+           if(_this.menu_expand === false){
+               return;
+           }
+           
+           if(typeof(_this.navGroup.items[_this.menu_expand].menu) == 'undefined'){
+               return;
+           }
+           
+           _this.navGroup.items[_this.menu_expand].menu.show(_this.navGroup.items[_this.menu_expand].el, false, false);
+           
+       },
+       listeners : {
+        childrenrendered : function (_self)
+         {
+             _this.navGroup.autoExpand();
+             
+             _this.navGroup.activeLookup();
+         },
+        render : function (_self)
+         {
+             _this.navGroup = this;
+             
+         }
+       },
+       xns : Roo.bootstrap,
+       '|xns' : 'Roo.bootstrap',
+       items  : [
+        {
+         xtype : 'NavItem',
+         active : false,
+         cls : '',
+         style : 'position:fixed;top:0;z-Index:1000;',
+         xns : Roo.bootstrap,
+         '|xns' : 'Roo.bootstrap',
+         items  : [
+          {
+           xtype : 'Link',
+           cls : 'logo',
+           href : baseURL +'/',
+           preventDefault : false,
+           xns : Roo.bootstrap,
+           '|xns' : 'Roo.bootstrap'
+          }
+         ]
+        }
+       ]
+      },
+      {
+       xtype : 'Container',
+       cls : 'left-menu-sidebar-options',
+       xns : Roo.bootstrap,
+       '|xns' : 'Roo.bootstrap',
+       items  : [
+        {
+         xtype : 'Row',
+         xns : Roo.bootstrap,
+         '|xns' : 'Roo.bootstrap'
+        }
+       ]
+      }
+     ]
+    },
+    {
+     xtype : 'NavHeaderbar',
+     autohide : true,
+     brand : ' ',
+     brand_href : baseURL + '/',
+     cls : 'mobile-header-menu',
+     inverse : false,
+     position : 'fixed-top',
+     style : '',
+     listeners : {
+      beforetoggle : function (_self)
+       {
+           _this.navGroup.autoExpand(); 
+           
+           _this.navGroup.activeLookup();
+           
+           _this.navHeaderBar.mask.show();
+           
+           if(this.el.select('.navbar-collapse',true).first().hasClass('in')){
+               _this.navHeaderBar.mask.hide();
+               return;
+           }
+       },
+      render : function (_self)
+       {
+           return;
+           
+           _this.navHeaderBar = this;
+           
+           this.el.addClass(language); 
+           
+           var body = Roo.select('body', true).first();
+           
+           var mark = {
+               tag: "div",
+               cls:"x-dlg-mask"
+           };
+           
+           this.mask = Roo.DomHelper.append(body, mark, true);
+           
+           var size = body.getSize();
+           this.mask.setSize(size.width, size.height);
+           
+           this.mask.setStyle('z-index', '1029');
+           
+           this.mask.enableDisplayMode("block");
+           this.mask.hide();
+           
+           this.mask.on('click', function(){
+               
+               this.el.select('.navbar-collapse',true).removeClass('in'); 
+               this.mask.hide();
+               
+           }, this);
+           
+           
+           var maxHeight = Roo.lib.Dom.getViewHeight() - this.el.select('.navbar-header', true).first().getHeight();
+           
+           this.el.select('.navbar-collapse', true).first().setStyle('max-height', maxHeight);
+           
+       }
+     },
+     xns : Roo.bootstrap,
+     '|xns' : 'Roo.bootstrap'
+    },
+    {
+     xtype : 'Container',
+     cls : 'general-content-body',
+     listeners : {
+      render : function (_self)
+       {
+           _this.doc_body_content = this;
+       }
+     },
+     xns : Roo.bootstrap,
+     '|xns' : 'Roo.bootstrap',
+     items  : [
+      {
+       xtype : 'Row',
+       style : 'margin: 0px;',
+       xns : Roo.bootstrap,
+       '|xns' : 'Roo.bootstrap',
+       items  : [
+        {
+         xtype : 'Column',
+         md : 9,
+         style : 'padding-left: 0px;',
+         xns : Roo.bootstrap,
+         '|xns' : 'Roo.bootstrap',
+         items  : [
+          {
+           xtype : 'Container',
+           cls : 'doc-header-container',
+           xns : Roo.bootstrap,
+           '|xns' : 'Roo.bootstrap',
+           items  : [
+            {
+             xtype : 'Header',
+             html : _this._strings['9bd81329febf6efe22788e03ddeaf0af'] /*  Class  */,
+             level : 4,
+             xns : Roo.bootstrap,
+             '|xns' : 'Roo.bootstrap',
+             items  : [
+              {
+               xtype : 'Element',
+               cls : 'doc-classname',
+               html : _this._strings['f561aaf6ef0bf14d4208bb46a4ccb3ad'] /* xxx */,
+               style : 'font-size: 24px;\n    font-weight: bold;',
+               tag : 'span',
+               listeners : {
+                render : function (_self)
+                 {
+                     _this.doc_name = this
+                 }
+               },
+               xns : Roo.bootstrap,
+               '|xns' : 'Roo.bootstrap'
+              },
+              {
+               xtype : 'Element',
+               cls : 'doc-extends-str',
+               html : _this._strings['ae635f08107a69569e636835f24e6f6f'] /*  extends  */,
+               tag : 'small',
+               listeners : {
+                render : function (_self)
+                 {
+                     _this.doc_extends_sep = this;
+                 }
+               },
+               xns : Roo.bootstrap,
+               '|xns' : 'Roo.bootstrap',
+               items  : [
+                {
+                 xtype : 'Link',
+                 cls : 'doc-extends',
+                 html : _this._strings['494a64a432ff6a121e4ab9003c7a0df3'] /* parentcls */,
+                 preventDefault : false,
+                 listeners : {
+                  click : function (e)
+                   {
+                   
+                       if (this.el.dom.innerHTML.length) {
+                           Roo.docs.init.loadDoc({ name : this.el.dom.innerHTML, is_class : true});
+                       }
+                   },
+                  render : function (_self)
+                   {
+                       _this.doc_extends = this;
+                   }
+                 },
+                 xns : Roo.bootstrap,
+                 '|xns' : 'Roo.bootstrap'
+                }
+               ]
+              }
+             ]
+            },
+            {
+             xtype : 'Header',
+             html : _this._strings['3673e725413179fe76f341ed908a5c36'] /* Defined in:  */,
+             level : 5,
+             xns : Roo.bootstrap,
+             '|xns' : 'Roo.bootstrap',
+             items  : [
+              {
+               xtype : 'Link',
+               cls : 'doc-source',
+               href : '#',
+               html : _this._strings['3673e725413179fe76f341ed908a5c36'] /* Defined in:  */,
+               preventDefault : true,
+               listeners : {
+                click : function (e)
+                 {
+                     
+                     Roo.log(["click", this]);
+                     if (this.el.dom.innerHTML.length > 0) {
+                         Roo.docs.init.loadSource();
+                     }
+                 },
+                render : function (_self)
+                 {
+                     _this.doc_source = this;
+                 }
+               },
+               xns : Roo.bootstrap,
+               '|xns' : 'Roo.bootstrap'
+              }
+             ]
+            }
+           ]
+          },
+          {
+           xtype : 'Container',
+           cls : 'doc-desc',
+           html : _this._strings['e64b94523532dbac62df6795a5153f04'] /* doc-desc */,
+           listeners : {
+            render : function (_self)
+             {
+                 _this.doc_desc = this;
+             }
+           },
+           xns : Roo.bootstrap,
+           '|xns' : 'Roo.bootstrap'
+          },
+          {
+           xtype : 'Container',
+           cls : 'doc-comments',
+           hidden : true,
+           html : _this._strings['d2b697ad8e989a6c4592987f22f5bbfc'] /* doc-comments */,
+           xns : Roo.bootstrap,
+           '|xns' : 'Roo.bootstrap'
+          }
+         ]
+        },
+        {
+         xtype : 'Column',
+         md : 3,
+         xns : Roo.bootstrap,
+         '|xns' : 'Roo.bootstrap',
+         items  : [
+          {
+           xtype : 'Container',
+           cls : 'doc-augments',
+           header : _this._strings['3e6ec55e2dff4342e3f25b0b0b988de9'] /* Inheritance tree */,
+           panel : 'success',
+           listeners : {
+            render : function (_self)
+             {
+                 _this.augments  = this;
+             }
+           },
+           xns : Roo.bootstrap,
+           '|xns' : 'Roo.bootstrap'
+          }
+         ]
+        }
+       ]
+      },
+      {
+       xtype : 'Container',
+       cls : 'doc-table-container',
+       expandable : true,
+       expanded : true,
+       header : _this._strings['50f33d14f129e4548c1c270fd6725a78'] /* Configuration options */,
+       panel : 'info',
+       style : 'margin-top:15px',
+       listeners : {
+        render : function (_self)
+         {
+             _this.configTableContainer = this;
+         }
+       },
+       xns : Roo.bootstrap,
+       '|xns' : 'Roo.bootstrap',
+       items  : [
+        {
+         xtype : 'Table',
+         rowSelection : true,
+         striped : true,
+         listeners : {
+          render : function (_self)
+           {
+               _this.configTable = this;
+           },
+          rowclass : function (_self, rowcfg)
+           {
+                 rc = rowcfg.record.json.memberOf == Roo.docs.init.currentClass ? 'doc-added-member '  : 'doc-not-member ';
+                 rowcfg.rowClass = rc + (rowcfg.record.json.expanded ? 'expanded' : '');
+           },
+          rowclick : function (_self, el, rowIndex, e)
+           {
+               if (e.target.className != 'fixedFont' && e.target.parentNode.className != 'fixedFont') {
+                   return false;
+               }
+               
+               var r = this.store.getAt(rowIndex);
+               r.json.expanded = !r.json.expanded ;
+               this.refreshRow(r);
+           }
+         },
+         xns : Roo.bootstrap,
+         '|xns' : 'Roo.bootstrap',
+         store : {
+          xtype : 'Store',
+          xns : Roo.data,
+          '|xns' : 'Roo.data',
+          proxy : {
+           xtype : 'MemoryProxy',
+           xns : Roo.data,
+           '|xns' : 'Roo.data'
+          },
+          reader : {
+           xtype : 'ArrayReader',
+           fields : [ 'name', 'type', 'desc', 'memberOf' ],
+           xns : Roo.data,
+           '|xns' : 'Roo.data'
+          }
+         },
+         cm : [
+          {
+           xtype : 'ColumnModel',
+           dataIndex : 'name',
+           header : _this._strings['d41d8cd98f00b204e9800998ecf8427e'] /*  */,
+           md : 11,
+           renderer : function(v,x,r) { 
+           
+               return Roo.docs.template.config(r.json);
+           
+           			
+           },
+           xns : Roo.grid,
+           '|xns' : 'Roo.grid'
+          },
+          {
+           xtype : 'ColumnModel',
+           dataIndex : 'memberOf',
+           header : _this._strings['f361257612a512f9be2fdc2abfb25aef'] /* <small>Defined by</small> */,
+           md : 1,
+           renderer : function(v,x,r) { 
+            if (r.json.memberOf  == Roo.docs.init.currentClass) {
+                       return '';
+                   }
+           
+           		return 	'<small><a href="#' + r.json.memberOf + '">' + r.json.memberOf + '</a></small>';
+           			
+           },
+           xns : Roo.grid,
+           '|xns' : 'Roo.grid'
+          }
+         ]
+        }
+       ]
+      },
+      {
+       xtype : 'Container',
+       cls : 'doc-table-container',
+       expandable : true,
+       expanded : false,
+       header : _this._strings['a1d108496af420635536a4e29e87d42b'] /* Constructor, Static and Public Methods */,
+       panel : 'info',
+       listeners : {
+        render : function (_self)
+         {
+             _this.methodsTableContainer = this;
+         }
+       },
+       xns : Roo.bootstrap,
+       '|xns' : 'Roo.bootstrap',
+       items  : [
+        {
+         xtype : 'Table',
+         rowSelection : true,
+         listeners : {
+          render : function (_self)
+           {
+               _this.methodsTable = this;
+           },
+          rowclass : function (_self, rowcfg)
+           {
+                 var j = rowcfg.record.json;
+                 var rc = j.memberOf == Roo.docs.init.currentClass || j.isConstructor ? 'doc-added-member '  : 'doc-not-member ';
+                 rowcfg.rowClass = rc + (rowcfg.record.json.expanded ? 'expanded' : '');
+           },
+          rowclick : function (_self, el, rowIndex, e)
+           {
+                 if (e.target.className != 'fixedFont' && e.target.parentNode.className != 'fixedFont') {
+                   return false;
+               }
+                var r = this.store.getAt(rowIndex);
+               r.json.expanded = !r.json.expanded ;
+               this.refreshRow(r);
+           }
+         },
+         xns : Roo.bootstrap,
+         '|xns' : 'Roo.bootstrap',
+         store : {
+          xtype : 'Store',
+          sortInfo : { field : 'name', direction : 'ASC' },
+          xns : Roo.data,
+          '|xns' : 'Roo.data',
+          proxy : {
+           xtype : 'MemoryProxy',
+           xns : Roo.data,
+           '|xns' : 'Roo.data'
+          },
+          reader : {
+           xtype : 'ArrayReader',
+           fields : [ 'name', 'type', 'desc', 'memberOf' ],
+           xns : Roo.data,
+           '|xns' : 'Roo.data'
+          }
+         },
+         cm : [
+          {
+           xtype : 'ColumnModel',
+           dataIndex : 'name',
+           header : _this._strings['d41d8cd98f00b204e9800998ecf8427e'] /*   */,
+           md : 11,
+           renderer : function(v,x,r) { 
+           
+               return Roo.docs.template.method(r.json);
+           		 
+           			
+           },
+           sortable : false,
+           xns : Roo.grid,
+           '|xns' : 'Roo.grid'
+          },
+          {
+           xtype : 'ColumnModel',
+           dataIndex : 'memberOf',
+           header : _this._strings['f361257612a512f9be2fdc2abfb25aef'] /* <small>Defined by</small> */,
+           md : 1,
+           renderer : function(v,x,r) { 
+           
+            if (r.json.memberOf  == Roo.docs.init.currentClass) {
+                       return '';
+                   }
+           		return 	'<small><a href="#' + r.json.memberOf + '">' + r.json.memberOf + '</a></small>';
+           			
+           },
+           xns : Roo.grid,
+           '|xns' : 'Roo.grid'
+          }
+         ]
+        }
+       ]
+      },
+      {
+       xtype : 'Container',
+       cls : 'doc-table-container',
+       expandable : true,
+       expanded : false,
+       header : _this._strings['87f9f735a1d36793ceaecd4e47124b63'] /* Events */,
+       panel : 'info',
+       listeners : {
+        render : function (_self)
+         {
+             _this.eventsTableContainer   = this;
+         }
+       },
+       xns : Roo.bootstrap,
+       '|xns' : 'Roo.bootstrap',
+       items  : [
+        {
+         xtype : 'Table',
+         rowSelection : true,
+         listeners : {
+          render : function (_self)
+           {
+               _this.eventsTable = this;
+           },
+          rowclass : function (_self, rowcfg)
+           {
+                 rc = rowcfg.record.json.memberOf == Roo.docs.init.currentClass ? 'doc-added-member '  : 'doc-not-member ';
+                 rowcfg.rowClass = rc + (rowcfg.record.json.expanded ? 'expanded' : '');
+           },
+          rowclick : function (_self, el, rowIndex, e)
+           {
+                   if (e.target.className != 'fixedFont' && e.target.parentNode.className != 'fixedFont') {
+                   return false;
+               }
+               var r = this.store.getAt(rowIndex);
+               r.json.expanded = !r.json.expanded ;
+               this.refreshRow(r);
+           }
+         },
+         xns : Roo.bootstrap,
+         '|xns' : 'Roo.bootstrap',
+         store : {
+          xtype : 'Store',
+          xns : Roo.data,
+          '|xns' : 'Roo.data',
+          proxy : {
+           xtype : 'MemoryProxy',
+           xns : Roo.data,
+           '|xns' : 'Roo.data'
+          },
+          reader : {
+           xtype : 'ArrayReader',
+           fields : [ 'name', 'type', 'desc', 'memberOf' ],
+           xns : Roo.data,
+           '|xns' : 'Roo.data'
+          }
+         },
+         cm : [
+          {
+           xtype : 'ColumnModel',
+           dataIndex : 'name',
+           header : _this._strings['d41d8cd98f00b204e9800998ecf8427e'] /*  */,
+           md : 11,
+           renderer : function(v,x,r) { 
+           
+               return Roo.docs.template.event(r.json);
+           		 
+           			
+           },
+           xns : Roo.grid,
+           '|xns' : 'Roo.grid'
+          },
+          {
+           xtype : 'ColumnModel',
+           dataIndex : 'memberOf',
+           header : _this._strings['f361257612a512f9be2fdc2abfb25aef'] /* <small>Defined by</small> */,
+           md : 1,
+           renderer : function(v,x,r) { 
+                   if (r.json.memberOf  == Roo.docs.init.currentClass) {
+                       return '';
+                   }
+           
+           		return 	'<small><a href="#' + r.json.memberOf + '">' + r.json.memberOf + '</a></small>';
+           			
+           },
+           xns : Roo.grid,
+           '|xns' : 'Roo.grid'
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  };  }
+});

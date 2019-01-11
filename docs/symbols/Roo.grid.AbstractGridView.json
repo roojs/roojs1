@@ -1,0 +1,24 @@
+{
+  "name" : "Roo.grid.AbstractGridView",
+  "augments" : [
+  ],
+  "desc" : "",
+  "isSingleton" : false,
+  "isStatic" : true,
+  "isBuiltin" : false,
+  "memberOf" : "Roo.grid.AbstractGridView",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+  ],
+  "returns" : [
+  ],
+  "config" : [
+  ],
+  "methods" : [
+  ],
+  "events" : [
+  ]
+}
