@@ -82,9 +82,9 @@ Roo.docs.template  = {
 		    return true;
 		}
 		$.isInherited = ($.memberOf != data.name);
-		    ownMethods.push($);
-		    return true;
-	    
+		ownMethods.push($);
+		return true;
+	
 		
 			
 		if ($.isNamespace || (($.memberOf != data.name) && $.isStatic)){
@@ -105,6 +105,7 @@ Roo.docs.template  = {
 		    //if (/@hide/.test($.desc)) {
 		    //	    return false;
 		    //}
+		    // not sure if we should just ignore signletons???
 		    if (data.isSingleton) {
 			    return true;
 		    }
