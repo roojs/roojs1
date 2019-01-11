@@ -8,9 +8,8 @@ Roo.docs.ViewSource= function() {}
 Roo.apply(Roo.docs.ViewSource.prototype, {
 
  _strings : {
-  'c4408d335012a56ff58937d78050efad' :"Accept",
-  '89babd10371e21bb9eaf39937de7c656' :"View Source",
-  '8ae4424e3e8d151789d3bdb669c20e6b' :"<i class='lnr lnr-download'></i> Download"
+  'd3d2e617335f08df83599665eef8a418' :"Close",
+  '89babd10371e21bb9eaf39937de7c656' :"View Source"
  },
 
  dialog : false,
@@ -60,60 +59,19 @@ Roo.apply(Roo.docs.ViewSource.prototype, {
     buttons : [
      {
       xtype : 'Button',
-      cls : 'coba-agree-btn',
-      disableIt : function() 
-      { 
-          this.setText('Scroll to end before agree');
-          this.disable();
-      },
-      enableIt : function() 
-      {
-          this.setText('Agree');
-          
-          if(_this.data.buttonText){
-              this.setText(_this.data.buttonText);
-          }
-          
-          if(_this.data.btnType) {
-              this.setText(this['_'+_this.data.btnType]);
-          }
-          
-          this.enable();
-      },
-      html : _this._strings['c4408d335012a56ff58937d78050efad'] /* Accept */,
+      html : _this._strings['d3d2e617335f08df83599665eef8a418'] /* Close */,
       weight : 'primary',
       listeners : {
        click : function (_self, e)
         {
             _this.dialog.hide();
-        
-            if(_this.callback){
-                _this.callback.call(_this);
-            }
+         
             
         },
        render : function (_self)
         {
             _this.acceptBtn = this;
             
-        }
-      },
-      xns : Roo.bootstrap,
-      '|xns' : 'Roo.bootstrap'
-     },
-     {
-      xtype : 'Button',
-      cls : 'coba-download-btn',
-      html : _this._strings['8ae4424e3e8d151789d3bdb669c20e6b'] /* <i class='lnr lnr-download'></i> Download */,
-      weight : 'default',
-      listeners : {
-       click : function (_self, e)
-        {
-            window.open(baseURL+'/Download/Popup/'+_this.data.declaration);
-        },
-       render : function (_self)
-        {
-            _this.download_btn = this;
         }
       },
       xns : Roo.bootstrap,
