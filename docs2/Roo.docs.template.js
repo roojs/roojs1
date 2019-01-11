@@ -119,16 +119,16 @@ Roo.docs.template  = {
 			    return true;
 		    }
 		    if (!$.isStatic) {
-			    $.isInherited = ($.memberOf != data.alias);
-			    ownMethods.push($);
+			$.isInherited = ($.memberOf != data.alias);
+			ownMethods.push($);
 		    }
 		    
 		    return true;
 	    }
-		);
-		 
-	!}
-  */
+	);
+	return msorted;
+	
+    },
 
     
     method : function(member) {
