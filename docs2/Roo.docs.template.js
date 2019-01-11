@@ -92,7 +92,7 @@ Roo.docs.template  = {
 	    }
 	    
 		
-	    if ($.isNamespace || (($.memberOf != data.name) && $.isStatic)){
+	    if (($.memberOf != data.name) && $.isStatic){
 		return true;
 	    }
 	    if ($.isStatic) {
@@ -115,7 +115,7 @@ Roo.docs.template  = {
 		if (data.isSingleton) {
 		    return true;
 		}
-		if ($.isNamespace || (($.memberOf != data.name) && $.isStatic)){
+		if (($.memberOf != data.name) && $.isStatic){
 		    return true;
 		}
 		if (!$.isStatic) {
@@ -125,9 +125,9 @@ Roo.docs.template  = {
 		
 		return true;
 	    }
-    );
-    return msorted;
-    
+	);
+	return ownMethods;
+	
     },
 
     
