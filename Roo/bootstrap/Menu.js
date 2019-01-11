@@ -402,12 +402,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         this.el.select('.open',true).each(function(aa) {
             
             aa.removeClass('open');
-          //var parent = getParent($(this))
-          //var relatedTarget = { relatedTarget: this }
-          
-           //$parent.trigger(e = $.Event('hide.bs.dropdown', relatedTarget))
-          //if (e.isDefaultPrevented()) return
-           //$parent.removeClass('open').trigger('hidden.bs.dropdown', relatedTarget)
+         
         });
     },
     addxtypeChild : function (tree, cntr) {
