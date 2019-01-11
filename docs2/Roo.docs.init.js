@@ -38,6 +38,7 @@ Roo.docs.init = {
             {
                 var d = Roo.decode(res.responseText);
                 Roo.log(d);
+                // our classes witch children first..
                 d.forEach(function(e) {
                     if (e.cn.length) {
                         this.addTreeItem(Roo.docs.navGroup, e, 'NavSidebarItem');
