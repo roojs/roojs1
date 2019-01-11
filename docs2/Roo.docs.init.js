@@ -87,7 +87,8 @@ Roo.docs.init = {
                 listeners : {
                     beforehide : (function(mi,ev,c)
                     {
-                        return true;
+                        
+                        //return true;
                         
                     }).createDelegate(this,[e], true)
                     
