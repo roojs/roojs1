@@ -212,14 +212,14 @@ Roo.docs.init = {
     },
     onClick : function(e)
     {
-        if (e.nodeName != 'A') {
+        if (e.target.nodeName != 'A') {
             return;
         }
-        if (!e.href.match(/#/)) {
+        if (!e.target.href.match(/#/)) {
             return;
         }
         e.stopPropagation();
-        var link = e.href.split('#')[1];
+        var link = e.target.href.split('#')[1];
         this.loadDoc(link);
         
     }
