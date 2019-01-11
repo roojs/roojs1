@@ -85,24 +85,6 @@ Roo.apply(Roo.docs.ViewSource.prototype, {
     },
     max_width : 900,
     name : 'accept_terms_dialog',
-    onScroll : function() 
-    { 
-        var scrollHeight = _this.dialog.bodyEl.dom.scrollHeight;
-        
-        var scrollTop = Math.ceil(_this.dialog.bodyEl.getScroll().top); // prevent zoom browser
-        
-        /*
-        * Container height is 480px, however we need to give some leeway for handling the zoom level issue..
-        * 50px is leeway
-        */
-        
-        if(scrollHeight - _this.dialog.bodyEl.getHeight() - 50 > scrollTop){
-            return;
-        }
-        
-        _this.acceptBtn.enableIt();
-        
-    },
     _SCROLL_AGREE : _this._strings['eab9dc0ccdb8cffda2c74258fc433437'] /* Please scroll through and read the full document in order to agree the statement */,
     title : _this._strings['d41d8cd98f00b204e9800998ecf8427e'] /*  */,
     listeners : {

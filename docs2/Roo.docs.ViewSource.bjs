@@ -26,7 +26,6 @@
    },
    "String cls" : "accept-dialog enable-modal-body-overflow",
    "string _BTN_UDS" : "I understand",
-   "| function onScroll" : "function() \n{ \n    var scrollHeight = _this.dialog.bodyEl.dom.scrollHeight;\n    \n    var scrollTop = Math.ceil(_this.dialog.bodyEl.getScroll().top); // prevent zoom browser\n    \n    /*\n    * Container height is 480px, however we need to give some leeway for handling the zoom level issue..\n    * 50px is leeway\n    */\n    \n    if(scrollHeight - _this.dialog.bodyEl.getHeight() - 50 > scrollTop){\n        return;\n    }\n    \n    _this.acceptBtn.enableIt();\n    \n}",
    "string _SCROLL_AGREE" : "Please scroll through and read the full document in order to agree the statement",
    "string fit_content" : true,
    "xtype" : "Modal",
