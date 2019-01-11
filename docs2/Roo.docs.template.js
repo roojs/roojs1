@@ -149,7 +149,8 @@ Roo.docs.template  = {
             }
         } else {
             //ctor
-            output+= 'Create a new '+member.memberOf ;
+            output+= 'Create a new '+member.memberOf;
+	    // example and desc.. are normally on the 'top'...
         }
         if (member.params.length) {
         
@@ -230,39 +231,17 @@ Roo.docs.template  = {
      
   
         var output = '<a name="' + member.memberOf +'-event-' + member.name + '"></a>' +
-		'<div class="fixedFont"> <span class="attributes">';
+		'<div class="fixedFont"> ';
 
-        if (member.isConstructor) {
-                output += "new <B>" + member.memberOf + (member.memberOf.length ? "." : "") +"</B>";
-        } else {
-                
-	    if (member.isPrivate) output += "&lt;private&gt; ";
-	    if (member.isInner) output += "&lt;inner&gt; ";
-	    if (member.isStatic || member.singleton.length) { //|| data.comment.getTag("instanceOf").length) {
-		    output +=  member.memberOf + ".";	
-	    }
-        }
-        output += '</span><b class="itemname">' + member.name + '</b>';
-				
-        outp
+        
+        output += '<b class="itemname">'+member.name+'</b>' +this.makeSignature(member.params) + '</div>';
               
-            
-                <a id="{+member.memberOf+}-event-{+member.name+}"></a>
-                
-	       <div class="fixedFont">
-		<b class="itemname">{+member.name.substring(1)+}</b> {+makeSignature(member.params)+} 
-		
-		</div>
-
-                <div class="mdesc">
-
-                   <div class="short">{+resolveLinks(summarize(member.desc))+}
+        output += '<div class="mdesc">';
+	output += '<div class="short">' +this.resolveLinks(this.summarize(member.desc))+ + '</div>';
 		   
-		</div> 
 		    
-                    <div class="long">
-		    
-			{+resolveLinks(member.desc)+}
+        output += '<div class="long">' + this.resolveLinks(member.desc);
+	
 		    
 			<if test="member.example">
 				<pre class="code">{+member.example+}</pre>
