@@ -969,6 +969,7 @@ td.attributes, .fixedFont
     margin-left: 20px;
     display: block;
     float:left;
+    padding-bottom: 10px;
 }
 .detailList dt {
     clear: both;
