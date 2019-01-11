@@ -42,7 +42,7 @@ Roo.docs.template  = {
 				    return v.length ? v : "<B>Empty</B>";
 				}).join(", ")) : ''
 		    ) + '</div>'
-    }
+    },
     
 
 /*

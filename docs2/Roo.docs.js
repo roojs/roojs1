@@ -719,7 +719,7 @@ Roo.docs = new Roo.XComponent({
            md : 11,
            renderer : function(v,x,r) { 
            
-           return Roo.docs.template.event(r.json);
+               return Roo.docs.template.event(r.json);
            		 
            			
            },

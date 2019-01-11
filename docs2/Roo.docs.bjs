@@ -374,7 +374,7 @@
            "String header" : "",
            "Number md" : 11,
            "String dataIndex" : "name",
-           "$ Function renderer" : "function(v,x,r) { \n\nreturn Roo.docs.template.event(r.json);\n\t\t \n\t\t\t\n}",
+           "$ Function renderer" : "function(v,x,r) { \n\n    return Roo.docs.template.event(r.json);\n\t\t \n\t\t\t\n}",
            "xtype" : "ColumnModel",
            "$ xns" : "Roo.grid",
            "* prop" : "cm[]"
