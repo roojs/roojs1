@@ -83,22 +83,20 @@ Roo.docs.render  = {
     
     method : function(member) {
       
-          
-           
-                <a name="{member.memberOf}.{+member.name+}"></a>
-		<div class="fixedFont">
-			<span class="attributes">{!
-					if (member.is('CONSTRUCTOR')) {
-						output += "new <B>" + member.memberOf + (member.memberOf.length ? "." : "") +"</B>";
-					} else {
-						
-						
-						if (member.isPrivate) output += "&lt;private&gt; ";
-						if (member.isInner) output += "&lt;inner&gt; ";
-						if (member.isStatic || data.comment.getTag("singleton").length || data.comment.getTag("instanceOf").length) {
-							output +=  data.alias + ".";	
-						}
-					}
+        var ret = '<a name="' + member.memberOf +'.' + member.name '"></a>' +
+		'<div class="fixedFont">' +
+			'<span class="attributes">';
+
+        if (member.isConstructor) {
+                output += "new <B>" + member.memberOf + (member.memberOf.length ? "." : "") +"</B>";
+        } else {
+                
+                if (member.isPrivate) output += "&lt;private&gt; ";
+                if (member.isInner) output += "&lt;inner&gt; ";
+                if (member.isStatic || data.comment.getTag("singleton").length || data.comment.getTag("instanceOf").length) {
+                        output +=  data.alias + ".";	
+                }
+        }
 				!}</span><b class="itemname">{+member.name+}</b>
 				
 				 {+makeSignature(member.params)+} 
