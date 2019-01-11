@@ -2,7 +2,7 @@
 
 Roo.docs.init = {
     
-    classes : false, // classes go here..
+    classes : false, // flat version of list of classes 
     currentClass : '', // currently viewed class name
     
     
@@ -68,7 +68,7 @@ Roo.docs.init = {
     },
     addTreeItem : function(parent, e, type) {
         
-        this.classes[d.name] = d;;
+        this.classes[d.name] = d; 
         // add a node..
         var node = parent.addxtypeChild(Roo.factory({
             html: e.name.split('.').pop(),
