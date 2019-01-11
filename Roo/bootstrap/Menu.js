@@ -30,7 +30,7 @@ Roo.bootstrap.Menu = function(config){
     this.addEvents({
         /**
          * @event beforeshow
-         * Fires before this menu is displayed
+         * Fires before this menu is displayed (return true to block)
          * @param {Roo.menu.Menu} this
          */
         beforeshow : true,
