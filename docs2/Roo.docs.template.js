@@ -72,6 +72,8 @@ Roo.docs.template  = {
 		//}
 		    
 		//if (!$.isEvent && (data.comment.getTag("instanceOf").length || data.comment.getTag("singleton").length)) {
+		
+		// not sure if we should just ignore signletons???
 		//if (!data.isSingleton) {
 		//    return true; 
 		//}
