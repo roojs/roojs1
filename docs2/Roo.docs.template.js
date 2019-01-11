@@ -2,26 +2,26 @@
 
 Roo.docs.template  = {
 
-    augments : function()
+    augments : function(data)
     {
 	var symbolLink  = this.symbolLink;
-	var output += '<div class="inheritance res-block"> <pre class="res-block-inner">'
+	var output += '<div class="inheritance res-block"> <pre class="res-block-inner">';
     
 	var iblock_indent = 0;
 	 data.augments.reverse().map(
 		function($) {  
-			output += iblock_indent ? ('<img src="../images/default/s.gif" height="1" width="' + 
-				iblock_indent + '"/><img src="../images/default/tree/elbow-end.gif" class="elbow"/>') : '';
-			output += symbolLink($) + "\n"; 
-			iblock_indent += 20;
+		    output += iblock_indent ? ('<img src="../images/default/s.gif" height="1" width="' + 
+			    iblock_indent + '"/><img src="../images/default/tree/elbow-end.gif" class="elbow"/>') : '';
+		    output += symbolLink($) + "\n"; 
+		    iblock_indent += 20;
 		}
 	)
 	 
-!}<img src="../../images/default/s.gif" height="1"  width="{+ iblock_indent +}"/><img class="elbow" src="../../images/default/tree/elbow-end.gif"/>{+data.alias+} 
+	return output +  '<img src="../images/default/s.gif" height="1"  width="' +  iblock_indent +'"/>' +
+		'<img class="elbow" src="../images/default/tree/elbow-end.gif"/>'+data.alias+
 
-		   </pre>
-		</div>
-       </if>
+		   '</pre></div>'
+       
     }
 
 /*
