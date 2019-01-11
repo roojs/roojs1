@@ -226,7 +226,7 @@ Roo.docs.template  = {
     
     
     
-    events : function(member)
+    event  : function(member)
     {
      
   
