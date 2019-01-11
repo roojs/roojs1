@@ -423,7 +423,7 @@ Roo.docs.template  = {
     {
         if (typeof desc != "undefined") {
 	    // finds the first fulls stop...
-            return desc.match(/([\w\W]+?\.)[^a-z0-9]/i)? RegExp.$1 : desc;
+            return desc.match(/([\w\W]+?\.)[^a-z0-9]/i)? RegExp.$1.replace("\n", " ") : desc.split("\n")[0];
         }
         return '';
     },
