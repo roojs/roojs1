@@ -48,6 +48,9 @@ Roo.docs.init = {
                         this.addTreeItem(Roo.docs.navGroup, e, 'NavSidebarItem');
                     }
                 }, this);
+                
+                Roo.docs.navGroup.show(this.triggerEl, '?', false);
+                
             },
             scope : this
         });
@@ -96,6 +99,7 @@ Roo.docs.init = {
                 
             })
         }));
+        parent.items.push(node);
         if (e.cn.length  && type == 'NavSidebarItem') {
             this.topm = node.menu;
         }
