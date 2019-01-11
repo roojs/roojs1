@@ -212,6 +212,7 @@
            },
            "String header" : "Inheritance tree",
            "xtype" : "Container",
+           "String panel" : "success",
            "$ xns" : "Roo.bootstrap"
           }
          ]
