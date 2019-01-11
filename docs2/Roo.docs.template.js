@@ -41,7 +41,8 @@ Roo.docs.template  = {
 				dtag.values.map(function(v) {
 				    return v.length ? v : "<B>Empty</B>";
 				}).join(", ")) : ''
-		    ) + '</div>'
+		    ) + '</div>';
+	return output;
     },
     
 
