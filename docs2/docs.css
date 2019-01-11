@@ -899,6 +899,6 @@ pre code {
     background-color:  #fcf8e3;
     
 }
-.jsdoc-pretty code {
+ code.jsdoc-pretty {
     background-color: #fff;
 }
