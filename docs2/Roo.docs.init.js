@@ -159,7 +159,7 @@ Roo.docs.init = {
         
        
         Roo.Ajax.request({
-            url : 'src/' +this.currentClass.replace(/\./g/,'_') + '.js.html',
+            url : 'src/' +this.currentClass.replace(/\./g,'_') + '.js.html',
             method : 'GET',
             success : function(res, o)
             {
