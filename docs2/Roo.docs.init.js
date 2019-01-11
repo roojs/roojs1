@@ -85,17 +85,9 @@ Roo.docs.init = {
                 xns: Roo.bootstrap,
                 xtype : 'Menu',
                 listeners : {
-                    click : (function(mi,ev,c)
+                    hide : (function(mi,ev,c)
                     {
-                        
-                          ev.stopPropagation();
-                         
-                        if (c.cn.length) {
-                            Roo.log(ev);
-                        }
-                        
-                        
-                        Roo.docs.init.loadDoc(c);
+                        return true;
                         
                     }).createDelegate(this,[e], true)
                     
