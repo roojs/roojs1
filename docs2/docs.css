@@ -993,3 +993,6 @@ td.attributes, .fixedFont
     margin: 10px 10px 10px 0px;
     padding: 10px;
 }
+.doc-augments .panel-body {
+    padding: 0;
+}
