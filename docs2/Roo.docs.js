@@ -11,7 +11,6 @@ Roo.docs = new Roo.XComponent({
   'ae635f08107a69569e636835f24e6f6f' :" extends ",
   '87f9f735a1d36793ceaecd4e47124b63' :"Events",
   'd41d8cd98f00b204e9800998ecf8427e' :"",
-  '9c5a24f0cbb12d939e4622b93bea904b' :"Public Methods",
   '50f33d14f129e4548c1c270fd6725a78' :"Configuration options",
   'e64b94523532dbac62df6795a5153f04' :"doc-desc",
   '3673e725413179fe76f341ed908a5c36' :"Defined in: ",
@@ -20,6 +19,7 @@ Roo.docs = new Roo.XComponent({
   '494a64a432ff6a121e4ab9003c7a0df3' :"parentcls",
   '9bd81329febf6efe22788e03ddeaf0af' :" Class ",
   'f561aaf6ef0bf14d4208bb46a4ccb3ad' :"xxx",
+  'a1d108496af420635536a4e29e87d42b' :"Constructor, Static and Public Methods",
   'd41d8cd98f00b204e9800998ecf8427e' :" "
  },
 
@@ -485,7 +485,8 @@ Roo.docs = new Roo.XComponent({
            },
           rowclass : function (_self, rowcfg)
            {
-                   rowcfg.rowClass = rowcfg.record.json.expanded ? 'expanded' : '';
+                 rc = rowcfg.record.json.memberOf == Roo.docs.init.currentClass ? "doc-added-member '  : '';
+                 rowcfg.rowClass = rc + rowcfg.record.json.expanded ? 'expanded' : '';
            },
           rowclick : function (_self, el, rowIndex, e)
            {
@@ -556,7 +557,7 @@ Roo.docs = new Roo.XComponent({
        cls : 'doc-table-container',
        expandable : true,
        expanded : false,
-       header : _this._strings['9c5a24f0cbb12d939e4622b93bea904b'] /* Public Methods */,
+       header : _this._strings['a1d108496af420635536a4e29e87d42b'] /* Constructor, Static and Public Methods */,
        panel : 'info',
        listeners : {
         render : function (_self)
@@ -577,7 +578,8 @@ Roo.docs = new Roo.XComponent({
            },
           rowclass : function (_self, rowcfg)
            {
-                   rowcfg.rowClass = rowcfg.record.json.expanded ? 'expanded' : '';
+                 rc = rowcfg.record.json.memberOf == Roo.docs.init.currentClass ? "doc-added-member '  : '';
+                 rowcfg.rowClass = rc + rowcfg.record.json.expanded ? 'expanded' : '';
            },
           rowclick : function (_self, el, rowIndex, e)
            {
@@ -670,7 +672,8 @@ Roo.docs = new Roo.XComponent({
            },
           rowclass : function (_self, rowcfg)
            {
-                   rowcfg.rowClass = rowcfg.record.json.expanded ? 'expanded' : '';
+                 rc = rowcfg.record.json.memberOf == Roo.docs.init.currentClass ? "doc-added-member '  : '';
+                 rowcfg.rowClass = rc + rowcfg.record.json.expanded ? 'expanded' : '';
            },
           rowclick : function (_self, el, rowIndex, e)
            {
