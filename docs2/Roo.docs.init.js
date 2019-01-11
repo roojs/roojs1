@@ -67,6 +67,8 @@ Roo.docs.init = {
         
     },
     addTreeItem : function(parent, e, type) {
+        
+        this.classes[d.name] = d;;
         // add a node..
         var node = parent.addxtypeChild(Roo.factory({
             html: e.name.split('.').pop(),
