@@ -72,6 +72,10 @@ Roo.docs.init = {
                     } else {
                         c = ev;
                     }
+                    if (c.cn.length) {
+                        
+                    }
+                    
                     
                     Roo.docs.init.loadDoc(c);
                     
