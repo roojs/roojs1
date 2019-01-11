@@ -67,12 +67,8 @@ Roo.docs.init = {
                 click : (function(mi,ev,c)
                 {
                     
-                    if (c) { //
-                       ev.stopPropagation();
-                    } else {
-                        Roo.log(mi)
-                        c = ev;
-                    }
+                      ev.stopPropagation();
+                     
                     if (c.cn.length) {
                         Roo.log(ev);
                     }
