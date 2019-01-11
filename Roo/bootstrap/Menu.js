@@ -30,13 +30,13 @@ Roo.bootstrap.Menu = function(config){
     this.addEvents({
         /**
          * @event beforeshow
-         * Fires before this menu is displayed (return true to block)
+         * Fires before this menu is displayed (return false to block)
          * @param {Roo.menu.Menu} this
          */
         beforeshow : true,
         /**
          * @event beforehide
-         * Fires before this menu is hidden (return true to block)
+         * Fires before this menu is hidden (return false to block)
          * @param {Roo.menu.Menu} this
          */
         beforehide : true,
@@ -260,7 +260,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
      */
     show : function(el, pos, parentMenu)
     {
-        if (true === this.fireEvent("beforeshow", this)) {
+        if (false === this.fireEvent("beforeshow", this)) {
 	    Roo.log("show canceled");
 	    return;
 	}
