@@ -541,7 +541,9 @@ Roo.docs = new Roo.XComponent({
            header : _this._strings['f361257612a512f9be2fdc2abfb25aef'] /* <small>Defined by</small> */,
            md : 1,
            renderer : function(v,x,r) { 
-           
+            if (r.json.memberOf  == Roo.docs.init.currentClass) {
+                       return '';
+                   }
            
            		return 	'<small><a href="#' + r.json.memberOf + '">' + r.json.memberOf + '</a></small>';
            			
@@ -643,7 +645,9 @@ Roo.docs = new Roo.XComponent({
            md : 1,
            renderer : function(v,x,r) { 
            
-           
+            if (r.json.memberOf  == Roo.docs.init.currentClass) {
+                       return '';
+                   }
            		return 	'<small><a href="#' + r.json.memberOf + '">' + r.json.memberOf + '</a></small>';
            			
            },
