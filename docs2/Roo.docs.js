@@ -485,7 +485,7 @@ Roo.docs = new Roo.XComponent({
            {
                if (e.target.className != 'fixedFont') {
                    
-                   return true;
+                   return false;
                }
                
                var r = this.store.getAt(rowIndex);
