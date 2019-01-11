@@ -176,6 +176,30 @@ Roo.docs.init = {
         
         
     },
+    
+    loadSource : function(cls)
+    {
+        Roo.docs.doc_body_content.hide();
+        this.currentClass = cls.name;
+        if (!cls.is_class) {
+            return;
+        }
+        Roo.docs.doc_body_content.show();
+        Roo.Ajax.request({
+            url : 'symbols/' + cls.name + '.json',
+            method : 'GET',
+            success : function(res, o)
+            {
+                var d = Roo.decode(res.responseText);
+                this.fillDoc(d);
+                
+            },
+            scope : this
+        });
+        
+        
+    },
+    
     fillDoc : function(d)
     {
         /*{
