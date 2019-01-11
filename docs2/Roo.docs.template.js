@@ -237,7 +237,7 @@ Roo.docs.template  = {
         output += '<b class="itemname">'+member.name+'</b>' +this.makeSignature(member.params) + '</div>';
               
         output += '<div class="mdesc">';
-	output += '<div class="short">' +this.resolveLinks(this.summarize(member.desc))+ + '</div>';
+	output += '<div class="short">' +this.resolveLinks(this.summarize(member.desc))+   '</div>';
 		   
 		    
         output += '<div class="long">' + this.resolveLinks(member.desc);
