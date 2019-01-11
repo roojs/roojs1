@@ -74,18 +74,18 @@ Roo.docs.template  = {
 		//if (!$.isEvent && (data.comment.getTag("instanceOf").length || data.comment.getTag("singleton").length)) {
 		if (data.isSingleton) {
 		    
-		    if ($.isStatic && $.memberOf != Roo.docs.init.currentClass)) {
-					return true;
-				}
-			$.isInherited = ($.memberOf != data.alias);
+		    if ($.isStatic && $.memberOf != data.name)) {
+	    		return true;
+		    }
+		    $.isInherited = ($.memberOf != data.name);
 			ownMethods.push($);
 			return true;
 		}
 		
 			
-			if ($.isNamespace || $.isEvent || (($.memberOf != data.alias) && $.isStatic)){
-				return true;
-			}
+		if ($.isNamespace || (($.memberOf != data.name) && $.isStatic)){
+			return true;
+		}
 			if ($.isStatic) {
 				$.isInherited = ($.memberOf != data.alias);
 				ownMethods.push($);
