@@ -1,0 +1,36 @@
+{
+  "name" : "Roo.form.Action",
+  "augments" : [
+  ],
+  "desc" : "Internal Class used to handle form actions",
+  "isSingleton" : false,
+  "isStatic" : false,
+  "isBuiltin" : false,
+  "memberOf" : "Action",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "el",
+      "type" : "Roo.form.BasicForm",
+      "desc" : "The form element or its id",
+      "isOptional" : false
+    },
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "Configuration options",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
+  "config" : [
+  ],
+  "methods" : [
+  ],
+  "events" : [
+  ]
+}

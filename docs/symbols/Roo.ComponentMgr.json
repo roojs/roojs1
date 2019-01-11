@@ -1,0 +1,124 @@
+{
+  "name" : "Roo.ComponentMgr",
+  "augments" : [
+  ],
+  "desc" : "Provides a common registry of all components on a page so that they can be easily accessed by component id (see {@link Roo.getCmp}).",
+  "isSingleton" : true,
+  "isStatic" : false,
+  "isBuiltin" : false,
+  "memberOf" : "ComponentMgr",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+  ],
+  "returns" : [
+  ],
+  "config" : [
+  ],
+  "methods" : [
+    {
+      "name" : "onAvailable",
+      "desc" : "Registers a function that will be called when a specified component is added to ComponentMgr",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.ComponentMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "String",
+          "desc" : "The component id",
+          "isOptional" : false
+        },
+        {
+          "name" : "fn",
+          "type" : "Funtction",
+          "desc" : "The callback function",
+          "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "The scope of the callback",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "get",
+      "desc" : "Returns a component by id",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.ComponentMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "String",
+          "desc" : "The component id",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "register",
+      "desc" : "Registers a component.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.ComponentMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "c",
+          "type" : "Roo.Component",
+          "desc" : "The component",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "unregister",
+      "desc" : "Unregisters a component.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.ComponentMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "c",
+          "type" : "Roo.Component",
+          "desc" : "The component",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    }
+  ],
+  "events" : [
+  ]
+}

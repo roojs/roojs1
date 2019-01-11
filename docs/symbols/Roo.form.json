@@ -1,0 +1,24 @@
+{
+  "name" : "Roo.form",
+  "augments" : [
+  ],
+  "desc" : "",
+  "isSingleton" : false,
+  "isStatic" : true,
+  "isBuiltin" : false,
+  "memberOf" : "Roo.form",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+  ],
+  "returns" : [
+  ],
+  "config" : [
+  ],
+  "methods" : [
+  ],
+  "events" : [
+  ]
+}

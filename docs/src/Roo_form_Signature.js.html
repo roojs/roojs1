@@ -1,0 +1,340 @@
+<html><head><title>/home/alan/gitlive/roojs1/Roo/form/Signature.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+/**
+ * @class Roo.form.Signature
+ * @extends Roo.form.Field
+ * Signature field.  
+ * @constructor
+ * 
+ * @param {Object} config Configuration options
+ */
+
+</span><span class="jsdoc-var">Roo.form.Signature </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.form.Signature.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({</span><span class="jsdoc-comment">// not in used??
+         /**
+         * @event confirm
+         * Fires when the 'confirm' icon is pressed (add a listener to enable add button)
+	     * @param {Roo.form.Signature} combo This combo box
+	     */
+        </span><span class="jsdoc-string">'confirm' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event reset
+         * Fires when the 'edit' icon is pressed (add a listener to enable add button)
+	     * @param {Roo.form.ComboBox} combo This combo box
+	     * @param {Roo.data.Record|false} record The data record returned from the underlying store (or false on nothing selected)
+	     */
+        </span><span class="jsdoc-string">'reset' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.Signature</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.form.Field</span><span class="jsdoc-syntax">,  {
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Object} labels Label to use when rendering a form.
+     * defaults to 
+     * labels : { 
+     *      clear : &quot;Clear&quot;,
+     *      confirm : &quot;Confirm&quot;
+     *  }
+     */
+    </span><span class="jsdoc-var">labels </span><span class="jsdoc-syntax">: {
+        </span><span class="jsdoc-var">clear </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Clear&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">confirm </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Confirm&quot;
+    </span><span class="jsdoc-syntax">},
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Number} width The signature panel width (defaults to 300)
+     */
+    </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 300,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Number} height The signature panel height (defaults to 100)
+     */
+    </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">: 100,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} allowBlank False to validate that the value length &gt; 0 (defaults to false)
+     */
+    </span><span class="jsdoc-var">allowBlank </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">//private
+    // {Object} signPanel The signature SVG panel element (defaults to {})
+    </span><span class="jsdoc-var">signPanel </span><span class="jsdoc-syntax">: {},
+    </span><span class="jsdoc-comment">// {Boolean} isMouseDown False to validate that the mouse down event (defaults to false)
+    </span><span class="jsdoc-var">isMouseDown </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">// {Boolean} isConfirmed validate the signature is confirmed or not for submitting form (defaults to false)
+    </span><span class="jsdoc-var">isConfirmed </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">// {String} signatureTmp SVG mapping string (defaults to empty string)
+    </span><span class="jsdoc-var">signatureTmp </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+
+
+    </span><span class="jsdoc-var">defaultAutoCreate </span><span class="jsdoc-syntax">: { </span><span class="jsdoc-comment">// modified by initCompnoent..
+        </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;input&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;hidden&quot;
+    </span><span class="jsdoc-syntax">},
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">){
+
+        </span><span class="jsdoc-var">Roo.form.Signature.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">this.wrap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.wrap</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'x-form-signature-wrap'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'width: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">:{</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'x-form-signature'</span><span class="jsdoc-syntax">}
+        });
+
+        </span><span class="jsdoc-var">this.createToolbar</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.signPanel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.wrap.createChild</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'width: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px; height: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.height </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px; border: 0;'
+            </span><span class="jsdoc-syntax">}, </span><span class="jsdoc-var">this.el
+        </span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">this.svgID </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.svgEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.signPanel.createChild</span><span class="jsdoc-syntax">({
+              </span><span class="jsdoc-var">xmlns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'http://www.w3.org/2000/svg'</span><span class="jsdoc-syntax">,
+              </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'svg'</span><span class="jsdoc-syntax">,
+              </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.svgID </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;-svg&quot;</span><span class="jsdoc-syntax">,
+              </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">,
+              </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.height</span><span class="jsdoc-syntax">,
+              </span><span class="jsdoc-var">viewBox</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'0 0 '</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.height</span><span class="jsdoc-syntax">,
+              </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;rect&quot;</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.svgID </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;-svg-r&quot;</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.height</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">fill</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;#ffa&quot;
+                </span><span class="jsdoc-syntax">},
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;line&quot;</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.svgID </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;-svg-l&quot;</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">x1</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;0&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// start
+                    </span><span class="jsdoc-var">y1</span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">this.height</span><span class="jsdoc-syntax">*0.8), </span><span class="jsdoc-comment">// start set the line in 80% of height
+                    </span><span class="jsdoc-var">x2</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// end
+                    </span><span class="jsdoc-var">y2</span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">this.height</span><span class="jsdoc-syntax">*0.8), </span><span class="jsdoc-comment">// end set the line in 80% of height
+                    </span><span class="jsdoc-string">'stroke'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;#666&quot;</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'stroke-width'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;1&quot;</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'stroke-dasharray'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;3&quot;</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'shape-rendering'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;crispEdges&quot;</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'pointer-events'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;none&quot;
+                </span><span class="jsdoc-syntax">},
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;path&quot;</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.svgID </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;-svg-p&quot;</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'stroke'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;navy&quot;</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'stroke-width'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;3&quot;</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'fill'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;none&quot;</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'pointer-events'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'none'
+                </span><span class="jsdoc-syntax">}
+              ]
+        });
+        </span><span class="jsdoc-var">this.createSVG</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.svgBox </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.svgEl.dom.getScreenCTM</span><span class="jsdoc-syntax">();
+    },
+    </span><span class="jsdoc-var">createSVG </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">svg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.signPanel</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">svg.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.svgID </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-svg-r'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">r.addEventListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mousedown'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">t.down</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">); }, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">r.addEventListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mousemove'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">t.move</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">); }, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">r.addEventListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseup'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">t.up</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">); }, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">r.addEventListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseout'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">t.up</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">); }, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">r.addEventListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'touchstart'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">t.down</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">); }, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">r.addEventListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'touchmove'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">t.move</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">); }, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">r.addEventListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'touchend'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">t.up</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">); }, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+
+    },
+    </span><span class="jsdoc-var">isTouchEvent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">e.type.match</span><span class="jsdoc-syntax">(/^touch/);
+    },
+    </span><span class="jsdoc-var">getCoords </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pt    </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.svgEl.dom.createSVGPoint</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">pt.x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.clientX</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">pt.y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.clientY</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isTouchEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">pt.x </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">e.targetTouches</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.clientX</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">pt.y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.targetTouches</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.clientY</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.svgEl.dom.getScreenCTM</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">a.inverse</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">mx </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pt.matrixTransform</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">mx.x </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">',' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">mx.y</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-comment">//mouse event headler 
+    </span><span class="jsdoc-var">down </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.signatureTmp </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">'M' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.getCoords</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.signPanel.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.svgID </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-svg-p'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'d'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.signatureTmp</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">this.isMouseDown </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+    },
+    </span><span class="jsdoc-var">move </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isMouseDown</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.signatureTmp </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">'L' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.getCoords</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.signPanel.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.svgID </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-svg-p'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">( </span><span class="jsdoc-string">'d'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.signatureTmp</span><span class="jsdoc-syntax">);
+        }
+
+        </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+    },
+    </span><span class="jsdoc-var">up </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.isMouseDown </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.signatureTmp.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sp.length </span><span class="jsdoc-syntax">&gt; 1){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">sp</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">sp.length</span><span class="jsdoc-syntax">-2]</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(/^L/)){
+                </span><span class="jsdoc-var">sp.pop</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">sp.pop</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">sp.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.signatureTmp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sp.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot; &quot;</span><span class="jsdoc-syntax">);
+            }
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">() != </span><span class="jsdoc-var">this.signatureTmp</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.signPanel.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.svgID </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-svg-r'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fill'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'#ffa'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.isConfirmed </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Protected method that will not generally be called directly. It
+     * is called when the editor creates its toolbar. Override this method if you need to
+     * add custom toolbar buttons.
+     * @param {HtmlEditor} editor
+     */
+    </span><span class="jsdoc-var">createToolbar </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">){
+         </span><span class="jsdoc-keyword">function </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">toggle</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">xid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fid </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-'</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">xid</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cmd </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-btn-icon x-edit-'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">enableToggle</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">toggle </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// was editor...
+                </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">||</span><span class="jsdoc-var">editor.relayBtnCmd</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">clickEvent</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'mousedown'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">tooltip</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">etb.buttonTips</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">] || </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">///tips ???
+                </span><span class="jsdoc-var">tabIndex</span><span class="jsdoc-syntax">:-1
+            };
+        }
+
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Toolbar</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">editor.wrap.dom.firstChild</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.tb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tb</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.tb.add</span><span class="jsdoc-syntax">(
+           {
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">' x-signature-btn x-signature-'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// was editor...
+                </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.reset</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">clickEvent</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'mousedown'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.labels.clear
+            </span><span class="jsdoc-syntax">},
+            {
+                 </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Fill'</span><span class="jsdoc-syntax">,
+                 </span><span class="jsdoc-var">xns</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.Toolbar
+            </span><span class="jsdoc-syntax">},
+            {
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'  x-signature-btn x-signature-'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// was editor...
+                </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.confirmHandler</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">clickEvent</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'mousedown'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.labels.confirm
+            </span><span class="jsdoc-syntax">}
+        );
+
+    },
+    </span><span class="jsdoc-comment">//public
+    /**
+     * when user is clicked confirm then show this image.....
+     * 
+     * @return {String} Image Data URI
+     */
+    </span><span class="jsdoc-var">getImageDataURI </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">svg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.svgEl.dom.parentNode.innerHTML</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">src </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'data:image/svg+xml;base64,'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">window.btoa</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">svg</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-comment">/**
+     * 
+     * @return {Boolean} this.isConfirmed
+     */
+    </span><span class="jsdoc-var">getConfirmed </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.isConfirmed</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-comment">/**
+     * 
+     * @return {Number} this.width
+     */
+    </span><span class="jsdoc-var">getWidth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-comment">/**
+     * 
+     * @return {Number} this.height
+     */
+    </span><span class="jsdoc-var">getHeight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.height</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">getSignature </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.signatureTmp</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">reset </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.signatureTmp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.signPanel.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.svgID </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-svg-r'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fill'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'#ffa'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.signPanel.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.svgID </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-svg-p'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">( </span><span class="jsdoc-string">'d'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.isConfirmed </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">Roo.form.Signature.superclass.reset.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+    </span><span class="jsdoc-var">setSignature </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.signatureTmp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.signPanel.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.svgID </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-svg-r'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fill'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'#ffa'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.signPanel.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.svgID </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-svg-p'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">( </span><span class="jsdoc-string">'d'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.isConfirmed </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">Roo.form.Signature.superclass.reset.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+    </span><span class="jsdoc-var">test </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+</span><span class="jsdoc-comment">//        Roo.log(this.signPanel.dom.contentWindow.up())
+    </span><span class="jsdoc-syntax">},
+    </span><span class="jsdoc-comment">//private
+    </span><span class="jsdoc-var">setConfirmed </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+
+
+
+</span><span class="jsdoc-comment">//        Roo.log(Roo.get(this.signPanel.dom.contentWindow.r).attr('fill', '#cfc'));
+    </span><span class="jsdoc-syntax">},
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">confirmHandler </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.getSignature</span><span class="jsdoc-syntax">()){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-var">this.signPanel.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.svgID </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-svg-r'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fill'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'#cfc'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getSignature</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-var">this.isConfirmed </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'confirm'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+    </span><span class="jsdoc-comment">// private
+    // Subclasses should provide the validation implementation by overriding this
+    </span><span class="jsdoc-var">validateValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.allowBlank</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isConfirmed</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+    }
+});</span></code></body></html>

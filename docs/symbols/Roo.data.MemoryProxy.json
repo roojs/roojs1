@@ -1,0 +1,76 @@
+{
+  "name" : "Roo.data.MemoryProxy",
+  "augments" : [
+  ],
+  "desc" : "An implementation of Roo.data.DataProxy that simply passes the data specified in its constructor\nto the Reader when its load method is called.",
+  "isSingleton" : false,
+  "isStatic" : false,
+  "isBuiltin" : false,
+  "memberOf" : "MemoryProxy",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "data",
+      "type" : "Object",
+      "desc" : "The data object which the Reader uses to construct a block of Roo.data.Records.",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
+  "config" : [
+  ],
+  "methods" : [
+    {
+      "name" : "load",
+      "desc" : "Load data from the requested source (in this case an in-memory\ndata object passed to the constructor), read the data object into\na block of Roo.data.Records using the passed Roo.data.DataReader implementation, and\nprocess that block using the passed callback.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.data.MemoryProxy",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "params",
+          "type" : "Object",
+          "desc" : "This parameter is not used by the MemoryProxy class.",
+          "isOptional" : false
+        },
+        {
+          "name" : "reader",
+          "type" : "Roo.data.DataReader",
+          "desc" : "The Reader object which converts the data\nobject into a block of Roo.data.Records.",
+          "isOptional" : false
+        },
+        {
+          "name" : "callback",
+          "type" : "Function",
+          "desc" : "The function into which to pass the block of Roo.data.records.\nThe function must be passed <ul>\n<li>The Record block object</li>\n<li>The \"arg\" argument from the load function</li>\n<li>A boolean success indicator</li>\n</ul>",
+          "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "The scope in which to call the callback",
+          "isOptional" : false
+        },
+        {
+          "name" : "arg",
+          "type" : "Object",
+          "desc" : "An optional argument which is passed to the callback as its second parameter.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    }
+  ],
+  "events" : [
+  ]
+}

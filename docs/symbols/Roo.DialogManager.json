@@ -1,0 +1,121 @@
+{
+  "name" : "Roo.DialogManager",
+  "augments" : [
+  ],
+  "desc" : "Provides global access to BasicDialogs that have been created and\nsupport for z-indexing (layering) multiple open dialogs.",
+  "isSingleton" : false,
+  "isStatic" : false,
+  "isBuiltin" : false,
+  "memberOf" : "DialogManager",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+  ],
+  "returns" : [
+  ],
+  "config" : [
+  ],
+  "methods" : [
+    {
+      "name" : "bringToFront",
+      "desc" : "Brings the specified dialog to the front",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.DialogManager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "dlg",
+          "type" : "String/Object",
+          "desc" : "The id of the dialog or a dialog",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
+    },
+    {
+      "name" : "sendToBack",
+      "desc" : "Sends the specified dialog to the back",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.DialogManager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "dlg",
+          "type" : "String/Object",
+          "desc" : "The id of the dialog or a dialog",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
+    },
+    {
+      "name" : "hideAll",
+      "desc" : "Hides all dialogs",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.DialogManager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "get",
+      "desc" : "Gets a registered dialog by id",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.DialogManager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "String/Object",
+          "desc" : "The id of the dialog or a dialog",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
+    }
+  ],
+  "events" : [
+  ]
+}

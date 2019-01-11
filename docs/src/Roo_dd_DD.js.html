@@ -1,0 +1,300 @@
+<html><head><title>/home/alan/gitlive/roojs1/Roo/dd/DD.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+/**
+ * @class Roo.dd.DD
+ * A DragDrop implementation where the linked element follows the
+ * mouse cursor during a drag.
+ * @extends Roo.dd.DragDrop
+ * @constructor
+ * @param {String} id the id of the linked element
+ * @param {String} sGroup the group of related DragDrop items
+ * @param {object} config an object containing configurable attributes
+ *                Valid properties for DD:
+ *                    scroll
+ */
+</span><span class="jsdoc-var">Roo.dd.DD </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sGroup</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.init</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sGroup</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    }
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.dd.DD</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.dd.DragDrop</span><span class="jsdoc-syntax">, {
+
+    </span><span class="jsdoc-comment">/**
+     * When set to true, the utility automatically tries to scroll the browser
+     * window wehn a drag and drop element is dragged near the viewport boundary.
+     * Defaults to true.
+     * @property scroll
+     * @type boolean
+     */
+    </span><span class="jsdoc-var">scroll</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * Sets the pointer offset to the distance between the linked element's top
+     * left corner and the location the element was clicked
+     * @method autoOffset
+     * @param {int} iPageX the X coordinate of the click
+     * @param {int} iPageY the Y coordinate of the click
+     */
+    </span><span class="jsdoc-var">autoOffset</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">iPageX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">iPageY</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">iPageX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.startPageX</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">iPageY </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.startPageY</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.setDelta</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Sets the pointer offset.  You can call this directly to force the
+     * offset to be in a particular location (e.g., pass in 0,0 to set it
+     * to the center of the object)
+     * @method setDelta
+     * @param {int} iDeltaX the distance from the left
+     * @param {int} iDeltaY the distance from the top
+     */
+    </span><span class="jsdoc-var">setDelta</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">iDeltaX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">iDeltaY</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.deltaX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">iDeltaX</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.deltaY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">iDeltaY</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Sets the drag element to the location of the mousedown or click event,
+     * maintaining the cursor location relative to the location on the element
+     * that was clicked.  Override this if you want to place the element in a
+     * location other than where the cursor is.
+     * @method setDragElPos
+     * @param {int} iPageX the X coordinate of the mousedown or drag event
+     * @param {int} iPageY the Y coordinate of the mousedown or drag event
+     */
+    </span><span class="jsdoc-var">setDragElPos</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">iPageX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">iPageY</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-comment">// the first time we do this, we are going to check to make sure
+        // the element has css positioning
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getDragEl</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.alignElWithMouse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">iPageX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">iPageY</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Sets the element to the location of the mousedown or click event,
+     * maintaining the cursor location relative to the location on the element
+     * that was clicked.  Override this if you want to place the element in a
+     * location other than where the cursor is.
+     * @method alignElWithMouse
+     * @param {HTMLElement} el the element to move
+     * @param {int} iPageX the X coordinate of the mousedown or drag event
+     * @param {int} iPageY the Y coordinate of the mousedown or drag event
+     */
+    </span><span class="jsdoc-var">alignElWithMouse</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">iPageX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">iPageY</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">oCoord </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getTargetCoord</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">iPageX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">iPageY</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fly </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.dom </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.deltaSetXY</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">aCoord </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-var">oCoord.x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">oCoord.y</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-var">fly.setXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">aCoord</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">newLeft </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fly.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">newTop  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fly.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.deltaSetXY </span><span class="jsdoc-syntax">= [ </span><span class="jsdoc-var">newLeft </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">oCoord.x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newTop </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">oCoord.y </span><span class="jsdoc-syntax">];
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">fly.setLeftTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oCoord.x </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.deltaSetXY</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-var">oCoord.y </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.deltaSetXY</span><span class="jsdoc-syntax">[1]);
+        }
+
+        </span><span class="jsdoc-var">this.cachePosition</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oCoord.x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">oCoord.y</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.autoScroll</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oCoord.x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">oCoord.y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el.offsetHeight</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el.offsetWidth</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">oCoord</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Saves the most recent position so that we can reset the constraints and
+     * tick marks on-demand.  We need to know this so that we can calculate the
+     * number of pixels the element is offset from its original position.
+     * @method cachePosition
+     * @param iPageX the current x position (optional, this just makes it so we
+     * don't have to look it up again)
+     * @param iPageY the current y position (optional, this just makes it so we
+     * don't have to look it up again)
+     */
+    </span><span class="jsdoc-var">cachePosition</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">iPageX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">iPageY</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">iPageX</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.lastPageX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">iPageX</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.lastPageY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">iPageY</span><span class="jsdoc-syntax">;
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">aCoord </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Dom.getXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getEl</span><span class="jsdoc-syntax">());
+            </span><span class="jsdoc-var">this.lastPageX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">aCoord</span><span class="jsdoc-syntax">[0];
+            </span><span class="jsdoc-var">this.lastPageY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">aCoord</span><span class="jsdoc-syntax">[1];
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Auto-scroll the window if the dragged object has been moved beyond the
+     * visible window boundary.
+     * @method autoScroll
+     * @param {int} x the drag element's x position
+     * @param {int} y the drag element's y position
+     * @param {int} h the height of the drag element
+     * @param {int} w the width of the drag element
+     * @private
+     */
+    </span><span class="jsdoc-var">autoScroll</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">) {
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.scroll</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// The client height
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">clientH </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Dom.getViewWidth</span><span class="jsdoc-syntax">();
+
+            </span><span class="jsdoc-comment">// The client width
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">clientW </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">();
+
+            </span><span class="jsdoc-comment">// The amt scrolled down
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">st </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.DDM.getScrollTop</span><span class="jsdoc-syntax">();
+
+            </span><span class="jsdoc-comment">// The amt scrolled right
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.DDM.getScrollLeft</span><span class="jsdoc-syntax">();
+
+            </span><span class="jsdoc-comment">// Location of the bottom of the element
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bot </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-comment">// Location of the right of the element
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">right </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-comment">// The distance from the cursor to the bottom of the visible area,
+            // adjusted so that we don't scroll if the cursor is beyond the
+            // element drag constraints
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">toBot </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">clientH </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">st </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.deltaY</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-comment">// The distance from the cursor to the right of the visible area
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">toRight </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">clientW </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">sl </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.deltaX</span><span class="jsdoc-syntax">);
+
+
+            </span><span class="jsdoc-comment">// How close to the edge the cursor must be before we scroll
+            // var thresh = (document.all) ? 100 : 40;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">thresh </span><span class="jsdoc-syntax">= 40;
+
+            </span><span class="jsdoc-comment">// How many pixels to scroll per autoscroll op.  This helps to reduce
+            // clunky scrolling. IE is more sensitive about this ... it needs this
+            // value to be higher.
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">scrAmt </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">document.all</span><span class="jsdoc-syntax">) ? 80 : 30;
+
+            </span><span class="jsdoc-comment">// Scroll down if we are near the bottom of the visible page and the
+            // obj extends below the crease
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">bot </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">clientH </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">toBot </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">thresh </span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">window.scrollTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">st </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">scrAmt</span><span class="jsdoc-syntax">);
+            }
+
+            </span><span class="jsdoc-comment">// Scroll up if the window is scrolled down and the top of the object
+            // goes above the top border
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">st </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">st </span><span class="jsdoc-syntax">&gt; 0 &amp;&amp; </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">st </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">thresh </span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">window.scrollTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">st </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">scrAmt</span><span class="jsdoc-syntax">);
+            }
+
+            </span><span class="jsdoc-comment">// Scroll right if the obj is beyond the right border and the cursor is
+            // near the border.
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">right </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">clientW </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">toRight </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">thresh </span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">window.scrollTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sl </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">scrAmt</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">st</span><span class="jsdoc-syntax">);
+            }
+
+            </span><span class="jsdoc-comment">// Scroll left if the window has been scrolled to the right and the obj
+            // extends past the left border
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">sl </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">sl </span><span class="jsdoc-syntax">&gt; 0 &amp;&amp; </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">sl </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">thresh </span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">window.scrollTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sl </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">scrAmt</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">st</span><span class="jsdoc-syntax">);
+            }
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Finds the location the element should be placed if we want to move
+     * it to where the mouse location less the click offset would place us.
+     * @method getTargetCoord
+     * @param {int} iPageX the X coordinate of the click
+     * @param {int} iPageY the Y coordinate of the click
+     * @return an object that contains the coordinates (Object.x and Object.y)
+     * @private
+     */
+    </span><span class="jsdoc-var">getTargetCoord</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">iPageX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">iPageY</span><span class="jsdoc-syntax">) {
+
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">iPageX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.deltaX</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">iPageY </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.deltaY</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.constrainX</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.minX</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.minX</span><span class="jsdoc-syntax">; }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.maxX</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.maxX</span><span class="jsdoc-syntax">; }
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.constrainY</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.minY</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.minY</span><span class="jsdoc-syntax">; }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.maxY</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.maxY</span><span class="jsdoc-syntax">; }
+        }
+
+        </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getTick</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.xTicks</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getTick</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.yTicks</span><span class="jsdoc-syntax">);
+
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">};
+    },
+
+    </span><span class="jsdoc-comment">/*
+     * Sets up config options specific to this class. Overrides
+     * Roo.dd.DragDrop, but all versions of this method through the
+     * inheritance chain are called
+     */
+    </span><span class="jsdoc-var">applyConfig</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-var">Roo.dd.DD.superclass.applyConfig.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.scroll </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.config.scroll </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/*
+     * Event that fires prior to the onMouseDown event.  Overrides
+     * Roo.dd.DragDrop.
+     */
+    </span><span class="jsdoc-var">b4MouseDown</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-comment">// this.resetConstraints();
+        </span><span class="jsdoc-var">this.autoOffset</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.getPageX</span><span class="jsdoc-syntax">(),
+                            </span><span class="jsdoc-var">e.getPageY</span><span class="jsdoc-syntax">());
+    },
+
+    </span><span class="jsdoc-comment">/*
+     * Event that fires prior to the onDrag event.  Overrides
+     * Roo.dd.DragDrop.
+     */
+    </span><span class="jsdoc-var">b4Drag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.setDragElPos</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.getPageX</span><span class="jsdoc-syntax">(),
+                            </span><span class="jsdoc-var">e.getPageY</span><span class="jsdoc-syntax">());
+    },
+
+    </span><span class="jsdoc-var">toString</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;DD &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">);
+    }
+
+    </span><span class="jsdoc-comment">//////////////////////////////////////////////////////////////////////////
+    // Debugging ygDragDrop events that can be overridden
+    //////////////////////////////////////////////////////////////////////////
+    /*
+    startDrag: function(x, y) {
+    },
+
+    onDrag: function(e) {
+    },
+
+    onDragEnter: function(e, id) {
+    },
+
+    onDragOver: function(e, id) {
+    },
+
+    onDragOut: function(e, id) {
+    },
+
+    onDragDrop: function(e, id) {
+    },
+
+    endDrag: function(e) {
+    }
+
+    */
+
+</span><span class="jsdoc-syntax">});</span></code></body></html>

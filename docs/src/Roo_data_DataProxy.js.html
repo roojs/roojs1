@@ -1,0 +1,60 @@
+<html><head><title>/home/alan/gitlive/roojs1/Roo/data/DataProxy.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+/**
+ * @class Roo.data.DataProxy
+ * @extends Roo.data.Observable
+ * This class is an abstract base class for implementations which provide retrieval of
+ * unformatted data objects.&lt;br&gt;
+ * &lt;p&gt;
+ * DataProxy implementations are usually used in conjunction with an implementation of Roo.data.DataReader
+ * (of the appropriate type which knows how to parse the data object) to provide a block of
+ * {@link Roo.data.Records} to an {@link Roo.data.Store}.&lt;br&gt;
+ * &lt;p&gt;
+ * Custom implementations must implement the load method as described in
+ * {@link Roo.data.HttpProxy#load}.
+ */
+</span><span class="jsdoc-var">Roo.data.DataProxy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+         * @event beforeload
+         * Fires before a network request is made to retrieve a data object.
+         * @param {Object} This DataProxy object.
+         * @param {Object} params The params parameter to the load function.
+         */
+        </span><span class="jsdoc-var">beforeload </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event load
+         * Fires before the load method's callback is called.
+         * @param {Object} This DataProxy object.
+         * @param {Object} o The data object.
+         * @param {Object} arg The callback argument object passed to the load function.
+         */
+        </span><span class="jsdoc-var">load </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event loadexception
+         * Fires if an Exception occurs during data retrieval.
+         * @param {Object} This DataProxy object.
+         * @param {Object} o The data object.
+         * @param {Object} arg The callback argument object passed to the load function.
+         * @param {Object} e The Exception.
+         */
+        </span><span class="jsdoc-var">loadexception </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+    </span><span class="jsdoc-var">Roo.data.DataProxy.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.data.DataProxy</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg {void} listeners (Not available) Constructor blocks listeners from being set
+     */
+</span></code></body></html>

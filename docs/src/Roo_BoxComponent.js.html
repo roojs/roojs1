@@ -1,0 +1,283 @@
+<html><head><title>/home/alan/gitlive/roojs1/Roo/BoxComponent.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+/**
+ * @class Roo.BoxComponent
+ * @extends Roo.Component
+ * Base class for any visual {@link Roo.Component} that uses a box container.  BoxComponent provides automatic box
+ * model adjustments for sizing and positioning and will work correctly withnin the Component rendering model.  All
+ * container classes should subclass BoxComponent so that they will work consistently when nested within other Ext
+ * layout containers.
+ * @constructor
+ * @param {Roo.Element/String/Object} config The configuration options.
+ */
+</span><span class="jsdoc-var">Roo.BoxComponent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.Component.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+         * @event resize
+         * Fires after the component is resized.
+	     * @param {Roo.Component} this
+	     * @param {Number} adjWidth The box-adjusted width that was set
+	     * @param {Number} adjHeight The box-adjusted height that was set
+	     * @param {Number} rawWidth The width that was originally specified
+	     * @param {Number} rawHeight The height that was originally specified
+	     */
+        </span><span class="jsdoc-var">resize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event move
+         * Fires after the component is moved.
+	     * @param {Roo.Component} this
+	     * @param {Number} x The new x position
+	     * @param {Number} y The new y position
+	     */
+        </span><span class="jsdoc-var">move </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.BoxComponent</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.Component</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-comment">// private, set in afterRender to signify that the component has been rendered
+    </span><span class="jsdoc-var">boxReady </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">// private, used to defer height settings to subclasses
+    </span><span class="jsdoc-var">deferHeight</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/** @cfg {Number} width
+     * width (optional) size of component
+     */
+     /** @cfg {Number} height
+     * height (optional) size of component
+     */
+
+    /**
+     * Sets the width and height of the component.  This method fires the resize event.  This method can accept
+     * either width and height as separate numeric arguments, or you can pass a size object like {width:10, height:20}.
+     * @param {Number/Object} width The new width to set, or a size object in the format {width, height}
+     * @param {Number} height The new height to set (not required if a size object is passed as the first arg)
+     * @return {Roo.BoxComponent} this
+     */
+    </span><span class="jsdoc-var">setSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-comment">// support for standard size objects
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'object'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">w.height</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">w.width</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-comment">// not rendered
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.boxReady</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-comment">// prevent recalcs when not needed
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lastSize </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.lastSize.width </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.lastSize.height </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.lastSize </span><span class="jsdoc-syntax">= {</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">};
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">adj </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.adjustSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">aw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">adj.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ah </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">adj.height</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">aw </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">ah </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// this code is nasty but performs better with floaters
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rz </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getResizeEl</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.deferHeight </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">aw </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ah </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">rz.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">aw</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ah</span><span class="jsdoc-syntax">);
+            }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.deferHeight </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ah </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">rz.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ah</span><span class="jsdoc-syntax">);
+            }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">aw </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">rz.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">aw</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-var">this.onResize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">aw</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ah</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'resize'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">aw</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ah</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Gets the current size of the component's underlying element.
+     * @return {Object} An object containing the element's size {width: (element width), height: (element height)}
+     */
+    </span><span class="jsdoc-var">getSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.getSize</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Gets the current XY position of the component's underlying element.
+     * @param {Boolean} local (optional) If true the element's left and top are returned instead of page XY (defaults to false)
+     * @return {Array} The XY position of the element (e.g., [100, 200])
+     */
+    </span><span class="jsdoc-var">getPosition </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">local</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">local </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.el.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">this.el.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)];
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.xy </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.el.getXY</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Gets the current box measurements of the component's underlying element.
+     * @param {Boolean} local (optional) If true the element's left and top are returned instead of page XY (defaults to false)
+     * @returns {Object} box An object in the format {x, y, width, height}
+     */
+    </span><span class="jsdoc-var">getBox </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">local</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getSize</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">local</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">s.x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">s.y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">xy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.xy </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.el.getXY</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">s.x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[0];
+            </span><span class="jsdoc-var">s.y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[1];
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Sets the current box measurements of the component's underlying element.
+     * @param {Object} box An object in the format {x, y, width, height}
+     * @returns {Roo.BoxComponent} this
+     */
+    </span><span class="jsdoc-var">updateBox </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">box.height</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.setPagePosition</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box.x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">box.y</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">// protected
+    </span><span class="jsdoc-var">getResizeEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.resizeEl </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">// protected
+    </span><span class="jsdoc-var">getPositionEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.positionEl </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Sets the left and top of the component.  To set the page XY position instead, use {@link #setPagePosition}.
+     * This method fires the move event.
+     * @param {Number} left The new left
+     * @param {Number} top The new top
+     * @returns {Roo.BoxComponent} this
+     */
+    </span><span class="jsdoc-var">setPosition </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.boxReady</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">adj </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.adjustPosition</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ax </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">adj.x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">adj.y</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getPositionEl</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ax </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">ay </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ax </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ay </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">el.setLeftTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ax</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ay</span><span class="jsdoc-syntax">);
+            }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ax </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">el.setLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ax</span><span class="jsdoc-syntax">);
+            }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ay </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">el.setTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ay</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-var">this.onPosition</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ax</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ay</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'move'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ax</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ay</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Sets the page XY position of the component.  To set the left and top instead, use {@link #setPosition}.
+     * This method fires the move event.
+     * @param {Number} x The new x position
+     * @param {Number} y The new y position
+     * @returns {Roo.BoxComponent} this
+     */
+    </span><span class="jsdoc-var">setPagePosition </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.pageX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.pageY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.boxReady</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// cannot translate undefined points
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.translatePoints</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.setPosition</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p.left</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">p.top</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">Roo.BoxComponent.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizeEl</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.resizeEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizeEl</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.positionEl</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.positionEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.positionEl</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">afterRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">Roo.BoxComponent.superclass.afterRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.boxReady </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.height</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.x </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.y</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.setPosition</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.y</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.pageX </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.pageY</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.setPagePosition</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.pageX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.pageY</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Force the component's size to recalculate based on the underlying element's current height and width.
+     * @returns {Roo.BoxComponent} this
+     */
+    </span><span class="jsdoc-var">syncSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.lastSize</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.getWidth</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.el.getHeight</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Called after the component is resized, this method is empty by default but can be implemented by any
+     * subclass that needs to perform custom logic after a resize occurs.
+     * @param {Number} adjWidth The box-adjusted width that was set
+     * @param {Number} adjHeight The box-adjusted height that was set
+     * @param {Number} rawWidth The width that was originally specified
+     * @param {Number} rawHeight The height that was originally specified
+     */
+    </span><span class="jsdoc-var">onResize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">adjWidth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">adjHeight</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rawWidth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rawHeight</span><span class="jsdoc-syntax">){
+
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Called after the component is moved, this method is empty by default but can be implemented by any
+     * subclass that needs to perform custom logic after a move occurs.
+     * @param {Number} x The new x position
+     * @param {Number} y The new y position
+     */
+    </span><span class="jsdoc-var">onPosition </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">){
+
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">adjustSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoWidth</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'auto'</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoHeight</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'auto'</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{</span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">};
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">adjustPosition </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{</span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">};
+    }
+});</span></code></body></html>

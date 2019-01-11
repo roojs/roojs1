@@ -1,0 +1,29 @@
+<html><head><title>/home/alan/gitlive/roojs1/Roo/menu/ColorItem.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+/**
+ * @class Roo.menu.ColorItem
+ * @extends Roo.menu.Adapter
+ * A menu item that wraps the {@link Roo.ColorPalette} component.
+ * @constructor
+ * Creates a new ColorItem
+ * @param {Object} config Configuration options
+ */
+</span><span class="jsdoc-var">Roo.menu.ColorItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.menu.ColorItem.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.ColorPalette</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-comment">/** The Roo.ColorPalette object @type Roo.ColorPalette */
+    </span><span class="jsdoc-var">this.palette </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.component</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.relayEvents</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.palette</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-string">&quot;select&quot;</span><span class="jsdoc-syntax">]);
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.selectHandler</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'select'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.selectHandler</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.scope</span><span class="jsdoc-syntax">);
+    }
+};
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.menu.ColorItem</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.menu.Adapter</span><span class="jsdoc-syntax">);</span></code></body></html>
