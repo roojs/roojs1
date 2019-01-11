@@ -57,6 +57,7 @@ Roo.docs.template  = {
 	    !data.isStatic
 	    ) {
 	    data.isInherited = false;
+	    data.isConstructor = true;
 	    ownMethods.push(data);   // should push ctor???
 	}
 	
@@ -135,10 +136,10 @@ Roo.docs.template  = {
     method : function(member) {
       
         var output = '<a name="' + member.memberOf +'.' + member.name + '"></a>' +
-        '<div class="fixedFont"> <span class="attributes">';
+	     '<div class="fixedFont"> <span class="attributes">';
 
         if (member.isConstructor) {
-                output += "new <B>" + member.memberOf + (member.memberOf.length ? "." : "") +"</B>";
+                output += "new ";
         } else {
                 
         if (member.isPrivate) output += "&lt;private&gt; ";
@@ -416,7 +417,10 @@ Roo.docs.template  = {
             }
         );
         */
-        str = str.replace(/\n/gi, '<br/>');
+        Roo.log(str);
+	str = str.replace(/\s+\n/gi, '\n');
+        str = str.replace(/\n\n+/gi, '<p/>');
+	//str = str.replace(/\n/gi, '<br/>');
         var linkSymbol = this.linkSymbol;
         str = str.replace(/\{@link ([^} ]+) ?\}/gi,
             function(match, symbolName) {
