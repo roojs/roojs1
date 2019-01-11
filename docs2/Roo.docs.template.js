@@ -90,17 +90,22 @@ Roo.docs.template  = {
                 output += "new <B>" + member.memberOf + (member.memberOf.length ? "." : "") +"</B>";
         } else {
                 
-                if (member.isPrivate) output += "&lt;private&gt; ";
-                if (member.isInner) output += "&lt;inner&gt; ";
-                if (member.isStatic || member.singleton.length) { //|| data.comment.getTag("instanceOf").length) {
-                        output +=  member.memberOf + ".";	
-                }
+	    if (member.isPrivate) output += "&lt;private&gt; ";
+	    if (member.isInner) output += "&lt;inner&gt; ";
+	    if (member.isStatic || member.singleton.length) { //|| data.comment.getTag("instanceOf").length) {
+		    output +=  member.memberOf + ".";	
+	    }
         }
         output += '</span><b class="itemname">' + member.name + '</b>';
 				
         output += this.makeSignature(member.params);
         if (member.returns.length) {
-            output += ': ' + this.linkSymbol(member.returns );
+            output += ': ';
+		for(var i = 0;i< member.returns.length;i++) {
+			
+			output += i > 0 : ' or ' : '';
+			this.linkSymbol(item.type);
+			
         }
 					/*<for each="item" in="member.returns">
 						<if test="$item_i > 0"> or </if>
