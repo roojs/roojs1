@@ -106,7 +106,7 @@ Roo.docs.template  = {
 		    if (data.isSingleton) {
 			    return true;
 		    }
-		    if ($.isNamespace || $.isEvent || (($.memberOf != data.alias) && $.isStatic)){
+		    if ($.isNamespace || (($.memberOf != data.name) && $.isStatic)){
 			    
 			    return true;
 		    }
