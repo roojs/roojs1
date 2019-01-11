@@ -12,7 +12,7 @@
  "items" : [
   {
    "listeners" : {
-    "show" : "function (_self)\n{\n  //  if(_this.data.buttonText){\n    //    _this.acceptBtn.setText(_this.data.buttonText);\n   // }\n    \n      _this.body_ctr.el.dom.innerHTML = _this.data.source;\n     _this.body_ctr.el.dom.scrollTop = 0;\n     _this.dialog.setTitle(\"View Source: \" + this.data.fname);\n    _this.dialog.el.setStyle('zIndex', '10002');\n    \n}"
+    "show" : "function (_self)\n{\n  //  if(_this.data.buttonText){\n    //    _this.acceptBtn.setText(_this.data.buttonText);\n   // }\n    \n      _this.body_ctr.el.dom.innerHTML = _this.data.source;\n     _this.body_ctr.el.dom.scrollTop = 0;\n     _this.dialog.setTitle(\"View Source: \" + _this.data.fname);\n    _this.dialog.el.setStyle('zIndex', '10002');\n    \n}"
    },
    "xtype" : "Modal",
    "Boolean fitwindow" : true,
