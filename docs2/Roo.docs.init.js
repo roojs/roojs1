@@ -177,7 +177,7 @@ Roo.docs.init = {
         } 
         
         if (d.methods.length) {
-            Roo.docs.methodsTable.store.load( { params : { data : d.methods }});
+            Roo.docs.methodsTable.store.load( { params : { data : Roo.docs.template.methodsSort(d) }});
             Roo.docs.methodsTableContainer.show();
         }
         if (d.events.length) {
