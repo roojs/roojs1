@@ -49,7 +49,7 @@ Roo.apply(Roo.docs.ViewSource.prototype, {
           
             _this.body_ctr.el.dom.innerHTML = _this.data.source;
            _this.body_ctr.el.dom.scrollTop = 0;
-          
+           _this.dialog.setTitle("View Source: " + this.data.fname);
           _this.dialog.el.setStyle('zIndex', '10002');
           
       }
