@@ -1,6 +1,6 @@
 
 
-Roo.docs.render  = {
+Roo.docs.template  = {
 
 /*
         sorting
