@@ -572,6 +572,16 @@ Roo.docs = new Roo.XComponent({
           render : function (_self)
            {
                _this.methodsTable = this;
+           },
+          rowclass : function (_self, rowcfg)
+           {
+                   rowcfg.rowClass = rowcfg.record.json.expanded ? 'expanded' : '';
+           },
+          rowclick : function (_self, el, rowIndex, e)
+           {
+               var r = this.store.getAt(rowIndex);
+               r.json.expanded = !r.json.expanded ;
+               this.refreshRow(r);
            }
          },
          xns : Roo.bootstrap,
@@ -660,6 +670,16 @@ Roo.docs = new Roo.XComponent({
           render : function (_self)
            {
                _this.eventsTable = this;
+           },
+          rowclass : function (_self, rowcfg)
+           {
+                   rowcfg.rowClass = rowcfg.record.json.expanded ? 'expanded' : '';
+           },
+          rowclick : function (_self, el, rowIndex, e)
+           {
+               var r = this.store.getAt(rowIndex);
+               r.json.expanded = !r.json.expanded ;
+               this.refreshRow(r);
            }
          },
          xns : Roo.bootstrap,
@@ -711,7 +731,9 @@ Roo.docs = new Roo.XComponent({
            header : _this._strings['f361257612a512f9be2fdc2abfb25aef'] /* <small>Defined by</small> */,
            md : 1,
            renderer : function(v,x,r) { 
-           
+                   if (r.json.memberOf  == Roo.docs.init.currentClass) {
+                       return '';
+                   }
            
            		return 	'<small><a href="#' + r.json.memberOf + '">' + r.json.memberOf + '</a></small>';
            			

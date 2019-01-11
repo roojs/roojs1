@@ -295,7 +295,9 @@
        "items" : [
         {
          "listeners" : {
-          "render" : "function (_self)\n{\n    _this.methodsTable = this;\n}"
+          "rowclass" : "function (_self, rowcfg)\n{\n        rowcfg.rowClass = rowcfg.record.json.expanded ? 'expanded' : '';\n}",
+          "render" : "function (_self)\n{\n    _this.methodsTable = this;\n}",
+          "rowclick" : "function (_self, el, rowIndex, e)\n{\n    var r = this.store.getAt(rowIndex);\n    r.json.expanded = !r.json.expanded ;\n    this.refreshRow(r);\n}"
          },
          "xtype" : "Table",
          "Boolean rowSelection" : true,
@@ -357,7 +359,9 @@
        "items" : [
         {
          "listeners" : {
-          "render" : "function (_self)\n{\n    _this.eventsTable = this;\n}"
+          "rowclass" : "function (_self, rowcfg)\n{\n        rowcfg.rowClass = rowcfg.record.json.expanded ? 'expanded' : '';\n}",
+          "render" : "function (_self)\n{\n    _this.eventsTable = this;\n}",
+          "rowclick" : "function (_self, el, rowIndex, e)\n{\n    var r = this.store.getAt(rowIndex);\n    r.json.expanded = !r.json.expanded ;\n    this.refreshRow(r);\n}"
          },
          "xtype" : "Table",
          "Boolean rowSelection" : true,
@@ -376,7 +380,7 @@
            "String header" : "<small>Defined by</small>",
            "Number md" : 1,
            "String dataIndex" : "memberOf",
-           "$ Function renderer" : "function(v,x,r) { \n\n\n\t\treturn \t'<small><a href=\"#' + r.json.memberOf + '\">' + r.json.memberOf + '</a></small>';\n\t\t\t\n}",
+           "$ Function renderer" : "function(v,x,r) { \n        if (r.json.memberOf  == Roo.docs.init.currentClass) {\n            return '';\n        }\n\n\t\treturn \t'<small><a href=\"#' + r.json.memberOf + '\">' + r.json.memberOf + '</a></small>';\n\t\t\t\n}",
            "xtype" : "ColumnModel",
            "$ xns" : "Roo.grid",
            "* prop" : "cm[]"
