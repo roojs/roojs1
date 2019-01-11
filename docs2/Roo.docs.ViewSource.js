@@ -47,7 +47,7 @@ Roo.apply(Roo.docs.ViewSource.prototype, {
           //    _this.acceptBtn.setText(_this.data.buttonText);
          // }
           
-           
+            _this.body_ctr.el.dom.innerHTML = _this.data.source;
          
           
           _this.dialog.el.setStyle('zIndex', '10002');
