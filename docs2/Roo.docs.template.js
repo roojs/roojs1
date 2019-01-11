@@ -4,7 +4,7 @@ Roo.docs.template  = {
 
     augments : function(data)
     {
-	var symbolLink  = this.symbolLink;
+	var linkSymbol  = this.linkSymbol;
 	var output = '<div class="inheritance res-block"> <pre class="res-block-inner">';
     
 	var iblock_indent = 0;
@@ -12,7 +12,7 @@ Roo.docs.template  = {
 		function($) {  
 		    output += iblock_indent ? ('<img src="../images/default/s.gif" height="1" width="' + 
 			    iblock_indent + '"/><img src="../images/default/tree/elbow-end.gif" class="elbow"/>') : '';
-		    output += symbolLink($) + "\n"; 
+		    output += linkSymbol($) + "\n"; 
 		    iblock_indent += 20;
 		}
 	)
