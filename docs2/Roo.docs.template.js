@@ -91,7 +91,7 @@ Roo.docs.template  = {
 		
 		if (data.isSingleton) {
 		 
-		    if ($.isStatic && $.memberOf != data.name) {
+		    if ($.isStatic && $.memberOf != data.name) { // it's a singleton - can not inherit static methods.
 			return true;
 		    }
 		
