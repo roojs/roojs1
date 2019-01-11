@@ -36,7 +36,7 @@ Roo.bootstrap.Menu = function(config){
         beforeshow : true,
         /**
          * @event beforehide
-         * Fires before this menu is hidden
+         * Fires before this menu is hidden (return true to block)
          * @param {Roo.menu.Menu} this
          */
         beforehide : true,
