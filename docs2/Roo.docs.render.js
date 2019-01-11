@@ -83,9 +83,8 @@ Roo.docs.render  = {
     
     method : function(member) {
       
-        var output = '<a name="' + member.memberOf +'.' + member.name '"></a>' +
-		'<div class="fixedFont">' +
-			'<span class="attributes">';
+        var output = '<a name="' + member.memberOf +'.' + member.name + '"></a>' +
+		'<div class="fixedFont"> <span class="attributes">';
 
         if (member.isConstructor) {
                 output += "new <B>" + member.memberOf + (member.memberOf.length ? "." : "") +"</B>";
