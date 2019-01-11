@@ -23,7 +23,7 @@
     {
      "xtype" : "Container",
      "$ xns" : "Roo.bootstrap",
-     "String style" : "width: 100%;"
+     "String style" : "width: 100%;overflow:auto;"
     },
     {
      "listeners" : {
