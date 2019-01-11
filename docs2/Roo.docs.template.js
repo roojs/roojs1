@@ -26,6 +26,28 @@ Roo.docs.template  = {
 		   '</pre></div>'
        
     },
+    
+    config : function(dtag)
+    {
+	   
+	output += '<a name="'+dtag.memberOf+'-cfg-'+dtag.name+'"></a>
+			<div class="fixedFont">
+				<b  class="itemname">{+dtag.name+}</b> : {+((dtag.type) ? (new Link().toSymbol(dtag.type)) : "" )+}
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">{+resolveLinks(summarize(dtag.desc))+}</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">
+                    {+resolveLinks(dtag.desc)+}
+                    {+dtag.optvalues ? ("<BR/>Possible Values: " + dtag.optvalues.map(function(v) { return v.length ? v : "<B>Empty</B>"; }).join(", ")) : '' +}
+                </div> 
+    }
+    
 
 /*
         method sorting
