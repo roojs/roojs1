@@ -121,7 +121,11 @@ h6,
     display: none;
 }
 
-
+.left-menu-sidebar.sidebar li.treeview-menu.dropdown-toggle > .dropdown-item,
+.left-menu-sidebar.sidebar li.treeview-menu.dropdown-toggle > .treeview-menu
+{
+    display: none;
+}
 
 /* ------------------logo */
 
