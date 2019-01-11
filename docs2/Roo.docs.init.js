@@ -181,7 +181,7 @@ Roo.docs.init = {
             Roo.docs.methodsTableContainer.show();
         }
         if (d.events.length) {
-            Roo.docs.eventsTable.store.load( { params : { data : d.events}});
+            Roo.docs.eventsTable.store.load( { params : { data : d.events.sort(Roo.docs.template.makeSortby("name")}});
             Roo.docs.eventsTableContainer.show();
         }
         
