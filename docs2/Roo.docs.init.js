@@ -73,7 +73,7 @@ Roo.docs.init = {
                         c = ev;
                     }
                     if (c.cn.length) {
-                        
+                        Roo.log(ev);
                     }
                     
                     
