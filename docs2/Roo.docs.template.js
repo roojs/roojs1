@@ -175,7 +175,7 @@ Roo.docs.template  = {
             output += '<dl class="detailList"><dt class="heading">Returns:</dt>';
 	    for (var i =0; i < member.returns.length; i++) {
 		var item = member.returns[i];
-		output+= '<dd>' + this.linkSymbol( item.type ) + ' ' + item.desc</dd></dl>';
+		output+= '<dd>' + this.linkSymbol( item.type ) + ' ' + this.resolveLinks(item.desc) + '</dd></dl>';
 	    }
                     
         }
@@ -184,7 +184,8 @@ Roo.docs.template  = {
                         <dl class="detailList">
                         <dt class="heading">Returns:</dt>
                         <for each="item" in="member.returns">
-                                <dd>{+((item.type)?"<span class=\"fixedFont\">"+(new Link().toSymbol(item.type))+"</span> " : "")+} {+resolveLinks(item.desc)+}</dd>
+                                <dd>{+((item.type)?"<span class=\"fixedFont\">"+(new Link().toSymbol(item.type))+"</span> " : "")+}
+                                {+resolveLinks(item.desc)+}</dd>
                         </for>
                         </dl>
                 </if>
