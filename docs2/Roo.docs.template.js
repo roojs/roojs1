@@ -74,7 +74,7 @@ Roo.docs.template  = {
 		//if (!$.isEvent && (data.comment.getTag("instanceOf").length || data.comment.getTag("singleton").length)) {
 		if (data.isSingleton) {
 		    
-		    if ($.isStatic && $.memberOf != data.alias)) {
+		    if ($.isStatic && $.memberOf != Roo.docs.init.currentClass)) {
 					return true;
 				}
 			$.isInherited = ($.memberOf != data.alias);
