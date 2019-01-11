@@ -62,7 +62,7 @@ Roo.docs.init = {
             xns : Roo.bootstrap,
             xtype : type,
             preventDefault : true,
-            cls : type == 'NavSidebarItem' ? 'open' : '',
+          //  cls : type == 'NavSidebarItem' ? 'open' : '',
             listeners : {
                 click : (function(mi,ev,c)
                 {
