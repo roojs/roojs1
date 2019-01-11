@@ -132,7 +132,9 @@ h6,
 }
 
 
- .left-menu-sidebar.sidebar .sidebar-menu  ul.treeview-menu.show , /* the actuall menu that is shown */ 
+.left-menu-sidebar.sidebar .sidebar-menu  ul.treeview-menu.show, /* the actuall menu that is shown */
+.left-menu-sidebar.sidebar .sidebar-menu  ul.treeview-menu.show > li.treeview-menu > a.dropdown-item, /* the actuall menu that is shown */
+  
 /* expanded non-menu item */
 
 .left-menu-sidebar.sidebar .sidebar-menu ul.treeview-menu.show > li.treeview-menu.dropdown-toggle > a.dropdown-item,
