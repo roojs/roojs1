@@ -8,7 +8,7 @@
       "name" : "msg",
       "type" : "String",
       "desc" : "The text to display in a centered loading message box (defaults to 'Loading...')",
-      "memberOf" : "",
+      "memberOf" : "Roo.LoadMask",
       "values" : [
       ]
     },
@@ -24,7 +24,7 @@
       "name" : "msgCls",
       "type" : "String",
       "desc" : "The CSS class to apply to the loading message element (defaults to \"x-mask-loading\")",
-      "memberOf" : "",
+      "memberOf" : "Roo.LoadMask",
       "values" : [
       ]
     }
@@ -33,9 +33,15 @@
     {
       "name" : "disable",
       "desc" : "Disables the mask to prevent it from being displayed",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.LoadMask",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -43,9 +49,15 @@
     {
       "name" : "enable",
       "desc" : "Enables the mask so that it can be displayed",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.LoadMask",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""

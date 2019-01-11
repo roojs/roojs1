@@ -8,7 +8,7 @@
       "name" : "showDelay",
       "type" : "Number",
       "desc" : "Delay in milliseconds before the quick tip displays after the mouse enters the target element (defaults to 500)",
-      "memberOf" : "",
+      "memberOf" : "Roo.QuickTips",
       "values" : [
       ]
     },
@@ -16,7 +16,7 @@
       "name" : "maxWidth",
       "type" : "Number",
       "desc" : "The maximum width of the quick tip (defaults to 300)",
-      "memberOf" : "",
+      "memberOf" : "Roo.QuickTips",
       "values" : [
       ]
     },
@@ -24,7 +24,7 @@
       "name" : "Delay",
       "type" : "Number",
       "desc" : "in milliseconds before the quick tip hides when autoDismiss = true (defaults to 5000)",
-      "memberOf" : "",
+      "memberOf" : "Roo.QuickTips",
       "values" : [
       ]
     },
@@ -32,7 +32,7 @@
       "name" : "text",
       "type" : "String",
       "desc" : "Body text to display (defaults to '').  This can be any valid HTML markup.",
-      "memberOf" : "",
+      "memberOf" : "Roo.QuickTips",
       "values" : [
       ]
     },
@@ -40,7 +40,7 @@
       "name" : "hideOnClick",
       "type" : "Boolean",
       "desc" : "True to hide the quick tip if the user clicks anywhere in the document (defaults to true)",
-      "memberOf" : "",
+      "memberOf" : "Roo.QuickTips",
       "values" : [
       ]
     },
@@ -48,7 +48,7 @@
       "name" : "minWidth",
       "type" : "Number",
       "desc" : "The minimum width of the quick tip (defaults to 40)",
-      "memberOf" : "",
+      "memberOf" : "Roo.QuickTips",
       "values" : [
       ]
     },
@@ -56,7 +56,7 @@
       "name" : "hideDelay",
       "type" : "Number",
       "desc" : "Delay in milliseconds before the quick tip hides when autoHide = true (defaults to 200)",
-      "memberOf" : "",
+      "memberOf" : "Roo.QuickTips",
       "values" : [
       ]
     },
@@ -64,7 +64,7 @@
       "name" : "title",
       "type" : "String",
       "desc" : "Title text to display (defaults to '').  This can be any valid HTML markup.",
-      "memberOf" : "",
+      "memberOf" : "Roo.QuickTips",
       "values" : [
       ]
     },
@@ -72,7 +72,7 @@
       "name" : "cls",
       "type" : "String",
       "desc" : "A CSS class to apply to the base quick tip element (defaults to '').",
-      "memberOf" : "",
+      "memberOf" : "Roo.QuickTips",
       "values" : [
       ]
     },
@@ -80,7 +80,7 @@
       "name" : "width",
       "type" : "Number",
       "desc" : "Width in pixels of the quick tip (defaults to auto).  Width will be ignored if it exceeds the bounds of\nminWidth or maxWidth.",
-      "memberOf" : "",
+      "memberOf" : "Roo.QuickTips",
       "values" : [
       ]
     },
@@ -88,7 +88,7 @@
       "name" : "interceptTitles",
       "type" : "Boolean",
       "desc" : "True to automatically use the element's DOM title value if available (defaults to false)",
-      "memberOf" : "",
+      "memberOf" : "Roo.QuickTips",
       "values" : [
       ]
     },
@@ -96,7 +96,7 @@
       "name" : "trackMouse",
       "type" : "Boolean",
       "desc" : "True to have the quick tip follow the mouse as it moves over the target element (defaults to false)",
-      "memberOf" : "",
+      "memberOf" : "Roo.QuickTips",
       "values" : [
       ]
     },
@@ -104,7 +104,7 @@
       "name" : "True",
       "type" : "Boolean",
       "desc" : "to automatically hide the quick tip after a set period of time, regardless of the user's actions\n(defaults to true).  Used in conjunction with autoDismissDelay.",
-      "memberOf" : "",
+      "memberOf" : "Roo.QuickTips",
       "values" : [
       ]
     },
@@ -112,7 +112,7 @@
       "name" : "animate",
       "type" : "Boolean",
       "desc" : "True to turn on fade animation. Defaults to false (ClearType/scrollbar flicker issues in IE7).",
-      "memberOf" : "",
+      "memberOf" : "Roo.QuickTips",
       "values" : [
       ]
     },
@@ -120,7 +120,7 @@
       "name" : "autoHide",
       "type" : "Boolean",
       "desc" : "True to automatically hide the quick tip after the mouse exits the target element (defaults to true).\nUsed in conjunction with hideDelay.",
-      "memberOf" : "",
+      "memberOf" : "Roo.QuickTips",
       "values" : [
       ]
     }
@@ -129,9 +129,15 @@
     {
       "name" : "isEnabled",
       "desc" : "Returns true if the quick tip is enabled, else false.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.QuickTips",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -139,9 +145,15 @@
     {
       "name" : "disable",
       "desc" : "Disable this quick tip.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.QuickTips",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -149,14 +161,21 @@
     {
       "name" : "unregister",
       "desc" : "Removes this quick tip from its element and destroys it.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.QuickTips",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "el",
           "type" : "String/HTMLElement/Element",
-          "desc" : "The element from which the quick tip is to be removed."
+          "desc" : "The element from which the quick tip is to be removed.",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -164,9 +183,15 @@
     {
       "name" : "enable",
       "desc" : "Enable this quick tip.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.QuickTips",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -174,9 +199,15 @@
     {
       "name" : "init",
       "desc" : "Initialize and enable QuickTips for first use.  This should be called once before the first attempt to access\nor display QuickTips in a page.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.QuickTips",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -184,14 +215,21 @@
     {
       "name" : "register",
       "desc" : "Configures a new quick tip instance and assigns it to a target element.  The following config options\nare supported:\n<pre>\nProperty    Type                   Description\n----------  ---------------------  ------------------------------------------------------------------------\ntarget      Element/String/Array   An Element, id or array of ids that this quick tip should be tied to\n</ul>",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.QuickTips",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "config",
           "type" : "Object",
-          "desc" : "The config object"
+          "desc" : "The config object",
+          "isOptional" : false
         }
       ],
       "returns" : ""

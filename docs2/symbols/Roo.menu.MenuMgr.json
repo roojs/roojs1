@@ -9,9 +9,15 @@
     {
       "name" : "hideAll",
       "desc" : "Hides all menus that are currently visible",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.menu.MenuMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -19,14 +25,21 @@
     {
       "name" : "get",
       "desc" : "Returns a {@link Roo.menu.Menu} object",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.menu.MenuMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "menu",
           "type" : "String/Object",
-          "desc" : "The string menu id, an existing menu object reference, or a Menu config that will\nbe used to generate and return a new Menu instance."
+          "desc" : "The string menu id, an existing menu object reference, or a Menu config that will\nbe used to generate and return a new Menu instance.",
+          "isOptional" : false
         }
       ],
       "returns" : ""

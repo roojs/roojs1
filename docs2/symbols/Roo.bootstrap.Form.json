@@ -11,7 +11,7 @@
       "name" : "labelAlign",
       "type" : "String",
       "desc" : "top | left (default top)",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Form",
       "values" : [
       ]
     },
@@ -27,7 +27,7 @@
       "name" : "fileUpload",
       "type" : "Boolean",
       "desc" : "Set to true if this form is a file upload.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Form",
       "values" : [
       ]
     },
@@ -61,7 +61,7 @@
       "name" : "align",
       "type" : "String",
       "desc" : "left  | right - for navbars",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Form",
       "values" : [
       ]
     },
@@ -87,7 +87,7 @@
       "name" : "method",
       "type" : "String",
       "desc" : "GET | POST (default POST)",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Form",
       "values" : [
       ]
     },
@@ -95,7 +95,7 @@
       "name" : "errorMask",
       "type" : "Boolean",
       "desc" : "default false",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Form",
       "values" : [
         "(true",
         "false)"
@@ -121,7 +121,7 @@
       "name" : "timeout",
       "type" : "Number",
       "desc" : "Timeout for form actions in seconds (default is 30 seconds).",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Form",
       "values" : [
       ]
     },
@@ -137,7 +137,7 @@
       "name" : "loadMask",
       "type" : "Boolean",
       "desc" : "load mask when submit (default true)",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Form",
       "values" : [
       ]
     },
@@ -145,7 +145,7 @@
       "name" : "baseParams",
       "type" : "Object",
       "desc" : "Parameters to pass with all requests. e.g. baseParams: {id: '123', foo: 'bar'}.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Form",
       "values" : [
       ]
     },
@@ -169,7 +169,7 @@
       "name" : "maskBody",
       "type" : "Boolean",
       "desc" : "",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Form",
       "values" : [
       ]
     },
@@ -185,7 +185,7 @@
       "name" : "url",
       "type" : "String",
       "desc" : "The URL to use for form actions if one isn't supplied in the action options.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Form",
       "values" : [
       ]
     },
@@ -209,7 +209,7 @@
       "name" : "maskOffset",
       "type" : "Number",
       "desc" : "Default 100",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Form",
       "values" : [
       ]
     }
@@ -218,19 +218,27 @@
     {
       "name" : "doAction",
       "desc" : "Performs a predefined action (submit or load) or custom actions you define on this form.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.bootstrap.Form",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "actionName",
           "type" : "String",
-          "desc" : "The name of the action type"
+          "desc" : "The name of the action type",
+          "isOptional" : false
         },
         {
           "name" : "options",
           "type" : "Object",
-          "desc" : "(optional) The options to pass to the action.  All of the config options listed\nbelow are supported by both the submit and load actions unless otherwise noted (custom actions could also\naccept other config options):\n<pre>\nProperty          Type             Description\n----------------  ---------------  ----------------------------------------------------------------------------------\nurl               String           The url for the action (defaults to the form's url)\nmethod            String           The form method to use (defaults to the form's method, or POST if not defined)\nparams            String/Object    The params to pass (defaults to the form's baseParams, or none if not defined)\nclientValidation  Boolean          Applies to submit only.  Pass true to call form.isValid() prior to posting to\n                                   validate the form on the client (defaults to false)\n</pre>"
+          "desc" : "(optional) The options to pass to the action.  All of the config options listed\nbelow are supported by both the submit and load actions unless otherwise noted (custom actions could also\naccept other config options):\n<pre>\nProperty          Type             Description\n----------------  ---------------  ----------------------------------------------------------------------------------\nurl               String           The url for the action (defaults to the form's url)\nmethod            String           The form method to use (defaults to the form's method, or POST if not defined)\nparams            String/Object    The params to pass (defaults to the form's baseParams, or none if not defined)\nclientValidation  Boolean          Applies to submit only.  Pass true to call form.isValid() prior to posting to\n                                   validate the form on the client (defaults to false)\n</pre>",
+          "isOptional" : false
         }
       ],
       "returns" : "BasicForm"
@@ -238,14 +246,21 @@
     {
       "name" : "setValues",
       "desc" : "Set values for fields in this form in bulk.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.bootstrap.Form",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "values",
           "type" : "Array/Object",
-          "desc" : "Either an array in the form [{id:'fieldId', value:'foo'},...] or an object hash of {id: value, id2: value2}"
+          "desc" : "Either an array in the form [{id:'fieldId', value:'foo'},...] or an object hash of {id: value, id2: value2}",
+          "isOptional" : false
         }
       ],
       "returns" : "BasicForm"
@@ -253,9 +268,15 @@
     {
       "name" : "getFieldValues",
       "desc" : "Returns the fields in this form as an object with key/value pairs.\nThis differs from getValues as it calls getValue on each child item, rather than using dom data.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.bootstrap.Form",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "Object"
@@ -263,14 +284,21 @@
     {
       "name" : "markInvalid",
       "desc" : "Mark fields in this form invalid in bulk.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.bootstrap.Form",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "errors",
           "type" : "Array/Object",
-          "desc" : "Either an array in the form [{id:'fieldId', msg:'The message'},...] or an object hash of {id: msg, id2: msg2}"
+          "desc" : "Either an array in the form [{id:'fieldId', msg:'The message'},...] or an object hash of {id: msg, id2: msg2}",
+          "isOptional" : false
         }
       ],
       "returns" : "BasicForm"
@@ -278,9 +306,15 @@
     {
       "name" : "clearInvalid",
       "desc" : "Clears all invalid messages in this form.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.bootstrap.Form",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "BasicForm"
@@ -288,14 +322,21 @@
     {
       "name" : "findField",
       "desc" : "Find a Roo.form.Field in this form by id, dataIndex, name or hiddenName",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.bootstrap.Form",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "id",
           "type" : "String",
-          "desc" : "The value to search for"
+          "desc" : "The value to search for",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -303,9 +344,15 @@
     {
       "name" : "isDirty",
       "desc" : "Returns true if any fields in this form have changed since their original load.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.bootstrap.Form",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -313,9 +360,15 @@
     {
       "name" : "reset",
       "desc" : "Resets this form.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.bootstrap.Form",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "BasicForm"
@@ -323,14 +376,21 @@
     {
       "name" : "getValues",
       "desc" : "Returns the fields in this form as an object with key/value pairs. If multiple fields exist with the same name\nthey are returned as an array.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.bootstrap.Form",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "asString",
           "type" : "Boolean",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : "Object"
@@ -338,9 +398,15 @@
     {
       "name" : "isValid",
       "desc" : "Returns true if client-side validation on the form is successful.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.bootstrap.Form",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -348,9 +414,15 @@
     {
       "name" : "tooltipEl",
       "desc" : "Fetch the element to display the tooltip on.",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.bootstrap.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "Roo.Element"
@@ -358,9 +430,15 @@
     {
       "name" : "hide",
       "desc" : "Hide a component - adds 'hidden' class",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.bootstrap.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -368,9 +446,15 @@
     {
       "name" : "show",
       "desc" : "Show a component - removes 'hidden' class",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.bootstrap.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -378,9 +462,15 @@
     {
       "name" : "setVisibilityEl",
       "desc" : "Set the element that will be used to show or hide",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.bootstrap.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -388,9 +478,15 @@
     {
       "name" : "getVisibilityEl",
       "desc" : "Get the element that will be used to show or hide",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.bootstrap.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -398,9 +494,15 @@
     {
       "name" : "initEvents",
       "desc" : "Initialize Events for the element",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.bootstrap.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -408,9 +510,15 @@
     {
       "name" : "getChildContainer",
       "desc" : "Fetch the element to add children to",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.bootstrap.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "Roo.Element"
@@ -418,9 +526,15 @@
     {
       "name" : "getId",
       "desc" : "Returns the id of this component.",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "String"
@@ -428,14 +542,21 @@
     {
       "name" : "render",
       "desc" : "If this is a lazy rendering component, render it to its container element.",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "container",
           "type" : "String/HTMLElement/Element",
-          "desc" : "(optional) The element this component should be rendered into. If it is being applied to existing markup, this should be left off."
+          "desc" : "(optional) The element this component should be rendered into. If it is being applied to existing markup, this should be left off.",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -443,9 +564,15 @@
     {
       "name" : "destroy",
       "desc" : "Destroys this component by purging any event listeners, removing the component's element from the DOM,\nremoving the component from its {@link Roo.Container} (if applicable) and unregistering it from {@link Roo.ComponentMgr}.",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -453,9 +580,15 @@
     {
       "name" : "isVisible",
       "desc" : "Returns true if this component is visible.",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -463,14 +596,21 @@
     {
       "name" : "setDisabled",
       "desc" : "Convenience function for setting disabled/enabled by boolean.",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "disabled",
           "type" : "Boolean",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -478,14 +618,21 @@
     {
       "name" : "focus",
       "desc" : "Try to focus this component.",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "selectText",
           "type" : "Boolean",
-          "desc" : "True to also select the text in this component (if applicable)"
+          "desc" : "True to also select the text in this component (if applicable)",
+          "isOptional" : false
         }
       ],
       "returns" : "Roo.Component"
@@ -493,9 +640,15 @@
     {
       "name" : "enable",
       "desc" : "Enable this component.",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "Roo.Component"
@@ -503,14 +656,21 @@
     {
       "name" : "setVisible",
       "desc" : "Convenience function to hide or show this component by boolean.",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "visible",
           "type" : "Boolean",
-          "desc" : "True to show, false to hide"
+          "desc" : "True to show, false to hide",
+          "isOptional" : false
         }
       ],
       "returns" : "Roo.Component"
@@ -518,9 +678,15 @@
     {
       "name" : "disable",
       "desc" : "Disable this component.",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "Roo.Component"
@@ -528,9 +694,15 @@
     {
       "name" : "getEl",
       "desc" : "Returns the underlying {@link Roo.Element}.",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "Roo.Element"
@@ -538,9 +710,15 @@
     {
       "name" : "purgeListeners",
       "desc" : "Removes all listeners for this object",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -548,29 +726,39 @@
     {
       "name" : "on",
       "desc" : "Appends an event handler to this element (shorthand for addListener)",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "eventName",
           "type" : "String",
-          "desc" : "The type of event to listen for"
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
         },
         {
           "name" : "handler",
           "type" : "Function",
-          "desc" : "The method the event invokes"
+          "desc" : "The method the event invokes",
+          "isOptional" : false
         },
         {
           "name" : "scope",
           "type" : "Object",
-          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context."
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context.",
+          "isOptional" : false
         },
         {
           "name" : "options",
           "type" : "Object",
-          "desc" : "(optional)"
+          "desc" : "(optional)",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -578,24 +766,33 @@
     {
       "name" : "un",
       "desc" : "Removes a listener (shorthand for removeListener)",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "eventName",
           "type" : "String",
-          "desc" : "The type of event to listen for"
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
         },
         {
           "name" : "handler",
           "type" : "Function",
-          "desc" : "The handler to remove"
+          "desc" : "The handler to remove",
+          "isOptional" : false
         },
         {
           "name" : "scope",
           "type" : "Object",
-          "desc" : "(optional) The scope (this object) for the handler"
+          "desc" : "(optional) The scope (this object) for the handler",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -603,14 +800,21 @@
     {
       "name" : "addEvents",
       "desc" : "Used to define events on this Observable",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "object",
           "type" : "Object",
-          "desc" : "The object with the events defined"
+          "desc" : "The object with the events defined",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -618,14 +822,21 @@
     {
       "name" : "releaseCapture",
       "desc" : "Removes <b>all</b> added captures from the Observable.",
-      "static" : true,
-      "constructor" : false,
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "o",
           "type" : "Observable",
-          "desc" : "The Observable to release"
+          "desc" : "The Observable to release",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -633,24 +844,33 @@
     {
       "name" : "removeListener",
       "desc" : "Removes a listener",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "eventName",
           "type" : "String",
-          "desc" : "The type of event to listen for"
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
         },
         {
           "name" : "handler",
           "type" : "Function",
-          "desc" : "The handler to remove"
+          "desc" : "The handler to remove",
+          "isOptional" : false
         },
         {
           "name" : "scope",
           "type" : "Object",
-          "desc" : "(optional) The scope (this object) for the handler"
+          "desc" : "(optional) The scope (this object) for the handler",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -658,19 +878,27 @@
     {
       "name" : "fireEvent",
       "desc" : "Fires the specified event with the passed parameters (minus the event name).",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "eventName",
           "type" : "String",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "args",
           "type" : "Object...",
-          "desc" : "Variable number of parameters are passed to handlers"
+          "desc" : "Variable number of parameters are passed to handlers",
+          "isOptional" : false
         }
       ],
       "returns" : "Boolean"
@@ -678,14 +906,21 @@
     {
       "name" : "hasListener",
       "desc" : "Checks to see if this object has any listeners for a specified event",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "eventName",
           "type" : "String",
-          "desc" : "The name of the event to check for"
+          "desc" : "The name of the event to check for",
+          "isOptional" : false
         }
       ],
       "returns" : "Boolean"
@@ -693,24 +928,33 @@
     {
       "name" : "capture",
       "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
-      "static" : true,
-      "constructor" : false,
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "o",
           "type" : "Observable",
-          "desc" : "The Observable to capture"
+          "desc" : "The Observable to capture",
+          "isOptional" : false
         },
         {
           "name" : "fn",
           "type" : "Function",
-          "desc" : "The function to call"
+          "desc" : "The function to call",
+          "isOptional" : false
         },
         {
           "name" : "scope",
           "type" : "Object",
-          "desc" : "(optional) The scope (this object) for the fn"
+          "desc" : "(optional) The scope (this object) for the fn",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -718,29 +962,39 @@
     {
       "name" : "addListener",
       "desc" : "Appends an event handler to this component",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "eventName",
           "type" : "String",
-          "desc" : "The type of event to listen for"
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
         },
         {
           "name" : "handler",
           "type" : "Function",
-          "desc" : "The method the event invokes"
+          "desc" : "The method the event invokes",
+          "isOptional" : false
         },
         {
           "name" : "scope",
           "type" : "Object",
-          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context."
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context.",
+          "isOptional" : false
         },
         {
           "name" : "options",
           "type" : "Object",
-          "desc" : "(optional) An object containing handler configuration\nproperties. This may contain any of the following properties:<ul>\n<li>scope {Object} The scope in which to execute the handler function. The handler function's \"this\" context.</li>\n<li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li>\n<li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li>\n<li>buffer {Number} Causes the handler to be scheduled to run in an {@link Roo.util.DelayedTask} delayed\nby the specified number of milliseconds. If the event fires again within that time, the original\nhandler is <em>not</em> invoked, but the new handler is scheduled in its place.</li>\n</ul><br>\n<p>\n<b>Combining Options</b><br>\nUsing the options argument, it is possible to combine different types of listeners:<br>\n<br>\nA normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)\n\t\t<pre><code>\n\t\tel.on('click', this.onClick, this, {\n \t\t\tsingle: true,\n    \t\tdelay: 100,\n    \t\tforumId: 4\n\t\t});\n\t\t</code></pre>\n<p>\n<b>Attaching multiple handlers in 1 call</b><br>\nThe method also allows for a single argument to be passed which is a config object containing properties\nwhich specify multiple handlers.\n<pre><code>\n\t\tel.on({\n\t\t\t'click': {\n        \t\tfn: this.onClick,\n        \t\tscope: this,\n        \t\tdelay: 100\n    \t\t}, \n    \t\t'mouseover': {\n        \t\tfn: this.onMouseOver,\n        \t\tscope: this\n    \t\t},\n    \t\t'mouseout': {\n        \t\tfn: this.onMouseOut,\n        \t\tscope: this\n    \t\t}\n\t\t});\n\t\t</code></pre>\n<p>\nOr a shorthand syntax which passes the same scope object to all handlers:\n     \t<pre><code>\n\t\tel.on({\n\t\t\t'click': this.onClick,\n    \t\t'mouseover': this.onMouseOver,\n    \t\t'mouseout': this.onMouseOut,\n    \t\tscope: this\n\t\t});\n\t\t</code></pre>"
+          "desc" : "(optional) An object containing handler configuration\nproperties. This may contain any of the following properties:<ul>\n<li>scope {Object} The scope in which to execute the handler function. The handler function's \"this\" context.</li>\n<li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li>\n<li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li>\n<li>buffer {Number} Causes the handler to be scheduled to run in an {@link Roo.util.DelayedTask} delayed\nby the specified number of milliseconds. If the event fires again within that time, the original\nhandler is <em>not</em> invoked, but the new handler is scheduled in its place.</li>\n</ul><br>\n<p>\n<b>Combining Options</b><br>\nUsing the options argument, it is possible to combine different types of listeners:<br>\n<br>\nA normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)\n\t\t<pre><code>\n\t\tel.on('click', this.onClick, this, {\n \t\t\tsingle: true,\n    \t\tdelay: 100,\n    \t\tforumId: 4\n\t\t});\n\t\t</code></pre>\n<p>\n<b>Attaching multiple handlers in 1 call</b><br>\nThe method also allows for a single argument to be passed which is a config object containing properties\nwhich specify multiple handlers.\n<pre><code>\n\t\tel.on({\n\t\t\t'click': {\n        \t\tfn: this.onClick,\n        \t\tscope: this,\n        \t\tdelay: 100\n    \t\t}, \n    \t\t'mouseover': {\n        \t\tfn: this.onMouseOver,\n        \t\tscope: this\n    \t\t},\n    \t\t'mouseout': {\n        \t\tfn: this.onMouseOut,\n        \t\tscope: this\n    \t\t}\n\t\t});\n\t\t</code></pre>\n<p>\nOr a shorthand syntax which passes the same scope object to all handlers:\n     \t<pre><code>\n\t\tel.on({\n\t\t\t'click': this.onClick,\n    \t\t'mouseover': this.onMouseOver,\n    \t\t'mouseout': this.onMouseOut,\n    \t\tscope: this\n\t\t});\n\t\t</code></pre>",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -757,12 +1011,14 @@
         {
           "name" : "this",
           "type" : "Form",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "action",
           "type" : "Action",
-          "desc" : "The action that failed"
+          "desc" : "The action that failed",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -777,12 +1033,14 @@
         {
           "name" : "this",
           "type" : "Form",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "action",
           "type" : "Action",
-          "desc" : "The action that completed"
+          "desc" : "The action that completed",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -797,12 +1055,14 @@
         {
           "name" : "this",
           "type" : "Form",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "action",
           "type" : "Action",
-          "desc" : "The action to be performed"
+          "desc" : "The action to be performed",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -817,12 +1077,14 @@
         {
           "name" : "this",
           "type" : "Form",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "valid",
           "type" : "Boolean",
-          "desc" : "true if the form has passed client-side validation"
+          "desc" : "true if the form has passed client-side validation",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -837,7 +1099,8 @@
         {
           "name" : "this",
           "type" : "Roo.bootstrap.Component",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -852,7 +1115,8 @@
         {
           "name" : "this",
           "type" : "Roo.Component",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -867,7 +1131,8 @@
         {
           "name" : "this",
           "type" : "Roo.Component",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -882,7 +1147,8 @@
         {
           "name" : "this",
           "type" : "Roo.Component",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -897,7 +1163,8 @@
         {
           "name" : "this",
           "type" : "Roo.Component",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -912,7 +1179,8 @@
         {
           "name" : "this",
           "type" : "Roo.Component",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -927,7 +1195,8 @@
         {
           "name" : "this",
           "type" : "Roo.Component",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -942,7 +1211,8 @@
         {
           "name" : "this",
           "type" : "Roo.Component",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -957,7 +1227,8 @@
         {
           "name" : "this",
           "type" : "Roo.Component",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -972,7 +1243,8 @@
         {
           "name" : "this",
           "type" : "Roo.Component",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -987,7 +1259,8 @@
         {
           "name" : "this",
           "type" : "Roo.Component",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""

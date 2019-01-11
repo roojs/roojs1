@@ -9,14 +9,21 @@
     {
       "name" : "register",
       "desc" : "Registers new overflow element(s) to auto scroll",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.dd.ScrollManager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "el",
           "type" : "String/HTMLElement/Element/Array",
-          "desc" : "The id of or the element to be scrolled or an array of either"
+          "desc" : "The id of or the element to be scrolled or an array of either",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -24,14 +31,21 @@
     {
       "name" : "unregister",
       "desc" : "Unregisters overflow element(s) so they are no longer scrolled",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.dd.ScrollManager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "el",
           "type" : "String/HTMLElement/Element/Array",
-          "desc" : "The id of or the element to be removed or an array of either"
+          "desc" : "The id of or the element to be removed or an array of either",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -39,9 +53,15 @@
     {
       "name" : "refreshCache",
       "desc" : "Manually trigger a cache refresh.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.dd.ScrollManager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""

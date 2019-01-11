@@ -9,9 +9,15 @@
     {
       "name" : "currentEl",
       "desc" : "",
-      "static" : true,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.bootstrap.Tooltip",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""

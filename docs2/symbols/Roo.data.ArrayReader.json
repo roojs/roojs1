@@ -9,7 +9,7 @@
       "name" : "fields",
       "type" : "Array",
       "desc" : "Array of field definition objects",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.ArrayReader",
       "values" : [
       ]
     },
@@ -17,7 +17,7 @@
       "name" : "id",
       "type" : "String",
       "desc" : "(optional) The subscript within row Array that provides an ID for the Record",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.ArrayReader",
       "values" : [
       ]
     }
@@ -26,14 +26,21 @@
     {
       "name" : "readRecords",
       "desc" : "Create a data block containing Roo.data.Records from an XML document.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.data.ArrayReader",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "o",
           "type" : "Object",
-          "desc" : "An Array of row objects which represents the dataset."
+          "desc" : "An Array of row objects which represents the dataset.",
+          "isOptional" : false
         }
       ],
       "returns" : "Object"
@@ -41,14 +48,21 @@
     {
       "name" : "newRow",
       "desc" : "Create an empty record",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.data.DataReader",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "data",
           "type" : "Object",
-          "desc" : "(optional) - overlay some values"
+          "desc" : "(optional) - overlay some values",
+          "isOptional" : false
         }
       ],
       "returns" : "Roo.data.Record"

@@ -9,14 +9,21 @@
     {
       "name" : "clear",
       "desc" : "Clears a value from the state",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.state.Provider",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "name",
           "type" : "String",
-          "desc" : "The key name"
+          "desc" : "The key name",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -24,14 +31,21 @@
     {
       "name" : "decodeValue",
       "desc" : "Decodes a string previously encoded with {@link #encodeValue}.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.state.Provider",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "value",
           "type" : "String",
-          "desc" : "The value to decode"
+          "desc" : "The value to decode",
+          "isOptional" : false
         }
       ],
       "returns" : "Mixed"
@@ -39,19 +53,27 @@
     {
       "name" : "get",
       "desc" : "Returns the current value for a key",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.state.Provider",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "name",
           "type" : "String",
-          "desc" : "The key name"
+          "desc" : "The key name",
+          "isOptional" : false
         },
         {
           "name" : "defaultValue",
           "type" : "Mixed",
-          "desc" : "A default value to return if the key's value is not found"
+          "desc" : "A default value to return if the key's value is not found",
+          "isOptional" : false
         }
       ],
       "returns" : "Mixed"
@@ -59,19 +81,27 @@
     {
       "name" : "set",
       "desc" : "Sets the value for a key",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.state.Provider",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "name",
           "type" : "String",
-          "desc" : "The key name"
+          "desc" : "The key name",
+          "isOptional" : false
         },
         {
           "name" : "value",
           "type" : "Mixed",
-          "desc" : "The value to set"
+          "desc" : "The value to set",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -79,14 +109,21 @@
     {
       "name" : "encodeValue",
       "desc" : "Encodes a value including type information.  Decode with {@link #decodeValue}.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.state.Provider",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "value",
           "type" : "Mixed",
-          "desc" : "The value to encode"
+          "desc" : "The value to encode",
+          "isOptional" : false
         }
       ],
       "returns" : "String"
@@ -103,17 +140,20 @@
         {
           "name" : "this",
           "type" : "Provider",
-          "desc" : "This state provider"
+          "desc" : "This state provider",
+          "isOptional" : false
         },
         {
           "name" : "key",
           "type" : "String",
-          "desc" : "The state key which was changed"
+          "desc" : "The state key which was changed",
+          "isOptional" : false
         },
         {
           "name" : "value",
           "type" : "String",
-          "desc" : "The encoded value for the state"
+          "desc" : "The encoded value for the state",
+          "isOptional" : false
         }
       ],
       "returns" : ""

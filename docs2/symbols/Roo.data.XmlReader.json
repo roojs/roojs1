@@ -9,7 +9,7 @@
       "name" : "id",
       "type" : "String",
       "desc" : "The DomQuery path relative from the record element to the element that contains\na record identifier value.",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.XmlReader",
       "values" : [
       ]
     },
@@ -17,7 +17,7 @@
       "name" : "success",
       "type" : "String",
       "desc" : "The DomQuery path to the success attribute used by forms.",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.XmlReader",
       "values" : [
       ]
     },
@@ -25,7 +25,7 @@
       "name" : "record",
       "type" : "String",
       "desc" : "The DomQuery path to the repeated element which contains record information.",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.XmlReader",
       "values" : [
       ]
     },
@@ -33,7 +33,7 @@
       "name" : "totalRecords",
       "type" : "String",
       "desc" : "The DomQuery path from which to retrieve the total number of records\nin the dataset. This is only needed if the whole dataset is not passed in one go, but is being\npaged from the remote server.",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.XmlReader",
       "values" : [
       ]
     }
@@ -42,14 +42,21 @@
     {
       "name" : "read",
       "desc" : "This method is only used by a DataProxy which has retrieved data from a remote server.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.data.XmlReader",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "response",
           "type" : "Object",
-          "desc" : "The XHR object which contains the parsed XML document.  The response is expected\nto contain a method called 'responseXML' that returns an XML document object."
+          "desc" : "The XHR object which contains the parsed XML document.  The response is expected\nto contain a method called 'responseXML' that returns an XML document object.",
+          "isOptional" : false
         }
       ],
       "returns" : "Object"
@@ -57,14 +64,21 @@
     {
       "name" : "readRecords",
       "desc" : "Create a data block containing Roo.data.Records from an XML document.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.data.XmlReader",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "doc",
           "type" : "Object",
-          "desc" : "A parsed XML document."
+          "desc" : "A parsed XML document.",
+          "isOptional" : false
         }
       ],
       "returns" : "Object"
@@ -72,14 +86,21 @@
     {
       "name" : "newRow",
       "desc" : "Create an empty record",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.data.DataReader",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "data",
           "type" : "Object",
-          "desc" : "(optional) - overlay some values"
+          "desc" : "(optional) - overlay some values",
+          "isOptional" : false
         }
       ],
       "returns" : "Roo.data.Record"

@@ -9,14 +9,21 @@
     {
       "name" : "bringToFront",
       "desc" : "Brings the specified dialog to the front",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.DialogManager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "dlg",
           "type" : "String/Object",
-          "desc" : "The id of the dialog or a dialog"
+          "desc" : "The id of the dialog or a dialog",
+          "isOptional" : false
         }
       ],
       "returns" : "Roo.BasicDialog"
@@ -24,14 +31,21 @@
     {
       "name" : "sendToBack",
       "desc" : "Sends the specified dialog to the back",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.DialogManager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "dlg",
           "type" : "String/Object",
-          "desc" : "The id of the dialog or a dialog"
+          "desc" : "The id of the dialog or a dialog",
+          "isOptional" : false
         }
       ],
       "returns" : "Roo.BasicDialog"
@@ -39,9 +53,15 @@
     {
       "name" : "hideAll",
       "desc" : "Hides all dialogs",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.DialogManager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -49,14 +69,21 @@
     {
       "name" : "get",
       "desc" : "Gets a registered dialog by id",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.DialogManager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "id",
           "type" : "String/Object",
-          "desc" : "The id of the dialog or a dialog"
+          "desc" : "The id of the dialog or a dialog",
+          "isOptional" : false
         }
       ],
       "returns" : "Roo.BasicDialog"

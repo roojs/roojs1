@@ -9,24 +9,33 @@
     {
       "name" : "onAvailable",
       "desc" : "Registers a function that will be called when a specified component is added to ComponentMgr",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.ComponentMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "id",
           "type" : "String",
-          "desc" : "The component id"
+          "desc" : "The component id",
+          "isOptional" : false
         },
         {
           "name" : "fn",
           "type" : "Funtction",
-          "desc" : "The callback function"
+          "desc" : "The callback function",
+          "isOptional" : false
         },
         {
           "name" : "scope",
           "type" : "Object",
-          "desc" : "The scope of the callback"
+          "desc" : "The scope of the callback",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -34,14 +43,21 @@
     {
       "name" : "get",
       "desc" : "Returns a component by id",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.ComponentMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "id",
           "type" : "String",
-          "desc" : "The component id"
+          "desc" : "The component id",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -49,14 +65,21 @@
     {
       "name" : "register",
       "desc" : "Registers a component.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.ComponentMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "c",
           "type" : "Roo.Component",
-          "desc" : "The component"
+          "desc" : "The component",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -64,14 +87,21 @@
     {
       "name" : "unregister",
       "desc" : "Unregisters a component.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.ComponentMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "c",
           "type" : "Roo.Component",
-          "desc" : "The component"
+          "desc" : "The component",
+          "isOptional" : false
         }
       ],
       "returns" : ""

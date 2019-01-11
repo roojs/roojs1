@@ -9,24 +9,33 @@
     {
       "name" : "selectNumber",
       "desc" : "Selects the value of a node, parsing integers and floats.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.DomQuery",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "selector",
           "type" : "String",
-          "desc" : "The selector/xpath query"
+          "desc" : "The selector/xpath query",
+          "isOptional" : false
         },
         {
           "name" : "root",
           "type" : "Node",
-          "desc" : "(optional) The start of the query (defaults to document)."
+          "desc" : "(optional) The start of the query (defaults to document).",
+          "isOptional" : false
         },
         {
           "name" : "defaultValue",
           "type" : "Number",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : "Number"
@@ -34,19 +43,27 @@
     {
       "name" : "is",
       "desc" : "Returns true if the passed element(s) match the passed simple selector (e.g. div.some-class or span:first-child)",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.DomQuery",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "el",
           "type" : "String/HTMLElement/Array",
-          "desc" : "An element id, element or array of elements"
+          "desc" : "An element id, element or array of elements",
+          "isOptional" : false
         },
         {
           "name" : "selector",
           "type" : "String",
-          "desc" : "The simple selector to test"
+          "desc" : "The simple selector to test",
+          "isOptional" : false
         }
       ],
       "returns" : "Boolean"
@@ -54,24 +71,33 @@
     {
       "name" : "selectValue",
       "desc" : "Selects the value of a node, optionally replacing null with the defaultValue.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.DomQuery",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "selector",
           "type" : "String",
-          "desc" : "The selector/xpath query"
+          "desc" : "The selector/xpath query",
+          "isOptional" : false
         },
         {
           "name" : "root",
           "type" : "Node",
-          "desc" : "(optional) The start of the query (defaults to document)."
+          "desc" : "(optional) The start of the query (defaults to document).",
+          "isOptional" : false
         },
         {
           "name" : "defaultValue",
           "type" : "String",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -79,24 +105,33 @@
     {
       "name" : "filter",
       "desc" : "Filters an array of elements to only include matches of a simple selector (e.g. div.some-class or span:first-child)",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.DomQuery",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "el",
           "type" : "Array",
-          "desc" : "An array of elements to filter"
+          "desc" : "An array of elements to filter",
+          "isOptional" : false
         },
         {
           "name" : "selector",
           "type" : "String",
-          "desc" : "The simple selector to test"
+          "desc" : "The simple selector to test",
+          "isOptional" : false
         },
         {
           "name" : "nonMatches",
           "type" : "Boolean",
-          "desc" : "If true, it returns the elements that DON'T match\nthe selector instead of the ones that match"
+          "desc" : "If true, it returns the elements that DON'T match\nthe selector instead of the ones that match",
+          "isOptional" : false
         }
       ],
       "returns" : "Array"
@@ -104,19 +139,27 @@
     {
       "name" : "select",
       "desc" : "Selects a group of elements.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.DomQuery",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "selector",
           "type" : "String",
-          "desc" : "The selector/xpath query (can be a comma separated list of selectors)"
+          "desc" : "The selector/xpath query (can be a comma separated list of selectors)",
+          "isOptional" : false
         },
         {
           "name" : "root",
           "type" : "Node",
-          "desc" : "(optional) The start of the query (defaults to document)."
+          "desc" : "(optional) The start of the query (defaults to document).",
+          "isOptional" : false
         }
       ],
       "returns" : "Array"
@@ -124,19 +167,27 @@
     {
       "name" : "selectNode",
       "desc" : "Selects a single element.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.DomQuery",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "selector",
           "type" : "String",
-          "desc" : "The selector/xpath query"
+          "desc" : "The selector/xpath query",
+          "isOptional" : false
         },
         {
           "name" : "root",
           "type" : "Node",
-          "desc" : "(optional) The start of the query (defaults to document)."
+          "desc" : "(optional) The start of the query (defaults to document).",
+          "isOptional" : false
         }
       ],
       "returns" : "Element"
@@ -144,19 +195,27 @@
     {
       "name" : "compile",
       "desc" : "Compiles a selector/xpath query into a reusable function. The returned function\ntakes one parameter \"root\" (optional), which is the context node from where the query should start.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.DomQuery",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "selector",
           "type" : "String",
-          "desc" : "The selector/xpath query"
+          "desc" : "The selector/xpath query",
+          "isOptional" : false
         },
         {
           "name" : "type",
           "type" : "String",
-          "desc" : "(optional) Either \"select\" (the default) or \"simple\" for a simple selector match"
+          "desc" : "(optional) Either \"select\" (the default) or \"simple\" for a simple selector match",
+          "isOptional" : false
         }
       ],
       "returns" : "Function"

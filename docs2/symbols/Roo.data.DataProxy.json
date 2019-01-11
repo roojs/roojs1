@@ -18,17 +18,20 @@
         {
           "name" : "This",
           "type" : "Object",
-          "desc" : "DataProxy object."
+          "desc" : "DataProxy object.",
+          "isOptional" : false
         },
         {
           "name" : "o",
           "type" : "Object",
-          "desc" : "The data object."
+          "desc" : "The data object.",
+          "isOptional" : false
         },
         {
           "name" : "arg",
           "type" : "Object",
-          "desc" : "The callback argument object passed to the load function."
+          "desc" : "The callback argument object passed to the load function.",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -43,12 +46,14 @@
         {
           "name" : "This",
           "type" : "Object",
-          "desc" : "DataProxy object."
+          "desc" : "DataProxy object.",
+          "isOptional" : false
         },
         {
           "name" : "params",
           "type" : "Object",
-          "desc" : "The params parameter to the load function."
+          "desc" : "The params parameter to the load function.",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -63,22 +68,26 @@
         {
           "name" : "This",
           "type" : "Object",
-          "desc" : "DataProxy object."
+          "desc" : "DataProxy object.",
+          "isOptional" : false
         },
         {
           "name" : "o",
           "type" : "Object",
-          "desc" : "The data object."
+          "desc" : "The data object.",
+          "isOptional" : false
         },
         {
           "name" : "arg",
           "type" : "Object",
-          "desc" : "The callback argument object passed to the load function."
+          "desc" : "The callback argument object passed to the load function.",
+          "isOptional" : false
         },
         {
           "name" : "e",
           "type" : "Object",
-          "desc" : "The Exception."
+          "desc" : "The Exception.",
+          "isOptional" : false
         }
       ],
       "returns" : ""

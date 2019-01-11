@@ -8,7 +8,7 @@
       "name" : "columns",
       "type" : "Object",
       "desc" : "Including width, header, renderer, cls, dataIndex",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.ColumnTree",
       "values" : [
       ]
     },
@@ -16,7 +16,7 @@
       "name" : "borderWidth",
       "type" : "int",
       "desc" : "compined right/left border allowance",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.ColumnTree",
       "values" : [
       ]
     }
@@ -34,12 +34,14 @@
         {
           "name" : "w",
           "type" : "int",
-          "desc" : "Width"
+          "desc" : "Width",
+          "isOptional" : false
         },
         {
           "name" : "h",
           "type" : "int",
-          "desc" : "Height"
+          "desc" : "Height",
+          "isOptional" : false
         }
       ],
       "returns" : ""

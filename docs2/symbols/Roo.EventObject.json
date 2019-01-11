@@ -9,9 +9,15 @@
     {
       "name" : "getPageX",
       "desc" : "Gets the x coordinate of the event.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.EventObject",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "Number"
@@ -19,9 +25,15 @@
     {
       "name" : "getPageY",
       "desc" : "Gets the y coordinate of the event.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.EventObject",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "Number"
@@ -29,9 +41,15 @@
     {
       "name" : "getTime",
       "desc" : "Gets the time of the event.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.EventObject",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "Number"
@@ -39,9 +57,15 @@
     {
       "name" : "getXY",
       "desc" : "Gets the page coordinates of the event.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.EventObject",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "Array"
@@ -49,9 +73,15 @@
     {
       "name" : "getRelatedTarget",
       "desc" : "Gets the related target.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.EventObject",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "HTMLElement"
@@ -59,9 +89,15 @@
     {
       "name" : "getWheelDelta",
       "desc" : "Normalizes mouse wheel delta across browsers",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.EventObject",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "Number"
@@ -69,9 +105,15 @@
     {
       "name" : "stopPropagation",
       "desc" : "Cancels bubbling of the event.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.EventObject",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -79,9 +121,15 @@
     {
       "name" : "stopEvent",
       "desc" : "Stop the event (preventDefault and stopPropagation)",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.EventObject",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -89,19 +137,27 @@
     {
       "name" : "within",
       "desc" : "Returns true if the target of this event equals el or is a child of el",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.EventObject",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "el",
           "type" : "String/HTMLElement/Element",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "related",
           "type" : "Boolean",
-          "desc" : "(optional) true to test if the related target is within el instead of the target"
+          "desc" : "(optional) true to test if the related target is within el instead of the target",
+          "isOptional" : false
         }
       ],
       "returns" : "Boolean"
@@ -109,9 +165,15 @@
     {
       "name" : "hasModifier",
       "desc" : "Returns true if the control, meta, shift or alt key was pressed during this event.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.EventObject",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "Boolean"
@@ -119,24 +181,33 @@
     {
       "name" : "getTarget",
       "desc" : "Gets the target for the event.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.EventObject",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "selector",
           "type" : "String",
-          "desc" : "(optional) A simple selector to filter the target or look for an ancestor of the target"
+          "desc" : "(optional) A simple selector to filter the target or look for an ancestor of the target",
+          "isOptional" : false
         },
         {
           "name" : "maxDepth",
           "type" : "Number/String/HTMLElement/Element",
-          "desc" : "(optional) The max depth to\n                search as a number or element (defaults to 10 || document.body)"
+          "desc" : "(optional) The max depth to\n                search as a number or element (defaults to 10 || document.body)",
+          "isOptional" : false
         },
         {
           "name" : "returnEl",
           "type" : "Boolean",
-          "desc" : "(optional) True to return a Roo.Element object instead of DOM node"
+          "desc" : "(optional) True to return a Roo.Element object instead of DOM node",
+          "isOptional" : false
         }
       ],
       "returns" : "HTMLelement"
@@ -144,9 +215,15 @@
     {
       "name" : "preventDefault",
       "desc" : "Prevents the browsers default handling of the event.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.EventObject",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -154,9 +231,15 @@
     {
       "name" : "getCharCode",
       "desc" : "Gets the key code for the event.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.EventObject",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "Number"
@@ -164,9 +247,15 @@
     {
       "name" : "getKey",
       "desc" : "Returns a normalized keyCode for the event.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.EventObject",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "Number"

@@ -9,9 +9,15 @@
     {
       "name" : "getProvider",
       "desc" : "Gets the currently configured state provider",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.state.Manager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "Provider"
@@ -19,14 +25,21 @@
     {
       "name" : "clear",
       "desc" : "Clears a value from the state",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.state.Manager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "name",
           "type" : "String",
-          "desc" : "The key name"
+          "desc" : "The key name",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -34,19 +47,27 @@
     {
       "name" : "get",
       "desc" : "Returns the current value for a key",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.state.Manager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "name",
           "type" : "String",
-          "desc" : "The key name"
+          "desc" : "The key name",
+          "isOptional" : false
         },
         {
           "name" : "defaultValue",
           "type" : "Mixed",
-          "desc" : "The default value to return if the key lookup does not match"
+          "desc" : "The default value to return if the key lookup does not match",
+          "isOptional" : false
         }
       ],
       "returns" : "Mixed"
@@ -54,19 +75,27 @@
     {
       "name" : "set",
       "desc" : "Sets the value for a key",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.state.Manager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "name",
           "type" : "String",
-          "desc" : "The key name"
+          "desc" : "The key name",
+          "isOptional" : false
         },
         {
           "name" : "value",
           "type" : "Mixed",
-          "desc" : "The state data"
+          "desc" : "The state data",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -74,14 +103,21 @@
     {
       "name" : "setProvider",
       "desc" : "Configures the default state provider for your application",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.state.Manager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "stateProvider",
           "type" : "Provider",
-          "desc" : "The state provider to set"
+          "desc" : "The state provider to set",
+          "isOptional" : false
         }
       ],
       "returns" : ""

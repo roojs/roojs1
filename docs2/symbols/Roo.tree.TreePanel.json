@@ -10,7 +10,7 @@
       "name" : "editor",
       "type" : "Object|Roo.tree.TreeEditor",
       "desc" : "The TreeEditor or xtype data to display when clicked.",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "values" : [
       ]
     },
@@ -26,7 +26,7 @@
       "name" : "singleExpand",
       "type" : "Boolean",
       "desc" : "true if only 1 node per branch may be expanded",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "values" : [
       ]
     },
@@ -34,7 +34,7 @@
       "name" : "ddAppendOnly",
       "type" : "String",
       "desc" : "True if the tree should only allow append drops (use for trees which are sorted)",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "values" : [
       ]
     },
@@ -42,7 +42,7 @@
       "name" : "dragConfig",
       "type" : "Object",
       "desc" : "Custom config to pass to the {@link Roo.tree.TreeDragZone} instance",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "values" : [
       ]
     },
@@ -50,7 +50,7 @@
       "name" : "enableDrop",
       "type" : "Boolean",
       "desc" : "true to enable just drop",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "values" : [
       ]
     },
@@ -58,7 +58,7 @@
       "name" : "hlColor",
       "type" : "String",
       "desc" : "The color of the node highlight (defaults to C3DAF9)",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "values" : [
       ]
     },
@@ -66,7 +66,7 @@
       "name" : "rendererTip",
       "type" : "Function",
       "desc" : "DEPRECATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes hovertip to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "values" : [
       ]
     },
@@ -74,7 +74,7 @@
       "name" : "enableDD",
       "type" : "Boolean",
       "desc" : "true to enable drag and drop",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "values" : [
       ]
     },
@@ -82,7 +82,7 @@
       "name" : "hlDrop",
       "type" : "Boolean",
       "desc" : "false to disable node highlight on drop (defaults to the value of Roo.enableFx)",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "values" : [
       ]
     },
@@ -90,7 +90,7 @@
       "name" : "renderer",
       "type" : "Function",
       "desc" : "DEPRECATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes. to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "values" : [
       ]
     },
@@ -98,7 +98,7 @@
       "name" : "rootVisible",
       "type" : "Boolean",
       "desc" : "false to hide the root node (defaults to true)",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "values" : [
       ]
     },
@@ -106,7 +106,7 @@
       "name" : "enableDrag",
       "type" : "Boolean",
       "desc" : "true to enable just drag",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "values" : [
       ]
     },
@@ -114,7 +114,7 @@
       "name" : "ddGroup",
       "type" : "String",
       "desc" : "The DD group this TreePanel belongs to",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "values" : [
       ]
     },
@@ -122,7 +122,7 @@
       "name" : "lines",
       "type" : "Boolean",
       "desc" : "false to disable tree lines (defaults to true)",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "values" : [
       ]
     },
@@ -130,7 +130,7 @@
       "name" : "dropConfig",
       "type" : "Object",
       "desc" : "Custom config to pass to the {@link Roo.tree.TreeDropZone} instance",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "values" : [
       ]
     },
@@ -138,7 +138,7 @@
       "name" : "selModel",
       "type" : "Boolean",
       "desc" : "A tree selection model to use with this TreePanel (defaults to a {@link Roo.tree.DefaultSelectionModel})",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "values" : [
       ]
     },
@@ -146,7 +146,7 @@
       "name" : "loader",
       "type" : "Boolean",
       "desc" : "A TreeLoader for use with this TreePanel",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "values" : [
       ]
     },
@@ -154,7 +154,7 @@
       "name" : "containerScroll",
       "type" : "Boolean",
       "desc" : "true to register this container with ScrollManager",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "values" : [
       ]
     },
@@ -162,7 +162,7 @@
       "name" : "ddScroll",
       "type" : "Boolean",
       "desc" : "true to enable YUI body scrolling",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "values" : [
       ]
     },
@@ -170,7 +170,7 @@
       "name" : "animate",
       "type" : "Boolean",
       "desc" : "true to enable animated expand/collapse (defaults to the value of Roo.enableFx)",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "values" : [
       ]
     },
@@ -178,7 +178,7 @@
       "name" : "pathSeparator",
       "type" : "String",
       "desc" : "The token used to separate sub-paths in path strings (defaults to '/')",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "values" : [
       ]
     }
@@ -187,9 +187,15 @@
     {
       "name" : "getLoader",
       "desc" : "Returns the default TreeLoader for this TreePanel",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.tree.TreePanel",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -197,9 +203,15 @@
     {
       "name" : "render",
       "desc" : "Trigger rendering of this TreePanel",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.tree.TreePanel",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -207,9 +219,15 @@
     {
       "name" : "getSelectionModel",
       "desc" : "Returns the selection model used by this TreePanel",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.tree.TreePanel",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -217,24 +235,33 @@
     {
       "name" : "expandPath",
       "desc" : "Expands a specified path in this TreePanel. A path can be retrieved from a node with {@link Roo.data.Node#getPath}",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.tree.TreePanel",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "path",
           "type" : "String",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "attr",
           "type" : "String",
-          "desc" : "(optional) The attribute used in the path (see {@link Roo.data.Node#getPath} for more info)"
+          "desc" : "(optional) The attribute used in the path (see {@link Roo.data.Node#getPath} for more info)",
+          "isOptional" : false
         },
         {
           "name" : "callback",
           "type" : "Function",
-          "desc" : "(optional) The callback to call when the expand is complete. The callback will be called with\n(bSuccess, oLastNode) where bSuccess is if the expand was successful and oLastNode is the last node that was expanded."
+          "desc" : "(optional) The callback to call when the expand is complete. The callback will be called with\n(bSuccess, oLastNode) where bSuccess is if the expand was successful and oLastNode is the last node that was expanded.",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -242,9 +269,15 @@
     {
       "name" : "expandAll",
       "desc" : "Expand all nodes",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.tree.TreePanel",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -252,19 +285,27 @@
     {
       "name" : "getChecked",
       "desc" : "Retrieve an array of checked nodes, or an array of a specific attribute of checked nodes (e.g. \"id\")",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.tree.TreePanel",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "attribute",
           "type" : "String",
-          "desc" : "(optional) Defaults to null (return the actual nodes)"
+          "desc" : "(optional) Defaults to null (return the actual nodes)",
+          "isOptional" : false
         },
         {
           "name" : "startNode",
           "type" : "TreeNode",
-          "desc" : "(optional) The node to start from, defaults to the root"
+          "desc" : "(optional) The node to start from, defaults to the root",
+          "isOptional" : false
         }
       ],
       "returns" : "Array"
@@ -272,24 +313,33 @@
     {
       "name" : "selectPath",
       "desc" : "Selects the node in this tree at the specified path. A path can be retrieved from a node with {@link Roo.data.Node#getPath}",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.tree.TreePanel",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "path",
           "type" : "String",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "attr",
           "type" : "String",
-          "desc" : "(optional) The attribute used in the path (see {@link Roo.data.Node#getPath} for more info)"
+          "desc" : "(optional) The attribute used in the path (see {@link Roo.data.Node#getPath} for more info)",
+          "isOptional" : false
         },
         {
           "name" : "callback",
           "type" : "Function",
-          "desc" : "(optional) The callback to call when the selection is complete. The callback will be called with\n(bSuccess, oSelNode) where bSuccess is if the selection was successful and oSelNode is the selected node."
+          "desc" : "(optional) The callback to call when the selection is complete. The callback will be called with\n(bSuccess, oSelNode) where bSuccess is if the selection was successful and oSelNode is the selected node.",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -297,9 +347,15 @@
     {
       "name" : "getEl",
       "desc" : "Returns the container element for this TreePanel",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.tree.TreePanel",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -307,9 +363,15 @@
     {
       "name" : "collapseAll",
       "desc" : "Collapse all nodes",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.tree.TreePanel",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -317,14 +379,21 @@
     {
       "name" : "setRootNode",
       "desc" : "Sets the root node for this tree.",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.data.Tree",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "node",
           "type" : "Node",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : "Node"
@@ -332,9 +401,15 @@
     {
       "name" : "getRootNode",
       "desc" : "Returns the root node for this tree.",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.data.Tree",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "Node"
@@ -342,14 +417,21 @@
     {
       "name" : "getNodeById",
       "desc" : "Gets a node in this tree by its id.",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.data.Tree",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "id",
           "type" : "String",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : "Node"
@@ -357,9 +439,15 @@
     {
       "name" : "purgeListeners",
       "desc" : "Removes all listeners for this object",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -367,29 +455,39 @@
     {
       "name" : "on",
       "desc" : "Appends an event handler to this element (shorthand for addListener)",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "eventName",
           "type" : "String",
-          "desc" : "The type of event to listen for"
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
         },
         {
           "name" : "handler",
           "type" : "Function",
-          "desc" : "The method the event invokes"
+          "desc" : "The method the event invokes",
+          "isOptional" : false
         },
         {
           "name" : "scope",
           "type" : "Object",
-          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context."
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context.",
+          "isOptional" : false
         },
         {
           "name" : "options",
           "type" : "Object",
-          "desc" : "(optional)"
+          "desc" : "(optional)",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -397,24 +495,33 @@
     {
       "name" : "un",
       "desc" : "Removes a listener (shorthand for removeListener)",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "eventName",
           "type" : "String",
-          "desc" : "The type of event to listen for"
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
         },
         {
           "name" : "handler",
           "type" : "Function",
-          "desc" : "The handler to remove"
+          "desc" : "The handler to remove",
+          "isOptional" : false
         },
         {
           "name" : "scope",
           "type" : "Object",
-          "desc" : "(optional) The scope (this object) for the handler"
+          "desc" : "(optional) The scope (this object) for the handler",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -422,14 +529,21 @@
     {
       "name" : "addEvents",
       "desc" : "Used to define events on this Observable",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "object",
           "type" : "Object",
-          "desc" : "The object with the events defined"
+          "desc" : "The object with the events defined",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -437,14 +551,21 @@
     {
       "name" : "releaseCapture",
       "desc" : "Removes <b>all</b> added captures from the Observable.",
-      "static" : true,
-      "constructor" : false,
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "o",
           "type" : "Observable",
-          "desc" : "The Observable to release"
+          "desc" : "The Observable to release",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -452,24 +573,33 @@
     {
       "name" : "removeListener",
       "desc" : "Removes a listener",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "eventName",
           "type" : "String",
-          "desc" : "The type of event to listen for"
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
         },
         {
           "name" : "handler",
           "type" : "Function",
-          "desc" : "The handler to remove"
+          "desc" : "The handler to remove",
+          "isOptional" : false
         },
         {
           "name" : "scope",
           "type" : "Object",
-          "desc" : "(optional) The scope (this object) for the handler"
+          "desc" : "(optional) The scope (this object) for the handler",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -477,19 +607,27 @@
     {
       "name" : "fireEvent",
       "desc" : "Fires the specified event with the passed parameters (minus the event name).",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "eventName",
           "type" : "String",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "args",
           "type" : "Object...",
-          "desc" : "Variable number of parameters are passed to handlers"
+          "desc" : "Variable number of parameters are passed to handlers",
+          "isOptional" : false
         }
       ],
       "returns" : "Boolean"
@@ -497,14 +635,21 @@
     {
       "name" : "hasListener",
       "desc" : "Checks to see if this object has any listeners for a specified event",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "eventName",
           "type" : "String",
-          "desc" : "The name of the event to check for"
+          "desc" : "The name of the event to check for",
+          "isOptional" : false
         }
       ],
       "returns" : "Boolean"
@@ -512,24 +657,33 @@
     {
       "name" : "capture",
       "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
-      "static" : true,
-      "constructor" : false,
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "o",
           "type" : "Observable",
-          "desc" : "The Observable to capture"
+          "desc" : "The Observable to capture",
+          "isOptional" : false
         },
         {
           "name" : "fn",
           "type" : "Function",
-          "desc" : "The function to call"
+          "desc" : "The function to call",
+          "isOptional" : false
         },
         {
           "name" : "scope",
           "type" : "Object",
-          "desc" : "(optional) The scope (this object) for the fn"
+          "desc" : "(optional) The scope (this object) for the fn",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -537,29 +691,39 @@
     {
       "name" : "addListener",
       "desc" : "Appends an event handler to this component",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "eventName",
           "type" : "String",
-          "desc" : "The type of event to listen for"
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
         },
         {
           "name" : "handler",
           "type" : "Function",
-          "desc" : "The method the event invokes"
+          "desc" : "The method the event invokes",
+          "isOptional" : false
         },
         {
           "name" : "scope",
           "type" : "Object",
-          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context."
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context.",
+          "isOptional" : false
         },
         {
           "name" : "options",
           "type" : "Object",
-          "desc" : "(optional) An object containing handler configuration\nproperties. This may contain any of the following properties:<ul>\n<li>scope {Object} The scope in which to execute the handler function. The handler function's \"this\" context.</li>\n<li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li>\n<li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li>\n<li>buffer {Number} Causes the handler to be scheduled to run in an {@link Roo.util.DelayedTask} delayed\nby the specified number of milliseconds. If the event fires again within that time, the original\nhandler is <em>not</em> invoked, but the new handler is scheduled in its place.</li>\n</ul><br>\n<p>\n<b>Combining Options</b><br>\nUsing the options argument, it is possible to combine different types of listeners:<br>\n<br>\nA normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)\n\t\t<pre><code>\n\t\tel.on('click', this.onClick, this, {\n \t\t\tsingle: true,\n    \t\tdelay: 100,\n    \t\tforumId: 4\n\t\t});\n\t\t</code></pre>\n<p>\n<b>Attaching multiple handlers in 1 call</b><br>\nThe method also allows for a single argument to be passed which is a config object containing properties\nwhich specify multiple handlers.\n<pre><code>\n\t\tel.on({\n\t\t\t'click': {\n        \t\tfn: this.onClick,\n        \t\tscope: this,\n        \t\tdelay: 100\n    \t\t}, \n    \t\t'mouseover': {\n        \t\tfn: this.onMouseOver,\n        \t\tscope: this\n    \t\t},\n    \t\t'mouseout': {\n        \t\tfn: this.onMouseOut,\n        \t\tscope: this\n    \t\t}\n\t\t});\n\t\t</code></pre>\n<p>\nOr a shorthand syntax which passes the same scope object to all handlers:\n     \t<pre><code>\n\t\tel.on({\n\t\t\t'click': this.onClick,\n    \t\t'mouseover': this.onMouseOver,\n    \t\t'mouseout': this.onMouseOut,\n    \t\tscope: this\n\t\t});\n\t\t</code></pre>"
+          "desc" : "(optional) An object containing handler configuration\nproperties. This may contain any of the following properties:<ul>\n<li>scope {Object} The scope in which to execute the handler function. The handler function's \"this\" context.</li>\n<li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li>\n<li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li>\n<li>buffer {Number} Causes the handler to be scheduled to run in an {@link Roo.util.DelayedTask} delayed\nby the specified number of milliseconds. If the event fires again within that time, the original\nhandler is <em>not</em> invoked, but the new handler is scheduled in its place.</li>\n</ul><br>\n<p>\n<b>Combining Options</b><br>\nUsing the options argument, it is possible to combine different types of listeners:<br>\n<br>\nA normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)\n\t\t<pre><code>\n\t\tel.on('click', this.onClick, this, {\n \t\t\tsingle: true,\n    \t\tdelay: 100,\n    \t\tforumId: 4\n\t\t});\n\t\t</code></pre>\n<p>\n<b>Attaching multiple handlers in 1 call</b><br>\nThe method also allows for a single argument to be passed which is a config object containing properties\nwhich specify multiple handlers.\n<pre><code>\n\t\tel.on({\n\t\t\t'click': {\n        \t\tfn: this.onClick,\n        \t\tscope: this,\n        \t\tdelay: 100\n    \t\t}, \n    \t\t'mouseover': {\n        \t\tfn: this.onMouseOver,\n        \t\tscope: this\n    \t\t},\n    \t\t'mouseout': {\n        \t\tfn: this.onMouseOut,\n        \t\tscope: this\n    \t\t}\n\t\t});\n\t\t</code></pre>\n<p>\nOr a shorthand syntax which passes the same scope object to all handlers:\n     \t<pre><code>\n\t\tel.on({\n\t\t\t'click': this.onClick,\n    \t\t'mouseover': this.onMouseOver,\n    \t\t'mouseout': this.onMouseOut,\n    \t\tscope: this\n\t\t});\n\t\t</code></pre>",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -576,12 +740,14 @@
         {
           "name" : "node",
           "type" : "Node",
-          "desc" : "The node"
+          "desc" : "The node",
+          "isOptional" : false
         },
         {
           "name" : "e",
           "type" : "Roo.EventObject",
-          "desc" : "The event object"
+          "desc" : "The event object",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -596,12 +762,14 @@
         {
           "name" : "node",
           "type" : "Node",
-          "desc" : "The node"
+          "desc" : "The node",
+          "isOptional" : false
         },
         {
           "name" : "e",
           "type" : "Roo.EventObject",
-          "desc" : "The event object"
+          "desc" : "The event object",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -616,12 +784,14 @@
         {
           "name" : "node",
           "type" : "Node",
-          "desc" : "The node"
+          "desc" : "The node",
+          "isOptional" : false
         },
         {
           "name" : "e",
           "type" : "Roo.EventObject",
-          "desc" : "The event object"
+          "desc" : "The event object",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -636,12 +806,14 @@
         {
           "name" : "this",
           "type" : "Node",
-          "desc" : "This node"
+          "desc" : "This node",
+          "isOptional" : false
         },
         {
           "name" : "checked",
           "type" : "Boolean",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -656,7 +828,8 @@
         {
           "name" : "dragOverEvent",
           "type" : "Object",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -671,17 +844,20 @@
         {
           "name" : "node",
           "type" : "Node",
-          "desc" : "The node"
+          "desc" : "The node",
+          "isOptional" : false
         },
         {
           "name" : "deep",
           "type" : "Boolean",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "anim",
           "type" : "Boolean",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -696,7 +872,8 @@
         {
           "name" : "node",
           "type" : "Node",
-          "desc" : "The node"
+          "desc" : "The node",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -711,7 +888,8 @@
         {
           "name" : "dropEvent",
           "type" : "Object",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -726,7 +904,8 @@
         {
           "name" : "node",
           "type" : "Node",
-          "desc" : "The node"
+          "desc" : "The node",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -741,17 +920,20 @@
         {
           "name" : "node",
           "type" : "Node",
-          "desc" : "The node"
+          "desc" : "The node",
+          "isOptional" : false
         },
         {
           "name" : "text",
           "type" : "String",
-          "desc" : "The new text"
+          "desc" : "The new text",
+          "isOptional" : false
         },
         {
           "name" : "oldText",
           "type" : "String",
-          "desc" : "The old text"
+          "desc" : "The old text",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -766,7 +948,8 @@
         {
           "name" : "node",
           "type" : "Node",
-          "desc" : "The node that was loaded"
+          "desc" : "The node that was loaded",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -781,17 +964,20 @@
         {
           "name" : "this",
           "type" : "Roo.tree.TreePanel",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "node",
           "type" : "Roo.tree.TreeNode",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "e",
           "type" : "event",
-          "desc" : "The raw browser event"
+          "desc" : "The raw browser event",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -806,12 +992,14 @@
         {
           "name" : "node",
           "type" : "Node",
-          "desc" : "The node"
+          "desc" : "The node",
+          "isOptional" : false
         },
         {
           "name" : "e",
           "type" : "Roo.EventObject",
-          "desc" : "The event object"
+          "desc" : "The event object",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -826,7 +1014,8 @@
         {
           "name" : "node",
           "type" : "Node",
-          "desc" : "The node"
+          "desc" : "The node",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -841,17 +1030,20 @@
         {
           "name" : "this",
           "type" : "Roo.tree.TreePanel",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "node",
           "type" : "Roo.tree.TreeNode",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "e",
           "type" : "event",
-          "desc" : "The raw browser event"
+          "desc" : "The raw browser event",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -866,7 +1058,8 @@
         {
           "name" : "dropEvent",
           "type" : "Object",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -881,22 +1074,26 @@
         {
           "name" : "this",
           "type" : "Roo.tree.TreePanel",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "node",
           "type" : "Roo.tree.TreeNode",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "dd",
           "type" : "DD",
-          "desc" : "The dd it was dropped on"
+          "desc" : "The dd it was dropped on",
+          "isOptional" : false
         },
         {
           "name" : "e",
           "type" : "event",
-          "desc" : "The raw browser event"
+          "desc" : "The raw browser event",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -911,17 +1108,20 @@
         {
           "name" : "node",
           "type" : "Node",
-          "desc" : "The node"
+          "desc" : "The node",
+          "isOptional" : false
         },
         {
           "name" : "deep",
           "type" : "Boolean",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "anim",
           "type" : "Boolean",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -936,12 +1136,14 @@
         {
           "name" : "node",
           "type" : "Node",
-          "desc" : "The node"
+          "desc" : "The node",
+          "isOptional" : false
         },
         {
           "name" : "disabled",
           "type" : "Boolean",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -956,7 +1158,8 @@
         {
           "name" : "node",
           "type" : "Node",
-          "desc" : "The node being loaded"
+          "desc" : "The node being loaded",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -971,22 +1174,26 @@
         {
           "name" : "tree",
           "type" : "Tree",
-          "desc" : "The owner tree"
+          "desc" : "The owner tree",
+          "isOptional" : false
         },
         {
           "name" : "parent",
           "type" : "Node",
-          "desc" : "The parent node"
+          "desc" : "The parent node",
+          "isOptional" : false
         },
         {
           "name" : "node",
           "type" : "Node",
-          "desc" : "The newly appended node"
+          "desc" : "The newly appended node",
+          "isOptional" : false
         },
         {
           "name" : "index",
           "type" : "Number",
-          "desc" : "The index of the newly appended node"
+          "desc" : "The index of the newly appended node",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -1001,27 +1208,32 @@
         {
           "name" : "tree",
           "type" : "Tree",
-          "desc" : "The owner tree"
+          "desc" : "The owner tree",
+          "isOptional" : false
         },
         {
           "name" : "node",
           "type" : "Node",
-          "desc" : "The node being moved"
+          "desc" : "The node being moved",
+          "isOptional" : false
         },
         {
           "name" : "oldParent",
           "type" : "Node",
-          "desc" : "The parent of the node"
+          "desc" : "The parent of the node",
+          "isOptional" : false
         },
         {
           "name" : "newParent",
           "type" : "Node",
-          "desc" : "The new parent the node is moving to"
+          "desc" : "The new parent the node is moving to",
+          "isOptional" : false
         },
         {
           "name" : "index",
           "type" : "Number",
-          "desc" : "The index it is being moved to"
+          "desc" : "The index it is being moved to",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -1036,22 +1248,26 @@
         {
           "name" : "tree",
           "type" : "Tree",
-          "desc" : "The owner tree"
+          "desc" : "The owner tree",
+          "isOptional" : false
         },
         {
           "name" : "parent",
           "type" : "Node",
-          "desc" : "The parent node"
+          "desc" : "The parent node",
+          "isOptional" : false
         },
         {
           "name" : "node",
           "type" : "Node",
-          "desc" : "The child node inserted"
+          "desc" : "The child node inserted",
+          "isOptional" : false
         },
         {
           "name" : "refNode",
           "type" : "Node",
-          "desc" : "The child node the node was inserted before"
+          "desc" : "The child node the node was inserted before",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -1066,17 +1282,20 @@
         {
           "name" : "tree",
           "type" : "Tree",
-          "desc" : "The owner tree"
+          "desc" : "The owner tree",
+          "isOptional" : false
         },
         {
           "name" : "parent",
           "type" : "Node",
-          "desc" : "The parent node"
+          "desc" : "The parent node",
+          "isOptional" : false
         },
         {
           "name" : "node",
           "type" : "Node",
-          "desc" : "The child node to be appended"
+          "desc" : "The child node to be appended",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -1091,27 +1310,32 @@
         {
           "name" : "tree",
           "type" : "Tree",
-          "desc" : "The owner tree"
+          "desc" : "The owner tree",
+          "isOptional" : false
         },
         {
           "name" : "node",
           "type" : "Node",
-          "desc" : "The node moved"
+          "desc" : "The node moved",
+          "isOptional" : false
         },
         {
           "name" : "oldParent",
           "type" : "Node",
-          "desc" : "The old parent of this node"
+          "desc" : "The old parent of this node",
+          "isOptional" : false
         },
         {
           "name" : "newParent",
           "type" : "Node",
-          "desc" : "The new parent of this node"
+          "desc" : "The new parent of this node",
+          "isOptional" : false
         },
         {
           "name" : "index",
           "type" : "Number",
-          "desc" : "The index it was moved to"
+          "desc" : "The index it was moved to",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -1126,17 +1350,20 @@
         {
           "name" : "tree",
           "type" : "Tree",
-          "desc" : "The owner tree"
+          "desc" : "The owner tree",
+          "isOptional" : false
         },
         {
           "name" : "parent",
           "type" : "Node",
-          "desc" : "The parent node"
+          "desc" : "The parent node",
+          "isOptional" : false
         },
         {
           "name" : "node",
           "type" : "Node",
-          "desc" : "The child node to be removed"
+          "desc" : "The child node to be removed",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -1151,17 +1378,20 @@
         {
           "name" : "tree",
           "type" : "Tree",
-          "desc" : "The owner tree"
+          "desc" : "The owner tree",
+          "isOptional" : false
         },
         {
           "name" : "parent",
           "type" : "Node",
-          "desc" : "The parent node"
+          "desc" : "The parent node",
+          "isOptional" : false
         },
         {
           "name" : "node",
           "type" : "Node",
-          "desc" : "The child node removed"
+          "desc" : "The child node removed",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -1176,22 +1406,26 @@
         {
           "name" : "tree",
           "type" : "Tree",
-          "desc" : "The owner tree"
+          "desc" : "The owner tree",
+          "isOptional" : false
         },
         {
           "name" : "parent",
           "type" : "Node",
-          "desc" : "The parent node"
+          "desc" : "The parent node",
+          "isOptional" : false
         },
         {
           "name" : "node",
           "type" : "Node",
-          "desc" : "The child node to be inserted"
+          "desc" : "The child node to be inserted",
+          "isOptional" : false
         },
         {
           "name" : "refNode",
           "type" : "Node",
-          "desc" : "The child node the node is being inserted before"
+          "desc" : "The child node the node is being inserted before",
+          "isOptional" : false
         }
       ],
       "returns" : ""

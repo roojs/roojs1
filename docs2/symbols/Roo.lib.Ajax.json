@@ -9,9 +9,15 @@
     {
       "name" : "request",
       "desc" : "",
-      "static" : true,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.lib.Ajax",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""

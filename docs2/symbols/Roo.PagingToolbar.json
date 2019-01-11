@@ -9,7 +9,7 @@
       "name" : "pageSize",
       "type" : "Number",
       "desc" : "The number of records to display per page (defaults to 20)",
-      "memberOf" : "",
+      "memberOf" : "Roo.PagingToolbar",
       "values" : [
       ]
     },
@@ -17,7 +17,7 @@
       "name" : "dataSource",
       "type" : "Roo.data.Store",
       "desc" : "The underlying data store providing the paged data",
-      "memberOf" : "",
+      "memberOf" : "Roo.PagingToolbar",
       "values" : [
       ]
     },
@@ -25,7 +25,7 @@
       "name" : "container",
       "type" : "String/HTMLElement/Element",
       "desc" : "container The id or element that will contain the toolbar",
-      "memberOf" : "",
+      "memberOf" : "Roo.PagingToolbar",
       "values" : [
       ]
     },
@@ -33,7 +33,7 @@
       "name" : "emptyMsg",
       "type" : "String",
       "desc" : "The message to display when no records are found (defaults to \"No data to display\")",
-      "memberOf" : "",
+      "memberOf" : "Roo.PagingToolbar",
       "values" : [
       ]
     },
@@ -49,7 +49,7 @@
       "name" : "displayInfo",
       "type" : "Boolean",
       "desc" : "True to display the displayMsg (defaults to false)",
-      "memberOf" : "",
+      "memberOf" : "Roo.PagingToolbar",
       "values" : [
       ]
     },
@@ -57,7 +57,7 @@
       "name" : "displayMsg",
       "type" : "String",
       "desc" : "The paging status message to display (defaults to \"Displaying {start} - {end} of {total}\")",
-      "memberOf" : "",
+      "memberOf" : "Roo.PagingToolbar",
       "values" : [
       ]
     }
@@ -66,14 +66,21 @@
     {
       "name" : "bind",
       "desc" : "Binds the paging toolbar to the specified {@link Roo.data.Store}",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.PagingToolbar",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "store",
           "type" : "Roo.data.Store",
-          "desc" : "The data store to bind"
+          "desc" : "The data store to bind",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -81,14 +88,21 @@
     {
       "name" : "unbind",
       "desc" : "Unbinds the paging toolbar from the specified {@link Roo.data.Store}",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.PagingToolbar",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "store",
           "type" : "Roo.data.Store",
-          "desc" : "The data store to unbind"
+          "desc" : "The data store to unbind",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -96,14 +110,21 @@
     {
       "name" : "addDom",
       "desc" : "Adds a new element to the toolbar from the passed {@link Roo.DomHelper} config.",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.Toolbar",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "config",
           "type" : "Object",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : "Roo.Toolbar.Item"
@@ -111,14 +132,21 @@
     {
       "name" : "addElement",
       "desc" : "Adds any standard HTML element to the toolbar",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.Toolbar",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "el",
           "type" : "String/HTMLElement/Element",
-          "desc" : "The element or id of the element to add"
+          "desc" : "The element or id of the element to add",
+          "isOptional" : false
         }
       ],
       "returns" : "Roo.Toolbar.Item"
@@ -126,9 +154,15 @@
     {
       "name" : "getEl",
       "desc" : "Returns the Element for this toolbar.",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.Toolbar",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "Roo.Element"
@@ -136,9 +170,15 @@
     {
       "name" : "hide",
       "desc" : "Hide the toolbar",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.Toolbar",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -146,9 +186,15 @@
     {
       "name" : "addSeparator",
       "desc" : "Adds a separator",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.Toolbar",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "Roo.Toolbar.Item"
@@ -156,9 +202,15 @@
     {
       "name" : "show",
       "desc" : "Show the toolbar",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.Toolbar",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -166,9 +218,15 @@
     {
       "name" : "addFill",
       "desc" : "Adds a fill element that forces subsequent additions to the right side of the toolbar",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.Toolbar",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "Roo.Toolbar.Fill"
@@ -176,9 +234,15 @@
     {
       "name" : "addSpacer",
       "desc" : "Adds a spacer element",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.Toolbar",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "Roo.Toolbar.Spacer"
@@ -186,19 +250,27 @@
     {
       "name" : "add",
       "desc" : "Adds element(s) to the toolbar -- this function takes a variable number of \narguments of mixed type and adds them to the toolbar.",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.Toolbar",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "arg1",
           "type" : "Mixed",
-          "desc" : "The following types of arguments are all valid:<br />\n<ul>\n<li>{@link Roo.Toolbar.Button} config: A valid button config object (equivalent to {@link #addButton})</li>\n<li>HtmlElement: Any standard HTML element (equivalent to {@link #addElement})</li>\n<li>Field: Any form field (equivalent to {@link #addField})</li>\n<li>Item: Any subclass of {@link Roo.Toolbar.Item} (equivalent to {@link #addItem})</li>\n<li>String: Any generic string (gets wrapped in a {@link Roo.Toolbar.TextItem}, equivalent to {@link #addText}).\nNote that there are a few special strings that are treated differently as explained nRoo.</li>\n<li>'separator' or '-': Creates a separator element (equivalent to {@link #addSeparator})</li>\n<li>' ': Creates a spacer element (equivalent to {@link #addSpacer})</li>\n<li>'->': Creates a fill element (equivalent to {@link #addFill})</li>\n</ul>"
+          "desc" : "The following types of arguments are all valid:<br />\n<ul>\n<li>{@link Roo.Toolbar.Button} config: A valid button config object (equivalent to {@link #addButton})</li>\n<li>HtmlElement: Any standard HTML element (equivalent to {@link #addElement})</li>\n<li>Field: Any form field (equivalent to {@link #addField})</li>\n<li>Item: Any subclass of {@link Roo.Toolbar.Item} (equivalent to {@link #addItem})</li>\n<li>String: Any generic string (gets wrapped in a {@link Roo.Toolbar.TextItem}, equivalent to {@link #addText}).\nNote that there are a few special strings that are treated differently as explained nRoo.</li>\n<li>'separator' or '-': Creates a separator element (equivalent to {@link #addSeparator})</li>\n<li>' ': Creates a spacer element (equivalent to {@link #addSpacer})</li>\n<li>'->': Creates a fill element (equivalent to {@link #addFill})</li>\n</ul>",
+          "isOptional" : false
         },
         {
           "name" : "arg2",
           "type" : "Mixed",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -206,14 +278,21 @@
     {
       "name" : "addField",
       "desc" : "Adds a dynamically rendered Roo.form field (TextField, ComboBox, etc).\nNote: the field should not have been rendered yet. For a field that has already been\nrendered, use {@link #addElement}.",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.Toolbar",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "field",
           "type" : "Roo.form.Field",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : "Roo.ToolbarItem"
@@ -221,14 +300,21 @@
     {
       "name" : "addText",
       "desc" : "Adds text to the toolbar",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.Toolbar",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "text",
           "type" : "String",
-          "desc" : "The text to add"
+          "desc" : "The text to add",
+          "isOptional" : false
         }
       ],
       "returns" : "Roo.Toolbar.Item"
@@ -236,14 +322,21 @@
     {
       "name" : "addItem",
       "desc" : "Adds any Toolbar.Item or subclass",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.Toolbar",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "item",
           "type" : "Roo.Toolbar.Item",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : "Roo.Toolbar.Item"
@@ -251,14 +344,21 @@
     {
       "name" : "addButton",
       "desc" : "Adds a button (or buttons). See {@link Roo.Toolbar.Button} for more info on the config.",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.Toolbar",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "config",
           "type" : "Object/Array",
-          "desc" : "A button config or array of configs"
+          "desc" : "A button config or array of configs",
+          "isOptional" : false
         }
       ],
       "returns" : "Roo.Toolbar.Button/Array"
@@ -266,19 +366,27 @@
     {
       "name" : "insertButton",
       "desc" : "Inserts any {@link Roo.Toolbar.Item}/{@link Roo.Toolbar.Button} at the specified index.",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.Toolbar",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "index",
           "type" : "Number",
-          "desc" : "The index where the item is to be inserted"
+          "desc" : "The index where the item is to be inserted",
+          "isOptional" : false
         },
         {
           "name" : "item",
           "type" : "Object/Roo.Toolbar.Item/Roo.Toolbar.Button (may be Array)",
-          "desc" : "The button, or button config object to be inserted."
+          "desc" : "The button, or button config object to be inserted.",
+          "isOptional" : false
         }
       ],
       "returns" : "Roo.Toolbar.Button/Item"
@@ -286,14 +394,21 @@
     {
       "name" : "addxtype",
       "desc" : "Add an Xtype element",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.Toolbar",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "xtype",
           "type" : "Object",
-          "desc" : "Xtype Object"
+          "desc" : "Xtype Object",
+          "isOptional" : false
         }
       ],
       "returns" : "Object"

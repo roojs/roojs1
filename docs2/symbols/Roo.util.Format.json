@@ -9,14 +9,21 @@
     {
       "name" : "uppercase",
       "desc" : "Converts a string to all upper case letters",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.util.Format",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "value",
           "type" : "String",
-          "desc" : "The text to convert"
+          "desc" : "The text to convert",
+          "isOptional" : false
         }
       ],
       "returns" : "String"
@@ -24,19 +31,27 @@
     {
       "name" : "date",
       "desc" : "Parse a value into a formatted date using the specified format pattern.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.util.Format",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "value",
           "type" : "Mixed",
-          "desc" : "The value to format"
+          "desc" : "The value to format",
+          "isOptional" : false
         },
         {
           "name" : "format",
           "type" : "String",
-          "desc" : "(optional) Any valid date format string (defaults to 'm/d/Y')"
+          "desc" : "(optional) Any valid date format string (defaults to 'm/d/Y')",
+          "isOptional" : false
         }
       ],
       "returns" : "String"
@@ -44,14 +59,21 @@
     {
       "name" : "lowercase",
       "desc" : "Converts a string to all lower case letters",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.util.Format",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "value",
           "type" : "String",
-          "desc" : "The text to convert"
+          "desc" : "The text to convert",
+          "isOptional" : false
         }
       ],
       "returns" : "String"
@@ -59,14 +81,21 @@
     {
       "name" : "undef",
       "desc" : "Checks a reference and converts it to empty string if it is undefined",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.util.Format",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "value",
           "type" : "Mixed",
-          "desc" : "Reference to check"
+          "desc" : "Reference to check",
+          "isOptional" : false
         }
       ],
       "returns" : "Mixed"
@@ -74,14 +103,21 @@
     {
       "name" : "stripTags",
       "desc" : "Strips all HTML tags",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.util.Format",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "value",
           "type" : "Mixed",
-          "desc" : "The text from which to strip tags"
+          "desc" : "The text from which to strip tags",
+          "isOptional" : false
         }
       ],
       "returns" : "String"
@@ -89,19 +125,27 @@
     {
       "name" : "ellipsis",
       "desc" : "Truncate a string and add an ellipsis ('...') to the end if it exceeds the specified length",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.util.Format",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "value",
           "type" : "String",
-          "desc" : "The string to truncate"
+          "desc" : "The string to truncate",
+          "isOptional" : false
         },
         {
           "name" : "length",
           "type" : "Number",
-          "desc" : "The maximum length to allow before truncating"
+          "desc" : "The maximum length to allow before truncating",
+          "isOptional" : false
         }
       ],
       "returns" : "String"
@@ -109,14 +153,21 @@
     {
       "name" : "htmlDecode",
       "desc" : "Convert certain characters (&, <, >, and ') from their HTML character equivalents.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.util.Format",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "value",
           "type" : "String",
-          "desc" : "The string to decode"
+          "desc" : "The string to decode",
+          "isOptional" : false
         }
       ],
       "returns" : "String"
@@ -124,14 +175,21 @@
     {
       "name" : "htmlEncode",
       "desc" : "Convert certain characters (&, <, >, and ') to their HTML character equivalents for literal display in web pages.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.util.Format",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "value",
           "type" : "String",
-          "desc" : "The string to encode"
+          "desc" : "The string to encode",
+          "isOptional" : false
         }
       ],
       "returns" : "String"
@@ -139,19 +197,27 @@
     {
       "name" : "toFixed",
       "desc" : "safer version of Math.toFixed..??/",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.util.Format",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "value",
           "type" : "Number/String",
-          "desc" : "The numeric value to format"
+          "desc" : "The numeric value to format",
+          "isOptional" : false
         },
         {
           "name" : "value",
           "type" : "Number/String",
-          "desc" : "Decimal places"
+          "desc" : "Decimal places",
+          "isOptional" : false
         }
       ],
       "returns" : "String"
@@ -159,24 +225,33 @@
     {
       "name" : "substr",
       "desc" : "Returns a substring from within an original string",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.util.Format",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "value",
           "type" : "String",
-          "desc" : "The original text"
+          "desc" : "The original text",
+          "isOptional" : false
         },
         {
           "name" : "start",
           "type" : "Number",
-          "desc" : "The start index of the substring"
+          "desc" : "The start index of the substring",
+          "isOptional" : false
         },
         {
           "name" : "length",
           "type" : "Number",
-          "desc" : "The length of the substring"
+          "desc" : "The length of the substring",
+          "isOptional" : false
         }
       ],
       "returns" : "String"
@@ -184,24 +259,33 @@
     {
       "name" : "number",
       "desc" : "Format a number\neventually this should probably emulate php's number_format",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.util.Format",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "value",
           "type" : "Number/String",
-          "desc" : "The numeric value to format"
+          "desc" : "The numeric value to format",
+          "isOptional" : false
         },
         {
           "name" : "decimals",
           "type" : "Number",
-          "desc" : "number of decimal places"
+          "desc" : "number of decimal places",
+          "isOptional" : false
         },
         {
           "name" : "delimiter",
           "type" : "String",
-          "desc" : "for thousands (default comma)"
+          "desc" : "for thousands (default comma)",
+          "isOptional" : false
         }
       ],
       "returns" : "String"
@@ -209,14 +293,21 @@
     {
       "name" : "usMoney",
       "desc" : "Format a number as US currency",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.util.Format",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "value",
           "type" : "Number/String",
-          "desc" : "The numeric value to format"
+          "desc" : "The numeric value to format",
+          "isOptional" : false
         }
       ],
       "returns" : "String"
@@ -224,14 +315,21 @@
     {
       "name" : "capitalize",
       "desc" : "Converts the first character only of a string to upper case",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.util.Format",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "value",
           "type" : "String",
-          "desc" : "The text to convert"
+          "desc" : "The text to convert",
+          "isOptional" : false
         }
       ],
       "returns" : "String"
@@ -239,14 +337,21 @@
     {
       "name" : "trim",
       "desc" : "Trims any whitespace from either side of a string",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.util.Format",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "value",
           "type" : "String",
-          "desc" : "The text to trim"
+          "desc" : "The text to trim",
+          "isOptional" : false
         }
       ],
       "returns" : "String"
@@ -254,14 +359,21 @@
     {
       "name" : "dateRenderer",
       "desc" : "Returns a date rendering function that can be reused to apply a date format multiple times efficiently",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.util.Format",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "format",
           "type" : "String",
-          "desc" : "Any valid date format string"
+          "desc" : "Any valid date format string",
+          "isOptional" : false
         }
       ],
       "returns" : "Function"

@@ -9,19 +9,27 @@
     {
       "name" : "constrain",
       "desc" : "Checks whether or not the current number is within a desired range.  If the number is already within the\nrange it is returned, otherwise the min or max value is returned depending on which side of the range is\nexceeded.  Note that this method returns the constrained value but does not change the current number.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Number",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "min",
           "type" : "Number",
-          "desc" : "The minimum number in the range"
+          "desc" : "The minimum number in the range",
+          "isOptional" : false
         },
         {
           "name" : "max",
           "type" : "Number",
-          "desc" : "The maximum number in the range"
+          "desc" : "The maximum number in the range",
+          "isOptional" : false
         }
       ],
       "returns" : "Number"

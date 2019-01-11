@@ -67,14 +67,21 @@
     {
       "name" : "addMenuItem",
       "desc" : "Creates a new {@link Roo.menu.Item} based an the supplied config object and adds it to the menu",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.menu.Menu",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "config",
           "type" : "Object",
-          "desc" : "A MenuItem config object"
+          "desc" : "A MenuItem config object",
+          "isOptional" : false
         }
       ],
       "returns" : "Roo.menu.Item"
@@ -82,14 +89,21 @@
     {
       "name" : "addElement",
       "desc" : "Adds an {@link Roo.Element} object to the menu",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.menu.Menu",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "el",
           "type" : "String/HTMLElement/Roo.Element",
-          "desc" : "The element or DOM node to add, or its id"
+          "desc" : "The element or DOM node to add, or its id",
+          "isOptional" : false
         }
       ],
       "returns" : "Roo.menu.Item"
@@ -97,9 +111,15 @@
     {
       "name" : "isVisible",
       "desc" : "Read-only.  Returns true if the menu is currently displayed, else false.",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.menu.Menu",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -107,14 +127,21 @@
     {
       "name" : "add",
       "desc" : "Addds one or more items of any type supported by the Menu class, or that can be converted into menu items.\nAny of the following are valid:\n<ul>\n<li>Any menu item object based on {@link Roo.menu.Item}</li>\n<li>An HTMLElement object which will be converted to a menu item</li>\n<li>A menu item config object that will be created as a new menu item</li>\n<li>A string, which can either be '-' or 'separator' to add a menu separator, otherwise\nit will be converted into a {@link Roo.menu.TextItem} and added</li>\n</ul>\nUsage:\n<pre><code>\n// Create the menu\nvar menu = new Roo.menu.Menu();\n\n// Create a menu item to add by reference\nvar menuItem = new Roo.menu.Item({ text: 'New Item!' });\n\n// Add a bunch of items at once using different methods.\n// Only the last item added will be returned.\nvar item = menu.add(\n    menuItem,                // add existing item by ref\n    'Dynamic Item',          // new TextItem\n    '-',                     // new separator\n    { text: 'Config Item' }  // new item by config\n);\n</code></pre>",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.menu.Menu",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "args",
           "type" : "Mixed",
-          "desc" : "One or more menu items, menu item configs or other objects that can be converted to menu items"
+          "desc" : "One or more menu items, menu item configs or other objects that can be converted to menu items",
+          "isOptional" : false
         }
       ],
       "returns" : "Roo.menu.Item"
@@ -122,9 +149,15 @@
     {
       "name" : "addSeparator",
       "desc" : "Adds a separator bar to the menu",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.menu.Menu",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "Roo.menu.Item"
@@ -132,9 +165,15 @@
     {
       "name" : "removeAll",
       "desc" : "Removes and destroys all items in the menu",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.menu.Menu",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -142,14 +181,21 @@
     {
       "name" : "remove",
       "desc" : "Removes an {@link Roo.menu.Item} from the menu and destroys the object",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.menu.Menu",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "item",
           "type" : "Roo.menu.Item",
-          "desc" : "The menu item to remove"
+          "desc" : "The menu item to remove",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -157,9 +203,15 @@
     {
       "name" : "getEl",
       "desc" : "Returns this menu's underlying {@link Roo.Element} object",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.menu.Menu",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "Roo.Element"
@@ -167,19 +219,27 @@
     {
       "name" : "insert",
       "desc" : "Inserts an existing object based on {@link Roo.menu.Item} to the menu at a specified index",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.menu.Menu",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "index",
           "type" : "Number",
-          "desc" : "The index in the menu's list of current items where the new item should be inserted"
+          "desc" : "The index in the menu's list of current items where the new item should be inserted",
+          "isOptional" : false
         },
         {
           "name" : "item",
           "type" : "Roo.menu.Item",
-          "desc" : "The menu item to add"
+          "desc" : "The menu item to add",
+          "isOptional" : false
         }
       ],
       "returns" : "Roo.menu.Item"
@@ -187,14 +247,21 @@
     {
       "name" : "hide",
       "desc" : "Hides this menu and optionally all parent menus",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.menu.Menu",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "deep",
           "type" : "Boolean",
-          "desc" : "(optional) True to hide all parent menus recursively, if any (defaults to false)"
+          "desc" : "(optional) True to hide all parent menus recursively, if any (defaults to false)",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -202,24 +269,33 @@
     {
       "name" : "show",
       "desc" : "Displays this menu relative to another element",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.menu.Menu",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "element",
           "type" : "String/HTMLElement/Roo.Element",
-          "desc" : "The element to align to"
+          "desc" : "The element to align to",
+          "isOptional" : false
         },
         {
           "name" : "position",
           "type" : "String",
-          "desc" : "(optional) The {@link Roo.Element#alignTo} anchor position to use in aligning to\nthe element (defaults to this.defaultAlign)"
+          "desc" : "(optional) The {@link Roo.Element#alignTo} anchor position to use in aligning to\nthe element (defaults to this.defaultAlign)",
+          "isOptional" : false
         },
         {
           "name" : "parentMenu",
           "type" : "Roo.menu.Menu",
-          "desc" : "(optional) This menu's parent menu, if applicable (defaults to undefined)"
+          "desc" : "(optional) This menu's parent menu, if applicable (defaults to undefined)",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -227,14 +303,21 @@
     {
       "name" : "addText",
       "desc" : "Creates a new {@link Roo.menu.TextItem} with the supplied text and adds it to the menu",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.menu.Menu",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "text",
           "type" : "String",
-          "desc" : "The text to display in the menu item"
+          "desc" : "The text to display in the menu item",
+          "isOptional" : false
         }
       ],
       "returns" : "Roo.menu.Item"
@@ -242,14 +325,21 @@
     {
       "name" : "addItem",
       "desc" : "Adds an existing object based on {@link Roo.menu.Item} to the menu",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.menu.Menu",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "item",
           "type" : "Roo.menu.Item",
-          "desc" : "The menu item to add"
+          "desc" : "The menu item to add",
+          "isOptional" : false
         }
       ],
       "returns" : "Roo.menu.Item"
@@ -257,19 +347,27 @@
     {
       "name" : "showAt",
       "desc" : "Displays this menu at a specific xy position",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.menu.Menu",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "xyPosition",
           "type" : "Array",
-          "desc" : "Contains X & Y [x, y] values for the position at which to show the menu (coordinates are page-based)"
+          "desc" : "Contains X & Y [x, y] values for the position at which to show the menu (coordinates are page-based)",
+          "isOptional" : false
         },
         {
           "name" : "parentMenu",
           "type" : "Roo.menu.Menu",
-          "desc" : "(optional) This menu's parent menu, if applicable (defaults to undefined)"
+          "desc" : "(optional) This menu's parent menu, if applicable (defaults to undefined)",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -277,9 +375,15 @@
     {
       "name" : "purgeListeners",
       "desc" : "Removes all listeners for this object",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -287,29 +391,39 @@
     {
       "name" : "on",
       "desc" : "Appends an event handler to this element (shorthand for addListener)",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "eventName",
           "type" : "String",
-          "desc" : "The type of event to listen for"
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
         },
         {
           "name" : "handler",
           "type" : "Function",
-          "desc" : "The method the event invokes"
+          "desc" : "The method the event invokes",
+          "isOptional" : false
         },
         {
           "name" : "scope",
           "type" : "Object",
-          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context."
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context.",
+          "isOptional" : false
         },
         {
           "name" : "options",
           "type" : "Object",
-          "desc" : "(optional)"
+          "desc" : "(optional)",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -317,24 +431,33 @@
     {
       "name" : "un",
       "desc" : "Removes a listener (shorthand for removeListener)",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "eventName",
           "type" : "String",
-          "desc" : "The type of event to listen for"
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
         },
         {
           "name" : "handler",
           "type" : "Function",
-          "desc" : "The handler to remove"
+          "desc" : "The handler to remove",
+          "isOptional" : false
         },
         {
           "name" : "scope",
           "type" : "Object",
-          "desc" : "(optional) The scope (this object) for the handler"
+          "desc" : "(optional) The scope (this object) for the handler",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -342,14 +465,21 @@
     {
       "name" : "addEvents",
       "desc" : "Used to define events on this Observable",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "object",
           "type" : "Object",
-          "desc" : "The object with the events defined"
+          "desc" : "The object with the events defined",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -357,14 +487,21 @@
     {
       "name" : "releaseCapture",
       "desc" : "Removes <b>all</b> added captures from the Observable.",
-      "static" : true,
-      "constructor" : false,
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "o",
           "type" : "Observable",
-          "desc" : "The Observable to release"
+          "desc" : "The Observable to release",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -372,24 +509,33 @@
     {
       "name" : "removeListener",
       "desc" : "Removes a listener",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "eventName",
           "type" : "String",
-          "desc" : "The type of event to listen for"
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
         },
         {
           "name" : "handler",
           "type" : "Function",
-          "desc" : "The handler to remove"
+          "desc" : "The handler to remove",
+          "isOptional" : false
         },
         {
           "name" : "scope",
           "type" : "Object",
-          "desc" : "(optional) The scope (this object) for the handler"
+          "desc" : "(optional) The scope (this object) for the handler",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -397,19 +543,27 @@
     {
       "name" : "fireEvent",
       "desc" : "Fires the specified event with the passed parameters (minus the event name).",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "eventName",
           "type" : "String",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "args",
           "type" : "Object...",
-          "desc" : "Variable number of parameters are passed to handlers"
+          "desc" : "Variable number of parameters are passed to handlers",
+          "isOptional" : false
         }
       ],
       "returns" : "Boolean"
@@ -417,14 +571,21 @@
     {
       "name" : "hasListener",
       "desc" : "Checks to see if this object has any listeners for a specified event",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "eventName",
           "type" : "String",
-          "desc" : "The name of the event to check for"
+          "desc" : "The name of the event to check for",
+          "isOptional" : false
         }
       ],
       "returns" : "Boolean"
@@ -432,24 +593,33 @@
     {
       "name" : "capture",
       "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
-      "static" : true,
-      "constructor" : false,
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "o",
           "type" : "Observable",
-          "desc" : "The Observable to capture"
+          "desc" : "The Observable to capture",
+          "isOptional" : false
         },
         {
           "name" : "fn",
           "type" : "Function",
-          "desc" : "The function to call"
+          "desc" : "The function to call",
+          "isOptional" : false
         },
         {
           "name" : "scope",
           "type" : "Object",
-          "desc" : "(optional) The scope (this object) for the fn"
+          "desc" : "(optional) The scope (this object) for the fn",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -457,29 +627,39 @@
     {
       "name" : "addListener",
       "desc" : "Appends an event handler to this component",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "eventName",
           "type" : "String",
-          "desc" : "The type of event to listen for"
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
         },
         {
           "name" : "handler",
           "type" : "Function",
-          "desc" : "The method the event invokes"
+          "desc" : "The method the event invokes",
+          "isOptional" : false
         },
         {
           "name" : "scope",
           "type" : "Object",
-          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context."
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context.",
+          "isOptional" : false
         },
         {
           "name" : "options",
           "type" : "Object",
-          "desc" : "(optional) An object containing handler configuration\nproperties. This may contain any of the following properties:<ul>\n<li>scope {Object} The scope in which to execute the handler function. The handler function's \"this\" context.</li>\n<li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li>\n<li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li>\n<li>buffer {Number} Causes the handler to be scheduled to run in an {@link Roo.util.DelayedTask} delayed\nby the specified number of milliseconds. If the event fires again within that time, the original\nhandler is <em>not</em> invoked, but the new handler is scheduled in its place.</li>\n</ul><br>\n<p>\n<b>Combining Options</b><br>\nUsing the options argument, it is possible to combine different types of listeners:<br>\n<br>\nA normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)\n\t\t<pre><code>\n\t\tel.on('click', this.onClick, this, {\n \t\t\tsingle: true,\n    \t\tdelay: 100,\n    \t\tforumId: 4\n\t\t});\n\t\t</code></pre>\n<p>\n<b>Attaching multiple handlers in 1 call</b><br>\nThe method also allows for a single argument to be passed which is a config object containing properties\nwhich specify multiple handlers.\n<pre><code>\n\t\tel.on({\n\t\t\t'click': {\n        \t\tfn: this.onClick,\n        \t\tscope: this,\n        \t\tdelay: 100\n    \t\t}, \n    \t\t'mouseover': {\n        \t\tfn: this.onMouseOver,\n        \t\tscope: this\n    \t\t},\n    \t\t'mouseout': {\n        \t\tfn: this.onMouseOut,\n        \t\tscope: this\n    \t\t}\n\t\t});\n\t\t</code></pre>\n<p>\nOr a shorthand syntax which passes the same scope object to all handlers:\n     \t<pre><code>\n\t\tel.on({\n\t\t\t'click': this.onClick,\n    \t\t'mouseover': this.onMouseOver,\n    \t\t'mouseout': this.onMouseOut,\n    \t\tscope: this\n\t\t});\n\t\t</code></pre>"
+          "desc" : "(optional) An object containing handler configuration\nproperties. This may contain any of the following properties:<ul>\n<li>scope {Object} The scope in which to execute the handler function. The handler function's \"this\" context.</li>\n<li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li>\n<li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li>\n<li>buffer {Number} Causes the handler to be scheduled to run in an {@link Roo.util.DelayedTask} delayed\nby the specified number of milliseconds. If the event fires again within that time, the original\nhandler is <em>not</em> invoked, but the new handler is scheduled in its place.</li>\n</ul><br>\n<p>\n<b>Combining Options</b><br>\nUsing the options argument, it is possible to combine different types of listeners:<br>\n<br>\nA normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)\n\t\t<pre><code>\n\t\tel.on('click', this.onClick, this, {\n \t\t\tsingle: true,\n    \t\tdelay: 100,\n    \t\tforumId: 4\n\t\t});\n\t\t</code></pre>\n<p>\n<b>Attaching multiple handlers in 1 call</b><br>\nThe method also allows for a single argument to be passed which is a config object containing properties\nwhich specify multiple handlers.\n<pre><code>\n\t\tel.on({\n\t\t\t'click': {\n        \t\tfn: this.onClick,\n        \t\tscope: this,\n        \t\tdelay: 100\n    \t\t}, \n    \t\t'mouseover': {\n        \t\tfn: this.onMouseOver,\n        \t\tscope: this\n    \t\t},\n    \t\t'mouseout': {\n        \t\tfn: this.onMouseOut,\n        \t\tscope: this\n    \t\t}\n\t\t});\n\t\t</code></pre>\n<p>\nOr a shorthand syntax which passes the same scope object to all handlers:\n     \t<pre><code>\n\t\tel.on({\n\t\t\t'click': this.onClick,\n    \t\t'mouseover': this.onMouseOver,\n    \t\t'mouseout': this.onMouseOut,\n    \t\tscope: this\n\t\t});\n\t\t</code></pre>",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -496,12 +676,14 @@
         {
           "name" : "picker",
           "type" : "DatePicker",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "date",
           "type" : "Date",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -516,17 +698,20 @@
         {
           "name" : "this",
           "type" : "Roo.menu.Menu",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "e",
           "type" : "Roo.EventObject",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "menuItem",
           "type" : "Roo.menu.Item",
-          "desc" : "The menu item that was clicked"
+          "desc" : "The menu item that was clicked",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -541,17 +726,20 @@
         {
           "name" : "this",
           "type" : "Roo.menu.Menu",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "e",
           "type" : "Roo.EventObject",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "menuItem",
           "type" : "Roo.menu.Item",
-          "desc" : "The menu item that was clicked"
+          "desc" : "The menu item that was clicked",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -566,7 +754,8 @@
         {
           "name" : "this",
           "type" : "Roo.menu.Menu",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -581,12 +770,14 @@
         {
           "name" : "baseItem",
           "type" : "Roo.menu.BaseItem",
-          "desc" : "The BaseItem that was clicked"
+          "desc" : "The BaseItem that was clicked",
+          "isOptional" : false
         },
         {
           "name" : "e",
           "type" : "Roo.EventObject",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -601,7 +792,8 @@
         {
           "name" : "this",
           "type" : "Roo.menu.Menu",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -616,7 +808,8 @@
         {
           "name" : "this",
           "type" : "Roo.menu.Menu",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -631,17 +824,20 @@
         {
           "name" : "this",
           "type" : "Roo.menu.Menu",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "menuItem",
           "type" : "Roo.menu.Item",
-          "desc" : "The menu item that was clicked"
+          "desc" : "The menu item that was clicked",
+          "isOptional" : false
         },
         {
           "name" : "e",
           "type" : "Roo.EventObject",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -656,7 +852,8 @@
         {
           "name" : "this",
           "type" : "Roo.menu.Menu",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""

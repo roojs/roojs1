@@ -9,14 +9,21 @@
     {
       "name" : "email'",
       "desc" : "The function used to validate email addresses",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.form.VTypes",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "value",
           "type" : "String",
-          "desc" : "The email address"
+          "desc" : "The email address",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -24,14 +31,21 @@
     {
       "name" : "url'",
       "desc" : "The function used to validate URLs",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.form.VTypes",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "value",
           "type" : "String",
-          "desc" : "The URL"
+          "desc" : "The URL",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -39,14 +53,21 @@
     {
       "name" : "alpha'",
       "desc" : "The function used to validate alpha values",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.form.VTypes",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "value",
           "type" : "String",
-          "desc" : "The value"
+          "desc" : "The value",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -54,14 +75,21 @@
     {
       "name" : "alphanum'",
       "desc" : "The function used to validate alphanumeric values",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.form.VTypes",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "value",
           "type" : "String",
-          "desc" : "The value"
+          "desc" : "The value",
+          "isOptional" : false
         }
       ],
       "returns" : ""

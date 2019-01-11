@@ -9,19 +9,27 @@
     {
       "name" : "createInstance",
       "desc" : "Return a unique TextMetrics instance that can be bound directly to an element and reused.  This reduces\nthe overhead of multiple calls to initialize the style properties on each measurement.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.util.TextMetrics",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "el",
           "type" : "String/HTMLElement",
-          "desc" : "The element, dom node or id that the instance will be bound to"
+          "desc" : "The element, dom node or id that the instance will be bound to",
+          "isOptional" : false
         },
         {
           "name" : "fixedWidth",
           "type" : "Number",
-          "desc" : "(optional) If the text will be multiline, you have to set a fixed width\nin order to accurately measure the text height"
+          "desc" : "(optional) If the text will be multiline, you have to set a fixed width\nin order to accurately measure the text height",
+          "isOptional" : false
         }
       ],
       "returns" : "Roo.util.TextMetrics.Instance"
@@ -29,24 +37,33 @@
     {
       "name" : "measure",
       "desc" : "Measures the size of the specified text",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.util.TextMetrics",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "el",
           "type" : "String/HTMLElement",
-          "desc" : "The element, dom node or id from which to copy existing CSS styles\nthat can affect the size of the rendered text"
+          "desc" : "The element, dom node or id from which to copy existing CSS styles\nthat can affect the size of the rendered text",
+          "isOptional" : false
         },
         {
           "name" : "text",
           "type" : "String",
-          "desc" : "The text to measure"
+          "desc" : "The text to measure",
+          "isOptional" : false
         },
         {
           "name" : "fixedWidth",
           "type" : "Number",
-          "desc" : "(optional) If the text will be multiline, you have to set a fixed width\nin order to accurately measure the text height"
+          "desc" : "(optional) If the text will be multiline, you have to set a fixed width\nin order to accurately measure the text height",
+          "isOptional" : false
         }
       ],
       "returns" : "Object"

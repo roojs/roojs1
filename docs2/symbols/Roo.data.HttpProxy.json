@@ -9,7 +9,7 @@
       "name" : "method",
       "type" : "String",
       "desc" : "(Optional) The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GET)",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.HttpProxy",
       "values" : [
       ]
     },
@@ -17,7 +17,7 @@
       "name" : "timeout",
       "type" : "Number",
       "desc" : "(Optional) The timeout in milliseconds to be used for requests. (defaults to 30000)",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.HttpProxy",
       "values" : [
       ]
     },
@@ -25,7 +25,7 @@
       "name" : "autoAbort",
       "type" : "Boolean",
       "desc" : "(Optional) Whether this request should abort any pending requests. (defaults to false)",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.HttpProxy",
       "values" : [
       ]
     },
@@ -33,7 +33,7 @@
       "name" : "url",
       "type" : "String",
       "desc" : "(Optional) The default URL to be used for requests to the server. (defaults to undefined)",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.HttpProxy",
       "values" : [
       ]
     },
@@ -41,7 +41,7 @@
       "name" : "extraParams",
       "type" : "Object",
       "desc" : "(Optional) An object containing properties which are used as\nextra parameters to each request made by this object. (defaults to undefined)",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.HttpProxy",
       "values" : [
       ]
     },
@@ -49,7 +49,7 @@
       "name" : "disableCaching",
       "type" : "Boolean",
       "desc" : "(Optional) True to add a unique cache-buster param to GET requests. (defaults to true)",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.HttpProxy",
       "values" : [
       ]
     },
@@ -57,7 +57,7 @@
       "name" : "defaultHeaders",
       "type" : "Object",
       "desc" : "(Optional) An object containing request headers which are added\n to each request made by this object. (defaults to undefined)",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.HttpProxy",
       "values" : [
       ]
     }
@@ -66,9 +66,15 @@
     {
       "name" : "getConnection",
       "desc" : "Return the {@link Roo.data.Connection} object being used by this Proxy.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.data.HttpProxy",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "Connection"
@@ -76,34 +82,45 @@
     {
       "name" : "load",
       "desc" : "Load data from the configured {@link Roo.data.Connection}, read the data object into\na block of Roo.data.Records using the passed {@link Roo.data.DataReader} implementation, and\nprocess that block using the passed callback.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.data.HttpProxy",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "params",
           "type" : "Object",
-          "desc" : "An object containing properties which are to be used as HTTP parameters\nfor the request to the remote server."
+          "desc" : "An object containing properties which are to be used as HTTP parameters\nfor the request to the remote server.",
+          "isOptional" : false
         },
         {
           "name" : "reader",
           "type" : "Roo.data.DataReader",
-          "desc" : "The Reader object which converts the data\nobject into a block of Roo.data.Records."
+          "desc" : "The Reader object which converts the data\nobject into a block of Roo.data.Records.",
+          "isOptional" : false
         },
         {
           "name" : "callback",
           "type" : "Function",
-          "desc" : "The function into which to pass the block of Roo.data.Records.\nThe function must be passed <ul>\n<li>The Record block object</li>\n<li>The \"arg\" argument from the load function</li>\n<li>A boolean success indicator</li>\n</ul>"
+          "desc" : "The function into which to pass the block of Roo.data.Records.\nThe function must be passed <ul>\n<li>The Record block object</li>\n<li>The \"arg\" argument from the load function</li>\n<li>A boolean success indicator</li>\n</ul>",
+          "isOptional" : false
         },
         {
           "name" : "scope",
           "type" : "Object",
-          "desc" : "The scope in which to call the callback"
+          "desc" : "The scope in which to call the callback",
+          "isOptional" : false
         },
         {
           "name" : "arg",
           "type" : "Object",
-          "desc" : "An optional argument which is passed to the callback as its second parameter."
+          "desc" : "An optional argument which is passed to the callback as its second parameter.",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -120,17 +137,20 @@
         {
           "name" : "This",
           "type" : "Object",
-          "desc" : "DataProxy object."
+          "desc" : "DataProxy object.",
+          "isOptional" : false
         },
         {
           "name" : "o",
           "type" : "Object",
-          "desc" : "The data object."
+          "desc" : "The data object.",
+          "isOptional" : false
         },
         {
           "name" : "arg",
           "type" : "Object",
-          "desc" : "The callback argument object passed to the load function."
+          "desc" : "The callback argument object passed to the load function.",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -145,12 +165,14 @@
         {
           "name" : "This",
           "type" : "Object",
-          "desc" : "DataProxy object."
+          "desc" : "DataProxy object.",
+          "isOptional" : false
         },
         {
           "name" : "params",
           "type" : "Object",
-          "desc" : "The params parameter to the load function."
+          "desc" : "The params parameter to the load function.",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -165,22 +187,26 @@
         {
           "name" : "This",
           "type" : "Object",
-          "desc" : "DataProxy object."
+          "desc" : "DataProxy object.",
+          "isOptional" : false
         },
         {
           "name" : "o",
           "type" : "Object",
-          "desc" : "The data object."
+          "desc" : "The data object.",
+          "isOptional" : false
         },
         {
           "name" : "arg",
           "type" : "Object",
-          "desc" : "The callback argument object passed to the load function."
+          "desc" : "The callback argument object passed to the load function.",
+          "isOptional" : false
         },
         {
           "name" : "e",
           "type" : "Object",
-          "desc" : "The Exception."
+          "desc" : "The Exception.",
+          "isOptional" : false
         }
       ],
       "returns" : ""

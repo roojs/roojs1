@@ -9,14 +9,21 @@
     {
       "name" : "indexOf",
       "desc" : "Checks whether or not the specified object exists in the array.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Array",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "o",
           "type" : "Object",
-          "desc" : "The object to check for"
+          "desc" : "The object to check for",
+          "isOptional" : false
         }
       ],
       "returns" : "Number"
@@ -24,14 +31,21 @@
     {
       "name" : "map",
       "desc" : "Map (JS 1.6 compatibility)",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Array",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "function",
           "type" : "Function",
-          "desc" : "to call"
+          "desc" : "to call",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -39,14 +53,21 @@
     {
       "name" : "remove",
       "desc" : "Removes the specified object from the array.  If the object is not found nothing happens.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Array",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "o",
           "type" : "Object",
-          "desc" : "The object to remove"
+          "desc" : "The object to remove",
+          "isOptional" : false
         }
       ],
       "returns" : ""

@@ -8,7 +8,7 @@
       "name" : "offset",
       "type" : "String",
       "desc" : "The number of pixels to offset the shadow from the element (defaults to 4)",
-      "memberOf" : "",
+      "memberOf" : "Roo.Shadow",
       "values" : [
       ]
     },
@@ -25,14 +25,21 @@
     {
       "name" : "setZIndex",
       "desc" : "Adjust the z-index of this shadow",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.Shadow",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "zindex",
           "type" : "Number",
-          "desc" : "The new z-index"
+          "desc" : "The new z-index",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -40,9 +47,15 @@
     {
       "name" : "isVisible",
       "desc" : "Returns true if the shadow is visible, else false",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.Shadow",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -50,9 +63,15 @@
     {
       "name" : "hide",
       "desc" : "Hides this shadow",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.Shadow",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -60,14 +79,21 @@
     {
       "name" : "show",
       "desc" : "Displays the shadow under the target element",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.Shadow",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "targetEl",
           "type" : "String/HTMLElement/Element",
-          "desc" : "The id or element under which the shadow should display"
+          "desc" : "The id or element under which the shadow should display",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -75,29 +101,39 @@
     {
       "name" : "realign",
       "desc" : "Direct alignment when values are already available. Show must be called at least once before\ncalling this method to ensure it is initialized.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.Shadow",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "left",
           "type" : "Number",
-          "desc" : "The target element left position"
+          "desc" : "The target element left position",
+          "isOptional" : false
         },
         {
           "name" : "top",
           "type" : "Number",
-          "desc" : "The target element top position"
+          "desc" : "The target element top position",
+          "isOptional" : false
         },
         {
           "name" : "width",
           "type" : "Number",
-          "desc" : "The target element width"
+          "desc" : "The target element width",
+          "isOptional" : false
         },
         {
           "name" : "height",
           "type" : "Number",
-          "desc" : "The target element height"
+          "desc" : "The target element height",
+          "isOptional" : false
         }
       ],
       "returns" : ""

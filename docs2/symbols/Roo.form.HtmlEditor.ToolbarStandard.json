@@ -8,7 +8,7 @@
       "name" : "createLinkText",
       "type" : "String",
       "desc" : "The default text for the create link prompt",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard",
       "values" : [
       ]
     },
@@ -16,7 +16,7 @@
       "name" : "btns",
       "type" : "Array",
       "desc" : "List of additional buttons.\n\n\nNEEDS Extra CSS? \n.x-html-editor-tb .x-edit-none .x-btn-text { background: none; }",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard",
       "values" : [
       ]
     },
@@ -24,7 +24,7 @@
       "name" : "defaultFont",
       "type" : "String",
       "desc" : "default font to use.",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard",
       "values" : [
       ]
     },
@@ -32,7 +32,7 @@
       "name" : "defaultLinkValue",
       "type" : "String",
       "desc" : "The default value for the create link prompt (defaults to http:/ /)",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard",
       "values" : [
       ]
     },
@@ -40,7 +40,7 @@
       "name" : "fontFamilies",
       "type" : "Array",
       "desc" : "An array of available font families",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard",
       "values" : [
       ]
     },
@@ -48,7 +48,7 @@
       "name" : "disable",
       "type" : "Object",
       "desc" : "List of elements to disable..",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard",
       "values" : [
       ]
     }
@@ -57,9 +57,15 @@
     {
       "name" : "updateToolbar",
       "desc" : "Protected method that will not generally be called directly. It triggers\na toolbar update by reading the markup state of the current selection in the editor.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""

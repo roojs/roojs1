@@ -9,14 +9,21 @@
     {
       "name" : "asFloat",
       "desc" : "Float sorting",
-      "static" : true,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.data.SortTypes",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "s",
           "type" : "Mixed",
-          "desc" : "The value being converted"
+          "desc" : "The value being converted",
+          "isOptional" : false
         }
       ],
       "returns" : "Float"
@@ -24,14 +31,21 @@
     {
       "name" : "asUCString",
       "desc" : "Case insensitive string",
-      "static" : true,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.data.SortTypes",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "s",
           "type" : "Mixed",
-          "desc" : "The value being converted"
+          "desc" : "The value being converted",
+          "isOptional" : false
         }
       ],
       "returns" : "String"
@@ -39,14 +53,21 @@
     {
       "name" : "asDate",
       "desc" : "Date sorting",
-      "static" : true,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.data.SortTypes",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "s",
           "type" : "Mixed",
-          "desc" : "The value being converted"
+          "desc" : "The value being converted",
+          "isOptional" : false
         }
       ],
       "returns" : "Number"
@@ -54,14 +75,21 @@
     {
       "name" : "asUCText",
       "desc" : "Strips all HTML tags to sort on text only - Case insensitive",
-      "static" : true,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.data.SortTypes",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "s",
           "type" : "Mixed",
-          "desc" : "The value being converted"
+          "desc" : "The value being converted",
+          "isOptional" : false
         }
       ],
       "returns" : "String"
@@ -69,14 +97,21 @@
     {
       "name" : "asInt",
       "desc" : "Integer sorting",
-      "static" : true,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.data.SortTypes",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "s",
           "type" : "Mixed",
-          "desc" : "The value being converted"
+          "desc" : "The value being converted",
+          "isOptional" : false
         }
       ],
       "returns" : "Number"
@@ -84,14 +119,21 @@
     {
       "name" : "asText",
       "desc" : "Strips all HTML tags to sort on text only",
-      "static" : true,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.data.SortTypes",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "s",
           "type" : "Mixed",
-          "desc" : "The value being converted"
+          "desc" : "The value being converted",
+          "isOptional" : false
         }
       ],
       "returns" : "String"
@@ -99,14 +141,21 @@
     {
       "name" : "none",
       "desc" : "Default sort that does nothing",
-      "static" : true,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.data.SortTypes",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "s",
           "type" : "Mixed",
-          "desc" : "The value being converted"
+          "desc" : "The value being converted",
+          "isOptional" : false
         }
       ],
       "returns" : "Mixed"

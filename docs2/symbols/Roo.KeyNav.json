@@ -8,7 +8,7 @@
       "name" : "disabled",
       "type" : "Boolean",
       "desc" : "True to disable this KeyNav instance (defaults to false)",
-      "memberOf" : "",
+      "memberOf" : "Roo.KeyNav",
       "values" : [
       ]
     },
@@ -16,7 +16,7 @@
       "name" : "defaultEventAction",
       "type" : "String",
       "desc" : "The method to call on the {@link Roo.EventObject} after this KeyNav intercepts a key.  Valid values are\n{@link Roo.EventObject#stopEvent}, {@link Roo.EventObject#preventDefault} and\n{@link Roo.EventObject#stopPropagation} (defaults to 'stopEvent')",
-      "memberOf" : "",
+      "memberOf" : "Roo.KeyNav",
       "values" : [
       ]
     },
@@ -24,7 +24,7 @@
       "name" : "forceKeyDown",
       "type" : "Boolean",
       "desc" : "Handle the keydown event instead of keypress (defaults to false).  KeyNav automatically does this for IE since\nIE does not propagate special keys on keypress, but setting this to true will force other browsers to also\nhandle keydown instead of keypress.",
-      "memberOf" : "",
+      "memberOf" : "Roo.KeyNav",
       "values" : [
       ]
     }
@@ -33,9 +33,15 @@
     {
       "name" : "enable",
       "desc" : "Enable this KeyNav",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.KeyNav",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -43,9 +49,15 @@
     {
       "name" : "disable",
       "desc" : "Disable this KeyNav",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.KeyNav",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""

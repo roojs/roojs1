@@ -9,14 +9,21 @@
     {
       "name" : "add",
       "desc" : "Adds elements to this composite.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.CompositeElement",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "els",
           "type" : "String/Array",
-          "desc" : "A string CSS selector, an array of elements or an element"
+          "desc" : "A string CSS selector, an array of elements or an element",
+          "isOptional" : false
         }
       ],
       "returns" : "CompositeElement"
@@ -24,9 +31,15 @@
     {
       "name" : "contains",
       "desc" : "Returns true if this composite contains the passed element",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.CompositeElement",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -34,19 +47,27 @@
     {
       "name" : "each",
       "desc" : "Calls the passed function passing (el, this, index) for each element in this composite.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.CompositeElement",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "fn",
           "type" : "Function",
-          "desc" : "The function to call"
+          "desc" : "The function to call",
+          "isOptional" : false
         },
         {
           "name" : "scope",
           "type" : "Object",
-          "desc" : "(optional) The <i>this</i> object (defaults to the element)"
+          "desc" : "(optional) The <i>this</i> object (defaults to the element)",
+          "isOptional" : false
         }
       ],
       "returns" : "CompositeElement"
@@ -54,24 +75,33 @@
     {
       "name" : "replaceElement",
       "desc" : "Replaces the specified element with the passed element.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.CompositeElement",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "el",
           "type" : "String/HTMLElement/Element/Number",
-          "desc" : "The id of an element, the Element itself, the index of the element in this composite\nto replace."
+          "desc" : "The id of an element, the Element itself, the index of the element in this composite\nto replace.",
+          "isOptional" : false
         },
         {
           "name" : "replacement",
           "type" : "String/HTMLElement/Element",
-          "desc" : "The id of an element or the Element itself."
+          "desc" : "The id of an element or the Element itself.",
+          "isOptional" : false
         },
         {
           "name" : "domReplace",
           "type" : "Boolean",
-          "desc" : "(Optional) True to remove and replace the element in the document too."
+          "desc" : "(Optional) True to remove and replace the element in the document too.",
+          "isOptional" : false
         }
       ],
       "returns" : "CompositeElement"
@@ -79,14 +109,21 @@
     {
       "name" : "fill",
       "desc" : "Clears this composite and adds the elements returned by the passed selector.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.CompositeElement",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "els",
           "type" : "String/Array",
-          "desc" : "A string CSS selector, an array of elements or an element"
+          "desc" : "A string CSS selector, an array of elements or an element",
+          "isOptional" : false
         }
       ],
       "returns" : "CompositeElement"
@@ -94,9 +131,15 @@
     {
       "name" : "clear",
       "desc" : "Removes all elements.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.CompositeElement",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -104,19 +147,27 @@
     {
       "name" : "filter",
       "desc" : "Filters this composite to only elements that match the passed selector.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.CompositeElement",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "selector",
           "type" : "String",
-          "desc" : "A string CSS selector"
+          "desc" : "A string CSS selector",
+          "isOptional" : false
         },
         {
           "name" : "inverse",
           "type" : "Boolean",
-          "desc" : "return inverse filter (not matches)"
+          "desc" : "return inverse filter (not matches)",
+          "isOptional" : false
         }
       ],
       "returns" : "CompositeElement"
@@ -124,14 +175,21 @@
     {
       "name" : "item",
       "desc" : "Returns the Element object at the specified index",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.CompositeElement",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "index",
           "type" : "Number",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : "Roo.Element"
@@ -139,9 +197,15 @@
     {
       "name" : "last",
       "desc" : "Returns the last Element",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.CompositeElement",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "Roo.Element"
@@ -149,19 +213,27 @@
     {
       "name" : "removeElement",
       "desc" : "Removes the specified element(s).",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.CompositeElement",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "el",
           "type" : "Mixed",
-          "desc" : "The id of an element, the Element itself, the index of the element in this composite\nor an array of any of those."
+          "desc" : "The id of an element, the Element itself, the index of the element in this composite\nor an array of any of those.",
+          "isOptional" : false
         },
         {
           "name" : "removeDom",
           "type" : "Boolean",
-          "desc" : "(optional) True to also remove the element from the document"
+          "desc" : "(optional) True to also remove the element from the document",
+          "isOptional" : false
         }
       ],
       "returns" : "CompositeElement"
@@ -169,9 +241,15 @@
     {
       "name" : "indexOf",
       "desc" : "Returns true if this composite contains the passed element",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.CompositeElement",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -179,9 +257,15 @@
     {
       "name" : "getCount",
       "desc" : "Returns the number of elements in this composite",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.CompositeElement",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -189,9 +273,15 @@
     {
       "name" : "first",
       "desc" : "Returns the first Element",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.CompositeElement",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "Roo.Element"

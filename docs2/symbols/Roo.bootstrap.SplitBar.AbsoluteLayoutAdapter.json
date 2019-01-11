@@ -10,24 +10,33 @@
     {
       "name" : "setElementSize",
       "desc" : "Called after drag operations to set the size of the resizing element.",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.bootstrap.SplitBar.BasicLayoutAdapter",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "s",
           "type" : "Roo.bootstrap.SplitBar",
-          "desc" : "The SplitBar using this adapter"
+          "desc" : "The SplitBar using this adapter",
+          "isOptional" : false
         },
         {
           "name" : "newSize",
           "type" : "Number",
-          "desc" : "The new size to set"
+          "desc" : "The new size to set",
+          "isOptional" : false
         },
         {
           "name" : "onComplete",
           "type" : "Function",
-          "desc" : "A function to be invoked when resizing is complete"
+          "desc" : "A function to be invoked when resizing is complete",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -35,14 +44,21 @@
     {
       "name" : "getElementSize",
       "desc" : "Called before drag operations to get the current size of the resizing element.",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.bootstrap.SplitBar.BasicLayoutAdapter",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "s",
           "type" : "Roo.bootstrap.SplitBar",
-          "desc" : "The SplitBar using this adapter"
+          "desc" : "The SplitBar using this adapter",
+          "isOptional" : false
         }
       ],
       "returns" : ""

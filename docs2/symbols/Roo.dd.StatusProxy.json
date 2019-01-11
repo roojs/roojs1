@@ -8,7 +8,7 @@
       "name" : "dropNotAllowed",
       "type" : "String",
       "desc" : "The CSS class to apply to the status element when drop is not allowed (defaults to \"x-dd-drop-nodrop\").",
-      "memberOf" : "",
+      "memberOf" : "Roo.dd.StatusProxy",
       "values" : [
       ]
     },
@@ -16,7 +16,7 @@
       "name" : "dropAllowed",
       "type" : "String",
       "desc" : "The CSS class to apply to the status element when drop is allowed (defaults to \"x-dd-drop-ok\").",
-      "memberOf" : "",
+      "memberOf" : "Roo.dd.StatusProxy",
       "values" : [
       ]
     }
@@ -25,14 +25,21 @@
     {
       "name" : "reset",
       "desc" : "Resets the status indicator to the default dropNotAllowed value",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.dd.StatusProxy",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "clearGhost",
           "type" : "Boolean",
-          "desc" : "True to also remove all content from the ghost, false to preserve it"
+          "desc" : "True to also remove all content from the ghost, false to preserve it",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -40,9 +47,15 @@
     {
       "name" : "getGhost",
       "desc" : "Returns the ghost element",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.dd.StatusProxy",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "Roo.Element"
@@ -50,9 +63,15 @@
     {
       "name" : "getEl",
       "desc" : "Returns the underlying proxy {@link Roo.Layer}",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.dd.StatusProxy",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "Roo.Layer"
@@ -60,9 +79,15 @@
     {
       "name" : "sync",
       "desc" : "Force the Layer to sync its shadow and shim positions to the element",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.dd.StatusProxy",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -70,14 +95,21 @@
     {
       "name" : "hide",
       "desc" : "Hides the proxy",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.dd.StatusProxy",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "clear",
           "type" : "Boolean",
-          "desc" : "True to reset the status and clear the ghost contents, false to preserve them"
+          "desc" : "True to reset the status and clear the ghost contents, false to preserve them",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -85,9 +117,15 @@
     {
       "name" : "show",
       "desc" : "Displays this proxy",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.dd.StatusProxy",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -95,9 +133,15 @@
     {
       "name" : "stop",
       "desc" : "Stops the repair animation if it's currently running",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.dd.StatusProxy",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -105,14 +149,21 @@
     {
       "name" : "setStatus",
       "desc" : "Updates the proxy's visual element to indicate the status of whether or not drop is allowed\nover the current target element.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.dd.StatusProxy",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "cssClass",
           "type" : "String",
-          "desc" : "The css class for the new drop status indicator image"
+          "desc" : "The css class for the new drop status indicator image",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -120,14 +171,21 @@
     {
       "name" : "update",
       "desc" : "Updates the contents of the ghost element",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.dd.StatusProxy",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "html",
           "type" : "String",
-          "desc" : "The html that will replace the current innerHTML of the ghost element"
+          "desc" : "The html that will replace the current innerHTML of the ghost element",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -135,24 +193,33 @@
     {
       "name" : "repair",
       "desc" : "Causes the proxy to return to its position of origin via an animation.  Should be called after an\ninvalid drop operation by the item being dragged.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.dd.StatusProxy",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "xy",
           "type" : "Array",
-          "desc" : "The XY position of the element ([x, y])"
+          "desc" : "The XY position of the element ([x, y])",
+          "isOptional" : false
         },
         {
           "name" : "callback",
           "type" : "Function",
-          "desc" : "The function to call after the repair is complete"
+          "desc" : "The function to call after the repair is complete",
+          "isOptional" : false
         },
         {
           "name" : "scope",
           "type" : "Object",
-          "desc" : "The scope in which to execute the callback"
+          "desc" : "The scope in which to execute the callback",
+          "isOptional" : false
         }
       ],
       "returns" : ""

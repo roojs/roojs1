@@ -18,29 +18,39 @@
     {
       "name" : "update",
       "desc" : "Performs an async request, updating this element with the response. If params are specified it uses POST, otherwise it uses GET.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.UpdateManager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "url",
           "type" : "Object/String/Function",
-          "desc" : "The url for this request or a function to call to get the url or a config object containing any of the following options:\n<pre><code>\num.update({<br/>\n    url: \"your-url.php\",<br/>\n    params: {param1: \"foo\", param2: \"bar\"}, // or a URL encoded string<br/>\n    callback: yourFunction,<br/>\n    scope: yourObject, //(optional scope)  <br/>\n    discardUrl: false, <br/>\n    nocache: false,<br/>\n    text: \"Loading...\",<br/>\n    timeout: 30,<br/>\n    scripts: false<br/>\n});\n</code></pre>\nThe only required property is url. The optional properties nocache, text and scripts\nare shorthand for disableCaching, indicatorText and loadScripts and are used to set their associated property on this UpdateManager instance."
+          "desc" : "The url for this request or a function to call to get the url or a config object containing any of the following options:\n<pre><code>\num.update({<br/>\n    url: \"your-url.php\",<br/>\n    params: {param1: \"foo\", param2: \"bar\"}, // or a URL encoded string<br/>\n    callback: yourFunction,<br/>\n    scope: yourObject, //(optional scope)  <br/>\n    discardUrl: false, <br/>\n    nocache: false,<br/>\n    text: \"Loading...\",<br/>\n    timeout: 30,<br/>\n    scripts: false<br/>\n});\n</code></pre>\nThe only required property is url. The optional properties nocache, text and scripts\nare shorthand for disableCaching, indicatorText and loadScripts and are used to set their associated property on this UpdateManager instance.",
+          "isOptional" : false
         },
         {
           "name" : "params",
           "type" : "String/Object",
-          "desc" : "(optional) The parameters to pass as either a url encoded string \"param1=1&amp;param2=2\" or an object {param1: 1, param2: 2}"
+          "desc" : "(optional) The parameters to pass as either a url encoded string \"param1=1&amp;param2=2\" or an object {param1: 1, param2: 2}",
+          "isOptional" : false
         },
         {
           "name" : "callback",
           "type" : "Function",
-          "desc" : "(optional) Callback when transaction is complete - called with signature (oElement, bSuccess, oResponse)"
+          "desc" : "(optional) Callback when transaction is complete - called with signature (oElement, bSuccess, oResponse)",
+          "isOptional" : false
         },
         {
           "name" : "discardUrl",
           "type" : "Boolean",
-          "desc" : "(optional) By default when you execute an update the defaultUrl is changed to the last used url. If true, it will not store the url."
+          "desc" : "(optional) By default when you execute an update the defaultUrl is changed to the last used url. If true, it will not store the url.",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -48,9 +58,15 @@
     {
       "name" : "showLoading",
       "desc" : "Called to update the element to \"Loading\" state. Override to perform custom action.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.UpdateManager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -58,14 +74,21 @@
     {
       "name" : "setDefaultUrl",
       "desc" : "Set the defaultUrl used for updates",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.UpdateManager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "defaultUrl",
           "type" : "String/Function",
-          "desc" : "The url or a function to call to get the url"
+          "desc" : "The url or a function to call to get the url",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -73,29 +96,39 @@
     {
       "name" : "updateElement",
       "desc" : "Static convenience method. This method is deprecated in favor of el.load({url:'foo.php', ...}).\nUsage:\n<pre><code>Roo.UpdateManager.updateElement(\"my-div\", \"stuff.php\");</code></pre>",
-      "static" : true,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.UpdateManager",
+      "example" : "",
+      "deprecated" : "This has been deprecated: ",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "el",
           "type" : "String/HTMLElement/Roo.Element",
-          "desc" : "The element to update"
+          "desc" : "The element to update",
+          "isOptional" : false
         },
         {
           "name" : "url",
           "type" : "String",
-          "desc" : "The url"
+          "desc" : "The url",
+          "isOptional" : false
         },
         {
           "name" : "params",
           "type" : "String/Object",
-          "desc" : "(optional) Url encoded param string or an object of name/value pairs"
+          "desc" : "(optional) Url encoded param string or an object of name/value pairs",
+          "isOptional" : false
         },
         {
           "name" : "options",
           "type" : "Object",
-          "desc" : "(optional) A config object with any of the UpdateManager properties you want to set - for example: {disableCaching:true, indicatorText: \"Loading data...\"}"
+          "desc" : "(optional) A config object with any of the UpdateManager properties you want to set - for example: {disableCaching:true, indicatorText: \"Loading data...\"}",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -103,14 +136,21 @@
     {
       "name" : "refresh",
       "desc" : "Refresh the element with the last used url or defaultUrl. If there is no url, it returns immediately",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.UpdateManager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "callback",
           "type" : "Function",
-          "desc" : "(optional) Callback when transaction is complete - called with signature (oElement, bSuccess)"
+          "desc" : "(optional) Callback when transaction is complete - called with signature (oElement, bSuccess)",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -118,9 +158,15 @@
     {
       "name" : "getEl",
       "desc" : "Get the Element this UpdateManager is bound to",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.UpdateManager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "Roo.Element"
@@ -128,9 +174,15 @@
     {
       "name" : "isUpdating",
       "desc" : "Returns true if an update is in progress",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.UpdateManager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "Boolean"
@@ -138,9 +190,15 @@
     {
       "name" : "stopAutoRefresh",
       "desc" : "Stop auto refresh on this element.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.UpdateManager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -148,34 +206,45 @@
     {
       "name" : "startAutoRefresh",
       "desc" : "Set this element to auto refresh.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.UpdateManager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "interval",
           "type" : "Number",
-          "desc" : "How often to update (in seconds)."
+          "desc" : "How often to update (in seconds).",
+          "isOptional" : false
         },
         {
           "name" : "url",
           "type" : "String/Function",
-          "desc" : "(optional) The url for this request or a function to call to get the url (Defaults to the last used url)"
+          "desc" : "(optional) The url for this request or a function to call to get the url (Defaults to the last used url)",
+          "isOptional" : false
         },
         {
           "name" : "params",
           "type" : "String/Object",
-          "desc" : "(optional) The parameters to pass as either a url encoded string \"&param1=1&param2=2\" or as an object {param1: 1, param2: 2}"
+          "desc" : "(optional) The parameters to pass as either a url encoded string \"&param1=1&param2=2\" or as an object {param1: 1, param2: 2}",
+          "isOptional" : false
         },
         {
           "name" : "callback",
           "type" : "Function",
-          "desc" : "(optional) Callback when transaction is complete - called with signature (oElement, bSuccess)"
+          "desc" : "(optional) Callback when transaction is complete - called with signature (oElement, bSuccess)",
+          "isOptional" : false
         },
         {
           "name" : "refreshNow",
           "type" : "Boolean",
-          "desc" : "(optional) Whether to execute the refresh now, or wait the interval"
+          "desc" : "(optional) Whether to execute the refresh now, or wait the interval",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -183,9 +252,15 @@
     {
       "name" : "abort",
       "desc" : "Aborts the executing transaction",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.UpdateManager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -193,14 +268,21 @@
     {
       "name" : "setRenderer",
       "desc" : "Set the content renderer for this UpdateManager. See {@link Roo.UpdateManager.BasicRenderer#render} for more details.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.UpdateManager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "renderer",
           "type" : "Object",
-          "desc" : "The object implementing the render() method"
+          "desc" : "The object implementing the render() method",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -208,29 +290,39 @@
     {
       "name" : "formUpdate",
       "desc" : "Performs an async form post, updating this element with the response. If the form has the attribute enctype=\"multipart/form-data\", it assumes it's a file upload.\nUses this.sslBlankUrl for SSL file uploads to prevent IE security warning.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.UpdateManager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "form",
           "type" : "String/HTMLElement",
-          "desc" : "The form Id or form element"
+          "desc" : "The form Id or form element",
+          "isOptional" : false
         },
         {
           "name" : "url",
           "type" : "String",
-          "desc" : "(optional) The url to pass the form to. If omitted the action attribute on the form will be used."
+          "desc" : "(optional) The url to pass the form to. If omitted the action attribute on the form will be used.",
+          "isOptional" : false
         },
         {
           "name" : "reset",
           "type" : "Boolean",
-          "desc" : "(optional) Whether to try to reset the form after the update"
+          "desc" : "(optional) Whether to try to reset the form after the update",
+          "isOptional" : false
         },
         {
           "name" : "callback",
           "type" : "Function",
-          "desc" : "(optional) Callback when transaction is complete - called with signature (oElement, bSuccess, oResponse)"
+          "desc" : "(optional) Callback when transaction is complete - called with signature (oElement, bSuccess, oResponse)",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -238,9 +330,15 @@
     {
       "name" : "purgeListeners",
       "desc" : "Removes all listeners for this object",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : ""
@@ -248,29 +346,39 @@
     {
       "name" : "on",
       "desc" : "Appends an event handler to this element (shorthand for addListener)",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "eventName",
           "type" : "String",
-          "desc" : "The type of event to listen for"
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
         },
         {
           "name" : "handler",
           "type" : "Function",
-          "desc" : "The method the event invokes"
+          "desc" : "The method the event invokes",
+          "isOptional" : false
         },
         {
           "name" : "scope",
           "type" : "Object",
-          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context."
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context.",
+          "isOptional" : false
         },
         {
           "name" : "options",
           "type" : "Object",
-          "desc" : "(optional)"
+          "desc" : "(optional)",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -278,24 +386,33 @@
     {
       "name" : "un",
       "desc" : "Removes a listener (shorthand for removeListener)",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "eventName",
           "type" : "String",
-          "desc" : "The type of event to listen for"
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
         },
         {
           "name" : "handler",
           "type" : "Function",
-          "desc" : "The handler to remove"
+          "desc" : "The handler to remove",
+          "isOptional" : false
         },
         {
           "name" : "scope",
           "type" : "Object",
-          "desc" : "(optional) The scope (this object) for the handler"
+          "desc" : "(optional) The scope (this object) for the handler",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -303,14 +420,21 @@
     {
       "name" : "addEvents",
       "desc" : "Used to define events on this Observable",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "object",
           "type" : "Object",
-          "desc" : "The object with the events defined"
+          "desc" : "The object with the events defined",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -318,14 +442,21 @@
     {
       "name" : "releaseCapture",
       "desc" : "Removes <b>all</b> added captures from the Observable.",
-      "static" : true,
-      "constructor" : false,
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "o",
           "type" : "Observable",
-          "desc" : "The Observable to release"
+          "desc" : "The Observable to release",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -333,24 +464,33 @@
     {
       "name" : "removeListener",
       "desc" : "Removes a listener",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "eventName",
           "type" : "String",
-          "desc" : "The type of event to listen for"
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
         },
         {
           "name" : "handler",
           "type" : "Function",
-          "desc" : "The handler to remove"
+          "desc" : "The handler to remove",
+          "isOptional" : false
         },
         {
           "name" : "scope",
           "type" : "Object",
-          "desc" : "(optional) The scope (this object) for the handler"
+          "desc" : "(optional) The scope (this object) for the handler",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -358,19 +498,27 @@
     {
       "name" : "fireEvent",
       "desc" : "Fires the specified event with the passed parameters (minus the event name).",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "eventName",
           "type" : "String",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "args",
           "type" : "Object...",
-          "desc" : "Variable number of parameters are passed to handlers"
+          "desc" : "Variable number of parameters are passed to handlers",
+          "isOptional" : false
         }
       ],
       "returns" : "Boolean"
@@ -378,14 +526,21 @@
     {
       "name" : "hasListener",
       "desc" : "Checks to see if this object has any listeners for a specified event",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "eventName",
           "type" : "String",
-          "desc" : "The name of the event to check for"
+          "desc" : "The name of the event to check for",
+          "isOptional" : false
         }
       ],
       "returns" : "Boolean"
@@ -393,24 +548,33 @@
     {
       "name" : "capture",
       "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
-      "static" : true,
-      "constructor" : false,
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "o",
           "type" : "Observable",
-          "desc" : "The Observable to capture"
+          "desc" : "The Observable to capture",
+          "isOptional" : false
         },
         {
           "name" : "fn",
           "type" : "Function",
-          "desc" : "The function to call"
+          "desc" : "The function to call",
+          "isOptional" : false
         },
         {
           "name" : "scope",
           "type" : "Object",
-          "desc" : "(optional) The scope (this object) for the fn"
+          "desc" : "(optional) The scope (this object) for the fn",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -418,29 +582,39 @@
     {
       "name" : "addListener",
       "desc" : "Appends an event handler to this component",
-      "static" : false,
-      "constructor" : false,
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
       "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "eventName",
           "type" : "String",
-          "desc" : "The type of event to listen for"
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
         },
         {
           "name" : "handler",
           "type" : "Function",
-          "desc" : "The method the event invokes"
+          "desc" : "The method the event invokes",
+          "isOptional" : false
         },
         {
           "name" : "scope",
           "type" : "Object",
-          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context."
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context.",
+          "isOptional" : false
         },
         {
           "name" : "options",
           "type" : "Object",
-          "desc" : "(optional) An object containing handler configuration\nproperties. This may contain any of the following properties:<ul>\n<li>scope {Object} The scope in which to execute the handler function. The handler function's \"this\" context.</li>\n<li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li>\n<li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li>\n<li>buffer {Number} Causes the handler to be scheduled to run in an {@link Roo.util.DelayedTask} delayed\nby the specified number of milliseconds. If the event fires again within that time, the original\nhandler is <em>not</em> invoked, but the new handler is scheduled in its place.</li>\n</ul><br>\n<p>\n<b>Combining Options</b><br>\nUsing the options argument, it is possible to combine different types of listeners:<br>\n<br>\nA normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)\n\t\t<pre><code>\n\t\tel.on('click', this.onClick, this, {\n \t\t\tsingle: true,\n    \t\tdelay: 100,\n    \t\tforumId: 4\n\t\t});\n\t\t</code></pre>\n<p>\n<b>Attaching multiple handlers in 1 call</b><br>\nThe method also allows for a single argument to be passed which is a config object containing properties\nwhich specify multiple handlers.\n<pre><code>\n\t\tel.on({\n\t\t\t'click': {\n        \t\tfn: this.onClick,\n        \t\tscope: this,\n        \t\tdelay: 100\n    \t\t}, \n    \t\t'mouseover': {\n        \t\tfn: this.onMouseOver,\n        \t\tscope: this\n    \t\t},\n    \t\t'mouseout': {\n        \t\tfn: this.onMouseOut,\n        \t\tscope: this\n    \t\t}\n\t\t});\n\t\t</code></pre>\n<p>\nOr a shorthand syntax which passes the same scope object to all handlers:\n     \t<pre><code>\n\t\tel.on({\n\t\t\t'click': this.onClick,\n    \t\t'mouseover': this.onMouseOver,\n    \t\t'mouseout': this.onMouseOut,\n    \t\tscope: this\n\t\t});\n\t\t</code></pre>"
+          "desc" : "(optional) An object containing handler configuration\nproperties. This may contain any of the following properties:<ul>\n<li>scope {Object} The scope in which to execute the handler function. The handler function's \"this\" context.</li>\n<li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li>\n<li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li>\n<li>buffer {Number} Causes the handler to be scheduled to run in an {@link Roo.util.DelayedTask} delayed\nby the specified number of milliseconds. If the event fires again within that time, the original\nhandler is <em>not</em> invoked, but the new handler is scheduled in its place.</li>\n</ul><br>\n<p>\n<b>Combining Options</b><br>\nUsing the options argument, it is possible to combine different types of listeners:<br>\n<br>\nA normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)\n\t\t<pre><code>\n\t\tel.on('click', this.onClick, this, {\n \t\t\tsingle: true,\n    \t\tdelay: 100,\n    \t\tforumId: 4\n\t\t});\n\t\t</code></pre>\n<p>\n<b>Attaching multiple handlers in 1 call</b><br>\nThe method also allows for a single argument to be passed which is a config object containing properties\nwhich specify multiple handlers.\n<pre><code>\n\t\tel.on({\n\t\t\t'click': {\n        \t\tfn: this.onClick,\n        \t\tscope: this,\n        \t\tdelay: 100\n    \t\t}, \n    \t\t'mouseover': {\n        \t\tfn: this.onMouseOver,\n        \t\tscope: this\n    \t\t},\n    \t\t'mouseout': {\n        \t\tfn: this.onMouseOut,\n        \t\tscope: this\n    \t\t}\n\t\t});\n\t\t</code></pre>\n<p>\nOr a shorthand syntax which passes the same scope object to all handlers:\n     \t<pre><code>\n\t\tel.on({\n\t\t\t'click': this.onClick,\n    \t\t'mouseover': this.onMouseOver,\n    \t\t'mouseout': this.onMouseOut,\n    \t\tscope: this\n\t\t});\n\t\t</code></pre>",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -457,12 +631,14 @@
         {
           "name" : "el",
           "type" : "Roo.Element",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "oResponseObject",
           "type" : "Object",
-          "desc" : "The response Object"
+          "desc" : "The response Object",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -477,17 +653,20 @@
         {
           "name" : "el",
           "type" : "Roo.Element",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "url",
           "type" : "String/Object/Function",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "params",
           "type" : "String/Object",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -502,12 +681,14 @@
         {
           "name" : "el",
           "type" : "Roo.Element",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "oResponseObject",
           "type" : "Object",
-          "desc" : "The response Object"
+          "desc" : "The response Object",
+          "isOptional" : false
         }
       ],
       "returns" : ""

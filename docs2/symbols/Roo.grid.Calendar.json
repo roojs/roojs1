@@ -8,7 +8,7 @@
       "name" : "eventStore",
       "type" : "Store",
       "desc" : "The store that loads events.",
-      "memberOf" : "",
+      "memberOf" : "Roo.grid.Calendar",
       "values" : [
       ]
     }
@@ -17,9 +17,15 @@
     {
       "name" : "getSelectionModel",
       "desc" : "Returns the grid's SelectionModel.",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.grid.Calendar",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
       ],
       "returns" : "SelectionModel"
@@ -36,12 +42,14 @@
         {
           "name" : "this",
           "type" : "Calendar",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "",
           "type" : "event",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -56,12 +64,14 @@
         {
           "name" : "this",
           "type" : "DatePicker",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "date",
           "type" : "Date",
-          "desc" : "The selected date"
+          "desc" : "The selected date",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -76,7 +86,8 @@
         {
           "name" : "e",
           "type" : "Roo.EventObject",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -91,12 +102,14 @@
         {
           "name" : "this",
           "type" : "DatePicker",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "date",
           "type" : "Date",
-          "desc" : "The selected month"
+          "desc" : "The selected month",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -111,22 +124,26 @@
         {
           "name" : "this",
           "type" : "Grid",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "dd",
           "type" : "Roo.GridDD",
-          "desc" : "The drag drop object"
+          "desc" : "The drag drop object",
+          "isOptional" : false
         },
         {
           "name" : "targetId",
           "type" : "String",
-          "desc" : "The target drag drop object"
+          "desc" : "The target drag drop object",
+          "isOptional" : false
         },
         {
           "name" : "e",
           "type" : "event",
-          "desc" : "The raw browser event"
+          "desc" : "The raw browser event",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -141,17 +158,20 @@
         {
           "name" : "this",
           "type" : "Grid",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "rowIndex",
           "type" : "Number",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "e",
           "type" : "Roo.EventObject",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -166,17 +186,20 @@
         {
           "name" : "this",
           "type" : "Grid",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "columnIndex",
           "type" : "Number",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "e",
           "type" : "Roo.EventObject",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -191,17 +214,20 @@
         {
           "name" : "this",
           "type" : "Grid",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "dd",
           "type" : "Roo.GridDD",
-          "desc" : "The drag drop object"
+          "desc" : "The drag drop object",
+          "isOptional" : false
         },
         {
           "name" : "e",
           "type" : "event",
-          "desc" : "The raw browser event"
+          "desc" : "The raw browser event",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -216,17 +242,20 @@
         {
           "name" : "this",
           "type" : "Grid",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "dd",
           "type" : "Roo.GridDD",
-          "desc" : "The drag drop object"
+          "desc" : "The drag drop object",
+          "isOptional" : false
         },
         {
           "name" : "e",
           "type" : "event",
-          "desc" : "The raw browser event"
+          "desc" : "The raw browser event",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -241,17 +270,20 @@
         {
           "name" : "this",
           "type" : "Grid",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "columnIndex",
           "type" : "Number",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "e",
           "type" : "Roo.EventObject",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -266,22 +298,26 @@
         {
           "name" : "this",
           "type" : "Grid",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "dd",
           "type" : "Roo.GridDD",
-          "desc" : "The drag drop object"
+          "desc" : "The drag drop object",
+          "isOptional" : false
         },
         {
           "name" : "targetId",
           "type" : "String",
-          "desc" : "The target drag drop object"
+          "desc" : "The target drag drop object",
+          "isOptional" : false
         },
         {
           "name" : "e",
           "type" : "event",
-          "desc" : "The raw browser event"
+          "desc" : "The raw browser event",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -296,7 +332,8 @@
         {
           "name" : "e",
           "type" : "Roo.EventObject",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -311,7 +348,8 @@
         {
           "name" : "e",
           "type" : "Roo.EventObject",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -326,22 +364,26 @@
         {
           "name" : "this",
           "type" : "Grid",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "dd",
           "type" : "Roo.GridDD",
-          "desc" : "The drag drop object"
+          "desc" : "The drag drop object",
+          "isOptional" : false
         },
         {
           "name" : "targetId",
           "type" : "String",
-          "desc" : "The target drag drop object"
+          "desc" : "The target drag drop object",
+          "isOptional" : false
         },
         {
           "name" : "e",
           "type" : "event",
-          "desc" : "The raw browser event"
+          "desc" : "The raw browser event",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -356,12 +398,14 @@
         {
           "name" : "oldIndex",
           "type" : "Number",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "newIndex",
           "type" : "Number",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -376,7 +420,8 @@
         {
           "name" : "e",
           "type" : "Roo.EventObject",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -391,12 +436,14 @@
         {
           "name" : "this",
           "type" : "Calendar",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "data",
           "type" : "data",
-          "desc" : "to be modified"
+          "desc" : "to be modified",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -411,12 +458,14 @@
         {
           "name" : "scrollLeft",
           "type" : "Number",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "scrollTop",
           "type" : "Number",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -431,17 +480,20 @@
         {
           "name" : "this",
           "type" : "Grid",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "rowIndex",
           "type" : "Number",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "e",
           "type" : "Roo.EventObject",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -456,22 +508,26 @@
         {
           "name" : "this",
           "type" : "Grid",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "rowIndex",
           "type" : "Number",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "columnIndex",
           "type" : "Number",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "e",
           "type" : "Roo.EventObject",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -486,12 +542,14 @@
         {
           "name" : "this",
           "type" : "Calendar",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "Event",
           "type" : "event",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -506,7 +564,8 @@
         {
           "name" : "e",
           "type" : "Roo.EventObject",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -521,7 +580,8 @@
         {
           "name" : "e",
           "type" : "Roo.EventObject",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -536,7 +596,8 @@
         {
           "name" : "e",
           "type" : "Roo.EventObject",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -551,12 +612,14 @@
         {
           "name" : "this",
           "type" : "Calendar",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "",
           "type" : "event",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -571,22 +634,26 @@
         {
           "name" : "this",
           "type" : "Grid",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "dd",
           "type" : "Roo.GridDD",
-          "desc" : "The drag drop object"
+          "desc" : "The drag drop object",
+          "isOptional" : false
         },
         {
           "name" : "targetId",
           "type" : "String",
-          "desc" : "The target drag drop object"
+          "desc" : "The target drag drop object",
+          "isOptional" : false
         },
         {
           "name" : "e",
           "type" : "event",
-          "desc" : "The raw browser event"
+          "desc" : "The raw browser event",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -601,17 +668,20 @@
         {
           "name" : "this",
           "type" : "Grid",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "rowIndex",
           "type" : "Number",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "e",
           "type" : "Roo.EventObject",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -626,22 +696,26 @@
         {
           "name" : "this",
           "type" : "Grid",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "rowIndex",
           "type" : "Number",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "columnIndex",
           "type" : "Number",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "e",
           "type" : "Roo.EventObject",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -656,17 +730,20 @@
         {
           "name" : "this",
           "type" : "Grid",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "columnIndex",
           "type" : "Number",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "e",
           "type" : "Roo.EventObject",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -681,12 +758,14 @@
         {
           "name" : "gridview",
           "type" : "GridView",
-          "desc" : "The grid view"
+          "desc" : "The grid view",
+          "isOptional" : false
         },
         {
           "name" : "rowcfg",
           "type" : "Object",
-          "desc" : "contains record  rowIndex and rowClass - set rowClass to add a style."
+          "desc" : "contains record  rowIndex and rowClass - set rowClass to add a style.",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -701,7 +780,8 @@
         {
           "name" : "e",
           "type" : "Roo.EventObject",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -716,7 +796,8 @@
         {
           "name" : "e",
           "type" : "Roo.EventObject",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -731,7 +812,8 @@
         {
           "name" : "grid",
           "type" : "Grid",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -746,12 +828,14 @@
         {
           "name" : "columnIndex",
           "type" : "Number",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "newSize",
           "type" : "Number",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""
@@ -766,22 +850,26 @@
         {
           "name" : "this",
           "type" : "Grid",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "rowIndex",
           "type" : "Number",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "cellIndex",
           "type" : "Number",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         },
         {
           "name" : "e",
           "type" : "Roo.EventObject",
-          "desc" : ""
+          "desc" : "",
+          "isOptional" : false
         }
       ],
       "returns" : ""

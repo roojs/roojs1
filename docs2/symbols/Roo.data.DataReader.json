@@ -9,14 +9,21 @@
     {
       "name" : "newRow",
       "desc" : "Create an empty record",
-      "static" : false,
-      "constructor" : false,
-      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "singleton" : "",
+      "memberOf" : "Roo.data.DataReader",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "data",
           "type" : "Object",
-          "desc" : "(optional) - overlay some values"
+          "desc" : "(optional) - overlay some values",
+          "isOptional" : false
         }
       ],
       "returns" : "Roo.data.Record"
