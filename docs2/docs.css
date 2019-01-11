@@ -114,6 +114,12 @@ h6,
     font-weight: bold;
 }
 
+/**-----subsubsub menuds... **/
+.left-menu-sidebar.sidebar .treeview-menu.dropdown-toggle > dropdown-item {
+    display: none;
+}
+
+
 
 /* ------------------logo */
 
