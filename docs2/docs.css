@@ -289,16 +289,7 @@ header-menu-options ul.socials > li:first-child,
 .mobile-general-content-head {
     /*padding-right: 10px;*/
 }
-
-.mobile-general-brick-block {
-    margin: 0px;
-}
-
-.mobile-general-brick-block .column {
-    padding-left: 0px;
-    padding-right: 0px;
-}
-
+ 
 .mobile-footer {
     display: block;
 }
@@ -313,32 +304,12 @@ header-menu-options ul.socials > li:first-child,
 .mobile-header-menu {
     display: block;
 }
-
-.awards-item + .awards-item {
-    margin-top: 30px;
-}
-
-.awards-item-image + .awards-item-image {
-    margin-top: 15px;
-}
-
-.award-years-brick .roo-brick-paragraph {
-    max-width: 150px;
-    max-height: 150px;
-    margin-top: 15px;
-}
-
-.projects-options {
-    margin: 0px;
-}
+ 
 
 .main-content-projects-container label {
     display: none;
 }
-
-.projects-options .projects-option-selector {
-    padding: 0px;
-}
+ 
 .main-content-projects-container {
     margin-top:0px;
     width:100%;
@@ -354,136 +325,24 @@ header-menu-options ul.socials > li:first-child,
 .mobile-header-menu .languages .active {
     font-weight: bold;
 }
-
-/* ----------- General bricks ------------ */
-
-.general-brick-block {
-    margin: 0px;
-}
-
-.general-brick-block .column + .column {
-    margin-top: 10px;
-}
-
-.general-brick-block + .general-brick-block {
-    margin-top: 10px;
-}
-
-.general-brick-block .column {
-    padding-left: 0px;
-    padding-right: 10px;
-    margin-top: 0px;
-    margin-bottom: 10px;
-}
-
-.general-brick-block,
-.related-projects h2 {
-   margin: 0 auto;
-   max-width: 400px;
-   margin-top:20px;
-   margin-bottom: 10px;
-}
-
-.general-brick-block .column + .column {
-    margin-top: 0px;
-}
-
-.general-brick-block + .general-brick-block {
-    margin-top: 10px;
-}
-
-.general-brick-block .column:last-child {
-    /*margin-top: 10px;*/
-}
+ 
 
 .general-content-body {
     margin-top: 7px;
 }
 
-.general-content-body .related-projects {
-    padding: 0px;
-    /*margin-top: 55px;*/
-}
-
-.image-location-block {
-    margin: 10px 0 0 0;
-}
-
-.image-location-block .column {
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
-.image-location-block .image-location-icons .image-location-baidu-icon {
-    position: absolute;
-    bottom: 5px;
-    left: 10px
-}
-
-.image-location-block .image-location-icons .image-location-google-icon {
-    position: absolute;
-    bottom: 5px;
-    right: 5px
-}
-
-
-.image-location-baidu-icon {
-    background-image: url(/templates/images/baidu-map-icon.png);
-    background-repeat: no-repeat;
-    background-size: 100%;
-    width: 30px;
-    height: 30px;
-    float: right;
-    border-radius: 15px;
-    cursor: pointer;
-}
-
-.image-location-google-icon {
-    background-image: url(/templates/images/google-map-icon.png);
-    background-repeat: no-repeat;
-    background-size: 100%;
-    width: 30px;
-    height: 30px;
-    float: right;
-    border-radius: 15px;
-    cursor: pointer;
-}
  
-
-.slide-container .tab-pane,
-.home-slide-container .tab-pane {
-    background-size: cover;
-    background-position: bottom;
-    background-attachment: scroll; 
-}
-
-.slide-container {
-    margin-top: 15px;
-}
-
-.home-slide-container {
-    margin-top: 0px;
-}
+ 
+ 
+ 
+ 
 .main-content-projects-container form {
     margin-bottom: 0;
 }
 
 @media (min-width: 768px) {
     
-    .mask-inverse .masonry-brick-paragraph {
-        background: rgba(22, 17, 76, 0.25);
-    }
-
-/*    .general-brick-block .column:first-child {
-        padding-left: 0px;
-        padding-right: 0px;
-    }
-
-    .general-brick-block .column:last-child {
-        padding-left: 1px;
-        padding-right: 0px;
-        margin-top: 0;
-    }*/
+     
     
     .left-menu-sidebar {
         display: block;
@@ -530,22 +389,13 @@ header-menu-options ul.socials > li:first-child,
         display: none;
     }
     
-    .projects-options .projects-option-selector:nth-child(2) {
-        padding: 0px 15px;
-    }
-    
-    .services .main-content {
-        top: 0px;
-    }
+     
     .main-content .header-column h1 {
         text-align: center;
         padding-bottom: 11px;
     
     }
-    /** awards / news ?  header bar to wide **/
-    .news-page .general-content-body > .row {
-        margin: 0;
-    }
+    
     
 }
 
