@@ -112,7 +112,7 @@ Roo.docs.init = {
     loadDoc : function(cls)
     {
         Roo.docs.doc_body_content.hide();
-        this.currentClass = cls;
+        this.currentClass = cls.name;
         if (!cls.is_class) {
             return;
         }
