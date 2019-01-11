@@ -223,6 +223,135 @@ Roo.docs.template  = {
         return output;
     },
     
+    
+    
+    events : function(member)
+    {
+     
+  
+        var output = '<a name="' + member.memberOf +'-event-' + member.name + '"></a>' +
+		'<div class="fixedFont"> <span class="attributes">';
+
+        if (member.isConstructor) {
+                output += "new <B>" + member.memberOf + (member.memberOf.length ? "." : "") +"</B>";
+        } else {
+                
+	    if (member.isPrivate) output += "&lt;private&gt; ";
+	    if (member.isInner) output += "&lt;inner&gt; ";
+	    if (member.isStatic || member.singleton.length) { //|| data.comment.getTag("instanceOf").length) {
+		    output +=  member.memberOf + ".";	
+	    }
+        }
+        output += '</span><b class="itemname">' + member.name + '</b>';
+				
+        outp
+              
+            
+                <a id="{+member.memberOf+}-event-{+member.name+}"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">{+member.name.substring(1)+}</b> {+makeSignature(member.params)+} 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">{+resolveLinks(summarize(member.desc))+}
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			{+resolveLinks(member.desc)+}
+		    
+			<if test="member.example">
+				<pre class="code">{+member.example+}</pre>
+			</if>
+			
+		
+			<if test="member.params.length">
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				<for each="item" in="member.params">
+					<dt>
+						{+((item.type)?"<span class=\"fixedFont\">"+(new Link().toSymbol(item.type))+"</span> " : "")+}<b>{+item.name+}</b>
+						<if test="item.isOptional"><i>Optional
+							<if test="item.defaultValue">, 
+							Default: {+item.defaultValue+}
+						</if></i></if>
+					</dt>
+					<dd>{+resolveLinks(item.desc)+}</dd>
+				</for>
+				</dl>
+			</if>
+			<if test="member.deprecated">
+				<dl class="detailList">
+				<dt class="heading">Deprecated:</dt>
+				<dt>
+					{+member.deprecated+}
+				</dt>
+				</dl>
+			</if>
+			<if test="member.since.length">
+				<dl class="detailList">
+				<dt class="heading">Since:</dt>
+					<dd>{+ member.since +}</dd>
+				</dl>
+				</dl>
+			</if>
+			<if test="member.exceptions.length">
+				<dl class="detailList">
+				<dt class="heading">Throws:</dt>
+				<for each="item" in="member.exceptions">
+					<dt>
+						{+((item.type)?"<span class=\"light fixedFont\">{"+(new Link().toSymbol(item.type))+"}</span> " : "")+} <b>{+item.name+}</b>
+					</dt>
+					<dd>{+resolveLinks(item.desc)+}</dd>
+				</for>
+				</dl>
+			</if>
+			<if test="member.returns.length">
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				<for each="item" in="member.returns">
+					<dd>{+((item.type)?"<span class=\"light fixedFont\">{"+(new Link().toSymbol(item.type))+"}</span> " : "")+}{+resolveLinks(item.desc)+}</dd>
+				</for>
+				</dl>
+			</if>
+			<if test="member.requires.length">
+				<dl class="detailList">
+				<dt class="heading">Requires:</dt>
+				<for each="item" in="member.requires">
+					<dd>{+ resolveLinks(item) +}</dd>
+				</for>
+				</dl>
+			</if>
+			<if test="member.see.length">
+				<dl class="detailList">
+				<dt class="heading">See:</dt>
+				<for each="item" in="member.see">
+					<dd>{+ new Link().toSymbol(item) +}</dd>
+				</for>
+				</dl>
+			</if>
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     makeSignature : function(params)
     {
         
