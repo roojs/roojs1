@@ -326,12 +326,12 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
      */
     hide : function(deep)
     {
-        
+        if (true === this.fireEvent("beforehide", this)) {
+	    return;
+	}
         this.hideMenuItems();
         if(this.el && this.isVisible()){
-            if (true === this.fireEvent("beforehide", this)) {
-		return;
-	    }
+           
             if(this.activeItem){
                 this.activeItem.deactivate();
                 this.activeItem = null;
