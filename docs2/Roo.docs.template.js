@@ -62,40 +62,38 @@ Roo.docs.template  = {
 	
 	var msorted = data.methods.sort(makeSortby("name"));
 	!}
-	<!-- static's first 
 	
 	
-	-->
-	{!
-		msorted.filter(
-				function($){
-					
-					if (/@hide/.test($.desc)) {
-						return false;
-					}
-					
-					if (!$.isEvent && (data.comment.getTag("instanceOf").length || data.comment.getTag("singleton").length)) {
-						if ($.isStatic && (data.comment.getTag("instanceOf").length || data.comment.getTag("singleton").length) &&
-							($.memberOf != data.alias)) {
-								return true;
-							}
-						$.isInherited = ($.memberOf != data.alias);
-						ownMethods.push($);
-						return true;
-					}
-					
-					
-					if ($.isNamespace || $.isEvent || (($.memberOf != data.alias) && $.isStatic)){
-						return true;
-					}
-					if ($.isStatic) {
-						$.isInherited = ($.memberOf != data.alias);
-						ownMethods.push($);
-					}
-					
+	msorted.filter(
+	    function($){
+		    
+		//if (/@hide/.test($.desc)) { == not needed - done in the backend
+		//	return false;
+		//}
+		    
+		//if (!$.isEvent && (data.comment.getTag("instanceOf").length || data.comment.getTag("singleton").length)) {
+		/if (!$.isEvent && (data.singleton)) {
+			if ($.isStatic && (data.comment.getTag("instanceOf").length || data.comment.getTag("singleton").length) &&
+				($.memberOf != data.alias)) {
 					return true;
 				}
-			);
+			$.isInherited = ($.memberOf != data.alias);
+			ownMethods.push($);
+			return true;
+		}
+		
+			
+			if ($.isNamespace || $.isEvent || (($.memberOf != data.alias) && $.isStatic)){
+				return true;
+			}
+			if ($.isStatic) {
+				$.isInherited = ($.memberOf != data.alias);
+				ownMethods.push($);
+			}
+			
+			return true;
+		}
+	);
 	!}
 	<!-- then dynamics first -->
 	{!	
