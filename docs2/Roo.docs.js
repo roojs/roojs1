@@ -187,6 +187,8 @@ Roo.docs = new Roo.XComponent({
         {
          xtype : 'NavItem',
          active : false,
+         cls : '',
+         style : 'position:fixed',
          xns : Roo.bootstrap,
          '|xns' : 'Roo.bootstrap',
          items  : [

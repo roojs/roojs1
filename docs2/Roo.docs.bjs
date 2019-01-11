@@ -51,8 +51,10 @@
        "items" : [
         {
          "Boolean active" : false,
+         "String cls" : "",
          "xtype" : "NavItem",
          "$ xns" : "Roo.bootstrap",
+         "String style" : "position:fixed",
          "items" : [
           {
            "String cls" : "logo",
