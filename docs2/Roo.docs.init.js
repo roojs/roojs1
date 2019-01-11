@@ -63,6 +63,7 @@ Roo.docs.init = {
             html: e.name.split('.').pop(),
             id : e.name,
             xns : Roo.bootstrap,
+            showArrow: false,
             xtype : type,
             preventDefault : true,
           //  cls : type == 'NavSidebarItem' ? 'open' : '',
