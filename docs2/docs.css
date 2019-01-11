@@ -113,6 +113,10 @@ h6,
     color: #666;
     font-weight: bold;
 }
+/* block the broken bit from sidbar... */
+.sidebar .sidebar-menu li.open li.treeview-menu>a  {
+    display: none;
+}
 
 /**-----subsubsub menuds... **/
 .left-menu-sidebar.sidebar .treeview-menu.dropdown-toggle > a.dropdown-item,
