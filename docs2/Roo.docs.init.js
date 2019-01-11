@@ -74,7 +74,7 @@ Roo.docs.init = {
                      
                     if (c.cn.length) {
                         Roo.log(ev);
-                        mi.menu.show(this.menu.triggerEl,'?', false);
+                        mi.menu.show(mi.menu.triggerEl,'?', false);
                     }
                     
                     Roo.docs.init.loadDoc(c);
