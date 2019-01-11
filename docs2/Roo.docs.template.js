@@ -45,23 +45,22 @@ Roo.docs.template  = {
 	return output;
     },
     
-
-/*
-        method sorting
- 	<!-- constructor?? -->
-  	{! 
-		var ownMethods = [];
+    methodsSort : function(data)
+    {
 	
-		if (data.comment.getTag('class').length && 
-			!data.isBuiltin() && 
-			!data.comment.getTag('singleton').length &&
-			!data.comment.getTag('static').length
-			) {
-			data.isInherited = false;
-			ownMethods.push(data);
-		}
-		
-		var msorted = data.methods.sort(makeSortby("name"));
+  	
+	var ownMethods = [];
+
+	if (data.comment.name.length && 
+		!data.isBuiltin() && 
+		!data.isSingleton &&
+		!data.isStatic
+		) {
+		data.isInherited = false;
+		ownMethods.push(data);
+	}
+	
+	var msorted = data.methods.sort(makeSortby("name"));
 	!}
 	<!-- static's first 
 	
@@ -430,5 +429,16 @@ Roo.docs.template  = {
     linkSymbol : function(str)
     {
         return '<span class=\"fixedFont\"><a href="#' + str + '">' + str + '</a></span>';
+    },
+    makeSortby : function(attribute) {
+	return function(a, b) {
+	    if (a[attribute] != undefined && b[attribute] != undefined) {
+		a = a[attribute]; //.toLowerCase();
+		b = b[attribute];//.toLowerCase();
+		if (a < b) return -1;
+		if (a > b) return 1;
+		return 0;
+	    }
+	}
     }
 }
