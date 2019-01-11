@@ -898,8 +898,7 @@ td.attributes, .fixedFont
 /*	color: #002EBE; */
 	font-family: "Courier New",Courier,monospace;
 	font-size: 13px;
-    margin-left: 4px;
-}
+ }
 
 .itemname
 {
@@ -915,8 +914,12 @@ td.attributes, .fixedFont
      vertical-align: top;
     padding: 5px 10px;
     font-size: 13px;
-    color: #666;
+    
 } 
+.doc-table-container .short {
+    color: #666;
+}
+
 
 .doc-table-container td.short {
     display : block;
@@ -929,9 +932,10 @@ td.attributes, .fixedFont
 }
 .doc-table-container td.expanded .long {
     display : block;
+    margin-bottom: 10px;
 }
 
-.doc-table-container td.expanded .fixedFont::before {
+.doc-table-container td.expanded>.fixedFont::before {
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
     content: "\f068";
@@ -940,11 +944,46 @@ td.attributes, .fixedFont
     color: #002EBE;
 }
 
-.doc-table-container td .fixedFont::before {
+.doc-table-container td>.fixedFont::before {
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
     content: "\f067";
         margin-right: 10px;
     font-size: 10px;
     color: #002EBE;
+}
+
+
+.detailList {
+    margin-left: 20px; 
+    padding-top: 10px;
+    line-height: 20px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+.detailList dt,
+.detailList dd
+{ 
+    margin-left: 20px;
+    display: block;
+    float:left;
+}
+
+.detailList .heading
+{
+    font-weight: bold;
+    padding-bottom: 6px;
+    margin-left: 0;
+    display: block;
+    
+}
+.long pre, .description pre {
+    background: #F8F8F8 none repeat scroll 0% 0%;
+    border-color: #ccc;
+    border-style: solid;
+    border-width: 1px 1px 1px 5px;
+    font-size: 12px !important;
+    line-height: 14px !important;
+    margin: 10px 10px 10px 0px;
+    padding: 10px;
 }
