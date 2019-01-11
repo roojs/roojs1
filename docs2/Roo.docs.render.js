@@ -139,16 +139,17 @@ Roo.docs.render  = {
                                 ""
                             )+  '<b>'+item.name+'</b>';
                         if (item.isOptional) {
-                            //code
+                            output+='<i>Optional ';
+                            if (item.defaultValue.length) {
+                                output+='Default: '+item.defaultValue;
+                            }
+                            output+='</i>';
                         }
-                                <if test="item.isOptional"><i>Optional
-                                        <if test="item.defaultValue">, 
-                                        Default: {+item.defaultValue+}
-                                </if></i></if>
-                        </dt>
-                        <dd>{+resolveLinks(item.desc)+}</dd>
-                </for>
-                </dl>
+                        output +='</dt><dd>'+this.resolveLinks(item.desc)+'</dd>';
+                }
+                output+= '</dl>';
+                
+                
 			</if>
 			<if test="member.deprecated">
 				<dl class="detailList">
