@@ -977,7 +977,7 @@ td.attributes, .fixedFont
     padding-bottom: 6px;
     margin-left: 0;
     display: block;
-    clear:none;
+    clear:both;
     
 }
 .long pre, .description pre {
