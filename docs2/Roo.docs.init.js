@@ -78,6 +78,7 @@ Roo.docs.init = {
                 }).createDelegate(this,[e], true)
                 
             },
+            fa : !e.cn.length  ? 'chevron-down' : '',
             menu : !e.cn.length ? false  : Roo.factory({
                 type : 'treeview',
                 xns: Roo.bootstrap,
