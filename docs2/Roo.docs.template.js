@@ -5,7 +5,7 @@ Roo.docs.template  = {
     augments : function(data)
     {
 	var symbolLink  = this.symbolLink;
-	var output += '<div class="inheritance res-block"> <pre class="res-block-inner">';
+	var output = '<div class="inheritance res-block"> <pre class="res-block-inner">';
     
 	var iblock_indent = 0;
 	 data.augments.reverse().map(
@@ -22,7 +22,7 @@ Roo.docs.template  = {
 
 		   '</pre></div>'
        
-    }
+    },
 
 /*
         method sorting
