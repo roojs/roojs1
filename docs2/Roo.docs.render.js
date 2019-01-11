@@ -83,7 +83,7 @@ Roo.docs.render  = {
     
     method : function(member) {
       
-        var ret = '<a name="' + member.memberOf +'.' + member.name '"></a>' +
+        var output = '<a name="' + member.memberOf +'.' + member.name '"></a>' +
 		'<div class="fixedFont">' +
 			'<span class="attributes">';
 
@@ -93,59 +93,62 @@ Roo.docs.render  = {
                 
                 if (member.isPrivate) output += "&lt;private&gt; ";
                 if (member.isInner) output += "&lt;inner&gt; ";
-                if (member.isStatic || data.comment.getTag("singleton").length || data.comment.getTag("instanceOf").length) {
+                if (member.isStatic || data.singleton.length) { //|| data.comment.getTag("instanceOf").length) {
                         output +=  data.alias + ".";	
                 }
         }
-				!}</span><b class="itemname">{+member.name+}</b>
+        output += '</span><b class="itemname">' + member.name + '</b>';
 				
-				 {+makeSignature(member.params)+} 
-			
-				<if test="member.returns.length">
-					 : 
-					<for each="item" in="member.returns">
+        output += this.makeSignature(member.params);
+        if (member.returns.length) {
+            output += ': <a href="#' + member.returns + '">' + member.returns + '</a>';
+        }
+					/*<for each="item" in="member.returns">
 						<if test="$item_i > 0"> or </if>
 						{+((item.type) ? (new Link().toSymbol(item.type)) : "" )+}
 					
 					</for>
-					
-				</if>
+					*/
 			
-		</div>
-                <div class="mdesc">
-		<if test="!member.is('CONSTRUCTOR')">
-                   <div class="short">{+resolveLinks(summarize(member.desc))+}</div> 
-		 </if>
-		 <if test="member.is('CONSTRUCTOR')">
-			<div class="short">Create a new {+data.alias +}</div> 
-		 </if>
-		 
-                    <div class="long">
-			<if test="!member.is('CONSTRUCTOR')">
-				{+resolveLinks(member.desc)+}
-		    
-				<if test="member.example">
-					<pre class="code">{+member.example+}</pre>
-				</if>
-			</if>
-			
-			<if test="member.is('CONSTRUCTOR')">
-				Create a new {+data.alias +}
-			</if>
-			<if test="member.params.length">
-				<dl class="detailList">
-				<dt class="heading">Parameters:</dt>
-				<for each="item" in="member.params">
-					<dt>
-						{+((item.type)?"<span class=\"fixedFont\">"+(new Link().toSymbol(item.type))+"</span> " : "")+} <b>{+item.name+}</b>
-						<if test="item.isOptional"><i>Optional
-							<if test="item.defaultValue">, 
-							Default: {+item.defaultValue+}
-						</if></i></if>
-					</dt>
-					<dd>{+resolveLinks(item.desc)+}</dd>
-				</for>
-				</dl>
+	output += '</div> <div class="mdesc">';
+        if (!member.isConstructor) {
+            output+= '<div class="short">'+this.resolveLinks(this.summarize(member.desc)) +'</div>';
+        } else  {
+            //ctor
+	    output+= '<div class="short">Create a new '+data.alias +'</div>';
+        }
+	data +='<div class="long">';
+        if (!member.isConstructor) {
+            output+= this.resolveLinks(member.desc) +'</div>';
+            if (member.example.length) {
+                output +'<pre class="code">'+member.example+'</pre>';
+            }
+        } else {
+            //ctor
+            output+= 'Create a new '+data.alias ;
+        }
+        if (member.params.length) {
+            
+         
+                output+= '<dl class="detailList"> <dt class="heading">Parameters:</dt>';
+                for(var pi in member.params) {
+                    var item = member.params[i];
+                        output += '<dt>' +
+                           ( item.type.length ?
+                                '<span class="fixedFont"><a href="#' + item.type + '>'+item.type+'</a></span> ' :
+                                ""
+                            )+  '<b>'+item.name+'</b>';
+                        if (item.isOptional) {
+                            //code
+                        }
+                                <if test="item.isOptional"><i>Optional
+                                        <if test="item.defaultValue">, 
+                                        Default: {+item.defaultValue+}
+                                </if></i></if>
+                        </dt>
+                        <dd>{+resolveLinks(item.desc)+}</dd>
+                </for>
+                </dl>
 			</if>
 			<if test="member.deprecated">
 				<dl class="detailList">
