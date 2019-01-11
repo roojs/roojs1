@@ -21,6 +21,9 @@
    "String title" : "View Source",
    "items" : [
     {
+     "listeners" : {
+      "render" : "function (_self)\n{\n_this.body_ctr = this;\n}"
+     },
      "xtype" : "Container",
      "$ xns" : "Roo.bootstrap",
      "String style" : "width: 100%;overflow:auto;"

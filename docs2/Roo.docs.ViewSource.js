@@ -82,6 +82,12 @@ Roo.apply(Roo.docs.ViewSource.prototype, {
      {
       xtype : 'Container',
       style : 'width: 100%;overflow:auto;',
+      listeners : {
+       render : function (_self)
+        {
+        _this.body_ctr = this;
+        }
+      },
       xns : Roo.bootstrap,
       '|xns' : 'Roo.bootstrap'
      }
