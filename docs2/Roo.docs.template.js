@@ -111,7 +111,7 @@ Roo.docs.template  = {
 		    //if (/@hide/.test($.desc)) {
 		    //	    return false;
 		    //}
-		    // not sure if we should just ignore signletons???
+		    // it's a signleton class - can not have dynamic methods..
 		    if (data.isSingleton) {
 			    return true;
 		    }
