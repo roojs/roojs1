@@ -72,9 +72,9 @@ Roo.docs.template  = {
 		//}
 		    
 		//if (!$.isEvent && (data.comment.getTag("instanceOf").length || data.comment.getTag("singleton").length)) {
-		/if (!$.isEvent && (data.isSngleton)) {
-			if ($.isStatic && (data.comment.getTag("instanceOf").length || data.comment.getTag("singleton").length) &&
-				($.memberOf != data.alias)) {
+		if (data.isSingleton) {
+		    
+		    if ($.isStatic && $.memberOf != data.alias)) {
 					return true;
 				}
 			$.isInherited = ($.memberOf != data.alias);
