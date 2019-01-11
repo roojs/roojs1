@@ -3,6 +3,9 @@
   "augments" : [
   ],
   "desc" : "Default Adapter. It assumes the splitter and resizing element are not positioned\nelements and only gets/sets the width of the element. Generally used for table based layouts.",
+  "isSingleton" : false,
+  "isStatic" : true,
+  "isBuiltin" : false,
   "config" : [
   ],
   "methods" : [
@@ -12,7 +15,6 @@
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "singleton" : "",
       "memberOf" : "Roo.SplitBar.BasicLayoutAdapter",
       "example" : "",
       "deprecated" : "",
@@ -47,7 +49,6 @@
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "singleton" : "",
       "memberOf" : "Roo.SplitBar.BasicLayoutAdapter",
       "example" : "",
       "deprecated" : "",

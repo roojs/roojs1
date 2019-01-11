@@ -3,6 +3,9 @@
   "augments" : [
   ],
   "desc" : "This class extends the Grid to provide a calendar widget\n<br><br>Usage:<pre><code>\n var grid = new Roo.grid.Calendar(\"my-container-id\", {\n     ds: myDataStore,\n     cm: myColModel,\n     selModel: mySelectionModel,\n     autoSizeColumns: true,\n     monitorWindowResize: false,\n     trackMouseOver: true\n     eventstore : real data store..\n });\n // set any options\n grid.render();",
+  "isSingleton" : false,
+  "isStatic" : true,
+  "isBuiltin" : false,
   "config" : [
     {
       "name" : "eventStore",
@@ -20,7 +23,6 @@
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "singleton" : "",
       "memberOf" : "Roo.grid.Calendar",
       "example" : "",
       "deprecated" : "",

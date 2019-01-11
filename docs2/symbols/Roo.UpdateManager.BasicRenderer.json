@@ -3,6 +3,9 @@
   "augments" : [
   ],
   "desc" : "Default Content renderer. Updates the elements innerHTML with the responseText.",
+  "isSingleton" : false,
+  "isStatic" : true,
+  "isBuiltin" : false,
   "config" : [
   ],
   "methods" : [
@@ -12,7 +15,6 @@
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "singleton" : "",
       "memberOf" : "Roo.UpdateManager.BasicRenderer",
       "example" : "",
       "deprecated" : "",

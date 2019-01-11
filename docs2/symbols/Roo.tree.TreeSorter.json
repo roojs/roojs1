@@ -3,6 +3,9 @@
   "augments" : [
   ],
   "desc" : "Provides sorting of nodes in a TreePanel",
+  "isSingleton" : false,
+  "isStatic" : true,
+  "isBuiltin" : false,
   "config" : [
     {
       "name" : "folderSort",

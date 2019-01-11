@@ -3,6 +3,9 @@
   "augments" : [
   ],
   "desc" : "A simple utility class for generically masking elements while loading data.  If the element being masked has\nan underlying {@link Roo.data.Store}, the masking will be automatically synchronized with the store's loading\nprocess and the mask element will be cached for reuse.  For all other elements, this mask will replace the\nelement's UpdateManager load indicator and will be destroyed after the initial load.",
+  "isSingleton" : false,
+  "isStatic" : true,
+  "isBuiltin" : false,
   "config" : [
     {
       "name" : "msg",
@@ -36,7 +39,6 @@
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "singleton" : "",
       "memberOf" : "Roo.LoadMask",
       "example" : "",
       "deprecated" : "",
@@ -53,7 +55,6 @@
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "singleton" : "",
       "memberOf" : "Roo.LoadMask",
       "example" : "",
       "deprecated" : "",

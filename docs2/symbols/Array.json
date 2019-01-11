@@ -3,6 +3,9 @@
   "augments" : [
   ],
   "desc" : "",
+  "isSingleton" : false,
+  "isStatic" : false,
+  "isBuiltin" : true,
   "config" : [
   ],
   "methods" : [
@@ -12,7 +15,6 @@
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "singleton" : "",
       "memberOf" : "Array",
       "example" : "",
       "deprecated" : "",
@@ -40,7 +42,6 @@
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "singleton" : "",
       "memberOf" : "Array",
       "example" : "",
       "deprecated" : "",
@@ -63,7 +64,6 @@
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "singleton" : "",
       "memberOf" : "Array",
       "example" : "",
       "deprecated" : "",

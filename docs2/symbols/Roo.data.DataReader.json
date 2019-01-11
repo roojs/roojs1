@@ -3,6 +3,9 @@
   "augments" : [
   ],
   "desc" : "Base class for reading structured data from a data source.  This class is intended to be\nextended (see {Roo.data.ArrayReader}, {Roo.data.JsonReader} and {Roo.data.XmlReader}) and should not be created directly.",
+  "isSingleton" : false,
+  "isStatic" : true,
+  "isBuiltin" : false,
   "config" : [
   ],
   "methods" : [
@@ -12,7 +15,6 @@
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "singleton" : "",
       "memberOf" : "Roo.data.DataReader",
       "example" : "",
       "deprecated" : "",

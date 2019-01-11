@@ -3,6 +3,9 @@
   "augments" : [
   ],
   "desc" : "Basic Toolbar\n\nUsage:\n\n new Roo.bootstrap.HtmlEditor({\n    ....\n    toolbars : [\n        new Roo.bootstrap.HtmlEditorToolbar1({\n            disable : { fonts: 1 , format: 1, ..., ... , ...],\n            btns : [ .... ]\n        })\n    }",
+  "isSingleton" : false,
+  "isStatic" : true,
+  "isBuiltin" : false,
   "config" : [
     {
       "name" : "btns",
@@ -28,7 +31,6 @@
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "singleton" : "",
       "memberOf" : "Roo.bootstrap.htmleditor.ToolbarStandard",
       "example" : "",
       "deprecated" : "",

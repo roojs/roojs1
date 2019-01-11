@@ -4,6 +4,9 @@
     "Roo.bootstrap.SplitBar.BasicLayoutAdapter"
   ],
   "desc" : "Adapter that  moves the splitter element to align with the resized sizing element. \nUsed with an absolute positioned SplitBar.",
+  "isSingleton" : false,
+  "isStatic" : true,
+  "isBuiltin" : false,
   "config" : [
   ],
   "methods" : [
@@ -13,7 +16,6 @@
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "singleton" : "",
       "memberOf" : "Roo.bootstrap.SplitBar.BasicLayoutAdapter",
       "example" : "",
       "deprecated" : "",
@@ -48,7 +50,6 @@
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "singleton" : "",
       "memberOf" : "Roo.bootstrap.SplitBar.BasicLayoutAdapter",
       "example" : "",
       "deprecated" : "",

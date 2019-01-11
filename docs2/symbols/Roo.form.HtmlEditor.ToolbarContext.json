@@ -3,6 +3,9 @@
   "augments" : [
   ],
   "desc" : "Context Toolbar\n\nUsage:\n\n new Roo.form.HtmlEditor({\n    ....\n    toolbars : [\n        { xtype: 'ToolbarStandard', styles : {} }\n        { xtype: 'ToolbarContext', disable : {} }\n    ]\n})",
+  "isSingleton" : false,
+  "isStatic" : true,
+  "isBuiltin" : false,
   "config" : [
     {
       "name" : "disable",
@@ -28,7 +31,6 @@
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "singleton" : "",
       "memberOf" : "Roo.form.HtmlEditor.ToolbarContext",
       "example" : "",
       "deprecated" : "",

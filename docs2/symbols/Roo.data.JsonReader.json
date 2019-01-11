@@ -4,6 +4,9 @@
     "Roo.data.DataReader"
   ],
   "desc" : "Data reader class to create an Array of Roo.data.Record objects from a JSON response\nbased on mappings in a provided Roo.data.Record constructor.\n\nThe default behaviour of a store is to send ?_requestMeta=1, unless the class has recieved 'metaData' property\nin the reply previously. \n\n<p>\nExample code:\n<pre><code>\nvar RecordDef = Roo.data.Record.create([\n    {name: 'name', mapping: 'name'},     // \"mapping\" property not needed if it's the same as \"name\"\n    {name: 'occupation'}                 // This field will use \"occupation\" as the mapping.\n]);\nvar myReader = new Roo.data.JsonReader({\n    totalProperty: \"results\",    // The property which contains the total dataset size (optional)\n    root: \"rows\",                // The property which contains an Array of row objects\n    id: \"id\"                     // The property within each row object that provides an ID for the record (optional)\n}, RecordDef);\n</code></pre>\n<p>\nThis would consume a JSON file like this:\n<pre><code>\n{ 'results': 2, 'rows': [\n    { 'id': 1, 'name': 'Bill', occupation: 'Gardener' },\n    { 'id': 2, 'name': 'Ben', occupation: 'Horticulturalist' } ]\n}\n</code></pre>",
+  "isSingleton" : false,
+  "isStatic" : true,
+  "isBuiltin" : false,
   "config" : [
     {
       "name" : "id",
@@ -53,7 +56,6 @@
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "singleton" : "",
       "memberOf" : "Roo.data.JsonReader",
       "example" : "",
       "deprecated" : "",
@@ -81,7 +83,6 @@
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "singleton" : "",
       "memberOf" : "Roo.data.JsonReader",
       "example" : "",
       "deprecated" : "",
@@ -109,7 +110,6 @@
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "singleton" : "",
       "memberOf" : "Roo.data.DataReader",
       "example" : "",
       "deprecated" : "",

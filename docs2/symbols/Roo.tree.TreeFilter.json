@@ -3,6 +3,9 @@
   "augments" : [
   ],
   "desc" : "Note this class is experimental and doesn't update the indent (lines) or expand collapse icons of the nodes",
+  "isSingleton" : false,
+  "isStatic" : true,
+  "isBuiltin" : false,
   "config" : [
   ],
   "methods" : [
@@ -12,7 +15,6 @@
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "singleton" : "",
       "memberOf" : "Roo.tree.TreeFilter",
       "example" : "",
       "deprecated" : "",
@@ -29,7 +31,6 @@
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "singleton" : "",
       "memberOf" : "Roo.tree.TreeFilter",
       "example" : "",
       "deprecated" : "",
@@ -64,7 +65,6 @@
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "singleton" : "",
       "memberOf" : "Roo.tree.TreeFilter",
       "example" : "",
       "deprecated" : "",

@@ -3,6 +3,9 @@
   "augments" : [
   ],
   "desc" : "",
+  "isSingleton" : false,
+  "isStatic" : false,
+  "isBuiltin" : false,
   "config" : [
   ],
   "methods" : [

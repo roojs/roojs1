@@ -3,6 +3,9 @@
   "augments" : [
   ],
   "desc" : "Overridable validation definitions. The validations provided are basic and intended to be easily customizable and extended.",
+  "isSingleton" : true,
+  "isStatic" : true,
+  "isBuiltin" : false,
   "config" : [
   ],
   "methods" : [
@@ -12,7 +15,6 @@
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "singleton" : "",
       "memberOf" : "Roo.form.VTypes",
       "example" : "",
       "deprecated" : "",
@@ -35,7 +37,6 @@
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "singleton" : "",
       "memberOf" : "Roo.form.VTypes",
       "example" : "",
       "deprecated" : "",
@@ -58,7 +59,6 @@
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "singleton" : "",
       "memberOf" : "Roo.form.VTypes",
       "example" : "",
       "deprecated" : "",
@@ -81,7 +81,6 @@
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "singleton" : "",
       "memberOf" : "Roo.form.VTypes",
       "example" : "",
       "deprecated" : "",
