@@ -92,8 +92,8 @@ Roo.docs.template  = {
                 
                 if (member.isPrivate) output += "&lt;private&gt; ";
                 if (member.isInner) output += "&lt;inner&gt; ";
-                if (member.isStatic || data.singleton.length) { //|| data.comment.getTag("instanceOf").length) {
-                        output +=  data.alias + ".";	
+                if (member.isStatic || member.singleton.length) { //|| data.comment.getTag("instanceOf").length) {
+                        output +=  member.alias + ".";	
                 }
         }
         output += '</span><b class="itemname">' + member.name + '</b>';
