@@ -139,7 +139,7 @@ Roo.apply(Roo.docs.ViewSource.prototype, {
           listeners : {
            render : function (_self)
             {
-                _this.terms_body = this;
+                _this.body_ctr = this;
             }
           },
           xns : Roo.bootstrap,
