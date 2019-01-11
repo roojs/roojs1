@@ -434,7 +434,7 @@ Roo.docs.template  = {
     summarize : function(desc)
     {
         if (typeof desc != "undefined") {
-	    // finds the first fulls stop...
+	    // finds the first fulls stop... (and we remove '<' html...)
             return desc.match(/([\w\W]+?[\.|:])[^a-z0-9]/i)?
 		RegExp.$1.split('<')[0].replace("\n", " ") : desc.split("\n")[0];
         }
