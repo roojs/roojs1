@@ -74,7 +74,7 @@ Roo.docs.init = {
                      
                     if (c.cn.length) {
                         Roo.log(ev);
-                        if (mi.menu.hasClass('show')) {
+                        if (mi.menu.el.hasClass('show')) {
                             mi.menu.hide();
                         } else {
                             mi.menu.show(mi.menu.triggerEl,'?', false);
