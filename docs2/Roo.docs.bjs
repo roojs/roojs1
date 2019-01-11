@@ -297,7 +297,7 @@
        "items" : [
         {
          "listeners" : {
-          "rowclass" : "function (_self, rowcfg)\n{\n      rc = rowcfg.record.json.memberOf == Roo.docs.init.currentClass ? 'doc-added-member '  : '';\n      rowcfg.rowClass = rc + rowcfg.record.json.expanded ? 'expanded' : '';\n}",
+          "rowclass" : "function (_self, rowcfg)\n{\n      rc = rowcfg.record.json.memberOf == Roo.docs.init.currentClass ? 'doc-added-member '  : '';\n      rowcfg.rowClass = rc + (rowcfg.record.json.expanded ? 'expanded' : '');\n}",
           "render" : "function (_self)\n{\n    _this.methodsTable = this;\n}",
           "rowclick" : "function (_self, el, rowIndex, e)\n{\n      if (e.target.className != 'fixedFont' && e.target.parentNode.className != 'fixedFont') {\n        return false;\n    }\n     var r = this.store.getAt(rowIndex);\n    r.json.expanded = !r.json.expanded ;\n    this.refreshRow(r);\n}"
          },
@@ -361,7 +361,7 @@
        "items" : [
         {
          "listeners" : {
-          "rowclass" : "function (_self, rowcfg)\n{\n      rc = rowcfg.record.json.memberOf == Roo.docs.init.currentClass ? 'doc-added-member '  : '';\n      rowcfg.rowClass = rc + rowcfg.record.json.expanded ? 'expanded' : '';\n}",
+          "rowclass" : "function (_self, rowcfg)\n{\n      rc = rowcfg.record.json.memberOf == Roo.docs.init.currentClass ? 'doc-added-member '  : '';\n      rowcfg.rowClass = rc + (rowcfg.record.json.expanded ? 'expanded' : '');\n}",
           "render" : "function (_self)\n{\n    _this.eventsTable = this;\n}",
           "rowclick" : "function (_self, el, rowIndex, e)\n{\n        if (e.target.className != 'fixedFont' && e.target.parentNode.className != 'fixedFont') {\n        return false;\n    }\n    var r = this.store.getAt(rowIndex);\n    r.json.expanded = !r.json.expanded ;\n    this.refreshRow(r);\n}"
          },

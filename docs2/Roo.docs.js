@@ -579,7 +579,7 @@ Roo.docs = new Roo.XComponent({
           rowclass : function (_self, rowcfg)
            {
                  rc = rowcfg.record.json.memberOf == Roo.docs.init.currentClass ? 'doc-added-member '  : '';
-                 rowcfg.rowClass = rc + rowcfg.record.json.expanded ? 'expanded' : '';
+                 rowcfg.rowClass = rc + (rowcfg.record.json.expanded ? 'expanded' : '');
            },
           rowclick : function (_self, el, rowIndex, e)
            {
@@ -673,7 +673,7 @@ Roo.docs = new Roo.XComponent({
           rowclass : function (_self, rowcfg)
            {
                  rc = rowcfg.record.json.memberOf == Roo.docs.init.currentClass ? 'doc-added-member '  : '';
-                 rowcfg.rowClass = rc + rowcfg.record.json.expanded ? 'expanded' : '';
+                 rowcfg.rowClass = rc + (rowcfg.record.json.expanded ? 'expanded' : '');
            },
           rowclick : function (_self, el, rowIndex, e)
            {
