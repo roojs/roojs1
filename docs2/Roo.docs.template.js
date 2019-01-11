@@ -101,10 +101,11 @@ Roo.docs.template  = {
         output += this.makeSignature(member.params);
         if (member.returns.length) {
             output += ': ';
-		for(var i = 0;i< member.returns.length;i++) {
-		    output += (i > 0 ? ' or ' : '') +
-			this.linkSymbol(item.type);
-		}
+	    for(var i = 0;i< member.returns.length;i++) {
+		var item = member.returns[i];
+		output += (i > 0 ? ' or ' : '') +
+		    this.linkSymbol(item.type);
+	    }
         }
 			
 			
@@ -171,8 +172,12 @@ Roo.docs.template  = {
                 </if>
                 */
         if (member.returns.length) {
-            output += '<dl class="detailList"><dt class="heading">Returns:</dt>' +
-                    '<dd>' + this.linkSymbol( member.returns) + '</dd></dl>';
+            output += '<dl class="detailList"><dt class="heading">Returns:</dt>';
+	    for (var i =0; i < member.returns.length; i++) {
+		var item = member.returns[i];
+		output+= '<dd>' + this.linkSymbol( item.type ) + ' ' + item.desc</dd></dl>';
+	    }
+                    
         }
         /*
                 <if test="member.returns.length">
@@ -284,6 +289,6 @@ Roo.docs.template  = {
     },
     linkSymbol : function(str)
     {
-        return '<a href="#' + str + '">' + str + '</a>';
+        return '<span class=\"fixedFont\"><a href="#' + str + '">' + str + '</a></a>';
     }
 }
