@@ -49,7 +49,7 @@ Roo.docs.init = {
                     }
                 }, this);
                 
-                Roo.docs.navGroup.show(this.triggerEl, '?', false);
+                Roo.docs.navGroup.items[1].show();
                 
             },
             scope : this
