@@ -83,7 +83,23 @@ Roo.docs.init = {
             menu : !e.cn.length ? false  : Roo.factory({
                 type : 'treeview',
                 xns: Roo.bootstrap,
-                xtype : 'Menu'
+                xtype : 'Menu',
+                listeners : 
+                click : (function(mi,ev,c)
+                {
+                    
+                      ev.stopPropagation();
+                     
+                    if (c.cn.length) {
+                        Roo.log(ev);
+                    }
+                    
+                    
+                    Roo.docs.init.loadDoc(c);
+                    
+                }).createDelegate(this,[e], true)
+                
+            },
                 
             })
         }));
