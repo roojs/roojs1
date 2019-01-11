@@ -72,7 +72,7 @@ Roo.docs.template  = {
 		//}
 		    
 		//if (!$.isEvent && (data.comment.getTag("instanceOf").length || data.comment.getTag("singleton").length)) {
-		/if (!$.isEvent && (data.singleton)) {
+		/if (!$.isEvent && (data.isSngleton)) {
 			if ($.isStatic && (data.comment.getTag("instanceOf").length || data.comment.getTag("singleton").length) &&
 				($.memberOf != data.alias)) {
 					return true;
