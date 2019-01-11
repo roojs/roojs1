@@ -261,6 +261,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     show : function(el, pos, parentMenu)
     {
         if (true === this.fireEvent("beforeshow", this)) {
+	    Roo.log("show canceled");
 	    return;
 	}
 	this.parentMenu = parentMenu;
