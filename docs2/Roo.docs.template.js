@@ -21,7 +21,7 @@ Roo.docs.template  = {
 	)
 	 
 	return output +  '<img src="../images/default/s.gif" height="1"  width="' +  iblock_indent +'"/>' +
-		'<img class="elbow" src="../images/default/tree/elbow-end.gif"/>'+data.alias+
+		'<img class="elbow" src="../images/default/tree/elbow-end.gif"/>'+data.name+
 
 		   '</pre></div>'
        
