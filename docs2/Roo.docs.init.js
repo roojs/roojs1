@@ -146,11 +146,10 @@ Roo.docs.init = {
     
     loadClass : function(name)
     {
-        Roo.each(this.classes, function(c) {
-            if (c.name == name) {
-                this.loadDoc(c);
-            }
-        },this);
+        if(typeof(this.classes[name]) != 'undefined') {
+            this.loadDoc(this.classes[name]);
+        }
+        
         
         
     },
