@@ -14,16 +14,12 @@ roojspacker -t roojs-ui.js -T roojs-ui-debug.js -i buildSDK/dependancy_ui.txt
 cat      roojs-core.js  roojs-ui.js >  roojs-all.js
 cat roojs-core-debug.js  roojs-ui-debug.js > roojs-debug.js
 
-
-#build bootstrap library
-#seed ../gnome.introspection-doc-generator/pack.js \
-#     -f buildSDK/debootstrappendancy_bootstrap.txt -o roojs-bootstrap.js -O roojs-bootstrap-debug.js
-
+ 
+#bootstrap
 roojspacker -t roojs-bootstrap.js -T roojs-bootstrap-debug.js -i buildSDK/dependancy_bootstrap.txt
-
-#build calendar library
-#seed ../gnome.introspection-doc-generator/pack.js \
- #    -f buildSDK/dependancy_calendar.txt -o roojs-calendar.js -O roojs-calendar-debug.js
+ 
+roojspacker -t roojs-calendar.js -T roojs-calendar-debug.js -i buildSDK/dependancy_calendar.txt  
+  
   
 #build mailer library
 #seed ../gnome.introspection-doc-generator/pack.js \
