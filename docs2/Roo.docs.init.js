@@ -48,8 +48,8 @@ Roo.docs.init = {
                         this.addTreeItem(Roo.docs.navGroup, e, 'NavSidebarItem');
                     }
                 }, this);
-                
-                Roo.docs.navGroup.items[1].show();
+                var roo = Roo.docs.navGroup.items[1]
+                roo.show(roo.triggerEl, '?', false);
                 
             },
             scope : this
