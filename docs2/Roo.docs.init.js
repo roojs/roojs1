@@ -42,10 +42,12 @@ Roo.docs.init = {
             {
                 var d = Roo.decode(res.responseText);
                 Roo.log(d);
+                this.classes = [];
                 // our classes witch children first..
                 d.forEach(function(e) {
                     if (e.cn.length) {
                         this.addTreeItem(Roo.docs.navGroup, e, 'NavSidebarItem');
+                        
                     }
                 }, this);
                 
@@ -56,7 +58,7 @@ Roo.docs.init = {
                 }, this);
                 var roo = Roo.docs.navGroup.items[1].menu;
                 roo.show(roo.triggerEl, '?', false);
-                this.classes = d;
+                
                 
             },
             scope : this
