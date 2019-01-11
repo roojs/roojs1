@@ -115,7 +115,7 @@ h6,
 }
 
 /**-----subsubsub menuds... **/
-.left-menu-sidebar.sidebar .treeview-menu.dropdown-toggle > dropdown-item {
+.left-menu-sidebar.sidebar .treeview-menu.dropdown-toggle > .dropdown-item {
     display: none;
 }
 
