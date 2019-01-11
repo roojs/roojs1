@@ -72,7 +72,7 @@ Roo.docs.template  = {
 		//}
 		    
 		//if (!$.isEvent && (data.comment.getTag("instanceOf").length || data.comment.getTag("singleton").length)) {
-		if ($.isSingleton) {
+		if (data.isSingleton) {
 		    
 		    if ($.isStatic && $.memberOf != data.name)) {
 	    		return true;
@@ -101,7 +101,7 @@ Roo.docs.template  = {
 		    //if (/@hide/.test($.desc)) {
 		    //	    return false;
 		    //}
-		    if ($.isSingleton) {
+		    if (data.isSingleton) {
 			    return true;
 		    }
 		    if ($.isNamespace || $.isEvent || (($.memberOf != data.alias) && $.isStatic)){
