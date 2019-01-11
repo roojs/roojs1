@@ -417,7 +417,7 @@ Roo.docs.template  = {
             }
         );
         */
-        Roo.log(str);
+        Roo.log(JSON.stringify(str));
 	str = str.replace(/\s+\n/gi, '\n');
         str = str.replace(/\n\n+/gi, '<p/>');
 	//str = str.replace(/\n/gi, '<br/>');
