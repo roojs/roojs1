@@ -446,7 +446,7 @@ Roo.docs.template  = {
 		if (a > b) return 1;
 		return 0;
 	    }
-	    return null
+	    return 0;
 	}
     }
 }
