@@ -6,6 +6,15 @@
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : true,
+  "memberOf" : "Function",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+  ],
+  "returns" : [
+  ],
   "config" : [
   ],
   "methods" : [

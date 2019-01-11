@@ -4,8 +4,17 @@
   ],
   "desc" : "Registers event handlers that want to receive a normalized EventObject instead of the standard browser event and provides \nseveral useful events directly.\nSee {@link Roo.EventObject} for more details on normalized event objects.",
   "isSingleton" : true,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "EventManager",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+  ],
+  "returns" : [
+  ],
   "config" : [
   ],
   "methods" : [

@@ -4,8 +4,23 @@
   ],
   "desc" : "Basic Toolbar class.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "Toolbar",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "container",
+      "type" : "Object",
+      "desc" : "The config object",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "container",

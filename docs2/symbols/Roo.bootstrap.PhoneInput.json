@@ -9,8 +9,23 @@
   ],
   "desc" : "An input with International dial-code selection",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "PhoneInput",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "Configuration options",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "triggerClass",

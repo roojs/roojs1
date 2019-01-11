@@ -5,8 +5,23 @@
   ],
   "desc" : "Create a \"View\" for an element based on a data model or UpdateManager and the supplied DomHelper template. \nThis class also supports single and multi selection modes. <br>\nCreate a data model bound view:\n <pre><code>\n var store = new Roo.data.Store(...);\n\n var view = new Roo.View({\n    el : \"my-element\",\n    tpl : '&lt;div id=\"{0}\"&gt;{2} - {1}&lt;/div&gt;', // auto create template\n \n    singleSelect: true,\n    selectedClass: \"ydataview-selected\",\n    store: store\n });\n\n // listen for node click?\n view.on(\"click\", function(vw, index, node, e){\n alert('Node \"' + node.id + '\" at index: ' + index + \" was clicked.\");\n });\n\n // load XML data\n dataModel.load(\"foobar.xml\");\n </code></pre>\n For an example of creating a JSON/UpdateManager view, see {@link Roo.JsonView}.\n<br><br>\n<b>Note: The root of your template must be a single node. Table/row implementations may work but are not supported due to\nIE\"s limited insertion support with tables and Opera\"s faulty event bubbling.</b>\n\nNote: old style constructor is still suported (container, template, config)",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "View",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "The config object",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "selectedClass",

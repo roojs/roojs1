@@ -4,8 +4,17 @@
   ],
   "desc" : "",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
+  "memberOf" : "Roo.grid",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+  ],
+  "returns" : [
+  ],
   "config" : [
   ],
   "methods" : [

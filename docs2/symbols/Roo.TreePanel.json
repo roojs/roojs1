@@ -6,8 +6,23 @@
   ],
   "desc" : "Create a new TreePanel. - defaults to fit/scoll contents.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "TreePanel",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "String/Object",
+      "desc" : "A string to set only the panel's title, or a config object",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "loadOnce",

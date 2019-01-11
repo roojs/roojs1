@@ -9,8 +9,23 @@
   ],
   "desc" : "Multiline text field.  Can be used as a direct replacement for traditional textarea fields, plus adds\nsupport for auto-sizing.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "TextArea",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "Configuration options",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "hideMode",

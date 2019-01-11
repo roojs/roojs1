@@ -4,8 +4,17 @@
   ],
   "desc" : "Default Adapter. It assumes the splitter and resizing element are not positioned\nelements and only gets/sets the width of the element. Generally used for table based layouts.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "BasicLayoutAdapter",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+  ],
+  "returns" : [
+  ],
   "config" : [
   ],
   "methods" : [

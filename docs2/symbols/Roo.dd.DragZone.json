@@ -9,8 +9,29 @@
   ],
   "desc" : "This class provides a container DD instance that proxies for multiple child node sources.<br />\nBy default, this class requires that draggable child nodes are registered with {@link Roo.dd.Registry}.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "DragZone",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "el",
+      "type" : "String/HTMLElement/Element",
+      "desc" : "The container element",
+      "isOptional" : false
+    },
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

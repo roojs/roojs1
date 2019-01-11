@@ -7,8 +7,35 @@
   ],
   "desc" : "A DragDrop implementation that inserts an empty, bordered div into\nthe document that follows the cursor during drag operations.  At the time of\nthe click, the frame div is resized to the dimensions of the linked html\nelement, and moved to the exact location of the linked element.\n\nReferences to the \"frame\" element refer to the single proxy element that\nwas created to be dragged in place of all DDProxy elements on the\npage.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "DDProxy",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "id",
+      "type" : "String",
+      "desc" : "the id of the linked html element",
+      "isOptional" : false
+    },
+    {
+      "name" : "sGroup",
+      "type" : "String",
+      "desc" : "the group of related DragDrop objects",
+      "isOptional" : false
+    },
+    {
+      "name" : "config",
+      "type" : "object",
+      "desc" : "an object containing configurable attributes\n               Valid properties for DDProxy in addition to those in DragDrop:\n                  resizeFrame, centerFrame, dragElId",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

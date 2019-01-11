@@ -5,8 +5,41 @@
   ],
   "desc" : "Creates draggable splitter bar functionality from two elements (element to be dragged and element to be resized).\n<br><br>\nUsage:\n<pre><code>\nvar split = new Roo.SplitBar(\"elementToDrag\", \"elementToSize\",\n                   Roo.SplitBar.HORIZONTAL, Roo.SplitBar.LEFT);\nsplit.setAdapter(new Roo.SplitBar.AbsoluteLayoutAdapter(\"container\"));\nsplit.minSize = 100;\nsplit.maxSize = 600;\nsplit.animate = true;\nsplit.on('moved', splitterMoved);\n</code></pre>",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "SplitBar",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "dragElement",
+      "type" : "String/HTMLElement/Roo.Element",
+      "desc" : "The element to be dragged and act as the SplitBar.",
+      "isOptional" : false
+    },
+    {
+      "name" : "resizingElement",
+      "type" : "String/HTMLElement/Roo.Element",
+      "desc" : "The element to be resized based on where the SplitBar element is dragged",
+      "isOptional" : false
+    },
+    {
+      "name" : "orientation",
+      "type" : "Number",
+      "desc" : "(optional) Either Roo.SplitBar.HORIZONTAL or Roo.SplitBar.VERTICAL. (Defaults to HORIZONTAL)",
+      "isOptional" : false
+    },
+    {
+      "name" : "placement",
+      "type" : "Number",
+      "desc" : "(optional) Either Roo.SplitBar.LEFT or Roo.SplitBar.RIGHT for horizontal or  \n                        Roo.SplitBar.TOP or Roo.SplitBar.BOTTOM for vertical. (By default, this is determined automatically by the initial\n                        position of the SplitBar).",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

@@ -6,8 +6,35 @@
   ],
   "desc" : "A DragDrop implementation that does not move, but can be a drop\ntarget.  You would get the same result by simply omitting implementation\nfor the event callbacks, but this way we reduce the processing cost of the\nevent listener and the callbacks.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "DDTarget",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "id",
+      "type" : "String",
+      "desc" : "the id of the element that is a drop target",
+      "isOptional" : false
+    },
+    {
+      "name" : "sGroup",
+      "type" : "String",
+      "desc" : "the group of related DragDrop objects",
+      "isOptional" : false
+    },
+    {
+      "name" : "config",
+      "type" : "object",
+      "desc" : "an object containing configurable attributes\n                Valid properties for DDTarget in addition to those in\n                DragDrop:\n                   none",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

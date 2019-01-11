@@ -6,8 +6,29 @@
   ],
   "desc" : "Create a new NestedLayoutPanel.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "NestedLayoutPanel",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "layout",
+      "type" : "Roo.BorderLayout",
+      "desc" : "The layout for this panel",
+      "isOptional" : false
+    },
+    {
+      "name" : "config",
+      "type" : "String/Object",
+      "desc" : "A string to set only the title or a config object",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "loadOnce",

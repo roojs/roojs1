@@ -9,8 +9,23 @@
   ],
   "desc" : "A facebook style adder... for lists of email / people / countries  etc...\npick multiple items from a combo box, and shows each one.\n\n Fred [x]  Brian [x]  [Pick another |v]\n\n\n For this to work: it needs various extra information\n   - normal combo problay has\n     name, hiddenName\n   + displayField, valueField\n\n   For our purpose...\n\n\n  If we change from 'extends' to wrapping...",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "ComboBoxArray",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "Configuration options",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "hideMode",

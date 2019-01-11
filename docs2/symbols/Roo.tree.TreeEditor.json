@@ -7,8 +7,29 @@
   ],
   "desc" : "Provides editor functionality for inline tree node editing.  Any valid {@link Roo.form.Field} can be used\nas the editor field.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "TreeEditor",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "(used to be the tree panel.)",
+      "isOptional" : false
+    },
+    {
+      "name" : "oldconfig",
+      "type" : "Object",
+      "desc" : "DEPRECIATED Either a prebuilt {@link Roo.form.Field} instance or a Field config object",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

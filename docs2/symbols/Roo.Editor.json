@@ -6,8 +6,29 @@
   ],
   "desc" : "A base editor field that handles displaying/hiding on demand and has some built-in sizing and event handling logic.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "Editor",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "field",
+      "type" : "Roo.form.Field",
+      "desc" : "The Field object (or descendant)",
+      "isOptional" : false
+    },
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "The config object",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

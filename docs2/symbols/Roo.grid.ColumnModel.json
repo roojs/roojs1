@@ -5,8 +5,23 @@
   ],
   "desc" : "This is the default implementation of a ColumnModel used by the Grid. It defines\nthe columns in the grid.\n<br>Usage:<br>\n <pre><code>\n var colModel = new Roo.grid.ColumnModel([\n\t{header: \"Ticker\", width: 60, sortable: true, locked: true},\n\t{header: \"Company Name\", width: 150, sortable: true},\n\t{header: \"Market Cap.\", width: 100, sortable: true},\n\t{header: \"$ Sales\", width: 100, sortable: true, renderer: money},\n\t{header: \"Employees\", width: 100, sortable: true, resizable: false}\n ]);\n </code></pre>\n<p>\nThe config options listed for this class are options which may appear in each\nindividual column definition.\n<br/>RooJS Fix - column id's are not sequential but use Roo.id() - fixes bugs with layouts.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "ColumnModel",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "An Array of column config objects. See this class's\nconfig objects for details.",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "editor",

@@ -4,8 +4,17 @@
   ],
   "desc" : "Provides a common registry of all components on a page so that they can be easily accessed by component id (see {@link Roo.getCmp}).",
   "isSingleton" : true,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "ComponentMgr",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+  ],
+  "returns" : [
+  ],
   "config" : [
   ],
   "methods" : [

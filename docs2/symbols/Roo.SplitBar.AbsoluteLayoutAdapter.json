@@ -5,8 +5,23 @@
   ],
   "desc" : "Adapter that  moves the splitter element to align with the resized sizing element. \nUsed with an absolute positioned SplitBar.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "AbsoluteLayoutAdapter",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "container",
+      "type" : "String/HTMLElement/Roo.Element",
+      "desc" : "The container that wraps around the absolute positioned content. If it's\ndocument.body, make sure you assign an id to the body element.",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
   ],
   "methods" : [

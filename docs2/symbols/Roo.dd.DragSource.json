@@ -8,8 +8,29 @@
   ],
   "desc" : "A simple class that provides the basic implementation needed to make any element draggable.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "DragSource",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "el",
+      "type" : "String/HTMLElement/Element",
+      "desc" : "The container element",
+      "isOptional" : false
+    },
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

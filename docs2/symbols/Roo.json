@@ -4,8 +4,17 @@
   ],
   "desc" : "Roo core utilities and functions.",
   "isSingleton" : true,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "Roo",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "removeMask",

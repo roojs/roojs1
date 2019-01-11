@@ -7,8 +7,29 @@
   ],
   "desc" : "This is a pre-built layout that represents a classic, 5-pane application.  It consists of a header, a primary\ncenter region containing two nested regions (a top one for a list view and one for item preview below),\nand regions on either side that can be used for navigation, application commands, informational displays, etc.\nThe setup and configuration work exactly the same as it does for a {@link Roo.BorderLayout} - this class simply\nexpedites the setup of the overall layout and regions for this common application style.\nExample:\n <pre><code>\nvar reader = new Roo.ReaderLayout();\nvar CP = Roo.ContentPanel;  // shortcut for adding\n\nreader.beginUpdate();\nreader.add(\"north\", new CP(\"north\", \"North\"));\nreader.add(\"west\", new CP(\"west\", {title: \"West\"}));\nreader.add(\"east\", new CP(\"east\", {title: \"East\"}));\n\nreader.regions.listView.add(new CP(\"listView\", \"List\"));\nreader.regions.preview.add(new CP(\"preview\", \"Preview\"));\nreader.endUpdate();\n</code></pre>",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "ReaderLayout",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "Configuration options",
+      "isOptional" : false
+    },
+    {
+      "name" : "container",
+      "type" : "String/HTMLElement/Element",
+      "desc" : "(optional) The container this layout is bound to (defaults to\ndocument.body if omitted)",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

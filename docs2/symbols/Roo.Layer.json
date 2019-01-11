@@ -5,8 +5,29 @@
   ],
   "desc" : "An extended {@link Roo.Element} object that supports a shadow and shim, constrain to viewport and\nautomatic maintaining of shadow/shim positions.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "Layer",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "An object with config options.",
+      "isOptional" : false
+    },
+    {
+      "name" : "existingEl",
+      "type" : "String/HTMLElement",
+      "desc" : "(optional) Uses an existing DOM element. If the element is not found it creates it.",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "shadow",

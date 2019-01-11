@@ -5,8 +5,17 @@
   ],
   "desc" : "Abstract base class for grid SelectionModels.  It provides the interface that should be\nimplemented by descendant classes.  This class should not be directly instantiated.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "AbstractSelectionModel",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

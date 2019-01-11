@@ -5,8 +5,29 @@
   ],
   "desc" : "A Collection class that maintains both numeric indexes and keys and exposes events.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "MixedCollection",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "allowFunctions",
+      "type" : "Boolean",
+      "desc" : "True if the addAll function should add function references to the\ncollection (defaults to false)",
+      "isOptional" : false
+    },
+    {
+      "name" : "keyFn",
+      "type" : "Function",
+      "desc" : "A function that can accept an item of the type(s) stored in this MixedCollection\nand return the key value for that item.  This is used when available to look up the key on items that\nwere passed without an explicit key parameter to a MixedCollection method.  Passing this parameter is\nequivalent to providing an implementation for the {@link #getKey} method.",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

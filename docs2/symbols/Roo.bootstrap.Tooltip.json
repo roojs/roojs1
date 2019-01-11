@@ -4,8 +4,23 @@
   ],
   "desc" : "Bootstrap Tooltip class\nThis is basic at present - all componets support it by default, however they should add tooltipEl() method\nto determine which dom element triggers the tooltip.\n\nIt needs to add support for additional attributes like tooltip-position",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "Tooltip",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "The config object",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
   ],
   "methods" : [

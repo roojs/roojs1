@@ -8,8 +8,23 @@
   ],
   "desc" : "Bootstrap Navbar.NavSidebarItem class\n{String} badgeWeight (default|primary|success|info|warning|danger)the extra classes for the badge\n{Boolean} open is the menu open\n{Boolean} buttonView use button as the tigger el rather that a (default false)\n{String} buttonWeight (default|primary|success|info|warning|danger)the extra classes for the button\n{String} buttonSize (sm|md|lg)the extra classes for the button\n{Boolean} showArrow show arrow next to the text (default true)",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "NavSidebarItem",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "The config object",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

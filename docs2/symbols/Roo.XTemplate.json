@@ -5,8 +5,17 @@
   ],
   "desc" : "Provides a template that can have nested templates for loops or conditionals. The syntax is:\n<pre><code>\nvar t = new Roo.XTemplate(\n\t'&lt;select name=\"{name}\"&gt;',\n\t\t'&lt;tpl for=\"options\"&gt;&lt;option value=\"{value:trim}\"&gt;{text:ellipsis(10)}&lt;/option&gt;&lt;/tpl&gt;',\n\t'&lt;/select&gt;'\n);\n \n// then append, applying the master template values\n </code></pre>\n\nSupported features:\n\n Tags:\n\n<pre><code>\n      {a_variable} - output encoded.\n      {a_variable.format:(\"Y-m-d\")} - call a method on the variable\n      {a_variable:raw} - unencoded output\n      {a_variable:toFixed(1,2)} - Roo.util.Format.\"toFixed\"\n      {a_variable:this.method_on_template(...)} - call a method on the template object.\n \n</code></pre>\n The tpl tag:\n<pre><code>\n        &lt;tpl for=\"a_variable or condition..\"&gt;&lt;/tpl&gt;\n        &lt;tpl if=\"a_variable or condition\"&gt;&lt;/tpl&gt;\n        &lt;tpl exec=\"some javascript\"&gt;&lt;/tpl&gt;\n        &lt;tpl name=\"named_template\"&gt;&lt;/tpl&gt; (experimental)\n  \n        &lt;tpl for=\".\"&gt;&lt;/tpl&gt; - just iterate the property..\n        &lt;tpl for=\"..\"&gt;&lt;/tpl&gt; - iterates with the parent (probably the template) \n</code></pre>",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "XTemplate",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "html",

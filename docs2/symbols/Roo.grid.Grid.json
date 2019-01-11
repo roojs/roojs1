@@ -5,8 +5,29 @@
   ],
   "desc" : "This class represents the primary interface of a component based grid control.\n<br><br>Usage:<pre><code>\n var grid = new Roo.grid.Grid(\"my-container-id\", {\n     ds: myDataStore,\n     cm: myColModel,\n     selModel: mySelectionModel,\n     autoSizeColumns: true,\n     monitorWindowResize: false,\n     trackMouseOver: true\n });\n // set any options\n grid.render();\n</code></pre>\n<b>Common Problems:</b><br/>\n- Grid does not resize properly when going smaller: Setting overflow hidden on the container\nelement will correct this<br/>\n- If you get el.style[camel]= NaNpx or -2px or something related, be certain you have given your container element\ndimensions. The grid adapts to your container's size, if your container has no size defined then the results\nare unpredictable.<br/>\n- Do not render the grid into an element with display:none. Try using visibility:hidden. Otherwise there is no way for the\ngrid to calculate dimensions/offsets.<br/>",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "Grid",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "container",
+      "type" : "String/HTMLElement/Roo.Element",
+      "desc" : "The element into which this grid will be rendered -\nThe container MUST have some type of size defined for the grid to fill. The container will be\nautomatically set to position relative if it isn't already.",
+      "isOptional" : false
+    },
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "A config object that sets properties on this grid.",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "autoSizeColumns",

@@ -4,8 +4,23 @@
   ],
   "desc" : "Base class that provides a common interface for publishing events. Subclasses are expected to\nto have a property \"events\" with all the events defined.<br>\nFor example:\n<pre><code>\n Employee = function(name){\n    this.name = name;\n    this.addEvents({\n        \"fired\" : true,\n        \"quit\" : true\n    });\n }\n Roo.extend(Employee, Roo.util.Observable);\n</code></pre>",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "Observable",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "properties to use (incuding events / listeners)",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

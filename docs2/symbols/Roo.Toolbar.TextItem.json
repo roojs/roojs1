@@ -5,8 +5,23 @@
   ],
   "desc" : "A simple class that renders text directly into a toolbar.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "TextItem",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "text",
+      "type" : "String",
+      "desc" : "",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
   ],
   "methods" : [

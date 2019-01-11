@@ -5,8 +5,41 @@
   ],
   "desc" : "Represents an individual item (tab plus body) in a TabPanel.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "TabPanelItem",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "tabPanel",
+      "type" : "Roo.TabPanel",
+      "desc" : "The {@link Roo.TabPanel} this TabPanelItem belongs to",
+      "isOptional" : false
+    },
+    {
+      "name" : "id",
+      "type" : "String",
+      "desc" : "The id of this TabPanelItem",
+      "isOptional" : false
+    },
+    {
+      "name" : "text",
+      "type" : "String",
+      "desc" : "The text for the tab of this TabPanelItem",
+      "isOptional" : false
+    },
+    {
+      "name" : "closable",
+      "type" : "Boolean",
+      "desc" : "True to allow this TabPanelItem to be closable (defaults to false)",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

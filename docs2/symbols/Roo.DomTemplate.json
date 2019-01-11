@@ -5,8 +5,17 @@
   ],
   "desc" : "An effort at a dom based template engine..\n\nSimilar to XTemplate, except it uses dom parsing to create the template..\n\nSupported features:\n\n Tags:\n\n<pre><code>\n      {a_variable} - output encoded.\n      {a_variable.format:(\"Y-m-d\")} - call a method on the variable\n      {a_variable:raw} - unencoded output\n      {a_variable:toFixed(1,2)} - Roo.util.Format.\"toFixed\"\n      {a_variable:this.method_on_template(...)} - call a method on the template object.\n \n</code></pre>\n The tpl tag:\n<pre><code>\n        &lt;div roo-for=\"a_variable or condition..\"&gt;&lt;/div&gt;\n        &lt;div roo-if=\"a_variable or condition\"&gt;&lt;/div&gt;\n        &lt;div roo-exec=\"some javascript\"&gt;&lt;/div&gt;\n        &lt;div roo-name=\"named_template\"&gt;&lt;/div&gt; \n  \n</code></pre>",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "DomTemplate",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "html",

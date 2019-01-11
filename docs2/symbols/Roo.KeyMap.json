@@ -4,8 +4,35 @@
   ],
   "desc" : "Handles mapping keys to actions for an element. One key map can be used for multiple actions.\nThe constructor accepts the same config object as defined by {@link #addBinding}.\nIf you bind a callback function to a KeyMap, anytime the KeyMap handles an expected key\ncombination it will call the function with this signature (if the match is a multi-key\ncombination the callback will still be called only once): (String key, Roo.EventObject e)\nA KeyMap can also handle a string representation of keys.<br />\nUsage:\n <pre><code>\n// map one key by key code\nvar map = new Roo.KeyMap(\"my-element\", {\n    key: 13, // or Roo.EventObject.ENTER\n    fn: myHandler,\n    scope: myObject\n});\n\n// map multiple keys to one action by string\nvar map = new Roo.KeyMap(\"my-element\", {\n    key: \"a\\r\\n\\t\",\n    fn: myHandler,\n    scope: myObject\n});\n\n// map multiple keys to multiple actions by strings and array of codes\nvar map = new Roo.KeyMap(\"my-element\", [\n    {\n        key: [10,13],\n        fn: function(){ alert(\"Return was pressed\"); }\n    }, {\n        key: \"abc\",\n        fn: function(){ alert('a, b or c was pressed'); }\n    }, {\n        key: \"\\t\",\n        ctrl:true,\n        shift:true,\n        fn: function(){ alert('Control + shift + tab was pressed.'); }\n    }\n]);\n</code></pre>\n<b>Note: A KeyMap starts enabled</b>",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "KeyMap",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "el",
+      "type" : "String/HTMLElement/Roo.Element",
+      "desc" : "The element to bind to",
+      "isOptional" : false
+    },
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "The config (see {@link #addBinding})",
+      "isOptional" : false
+    },
+    {
+      "name" : "eventName",
+      "type" : "String",
+      "desc" : "(optional) The event to bind to (defaults to \"keydown\")",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
   ],
   "methods" : [

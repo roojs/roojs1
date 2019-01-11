@@ -4,8 +4,17 @@
   ],
   "desc" : "Defines the default sorting (casting?) comparison functions used when sorting data.",
   "isSingleton" : true,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "SortTypes",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+  ],
+  "returns" : [
+  ],
   "config" : [
   ],
   "methods" : [

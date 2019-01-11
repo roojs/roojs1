@@ -6,8 +6,29 @@
   ],
   "desc" : "Create a new GridPanel.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "GridPanel",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "grid",
+      "type" : "Roo.grid.Grid",
+      "desc" : "The grid for this panel",
+      "isOptional" : false
+    },
+    {
+      "name" : "config",
+      "type" : "String/Object",
+      "desc" : "A string to set only the panel's title, or a config object",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "loadOnce",

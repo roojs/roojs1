@@ -5,8 +5,23 @@
   ],
   "desc" : "Base class for all major Roo components.  All subclasses of Component can automatically participate in the standard\nRoo component lifecycle of creation, rendering and destruction.  They also have automatic support for basic hide/show\nand enable/disable behavior.  Component allows any subclass to be lazy-rendered into any {@link Roo.Container} and\nto be automatically registered with the {@link Roo.ComponentMgr} so that it can be referenced at any time via {@link Roo.getCmp}.\nAll visual components (widgets) that require rendering into a layout should subclass Component.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "Component",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Roo.Element/String/Object",
+      "desc" : "The configuration options.  If an element is passed, it is set as the internal\nelement and its id used as the component id.  If a string is passed, it is assumed to be the id of an existing element\nand is used as the component id.  Otherwise, it is assumed to be a standard config object and is applied to the component.",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

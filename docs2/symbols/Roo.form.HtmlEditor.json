@@ -8,8 +8,17 @@
   ],
   "desc" : "Provides a lightweight HTML Editor component.\n\nThis has been tested on Fireforx / Chrome.. IE may not be so great..\n\n<br><br><b>Note: The focus/blur and validation marking functionality inherited from Ext.form.Field is NOT\nsupported by this editor.</b><br/><br/>\nAn Editor is a sensitive component that can't be used in all spots standard fields can be used. Putting an Editor within\nany element that has display set to 'none' can cause problems in Safari and Firefox.<br/><br/>",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "HtmlEditor",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "whitelist",

@@ -15,16 +15,17 @@
  * @class Roo.data.Connection
  * @extends Roo.util.Observable
  * The class encapsulates a connection to the page's originating domain, allowing requests to be made
- * either to a configured URL, or to a URL specified at request time.<br><br>
- * <p>
+ * either to a configured URL, or to a URL specified at request time. 
+ * 
  * Requests made by this class are asynchronous, and will return immediately. No data from
  * the server will be available to the statement immediately following the {@link #request} call.
- * To process returned data, use a callback in the request options object, or an event listener.</p><br>
- * <p>
+ * To process returned data, use a callback in the request options object, or an event listener.
+ * 
  * Note: If you are doing a file upload, you will not get a normal response object sent back to
  * your callback or event handler.  Since the upload is handled via in IFRAME, there is no XMLHttpRequest.
  * The response object is created using the innerHTML of the IFRAME's document as the responseText
- * property and, if present, the IFRAME's XML document as the responseXML property.</p><br>
+ * property and, if present, the IFRAME's XML document as the responseXML property.
+ * 
  * This means that a valid XML or HTML document must be returned. If JSON data is required, it is suggested
  * that it be placed either inside a &lt;textarea> in an HTML document and retrieved from the responseText
  * using a regex, or inside a CDATA section in an XML document and retrieved from the responseXML using

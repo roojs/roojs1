@@ -4,8 +4,35 @@
   ],
   "desc" : "A DnD enabled version of Roo.View.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "DDView",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "container",
+      "type" : "Element/String",
+      "desc" : "The Element in which to create the View.",
+      "isOptional" : false
+    },
+    {
+      "name" : "tpl",
+      "type" : "String",
+      "desc" : "The template string used to create the markup for each element of the View",
+      "isOptional" : false
+    },
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "The configuration properties. These include all the config options of\n{@link Roo.View} plus some specific to this class.<br>\n<p>\nDrag/drop is implemented by adding {@link Roo.data.Record}s to the target DDView. If copying is\nnot being performed, the original {@link Roo.data.Record} is removed from the source DDView.<br>\n<p>\nThe following extra CSS rules are needed to provide insertion point highlighting:<pre><code>\n.x-view-drag-insert-above {\n\tborder-top:1px dotted #3366cc;\n}\n.x-view-drag-insert-below {\n\tborder-bottom:1px dotted #3366cc;\n}\n</code></pre>",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "dropGroup",

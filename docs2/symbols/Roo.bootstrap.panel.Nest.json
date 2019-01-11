@@ -6,8 +6,29 @@
   ],
   "desc" : "Create a new Panel, that can contain a layout.Border.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "Nest",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "layout",
+      "type" : "Roo.BorderLayout",
+      "desc" : "The layout for this panel",
+      "isOptional" : false
+    },
+    {
+      "name" : "config",
+      "type" : "String/Object",
+      "desc" : "A string to set only the title or a config object",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "loadOnce",

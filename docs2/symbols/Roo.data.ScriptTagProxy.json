@@ -4,8 +4,23 @@
   ],
   "desc" : "An implementation of Roo.data.DataProxy that reads a data object from a URL which may be in a domain\nother than the originating domain of the running page.<br><br>\n<p>\n<em>Note that if you are retrieving data from a page that is in a domain that is NOT the same as the originating domain\nof the running page, you must use this class, rather than DataProxy.</em><br><br>\n<p>\nThe content passed back from a server resource requested by a ScriptTagProxy is executable JavaScript\nsource code that is used as the source inside a &lt;script> tag.<br><br>\n<p>\nIn order for the browser to process the returned data, the server must wrap the data object\nwith a call to a callback function, the name of which is passed as a parameter by the ScriptTagProxy.\nBelow is a Java example for a servlet which returns data for either a ScriptTagProxy, or an HttpProxy\ndepending on whether the callback name was passed:\n<p>\n<pre><code>\nboolean scriptTag = false;\nString cb = request.getParameter(\"callback\");\nif (cb != null) {\n    scriptTag = true;\n    response.setContentType(\"text/javascript\");\n} else {\n    response.setContentType(\"application/x-json\");\n}\nWriter out = response.getWriter();\nif (scriptTag) {\n    out.write(cb + \"(\");\n}\nout.print(dataBlock.toJsonString());\nif (scriptTag) {\n    out.write(\");\");\n}\n</pre></code>",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "ScriptTagProxy",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "A configuration object.",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "timeout",

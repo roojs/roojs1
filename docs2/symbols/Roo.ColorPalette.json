@@ -6,8 +6,23 @@
   ],
   "desc" : "Simple color palette class for choosing colors.  The palette can be rendered to any container.<br />\nHere's an example of typical usage:\n<pre><code>\nvar cp = new Roo.ColorPalette({value:'993300'});  // initial selected color\ncp.render('my-div');\n\ncp.on('select', function(palette, selColor){\n    // do something with selColor\n});\n</code></pre>",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "ColorPalette",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "The config object",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

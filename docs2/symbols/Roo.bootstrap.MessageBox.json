@@ -4,8 +4,17 @@
   ],
   "desc" : "Utility class for generating different styles of message boxes.  The alias Roo.Msg can also be used.\nExample usage:\n<pre><code>\n// Basic alert:\nRoo.Msg.alert('Status', 'Changes saved successfully.');\n\n// Prompt for user data:\nRoo.Msg.prompt('Name', 'Please enter your name:', function(btn, text){\n    if (btn == 'ok'){\n        // process text value...\n    }\n});\n\n// Show a dialog using config options:\nRoo.Msg.show({\n   title:'Save Changes?',\n   msg: 'Your are closing a tab that has unsaved changes. Would you like to save your changes?',\n   buttons: Roo.Msg.YESNOCANCEL,\n   fn: processResult,\n   animEl: 'elId'\n});\n</code></pre>",
   "isSingleton" : true,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "MessageBox",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+  ],
+  "returns" : [
+  ],
   "config" : [
   ],
   "methods" : [

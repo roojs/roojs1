@@ -5,8 +5,17 @@
   ],
   "desc" : "Provides a template that can have child templates. The syntax is:\n<pre><code>\nvar t = new Roo.MasterTemplate(\n\t'&lt;select name=\"{name}\"&gt;',\n\t\t'&lt;tpl name=\"options\"&gt;&lt;option value=\"{value:trim}\"&gt;{text:ellipsis(10)}&lt;/option&gt;&lt;/tpl&gt;',\n\t'&lt;/select&gt;'\n);\nt.add('options', {value: 'foo', text: 'bar'});\n// or you can add multiple child elements in one shot\nt.addAll('options', [\n    {value: 'foo', text: 'bar'},\n    {value: 'foo2', text: 'bar2'},\n    {value: 'foo3', text: 'bar3'}\n]);\n// then append, applying the master template values\nt.append('my-form', {name: 'my-select'});\n</code></pre>\nA name attribute for the child template is not required if you have only one child\ntemplate or you want to refer to them by index.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "MasterTemplate",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "html",

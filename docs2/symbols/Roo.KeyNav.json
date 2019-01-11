@@ -4,8 +4,29 @@
   ],
   "desc" : "<p>Provides a convenient wrapper for normalized keyboard navigation.  KeyNav allows you to bind\nnavigation keys to function calls that will get called when the keys are pressed, providing an easy\nway to implement custom navigation schemes for any UI component.</p>\n<p>The following are all of the possible keys that can be implemented: enter, left, right, up, down, tab, esc,\npageUp, pageDown, del, home, end.  Usage:</p>\n <pre><code>\nvar nav = new Roo.KeyNav(\"my-element\", {\n    \"left\" : function(e){\n        this.moveLeft(e.ctrlKey);\n    },\n    \"right\" : function(e){\n        this.moveRight(e.ctrlKey);\n    },\n    \"enter\" : function(e){\n        this.save();\n    },\n    scope : this\n});\n</code></pre>",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "KeyNav",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "el",
+      "type" : "String/HTMLElement/Roo.Element",
+      "desc" : "The element to bind to",
+      "isOptional" : false
+    },
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "The config",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "disabled",

@@ -6,8 +6,35 @@
   ],
   "desc" : "A DragDrop implementation where the linked element follows the\nmouse cursor during a drag.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "DD",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "id",
+      "type" : "String",
+      "desc" : "the id of the linked element",
+      "isOptional" : false
+    },
+    {
+      "name" : "sGroup",
+      "type" : "String",
+      "desc" : "the group of related DragDrop items",
+      "isOptional" : false
+    },
+    {
+      "name" : "config",
+      "type" : "object",
+      "desc" : "an object containing configurable attributes\n               Valid properties for DD:\n                   scroll",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

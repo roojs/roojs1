@@ -5,8 +5,29 @@
   ],
   "desc" : "A lightweight tab container.\n<br><br>\nUsage:\n<pre><code>\n// basic tabs 1, built from existing content\nvar tabs = new Roo.TabPanel(\"tabs1\");\ntabs.addTab(\"script\", \"View Script\");\ntabs.addTab(\"markup\", \"View Markup\");\ntabs.activate(\"script\");\n\n// more advanced tabs, built from javascript\nvar jtabs = new Roo.TabPanel(\"jtabs\");\njtabs.addTab(\"jtabs-1\", \"Normal Tab\", \"My content was added during construction.\");\n\n// set up the UpdateManager\nvar tab2 = jtabs.addTab(\"jtabs-2\", \"Ajax Tab 1\");\nvar updater = tab2.getUpdateManager();\nupdater.setDefaultUrl(\"ajax1.htm\");\ntab2.on('activate', updater.refresh, updater, true);\n\n// Use setUrl for Ajax loading\nvar tab3 = jtabs.addTab(\"jtabs-3\", \"Ajax Tab 2\");\ntab3.setUrl(\"ajax2.htm\", null, true);\n\n// Disabled tab\nvar tab4 = jtabs.addTab(\"tabs1-5\", \"Disabled Tab\", \"Can't see me cause I'm disabled\");\ntab4.disable();\n\njtabs.activate(\"jtabs-1\");\n</code></pre>",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "TabPanel",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "container",
+      "type" : "String/HTMLElement/Roo.Element",
+      "desc" : "The id, DOM element or Roo.Element container where this TabPanel is to be rendered.",
+      "isOptional" : false
+    },
+    {
+      "name" : "config",
+      "type" : "Object/Boolean",
+      "desc" : "Config object to set any properties for this TabPanel, or true to render the tabs on the bottom.",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

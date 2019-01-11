@@ -5,8 +5,29 @@
   ],
   "desc" : "Provides AJAX-style update for Element object.<br><br>\nUsage:<br>\n<pre><code>\n// Get it from a Roo.Element object\nvar el = Roo.get(\"foo\");\nvar mgr = el.getUpdateManager();\nmgr.update(\"http://myserver.com/index.php\", \"param1=1&amp;param2=2\");\n...\nmgr.formUpdate(\"myFormId\", \"http://myserver.com/index.php\");\n<br>\n// or directly (returns the same UpdateManager instance)\nvar mgr = new Roo.UpdateManager(\"myElementId\");\nmgr.startAutoRefresh(60, \"http://myserver.com/index.php\");\nmgr.on(\"update\", myFcnNeedsToKnow);\n<br>\n   // short handed call directly from the element object\n   Roo.get(\"foo\").load({\n        url: \"bar.php\",\n        scripts:true,\n        params: \"for=bar\",\n        text: \"Loading Foo...\"\n   });\n</code></pre>",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "UpdateManager",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "el",
+      "type" : "String/HTMLElement/Roo.Element",
+      "desc" : "The element to update",
+      "isOptional" : false
+    },
+    {
+      "name" : "forceNew",
+      "type" : "Boolean",
+      "desc" : "(optional) By default the constructor checks to see if the passed element already has an UpdateManager and if it does it returns the same instance. This will skip that check (useful for extending this class).",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

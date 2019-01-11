@@ -5,8 +5,23 @@
   ],
   "desc" : "The Store class encapsulates a client side cache of {@link Roo.data.Record} objects which provide input data\nfor widgets such as the Roo.grid.Grid, or the Roo.form.ComboBox.<br>\n<p>\nA Store object uses an implementation of {@link Roo.data.DataProxy} to access a data object unless you call loadData() directly and pass in your data. The Store object\nhas no knowledge of the format of the data returned by the Proxy.<br>\n<p>\nA Store object uses its configured implementation of {@link Roo.data.DataReader} to create {@link Roo.data.Record}\ninstances from the data object. These records are cached and made available through accessor functions.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "Store",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "A config object containing the objects needed for the Store to access data,\nand read the data into Records.",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

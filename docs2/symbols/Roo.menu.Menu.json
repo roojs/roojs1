@@ -5,8 +5,23 @@
   ],
   "desc" : "A menu object.  This is the container to which you add all other menu items.  Menu can also serve a as a base class\nwhen you want a specialzed menu based off of another component (like {@link Roo.menu.DateMenu} for example).",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "Menu",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "Configuration options",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

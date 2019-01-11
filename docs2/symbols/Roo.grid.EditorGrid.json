@@ -6,8 +6,35 @@
   ],
   "desc" : "Class for creating and editable grid.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "EditorGrid",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "container",
+      "type" : "String/HTMLElement/Roo.Element",
+      "desc" : "The element into which this grid will be rendered - \nThe container MUST have some type of size defined for the grid to fill. The container will be \nautomatically set to position relative if it isn't already.",
+      "isOptional" : false
+    },
+    {
+      "name" : "dataSource",
+      "type" : "Object",
+      "desc" : "The data model to bind to",
+      "isOptional" : false
+    },
+    {
+      "name" : "colModel",
+      "type" : "Object",
+      "desc" : "The column model with info about this grid's columns",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

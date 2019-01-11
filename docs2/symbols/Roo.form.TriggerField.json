@@ -9,8 +9,23 @@
   ],
   "desc" : "Provides a convenient wrapper for TextFields that adds a clickable trigger button (looks like a combobox by default).\nThe trigger has no default action, so you must assign a function to implement the trigger click handler by\noverriding {@link #onTriggerClick}. You can create a TriggerField directly, as it renders exactly like a combobox\nfor which you can provide a custom implementation.  For example:\n<pre><code>\nvar trigger = new Roo.form.TriggerField();\ntrigger.onTriggerClick = myTriggerFn;\ntrigger.applyTo('my-field');\n</code></pre>\n\nHowever, in general you will most likely want to use TriggerField as the base class for a reusable component.\n{@link Roo.form.DateField} and {@link Roo.form.ComboBox} are perfect examples of this.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "TriggerField",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "Configuration options (valid {@Roo.form.TextField} config options will also be applied\nto the base TextField)",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "triggerClass",

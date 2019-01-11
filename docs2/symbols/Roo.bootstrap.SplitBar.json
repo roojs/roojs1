@@ -5,8 +5,17 @@
   ],
   "desc" : "Creates draggable splitter bar functionality from two elements (element to be dragged and element to be resized).\n<br><br>\nUsage:\n<pre><code>\nvar split = new Roo.bootstrap.SplitBar(\"elementToDrag\", \"elementToSize\",\n                   Roo.bootstrap.SplitBar.HORIZONTAL, Roo.bootstrap.SplitBar.LEFT);\nsplit.setAdapter(new Roo.bootstrap.SplitBar.AbsoluteLayoutAdapter(\"container\"));\nsplit.minSize = 100;\nsplit.maxSize = 600;\nsplit.animate = true;\nsplit.on('moved', splitterMoved);\n</code></pre>",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "SplitBar",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

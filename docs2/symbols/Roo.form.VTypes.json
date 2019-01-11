@@ -4,8 +4,17 @@
   ],
   "desc" : "Overridable validation definitions. The validations provided are basic and intended to be easily customizable and extended.",
   "isSingleton" : true,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "VTypes",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+  ],
+  "returns" : [
+  ],
   "config" : [
   ],
   "methods" : [

@@ -4,8 +4,17 @@
   ],
   "desc" : "Provides global access to BasicDialogs that have been created and\nsupport for z-indexing (layering) multiple open dialogs.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "DialogManager",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+  ],
+  "returns" : [
+  ],
   "config" : [
   ],
   "methods" : [

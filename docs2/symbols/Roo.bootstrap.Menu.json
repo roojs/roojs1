@@ -7,8 +7,23 @@
   ],
   "desc" : "Bootstrap Menu class - container for MenuItems",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "Menu",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "The config object",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "isLink",
@@ -1000,7 +1015,7 @@
     },
     {
       "name" : "beforehide",
-      "desc" : "Fires before this menu is hidden",
+      "desc" : "Fires before this menu is hidden (return false to block)",
       "memberOf" : "",
       "example" : "",
       "deprecated" : "",
@@ -1044,7 +1059,7 @@
     },
     {
       "name" : "beforeshow",
-      "desc" : "Fires before this menu is displayed",
+      "desc" : "Fires before this menu is displayed (return false to block)",
       "memberOf" : "",
       "example" : "",
       "deprecated" : "",

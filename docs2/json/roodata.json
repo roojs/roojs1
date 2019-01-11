@@ -33157,7 +33157,7 @@
       {
         "name" : "beforehide",
         "type" : "function",
-        "desc" : "Fires before this menu is hidden",
+        "desc" : "Fires before this menu is hidden (return false to block)",
         "sig" : "function (_self)\n{\n\n}",
         "memberOf" : ""
       },
@@ -33171,7 +33171,7 @@
       {
         "name" : "beforeshow",
         "type" : "function",
-        "desc" : "Fires before this menu is displayed",
+        "desc" : "Fires before this menu is displayed (return false to block)",
         "sig" : "function (_self)\n{\n\n}",
         "memberOf" : ""
       },
@@ -62321,7 +62321,7 @@
       {
         "name" : "id",
         "type" : "String",
-        "desc" : "(optional) The subscript within row Array that provides an ID for the Record",
+        "desc" : "Name of the property within a row object that contains a record identifier value.\nas specified to {@link Roo.data.Record#create},\nor an {@link Roo.data.Record} object\n\n\ncreated using {@link Roo.data.Record#create}.",
         "memberOf" : ""
       }
     ],

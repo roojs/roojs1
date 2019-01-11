@@ -3,10 +3,25 @@
   "augments" : [
     "Roo.util.Observable"
   ],
-  "desc" : "The class encapsulates a connection to the page's originating domain, allowing requests to be made\neither to a configured URL, or to a URL specified at request time.<br><br>\n<p>\nRequests made by this class are asynchronous, and will return immediately. No data from\nthe server will be available to the statement immediately following the {@link #request} call.\nTo process returned data, use a callback in the request options object, or an event listener.</p><br>\n<p>\nNote: If you are doing a file upload, you will not get a normal response object sent back to\nyour callback or event handler.  Since the upload is handled via in IFRAME, there is no XMLHttpRequest.\nThe response object is created using the innerHTML of the IFRAME's document as the responseText\nproperty and, if present, the IFRAME's XML document as the responseXML property.</p><br>\nThis means that a valid XML or HTML document must be returned. If JSON data is required, it is suggested\nthat it be placed either inside a &lt;textarea> in an HTML document and retrieved from the responseText\nusing a regex, or inside a CDATA section in an XML document and retrieved from the responseXML using\nstandard DOM methods.",
+  "desc" : "The class encapsulates a connection to the page's originating domain, allowing requests to be made\neither to a configured URL, or to a URL specified at request time. \n\nRequests made by this class are asynchronous, and will return immediately. No data from\nthe server will be available to the statement immediately following the {@link #request} call.\nTo process returned data, use a callback in the request options object, or an event listener.\n\nNote: If you are doing a file upload, you will not get a normal response object sent back to\nyour callback or event handler.  Since the upload is handled via in IFRAME, there is no XMLHttpRequest.\nThe response object is created using the innerHTML of the IFRAME's document as the responseText\nproperty and, if present, the IFRAME's XML document as the responseXML property.\n\nThis means that a valid XML or HTML document must be returned. If JSON data is required, it is suggested\nthat it be placed either inside a &lt;textarea> in an HTML document and retrieved from the responseText\nusing a regex, or inside a CDATA section in an XML document and retrieved from the responseXML using\nstandard DOM methods.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "Connection",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "a configuration object.",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

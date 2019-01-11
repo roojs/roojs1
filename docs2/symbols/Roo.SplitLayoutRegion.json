@@ -7,8 +7,17 @@
   ],
   "desc" : "Adds a splitbar and other (private) useful functionality to a {@link Roo.LayoutRegion}.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "SplitLayoutRegion",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "cmargins",

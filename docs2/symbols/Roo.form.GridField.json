@@ -8,8 +8,23 @@
   ],
   "desc" : "Embed a grid (or editable grid into a form)\nSTATUS ALPHA\n\nThis embeds a grid in a form, the value of the field should be the json encoded array of rows\nit needs \nxgrid.store = Roo.data.Store\nxgrid.store.proxy = Roo.data.MemoryProxy (data = [] )\nxgrid.store.reader = Roo.data.JsonReader",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "GridField",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "Configuration options",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "inputType",

@@ -5,8 +5,23 @@
   ],
   "desc" : "A TreeLoader provides for lazy loading of an {@link Roo.tree.TreeNode}'s child\nnodes from a specified URL. The response must be a javascript Array definition\nwho's elements are node definition objects. eg:\n<pre><code>\n{  success : true,\n   data :      [\n   \n    { 'id': 1, 'text': 'A folder Node', 'leaf': false },\n    { 'id': 2, 'text': 'A leaf Node', 'leaf': true }\n    ]\n}\n\n\n</code></pre>\n<br><br>\nThe old style respose with just an array is still supported, but not recommended.\n<br><br>\n\nA server request is sent, and child nodes are loaded only when a node is expanded.\nThe loading node's id is passed to the server under the parameter name \"node\" to\nenable the server to produce the correct child nodes.\n<br><br>\nTo pass extra parameters, an event handler may be attached to the \"beforeload\"\nevent, and the parameters specified in the TreeLoader's baseParams property:\n<pre><code>\n    myTreeLoader.on(\"beforeload\", function(treeLoader, node) {\n        this.baseParams.category = node.attributes.category;\n    }, this);\n</code></pre><\nThis would pass an HTTP parameter called \"category\" to the server containing\nthe value of the Node's \"category\" attribute.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "TreeLoader",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "A config object containing config properties.",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

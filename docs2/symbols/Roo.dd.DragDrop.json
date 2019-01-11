@@ -5,8 +5,35 @@
   ],
   "desc" : "Defines the interface and base operation of items that that can be\ndragged or can be drop targets.  It was designed to be extended, overriding\nthe event handlers for startDrag, onDrag, onDragOver and onDragOut.\nUp to three html elements can be associated with a DragDrop instance:\n<ul>\n<li>linked element: the element that is passed into the constructor.\nThis is the element which defines the boundaries for interaction with\nother DragDrop objects.</li>\n<li>handle element(s): The drag operation only occurs if the element that\nwas clicked matches a handle element.  By default this is the linked\nelement, but there are times that you will want only a portion of the\nlinked element to initiate the drag operation, and the setHandleElId()\nmethod provides a way to define this.</li>\n<li>drag element: this represents the element that would be moved along\nwith the cursor during a drag operation.  By default, this is the linked\nelement itself as in {@link Roo.dd.DD}.  setDragElId() lets you define\na separate element that would be moved, as in {@link Roo.dd.DDProxy}.\n</li>\n</ul>\nThis class should not be instantiated until the onload event to ensure that\nthe associated elements are available.\nThe following would define a DragDrop obj that would interact with any\nother DragDrop obj in the \"group1\" group:\n<pre>\n dd = new Roo.dd.DragDrop(\"div1\", \"group1\");\n</pre>\nSince none of the event handlers have been implemented, nothing would\nactually happen if you were to run the code above.  Normally you would\noverride this class or one of the default implementations, but you can\nalso override the methods you want on an instance of the class...\n<pre>\n dd.onDragDrop = function(e, id) {\n &nbsp;&nbsp;alert(\"dd was dropped on \" + id);\n }\n</pre>",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "DragDrop",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "id",
+      "type" : "String",
+      "desc" : "of the element that is linked to this instance",
+      "isOptional" : false
+    },
+    {
+      "name" : "sGroup",
+      "type" : "String",
+      "desc" : "the group of related DragDrop objects",
+      "isOptional" : false
+    },
+    {
+      "name" : "config",
+      "type" : "object",
+      "desc" : "an object containing configurable attributes\n               Valid properties for DragDrop:\n                   padding, isTarget, maintainOffset, primaryButtonOnly",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

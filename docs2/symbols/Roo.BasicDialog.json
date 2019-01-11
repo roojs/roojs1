@@ -5,8 +5,29 @@
   ],
   "desc" : "Lightweight Dialog Class.  The code below shows the creation of a typical dialog using existing HTML markup:\n<pre><code>\nvar dlg = new Roo.BasicDialog(\"my-dlg\", {\n    height: 200,\n    width: 300,\n    minHeight: 100,\n    minWidth: 150,\n    modal: true,\n    proxyDrag: true,\n    shadow: true\n});\ndlg.addKeyListener(27, dlg.hide, dlg); // ESC can also close the dialog\ndlg.addButton('OK', dlg.hide, dlg);    // Could call a save function instead of hiding\ndlg.addButton('Cancel', dlg.hide, dlg);\ndlg.show();\n</code></pre>\n  <b>A Dialog should always be a direct child of the body element.</b>",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "BasicDialog",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "el",
+      "type" : "String/HTMLElement/Roo.Element",
+      "desc" : "The container element or DOM node, or its id",
+      "isOptional" : false
+    },
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "Configuration options",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "y",

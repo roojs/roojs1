@@ -4,8 +4,29 @@
   ],
   "desc" : "Represents an Element in the DOM.<br><br>\nUsage:<br>\n<pre><code>\nvar el = Roo.get(\"my-div\");\n\n// or with getEl\nvar el = getEl(\"my-div\");\n\n// or with a DOM element\nvar el = Roo.get(myDivElement);\n</code></pre>\nUsing Roo.get() or getEl() instead of calling the constructor directly ensures you get the same object\neach call instead of constructing a new one.<br><br>\n<b>Animations</b><br />\nMany of the functions for manipulating an element have an optional \"animate\" parameter. The animate parameter\nshould either be a boolean (true) or an object literal with animation options. The animation options are:\n<pre>\nOption    Default   Description\n--------- --------  ---------------------------------------------\nduration  .35       The duration of the animation in seconds\neasing    easeOut   The YUI easing method\ncallback  none      A function to execute when the anim completes\nscope     this      The scope (this) of the callback function\n</pre>\nAlso, the Anim object being used for the animation will be set on your options object as \"anim\", which allows you to stop or\nmanipulate the animation. Here's an example:\n<pre><code>\nvar el = Roo.get(\"my-div\");\n\n// no animation\nel.setWidth(100);\n\n// default animation\nel.setWidth(100, true);\n\n// animation with some options set\nel.setWidth(100, {\n    duration: 1,\n    callback: this.foo,\n    scope: this\n});\n\n// using the \"anim\" property to get the Anim object\nvar opt = {\n    duration: 1,\n    callback: this.foo,\n    scope: this\n};\nel.setWidth(100, opt);\n...\nif(opt.anim.isAnimated()){\n    opt.anim.stop();\n}\n</code></pre>\n<b> Composite (Collections of) Elements</b><br />\nFor working with collections of Elements, see <a href=\"Roo.CompositeElement.html\">Roo.CompositeElement</a>",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "Element",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "element",
+      "type" : "String/HTMLElement",
+      "desc" : "",
+      "isOptional" : false
+    },
+    {
+      "name" : "forceNew",
+      "type" : "Boolean",
+      "desc" : "(optional) By default the constructor checks to see if there is already an instance of this element in the cache and if there is it returns the same instance. This will skip that check (useful for extending this class).",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
   ],
   "methods" : [

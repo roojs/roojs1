@@ -7,8 +7,29 @@
   ],
   "desc" : "This class represents the  interface of a component based property grid control.\n<br><br>Usage:<pre><code>\n var grid = new Roo.grid.PropertyGrid(\"my-container-id\", {\n      \n });\n // set any options\n grid.render();\n</code></pre>",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "PropertyGrid",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "container",
+      "type" : "String/HTMLElement/Roo.Element",
+      "desc" : "The element into which this grid will be rendered -\nThe container MUST have some type of size defined for the grid to fill. The container will be\nautomatically set to position relative if it isn't already.",
+      "isOptional" : false
+    },
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "A config object that sets properties on this grid.",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

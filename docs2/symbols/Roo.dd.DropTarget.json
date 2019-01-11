@@ -7,8 +7,29 @@
   ],
   "desc" : "A simple class that provides the basic implementation needed to make any element a drop target that can have\ndraggable items dropped onto it.  The drop has no effect until an implementation of notifyDrop is provided.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "DropTarget",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "el",
+      "type" : "String/HTMLElement/Element",
+      "desc" : "The container element",
+      "isOptional" : false
+    },
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

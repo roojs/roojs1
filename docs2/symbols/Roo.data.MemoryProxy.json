@@ -4,8 +4,23 @@
   ],
   "desc" : "An implementation of Roo.data.DataProxy that simply passes the data specified in its constructor\nto the Reader when its load method is called.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "MemoryProxy",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "data",
+      "type" : "Object",
+      "desc" : "The data object which the Reader uses to construct a block of Roo.data.Records.",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
   ],
   "methods" : [

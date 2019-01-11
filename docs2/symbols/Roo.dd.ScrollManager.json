@@ -4,8 +4,17 @@
   ],
   "desc" : "Provides automatic scrolling of overflow regions in the page during drag operations.<br><br>\n<b>Note: This class uses \"Point Mode\" and is untested in \"Intersect Mode\".</b>",
   "isSingleton" : true,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "ScrollManager",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+  ],
+  "returns" : [
+  ],
   "config" : [
   ],
   "methods" : [

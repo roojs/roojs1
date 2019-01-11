@@ -9,8 +9,23 @@
   ],
   "desc" : "Single radio field.  Same as Checkbox, but provided as a convenience for automatically setting the input type.\nRadio grouping is handled automatically by the browser if you give each radio in a group the same name.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "Radio",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "Configuration options",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "inputType",

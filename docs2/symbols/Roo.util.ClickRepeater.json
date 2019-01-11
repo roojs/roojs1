@@ -5,8 +5,29 @@
   ],
   "desc" : "A wrapper class which can be applied to any element. Fires a \"click\" event while the\nmouse is pressed. The interval between firings may be specified in the config but\ndefaults to 10 milliseconds.\n\nOptionally, a CSS class may be applied to the element during the time it is pressed.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "ClickRepeater",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "el",
+      "type" : "String/HTMLElement/Element",
+      "desc" : "The element to listen on",
+      "isOptional" : false
+    },
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "stopDefault",

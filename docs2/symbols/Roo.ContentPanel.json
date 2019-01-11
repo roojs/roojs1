@@ -5,8 +5,41 @@
   ],
   "desc" : "A basic ContentPanel element.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "ContentPanel",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "el",
+      "type" : "String/HTMLElement/Roo.Element",
+      "desc" : "The container element for this panel",
+      "isOptional" : false
+    },
+    {
+      "name" : "config",
+      "type" : "String/Object",
+      "desc" : "A string to set only the title or a config object",
+      "isOptional" : false
+    },
+    {
+      "name" : "content",
+      "type" : "String",
+      "desc" : "(optional) Set the HTML content for this panel",
+      "isOptional" : false
+    },
+    {
+      "name" : "region",
+      "type" : "String",
+      "desc" : "(optional) Used by xtype constructors to add to regions. (values center,east,west,south,north)",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "loadOnce",

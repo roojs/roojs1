@@ -5,8 +5,23 @@
   ],
   "desc" : "This is a convience class to wrap up the main document loading code.. , rather than adding Roo.onReady(......)",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "Document",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "the methods and properties of the 'base' class for the application.\n\n Generic Page handler - implement this to start your app..\n\neg.\n MyProject = new Roo.Document({\n        events : {\n            'load' : true // your events..\n        },\n        listeners : {\n            'ready' : function() {\n                // fired on Roo.onReady()\n            }\n        }",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

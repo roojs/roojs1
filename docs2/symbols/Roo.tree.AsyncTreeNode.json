@@ -7,8 +7,23 @@
   ],
   "desc" : "",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "AsyncTreeNode",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "attributes",
+      "type" : "Object/String",
+      "desc" : "The attributes/config for the node or just a string with the text for the node",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

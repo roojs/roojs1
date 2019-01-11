@@ -6,6 +6,15 @@
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : true,
+  "memberOf" : "_global_",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+  ],
+  "returns" : [
+  ],
   "config" : [
   ],
   "methods" : [

@@ -8,8 +8,23 @@
   ],
   "desc" : "Basic text field.  Can be used as a direct replacement for traditional text inputs, or as the base\nclass for more sophisticated input controls (like {@link Roo.form.TextArea} and {@link Roo.form.ComboBox}).",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "TextField",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "Configuration options",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "hideMode",

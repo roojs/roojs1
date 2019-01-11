@@ -4,8 +4,17 @@
   ],
   "desc" : "EventObject exposes the Yahoo! UI Event functionality directly on the object\npassed to your event handler. It exists mostly for convenience. It also fixes the annoying null checks automatically to cleanup your code \nExample:\n<pre><code>\n function handleClick(e){ // e is not a standard event object, it is a Roo.EventObject\n    e.preventDefault();\n    var target = e.getTarget();\n    ...\n }\n var myDiv = Roo.get(\"myDiv\");\n myDiv.on(\"click\", handleClick);\n //or\n Roo.EventManager.on(\"myDiv\", 'click', handleClick);\n Roo.EventManager.addListener(\"myDiv\", 'click', handleClick);\n </code></pre>",
   "isSingleton" : true,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "EventObject",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+  ],
+  "returns" : [
+  ],
   "config" : [
   ],
   "methods" : [

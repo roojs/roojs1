@@ -5,8 +5,23 @@
   ],
   "desc" : "Represents a tree data structure and bubbles all the events for its nodes. The nodes\nin the tree have most standard DOM functionality.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "Tree",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "root",
+      "type" : "Node",
+      "desc" : "(optional) The root node",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

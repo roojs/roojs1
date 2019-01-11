@@ -7,8 +7,23 @@
   ],
   "desc" : "Adds a separator bar to a menu, used to divide logical groups of menu items. Generally you will\nadd one of these by using \"-\" in you call to add() or in your items config rather than creating one directly.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "Separator",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "Configuration options",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "listeners",

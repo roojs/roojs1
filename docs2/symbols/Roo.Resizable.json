@@ -5,8 +5,29 @@
   ],
   "desc" : "<p>Applies drag handles to an element to make it resizable. The drag handles are inserted into the element\nand positioned absolute. Some elements, such as a textarea or image, don't support this. To overcome that, you can wrap\nthe textarea in a div and set \"resizeChild\" to true (or to the id of the element), <b>or</b> set wrap:true in your config and\nthe element will be wrapped for you automatically.</p>\n<p>Here is the list of valid resize handles:</p>\n<pre>\nValue   Description\n------  -------------------\n 'n'     north\n 's'     south\n 'e'     east\n 'w'     west\n 'nw'    northwest\n 'sw'    southwest\n 'se'    southeast\n 'ne'    northeast\n 'hd'    horizontal drag\n 'all'   all\n</pre>\n<p>Here's an example showing the creation of a typical Resizable:</p>\n<pre><code>\nvar resizer = new Roo.Resizable(\"element-id\", {\n    handles: 'all',\n    minWidth: 200,\n    minHeight: 100,\n    maxWidth: 500,\n    maxHeight: 400,\n    pinned: true\n});\nresizer.on(\"resize\", myHandler);\n</code></pre>\n<p>To hide a particular handle, set its display to none in CSS, or through script:<br>\nresizer.east.setDisplayed(false);</p>",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
+  "memberOf" : "Resizable",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "el",
+      "type" : "String/HTMLElement/Roo.Element",
+      "desc" : "The id or element to resize",
+      "isOptional" : false
+    },
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "configuration options",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
   "config" : [
     {
       "name" : "easing",
