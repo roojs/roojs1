@@ -278,7 +278,10 @@ Roo.docs.render  = {
     },
     summarize : function(str)
     {
-        
+        if (typeof desc != "undefined") {
+            return desc.match(/([\w\W]+?\.)[^a-z0-9]/i)? RegExp.$1 : desc;
+        }
+        return '';
     },
     linkSymbol : function(str)
     {
