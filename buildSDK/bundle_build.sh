@@ -37,10 +37,10 @@ roojspacker -t roojs-doc.js -T roojs-doc-debug.js -i buildSDK/dependancy_doc.txt
 
      
 
-#build the docs.. (and properties file)
-seed ../gnome.introspection-doc-generator/jsdocbuild.js --baseDir ../roojs1 \
-   --target ../roojs1/docs --conf ../roojs1/buildSDK/jsdoc.cfg.json \
-   --cacheDirectory /tmp/roocache/
+# = not used anymore
+#seed ../gnome.introspection-doc-generator/jsdocbuild.js --baseDir ../roojs1 \
+   #--target ../roojs1/docs --conf ../roojs1/buildSDK/jsdoc.cfg.json \
+   -#-cacheDirectory /tmp/roocache/
 
 #new version?? - under testing...
 roojspacker -i buildSDK/dependancy_core.txt  -i buildSDK/dependancy_ui.txt  \
