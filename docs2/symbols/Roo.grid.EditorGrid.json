@@ -784,7 +784,7 @@
   ],
   "events" : [
     {
-      "name" : "*validateedit",
+      "name" : "validateedit",
       "desc" : "Fires after a cell is edited, but before the value is set in the record. \nYou can use this to modify the value being set in the field, Return false\nto cancel the change. The edit event object has the following properties <br />\n<ul style=\"padding:5px;padding-left:16px;\">\n<li>editor - This editor</li>\n<li>grid - This grid</li>\n<li>record - The record being edited</li>\n<li>field - The field name being edited</li>\n<li>value - The value being set</li>\n<li>originalValue - The original value for the field, before the edit.</li>\n<li>row - The grid row index</li>\n<li>column - The grid column index</li>\n<li>cancel - Set this to true to cancel the edit or return false from your handler.</li>\n</ul>",
       "memberOf" : "",
       "example" : "",
@@ -798,10 +798,12 @@
           "desc" : "An edit event (see above for description)",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforeedit",
+      "name" : "beforeedit",
       "desc" : "Fires before cell editing is triggered. The edit event object has the following properties <br />\n<ul style=\"padding:5px;padding-left:16px;\">\n<li>grid - This grid</li>\n<li>record - The record being edited</li>\n<li>field - The field name being edited</li>\n<li>value - The value for the field being edited.</li>\n<li>row - The grid row index</li>\n<li>column - The grid column index</li>\n<li>cancel - Set this to true to cancel the edit or return false from your handler.</li>\n</ul>",
       "memberOf" : "",
       "example" : "",
@@ -815,10 +817,12 @@
           "desc" : "An edit event (see above for description)",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*afteredit",
+      "name" : "afteredit",
       "desc" : "Fires after a cell is edited. <br />\n<ul style=\"padding:5px;padding-left:16px;\">\n<li>grid - This grid</li>\n<li>record - The record being edited</li>\n<li>field - The field name being edited</li>\n<li>value - The value being set</li>\n<li>originalValue - The original value for the field, before the edit.</li>\n<li>row - The grid row index</li>\n<li>column - The grid column index</li>\n</ul>",
       "memberOf" : "",
       "example" : "",
@@ -832,10 +836,12 @@
           "desc" : "An edit event (see above for description)",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*rowcontextmenu",
+      "name" : "rowcontextmenu",
       "desc" : "Fires when a row is right clicked",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
@@ -861,10 +867,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*columnmove",
+      "name" : "columnmove",
       "desc" : "Fires when the user moves a column",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
@@ -884,10 +892,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*headercontextmenu",
+      "name" : "headercontextmenu",
       "desc" : "Fires when a header is right clicked",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
@@ -913,10 +923,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*render",
+      "name" : "render",
       "desc" : "Fires when the grid is rendered",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
@@ -930,10 +942,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*bodyscroll",
+      "name" : "bodyscroll",
       "desc" : "Fires when the body element is scrolled",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
@@ -953,10 +967,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*columnresize",
+      "name" : "columnresize",
       "desc" : "Fires when the user resizes a column",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
@@ -976,10 +992,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*enddrag",
+      "name" : "enddrag",
       "desc" : "Fires when a drag operation is complete",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
@@ -1005,10 +1023,12 @@
           "desc" : "The raw browser event",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*mouseout",
+      "name" : "mouseout",
       "desc" : "The raw mouseout event for the entire grid.",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
@@ -1022,10 +1042,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*cellclick",
+      "name" : "cellclick",
       "desc" : "Fires when a cell is clicked",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
@@ -1057,10 +1079,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*dragover",
+      "name" : "dragover",
       "desc" : "Fires while row(s) are being dragged. \"targetId\" is the id of the Yahoo.util.DD object the selected rows are being dragged over.",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
@@ -1092,10 +1116,12 @@
           "desc" : "The raw browser event",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*rowclass",
+      "name" : "rowclass",
       "desc" : "Fires when a row is rendered, so you can change add a style to it.",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
@@ -1115,10 +1141,12 @@
           "desc" : "contains record  rowIndex and rowClass - set rowClass to add a style.",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*keydown",
+      "name" : "keydown",
       "desc" : "The raw keydown event for the entire grid.",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
@@ -1132,10 +1160,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*mousedown",
+      "name" : "mousedown",
       "desc" : "The raw mousedown event for the entire grid.",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
@@ -1149,10 +1179,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*dragenter",
+      "name" : "dragenter",
       "desc" : "Fires when the dragged row(s) first cross another DD target while being dragged",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
@@ -1184,10 +1216,12 @@
           "desc" : "The raw browser event",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*dragout",
+      "name" : "dragout",
       "desc" : "Fires when the dragged row(s) leave another DD target while being dragged",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
@@ -1219,10 +1253,12 @@
           "desc" : "The raw browser event",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*mouseup",
+      "name" : "mouseup",
       "desc" : "The raw mouseup event for the entire grid.",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
@@ -1236,10 +1272,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*keypress",
+      "name" : "keypress",
       "desc" : "The raw keypress event for the entire grid.",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
@@ -1253,10 +1291,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*headerclick",
+      "name" : "headerclick",
       "desc" : "Fires when a header is clicked",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
@@ -1282,10 +1322,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*mouseover",
+      "name" : "mouseover",
       "desc" : "The raw mouseover event for the entire grid.",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
@@ -1299,10 +1341,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*headerdblclick",
+      "name" : "headerdblclick",
       "desc" : "Fires when a header cell is double clicked",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
@@ -1328,10 +1372,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*dragdrop",
+      "name" : "dragdrop",
       "desc" : "Fires when dragged row(s) are dropped on a valid DD target",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
@@ -1363,10 +1409,12 @@
           "desc" : "The raw browser event",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*rowclick",
+      "name" : "rowclick",
       "desc" : "Fires when a row is clicked",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
@@ -1392,10 +1440,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*click",
+      "name" : "click",
       "desc" : "The raw click event for the entire grid.",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
@@ -1409,10 +1459,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*rowdblclick",
+      "name" : "rowdblclick",
       "desc" : "Fires when a row is double clicked",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
@@ -1438,10 +1490,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*startdrag",
+      "name" : "startdrag",
       "desc" : "Fires when row(s) start being dragged",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
@@ -1467,10 +1521,12 @@
           "desc" : "The raw browser event",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*dblclick",
+      "name" : "dblclick",
       "desc" : "The raw dblclick event for the entire grid.",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
@@ -1484,10 +1540,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*cellcontextmenu",
+      "name" : "cellcontextmenu",
       "desc" : "Fires when a cell is right clicked",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
@@ -1519,10 +1577,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*contextmenu",
+      "name" : "contextmenu",
       "desc" : "The raw contextmenu event for the entire grid.",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
@@ -1536,10 +1596,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*celldblclick",
+      "name" : "celldblclick",
       "desc" : "Fires when a cell is double clicked",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
@@ -1571,6 +1633,8 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

@@ -782,7 +782,7 @@
   ],
   "events" : [
     {
-      "name" : "*render",
+      "name" : "render",
       "desc" : "Fires when the button is rendered",
       "memberOf" : "Roo.Button",
       "example" : "",
@@ -796,10 +796,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*click",
+      "name" : "click",
       "desc" : "Fires when this button is clicked",
       "memberOf" : "Roo.Button",
       "example" : "",
@@ -819,10 +821,12 @@
           "desc" : "The click event",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*mouseover",
+      "name" : "mouseover",
       "desc" : "Fires when the mouse hovers over the button",
       "memberOf" : "Roo.Button",
       "example" : "",
@@ -842,10 +846,12 @@
           "desc" : "The event object",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*toggle",
+      "name" : "toggle",
       "desc" : "Fires when the \"pressed\" state of this button changes (only if enableToggle = true)",
       "memberOf" : "Roo.Button",
       "example" : "",
@@ -865,10 +871,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*mouseout",
+      "name" : "mouseout",
       "desc" : "Fires when the mouse exits the button",
       "memberOf" : "Roo.Button",
       "example" : "",
@@ -888,6 +896,8 @@
           "desc" : "The event object",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

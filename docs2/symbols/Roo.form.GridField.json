@@ -1392,7 +1392,7 @@
   ],
   "events" : [
     {
-      "name" : "*blur",
+      "name" : "blur",
       "desc" : "Fires when this field loses input focus.",
       "memberOf" : "Roo.form.Field",
       "example" : "",
@@ -1406,10 +1406,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*valid",
+      "name" : "valid",
       "desc" : "Fires after the field has been validated with no errors.",
       "memberOf" : "Roo.form.Field",
       "example" : "",
@@ -1423,10 +1425,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*specialkey",
+      "name" : "specialkey",
       "desc" : "Fires when any key related to navigation (arrows, tab, enter, esc, etc.) is pressed.  You can check\n{@link Roo.EventObject#getKey} to determine which key was pressed.",
       "memberOf" : "Roo.form.Field",
       "example" : "",
@@ -1446,10 +1450,12 @@
           "desc" : "The event object",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*focus",
+      "name" : "focus",
       "desc" : "Fires when this field receives input focus.",
       "memberOf" : "Roo.form.Field",
       "example" : "",
@@ -1463,10 +1469,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*keyup",
+      "name" : "keyup",
       "desc" : "Fires after the key up",
       "memberOf" : "Roo.form.Field",
       "example" : "",
@@ -1486,10 +1494,12 @@
           "desc" : "The event Object",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*invalid",
+      "name" : "invalid",
       "desc" : "Fires after the field has been marked as invalid.",
       "memberOf" : "Roo.form.Field",
       "example" : "",
@@ -1509,10 +1519,12 @@
           "desc" : "The validation message",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*change",
+      "name" : "change",
       "desc" : "Fires just before the field blurs if the field value has changed.",
       "memberOf" : "Roo.form.Field",
       "example" : "",
@@ -1538,10 +1550,12 @@
           "desc" : "The original value",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*move",
+      "name" : "move",
       "desc" : "Fires after the component is moved.",
       "memberOf" : "Roo.BoxComponent",
       "example" : "",
@@ -1567,10 +1581,12 @@
           "desc" : "The new y position",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*resize",
+      "name" : "resize",
       "desc" : "Fires after the component is resized.",
       "memberOf" : "Roo.BoxComponent",
       "example" : "",
@@ -1608,10 +1624,12 @@
           "desc" : "The height that was originally specified",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforerender",
+      "name" : "beforerender",
       "desc" : "Fires before the component is rendered. Return false to stop the render.",
       "memberOf" : "Roo.Component",
       "example" : "",
@@ -1625,10 +1643,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*disable",
+      "name" : "disable",
       "desc" : "Fires after the component is disabled.",
       "memberOf" : "Roo.Component",
       "example" : "",
@@ -1642,10 +1662,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*render",
+      "name" : "render",
       "desc" : "Fires after the component is rendered.",
       "memberOf" : "Roo.Component",
       "example" : "",
@@ -1659,10 +1681,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*destroy",
+      "name" : "destroy",
       "desc" : "Fires after the component is destroyed.",
       "memberOf" : "Roo.Component",
       "example" : "",
@@ -1676,10 +1700,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*hide",
+      "name" : "hide",
       "desc" : "Fires after the component is hidden.",
       "memberOf" : "Roo.Component",
       "example" : "",
@@ -1693,10 +1719,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforehide",
+      "name" : "beforehide",
       "desc" : "Fires before the component is hidden. Return false to stop the hide.",
       "memberOf" : "Roo.Component",
       "example" : "",
@@ -1710,10 +1738,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*show",
+      "name" : "show",
       "desc" : "Fires after the component is shown.",
       "memberOf" : "Roo.Component",
       "example" : "",
@@ -1727,10 +1757,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforeshow",
+      "name" : "beforeshow",
       "desc" : "Fires before the component is shown.  Return false to stop the show.",
       "memberOf" : "Roo.Component",
       "example" : "",
@@ -1744,10 +1776,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*enable",
+      "name" : "enable",
       "desc" : "Fires after the component is enabled.",
       "memberOf" : "Roo.Component",
       "example" : "",
@@ -1761,10 +1795,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforedestroy",
+      "name" : "beforedestroy",
       "desc" : "Fires before the component is destroyed. Return false to stop the destroy.",
       "memberOf" : "Roo.Component",
       "example" : "",
@@ -1778,6 +1814,8 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

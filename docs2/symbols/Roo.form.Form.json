@@ -1361,7 +1361,7 @@
   ],
   "events" : [
     {
-      "name" : "*rendered",
+      "name" : "rendered",
       "desc" : "Fires when the form is rendered",
       "memberOf" : "",
       "example" : "",
@@ -1375,10 +1375,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*clientvalidation",
+      "name" : "clientvalidation",
       "desc" : "If the monitorValid config option is true, this event fires repetitively to notify of valid state",
       "memberOf" : "",
       "example" : "",
@@ -1398,10 +1400,12 @@
           "desc" : "true if the form has passed client-side validation",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforeaction",
+      "name" : "beforeaction",
       "desc" : "Fires before any action is performed. Return false to cancel the action.",
       "memberOf" : "Roo.form.BasicForm",
       "example" : "",
@@ -1421,10 +1425,12 @@
           "desc" : "The action to be performed",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*actioncomplete",
+      "name" : "actioncomplete",
       "desc" : "Fires when an action is completed.",
       "memberOf" : "Roo.form.BasicForm",
       "example" : "",
@@ -1444,10 +1450,12 @@
           "desc" : "The action that completed",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*actionfailed",
+      "name" : "actionfailed",
       "desc" : "Fires when an action fails.",
       "memberOf" : "Roo.form.BasicForm",
       "example" : "",
@@ -1467,6 +1475,8 @@
           "desc" : "The action that failed",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

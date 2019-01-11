@@ -1159,7 +1159,7 @@
   ],
   "events" : [
     {
-      "name" : "*beforeloadadd",
+      "name" : "beforeloadadd",
       "desc" : "Fires after a new set of Records has been loaded.",
       "memberOf" : "Roo.data.Store",
       "example" : "",
@@ -1185,10 +1185,12 @@
           "desc" : "The loading options that were specified (see {@link #load} for details)",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*loadexception",
+      "name" : "loadexception",
       "desc" : "Fires if an exception occurs in the Proxy during loading.\nCalled with the signature of the Proxy's \"loadexception\" event.\nIf you return Json { data: [] , success: false, .... } then this will be thrown with the following args",
       "memberOf" : "Roo.data.Store",
       "example" : "",
@@ -1220,10 +1222,12 @@
           "desc" : "from your request (normally this contains the Exception)",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*load",
+      "name" : "load",
       "desc" : "Fires after a new set of Records has been loaded, before they are added to the store.",
       "memberOf" : "Roo.data.Store",
       "example" : "",
@@ -1249,10 +1253,12 @@
           "desc" : "The loading options that were specified (see {@link #load} for details)",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*add",
+      "name" : "add",
       "desc" : "Fires when Records have been added to the Store",
       "memberOf" : "Roo.data.Store",
       "example" : "",
@@ -1278,10 +1284,12 @@
           "desc" : "The index at which the record(s) were added",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*metachange",
+      "name" : "metachange",
       "desc" : "Fires when this store's reader provides new metadata (fields). This is currently only support for JsonReaders.",
       "memberOf" : "Roo.data.Store",
       "example" : "",
@@ -1301,10 +1309,12 @@
           "desc" : "The JSON metadata",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*clear",
+      "name" : "clear",
       "desc" : "Fires when the data cache has been cleared.",
       "memberOf" : "Roo.data.Store",
       "example" : "",
@@ -1318,10 +1328,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*remove",
+      "name" : "remove",
       "desc" : "Fires when a Record has been removed from the Store",
       "memberOf" : "Roo.data.Store",
       "example" : "",
@@ -1347,10 +1359,12 @@
           "desc" : "The index at which the record was removed",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*update",
+      "name" : "update",
       "desc" : "Fires when a Record has been updated",
       "memberOf" : "Roo.data.Store",
       "example" : "",
@@ -1376,10 +1390,12 @@
           "desc" : "The update operation being performed.  Value may be one of:\n<pre><code>\n Roo.data.Record.EDIT\n Roo.data.Record.REJECT\n Roo.data.Record.COMMIT\n</code></pre>",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforeload",
+      "name" : "beforeload",
       "desc" : "Fires before a request is made for a new data object.  If the beforeload handler returns false\nthe load action will be canceled.",
       "memberOf" : "Roo.data.Store",
       "example" : "",
@@ -1399,10 +1415,12 @@
           "desc" : "The loading options that were specified (see {@link #load} for details)",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*datachanged",
+      "name" : "datachanged",
       "desc" : "Fires when the data cache has changed, and a widget which is using this Store\nas a Record cache should refresh its view.",
       "memberOf" : "Roo.data.Store",
       "example" : "",
@@ -1416,6 +1434,8 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

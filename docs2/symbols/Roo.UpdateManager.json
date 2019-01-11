@@ -664,7 +664,7 @@
   ],
   "events" : [
     {
-      "name" : "*update",
+      "name" : "update",
       "desc" : "Fired after successful update is made.",
       "memberOf" : "",
       "example" : "",
@@ -684,10 +684,12 @@
           "desc" : "The response Object",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforeupdate",
+      "name" : "beforeupdate",
       "desc" : "Fired before an update is made, return false from your handler and the update is cancelled.",
       "memberOf" : "",
       "example" : "",
@@ -713,10 +715,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*failure",
+      "name" : "failure",
       "desc" : "Fired on update failure.",
       "memberOf" : "",
       "example" : "",
@@ -736,6 +740,8 @@
           "desc" : "The response Object",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

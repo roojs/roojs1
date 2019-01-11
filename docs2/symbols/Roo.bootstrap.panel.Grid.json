@@ -821,7 +821,7 @@
   ],
   "events" : [
     {
-      "name" : "*activate",
+      "name" : "activate",
       "desc" : "Fires when this panel is activated.",
       "memberOf" : "Roo.bootstrap.panel.Content",
       "example" : "",
@@ -835,10 +835,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*resize",
+      "name" : "resize",
       "desc" : "Fires when this panel is resized if fitToFrame is true.",
       "memberOf" : "Roo.bootstrap.panel.Content",
       "example" : "",
@@ -864,10 +866,12 @@
           "desc" : "The height after any component adjustments",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*deactivate",
+      "name" : "deactivate",
       "desc" : "Fires when this panel is activated.",
       "memberOf" : "Roo.bootstrap.panel.Content",
       "example" : "",
@@ -881,10 +885,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*render",
+      "name" : "render",
       "desc" : "Fires when this tab is created",
       "memberOf" : "Roo.bootstrap.panel.Content",
       "example" : "",
@@ -898,6 +904,8 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

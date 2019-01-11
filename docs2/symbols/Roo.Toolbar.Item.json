@@ -156,7 +156,7 @@
   ],
   "events" : [
     {
-      "name" : "*render",
+      "name" : "render",
       "desc" : "Fires when the button is rendered",
       "memberOf" : "",
       "example" : "",
@@ -170,6 +170,8 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

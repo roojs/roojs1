@@ -460,7 +460,7 @@
   ],
   "events" : [
     {
-      "name" : "*selectionchange",
+      "name" : "selectionchange",
       "desc" : "Fires when the selected nodes change",
       "memberOf" : "",
       "example" : "",
@@ -480,6 +480,8 @@
           "desc" : "Array of the selected nodes",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

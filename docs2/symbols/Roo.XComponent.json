@@ -491,7 +491,7 @@
   ],
   "events" : [
     {
-      "name" : "*built",
+      "name" : "built",
       "desc" : "Fires when this the componnt is built",
       "memberOf" : "",
       "example" : "",
@@ -505,6 +505,8 @@
           "desc" : "the component",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

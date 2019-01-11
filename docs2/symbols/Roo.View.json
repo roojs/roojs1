@@ -848,7 +848,7 @@
   ],
   "events" : [
     {
-      "name" : "*dblclick",
+      "name" : "dblclick",
       "desc" : "Fires when a template node is double clicked.",
       "memberOf" : "",
       "example" : "",
@@ -880,10 +880,12 @@
           "desc" : "The raw event object",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*preparedata",
+      "name" : "preparedata",
       "desc" : "Fires on every row to render, to allow you to change the data.",
       "memberOf" : "",
       "example" : "",
@@ -903,10 +905,12 @@
           "desc" : "to be rendered (change this)",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*selectionchange",
+      "name" : "selectionchange",
       "desc" : "Fires when the selected nodes change.",
       "memberOf" : "",
       "example" : "",
@@ -926,10 +930,12 @@
           "desc" : "Array of the selected nodes",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforeselect",
+      "name" : "beforeselect",
       "desc" : "Fires before a selection is made. If any handlers return false, the selection is cancelled.",
       "memberOf" : "",
       "example" : "",
@@ -955,10 +961,12 @@
           "desc" : "Array of currently selected nodes",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforeclick",
+      "name" : "beforeclick",
       "desc" : "Fires before a click is processed. Returns false to cancel the default action.",
       "memberOf" : "",
       "example" : "",
@@ -990,10 +998,12 @@
           "desc" : "The raw event object",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*click",
+      "name" : "click",
       "desc" : "Fires when a template node is clicked.",
       "memberOf" : "",
       "example" : "",
@@ -1025,10 +1035,12 @@
           "desc" : "The raw event object",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*contextmenu",
+      "name" : "contextmenu",
       "desc" : "Fires when a template node is right clicked.",
       "memberOf" : "",
       "example" : "",
@@ -1060,6 +1072,8 @@
           "desc" : "The raw event object",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

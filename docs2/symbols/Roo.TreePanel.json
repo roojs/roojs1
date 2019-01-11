@@ -791,7 +791,7 @@
   ],
   "events" : [
     {
-      "name" : "*deactivate",
+      "name" : "deactivate",
       "desc" : "Fires when this panel is activated.",
       "memberOf" : "Roo.ContentPanel",
       "example" : "",
@@ -805,10 +805,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*resize",
+      "name" : "resize",
       "desc" : "Fires when this panel is resized if fitToFrame is true.",
       "memberOf" : "Roo.ContentPanel",
       "example" : "",
@@ -834,10 +836,12 @@
           "desc" : "The height after any component adjustments",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*render",
+      "name" : "render",
       "desc" : "Fires when this tab is created",
       "memberOf" : "Roo.ContentPanel",
       "example" : "",
@@ -851,10 +855,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*activate",
+      "name" : "activate",
       "desc" : "Fires when this panel is activated.",
       "memberOf" : "Roo.ContentPanel",
       "example" : "",
@@ -868,6 +874,8 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

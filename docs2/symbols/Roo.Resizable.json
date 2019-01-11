@@ -642,7 +642,7 @@
   ],
   "events" : [
     {
-      "name" : "*resize",
+      "name" : "resize",
       "desc" : "Fired after a resize.",
       "memberOf" : "",
       "example" : "",
@@ -674,10 +674,12 @@
           "desc" : "The mouseup event",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*resizing",
+      "name" : "resizing",
       "desc" : "Fired a resizing.",
       "memberOf" : "",
       "example" : "",
@@ -721,10 +723,12 @@
           "desc" : "The mouseup event",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforeresize",
+      "name" : "beforeresize",
       "desc" : "Fired before resize is allowed. Set enabled to false to cancel resize.",
       "memberOf" : "",
       "example" : "",
@@ -744,6 +748,8 @@
           "desc" : "The mousedown event",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

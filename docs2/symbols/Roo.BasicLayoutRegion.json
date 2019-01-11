@@ -587,7 +587,7 @@
   ],
   "events" : [
     {
-      "name" : "*paneladded",
+      "name" : "paneladded",
       "desc" : "Fires when a panel is added.",
       "memberOf" : "",
       "example" : "",
@@ -607,10 +607,12 @@
           "desc" : "The panel",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*invalidated",
+      "name" : "invalidated",
       "desc" : "Fires when the layout for this region is changed.",
       "memberOf" : "",
       "example" : "",
@@ -624,10 +626,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*expanded",
+      "name" : "expanded",
       "desc" : "Fires when this region is expanded.",
       "memberOf" : "",
       "example" : "",
@@ -641,10 +645,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforeremove",
+      "name" : "beforeremove",
       "desc" : "Fires before a panel is removed (or closed). To cancel the removal set \"e.cancel = true\" on the event argument.",
       "memberOf" : "",
       "example" : "",
@@ -670,10 +676,12 @@
           "desc" : "The cancel event object",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*collapsed",
+      "name" : "collapsed",
       "desc" : "Fires when this region is collapsed.",
       "memberOf" : "",
       "example" : "",
@@ -687,10 +695,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*panelremoved",
+      "name" : "panelremoved",
       "desc" : "Fires when a panel is removed.",
       "memberOf" : "",
       "example" : "",
@@ -710,10 +720,12 @@
           "desc" : "The panel",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforecollapse",
+      "name" : "beforecollapse",
       "desc" : "Fires when this region before collapse.",
       "memberOf" : "",
       "example" : "",
@@ -727,10 +739,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*slidehide",
+      "name" : "slidehide",
       "desc" : "Fires when this region slides out of view.",
       "memberOf" : "",
       "example" : "",
@@ -744,10 +758,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*visibilitychange",
+      "name" : "visibilitychange",
       "desc" : "Fires when this region is shown or hidden",
       "memberOf" : "",
       "example" : "",
@@ -767,10 +783,12 @@
           "desc" : "true or false",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*slideshow",
+      "name" : "slideshow",
       "desc" : "Fires when this region is slid into view.",
       "memberOf" : "",
       "example" : "",
@@ -784,10 +802,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*panelactivated",
+      "name" : "panelactivated",
       "desc" : "Fires when a panel is activated.",
       "memberOf" : "",
       "example" : "",
@@ -807,10 +827,12 @@
           "desc" : "The activated panel",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*resized",
+      "name" : "resized",
       "desc" : "Fires when the user resizes this region.",
       "memberOf" : "",
       "example" : "",
@@ -830,6 +852,8 @@
           "desc" : "The new size (width for east/west, height for north/south)",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

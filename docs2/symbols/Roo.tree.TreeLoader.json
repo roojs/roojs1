@@ -423,7 +423,7 @@
   ],
   "events" : [
     {
-      "name" : "*create",
+      "name" : "create",
       "desc" : "Fires before a node is created, enabling you to return custom Node types",
       "memberOf" : "",
       "example" : "",
@@ -443,10 +443,12 @@
           "desc" : "- the data returned from the AJAX call (modify it to suit)",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforeload",
+      "name" : "beforeload",
       "desc" : "Fires before a network request is made to retrieve the Json text which specifies a node's children.",
       "memberOf" : "",
       "example" : "",
@@ -472,10 +474,12 @@
           "desc" : "The callback function specified in the {@link #load} call.",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*load",
+      "name" : "load",
       "desc" : "Fires when the node has been successfuly loaded.",
       "memberOf" : "",
       "example" : "",
@@ -501,10 +505,12 @@
           "desc" : "The response object containing the data from the server.",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*loadexception",
+      "name" : "loadexception",
       "desc" : "Fires if the network request failed.",
       "memberOf" : "",
       "example" : "",
@@ -530,6 +536,8 @@
           "desc" : "The response object containing the data from the server.",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

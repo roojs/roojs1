@@ -464,7 +464,7 @@
   ],
   "events" : [
     {
-      "name" : "*layout",
+      "name" : "layout",
       "desc" : "Fires when a layout is performed.",
       "memberOf" : "",
       "example" : "",
@@ -478,10 +478,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*regionexpanded",
+      "name" : "regionexpanded",
       "desc" : "Fires when a region is expanded.",
       "memberOf" : "",
       "example" : "",
@@ -495,10 +497,12 @@
           "desc" : "The expanded region",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*regionresized",
+      "name" : "regionresized",
       "desc" : "Fires when the user resizes a region.",
       "memberOf" : "",
       "example" : "",
@@ -518,10 +522,12 @@
           "desc" : "The new size (width for east/west, height for north/south)",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*regioncollapsed",
+      "name" : "regioncollapsed",
       "desc" : "Fires when a region is collapsed.",
       "memberOf" : "",
       "example" : "",
@@ -535,6 +541,8 @@
           "desc" : "The collapsed region",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

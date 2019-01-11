@@ -25,7 +25,7 @@
   ],
   "events" : [
     {
-      "name" : "*resize",
+      "name" : "resize",
       "desc" : "Fire this event on a container when it resizes",
       "memberOf" : "",
       "example" : "",
@@ -45,6 +45,8 @@
           "desc" : "Height",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

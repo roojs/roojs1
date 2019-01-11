@@ -1184,7 +1184,7 @@
   ],
   "events" : [
     {
-      "name" : "*move",
+      "name" : "move",
       "desc" : "Fires when this dialog is moved by the user.",
       "memberOf" : "",
       "example" : "",
@@ -1210,10 +1210,12 @@
           "desc" : "The new page Y",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*resize",
+      "name" : "resize",
       "desc" : "Fires when this dialog is resized by the user.",
       "memberOf" : "",
       "example" : "",
@@ -1239,10 +1241,12 @@
           "desc" : "The new height",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforehide",
+      "name" : "beforehide",
       "desc" : "Fires before this dialog is hidden.",
       "memberOf" : "",
       "example" : "",
@@ -1256,10 +1260,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforeshow",
+      "name" : "beforeshow",
       "desc" : "Fires before this dialog is shown.",
       "memberOf" : "",
       "example" : "",
@@ -1273,10 +1279,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*hide",
+      "name" : "hide",
       "desc" : "Fires when this dialog is hidden.",
       "memberOf" : "",
       "example" : "",
@@ -1290,10 +1298,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*show",
+      "name" : "show",
       "desc" : "Fires when this dialog is shown.",
       "memberOf" : "",
       "example" : "",
@@ -1307,10 +1317,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*keydown",
+      "name" : "keydown",
       "desc" : "Fires when a key is pressed",
       "memberOf" : "",
       "example" : "",
@@ -1330,6 +1342,8 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

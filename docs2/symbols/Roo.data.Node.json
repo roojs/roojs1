@@ -922,7 +922,7 @@
   ],
   "events" : [
     {
-      "name" : "*beforeappend",
+      "name" : "beforeappend",
       "desc" : "Fires before a new child is appended, return false to cancel the append.",
       "memberOf" : "",
       "example" : "",
@@ -948,10 +948,12 @@
           "desc" : "The child node to be appended",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*move",
+      "name" : "move",
       "desc" : "Fires when this node is moved to a new location in the tree",
       "memberOf" : "",
       "example" : "",
@@ -989,10 +991,12 @@
           "desc" : "The index it was moved to",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*append",
+      "name" : "append",
       "desc" : "Fires when a new child node is appended",
       "memberOf" : "",
       "example" : "",
@@ -1024,10 +1028,12 @@
           "desc" : "The index of the newly appended node",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforeremove",
+      "name" : "beforeremove",
       "desc" : "Fires before a child is removed, return false to cancel the remove.",
       "memberOf" : "",
       "example" : "",
@@ -1053,10 +1059,12 @@
           "desc" : "The child node to be removed",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*remove",
+      "name" : "remove",
       "desc" : "Fires when a child node is removed",
       "memberOf" : "",
       "example" : "",
@@ -1082,10 +1090,12 @@
           "desc" : "The removed node",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforeinsert",
+      "name" : "beforeinsert",
       "desc" : "Fires before a new child is inserted, return false to cancel the insert.",
       "memberOf" : "",
       "example" : "",
@@ -1117,10 +1127,12 @@
           "desc" : "The child node the node is being inserted before",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*insert",
+      "name" : "insert",
       "desc" : "Fires when a new child node is inserted.",
       "memberOf" : "",
       "example" : "",
@@ -1152,10 +1164,12 @@
           "desc" : "The child node the node was inserted before",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforemove",
+      "name" : "beforemove",
       "desc" : "Fires before this node is moved to a new location in the tree. Return false to cancel the move.",
       "memberOf" : "",
       "example" : "",
@@ -1193,6 +1207,8 @@
           "desc" : "The index it is being moved to",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

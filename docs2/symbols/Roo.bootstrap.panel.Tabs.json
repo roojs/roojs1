@@ -734,7 +734,7 @@
   ],
   "events" : [
     {
-      "name" : "*tabchange",
+      "name" : "tabchange",
       "desc" : "Fires when the active tab changes",
       "memberOf" : "",
       "example" : "",
@@ -754,10 +754,12 @@
           "desc" : "The new active tab",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforetabchange",
+      "name" : "beforetabchange",
       "desc" : "Fires before the active tab changes, set cancel to true on the \"e\" parameter to cancel the change",
       "memberOf" : "",
       "example" : "",
@@ -783,6 +785,8 @@
           "desc" : "The tab being changed to",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

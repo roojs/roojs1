@@ -833,7 +833,7 @@
   ],
   "events" : [
     {
-      "name" : "*selectionchange",
+      "name" : "selectionchange",
       "desc" : "Fires when the selection changes",
       "memberOf" : "",
       "example" : "",
@@ -847,10 +847,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*rowselect",
+      "name" : "rowselect",
       "desc" : "Fires when a row is selected.",
       "memberOf" : "",
       "example" : "",
@@ -876,10 +878,12 @@
           "desc" : "The record",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforerowselect",
+      "name" : "beforerowselect",
       "desc" : "Fires when a row is selected being selected, return false to cancel.",
       "memberOf" : "",
       "example" : "",
@@ -905,10 +909,12 @@
           "desc" : "False if other selections will be cleared",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*afterselectionchange",
+      "name" : "afterselectionchange",
       "desc" : "Fires after the selection changes (eg. by key press or clicking)",
       "memberOf" : "",
       "example" : "",
@@ -922,10 +928,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*rowdeselect",
+      "name" : "rowdeselect",
       "desc" : "Fires when a row is deselected.",
       "memberOf" : "",
       "example" : "",
@@ -945,6 +953,8 @@
           "desc" : "The selected index",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

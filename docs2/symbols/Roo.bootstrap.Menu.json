@@ -893,7 +893,7 @@
   ],
   "events" : [
     {
-      "name" : "*mouseout",
+      "name" : "mouseout",
       "desc" : "Fires when the mouse exits this menu",
       "memberOf" : "",
       "example" : "",
@@ -919,10 +919,12 @@
           "desc" : "The menu item that was clicked",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*click",
+      "name" : "click",
       "desc" : "Fires when this menu is clicked (or when the enter key is pressed while it is active)",
       "memberOf" : "",
       "example" : "",
@@ -948,10 +950,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*mouseover",
+      "name" : "mouseover",
       "desc" : "Fires when the mouse is hovering over this menu",
       "memberOf" : "",
       "example" : "",
@@ -977,10 +981,12 @@
           "desc" : "The menu item that was clicked",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*hide",
+      "name" : "hide",
       "desc" : "Fires after this menu is hidden",
       "memberOf" : "",
       "example" : "",
@@ -994,10 +1000,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*show",
+      "name" : "show",
       "desc" : "Fires after this menu is displayed",
       "memberOf" : "",
       "example" : "",
@@ -1011,10 +1019,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforehide",
+      "name" : "beforehide",
       "desc" : "Fires before this menu is hidden",
       "memberOf" : "",
       "example" : "",
@@ -1028,10 +1038,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*itemclick",
+      "name" : "itemclick",
       "desc" : "Fires when a menu item contained in this menu is clicked",
       "memberOf" : "",
       "example" : "",
@@ -1051,10 +1063,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforeshow",
+      "name" : "beforeshow",
       "desc" : "Fires before this menu is displayed",
       "memberOf" : "",
       "example" : "",
@@ -1068,10 +1082,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*childrenrendered",
+      "name" : "childrenrendered",
       "desc" : "Fires when the children have been rendered..",
       "memberOf" : "Roo.bootstrap.Component",
       "example" : "",
@@ -1085,10 +1101,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforerender",
+      "name" : "beforerender",
       "desc" : "Fires before the component is rendered. Return false to stop the render.",
       "memberOf" : "Roo.Component",
       "example" : "",
@@ -1102,10 +1120,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*disable",
+      "name" : "disable",
       "desc" : "Fires after the component is disabled.",
       "memberOf" : "Roo.Component",
       "example" : "",
@@ -1119,10 +1139,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*render",
+      "name" : "render",
       "desc" : "Fires after the component is rendered.",
       "memberOf" : "Roo.Component",
       "example" : "",
@@ -1136,10 +1158,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*destroy",
+      "name" : "destroy",
       "desc" : "Fires after the component is destroyed.",
       "memberOf" : "Roo.Component",
       "example" : "",
@@ -1153,10 +1177,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*enable",
+      "name" : "enable",
       "desc" : "Fires after the component is enabled.",
       "memberOf" : "Roo.Component",
       "example" : "",
@@ -1170,10 +1196,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforedestroy",
+      "name" : "beforedestroy",
       "desc" : "Fires before the component is destroyed. Return false to stop the destroy.",
       "memberOf" : "Roo.Component",
       "example" : "",
@@ -1187,6 +1215,8 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

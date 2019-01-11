@@ -492,7 +492,7 @@
   ],
   "events" : [
     {
-      "name" : "*selectionchange",
+      "name" : "selectionchange",
       "desc" : "Fires when the selected node changes",
       "memberOf" : "",
       "example" : "",
@@ -512,10 +512,12 @@
           "desc" : "the new selection",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforeselect",
+      "name" : "beforeselect",
       "desc" : "Fires before the selected node changes, return false to cancel the change",
       "memberOf" : "",
       "example" : "",
@@ -541,6 +543,8 @@
           "desc" : "the old selection",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

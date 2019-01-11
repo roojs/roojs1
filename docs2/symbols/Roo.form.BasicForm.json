@@ -975,7 +975,7 @@
   ],
   "events" : [
     {
-      "name" : "*beforeaction",
+      "name" : "beforeaction",
       "desc" : "Fires before any action is performed. Return false to cancel the action.",
       "memberOf" : "",
       "example" : "",
@@ -995,10 +995,12 @@
           "desc" : "The action to be performed",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*actioncomplete",
+      "name" : "actioncomplete",
       "desc" : "Fires when an action is completed.",
       "memberOf" : "",
       "example" : "",
@@ -1018,10 +1020,12 @@
           "desc" : "The action that completed",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*actionfailed",
+      "name" : "actionfailed",
       "desc" : "Fires when an action fails.",
       "memberOf" : "",
       "example" : "",
@@ -1041,6 +1045,8 @@
           "desc" : "The action that failed",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

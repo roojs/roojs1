@@ -658,7 +658,7 @@
   ],
   "events" : [
     {
-      "name" : "*beforeclose",
+      "name" : "beforeclose",
       "desc" : "Fires before this tab is closed. To cancel the close, set cancel to true on e (e.cancel = true).",
       "memberOf" : "",
       "example" : "",
@@ -678,10 +678,12 @@
           "desc" : "Set cancel to true on this object to cancel the close.",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*close",
+      "name" : "close",
       "desc" : "Fires when this tab is closed.",
       "memberOf" : "",
       "example" : "",
@@ -695,10 +697,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*activate",
+      "name" : "activate",
       "desc" : "Fires when this tab becomes the active tab.",
       "memberOf" : "",
       "example" : "",
@@ -718,10 +722,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*deactivate",
+      "name" : "deactivate",
       "desc" : "Fires when this tab is no longer the active tab.",
       "memberOf" : "",
       "example" : "",
@@ -741,6 +747,8 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

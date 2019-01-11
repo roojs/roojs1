@@ -741,7 +741,7 @@
   ],
   "events" : [
     {
-      "name" : "*select",
+      "name" : "select",
       "desc" : "",
       "memberOf" : "",
       "example" : "",
@@ -761,10 +761,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*mouseover",
+      "name" : "mouseover",
       "desc" : "Fires when the mouse is hovering over this menu",
       "memberOf" : "Roo.menu.Menu",
       "example" : "",
@@ -790,10 +792,12 @@
           "desc" : "The menu item that was clicked",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*mouseout",
+      "name" : "mouseout",
       "desc" : "Fires when the mouse exits this menu",
       "memberOf" : "Roo.menu.Menu",
       "example" : "",
@@ -819,10 +823,12 @@
           "desc" : "The menu item that was clicked",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforehide",
+      "name" : "beforehide",
       "desc" : "Fires before this menu is hidden",
       "memberOf" : "Roo.menu.Menu",
       "example" : "",
@@ -836,10 +842,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*itemclick",
+      "name" : "itemclick",
       "desc" : "Fires when a menu item contained in this menu is clicked",
       "memberOf" : "Roo.menu.Menu",
       "example" : "",
@@ -859,10 +867,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforeshow",
+      "name" : "beforeshow",
       "desc" : "Fires before this menu is displayed",
       "memberOf" : "Roo.menu.Menu",
       "example" : "",
@@ -876,10 +886,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*hide",
+      "name" : "hide",
       "desc" : "Fires after this menu is hidden",
       "memberOf" : "Roo.menu.Menu",
       "example" : "",
@@ -893,10 +905,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*click",
+      "name" : "click",
       "desc" : "Fires when this menu is clicked (or when the enter key is pressed while it is active)",
       "memberOf" : "Roo.menu.Menu",
       "example" : "",
@@ -922,10 +936,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*show",
+      "name" : "show",
       "desc" : "Fires after this menu is displayed",
       "memberOf" : "Roo.menu.Menu",
       "example" : "",
@@ -939,6 +955,8 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

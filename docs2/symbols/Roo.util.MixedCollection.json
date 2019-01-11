@@ -1144,7 +1144,7 @@
   ],
   "events" : [
     {
-      "name" : "*remove",
+      "name" : "remove",
       "desc" : "Fires when an item is removed from the collection.",
       "memberOf" : "",
       "example" : "",
@@ -1164,10 +1164,12 @@
           "desc" : "(optional) The key associated with the removed item.",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*add",
+      "name" : "add",
       "desc" : "Fires when an item is added to the collection.",
       "memberOf" : "",
       "example" : "",
@@ -1193,10 +1195,12 @@
           "desc" : "The key associated with the added item.",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*replace",
+      "name" : "replace",
       "desc" : "Fires when an item is replaced in the collection.",
       "memberOf" : "",
       "example" : "",
@@ -1222,10 +1226,12 @@
           "desc" : "The new item.",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*clear",
+      "name" : "clear",
       "desc" : "Fires when the collection is cleared.",
       "memberOf" : "",
       "example" : "",
@@ -1233,6 +1239,8 @@
       "since" : "",
       "see" : "",
       "params" : [
+      ],
+      "returns" : [
       ]
     }
   ]

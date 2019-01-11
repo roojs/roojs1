@@ -386,7 +386,7 @@
   ],
   "events" : [
     {
-      "name" : "*mousedown",
+      "name" : "mousedown",
       "desc" : "Fires when the mouse button is depressed.",
       "memberOf" : "",
       "example" : "",
@@ -400,10 +400,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*click",
+      "name" : "click",
       "desc" : "Fires on a specified interval during the time the element is pressed.",
       "memberOf" : "",
       "example" : "",
@@ -417,10 +419,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*mouseup",
+      "name" : "mouseup",
       "desc" : "Fires when the mouse key is released.",
       "memberOf" : "",
       "example" : "",
@@ -434,6 +438,8 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

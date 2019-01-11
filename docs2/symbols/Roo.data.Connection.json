@@ -465,7 +465,7 @@
   ],
   "events" : [
     {
-      "name" : "*requestcomplete",
+      "name" : "requestcomplete",
       "desc" : "Fires if the request was successfully completed.",
       "memberOf" : "",
       "example" : "",
@@ -491,10 +491,12 @@
           "desc" : "The options config object passed to the {@link #request} method.",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforerequest",
+      "name" : "beforerequest",
       "desc" : "Fires before a network request is made to retrieve a data object.",
       "memberOf" : "",
       "example" : "",
@@ -514,10 +516,12 @@
           "desc" : "The options config object passed to the {@link #request} method.",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*requestexception",
+      "name" : "requestexception",
       "desc" : "Fires if an error HTTP status was returned from the server.\nSee {@link http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html} for details of HTTP status codes.",
       "memberOf" : "",
       "example" : "",
@@ -543,6 +547,8 @@
           "desc" : "The options config object passed to the {@link #request} method.",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

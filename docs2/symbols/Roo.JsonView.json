@@ -1050,7 +1050,7 @@
   ],
   "events" : [
     {
-      "name" : "*loadexception",
+      "name" : "loadexception",
       "desc" : "Fires when loading fails.",
       "memberOf" : "",
       "example" : "",
@@ -1070,10 +1070,12 @@
           "desc" : "The raw Connect response object",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*load",
+      "name" : "load",
       "desc" : "Fires when data is loaded.",
       "memberOf" : "",
       "example" : "",
@@ -1099,10 +1101,12 @@
           "desc" : "The raw Connect response object",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforerender",
+      "name" : "beforerender",
       "desc" : "Fires before rendering of the downloaded JSON data.",
       "memberOf" : "",
       "example" : "",
@@ -1122,10 +1126,12 @@
           "desc" : "The JSON data loaded",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*dblclick",
+      "name" : "dblclick",
       "desc" : "Fires when a template node is double clicked.",
       "memberOf" : "Roo.View",
       "example" : "",
@@ -1157,10 +1163,12 @@
           "desc" : "The raw event object",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*preparedata",
+      "name" : "preparedata",
       "desc" : "Fires on every row to render, to allow you to change the data.",
       "memberOf" : "Roo.View",
       "example" : "",
@@ -1180,10 +1188,12 @@
           "desc" : "to be rendered (change this)",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*selectionchange",
+      "name" : "selectionchange",
       "desc" : "Fires when the selected nodes change.",
       "memberOf" : "Roo.View",
       "example" : "",
@@ -1203,10 +1213,12 @@
           "desc" : "Array of the selected nodes",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforeselect",
+      "name" : "beforeselect",
       "desc" : "Fires before a selection is made. If any handlers return false, the selection is cancelled.",
       "memberOf" : "Roo.View",
       "example" : "",
@@ -1232,10 +1244,12 @@
           "desc" : "Array of currently selected nodes",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforeclick",
+      "name" : "beforeclick",
       "desc" : "Fires before a click is processed. Returns false to cancel the default action.",
       "memberOf" : "Roo.View",
       "example" : "",
@@ -1267,10 +1281,12 @@
           "desc" : "The raw event object",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*click",
+      "name" : "click",
       "desc" : "Fires when a template node is clicked.",
       "memberOf" : "Roo.View",
       "example" : "",
@@ -1302,10 +1318,12 @@
           "desc" : "The raw event object",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*contextmenu",
+      "name" : "contextmenu",
       "desc" : "Fires when a template node is right clicked.",
       "memberOf" : "Roo.View",
       "example" : "",
@@ -1337,6 +1355,8 @@
           "desc" : "The raw event object",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

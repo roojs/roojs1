@@ -184,7 +184,7 @@
   ],
   "events" : [
     {
-      "name" : "*statechange",
+      "name" : "statechange",
       "desc" : "Fires when a state change occurs.",
       "memberOf" : "Roo.state.Provider",
       "example" : "",
@@ -210,6 +210,8 @@
           "desc" : "The encoded value for the state",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

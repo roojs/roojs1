@@ -738,7 +738,7 @@
   ],
   "events" : [
     {
-      "name" : "*layout",
+      "name" : "layout",
       "desc" : "Fires when a layout is performed.",
       "memberOf" : "Roo.LayoutManager",
       "example" : "",
@@ -752,10 +752,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*regionexpanded",
+      "name" : "regionexpanded",
       "desc" : "Fires when a region is expanded.",
       "memberOf" : "Roo.LayoutManager",
       "example" : "",
@@ -769,10 +771,12 @@
           "desc" : "The expanded region",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*regionresized",
+      "name" : "regionresized",
       "desc" : "Fires when the user resizes a region.",
       "memberOf" : "Roo.LayoutManager",
       "example" : "",
@@ -792,10 +796,12 @@
           "desc" : "The new size (width for east/west, height for north/south)",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*regioncollapsed",
+      "name" : "regioncollapsed",
       "desc" : "Fires when a region is collapsed.",
       "memberOf" : "Roo.LayoutManager",
       "example" : "",
@@ -809,6 +815,8 @@
           "desc" : "The collapsed region",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

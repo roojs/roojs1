@@ -520,7 +520,7 @@
   ],
   "events" : [
     {
-      "name" : "*beforeeditnext",
+      "name" : "beforeeditnext",
       "desc" : "Fires before the next editable sell is made active\nYou can use this to skip to another cell or fire the tabend\n   if you set cell to false",
       "memberOf" : "",
       "example" : "",
@@ -534,10 +534,12 @@
           "desc" : "object : { cell : [ row, col ] }",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*cellselect",
+      "name" : "cellselect",
       "desc" : "Fires when a cell is selected.",
       "memberOf" : "",
       "example" : "",
@@ -563,10 +565,12 @@
           "desc" : "The selected cell index",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*tabend",
+      "name" : "tabend",
       "desc" : "Fires when the tab (or enter) was pressed on the last editable cell\nYou can use this to trigger add new row.",
       "memberOf" : "",
       "example" : "",
@@ -580,10 +584,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*selectionchange",
+      "name" : "selectionchange",
       "desc" : "Fires when the active selection changes.",
       "memberOf" : "",
       "example" : "",
@@ -603,10 +609,12 @@
           "desc" : "null for no selection or an object (o) with two properties\n\t        <ul>\n\t        <li>o.record: the record object for the row the selection is in</li>\n\t        <li>o.cell: An array of [rowIndex, columnIndex]</li>\n\t        </ul>",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforerowselect",
+      "name" : "beforerowselect",
       "desc" : "Fires before a cell is selected.",
       "memberOf" : "",
       "example" : "",
@@ -632,6 +640,8 @@
           "desc" : "The selected cell index",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

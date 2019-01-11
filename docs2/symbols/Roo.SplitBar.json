@@ -511,7 +511,7 @@
   ],
   "events" : [
     {
-      "name" : "*resize",
+      "name" : "resize",
       "desc" : "Fires when the splitter is moved (alias for {@link #event-moved})",
       "memberOf" : "",
       "example" : "",
@@ -531,10 +531,12 @@
           "desc" : "the new width or height",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforeresize",
+      "name" : "beforeresize",
       "desc" : "Fires before the splitter is dragged",
       "memberOf" : "",
       "example" : "",
@@ -548,10 +550,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*moved",
+      "name" : "moved",
       "desc" : "Fires when the splitter is moved",
       "memberOf" : "",
       "example" : "",
@@ -571,6 +575,8 @@
           "desc" : "the new width or height",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]

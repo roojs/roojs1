@@ -1420,7 +1420,7 @@
   ],
   "events" : [
     {
-      "name" : "*load",
+      "name" : "load",
       "desc" : "Fires when this node is loaded",
       "memberOf" : "",
       "example" : "",
@@ -1434,10 +1434,12 @@
           "desc" : "This node",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforeload",
+      "name" : "beforeload",
       "desc" : "Fires before this node is loaded, return false to cancel",
       "memberOf" : "",
       "example" : "",
@@ -1451,10 +1453,12 @@
           "desc" : "This node",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforecollapse",
+      "name" : "beforecollapse",
       "desc" : "Fires before this node is collapsed, return false to cancel.",
       "memberOf" : "Roo.tree.TreeNode",
       "example" : "",
@@ -1480,10 +1484,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*dblclick",
+      "name" : "dblclick",
       "desc" : "Fires when this node is double clicked",
       "memberOf" : "Roo.tree.TreeNode",
       "example" : "",
@@ -1503,10 +1509,12 @@
           "desc" : "The event object",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*disabledchange",
+      "name" : "disabledchange",
       "desc" : "Fires when the disabled status of this node changes",
       "memberOf" : "Roo.tree.TreeNode",
       "example" : "",
@@ -1526,10 +1534,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforechildrenrendered",
+      "name" : "beforechildrenrendered",
       "desc" : "Fires right before the child nodes for this node are rendered",
       "memberOf" : "Roo.tree.TreeNode",
       "example" : "",
@@ -1543,10 +1553,12 @@
           "desc" : "This node",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforeclick",
+      "name" : "beforeclick",
       "desc" : "Fires before click processing. Return false to cancel the default action.",
       "memberOf" : "Roo.tree.TreeNode",
       "example" : "",
@@ -1566,10 +1578,12 @@
           "desc" : "The event object",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*checkchange",
+      "name" : "checkchange",
       "desc" : "Fires when a node with a checkbox's checked property changes",
       "memberOf" : "Roo.tree.TreeNode",
       "example" : "",
@@ -1589,10 +1603,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*collapse",
+      "name" : "collapse",
       "desc" : "Fires when this node is collapsed",
       "memberOf" : "Roo.tree.TreeNode",
       "example" : "",
@@ -1606,10 +1622,12 @@
           "desc" : "This node",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*textchange",
+      "name" : "textchange",
       "desc" : "Fires when the text for this node is changed",
       "memberOf" : "Roo.tree.TreeNode",
       "example" : "",
@@ -1635,10 +1653,12 @@
           "desc" : "The old text",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforeexpand",
+      "name" : "beforeexpand",
       "desc" : "Fires before this node is expanded, return false to cancel.",
       "memberOf" : "Roo.tree.TreeNode",
       "example" : "",
@@ -1664,10 +1684,12 @@
           "desc" : "",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*click",
+      "name" : "click",
       "desc" : "Fires when this node is clicked",
       "memberOf" : "Roo.tree.TreeNode",
       "example" : "",
@@ -1687,10 +1709,12 @@
           "desc" : "The event object",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*contextmenu",
+      "name" : "contextmenu",
       "desc" : "Fires when this node is right clicked",
       "memberOf" : "Roo.tree.TreeNode",
       "example" : "",
@@ -1710,10 +1734,12 @@
           "desc" : "The event object",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*expand",
+      "name" : "expand",
       "desc" : "Fires when this node is expanded",
       "memberOf" : "Roo.tree.TreeNode",
       "example" : "",
@@ -1727,10 +1753,12 @@
           "desc" : "This node",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforeappend",
+      "name" : "beforeappend",
       "desc" : "Fires before a new child is appended, return false to cancel the append.",
       "memberOf" : "Roo.data.Node",
       "example" : "",
@@ -1756,10 +1784,12 @@
           "desc" : "The child node to be appended",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*move",
+      "name" : "move",
       "desc" : "Fires when this node is moved to a new location in the tree",
       "memberOf" : "Roo.data.Node",
       "example" : "",
@@ -1797,10 +1827,12 @@
           "desc" : "The index it was moved to",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*append",
+      "name" : "append",
       "desc" : "Fires when a new child node is appended",
       "memberOf" : "Roo.data.Node",
       "example" : "",
@@ -1832,10 +1864,12 @@
           "desc" : "The index of the newly appended node",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforeremove",
+      "name" : "beforeremove",
       "desc" : "Fires before a child is removed, return false to cancel the remove.",
       "memberOf" : "Roo.data.Node",
       "example" : "",
@@ -1861,10 +1895,12 @@
           "desc" : "The child node to be removed",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*remove",
+      "name" : "remove",
       "desc" : "Fires when a child node is removed",
       "memberOf" : "Roo.data.Node",
       "example" : "",
@@ -1890,10 +1926,12 @@
           "desc" : "The removed node",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforeinsert",
+      "name" : "beforeinsert",
       "desc" : "Fires before a new child is inserted, return false to cancel the insert.",
       "memberOf" : "Roo.data.Node",
       "example" : "",
@@ -1925,10 +1963,12 @@
           "desc" : "The child node the node is being inserted before",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*insert",
+      "name" : "insert",
       "desc" : "Fires when a new child node is inserted.",
       "memberOf" : "Roo.data.Node",
       "example" : "",
@@ -1960,10 +2000,12 @@
           "desc" : "The child node the node was inserted before",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     },
     {
-      "name" : "*beforemove",
+      "name" : "beforemove",
       "desc" : "Fires before this node is moved to a new location in the tree. Return false to cancel the move.",
       "memberOf" : "Roo.data.Node",
       "example" : "",
@@ -2001,6 +2043,8 @@
           "desc" : "The index it is being moved to",
           "isOptional" : false
         }
+      ],
+      "returns" : [
       ]
     }
   ]
