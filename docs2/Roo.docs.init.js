@@ -96,9 +96,9 @@ Roo.docs.init = {
                     beforehide : (function(mi,ev,c)
                     {
                         if (c.name.split('.').length < 2) {
-                            return true;
+                            return false;
                         }
-                        return false;
+                        return true;
                         
                     }).createDelegate(this,[e], true)
                     
