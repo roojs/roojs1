@@ -37,8 +37,8 @@ Roo.docs.template  = {
 	output += '<div class="mdesc"><div class="short">'+this.resolveLinks(this.summarize(dtag.desc))+'</div></div>';
 			
 	output += '<div class="mdesc"><div class="long">' + this.resolveLinks(dtag.desc)+ ' ' + 
-                    (dtag.optvalues ? ("<BR/>Possible Values: " +
-				dtag.optvalues.map(function(v) {
+                    (dtag.values ? ("<BR/>Possible Values: " +
+				dtag.values.map(function(v) {
 				    return v.length ? v : "<B>Empty</B>";
 				}).join(", ")) : ''
 		    ) + '</div>'
