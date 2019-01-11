@@ -51,8 +51,8 @@ Roo.docs.template  = {
       
 	var ownMethods = [];
     
-	if (data.comment.name.length && 
-	    !data.isBuiltin() && 
+	if (data.name.length && 
+	    !data.isBuiltin && 
 	    !data.isSingleton &&
 	    !data.isStatic
 	    ) {
