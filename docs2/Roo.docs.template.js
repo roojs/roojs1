@@ -61,8 +61,8 @@ Roo.docs.template  = {
 	}
 	
 	var msorted = data.methods.sort(makeSortby("name"));
-	!}
 	
+	// static first?
 	
 	msorted.filter(
 	    function($){
@@ -86,15 +86,14 @@ Roo.docs.template  = {
 		if ($.isNamespace || (($.memberOf != data.name) && $.isStatic)){
 			return true;
 		}
-			if ($.isStatic) {
-				$.isInherited = ($.memberOf != data.alias);
-				ownMethods.push($);
-			}
-			
-			return true;
+		if ($.isStatic) {
+			$.isInherited = ($.memberOf != data.name);
+			ownMethods.push($);
 		}
-	);
-	!}
+			
+		return true;
+    	}
+
 	<!-- then dynamics first -->
 	{!	
 		msorted.filter(
