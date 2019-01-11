@@ -57,7 +57,7 @@ Roo.docs.template  = {
 		!data.isStatic
 		) {
 		data.isInherited = false;
-		ownMethods.push(data);
+		ownMethods.push(data);   // should push ctor???
 	}
 	
 	var msorted = data.methods.sort(makeSortby("name"));
