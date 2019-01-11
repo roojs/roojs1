@@ -173,7 +173,7 @@ Roo.docs.init = {
         Roo.docs.eventsTableContainer.hide();
         if (d.config.length) {
             Roo.docs.configTableContainer.show();
-            Roo.docs.configTable.store.load( { params : { data : d.config }});
+            Roo.docs.configTable.store.load( { params : { data : d.config.sort(Roo.docs.template.makeSortby("name")) }});
         } 
         
         if (d.methods.length) {
@@ -181,7 +181,7 @@ Roo.docs.init = {
             Roo.docs.methodsTableContainer.show();
         }
         if (d.events.length) {
-            Roo.docs.eventsTable.store.load( { params : { data : d.events.sort(Roo.docs.template.makeSortby("name"))}});
+            Roo.docs.eventsTable.store.load( { params : { data : d.events.sort(Roo.docs.template.makeSortby("name")) }});
             Roo.docs.eventsTableContainer.show();
         }
         
