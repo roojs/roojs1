@@ -55,7 +55,7 @@
          "String cls" : "",
          "xtype" : "NavItem",
          "$ xns" : "Roo.bootstrap",
-         "String style" : "position:fixed;top:0;",
+         "String style" : "position:fixed;top:0;z-Index:1000;",
          "items" : [
           {
            "String cls" : "logo",
