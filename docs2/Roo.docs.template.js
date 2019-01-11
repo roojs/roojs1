@@ -4,127 +4,127 @@ Roo.docs.template  = {
 
     augments : function(data)
     {
-    if (!data.augments.length) {
-        return '';
-    }
-    var linkSymbol  = this.linkSymbol;
-    var output = '<div class="inheritance res-block"> <pre class="res-block-inner">';
+	if (!data.augments.length) {
+	    return '';
+	}
+	var linkSymbol  = this.linkSymbol;
+	var output = '<div class="inheritance res-block"> <pre class="res-block-inner">';
+	
+	var iblock_indent = 0;
+	 data.augments.reverse().map(
+	    function($) {  
+		output += iblock_indent ? ('<img src="../images/default/s.gif" height="1" width="' + 
+		    iblock_indent + '"/><img src="../images/default/tree/elbow-end.gif" class="elbow"/>') : '';
+		output += linkSymbol($) + "\n"; 
+		iblock_indent += 20;
+	    }
+	)
+	 
+	return output +  '<img src="../images/default/s.gif" height="1"  width="' +  iblock_indent +'"/>' +
+	    '<img class="elbow" src="../images/default/tree/elbow-end.gif"/>'+data.name+
     
-    var iblock_indent = 0;
-     data.augments.reverse().map(
-        function($) {  
-            output += iblock_indent ? ('<img src="../images/default/s.gif" height="1" width="' + 
-                iblock_indent + '"/><img src="../images/default/tree/elbow-end.gif" class="elbow"/>') : '';
-            output += linkSymbol($) + "\n"; 
-            iblock_indent += 20;
-        }
-    )
-     
-    return output +  '<img src="../images/default/s.gif" height="1"  width="' +  iblock_indent +'"/>' +
-        '<img class="elbow" src="../images/default/tree/elbow-end.gif"/>'+data.name+
-
-           '</pre></div>'
+	       '</pre></div>'
        
     },
     
     config : function(dtag)
     {
        
-    var output = '<a name="'+dtag.memberOf+'-cfg-'+dtag.name+'"></a>';
-    output += '<div class="fixedFont"><b  class="itemname"> ' + dtag.name + '</b> : ' +
-        (dtag.type.length ? this.linkSymbol(dtag.type) : "" ) + '</div>';
-          
-    output += '<div class="mdesc"><div class="short">'+this.resolveLinks(this.summarize(dtag.desc))+'</div></div>';
-            
-    output += '<div class="mdesc"><div class="long">' + this.resolveLinks(dtag.desc)+ ' ' + 
-                    (dtag.values.length ? ("<BR/>Possible Values: " +
-                dtag.values.map(function(v) {
-                    return v.length ? v : "<B>Empty</B>";
-                }).join(", ")) : ''
-            ) + '</div>';
-    return output;
+	var output = '<a name="'+dtag.memberOf+'-cfg-'+dtag.name+'"></a>';
+	output += '<div class="fixedFont"><b  class="itemname"> ' + dtag.name + '</b> : ' +
+	    (dtag.type.length ? this.linkSymbol(dtag.type) : "" ) + '</div>';
+	      
+	output += '<div class="mdesc"><div class="short">'+this.resolveLinks(this.summarize(dtag.desc))+'</div></div>';
+		
+	output += '<div class="mdesc"><div class="long">' + this.resolveLinks(dtag.desc)+ ' ' + 
+			(dtag.values.length ? ("<BR/>Possible Values: " +
+		    dtag.values.map(function(v) {
+			return v.length ? v : "<B>Empty</B>";
+		    }).join(", ")) : ''
+		) + '</div>';
+	return output;
     },
     
     methodsSort : function(data)
     {
     
       
-    var ownMethods = [];
-
-    if (data.comment.name.length && 
-        !data.isBuiltin() && 
-        !data.isSingleton &&
-        !data.isStatic
-        ) {
-        data.isInherited = false;
-        ownMethods.push(data);   // should push ctor???
-    }
+	var ownMethods = [];
     
-    var msorted = data.methods.sort(makeSortby("name"));
+	if (data.comment.name.length && 
+	    !data.isBuiltin() && 
+	    !data.isSingleton &&
+	    !data.isStatic
+	    ) {
+	    data.isInherited = false;
+	    ownMethods.push(data);   // should push ctor???
+	}
+	
+	var msorted = data.methods.sort(makeSortby("name"));
+	
+	// static first?
+	
+	msorted.filter(
+	    function($){
+		
+	    //if (/@hide/.test($.desc)) { == not needed - done in the backend
+	    //    return false;
+	    //}
+		
+	    //if (!$.isEvent && (data.comment.getTag("instanceOf").length || data.comment.getTag("singleton").length)) {
+	    
+	    // not sure if we should just ignore signletons???
+	    //if (!data.isSingleton) {
+	    //    return true; 
+	    //}
+	    
+	    
+	    
+	    if (data.isSingleton) {
+	     
+		if ($.isStatic && $.memberOf != data.name) { // it's a singleton - can not inherit static methods.
+		return true;
+		}
+	    
+		$.isInherited = ($.memberOf != data.name);
+		ownMethods.push($);
+		return true;
+	    }
+	    
+		
+	    if ($.isNamespace || (($.memberOf != data.name) && $.isStatic)){
+		return true;
+	    }
+	    if ($.isStatic) {
+		$.isInherited = ($.memberOf != data.name);
+		ownMethods.push($);
+	    }
+		
+	    return true;
+	    }
+	    );
     
-    // static first?
+	// then dynamics..
     
-    msorted.filter(
-        function($){
-            
-        //if (/@hide/.test($.desc)) { == not needed - done in the backend
-        //    return false;
-        //}
-            
-        //if (!$.isEvent && (data.comment.getTag("instanceOf").length || data.comment.getTag("singleton").length)) {
-        
-        // not sure if we should just ignore signletons???
-        //if (!data.isSingleton) {
-        //    return true; 
-        //}
-        
-        
-        
-        if (data.isSingleton) {
-         
-            if ($.isStatic && $.memberOf != data.name) { // it's a singleton - can not inherit static methods.
-            return true;
-            }
-        
-            $.isInherited = ($.memberOf != data.name);
-            ownMethods.push($);
-            return true;
-        }
-        
-            
-        if ($.isNamespace || (($.memberOf != data.name) && $.isStatic)){
-            return true;
-        }
-        if ($.isStatic) {
-            $.isInherited = ($.memberOf != data.name);
-            ownMethods.push($);
-        }
-            
-        return true;
-        }
-        );
-
-    // then dynamics..
-
-    msorted.filter(
-        function($){
-            //if (/@hide/.test($.desc)) {
-            //        return false;
-            //}
-            // it's a signleton class - can not have dynamic methods..
-            if (data.isSingleton) {
-                return true;
-            }
-            if ($.isNamespace || (($.memberOf != data.name) && $.isStatic)){
-                return true;
-            }
-            if (!$.isStatic) {
-            $.isInherited = ($.memberOf != data.alias);
-            ownMethods.push($);
-            }
-            
-            return true;
-        }
+	msorted.filter(
+	    function($){
+		//if (/@hide/.test($.desc)) {
+		//        return false;
+		//}
+		// it's a signleton class - can not have dynamic methods..
+		if (data.isSingleton) {
+		    return true;
+		}
+		if ($.isNamespace || (($.memberOf != data.name) && $.isStatic)){
+		    return true;
+		}
+		if (!$.isStatic) {
+		$.isInherited = ($.memberOf != data.alias);
+		ownMethods.push($);
+		}
+		
+		return true;
+	    }
     );
     return msorted;
     
