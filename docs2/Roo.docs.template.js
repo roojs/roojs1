@@ -434,8 +434,9 @@ Roo.docs.template  = {
     summarize : function(desc)
     {
         if (typeof desc != "undefined") {
-        // finds the first fulls stop...
-            return desc.match(/([\w\W]+?[\.|:])[^a-z0-9]/i)? RegExp.$1.replace("\n", " ") : desc.split("\n")[0];
+	    // finds the first fulls stop...
+            return desc.match(/([\w\W]+?[\.|:])[^a-z0-9]/i)?
+		RegExp.$1.split('<')[0].replace("\n", " ") : desc.split("\n")[0];
         }
         return '';
     },
