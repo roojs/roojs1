@@ -60,7 +60,7 @@ Roo.docs.template  = {
 	    ownMethods.push(data);   // should push ctor???
 	}
 	
-	var msorted = data.methods.sort(makeSortby("name"));
+	var msorted = data.methods.sort(this.makeSortby("name"));
 	
 	// static first?
 	
