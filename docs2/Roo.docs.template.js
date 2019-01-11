@@ -78,16 +78,7 @@ Roo.docs.template  = {
 		//    return true; 
 		//}
 		
-		if (!$.isEvent && (data.comment.getTag("instanceOf").length || data.comment.getTag("singleton").length)) {
-			    if ($.isStatic && (data.comment.getTag("instanceOf").length || data.comment.getTag("singleton").length) &&
-				    ($.memberOf != data.alias)) {
-					    return true;
-				    }
-			    $.isInherited = ($.memberOf != data.alias);
-			    ownMethods.push($);
-			    return true;
-		    }
-		    
+		
 		
 		if (data.isSingleton) {
 		 
