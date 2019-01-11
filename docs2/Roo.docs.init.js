@@ -209,6 +209,17 @@ Roo.docs.init = {
         }
         
         
+    },
+    onClick : function(e)
+    {
+        if (e.tagName != 'A') {
+            return;
+        }
+        if (!e.href.match(/#/)) {
+            return;
+        }
+        e.stopPropagation();
+        
     }
     
     
