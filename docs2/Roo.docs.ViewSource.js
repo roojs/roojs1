@@ -81,7 +81,7 @@ Roo.apply(Roo.docs.ViewSource.prototype, {
     items  : [
      {
       xtype : 'Container',
-      style : 'width: 100%;overflow:auto;',
+      style : 'width: 100%;overflow:auto;height:100%;',
       listeners : {
        render : function (_self)
         {
