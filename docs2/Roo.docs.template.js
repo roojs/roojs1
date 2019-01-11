@@ -126,6 +126,7 @@ Roo.docs.template  = {
 		return true;
 	    }
 	);
+	
 	return ownMethods;
 	
     },
