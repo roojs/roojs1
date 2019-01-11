@@ -922,7 +922,9 @@ td>.fixedFont {
 .doc-table-container .short {
     color: #666;
 }
-
+.doc-table-container tfoot {
+    display: none;
+}
 
 .doc-table-container td.short {
     display : block;
