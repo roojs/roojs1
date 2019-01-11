@@ -201,8 +201,11 @@ Roo.docs.render  = {
         }
         output +='</div></div>';
         return output;
+    },
+    
+    makeSignature : function(params) {
+        
+        
     }
-    
-    
 
 }
