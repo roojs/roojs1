@@ -628,17 +628,7 @@ Roo.docs = new Roo.XComponent({
            renderer : function(v,x,r) { 
            
                return Roo.docs.template.method(r.json);
-           		return 	'<div class="fixedFont">' +
-           				'<b class="itemname">' + r.json.name + '</b>' +
-           			 	     (r.json.returns.length ? (' : <a href="#' + r.json.returns+'-constructor">' + r.json.returns + '</a>') : '') +
-            				//     (r.json.values.length ? ' : ( ' +  r.json.values.join(", ") + ' )' : '') +
-           			    '</div>' +
-           		  
-           			/*'<div class="mdesc">' +
-           			    '<div class="short">' + (r.json.desc.split("\n")[0]) + '</div>' +
-           			'</div>'+ */
-           			
-           			'<div class="mdesc"><div class="long">' + r.json.desc.split("\n").join('<br/>') + '</div></div>';
+           		 
            			
            },
            sortable : false,
