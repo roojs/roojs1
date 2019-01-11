@@ -107,7 +107,6 @@ Roo.docs.template  = {
 			    return true;
 		    }
 		    if ($.isNamespace || (($.memberOf != data.name) && $.isStatic)){
-			    
 			    return true;
 		    }
 		    if (!$.isStatic) {
