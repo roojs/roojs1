@@ -238,7 +238,67 @@ Roo.docs.render  = {
     },
     resolveLinks : function(str)
     {
-        
+        if (!str || typeof(str) == 'undefined') {
+                return '';
+            }
+            
+            // gtk specific. now..
+            // @ -> bold.. - they are arguments..
+            /*
+            str = str.replace(/@([a-z_]+)/gi,
+                function(match, symbolName) {
+                    return '<b>' + symbolName + '</b>';
+                }
+            );
+            // constants.
+            str = str.replace(/%([a-z_]+)/gi,
+                function(match, symbolName) {
+                    return '<b>' + symbolName + '</b>';
+                }
+            );
+            
+            str = str.replace(/#([a-z_]+)/gi,
+                function(match, symbolName) {
+                    return '<b>' + symbolName + '</b>';
+                    // this should do a lookup!!!!
+                    /// it could use data in the signature to find out..
+                    //return new Link().toSymbol(Template.data.ns + '.' + symbolName);
+                }
+            );
+            */
+            str = str.replace(/\n/gi, '<br/>');
+             
+            str = str.replace(/\{@link ([^} ]+) ?\}/gi,
+                function(match, symbolName) {
+                    return this.linkSymbol(symbolName);
+                }
+            );
+            
+            /*
+            str = str.replace(/\{([a-z\.\/]+)\}/gi,
+                function(match, symbolName) {
+                    //println("got match " + symbolName);
+                    bits = symbolName.split('/');
+                    var mret = '';
+                    for(var i = 0; i < bits.length; i++) {
+                        
+                        mret += (mret.length ? '&nbsp;|&nbsp;' : '') + new Link().toSymbol(bits[i]);
+                    }
+                    
+                    return mret; //new Link().toSymbol(symbolName);
+                }
+            );
+            */
+            // look for aaaa.\S+  ??? this might work???
+            /*
+            str = str.replace(/\([a-z]+\.\S+)/gi,
+                function(match, symbolName) {
+                    return new Link().toSymbol(symbolName);
+                }
+            );
+            */
+            
+            return str;
     },
     summarize : function(str)
     {
