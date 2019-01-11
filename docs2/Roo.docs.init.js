@@ -96,7 +96,7 @@ Roo.docs.init = {
                     beforehide : (function(mi,ev,c)
                     {
                         
-                         return false;
+                        return false;
                         
                     }).createDelegate(this,[e], true)
                     
