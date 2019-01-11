@@ -207,35 +207,34 @@ Roo.docs.render  = {
     {
         
             if (!params.length) return "()";
-            var linkSymbol = this.linkSymbol;
-            var signature = "("	+
-                params.filter(
-                    function($) {
-                        return $.name.indexOf(".") == -1; // don't show config params in signature
-                    }
-                ).map(
-                    function($) {
-                        $.defaultValue = typeof($.defaultValue) == 'undefined' ? false : $.defaultValue;
-                        
-                        return "" +
-                            ($.isOptional ? "[" : "") +
-                            (($.type) ? 
-                                linkSymbol(
-                                    (typeof($.type) == 'object' ) ? 'Function' : $.type
-                                ) + " " :  ""
-                            )   + 
-                            "<B><i>" +$.name + "</i></B>" +
-                            ($.defaultValue ? "=" +item.defaultValue : "") +
-                            ($.isOptional ? "]" : "");
-                        
-                         
-                    }
-                ).join(", ")
-            +
-            ")";
-            return signature;
-        },
-
+        var linkSymbol = this.linkSymbol;
+        var signature = "("	+
+            params.filter(
+                function($) {
+                    return $.name.indexOf(".") == -1; // don't show config params in signature
+                }
+            ).map(
+                function($) {
+                    $.defaultValue = typeof($.defaultValue) == 'undefined' ? false : $.defaultValue;
+                    
+                    return "" +
+                        ($.isOptional ? "[" : "") +
+                        (($.type) ? 
+                            linkSymbol(
+                                (typeof($.type) == 'object' ) ? 'Function' : $.type
+                            ) + " " :  ""
+                        )   + 
+                        "<B><i>" +$.name + "</i></B>" +
+                        ($.defaultValue ? "=" +item.defaultValue : "") +
+                        ($.isOptional ? "]" : "");
+                    
+                     
+                }
+            ).join(", ")
+        +
+        ")";
+        return signature;
+        
     },
     resolveLinks : function(str)
     {
@@ -247,7 +246,6 @@ Roo.docs.render  = {
     },
     linkSymbol : function(str)
     {
-        
-        return <'a href="#' + str + '>' + str + '</a>';
+        return '<a href="#' + str + '>' + str + '</a>';
     }
 }
