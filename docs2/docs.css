@@ -115,27 +115,27 @@ h6,
 }
 
 /**-----subsubsub menuds... **/
-.left-menu-sidebar.sidebar .treeview-menu.dropdown-toggle > .dropdown-item,
-.left-menu-sidebar.sidebar .treeview-menu.dropdown-toggle > .treeview-menu
+.left-menu-sidebar.sidebar .treeview-menu.dropdown-toggle > a.dropdown-item,
+.left-menu-sidebar.sidebar .treeview-menu.dropdown-toggle > li.treeview-menu
 {
     display: none;
 }
 
-.left-menu-sidebar.sidebar ul.treeview-menu > li.treeview-menu.dropdown-toggle > .dropdown-item,
-.left-menu-sidebar.sidebar ul.treeview-menu > li.treeview-menu.dropdown-toggle > .treeview-menu
+.left-menu-sidebar.sidebar ul.treeview-menu > li.treeview-menu.dropdown-toggle > a.dropdown-item,
+.left-menu-sidebar.sidebar ul.treeview-menu > li.treeview-menu.dropdown-toggle >  li.treeview-menu
 {
     display: none;
 }
 
 /* expanded non-menu item */
-.left-menu-sidebar.sidebar ul.treeview-menu.show > li.treeview-menu.dropdown-toggle > .dropdown-item,
-.left-menu-sidebar.sidebar ul.treeview-menu.show > li.treeview-menu.dropdown-toggle > .treeview-menu
+.left-menu-sidebar.sidebar ul.treeview-menu.show > li.treeview-menu.dropdown-toggle > a.dropdown-item,
+.left-menu-sidebar.sidebar ul.treeview-menu.show > li.treeview-menu.dropdown-toggle >  li.treeview-menu
 {
     display: block;
 }
 /* expanded sub menu item */
-.left-menu-sidebar.sidebar ul.treeview-menu.show    > li.treeview-menu.dropdown-toggle >  ul.treeview-menu
-            > li.treeview-menu.dropdown-toggle > .dropdown-item 
+.left-menu-sidebar.sidebar ul.treeview-menu.show    > li.treeview-menu.dropdown-toggle >   li.treeview-menu
+            > li.treeview-menu.dropdown-toggle > a.dropdown-item 
  {
     display: block;
 }
