@@ -8,18 +8,9 @@ Roo.docs.ViewSource= function() {}
 Roo.apply(Roo.docs.ViewSource.prototype, {
 
  _strings : {
-  'eab9dc0ccdb8cffda2c74258fc433437' :"Please scroll through and read the full document in order to agree the statement",
-  'd41d8cd98f00b204e9800998ecf8427e' :"",
   'c4408d335012a56ff58937d78050efad' :"Accept",
-  'c3eb5c3b9018d75cb7032deb99fe43e9' :"I understand",
-  '39535fa9d04b1337c8394b684ccec7bb' :"I agree",
+  '89babd10371e21bb9eaf39937de7c656' :"View Source",
   '8ae4424e3e8d151789d3bdb669c20e6b' :"<i class='lnr lnr-download'></i> Download"
- },
- _named_strings : {
-  'accept_terms_dialog_BTN_UDS' : 'c3eb5c3b9018d75cb7032deb99fe43e9' /* I understand */ ,
-  'accept_terms_dialog_SCROLL_AGREE' : 'eab9dc0ccdb8cffda2c74258fc433437' /* Please scroll through and read the full document in order to agree the statement */ ,
-  'accept_terms_dialog_title' : 'd41d8cd98f00b204e9800998ecf8427e' /*  */ ,
-  'accept_terms_dialog_BTN_AGREE' : '39535fa9d04b1337c8394b684ccec7bb' /* I agree */ 
  },
 
  dialog : false,
@@ -47,46 +38,9 @@ Roo.apply(Roo.docs.ViewSource.prototype, {
   var _this = this;
   this.dialog = Roo.factory({
     xtype : 'Modal',
-    _BTN_AGREE : _this._strings['39535fa9d04b1337c8394b684ccec7bb'] /* I agree */,
-    _BTN_UDS : _this._strings['c3eb5c3b9018d75cb7032deb99fe43e9'] /* I understand */,
-    cls : 'accept-dialog enable-modal-body-overflow',
     fit_content : true,
-    init : function() 
-    { 
-        _this.dialog.bodyEl.scrollTo('top');
-        
-        _this.acceptBtn.enableIt();
-        
-        if(
-            typeof(_this.data.disableScrolling) != 'undefined' &&
-            _this.data.disableScrolling == 1
-        ){
-            return;
-        }
-        
-        var scrollHeight = _this.dialog.bodyEl.dom.scrollHeight;
-        
-        /*
-        * 50px is leeway
-        */
-        
-        if(scrollHeight <= _this.dialog.bodyEl.getHeight() + 50){
-            return;
-        }
-        
-        _this.acceptBtn.disableIt();
-        
-        _this.dialog.bodyEl.on('scroll', this.onScroll, this);
-        
-         (function() {
-           this.onScroll();  
-        }).defer(100,this);
-        
-    },
     max_width : 900,
-    name : 'accept_terms_dialog',
-    _SCROLL_AGREE : _this._strings['eab9dc0ccdb8cffda2c74258fc433437'] /* Please scroll through and read the full document in order to agree the statement */,
-    title : _this._strings['d41d8cd98f00b204e9800998ecf8427e'] /*  */,
+    title : _this._strings['89babd10371e21bb9eaf39937de7c656'] /* View Source */,
     listeners : {
      show : function (_self)
       {

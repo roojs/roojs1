@@ -6,35 +6,20 @@
  "permname" : "",
  "modOrder" : "001",
  "strings" : {
-  "eab9dc0ccdb8cffda2c74258fc433437" : "Please scroll through and read the full document in order to agree the statement",
-  "d41d8cd98f00b204e9800998ecf8427e" : "",
   "c4408d335012a56ff58937d78050efad" : "Accept",
-  "c3eb5c3b9018d75cb7032deb99fe43e9" : "I understand",
-  "39535fa9d04b1337c8394b684ccec7bb" : "I agree",
+  "89babd10371e21bb9eaf39937de7c656" : "View Source",
   "8ae4424e3e8d151789d3bdb669c20e6b" : "<i class='lnr lnr-download'></i> Download"
- },
- "named_strings" : {
-  "accept_terms_dialog_BTN_UDS" : "c3eb5c3b9018d75cb7032deb99fe43e9",
-  "accept_terms_dialog_SCROLL_AGREE" : "eab9dc0ccdb8cffda2c74258fc433437",
-  "accept_terms_dialog_title" : "d41d8cd98f00b204e9800998ecf8427e",
-  "accept_terms_dialog_BTN_AGREE" : "39535fa9d04b1337c8394b684ccec7bb"
  },
  "items" : [
   {
    "listeners" : {
     "show" : "function (_self)\n{\n  //  if(_this.data.buttonText){\n    //    _this.acceptBtn.setText(_this.data.buttonText);\n   // }\n    \n     \n   \n    \n    _this.dialog.el.setStyle('zIndex', '10002');\n    \n}"
    },
-   "String cls" : "accept-dialog enable-modal-body-overflow",
-   "string _BTN_UDS" : "I understand",
-   "string _SCROLL_AGREE" : "Please scroll through and read the full document in order to agree the statement",
    "string fit_content" : true,
    "xtype" : "Modal",
    "int max_width" : 900,
    "$ xns" : "Roo.bootstrap",
-   "| function init" : "function() \n{ \n    _this.dialog.bodyEl.scrollTo('top');\n    \n    _this.acceptBtn.enableIt();\n    \n    if(\n        typeof(_this.data.disableScrolling) != 'undefined' &&\n        _this.data.disableScrolling == 1\n    ){\n        return;\n    }\n    \n    var scrollHeight = _this.dialog.bodyEl.dom.scrollHeight;\n    \n    /*\n    * 50px is leeway\n    */\n    \n    if(scrollHeight <= _this.dialog.bodyEl.getHeight() + 50){\n        return;\n    }\n    \n    _this.acceptBtn.disableIt();\n    \n    _this.dialog.bodyEl.on('scroll', this.onScroll, this);\n    \n     (function() {\n       this.onScroll();  \n    }).defer(100,this);\n    \n}",
-   "String title" : "",
-   "string _BTN_AGREE" : "I agree",
-   "string name" : "accept_terms_dialog",
+   "String title" : "View Source",
    "items" : [
     {
      "xtype" : "Container",
