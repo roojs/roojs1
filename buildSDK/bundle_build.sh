@@ -45,5 +45,5 @@ seed ../gnome.introspection-doc-generator/jsdocbuild.js --baseDir ../roojs1 \
 #new version?? - under testing...
 roojspacker -i buildSDK/dependancy_core.txt  -i buildSDK/dependancy_ui.txt  \
     -i buildSDK/dependancy_bootstrap.txt -i buildSDK/dependancy_calendar.txt \
-   --doc-target=docs2 -D
+   --doc-target=docs -D
 
