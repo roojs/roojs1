@@ -212,7 +212,7 @@ Roo.docs.init = {
     },
     onClick : function(e)
     {
-        if (e.tagName != 'A') {
+        if (e.nodeName != 'A') {
             return;
         }
         if (!e.href.match(/#/)) {
