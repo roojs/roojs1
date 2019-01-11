@@ -395,7 +395,7 @@ Roo.docs = new Roo.XComponent({
                      
                      Roo.log(["click", this]);
                      if (this.el.dom.innerHTML.length > 0) {
-                         Roo.docs.loadSource();
+                         Roo.docs.init.loadSource();
                      }
                  },
                 render : function (_self)
