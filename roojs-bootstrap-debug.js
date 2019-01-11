@@ -5125,7 +5125,7 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
             e.preventDefault();
         }
         
-        this.fireEvent('click', this);
+        this.fireEvent('click', this, e);
     },
     
     disable : function()
