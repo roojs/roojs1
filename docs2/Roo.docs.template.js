@@ -242,85 +242,81 @@ Roo.docs.template  = {
 		    
         output += '<div class="long">' + this.resolveLinks(member.desc);
 	
-		    
-			<if test="member.example">
-				<pre class="code">{+member.example+}</pre>
-			</if>
-			
-		
-			<if test="member.params.length">
-				<dl class="detailList">
-				<dt class="heading">Parameters:</dt>
-				<for each="item" in="member.params">
-					<dt>
-						{+((item.type)?"<span class=\"fixedFont\">"+(new Link().toSymbol(item.type))+"</span> " : "")+}<b>{+item.name+}</b>
-						<if test="item.isOptional"><i>Optional
-							<if test="item.defaultValue">, 
-							Default: {+item.defaultValue+}
-						</if></i></if>
-					</dt>
-					<dd>{+resolveLinks(item.desc)+}</dd>
-				</for>
-				</dl>
-			</if>
-			<if test="member.deprecated">
-				<dl class="detailList">
-				<dt class="heading">Deprecated:</dt>
-				<dt>
-					{+member.deprecated+}
-				</dt>
-				</dl>
-			</if>
-			<if test="member.since.length">
-				<dl class="detailList">
-				<dt class="heading">Since:</dt>
-					<dd>{+ member.since +}</dd>
-				</dl>
-				</dl>
-			</if>
-			<if test="member.exceptions.length">
-				<dl class="detailList">
-				<dt class="heading">Throws:</dt>
-				<for each="item" in="member.exceptions">
-					<dt>
-						{+((item.type)?"<span class=\"light fixedFont\">{"+(new Link().toSymbol(item.type))+"}</span> " : "")+} <b>{+item.name+}</b>
-					</dt>
-					<dd>{+resolveLinks(item.desc)+}</dd>
-				</for>
-				</dl>
-			</if>
-			<if test="member.returns.length">
-				<dl class="detailList">
-				<dt class="heading">Returns:</dt>
-				<for each="item" in="member.returns">
-					<dd>{+((item.type)?"<span class=\"light fixedFont\">{"+(new Link().toSymbol(item.type))+"}</span> " : "")+}{+resolveLinks(item.desc)+}</dd>
-				</for>
-				</dl>
-			</if>
-			<if test="member.requires.length">
-				<dl class="detailList">
-				<dt class="heading">Requires:</dt>
-				<for each="item" in="member.requires">
-					<dd>{+ resolveLinks(item) +}</dd>
-				</for>
-				</dl>
-			</if>
-			<if test="member.see.length">
-				<dl class="detailList">
-				<dt class="heading">See:</dt>
-				<for each="item" in="member.see">
-					<dd>{+ new Link().toSymbol(item) +}</dd>
-				</for>
-				</dl>
-			</if>
-
-		    
-		    
-		     
-                    </div>                    
-                </div>
-
-            
+	if (member.example.length) {
+	    output +'<pre class="code">'+member.example+'</pre>';
+	}
+	if (member.params.length) {
+        
+     
+            output+= '<dl class="detailList"> <dt class="heading">Parameters:</dt>';
+            for(var  i = 0; i <  member.params.length ; i++) {
+                var item = member.params[i];
+                    output += '<dt>' +
+                       ( item.type.length ?
+                            '<span class="fixedFont">' + this.linkSymbol(item.type) + '</span> ' :
+                            ""
+                        )+  '<b>'+item.name+'</b>';
+                    if (item.isOptional) {
+                        output+='<i>Optional ';
+                        if (item.defaultValue.length) {
+                            output+='Default: '+item.defaultValue;
+                        }
+                        output+='</i>';
+                    }
+                    output +='</dt><dd>'+this.resolveLinks(item.desc)+'</dd>';
+            }
+            output+= '</dl>';
+        }    		
+	  if (member.deprecated.length) {
+            output+= '<dl class="detailList"><dt class="heading">Deprecated:</dt><dt>' +
+                        +member.deprecated+'</dt></dl>';
+        }
+        
+        
+        if (member.since.length) {
+            output+= '<dl class="detailList"><dt class="heading">Since:</dt><dt>' +
+                        +member.since+'</dt></dl>';
+        }
+         /*
+                <if test="member.exceptions.length">
+                        <dl class="detailList">
+                        <dt class="heading">Throws:</dt>
+                        <for each="item" in="member.exceptions">
+                                <dt>
+                                        {+((item.type)?"<span class=\"fixedFont\">{"+(new Link().toSymbol(item.type))+"}</span> " : "")+} <b>{+item.name+}</b>
+                                </dt>
+                                <dd>{+resolveLinks(item.desc)+}</dd>
+                        </for>
+                        </dl>
+                </if>
+                */	
+	  if (member.returns.length) {
+            output += '<dl class="detailList"><dt class="heading">Returns:</dt>';
+	    for (var i =0; i < member.returns.length; i++) {
+		var item = member.returns[i];
+		output+= '<dd>' + this.linkSymbol( item.type ) + ' ' + this.resolveLinks(item.desc) + '</dd></dl>';
+	    }
+                    
+        }
+        
+        /*
+                <if test="member.requires.length">
+                        <dl class="detailList">
+                        <dt class="heading">Requires:</dt>
+                        <for each="item" in="member.requires">
+                                <dd>{+ resolveLinks(item) +}</dd>
+                        </for>
+                        </dl>
+                </if>
+        */
+        if (member.see.length) {
+            output+= '<dl class="detailList"><dt class="heading">See:</dt><dt>' +
+                        '<dd>' + this.linkSymbol( member.see ) +'</dd></dl>';
+        }
+        output +='</div></div>';		 
+		  
+	return output;
+    },
     
     
     
