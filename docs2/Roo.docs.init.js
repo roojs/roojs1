@@ -159,7 +159,7 @@ Roo.docs.init = {
         }
         Roo.docs.doc_source.el.dom.innerHTML = d.name.replace(/\./g,"/") + ".js";
         
-        Roo.docs.augments.el.dom.innerHTML = Roo.docs.template.augments(d);
+        //Roo.docs.augments.el.dom.innerHTML = Roo.docs.template.augments(d);
         
         
         Roo.docs.configTableContainer.hide();
