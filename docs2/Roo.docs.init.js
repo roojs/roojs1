@@ -219,6 +219,8 @@ Roo.docs.init = {
             return;
         }
         e.stopPropagation();
+        var link = e.href.split('#')[1];
+        this.loadDoc(link);
         
     }
     
