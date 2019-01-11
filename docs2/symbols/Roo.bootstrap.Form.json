@@ -1141,9 +1141,11 @@
     {
       "name" : "*actionfailed",
       "desc" : "Fires when an action fails.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1157,15 +1159,16 @@
           "desc" : "The action that failed",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*actioncomplete",
       "desc" : "Fires when an action is completed.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1179,15 +1182,16 @@
           "desc" : "The action that completed",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforeaction",
       "desc" : "Fires before any action is performed. Return false to cancel the action.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1201,15 +1205,16 @@
           "desc" : "The action to be performed",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*clientvalidation",
       "desc" : "If the monitorValid config option is true, this event fires repetitively to notify of valid state",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1223,15 +1228,16 @@
           "desc" : "true if the form has passed client-side validation",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*childrenrendered",
       "desc" : "Fires when the children have been rendered..",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.bootstrap.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1239,15 +1245,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforerender",
       "desc" : "Fires before the component is rendered. Return false to stop the render.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1255,15 +1262,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*disable",
       "desc" : "Fires after the component is disabled.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1271,15 +1279,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*render",
       "desc" : "Fires after the component is rendered.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1287,15 +1296,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*destroy",
       "desc" : "Fires after the component is destroyed.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1303,15 +1313,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*hide",
       "desc" : "Fires after the component is hidden.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1319,15 +1330,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforehide",
       "desc" : "Fires before the component is hidden. Return false to stop the hide.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1335,15 +1347,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*show",
       "desc" : "Fires after the component is shown.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1351,15 +1364,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforeshow",
       "desc" : "Fires before the component is shown.  Return false to stop the show.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1367,15 +1381,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*enable",
       "desc" : "Fires after the component is enabled.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1383,15 +1398,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforedestroy",
       "desc" : "Fires before the component is destroyed. Return false to stop the destroy.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1399,8 +1415,7 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     }
   ]
 }

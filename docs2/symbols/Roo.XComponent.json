@@ -493,9 +493,11 @@
     {
       "name" : "*built",
       "desc" : "Fires when this the componnt is built",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "c",
@@ -503,8 +505,7 @@
           "desc" : "the component",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     }
   ]
 }

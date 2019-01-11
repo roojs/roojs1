@@ -589,9 +589,11 @@
     {
       "name" : "*paneladded",
       "desc" : "Fires when a panel is added.",
-      "static" : true,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -605,15 +607,16 @@
           "desc" : "The panel",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*invalidated",
       "desc" : "Fires when the layout for this region is changed.",
-      "static" : true,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -621,15 +624,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*expanded",
       "desc" : "Fires when this region is expanded.",
-      "static" : true,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -637,15 +641,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforeremove",
       "desc" : "Fires before a panel is removed (or closed). To cancel the removal set \"e.cancel = true\" on the event argument.",
-      "static" : true,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -665,15 +670,16 @@
           "desc" : "The cancel event object",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*collapsed",
       "desc" : "Fires when this region is collapsed.",
-      "static" : true,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -681,15 +687,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*panelremoved",
       "desc" : "Fires when a panel is removed.",
-      "static" : true,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -703,15 +710,16 @@
           "desc" : "The panel",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforecollapse",
       "desc" : "Fires when this region before collapse.",
-      "static" : true,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -719,15 +727,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*slidehide",
       "desc" : "Fires when this region slides out of view.",
-      "static" : true,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -735,15 +744,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*visibilitychange",
       "desc" : "Fires when this region is shown or hidden",
-      "static" : true,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -757,15 +767,16 @@
           "desc" : "true or false",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*slideshow",
       "desc" : "Fires when this region is slid into view.",
-      "static" : true,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -773,15 +784,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*panelactivated",
       "desc" : "Fires when a panel is activated.",
-      "static" : true,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -795,15 +807,16 @@
           "desc" : "The activated panel",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*resized",
       "desc" : "Fires when the user resizes this region.",
-      "static" : true,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -817,8 +830,7 @@
           "desc" : "The new size (width for east/west, height for north/south)",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     }
   ]
 }

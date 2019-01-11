@@ -1146,9 +1146,11 @@
     {
       "name" : "*remove",
       "desc" : "Fires when an item is removed from the collection.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "o",
@@ -1162,15 +1164,16 @@
           "desc" : "(optional) The key associated with the removed item.",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*add",
       "desc" : "Fires when an item is added to the collection.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "index",
@@ -1190,15 +1193,16 @@
           "desc" : "The key associated with the added item.",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*replace",
       "desc" : "Fires when an item is replaced in the collection.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "key",
@@ -1218,18 +1222,18 @@
           "desc" : "The new item.",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*clear",
       "desc" : "Fires when the collection is cleared.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
-      ],
-      "returns" : ""
+      ]
     }
   ]
 }

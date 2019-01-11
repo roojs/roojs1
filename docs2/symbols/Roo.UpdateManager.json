@@ -666,9 +666,11 @@
     {
       "name" : "*update",
       "desc" : "Fired after successful update is made.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "el",
@@ -682,15 +684,16 @@
           "desc" : "The response Object",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforeupdate",
       "desc" : "Fired before an update is made, return false from your handler and the update is cancelled.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "el",
@@ -710,15 +713,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*failure",
       "desc" : "Fired on update failure.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "el",
@@ -732,8 +736,7 @@
           "desc" : "The response Object",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     }
   ]
 }

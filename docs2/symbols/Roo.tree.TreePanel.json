@@ -785,9 +785,11 @@
     {
       "name" : "*dblclick",
       "desc" : "Fires when a node is double clicked",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "node",
@@ -801,15 +803,16 @@
           "desc" : "The event object",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*contextmenu",
       "desc" : "Fires when a node is right clicked",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "node",
@@ -823,15 +826,16 @@
           "desc" : "The event object",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforeclick",
       "desc" : "Fires before click processing on a node. Return false to cancel the default action.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "node",
@@ -845,15 +849,16 @@
           "desc" : "The event object",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*checkchange",
       "desc" : "Fires when a node with a checkbox's checked property changes",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -867,15 +872,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*nodedragover",
       "desc" : "Fires when a tree node is being targeted for a drag drop, return false to signal drop not allowed. The dragOverEvent\npassed to handlers has the following properties:<br />\n<ul style=\"padding:5px;padding-left:16px;\">\n<li>tree - The TreePanel</li>\n<li>target - The node being targeted for the drop</li>\n<li>data - The drag data from the drag source</li>\n<li>point - The point of the drop - append, above or below</li>\n<li>source - The drag source</li>\n<li>rawEvent - Raw mouse event</li>\n<li>dropNode - Drop node(s) provided by the source.</li>\n<li>cancel - Set this to true to signal drop not allowed.</li>\n</ul>",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "dragOverEvent",
@@ -883,15 +889,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforeexpand",
       "desc" : "Fires before a node is expanded, return false to cancel.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "node",
@@ -911,15 +918,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*collapse",
       "desc" : "Fires when a node is collapsed",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "node",
@@ -927,15 +935,16 @@
           "desc" : "The node",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforenodedrop",
       "desc" : "Fires when a DD object is dropped on a node in this tree for preprocessing. Return false to cancel the drop. The dropEvent\npassed to handlers has the following properties:<br />\n<ul style=\"padding:5px;padding-left:16px;\">\n<li>tree - The TreePanel</li>\n<li>target - The node being targeted for the drop</li>\n<li>data - The drag data from the drag source</li>\n<li>point - The point of the drop - append, above or below</li>\n<li>source - The drag source</li>\n<li>rawEvent - Raw mouse event</li>\n<li>dropNode - Drop node(s) provided by the source <b>OR</b> you can supply node(s)\nto be inserted by setting them on this object.</li>\n<li>cancel - Set this to true to cancel the drop.</li>\n</ul>",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "dropEvent",
@@ -943,15 +952,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforechildrenrendered",
       "desc" : "Fires right before the child nodes for a node are rendered",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "node",
@@ -959,15 +969,16 @@
           "desc" : "The node",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*textchange",
       "desc" : "Fires when the text for a node is changed",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "node",
@@ -987,15 +998,16 @@
           "desc" : "The old text",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*load",
       "desc" : "Fires when a node is loaded",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "node",
@@ -1003,15 +1015,16 @@
           "desc" : "The node that was loaded",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*startdrag",
       "desc" : "Fires when a node starts being dragged",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1031,15 +1044,16 @@
           "desc" : "The raw browser event",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*click",
       "desc" : "Fires when a node is clicked",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "node",
@@ -1053,15 +1067,16 @@
           "desc" : "The event object",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*expand",
       "desc" : "Fires when a node is expanded",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "node",
@@ -1069,15 +1084,16 @@
           "desc" : "The node",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*enddrag",
       "desc" : "Fires when a drag operation is complete",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1097,15 +1113,16 @@
           "desc" : "The raw browser event",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*nodedrop",
       "desc" : "Fires after a DD object is dropped on a node in this tree. The dropEvent\npassed to handlers has the following properties:<br />\n<ul style=\"padding:5px;padding-left:16px;\">\n<li>tree - The TreePanel</li>\n<li>target - The node being targeted for the drop</li>\n<li>data - The drag data from the drag source</li>\n<li>point - The point of the drop - append, above or below</li>\n<li>source - The drag source</li>\n<li>rawEvent - Raw mouse event</li>\n<li>dropNode - Dropped node(s).</li>\n</ul>",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "dropEvent",
@@ -1113,15 +1130,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*dragdrop",
       "desc" : "Fires when a dragged node is dropped on a valid DD target",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1147,15 +1165,16 @@
           "desc" : "The raw browser event",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforecollapse",
       "desc" : "Fires before a node is collapsed, return false to cancel.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "node",
@@ -1175,15 +1194,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*disabledchange",
       "desc" : "Fires when the disabled status of a node changes",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "node",
@@ -1197,15 +1217,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforeload",
       "desc" : "Fires before a node is loaded, return false to cancel",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "node",
@@ -1213,15 +1234,16 @@
           "desc" : "The node being loaded",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*append",
       "desc" : "Fires when a new child node is appended to a node in this tree.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.data.Tree",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "tree",
@@ -1247,15 +1269,16 @@
           "desc" : "The index of the newly appended node",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforemove",
       "desc" : "Fires before a node is moved to a new location in the tree. Return false to cancel the move.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.data.Tree",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "tree",
@@ -1287,15 +1310,16 @@
           "desc" : "The index it is being moved to",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*insert",
       "desc" : "Fires when a new child node is inserted in a node in this tree.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.data.Tree",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "tree",
@@ -1321,15 +1345,16 @@
           "desc" : "The child node the node was inserted before",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforeappend",
       "desc" : "Fires before a new child is appended to a node in this tree, return false to cancel the append.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.data.Tree",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "tree",
@@ -1349,15 +1374,16 @@
           "desc" : "The child node to be appended",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*move",
       "desc" : "Fires when a node is moved to a new location in the tree",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.data.Tree",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "tree",
@@ -1389,15 +1415,16 @@
           "desc" : "The index it was moved to",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforeremove",
       "desc" : "Fires before a child is removed from a node in this tree, return false to cancel the remove.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.data.Tree",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "tree",
@@ -1417,15 +1444,16 @@
           "desc" : "The child node to be removed",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*remove",
       "desc" : "Fires when a child node is removed from a node in this tree.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.data.Tree",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "tree",
@@ -1445,15 +1473,16 @@
           "desc" : "The child node removed",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforeinsert",
       "desc" : "Fires before a new child is inserted in a node in this tree, return false to cancel the insert.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.data.Tree",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "tree",
@@ -1479,8 +1508,7 @@
           "desc" : "The child node the node is being inserted before",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     }
   ]
 }

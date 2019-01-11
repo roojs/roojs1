@@ -1363,9 +1363,11 @@
     {
       "name" : "*rendered",
       "desc" : "Fires when the form is rendered",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "form",
@@ -1373,15 +1375,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*clientvalidation",
       "desc" : "If the monitorValid config option is true, this event fires repetitively to notify of valid state",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1395,15 +1398,16 @@
           "desc" : "true if the form has passed client-side validation",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforeaction",
       "desc" : "Fires before any action is performed. Return false to cancel the action.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.form.BasicForm",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1417,15 +1421,16 @@
           "desc" : "The action to be performed",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*actioncomplete",
       "desc" : "Fires when an action is completed.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.form.BasicForm",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1439,15 +1444,16 @@
           "desc" : "The action that completed",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*actionfailed",
       "desc" : "Fires when an action fails.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.form.BasicForm",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1461,8 +1467,7 @@
           "desc" : "The action that failed",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     }
   ]
 }

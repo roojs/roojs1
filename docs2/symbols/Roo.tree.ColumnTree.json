@@ -27,9 +27,11 @@
     {
       "name" : "*resize",
       "desc" : "Fire this event on a container when it resizes",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "w",
@@ -43,8 +45,7 @@
           "desc" : "Height",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     }
   ]
 }

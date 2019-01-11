@@ -1052,9 +1052,11 @@
     {
       "name" : "*loadexception",
       "desc" : "Fires when loading fails.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1068,15 +1070,16 @@
           "desc" : "The raw Connect response object",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*load",
       "desc" : "Fires when data is loaded.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1096,15 +1099,16 @@
           "desc" : "The raw Connect response object",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforerender",
       "desc" : "Fires before rendering of the downloaded JSON data.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1118,15 +1122,16 @@
           "desc" : "The JSON data loaded",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*dblclick",
       "desc" : "Fires when a template node is double clicked.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.View",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1152,15 +1157,16 @@
           "desc" : "The raw event object",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*preparedata",
       "desc" : "Fires on every row to render, to allow you to change the data.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.View",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1174,15 +1180,16 @@
           "desc" : "to be rendered (change this)",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*selectionchange",
       "desc" : "Fires when the selected nodes change.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.View",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1196,15 +1203,16 @@
           "desc" : "Array of the selected nodes",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforeselect",
       "desc" : "Fires before a selection is made. If any handlers return false, the selection is cancelled.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.View",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1224,15 +1232,16 @@
           "desc" : "Array of currently selected nodes",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforeclick",
       "desc" : "Fires before a click is processed. Returns false to cancel the default action.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.View",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1258,15 +1267,16 @@
           "desc" : "The raw event object",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*click",
       "desc" : "Fires when a template node is clicked.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.View",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1292,15 +1302,16 @@
           "desc" : "The raw event object",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*contextmenu",
       "desc" : "Fires when a template node is right clicked.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.View",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1326,8 +1337,7 @@
           "desc" : "The raw event object",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     }
   ]
 }

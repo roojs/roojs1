@@ -467,9 +467,11 @@
     {
       "name" : "*requestcomplete",
       "desc" : "Fires if the request was successfully completed.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "conn",
@@ -489,15 +491,16 @@
           "desc" : "The options config object passed to the {@link #request} method.",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforerequest",
       "desc" : "Fires before a network request is made to retrieve a data object.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "conn",
@@ -511,15 +514,16 @@
           "desc" : "The options config object passed to the {@link #request} method.",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*requestexception",
       "desc" : "Fires if an error HTTP status was returned from the server.\nSee {@link http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html} for details of HTTP status codes.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "conn",
@@ -539,8 +543,7 @@
           "desc" : "The options config object passed to the {@link #request} method.",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     }
   ]
 }

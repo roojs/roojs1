@@ -186,9 +186,11 @@
     {
       "name" : "*statechange",
       "desc" : "Fires when a state change occurs.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.state.Provider",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -208,8 +210,7 @@
           "desc" : "The encoded value for the state",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     }
   ]
 }

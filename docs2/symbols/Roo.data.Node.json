@@ -924,9 +924,11 @@
     {
       "name" : "*beforeappend",
       "desc" : "Fires before a new child is appended, return false to cancel the append.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "tree",
@@ -946,15 +948,16 @@
           "desc" : "The child node to be appended",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*move",
       "desc" : "Fires when this node is moved to a new location in the tree",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "tree",
@@ -986,15 +989,16 @@
           "desc" : "The index it was moved to",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*append",
       "desc" : "Fires when a new child node is appended",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "tree",
@@ -1020,15 +1024,16 @@
           "desc" : "The index of the newly appended node",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforeremove",
       "desc" : "Fires before a child is removed, return false to cancel the remove.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "tree",
@@ -1048,15 +1053,16 @@
           "desc" : "The child node to be removed",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*remove",
       "desc" : "Fires when a child node is removed",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "tree",
@@ -1076,15 +1082,16 @@
           "desc" : "The removed node",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforeinsert",
       "desc" : "Fires before a new child is inserted, return false to cancel the insert.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "tree",
@@ -1110,15 +1117,16 @@
           "desc" : "The child node the node is being inserted before",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*insert",
       "desc" : "Fires when a new child node is inserted.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "tree",
@@ -1144,15 +1152,16 @@
           "desc" : "The child node the node was inserted before",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforemove",
       "desc" : "Fires before this node is moved to a new location in the tree. Return false to cancel the move.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "tree",
@@ -1184,8 +1193,7 @@
           "desc" : "The index it is being moved to",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     }
   ]
 }

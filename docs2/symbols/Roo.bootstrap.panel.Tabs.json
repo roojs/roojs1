@@ -736,9 +736,11 @@
     {
       "name" : "*tabchange",
       "desc" : "Fires when the active tab changes",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -752,15 +754,16 @@
           "desc" : "The new active tab",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforetabchange",
       "desc" : "Fires before the active tab changes, set cancel to true on the \"e\" parameter to cancel the change",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -780,8 +783,7 @@
           "desc" : "The tab being changed to",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     }
   ]
 }

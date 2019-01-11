@@ -522,9 +522,11 @@
     {
       "name" : "*beforeeditnext",
       "desc" : "Fires before the next editable sell is made active\nYou can use this to skip to another cell or fire the tabend\n   if you set cell to false",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "eventdata",
@@ -532,15 +534,16 @@
           "desc" : "object : { cell : [ row, col ] }",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*cellselect",
       "desc" : "Fires when a cell is selected.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -560,15 +563,16 @@
           "desc" : "The selected cell index",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*tabend",
       "desc" : "Fires when the tab (or enter) was pressed on the last editable cell\nYou can use this to trigger add new row.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -576,15 +580,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*selectionchange",
       "desc" : "Fires when the active selection changes.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -598,15 +603,16 @@
           "desc" : "null for no selection or an object (o) with two properties\n\t        <ul>\n\t        <li>o.record: the record object for the row the selection is in</li>\n\t        <li>o.cell: An array of [rowIndex, columnIndex]</li>\n\t        </ul>",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforerowselect",
       "desc" : "Fires before a cell is selected.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -626,8 +632,7 @@
           "desc" : "The selected cell index",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     }
   ]
 }

@@ -741,9 +741,11 @@
     {
       "name" : "*layout",
       "desc" : "Fires when a layout is performed.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.LayoutManager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -751,15 +753,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*regionexpanded",
       "desc" : "Fires when a region is expanded.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.LayoutManager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "region",
@@ -767,15 +770,16 @@
           "desc" : "The expanded region",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*regionresized",
       "desc" : "Fires when the user resizes a region.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.LayoutManager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "region",
@@ -789,15 +793,16 @@
           "desc" : "The new size (width for east/west, height for north/south)",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*regioncollapsed",
       "desc" : "Fires when a region is collapsed.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.LayoutManager",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "region",
@@ -805,8 +810,7 @@
           "desc" : "The collapsed region",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     }
   ]
 }

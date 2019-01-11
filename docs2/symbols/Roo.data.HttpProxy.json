@@ -137,9 +137,11 @@
     {
       "name" : "*load",
       "desc" : "Fires before the load method's callback is called.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.data.DataProxy",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "This",
@@ -159,15 +161,16 @@
           "desc" : "The callback argument object passed to the load function.",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforeload",
       "desc" : "Fires before a network request is made to retrieve a data object.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.data.DataProxy",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "This",
@@ -181,15 +184,16 @@
           "desc" : "The params parameter to the load function.",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*loadexception",
       "desc" : "Fires if an Exception occurs during data retrieval.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.data.DataProxy",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "This",
@@ -215,8 +219,7 @@
           "desc" : "The Exception.",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     }
   ]
 }

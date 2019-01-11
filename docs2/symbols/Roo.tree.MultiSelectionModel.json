@@ -462,9 +462,11 @@
     {
       "name" : "*selectionchange",
       "desc" : "Fires when the selected nodes change",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -478,8 +480,7 @@
           "desc" : "Array of the selected nodes",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     }
   ]
 }

@@ -743,9 +743,11 @@
     {
       "name" : "*select",
       "desc" : "",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "picker",
@@ -759,15 +761,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*mouseover",
       "desc" : "Fires when the mouse is hovering over this menu",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.menu.Menu",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -787,15 +790,16 @@
           "desc" : "The menu item that was clicked",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*mouseout",
       "desc" : "Fires when the mouse exits this menu",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.menu.Menu",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -815,15 +819,16 @@
           "desc" : "The menu item that was clicked",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforehide",
       "desc" : "Fires before this menu is hidden",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.menu.Menu",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -831,15 +836,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*itemclick",
       "desc" : "Fires when a menu item contained in this menu is clicked",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.menu.Menu",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "baseItem",
@@ -853,15 +859,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforeshow",
       "desc" : "Fires before this menu is displayed",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.menu.Menu",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -869,15 +876,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*hide",
       "desc" : "Fires after this menu is hidden",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.menu.Menu",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -885,15 +893,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*click",
       "desc" : "Fires when this menu is clicked (or when the enter key is pressed while it is active)",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.menu.Menu",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -913,15 +922,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*show",
       "desc" : "Fires after this menu is displayed",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.menu.Menu",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -929,8 +939,7 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     }
   ]
 }

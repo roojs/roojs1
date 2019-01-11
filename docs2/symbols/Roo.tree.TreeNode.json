@@ -1346,9 +1346,11 @@
     {
       "name" : "*beforecollapse",
       "desc" : "Fires before this node is collapsed, return false to cancel.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1368,15 +1370,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*dblclick",
       "desc" : "Fires when this node is double clicked",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1390,15 +1393,16 @@
           "desc" : "The event object",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*disabledchange",
       "desc" : "Fires when the disabled status of this node changes",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1412,15 +1416,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforechildrenrendered",
       "desc" : "Fires right before the child nodes for this node are rendered",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1428,15 +1433,16 @@
           "desc" : "This node",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforeclick",
       "desc" : "Fires before click processing. Return false to cancel the default action.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1450,15 +1456,16 @@
           "desc" : "The event object",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*checkchange",
       "desc" : "Fires when a node with a checkbox's checked property changes",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1472,15 +1479,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*collapse",
       "desc" : "Fires when this node is collapsed",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1488,15 +1496,16 @@
           "desc" : "This node",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*textchange",
       "desc" : "Fires when the text for this node is changed",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1516,15 +1525,16 @@
           "desc" : "The old text",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforeexpand",
       "desc" : "Fires before this node is expanded, return false to cancel.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1544,15 +1554,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*click",
       "desc" : "Fires when this node is clicked",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1566,15 +1577,16 @@
           "desc" : "The event object",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*contextmenu",
       "desc" : "Fires when this node is right clicked",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1588,15 +1600,16 @@
           "desc" : "The event object",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*expand",
       "desc" : "Fires when this node is expanded",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1604,15 +1617,16 @@
           "desc" : "This node",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforeappend",
       "desc" : "Fires before a new child is appended, return false to cancel the append.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.data.Node",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "tree",
@@ -1632,15 +1646,16 @@
           "desc" : "The child node to be appended",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*move",
       "desc" : "Fires when this node is moved to a new location in the tree",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.data.Node",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "tree",
@@ -1672,15 +1687,16 @@
           "desc" : "The index it was moved to",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*append",
       "desc" : "Fires when a new child node is appended",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.data.Node",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "tree",
@@ -1706,15 +1722,16 @@
           "desc" : "The index of the newly appended node",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforeremove",
       "desc" : "Fires before a child is removed, return false to cancel the remove.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.data.Node",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "tree",
@@ -1734,15 +1751,16 @@
           "desc" : "The child node to be removed",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*remove",
       "desc" : "Fires when a child node is removed",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.data.Node",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "tree",
@@ -1762,15 +1780,16 @@
           "desc" : "The removed node",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforeinsert",
       "desc" : "Fires before a new child is inserted, return false to cancel the insert.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.data.Node",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "tree",
@@ -1796,15 +1815,16 @@
           "desc" : "The child node the node is being inserted before",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*insert",
       "desc" : "Fires when a new child node is inserted.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.data.Node",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "tree",
@@ -1830,15 +1850,16 @@
           "desc" : "The child node the node was inserted before",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforemove",
       "desc" : "Fires before this node is moved to a new location in the tree. Return false to cancel the move.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.data.Node",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "tree",
@@ -1870,8 +1891,7 @@
           "desc" : "The index it is being moved to",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     }
   ]
 }

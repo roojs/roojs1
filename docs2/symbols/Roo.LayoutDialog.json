@@ -1265,9 +1265,11 @@
     {
       "name" : "*move",
       "desc" : "Fires when this dialog is moved by the user.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1287,15 +1289,16 @@
           "desc" : "The new page Y",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*resize",
       "desc" : "Fires when this dialog is resized by the user.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1315,15 +1318,16 @@
           "desc" : "The new height",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforehide",
       "desc" : "Fires before this dialog is hidden.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1331,15 +1335,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforeshow",
       "desc" : "Fires before this dialog is shown.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1347,15 +1352,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*hide",
       "desc" : "Fires when this dialog is hidden.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1363,15 +1369,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*show",
       "desc" : "Fires when this dialog is shown.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1379,15 +1386,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*keydown",
       "desc" : "Fires when a key is pressed",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -1401,8 +1409,7 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     }
   ]
 }

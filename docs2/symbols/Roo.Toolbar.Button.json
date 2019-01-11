@@ -784,9 +784,11 @@
     {
       "name" : "*render",
       "desc" : "Fires when the button is rendered",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.Button",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -794,15 +796,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*click",
       "desc" : "Fires when this button is clicked",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.Button",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -816,15 +819,16 @@
           "desc" : "The click event",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*mouseover",
       "desc" : "Fires when the mouse hovers over the button",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.Button",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -838,15 +842,16 @@
           "desc" : "The event object",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*toggle",
       "desc" : "Fires when the \"pressed\" state of this button changes (only if enableToggle = true)",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.Button",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -860,15 +865,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*mouseout",
       "desc" : "Fires when the mouse exits the button",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.Button",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -882,8 +888,7 @@
           "desc" : "The event object",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     }
   ]
 }

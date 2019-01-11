@@ -494,9 +494,11 @@
     {
       "name" : "*selectionchange",
       "desc" : "Fires when the selected node changes",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -510,15 +512,16 @@
           "desc" : "the new selection",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforeselect",
       "desc" : "Fires before the selected node changes, return false to cancel the change",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -538,8 +541,7 @@
           "desc" : "the old selection",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     }
   ]
 }

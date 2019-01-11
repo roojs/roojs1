@@ -159,9 +159,11 @@
     {
       "name" : "*render",
       "desc" : "Fires when the button is rendered",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.Toolbar.Item",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -169,8 +171,7 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     }
   ]
 }

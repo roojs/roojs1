@@ -2100,9 +2100,11 @@
     {
       "name" : "*add",
       "desc" : "Fires when the 'add' icon is pressed (add a listener to enable add button)",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.form.ComboBox",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "combo",
@@ -2110,15 +2112,16 @@
           "desc" : "This combo box",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*expand",
       "desc" : "Fires when the dropdown list is expanded",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.form.ComboBox",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "combo",
@@ -2126,15 +2129,16 @@
           "desc" : "This combo box",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*collapse",
       "desc" : "Fires when the dropdown list is collapsed",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.form.ComboBox",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "combo",
@@ -2142,15 +2146,16 @@
           "desc" : "This combo box",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*select",
       "desc" : "Fires when a list item is selected",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.form.ComboBox",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "combo",
@@ -2170,15 +2175,16 @@
           "desc" : "The index of the selected item in the dropdown list",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*edit",
       "desc" : "Fires when the 'edit' icon is pressed (add a listener to enable add button)",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.form.ComboBox",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "combo",
@@ -2192,15 +2198,16 @@
           "desc" : "The data record returned from the underlying store (or false on nothing selected)",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforequery",
       "desc" : "Fires before all queries are processed. Return false to cancel the query or set cancel to true.\nThe event object passed has these properties:",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.form.ComboBox",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "combo",
@@ -2232,15 +2239,16 @@
           "desc" : "The query event object",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforeselect",
       "desc" : "Fires before a list item is selected. Return false to cancel the selection.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.form.ComboBox",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "combo",
@@ -2260,15 +2268,16 @@
           "desc" : "The index of the selected item in the dropdown list",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*autosize",
       "desc" : "Fires when the autosize function is triggered.  The field may or may not have actually changed size\naccording to the default logic, but this event provides a hook for the developer to apply additional\nlogic at runtime to resize the field if needed.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.form.TextField",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -2282,15 +2291,16 @@
           "desc" : "The new field width",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*blur",
       "desc" : "Fires when this field loses input focus.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.form.Field",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -2298,15 +2308,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*valid",
       "desc" : "Fires after the field has been validated with no errors.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.form.Field",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -2314,15 +2325,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*specialkey",
       "desc" : "Fires when any key related to navigation (arrows, tab, enter, esc, etc.) is pressed.  You can check\n{@link Roo.EventObject#getKey} to determine which key was pressed.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.form.Field",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -2336,15 +2348,16 @@
           "desc" : "The event object",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*focus",
       "desc" : "Fires when this field receives input focus.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.form.Field",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -2352,15 +2365,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*keyup",
       "desc" : "Fires after the key up",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.form.Field",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -2374,15 +2388,16 @@
           "desc" : "The event Object",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*invalid",
       "desc" : "Fires after the field has been marked as invalid.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.form.Field",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -2396,15 +2411,16 @@
           "desc" : "The validation message",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*change",
       "desc" : "Fires just before the field blurs if the field value has changed.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.form.Field",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -2424,15 +2440,16 @@
           "desc" : "The original value",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*move",
       "desc" : "Fires after the component is moved.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.BoxComponent",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -2452,15 +2469,16 @@
           "desc" : "The new y position",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*resize",
       "desc" : "Fires after the component is resized.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.BoxComponent",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -2492,15 +2510,16 @@
           "desc" : "The height that was originally specified",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforerender",
       "desc" : "Fires before the component is rendered. Return false to stop the render.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -2508,15 +2527,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*disable",
       "desc" : "Fires after the component is disabled.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -2524,15 +2544,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*render",
       "desc" : "Fires after the component is rendered.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -2540,15 +2561,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*destroy",
       "desc" : "Fires after the component is destroyed.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -2556,15 +2578,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*hide",
       "desc" : "Fires after the component is hidden.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -2572,15 +2595,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforehide",
       "desc" : "Fires before the component is hidden. Return false to stop the hide.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -2588,15 +2612,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*show",
       "desc" : "Fires after the component is shown.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -2604,15 +2629,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforeshow",
       "desc" : "Fires before the component is shown.  Return false to stop the show.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -2620,15 +2646,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*enable",
       "desc" : "Fires after the component is enabled.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -2636,15 +2663,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*beforedestroy",
       "desc" : "Fires before the component is destroyed. Return false to stop the destroy.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -2652,8 +2680,7 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     }
   ]
 }

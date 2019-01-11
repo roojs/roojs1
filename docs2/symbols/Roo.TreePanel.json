@@ -793,9 +793,11 @@
     {
       "name" : "*deactivate",
       "desc" : "Fires when this panel is activated.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.ContentPanel",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -803,15 +805,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*resize",
       "desc" : "Fires when this panel is resized if fitToFrame is true.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.ContentPanel",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -831,15 +834,16 @@
           "desc" : "The height after any component adjustments",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*render",
       "desc" : "Fires when this tab is created",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.ContentPanel",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -847,15 +851,16 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     },
     {
       "name" : "*activate",
       "desc" : "Fires when this panel is activated.",
-      "static" : false,
-      "constructor" : false,
       "memberOf" : "Roo.ContentPanel",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
       "params" : [
         {
           "name" : "this",
@@ -863,8 +868,7 @@
           "desc" : "",
           "isOptional" : false
         }
-      ],
-      "returns" : ""
+      ]
     }
   ]
 }
