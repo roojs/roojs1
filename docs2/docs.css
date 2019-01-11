@@ -968,13 +968,16 @@ td.attributes, .fixedFont
     display: block;
     float:left;
 }
-
+.detailList dt {
+    clear: both;
+}
 .detailList .heading
 {
     font-weight: bold;
     padding-bottom: 6px;
     margin-left: 0;
     display: block;
+    clear:none;
     
 }
 .long pre, .description pre {
