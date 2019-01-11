@@ -672,7 +672,7 @@ Roo.docs = new Roo.XComponent({
            },
           rowclass : function (_self, rowcfg)
            {
-                 rc = rowcfg.record.json.memberOf == Roo.docs.init.currentClass ? 'doc-added-member '  : '';
+                 rc = rowcfg.record.json.memberOf == Roo.docs.init.currentClass ? 'doc-added-member '  : 'doc-not-member';
                  rowcfg.rowClass = rc + (rowcfg.record.json.expanded ? 'expanded' : '');
            },
           rowclick : function (_self, el, rowIndex, e)
