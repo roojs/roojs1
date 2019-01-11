@@ -483,8 +483,7 @@ Roo.docs = new Roo.XComponent({
            },
           rowclick : function (_self, el, rowIndex, e)
            {
-               if (e.target.className != 'fixedFont') {
-                   
+               if (e.target.className != 'fixedFont' && e.parentNode.className != 'fixedFont') {
                    return false;
                }
                
