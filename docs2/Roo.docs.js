@@ -583,7 +583,10 @@ Roo.docs = new Roo.XComponent({
            },
           rowclick : function (_self, el, rowIndex, e)
            {
-               var r = this.store.getAt(rowIndex);
+                 if (e.target.className != 'fixedFont' && e.target.parentNode.className != 'fixedFont') {
+                   return false;
+               }
+                var r = this.store.getAt(rowIndex);
                r.json.expanded = !r.json.expanded ;
                this.refreshRow(r);
            }

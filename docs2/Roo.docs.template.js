@@ -93,14 +93,14 @@ Roo.docs.template  = {
                 if (member.isPrivate) output += "&lt;private&gt; ";
                 if (member.isInner) output += "&lt;inner&gt; ";
                 if (member.isStatic || member.singleton.length) { //|| data.comment.getTag("instanceOf").length) {
-                        output +=  member.alias + ".";	
+                        output +=  member.memberOf + ".";	
                 }
         }
         output += '</span><b class="itemname">' + member.name + '</b>';
 				
         output += this.makeSignature(member.params);
         if (member.returns.length) {
-            output += ': <a href="#' + member.returns + '">' + member.returns + '</a>';
+            output += ': ' + this.linkSymbol(member.returns );
         }
 					/*<for each="item" in="member.returns">
 						<if test="$item_i > 0"> or </if>
@@ -118,7 +118,7 @@ Roo.docs.template  = {
         }
 	output +='<div class="long">';
         if (!member.isConstructor) {
-            output+= this.resolveLinks(member.desc) +'</div>';
+            output+= this.resolveLinks(member.desc) ;
             if (member.example.length) {
                 output +'<pre class="code">'+member.example+'</pre>';
             }
@@ -130,11 +130,11 @@ Roo.docs.template  = {
         
      
             output+= '<dl class="detailList"> <dt class="heading">Parameters:</dt>';
-            for(var pi in member.params) {
+            for(var  i = 0; i <  member.params.length ; i++) {
                 var item = member.params[i];
                     output += '<dt>' +
                        ( item.type.length ?
-                            '<span class="fixedFont"><a href="#' + item.type + '>'+item.type+'</a></span> ' :
+                            '<span class="fixedFont">' + this.linkSymbol(item.type) + '</span> ' :
                             ""
                         )+  '<b>'+item.name+'</b>';
                     if (item.isOptional) {
@@ -173,7 +173,7 @@ Roo.docs.template  = {
                 */
         if (member.returns.length) {
             output += '<dl class="detailList"><dt class="heading">Returns:</dt>' +
-                    '<dd><a href="#' + member.returns + '">' + member.returns + '</a></dd></dl>';
+                    '<dd>' + this.linkSymbol( member.returns) + '</dd></dl>';
         }
         /*
                 <if test="member.returns.length">
@@ -197,7 +197,7 @@ Roo.docs.template  = {
         */
         if (member.see.length) {
             output+= '<dl class="detailList"><dt class="heading">See:</dt><dt>' +
-                        '<dd><a href="#' + member.see+ '">' + member.see+ '</a></dd></dl>';
+                        '<dd>' + this.linkSymbol( member.see ) +'</dd></dl>';
         }
         output +='</div></div>';
         return output;
@@ -267,16 +267,16 @@ Roo.docs.template  = {
         );
         */
         str = str.replace(/\n/gi, '<br/>');
-         
+        var linkSymbol = this.linkSymbol;
         str = str.replace(/\{@link ([^} ]+) ?\}/gi,
             function(match, symbolName) {
-                return this.linkSymbol(symbolName);
+                return linkSymbol(symbolName);
             }
         );
          
         return str;
     },
-    summarize : function(str)
+    summarize : function(desc)
     {
         if (typeof desc != "undefined") {
             return desc.match(/([\w\W]+?\.)[^a-z0-9]/i)? RegExp.$1 : desc;
@@ -285,6 +285,6 @@ Roo.docs.template  = {
     },
     linkSymbol : function(str)
     {
-        return '<a href="#' + str + '>' + str + '</a>';
+        return '<a href="#' + str + '">' + str + '</a>';
     }
 }
