@@ -102,10 +102,9 @@ Roo.docs.template  = {
         if (member.returns.length) {
             output += ': ';
 		for(var i = 0;i< member.returns.length;i++) {
-			
-			output += i > 0 : ' or ' : '';
-			this.linkSymbol(item.type);
-			
+		    output += i > 0 : ' or ' : '';
+		    this.linkSymbol(item.type);
+		}
         }
 					/*<for each="item" in="member.returns">
 						<if test="$item_i > 0"> or </if>
