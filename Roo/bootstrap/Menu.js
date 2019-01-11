@@ -238,7 +238,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     isVisible : function(){
         return !this.hidden;
     },
-     onMouseOut : function(e){
+    onMouseOut : function(e){
         var t  = this.findTargetItem(e);
         
         //if(t ){
