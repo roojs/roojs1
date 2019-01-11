@@ -1,0 +1,91 @@
+{
+ "name" : "Roo.docs.ViewSource",
+ "parent" : "",
+ "title" : "",
+ "path" : "/home/alan/gitlive/roojs1/docs2/Roo.docs.ViewSource.bjs",
+ "permname" : "",
+ "modOrder" : "001",
+ "strings" : {
+  "eab9dc0ccdb8cffda2c74258fc433437" : "Please scroll through and read the full document in order to agree the statement",
+  "d41d8cd98f00b204e9800998ecf8427e" : "",
+  "c4408d335012a56ff58937d78050efad" : "Accept",
+  "c3eb5c3b9018d75cb7032deb99fe43e9" : "I understand",
+  "39535fa9d04b1337c8394b684ccec7bb" : "I agree",
+  "8ae4424e3e8d151789d3bdb669c20e6b" : "<i class='lnr lnr-download'></i> Download"
+ },
+ "named_strings" : {
+  "accept_terms_dialog_BTN_UDS" : "c3eb5c3b9018d75cb7032deb99fe43e9",
+  "accept_terms_dialog_SCROLL_AGREE" : "eab9dc0ccdb8cffda2c74258fc433437",
+  "accept_terms_dialog_title" : "d41d8cd98f00b204e9800998ecf8427e",
+  "accept_terms_dialog_BTN_AGREE" : "39535fa9d04b1337c8394b684ccec7bb"
+ },
+ "items" : [
+  {
+   "listeners" : {
+    "show" : "function (_self)\n{\n    if(_this.data.buttonText){\n        _this.acceptBtn.setText(_this.data.buttonText);\n    }\n    \n    if(_this.data.titleType) {\n        _this.dialog.titleEl.dom.innerHTML = this['_'+_this.data.titleType];\n    }\n    \n    if(_this.data.btnType) {\n        _this.acceptBtn.setText(this['_'+_this.data.btnType]);\n        _this.acceptBtn['_'+_this.data.btnType] = this['_'+_this.data.btnType];\n    }\n    \n    if(_this.data.cls){\n        _this.dialog.el.addClass(_this.data.cls);\n    }\n    \n    if(_this.data.declaration){\n        \n        Roo.Ajax.request({\n            url : baseURL + '/Roo/DeclarationsRender/' + _this.data.declaration,\n            method : 'GET',\n            mask : 'Loading...',\n            success : function(res) {\n                \n                _this.terms_body.el.dom.innerHTML = res.responseText;\n                \n                _this.dialog.init();\n                \n                (function() {\n                    _this.dialog.resize();\n                }).defer(10);\n            }\n        });\n        \n    }\n    \n    if(_this.data.nickname){\n        \n        new Pman.Request({\n            url: baseURL + '/Roo/Coba_declarations.php',\n            method : 'GET',\n            mask : 'Loading...',\n            params : {\n                _nickname : _this.data.nickname\n            },\n            success : function(res) {\n                \n                if(typeof(_this.data.title) == 'undefined') {\n                    \n                    _this.dialog.titleEl.dom.innerHTML = res.data.title;\n                }\n                \n                _this.terms_body.el.dom.innerHTML = res.data.content;\n                \n                _this.dialog.init();\n                \n                (function() {\n                    _this.dialog.resize();\n                }).defer(10);\n            }\n        });\n        \n    }\n    \n    if(_this.data.title){\n        _this.dialog.titleEl.dom.innerHTML = _this.data.title;\n    }\n    \n    _this.download_btn.hide();\n    \n    if(_this.data.allow_download) {\n        \n        _this.download_btn.show();\n    }\n    \n    _this.dialog.el.setStyle('zIndex', '10002');\n    \n}"
+   },
+   "String cls" : "accept-dialog enable-modal-body-overflow",
+   "string _BTN_UDS" : "I understand",
+   "| function onScroll" : "function() \n{ \n    var scrollHeight = _this.dialog.bodyEl.dom.scrollHeight;\n    \n    var scrollTop = Math.ceil(_this.dialog.bodyEl.getScroll().top); // prevent zoom browser\n    \n    /*\n    * Container height is 480px, however we need to give some leeway for handling the zoom level issue..\n    * 50px is leeway\n    */\n    \n    if(scrollHeight - _this.dialog.bodyEl.getHeight() - 50 > scrollTop){\n        return;\n    }\n    \n    _this.acceptBtn.enableIt();\n    \n}",
+   "string _SCROLL_AGREE" : "Please scroll through and read the full document in order to agree the statement",
+   "string fit_content" : true,
+   "xtype" : "Modal",
+   "int max_width" : 900,
+   "$ xns" : "Roo.bootstrap",
+   "| function init" : "function() \n{ \n    _this.dialog.bodyEl.scrollTo('top');\n    \n    _this.acceptBtn.enableIt();\n    \n    if(\n        typeof(_this.data.disableScrolling) != 'undefined' &&\n        _this.data.disableScrolling == 1\n    ){\n        return;\n    }\n    \n    var scrollHeight = _this.dialog.bodyEl.dom.scrollHeight;\n    \n    /*\n    * 50px is leeway\n    */\n    \n    if(scrollHeight <= _this.dialog.bodyEl.getHeight() + 50){\n        return;\n    }\n    \n    _this.acceptBtn.disableIt();\n    \n    _this.dialog.bodyEl.on('scroll', this.onScroll, this);\n    \n     (function() {\n       this.onScroll();  \n    }).defer(100,this);\n    \n}",
+   "String title" : "",
+   "string _BTN_AGREE" : "I agree",
+   "string name" : "accept_terms_dialog",
+   "items" : [
+    {
+     "xtype" : "Container",
+     "$ xns" : "Roo.bootstrap",
+     "String style" : "width: 100%;",
+     "items" : [
+      {
+       "xtype" : "Row",
+       "$ xns" : "Roo.bootstrap",
+       "items" : [
+        {
+         "listeners" : {
+          "render" : "function (_self)\n{\n    _this.terms_body = this;\n}"
+         },
+         "Number md" : 12,
+         "String cls" : "document-body-ctn",
+         "xtype" : "Column",
+         "$ xns" : "Roo.bootstrap"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "listeners" : {
+      "render" : "function (_self)\n{\n    _this.acceptBtn = this;\n    \n}\n",
+      "click" : "function (_self, e)\n{\n    _this.dialog.hide();\n\n    if(_this.callback){\n        _this.callback.call(_this);\n    }\n    \n}\n"
+     },
+     "| function disableIt" : "function() \n{ \n    this.setText('Scroll to end before agree');\n    this.disable();\n}",
+     "String cls" : "coba-agree-btn",
+     "xtype" : "Button",
+     "$ xns" : "Roo.bootstrap",
+     "String html" : "Accept",
+     "string weight" : "primary",
+     "* prop" : "buttons[]",
+     "| function enableIt" : "function() \n{\n    this.setText('Agree');\n    \n    if(_this.data.buttonText){\n        this.setText(_this.data.buttonText);\n    }\n    \n    if(_this.data.btnType) {\n        this.setText(this['_'+_this.data.btnType]);\n    }\n    \n    this.enable();\n}"
+    },
+    {
+     "listeners" : {
+      "render" : "function (_self)\n{\n    _this.download_btn = this;\n}",
+      "click" : "function (_self, e)\n{\n    window.open(baseURL+'/Download/Popup/'+_this.data.declaration);\n}\n"
+     },
+     "String cls" : "coba-download-btn",
+     "String weight" : "default",
+     "xtype" : "Button",
+     "$ xns" : "Roo.bootstrap",
+     "String html" : "<i class='lnr lnr-download'></i> Download",
+     "* prop" : "buttons[]"
+    }
+   ]
+  }
+ ]
+}
