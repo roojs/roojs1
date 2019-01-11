@@ -163,7 +163,10 @@ Roo.docs.init = {
             method : 'GET',
             success : function(res, o)
             {
-                Roo.docs.ViewSource.show({ source : res.responseText});
+                Roo.docs.ViewSource.show({
+                        source : res.responseText,
+                        fname : this.currentClass.replace(/\./g,'/') + ".js"
+                });
                 
             },
             scope : this
