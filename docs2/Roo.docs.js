@@ -644,6 +644,12 @@ Roo.docs = new Roo.XComponent({
        expanded : false,
        header : _this._strings['87f9f735a1d36793ceaecd4e47124b63'] /* Events */,
        panel : 'info',
+       listeners : {
+        render : function (_self)
+         {
+             _this.eventsTableContainer   = this;
+         }
+       },
        xns : Roo.bootstrap,
        '|xns' : 'Roo.bootstrap',
        items  : [

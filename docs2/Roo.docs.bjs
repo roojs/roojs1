@@ -344,6 +344,9 @@
        ]
       },
       {
+       "listeners" : {
+        "render" : "function (_self)\n{\n    _this.eventsTableContainer   = this;\n}"
+       },
        "String header" : "Events",
        "Boolean expanded" : false,
        "String cls" : "doc-table-container",
