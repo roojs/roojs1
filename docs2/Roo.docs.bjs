@@ -211,6 +211,7 @@
             "render" : "function (_self)\n{\n    _this.augments  = this;\n}"
            },
            "String header" : "Inheritance tree",
+           "String cls" : "doc-augments",
            "xtype" : "Container",
            "String panel" : "success",
            "$ xns" : "Roo.bootstrap"
