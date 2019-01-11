@@ -50,7 +50,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "onDocumentReady",
@@ -84,7 +85,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "onTextResize",
@@ -118,7 +120,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "on",
@@ -164,7 +167,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "removeResizeListener",
@@ -192,7 +196,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "onWindowResize",
@@ -226,7 +231,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "wrap",
@@ -260,7 +266,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Function"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Function",
+          "desc" : "The wrapped function"
+        }
+      ]
     },
     {
       "name" : "removeListener",
@@ -294,7 +306,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if a listener was actually removed"
+        }
+      ]
     }
   ],
   "events" : [

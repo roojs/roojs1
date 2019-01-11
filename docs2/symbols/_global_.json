@@ -20,7 +20,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "Renderer",
@@ -36,7 +37,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "InlineLexer",
@@ -52,7 +54,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "marked",
@@ -68,7 +71,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "Lexer",
@@ -84,7 +88,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "Parser",
@@ -100,7 +105,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     }
   ],
   "events" : [

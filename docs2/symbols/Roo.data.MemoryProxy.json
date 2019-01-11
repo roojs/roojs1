@@ -50,7 +50,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     }
   ],
   "events" : [

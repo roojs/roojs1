@@ -29,7 +29,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "getEl",
@@ -45,7 +51,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "hasPanel",
@@ -67,7 +79,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "getActivePanel",
@@ -83,7 +101,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.ContentPanel"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.ContentPanel",
+          "desc" : "The active panel or null"
+        }
+      ]
     },
     {
       "name" : "resizeTo",
@@ -105,7 +129,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "showPanel",
@@ -127,7 +152,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.ContentPanel"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.ContentPanel",
+          "desc" : "The shown panel or null"
+        }
+      ]
     },
     {
       "name" : "getPosition",
@@ -143,7 +174,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "add",
@@ -165,7 +202,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.ContentPanel"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.ContentPanel",
+          "desc" : "The panel added (if only one was added)"
+        }
+      ]
     },
     {
       "name" : "remove",
@@ -193,7 +236,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.ContentPanel"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.ContentPanel",
+          "desc" : "The panel that was removed"
+        }
+      ]
     },
     {
       "name" : "getPanel",
@@ -215,7 +264,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.ContentPanel"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.ContentPanel",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "purgeListeners",
@@ -231,7 +286,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "on",
@@ -271,7 +327,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "un",
@@ -305,7 +362,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addEvents",
@@ -327,7 +385,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "releaseCapture",
@@ -349,7 +408,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "removeListener",
@@ -383,7 +443,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "fireEvent",
@@ -411,7 +472,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "returns false if any of the handlers return false otherwise it returns true"
+        }
+      ]
     },
     {
       "name" : "hasListener",
@@ -433,7 +500,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if the event is being listened for, else false"
+        }
+      ]
     },
     {
       "name" : "capture",
@@ -467,7 +540,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addListener",
@@ -507,7 +581,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     }
   ],
   "events" : [

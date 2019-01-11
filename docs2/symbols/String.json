@@ -26,7 +26,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The escaped string"
+        }
+      ]
     },
     {
       "name" : "leftPad",
@@ -60,7 +66,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The padded string"
+        }
+      ]
     },
     {
       "name" : "toggle",
@@ -88,7 +100,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The new value"
+        }
+      ]
     },
     {
       "name" : "format",
@@ -122,7 +140,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The formatted string"
+        }
+      ]
     },
     {
       "name" : "unicodeClean",
@@ -138,7 +162,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The clean string"
+        }
+      ]
     }
   ],
   "events" : [

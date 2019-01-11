@@ -256,7 +256,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "showPanel",
@@ -278,7 +279,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.ContentPanel"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.ContentPanel",
+          "desc" : "The shown panel, or null if a panel could not be found from panelId"
+        }
+      ]
     },
     {
       "name" : "add",
@@ -300,7 +307,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.ContentPanel"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.ContentPanel",
+          "desc" : "The panel added (if only one was added; null otherwise)"
+        }
+      ]
     },
     {
       "name" : "animateCollapse",
@@ -322,7 +335,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "animateExpand",
@@ -350,7 +364,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "remove",
@@ -378,7 +393,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.ContentPanel"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.ContentPanel",
+          "desc" : "The panel that was removed"
+        }
+      ]
     },
     {
       "name" : "hide",
@@ -394,7 +415,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "show",
@@ -410,7 +432,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getBox",
@@ -432,7 +455,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "hidePanel",
@@ -454,7 +478,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getActivePanel",
@@ -470,7 +495,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.ContentPanel"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.ContentPanel",
+          "desc" : "The active panel or null"
+        }
+      ]
     },
     {
       "name" : "getEl",
@@ -486,7 +517,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "getTabs",
@@ -502,7 +539,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.TabPanel"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.TabPanel",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "isVisible",
@@ -518,7 +561,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "getPanel",
@@ -540,7 +589,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.ContentPanel"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.ContentPanel",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "hasPanel",
@@ -562,7 +617,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "resizeTo",
@@ -584,7 +645,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getPosition",
@@ -600,7 +662,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "purgeListeners",
@@ -616,7 +684,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "on",
@@ -656,7 +725,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "un",
@@ -690,7 +760,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addEvents",
@@ -712,7 +783,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "releaseCapture",
@@ -734,7 +806,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "removeListener",
@@ -768,7 +841,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "fireEvent",
@@ -796,7 +870,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "returns false if any of the handlers return false otherwise it returns true"
+        }
+      ]
     },
     {
       "name" : "hasListener",
@@ -818,7 +898,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if the event is being listened for, else false"
+        }
+      ]
     },
     {
       "name" : "capture",
@@ -852,7 +938,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addListener",
@@ -892,7 +979,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     }
   ],
   "events" : [

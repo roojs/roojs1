@@ -26,7 +26,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "boolean",
+          "desc" : "true if this element is a DragDrop item,\nfalse otherwise"
+        }
+      ]
     },
     {
       "name" : "getRelated",
@@ -54,7 +60,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "DragDrop[]"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "DragDrop[]",
+          "desc" : "the related instances"
+        }
+      ]
     },
     {
       "name" : "getScrollLeft",
@@ -70,7 +82,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "int"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "int",
+          "desc" : "the document's scrollTop"
+        }
+      ]
     },
     {
       "name" : "regDragDrop",
@@ -98,7 +116,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "handleWasClicked",
@@ -120,7 +139,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "refreshCache",
@@ -142,7 +162,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getCss",
@@ -164,7 +185,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "The style property of the element"
+        }
+      ]
     },
     {
       "name" : "swapNode",
@@ -192,7 +219,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "stopEvent",
@@ -214,7 +242,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "lock",
@@ -230,7 +259,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "moveToEl",
@@ -258,7 +288,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "unlock",
@@ -274,7 +305,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getDDById",
@@ -296,7 +328,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "DragDrop"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "DragDrop",
+          "desc" : "the drag drop object, null if it is not found"
+        }
+      ]
     },
     {
       "name" : "isLegalTarget",
@@ -324,7 +362,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "boolean",
+          "desc" : "true if the target is a legal target for the\ndd obj"
+        }
+      ]
     },
     {
       "name" : "isTypeOfDD",
@@ -346,7 +390,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "boolean",
+          "desc" : "true if typeof oDD = DragDrop"
+        }
+      ]
     },
     {
       "name" : "startDrag",
@@ -374,7 +424,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getStyle",
@@ -402,7 +453,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "string"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "string",
+          "desc" : "The value of the style property"
+        }
+      ]
     },
     {
       "name" : "getPosX",
@@ -424,7 +481,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "int"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "int",
+          "desc" : "the X coordinate"
+        }
+      ]
     },
     {
       "name" : "getPosY",
@@ -446,7 +509,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "int"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "int",
+          "desc" : "the Y coordinate"
+        }
+      ]
     },
     {
       "name" : "isLocked",
@@ -462,7 +531,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "boolean",
+          "desc" : "True if drag and drop is locked, false otherwise."
+        }
+      ]
     },
     {
       "name" : "getBestMatch",
@@ -484,7 +559,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "DragDrop"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "DragDrop",
+          "desc" : "The best single match"
+        }
+      ]
     },
     {
       "name" : "getLocation",
@@ -506,7 +587,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.lib.Region"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.lib.Region",
+          "desc" : "a Region object representing the total area\n                            the element occupies, including any padding\n                            the instance is configured for."
+        }
+      ]
     },
     {
       "name" : "isHandle",
@@ -528,7 +615,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "boolean",
+          "desc" : "true if this element is a DragDrop handle, false\notherwise"
+        }
+      ]
     },
     {
       "name" : "getScrollTop",
@@ -544,7 +637,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "int"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "int",
+          "desc" : "the document's scrollTop"
+        }
+      ]
     },
     {
       "name" : "numericSort",
@@ -560,7 +659,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "regHandle",
@@ -588,7 +688,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getElement",
@@ -610,7 +711,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "The element"
+        }
+      ]
     },
     {
       "name" : "verifyEl",
@@ -632,7 +739,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "boolean",
+          "desc" : "true if the element looks usable"
+        }
+      ]
     }
   ],
   "events" : [

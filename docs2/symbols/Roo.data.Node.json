@@ -57,7 +57,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "removeChild",
@@ -79,7 +80,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Node"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Node",
+          "desc" : "The removed node"
+        }
+      ]
     },
     {
       "name" : "isAncestor",
@@ -101,7 +108,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "contains",
@@ -123,7 +136,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "cascade",
@@ -157,7 +176,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getDepth",
@@ -173,7 +193,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "getPath",
@@ -195,7 +221,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The path"
+        }
+      ]
     },
     {
       "name" : "indexOf",
@@ -217,7 +249,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "The index of the node or -1 if it was not found"
+        }
+      ]
     },
     {
       "name" : "isFirst",
@@ -233,7 +271,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "isLast",
@@ -249,7 +293,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "isLeaf",
@@ -265,7 +315,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "insertBefore",
@@ -293,7 +349,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Node"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Node",
+          "desc" : "The inserted node"
+        }
+      ]
     },
     {
       "name" : "item",
@@ -315,7 +377,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Node"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Node",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "getOwnerTree",
@@ -331,7 +399,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Tree"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Tree",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "appendChild",
@@ -353,7 +427,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Node"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Node",
+          "desc" : "The appended node if single append, or null if an array was passed"
+        }
+      ]
     },
     {
       "name" : "findChildBy",
@@ -381,7 +461,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Node"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Node",
+          "desc" : "The found child or null if none was found"
+        }
+      ]
     },
     {
       "name" : "replaceChild",
@@ -409,7 +495,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Node"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Node",
+          "desc" : "The replaced node"
+        }
+      ]
     },
     {
       "name" : "bubble",
@@ -443,7 +535,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "eachChild",
@@ -477,7 +570,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "findChild",
@@ -505,7 +599,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Node"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Node",
+          "desc" : "The found child or null if none was found"
+        }
+      ]
     },
     {
       "name" : "purgeListeners",
@@ -521,7 +621,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "on",
@@ -561,7 +662,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "un",
@@ -595,7 +697,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addEvents",
@@ -617,7 +720,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "releaseCapture",
@@ -639,7 +743,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "removeListener",
@@ -673,7 +778,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "fireEvent",
@@ -701,7 +807,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "returns false if any of the handlers return false otherwise it returns true"
+        }
+      ]
     },
     {
       "name" : "hasListener",
@@ -723,7 +835,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if the event is being listened for, else false"
+        }
+      ]
     },
     {
       "name" : "capture",
@@ -757,7 +875,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addListener",
@@ -797,7 +916,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     }
   ],
   "events" : [

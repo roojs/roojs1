@@ -26,7 +26,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "handle The custom handle data"
+        }
+      ]
     },
     {
       "name" : "getTargetFromEvent",
@@ -48,7 +54,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "data The custom data"
+        }
+      ]
     },
     {
       "name" : "register",
@@ -76,7 +88,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "unregister",
@@ -98,7 +111,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getHandle",
@@ -120,7 +134,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "handle The custom handle data"
+        }
+      ]
     },
     {
       "name" : "getTarget",
@@ -142,7 +162,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "data The custom data"
+        }
+      ]
     }
   ],
   "events" : [

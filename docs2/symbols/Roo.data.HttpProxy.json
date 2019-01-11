@@ -77,7 +77,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Connection"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Connection",
+          "desc" : "The Connection object. This object may be used to subscribe to events on\na finer-grained basis than the DataProxy events."
+        }
+      ]
     },
     {
       "name" : "load",
@@ -123,7 +129,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     }
   ],
   "events" : [

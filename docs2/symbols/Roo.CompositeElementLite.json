@@ -33,7 +33,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "CompositeElement"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "CompositeElement",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "item",
@@ -55,7 +61,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "add",
@@ -77,7 +89,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "CompositeElement"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "CompositeElement",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "contains",
@@ -93,7 +111,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "",
+          "desc" : "Boolean"
+        }
+      ]
     },
     {
       "name" : "replaceElement",
@@ -127,7 +151,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "CompositeElement"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "CompositeElement",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "fill",
@@ -149,7 +179,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "CompositeElement"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "CompositeElement",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "clear",
@@ -165,7 +201,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "filter",
@@ -193,7 +230,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "CompositeElement"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "CompositeElement",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "last",
@@ -209,7 +252,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "removeElement",
@@ -237,7 +286,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "CompositeElement"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "CompositeElement",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "indexOf",
@@ -253,7 +308,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "",
+          "desc" : "Boolean"
+        }
+      ]
     },
     {
       "name" : "getCount",
@@ -269,7 +330,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "",
+          "desc" : "Number"
+        }
+      ]
     },
     {
       "name" : "first",
@@ -285,7 +352,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : ""
+        }
+      ]
     }
   ],
   "events" : [

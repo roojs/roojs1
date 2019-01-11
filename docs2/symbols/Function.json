@@ -38,7 +38,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Function"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Function",
+          "desc" : "The new function"
+        }
+      ]
     },
     {
       "name" : "defer",
@@ -78,7 +84,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "The timeout id that can be used with clearTimeout"
+        }
+      ]
     },
     {
       "name" : "createSequence",
@@ -106,7 +118,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Function"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Function",
+          "desc" : "The new function"
+        }
+      ]
     },
     {
       "name" : "createInterceptor",
@@ -134,7 +152,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Function"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Function",
+          "desc" : "The new function"
+        }
+      ]
     },
     {
       "name" : "createCallback",
@@ -150,7 +174,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Function"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Function",
+          "desc" : "The new function"
+        }
+      ]
     }
   ],
   "events" : [

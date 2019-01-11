@@ -99,7 +99,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "BasicForm"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "BasicForm",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "loadRecord",
@@ -121,7 +127,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "BasicForm"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "BasicForm",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "load",
@@ -143,7 +155,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "BasicForm"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "BasicForm",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "doAction",
@@ -171,7 +189,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "BasicForm"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "BasicForm",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "getValues",
@@ -193,7 +217,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "resetHasChanged",
@@ -209,7 +239,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "",
+          "desc" : "Boolean"
+        }
+      ]
     },
     {
       "name" : "clearInvalid",
@@ -225,7 +261,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "BasicForm"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "BasicForm",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "isDirty",
@@ -241,7 +283,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "",
+          "desc" : "Boolean"
+        }
+      ]
     },
     {
       "name" : "updateRecord",
@@ -263,7 +311,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "BasicForm"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "BasicForm",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "hasChanged",
@@ -279,7 +333,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "",
+          "desc" : "Boolean"
+        }
+      ]
     },
     {
       "name" : "applyToFields",
@@ -301,7 +361,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "BasicForm"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "BasicForm",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "getFieldValues",
@@ -317,7 +383,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "submit",
@@ -339,7 +411,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "BasicForm"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "BasicForm",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "markInvalid",
@@ -361,7 +439,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "BasicForm"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "BasicForm",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "setValues",
@@ -383,7 +467,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "BasicForm"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "BasicForm",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "isValid",
@@ -399,7 +489,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "",
+          "desc" : "Boolean"
+        }
+      ]
     },
     {
       "name" : "render",
@@ -415,7 +511,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "BasicForm"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "BasicForm",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "add",
@@ -449,7 +551,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "BasicForm"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "BasicForm",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "applyIfToFields",
@@ -471,7 +579,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "BasicForm"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "BasicForm",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "findField",
@@ -493,7 +607,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "",
+          "desc" : "Field"
+        }
+      ]
     },
     {
       "name" : "reset",
@@ -509,7 +629,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "BasicForm"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "BasicForm",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "addForm",
@@ -531,7 +657,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "purgeListeners",
@@ -547,7 +674,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "on",
@@ -587,7 +715,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "un",
@@ -621,7 +750,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addEvents",
@@ -643,7 +773,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "releaseCapture",
@@ -665,7 +796,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "removeListener",
@@ -699,7 +831,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "fireEvent",
@@ -727,7 +860,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "returns false if any of the handlers return false otherwise it returns true"
+        }
+      ]
     },
     {
       "name" : "hasListener",
@@ -749,7 +888,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if the event is being listened for, else false"
+        }
+      ]
     },
     {
       "name" : "capture",
@@ -783,7 +928,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addListener",
@@ -823,7 +969,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     }
   ],
   "events" : [

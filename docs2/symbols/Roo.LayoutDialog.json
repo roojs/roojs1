@@ -254,7 +254,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "xdata xtype object data."
+        }
+      ]
     },
     {
       "name" : "getLayout",
@@ -270,7 +276,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.BorderLayout"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BorderLayout",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "endUpdate",
@@ -286,7 +298,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "beginUpdate",
@@ -302,7 +315,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "expand",
@@ -318,7 +332,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "alignTo",
@@ -352,7 +367,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.BasicDialog"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "setTitle",
@@ -374,7 +395,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.BasicDialog"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "isVisible",
@@ -390,7 +417,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "resizeTo",
@@ -418,7 +451,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.BasicDialog"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "center",
@@ -434,7 +473,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.BasicDialog"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "collapse",
@@ -450,7 +495,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "initTabs",
@@ -466,7 +512,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.TabPanel"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.TabPanel",
+          "desc" : "The tabs component"
+        }
+      ]
     },
     {
       "name" : "toFront",
@@ -482,7 +534,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.BasicDialog"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "moveTo",
@@ -510,7 +568,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.BasicDialog"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "hide",
@@ -532,7 +596,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.BasicDialog"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "destroy",
@@ -554,7 +624,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "show",
@@ -576,7 +647,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.BasicDialog"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "anchorTo",
@@ -616,7 +693,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.BasicDialog"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "addButton",
@@ -650,7 +733,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Button"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Button",
+          "desc" : "The new button"
+        }
+      ]
     },
     {
       "name" : "addKeyListener",
@@ -684,7 +773,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.BasicDialog"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "focus",
@@ -700,7 +795,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getTabs",
@@ -716,7 +812,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.TabPanel"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.TabPanel",
+          "desc" : "The tabs component"
+        }
+      ]
     },
     {
       "name" : "setDefaultButton",
@@ -738,7 +840,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.BasicDialog"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "toBack",
@@ -754,7 +862,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.BasicDialog"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "setContentSize",
@@ -782,7 +896,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.BasicDialog"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "restoreState",
@@ -798,7 +918,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.BasicDialog"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "getEl",
@@ -814,7 +940,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "The underlying dialog Element"
+        }
+      ]
     },
     {
       "name" : "purgeListeners",
@@ -830,7 +962,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "on",
@@ -870,7 +1003,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "un",
@@ -904,7 +1038,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addEvents",
@@ -926,7 +1061,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "releaseCapture",
@@ -948,7 +1084,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "removeListener",
@@ -982,7 +1119,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "fireEvent",
@@ -1010,7 +1148,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "returns false if any of the handlers return false otherwise it returns true"
+        }
+      ]
     },
     {
       "name" : "hasListener",
@@ -1032,7 +1176,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if the event is being listened for, else false"
+        }
+      ]
     },
     {
       "name" : "capture",
@@ -1066,7 +1216,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addListener",
@@ -1106,7 +1257,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     }
   ],
   "events" : [

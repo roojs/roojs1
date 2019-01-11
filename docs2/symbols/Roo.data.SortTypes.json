@@ -26,7 +26,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Float"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Float",
+          "desc" : "The comparison value"
+        }
+      ]
     },
     {
       "name" : "asUCString",
@@ -48,7 +54,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The comparison value"
+        }
+      ]
     },
     {
       "name" : "asDate",
@@ -70,7 +82,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "The comparison value"
+        }
+      ]
     },
     {
       "name" : "asUCText",
@@ -92,7 +110,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The comparison value"
+        }
+      ]
     },
     {
       "name" : "asInt",
@@ -114,7 +138,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "The comparison value"
+        }
+      ]
     },
     {
       "name" : "asText",
@@ -136,7 +166,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The comparison value"
+        }
+      ]
     },
     {
       "name" : "none",
@@ -158,7 +194,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Mixed"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Mixed",
+          "desc" : "The comparison value"
+        }
+      ]
     }
   ],
   "events" : [

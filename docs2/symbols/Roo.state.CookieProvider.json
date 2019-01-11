@@ -59,7 +59,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "decodeValue",
@@ -81,7 +82,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Mixed"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Mixed",
+          "desc" : "The decoded value"
+        }
+      ]
     },
     {
       "name" : "get",
@@ -109,7 +116,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Mixed"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Mixed",
+          "desc" : "The state data"
+        }
+      ]
     },
     {
       "name" : "set",
@@ -137,7 +150,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "encodeValue",
@@ -159,7 +173,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The encoded value"
+        }
+      ]
     }
   ],
   "events" : [

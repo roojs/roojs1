@@ -26,7 +26,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Record"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Record",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "commit",
@@ -42,7 +48,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "get",
@@ -64,7 +71,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "The value of the field."
+        }
+      ]
     },
     {
       "name" : "set",
@@ -92,7 +105,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "reject",
@@ -108,7 +122,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "create",
@@ -130,7 +145,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     }
   ],
   "events" : [

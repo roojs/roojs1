@@ -35,7 +35,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "The item removed."
+        }
+      ]
     },
     {
       "name" : "get",
@@ -57,7 +63,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "The item associated with the passed key."
+        }
+      ]
     },
     {
       "name" : "itemAt",
@@ -79,7 +91,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "each",
@@ -107,7 +125,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "insert",
@@ -141,7 +160,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "The item inserted."
+        }
+      ]
     },
     {
       "name" : "getCount",
@@ -157,7 +182,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "the number of items in the collection."
+        }
+      ]
     },
     {
       "name" : "clear",
@@ -173,7 +204,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "keySort",
@@ -201,7 +233,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "indexOf",
@@ -223,7 +256,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "index of the item."
+        }
+      ]
     },
     {
       "name" : "clone",
@@ -239,7 +278,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "MixedCollection"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "MixedCollection",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "containsKey",
@@ -261,7 +306,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if the collection contains the Object as a key."
+        }
+      ]
     },
     {
       "name" : "getKey",
@@ -283,7 +334,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "The key for the passed item."
+        }
+      ]
     },
     {
       "name" : "find",
@@ -311,7 +368,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "The first item in the collection which returned true from the selection function."
+        }
+      ]
     },
     {
       "name" : "getRange",
@@ -339,7 +402,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Array"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Array",
+          "desc" : "An array of items"
+        }
+      ]
     },
     {
       "name" : "eachKey",
@@ -367,7 +436,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "indexOfKey",
@@ -389,7 +459,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "index of the key."
+        }
+      ]
     },
     {
       "name" : "contains",
@@ -411,7 +487,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if the collection contains the Object as an item."
+        }
+      ]
     },
     {
       "name" : "addAll",
@@ -433,7 +515,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "key",
@@ -455,7 +538,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "The item associated with the passed key."
+        }
+      ]
     },
     {
       "name" : "item",
@@ -477,7 +566,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "The item associated with the passed key."
+        }
+      ]
     },
     {
       "name" : "filterBy",
@@ -505,7 +600,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "MixedCollection"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "MixedCollection",
+          "desc" : "The new filtered collection"
+        }
+      ]
     },
     {
       "name" : "add",
@@ -533,7 +634,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "The item added."
+        }
+      ]
     },
     {
       "name" : "removeAt",
@@ -555,7 +662,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "removeKey",
@@ -577,7 +685,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "filter",
@@ -605,7 +714,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "MixedCollection"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "MixedCollection",
+          "desc" : "The new filtered collection"
+        }
+      ]
     },
     {
       "name" : "last",
@@ -621,7 +736,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "the last item in the collection.."
+        }
+      ]
     },
     {
       "name" : "replace",
@@ -649,7 +770,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "The new item."
+        }
+      ]
     },
     {
       "name" : "first",
@@ -665,7 +792,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "the first item in the collection.."
+        }
+      ]
     },
     {
       "name" : "sort",
@@ -693,7 +826,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "purgeListeners",
@@ -709,7 +843,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "on",
@@ -749,7 +884,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "un",
@@ -783,7 +919,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addEvents",
@@ -805,7 +942,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "releaseCapture",
@@ -827,7 +965,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "removeListener",
@@ -861,7 +1000,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "fireEvent",
@@ -889,7 +1029,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "returns false if any of the handlers return false otherwise it returns true"
+        }
+      ]
     },
     {
       "name" : "hasListener",
@@ -911,7 +1057,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if the event is being listened for, else false"
+        }
+      ]
     },
     {
       "name" : "capture",
@@ -945,7 +1097,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addListener",
@@ -985,7 +1138,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     }
   ],
   "events" : [

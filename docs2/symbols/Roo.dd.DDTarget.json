@@ -36,7 +36,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "init",
@@ -70,7 +71,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "removeInvalidHandleType",
@@ -92,7 +94,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "unreg",
@@ -108,7 +111,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addInvalidHandleType",
@@ -130,7 +134,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "onDragDrop",
@@ -158,7 +163,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "removeInvalidHandleId",
@@ -180,7 +186,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "onAvailable",
@@ -196,7 +203,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "setOuterHandleElId",
@@ -218,7 +226,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "onMouseUp",
@@ -240,7 +249,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getDragEl",
@@ -256,7 +266,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "HTMLElement"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "HTMLElement",
+          "desc" : "the html element"
+        }
+      ]
     },
     {
       "name" : "setYConstraint",
@@ -290,7 +306,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "clearConstraints",
@@ -306,7 +323,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "onInvalidDrop",
@@ -328,7 +346,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addInvalidHandleId",
@@ -350,7 +369,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "removeInvalidHandleClass",
@@ -372,7 +392,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "onDragOut",
@@ -400,7 +421,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "setDragElId",
@@ -422,7 +444,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "endDrag",
@@ -444,7 +467,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getEl",
@@ -460,7 +484,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "HTMLElement"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "HTMLElement",
+          "desc" : "the html element"
+        }
+      ]
     },
     {
       "name" : "onDrag",
@@ -482,7 +512,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "onDragEnter",
@@ -510,7 +541,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "lock",
@@ -526,7 +558,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "onMouseDown",
@@ -548,7 +581,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "applyConfig",
@@ -564,7 +598,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "unlock",
@@ -580,7 +615,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "isTarget",
@@ -596,7 +632,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "setInitPosition",
@@ -624,7 +661,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "initTarget",
@@ -658,7 +696,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addToGroup",
@@ -680,7 +719,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "onDragOver",
@@ -708,7 +748,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "toString",
@@ -724,7 +765,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "string"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "string",
+          "desc" : "string representation of the dd obj"
+        }
+      ]
     },
     {
       "name" : "setPadding",
@@ -764,7 +811,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "removeFromGroup",
@@ -786,7 +834,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addInvalidHandleClass",
@@ -808,7 +857,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "startDrag",
@@ -836,7 +886,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "padding",
@@ -852,7 +903,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "resetConstraints",
@@ -874,7 +926,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "clearTicks",
@@ -890,7 +943,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "isLocked",
@@ -906,7 +960,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "boolean",
+          "desc" : "true if this obj or all drag/drop is locked, else\nfalse"
+        }
+      ]
     },
     {
       "name" : "setXConstraint",
@@ -940,7 +1000,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "isValidHandleChild",
@@ -962,7 +1023,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "boolean",
+          "desc" : "true if this is a valid tag type, false if not"
+        }
+      ]
     },
     {
       "name" : "purgeListeners",
@@ -978,7 +1045,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "on",
@@ -1018,7 +1086,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "un",
@@ -1052,7 +1121,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addEvents",
@@ -1074,7 +1144,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "releaseCapture",
@@ -1096,7 +1167,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "removeListener",
@@ -1130,7 +1202,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "fireEvent",
@@ -1158,7 +1231,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "returns false if any of the handlers return false otherwise it returns true"
+        }
+      ]
     },
     {
       "name" : "hasListener",
@@ -1180,7 +1259,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if the event is being listened for, else false"
+        }
+      ]
     },
     {
       "name" : "capture",
@@ -1214,7 +1299,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addListener",
@@ -1254,7 +1340,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     }
   ],
   "events" : [

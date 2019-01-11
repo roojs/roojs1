@@ -59,7 +59,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "records A data block which is used by an {@link Roo.data.Store} as\na cache of Roo.data.Records."
+        }
+      ]
     },
     {
       "name" : "readRecords",
@@ -81,7 +87,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "records A data block which is used by an {@link Roo.data.Store} as\na cache of Roo.data.Records."
+        }
+      ]
     },
     {
       "name" : "newRow",
@@ -103,7 +115,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.data.Record"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.data.Record",
+          "desc" : "record created."
+        }
+      ]
     }
   ],
   "events" : [

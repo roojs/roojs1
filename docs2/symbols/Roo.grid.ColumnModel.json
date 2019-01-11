@@ -185,7 +185,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "isHidden",
@@ -207,7 +208,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "setColumnHeader",
@@ -235,7 +242,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getColumnCount",
@@ -251,7 +259,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "getColumnHeader",
@@ -273,7 +287,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "getRenderer",
@@ -295,7 +315,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Function"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Function",
+          "desc" : "The function used to render the cell. See {@link #setRenderer}."
+        }
+      ]
     },
     {
       "name" : "getColumnTooltip",
@@ -317,7 +343,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "setColumnWidth",
@@ -345,7 +377,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "setDataIndex",
@@ -373,7 +406,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "isCellEditable",
@@ -401,7 +435,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "getColumnsBy",
@@ -429,7 +469,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Array"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Array",
+          "desc" : "result"
+        }
+      ]
     },
     {
       "name" : "getColumnWidth",
@@ -451,7 +497,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "isFixed",
@@ -467,7 +519,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getCellEditor",
@@ -495,7 +548,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "getColumnId",
@@ -517,7 +576,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "the id"
+        }
+      ]
     },
     {
       "name" : "getDataIndex",
@@ -539,7 +604,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "isResizable",
@@ -555,7 +626,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "setColumnTooltip",
@@ -583,7 +660,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "setHidden",
@@ -611,7 +689,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "setEditable",
@@ -639,7 +718,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getColumnById",
@@ -661,7 +741,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "the column"
+        }
+      ]
     },
     {
       "name" : "getColumnByDataIndex",
@@ -683,7 +769,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object|Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object|Boolean",
+          "desc" : "the column or false if not found"
+        }
+      ]
     },
     {
       "name" : "setEditor",
@@ -711,7 +803,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "findColumnIndex",
@@ -733,7 +826,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "the index, or -1 if not found"
+        }
+      ]
     },
     {
       "name" : "isSortable",
@@ -755,7 +854,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "getIndexById",
@@ -777,7 +882,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "the index, or -1 if not found"
+        }
+      ]
     },
     {
       "name" : "getTotalWidth",
@@ -799,7 +910,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "purgeListeners",
@@ -815,7 +932,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "on",
@@ -855,7 +973,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "un",
@@ -889,7 +1008,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addEvents",
@@ -911,7 +1031,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "releaseCapture",
@@ -933,7 +1054,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "removeListener",
@@ -967,7 +1089,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "fireEvent",
@@ -995,7 +1118,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "returns false if any of the handlers return false otherwise it returns true"
+        }
+      ]
     },
     {
       "name" : "hasListener",
@@ -1017,7 +1146,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if the event is being listened for, else false"
+        }
+      ]
     },
     {
       "name" : "capture",
@@ -1051,7 +1186,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addListener",
@@ -1091,7 +1227,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     }
   ],
   "events" : [

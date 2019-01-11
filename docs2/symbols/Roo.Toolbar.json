@@ -42,7 +42,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Toolbar.Item"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Toolbar.Item",
+          "desc" : "The element's item"
+        }
+      ]
     },
     {
       "name" : "addElement",
@@ -64,7 +70,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Toolbar.Item"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Toolbar.Item",
+          "desc" : "The element's item"
+        }
+      ]
     },
     {
       "name" : "getEl",
@@ -80,7 +92,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "hide",
@@ -96,7 +114,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addSeparator",
@@ -112,7 +131,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Toolbar.Item"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Toolbar.Item",
+          "desc" : "The separator item"
+        }
+      ]
     },
     {
       "name" : "show",
@@ -128,7 +153,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addFill",
@@ -144,7 +170,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Toolbar.Fill"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Toolbar.Fill",
+          "desc" : "The fill item"
+        }
+      ]
     },
     {
       "name" : "addSpacer",
@@ -160,7 +192,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Toolbar.Spacer"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Toolbar.Spacer",
+          "desc" : "The spacer item"
+        }
+      ]
     },
     {
       "name" : "add",
@@ -188,7 +226,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addField",
@@ -210,7 +249,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.ToolbarItem"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.ToolbarItem",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "addText",
@@ -232,7 +277,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Toolbar.Item"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Toolbar.Item",
+          "desc" : "The element's item"
+        }
+      ]
     },
     {
       "name" : "addItem",
@@ -254,7 +305,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Toolbar.Item"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Toolbar.Item",
+          "desc" : "The item"
+        }
+      ]
     },
     {
       "name" : "addButton",
@@ -276,7 +333,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Toolbar.Button/Array"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Toolbar.Button/Array",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "insertButton",
@@ -304,7 +367,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Toolbar.Button/Item"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Toolbar.Button/Item",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "addxtype",
@@ -326,7 +395,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "created Object"
+        }
+      ]
     }
   ],
   "events" : [

@@ -42,7 +42,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "restoreState",
@@ -64,7 +65,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addRegion",
@@ -92,7 +94,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "BorderLayoutRegion"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "BorderLayoutRegion",
+          "desc" : "The new region"
+        }
+      ]
     },
     {
       "name" : "showPanel",
@@ -114,7 +122,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.ContentPanel"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.ContentPanel",
+          "desc" : "The shown panel or null"
+        }
+      ]
     },
     {
       "name" : "batchAdd",
@@ -136,7 +150,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "remove",
@@ -164,7 +179,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.ContentPanel"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.ContentPanel",
+          "desc" : "The removed panel"
+        }
+      ]
     },
     {
       "name" : "findPanel",
@@ -186,7 +207,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.ContentPanel"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.ContentPanel",
+          "desc" : "The panel or null if it wasn't found"
+        }
+      ]
     },
     {
       "name" : "layout",
@@ -202,7 +229,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addxtype",
@@ -224,7 +252,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "add",
@@ -252,7 +281,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.ContentPanel"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.ContentPanel",
+          "desc" : "The added panel"
+        }
+      ]
     },
     {
       "name" : "getRegion",
@@ -274,7 +309,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.LayoutRegion"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.LayoutRegion",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "beginUpdate",
@@ -290,7 +331,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "isUpdating",
@@ -306,7 +348,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "getViewSize",
@@ -322,7 +370,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "The size as an object {width: (the width), height: (the height)}"
+        }
+      ]
     },
     {
       "name" : "endUpdate",
@@ -344,7 +398,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getEl",
@@ -360,7 +415,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "purgeListeners",
@@ -376,7 +437,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "on",
@@ -416,7 +478,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "un",
@@ -450,7 +513,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addEvents",
@@ -472,7 +536,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "releaseCapture",
@@ -494,7 +559,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "removeListener",
@@ -528,7 +594,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "fireEvent",
@@ -556,7 +623,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "returns false if any of the handlers return false otherwise it returns true"
+        }
+      ]
     },
     {
       "name" : "hasListener",
@@ -578,7 +651,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if the event is being listened for, else false"
+        }
+      ]
     },
     {
       "name" : "capture",
@@ -612,7 +691,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addListener",
@@ -652,7 +732,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     }
   ],
   "events" : [

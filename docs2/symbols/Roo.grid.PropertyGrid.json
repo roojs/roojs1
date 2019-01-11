@@ -231,7 +231,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "data  data stored in grid"
+        }
+      ]
     },
     {
       "name" : "setSource",
@@ -253,7 +259,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "stopEditing",
@@ -269,7 +276,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getDragDropText",
@@ -285,7 +293,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "startEditing",
@@ -313,7 +327,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getSelectionModel",
@@ -329,7 +344,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "SelectionModel"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "SelectionModel",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "destroy",
@@ -351,7 +372,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getColumnModel",
@@ -367,7 +389,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "ColumnModel"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "ColumnModel",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "getGridEl",
@@ -383,7 +411,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Element",
+          "desc" : "The element"
+        }
+      ]
     },
     {
       "name" : "getDataSource",
@@ -399,7 +433,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "DataSource"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "DataSource",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "autoSize",
@@ -415,7 +455,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getView",
@@ -431,7 +472,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "GridView"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "GridView",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "reconfigure",
@@ -459,7 +506,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "render",
@@ -475,7 +523,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.grid.Grid"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.grid.Grid",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "purgeListeners",
@@ -491,7 +545,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "on",
@@ -531,7 +586,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "un",
@@ -565,7 +621,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addEvents",
@@ -587,7 +644,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "releaseCapture",
@@ -609,7 +667,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "removeListener",
@@ -643,7 +702,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "fireEvent",
@@ -671,7 +731,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "returns false if any of the handlers return false otherwise it returns true"
+        }
+      ]
     },
     {
       "name" : "hasListener",
@@ -693,7 +759,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if the event is being listened for, else false"
+        }
+      ]
     },
     {
       "name" : "capture",
@@ -727,7 +799,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addListener",
@@ -767,7 +840,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     }
   ],
   "events" : [

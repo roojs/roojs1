@@ -35,7 +35,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "endUpdate",
@@ -51,7 +52,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "disableTab",
@@ -73,7 +75,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getTab",
@@ -95,7 +98,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.TabPanelItem"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.TabPanelItem",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "unhideTab",
@@ -117,7 +126,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "beginUpdate",
@@ -133,7 +143,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "enableTab",
@@ -155,7 +166,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getCount",
@@ -171,7 +183,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "destroy",
@@ -193,7 +211,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "syncHeight",
@@ -215,7 +234,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "activate",
@@ -237,7 +257,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.TabPanelItem"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.TabPanelItem",
+          "desc" : "The TabPanelItem."
+        }
+      ]
     },
     {
       "name" : "autoSizeTabs",
@@ -253,7 +279,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addTabItem",
@@ -275,7 +302,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addTab",
@@ -315,7 +343,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.TabPanelItem"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.TabPanelItem",
+          "desc" : "The created TabPanelItem"
+        }
+      ]
     },
     {
       "name" : "removeTab",
@@ -337,7 +371,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "hideTab",
@@ -359,7 +394,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getActiveTab",
@@ -375,7 +411,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.TabPanelItem"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.TabPanelItem",
+          "desc" : "The active TabPanelItem or null if none are active."
+        }
+      ]
     },
     {
       "name" : "purgeListeners",
@@ -391,7 +433,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "on",
@@ -431,7 +474,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "un",
@@ -465,7 +509,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addEvents",
@@ -487,7 +532,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "releaseCapture",
@@ -509,7 +555,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "removeListener",
@@ -543,7 +590,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "fireEvent",
@@ -571,7 +619,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "returns false if any of the handlers return false otherwise it returns true"
+        }
+      ]
     },
     {
       "name" : "hasListener",
@@ -593,7 +647,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if the event is being listened for, else false"
+        }
+      ]
     },
     {
       "name" : "capture",
@@ -627,7 +687,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addListener",
@@ -667,7 +728,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     }
   ],
   "events" : [

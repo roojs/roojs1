@@ -117,7 +117,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Array"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Array",
+          "desc" : "An array of HTMLElements"
+        }
+      ]
     },
     {
       "name" : "getNodes",
@@ -145,7 +151,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Array"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Array",
+          "desc" : "An array of nodes"
+        }
+      ]
     },
     {
       "name" : "select",
@@ -179,7 +191,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "clearSelections",
@@ -201,7 +214,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "isSelected",
@@ -223,7 +237,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "refresh",
@@ -239,7 +259,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "onBeforeLoad",
@@ -255,7 +276,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getSelectedIndexes",
@@ -271,7 +293,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Array"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Array",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "indexOf",
@@ -293,7 +321,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "The index of the node or -1"
+        }
+      ]
     },
     {
       "name" : "getEl",
@@ -309,7 +343,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "setStore",
@@ -331,7 +371,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "refreshNode",
@@ -353,7 +394,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "prepareData",
@@ -375,7 +417,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getSelectionCount",
@@ -391,7 +434,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "findItemFromChild",
@@ -413,7 +462,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "HTMLElement"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "HTMLElement",
+          "desc" : "The template node"
+        }
+      ]
     },
     {
       "name" : "unselect",
@@ -447,7 +502,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getNode",
@@ -469,7 +525,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "HTMLElement"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "HTMLElement",
+          "desc" : "The node or null if it wasn't found"
+        }
+      ]
     },
     {
       "name" : "purgeListeners",
@@ -485,7 +547,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "on",
@@ -525,7 +588,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "un",
@@ -559,7 +623,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addEvents",
@@ -581,7 +646,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "releaseCapture",
@@ -603,7 +669,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "removeListener",
@@ -637,7 +704,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "fireEvent",
@@ -665,7 +733,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "returns false if any of the handlers return false otherwise it returns true"
+        }
+      ]
     },
     {
       "name" : "hasListener",
@@ -687,7 +761,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if the event is being listened for, else false"
+        }
+      ]
     },
     {
       "name" : "capture",
@@ -721,7 +801,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addListener",
@@ -761,7 +842,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     }
   ],
   "events" : [

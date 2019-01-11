@@ -251,7 +251,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "defaults to this.el"
+        }
+      ]
     },
     {
       "name" : "hide",
@@ -267,7 +273,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "show",
@@ -283,7 +290,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "setVisibilityEl",
@@ -299,7 +307,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getVisibilityEl",
@@ -315,7 +324,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "initEvents",
@@ -331,7 +341,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getChildContainer",
@@ -347,7 +358,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "defaults to this.el"
+        }
+      ]
     },
     {
       "name" : "getId",
@@ -363,7 +380,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "render",
@@ -385,7 +408,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "destroy",
@@ -401,7 +425,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "isVisible",
@@ -417,7 +442,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "setDisabled",
@@ -439,7 +465,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "focus",
@@ -461,7 +488,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Component"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Component",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "enable",
@@ -477,7 +510,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Component"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Component",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "setVisible",
@@ -499,7 +538,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Component"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Component",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "disable",
@@ -515,7 +560,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Component"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Component",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "getEl",
@@ -531,7 +582,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "The element"
+        }
+      ]
     },
     {
       "name" : "purgeListeners",
@@ -547,7 +604,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "on",
@@ -587,7 +645,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "un",
@@ -621,7 +680,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addEvents",
@@ -643,7 +703,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "releaseCapture",
@@ -665,7 +726,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "removeListener",
@@ -699,7 +761,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "fireEvent",
@@ -727,7 +790,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "returns false if any of the handlers return false otherwise it returns true"
+        }
+      ]
     },
     {
       "name" : "hasListener",
@@ -749,7 +818,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if the event is being listened for, else false"
+        }
+      ]
     },
     {
       "name" : "capture",
@@ -783,7 +858,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addListener",
@@ -823,7 +899,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     }
   ],
   "events" : [

@@ -22,7 +22,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "hide",
@@ -38,7 +39,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "focus",
@@ -54,7 +56,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "show",
@@ -70,7 +73,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getEl",
@@ -86,7 +90,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "HTMLElement"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "HTMLElement",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "destroy",
@@ -102,7 +112,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "enable",
@@ -118,7 +129,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "setVisible",
@@ -140,7 +152,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     }
   ],
   "events" : [

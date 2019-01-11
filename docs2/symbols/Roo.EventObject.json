@@ -20,7 +20,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "getPageY",
@@ -36,7 +42,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "getTime",
@@ -52,7 +64,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "getXY",
@@ -68,7 +86,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Array"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Array",
+          "desc" : "The xy values like [x, y]"
+        }
+      ]
     },
     {
       "name" : "getRelatedTarget",
@@ -84,7 +108,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "HTMLElement"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "HTMLElement",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "getWheelDelta",
@@ -100,7 +130,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "The delta"
+        }
+      ]
     },
     {
       "name" : "stopPropagation",
@@ -116,7 +152,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "stopEvent",
@@ -132,7 +169,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "within",
@@ -160,7 +198,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "hasModifier",
@@ -176,7 +220,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "getTarget",
@@ -210,7 +260,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "HTMLelement"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "HTMLelement",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "preventDefault",
@@ -226,7 +282,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getCharCode",
@@ -242,7 +299,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "getKey",
@@ -258,7 +321,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "The key code"
+        }
+      ]
     }
   ],
   "events" : [

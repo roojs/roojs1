@@ -116,7 +116,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "execCmd",
@@ -144,7 +145,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "cleanWord",
@@ -160,7 +162,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "syncValue",
@@ -176,7 +179,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "cleanTableWidths",
@@ -192,7 +196,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "cleanHtml",
@@ -214,7 +219,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "toggleSourceEdit",
@@ -236,7 +242,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getDocMarkup",
@@ -252,7 +259,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "iterateChildren",
@@ -280,7 +288,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "pushValue",
@@ -296,7 +305,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "rangeIntersectsNode",
@@ -312,7 +322,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "insertAtCursor",
@@ -334,7 +345,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getId",
@@ -350,7 +362,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "render",
@@ -372,7 +390,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "destroy",
@@ -388,7 +407,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "isVisible",
@@ -404,7 +424,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "setDisabled",
@@ -426,7 +447,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "hide",
@@ -442,7 +464,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Component"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Component",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "focus",
@@ -464,7 +492,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Component"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Component",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "show",
@@ -480,7 +514,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Component"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Component",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "enable",
@@ -496,7 +536,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Component"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Component",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "setVisible",
@@ -518,7 +564,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Component"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Component",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "disable",
@@ -534,7 +586,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Component"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Component",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "getEl",
@@ -550,7 +608,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "The element"
+        }
+      ]
     },
     {
       "name" : "purgeListeners",
@@ -566,7 +630,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "on",
@@ -606,7 +671,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "un",
@@ -640,7 +706,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addEvents",
@@ -662,7 +729,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "releaseCapture",
@@ -684,7 +752,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "removeListener",
@@ -718,7 +787,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "fireEvent",
@@ -746,7 +816,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "returns false if any of the handlers return false otherwise it returns true"
+        }
+      ]
     },
     {
       "name" : "hasListener",
@@ -768,7 +844,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if the event is being listened for, else false"
+        }
+      ]
     },
     {
       "name" : "capture",
@@ -802,7 +884,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addListener",
@@ -842,7 +925,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     }
   ],
   "events" : [

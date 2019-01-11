@@ -26,7 +26,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.data.Record"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.data.Record",
+          "desc" : "record created."
+        }
+      ]
     }
   ],
   "events" : [

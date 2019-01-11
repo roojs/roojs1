@@ -83,7 +83,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "this"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "this",
+          "desc" : "The Layer"
+        }
+      ]
     },
     {
       "name" : "getCenterXY",
@@ -99,7 +105,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Array"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Array",
+          "desc" : "The x, y values [x, y]"
+        }
+      ]
     },
     {
       "name" : "getScroll",
@@ -115,7 +127,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "An object containing the scroll position in the format {left: (scrollLeft), top: (scrollTop)}"
+        }
+      ]
     },
     {
       "name" : "createShim",
@@ -131,7 +149,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "The new shim element"
+        }
+      ]
     },
     {
       "name" : "scrollTo",
@@ -165,7 +189,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "removeAllListeners",
@@ -181,7 +211,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "setStyle",
@@ -209,7 +245,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "on",
@@ -249,7 +291,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addClassOnClick",
@@ -271,7 +314,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "getBorderWidth",
@@ -293,7 +342,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "The width of the sides passed added together"
+        }
+      ]
     },
     {
       "name" : "scroll",
@@ -327,7 +382,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "Returns true if a scroll was triggered or false if the element\nwas scrolled as far as it could go."
+        }
+      ]
     },
     {
       "name" : "addKeyMap",
@@ -349,7 +410,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.KeyMap"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.KeyMap",
+          "desc" : "The KeyMap created"
+        }
+      ]
     },
     {
       "name" : "createChild",
@@ -383,7 +450,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "The new child element"
+        }
+      ]
     },
     {
       "name" : "addClass",
@@ -405,7 +478,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "attr",
@@ -433,7 +512,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The attribute value"
+        }
+      ]
     },
     {
       "name" : "setOpacity",
@@ -461,7 +546,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "setSize",
@@ -495,7 +586,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "un",
@@ -523,7 +620,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "up",
@@ -551,7 +654,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "The matching DOM node (or null if no match was found)"
+        }
+      ]
     },
     {
       "name" : "repaint",
@@ -567,7 +676,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "translatePoints",
@@ -595,7 +710,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "An object with left and top properties. e.g. {left: (value), top: (value)}"
+        }
+      ]
     },
     {
       "name" : "createProxy",
@@ -629,7 +750,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "The new proxy element"
+        }
+      ]
     },
     {
       "name" : "down",
@@ -657,7 +784,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "HTMLElement/Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "HTMLElement/Roo.Element",
+          "desc" : "The child Roo.Element (or DOM node if returnDom = true)"
+        }
+      ]
     },
     {
       "name" : "getBox",
@@ -685,7 +818,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "box An object in the format {x, y, width, height}"
+        }
+      ]
     },
     {
       "name" : "toggle",
@@ -707,7 +846,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "setBounds",
@@ -753,7 +898,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "getX",
@@ -769,7 +920,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "The X position of the element"
+        }
+      ]
     },
     {
       "name" : "getY",
@@ -785,7 +942,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "The Y position of the element"
+        }
+      ]
     },
     {
       "name" : "focus",
@@ -801,7 +964,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "get",
@@ -823,7 +992,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Element",
+          "desc" : "The Element object"
+        }
+      ]
     },
     {
       "name" : "autoHeight",
@@ -863,7 +1038,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "scrollIntoView",
@@ -891,7 +1072,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "getAlignToXY",
@@ -925,7 +1112,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Array"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Array",
+          "desc" : "[x, y]"
+        }
+      ]
     },
     {
       "name" : "clearOpacity",
@@ -941,7 +1134,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "setPositioning",
@@ -963,7 +1162,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "getMargins",
@@ -985,7 +1190,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object/Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object/Number",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "setRegion",
@@ -1013,7 +1224,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "getAttributeNS",
@@ -1041,7 +1258,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The attribute value"
+        }
+      ]
     },
     {
       "name" : "setLeft",
@@ -1063,7 +1286,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "load",
@@ -1103,7 +1332,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "replaceClass",
@@ -1131,7 +1366,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "initDDTarget",
@@ -1165,7 +1406,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.dd.DDTarget"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.dd.DDTarget",
+          "desc" : "The DDTarget object"
+        }
+      ]
     },
     {
       "name" : "setHeight",
@@ -1193,7 +1440,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "clean",
@@ -1215,7 +1468,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getPositioning",
@@ -1231,7 +1485,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "update",
@@ -1265,7 +1525,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "contains",
@@ -1287,7 +1553,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if this element is an ancestor of el, else false"
+        }
+      ]
     },
     {
       "name" : "appendChild",
@@ -1309,7 +1581,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "getValue",
@@ -1331,7 +1609,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String/Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String/Number",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "getRegion",
@@ -1347,7 +1631,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Region"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Region",
+          "desc" : "A Roo.lib.Region containing \"top, left, bottom, right\" member data."
+        }
+      ]
     },
     {
       "name" : "anchorTo",
@@ -1399,7 +1689,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "removeClass",
@@ -1421,7 +1717,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "radioClass",
@@ -1443,7 +1745,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "getWidth",
@@ -1465,7 +1773,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "The element's width"
+        }
+      ]
     },
     {
       "name" : "insertBefore",
@@ -1487,7 +1801,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "getHeight",
@@ -1509,7 +1829,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "The element's height"
+        }
+      ]
     },
     {
       "name" : "setTop",
@@ -1531,7 +1857,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "toggleClass",
@@ -1553,7 +1885,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "wrap",
@@ -1581,7 +1919,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "HTMLElement/Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "HTMLElement/Element",
+          "desc" : "The newly created wrapper element"
+        }
+      ]
     },
     {
       "name" : "setVisible",
@@ -1609,7 +1953,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "addListener",
@@ -1649,7 +1999,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "setWidth",
@@ -1677,7 +2028,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "center",
@@ -1699,7 +2056,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "isVisible",
@@ -1721,7 +2079,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if the element is currently visible, else false"
+        }
+      ]
     },
     {
       "name" : "findParent",
@@ -1755,7 +2119,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "HTMLElement"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "HTMLElement",
+          "desc" : "The matching DOM node (or null if no match was found)"
+        }
+      ]
     },
     {
       "name" : "addKeyListener",
@@ -1789,7 +2159,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.KeyMap"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.KeyMap",
+          "desc" : "The KeyMap created"
+        }
+      ]
     },
     {
       "name" : "swallowEvent",
@@ -1817,7 +2193,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "getStyles",
@@ -1845,7 +2227,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "The style object"
+        }
+      ]
     },
     {
       "name" : "getSize",
@@ -1867,7 +2255,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "An object containing the element's size {width: (element width), height: (element height)}"
+        }
+      ]
     },
     {
       "name" : "endMeasure",
@@ -1883,7 +2277,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "getViewSize",
@@ -1899,7 +2299,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "An object containing the viewport's size {width: (viewport width), height: (viewport height)}"
+        }
+      ]
     },
     {
       "name" : "addClassOnFocus",
@@ -1921,7 +2327,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "alignTo",
@@ -1961,7 +2373,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "insertAfter",
@@ -1983,7 +2401,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "hide",
@@ -2005,7 +2429,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "setBottom",
@@ -2027,7 +2457,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "clearPositioning",
@@ -2049,7 +2485,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "isDisplayed",
@@ -2065,7 +2507,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "show",
@@ -2087,7 +2535,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "setLeftTop",
@@ -2115,7 +2569,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "child",
@@ -2143,7 +2603,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "HTMLElement/Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "HTMLElement/Roo.Element",
+          "desc" : "The child Roo.Element (or DOM node if returnDom = true)"
+        }
+      ]
     },
     {
       "name" : "unmask",
@@ -2159,7 +2625,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "moveTo",
@@ -2193,7 +2660,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "addClassOnOver",
@@ -2221,7 +2694,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "getLeft",
@@ -2243,7 +2722,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "isScrollable",
@@ -2259,7 +2744,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "boxWrap",
@@ -2281,7 +2772,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "replace",
@@ -2303,7 +2800,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "select",
@@ -2331,7 +2834,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "CompositeElement/CompositeElementLite"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "CompositeElement/CompositeElementLite",
+          "desc" : "The composite element"
+        }
+      ]
     },
     {
       "name" : "isMasked",
@@ -2347,7 +2856,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "getUpdateManager",
@@ -2363,7 +2878,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.UpdateManager"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.UpdateManager",
+          "desc" : "The UpdateManager"
+        }
+      ]
     },
     {
       "name" : "insertHtml",
@@ -2397,7 +2918,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "HTMLElement/Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "HTMLElement/Roo.Element",
+          "desc" : "The inserted node (or nearest related if more than 1 inserted)"
+        }
+      ]
     },
     {
       "name" : "mask",
@@ -2425,7 +2952,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Element",
+          "desc" : "The mask  element"
+        }
+      ]
     },
     {
       "name" : "getTop",
@@ -2447,7 +2980,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "getBottom",
@@ -2469,7 +3008,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "getRight",
@@ -2491,7 +3036,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "beginMeasure",
@@ -2507,7 +3058,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "appendTo",
@@ -2529,7 +3086,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "fly",
@@ -2557,7 +3120,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Element",
+          "desc" : "The shared Element object"
+        }
+      ]
     },
     {
       "name" : "hasClass",
@@ -2579,7 +3148,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if the class exists, else false"
+        }
+      ]
     },
     {
       "name" : "findScrollableParent",
@@ -2595,7 +3170,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "fitToParent",
@@ -2623,7 +3199,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "setXY",
@@ -2651,7 +3233,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "getXY",
@@ -2667,7 +3255,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Array"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Array",
+          "desc" : "The XY position of the element"
+        }
+      ]
     },
     {
       "name" : "unselectable",
@@ -2683,7 +3277,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "blur",
@@ -2699,7 +3299,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "setRight",
@@ -2721,7 +3327,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "findParentNode",
@@ -2755,7 +3367,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "HTMLElement"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "HTMLElement",
+          "desc" : "The matching DOM node (or null if no match was found)"
+        }
+      ]
     },
     {
       "name" : "position",
@@ -2795,7 +3413,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getFrameWidth",
@@ -2817,7 +3436,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "setLocation",
@@ -2851,7 +3476,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "unclip",
@@ -2867,7 +3498,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "set",
@@ -2895,7 +3532,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "setDisplayed",
@@ -2917,7 +3560,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "insertFirst",
@@ -2939,7 +3588,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "The new child"
+        }
+      ]
     },
     {
       "name" : "animate",
@@ -2985,7 +3640,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "enableDisplayMode",
@@ -3007,7 +3668,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "getComputedWidth",
@@ -3023,7 +3690,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "clip",
@@ -3039,7 +3712,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "setVisibilityMode",
@@ -3061,7 +3740,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "getColor",
@@ -3095,7 +3780,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "insertSibling",
@@ -3129,7 +3815,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "the inserted Element"
+        }
+      ]
     },
     {
       "name" : "removeListener",
@@ -3157,7 +3849,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "applyStyles",
@@ -3179,7 +3877,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "getPrevSibling",
@@ -3195,7 +3899,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "HTMLElement"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "HTMLElement",
+          "desc" : "The previous sibling or null"
+        }
+      ]
     },
     {
       "name" : "setBox",
@@ -3229,7 +3939,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "initDDProxy",
@@ -3263,7 +3979,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.dd.DDProxy"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.dd.DDProxy",
+          "desc" : "The DDProxy object"
+        }
+      ]
     },
     {
       "name" : "setX",
@@ -3291,7 +4013,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "setY",
@@ -3319,7 +4047,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "query",
@@ -3341,7 +4075,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Array"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Array",
+          "desc" : "An array of the matched nodes"
+        }
+      ]
     },
     {
       "name" : "getAnchorXY",
@@ -3375,7 +4115,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Array"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Array",
+          "desc" : "[x, y] An array containing the element's x and y coordinates"
+        }
+      ]
     },
     {
       "name" : "initDD",
@@ -3409,7 +4155,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.dd.DD"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.dd.DD",
+          "desc" : "The DD object"
+        }
+      ]
     },
     {
       "name" : "getComputedHeight",
@@ -3425,7 +4177,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "is",
@@ -3447,7 +4205,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if this element matches the selector, else false"
+        }
+      ]
     },
     {
       "name" : "move",
@@ -3481,7 +4245,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "remove",
@@ -3497,7 +4267,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getNextSibling",
@@ -3513,7 +4284,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "HTMLElement"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "HTMLElement",
+          "desc" : "The next sibling or null"
+        }
+      ]
     },
     {
       "name" : "getStyle",
@@ -3535,7 +4312,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The current value of the style property for this element."
+        }
+      ]
     },
     {
       "name" : "isBorderBox",
@@ -3551,7 +4334,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "getPadding",
@@ -3573,7 +4362,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "The padding of the sides passed added together"
+        }
+      ]
     }
   ],
   "events" : [

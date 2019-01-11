@@ -250,7 +250,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "Image Data URI"
+        }
+      ]
     },
     {
       "name" : "getConfirmed",
@@ -266,7 +272,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "this.isConfirmed"
+        }
+      ]
     },
     {
       "name" : "getHeight",
@@ -282,7 +294,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "this.height"
+        }
+      ]
     },
     {
       "name" : "createToolbar",
@@ -304,7 +322,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getWidth",
@@ -320,7 +339,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "this.width"
+        }
+      ]
     },
     {
       "name" : "validate",
@@ -336,7 +361,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if the value is valid, else false"
+        }
+      ]
     },
     {
       "name" : "getValue",
@@ -352,7 +383,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Mixed"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Mixed",
+          "desc" : "value The field value"
+        }
+      ]
     },
     {
       "name" : "setValue",
@@ -374,7 +411,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getName",
@@ -390,7 +428,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "name The field name"
+        }
+      ]
     },
     {
       "name" : "markInvalid",
@@ -412,7 +456,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getRawValue",
@@ -428,7 +473,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Mixed"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Mixed",
+          "desc" : "value The field value"
+        }
+      ]
     },
     {
       "name" : "applyTo",
@@ -450,7 +501,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.form.Field"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.form.Field",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "resetHasChanged",
@@ -466,7 +523,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "isDirty",
@@ -482,7 +540,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "setRawValue",
@@ -504,7 +563,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "clearInvalid",
@@ -520,7 +580,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "isValid",
@@ -542,7 +603,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if the value is valid, else false"
+        }
+      ]
     },
     {
       "name" : "reset",
@@ -558,7 +625,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "hasChanged",
@@ -574,7 +642,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "updateBox",
@@ -596,7 +665,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "setPagePosition",
@@ -624,7 +694,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "syncSize",
@@ -640,7 +711,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "setSize",
@@ -668,7 +740,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.BoxComponent"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BoxComponent",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "getPosition",
@@ -690,7 +768,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Array"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Array",
+          "desc" : "The XY position of the element (e.g., [100, 200])"
+        }
+      ]
     },
     {
       "name" : "onResize",
@@ -730,7 +814,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getBox",
@@ -752,7 +837,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getSize",
@@ -768,7 +854,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "An object containing the element's size {width: (element width), height: (element height)}"
+        }
+      ]
     },
     {
       "name" : "onPosition",
@@ -796,7 +888,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "setPosition",
@@ -824,7 +917,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getId",
@@ -840,7 +934,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "render",
@@ -862,7 +962,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "destroy",
@@ -878,7 +979,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "isVisible",
@@ -894,7 +996,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "setDisabled",
@@ -916,7 +1019,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "hide",
@@ -932,7 +1036,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Component"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Component",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "focus",
@@ -954,7 +1064,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Component"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Component",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "show",
@@ -970,7 +1086,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Component"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Component",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "enable",
@@ -986,7 +1108,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Component"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Component",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "setVisible",
@@ -1008,7 +1136,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Component"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Component",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "disable",
@@ -1024,7 +1158,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Component"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Component",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "getEl",
@@ -1040,7 +1180,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "The element"
+        }
+      ]
     },
     {
       "name" : "purgeListeners",
@@ -1056,7 +1202,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "on",
@@ -1096,7 +1243,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "un",
@@ -1130,7 +1278,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addEvents",
@@ -1152,7 +1301,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "releaseCapture",
@@ -1174,7 +1324,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "removeListener",
@@ -1208,7 +1359,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "fireEvent",
@@ -1236,7 +1388,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "returns false if any of the handlers return false otherwise it returns true"
+        }
+      ]
     },
     {
       "name" : "hasListener",
@@ -1258,7 +1416,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if the event is being listened for, else false"
+        }
+      ]
     },
     {
       "name" : "capture",
@@ -1292,7 +1456,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addListener",
@@ -1332,7 +1497,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     }
   ],
   "events" : [

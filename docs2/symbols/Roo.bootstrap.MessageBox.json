@@ -44,7 +44,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.MessageBox"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.MessageBox",
+          "desc" : "This message box"
+        }
+      ]
     },
     {
       "name" : "confirm",
@@ -84,7 +90,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.MessageBox"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.MessageBox",
+          "desc" : "This message box"
+        }
+      ]
     },
     {
       "name" : "getDialog",
@@ -100,7 +112,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.BasicDialog"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "The BasicDialog element"
+        }
+      ]
     },
     {
       "name" : "progress",
@@ -128,7 +146,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.MessageBox"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.MessageBox",
+          "desc" : "This message box"
+        }
+      ]
     },
     {
       "name" : "hide",
@@ -144,7 +168,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "show",
@@ -166,7 +191,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.MessageBox"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.MessageBox",
+          "desc" : "This message box"
+        }
+      ]
     },
     {
       "name" : "isVisible",
@@ -182,7 +213,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if the message box is visible, else false"
+        }
+      ]
     },
     {
       "name" : "wait",
@@ -210,7 +247,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.MessageBox"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.MessageBox",
+          "desc" : "This message box"
+        }
+      ]
     },
     {
       "name" : "updateText",
@@ -232,7 +275,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.MessageBox"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.MessageBox",
+          "desc" : "This message box"
+        }
+      ]
     },
     {
       "name" : "updateProgress",
@@ -260,7 +309,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.MessageBox"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.MessageBox",
+          "desc" : "This message box"
+        }
+      ]
     },
     {
       "name" : "prompt",
@@ -306,7 +361,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.MessageBox"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.MessageBox",
+          "desc" : "This message box"
+        }
+      ]
     }
   ],
   "events" : [

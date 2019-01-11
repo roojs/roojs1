@@ -32,7 +32,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "The constrained value if outside the range, otherwise the current value"
+        }
+      ]
     }
   ],
   "events" : [

@@ -70,7 +70,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "get",
@@ -92,7 +93,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Element",
+          "desc" : "The Element object"
+        }
+      ]
     },
     {
       "name" : "decode",
@@ -108,7 +115,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getDom",
@@ -130,7 +138,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "",
+          "desc" : "HTMLElement"
+        }
+      ]
     },
     {
       "name" : "urlEncode",
@@ -152,7 +166,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "addBehaviors",
@@ -174,7 +194,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "factory",
@@ -202,7 +223,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "apply",
@@ -236,7 +258,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "returns obj"
+        }
+      ]
     },
     {
       "name" : "onReady",
@@ -270,7 +298,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "select",
@@ -304,7 +333,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "CompositeElementLite/CompositeElement"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "CompositeElementLite/CompositeElement",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "applyIf",
@@ -332,7 +367,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "returns obj"
+        }
+      ]
     },
     {
       "name" : "getCmp",
@@ -354,7 +395,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "",
+          "desc" : "Roo.Component"
+        }
+      ]
     },
     {
       "name" : "id",
@@ -382,7 +429,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The generated Id."
+        }
+      ]
     },
     {
       "name" : "encodeURIComponent",
@@ -404,7 +457,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "encode",
@@ -420,7 +479,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "fly",
@@ -448,7 +508,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Element",
+          "desc" : "The shared Element object"
+        }
+      ]
     },
     {
       "name" : "isEmpty",
@@ -476,7 +542,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "query",
@@ -504,7 +576,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Array"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Array",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "urlDecode",
@@ -532,7 +610,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "A literal with members"
+        }
+      ]
     },
     {
       "name" : "escapeRe",
@@ -554,7 +638,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "extend",
@@ -588,7 +678,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "namespace",
@@ -622,7 +713,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "override",
@@ -650,7 +742,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "selectNode",
@@ -678,7 +771,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "type",
@@ -700,7 +799,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : ""
+        }
+      ]
     }
   ],
   "events" : [

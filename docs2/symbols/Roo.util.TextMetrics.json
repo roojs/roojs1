@@ -32,7 +32,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.util.TextMetrics.Instance"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.util.TextMetrics.Instance",
+          "desc" : "instance The new instance"
+        }
+      ]
     },
     {
       "name" : "measure",
@@ -66,7 +72,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "An object containing the text's size {width: (width), height: (height)}"
+        }
+      ]
     }
   ],
   "events" : [

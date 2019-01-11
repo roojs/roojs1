@@ -55,7 +55,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "compile",
@@ -71,7 +72,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "insertFirst",
@@ -105,7 +107,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "HTMLElement/Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "HTMLElement/Roo.Element",
+          "desc" : "The new node or Element"
+        }
+      ]
     },
     {
       "name" : "overwrite",
@@ -139,7 +147,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "HTMLElement/Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "HTMLElement/Roo.Element",
+          "desc" : "The new node or Element"
+        }
+      ]
     },
     {
       "name" : "insertBefore",
@@ -173,7 +187,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "HTMLElement/Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "HTMLElement/Roo.Element",
+          "desc" : "The new node or Element"
+        }
+      ]
     },
     {
       "name" : "applyTemplate",
@@ -195,7 +215,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The HTML fragment"
+        }
+      ]
     },
     {
       "name" : "set",
@@ -223,7 +249,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Template"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Template",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "from",
@@ -245,7 +277,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "insertAfter",
@@ -279,7 +312,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "HTMLElement/Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "HTMLElement/Roo.Element",
+          "desc" : "The new node or Element"
+        }
+      ]
     },
     {
       "name" : "append",
@@ -313,7 +352,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "HTMLElement/Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "HTMLElement/Roo.Element",
+          "desc" : "The new node or Element"
+        }
+      ]
     },
     {
       "name" : "apply",
@@ -329,7 +374,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     }
   ],
   "events" : [

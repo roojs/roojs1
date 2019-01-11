@@ -26,7 +26,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The converted text"
+        }
+      ]
     },
     {
       "name" : "date",
@@ -54,7 +60,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The formatted date string"
+        }
+      ]
     },
     {
       "name" : "lowercase",
@@ -76,7 +88,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The converted text"
+        }
+      ]
     },
     {
       "name" : "undef",
@@ -98,7 +116,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Mixed"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Mixed",
+          "desc" : "Empty string if converted, otherwise the original value"
+        }
+      ]
     },
     {
       "name" : "stripTags",
@@ -120,7 +144,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The stripped text"
+        }
+      ]
     },
     {
       "name" : "ellipsis",
@@ -148,7 +178,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The converted text"
+        }
+      ]
     },
     {
       "name" : "htmlDecode",
@@ -170,7 +206,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The decoded text"
+        }
+      ]
     },
     {
       "name" : "htmlEncode",
@@ -192,7 +234,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The encoded text"
+        }
+      ]
     },
     {
       "name" : "toFixed",
@@ -220,7 +268,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The formatted currency string"
+        }
+      ]
     },
     {
       "name" : "substr",
@@ -254,7 +308,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The substring"
+        }
+      ]
     },
     {
       "name" : "number",
@@ -288,7 +348,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The formatted currency string"
+        }
+      ]
     },
     {
       "name" : "usMoney",
@@ -310,7 +376,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The formatted currency string"
+        }
+      ]
     },
     {
       "name" : "capitalize",
@@ -332,7 +404,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The converted text"
+        }
+      ]
     },
     {
       "name" : "trim",
@@ -354,7 +432,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The trimmed text"
+        }
+      ]
     },
     {
       "name" : "dateRenderer",
@@ -376,7 +460,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Function"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Function",
+          "desc" : "The date formatting function"
+        }
+      ]
     }
   ],
   "events" : [

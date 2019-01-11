@@ -26,7 +26,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.BasicDialog"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "sendToBack",
@@ -48,7 +54,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.BasicDialog"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "hideAll",
@@ -64,7 +76,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "get",
@@ -86,7 +99,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.BasicDialog"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
     }
   ],
   "events" : [

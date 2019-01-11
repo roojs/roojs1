@@ -155,7 +155,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.grid.Grid"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.grid.Grid",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "load",
@@ -195,7 +201,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.ContentPanel"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.ContentPanel",
+          "desc" : "this"
+        }
+      ]
     },
     {
       "name" : "getUpdateManager",
@@ -211,7 +223,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.UpdateManager"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.UpdateManager",
+          "desc" : "The UpdateManager"
+        }
+      ]
     },
     {
       "name" : "isClosable",
@@ -227,7 +245,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "destroy",
@@ -243,7 +267,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getEl",
@@ -259,7 +284,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "setContent",
@@ -287,7 +318,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getId",
@@ -303,7 +335,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "addxtype",
@@ -325,7 +363,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "refresh",
@@ -341,7 +380,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getTitle",
@@ -357,7 +397,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "String"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "setTitle",
@@ -379,7 +425,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getToolbar",
@@ -395,7 +442,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Toolbar"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Toolbar",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "setUrl",
@@ -429,7 +482,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.UpdateManager"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.UpdateManager",
+          "desc" : "The UpdateManager"
+        }
+      ]
     },
     {
       "name" : "purgeListeners",
@@ -445,7 +504,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "on",
@@ -485,7 +545,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "un",
@@ -519,7 +580,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addEvents",
@@ -541,7 +603,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "releaseCapture",
@@ -563,7 +626,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "removeListener",
@@ -597,7 +661,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "fireEvent",
@@ -625,7 +690,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "returns false if any of the handlers return false otherwise it returns true"
+        }
+      ]
     },
     {
       "name" : "hasListener",
@@ -647,7 +718,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if the event is being listened for, else false"
+        }
+      ]
     },
     {
       "name" : "capture",
@@ -681,7 +758,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addListener",
@@ -721,7 +799,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     }
   ],
   "events" : [

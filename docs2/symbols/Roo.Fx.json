@@ -114,7 +114,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "The Element"
+        }
+      ]
     },
     {
       "name" : "stopFx",
@@ -130,7 +136,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "The Element"
+        }
+      ]
     },
     {
       "name" : "frame",
@@ -164,7 +176,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "The Element"
+        }
+      ]
     },
     {
       "name" : "pause",
@@ -186,7 +204,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "The Element"
+        }
+      ]
     },
     {
       "name" : "hasFxBlock",
@@ -202,7 +226,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if blocking, else false"
+        }
+      ]
     },
     {
       "name" : "hasActiveFx",
@@ -218,7 +248,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if element has active effects, else false"
+        }
+      ]
     },
     {
       "name" : "highlight",
@@ -246,7 +282,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "The Element"
+        }
+      ]
     },
     {
       "name" : "syncFx",
@@ -262,7 +304,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "The Element"
+        }
+      ]
     },
     {
       "name" : "puff",
@@ -284,7 +332,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "The Element"
+        }
+      ]
     },
     {
       "name" : "fadeIn",
@@ -306,7 +360,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "The Element"
+        }
+      ]
     },
     {
       "name" : "sequenceFx",
@@ -322,7 +382,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "The Element"
+        }
+      ]
     },
     {
       "name" : "slideIn",
@@ -350,7 +416,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "The Element"
+        }
+      ]
     },
     {
       "name" : "ghost",
@@ -378,7 +450,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "The Element"
+        }
+      ]
     },
     {
       "name" : "slideOut",
@@ -406,7 +484,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "The Element"
+        }
+      ]
     },
     {
       "name" : "scale",
@@ -440,7 +524,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "The Element"
+        }
+      ]
     },
     {
       "name" : "switchOff",
@@ -462,7 +552,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "The Element"
+        }
+      ]
     },
     {
       "name" : "shift",
@@ -484,7 +580,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.Element"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "The Element"
+        }
+      ]
     }
   ],
   "events" : [

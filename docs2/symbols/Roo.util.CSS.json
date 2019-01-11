@@ -32,7 +32,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "StyleSheet"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "StyleSheet",
+          "desc" : ""
+        }
+      ]
     },
     {
       "name" : "getRules",
@@ -54,7 +60,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "An object (hash) of rules indexed by selector"
+        }
+      ]
     },
     {
       "name" : "swapStyleSheet",
@@ -82,7 +94,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "updateRule",
@@ -116,7 +129,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "true If a rule was found and updated"
+        }
+      ]
     },
     {
       "name" : "getRule",
@@ -144,7 +163,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "CSSRule"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "CSSRule",
+          "desc" : "The CSS rule or null if one is not found"
+        }
+      ]
     },
     {
       "name" : "refreshCache",
@@ -160,7 +185,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Object"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "An object (hash) of rules indexed by selector"
+        }
+      ]
     },
     {
       "name" : "removeStyleSheet",
@@ -182,7 +213,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     }
   ],
   "events" : [

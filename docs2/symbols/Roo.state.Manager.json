@@ -20,7 +20,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Provider"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Provider",
+          "desc" : "The state provider"
+        }
+      ]
     },
     {
       "name" : "clear",
@@ -42,7 +48,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "get",
@@ -70,7 +77,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Mixed"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Mixed",
+          "desc" : "The state data"
+        }
+      ]
     },
     {
       "name" : "set",
@@ -98,7 +111,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "setProvider",
@@ -120,7 +134,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     }
   ],
   "events" : [

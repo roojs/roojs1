@@ -107,7 +107,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "removeAll",
@@ -123,7 +124,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "query",
@@ -157,7 +159,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "MixedCollection"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "MixedCollection",
+          "desc" : "Returns an Roo.util.MixedCollection of the matched records"
+        }
+      ]
     },
     {
       "name" : "sum",
@@ -191,7 +199,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "The sum"
+        }
+      ]
     },
     {
       "name" : "getById",
@@ -213,7 +227,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.data.Record"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.data.Record",
+          "desc" : "The Record with the passed id. Returns undefined if not found."
+        }
+      ]
     },
     {
       "name" : "commitChanges",
@@ -229,7 +249,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getCount",
@@ -245,7 +266,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "indexOf",
@@ -267,7 +289,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "The index of the passed Record. Returns -1 if not found."
+        }
+      ]
     },
     {
       "name" : "add",
@@ -289,7 +317,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "indexOfId",
@@ -311,7 +340,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Number"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "The index of the Record. Returns -1 if not found."
+        }
+      ]
     },
     {
       "name" : "filter",
@@ -345,7 +380,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "sort",
@@ -373,7 +409,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getRange",
@@ -401,7 +438,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.data.Record[]"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.data.Record[]",
+          "desc" : "An array of Records"
+        }
+      ]
     },
     {
       "name" : "queryBy",
@@ -429,7 +472,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "MixedCollection"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "MixedCollection",
+          "desc" : "Returns an Roo.util.MixedCollection of the matched records"
+        }
+      ]
     },
     {
       "name" : "clearFilter",
@@ -451,7 +500,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "each",
@@ -479,7 +529,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "rejectChanges",
@@ -495,7 +546,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getAt",
@@ -517,7 +569,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Roo.data.Record"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.data.Record",
+          "desc" : "The Record at the passed index. Returns undefined if not found."
+        }
+      ]
     },
     {
       "name" : "getTotalCount",
@@ -533,7 +591,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "filterBy",
@@ -561,7 +620,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "collect",
@@ -595,7 +655,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Array"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Array",
+          "desc" : "An array of the unique values"
+        }
+      ]
     },
     {
       "name" : "getModifiedRecords",
@@ -611,7 +677,13 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : "Roo.data.Record[]"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.data.Record[]",
+          "desc" : "An array of Records containing outstanding modifications."
+        }
+      ]
     },
     {
       "name" : "remove",
@@ -633,7 +705,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "loadData",
@@ -661,7 +734,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "load",
@@ -683,7 +757,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "setDefaultSort",
@@ -711,7 +786,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "insert",
@@ -739,7 +815,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "getSortState",
@@ -755,7 +832,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "purgeListeners",
@@ -771,7 +849,8 @@
       "see" : "",
       "params" : [
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "on",
@@ -811,7 +890,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "un",
@@ -845,7 +925,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addEvents",
@@ -867,7 +948,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "releaseCapture",
@@ -889,7 +971,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "removeListener",
@@ -923,7 +1006,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "fireEvent",
@@ -951,7 +1035,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "returns false if any of the handlers return false otherwise it returns true"
+        }
+      ]
     },
     {
       "name" : "hasListener",
@@ -973,7 +1063,13 @@
           "isOptional" : false
         }
       ],
-      "returns" : "Boolean"
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if the event is being listened for, else false"
+        }
+      ]
     },
     {
       "name" : "capture",
@@ -1007,7 +1103,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     },
     {
       "name" : "addListener",
@@ -1047,7 +1144,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : ""
+      "returns" : [
+      ]
     }
   ],
   "events" : [
