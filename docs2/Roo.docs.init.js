@@ -135,6 +135,18 @@ Roo.docs.init = {
         }, this);
         
     },
+    
+    loadClass : function(name)
+    {
+        Roo.each(this.classes, function(c) {
+            if (c.name == name) {
+                this.loadDoc(c);
+            }
+        },this);
+        
+        
+    },
+    
     loadDoc : function(cls)
     {
         Roo.docs.doc_body_content.hide();
