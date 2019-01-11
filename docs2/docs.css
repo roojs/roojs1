@@ -132,10 +132,10 @@ h6,
 }
 
 
- .sidebar-menu ul.treeview-menu.show , /* the actuall menu that is shown */ 
+ .left-menu-sidebar.sidebar .sidebar-menu  ul.treeview-menu.show , /* the actuall menu that is shown */ 
 /* expanded non-menu item */
 
-.left-menu-sidebar.sidebar.sidebar-menu ul.treeview-menu.show > li.treeview-menu.dropdown-toggle > a.dropdown-item,
+.left-menu-sidebar.sidebar .sidebar-menu ul.treeview-menu.show > li.treeview-menu.dropdown-toggle > a.dropdown-item,
 .left-menu-sidebar.sidebar .sidebar-menu ul.treeview-menu.show > li.treeview-menu.dropdown-toggle >  li.treeview-menu
 {
     display: block;
