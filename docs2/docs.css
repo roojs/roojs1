@@ -911,7 +911,7 @@ td.attributes, .fixedFont
 .doc-table-container .short,
 .doc-table-container .long
 {
-     vertical-align: top;
+    vertical-align: top;
     padding: 5px 10px;
     font-size: 13px;
     
