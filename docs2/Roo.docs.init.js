@@ -70,7 +70,7 @@ Roo.docs.init = {
                     if (c) { //
                        ev.stopPropagation();
                     } else {
-                        Roo.log("???");
+                        Roo.log(mi)
                         c = ev;
                     }
                     if (c.cn.length) {
