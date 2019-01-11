@@ -101,7 +101,8 @@ Roo.docs.template  = {
 		}
 			
 		return true;
-    	}
+	    }
+    	);
 
 	// then dynamics..
 
