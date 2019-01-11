@@ -95,7 +95,9 @@ Roo.docs.init = {
                 listeners : {
                     beforehide : (function(mi,ev,c)
                     {
-                        
+                        if (c.name.split('.').length < 2) {
+                            return true;
+                        }
                         return false;
                         
                     }).createDelegate(this,[e], true)
