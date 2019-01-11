@@ -218,6 +218,9 @@
        ]
       },
       {
+       "listeners" : {
+        "render" : "function (_self)\n{\n    _this.configTableContainer = this;\n}"
+       },
        "String header" : "Configuration options",
        "Boolean expanded" : true,
        "String cls" : "doc-table-container",
