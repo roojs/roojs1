@@ -72,7 +72,7 @@ Roo.docs.template  = {
 		//}
 		    
 		//if (!$.isEvent && (data.comment.getTag("instanceOf").length || data.comment.getTag("singleton").length)) {
-		if (data.isSingleton) {
+		if ($.isSingleton) {
 		    
 		    if ($.isStatic && $.memberOf != data.name)) {
 	    		return true;
@@ -94,28 +94,28 @@ Roo.docs.template  = {
 		return true;
     	}
 
-	<!-- then dynamics first -->
-	{!	
-		msorted.filter(
-				function($){
-					if (/@hide/.test($.desc)) {
-						return false;
-					}
-					if (data.comment.getTag("instanceOf").length  || data.comment.getTag("singleton").length) {
-						return true;
-					}
-					if ($.isNamespace || $.isEvent || (($.memberOf != data.alias) && $.isStatic)){
-						
-						return true;
-					}
-					if (!$.isStatic) {
-						$.isInherited = ($.memberOf != data.alias);
-						ownMethods.push($);
-					}
-					
-					return true;
-				}
-			);
+	// then dynamics..
+
+	msorted.filter(
+	    function($){
+		    //if (/@hide/.test($.desc)) {
+		    //	    return false;
+		    //}
+		    if ($.isSingleton) {
+			    return true;
+		    }
+		    if ($.isNamespace || $.isEvent || (($.memberOf != data.alias) && $.isStatic)){
+			    
+			    return true;
+		    }
+		    if (!$.isStatic) {
+			    $.isInherited = ($.memberOf != data.alias);
+			    ownMethods.push($);
+		    }
+		    
+		    return true;
+	    }
+		);
 		 
 	!}
   */
