@@ -222,7 +222,7 @@ Roo.docs.render  = {
                             (($.type) ? 
                                 linkSymbol(
                                     (typeof($.type) == 'object' ) ? 'Function' : $.type
-                                )) + " " :  ""
+                                ) + " " :  ""
                             )   + 
                             "<B><i>" +$.name + "</i></B>" +
                             ($.defaultValue ? "=" +item.defaultValue : "") +
@@ -244,5 +244,10 @@ Roo.docs.render  = {
     summarize : function(str)
     {
         
+    },
+    linkSymbol : function(str)
+    {
+        
+        return <'a href="#' + str + '>' + str + '</a>';
     }
 }
