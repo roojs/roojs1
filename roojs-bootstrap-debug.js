@@ -2060,13 +2060,13 @@ Roo.bootstrap.Menu = function(config){
     this.addEvents({
         /**
          * @event beforeshow
-         * Fires before this menu is displayed
+         * Fires before this menu is displayed (return true to block)
          * @param {Roo.menu.Menu} this
          */
         beforeshow : true,
         /**
          * @event beforehide
-         * Fires before this menu is hidden
+         * Fires before this menu is hidden (return true to block)
          * @param {Roo.menu.Menu} this
          */
         beforehide : true,
@@ -2288,12 +2288,16 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
      * the element (defaults to this.defaultAlign)
      * @param {Roo.menu.Menu} parentMenu (optional) This menu's parent menu, if applicable (defaults to undefined)
      */
-    show : function(el, pos, parentMenu){
-        this.parentMenu = parentMenu;
+    show : function(el, pos, parentMenu)
+    {
+        if (true === this.fireEvent("beforeshow", this)) {
+	    return;
+	}
+	this.parentMenu = parentMenu;
         if(!this.el){
             this.render();
         }
-        this.fireEvent("beforeshow", this);
+        
         this.showAt(this.el.getAlignToXY(el, pos || this.defaultAlign), parentMenu, false);
     },
      /**
@@ -2356,10 +2360,12 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
      */
     hide : function(deep)
     {
-        
+        if (true === this.fireEvent("beforehide", this)) {
+	    return;
+	}
         this.hideMenuItems();
         if(this.el && this.isVisible()){
-            this.fireEvent("beforehide", this);
+           
             if(this.activeItem){
                 this.activeItem.deactivate();
                 this.activeItem = null;
@@ -2426,16 +2432,11 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         if (!this.el) { 
             return;
         }
-        //$(backdrop).remove()
+        
         this.el.select('.open',true).each(function(aa) {
             
             aa.removeClass('open');
-          //var parent = getParent($(this))
-          //var relatedTarget = { relatedTarget: this }
-          
-           //$parent.trigger(e = $.Event('hide.bs.dropdown', relatedTarget))
-          //if (e.isDefaultPrevented()) return
-           //$parent.removeClass('open').trigger('hidden.bs.dropdown', relatedTarget)
+         
         });
     },
     addxtypeChild : function (tree, cntr) {

@@ -85,7 +85,7 @@ Roo.docs.init = {
                 xns: Roo.bootstrap,
                 xtype : 'Menu',
                 listeners : {
-                    hide : (function(mi,ev,c)
+                    beforehide : (function(mi,ev,c)
                     {
                         return true;
                         
