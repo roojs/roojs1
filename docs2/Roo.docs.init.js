@@ -84,22 +84,22 @@ Roo.docs.init = {
                 type : 'treeview',
                 xns: Roo.bootstrap,
                 xtype : 'Menu',
-                listeners : 
-                click : (function(mi,ev,c)
-                {
+                listeners : {
+                    click : (function(mi,ev,c)
+                    {
+                        
+                          ev.stopPropagation();
+                         
+                        if (c.cn.length) {
+                            Roo.log(ev);
+                        }
+                        
+                        
+                        Roo.docs.init.loadDoc(c);
+                        
+                    }).createDelegate(this,[e], true)
                     
-                      ev.stopPropagation();
-                     
-                    if (c.cn.length) {
-                        Roo.log(ev);
-                    }
-                    
-                    
-                    Roo.docs.init.loadDoc(c);
-                    
-                }).createDelegate(this,[e], true)
-                
-            },
+                }
                 
             })
         }));
