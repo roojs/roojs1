@@ -158,11 +158,23 @@ Roo.docs.init = {
         }
         Roo.docs.doc_source.el.dom.innerHTML = d.name.replace(/\./g,"/") + ".js";
         
+        Roo.docs.configTable.hide();
+        Roo.docs.methodsTable.hide();
+        Roo.docs.eventsTable.hide();
+        if (d.config.length) {
+            Roo.docs.configTable.show();
+            Roo.docs.configTable.store.load( { params : { data : d.config }});
+        } 
         
-        Roo.docs.configTable.store.load( { params : { data : d.config }});
-
-        Roo.docs.methodsTable.store.load( { params : { data : d.methods }});
-        Roo.docs.eventsTable.store.load( { params : { data : d.events}});
+        if (d.methods.length) {
+            Roo.docs.methodsTable.store.load( { params : { data : d.methods }});
+            Roo.docs.methodsTable.show();
+        }
+        if (d.events.length) {
+            Roo.docs.eventsTable.store.load( { params : { data : d.events}});
+            Roo.docs.eventsTable.show();
+        }
+        
         
     }
     
