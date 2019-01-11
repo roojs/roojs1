@@ -960,6 +960,8 @@ td.attributes, .fixedFont
     line-height: 20px;
     padding-bottom: 0px;
     margin-bottom: 0px;
+    display: block;
+    clear: both;
 }
 .detailList dt,
 .detailList dd
