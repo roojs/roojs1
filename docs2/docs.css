@@ -896,6 +896,6 @@ pre code {
     font-family: monospace; /** default font is too soft.. */
 }
 .doc-added-member {
-    
+    background-color:  #dff0d8;
     
 }
