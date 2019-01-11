@@ -179,17 +179,7 @@ Roo.docs.template  = {
 	    }
                     
         }
-        /*
-                <if test="member.returns.length">
-                        <dl class="detailList">
-                        <dt class="heading">Returns:</dt>
-                        <for each="item" in="member.returns">
-                                <dd>{+((item.type)?"<span class=\"fixedFont\">"+(new Link().toSymbol(item.type))+"</span> " : "")+}
-                                {+resolveLinks(item.desc)+}</dd>
-                        </for>
-                        </dl>
-                </if>
-        */
+        
         /*
                 <if test="member.requires.length">
                         <dl class="detailList">
