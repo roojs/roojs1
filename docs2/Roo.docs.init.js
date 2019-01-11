@@ -2,6 +2,8 @@
 
 Roo.docs.init = {
     
+    classes : false,. // classes go here..
+    currentClass : '',
     onReady : function()
     {
        
