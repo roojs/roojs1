@@ -398,7 +398,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         if (!this.el) { 
             return;
         }
-        //$(backdrop).remove()
+        
         this.el.select('.open',true).each(function(aa) {
             
             aa.removeClass('open');
