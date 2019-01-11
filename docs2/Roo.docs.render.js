@@ -206,6 +206,13 @@ Roo.docs.render  = {
     makeSignature : function(params) {
         
         
+    },
+    resolveLinks : function(str)
+    {
+        
+    },
+    summarize : function(str)
+    {
+        
     }
-
 }
