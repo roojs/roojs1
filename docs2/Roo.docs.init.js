@@ -2,8 +2,10 @@
 
 Roo.docs.init = {
     
-    classes : false,. // classes go here..
-    currentClass : '',
+    classes : false, // classes go here..
+    currentClass : '', // currently viewed class name
+    
+    
     onReady : function()
     {
        
