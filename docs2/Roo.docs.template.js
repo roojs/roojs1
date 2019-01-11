@@ -76,7 +76,7 @@ Roo.docs.template  = {
 		    return true;
 		}
 		
-		if ($.isStatic && $.memberOf != data.name)) {
+		if ($.isStatic && $.memberOf != data.name) {
 		    return true;
 		}
 		$.isInherited = ($.memberOf != data.name);
