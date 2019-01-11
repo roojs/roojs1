@@ -149,23 +149,17 @@ Roo.docs.render  = {
                 }
                 output+= '</dl>';
                 
+                if (member.deprecated.length) {
+                    output+= '<dl class="detailList"><dt class="heading">Deprecated:</dt><dt>' +
+				+member.deprecated+'</dt></dl>';
+                }
                 
-			</if>
-			<if test="member.deprecated">
-				<dl class="detailList">
-				<dt class="heading">Deprecated:</dt>
-				<dt>
-					{+member.deprecated+}
-				</dt>
-				</dl>
-			</if>
-			<if test="member.since.length">
-				<dl class="detailList">
-				<dt class="heading">Since:</dt>
-					<dd>{+ member.since +}</dd>
-				</dl>
-				</dl>
-			</if>
+                
+                if (member.since.length) {
+                    output+= '<dl class="detailList"><dt class="heading">Since:</dt><dt>' +
+				+member.since+'</dt></dl>';
+                }
+                 /*
 			<if test="member.exceptions.length">
 				<dl class="detailList">
 				<dt class="heading">Throws:</dt>
@@ -177,6 +171,12 @@ Roo.docs.render  = {
 				</for>
 				</dl>
 			</if>
+			*/
+                if (member.returns.length) {
+                    output += '<dl class="detailList"><dt class="heading">Returns:</dt>' +
+                            '<dd><a href="#' + member.returns + '">' + member.returns + '</a></dd></dl>';
+                }
+                /*
 			<if test="member.returns.length">
 				<dl class="detailList">
 				<dt class="heading">Returns:</dt>
@@ -185,6 +185,8 @@ Roo.docs.render  = {
 				</for>
 				</dl>
 			</if>
+		*/
+                /*
 			<if test="member.requires.length">
 				<dl class="detailList">
 				<dt class="heading">Requires:</dt>
@@ -193,6 +195,11 @@ Roo.docs.render  = {
 				</for>
 				</dl>
 			</if>
+		*/
+                if (member.see.length) {
+                    output+= '<dl class="detailList"><dt class="heading">See:</dt><dt>' +
+				'<dd><a href="#' + member.see+ '">' + member.see+ '</a></dd></dl>';
+                }
 			<if test="member.see.length">
 				<dl class="detailList">
 				<dt class="heading">See:</dt>
