@@ -42,6 +42,7 @@ Roo.docs.template  = {
 			return v.length ? v : "<B>Empty</B>";
 		    }).join(", ")) : ''
 		) + '</div>';
+	Roo.log(JSON.stringify(output));
 	return output;
     },
     
