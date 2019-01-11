@@ -134,7 +134,8 @@ h6,
     display: block;
 }
 /* expanded sub menu item */
-.left-menu-sidebar.sidebar ul.treeview-menu.show    > li.treeview-menu.dropdown-toggle >  ul.treeview-menu  > li.treeview-menu.dropdown-toggle > .dropdown-item 
+.left-menu-sidebar.sidebar ul.treeview-menu.show    > li.treeview-menu.dropdown-toggle >  ul.treeview-menu
+            > li.treeview-menu.dropdown-toggle > .dropdown-item 
  {
     display: block;
 }
