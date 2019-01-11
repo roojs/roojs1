@@ -282,6 +282,9 @@
        ]
       },
       {
+       "listeners" : {
+        "render" : "function (_self)\n{\n    _this.methodsTableContainer = this;\n}"
+       },
        "String header" : "Public Methods",
        "Boolean expanded" : false,
        "String cls" : "doc-table-container",

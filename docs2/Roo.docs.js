@@ -556,6 +556,12 @@ Roo.docs = new Roo.XComponent({
        expanded : false,
        header : _this._strings['9c5a24f0cbb12d939e4622b93bea904b'] /* Public Methods */,
        panel : 'info',
+       listeners : {
+        render : function (_self)
+         {
+             _this.methodsTableContainer = this;
+         }
+       },
        xns : Roo.bootstrap,
        '|xns' : 'Roo.bootstrap',
        items  : [
