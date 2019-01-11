@@ -203,9 +203,39 @@ Roo.docs.render  = {
         return output;
     },
     
-    makeSignature : function(params) {
+    makeSignature : function(params)
+    {
         
-        
+            if (!params.length) return "()";
+            var Link = this.Link;
+            var signature = "("	+
+                params.filter(
+                    function($) {
+                        return $.name.indexOf(".") == -1; // don't show config params in signature
+                    }
+                ).map(
+                    function($) {
+                        $.defaultValue = typeof($.defaultValue) == 'undefined' ? false : $.defaultValue;
+                        
+                        return "" +
+                            ($.isOptional ? "[" : "") +
+                            (($.type) ? 
+                                linkSymbo(
+                                    (typeof($.type) == 'object' ) ? 'Function' : $.type
+                                )) + " " :  ""
+                            )   + 
+                            "<B><i>" +$.name + "</i></B>" +
+                            ($.defaultValue ? "=" +item.defaultValue : "") +
+                            ($.isOptional ? "]" : "");
+                        
+                         
+                    }
+                ).join(", ")
+            +
+            ")";
+            return signature;
+        },
+
     },
     resolveLinks : function(str)
     {
