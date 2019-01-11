@@ -74,7 +74,12 @@ Roo.docs.init = {
                      
                     if (c.cn.length) {
                         Roo.log(ev);
-                        mi.menu.show(mi.menu.triggerEl,'?', false);
+                        if (mi.menu.hasClass('show')) {
+                            mi.menu.hide();
+                        } else {
+                            mi.menu.show(mi.menu.triggerEl,'?', false);
+                        }
+                        
                     }
                     
                     Roo.docs.init.loadDoc(c);
