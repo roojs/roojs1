@@ -142,7 +142,7 @@ Roo.docs.template  = {
                 
         if (member.isPrivate) output += "&lt;private&gt; ";
         if (member.isInner) output += "&lt;inner&gt; ";
-        if (member.isStatic || member.singleton.length) { //|| data.comment.getTag("instanceOf").length) {
+        if (member.isStatic || member.isSingleton) { //|| data.comment.getTag("instanceOf").length) {
             output +=  member.memberOf + ".";    
         }
         }
