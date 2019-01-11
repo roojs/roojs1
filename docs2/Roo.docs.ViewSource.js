@@ -83,29 +83,7 @@ Roo.apply(Roo.docs.ViewSource.prototype, {
       xtype : 'Container',
       style : 'width: 100%;',
       xns : Roo.bootstrap,
-      '|xns' : 'Roo.bootstrap',
-      items  : [
-       {
-        xtype : 'Row',
-        xns : Roo.bootstrap,
-        '|xns' : 'Roo.bootstrap',
-        items  : [
-         {
-          xtype : 'Column',
-          cls : 'document-body-ctn',
-          md : 12,
-          listeners : {
-           render : function (_self)
-            {
-                _this.body_ctr = this;
-            }
-          },
-          xns : Roo.bootstrap,
-          '|xns' : 'Roo.bootstrap'
-         }
-        ]
-       }
-      ]
+      '|xns' : 'Roo.bootstrap'
      }
     ]
    }  );

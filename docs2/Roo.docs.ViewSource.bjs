@@ -23,24 +23,7 @@
     {
      "xtype" : "Container",
      "$ xns" : "Roo.bootstrap",
-     "String style" : "width: 100%;",
-     "items" : [
-      {
-       "xtype" : "Row",
-       "$ xns" : "Roo.bootstrap",
-       "items" : [
-        {
-         "listeners" : {
-          "render" : "function (_self)\n{\n    _this.body_ctr = this;\n}"
-         },
-         "Number md" : 12,
-         "String cls" : "document-body-ctn",
-         "xtype" : "Column",
-         "$ xns" : "Roo.bootstrap"
-        }
-       ]
-      }
-     ]
+     "String style" : "width: 100%;"
     },
     {
      "listeners" : {
