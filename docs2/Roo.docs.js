@@ -632,7 +632,7 @@ Roo.docs = new Roo.XComponent({
            			'<div class="mdesc"><div class="long">' + r.json.desc.split("\n").join('<br/>') + '</div></div>';
            			
            },
-           sortable : true,
+           sortable : false,
            xns : Roo.grid,
            '|xns' : 'Roo.grid'
           },
