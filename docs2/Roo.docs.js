@@ -9,7 +9,6 @@ Roo.docs = new Roo.XComponent({
  _strings : {
   '3e6ec55e2dff4342e3f25b0b0b988de9' :"Inheritance tree",
   'ae635f08107a69569e636835f24e6f6f' :" extends ",
-  'cc4abf828cf2e8abef1c409d2122c02f' :"<small>click to expand</small>",
   '87f9f735a1d36793ceaecd4e47124b63' :"Events",
   'd41d8cd98f00b204e9800998ecf8427e' :"",
   '232cedface5acac121a6e099364a2b07' :"source: ",
@@ -21,7 +20,8 @@ Roo.docs = new Roo.XComponent({
   'f361257612a512f9be2fdc2abfb25aef' :"<small>Defined by</small>",
   '494a64a432ff6a121e4ab9003c7a0df3' :"parentcls",
   '9bd81329febf6efe22788e03ddeaf0af' :" Class ",
-  'f561aaf6ef0bf14d4208bb46a4ccb3ad' :"xxx"
+  'f561aaf6ef0bf14d4208bb46a4ccb3ad' :"xxx",
+  'd41d8cd98f00b204e9800998ecf8427e' :" "
  },
 
   part     :  ["docs2", "docs" ],
@@ -616,7 +616,7 @@ Roo.docs = new Roo.XComponent({
           {
            xtype : 'ColumnModel',
            dataIndex : 'name',
-           header : _this._strings['cc4abf828cf2e8abef1c409d2122c02f'] /* <small>click to expand</small> */,
+           header : _this._strings['d41d8cd98f00b204e9800998ecf8427e'] /*   */,
            md : 11,
            renderer : function(v,x,r) { 
            
