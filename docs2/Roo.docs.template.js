@@ -419,7 +419,7 @@ Roo.docs.template  = {
         */
         Roo.log(JSON.stringify(str));
 	str = str.replace(/[ \t]+\n/gi, '\n');
-        str = str.replace(/\n\n+/gi, '<p/>');
+        str = str.replace(/\n\n+/gi, '<br/><br/>');
 	//str = str.replace(/\n/gi, '<br/>');
         var linkSymbol = this.linkSymbol;
         str = str.replace(/\{@link ([^} ]+) ?\}/gi,
